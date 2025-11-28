@@ -1,29 +1,50 @@
-import { memo } from 'react';
-import { useTranslation } from '../../../hooks/useTranslation';
-import * as S from '../../ui/Styled';
-import { PaletteIcon, MagicIcon, MicIcon, LockIcon } from '../../ui/Icons';
-import { PrompterSettings, PrompterActions } from '../../../hooks/usePrompterSettings';
+import { memo } from "react";
+import { useTranslation } from "../../../hooks/useTranslation";
+import * as S from "../../ui/Styled";
+import { PaletteIcon, MagicIcon, MicIcon, LockIcon } from "../../ui/Icons";
+import { PrompterSettings, PrompterActions } from "../../../hooks/usePrompterSettings";
 
 interface ThemeControlProps {
-    settings: PrompterSettings;
-    actions: PrompterActions;
-    isVoiceMode: boolean;
-    toggleVoice: () => void;
-    isPro: boolean;
+ settings: PrompterSettings;
+ actions: PrompterActions;
+ isVoiceMode: boolean;
+ toggleVoice: () => void;
+ isPro: boolean;
 }
 
-export const ThemeControl = memo(({ settings, actions, isVoiceMode, toggleVoice, isPro }: ThemeControlProps) => {
-    const { t } = useTranslation();
-    const { theme, isFocusMode } = settings;
-    const { cycleTheme, setIsFocusMode } = actions;
+export const ThemeControl = memo(
+ ({ settings, actions, isVoiceMode, toggleVoice, isPro }: ThemeControlProps) => {
+  const { t } = useTranslation();
+  const { theme, isFocusMode } = settings;
+  const { cycleTheme, setIsFocusMode } = actions;
 
-    return (
-        <S.HudGroup>
-            <S.IconButton onClick={cycleTheme} title={`${t('host.controls.theme')}: ${t(`host.themes.${theme}`)}`} aria-label={t('host.controls.theme')}><PaletteIcon /></S.IconButton>
-            <S.IconButton onClick={() => setIsFocusMode(!isFocusMode)} active={isFocusMode} title={t('host.controls.focusLine')} aria-label={t('host.controls.focusLine')}><MagicIcon /></S.IconButton>
-            <S.IconButton onClick={toggleVoice} active={isVoiceMode} title={t('host.controls.voice')} aria-label={t('host.controls.voice')} className={!isPro ? 'opacity-50' : ''}>
-                {isPro ? <MicIcon /> : <LockIcon />}
-            </S.IconButton>
-        </S.HudGroup>
-    );
-});
+  return (
+   <S.HudGroup>
+    <S.IconButton
+     onClick={cycleTheme}
+     title={`${t("host.controls.theme")}: ${t(`host.themes.${theme}`)}`}
+     aria-label={t("host.controls.theme")}
+    >
+     <PaletteIcon />
+    </S.IconButton>
+    <S.IconButton
+     onClick={() => setIsFocusMode(!isFocusMode)}
+     active={isFocusMode}
+     title={t("host.controls.focusLine")}
+     aria-label={t("host.controls.focusLine")}
+    >
+     <MagicIcon />
+    </S.IconButton>
+    <S.IconButton
+     onClick={toggleVoice}
+     active={isVoiceMode}
+     title={t("host.controls.voice")}
+     aria-label={t("host.controls.voice")}
+     className={!isPro ? "opacity-50" : ""}
+    >
+     {isPro ? <MicIcon /> : <LockIcon />}
+    </S.IconButton>
+   </S.HudGroup>
+  );
+ }
+);
