@@ -8,7 +8,7 @@ export const pt = {
   home: "Início",
   features: "Recursos",
   pricing: "Preços",
-  backToHome: "Voltar para Home",
+  backToHome: "Voltar para Página Inicial",
  },
  landing: {
   hero: {

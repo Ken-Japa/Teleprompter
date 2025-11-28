@@ -21,7 +21,7 @@ export const ScreenContainer = React.forwardRef<
 ));
 
 export const Header = ({ children }: { children: React.ReactNode }) => (
- <header className="flex items-center justify-between px-8 py-5 z-20 sticky top-0 transition-all duration-300">
+ <header className="flex items-center justify-between px-8 py-5 z-30 sticky top-0 transition-all duration-300">
   <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-xl border-b border-white/5 z-[-1]"></div>
   {children}
  </header>

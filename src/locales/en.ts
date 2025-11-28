@@ -16,6 +16,7 @@ export const en = {
    subheadline:
     "The zero-latency professional teleprompter with remote phone control — no cables, no apps, just your browser.",
    cta: "Start Your Free Teleprompter",
+   versionLive: "Version 2.0 Live",
   },
   features: {
    sync: {
@@ -50,6 +51,7 @@ export const en = {
    lifetime: "Lifetime",
    price: "$ 9",
    oneTime: "one-time payment",
+   limitedOffer: "Limited Offer",
    conversionNotice: "The final value will be converted to your local currency at checkout.",
    cta: "Grab Your Lifetime Access",
    features: [
@@ -187,5 +189,8 @@ export const en = {
    tip1: "Use a dark background and light text to reduce eye strain.",
    tip2: "Practice with different speeds to find the ideal rhythm for your presentation.",
   },
+ },
+ footer: {
+  copyright: "PromptNinja. All rights reserved.",
  },
 };
