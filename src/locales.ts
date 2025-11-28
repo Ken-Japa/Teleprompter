@@ -136,6 +136,55 @@ export const resources = {
    start: "INICIAR",
    pause: "PAUSAR",
   },
+  tutorial: {
+   title: "Guia Rápido do PromptNinja",
+   overview: {
+    title: "Visão Geral",
+    description:
+     "O PromptNinja é um teleprompter profissional P2P que transforma seu navegador em um estúdio completo e seu smartphone em um controle remoto. Sem apps, contas ou dependência de servidores.",
+   },
+   howToUse: {
+    title: "Como Usar",
+    step1: {
+     title: "Escreva seu Roteiro",
+     description:
+      "Use o editor para digitar ou colar seu texto. Você pode usar tags como <r>texto</r> para destacar palavras em cores.",
+    },
+    step2: {
+     title: "Conecte seu Celular",
+     description:
+      "Escaneie o QR Code com seu smartphone para usá-lo como controle remoto. Ajuste a velocidade e inicie/pause a rolagem.",
+    },
+    step3: {
+     title: "Modo de Apresentação",
+     description:
+      "Clique em 'Iniciar Apresentação' para entrar no modo teleprompter. Use o controle remoto ou o controle de voz para gerenciar a rolagem.",
+    },
+   },
+   advancedFeatures: {
+    title: "Recursos Avançados",
+    voiceControl: {
+     title: "Controle de Voz (Pro)",
+     description:
+      "Ative o controle de voz para que o teleprompter role automaticamente conforme você fala. Requer versão Pro.",
+    },
+    themes: {
+     title: "Temas",
+     description:
+      "Personalize a aparência do teleprompter com diferentes temas para melhor legibilidade em diversas condições de iluminação.",
+    },
+    focusMode: {
+     title: "Modo Foco",
+     description:
+      "Ative o modo foco para destacar a linha atual, ajudando a manter o foco durante a leitura.",
+    },
+   },
+   tips: {
+    title: "Dicas",
+    tip1: "Use um fundo escuro e texto claro para reduzir o cansaço visual.",
+    tip2: "Pratique com diferentes velocidades para encontrar o ritmo ideal para sua apresentação.",
+   },
+  },
  },
  en: {
   title: {
@@ -272,6 +321,55 @@ export const resources = {
    reset: "Reset",
    start: "START",
    pause: "PAUSE",
+  },
+  tutorial: {
+   title: "PromptNinja Quick Guide",
+   overview: {
+    title: "Overview",
+    description:
+     "PromptNinja is a P2P professional teleprompter that turns your browser into a complete studio and your smartphone into a remote control. No apps, no accounts, no server dependency.",
+   },
+   howToUse: {
+    title: "How to Use",
+    step1: {
+     title: "Write Your Script",
+     description:
+      "Use the editor to type or paste your text. You can use tags like <r>text</r> to highlight words in colors.",
+    },
+    step2: {
+     title: "Connect Your Phone",
+     description:
+      "Scan the QR Code with your smartphone to use it as a remote control. Adjust speed and start/pause scrolling.",
+    },
+    step3: {
+     title: "Presentation Mode",
+     description:
+      "Click 'Start Presentation' to enter teleprompter mode. Use the remote control or voice control to manage scrolling.",
+    },
+   },
+   advancedFeatures: {
+    title: "Advanced Features",
+    voiceControl: {
+     title: "Voice Control (Pro)",
+     description:
+      "Activate voice control for the teleprompter to scroll automatically as you speak. Requires Pro version.",
+    },
+    themes: {
+     title: "Themes",
+     description:
+      "Customize the teleprompter's appearance with different themes for better readability in various lighting conditions.",
+    },
+    focusMode: {
+     title: "Focus Mode",
+     description:
+      "Activate focus mode to highlight the current line, helping you maintain focus while reading.",
+    },
+   },
+   tips: {
+    title: "Tips",
+    tip1: "Use a dark background and light text to reduce eye strain.",
+    tip2: "Practice with different speeds to find the ideal rhythm for your presentation.",
+   },
   },
  },
 };

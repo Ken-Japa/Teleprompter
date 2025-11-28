@@ -6,3 +6,4 @@ export * from "./styles/Core";
 export * from "./styles/Layouts";
 export * from "./styles/Feedback";
 export * from "./styles/Marketing";
+export * from "./styles/Modal";

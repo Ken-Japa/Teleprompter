@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { ConnectionStatus } from "../../types";
 import * as S from "../ui/Styled";
 import { useTranslation } from "../../hooks/useTranslation";
-import { HomeIcon, PlayIcon } from "../ui/Icons";
+import { HomeIcon, PlayIcon, InfoIcon } from "../ui/Icons";
 import { ConnectSidebar } from "./ConnectSidebar";
 import { EditorToolbar } from "./EditorToolbar";
 import { useEditorLogic } from "../../hooks/useEditorLogic";
+import { TutorialModal } from "../ui/TutorialModal";
 
 interface EditorProps {
  text: string;
@@ -17,6 +18,7 @@ interface EditorProps {
 
 export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, onStart }) => {
  const { t } = useTranslation();
+ const [showTutorialModal, setShowTutorialModal] = useState(false);
 
  // Separation of Concerns: Logic is now in the hook
  const { localText, textAreaRef, handleChange, handleInsertTag, handleClear } = useEditorLogic({
@@ -40,6 +42,13 @@ export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, o
      </button>
     </div>
     <div className="flex items-center space-x-3">
+     <S.IconButton
+      onClick={() => setShowTutorialModal(true)}
+      title="Tutorial"
+      aria-label="Open Tutorial"
+     >
+      <InfoIcon />
+     </S.IconButton>
      <S.PrimaryButton onClick={onStart} aria-label="Start Presentation Mode" className="!py-2 !px-5 !text-xs">
       <PlayIcon className="w-3 h-3 mr-2" /> {t("host.startPrompter")}
      </S.PrimaryButton>
@@ -60,6 +69,7 @@ export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, o
 
     <ConnectSidebar peerId={peerId} status={status} />
    </div>
+   <TutorialModal isOpen={showTutorialModal} onClose={() => setShowTutorialModal(false)} />
   </S.EditorContainer>
  );
 };
