@@ -3,7 +3,7 @@ import * as S from "../ui/Styled";
 import { ConnectionStatus } from "../../types";
 import { PrompterActions, PrompterSettings } from "../../hooks/usePrompterSettings";
 import { PrompterTimer, SpeedControl, FontControl, DisplayControl, ThemeControl } from "./controls";
-import { InfoIcon } from "../ui/Icons";
+import { InfoIcon, LogOutIcon } from "../ui/Icons";
 import { TutorialModal } from "../ui/TutorialModal";
 
 interface PrompterHUDProps {
@@ -55,16 +55,17 @@ export const PrompterHUD = memo(
      onClick={() => setShowTutorialModal(true)}
      title="Tutorial"
      aria-label="Open Tutorial"
-     className="ml-4"
+     className="ml-4 w-8 h-8 sm:w-10 sm:h-10"
     >
-     <InfoIcon />
+     <InfoIcon className="w-4 h-4 sm:w-5 sm:h-5" />
     </S.IconButton>
 
     <S.PrimaryButton
      onClick={onExit}
-     className="ml-4 bg-slate-800 hover:bg-slate-700 text-slate-200 shadow-none py-2 px-4 !rounded-xl text-xs"
+     className="ml-4 bg-slate-800 hover:bg-slate-700 text-slate-200 shadow-none py-2 px-3 !rounded-xl text-xs sm:py-2 sm:px-4"
     >
-     EXIT
+     <span className="hidden sm:inline">EXIT</span>
+     <LogOutIcon className="inline sm:hidden w-4 h-4" />
     </S.PrimaryButton>
 
     <TutorialModal isOpen={showTutorialModal} onClose={() => setShowTutorialModal(false)} />

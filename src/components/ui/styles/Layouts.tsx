@@ -135,7 +135,7 @@ export const FocusIndicator = () => (
 
 export const HudContainer = ({ children, visible }: { children: React.ReactNode; visible: boolean }) => (
     <div
-        className={`fixed bottom-12 left-1/2 -translate-x-1/2 glass-panel pl-6 pr-4 py-3 rounded-full z-50 transition-all duration-500 cubic-bezier(0.16, 1, 0.3, 1) flex items-center space-x-6 ring-1 ring-white/10 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.8)] ${visible ? "opacity-100 translate-y-0 scale-100 blur-0" : "opacity-0 translate-y-12 scale-90 blur-lg pointer-events-none"}`}
+        className={`fixed bottom-4 w-full px-4 sm:left-1/2 sm:-translate-x-1/2 sm:w-auto glass-panel py-2 rounded-xl sm:bottom-12 sm:px-6 sm:py-3 sm:rounded-full z-50 transition-all duration-500 cubic-bezier(0.16, 1, 0.3, 1) flex flex-wrap justify-center items-center space-x-3 sm:flex-nowrap sm:space-x-6 ring-1 ring-white/10 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.8)] ${visible ? "opacity-100 translate-y-0 scale-100 blur-0" : "opacity-0 translate-y-12 scale-90 blur-lg pointer-events-none"}`}
     >
         {children}
     </div>

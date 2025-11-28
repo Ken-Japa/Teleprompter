@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { ConnectionStatus } from "../../types";
 import * as S from "../ui/Styled";
 import { useTranslation } from "../../hooks/useTranslation";
-import { HomeIcon, PlayIcon, InfoIcon } from "../ui/Icons";
+import { HomeIcon, PlayIcon } from "../ui/Icons";
 import { ConnectSidebar } from "./ConnectSidebar";
 import { EditorToolbar } from "./EditorToolbar";
 import { useEditorLogic } from "../../hooks/useEditorLogic";
-import { TutorialModal } from "../ui/TutorialModal";
 import { LanguageSelector } from "../ui/LanguageSelector";
 
 interface EditorProps {
@@ -19,7 +18,6 @@ interface EditorProps {
 
 export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, onStart }) => {
     const { t } = useTranslation();
-    const [showTutorialModal, setShowTutorialModal] = useState(false);
 
     // Separation of Concerns: Logic is now in the hook
     const { localText, textAreaRef, handleChange, handleInsertTag, handleClear } = useEditorLogic({
@@ -31,7 +29,8 @@ export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, o
         <S.EditorContainer>
             <S.Header>
                 <div className="flex items-center space-x-6">
-                    <S.LogoText main={t("title.main")} sub={t("title.sub")} />
+                    <S.LogoText main={t("title.main")} sub={t("title.sub")} className="hidden sm:flex" />
+                    <S.LogoText sub={t("title.main")} className="sm:hidden" />
                     <button
                         onClick={() => {
                             window.location.hash = "";
@@ -39,20 +38,14 @@ export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, o
                         className="flex items-center text-xs font-bold text-slate-500 hover:text-white transition"
                         aria-label="Back to Home"
                     >
-                        <HomeIcon className="w-3 h-3 mr-1" /> {t("menu.backToHome")}
+                        <HomeIcon className="w-4 h-4 mr-1" /> <span className="hidden sm:inline">{t("menu.backToHome")}</span>
                     </button>
                 </div>
                 <div className="flex items-center space-x-3">
-                    <S.IconButton
-                        onClick={() => setShowTutorialModal(true)}
-                        title="Tutorial"
-                        aria-label="Open Tutorial"
-                    >
-                        <InfoIcon />
-                    </S.IconButton>
+
                     <LanguageSelector />
-                    <S.PrimaryButton onClick={onStart} aria-label="Start Presentation Mode" className="!py-2 !px-5 !text-xs">
-                        <PlayIcon className="w-3 h-3 mr-2" /> {t("host.startPrompter")}
+                    <S.PrimaryButton onClick={onStart} aria-label="Start Presentation Mode" className="!py-2 !px-3 sm:!py-2 sm:!px-5 sm:!text-xs">
+                        <PlayIcon className="w-5 h-5 mr-0 sm:w-3 sm:h-3 sm:mr-2" /> <span className="hidden sm:inline">{t("host.startPrompter")}</span>
                     </S.PrimaryButton>
                 </div>
             </S.Header>
@@ -71,7 +64,6 @@ export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, o
 
                 <ConnectSidebar peerId={peerId} status={status} />
             </div>
-            <TutorialModal isOpen={showTutorialModal} onClose={() => setShowTutorialModal(false)} />
         </S.EditorContainer>
     );
 };
