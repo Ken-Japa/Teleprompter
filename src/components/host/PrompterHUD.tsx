@@ -13,6 +13,8 @@ interface PrompterHUDProps {
  actions: PrompterActions;
  isVoiceMode: boolean;
  isPro: boolean;
+ voiceApiSupported: boolean;
+ voiceApiError: string | null;
  resetTimerSignal: boolean;
  onStateChange: (isPlaying: boolean, speed: number) => void;
  onResetPrompter: () => void;
@@ -35,6 +37,8 @@ export const PrompterHUD = memo(
   onResetPrompter,
   toggleVoice,
   onExit,
+  voiceApiSupported,
+  voiceApiError,
  }: PrompterHUDProps) => {
   return (
    <S.HudContainer visible={showHud}>
@@ -60,6 +64,8 @@ export const PrompterHUD = memo(
      isVoiceMode={isVoiceMode}
      toggleVoice={toggleVoice}
      isPro={isPro}
+     voiceApiSupported={voiceApiSupported}
+     voiceApiError={voiceApiError}
     />
 
     <S.PrimaryButton

@@ -98,6 +98,52 @@ Para rodar o PromptNinja localmente e contribuir com o código.
 
 ---
 
+## 🚀 Deploy na Vercel
+
+A Vercel oferece uma plataforma de deploy fácil e rápida para aplicações web.
+
+1. **Crie uma conta na Vercel:** Se você ainda não tem uma, crie uma conta em [vercel.com](https://vercel.com/).
+2. **Instale a Vercel CLI (opcional, mas recomendado):**
+   ```bash
+   npm install -g vercel
+   ```
+3. **Faça login na Vercel CLI:**
+   ```bash
+   vercel login
+   ```
+4. **Faça o deploy do seu projeto:**
+   Navegue até a pasta raiz do seu projeto no terminal e execute:
+   ```bash
+   vercel
+   ```
+   Siga as instruções no terminal. A Vercel detectará automaticamente que é um projeto Vite e configurará o deploy.
+5. **HTTPS:** A Vercel configura automaticamente o HTTPS para o seu deploy.
+
+---
+
+## 🚀 Deploy na Netlify
+
+A Netlify oferece uma plataforma de deploy poderosa e fácil de usar.
+
+1. **Crie uma conta na Netlify:** Se você ainda não tem uma, crie uma conta em [netlify.com](https://www.netlify.com/).
+2. **Instale a Netlify CLI (opcional, mas recomendado):**
+   ```bash
+   npm install -g netlify-cli
+   ```
+3. **Faça login na Netlify CLI:**
+   ```bash
+   netlify login
+   ```
+4. **Faça o deploy do seu projeto:**
+   Navegue até a pasta raiz do seu projeto no terminal e execute:
+   ```bash
+   netlify deploy
+   ```
+   Siga as instruções no terminal. A Netlify detectará automaticamente que é um projeto Vite e configurará o deploy.
+5. **HTTPS:** A Netlify configura automaticamente o HTTPS para o seu deploy.
+
+---
+
 ## 🧩 Estrutura do Projeto
 
 O projeto segue uma arquitetura moderna baseada em React Hooks e Componentização.

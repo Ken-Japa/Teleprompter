@@ -123,6 +123,9 @@ export const resources = {
     invalid: "Chave Inválida",
     success: "Ninja Pro Ativado!",
    },
+   voice: {
+    notSupported: "Seu navegador não suporta controle por voz",
+   },
   },
   remote: {
    connecting: "Buscando Ninja Host...",
@@ -256,6 +259,9 @@ export const resources = {
     button: "Activate PRO",
     invalid: "Invalid Key",
     success: "Ninja Pro Activated!",
+   },
+   voice: {
+    notSupported: "Your browser does not support voice control",
    },
   },
   remote: {

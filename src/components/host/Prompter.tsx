@@ -52,7 +52,7 @@ export const Prompter = memo(
    const mouseMoveRafRef = useRef<number | null>(null);
 
    // Voice Control
-   const { startListening, stopListening, resetVoice, activeSentenceIndex, sentences } = useVoiceControl(
+   const { startListening, stopListening, resetVoice, activeSentenceIndex, sentences, voiceApiSupported, voiceApiError } = useVoiceControl(
     text,
     isPro
    );
@@ -218,6 +218,8 @@ export const Prompter = memo(
       actions={actions}
       isVoiceMode={isVoiceMode}
       isPro={isPro}
+      voiceApiSupported={voiceApiSupported}
+      voiceApiError={voiceApiError}
       resetTimerSignal={resetTimerSignal}
       onStateChange={onStateChange}
       onResetPrompter={resetPrompter}

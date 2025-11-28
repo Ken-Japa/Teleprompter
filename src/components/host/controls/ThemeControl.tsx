@@ -10,10 +10,12 @@ interface ThemeControlProps {
  isVoiceMode: boolean;
  toggleVoice: () => void;
  isPro: boolean;
+ voiceApiSupported: boolean;
+ voiceApiError: string | null;
 }
 
 export const ThemeControl = memo(
- ({ settings, actions, isVoiceMode, toggleVoice, isPro }: ThemeControlProps) => {
+ ({ settings, actions, isVoiceMode, toggleVoice, isPro, voiceApiSupported, voiceApiError }: ThemeControlProps) => {
   const { t } = useTranslation();
   const { theme, isFocusMode } = settings;
   const { cycleTheme, setIsFocusMode } = actions;
@@ -38,9 +40,10 @@ export const ThemeControl = memo(
     <S.IconButton
      onClick={toggleVoice}
      active={isVoiceMode}
-     title={t("host.controls.voice")}
+     title={voiceApiSupported ? t("host.controls.voice") : t(voiceApiError || "")}
      aria-label={t("host.controls.voice")}
-     className={!isPro ? "opacity-50" : ""}
+     className={!isPro || !voiceApiSupported ? "opacity-50" : ""}
+     disabled={!voiceApiSupported}
     >
      {isPro ? <MicIcon /> : <LockIcon />}
     </S.IconButton>

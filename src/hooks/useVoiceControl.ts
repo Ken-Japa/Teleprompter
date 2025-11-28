@@ -6,6 +6,8 @@ import { logger } from "../utils/logger";
 export const useVoiceControl = (text: string, isPro: boolean) => {
  const [isListening, setIsListening] = useState<boolean>(false);
  const [activeSentenceIndex, setActiveSentenceIndex] = useState<number>(-1);
+ const [voiceApiSupported, setVoiceApiSupported] = useState<boolean>(true);
+ const [voiceApiError, setVoiceApiError] = useState<string | null>(null);
 
  const recognitionRef = useRef<any>(null);
  const lastMatchIndexRef = useRef<number>(0);
@@ -39,7 +41,11 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
  // Memoized start function to be safe for recursion in onend
  const startRecognitionInstance = useCallback(() => {
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SpeechRecognition) return;
+  if (!SpeechRecognition) {
+   setVoiceApiSupported(false);
+   setVoiceApiError("voice.notSupported"); // Key for translation
+   return;
+  }
 
   // Abort previous to ensure clean state
   if (recognitionRef.current) {
@@ -136,5 +142,7 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
   activeSentenceIndex,
   setActiveSentenceIndex,
   sentences,
+  voiceApiSupported,
+  voiceApiError,
  };
 };
