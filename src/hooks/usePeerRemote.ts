@@ -90,8 +90,44 @@ export const usePeerRemote = (hostId: string) => {
   let retryCount = 0;
   const MAX_RETRIES = 15;
 
-  const initRemote = () => {
+  /**
+   * @function loadPeerJSLibrary
+   * @description Carrega dinamicamente a biblioteca PeerJS.
+   * @returns {Promise<void>} Uma promessa que resolve quando a biblioteca é carregada.
+   */
+  const loadPeerJSLibrary = (): Promise<void> => {
+   return new Promise((resolve, reject) => {
+    if (window.Peer) {
+     resolve();
+     return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js";
+    script.async = true;
+    script.onload = () => {
+     console.log("PeerJS library loaded successfully.");
+     resolve();
+    };
+    script.onerror = () => {
+     console.error("Failed to load PeerJS library.");
+     reject(new Error("Failed to load PeerJS library."));
+    };
+    document.head.appendChild(script);
+   });
+  };
+
+  const initRemote = async () => {
    if (!mountedRef.current) return;
+
+   // Tenta carregar a biblioteca PeerJS
+   try {
+    await loadPeerJSLibrary();
+   } catch (error) {
+    console.error("PeerJS failed to load:", error);
+    setStatus(ConnectionStatus.ERROR);
+    return;
+   }
 
    // Wait for library load
    if (!window.Peer) {

@@ -15,13 +15,48 @@ export const ConnectSidebar: React.FC<ConnectSidebarProps> = memo(({ peerId, sta
  const [copied, setCopied] = useState(false);
 
  useEffect(() => {
-  if (peerId && qrRef.current && window.QRCode) {
-   qrRef.current.innerHTML = "";
+  /**
+   * @function loadQRCodeLibrary
+   * @description Carrega dinamicamente a biblioteca QRCode.js.
+   * @returns {Promise<void>} Uma promessa que resolve quando a biblioteca é carregada.
+   */
+  const loadQRCodeLibrary = (): Promise<void> => {
+   return new Promise((resolve, reject) => {
+    if (window.QRCode) {
+     resolve();
+     return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js";
+    script.async = true;
+    script.onload = () => {
+     console.log("QRCode.js library loaded successfully.");
+     resolve();
+    };
+    script.onerror = () => {
+     console.error("Failed to load QRCode.js library.");
+     reject(new Error("Failed to load QRCode.js library."));
+    };
+    document.head.appendChild(script);
+   });
+  };
+
+  const generateQrCode = async () => {
+   if (!peerId || !qrRef.current) return;
+
    try {
+    await loadQRCodeLibrary();
+    if (!window.QRCode) {
+     console.error("QRCode.js not available after loading attempt.");
+     return;
+    }
+
+    qrRef.current.innerHTML = "";
     const url = `${window.location.protocol}//${window.location.host}${window.location.pathname}#remote?id=${peerId}`;
     new window.QRCode(qrRef.current, {
      text: url,
-     width: 140, // Slightly smaller to fit improved frame
+     width: 140,
      height: 140,
      colorDark: "#020617",
      colorLight: "#ffffff",
@@ -30,7 +65,9 @@ export const ConnectSidebar: React.FC<ConnectSidebarProps> = memo(({ peerId, sta
    } catch (e) {
     console.error("QR Generation failed", e);
    }
-  }
+  };
+
+  generateQrCode();
  }, [peerId]);
 
  const copyLink = () => {
