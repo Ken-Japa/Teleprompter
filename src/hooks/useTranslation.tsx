@@ -10,7 +10,16 @@ interface TranslationContextType {
 const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
 
 const getInitialLanguage = (): Language => {
-    // 1. Tenta obter do localStorage
+    // 1. Tenta obter do parâmetro 'lang' da URL
+    if (typeof window !== "undefined") {
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get("lang");
+        if (urlLang === "pt" || urlLang === "en" || urlLang === "es") {
+            return urlLang as Language;
+        }
+    }
+
+    // 2. Tenta obter do localStorage
     if (typeof window !== "undefined") {
         const storedLang = localStorage.getItem("app_language");
         if (storedLang === "pt" || storedLang === "en" || storedLang === "es") {
@@ -18,7 +27,7 @@ const getInitialLanguage = (): Language => {
         }
     }
 
-    // 2. Tenta detectar do navegador
+    // 3. Tenta detectar do navegador
     if (typeof navigator !== "undefined") {
         const browserLang = navigator.language.split("-")[0];
         if (browserLang === "pt" || browserLang === "en" || browserLang === "es") {
@@ -26,7 +35,7 @@ const getInitialLanguage = (): Language => {
         }
     }
 
-    // 3. Padrão para português
+    // 4. Padrão para português
     return "pt";
 };
 

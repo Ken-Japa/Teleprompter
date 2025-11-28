@@ -12,31 +12,31 @@ export const es = {
   },
   landing: {
    hero: {
-    headline: "Desplázate como un Maestro",
+    headline: "Domina tu Presentación",
     subheadline:
-     "El teleprompter profesional de latencia cero con control remoto. Sin cables, sin apps, directamente en tu navegador.",
-    cta: "Lanzar Aplicación Web",
+     "El teleprompter profesional de latencia cero con control remoto desde tu móvil — sin cables, sin apps, directamente en tu navegador.",
+    cta: "Iniciar Teleprompter Gratis",
    },
    features: {
     sync: {
      title: "Sincronización Instantánea",
-     desc: "La tecnología P2P (Peer-to-Peer) garantiza un control en tiempo real sin demoras.",
+     desc: "La tecnología Peer-to-Peer (P2P) ofrece control en tiempo real sin demoras — sin latencia del servidor, solo sincronización instantánea.",
     },
     offline: {
      title: "Modo Offline",
-     desc: "Funciona sin internet después de cargar. Tus datos nunca salen de tu dispositivo.",
+     desc: "Accede a tu teleprompter sin conexión. Tus guiones permanecen privados, nunca salen de tu dispositivo.",
     },
     privacy: {
      title: "Privacidad Total",
-     desc: "Sin backend, sin base de datos. Tu guion se guarda solo en tu navegador.",
+     desc: "Privacidad total: Sin nube, sin servidores, tu guion se almacena solo en tu navegador.",
     },
     voice: {
      title: "Control por Voz",
-     desc: "El texto se desplaza automáticamente mientras hablas. Manos libres y enfoque total.",
+     desc: "Teleprompter manos libres: Tu guion se desplaza automáticamente con tu voz, manteniéndote enfocado.",
     },
     focus: {
      title: "Enfoque Dinámico",
-     desc: "Resaltado visual inteligente en la línea que estás leyendo para que nunca te pierdas.",
+     desc: "Línea de enfoque dinámico: El resaltado inteligente sigue tu lectura, asegurando que nunca pierdas el hilo.",
     },
     themes: {
      title: "Temas Visuales",
@@ -45,7 +45,7 @@ export const es = {
    },
    pricing: {
     title: "Acceso de por Vida",
-    subtitle: "Paga una vez, úsalo para siempre. Sin suscripciones mensuales.",
+    subtitle: "Pago único para acceso de por vida. Sin cuotas recurrentes, nunca.",
     lifetime: "De por Vida",
     price: "€9",
     oneTime: "pago único",
@@ -72,10 +72,10 @@ export const es = {
    editText: "Editar Guion",
    mirror: "Espejo",
    remoteConnect: "Conexión Remota",
-   scanInstruction: "Escanea para controlar",
+   scanInstruction: "Escanea el Código QR para Controlar",
    generatingId: "Generando Enlace...",
    idLabel: "ID de Sesión:",
-   editorPlaceholder: "Pega tu guion aquí y conviértete en un maestro orador...",
+   editorPlaceholder: "Pega o escribe tu guion de discurso aquí para dominar tu presentación...",
    localhostWarning: "Advertencia: Localhost detectado. Usa el botón de abajo para probar.",
    openRemoteTab: "Abrir Control Remoto (Nueva Pestaña)",
    copyLink: "Copiar Enlace",
@@ -136,28 +136,28 @@ export const es = {
    pause: "PAUSAR",
   },
   tutorial: {
-   title: "Guía Rápida de PromptNinja",
+   title: "PromptNinja: Tu Guía de Inicio Rápido",
    overview: {
     title: "Visión General",
     description:
-     "PromptNinja es un teleprompter profesional P2P que convierte tu navegador en un estudio completo y tu smartphone en un control remoto. Sin aplicaciones, cuentas o dependencia de servidores.",
+     "PromptNinja es un teleprompter profesional peer-to-peer que transforma tu navegador en un estudio completo y tu smartphone en un control remoto — sin apps, sin cuentas, sin dependencia de servidores.",
    },
    howToUse: {
     title: "Cómo Usar",
     step1: {
      title: "Escribe tu Guion",
      description:
-      "Usa el editor para escribir o pegar tu texto. Puedes usar etiquetas como <r>texto</r> para resaltar palabras en colores.",
+      "Escribe o pega fácilmente tu guion de presentación. Usa etiquetas como <r>texto</r> para resaltar con colores.",
     },
     step2: {
      title: "Conecta tu Teléfono",
      description:
-      "Escanea el Código QR con tu smartphone para usarlo como control remoto. Ajusta la velocidad e inicia/pausa el desplazamiento.",
+      "Conecta tu smartphone: Escanea el código QR para convertirlo en un control remoto para velocidad y desplazamiento.",
     },
     step3: {
      title: "Modo de Presentación",
      description:
-      "Haz clic en 'Iniciar Presentación' para entrar en el modo teleprompter. Usa el control remoto o el control por voz para gestionar el desplazamiento.",
+      "Activa el modo teleprompter: Haz clic en 'Iniciar Presentación' y controla con tu mando a distancia o voz.",
     },
    },
    advancedFeatures: {
@@ -165,7 +165,7 @@ export const es = {
     voiceControl: {
      title: "Control por Voz (Pro)",
      description:
-      "Activa el control por voz para que el teleprompter se desplace automáticamente mientras hablas. Requiere la versión Pro.",
+      "Habilita el desplazamiento activado por voz: Tu teleprompter avanza automáticamente mientras hablas. (Función Pro)",
     },
     themes: {
      title: "Temas",
@@ -175,7 +175,7 @@ export const es = {
     focusMode: {
      title: "Modo Enfoque",
      description:
-      "Activa el modo enfoque para resaltar la línea actual, ayudándote a mantener el enfoque durante la lectura.",
+      "Utiliza el modo enfoque: Resalta tu línea actual, asegurando que te mantengas en el camino y concentrado.",
     },
    },
    tips: {

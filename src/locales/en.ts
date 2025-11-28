@@ -1,186 +1,187 @@
 export const en = {
-  title: {
-   main: "PROMPT",
-   sub: "NINJA",
-   remote: "CONTROL",
+ title: {
+  main: "PROMPT",
+  sub: "NINJA",
+  remote: "CONTROL",
+ },
+ menu: {
+  home: "Home",
+  features: "Features",
+  pricing: "Pricing",
+  backToHome: "Back to Home",
+ },
+ landing: {
+  hero: {
+   headline: "Master Your Presentations",
+   subheadline:
+    "The zero-latency professional teleprompter with remote phone control — no cables, no apps, just your browser.",
+   cta: "Start Your Free Teleprompter",
   },
-  menu: {
-   home: "Home",
-   features: "Features",
-   pricing: "Pricing",
-   backToHome: "Back to Home",
-  },
-  landing: {
-   hero: {
-    headline: "Scroll Like a Master",
-    subheadline:
-     "The professional zero-latency teleprompter with remote control. No cables, no apps, runs in your browser.",
-    cta: "Launch Web App",
+  features: {
+   sync: {
+    title: "Instant Sync",
+    desc:
+     "Peer-to-Peer (P2P) technology delivers zero-delay real-time control — no server lag, just instant sync.",
    },
-   features: {
-    sync: {
-     title: "Instant Sync",
-     desc: "P2P (Peer-to-Peer) technology ensures real-time control with zero delay.",
-    },
-    offline: {
-     title: "Offline Mode",
-     desc: "Works without internet after loading. Your data never leaves your device.",
-    },
-    privacy: {
-     title: "Total Privacy",
-     desc: "No backend, no database. Your script is saved only in your browser.",
-    },
-    voice: {
-     title: "Voice Control",
-     desc: "Text scrolls automatically as you speak. Hands-free and total focus.",
-    },
-    focus: {
-     title: "Dynamic Focus",
-     desc: "Smart visual highlighting on the line you are reading so you never get lost.",
-    },
-    themes: {
-     title: "Visual Themes",
-     desc: "Dark, Light, Matrix, and High Contrast modes for any environment.",
-    },
+   offline: {
+    title: "Offline Mode",
+    desc: "Access your teleprompter offline. Your scripts stay private, never leaving your device.",
    },
-   pricing: {
-    title: "Lifetime Access",
-    subtitle: "Pay once, use forever. No monthly subscriptions.",
-    lifetime: "Lifetime",
-    price: "$9",
-    oneTime: "one-time payment",
-    cta: "Get Lifetime Access",
-    features: [
-     "Unlimited Sessions",
-     "No Watermark",
-     "No Time Limit",
-     "Color Highlighting",
-     "Voice Control",
-     "Dynamic Focus Line",
-     "Priority Support",
-    ],
-   },
-  },
-  status: {
-   disconnected: "DISCONNECTED",
-   connecting: "CONNECTING...",
-   connected: "CONNECTED",
-   error: "NETWORK ERROR",
-  },
-  host: {
-   startPrompter: "Presentation Mode",
-   editText: "Edit Script",
-   mirror: "Mirror",
-   remoteConnect: "Remote Connect",
-   scanInstruction: "Scan to control",
-   generatingId: "Generating Link...",
-   idLabel: "Session ID:",
-   editorPlaceholder: "Paste your script here and become a master speaker...",
-   localhostWarning: "Warning: Localhost detected. Use the button below to test.",
-   openRemoteTab: "Open Remote (New Tab)",
-   copyLink: "Copy Link",
-   linkCopied: "Copied!",
-   connectionLost: "CONNECTION LOST",
-   watermark: "PROMPT NINJA FREE VERSION",
-   controls: {
-    play: "Play",
-    pause: "Pause",
-    reset: "Reset",
-    speed: "Speed",
-    margin: "Focus",
-    size: "Text",
-    timer: "Time",
-    caps: "All Caps",
-    voice: "Voice Control",
-    focusLine: "Focus Line",
-    theme: "Visual Theme",
-   },
-   themes: {
-    ninja: "Ninja (Dark)",
-    paper: "Paper (Light)",
-    contrast: "Contrast",
-    matrix: "Matrix",
-    cyber: "Cyberpunk",
-    cream: "Cream (Reader)",
-   },
-   tips: {
-    title: "PRO Editing Tips",
-    desc: "Use tags to highlight text:",
-    red: "Red Highlight",
-    yellow: "Yellow Highlight",
-    green: "Green Highlight",
-    caps: "Use 'TT' button for All Caps mode.",
-    voice: "Enable Mic for voice-activated scrolling.",
-   },
-   paywall: {
-    title: "PRO Feature Locked",
-    desc: "This feature is exclusive to Ninja PROs. Unlock to use colors, voice, and unlimited time.",
-    cta: "Unlock Lifetime",
-    inputPlaceholder: "Enter PRO key...",
-    button: "Activate PRO",
-    invalid: "Invalid Key",
-    success: "Ninja Pro Activated!",
+   privacy: {
+    title: "Total Privacy",
+    desc: "Ultimate privacy: No cloud, no servers, your script is stored only in your browser.",
    },
    voice: {
-    notSupported: "Your browser does not support voice control",
+    title: "Voice Control",
+    desc: "Hands-free teleprompter: Your script scrolls automatically with your voice, keeping you focused.",
+   },
+   focus: {
+    title: "Dynamic Focus",
+    desc: "Dynamic focus line: Smart highlighting tracks your reading, ensuring you never lose your place.",
+   },
+   themes: {
+    title: "Visual Themes",
+    desc: "Dark, Light, Matrix, and High Contrast modes for any environment.",
    },
   },
-  remote: {
-   connecting: "Searching Ninja Host...",
-   targetId: "Target: {{id}}",
-   touchArea: "TRACKPAD",
-   speed: "Speed",
+  pricing: {
+   title: "Lifetime Access",
+   subtitle: "One-time payment for lifetime access. No recurring fees, ever.",
+   lifetime: "Lifetime",
+   price: "$9",
+   oneTime: "one-time payment",
+   cta: "Grab Your Lifetime Access",
+   features: [
+    "Unlimited Sessions",
+    "No Watermark",
+    "No Time Limit",
+    "Color Highlighting",
+    "Voice Control",
+    "Dynamic Focus Line",
+    "Priority Support",
+   ],
+  },
+ },
+ status: {
+  disconnected: "DISCONNECTED",
+  connecting: "CONNECTING...",
+  connected: "CONNECTED",
+  error: "NETWORK ERROR",
+ },
+ host: {
+  startPrompter: "Presentation Mode",
+  editText: "Edit Your Script",
+  mirror: "Mirror",
+  remoteConnect: "Remote Connect",
+  scanInstruction: "Scan the QR Code to Control",
+  generatingId: "Generating Link...",
+  idLabel: "Session ID:",
+  editorPlaceholder: "Paste or type your speech script here to master your delivery...",
+  localhostWarning: "Warning: Localhost detected. Use the button below to test.",
+  openRemoteTab: "Open Remote (New Tab)",
+  copyLink: "Copy Link",
+  linkCopied: "Copied!",
+  connectionLost: "CONNECTION LOST",
+  watermark: "PROMPT NINJA FREE VERSION",
+  controls: {
+   play: "Play",
+   pause: "Pause",
    reset: "Reset",
-   start: "START",
-   pause: "PAUSE",
+   speed: "Speed",
+   margin: "Focus",
+   size: "Text",
+   timer: "Time",
+   caps: "All Caps",
+   voice: "Voice Control",
+   focusLine: "Focus Line",
+   theme: "Visual Theme",
   },
-  tutorial: {
-   title: "PromptNinja Quick Guide",
-   overview: {
-    title: "Overview",
+  themes: {
+   ninja: "Ninja (Dark)",
+   paper: "Paper (Light)",
+   contrast: "Contrast",
+   matrix: "Matrix",
+   cyber: "Cyberpunk",
+   cream: "Cream (Reader)",
+  },
+  tips: {
+   title: "PRO Editing Tips",
+   desc: "Use tags to highlight text:",
+   red: "Red Highlight",
+   yellow: "Yellow Highlight",
+   green: "Green Highlight",
+   caps: "Use 'TT' button for All Caps mode.",
+   voice: "Enable Mic for voice-activated scrolling.",
+  },
+  paywall: {
+   title: "PRO Feature Locked",
+   desc: "This feature is exclusive to Ninja PROs. Unlock to use colors, voice, and unlimited time.",
+   cta: "Unlock Lifetime",
+   inputPlaceholder: "Enter PRO key...",
+   button: "Activate PRO",
+   invalid: "Invalid Key",
+   success: "Ninja Pro Activated!",
+  },
+  voice: {
+   notSupported: "Your browser does not support voice control",
+  },
+ },
+ remote: {
+  connecting: "Searching Ninja Host...",
+  targetId: "Target: {{id}}",
+  touchArea: "TRACKPAD",
+  speed: "Speed",
+  reset: "Reset",
+  start: "START",
+  pause: "PAUSE",
+ },
+ tutorial: {
+  title: "PromptNinja: Your Quick Start Guide",
+  overview: {
+   title: "Overview",
+   description:
+    "PromptNinja is a peer-to-peer professional teleprompter that transforms your browser into a full studio and your smartphone into a remote control — no apps, no accounts, no server reliance.",
+  },
+  howToUse: {
+   title: "How to Use",
+   step1: {
+    title: "Write Your Script",
     description:
-     "PromptNinja is a P2P professional teleprompter that turns your browser into a complete studio and your smartphone into a remote control. No apps, no accounts, no server dependency.",
+     "Easily type or paste your presentation script. Use tags like <r>text</r> for color highlighting.",
    },
-   howToUse: {
-    title: "How to Use",
-    step1: {
-     title: "Write Your Script",
-     description:
-      "Use the editor to type or paste your text. You can use tags like <r>text</r> to highlight words in colors.",
-    },
-    step2: {
-     title: "Connect Your Phone",
-     description:
-      "Scan the QR Code with your smartphone to use it as a remote control. Adjust speed and start/pause scrolling.",
-    },
-    step3: {
-     title: "Presentation Mode",
-     description:
-      "Click 'Start Presentation' to enter teleprompter mode. Use the remote control or voice control to manage scrolling.",
-    },
+   step2: {
+    title: "Connect Your Phone",
+    description:
+     "Connect your smartphone: Scan the QR code to turn it into a remote control for speed and scrolling.",
    },
-   advancedFeatures: {
-    title: "Advanced Features",
-    voiceControl: {
-     title: "Voice Control (Pro)",
-     description:
-      "Activate voice control for the teleprompter to scroll automatically as you speak. Requires Pro version.",
-    },
-    themes: {
-     title: "Themes",
-     description:
-      "Customize the teleprompter's appearance with different themes for better readability in various lighting conditions.",
-    },
-    focusMode: {
-     title: "Focus Mode",
-     description:
-      "Activate focus mode to highlight the current line, helping you maintain focus while reading.",
-    },
-   },
-   tips: {
-    title: "Tips",
-    tip1: "Use a dark background and light text to reduce eye strain.",
-    tip2: "Practice with different speeds to find the ideal rhythm for your presentation.",
+   step3: {
+    title: "Presentation Mode",
+    description:
+     "Activate teleprompter mode: Click 'Start Presentation' then control with your remote or voice.",
    },
   },
- };
+  advancedFeatures: {
+   title: "Advanced Features",
+   voiceControl: {
+    title: "Voice Control (Pro)",
+    description:
+     "Enable voice-activated scrolling: Your teleprompter advances automatically as you speak. (Pro feature)",
+   },
+   themes: {
+    title: "Themes",
+    description:
+     "Customize the teleprompter's appearance with different themes for better readability in various lighting conditions.",
+   },
+   focusMode: {
+    title: "Focus Mode",
+    description:
+     "Utilize focus mode: Highlights your current line, ensuring you stay on track and maintain concentration.",
+   },
+  },
+  tips: {
+   title: "Tips",
+   tip1: "Use a dark background and light text to reduce eye strain.",
+   tip2: "Practice with different speeds to find the ideal rhythm for your presentation.",
+  },
+ },
+};
