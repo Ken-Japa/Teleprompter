@@ -12,7 +12,7 @@ export const useRemoteController = (hostId: string) => {
  const [progress, setProgress] = useState<number>(0);
 
  // 2. Peer Connection
- const { status, sendMessage, setOnMessage } = usePeerRemote(hostId);
+ const { status, sendMessage, setOnMessage, errorMessage } = usePeerRemote(hostId);
 
  // 3. Logic Refs
  const accumulatedDelta = useRef<number>(0);
@@ -118,6 +118,7 @@ export const useRemoteController = (hostId: string) => {
    isPlaying,
    speed,
    progress,
+   errorMessage,
   },
   actions: {
    handleSpeedChange,

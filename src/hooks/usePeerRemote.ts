@@ -1,8 +1,10 @@
+import { getP2pErrorMessage } from "../utils/p2pErrorUtils";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { ConnectionStatus, MessageType, PeerDataConnection, PeerMessage } from "../types";
 
 export const usePeerRemote = (hostId: string) => {
  const [status, setStatus] = useState<ConnectionStatus>(ConnectionStatus.DISCONNECTED);
+ const [errorMessage, setErrorMessage] = useState<string | null>(null);
  const connRef = useRef<PeerDataConnection | null>(null);
  const peerRef = useRef<any>(null);
  const retryTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -37,6 +39,7 @@ export const usePeerRemote = (hostId: string) => {
   conn.on("open", () => {
    if (!mountedRef.current) return;
    setStatus(ConnectionStatus.CONNECTED);
+   setErrorMessage(null); // Clear error on successful connection
   });
 
   conn.on("data", (data: PeerMessage) => {
@@ -49,9 +52,16 @@ export const usePeerRemote = (hostId: string) => {
    connRef.current = null;
   });
 
-  conn.on("error", () => {
-   if (mountedRef.current && status === ConnectionStatus.CONNECTING) {
-    setStatus(ConnectionStatus.ERROR);
+  conn.on("error", (err: any) => {
+   if (mountedRef.current) {
+    const msg = `Erro na conexão P2P com o host: ${
+     err.message || "Ocorreu um erro inesperado."
+    }. Por favor, tente reconectar.`;
+    console.warn("Connection Error:", err);
+    setErrorMessage(msg);
+    if (status === ConnectionStatus.CONNECTING) {
+     setStatus(ConnectionStatus.ERROR);
+    }
    }
   });
  };
@@ -90,6 +100,10 @@ export const usePeerRemote = (hostId: string) => {
      retryTimeoutRef.current = setTimeout(initRemote, 500);
      return;
     }
+    const msg =
+     "Não foi possível carregar a biblioteca de conexão P2P. Verifique sua conexão com a internet ou tente novamente mais tarde.";
+    console.error(msg);
+    setErrorMessage(msg);
     setStatus(ConnectionStatus.ERROR);
     return;
    }
@@ -111,11 +125,25 @@ export const usePeerRemote = (hostId: string) => {
     });
 
     peer.on("error", (err: any) => {
+     const msg = getP2pErrorMessage(err, hostId);
      console.warn("Peer Error:", err);
-     if (["peer-unavailable", "disconnected", "network", "webrtc"].includes(err.type)) {
-      if (mountedRef.current) setStatus(ConnectionStatus.DISCONNECTED);
-     } else {
-      if (mountedRef.current) setStatus(ConnectionStatus.ERROR);
+     if (mountedRef.current) {
+      setErrorMessage(msg);
+      if (
+       [
+        "peer-unavailable",
+        "network",
+        "webrtc",
+        "browser-incompatible",
+        "invalid-id",
+        "ssl-unavailable",
+        "server-error",
+       ].includes(err.type)
+      ) {
+       setStatus(ConnectionStatus.ERROR);
+      } else if (err.type === "disconnected") {
+       setStatus(ConnectionStatus.DISCONNECTED);
+      }
      }
     });
 
@@ -125,6 +153,7 @@ export const usePeerRemote = (hostId: string) => {
        peer.reconnect();
       } catch (e) {}
      }
+     setErrorMessage(getP2pErrorMessage({ type: "disconnected" }, hostId));
     });
    } catch (e) {
     console.error("Remote Init Error", e);
@@ -167,5 +196,5 @@ export const usePeerRemote = (hostId: string) => {
   return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
  }, [status, attemptReconnect]);
 
- return { status, sendMessage, setOnMessage };
+ return { status, sendMessage, setOnMessage, errorMessage };
 };

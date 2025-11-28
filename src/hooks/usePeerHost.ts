@@ -4,6 +4,7 @@ import { ConnectionStatus, MessageType, PeerMessage } from "../types";
 export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
  const [peerId, setPeerId] = useState<string>("");
  const [status, setStatus] = useState<ConnectionStatus>(ConnectionStatus.DISCONNECTED);
+ const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
  // Refs to maintain instance integrity across renders without triggering re-renders
  const connectionsRef = useRef<Set<any>>(new Set());
@@ -23,6 +24,7 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
    clearTimeout(retryTimeoutRef.current);
    retryTimeoutRef.current = null;
   }
+  setErrorMessage(null); // Clear error message on destroy
 
   // Close all active connections first
   connectionsRef.current.forEach((conn) => {
@@ -92,6 +94,7 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
       return;
      }
      setPeerId(id);
+     setErrorMessage(null); // Clear error on successful open
      setStatus(ConnectionStatus.CONNECTING);
      retryCount = 0; // Reset retry on success
     });
@@ -117,7 +120,11 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
      });
 
      conn.on("error", (err: any) => {
+      const msg = `Erro na conexão P2P: ${
+       err.message || "Ocorreu um erro inesperado."
+      } Por favor, tente reconectar.`;
       console.warn("Connection Error:", err);
+      setErrorMessage(msg);
       connectionsRef.current.delete(conn);
      });
     });
@@ -168,5 +175,5 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
   });
  }, []);
 
- return { peerId, status, broadcast };
+ return { peerId, status, broadcast, errorMessage };
 };

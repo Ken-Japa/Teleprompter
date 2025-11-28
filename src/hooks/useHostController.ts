@@ -43,7 +43,7 @@ export const useHostController = () => {
      if (typeof msg.payload === "number") {
       setSpeed(Math.max(0, Math.min(10, msg.payload)));
      } else {
-      logger.warn("Received non-numeric payload for SPEED_UPDATE", { payload: msg.payload });
+      logger.warn("Received non-numeric payload for SPEED_UPDATE", { context: { payload: msg.payload } });
      }
      break;
     case MessageType.SCROLL_DELTA:
@@ -53,7 +53,7 @@ export const useHostController = () => {
        prompterRef.current.onRemoteScroll(msg.payload, false);
       }
      } else {
-      logger.warn("Received non-numeric payload for SCROLL_DELTA", { payload: msg.payload });
+      logger.warn("Received non-numeric payload for SCROLL_DELTA", { context: { payload: msg.payload } });
      }
      break;
     case MessageType.SCROLL_STOP:
@@ -64,21 +64,21 @@ export const useHostController = () => {
        prompterRef.current.onRemoteScroll(0, true, isHardStop);
       }
      } else {
-      logger.warn("Received non-object payload for SCROLL_STOP", { payload: msg.payload });
+      logger.warn("Received non-object payload for SCROLL_STOP", { context: { payload: msg.payload } });
      }
      break;
     case MessageType.RESTART:
      setIsPlaying(false);
      break;
     default:
-     logger.warn("Received unknown message type", { type: msg.type, message: msg });
+     logger.warn("Received unknown message type", { context: { type: msg.type, message: msg } });
      break;
    }
   },
   [setSpeed]
  );
 
- const { peerId, status, broadcast } = usePeerHost(handleRemoteMessage);
+ const { peerId, status, broadcast, errorMessage } = usePeerHost(handleRemoteMessage);
 
  // 5. Pro & Paywall Logic
  const { isPro, showPaywall, setShowPaywall, unlockPro } = useProState(status);
@@ -133,6 +133,7 @@ export const useHostController = () => {
    showPaywall,
    unlockKey,
    prompterState,
+   errorMessage,
   },
   actions: {
    setText,
