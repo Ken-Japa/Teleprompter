@@ -174,7 +174,7 @@ export const Prompter = memo(
         () =>
           ({
             "--prompter-font-size": `${fontSize}px`,
-            "--prompter-margin": `${margin}%`,
+            "--prompter-content-width": `calc(50% + ${margin}%)`,
           }) as React.CSSProperties,
         [fontSize, margin]
       );

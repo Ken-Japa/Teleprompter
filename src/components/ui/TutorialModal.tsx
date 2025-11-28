@@ -14,7 +14,7 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({ isOpen, onClose })
 
   return (
     <S.ModalOverlay onClick={onClose}>
-      <S.ModalContent onClick={(e) => e.stopPropagation()}>
+      <S.ModalContent>
         <S.ModalHeader>
           <S.ModalTitle>{t('tutorial.title')}</S.ModalTitle>
           <S.CloseButton onClick={onClose}>&times;</S.CloseButton>

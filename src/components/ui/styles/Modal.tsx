@@ -46,3 +46,26 @@ export const StyledUl = tw.ul`
 export const StyledLi = tw.li`
   mb-4 font-normal
 `;
+
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  children: React.ReactNode;
+}
+
+export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
+  if (!isOpen) return null;
+
+  return (
+    <ModalOverlay onClick={onClose}>
+      <ModalContent onClick={(e) => e.stopPropagation()}>
+        <ModalHeader>
+          <ModalTitle>{title}</ModalTitle>
+          <CloseButton onClick={onClose}>&times;</CloseButton>
+        </ModalHeader>
+        <ModalBody>{children}</ModalBody>
+      </ModalContent>
+    </ModalOverlay>
+  );
+};

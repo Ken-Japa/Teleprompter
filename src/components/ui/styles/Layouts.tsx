@@ -112,7 +112,7 @@ export const PrompterScrollArea = React.forwardRef<
 >(({ children, className = "", style, ...props }, ref) => (
     <div
         ref={ref}
-        className={`w-full h-full overflow-y-scroll scrollbar-hide relative z-10 ${className}`}
+        className={`w-full h-full overflow-y-scroll scrollbar-hide relative z-10 max-w-[var(--prompter-content-width)] mx-auto ${className}`}
         style={{ scrollBehavior: "auto", ...style }}
         {...props}
     >
@@ -135,15 +135,15 @@ export const FocusIndicator = () => (
 
 export const HudContainer = ({ children, visible }: { children: React.ReactNode; visible: boolean }) => (
     <div
-        className={`fixed bottom-4 w-full px-4 sm:left-1/2 sm:-translate-x-1/2 sm:w-auto glass-panel py-2 rounded-xl sm:bottom-12 sm:px-6 sm:py-3 sm:rounded-full z-50 transition-all duration-500 cubic-bezier(0.16, 1, 0.3, 1) flex flex-wrap justify-center items-center space-x-3 sm:flex-nowrap sm:space-x-6 ring-1 ring-white/10 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.8)] ${visible ? "opacity-100 translate-y-0 scale-100 blur-0" : "opacity-0 translate-y-12 scale-90 blur-lg pointer-events-none"}`}
+        className={`fixed bottom-4 w-full px-4 sm:left-1/2 sm:-translate-x-1/2 sm:w-auto glass-panel py-2 rounded-xl sm:bottom-12 sm:px-6 sm:py-3 sm:rounded-full z-50 transition-all duration-500 cubic-bezier(0.16, 1, 0.3, 1) flex flex-wrap justify-center items-center gap-x-4 gap-y-3 sm:flex-nowrap sm:space-x-6 ring-1 ring-white/10 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.8)] ${visible ? "opacity-100 translate-y-0 scale-100 blur-0" : "opacity-0 translate-y-12 scale-90 blur-lg pointer-events-none"}`}
     >
         {children}
     </div>
 );
 
 export const HudGroup = ({ children, label }: { children: React.ReactNode; label?: string }) => (
-    <div className="flex flex-col items-center space-y-1.5 border-r border-white/10 last:border-0 pr-6 last:pr-0 group relative">
-        <div className="flex items-center space-x-3">{children}</div>
+    <div className="flex flex-col items-center space-y-1.5 sm:border-r sm:border-white/10 sm:last:border-0 sm:pr-6 sm:last:pr-0 group relative">
+        <div className="flex items-center sm:gap-3">{children}</div>
         {label && (
             <span className="text-[9px] uppercase text-slate-500 font-bold tracking-[0.2em] group-hover:text-indigo-400 transition-colors absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 duration-300">
                 {label}

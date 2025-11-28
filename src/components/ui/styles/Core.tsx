@@ -79,7 +79,7 @@ export const IconButton = ({
 } & React.ButtonHTMLAttributes<HTMLButtonElement>) => (
     <button
         onClick={onClick}
-        className={`p-2.5 rounded-xl transition-all duration-300 border backdrop-blur-sm ${active ? "bg-indigo-500/90 text-white border-indigo-400/50 shadow-[0_0_20px_rgba(99,102,241,0.4)]" : "bg-white/5 border-white/5 hover:bg-white/10 text-slate-400 hover:text-white hover:border-white/20 hover:scale-105 active:scale-95"} ${className}`}
+        className={`p-2.5 rounded-xl transition-all duration-300 border backdrop-blur-sm flex items-center justify-center ${active ? "bg-indigo-500/90 text-white border-indigo-400/50 shadow-[0_0_20px_rgba(99,102,241,0.4)]" : "bg-white/5 border-white/5 hover:bg-white/10 text-slate-400 hover:text-white hover:border-white/20 hover:scale-105 active:scale-95"} ${className}`}
         {...props}
     >
         {children}
@@ -94,6 +94,8 @@ export const RangeSlider = ({
     onChange,
     width = "w-24",
     ariaLabel,
+    title,
+    label,
 }: {
     value: number;
     min: number;
@@ -102,6 +104,8 @@ export const RangeSlider = ({
     onChange: (val: number) => void;
     width?: string;
     ariaLabel?: string;
+    title?: string;
+    label?: string;
 }) => (
     <div className={`relative flex items-center ${width} h-8 group cursor-pointer`}>
         <div className="absolute inset-0 bg-slate-800 rounded-full h-1 top-1/2 -translate-y-1/2 border border-white/5"></div>
@@ -118,6 +122,7 @@ export const RangeSlider = ({
             onChange={(e) => onChange(Number(e.target.value))}
             className="w-full h-full absolute inset-0 opacity-0 cursor-pointer z-10"
             aria-label={ariaLabel || "Slider Control"}
+            title={title}
         />
         <div
             className="absolute h-3 w-3 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)] pointer-events-none transition-transform duration-200 group-hover:scale-125 top-1/2 -translate-y-1/2 -ml-1.5"
