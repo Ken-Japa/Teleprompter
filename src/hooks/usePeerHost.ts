@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { ConnectionStatus, MessageType, PeerMessage } from "../types";
+import { trackSuccessfulConnection, startUsageTracking, stopUsageTracking } from "../utils/analytics";
 
 export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
  const [peerId, setPeerId] = useState<string>("");
@@ -99,7 +100,9 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
     if (retryCount < MAX_RETRIES) {
      retryCount++;
      const delay = Math.min(3000, 200 * Math.pow(1.5, retryCount));
-     console.log(`PeerJS not ready after dynamic load, retrying in ${Math.round(delay)}ms (Attempt ${retryCount})`);
+     console.log(
+      `PeerJS not ready after dynamic load, retrying in ${Math.round(delay)}ms (Attempt ${retryCount})`
+     );
      retryTimeoutRef.current = setTimeout(initPeer, delay);
      return;
     }
@@ -132,6 +135,7 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
      setErrorMessage(null); // Clear error on successful open
      setStatus(ConnectionStatus.CONNECTING);
      retryCount = 0; // Reset retry on success
+     startUsageTracking();
     });
 
     peer.on("connection", (conn: any) => {
@@ -142,6 +146,7 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
 
      connectionsRef.current.add(conn);
      setStatus(ConnectionStatus.CONNECTED);
+     trackSuccessfulConnection();
 
      conn.on("data", (data: PeerMessage) => {
       if (onMessageRef.current) onMessageRef.current(data);
@@ -194,6 +199,7 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
    mountedRef.current = false;
    clearTimeout(startTimeout);
    destroyPeer();
+   stopUsageTracking();
   };
  }, [destroyPeer]);
 

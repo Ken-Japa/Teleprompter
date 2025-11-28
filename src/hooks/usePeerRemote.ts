@@ -1,6 +1,7 @@
 import { getP2pErrorMessage } from "../utils/p2pErrorUtils";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { ConnectionStatus, MessageType, PeerDataConnection, PeerMessage } from "../types";
+import { trackSuccessfulConnection, startUsageTracking, stopUsageTracking } from "../utils/analytics";
 
 export const usePeerRemote = (hostId: string) => {
  const [status, setStatus] = useState<ConnectionStatus>(ConnectionStatus.DISCONNECTED);
@@ -40,6 +41,8 @@ export const usePeerRemote = (hostId: string) => {
    if (!mountedRef.current) return;
    setStatus(ConnectionStatus.CONNECTED);
    setErrorMessage(null); // Clear error on successful connection
+   trackSuccessfulConnection();
+   startUsageTracking();
   });
 
   conn.on("data", (data: PeerMessage) => {
@@ -202,6 +205,7 @@ export const usePeerRemote = (hostId: string) => {
   return () => {
    mountedRef.current = false;
    cleanup();
+   stopUsageTracking();
   };
  }, [hostId, cleanup]);
 

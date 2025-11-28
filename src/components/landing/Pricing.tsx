@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import * as S from "../ui/Styled";
 import { CheckIcon } from "../ui/Icons";
+import { trackConversion } from "../../utils/analytics";
 
 interface PricingProps {
  onLaunch: () => void;
@@ -25,7 +26,10 @@ export const Pricing: React.FC<PricingProps> = ({ onLaunch }) => {
      price={t("landing.pricing.price")}
      oneTime={t("landing.pricing.oneTime")}
      subtitle={t("landing.pricing.cta")}
-     onClick={onLaunch}
+     onClick={() => {
+      trackConversion('Upgrade to Pro');
+      onLaunch();
+     }}
     >
      {(t("landing.pricing.features") as unknown as string[]).map((feat, i) => (
       <li key={i} className="flex items-center space-x-3 text-slate-300">
