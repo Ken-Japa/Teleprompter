@@ -98,8 +98,17 @@ export const PrompterScrollArea = React.forwardRef<HTMLDivElement, { children: R
   </div>
 ));
 
-export const GuideLine = ({ side }: { side: 'left' | 'right' }) => (
-  <div className={`absolute ${side === 'left' ? 'left-8 border-l' : 'right-8 border-r'} top-1/2 -translate-y-1/2 w-4 h-12 border-t border-b opacity-30 pointer-events-none z-20 guide-line-color transition-colors`} />
+export const FocusIndicator = () => (
+  <div className="absolute top-1/2 left-0 w-full -translate-y-1/2 pointer-events-none z-20 mix-blend-overlay">
+    {/* Line with fade - using currentColor to match theme */}
+    <div className="absolute inset-x-12 h-[2px] bg-gradient-to-r from-transparent via-current to-transparent opacity-30" />
+
+    {/* Left Arrow (Points Right) */}
+    <div className="absolute left-6 top-1/2 -translate-y-1/2 w-0 h-0 border-y-[8px] border-y-transparent border-l-[12px] border-l-current opacity-60 drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]" />
+
+    {/* Right Arrow (Points Left) */}
+    <div className="absolute right-6 top-1/2 -translate-y-1/2 w-0 h-0 border-y-[8px] border-y-transparent border-r-[12px] border-r-current opacity-60 drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]" />
+  </div>
 );
 
 export const HudContainer = ({ children, visible }: { children: React.ReactNode, visible: boolean }) => (

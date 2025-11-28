@@ -158,8 +158,7 @@ export const Prompter = memo(forwardRef<PrompterHandle, PrompterProps>(({
                 background: `linear-gradient(to bottom, ${theme === 'paper' ? 'white' : 'var(--tw-bg-opacity, 1) rgb(2 6 23)'} 0%, transparent 20%, transparent 80%, ${theme === 'paper' ? 'white' : 'var(--tw-bg-opacity, 1) rgb(2 6 23)'} 100%)`
             }}></div>
 
-            {isFocusMode && <S.GuideLine side="left" />}
-            {isFocusMode && <S.GuideLine side="right" />}
+            {isFocusMode && <S.FocusIndicator />}
             {!isPro && <S.Watermark text={t('host.watermark')} theme={theme} />}
 
             <S.MainContent onMouseMove={handleMouseMove}>
