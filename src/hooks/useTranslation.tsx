@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, createContext, useContext, ReactNode } from "react";
-import { resources, Language } from "../locales";
+import { resources, Language } from "../locales/index";
 
 interface TranslationContextType {
     lang: Language;
@@ -13,16 +13,16 @@ const getInitialLanguage = (): Language => {
     // 1. Tenta obter do localStorage
     if (typeof window !== "undefined") {
         const storedLang = localStorage.getItem("app_language");
-        if (storedLang === "pt" || storedLang === "en") {
-            return storedLang;
+        if (storedLang === "pt" || storedLang === "en" || storedLang === "es") {
+            return storedLang as Language;
         }
     }
 
     // 2. Tenta detectar do navegador
     if (typeof navigator !== "undefined") {
         const browserLang = navigator.language.split("-")[0];
-        if (browserLang === "pt" || browserLang === "en") {
-            return browserLang;
+        if (browserLang === "pt" || browserLang === "en" || browserLang === "es") {
+            return browserLang as Language;
         }
     }
 
