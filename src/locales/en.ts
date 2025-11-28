@@ -131,6 +131,20 @@ export const en = {
   editor: {
    highlight: "Highlight",
   },
+  defaultText: `Welcome to PromptNinja.
+
+The ultimate teleprompter for content creators.
+
+1. Scan the QR Code to connect.
+2. Control scroll speed with ease.
+3. Use the Trackpad for intuitive navigation.
+
+<r>ATTENTION:</r>
+Use color tags to highlight important moments in your script.
+<y>This text is in yellow for light emphasis.</y>
+<g>And this in green to signal calm or a smooth transition.</g>
+
+Paste your script here and customize your experience to start shining!`,
  },
  remote: {
   connecting: "Searching Ninja Host...",

@@ -134,6 +134,20 @@ export const es = {
   editor: {
    highlight: "Resaltar",
   },
+  defaultText: `Bienvenido a PromptNinja.
+
+El teleprompter definitivo para creadores de contenido.
+
+1. Escanee el Código QR para conectar.
+2. Controle la velocidad de desplazamiento con facilidad.
+3. Use el Trackpad para una navegación intuitiva.
+
+<r>ATENCIÓN:</r>
+Use etiquetas de color para resaltar momentos importantes en su guion.
+<y>Este texto está en amarillo para un énfasis ligero.</y>
+<g>Y este en verde para señalar calma o una transición suave.</g>
+
+¡Pegue su guion aquí y personalize su experiencia para empezar a brillar!`,
  },
  remote: {
   connecting: "Buscando Ninja Host...",

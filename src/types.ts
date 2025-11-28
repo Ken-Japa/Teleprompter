@@ -127,19 +127,3 @@ export type RemoteScrollHandler = (delta: number, stop?: boolean, hardStop?: boo
 export interface PrompterHandle {
  onRemoteScroll: RemoteScrollHandler;
 }
-
-export const DEFAULT_TEXT = `Bem-vindo ao PromptNinja.
-
-O teleprompter definitivo para criadores de conteúdo.
-
-1. Escaneie o QR Code.
-2. Controle a velocidade.
-3. Use o Trackpad.
-
-<r>ATENÇÃO:</r>
-Use as tags de cor para destacar momentos importantes.
-<y>Este texto está em amarelo para ênfase leve.</y>
-<g>E este em verde para sinalizar calma.</g>
-
-Cole seu roteiro aqui para começar...
-`;

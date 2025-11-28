@@ -1,16 +1,32 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { DEFAULT_TEXT } from "../types";
 import { logger } from "../utils/logger";
+import { useTranslation } from "../hooks/useTranslation";
 
 export const useScriptStorage = () => {
+ const { t, lang } = useTranslation();
+
  // Initialize from storage or default
  const [text, setText] = useState<string>(() => {
   try {
-   return localStorage.getItem("neonprompt_text") || DEFAULT_TEXT;
+   const storedText = localStorage.getItem("neonprompt_text");
+   const defaultTranslatedText = t("host.defaultText");
+   return storedText || defaultTranslatedText;
   } catch (e) {
-   return DEFAULT_TEXT;
+   return t("host.defaultText");
   }
  });
+
+ // Update text when language changes, only if it's still the default text
+ useEffect(() => {
+  const defaultTranslatedText = t("host.defaultText");
+  const storedText = localStorage.getItem("neonprompt_text");
+
+  // Only update if the current text is the default text for the previous language
+  // or if there's no stored text and the language changes
+  if (!storedText || storedText === t("host.defaultText", { lng: lang })) {
+   setText(defaultTranslatedText);
+  }
+ }, [lang, t]);
 
  const textRef = useRef(text);
  const lastSavedTextRef = useRef(text);

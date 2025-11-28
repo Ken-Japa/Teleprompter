@@ -135,6 +135,20 @@ export const pt = {
   editor: {
    highlight: "Destaque",
   },
+  defaultText: `Bem-vindo ao PromptNinja.
+
+O teleprompter definitivo para criadores de conteúdo.
+
+1. Escaneie o QR Code para conectar.
+2. Controle a velocidade de rolagem com facilidade.
+3. Use o Trackpad para navegação intuitiva.
+
+<r>ATENÇÃO:</r>
+Use as tags de cor para destacar momentos importantes no seu roteiro.
+<y>Este texto está em amarelo para ênfase leve.</y>
+<g>E este em verde para sinalizar calma ou uma transição suave.</g>
+
+Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
  },
  remote: {
   connecting: "Buscando Conexão com o Teleprompter...",
