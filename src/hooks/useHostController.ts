@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { ConnectionStatus, MessageType, PeerMessage, PrompterHandle } from "../types";
+import { logger } from "../utils/logger";
 import { usePeerHost } from "./usePeerHost";
 import { useProState } from "./useProState";
 import { useScriptStorage } from "./useScriptStorage";
@@ -42,7 +43,7 @@ export const useHostController = () => {
      if (typeof msg.payload === "number") {
       setSpeed(Math.max(0, Math.min(10, msg.payload)));
      } else {
-      console.warn("Received non-numeric payload for SPEED_UPDATE", msg.payload);
+      logger.warn("Received non-numeric payload for SPEED_UPDATE", { payload: msg.payload });
      }
      break;
     case MessageType.SCROLL_DELTA:
@@ -52,7 +53,7 @@ export const useHostController = () => {
        prompterRef.current.onRemoteScroll(msg.payload, false);
       }
      } else {
-      console.warn("Received non-numeric payload for SCROLL_DELTA", msg.payload);
+      logger.warn("Received non-numeric payload for SCROLL_DELTA", { payload: msg.payload });
      }
      break;
     case MessageType.SCROLL_STOP:
@@ -63,14 +64,14 @@ export const useHostController = () => {
        prompterRef.current.onRemoteScroll(0, true, isHardStop);
       }
      } else {
-      console.warn("Received non-object payload for SCROLL_STOP", msg.payload);
+      logger.warn("Received non-object payload for SCROLL_STOP", { payload: msg.payload });
      }
      break;
     case MessageType.RESTART:
      setIsPlaying(false);
      break;
     default:
-     console.warn("Received unknown message type", msg.type, msg);
+     logger.warn("Received unknown message type", { type: msg.type, message: msg });
      break;
    }
   },

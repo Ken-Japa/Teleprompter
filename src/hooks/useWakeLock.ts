@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { logger } from "../utils/logger";
 
 export const useWakeLock = (active: boolean = true) => {
  const [status, setStatus] = useState<"active" | "inactive" | "unsupported">("inactive");
@@ -13,7 +14,7 @@ export const useWakeLock = (active: boolean = true) => {
    try {
     noSleepRef.current = new window.NoSleep();
    } catch (e) {
-    console.error("Failed to init NoSleep", e);
+    logger.error("Failed to init NoSleep", { error: e as Error });
    }
   }
 
@@ -59,7 +60,7 @@ export const useWakeLock = (active: boolean = true) => {
      }
      return; // Native success, skip NoSleep
     } catch (err) {
-     console.warn("Wake Lock request failed, falling back:", err);
+     logger.warn("Wake Lock request failed, falling back:", { error: err as Error });
     }
    }
 
@@ -86,7 +87,7 @@ export const useWakeLock = (active: boolean = true) => {
      // Ensure cleanup if component unmounts before gesture
      cleanupFunctions.push(cleanupNoSleepListeners);
     } catch (err) {
-     console.error("NoSleep enable failed", err);
+     logger.error("NoSleep enable failed", { error: err as Error });
     }
    } else {
     if (!isCancelled) setStatus("unsupported");

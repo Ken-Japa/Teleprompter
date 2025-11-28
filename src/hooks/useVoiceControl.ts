@@ -1,6 +1,7 @@
 import { useRef, useState, useMemo, useEffect, useCallback } from "react";
 import { SpeechRecognitionEvent } from "../types";
 import { parseTextToSentences } from "../utils/textParser";
+import { logger } from "../utils/logger";
 
 export const useVoiceControl = (text: string, isPro: boolean) => {
  const [isListening, setIsListening] = useState<boolean>(false);
@@ -64,7 +65,7 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
 
    if (!intentionallyStoppedRef.current && duration > 100) {
     // Restart immediately
-    console.log("Voice: Auto-restart triggered");
+    logger.info("Voice: Auto-restart triggered");
     try {
      recognition.start();
     } catch (e) {}
@@ -101,7 +102,7 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
   try {
    recognition.start();
   } catch (e) {
-   console.error("Voice start error", e);
+   logger.error("Voice start error", { error: e as Error });
   }
  }, [fullCleanText, charToSentenceMap]);
 

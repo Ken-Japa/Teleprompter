@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { DEFAULT_TEXT } from "../types";
+import { logger } from "../utils/logger";
 
 export const useScriptStorage = () => {
  // Initialize from storage or default
@@ -27,7 +28,7 @@ export const useScriptStorage = () => {
      localStorage.setItem("neonprompt_text", textRef.current);
      lastSavedTextRef.current = textRef.current;
     } catch (e) {
-     console.error("Failed to save script", e);
+     logger.error("Failed to save script", { error: e as Error });
     }
    }
   };
