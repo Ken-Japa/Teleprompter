@@ -56,6 +56,7 @@ export const pt = {
    oneTime: "pagamento único",
    cta: "Garanta Seu Acesso Vitalício PRO",
    limitedOffer: "Oferta Limitada",
+   conversionNotice: "",
    features: [
     "Sessões de Teleprompter Ilimitadas",
     "Sem Marca D'água (Versão PRO)",
@@ -130,6 +131,9 @@ export const pt = {
   },
   voice: {
    notSupported: "Seu navegador não suporta controle por voz",
+  },
+  editor: {
+   highlight: "Destaque",
   },
  },
  remote: {

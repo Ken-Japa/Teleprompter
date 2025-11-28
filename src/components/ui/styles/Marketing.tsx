@@ -85,6 +85,7 @@ export const PricingCard = ({
                     </div>
                     <div className="text-slate-500 text-sm mb-10 font-medium tracking-wide">{oneTime}</div>
 
+
                     <div className="w-full h-px bg-white/10 mb-8" />
 
                     <ul className="space-y-4 mb-10 text-left w-full px-4">{children}</ul>
@@ -95,6 +96,7 @@ export const PricingCard = ({
                     >
                         {subtitle}
                     </button>
+                    <p className="text-slate-500 text-xs mt-4 text-center">{t("landing.pricing.conversionNotice")}</p>
                 </div>
             </div>
         </div>

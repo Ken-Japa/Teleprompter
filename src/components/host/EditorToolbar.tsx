@@ -14,7 +14,7 @@ export const EditorToolbar = memo(({ onInsertTag, onClear }: EditorToolbarProps)
  return (
   <S.FormattingToolbar>
    <div className="flex items-center">
-    <span className="text-[10px] uppercase font-bold text-slate-500 mr-3 tracking-wider">Highlight</span>
+    <span className="text-[10px] uppercase font-bold text-slate-500 mr-3 tracking-wider">{t("host.editor.highlight")}</span>
     <div
      className="flex space-x-1 bg-slate-800/50 p-1 rounded-lg border border-slate-700/50"
      role="group"

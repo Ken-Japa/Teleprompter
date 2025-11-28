@@ -48,8 +48,9 @@ export const en = {
    title: "Lifetime Access",
    subtitle: "One-time payment for lifetime access. No recurring fees, ever.",
    lifetime: "Lifetime",
-   price: "$9",
+   price: "$ 9",
    oneTime: "one-time payment",
+   conversionNotice: "The final value will be converted to your local currency at checkout.",
    cta: "Grab Your Lifetime Access",
    features: [
     "Unlimited Sessions",
@@ -124,6 +125,9 @@ export const en = {
   },
   voice: {
    notSupported: "Your browser does not support voice control",
+  },
+  editor: {
+   highlight: "Highlight",
   },
  },
  remote: {

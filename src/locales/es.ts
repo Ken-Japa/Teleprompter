@@ -52,10 +52,11 @@ export const es = {
    title: "Acceso de por Vida",
    subtitle: "Pago único para acceso de por vida. Sin cuotas recurrentes, nunca.",
    lifetime: "De por Vida",
-   price: "€9",
+   price: "€8",
    oneTime: "pago único",
    cta: "Obtener Acceso de por Vida",
    limitedOffer: "Oferta Limitada",
+   conversionNotice: "El valor final se convertirá a tu moneda local al finalizar la compra.",
    features: [
     "Sesiones Ilimitadas",
     "Sin Marca de Agua",
@@ -129,6 +130,9 @@ export const es = {
   },
   voice: {
    notSupported: "Tu navegador no soporta control por voz",
+  },
+  editor: {
+   highlight: "Resaltar",
   },
  },
  remote: {
