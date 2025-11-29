@@ -10,7 +10,6 @@ import React, {
 } from "react";
 import { ConnectionStatus, PrompterHandle } from "../../types";
 import * as S from "../ui/Styled";
-import { useTranslation } from "../../hooks/useTranslation";
 import { useVoiceControl } from "../../hooks/useVoiceControl";
 import { useWakeLock } from "../../hooks/useWakeLock";
 import { useScrollPhysics } from "../../hooks/useScrollPhysics";
@@ -35,7 +34,6 @@ interface PrompterProps {
 export const Prompter = memo(
   forwardRef<PrompterHandle, PrompterProps>(
     ({ text, isPro, status, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate }, ref) => {
-      const { t } = useTranslation();
 
       // Extracted Settings Logic
       const { settings, actions } = usePrompterSettings(isPro);
@@ -198,7 +196,6 @@ export const Prompter = memo(
           ></div>
 
           {isFocusMode && <S.FocusIndicator />}
-          {!isPro && <S.Watermark text={t("host.watermark")} theme={theme} />}
 
           <S.MainContent onMouseMove={handleMouseMove}>
             <S.PrompterScrollArea
@@ -207,7 +204,7 @@ export const Prompter = memo(
               className="no-scrollbar hardware-accelerated"
               style={{ scrollBehavior: "auto", willChange: "scroll-position", paddingLeft: `${margin}%`, paddingRight: `${margin}%` }}
             >
-              <ScriptBoard sentences={sentences} isMirrored={isMirrored} isUpperCase={isUpperCase} />
+              <ScriptBoard sentences={sentences} isMirrored={isMirrored} isUpperCase={isUpperCase} isPro={isPro} theme={theme} />
             </S.PrompterScrollArea>
           </S.MainContent>
 

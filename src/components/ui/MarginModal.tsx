@@ -17,13 +17,13 @@ export const MarginModal = ({ isOpen, onClose, margin, setMargin }: MarginModalP
       <div className="flex flex-col items-center space-y-4 p-4">
         <S.RangeSlider
           value={margin}
-          min={0}
-          max={100}
+          min={23}
+          max={50}
           onChange={setMargin}
           width="w-full"
           ariaLabel={t("host.controls.margin")}
         />
-        <span className="text-xl font-bold text-white">{margin}%</span>
+
       </div>
     </S.Modal>
   );
