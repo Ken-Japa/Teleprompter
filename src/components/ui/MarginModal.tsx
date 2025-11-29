@@ -11,19 +11,22 @@ interface MarginModalProps {
 
 export const MarginModal = ({ isOpen, onClose, margin, setMargin }: MarginModalProps) => {
   const { t } = useTranslation();
+  const minMargin = 23;
+  const maxMargin = 50;
+  const sliderValue = ((margin - minMargin) / (maxMargin - minMargin)) * 100;
 
   return (
     <S.Modal isOpen={isOpen} onClose={onClose} title={t("host.controls.margin")}>
       <div className="flex flex-col items-center space-y-4 p-4">
         <S.RangeSlider
-          value={margin}
-          min={23}
-          max={50}
-          onChange={setMargin}
+          value={sliderValue}
+          min={0}
+          max={100}
+          onChange={v => setMargin(minMargin + ((maxMargin - minMargin) * v) / 100)}
           width="w-full"
           ariaLabel={t("host.controls.margin")}
         />
-
+        <span className="text-xl font-bold text-white">{Math.round(sliderValue)}%</span>
       </div>
     </S.Modal>
   );

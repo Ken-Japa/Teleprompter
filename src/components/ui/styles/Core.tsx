@@ -95,7 +95,7 @@ export const RangeSlider = ({
     width = "w-24",
     ariaLabel,
     title,
-    label,
+    reverse = false,
 }: {
     value: number;
     min: number;
@@ -106,30 +106,37 @@ export const RangeSlider = ({
     ariaLabel?: string;
     title?: string;
     label?: string;
-}) => (
-    <div className={`relative flex items-center ${width} h-8 group cursor-pointer`}>
-        <div className="absolute inset-0 bg-slate-800 rounded-full h-1 top-1/2 -translate-y-1/2 border border-white/5"></div>
-        <div
-            className="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-indigo-500 rounded-full group-hover:bg-indigo-400 transition-colors shadow-[0_0_10px_rgba(99,102,241,0.5)]"
-            style={{ width: `${((value - min) / (max - min)) * 100}%` }}
-        />
-        <input
-            type="range"
-            min={min}
-            max={max}
-            step={step}
-            value={value}
-            onChange={(e) => onChange(Number(e.target.value))}
-            className="w-full h-full absolute inset-0 opacity-0 cursor-pointer z-10"
-            aria-label={ariaLabel || "Slider Control"}
-            title={title}
-        />
-        <div
-            className="absolute h-3 w-3 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)] pointer-events-none transition-transform duration-200 group-hover:scale-125 top-1/2 -translate-y-1/2 -ml-1.5"
-            style={{ left: `${((value - min) / (max - min)) * 100}%` }}
-        />
-    </div>
-);
+    reverse?: boolean;
+}) => {
+    // Calcula a posição do slider, invertendo se reverse=true
+    const percent = reverse
+        ? ((max - value) / (max - min)) * 100
+        : ((value - min) / (max - min)) * 100;
+    return (
+        <div className={`relative flex items-center ${width} h-8 group cursor-pointer`}>
+            <div className="absolute inset-0 bg-slate-800 rounded-full h-1 top-1/2 -translate-y-1/2 border border-white/5"></div>
+            <div
+                className="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-indigo-500 rounded-full group-hover:bg-indigo-400 transition-colors shadow-[0_0_10px_rgba(99,102,241,0.5)]"
+                style={{ width: `${percent}%` }}
+            />
+            <input
+                type="range"
+                min={min}
+                max={max}
+                step={step}
+                value={value}
+                onChange={(e) => onChange(Number(e.target.value))}
+                className="w-full h-full absolute inset-0 opacity-0 cursor-pointer z-10"
+                aria-label={ariaLabel || "Slider Control"}
+                title={title}
+            />
+            <div
+                className="absolute h-3 w-3 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)] pointer-events-none transition-transform duration-200 group-hover:scale-125 top-1/2 -translate-y-1/2 -ml-1.5"
+                style={{ left: `${percent}%` }}
+            />
+        </div>
+    );
+};
 
 export const ColorButton = ({
     color,
