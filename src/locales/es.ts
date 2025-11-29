@@ -90,6 +90,7 @@ export const es = {
   linkCopied: "¡Copiado!",
   connectionLost: "CONEXIÓN PERDIDA",
   watermark: "PROMPT NINJA VERSIÓN GRATUITA",
+  exit: "Salir",
   controls: {
    play: "Reproducir",
    pause: "Pausar",
@@ -133,6 +134,7 @@ export const es = {
    invalidKey: "Clave de desbloqueo inválida. Inténtalo de nuevo.",
    countdownMessage: "Volviendo a la página en...",
   },
+
   voice: {
    notSupported: "Tu navegador no soporta control por voz",
   },
@@ -160,8 +162,11 @@ Use etiquetas de color para resaltar momentos importantes en su guion.
   touchArea: "TRACKPAD",
   speed: "Velocidad",
   reset: "Reiniciar",
-  start: "INICIAR",
-  pause: "PAUSAR",
+  start: "Iniciar",
+  pause: "Pausar",
+  stop: "Parar",
+  theme: "Tema",
+  language: "Idioma",
  },
  tutorial: {
   title: "PromptNinja: Tu Guía de Inicio Rápido",
@@ -201,18 +206,10 @@ Use etiquetas de color para resaltar momentos importantes en su guion.
      "Personaliza la apariencia del teleprompter con diferentes temas para una mejor legibilidad en diversas condiciones de iluminación.",
    },
    focusMode: {
-    title: "Modo Enfoque",
+    title: "Modo de Enfoque",
     description:
-     "Utiliza el modo enfoque: Resalta tu línea actual, asegurando que te mantengas en el camino y concentrado.",
+     "Activa el Modo de Enfoque para resaltar la línea de lectura y atenuar el texto circundante.",
    },
   },
-  tips: {
-   title: "Consejos",
-   tip1: "Usa un fondo oscuro y texto claro para reducir la fatiga visual.",
-   tip2: "Practica con diferentes velocidades para encontrar el ritmo ideal para tu presentación.",
-  },
- },
- footer: {
-  copyright: "PromptNinja. Todos los derechos reservados.",
  },
 };

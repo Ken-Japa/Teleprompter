@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { ConnectionStatus, Theme } from "../types";
-import { MinusIcon, PauseIcon, PlayIcon, PlusIcon } from "../components/ui/Icons";
+import { MinusIcon, PauseIcon, PlayIcon, PlusIcon, StopIcon } from "../components/ui/Icons";
 import { useTranslation } from "../hooks/useTranslation";
 import * as S from "../components/ui/Styled";
 import { Trackpad } from "../components/remote/Trackpad";
@@ -18,7 +18,7 @@ const GearIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height
 const NavIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>;
 
 export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
-  const { t } = useTranslation();
+  const { t, lang, setLang } = useTranslation();
   const { state, actions } = useRemoteController(hostId);
   const { status, isPlaying, speed, progress, errorMessage, settings, text, elapsedTime } = state;
 
@@ -35,45 +35,43 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
   // Parse text for Navigation with Visual Weight Heuristic
   const textSegments = useMemo(() => {
     if (!text) return [];
-    const segments: { id: number; text: string; progress: number }[] = [];
     
-    // Heuristic: Each line (visual block) consumes vertical space equivalent to ~80 characters of height
-    // This compensates for short lines consuming equal vertical space as full lines
-    const NEWLINE_WEIGHT = 80; 
-    
-    // 1. Calculate Total Visual Weight
-    let totalVisualWeight = 0;
-    for (let i = 0; i < text.length; i++) {
-        totalVisualWeight += 1;
-        if (text[i] === '\n') totalVisualWeight += NEWLINE_WEIGHT;
-    }
-    // Add base weight if text doesn't end in newline to account for last line height
-    if (text.length > 0 && text[text.length-1] !== '\n') totalVisualWeight += NEWLINE_WEIGHT;
+    // Heuristic: 
+    // A visual line takes up vertical space. We estimate visual lines based on character count wrapping.
+    // Assuming ~50 chars per visual line on average.
+    const CHARS_PER_VISUAL_LINE = 50;
+    const WEIGHT_PER_VISUAL_LINE = 100;
 
-    // 2. Find Segments and Calculate Progress
-    const regex = /.+/g; // Matches non-empty lines
-    let match;
-    
-    // Helper to calculate weight up to an index
-    const getWeightUntil = (endIndex: number) => {
-        let w = 0;
-        for (let i = 0; i < endIndex; i++) {
-            w += 1;
-            if (text[i] === '\n') w += NEWLINE_WEIGHT;
-        }
-        return w;
+    const getLineWeight = (line: string) => {
+        const length = line.length;
+        // Minimum 1 visual line, even if empty (it's a newline)
+        const visualLines = Math.max(1, Math.ceil(length / CHARS_PER_VISUAL_LINE));
+        return visualLines * WEIGHT_PER_VISUAL_LINE;
     };
 
-    while ((match = regex.exec(text)) !== null) {
-        if (match[0].trim().length > 0) {
-             const currentWeight = getWeightUntil(match.index);
+    const lines = text.split('\n');
+    const totalVisualWeight = lines.reduce((acc, line) => acc + getLineWeight(line), 0);
+
+    const segments: { id: number; text: string; progress: number }[] = [];
+    let currentWeight = 0;
+    let charIndex = 0;
+
+    lines.forEach((line) => {
+        const weight = getLineWeight(line);
+        
+        // Only add navigable segments for non-empty lines
+        if (line.trim().length > 0) {
              segments.push({
-                 id: match.index,
-                 text: match[0],
+                 id: charIndex,
+                 text: line,
                  progress: currentWeight / totalVisualWeight
              });
         }
-    }
+        
+        currentWeight += weight;
+        charIndex += line.length + 1; // +1 for newline
+    });
+
     return segments;
   }, [text]);
 
@@ -164,14 +162,29 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                             </div>
                         </div>
 
-                        {/* Play Button */}
-                        <button onClick={actions.handlePlayToggle} className={`flex-1 h-44 rounded-[2.5rem] shadow-2xl transition-all duration-300 active:scale-95 border-t border-white/10 flex flex-col items-center justify-center gap-3 relative overflow-hidden group ${isPlaying ? "bg-gradient-to-b from-amber-500 to-amber-600 text-white shadow-[0_0_60px_-10px_rgba(245,158,11,0.4)]" : "bg-gradient-to-b from-indigo-600 to-indigo-700 text-white shadow-[0_0_60px_-10px_rgba(79,70,229,0.4)] hover:shadow-[0_0_80px_-10px_rgba(79,70,229,0.6)]"}`}>
-                            <div className="absolute inset-x-0 top-0 h-[1px] bg-white/40"></div>
-                            <div className="relative z-10 flex flex-col items-center">
-                                {isPlaying ? <PauseIcon className="w-16 h-16 fill-current drop-shadow-lg" /> : <PlayIcon className="w-16 h-16 fill-current ml-2 drop-shadow-lg" />}
-                                <span className="text-xs font-bold uppercase tracking-[0.2em] opacity-80 mt-2">{isPlaying ? t("remote.pause") : t("remote.start")}</span>
-                            </div>
-                        </button>
+                        {/* Play/Stop Controls */}
+                        <div className="flex-1 flex flex-col gap-4 h-44">
+                            {/* Play Button */}
+                            <button 
+                                onClick={actions.handlePlayToggle} 
+                                className={`flex-1 rounded-[2rem] shadow-2xl transition-all duration-300 active:scale-95 border-t border-white/10 flex flex-col items-center justify-center gap-2 relative overflow-hidden group ${isPlaying ? "bg-gradient-to-b from-amber-500 to-amber-600 text-white shadow-[0_0_60px_-10px_rgba(245,158,11,0.4)]" : "bg-gradient-to-b from-indigo-600 to-indigo-700 text-white shadow-[0_0_60px_-10px_rgba(79,70,229,0.4)] hover:shadow-[0_0_80px_-10px_rgba(79,70,229,0.6)]"}`}
+                            >
+                                <div className="absolute inset-x-0 top-0 h-[1px] bg-white/40"></div>
+                                <div className="relative z-10 flex flex-col items-center">
+                                    {isPlaying ? <PauseIcon className="w-12 h-12 fill-current drop-shadow-lg" /> : <PlayIcon className="w-12 h-12 fill-current ml-1 drop-shadow-lg" />}
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-80">{isPlaying ? t("remote.pause") : t("remote.start")}</span>
+                                </div>
+                            </button>
+                            
+                            {/* Stop Button */}
+                             <button 
+                                onClick={() => actions.handleStop()} 
+                                className="h-14 rounded-2xl bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 text-red-400 active:scale-95 transition-all flex items-center justify-center gap-2"
+                            >
+                                <StopIcon className="w-5 h-5 fill-current" />
+                                <span className="text-xs font-bold uppercase tracking-widest">{t("remote.stop")}</span>
+                            </button>
+                        </div>
                     </div>
                 </S.ControlsContainer>
             </>
@@ -217,6 +230,11 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
         )}
 
         {/* SETTINGS TAB */}
+        {activeTab === 'settings' && !settings && (
+            <div className="flex-1 flex items-center justify-center text-slate-500">
+                Waiting for host settings...
+            </div>
+        )}
         {activeTab === 'settings' && settings && (
             <div className="flex-1 overflow-y-auto p-6 space-y-8 bg-slate-950">
                 
@@ -285,7 +303,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
 
                 {/* Themes */}
                 <div className="space-y-3">
-                     <div className="text-sm text-slate-400 uppercase tracking-widest font-bold">Theme</div>
+                     <div className="text-sm text-slate-400 uppercase tracking-widest font-bold">{t("remote.theme")}</div>
                      <div className="grid grid-cols-3 gap-3">
                         {(['ninja', 'paper', 'contrast', 'matrix', 'cyber', 'cream'] as Theme[]).map(theme => (
                             <button 
@@ -296,6 +314,31 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                 {theme}
                             </button>
                         ))}
+                     </div>
+                </div>
+
+                {/* Language */}
+                <div className="space-y-3 pt-4 border-t border-white/5">
+                     <div className="text-sm text-slate-400 uppercase tracking-widest font-bold">{t("remote.language")}</div>
+                     <div className="grid grid-cols-3 gap-3">
+                        <button 
+                            onClick={() => setLang('en')}
+                            className={`p-3 rounded-lg border text-xs font-bold ${lang === 'en' ? 'bg-indigo-600 text-white border-indigo-500' : 'bg-slate-900 border-slate-800 text-slate-500'}`}
+                        >
+                            English
+                        </button>
+                        <button 
+                            onClick={() => setLang('pt')}
+                            className={`p-3 rounded-lg border text-xs font-bold ${lang === 'pt' ? 'bg-indigo-600 text-white border-indigo-500' : 'bg-slate-900 border-slate-800 text-slate-500'}`}
+                        >
+                            Português
+                        </button>
+                        <button 
+                            onClick={() => setLang('es')}
+                            className={`p-3 rounded-lg border text-xs font-bold ${lang === 'es' ? 'bg-indigo-600 text-white border-indigo-500' : 'bg-slate-900 border-slate-800 text-slate-500'}`}
+                        >
+                            Español
+                        </button>
                      </div>
                 </div>
             </div>

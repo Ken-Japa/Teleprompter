@@ -36,7 +36,7 @@ interface PrompterProps {
 
 export const Prompter = memo(
   forwardRef<PrompterHandle, PrompterProps>(
-    ({ text, isPro, status, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onResetTimer, settings, actions }, ref) => {
+    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onResetTimer, settings, actions }, ref) => {
 
       // Extracted Settings Logic
       const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical } = settings;
@@ -219,6 +219,7 @@ export const Prompter = memo(
 
           <PrompterHUD
             showHud={showHud}
+            peerId={peerId}
             status={status}
             isPlaying={externalState.isPlaying}
             speed={externalState.speed}

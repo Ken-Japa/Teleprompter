@@ -113,6 +113,13 @@ export const useRemoteController = (hostId: string) => {
   vibrate(50);
  }, [isPlaying, sendMessage, vibrate]);
 
+ const handleStop = useCallback(() => {
+    setIsPlaying(false);
+    setElapsedTime(0);
+    sendMessage(MessageType.RESTART);
+    vibrate(50);
+ }, [sendMessage, vibrate]);
+
  const handleTrackpadDelta = useCallback((delta: number) => {
   accumulatedDelta.current += delta;
  }, []);
@@ -169,6 +176,7 @@ export const useRemoteController = (hostId: string) => {
    handleSettingsChange,
    handleTextChange,
    handleScrollTo,
+   handleStop,
   },
  };
 };

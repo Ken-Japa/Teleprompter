@@ -137,6 +137,7 @@ export const pt = {
   voice: {
    notSupported: "Seu navegador não suporta controle por voz",
   },
+  exit: "Sair",
   editor: {
    highlight: "Destaque",
   },
@@ -161,8 +162,11 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
   touchArea: "Área de Controle Remoto",
   speed: "Velocidade",
   reset: "Reiniciar",
-  start: "Iniciar Apresentação",
-  pause: "Pausar Apresentação",
+  start: "Iniciar",
+  pause: "Pausar",
+  stop: "Parar",
+  theme: "Tema",
+  language: "Idioma",
  },
  tutorial: {
   title: "Guia Completo: Domine o PromptNinja",

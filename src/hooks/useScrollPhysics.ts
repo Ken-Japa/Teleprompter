@@ -33,6 +33,7 @@ export const useScrollPhysics = ({
  const animationFrameRef = useRef<number | null>(null);
  const lastSyncTimeRef = useRef<number>(0);
  const isSleepingRef = useRef<boolean>(true);
+ const retryTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
  // Interaction Flags
  const isUserTouchingRef = useRef<boolean>(false);
@@ -54,6 +55,21 @@ export const useScrollPhysics = ({
  const loop = useCallback(
   (timestamp: number) => {
    if (!scrollContainerRef.current) {
+    // If playing but ref not ready, retry with a small delay to allow mounting
+    if (isPlaying || (isVoiceMode && activeSentenceIndex !== -1)) {
+      if (!retryTimeoutRef.current) {
+         // Use a timeout to avoid spamming RAF if the DOM is taking time
+         retryTimeoutRef.current = setTimeout(() => {
+            retryTimeoutRef.current = null;
+            wakeUpLoop();
+         }, 100);
+      }
+      // Mark animation frame as null so we know we aren't in a RAF loop
+      animationFrameRef.current = null;
+      // Ensure loop is considered sleeping so wakeUpLoop can restart it
+      isSleepingRef.current = true;
+      return;
+    }
     animationFrameRef.current = null;
     isSleepingRef.current = true;
     return;
@@ -294,6 +310,7 @@ export const useScrollPhysics = ({
  useEffect(() => {
   return () => {
    if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+   if (retryTimeoutRef.current) clearTimeout(retryTimeoutRef.current);
   };
  }, []);
 

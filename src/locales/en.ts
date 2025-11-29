@@ -87,6 +87,7 @@ export const en = {
   linkCopied: "Copied!",
   connectionLost: "CONNECTION LOST",
   watermark: "PROMPT NINJA FREE VERSION",
+  exit: "Exit",
   controls: {
    play: "Play",
    pause: "Pause",
@@ -130,6 +131,7 @@ export const en = {
    invalidKey: "Invalid unlock key. Please try again.",
    countdownMessage: "Returning to the page in...",
   },
+
   voice: {
    notSupported: "Your browser does not support voice control",
   },
@@ -157,8 +159,11 @@ Paste your script here and customize your experience to start shining!`,
   touchArea: "TRACKPAD",
   speed: "Speed",
   reset: "Reset",
-  start: "START",
-  pause: "PAUSE",
+  start: "Start",
+  pause: "Pause",
+  stop: "Stop",
+  theme: "Theme",
+  language: "Language",
  },
  tutorial: {
   title: "PromptNinja: Your Quick Start Guide",
@@ -199,17 +204,8 @@ Paste your script here and customize your experience to start shining!`,
    },
    focusMode: {
     title: "Focus Mode",
-    description:
-     "Utilize focus mode: Highlights your current line, ensuring you stay on track and maintain concentration.",
+    description: "Activate Focus Mode to highlight the reading line and dim the surrounding text.",
    },
   },
-  tips: {
-   title: "Tips",
-   tip1: "Use a dark background and light text to reduce eye strain.",
-   tip2: "Practice with different speeds to find the ideal rhythm for your presentation.",
-  },
- },
- footer: {
-  copyright: "PromptNinja. All rights reserved.",
  },
 };
