@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { ConnectionStatus } from "../types";
 
-export const useProState = (connectionStatus: ConnectionStatus) => {
+export const useProState = (connectionStatus: ConnectionStatus, isPlaying: boolean) => {
  const [isPro, setIsPro] = useState<boolean>(() => localStorage.getItem("promptninja_pro") === "true");
  const [showPaywall, setShowPaywall] = useState<boolean>(false);
 
@@ -16,13 +16,17 @@ export const useProState = (connectionStatus: ConnectionStatus) => {
    localStorage.setItem("promptninja_pro", String(newState));
    window.location.reload();
   };
- }, [isPro]);
+  window.showPaywallModal = () => {
+   setShowPaywall(true);
+  };
+ }, [isPro, setShowPaywall]);
 
  // Paywall Timer Logic - Optimized
  // We only trigger a re-render when the time is UP, not every second.
  useEffect(() => {
   if (isPro) return;
-  if (connectionStatus !== ConnectionStatus.CONNECTED) {
+  // O timer só deve iniciar se estiver conectado E a apresentação estiver em play
+  if (connectionStatus !== ConnectionStatus.CONNECTED || !isPlaying) {
    if (timerRef.current) {
     clearTimeout(timerRef.current);
     timerRef.current = null;
@@ -43,7 +47,7 @@ export const useProState = (connectionStatus: ConnectionStatus) => {
     timerRef.current = null;
    }
   };
- }, [connectionStatus, isPro, showPaywall]);
+ }, [connectionStatus, isPro, showPaywall, isPlaying]);
 
  const unlockPro = (key: string): boolean => {
   if (key === "PRO-NINJA-2025") {

@@ -125,6 +125,9 @@ export const en = {
    button: "Activate PRO",
    invalid: "Invalid Key",
    success: "Ninja Pro Activated!",
+   emptyKey: "Please enter an unlock key.",
+   invalidKey: "Invalid unlock key. Please try again.",
+   countdownMessage: "Returning to the page in...",
   },
   voice: {
    notSupported: "Your browser does not support voice control",

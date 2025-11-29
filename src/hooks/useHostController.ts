@@ -5,8 +5,10 @@ import { usePeerHost } from "./usePeerHost";
 import { useProState } from "./useProState";
 import { useScriptStorage } from "./useScriptStorage";
 import { useLocalStorage } from "./useLocalStorage";
+import { useTranslation } from "./useTranslation";
 
 export const useHostController = () => {
+ const { t } = useTranslation();
  // 1. Data Persistence
  const [text, setText] = useScriptStorage() || useState("");
 
@@ -81,8 +83,10 @@ export const useHostController = () => {
  const { peerId, status, broadcast, errorMessage } = usePeerHost(handleRemoteMessage);
 
  // 5. Pro & Paywall Logic
- const { isPro, showPaywall, setShowPaywall, unlockPro } = useProState(status);
+ const { isPro, showPaywall, setShowPaywall, unlockPro } = useProState(status, isPlaying);
  const [unlockKey, setUnlockKey] = useState<string>("");
+ const [paywallErrorMessage, setPaywallErrorMessage] = useState<string | null>(null);
+ const [showCountdownModal, setShowCountdownModal] = useState<boolean>(false);
 
  // Pause playback if Paywall triggers
  useEffect(() => {
@@ -114,7 +118,28 @@ export const useHostController = () => {
  );
 
  const handleUnlock = () => {
-  if (unlockKey && unlockPro(unlockKey)) setUnlockKey("");
+  setPaywallErrorMessage(null); // Clear previous errors
+
+  if (!unlockKey) {
+   setPaywallErrorMessage(t("host.paywall.emptyKey"));
+   return;
+  }
+
+  if (!unlockPro(unlockKey)) {
+   setPaywallErrorMessage(t("host.paywall.invalidKey"));
+   return;
+  }
+
+  setUnlockKey("");
+ };
+
+ const handleClosePaywall = () => {
+  setShowPaywall(false);
+  setShowCountdownModal(true);
+ };
+
+ const handleCountdownEnd = () => {
+  setShowCountdownModal(false);
  };
 
  const navigation = {
@@ -143,6 +168,8 @@ export const useHostController = () => {
    unlockKey,
    prompterState,
    errorMessage,
+   paywallErrorMessage,
+   showCountdownModal,
   },
   actions: {
    setText,
@@ -152,6 +179,9 @@ export const useHostController = () => {
    handleScrollUpdate,
    setShowPaywall,
    navigation,
+   handleClosePaywall,
+   setShowCountdownModal,
+   handleCountdownEnd,
   },
   refs: {
    prompterRef,

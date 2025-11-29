@@ -27,13 +27,33 @@ export const PaywallModal = ({
   title,
   desc,
   children,
+  onClose,
 }: {
   title: string;
   desc: string;
   children: React.ReactNode;
+  onClose?: () => void;
 }) => (
   <div className="absolute inset-0 bg-slate-950/95 backdrop-blur-sm z-[100] flex items-center justify-center p-6 animate-fadeIn">
-    <div className="bg-slate-900 border border-indigo-500/30 p-8 rounded-3xl shadow-[0_0_100px_rgba(79,70,229,0.3)] max-w-md w-full text-center">
+    <div className="bg-slate-900 border border-indigo-500/30 p-8 rounded-3xl shadow-[0_0_100px_rgba(79,70,229,0.3)] max-w-md w-full text-center relative">
+      {onClose && (
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors duration-200"
+          aria-label="Fechar"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      )}
       <div className="inline-block p-4 bg-indigo-500/10 rounded-full mb-6">
         <img
           src="/assets/LogoPrompt.png"

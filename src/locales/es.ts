@@ -128,6 +128,9 @@ export const es = {
    button: "Activar PRO",
    invalid: "Clave Inválida",
    success: "¡Ninja Pro Activado!",
+   emptyKey: "Por favor, introduce una clave de desbloqueo.",
+   invalidKey: "Clave de desbloqueo inválida. Inténtalo de nuevo.",
+   countdownMessage: "Volviendo a la página en...",
   },
   voice: {
    notSupported: "Tu navegador no soporta control por voz",

@@ -4,19 +4,23 @@ import * as S from "../components/ui/Styled";
 import { Editor } from "../components/host/Editor";
 import { Prompter } from "../components/host/Prompter";
 import { useHostController } from "../hooks/useHostController";
+import { CountdownModal } from "../components/ui/styles/CountdownModal";
 
 export const Host: React.FC = () => {
     const { t } = useTranslation();
 
     // Separation of Concerns: Host is now a dumb component
     const { state, actions, refs } = useHostController();
-    const { text, isEditMode, peerId, status, isPro, showPaywall, unlockKey, prompterState, errorMessage } = state;
+    const { text, isEditMode, peerId, status, isPro, showPaywall, unlockKey, prompterState, errorMessage, paywallErrorMessage, showCountdownModal } = state;
 
     return (
         <>
             {showPaywall && (
-                <S.PaywallModal title={t("host.paywall.title")} desc={t("host.paywall.desc")}>
+                <S.PaywallModal title={t("host.paywall.title")} desc={t("host.paywall.desc")} onClose={actions.handleClosePaywall}>
                     <div className="flex flex-col space-y-3">
+                        {paywallErrorMessage && (
+                            <p className="text-red-500 text-center text-sm">{paywallErrorMessage}</p>
+                        )}
                         <input
                             type="text"
                             placeholder={t("host.paywall.inputPlaceholder")}
@@ -27,6 +31,14 @@ export const Host: React.FC = () => {
                         <S.PrimaryButton onClick={actions.handleUnlock}>{t("host.paywall.button")}</S.PrimaryButton>
                     </div>
                 </S.PaywallModal>
+            )}
+
+            {showCountdownModal && (
+                <CountdownModal
+                    duration={3}
+                    onCountdownEnd={actions.handleCountdownEnd}
+                    message={t("host.paywall.countdownMessage")}
+                />
             )}
 
             {errorMessage && <S.ErrorToast message={errorMessage} />}

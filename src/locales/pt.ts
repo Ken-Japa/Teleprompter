@@ -129,6 +129,9 @@ export const pt = {
    button: "Ativar Versão PRO",
    invalid: "Chave PRO Inválida",
    success: "PromptNinja PRO Ativado com Sucesso!",
+   emptyKey: "Por favor, insira uma chave de desbloqueio.",
+   invalidKey: "Chave de desbloqueio inválida. Tente novamente.",
+   countdownMessage: "Retornando à página em...",
   },
   voice: {
    notSupported: "Seu navegador não suporta controle por voz",
