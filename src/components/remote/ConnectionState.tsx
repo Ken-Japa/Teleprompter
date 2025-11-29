@@ -13,27 +13,42 @@ interface ConnectionStateProps {
 export const ConnectionState: React.FC<ConnectionStateProps> = ({ status, hostId }) => {
  const { t } = useTranslation();
  const [isScanning, setIsScanning] = useState(false);
- const html5QrcodeScannerRef = useRef<any>(null);
+ const [scanError, setScanError] = useState<string | null>(null);
+ const html5QrcodeRef = useRef<any>(null);
 
  const startScanner = async () => {
   setIsScanning(true);
+  setScanError(null);
+  
   try {
       await loadHtml5QrcodeLibrary();
-      // Short delay to ensure DOM element is ready and library loaded
-      setTimeout(() => {
-          if (window.Html5QrcodeScanner) {
-               const scanner = new window.Html5QrcodeScanner(
-                  "reader",
-                  { fps: 10, qrbox: { width: 250, height: 250 } },
-                  false
-              );
-              scanner.render(onScanSuccess, onScanFailure);
-              html5QrcodeScannerRef.current = scanner;
+      
+      // Short delay to ensure DOM element is ready
+      setTimeout(async () => {
+          if (window.Html5Qrcode) {
+              try {
+                  const html5QrCode = new window.Html5Qrcode("reader");
+                  html5QrcodeRef.current = html5QrCode;
+                  
+                  const config = { fps: 10, qrbox: { width: 250, height: 250 } };
+                  
+                  // Prefer back camera
+                  await html5QrCode.start(
+                      { facingMode: "environment" }, 
+                      config, 
+                      onScanSuccess,
+                      onScanFailure
+                  );
+              } catch (err) {
+                  console.error("Error starting scanner", err);
+                  setScanError("Camera access failed. Please ensure you are using HTTPS and have granted camera permissions.");
+              }
           }
       }, 100);
   } catch (e) {
       console.error(e);
       setIsScanning(false);
+      setScanError("Failed to load scanner library.");
   }
  };
 
@@ -48,10 +63,7 @@ export const ConnectionState: React.FC<ConnectionStateProps> = ({ status, hostId
         }
     }
     
-    if (html5QrcodeScannerRef.current) {
-        html5QrcodeScannerRef.current.clear().catch(console.error);
-    }
-    setIsScanning(false);
+    stopScanner();
     
     // Force update hash and reload
     window.location.hash = `remote?id=${newId}`;
@@ -59,12 +71,18 @@ export const ConnectionState: React.FC<ConnectionStateProps> = ({ status, hostId
  };
 
  const onScanFailure = (error: any) => {
-    // Only log if needed, usually it's just "no code found"
+    // Only log if needed
  };
  
- const stopScanner = () => {
-    if (html5QrcodeScannerRef.current) {
-        html5QrcodeScannerRef.current.clear().catch(console.error);
+ const stopScanner = async () => {
+    if (html5QrcodeRef.current) {
+        try {
+            await html5QrcodeRef.current.stop();
+            html5QrcodeRef.current.clear();
+        } catch (e) {
+            console.error("Failed to stop scanner", e);
+        }
+        html5QrcodeRef.current = null;
     }
     setIsScanning(false);
  };
@@ -72,8 +90,9 @@ export const ConnectionState: React.FC<ConnectionStateProps> = ({ status, hostId
  // Cleanup on unmount
  useEffect(() => {
      return () => {
-         if (html5QrcodeScannerRef.current) {
-             html5QrcodeScannerRef.current.clear().catch(console.error);
+         if (html5QrcodeRef.current) {
+             html5QrcodeRef.current.stop().catch(console.error);
+             html5QrcodeRef.current.clear().catch(console.error);
          }
      };
  }, []);
@@ -82,7 +101,16 @@ export const ConnectionState: React.FC<ConnectionStateProps> = ({ status, hostId
      return (
          <div className="flex-1 flex flex-col items-center justify-center p-4 bg-black z-50 absolute inset-0 animate-fadeIn">
              <h3 className="text-white font-bold mb-4">Scan Host QR Code</h3>
-             <div id="reader" className="w-full max-w-sm bg-white rounded-lg overflow-hidden"></div>
+             
+             <div className="relative w-full max-w-sm bg-black rounded-lg overflow-hidden border border-slate-800">
+                <div id="reader" className="w-full h-[300px] bg-black"></div>
+                {scanError && (
+                    <div className="absolute inset-0 flex items-center justify-center p-4 bg-black/80 text-red-400 text-center text-sm">
+                        {scanError}
+                    </div>
+                )}
+             </div>
+
              <S.SecondaryButton onClick={stopScanner} className="mt-8 !bg-red-500/20 !text-red-400 !border-red-500/30">
                  {t("remote.stop") || "Cancel"}
              </S.SecondaryButton>
