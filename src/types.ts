@@ -114,6 +114,7 @@ export interface PrompterSettings {
  theme: Theme;
  isUpperCase: boolean;
  isFocusMode: boolean;
+ isFlipVertical: boolean;
 }
 
 export interface PeerMessage {

@@ -7,12 +7,13 @@ import { useTranslation } from '../../hooks/useTranslation';
 interface ScriptBoardProps {
   sentences: Sentence[];
   isMirrored: boolean;
+  isFlipVertical?: boolean;
   isUpperCase: boolean;
   isPro: boolean;
   theme: string;
 }
 
-export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, theme }: ScriptBoardProps) => {
+export const ScriptBoard = memo(({ sentences, isMirrored, isFlipVertical, isUpperCase, isPro, theme }: ScriptBoardProps) => {
   const { t } = useTranslation();
 
   const watermarkIndexes = [];
@@ -22,6 +23,12 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
   if (watermarkIndexes[watermarkIndexes.length - 1] !== sentences.length - 1) {
     watermarkIndexes.push(sentences.length - 1);
   }
+
+  // Calculate Transforms
+  const transforms = [];
+  if (isMirrored) transforms.push("scaleX(-1)");
+  if (isFlipVertical) transforms.push("scaleY(-1)");
+  transforms.push("translateZ(0)");
 
   return (
     <div style={{ position: "relative", width: "100%" }}>
@@ -47,7 +54,7 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
       <div
         className={`w-full max-w-7xl mx-auto transition-transform duration-300 ${isUpperCase ? "uppercase" : ""} hardware-accelerated`}
         style={{
-          transform: isMirrored ? "scaleX(-1) translateZ(0)" : "translateZ(0)",
+          transform: transforms.join(" "),
           paddingLeft: "var(--prompter-margin)",
           paddingRight: "var(--prompter-margin)",
         }}

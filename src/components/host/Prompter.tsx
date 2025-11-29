@@ -29,16 +29,17 @@ interface PrompterProps {
   externalState: { isPlaying: boolean; speed: number };
   onStateChange: (isPlaying: boolean, speed: number) => void;
   onScrollUpdate: (progress: number) => void;
+  onResetTimer?: () => void;
   settings: PrompterSettings;
   actions: PrompterActions;
 }
 
 export const Prompter = memo(
   forwardRef<PrompterHandle, PrompterProps>(
-    ({ text, isPro, status, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, settings, actions }, ref) => {
+    ({ text, isPro, status, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onResetTimer, settings, actions }, ref) => {
 
       // Extracted Settings Logic
-      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode } = settings;
+      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical } = settings;
 
       // Ephemeral State
       const [isVoiceMode, setIsVoiceMode] = useState<boolean>(false);
@@ -163,6 +164,7 @@ export const Prompter = memo(
       const resetPrompter = useCallback(() => {
         onStateChange(false, externalState.speed);
         setResetTimerSignal((p) => !p);
+        if (onResetTimer) onResetTimer();
         resetVoice();
         resetPhysics();
         if (currentActiveElementRef.current) {
@@ -204,9 +206,14 @@ export const Prompter = memo(
               ref={scrollContainerRef}
               onScroll={handleNativeScroll}
               className="hardware-accelerated"
-              style={{ paddingLeft: `${margin}%`, paddingRight: `${margin}%`, marginBottom: '4em' }}
+              style={{
+                paddingLeft: `${margin}%`,
+                paddingRight: `${margin}%`,
+                paddingTop: '50vh',
+                paddingBottom: '50vh'
+              }}
             >
-              <ScriptBoard sentences={sentences} isMirrored={isMirrored} isUpperCase={isUpperCase} isPro={isPro} theme={theme} />
+              <ScriptBoard sentences={sentences} isMirrored={isMirrored} isFlipVertical={isFlipVertical} isUpperCase={isUpperCase} isPro={isPro} theme={theme} />
             </S.PrompterScrollArea>
           </S.MainContent>
 

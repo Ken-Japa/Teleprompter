@@ -63,6 +63,7 @@ export const Host: React.FC = () => {
                     externalState={prompterState}
                     onStateChange={actions.handlePrompterStateChange}
                     onScrollUpdate={actions.handleScrollUpdate}
+                    onResetTimer={actions.resetTimer}
                     settings={prompterSettings}
                     actions={actions.prompterActions}
                 />

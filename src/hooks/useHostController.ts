@@ -28,7 +28,22 @@ export const useHostController = () => {
   // 3. Prompter State
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [speed, setSpeed] = useLocalStorage<number>("neonprompt_speed", 2);
+  const [elapsedTime, setElapsedTime] = useState<number>(0);
 
+  // Timer Logic
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isPlaying) {
+      interval = setInterval(() => {
+        setElapsedTime((prev) => prev + 1);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [isPlaying]);
+
+  // Reset Timer when stopping or restarting (Optional: currently we don't reset on pause, only on explicit reset action if we had one)
+  // For now, we just keep it running. If we want to reset, we need a reset signal.
+  
   // 5. Pro & Paywall Logic
   const { isPro, showPaywall, setShowPaywall, unlockPro } = useProState(isPlaying);
 
@@ -75,6 +90,7 @@ export const useHostController = () => {
           break;
         case MessageType.RESTART:
           setIsPlaying(false);
+          setElapsedTime(0);
           break;
         case MessageType.TEXT_UPDATE:
           if (typeof msg.payload === "string") {
@@ -95,6 +111,7 @@ export const useHostController = () => {
             if (s.theme) prompterActions.setTheme(s.theme);
             if (s.isUpperCase !== undefined) prompterActions.setIsUpperCase(s.isUpperCase);
             if (s.isFocusMode !== undefined) prompterActions.setIsFocusMode(s.isFocusMode);
+            if (s.isFlipVertical !== undefined) prompterActions.setIsFlipVertical(s.isFlipVertical);
           }
           break;
         default:
@@ -123,10 +140,11 @@ export const useHostController = () => {
         isPlaying,
         speed,
         settings: prompterSettings,
-        text: text.substring(0, 10000) // Limit text size just in case
+        text: text.substring(0, 10000), // Limit text size just in case
+        elapsedTime
       });
     }
-  }, [isPlaying, speed, status, broadcast, prompterSettings, text]);
+  }, [isPlaying, speed, status, broadcast, prompterSettings, text, elapsedTime]);
 
   const handleScrollUpdate = useCallback(
     (progress: number) => {
@@ -170,6 +188,10 @@ export const useHostController = () => {
     setShowCountdownModal(false);
   };
 
+  const resetTimer = useCallback(() => {
+    setElapsedTime(0);
+  }, []);
+
   const navigation = {
     startPresentation: () => {
       window.location.hash = "app/play";
@@ -212,6 +234,7 @@ export const useHostController = () => {
       setShowCountdownModal,
       handleCountdownEnd,
       prompterActions,
+      resetTimer,
     },
     refs: {
       prompterRef,

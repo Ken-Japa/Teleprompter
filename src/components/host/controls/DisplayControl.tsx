@@ -25,9 +25,18 @@ export const DisplayControl = memo(({ settings, actions, onOpenMarginSlider }: D
     className="w-8 h-8 sm:w-10 sm:h-10"
    >
     <FlipIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-   </S.IconButton>
-   <S.IconButton
-    onClick={onOpenMarginSlider}
+    </S.IconButton>
+    <S.IconButton
+      onClick={() => actions.setIsFlipVertical(!settings.isFlipVertical)}
+      active={settings.isFlipVertical}
+      title={t("host.mirrorV")}
+      aria-label={t("host.mirrorV")}
+      className="w-8 h-8 sm:w-10 sm:h-10"
+    >
+      <FlipIcon className="w-4 h-4 sm:w-5 sm:h-5 rotate-90" />
+    </S.IconButton>
+    <S.IconButton
+      onClick={onOpenMarginSlider}
     active={margin > 0}
     title={t("host.controls.margin")}
     aria-label={t("host.controls.margin")}

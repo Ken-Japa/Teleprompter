@@ -9,6 +9,7 @@ export interface PrompterSettings {
  theme: Theme;
  isUpperCase: boolean;
  isFocusMode: boolean;
+ isFlipVertical: boolean;
 }
 
 export interface PrompterActions {
@@ -18,6 +19,7 @@ export interface PrompterActions {
  setTheme: (val: Theme | ((v: Theme) => Theme)) => void;
  setIsUpperCase: (val: boolean) => void;
  setIsFocusMode: (val: boolean) => void;
+ setIsFlipVertical: (val: boolean) => void;
  cycleTheme: () => void;
 }
 
@@ -29,6 +31,7 @@ export const usePrompterSettings = (isPro: boolean) => {
  const [theme, setTheme] = useLocalStorage<Theme>("neonprompt_theme", "ninja");
  const [isUpperCase, setIsUpperCase] = useLocalStorage<boolean>("neonprompt_caps", false);
  const [isFocusMode, setIsFocusMode] = useLocalStorage<boolean>("neonprompt_focus", isPro);
+ const [isFlipVertical, setIsFlipVertical] = useLocalStorage<boolean>("neonprompt_flipv", false);
 
  const cycleTheme = useCallback(() => {
   const themes: Theme[] = ["ninja", "paper", "contrast", "matrix", "cyber", "cream"];
@@ -42,6 +45,7 @@ export const usePrompterSettings = (isPro: boolean) => {
   theme,
   isUpperCase,
   isFocusMode,
+  isFlipVertical,
  };
 
  const actions: PrompterActions = {
@@ -51,6 +55,7 @@ export const usePrompterSettings = (isPro: boolean) => {
   setTheme,
   setIsUpperCase,
   setIsFocusMode,
+  setIsFlipVertical,
   cycleTheme,
  };
 

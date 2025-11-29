@@ -11,9 +11,21 @@ export const useRemoteController = (hostId: string) => {
  const [speed, setSpeed] = useState<number>(2);
  const [progress, setProgress] = useState<number>(0);
  const [settings, setSettings] = useState<PrompterSettings | null>(null);
- const [text, setText] = useState<string>("");
+  const [text, setText] = useState<string>("");
+  const [elapsedTime, setElapsedTime] = useState<number>(0);
 
- // 2. Peer Connection
+  // Timer Logic (Local Approximation)
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isPlaying) {
+      interval = setInterval(() => {
+        setElapsedTime((prev) => prev + 1);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [isPlaying]);
+
+  // 2. Peer Connection
  const { status, sendMessage, setOnMessage, errorMessage } = usePeerRemote(hostId);
 
  // 3. Logic Refs
@@ -44,6 +56,7 @@ export const useRemoteController = (hostId: string) => {
     setSpeed(data.payload.speed);
     if (data.payload.settings) setSettings(data.payload.settings);
     if (data.payload.text !== undefined) setText(data.payload.text);
+    if (data.payload.elapsedTime !== undefined) setElapsedTime(data.payload.elapsedTime);
    }
    if (data.type === MessageType.SCROLL_SYNC) {
     setProgress(data.payload.progress);
@@ -146,6 +159,7 @@ export const useRemoteController = (hostId: string) => {
    errorMessage,
    settings,
    text,
+   elapsedTime,
   },
   actions: {
    handleSpeedChange,
