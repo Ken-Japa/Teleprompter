@@ -180,7 +180,7 @@ export const Prompter = memo(
       return (
         <S.ScreenContainer
           ref={containerRef}
-          className={`relative ${getThemeClass()}`}
+          className={`relative h-screen ${getThemeClass()}`}
           data-theme={theme}
           {...({ "data-theme": theme } as any)}
           style={containerStyle}

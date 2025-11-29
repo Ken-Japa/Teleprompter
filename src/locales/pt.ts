@@ -101,6 +101,7 @@ export const pt = {
    voice: "Controle por Voz",
    focusLine: "Linha de Foco Dinâmico",
    theme: "Tema Visual do Teleprompter",
+   fontSize: "Tamanho da Fonte",
   },
   themes: {
    ninja: "Ninja (Tema Escuro)",

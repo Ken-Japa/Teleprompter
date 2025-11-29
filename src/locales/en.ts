@@ -98,6 +98,7 @@ export const en = {
    voice: "Voice Control",
    focusLine: "Focus Line",
    theme: "Visual Theme",
+   fontSize: "Font Size",
   },
   themes: {
    ninja: "Ninja (Dark)",

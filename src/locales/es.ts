@@ -101,6 +101,7 @@ export const es = {
    voice: "Control por Voz",
    focusLine: "Línea de Enfoque",
    theme: "Tema Visual",
+   fontSize: "Tamaño de Texto",
   },
   themes: {
    ninja: "Ninja (Oscuro)",

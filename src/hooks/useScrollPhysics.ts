@@ -82,11 +82,34 @@ export const useScrollPhysics = ({
     !isManualScrollingRef.current &&
     Math.abs(momentumRef.current) < 0.5
    ) {
-    const moveAmount = (velocityCacheRef.current * deltaTime) / 1000;
-    if (internalScrollPos.current + metrics.clientHeight < metrics.scrollHeight - 2) {
-     deltaScroll += moveAmount;
-    } else {
-     onAutoStop();
+    // Only attempt to scroll or auto-stop if content is larger than the viewport
+    if (metrics.scrollHeight > metrics.clientHeight) {
+     const moveAmount = (velocityCacheRef.current * deltaTime) / 1000;
+
+     // Debug Log (throttle or conditional)
+     if (Math.random() < 0.01) {
+       console.log("Physics Loop Active", {
+         speed,
+         velocity: velocityCacheRef.current,
+         deltaTime,
+         moveAmount,
+         pos: internalScrollPos.current,
+         metrics
+       });
+     }
+
+     if (internalScrollPos.current + metrics.clientHeight < metrics.scrollHeight - 2) {
+      deltaScroll += moveAmount;
+     } else {
+      console.warn("AutoStop Triggered by Physics Engine", {
+       internalScrollPos: internalScrollPos.current,
+       clientHeight: metrics.clientHeight,
+       scrollHeight: metrics.scrollHeight,
+       sum: internalScrollPos.current + metrics.clientHeight,
+       diff: metrics.scrollHeight - (internalScrollPos.current + metrics.clientHeight)
+      });
+      onAutoStop();
+     }
     }
    }
 

@@ -106,6 +106,7 @@ export const useHostController = () => {
  // 7. Actions
  const handlePrompterStateChange = useCallback(
   (playing: boolean, newSpeed: number) => {
+   console.log(`Prompter State Change: Playing=${playing}, Speed=${newSpeed}`);
    setIsPlaying(playing);
    setSpeed(newSpeed);
   },
@@ -117,8 +118,16 @@ export const useHostController = () => {
  };
 
  const navigation = {
-  startPresentation: () => (window.location.hash = "app/play"),
-  exitPresentation: () => (window.location.hash = "app"),
+  startPresentation: () => {
+   window.location.hash = "app/play";
+   // Force state update immediately to ensure responsiveness even if hash event is delayed
+   setIsEditMode(false);
+  },
+  exitPresentation: () => {
+   window.location.hash = "app";
+   // Force state update immediately
+   setIsEditMode(true);
+  },
  };
 
  const prompterState = useMemo(() => ({ isPlaying, speed }), [isPlaying, speed]);
