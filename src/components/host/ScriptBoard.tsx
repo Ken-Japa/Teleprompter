@@ -45,7 +45,7 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
 
       {/* Texto centralizado com margens dinâmicas */}
       <div
-        className={`w-full max-w-7xl mx-auto py-[10vh] transition-transform duration-300 ${isUpperCase ? "uppercase" : ""} hardware-accelerated`}
+        className={`w-full max-w-7xl mx-auto transition-transform duration-300 ${isUpperCase ? "uppercase" : ""} hardware-accelerated`}
         style={{
           transform: isMirrored ? "scaleX(-1) translateZ(0)" : "translateZ(0)",
           paddingLeft: "var(--prompter-margin)",

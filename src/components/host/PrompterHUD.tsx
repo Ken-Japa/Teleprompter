@@ -59,7 +59,7 @@ export const PrompterHUD = memo(
                     onClick={() => setShowTutorialModal(true)}
                     title="Tutorial"
                     aria-label="Open Tutorial"
-                    className="ml-4 w-10 h-10 sm:w-12 sm:h-12"
+                    className="ml-4 w-10 h-10 sm:w-12 sm:h-12 hidden sm:block"
                 >
                     <InfoIcon className="w-5 h-5 sm:w-6 sm:h-6" />
                 </S.IconButton>

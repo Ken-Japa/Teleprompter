@@ -11,9 +11,11 @@ interface MarginModalProps {
 
 export const MarginModal = ({ isOpen, onClose, margin, setMargin }: MarginModalProps) => {
   const { t } = useTranslation();
-  const minMargin = 23;
-  const maxMargin = 50;
-  const sliderValue = ((margin - minMargin) / (maxMargin - minMargin)) * 100;
+  const minMargin = 0;
+  const maxMargin = 40;
+  // Ensure sliderValue is within bounds [0, 100] to prevent visual glitches
+  const rawSliderValue = ((margin - minMargin) / (maxMargin - minMargin)) * 100;
+  const sliderValue = Math.min(Math.max(rawSliderValue, 0), 100);
 
   return (
     <S.Modal isOpen={isOpen} onClose={onClose} title={t("host.controls.margin")}>

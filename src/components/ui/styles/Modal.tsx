@@ -63,35 +63,19 @@ export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
   const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
-    console.log("useEffect: Iniciando verificação do modal-root.");
     let element = document.getElementById("modal-root");
     if (!element) {
-      console.log("useEffect: modal-root não encontrado, criando um novo.");
       element = document.createElement("div");
       element.setAttribute("id", "modal-root");
       document.body.appendChild(element);
-      console.log("useEffect: modal-root criado e anexado ao body.", element);
-    } else {
-      console.log("useEffect: modal-root existente encontrado.", element);
     }
     setPortalTarget(element);
-    console.log("useEffect: portalTarget definido.", element);
-
-    return () => {
-      console.log("useEffect cleanup: Removendo modal-root (opcional).");
-      // Opcional: remover o modalRoot se não houver outros modais usando-o
-      // if (element && document.body.contains(element)) {
-      //   document.body.removeChild(element);
-      // }
-    };
   }, []);
 
   if (!portalTarget) {
-    console.log("Render: portalTarget ainda não está disponível, retornando null.");
     return null;
   }
 
-  console.log("Render: Renderizando portal com alvo:", portalTarget);
   return ReactDOM.createPortal(
     <ModalOverlay onClick={onClose}>
       <ModalContent onClick={(e) => e.stopPropagation()}>

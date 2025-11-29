@@ -47,7 +47,7 @@ export const useScrollPhysics = ({
 
  // Update Velocity Cache when speed changes
  useEffect(() => {
-  velocityCacheRef.current = Math.pow(speed, 1.4) * 15;
+  velocityCacheRef.current = Math.pow(speed, 1.4) * 40;
  }, [speed]);
 
  // The Main Loop definition
@@ -88,14 +88,14 @@ export const useScrollPhysics = ({
 
      // Debug Log (throttle or conditional)
      if (Math.random() < 0.01) {
-       console.log("Physics Loop Active", {
-         speed,
-         velocity: velocityCacheRef.current,
-         deltaTime,
-         moveAmount,
-         pos: internalScrollPos.current,
-         metrics
-       });
+      console.log("Physics Loop Active", {
+       speed,
+       velocity: velocityCacheRef.current,
+       deltaTime,
+       moveAmount,
+       pos: internalScrollPos.current,
+       metrics,
+      });
      }
 
      if (internalScrollPos.current + metrics.clientHeight < metrics.scrollHeight - 2) {
@@ -106,7 +106,7 @@ export const useScrollPhysics = ({
        clientHeight: metrics.clientHeight,
        scrollHeight: metrics.scrollHeight,
        sum: internalScrollPos.current + metrics.clientHeight,
-       diff: metrics.scrollHeight - (internalScrollPos.current + metrics.clientHeight)
+       diff: metrics.scrollHeight - (internalScrollPos.current + metrics.clientHeight),
       });
       onAutoStop();
      }

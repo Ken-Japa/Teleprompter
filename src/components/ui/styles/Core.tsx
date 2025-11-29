@@ -112,10 +112,13 @@ export const RangeSlider = ({
     label?: string;
     reverse?: boolean;
 }) => {
+    // Ensure value is within bounds to prevent visual glitches
+    const safeValue = Math.min(Math.max(value, min), max);
+
     // Calcula a posição do slider, invertendo se reverse=true
     const percent = reverse
-        ? ((max - value) / (max - min)) * 100
-        : ((value - min) / (max - min)) * 100;
+        ? ((max - safeValue) / (max - min)) * 100
+        : ((safeValue - min) / (max - min)) * 100;
     return (
         <div className={`relative flex items-center ${width} h-8 group cursor-pointer`}>
             <div className="absolute inset-0 bg-slate-800 rounded-full h-1 top-1/2 -translate-y-1/2 border border-white/5"></div>

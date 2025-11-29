@@ -202,7 +202,7 @@ export const Prompter = memo(
               ref={scrollContainerRef}
               onScroll={handleNativeScroll}
               className="hardware-accelerated"
-              style={{ scrollBehavior: "auto", willChange: "scroll-position", paddingLeft: `${margin}%`, paddingRight: `${margin}%`, marginBottom: '4em' }}
+              style={{ paddingLeft: `${margin}%`, paddingRight: `${margin}%`, marginBottom: '4em' }}
             >
               <ScriptBoard sentences={sentences} isMirrored={isMirrored} isUpperCase={isUpperCase} isPro={isPro} theme={theme} />
             </S.PrompterScrollArea>

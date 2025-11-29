@@ -9,7 +9,7 @@ export const ScreenContainer = React.forwardRef<
         className?: string;
     } & React.HTMLAttributes<HTMLDivElement>
 >(({ children, className = "", ...props }, ref) => (
-    <div ref={ref} className={`flex flex-col overflow-hidden bg-[#020617] relative ${className}`} {...props}>
+    <div ref={ref} className={`flex flex-col bg-[#020617] relative ${className}`} {...props}>
         {/* Subtle Noise Texture Overlay via CSS class */}
         <div className="absolute inset-0 bg-noise opacity-50 pointer-events-none z-[1]"></div>
 
@@ -107,16 +107,19 @@ export const PrompterScrollArea = React.forwardRef<
     HTMLDivElement,
     {
         children: React.ReactNode;
+        onScroll: (e: React.UIEvent<HTMLDivElement>) => void;
         className?: string;
     } & React.HTMLAttributes<HTMLDivElement>
->(({ children, className = "", style, ...props }, ref) => (
+>(({ children, onScroll, className = "", ...props }, ref) => (
     <div
         ref={ref}
-        className={`w-full h-full overflow-y-scroll scrollbar-hide relative z-10 max-w-[var(--prompter-content-width)] mx-auto ${className}`}
-        style={{ scrollBehavior: "auto", ...style }}
+        className={`flex-1 overflow-y-scroll scrollbar-hide relative z-10 px-4 ${className}`}
+        onScroll={onScroll}
         {...props}
     >
-        {children}
+        <div className="max-w-5xl mx-auto w-full relative z-20 py-[10vh]">
+            {children}
+        </div>
     </div>
 ));
 
