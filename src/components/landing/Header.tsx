@@ -18,7 +18,7 @@ export const Header: React.FC<HeaderProps> = ({ onLaunch }) => {
     return (
         <S.LandingNav>
             <div
-                onClick={() => window.scrollTo(0, 0)}
+                onClick={() => scrollToSection("hero")}
                 className="cursor-pointer"
                 role="button"
                 tabIndex={0}
@@ -30,7 +30,7 @@ export const Header: React.FC<HeaderProps> = ({ onLaunch }) => {
 
             <nav className="hidden md:flex items-center space-x-8" role="navigation">
                 <button
-                    onClick={() => window.scrollTo(0, 0)}
+                    onClick={() => scrollToSection("hero")}
                     className="text-sm font-medium text-slate-400 hover:text-white transition"
                     aria-label="Go to Home"
                 >

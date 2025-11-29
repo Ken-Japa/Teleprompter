@@ -12,7 +12,7 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
 
     return (
         <S.HeroSection>
-            <div className="inline-flex items-center space-x-3 bg-slate-900/60 border border-white/10 backdrop-blur-md rounded-full pl-2 pr-5 py-2 mb-12 shadow-lg shadow-indigo-500/10 hover:border-indigo-500/30 transition-colors cursor-default animate-float">
+            <div id="hero" className="inline-flex items-center space-x-3 bg-slate-900/60 border border-white/10 backdrop-blur-md rounded-full pl-2 pr-5 py-2 mb-12 shadow-lg shadow-indigo-500/10 hover:border-indigo-500/30 transition-colors cursor-default animate-float">
                 <span className="flex h-2.5 w-2.5 relative mx-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>

@@ -1,5 +1,5 @@
 import React from "react";
-import { NinjaLogoIcon } from "../Icons";
+
 
 // --- TYPOGRAPHY & BRANDING ---
 
@@ -8,7 +8,11 @@ export const LogoText = ({ main, sub, className = "" }: { main?: string; sub?: s
         <div className="relative bg-gradient-to-br from-[#1e1b4b] to-[#020617] p-2.5 rounded-xl border border-white/10 shadow-[0_0_20px_rgba(99,102,241,0.2)] group-hover:shadow-[0_0_40px_rgba(99,102,241,0.5)] group-hover:border-indigo-500/30 transition-all duration-500 overflow-hidden">
             {/* Internal Glow */}
             <div className="absolute inset-0 bg-indigo-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <NinjaLogoIcon className="w-5 h-5 text-indigo-400 relative z-10 group-hover:text-white transition-colors duration-300" />
+            <img
+                src="/assets/LogoPrompt.png"
+                alt="Logo PromptNinja"
+                className="w-8 h-5 relative z-10 group-hover:brightness-125 transition-all duration-300"
+            />
         </div>
         <h1 className="text-xl font-bold text-white tracking-tight flex items-center font-display">
             {main && (

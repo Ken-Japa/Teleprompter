@@ -1,5 +1,4 @@
 import React from "react";
-import { NinjaLogoIcon } from "../Icons";
 
 export const StatusBadge = ({ status, label }: { status: string; label: string }) => {
   const colorClass =
@@ -36,7 +35,11 @@ export const PaywallModal = ({
   <div className="absolute inset-0 bg-slate-950/95 backdrop-blur-sm z-[100] flex items-center justify-center p-6 animate-fadeIn">
     <div className="bg-slate-900 border border-indigo-500/30 p-8 rounded-3xl shadow-[0_0_100px_rgba(79,70,229,0.3)] max-w-md w-full text-center">
       <div className="inline-block p-4 bg-indigo-500/10 rounded-full mb-6">
-        <NinjaLogoIcon className="w-12 h-12 text-indigo-500" />
+        <img
+          src="/assets/LogoPrompt.png"
+          alt="Logo PromptNinja"
+          className="w-8 h-5 relative z-10 group-hover:brightness-125 transition-all duration-300"
+        />
       </div>
       <h2 className="text-3xl font-black text-white mb-4">{title}</h2>
       <p className="text-slate-400 mb-8 leading-relaxed">{desc}</p>
