@@ -8,12 +8,12 @@ import React, {
   forwardRef,
   useImperativeHandle,
 } from "react";
-import { ConnectionStatus, PrompterHandle } from "../../types";
+import { ConnectionStatus, PrompterHandle, PrompterSettings } from "../../types";
 import * as S from "../ui/Styled";
 import { useVoiceControl } from "../../hooks/useVoiceControl";
 import { useWakeLock } from "../../hooks/useWakeLock";
 import { useScrollPhysics } from "../../hooks/useScrollPhysics";
-import { usePrompterSettings } from "../../hooks/usePrompterSettings";
+import { PrompterActions } from "../../hooks/usePrompterSettings";
 import { useElementMetrics } from "../../hooks/useElementMetrics";
 import { ScriptBoard } from "./ScriptBoard";
 import { PrompterHUD } from "./PrompterHUD";
@@ -29,14 +29,15 @@ interface PrompterProps {
   externalState: { isPlaying: boolean; speed: number };
   onStateChange: (isPlaying: boolean, speed: number) => void;
   onScrollUpdate: (progress: number) => void;
+  settings: PrompterSettings;
+  actions: PrompterActions;
 }
 
 export const Prompter = memo(
   forwardRef<PrompterHandle, PrompterProps>(
-    ({ text, isPro, status, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate }, ref) => {
+    ({ text, isPro, status, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, settings, actions }, ref) => {
 
       // Extracted Settings Logic
-      const { settings, actions } = usePrompterSettings(isPro);
       const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode } = settings;
 
       // Ephemeral State
@@ -66,7 +67,7 @@ export const Prompter = memo(
       }, [onStateChange, externalState.speed]);
 
       // --- PHYSICS ENGINE INTEGRATION ---
-      const { handleNativeScroll, handleRemoteInput, resetPhysics, currentActiveElementRef } = useScrollPhysics({
+      const { handleNativeScroll, handleRemoteInput, handleScrollTo, resetPhysics, currentActiveElementRef } = useScrollPhysics({
         isPlaying: externalState.isPlaying,
         isVoiceMode,
         speed: externalState.speed,
@@ -82,8 +83,9 @@ export const Prompter = memo(
         ref,
         () => ({
           onRemoteScroll: handleRemoteInput,
+          scrollTo: handleScrollTo,
         }),
-        [handleRemoteInput]
+        [handleRemoteInput, handleScrollTo]
       );
 
       // Voice Active Element Highlighting (UI Side)

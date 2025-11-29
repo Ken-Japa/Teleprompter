@@ -242,6 +242,24 @@ export const useScrollPhysics = ({
   [wakeUpLoop]
  );
 
+ // Handle Scroll To (0-1)
+ const handleScrollTo = useCallback(
+  (progress: number) => {
+   if (scrollContainerRef.current && metricsRef.current) {
+    const metrics = metricsRef.current;
+    const maxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
+    const newPos = Math.max(0, Math.min(maxScroll, maxScroll * progress));
+
+    internalScrollPos.current = newPos;
+    if (scrollContainerRef.current) {
+     scrollContainerRef.current.scrollTop = newPos;
+    }
+    wakeUpLoop();
+   }
+  },
+  [scrollContainerRef, metricsRef, wakeUpLoop]
+ );
+
  // Handle Native Scroll
  const handleNativeScroll = useCallback(() => {
   if (scrollContainerRef.current) {
@@ -282,6 +300,7 @@ export const useScrollPhysics = ({
  return {
   handleNativeScroll,
   handleRemoteInput,
+  handleScrollTo,
   resetPhysics,
   currentActiveElementRef,
  };

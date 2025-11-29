@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { ConnectionStatus, MessageType, PeerMessage } from "../types";
+import { ConnectionStatus, MessageType, PeerMessage, PrompterSettings } from "../types";
 import { usePeerRemote } from "./usePeerRemote";
 import { useWakeLock } from "./useWakeLock";
 
@@ -10,6 +10,8 @@ export const useRemoteController = (hostId: string) => {
  const [isPlaying, setIsPlaying] = useState<boolean>(false);
  const [speed, setSpeed] = useState<number>(2);
  const [progress, setProgress] = useState<number>(0);
+ const [settings, setSettings] = useState<PrompterSettings | null>(null);
+ const [text, setText] = useState<string>("");
 
  // 2. Peer Connection
  const { status, sendMessage, setOnMessage, errorMessage } = usePeerRemote(hostId);
@@ -18,6 +20,7 @@ export const useRemoteController = (hostId: string) => {
  const accumulatedDelta = useRef<number>(0);
  const networkLoopRef = useRef<ReturnType<typeof setTimeout> | null>(null);
  const speedUpdateTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+ const textUpdateTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
  // 4. Wake Lock
  useWakeLock(status === ConnectionStatus.CONNECTED);
@@ -39,6 +42,8 @@ export const useRemoteController = (hostId: string) => {
    if (data.type === MessageType.SYNC_STATE) {
     setIsPlaying(data.payload.isPlaying);
     setSpeed(data.payload.speed);
+    if (data.payload.settings) setSettings(data.payload.settings);
+    if (data.payload.text !== undefined) setText(data.payload.text);
    }
    if (data.type === MessageType.SCROLL_SYNC) {
     setProgress(data.payload.progress);
@@ -112,6 +117,26 @@ export const useRemoteController = (hostId: string) => {
   [sendMessage]
  );
 
+ const handleSettingsChange = useCallback((newSettings: Partial<PrompterSettings>) => {
+  if (settings) {
+   setSettings({ ...settings, ...newSettings });
+  }
+  sendMessage(MessageType.SETTINGS_UPDATE, newSettings);
+ }, [sendMessage, settings]);
+
+ const handleTextChange = useCallback((newText: string) => {
+  setText(newText);
+  if (textUpdateTimeout.current) clearTimeout(textUpdateTimeout.current);
+  textUpdateTimeout.current = setTimeout(() => {
+   sendMessage(MessageType.TEXT_UPDATE, newText);
+  }, 500);
+ }, [sendMessage]);
+
+ const handleScrollTo = useCallback((newProgress: number) => {
+  setProgress(newProgress);
+  sendMessage(MessageType.SCROLL_TO, newProgress);
+ }, [sendMessage]);
+
  return {
   state: {
    status,
@@ -119,12 +144,17 @@ export const useRemoteController = (hostId: string) => {
    speed,
    progress,
    errorMessage,
+   settings,
+   text,
   },
   actions: {
    handleSpeedChange,
    handlePlayToggle,
    handleTrackpadDelta,
    handleTrackpadStop,
+   handleSettingsChange,
+   handleTextChange,
+   handleScrollTo,
   },
  };
 };

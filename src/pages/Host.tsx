@@ -11,7 +11,7 @@ export const Host: React.FC = () => {
 
     // Separation of Concerns: Host is now a dumb component
     const { state, actions, refs } = useHostController();
-    const { text, isEditMode, peerId, status, isPro, showPaywall, unlockKey, prompterState, errorMessage, paywallErrorMessage, showCountdownModal } = state;
+    const { text, isEditMode, peerId, status, isPro, showPaywall, unlockKey, prompterState, errorMessage, paywallErrorMessage, showCountdownModal, prompterSettings } = state;
 
     return (
         <>
@@ -63,6 +63,8 @@ export const Host: React.FC = () => {
                     externalState={prompterState}
                     onStateChange={actions.handlePrompterStateChange}
                     onScrollUpdate={actions.handleScrollUpdate}
+                    settings={prompterSettings}
+                    actions={actions.prompterActions}
                 />
             )}
         </>

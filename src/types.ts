@@ -99,9 +99,22 @@ export enum MessageType {
  SYNC_STATE = "SYNC_STATE",
  MIRROR_TOGGLE = "MIRROR_TOGGLE",
  FONT_SIZE = "FONT_SIZE",
+ // New types
+ TEXT_UPDATE = "TEXT_UPDATE",
+ SETTINGS_UPDATE = "SETTINGS_UPDATE",
+ SCROLL_TO = "SCROLL_TO",
 }
 
 export type Theme = "ninja" | "paper" | "contrast" | "matrix" | "cyber" | "cream";
+
+export interface PrompterSettings {
+ fontSize: number;
+ margin: number;
+ isMirrored: boolean;
+ theme: Theme;
+ isUpperCase: boolean;
+ isFocusMode: boolean;
+}
 
 export interface PeerMessage {
  type: MessageType;
@@ -126,4 +139,5 @@ export type RemoteScrollHandler = (delta: number, stop?: boolean, hardStop?: boo
 // React Pattern: Handle for exposing Prompter methods to parent
 export interface PrompterHandle {
  onRemoteScroll: RemoteScrollHandler;
+ scrollTo: (progress: number) => void;
 }
