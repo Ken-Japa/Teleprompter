@@ -83,7 +83,7 @@ export const useHostController = () => {
  const { peerId, status, broadcast, errorMessage } = usePeerHost(handleRemoteMessage);
 
  // 5. Pro & Paywall Logic
- const { isPro, showPaywall, setShowPaywall, unlockPro } = useProState(status, isPlaying);
+ const { isPro, showPaywall, setShowPaywall, unlockPro } = useProState(isPlaying);
  const [unlockKey, setUnlockKey] = useState<string>("");
  const [paywallErrorMessage, setPaywallErrorMessage] = useState<string | null>(null);
  const [showCountdownModal, setShowCountdownModal] = useState<boolean>(false);

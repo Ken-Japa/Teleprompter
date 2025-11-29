@@ -225,4 +225,5 @@ Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) par
 
 Feito com 💜 e código.
 window.togglePro()
+PRO-NINJA-2025
 window.showPaywallModal()
