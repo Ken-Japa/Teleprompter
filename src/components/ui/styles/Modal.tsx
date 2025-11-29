@@ -1,3 +1,5 @@
+import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 import tw from "tailwind-styled-components";
 
 export const ModalOverlay = tw.div`
@@ -5,6 +7,7 @@ export const ModalOverlay = tw.div`
 `;
 
 export const ModalContent = tw.div`
+  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
   bg-[#0a0f1e] rounded-3xl shadow-[0_0_100px_-20px_rgba(99,102,241,0.3)] max-w-2xl w-full max-h-[90vh] overflow-y-auto
   transform transition-all duration-300 ease-out scale-100 opacity-100
   dark:bg-[#0a0f1e] dark:text-slate-100 p-8 border border-indigo-500/30
@@ -57,7 +60,39 @@ interface ModalProps {
 export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
   if (!isOpen) return null;
 
-  return (
+  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    console.log("useEffect: Iniciando verificação do modal-root.");
+    let element = document.getElementById("modal-root");
+    if (!element) {
+      console.log("useEffect: modal-root não encontrado, criando um novo.");
+      element = document.createElement("div");
+      element.setAttribute("id", "modal-root");
+      document.body.appendChild(element);
+      console.log("useEffect: modal-root criado e anexado ao body.", element);
+    } else {
+      console.log("useEffect: modal-root existente encontrado.", element);
+    }
+    setPortalTarget(element);
+    console.log("useEffect: portalTarget definido.", element);
+
+    return () => {
+      console.log("useEffect cleanup: Removendo modal-root (opcional).");
+      // Opcional: remover o modalRoot se não houver outros modais usando-o
+      // if (element && document.body.contains(element)) {
+      //   document.body.removeChild(element);
+      // }
+    };
+  }, []);
+
+  if (!portalTarget) {
+    console.log("Render: portalTarget ainda não está disponível, retornando null.");
+    return null;
+  }
+
+  console.log("Render: Renderizando portal com alvo:", portalTarget);
+  return ReactDOM.createPortal(
     <ModalOverlay onClick={onClose}>
       <ModalContent onClick={(e) => e.stopPropagation()}>
         <ModalHeader>
@@ -66,6 +101,7 @@ export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
         </ModalHeader>
         <ModalBody>{children}</ModalBody>
       </ModalContent>
-    </ModalOverlay>
+    </ModalOverlay>,
+    portalTarget
   );
 };

@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./Styled";
 import { useTranslation } from "../../hooks/useTranslation";
 import { PrompterActions } from "../../hooks/usePrompterSettings";
