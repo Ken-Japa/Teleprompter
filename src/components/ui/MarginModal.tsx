@@ -18,7 +18,7 @@ export const MarginModal = ({ isOpen, onClose, margin, setMargin }: MarginModalP
         <S.RangeSlider
           value={margin}
           min={0}
-          max={50}
+          max={100}
           onChange={setMargin}
           width="w-full"
           ariaLabel={t("host.controls.margin")}

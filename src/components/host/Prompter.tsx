@@ -188,7 +188,7 @@ export const Prompter = memo(
           style={containerStyle}
         >
           {theme === "matrix" && (
-            <div className="absolute inset-0 pointer-events-none opacity-10 bg-[url('https://placehold.co/100x100/000000/00FF00?text=01')]"></div>
+            <div className="absolute inset-0 pointer-events-none opacity-10 "></div>
           )}
           <div
             className="absolute inset-0 z-30 pointer-events-none"
@@ -205,7 +205,7 @@ export const Prompter = memo(
               ref={scrollContainerRef}
               onScroll={handleNativeScroll}
               className="no-scrollbar hardware-accelerated"
-              style={{ scrollBehavior: "auto", willChange: "scroll-position" }}
+              style={{ scrollBehavior: "auto", willChange: "scroll-position", paddingLeft: `${margin}%`, paddingRight: `${margin}%` }}
             >
               <ScriptBoard sentences={sentences} isMirrored={isMirrored} isUpperCase={isUpperCase} />
             </S.PrompterScrollArea>
