@@ -1,4 +1,8 @@
 import { useEffect, useRef, useCallback } from "react";
+import { calculateAutoScroll, calculateMomentum } from "./physics/physicsCore";
+import { calculateVoiceTarget } from "./physics/voiceScroll";
+import { VOICE_CONFIG } from "../config/voiceControlConfig";
+import { PHYSICS_CONSTANTS } from "../config/constants";
 
 interface PhysicsParams {
  isPlaying: boolean;
@@ -6,7 +10,7 @@ interface PhysicsParams {
  speed: number;
  activeSentenceIndex: number;
  voiceProgress?: number;
- isFlipVertical?: boolean; // Add this prop
+ isFlipVertical?: boolean;
  metricsRef: React.MutableRefObject<{
   scrollHeight: number;
   clientHeight: number;
@@ -20,7 +24,7 @@ interface PhysicsParams {
  * Hook responsável pela física de rolagem do prompter.
  * Gerencia auto-scroll, inércia, rolagem manual e controle por voz.
  *
- * @param params Parâmetros de configuração da física.
+ * Refatorado para usar módulos de física em src/hooks/physics
  */
 export const useScrollPhysics = ({
  isPlaying,
@@ -83,7 +87,8 @@ export const useScrollPhysics = ({
  // Update Velocity Cache when speed changes
  useEffect(() => {
   // Fórmula empírica para velocidade confortável
-  velocityCacheRef.current = Math.pow(speed, 1.4) * 40;
+  velocityCacheRef.current =
+   Math.pow(speed, PHYSICS_CONSTANTS.SPEED_POWER) * PHYSICS_CONSTANTS.VELOCITY_MULTIPLIER;
  }, [speed]);
 
  /**
@@ -116,9 +121,9 @@ export const useScrollPhysics = ({
    }
 
    if (!lastFrameTimeRef.current) lastFrameTimeRef.current = timestamp;
-   const deltaTime = Math.min(timestamp - lastFrameTimeRef.current, 64); // Cap delta time
+   const deltaTime = Math.min(timestamp - lastFrameTimeRef.current, PHYSICS_CONSTANTS.MAX_DELTA_TIME); // Cap delta time
    lastFrameTimeRef.current = timestamp;
-   const timeScale = deltaTime / 16.67;
+   const timeScale = deltaTime / PHYSICS_CONSTANTS.TARGET_FRAME_TIME;
 
    let deltaScroll = 0;
    const metrics = metricsRef.current;
@@ -132,40 +137,22 @@ export const useScrollPhysics = ({
    }
 
    // 2. Auto Scroll
-   if (
-    _isPlaying &&
-    !isUserTouchingRef.current &&
-    !isManualScrollingRef.current &&
-    Math.abs(momentumRef.current) < 0.5
-   ) {
-    if (metrics.scrollHeight > metrics.clientHeight) {
-     const moveAmount = (velocityCacheRef.current * deltaTime) / 1000;
-
-     if (internalScrollPos.current + metrics.clientHeight < metrics.scrollHeight - 2) {
-      deltaScroll += moveAmount;
-     } else {
-      // Fim do conteúdo atingido
-      onAutoStop();
-     }
-    } else {
-     // Conteúdo menor que a tela, mantém o loop vivo se necessário
-     if (_isPlaying) {
-      isSleepingRef.current = false;
-     }
-    }
-   }
+   deltaScroll += calculateAutoScroll(
+    _isPlaying,
+    isUserTouchingRef.current,
+    isManualScrollingRef.current,
+    momentumRef.current,
+    velocityCacheRef.current,
+    deltaTime,
+    internalScrollPos.current,
+    metrics,
+    onAutoStop
+   );
 
    // 3. Momentum (Inércia)
-   if (Math.abs(momentumRef.current) > 0.01) {
-    deltaScroll += momentumRef.current * timeScale;
-    if (!isUserTouchingRef.current) {
-     momentumRef.current *= Math.pow(0.95, timeScale); // Desaceleração natural
-    } else {
-     momentumRef.current *= 0.8; // Fricção ao tocar
-    }
-   } else if (!isUserTouchingRef.current) {
-    momentumRef.current = 0;
-   }
+   const momentumResult = calculateMomentum(momentumRef.current, isUserTouchingRef.current, timeScale);
+   deltaScroll += momentumResult.delta;
+   momentumRef.current = momentumResult.newMomentum;
 
    // 4. Voice Control Scroll
    if (
@@ -175,40 +162,29 @@ export const useScrollPhysics = ({
     !isUserTouchingRef.current &&
     !isManualScrollingRef.current
    ) {
-    // Update active element cache if index changed
-    if (_activeSentenceIndex !== lastVoiceIndexRef.current) {
-     const activeEl = document.getElementById(`sentence-${_activeSentenceIndex}`);
-     if (activeEl) {
-      currentActiveElementRef.current = activeEl;
-     }
-     lastVoiceIndexRef.current = _activeSentenceIndex;
-    }
+    const target = calculateVoiceTarget(
+     _activeSentenceIndex,
+     _voiceProgress,
+     metrics,
+     currentActiveElementRef,
+     lastVoiceIndexRef
+    );
 
-    // Calculate target continuously based on progress
-    if (currentActiveElementRef.current) {
-     const activeEl = currentActiveElementRef.current;
-     // Calculate offset based on progress (0.0 to 1.0)
-     // This aligns the "current reading line" to the center of the viewport
-     const readingLineOffset = activeEl.clientHeight * _voiceProgress;
-
-     // OPTIMIZATION: Adjusted target to be % from top instead of 50% (Center)
-     // This provides more "Lookahead" so the user can see the next sentence comfortably
-     targetVoiceScrollRef.current = activeEl.offsetTop + readingLineOffset - metrics.clientHeight * 0.1;
-    }
+    targetVoiceScrollRef.current = target;
 
     if (targetVoiceScrollRef.current !== null) {
      const diff = targetVoiceScrollRef.current - internalScrollPos.current;
-     if (Math.abs(diff) > 1) {
-      // Increased Lerp speed  for better responsiveness
-      deltaScroll += diff * (0.2 * timeScale);
+     if (Math.abs(diff) > PHYSICS_CONSTANTS.SCROLL_TOLERANCE) {
+      // Increased Lerp speed for better responsiveness
+      deltaScroll += diff * (VOICE_CONFIG.SCROLL_LERP_FACTOR * timeScale);
      }
     }
    }
 
    // --- APPLY & SLEEP CHECK ---
 
-   const isMoving = Math.abs(deltaScroll) > 0.01;
-   const hasMomentum = Math.abs(momentumRef.current) > 0.01;
+   const isMoving = Math.abs(deltaScroll) > PHYSICS_CONSTANTS.MOMENTUM_THRESHOLD;
+   const hasMomentum = Math.abs(momentumRef.current) > PHYSICS_CONSTANTS.MOMENTUM_THRESHOLD;
    const shouldStayAwake = _isPlaying;
 
    // Verifica se pode dormir para economizar CPU
@@ -222,7 +198,8 @@ export const useScrollPhysics = ({
     const voiceStable =
      !_isVoiceMode ||
      targetVoiceScrollRef.current === null ||
-     Math.abs((targetVoiceScrollRef.current || 0) - internalScrollPos.current) < 1;
+     Math.abs((targetVoiceScrollRef.current || 0) - internalScrollPos.current) <
+      PHYSICS_CONSTANTS.SCROLL_TOLERANCE;
 
     if (voiceStable) {
      isSleepingRef.current = true;

@@ -58,6 +58,7 @@ export enum MessageType {
  SCROLL_TO = "SCROLL_TO",
  SETTINGS_UPDATE = "SETTINGS_UPDATE",
  TIME_UPDATE = "TIME_UPDATE",
+ TOGGLE_VOICE = "TOGGLE_VOICE",
 }
 
 export interface PeerMessage {
@@ -100,6 +101,7 @@ export interface PrompterHandle {
  onRemoteScroll: RemoteScrollHandler;
  scrollTo: (progress: number) => void;
  reset: () => void;
+ toggleVoice: () => void;
 }
 
 export interface TextFragment {

@@ -11,22 +11,22 @@ export const useRemoteController = (hostId: string) => {
  const [speed, setSpeed] = useState<number>(2);
  const [progress, setProgress] = useState<number>(0);
  const [settings, setSettings] = useState<PrompterSettings | null>(null);
-  const [text, setText] = useState<string>("");
-  const [elapsedTime, setElapsedTime] = useState<number>(0);
-  const [navigationMap, setNavigationMap] = useState<NavigationItem[]>([]);
+ const [text, setText] = useState<string>("");
+ const [elapsedTime, setElapsedTime] = useState<number>(0);
+ const [navigationMap, setNavigationMap] = useState<NavigationItem[]>([]);
 
-  // Timer Logic (Local Approximation)
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (isPlaying) {
-      interval = setInterval(() => {
-        setElapsedTime((prev) => prev + 1);
-      }, 1000);
-    }
-    return () => clearInterval(interval);
-  }, [isPlaying]);
+ // Timer Logic (Local Approximation)
+ useEffect(() => {
+  let interval: NodeJS.Timeout;
+  if (isPlaying) {
+   interval = setInterval(() => {
+    setElapsedTime((prev) => prev + 1);
+   }, 1000);
+  }
+  return () => clearInterval(interval);
+ }, [isPlaying]);
 
-  // 2. Peer Connection
+ // 2. Peer Connection
  const { status, sendMessage, setOnMessage, errorMessage } = usePeerRemote(hostId);
 
  // 3. Logic Refs
@@ -119,12 +119,16 @@ export const useRemoteController = (hostId: string) => {
  }, [isPlaying, sendMessage, vibrate]);
 
  const handleStop = useCallback(() => {
-    setIsPlaying(false);
-    setElapsedTime(0);
-    setProgress(0); // Explicitly reset local progress
-    sendMessage(MessageType.RESTART);
-    vibrate(50);
+  setIsPlaying(false);
+  setElapsedTime(0);
+  setProgress(0); // Explicitly reset local progress
+  sendMessage(MessageType.RESTART);
+  vibrate(50);
  }, [sendMessage, vibrate]);
+
+ const handleToggleVoice = useCallback(() => {
+  sendMessage(MessageType.TOGGLE_VOICE);
+ }, [sendMessage]);
 
  const handleTrackpadDelta = useCallback((delta: number) => {
   accumulatedDelta.current += delta;
@@ -143,25 +147,34 @@ export const useRemoteController = (hostId: string) => {
   [sendMessage]
  );
 
- const handleSettingsChange = useCallback((newSettings: Partial<PrompterSettings>) => {
-  if (settings) {
-   setSettings({ ...settings, ...newSettings });
-  }
-  sendMessage(MessageType.SETTINGS_UPDATE, newSettings);
- }, [sendMessage, settings]);
+ const handleSettingsChange = useCallback(
+  (newSettings: Partial<PrompterSettings>) => {
+   if (settings) {
+    setSettings({ ...settings, ...newSettings });
+   }
+   sendMessage(MessageType.SETTINGS_UPDATE, newSettings);
+  },
+  [sendMessage, settings]
+ );
 
- const handleTextChange = useCallback((newText: string) => {
-  setText(newText);
-  if (textUpdateTimeout.current) clearTimeout(textUpdateTimeout.current);
-  textUpdateTimeout.current = setTimeout(() => {
-   sendMessage(MessageType.TEXT_UPDATE, newText);
-  }, 500);
- }, [sendMessage]);
+ const handleTextChange = useCallback(
+  (newText: string) => {
+   setText(newText);
+   if (textUpdateTimeout.current) clearTimeout(textUpdateTimeout.current);
+   textUpdateTimeout.current = setTimeout(() => {
+    sendMessage(MessageType.TEXT_UPDATE, newText);
+   }, 500);
+  },
+  [sendMessage]
+ );
 
- const handleScrollTo = useCallback((newProgress: number) => {
-  setProgress(newProgress);
-  sendMessage(MessageType.SCROLL_TO, newProgress);
- }, [sendMessage]);
+ const handleScrollTo = useCallback(
+  (newProgress: number) => {
+   setProgress(newProgress);
+   sendMessage(MessageType.SCROLL_TO, newProgress);
+  },
+  [sendMessage]
+ );
 
  return {
   state: {
@@ -184,6 +197,7 @@ export const useRemoteController = (hostId: string) => {
    handleTextChange,
    handleScrollTo,
    handleStop,
+   handleToggleVoice,
   },
  };
 };

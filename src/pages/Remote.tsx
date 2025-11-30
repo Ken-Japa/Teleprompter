@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { ConnectionStatus, Theme } from "../types";
-import { MinusIcon, PauseIcon, PlayIcon, PlusIcon, StopIcon } from "../components/ui/Icons";
+import { MinusIcon, PauseIcon, PlayIcon, PlusIcon, StopIcon, MicIcon } from "../components/ui/Icons";
 import { useTranslation } from "../hooks/useTranslation";
 import * as S from "../components/ui/Styled";
 import { Trackpad } from "../components/remote/Trackpad";
@@ -271,14 +271,24 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                         </div>
                                     </button>
 
-                                    {/* Stop Button */}
-                                    <button
-                                        onClick={() => actions.handleStop()}
-                                        className="h-14 rounded-2xl bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 text-red-400 active:scale-95 transition-all flex items-center justify-center gap-2"
-                                    >
-                                        <StopIcon className="w-5 h-5 fill-current" />
-                                        <span className="text-xs font-bold uppercase tracking-widest">{t("remote.stop")}</span>
-                                    </button>
+                                    {/* Stop & Voice Buttons */}
+                                    <div className="flex gap-3 h-14">
+                                        <button
+                                            onClick={actions.handleToggleVoice}
+                                            className="w-14 h-full rounded-2xl bg-purple-500/10 border border-purple-500/20 hover:bg-purple-500/20 text-purple-400 active:scale-95 transition-all flex items-center justify-center"
+                                            title="Toggle Voice Control"
+                                        >
+                                            <MicIcon className="w-6 h-6" />
+                                        </button>
+
+                                        <button
+                                            onClick={() => actions.handleStop()}
+                                            className="flex-1 h-full rounded-2xl bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 text-red-400 active:scale-95 transition-all flex items-center justify-center gap-2"
+                                        >
+                                            <StopIcon className="w-5 h-5 fill-current" />
+                                            <span className="text-xs font-bold uppercase tracking-widest">{t("remote.stop")}</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </S.ControlsContainer>

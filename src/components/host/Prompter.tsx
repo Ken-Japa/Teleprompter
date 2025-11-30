@@ -22,6 +22,7 @@ import { trackConversion } from "../../utils/analytics";
 
 import { useNavigationMap } from "../../hooks/useNavigationMap";
 import { usePrompterTheme } from "../../hooks/usePrompterTheme";
+import { UI_LIMITS } from "../../config/constants";
 
 interface PrompterProps {
   text: string;
@@ -113,15 +114,48 @@ export const Prompter = memo(
         }
       }, [onStateChange, externalState.speed, resetVoice, resetPhysics, currentActiveElementRef]);
 
-      // Expose methods to parent via ref
+      // Voice control toggle
+      const toggleVoice = useCallback(() => {
+        if (!isPro) {
+          trackConversion('Attempted Pro Feature');
+          setShowPaywall(true);
+          return;
+        }
+
+        if (isVoiceMode) {
+          setIsVoiceMode(false);
+          stopListening();
+          // Remove active class from current element when stopping
+          if (currentActiveElementRef.current) {
+            currentActiveElementRef.current.classList.remove("sentence-active");
+          }
+        } else {
+          setIsVoiceMode(true);
+          // Pause auto-scroll when enabling voice mode
+          onStateChange(false, externalState.speed);
+          startListening();
+        }
+      }, [
+        isPro,
+        isVoiceMode,
+        setShowPaywall,
+        stopListening,
+        startListening,
+        onStateChange,
+        externalState.speed,
+        currentActiveElementRef,
+      ]);
+
+      // Expose methods to parent
       useImperativeHandle(
         ref,
         () => ({
           onRemoteScroll: (delta: number, stop: boolean = false, hardStop: boolean = false) => handleRemoteInput(delta, stop, hardStop),
           scrollTo: handleScrollTo,
           reset: resetPrompter,
+          toggleVoice: toggleVoice,
         }),
-        [handleRemoteInput, handleScrollTo, resetPrompter]
+        [handleRemoteInput, handleScrollTo, resetPrompter, toggleVoice]
       );
 
       // Voice Active Element Highlighting (UI Side)
@@ -146,38 +180,10 @@ export const Prompter = memo(
           if (hudTimeoutRef.current) clearTimeout(hudTimeoutRef.current);
           hudTimeoutRef.current = setTimeout(() => {
             if (externalState.isPlaying) setShowHud(false);
-          }, 3000);
+          }, UI_LIMITS.HUD.TIMEOUT_MS);
           mouseMoveRafRef.current = null;
         });
       }, [externalState.isPlaying]);
-
-      const toggleVoice = useCallback(() => {
-        if (!isPro) {
-          trackConversion('Attempted Pro Feature');
-          setShowPaywall(true);
-          return;
-        }
-        if (isVoiceMode) {
-          setIsVoiceMode(false);
-          stopListening();
-          if (currentActiveElementRef.current) {
-            currentActiveElementRef.current.classList.remove("sentence-active");
-          }
-        } else {
-          setIsVoiceMode(true);
-          onStateChange(false, externalState.speed);
-          startListening();
-        }
-      }, [
-        isPro,
-        isVoiceMode,
-        setShowPaywall,
-        stopListening,
-        startListening,
-        onStateChange,
-        externalState.speed,
-        currentActiveElementRef,
-      ]);
 
       // Navigation Map Calculation
       useNavigationMap({

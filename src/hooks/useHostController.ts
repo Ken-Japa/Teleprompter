@@ -126,6 +126,11 @@ export const useHostController = () => {
       if (s.isFlipVertical !== undefined) prompterActions.setIsFlipVertical(s.isFlipVertical);
      }
      break;
+    case MessageType.TOGGLE_VOICE:
+     if (prompterRef.current) {
+      prompterRef.current.toggleVoice();
+     }
+     break;
     default:
      logger.warn("Received unknown message type", { context: { type: msg.type, message: msg } });
      break;

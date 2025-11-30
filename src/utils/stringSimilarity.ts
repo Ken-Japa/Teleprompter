@@ -64,10 +64,9 @@ export const findBestMatch = (
   ratio: 1.0,
  };
 
- // We only compare substrings of roughly the same length as the pattern
- // Optimization: Check substrings with length variation +/- 10% to handle missing/extra chars
- const minLen = Math.floor(pattern.length * 0.9);
- const maxLen = Math.ceil(pattern.length * 1.1);
+ // Heuristic optimization: limit the search window based on length difference
+ // If the pattern is much longer/shorter than the text, a good match is unlikely
+ // unless we are looking for a substring. But here we are fuzzy matching.
 
  // Step size optimization: if pattern is long, we don't need to check every single char index
  // We can skip a few chars, but for accuracy we'll stick to 1 for now or dynamic based on length

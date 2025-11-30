@@ -2,6 +2,7 @@ import { memo } from "react";
 import { useTranslation } from "../../../hooks/useTranslation";
 import * as S from "../../ui/Styled";
 import { PlayIcon, PauseIcon, StopIcon } from "../../ui/Icons";
+import { UI_LIMITS } from "../../../config/constants";
 
 interface SpeedControlProps {
     isPlaying: boolean;
@@ -27,9 +28,9 @@ export const SpeedControl = memo(({ isPlaying, speed, onStateChange, onReset }: 
             </button>
             <S.RangeSlider
                 value={speed}
-                min={0}
-                max={10}
-                step={0.1}
+                min={UI_LIMITS.SPEED.MIN}
+                max={UI_LIMITS.SPEED.MAX}
+                step={UI_LIMITS.SPEED.STEP}
                 onChange={(s) => onStateChange(isPlaying, s)}
                 width="w-16 sm:w-24"
                 ariaLabel={t("host.controls.speed")}
