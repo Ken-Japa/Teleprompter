@@ -88,13 +88,28 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
     interimTranscript += event.results[i][0].transcript;
    }
 
-   const cleanTranscript = interimTranscript.toLowerCase().trim();
-   if (cleanTranscript.length < 3) return;
+   let cleanTranscript = interimTranscript.toLowerCase();
+   // Apply the same cleaning logic as the parser to ensure matching works
+   cleanTranscript = cleanTranscript
+     .replace(/[^\p{L}\p{N}\s]/gu, "")
+     .replace(/\s+/g, " ")
+     .trim();
+
+   // Increased min length to 4 to avoid false positives with common short words (que, de, para, etc)
+   if (cleanTranscript.length < 4) return;
 
    let absoluteIndex = fullCleanText.indexOf(cleanTranscript, lastMatchIndexRef.current);
+   
    if (absoluteIndex === -1 && lastMatchIndexRef.current > 0) {
     // Fallback: search from beginning if we lost track
-    absoluteIndex = fullCleanText.indexOf(cleanTranscript, 0);
+    const candidateIndex = fullCleanText.indexOf(cleanTranscript, 0);
+    
+    // Safety check: Only jump back to beginning if it's not a "huge" jump backwards
+    // This prevents jumping to top when user says a common word that appears at start
+    // We allow jumping back up to 200 characters (re-reading a recent sentence)
+    if (candidateIndex !== -1 && (lastMatchIndexRef.current - candidateIndex) < 200) {
+        absoluteIndex = candidateIndex;
+    }
    }
 
    if (absoluteIndex !== -1) {

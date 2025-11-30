@@ -29,8 +29,8 @@ Desenvolvido para criadores de conteúdo, jornalistas, palestrantes e educadores
   - `<g>Texto Verde</g>` para sinalizações de calma/início.
   - `<b>Texto Azul</b>` para notas de direção.
 - **Modo Espelho (Mirror):** Inverte o texto horizontalmente e verticalmente para uso com espelhos _beam splitter_ profissionais.
-- **Voice Control (IA):** O texto rola automaticamente sincronizado com sua fala (Web Speech API). _Recurso experimental._
-- **Linha de Foco (Focus Mode):** Escurece o texto fora da área de leitura central para máxima concentração.
+- **Voice Control (IA):** O texto rola automaticamente sincronizado com sua fala (Web Speech API). _Requer HTTPS e permissão de microfone._
+- **Linha de Foco (Focus Mode):** Escurece drasticamente o texto fora da linha central de leitura, eliminando distrações visuais.
 - **6 Temas Profissionais:**
   - 🥷 **Ninja:** Dark mode padrão (Otimizado para OLED).
   - 📄 **Paper:** Fundo claro para ambientes iluminados.
@@ -43,7 +43,10 @@ Desenvolvido para criadores de conteúdo, jornalistas, palestrantes e educadores
 ### 📱 Remote (Controle / Celular)
 
 - **Pareamento Instantâneo:** Basta escanear o QR Code gerado pelo Host.
-- **Trackpad Virtual:** Transforme a tela do celular em um touchpad sensível. Deslize para rolar, toque para pausar.
+- **Trackpad Virtual Inteligente:**
+  - **Gestos Naturais:** Deslize o dedo para cima para avançar o texto (rolar para baixo), deslize para baixo para voltar.
+  - **Física de Inércia:** O texto responde com peso e suavidade ao seu toque.
+  - **Toque para Pausar:** Um toque rápido na tela pausa ou retoma a rolagem.
 - **Controles Completos:**
   - Play / Pause.
   - Ajuste fino de velocidade.
@@ -224,6 +227,3 @@ Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) par
 ---
 
 Feito com 💜 e código.
-window.togglePro()
-PRO-NINJA-2025
-window.showPaywallModal()

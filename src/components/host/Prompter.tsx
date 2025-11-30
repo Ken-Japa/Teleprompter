@@ -190,6 +190,36 @@ export const Prompter = memo(
         onNavigationMapUpdate
       });
 
+      // Dynamic Focus Line Gradient
+      const focusGradient = useMemo(() => {
+        const getThemeColor = (t: string) => {
+          switch (t) {
+            case 'paper': return '#ffffff';
+            case 'contrast': return '#000000';
+            case 'matrix': return '#000000';
+            case 'cyber': return '#0f172a'; // slate-900
+            case 'cream': return '#fdfbf7';
+            default: return '#020617'; // slate-950 (Ninja/Default)
+          }
+        };
+
+        const color = getThemeColor(theme);
+
+        // If Focus Mode is active, we narrow the transparent window significantly
+        // Expanded the window as requested: from 42-58% to 35-65% (30% of screen height)
+        const start = isFocusMode ? "25%" : "10%";
+        const end = isFocusMode ? "75%" : "90%";
+
+        // Use a smooth gradient (fade) instead of hard stops
+        // From Solid Color (Top) -> Transparent (Start) ... Transparent (End) -> Solid Color (Bottom)
+        return `linear-gradient(to bottom, 
+          ${color} 0%, 
+          rgba(0,0,0,0) ${start}, 
+          rgba(0,0,0,0) ${end}, 
+          ${color} 100%
+        )`;
+      }, [theme, isFocusMode]);
+
       const containerStyle = useMemo(
         () =>
           ({
@@ -210,9 +240,9 @@ export const Prompter = memo(
             <div className="absolute inset-0 pointer-events-none opacity-10 "></div>
           )}
           <div
-            className="absolute inset-0 z-30 pointer-events-none"
+            className="absolute inset-0 z-30 pointer-events-none transition-all duration-500"
             style={{
-              background: `linear-gradient(to bottom, ${theme === "paper" ? "white" : "var(--tw-bg-opacity, 1) rgb(2 6 23)"} 0%, transparent 20%, transparent 80%, ${theme === "paper" ? "white" : "var(--tw-bg-opacity, 1) rgb(2 6 23)"} 100%)`,
+              background: focusGradient,
             }}
           ></div>
 

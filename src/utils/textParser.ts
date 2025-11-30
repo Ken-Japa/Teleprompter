@@ -106,27 +106,48 @@ export const parseTextToSentences = (
  }
 
  // 3. Build Mapping for Voice Matching
- const fullString = processedSentences
-  .map((s) => s.cleanContent)
-  .join(" ")
-  .toLowerCase();
- // Optimize: Use Int32Array for memory efficiency on large scripts
- const map = new Int32Array(fullString.length);
- let currentPos = 0;
+ // We need a "voice-friendly" version of the text:
+ // - Lowercase
+ // - No punctuation
+ // - No newlines
+ // - Single spaces between words
+
+ let builtString = "";
+ const tempMap: number[] = [];
 
  processedSentences.forEach((s) => {
-  const len = s.cleanContent.length;
-  for (let k = 0; k < len; k++) {
-   if (currentPos + k < map.length) map[currentPos + k] = s.id;
+  // Create a clean version: Lowercase, remove punctuation, normalize spaces
+  // Using Unicode properties to keep letters/numbers but remove symbols
+  const clean = s.cleanContent
+   .toLowerCase()
+   .replace(/[^\p{L}\p{N}\s]/gu, "")
+   .replace(/\s+/g, " ")
+   .trim();
+
+  if (clean.length === 0) return; // Skip sentences that are just punctuation/newlines
+
+  // If not the first item, add a space separator
+  if (builtString.length > 0) {
+   builtString += " ";
+   // Map the space to the NEXT sentence (lookahead) or CURRENT?
+   // Usually mapping to the current one being added is safer so that
+   // if the match overlaps the space, it counts as this sentence.
+   tempMap.push(s.id);
   }
-  // Map the space after the sentence to the sentence itself (improves "fuzzy" matching)
-  if (currentPos + len < map.length) map[currentPos + len] = s.id;
-  currentPos += len + 1;
+
+  // Append chars and fill map
+  for (let i = 0; i < clean.length; i++) {
+   tempMap.push(s.id);
+  }
+  builtString += clean;
  });
+
+ // Convert to Int32Array for performance
+ const map = new Int32Array(tempMap);
 
  return {
   sentences: processedSentences,
-  fullCleanText: fullString,
+  fullCleanText: builtString,
   charToSentenceMap: map,
  };
 };
