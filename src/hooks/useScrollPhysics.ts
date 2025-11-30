@@ -191,16 +191,16 @@ export const useScrollPhysics = ({
      // This aligns the "current reading line" to the center of the viewport
      const readingLineOffset = activeEl.clientHeight * _voiceProgress;
 
-     // OPTIMIZATION: Adjusted target to be 35% from top instead of 50% (Center)
+     // OPTIMIZATION: Adjusted target to be % from top instead of 50% (Center)
      // This provides more "Lookahead" so the user can see the next sentence comfortably
-     targetVoiceScrollRef.current = activeEl.offsetTop + readingLineOffset - metrics.clientHeight * 0.2;
+     targetVoiceScrollRef.current = activeEl.offsetTop + readingLineOffset - metrics.clientHeight * 0.1;
     }
 
     if (targetVoiceScrollRef.current !== null) {
      const diff = targetVoiceScrollRef.current - internalScrollPos.current;
      if (Math.abs(diff) > 1) {
-      // Increased Lerp speed from 0.05 to 0.12 for better responsiveness
-      deltaScroll += diff * (0.16 * timeScale);
+      // Increased Lerp speed  for better responsiveness
+      deltaScroll += diff * (0.2 * timeScale);
      }
     }
    }
