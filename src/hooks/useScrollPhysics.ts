@@ -5,6 +5,7 @@ interface PhysicsParams {
  isVoiceMode: boolean;
  speed: number;
  activeSentenceIndex: number;
+ voiceProgress?: number;
  isFlipVertical?: boolean; // Add this prop
  metricsRef: React.MutableRefObject<{
   scrollHeight: number;
@@ -26,6 +27,7 @@ export const useScrollPhysics = ({
  isVoiceMode,
  speed,
  activeSentenceIndex,
+ voiceProgress = 0,
  isFlipVertical,
  metricsRef,
  scrollContainerRef,
@@ -45,6 +47,7 @@ export const useScrollPhysics = ({
  const isPlayingRef = useRef(isPlaying);
  const isVoiceModeRef = useRef(isVoiceMode);
  const activeSentenceIndexRef = useRef(activeSentenceIndex);
+ const voiceProgressRef = useRef(voiceProgress);
  const isFlipVerticalRef = useRef(isFlipVertical);
 
  // Update Refs
@@ -60,6 +63,9 @@ export const useScrollPhysics = ({
  useEffect(() => {
   activeSentenceIndexRef.current = activeSentenceIndex;
  }, [activeSentenceIndex]);
+ useEffect(() => {
+  voiceProgressRef.current = voiceProgress;
+ }, [voiceProgress]);
  useEffect(() => {
   isFlipVerticalRef.current = isFlipVertical;
  }, [isFlipVertical]);
@@ -168,14 +174,24 @@ export const useScrollPhysics = ({
     !isUserTouchingRef.current &&
     !isManualScrollingRef.current
    ) {
+    // Update active element cache if index changed
     if (_activeSentenceIndex !== lastVoiceIndexRef.current) {
      const activeEl = document.getElementById(`sentence-${_activeSentenceIndex}`);
      if (activeEl) {
       currentActiveElementRef.current = activeEl;
-      targetVoiceScrollRef.current =
-       activeEl.offsetTop - metrics.clientHeight / 2 + activeEl.clientHeight / 2;
      }
      lastVoiceIndexRef.current = _activeSentenceIndex;
+    }
+
+    // Calculate target continuously based on progress
+    if (currentActiveElementRef.current) {
+      const activeEl = currentActiveElementRef.current;
+      // Calculate offset based on progress (0.0 to 1.0)
+      // This aligns the "current reading line" to the center of the viewport
+      const readingLineOffset = activeEl.clientHeight * _voiceProgress;
+      
+      targetVoiceScrollRef.current =
+       activeEl.offsetTop + readingLineOffset - metrics.clientHeight / 2;
     }
 
     if (targetVoiceScrollRef.current !== null) {
@@ -256,7 +272,7 @@ export const useScrollPhysics = ({
   if (isPlaying || (isVoiceMode && activeSentenceIndex !== -1)) {
    wakeUpLoop();
   }
- }, [isPlaying, isVoiceMode, activeSentenceIndex, wakeUpLoop]);
+ }, [isPlaying, isVoiceMode, activeSentenceIndex, voiceProgress, wakeUpLoop]);
 
  // Cleanup
  useEffect(() => {

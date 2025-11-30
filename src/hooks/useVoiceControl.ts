@@ -9,6 +9,7 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
   const { lang } = useTranslation();
   const [isListening, setIsListening] = useState<boolean>(false);
   const [activeSentenceIndex, setActiveSentenceIndex] = useState<number>(-1);
+  const [voiceProgress, setVoiceProgress] = useState<number>(0);
   const [voiceApiSupported, setVoiceApiSupported] = useState<boolean>(true);
   const [voiceApiError, setVoiceApiError] = useState<string | null>(null);
 
@@ -137,10 +138,37 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
 
       if (match) {
         lastMatchIndexRef.current = match.index;
-        if (match.index < charToSentenceMap.length) {
-          const sentenceId = charToSentenceMap[match.index];
-          console.log(`[Voice] Matched Sentence ID: ${sentenceId}`);
-          setActiveSentenceIndex(sentenceId);
+        
+        // Calculate the end index of the match to determine current reading position
+        // We use the length of what was recognized to project where we are in the text
+        const matchEndIndex = match.index + cleanTranscript.length;
+        
+        // Clamp to valid range
+        const lookupIndex = Math.min(matchEndIndex, charToSentenceMap.length - 1);
+
+        if (lookupIndex >= 0 && lookupIndex < charToSentenceMap.length) {
+          const sentenceId = charToSentenceMap[lookupIndex];
+          
+          // Calculate progress within the sentence for smooth scrolling
+          // Assumes sentences array is ordered by ID (which it is from parser)
+          const sentence = sentences[sentenceId];
+          if (sentence && typeof sentence.startIndex === 'number') {
+             const relativeIndex = lookupIndex - sentence.startIndex;
+             const len = sentence.cleanContent.length;
+             if (len > 0) {
+                 const p = Math.min(1, Math.max(0, relativeIndex / len));
+                 setVoiceProgress(p);
+             } else {
+                 setVoiceProgress(0);
+             }
+          }
+
+          // Only update if we moved forward or it's a definitive jump
+          // This prevents jitter if the match fluctuates slightly between sentences
+          if (sentenceId !== activeSentenceIndex) {
+             console.log(`[Voice] Matched Sentence ID: ${sentenceId} (Index: ${lookupIndex})`);
+             setActiveSentenceIndex(sentenceId);
+          }
         }
       } else {
           console.log(`[Voice] No match found (fuzzy)`);
@@ -184,6 +212,7 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
   resetVoice,
   activeSentenceIndex,
   setActiveSentenceIndex,
+  voiceProgress,
   sentences,
   voiceApiSupported,
   voiceApiError,

@@ -74,7 +74,7 @@ export const Prompter = memo(
       });
 
       // Voice Control
-      const { startListening, stopListening, resetVoice, activeSentenceIndex, sentences, voiceApiSupported, voiceApiError } = useVoiceControl(
+      const { startListening, stopListening, resetVoice, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError } = useVoiceControl(
         text,
         isPro
       );
@@ -94,6 +94,7 @@ export const Prompter = memo(
         isVoiceMode,
         speed: externalState.speed,
         activeSentenceIndex,
+        voiceProgress,
         isFlipVertical,
         metricsRef,
         scrollContainerRef,
