@@ -7,6 +7,7 @@ import { useScriptStorage } from "./useScriptStorage";
 import { useLocalStorage } from "./useLocalStorage";
 import { useTranslation } from "./useTranslation";
 import { usePrompterSettings } from "./usePrompterSettings";
+import { tryEnableNoSleep } from "./useWakeLock";
 
 export const useHostController = () => {
  const { t } = useTranslation();
@@ -217,6 +218,7 @@ export const useHostController = () => {
 
  const navigation = {
   startPresentation: () => {
+   tryEnableNoSleep();
    window.location.hash = "app/play";
    // Force state update immediately to ensure responsiveness even if hash event is delayed
    setIsEditMode(false);

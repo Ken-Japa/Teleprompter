@@ -1,31 +1,48 @@
 import { useEffect, useRef, useState } from "react";
 import { logger } from "../utils/logger";
 
+// Singleton instance for NoSleep to share across components and hooks
+let globalNoSleepInstance: any = null;
+
+const getNoSleep = () => {
+ if (typeof window === "undefined") return null;
+ if (!globalNoSleepInstance && window.NoSleep) {
+  try {
+   globalNoSleepInstance = new window.NoSleep();
+  } catch (e) {
+   logger.error("Failed to init NoSleep global instance", { error: e as Error });
+  }
+ }
+ return globalNoSleepInstance;
+};
+
+// Helper to detect iOS
+const isIOS = () => {
+ if (typeof navigator === "undefined") return false;
+ return (
+  /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+  (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+ );
+};
+
+/**
+ * Explicitly try to enable NoSleep (useful to call from a click handler)
+ */
+export const tryEnableNoSleep = () => {
+ const noSleep = getNoSleep();
+ if (noSleep) {
+  try {
+   noSleep.enable();
+   logger.info("NoSleep enabled explicitly via user interaction.");
+  } catch (e) {
+   logger.error("Failed to enable NoSleep explicitly", { error: e as Error });
+  }
+ }
+};
+
 export const useWakeLock = (active: boolean = true) => {
  const [status, setStatus] = useState<"active" | "inactive" | "unsupported">("inactive");
  const wakeLockRef = useRef<any>(null);
- // Use a static ref or external singleton logic for NoSleep if possible,
- // but here we just ensure we check existence strictly.
- const noSleepRef = useRef<any>(null);
-
- // Initialize NoSleep once
- useEffect(() => {
-  if (window.NoSleep && !noSleepRef.current) {
-   try {
-    noSleepRef.current = new window.NoSleep();
-   } catch (e) {
-    logger.error("Failed to init NoSleep", { error: e as Error });
-   }
-  }
-
-  // Cleanup on unmount if it was the last hook usage (though hard to track globally in a hook)
-  return () => {
-   if (noSleepRef.current) {
-    noSleepRef.current.disable();
-    // We don't nullify it to reuse the instance if component re-mounts quickly
-   }
-  };
- }, []);
 
  useEffect(() => {
   if (!active) {
@@ -35,8 +52,9 @@ export const useWakeLock = (active: boolean = true) => {
     wakeLockRef.current = null;
    }
    // Disable NoSleep
-   if (noSleepRef.current) {
-    noSleepRef.current.disable();
+   const noSleep = getNoSleep();
+   if (noSleep) {
+    noSleep.disable();
    }
    setStatus("inactive");
    return;
@@ -46,8 +64,12 @@ export const useWakeLock = (active: boolean = true) => {
   const cleanupFunctions: (() => void)[] = [];
 
   const requestLock = async () => {
+   const ios = isIOS();
+
    // 1. Try Native Wake Lock API
-   if ("wakeLock" in navigator) {
+   // Skip native API on iOS because it may not prevent WebRTC background throttling effectively.
+   // We prefer NoSleep.js (video loop) on iOS to keep the connection alive.
+   if ("wakeLock" in navigator && !ios) {
     try {
      const lock = await (navigator as any).wakeLock.request("screen");
      if (!isCancelled) {
@@ -65,12 +87,13 @@ export const useWakeLock = (active: boolean = true) => {
    }
 
    // 2. Fallback to NoSleep.js
-   if (noSleepRef.current) {
+   const noSleep = getNoSleep();
+   if (noSleep) {
     try {
      // NoSleep requires a user gesture interaction to enable.
      const enableNoSleep = () => {
-      if (noSleepRef.current && !isCancelled) {
-       noSleepRef.current.enable();
+      if (!isCancelled) {
+       noSleep.enable();
        setStatus("active");
       }
       cleanupNoSleepListeners();
@@ -113,8 +136,10 @@ export const useWakeLock = (active: boolean = true) => {
     wakeLockRef.current.release().catch(() => {});
     wakeLockRef.current = null;
    }
-   if (noSleepRef.current) {
-    noSleepRef.current.disable();
+   // Disable NoSleep
+   const noSleep = getNoSleep();
+   if (noSleep) {
+    noSleep.disable();
    }
   };
  }, [active]);
