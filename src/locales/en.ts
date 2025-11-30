@@ -103,6 +103,7 @@ export const en = {
    fontSize: "Font Size",
   },
   themes: {
+   default: "Default",
    ninja: "Ninja (Dark)",
    paper: "Paper (Light)",
    contrast: "Contrast",
@@ -165,7 +166,15 @@ Paste your script here and customize your experience to start shining!`,
   theme: "Theme",
   language: "Language",
  },
+ footer: {
+  copyright: "PromptNinja. All rights reserved.",
+ },
  tutorial: {
+  tips: {
+   title: "Pro Tips",
+   tip1: "Use voice control for hands-free operation.",
+   tip2: "Scan the QR code to control from your phone.",
+  },
   title: "PromptNinja: Your Quick Start Guide",
   overview: {
    title: "Overview",

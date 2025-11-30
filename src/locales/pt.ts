@@ -106,6 +106,7 @@ export const pt = {
    isMirrored: "Espelhar Horizontalmente",
   },
   themes: {
+   default: "Padrão",
    ninja: "Ninja (Tema Escuro)",
    paper: "Papel (Tema Claro)",
    contrast: "Alto Contraste",
@@ -171,7 +172,12 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
   scanError: "Falha ao acessar a câmera. Verifique as permissões ou se está usando HTTPS.",
  },
  tutorial: {
-  title: "Guia Completo: Domine o PromptNinja",
+  tips: {
+   title: "Dicas Pro",
+   tip1: "Use o controle por voz para operação mãos-livres.",
+   tip2: "Escaneie o código QR para controlar do seu telefone.",
+  },
+  title: "PromptNinja: Guia de Início Rápido",
   overview: {
    title: "Visão Geral do Teleprompter",
    description:
@@ -212,13 +218,6 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
     description:
      "Ative o modo de foco dinâmico para destacar a linha de texto atual, auxiliando você a manter a concentração e a fluidez durante a leitura.",
    },
-  },
-  tips: {
-   title: "Dicas Essenciais para Apresentações",
-   tip1:
-    "Para reduzir o cansaço visual, utilize um tema com fundo escuro e texto claro, especialmente em ambientes com pouca luz.",
-   tip2:
-    "Experimente e pratique com diferentes velocidades de rolagem para encontrar o ritmo perfeito que se alinha à sua fala e ao seu estilo de apresentação.",
   },
  },
  footer: {

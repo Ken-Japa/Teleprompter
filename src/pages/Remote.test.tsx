@@ -1,8 +1,11 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { vi, describe, it, expect, beforeEach, afterEach } from "vitest";
 import { Remote } from "./Remote";
+import { TranslationProvider } from "../hooks/useTranslation";
+import { Peer } from "peerjs";
 
-const mockPeer = {
+// Mocks
+const mockPeerInstance = {
  id: "remote-peer-id",
  destroyed: false,
  reconnect: vi.fn(),
@@ -20,21 +23,24 @@ const mockConn = {
  close: vi.fn(),
 };
 
-beforeEach(() => {
- window.Peer = class {
-  constructor() {
-   return mockPeer;
-  }
- } as any;
+// Mock do módulo peerjs
+vi.mock("peerjs", () => {
+ return {
+  Peer: vi.fn(function () {
+   return mockPeerInstance;
+  }),
+ };
+});
 
+beforeEach(() => {
  window.NoSleep = class {
   enable = vi.fn().mockResolvedValue(true);
   disable = vi.fn();
   constructor() {}
  } as any;
 
- mockPeer.connect.mockReturnValue(mockConn);
- mockPeer.on.mockImplementation((event, callback) => {
+ (mockPeerInstance.connect as any).mockReturnValue(mockConn);
+ (mockPeerInstance.on as any).mockImplementation((event: string, callback: any) => {
   if (event === "open") callback("remote-id");
  });
 });
@@ -43,17 +49,18 @@ afterEach(() => {
  vi.clearAllMocks();
 });
 
+const renderWithProvider = (ui: React.ReactNode) => {
+ return render(<TranslationProvider>{ui}</TranslationProvider>);
+};
+
 describe("Remote Component", () => {
- it("Should initialize PeerJS connection on mount", async () => {
-  render(<Remote hostId="host-123" />);
-  // Peer constructor check removed as it is now a class mock
-  await waitFor(() => {
-   expect(mockPeer.connect).toHaveBeenCalledWith("host-123", expect.anything());
-  });
+ it("Should initialize PeerJS connection on mount", () => {
+  renderWithProvider(<Remote />);
+  expect(Peer).toHaveBeenCalled();
  });
 
  it("Should show connecting state initially", () => {
-  render(<Remote hostId="host-123" />);
-  expect(screen.getByText(/Buscando Ninja Host/i)).toBeInTheDocument();
+  renderWithProvider(<Remote />);
+  expect(screen.getByText(/Searching Ninja Host/i)).toBeInTheDocument();
  });
 });

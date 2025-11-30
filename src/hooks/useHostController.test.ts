@@ -1,6 +1,7 @@
 import { renderHook, act } from "@testing-library/react";
 import { useHostController } from "./useHostController";
 import { vi, describe, it, expect, beforeEach, afterEach } from "vitest";
+import { TranslationProvider } from "./useTranslation";
 
 // Mocks
 const mockPeer = {
@@ -44,7 +45,9 @@ afterEach(() => {
 
 describe("useHostController Hook", () => {
  it("Should initialize with default values", () => {
-  const { result } = renderHook(() => useHostController());
+  const { result } = renderHook(() => useHostController(), {
+   wrapper: TranslationProvider,
+  });
 
   expect(result.current.state.text).toBeDefined();
   expect(result.current.state.isEditMode).toBe(true);
@@ -52,7 +55,9 @@ describe("useHostController Hook", () => {
  });
 
  it("Should update text", () => {
-  const { result } = renderHook(() => useHostController());
+  const { result } = renderHook(() => useHostController(), {
+   wrapper: TranslationProvider,
+  });
 
   act(() => {
    result.current.actions.setText("New Script Content");
@@ -62,7 +67,9 @@ describe("useHostController Hook", () => {
  });
 
  it("Should toggle mode when starting presentation", () => {
-  const { result } = renderHook(() => useHostController());
+  const { result } = renderHook(() => useHostController(), {
+   wrapper: TranslationProvider,
+  });
 
   // Initially in Edit Mode
   expect(result.current.state.isEditMode).toBe(true);
@@ -87,7 +94,9 @@ describe("useHostController Hook", () => {
  });
 
  it("Should handle prompter state changes", () => {
-  const { result } = renderHook(() => useHostController());
+  const { result } = renderHook(() => useHostController(), {
+   wrapper: TranslationProvider,
+  });
 
   act(() => {
    result.current.actions.handlePrompterStateChange(true, 5);

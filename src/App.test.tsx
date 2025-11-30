@@ -42,16 +42,17 @@ afterEach(() => {
 describe("App Routing Integration", () => {
  it("Should render Landing Page by default", () => {
   render(<App />);
-  // Text is split into spans, so we search for a unique part or use a custom matcher
-  expect(screen.getAllByText(/Role/i)[0]).toBeInTheDocument();
-  expect(screen.getByText(/Mestre/i)).toBeInTheDocument();
+  // Updated matcher for "PROMPT NINJA" or other landing text
+  // The landing page might have changed text or structure.
+  // "Start Your Free Teleprompter" is a CTA
+  expect(screen.getByText(/Start Your Free Teleprompter/i)).toBeInTheDocument();
  });
 
  it("Should route to Host (Editor) when hash is #app", async () => {
   window.location.hash = "#app";
   render(<App />);
   await waitFor(() => {
-   expect(screen.getByText(/Modo Apresentação/i)).toBeInTheDocument();
+   expect(screen.getAllByLabelText(/Start Presentation Mode/i)[0]).toBeInTheDocument();
   });
  });
 
@@ -59,7 +60,7 @@ describe("App Routing Integration", () => {
   window.location.hash = "#remote?id=test-123";
   render(<App />);
   await waitFor(() => {
-   expect(screen.getByText(/Buscando Ninja Host/i)).toBeInTheDocument();
+   expect(screen.getByText(/Searching Ninja Host/i)).toBeInTheDocument();
   });
  });
 });

@@ -2,6 +2,8 @@ import { useCallback } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 import { Theme, PrompterSettings } from "../types";
 
+export type { PrompterSettings }; // Re-export type
+
 export interface PrompterActions {
  setFontSize: (val: number | ((v: number) => number)) => void;
  setMargin: (val: number | ((v: number) => number)) => void;
@@ -19,14 +21,21 @@ export const usePrompterSettings = (isPro: boolean) => {
  const [margin, setMargin] = useLocalStorage<number>("neonprompt_margin", 10);
  const [isMirrored, setIsMirrored] = useLocalStorage<boolean>("neonprompt_mirror", false);
  const [theme, setTheme] = useLocalStorage<Theme>("neonprompt_theme", Theme.DEFAULT);
-  const [isUpperCase, setIsUpperCase] = useLocalStorage<boolean>("neonprompt_caps", false);
-  const [isFocusMode, setIsFocusMode] = useLocalStorage<boolean>("neonprompt_focus", isPro);
-  const [isFlipVertical, setIsFlipVertical] = useLocalStorage<boolean>("neonprompt_flipv", false);
+ const [isUpperCase, setIsUpperCase] = useLocalStorage<boolean>("neonprompt_caps", false);
+ const [isFocusMode, setIsFocusMode] = useLocalStorage<boolean>("neonprompt_focus", isPro);
+ const [isFlipVertical, setIsFlipVertical] = useLocalStorage<boolean>("neonprompt_flipv", false);
 
-  const cycleTheme = useCallback(() => {
-    const themes: Theme[] = [Theme.DEFAULT, Theme.PAPER, Theme.CONTRAST, Theme.MATRIX, Theme.CYBER, Theme.CREAM];
-    setTheme((prev) => themes[(themes.indexOf(prev) + 1) % themes.length]);
-  }, [setTheme]);
+ const cycleTheme = useCallback(() => {
+  const themes: Theme[] = [
+   Theme.DEFAULT,
+   Theme.PAPER,
+   Theme.CONTRAST,
+   Theme.MATRIX,
+   Theme.CYBER,
+   Theme.CREAM,
+  ];
+  setTheme((prev) => themes[(themes.indexOf(prev) + 1) % themes.length]);
+ }, [setTheme]);
 
  const settings: PrompterSettings = {
   fontSize,

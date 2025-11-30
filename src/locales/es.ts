@@ -106,6 +106,7 @@ export const es = {
    fontSize: "Tamaño de Texto",
   },
   themes: {
+   default: "Predeterminado",
    ninja: "Ninja (Oscuro)",
    paper: "Papel (Claro)",
    contrast: "Contraste",
@@ -168,8 +169,16 @@ Use etiquetas de color para resaltar momentos importantes en su guion.
   theme: "Tema",
   language: "Idioma",
  },
+ footer: {
+  copyright: "PromptNinja. Todos los derechos reservados.",
+ },
  tutorial: {
-  title: "PromptNinja: Tu Guía de Inicio Rápido",
+  tips: {
+   title: "Consejos Pro",
+   tip1: "Usa el control por voz para operar con manos libres.",
+   tip2: "Escanea el código QR para controlar desde tu teléfono.",
+  },
+  title: "PromptNinja: Guía de Inicio Rápido",
   overview: {
    title: "Visión General",
    description:
