@@ -11,6 +11,7 @@ import React, {
 import { ConnectionStatus, PrompterHandle, PrompterSettings, NavigationItem } from "../../types";
 import * as S from "../ui/Styled";
 import { useVoiceControl } from "../../hooks/useVoiceControl";
+import { useKeyboardShortcuts } from "../../hooks/useKeyboardShortcuts";
 import { useWakeLock } from "../../hooks/useWakeLock";
 import { useScrollPhysics } from "../../hooks/useScrollPhysics";
 import { PrompterActions } from "../../hooks/usePrompterSettings";
@@ -58,6 +59,19 @@ export const Prompter = memo(
 
       // Theme Logic
       const { getThemeClass } = usePrompterTheme(theme);
+
+      // Keyboard Shortcuts
+      useKeyboardShortcuts({
+        isPlaying: externalState.isPlaying,
+        onTogglePlay: () => onStateChange(!externalState.isPlaying, externalState.speed),
+        speed: externalState.speed,
+        onSpeedChange: (val) => onStateChange(externalState.isPlaying, val),
+        fontSize: fontSize,
+        onFontSizeChange: actions.setFontSize,
+        onToggleMirror: () => actions.setIsMirrored(!isMirrored),
+        onToggleFlip: () => actions.setIsFlipVertical(!isFlipVertical),
+        onToggleFocus: () => actions.setIsFocusMode(!isFocusMode),
+      });
 
       // Voice Control
       const { startListening, stopListening, resetVoice, activeSentenceIndex, sentences, voiceApiSupported, voiceApiError } = useVoiceControl(

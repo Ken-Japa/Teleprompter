@@ -50,6 +50,9 @@ export const useScrollPhysics = ({
  // Update Refs
  useEffect(() => {
   isPlayingRef.current = isPlaying;
+  if (!isPlaying) {
+      momentumRef.current = 0; // Instant stop when paused
+  }
  }, [isPlaying]);
  useEffect(() => {
   isVoiceModeRef.current = isVoiceMode;
