@@ -1,15 +1,5 @@
 // --- INFRASTRUCTURE TYPES (Polyfills & External Libs) ---
 
-// Polyfill definitions for requestIdleCallback
-type RequestIdleCallbackHandle = number;
-type RequestIdleCallbackOptions = {
- timeout?: number;
-};
-type RequestIdleCallbackDeadline = {
- readonly didTimeout: boolean;
- timeRemaining: () => number;
-};
-
 // Web Speech API Types
 export interface SpeechRecognitionEvent {
  resultIndex: number;
@@ -31,19 +21,6 @@ export interface SpeechRecognitionErrorEvent {
 
 // Global Window Extension
 declare global {
- interface Window {
-  // Peer removed as we use the npm package
-  QRCode: any;
-  NoSleep: any;
-  SpeechRecognition: any;
-  webkitSpeechRecognition: any;
-  togglePro: () => void; // Dev helper
-  requestIdleCallback: (
-   callback: (deadline: RequestIdleCallbackDeadline) => void,
-   opts?: RequestIdleCallbackOptions
-  ) => RequestIdleCallbackHandle;
-  cancelIdleCallback: (handle: RequestIdleCallbackHandle) => void;
- }
  interface Document {
   permissionsPolicy?: {
    allowsFeature(feature: string): boolean;
@@ -127,10 +104,13 @@ export interface PrompterHandle {
 
 export interface TextFragment {
  text: string;
+ type: "normal" | "red" | "yellow" | "green" | "blue";
  isHighlight?: boolean;
 }
 
 export interface Sentence {
- id: string;
+ id: number;
+ cleanContent: string;
+ startIndex?: number;
  fragments: TextFragment[];
 }
