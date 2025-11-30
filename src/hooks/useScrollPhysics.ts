@@ -95,6 +95,7 @@ export const useScrollPhysics = ({
    const _isPlaying = isPlayingRef.current;
    const _isVoiceMode = isVoiceModeRef.current;
    const _activeSentenceIndex = activeSentenceIndexRef.current;
+   const _voiceProgress = voiceProgressRef.current;
 
    if (!scrollContainerRef.current) {
     // Se estiver tocando e o container não estiver pronto, tenta novamente em breve
