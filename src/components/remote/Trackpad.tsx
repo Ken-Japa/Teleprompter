@@ -59,8 +59,9 @@ export const Trackpad: React.FC<TrackpadProps> = ({ onDelta, onStop, label }) =>
 
             // Physics Optimization: Reduced gain for better control
             const gain = 0.8;
-            // Inverted direction to match natural scrolling preference (Finger Up -> Text Up)
-            const optimizedDelta = -1 * Math.sign(rawDiff) * Math.pow(Math.abs(rawDiff), 1.2) * gain;
+            // Natural Scrolling: Finger Up (rawDiff > 0) -> Content Up (Delta > 0)
+            // Removed inversion (-1) to align with touch expectations
+            const optimizedDelta = Math.sign(rawDiff) * Math.pow(Math.abs(rawDiff), 1.1) * gain;
 
             updateCursorVisuals(e.touches[0].clientX, e.touches[0].clientY, true);
 
