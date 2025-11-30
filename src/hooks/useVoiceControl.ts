@@ -2,9 +2,11 @@ import { useRef, useState, useMemo, useEffect, useCallback } from "react";
 import { SpeechRecognitionEvent } from "../types";
 import { parseTextToSentences } from "../utils/textParser";
 import { logger } from "../utils/logger";
+import { useTranslation } from "./useTranslation";
 
 export const useVoiceControl = (text: string, isPro: boolean) => {
- const [isListening, setIsListening] = useState<boolean>(false);
+  const { lang } = useTranslation();
+  const [isListening, setIsListening] = useState<boolean>(false);
  const [activeSentenceIndex, setActiveSentenceIndex] = useState<number>(-1);
  const [voiceApiSupported, setVoiceApiSupported] = useState<boolean>(true);
  const [voiceApiError, setVoiceApiError] = useState<string | null>(null);
@@ -57,7 +59,7 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
   const recognition = new SpeechRecognition();
   recognition.continuous = true;
   recognition.interimResults = true;
-  recognition.lang = "pt-BR";
+  recognition.lang = lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US';
 
   recognition.onstart = () => {
    setIsListening(true);
@@ -110,7 +112,7 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
   } catch (e) {
    logger.error("Voice start error", { error: e as Error });
   }
- }, [fullCleanText, charToSentenceMap]);
+ }, [fullCleanText, charToSentenceMap, lang]);
 
  const startListening = useCallback(() => {
   if (!isPro) return;

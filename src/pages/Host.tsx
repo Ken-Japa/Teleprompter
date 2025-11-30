@@ -4,7 +4,7 @@ import * as S from "../components/ui/Styled";
 import { Editor } from "../components/host/Editor";
 import { Prompter } from "../components/host/Prompter";
 import { useHostController } from "../hooks/useHostController";
-import { CountdownModal } from "../components/ui/styles/CountdownModal";
+import { CountdownModal } from "../components/ui/CountdownModal";
 import { RedeemModal } from "../components/RedeemModal";
 
 export const Host: React.FC = () => {

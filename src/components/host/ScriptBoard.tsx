@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useMemo } from "react";
 import { Sentence } from "../../types";
 import { SentenceItem } from "./script/SentenceItem";
 import * as S from "../ui/Styled";
@@ -16,19 +16,25 @@ interface ScriptBoardProps {
 export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, theme }: ScriptBoardProps) => {
   const { t } = useTranslation();
 
-  const watermarkIndexes = [];
-  for (let i = 0; i < sentences.length; i += 25) {
-    watermarkIndexes.push(i);
-  }
-  if (watermarkIndexes[watermarkIndexes.length - 1] !== sentences.length - 1) {
-    watermarkIndexes.push(sentences.length - 1);
-  }
+  const watermarkIndexes = useMemo(() => {
+    const indexes = [];
+    for (let i = 0; i < sentences.length; i += 25) {
+      indexes.push(i);
+    }
+    if (indexes.length > 0 && indexes[indexes.length - 1] !== sentences.length - 1) {
+      indexes.push(sentences.length - 1);
+    }
+    return indexes;
+  }, [sentences.length]);
 
   // Calculate Transforms
-  const transforms = [];
-  if (isMirrored) transforms.push("scaleX(-1)");
-  // isFlipVertical is handled by the parent scroll container to ensure correct scroll direction/anchoring
-  transforms.push("translateZ(0)");
+  const transforms = useMemo(() => {
+      const t = [];
+      if (isMirrored) t.push("scaleX(-1)");
+      // isFlipVertical is handled by the parent scroll container to ensure correct scroll direction/anchoring
+      t.push("translateZ(0)");
+      return t.join(" ");
+  }, [isMirrored]);
 
   return (
     <div style={{ position: "relative", width: "100%" }}>
@@ -54,7 +60,7 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
       <div
         className={`w-full max-w-7xl mx-auto transition-transform duration-300 ${isUpperCase ? "uppercase" : ""} hardware-accelerated`}
         style={{
-          transform: transforms.join(" "),
+          transform: transforms,
           paddingLeft: "var(--prompter-margin)",
           paddingRight: "var(--prompter-margin)",
         }}

@@ -1,5 +1,5 @@
 {
- "name": "PromptNinja - Professional P2P Teleprompter",
- "description": "Master your speeches with PromptNinja. Zero-latency, offline-capable professional teleprompter with remote control.",
+ "name": "PromptNinja - Teleprompter Profissional P2P",
+ "description": "Domine seus discursos com PromptNinja. Teleprompter profissional com latência zero, modo offline e controle remoto.",
  "requestFramePermissions": ["screen-wake-lock", "microphone"]
 }

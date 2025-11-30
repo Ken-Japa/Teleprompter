@@ -19,6 +19,9 @@ import { ScriptBoard } from "./ScriptBoard";
 import { PrompterHUD } from "./PrompterHUD";
 import { trackConversion } from "../../utils/analytics";
 
+import { useNavigationMap } from "../../hooks/useNavigationMap";
+import { usePrompterTheme } from "../../hooks/usePrompterTheme";
+
 interface PrompterProps {
   text: string;
   isPro: boolean;
@@ -52,6 +55,9 @@ export const Prompter = memo(
       const scrollContainerRef = useRef<HTMLDivElement>(null);
       const hudTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
       const mouseMoveRafRef = useRef<number | null>(null);
+
+      // Theme Logic
+      const { getThemeClass } = usePrompterTheme(theme);
 
       // Voice Control
       const { startListening, stopListening, resetVoice, activeSentenceIndex, sentences, voiceApiSupported, voiceApiError } = useVoiceControl(
@@ -130,23 +136,6 @@ export const Prompter = memo(
         });
       }, [externalState.isPlaying]);
 
-      const getThemeClass = useCallback(() => {
-        switch (theme) {
-          case "paper":
-            return "bg-white text-slate-900";
-          case "contrast":
-            return "bg-black text-yellow-400 font-bold";
-          case "matrix":
-            return "bg-black text-green-500 font-mono";
-          case "cyber":
-            return "bg-slate-900 text-pink-500 shadow-[inset_0_0_100px_rgba(236,72,153,0.1)]";
-          case "cream":
-            return "bg-[#fdfbf7] text-[#333]";
-          default:
-            return "bg-slate-950 text-slate-100";
-        }
-      }, [theme]);
-
       const toggleVoice = useCallback(() => {
         if (!isPro) {
           trackConversion('Attempted Pro Feature');
@@ -176,54 +165,16 @@ export const Prompter = memo(
       ]);
 
       // Navigation Map Calculation
-      useEffect(() => {
-        if (!onNavigationMapUpdate || !scrollContainerRef.current || sentences.length === 0) return;
-
-        const calculateMap = () => {
-          const container = scrollContainerRef.current;
-          if (!container) return;
-
-          const maxScroll = container.scrollHeight - container.clientHeight;
-          if (maxScroll <= 0) return;
-
-          const map: NavigationItem[] = [];
-          const containerRect = container.getBoundingClientRect();
-          const centerOffset = container.clientHeight / 2;
-
-          sentences.forEach(s => {
-            const el = document.getElementById(`sentence-${s.id}`);
-            if (el) {
-              const rect = el.getBoundingClientRect();
-              // Calculate scroll position to center this element
-              const elementTopRelative = rect.top - containerRect.top + container.scrollTop;
-              let targetScroll = elementTopRelative - centerOffset + (rect.height / 2);
-
-              // Clamp
-              targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
-
-              // Construct label safely
-          const label = s.fragments ? s.fragments.map((f: any) => f.text).join('') : "";
-
-          map.push({
-                id: s.id,
-                label: label,
-                progress: targetScroll / maxScroll
-              });
-            }
-          });
-
-          if (map.length > 0) {
-             onNavigationMapUpdate(map);
-          }
-        };
-
-        // Debounce calculation
-        const timeoutId = setTimeout(() => {
-          requestAnimationFrame(calculateMap);
-        }, 1000); // Give it a second to settle layout
-
-        return () => clearTimeout(timeoutId);
-      }, [sentences, settings.fontSize, settings.margin, settings.isMirrored, settings.isFlipVertical, settings.isUpperCase, onNavigationMapUpdate]);
+      useNavigationMap({
+        sentences,
+        scrollContainerRef,
+        fontSize,
+        margin,
+        isMirrored,
+        isFlipVertical,
+        isUpperCase,
+        onNavigationMapUpdate
+      });
 
       const containerStyle = useMemo(
         () =>
