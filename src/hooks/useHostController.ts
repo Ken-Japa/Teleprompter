@@ -94,8 +94,13 @@ export const useHostController = () => {
      }
      break;
     case MessageType.RESTART:
-     setIsPlaying(false);
-     setElapsedTime(0);
+     if (prompterRef.current) {
+      prompterRef.current.reset();
+     } else {
+      // Fallback if prompter is not mounted (e.g. in edit mode)
+      setIsPlaying(false);
+      setElapsedTime(0);
+     }
      break;
     case MessageType.TEXT_UPDATE:
      if (typeof msg.payload === "string") {

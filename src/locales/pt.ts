@@ -103,6 +103,7 @@ export const pt = {
    focusLine: "Linha de Foco Dinâmico",
    theme: "Tema Visual do Teleprompter",
    fontSize: "Tamanho da Fonte",
+   isMirrored: "Espelhar Horizontalmente",
   },
   themes: {
    ninja: "Ninja (Tema Escuro)",
@@ -167,6 +168,7 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
   stop: "Parar",
   theme: "Tema",
   language: "Idioma",
+  scanError: "Falha ao acessar a câmera. Verifique as permissões ou se está usando HTTPS.",
  },
  tutorial: {
   title: "Guia Completo: Domine o PromptNinja",

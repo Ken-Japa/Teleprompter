@@ -79,14 +79,26 @@ export const Prompter = memo(
         onAutoStop: handleAutoStop,
       });
 
+      const resetPrompter = useCallback(() => {
+        onStateChange(false, externalState.speed);
+        setResetTimerSignal((p) => !p);
+        if (onResetTimer) onResetTimer();
+        resetVoice();
+        resetPhysics();
+        if (currentActiveElementRef.current) {
+          currentActiveElementRef.current.classList.remove("sentence-active");
+        }
+      }, [onStateChange, externalState.speed, resetVoice, resetPhysics, currentActiveElementRef]);
+
       // Expose methods to parent via ref
       useImperativeHandle(
         ref,
         () => ({
           onRemoteScroll: handleRemoteInput,
           scrollTo: handleScrollTo,
+          reset: resetPrompter,
         }),
-        [handleRemoteInput, handleScrollTo]
+        [handleRemoteInput, handleScrollTo, resetPrompter]
       );
 
       // Voice Active Element Highlighting (UI Side)
@@ -161,17 +173,6 @@ export const Prompter = memo(
         currentActiveElementRef,
       ]);
 
-      const resetPrompter = useCallback(() => {
-        onStateChange(false, externalState.speed);
-        setResetTimerSignal((p) => !p);
-        if (onResetTimer) onResetTimer();
-        resetVoice();
-        resetPhysics();
-        if (currentActiveElementRef.current) {
-          currentActiveElementRef.current.classList.remove("sentence-active");
-        }
-      }, [onStateChange, externalState.speed, resetVoice, resetPhysics, currentActiveElementRef]);
-
       const containerStyle = useMemo(
         () =>
           ({
@@ -209,6 +210,8 @@ export const Prompter = memo(
               style={{
                 paddingLeft: `${margin}%`,
                 paddingRight: `${margin}%`,
+              }}
+              contentStyle={{
                 paddingTop: '50vh',
                 paddingBottom: '50vh'
               }}

@@ -78,13 +78,13 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
 
     if (status !== ConnectionStatus.CONNECTED) {
         return (
-            <S.ScreenContainer className="bg-[#020617] h-[100dvh] flex flex-col">
+            <S.ScreenContainer className="bg-[#020617] min-h-screen h-[100dvh] flex flex-col">
                 {errorMessage && <S.ErrorToast message={errorMessage} />}
                 <S.Header>
                     <S.LogoText main={t("title.main")} sub={t("title.remote")} />
                     <S.StatusBadge status={status} label={t(`status.${status.toLowerCase()}`)} />
                 </S.Header>
-                <div className="flex-1 flex flex-col relative overflow-hidden">
+                <div className="flex-1 flex flex-col relative overflow-hidden z-10">
                     <ConnectionState status={status} hostId={hostId} />
                 </div>
             </S.ScreenContainer>
@@ -92,11 +92,11 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
     }
 
     return (
-        <S.ScreenContainer className="bg-[#020617] h-[100dvh] flex flex-col">
+        <S.ScreenContainer className="bg-[#020617] min-h-screen h-[100dvh] flex flex-col">
             {errorMessage && <S.ErrorToast message={errorMessage} />}
 
-            {/* Header & Navigation */}
-            <div className="flex flex-col bg-slate-900 border-b border-white/5 z-20">
+            {/* Header & Navigation - FIXED */}
+            <div className="fixed top-0 left-0 right-0 z-50 bg-[#020617]/90 backdrop-blur-xl border-b border-white/5">
                 <div className="flex items-center justify-between px-4 py-3">
                     <S.StatusBadge status={status} label={t(`status.${status.toLowerCase()}`)} />
                     <div className="flex gap-1 bg-slate-800 rounded-lg p-1">
@@ -132,23 +132,51 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                 </div>
             </div>
 
-            <div className="flex-1 flex flex-col relative overflow-hidden">
+            {/* Content Spacer for Fixed Header (approx height of header) */}
+            <div className="h-[106px]"></div>
+
+            <div className="flex-1 flex flex-col relative overflow-hidden z-10">
 
                 {/* CONTROL TAB */}
                 {activeTab === 'control' && (
                     <>
+                        {/* Timer Display - Moved UP */}
+                        <div className="flex justify-center pt-6 pb-4">
+                            <div className="bg-slate-900/50 px-6 py-2 rounded-xl border border-white/5 shadow-lg">
+                                <span className="font-mono text-4xl font-black text-indigo-400 tracking-widest drop-shadow-[0_0_15px_rgba(129,140,248,0.5)]">{formattedTime}</span>
+                            </div>
+                        </div>
+
+                        {/* Text Preview Window */}
+                        <div className="mx-6 mb-4 h-40 bg-slate-900/80 rounded-xl border border-white/10 overflow-hidden relative flex items-center justify-center shadow-inner">
+                            {/* Simple gradient masks */}
+                            <div className="absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-slate-900 to-transparent z-10 pointer-events-none"></div>
+                            <div className="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-t from-slate-900 to-transparent z-10 pointer-events-none"></div>
+
+                            {/* We estimate the current text based on progress */}
+                            <div className="absolute inset-0 flex items-center px-4 opacity-70">
+                                <p className="text-xs text-slate-300 font-mono leading-relaxed text-center w-full line-clamp-3">
+                                    {/* Heuristic: Show a slice of text based on progress. 
+                                       Since we don't have exact sentence sync, we estimate window. 
+                                   */}
+                                    {(() => {
+                                        if (!text) return "No text loaded";
+                                        const centerIdx = Math.floor(text.length * progress);
+                                        const start = Math.max(0, centerIdx - 50);
+                                        const end = Math.min(text.length, centerIdx + 50);
+                                        return "..." + text.substring(start, end).replace(/\n/g, ' ') + "...";
+                                    })()}
+                                </p>
+                            </div>
+                            {/* Focus line indicator */}
+                            <div className="absolute inset-x-0 top-1/2 h-[1px] bg-indigo-500/30 w-full"></div>
+                        </div>
+
                         <Trackpad
                             label={t("remote.touchArea")}
                             onDelta={actions.handleTrackpadDelta}
                             onStop={actions.handleTrackpadStop}
                         />
-
-                        {/* Timer Display Overlay */}
-                        <div className="absolute top-20 left-1/2 -translate-x-1/2 pointer-events-none z-50">
-                            <div className="bg-slate-950/90 backdrop-blur-xl px-6 py-3 rounded-2xl border border-white/10 shadow-2xl ring-1 ring-white/5">
-                                <span className="font-mono text-3xl font-black text-indigo-400 tracking-widest drop-shadow-[0_0_15px_rgba(129,140,248,0.5)]">{formattedTime}</span>
-                            </div>
-                        </div>
 
                         <S.ControlsContainer>
                             <div className="flex items-center justify-between px-6 pb-safe gap-6">
@@ -241,7 +269,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                         {/* Font Size */}
                         <div className="space-y-3">
                             <div className="flex justify-between text-sm text-slate-400 uppercase tracking-widest font-bold">
-                                <span>Font Size</span>
+                                <span>{t("host.controls.fontSize")}</span>
                                 <span>{settings.fontSize}px</span>
                             </div>
                             <input
@@ -255,7 +283,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                         {/* Margin */}
                         <div className="space-y-3">
                             <div className="flex justify-between text-sm text-slate-400 uppercase tracking-widest font-bold">
-                                <span>Margin</span>
+                                <span>{t("host.controls.margin")}</span>
                                 <span>{settings.margin}%</span>
                             </div>
                             <input
@@ -272,7 +300,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                 onClick={() => actions.handleSettingsChange({ isMirrored: !settings.isMirrored })}
                                 className={`p-4 rounded-xl border ${settings.isMirrored ? 'bg-indigo-600/20 border-indigo-500 text-indigo-300' : 'bg-slate-900 border-slate-800 text-slate-400'}`}
                             >
-                                <div className="font-bold mb-1">Mirror H</div>
+                                <div className="font-bold mb-1">{t("host.mirror")}</div>
                                 <div className="text-xs opacity-60">{settings.isMirrored ? 'ON' : 'OFF'}</div>
                             </button>
 
@@ -280,7 +308,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                 onClick={() => actions.handleSettingsChange({ isFlipVertical: !settings.isFlipVertical })}
                                 className={`p-4 rounded-xl border ${settings.isFlipVertical ? 'bg-indigo-600/20 border-indigo-500 text-indigo-300' : 'bg-slate-900 border-slate-800 text-slate-400'}`}
                             >
-                                <div className="font-bold mb-1">Mirror V</div>
+                                <div className="font-bold mb-1">{t("host.mirrorV")}</div>
                                 <div className="text-xs opacity-60">{settings.isFlipVertical ? 'ON' : 'OFF'}</div>
                             </button>
 
@@ -288,7 +316,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                 onClick={() => actions.handleSettingsChange({ isUpperCase: !settings.isUpperCase })}
                                 className={`p-4 rounded-xl border ${settings.isUpperCase ? 'bg-indigo-600/20 border-indigo-500 text-indigo-300' : 'bg-slate-900 border-slate-800 text-slate-400'}`}
                             >
-                                <div className="font-bold mb-1">ALL CAPS</div>
+                                <div className="font-bold mb-1">{t("host.controls.caps")}</div>
                                 <div className="text-xs opacity-60">{settings.isUpperCase ? 'ON' : 'OFF'}</div>
                             </button>
 
@@ -296,7 +324,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                 onClick={() => actions.handleSettingsChange({ isFocusMode: !settings.isFocusMode })}
                                 className={`p-4 rounded-xl border ${settings.isFocusMode ? 'bg-indigo-600/20 border-indigo-500 text-indigo-300' : 'bg-slate-900 border-slate-800 text-slate-400'}`}
                             >
-                                <div className="font-bold mb-1">Focus</div>
+                                <div className="font-bold mb-1">{t("host.controls.focusLine")}</div>
                                 <div className="text-xs opacity-60">{settings.isFocusMode ? 'ON' : 'OFF'}</div>
                             </button>
                         </div>

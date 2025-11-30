@@ -10,41 +10,49 @@ export const useElementMetrics = (ref: React.RefObject<HTMLElement | null>, depe
   scrollHeight: 0,
   clientHeight: 0,
  });
- useEffect(() => {
-  if (!ref.current) return;
+    useEffect(() => {
+        let observer: ResizeObserver | null = null;
+        let timeoutId: NodeJS.Timeout | null = null;
 
-  const updateMetrics = () => {
-   if (ref.current) {
-    // Mutate Ref directly for performance (used by physics engine)
-    metricsRef.current = {
-     scrollHeight: ref.current.scrollHeight,
-     clientHeight: ref.current.clientHeight,
-    };
-   }
-  };
+        const init = () => {
+            if (!ref.current) {
+                // Retry if ref is not yet ready
+                timeoutId = setTimeout(init, 50);
+                return;
+            }
 
-  // Update immediately
-  updateMetrics();
+            const updateMetrics = () => {
+                if (ref.current) {
+                    // Mutate Ref directly for performance (used by physics engine)
+                    metricsRef.current = {
+                        scrollHeight: ref.current.scrollHeight,
+                        clientHeight: ref.current.clientHeight,
+                    };
+                }
+            };
 
-  // Observer for resize events
-  const observer = new ResizeObserver(updateMetrics);
-  observer.observe(ref.current);
+            // Update immediately
+            updateMetrics();
 
-  // CRITICAL: Wait for fonts to load to ensure correct height calculation
-  if (document.fonts) {
-   document.fonts.ready.then(() => {
-    updateMetrics();
-   });
-  }
+            // Observer for resize events
+            observer = new ResizeObserver(updateMetrics);
+            observer.observe(ref.current);
 
-  // Fallback safety timeout
-  const t = setTimeout(updateMetrics, 1000);
+            // CRITICAL: Wait for fonts to load to ensure correct height calculation
+            if (document.fonts) {
+                document.fonts.ready.then(() => {
+                    updateMetrics();
+                });
+            }
+        };
 
-  return () => {
-   observer.disconnect();
-   clearTimeout(t);
-  };
- }, [ref, ...dependencies]);
+        init();
+
+        return () => {
+            if (observer) observer.disconnect();
+            if (timeoutId) clearTimeout(timeoutId);
+        };
+    }, [ref, ...dependencies]);
 
  return metricsRef;
 };

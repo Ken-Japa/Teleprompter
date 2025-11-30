@@ -141,4 +141,5 @@ export type RemoteScrollHandler = (delta: number, stop?: boolean, hardStop?: boo
 export interface PrompterHandle {
  onRemoteScroll: RemoteScrollHandler;
  scrollTo: (progress: number) => void;
+ reset: () => void;
 }

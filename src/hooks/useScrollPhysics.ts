@@ -126,6 +126,18 @@ export const useScrollPhysics = ({
       });
       onAutoStop();
      }
+    } else {
+        // If playing but metrics are invalid (loading?), don't sleep yet.
+        // Force a re-loop to check again in next frame/soon
+        // This prevents the engine from stalling during initial load/resize
+        if (isPlaying) {
+            // Don't accumulate delta, just keep loop alive
+             // But maybe throttle it to avoid high CPU when idle?
+             // Actually, RAF is fine. Just ensure we don't exit below.
+             isSleepingRef.current = false; 
+             // We don't return here, we fall through.
+             // But we must ensure 'isMoving' or 'hasMomentum' doesn't kill it.
+        }
     }
    }
 
@@ -171,10 +183,12 @@ export const useScrollPhysics = ({
 
    const isMoving = Math.abs(deltaScroll) > 0.01;
    const hasMomentum = Math.abs(momentumRef.current) > 0.01;
+   // Force awake if playing, even if not moving (waiting for metrics)
+   const shouldStayAwake = isPlaying; 
 
    // IDLE CHECK: If not playing, no momentum, not voice moving, and not touching -> Sleep
    if (
-    !isPlaying &&
+    !shouldStayAwake &&
     !hasMomentum &&
     !isMoving &&
     !isUserTouchingRef.current &&
@@ -299,20 +313,30 @@ export const useScrollPhysics = ({
   onScrollUpdate(0);
  }, [scrollContainerRef, onScrollUpdate]);
 
- // Wake up when external triggers happen
- useEffect(() => {
-  if (isPlaying || (isVoiceMode && activeSentenceIndex !== -1)) {
-   wakeUpLoop();
-  }
- }, [isPlaying, isVoiceMode, activeSentenceIndex, wakeUpLoop]);
+  // Wake up when external triggers happen
+  useEffect(() => {
+    if (isPlaying || (isVoiceMode && activeSentenceIndex !== -1)) {
+      // Ensure physics state matches playing state immediately
+      wakeUpLoop();
+    }
+  }, [isPlaying, isVoiceMode, activeSentenceIndex, wakeUpLoop]);
 
- // Stop loop on unmount
- useEffect(() => {
-  return () => {
-   if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
-   if (retryTimeoutRef.current) clearTimeout(retryTimeoutRef.current);
-  };
- }, []);
+  // Mount check for auto-start
+  useEffect(() => {
+    if (isPlaying) {
+      // Force a wake up after a short delay to ensure DOM is ready
+      const t = setTimeout(wakeUpLoop, 150);
+      return () => clearTimeout(t);
+    }
+  }, []); // Only on mount
+
+  // Stop loop on unmount
+  useEffect(() => {
+    return () => {
+      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+      if (retryTimeoutRef.current) clearTimeout(retryTimeoutRef.current);
+    };
+  }, []);
 
  return {
   handleNativeScroll,
