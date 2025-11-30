@@ -1,7 +1,15 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import { ConnectionStatus, MessageType, PeerMessage } from "../types";
-import { trackSuccessfulConnection, startUsageTracking, stopUsageTracking } from "../utils/analytics";
+import { Peer } from "peerjs";
+import { ConnectionStatus, PeerMessage, MessageType } from "../types";
+import { trackSuccessfulConnection, startUsageTracking } from "../utils/analytics";
 
+/**
+ * Hook customizado para gerenciar a conexão P2P do lado do Host (quem controla o prompter).
+ * Utiliza a biblioteca PeerJS para estabelecer conexões WebRTC.
+ *
+ * @param onRemoteMessage Callback executado quando uma mensagem é recebida de um controle remoto.
+ * @returns Objeto contendo o ID do peer, status da conexão, mensagem de erro, função de broadcast e função de limpeza.
+ */
 export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
  const [peerId, setPeerId] = useState<string>("");
  const [status, setStatus] = useState<ConnectionStatus>(ConnectionStatus.DISCONNECTED);
@@ -9,7 +17,7 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
 
  // Refs to maintain instance integrity across renders without triggering re-renders
  const connectionsRef = useRef<Set<any>>(new Set());
- const peerRef = useRef<any>(null);
+ const peerRef = useRef<Peer | null>(null);
  const retryTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
  const mountedRef = useRef<boolean>(true);
 
@@ -19,6 +27,28 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
   onMessageRef.current = onRemoteMessage;
  }, [onRemoteMessage]);
 
+ /**
+  * Envia uma mensagem para todos os peers conectados.
+  * @param type Tipo da mensagem (MessageType)
+  * @param payload Dados da mensagem
+  */
+ const broadcast = useCallback((type: MessageType, payload?: any) => {
+  const msg: PeerMessage = { type, payload, timestamp: Date.now() };
+  connectionsRef.current.forEach((conn) => {
+   if (conn.open) {
+    try {
+     conn.send(msg);
+    } catch (e) {
+     console.warn("Failed to send message to peer", e);
+    }
+   }
+  });
+ }, []);
+
+ /**
+  * Encerra a instância do Peer e todas as conexões ativas.
+  * Limpa listeners e previne vazamento de memória.
+  */
  const destroyPeer = useCallback(() => {
   // Clear any pending retries immediately
   if (retryTimeoutRef.current) {
@@ -53,63 +83,13 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
 
  useEffect(() => {
   mountedRef.current = true;
-  let retryCount = 0;
-  const MAX_RETRIES = 20;
 
   /**
-   * @function loadPeerJSLibrary
-   * @description Carrega dinamicamente a biblioteca PeerJS.
-   * @returns {Promise<void>} Uma promessa que resolve quando a biblioteca é carregada.
+   * Inicializa o PeerJS e configura os listeners de eventos.
+   * Gerencia reconexões e erros de inicialização.
    */
-  const loadPeerJSLibrary = (): Promise<void> => {
-   return new Promise((resolve, reject) => {
-    if (window.Peer) {
-     resolve();
-     return;
-    }
-
-    const script = document.createElement("script");
-    script.src = "https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js";
-    script.async = true;
-    script.onload = () => {
-     console.log("PeerJS library loaded successfully.");
-     resolve();
-    };
-    script.onerror = () => {
-     console.error("Failed to load PeerJS library.");
-     reject(new Error("Failed to load PeerJS library."));
-    };
-    document.head.appendChild(script);
-   });
-  };
-
   const initPeer = async () => {
    if (!mountedRef.current) return;
-
-   // Tenta carregar a biblioteca PeerJS
-   try {
-    await loadPeerJSLibrary();
-   } catch (error) {
-    console.error("PeerJS failed to load:", error);
-    setStatus(ConnectionStatus.ERROR);
-    return;
-   }
-
-   // Basic check if Peer is loaded
-   if (!window.Peer) {
-    if (retryCount < MAX_RETRIES) {
-     retryCount++;
-     const delay = Math.min(3000, 200 * Math.pow(1.5, retryCount));
-     console.log(
-      `PeerJS not ready after dynamic load, retrying in ${Math.round(delay)}ms (Attempt ${retryCount})`
-     );
-     retryTimeoutRef.current = setTimeout(initPeer, delay);
-     return;
-    }
-    console.error("PeerJS failed to load after multiple retries.");
-    setStatus(ConnectionStatus.ERROR);
-    return;
-   }
 
    // Cleanup previous instance if exists to avoid "ID Taken" errors (Strict Mode safety)
    if (peerRef.current) {
@@ -123,7 +103,7 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
 
    try {
     // Initialize Peer with default config (Cloud Server)
-    const peer = new window.Peer();
+    const peer = new Peer();
     peerRef.current = peer;
 
     peer.on("open", (id: string) => {
@@ -134,7 +114,6 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
      setPeerId(id);
      setErrorMessage(null); // Clear error on successful open
      setStatus(ConnectionStatus.CONNECTING);
-     retryCount = 0; // Reset retry on success
      startUsageTracking();
     });
 
@@ -199,22 +178,8 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
    mountedRef.current = false;
    clearTimeout(startTimeout);
    destroyPeer();
-   stopUsageTracking();
   };
  }, [destroyPeer]);
 
- const broadcast = useCallback((type: MessageType, payload: any) => {
-  connectionsRef.current.forEach((conn) => {
-   if (conn.open) {
-    try {
-     conn.send({ type, payload });
-    } catch (e) {
-     // Stale connection, remove it
-     connectionsRef.current.delete(conn);
-    }
-   }
-  });
- }, []);
-
- return { peerId, status, broadcast, errorMessage };
+ return { peerId, status, errorMessage, broadcast };
 };

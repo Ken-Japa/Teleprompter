@@ -13,7 +13,7 @@ interface ScriptBoardProps {
   theme: string;
 }
 
-export const ScriptBoard = memo(({ sentences, isMirrored, isFlipVertical, isUpperCase, isPro, theme }: ScriptBoardProps) => {
+export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, theme }: ScriptBoardProps) => {
   const { t } = useTranslation();
 
   const watermarkIndexes = [];
@@ -27,7 +27,7 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isFlipVertical, isUppe
   // Calculate Transforms
   const transforms = [];
   if (isMirrored) transforms.push("scaleX(-1)");
-  if (isFlipVertical) transforms.push("scaleY(-1)");
+  // isFlipVertical is handled by the parent scroll container to ensure correct scroll direction/anchoring
   transforms.push("translateZ(0)");
 
   return (

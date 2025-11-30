@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
-import { ConnectionStatus, MessageType, PeerMessage, PrompterHandle } from "../types";
+import { ConnectionStatus, MessageType, PeerMessage, PrompterHandle, NavigationItem } from "../types";
 import { logger } from "../utils/logger";
 import { usePeerHost } from "./usePeerHost";
 import { useProState } from "./useProState";
@@ -29,6 +29,7 @@ export const useHostController = () => {
  const [isPlaying, setIsPlaying] = useState<boolean>(false);
  const [speed, setSpeed] = useLocalStorage<number>("neonprompt_speed", 2);
  const [elapsedTime, setElapsedTime] = useState<number>(0);
+ const [navigationMap, setNavigationMap] = useState<NavigationItem[]>([]);
 
  // Timer Logic
  useEffect(() => {
@@ -152,9 +153,17 @@ export const useHostController = () => {
     settings: prompterSettings,
     text: text.substring(0, 10000), // Limit text size just in case
     elapsedTime,
+    navigationMap,
    });
   }
- }, [isPlaying, speed, status, broadcast, prompterSettings, text, elapsedTime]);
+ }, [isPlaying, speed, status, broadcast, prompterSettings, text, navigationMap]);
+
+ // 6.1 Time Broadcast (Lightweight)
+ useEffect(() => {
+  if (status === ConnectionStatus.CONNECTED && broadcast && isPlaying) {
+   broadcast(MessageType.TIME_UPDATE, { elapsedTime });
+  }
+ }, [elapsedTime, status, broadcast, isPlaying]);
 
  const handleScrollUpdate = useCallback(
   (progress: number) => {
@@ -162,6 +171,10 @@ export const useHostController = () => {
   },
   [broadcast]
  );
+
+ const handleNavigationMapUpdate = useCallback((map: NavigationItem[]) => {
+  setNavigationMap(map);
+ }, []);
 
  // 7. Actions
  const handlePrompterStateChange = useCallback(
@@ -245,6 +258,7 @@ export const useHostController = () => {
    handleCountdownEnd,
    prompterActions,
    resetTimer,
+   handleNavigationMapUpdate,
   },
   refs: {
    prompterRef,

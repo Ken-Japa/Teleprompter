@@ -201,8 +201,8 @@ export const TouchPad = React.forwardRef<
         {/* Noise Texture for Grip Feeling */}
         <div className="absolute inset-0 bg-noise opacity-[0.08] pointer-events-none"></div>
 
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none transition-all duration-500 opacity-20 group-active:opacity-50 group-active:scale-105 group-active:blur-[2px]">
-            <div className="text-white font-display font-black text-6xl md:text-8xl -rotate-90 whitespace-nowrap select-none tracking-tighter drop-shadow-2xl opacity-10 border border-white/10 rounded-full px-12 py-4 backdrop-blur-sm">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none transition-all duration-500 opacity-40 group-active:opacity-60 group-active:scale-105 group-active:blur-[2px]">
+            <div className="text-white font-display font-black text-2xl md:text-4xl whitespace-nowrap select-none tracking-widest drop-shadow-2xl opacity-50 border border-white/10 rounded-full px-8 py-2 backdrop-blur-sm bg-black/20">
                 {label}
             </div>
         </div>

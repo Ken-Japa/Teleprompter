@@ -20,9 +20,20 @@ const NavIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height=
 export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
     const { t, lang, setLang } = useTranslation();
     const { state, actions } = useRemoteController(hostId);
-    const { status, isPlaying, speed, progress, errorMessage, settings, text, elapsedTime } = state;
+    const { status, isPlaying, speed, progress, errorMessage, settings, text, elapsedTime, navigationMap } = state;
 
     const [activeTab, setActiveTab] = useState<'control' | 'edit' | 'settings' | 'nav'>('control');
+
+    // Local state for scrubbing to prevent jitter
+    const [isScrubbing, setIsScrubbing] = useState(false);
+    const [localProgress, setLocalProgress] = useState(progress);
+
+    // Sync local progress with remote progress when not scrubbing
+    React.useEffect(() => {
+        if (!isScrubbing) {
+            setLocalProgress(progress);
+        }
+    }, [progress, isScrubbing]);
 
     // Format Timer
     const formattedTime = useMemo(() => {
@@ -32,8 +43,17 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
         return `${mins}:${secs}`;
     }, [elapsedTime]);
 
-    // Parse text for Navigation with Visual Weight Heuristic
+    // Parse text for Navigation
     const textSegments = useMemo(() => {
+        // Priority: Use Host-provided Navigation Map
+        if (navigationMap && navigationMap.length > 0) {
+            return navigationMap.map(item => ({
+                id: item.id,
+                text: item.label || "...",
+                progress: item.progress
+            }));
+        }
+
         if (!text) return [];
 
         // Heuristic: 
@@ -52,17 +72,17 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
         const lines = text.split('\n');
         const totalVisualWeight = lines.reduce((acc, line) => acc + getLineWeight(line), 0);
 
-        const segments: { id: number; text: string; progress: number }[] = [];
+        const segments: { id: number | string; text: string; progress: number }[] = [];
         let currentWeight = 0;
         let charIndex = 0;
 
-        lines.forEach((line) => {
+        lines.forEach((line, index) => {
             const weight = getLineWeight(line);
 
             // Only add navigable segments for non-empty lines
             if (line.trim().length > 0) {
                 segments.push({
-                    id: charIndex,
+                    id: `heuristic-${index}`,
                     text: line,
                     progress: currentWeight / totalVisualWeight
                 });
@@ -73,7 +93,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
         });
 
         return segments;
-    }, [text]);
+    }, [text, navigationMap]);
 
 
     if (status !== ConnectionStatus.CONNECTED) {
@@ -98,7 +118,17 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
             {/* Header & Navigation - FIXED */}
             <div className="fixed top-0 left-0 right-0 z-50 bg-[#020617]/90 backdrop-blur-xl border-b border-white/5">
                 <div className="flex items-center justify-between px-4 py-3">
-                    <S.StatusBadge status={status} label={t(`status.${status.toLowerCase()}`)} />
+                    <div className="flex items-center gap-2">
+                        <S.StatusBadge status={status} label={t(`status.${status.toLowerCase()}`)} />
+                        {/* Quick Play/Pause in Header */}
+                        <button
+                            onClick={actions.handlePlayToggle}
+                            className={`p-2 rounded-full ${isPlaying ? 'bg-amber-500/20 text-amber-500 border border-amber-500/50' : 'bg-indigo-500/20 text-indigo-500 border border-indigo-500/50'} transition-all active:scale-95`}
+                        >
+                            {isPlaying ? <PauseIcon className="w-4 h-4 fill-current" /> : <PlayIcon className="w-4 h-4 fill-current ml-0.5" />}
+                        </button>
+                    </div>
+
                     <div className="flex gap-1 bg-slate-800 rounded-lg p-1">
                         <button onClick={() => setActiveTab('control')} className={`p-2 rounded-md transition-all ${activeTab === 'control' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}>
                             <ControlIcon />
@@ -118,14 +148,20 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                 {/* Progress Bar / Scrubber */}
                 <div className="px-4 pb-3">
                     <div className="flex items-center gap-3">
-                        <span className="text-[10px] font-mono text-slate-500">{Math.round(progress * 100)}%</span>
+                        <span className="text-[10px] font-mono text-slate-500">{Math.round(localProgress * 100)}%</span>
                         <input
                             type="range"
                             min="0"
                             max="1"
                             step="0.001"
-                            value={progress}
-                            onChange={(e) => actions.handleScrollTo(parseFloat(e.target.value))}
+                            value={localProgress}
+                            onPointerDown={() => setIsScrubbing(true)}
+                            onPointerUp={() => setIsScrubbing(false)}
+                            onChange={(e) => {
+                                const val = parseFloat(e.target.value);
+                                setLocalProgress(val);
+                                actions.handleScrollTo(val);
+                            }}
                             className="flex-1 h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-indigo-500"
                         />
                     </div>
@@ -148,35 +184,66 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                         </div>
 
                         {/* Text Preview Window */}
-                        <div className="mx-6 mb-4 h-40 bg-slate-900/80 rounded-xl border border-white/10 overflow-hidden relative flex items-center justify-center shadow-inner">
+                        <div className="mx-6 mb-4 h-24 bg-slate-900/80 rounded-xl border border-white/10 overflow-hidden relative flex items-center justify-center shadow-inner">
                             {/* Simple gradient masks */}
                             <div className="absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-slate-900 to-transparent z-10 pointer-events-none"></div>
                             <div className="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-t from-slate-900 to-transparent z-10 pointer-events-none"></div>
 
                             {/* We estimate the current text based on progress */}
                             <div className="absolute inset-0 flex items-center px-4 opacity-70">
-                                <p className="text-xs text-slate-300 font-mono leading-relaxed text-center w-full line-clamp-3">
-                                    {/* Heuristic: Show a slice of text based on progress. 
-                                       Since we don't have exact sentence sync, we estimate window. 
-                                   */}
+                                <p className="text-xs text-slate-300 font-mono leading-relaxed text-center w-full line-clamp-5">
+                                    {/* Priority: Navigation Map > Heuristic */}
                                     {(() => {
                                         if (!text) return "No text loaded";
-                                        const centerIdx = Math.floor(text.length * progress);
-                                        const start = Math.max(0, centerIdx - 50);
-                                        const end = Math.min(text.length, centerIdx + 50);
+
+                                        // 1. Try to find current segment from Navigation Map
+                                        if (navigationMap && navigationMap.length > 0) {
+                                            // Find the segment that starts <= current progress
+                                            // We iterate backwards or findLast to get the closest preceding segment
+                                            // Since map is sorted by progress (usually), we can find the last one that fits.
+                                            let currentSegment = navigationMap[0];
+                                            for (let i = 0; i < navigationMap.length; i++) {
+                                                if (navigationMap[i].progress <= localProgress) {
+                                                    currentSegment = navigationMap[i];
+                                                } else {
+                                                    break;
+                                                }
+                                            }
+
+                                            // If we found a segment, try to show it plus a bit of the next one
+                                            if (currentSegment) {
+                                                // We might want to show a bit of context around the current progress
+                                                // But showing the segment text is safer than raw slicing if we want sentence alignment.
+                                                // However, segments might be short.
+                                                // Let's refine: If we are very close to the next segment, show that too.
+                                                return currentSegment.label;
+                                            }
+                                        }
+
+                                        // 2. Fallback Heuristic (Refined)
+                                        // The offset needs to be dynamic or just better tuned.
+                                        // If 48 was too little (too close), we need to look further ahead.
+                                        // User said "some parts that passed still appear", which means we are showing text BEHIND the focus line.
+                                        // So we need to advance the window forward.
+                                        const offset = 350; // Increased lookahead significantly
+                                        const centerIdx = Math.min(text.length, Math.floor(text.length * localProgress) + offset);
+                                        const start = Math.max(0, centerIdx - 100);
+                                        const end = Math.min(text.length, centerIdx + 100);
                                         return "..." + text.substring(start, end).replace(/\n/g, ' ') + "...";
                                     })()}
                                 </p>
                             </div>
-                            {/* Focus line indicator */}
-                            <div className="absolute inset-x-0 top-1/2 h-[1px] bg-indigo-500/30 w-full"></div>
                         </div>
 
-                        <Trackpad
-                            label={t("remote.touchArea")}
-                            onDelta={actions.handleTrackpadDelta}
-                            onStop={actions.handleTrackpadStop}
-                        />
+                        {/* Dedicated Trackpad Window */}
+                        <div className="mx-6 mb-4 flex-1 min-h-[100px] bg-slate-800/30 rounded-xl border border-white/5 relative overflow-hidden backdrop-blur-sm shadow-inner flex flex-col">
+                            <div className="absolute inset-0 opacity-50 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')]"></div>
+                            <Trackpad
+                                label={t("remote.touchArea")}
+                                onDelta={actions.handleTrackpadDelta}
+                                onStop={actions.handleTrackpadStop}
+                            />
+                        </div>
 
                         <S.ControlsContainer>
                             <div className="flex items-center justify-between px-6 pb-safe gap-6">
@@ -333,13 +400,13 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                         <div className="space-y-3">
                             <div className="text-sm text-slate-400 uppercase tracking-widest font-bold">{t("remote.theme")}</div>
                             <div className="grid grid-cols-3 gap-3">
-                                {(['ninja', 'paper', 'contrast', 'matrix', 'cyber', 'cream'] as Theme[]).map(theme => (
+                                {([Theme.DEFAULT, Theme.PAPER, Theme.CONTRAST, Theme.MATRIX, Theme.CYBER, Theme.CREAM] as Theme[]).map(themeOption => (
                                     <button
-                                        key={theme}
-                                        onClick={() => actions.handleSettingsChange({ theme })}
-                                        className={`p-3 rounded-lg border text-xs font-bold capitalize ${settings.theme === theme ? 'bg-white text-black border-white' : 'bg-slate-900 border-slate-800 text-slate-500'}`}
+                                        key={themeOption}
+                                        onClick={() => actions.handleSettingsChange({ theme: themeOption })}
+                                        className={`p-3 rounded-lg border text-xs font-bold capitalize ${settings.theme === themeOption ? 'bg-white text-black border-white' : 'bg-slate-900 border-slate-800 text-slate-500'}`}
                                     >
-                                        {theme}
+                                        {themeOption === Theme.DEFAULT ? "Ninja" : themeOption}
                                     </button>
                                 ))}
                             </div>

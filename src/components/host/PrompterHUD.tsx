@@ -1,7 +1,7 @@
 import { memo, useState } from "react";
 import * as S from "../ui/Styled";
-import { ConnectionStatus } from "../../types";
-import { PrompterActions, PrompterSettings } from "../../hooks/usePrompterSettings";
+import { ConnectionStatus, PrompterSettings } from "../../types";
+import { PrompterActions } from "../../hooks/usePrompterSettings";
 import { useTranslation } from "../../hooks/useTranslation";
 import { PrompterTimer, SpeedControl, FontControl, DisplayControl, ThemeControl } from "./controls";
 import { QrCodeIcon, InfoIcon, LogOutIcon } from "../ui/Icons";

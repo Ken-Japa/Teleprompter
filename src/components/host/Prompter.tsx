@@ -8,7 +8,7 @@ import React, {
   forwardRef,
   useImperativeHandle,
 } from "react";
-import { ConnectionStatus, PrompterHandle, PrompterSettings } from "../../types";
+import { ConnectionStatus, PrompterHandle, PrompterSettings, NavigationItem } from "../../types";
 import * as S from "../ui/Styled";
 import { useVoiceControl } from "../../hooks/useVoiceControl";
 import { useWakeLock } from "../../hooks/useWakeLock";
@@ -29,6 +29,7 @@ interface PrompterProps {
   externalState: { isPlaying: boolean; speed: number };
   onStateChange: (isPlaying: boolean, speed: number) => void;
   onScrollUpdate: (progress: number) => void;
+  onNavigationMapUpdate?: (map: NavigationItem[]) => void;
   onResetTimer?: () => void;
   settings: PrompterSettings;
   actions: PrompterActions;
@@ -36,7 +37,7 @@ interface PrompterProps {
 
 export const Prompter = memo(
   forwardRef<PrompterHandle, PrompterProps>(
-    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onResetTimer, settings, actions }, ref) => {
+    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions }, ref) => {
 
       // Extracted Settings Logic
       const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical } = settings;
@@ -73,6 +74,7 @@ export const Prompter = memo(
         isVoiceMode,
         speed: externalState.speed,
         activeSentenceIndex,
+        isFlipVertical,
         metricsRef,
         scrollContainerRef,
         onScrollUpdate,
@@ -94,7 +96,7 @@ export const Prompter = memo(
       useImperativeHandle(
         ref,
         () => ({
-          onRemoteScroll: handleRemoteInput,
+          onRemoteScroll: (delta: number, stop: boolean = false, hardStop: boolean = false) => handleRemoteInput(delta, stop, hardStop),
           scrollTo: handleScrollTo,
           reset: resetPrompter,
         }),
@@ -173,6 +175,56 @@ export const Prompter = memo(
         currentActiveElementRef,
       ]);
 
+      // Navigation Map Calculation
+      useEffect(() => {
+        if (!onNavigationMapUpdate || !scrollContainerRef.current || sentences.length === 0) return;
+
+        const calculateMap = () => {
+          const container = scrollContainerRef.current;
+          if (!container) return;
+
+          const maxScroll = container.scrollHeight - container.clientHeight;
+          if (maxScroll <= 0) return;
+
+          const map: NavigationItem[] = [];
+          const containerRect = container.getBoundingClientRect();
+          const centerOffset = container.clientHeight / 2;
+
+          sentences.forEach(s => {
+            const el = document.getElementById(`sentence-${s.id}`);
+            if (el) {
+              const rect = el.getBoundingClientRect();
+              // Calculate scroll position to center this element
+              const elementTopRelative = rect.top - containerRect.top + container.scrollTop;
+              let targetScroll = elementTopRelative - centerOffset + (rect.height / 2);
+
+              // Clamp
+              targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+
+              // Construct label safely
+          const label = s.fragments ? s.fragments.map((f: any) => f.text).join('') : "";
+
+          map.push({
+                id: s.id,
+                label: label,
+                progress: targetScroll / maxScroll
+              });
+            }
+          });
+
+          if (map.length > 0) {
+             onNavigationMapUpdate(map);
+          }
+        };
+
+        // Debounce calculation
+        const timeoutId = setTimeout(() => {
+          requestAnimationFrame(calculateMap);
+        }, 1000); // Give it a second to settle layout
+
+        return () => clearTimeout(timeoutId);
+      }, [sentences, settings.fontSize, settings.margin, settings.isMirrored, settings.isFlipVertical, settings.isUpperCase, onNavigationMapUpdate]);
+
       const containerStyle = useMemo(
         () =>
           ({
@@ -187,7 +239,6 @@ export const Prompter = memo(
           ref={containerRef}
           className={`relative h-screen ${getThemeClass()}`}
           data-theme={theme}
-          {...({ "data-theme": theme } as any)}
           style={containerStyle}
         >
           {theme === "matrix" && (
@@ -210,6 +261,7 @@ export const Prompter = memo(
               style={{
                 paddingLeft: `${margin}%`,
                 paddingRight: `${margin}%`,
+                transform: isFlipVertical ? "scaleY(-1)" : undefined,
               }}
               contentStyle={{
                 paddingTop: '50vh',

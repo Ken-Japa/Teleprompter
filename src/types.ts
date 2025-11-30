@@ -1,33 +1,5 @@
 // --- INFRASTRUCTURE TYPES (Polyfills & External Libs) ---
 
-// Defining specific interfaces for PeerJS instead of using 'any'
-export interface PeerOptions {
- host?: string;
- port?: number;
- path?: string;
- secure?: boolean;
- config?: any;
- debug?: number;
-}
-
-export interface PeerDataConnection {
- open: boolean;
- send: (data: PeerMessage) => void;
- close: () => void;
- on: (event: string, cb: (data: any) => void) => void;
- peer: string;
-}
-
-export interface PeerInstance {
- id: string;
- destroyed: boolean;
- on: (event: string, cb: (data: any) => void) => void;
- connect: (id: string, options?: { reliable?: boolean }) => PeerDataConnection;
- destroy: () => void;
- reconnect: () => void;
- off: (event: string, fn?: Function) => void;
-}
-
 // Polyfill definitions for requestIdleCallback
 type RequestIdleCallbackHandle = number;
 type RequestIdleCallbackOptions = {
@@ -60,7 +32,7 @@ export interface SpeechRecognitionErrorEvent {
 // Global Window Extension
 declare global {
  interface Window {
-  Peer: new (id?: string, options?: PeerOptions) => PeerInstance;
+  // Peer removed as we use the npm package
   QRCode: any;
   NoSleep: any;
   SpeechRecognition: any;
@@ -81,6 +53,11 @@ declare global {
 
 // --- DOMAIN TYPES (App Specific) ---
 
+// Re-export PeerJS types for convenience if needed, or use directly.
+// But since we use them in hooks, we might not need them here unless for other files.
+import { DataConnection } from "peerjs";
+export type PeerDataConnection = DataConnection;
+
 export enum ConnectionStatus {
  DISCONNECTED = "DISCONNECTED",
  CONNECTING = "CONNECTING",
@@ -98,48 +75,62 @@ export enum MessageType {
  RESTART = "RESTART",
  SYNC_STATE = "SYNC_STATE",
  MIRROR_TOGGLE = "MIRROR_TOGGLE",
- FONT_SIZE = "FONT_SIZE",
- // New types
+ FONT_SIZE_UPDATE = "FONT_SIZE_UPDATE", // New
+ MARGIN_UPDATE = "MARGIN_UPDATE", // New
  TEXT_UPDATE = "TEXT_UPDATE",
- SETTINGS_UPDATE = "SETTINGS_UPDATE",
  SCROLL_TO = "SCROLL_TO",
-}
-
-export type Theme = "ninja" | "paper" | "contrast" | "matrix" | "cyber" | "cream";
-
-export interface PrompterSettings {
- fontSize: number;
- margin: number;
- isMirrored: boolean;
- theme: Theme;
- isUpperCase: boolean;
- isFocusMode: boolean;
- isFlipVertical: boolean;
+ SETTINGS_UPDATE = "SETTINGS_UPDATE",
+ TIME_UPDATE = "TIME_UPDATE",
 }
 
 export interface PeerMessage {
  type: MessageType;
  payload?: any;
+ timestamp?: number;
 }
 
-export interface TextFragment {
- text: string;
- type: "normal" | "red" | "yellow" | "green" | "blue";
+export interface NavigationItem {
+ id: string | number;
+ label: string;
+ progress: number; // 0 to 1
 }
 
-export interface Sentence {
- id: number;
- cleanContent: string; // For voice matching (no tags)
- fragments: TextFragment[]; // For display
- startIndex: number;
+export enum Theme {
+ DEFAULT = "default", // Ninja
+ PAPER = "paper",
+ CONTRAST = "contrast",
+ MATRIX = "matrix",
+ CYBER = "cyber",
+ CREAM = "cream",
 }
 
-// Optimization: Added 'hardStop' boolean to distinguish between a Flick (momentum) and a Hold (stop)
-export type RemoteScrollHandler = (delta: number, stop?: boolean, hardStop?: boolean) => void;
+export interface PrompterSettings {
+ fontSize: number;
+ margin: number;
+ // speed removed as it is external state
+ isMirrored: boolean;
+ isUpperCase: boolean;
+ theme: Theme;
+ isFocusMode: boolean;
+ isFlipVertical: boolean;
+}
 
-// React Pattern: Handle for exposing Prompter methods to parent
+export interface RemoteScrollHandler {
+ (deltaY: number, stop?: boolean, hardStop?: boolean): void;
+}
+
 export interface PrompterHandle {
  onRemoteScroll: RemoteScrollHandler;
  scrollTo: (progress: number) => void;
  reset: () => void;
+}
+
+export interface TextFragment {
+ text: string;
+ isHighlight?: boolean;
+}
+
+export interface Sentence {
+ id: string;
+ fragments: TextFragment[];
 }

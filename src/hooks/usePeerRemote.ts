@@ -1,240 +1,193 @@
 import { getP2pErrorMessage } from "../utils/p2pErrorUtils";
 import { useEffect, useRef, useState, useCallback } from "react";
-import { ConnectionStatus, MessageType, PeerDataConnection, PeerMessage } from "../types";
-import { trackSuccessfulConnection, startUsageTracking, stopUsageTracking } from "../utils/analytics";
+import { Peer } from "peerjs";
+import { ConnectionStatus, PeerDataConnection, PeerMessage, MessageType } from "../types";
+import { trackSuccessfulConnection, startUsageTracking } from "../utils/analytics";
 
+/**
+ * Hook customizado para gerenciar a conexão P2P do lado do Controle Remoto.
+ * 
+ * @param hostId ID do Host ao qual se conectar.
+ * @returns Objeto contendo status, mensagem de erro, e funções de gerenciamento.
+ */
 export const usePeerRemote = (hostId: string) => {
- const [status, setStatus] = useState<ConnectionStatus>(ConnectionStatus.DISCONNECTED);
- const [errorMessage, setErrorMessage] = useState<string | null>(null);
- const connRef = useRef<PeerDataConnection | null>(null);
- const peerRef = useRef<any>(null);
- const retryTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
- const mountedRef = useRef<boolean>(true);
+  const [status, setStatus] = useState<ConnectionStatus>(ConnectionStatus.DISCONNECTED);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const connRef = useRef<PeerDataConnection | null>(null);
+  const peerRef = useRef<Peer | null>(null);
+  const retryTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const mountedRef = useRef<boolean>(true);
 
- // Callbacks storage
- const onMessageRef = useRef<((data: PeerMessage) => void) | null>(null);
- const setOnMessage = useCallback((cb: (data: PeerMessage) => void) => {
-  onMessageRef.current = cb;
- }, []);
-
- // Explicit Reconnect Function
- const attemptReconnect = useCallback(() => {
-  if (!peerRef.current || peerRef.current.destroyed) return;
-
-  // If we are disconnected but peer is alive, try to connect to host again
-  if (status === ConnectionStatus.DISCONNECTED || status === ConnectionStatus.ERROR) {
-   console.log("Attempting explicit reconnect...");
-   setStatus(ConnectionStatus.CONNECTING);
-   try {
-    const conn = peerRef.current.connect(hostId, { reliable: true });
-    setupConnection(conn);
-   } catch (e) {
-    console.error("Reconnect failed", e);
-   }
-  }
- }, [hostId, status]);
-
- const setupConnection = (conn: any) => {
-  connRef.current = conn;
-
-  conn.on("open", () => {
-   if (!mountedRef.current) return;
-   setStatus(ConnectionStatus.CONNECTED);
-   setErrorMessage(null); // Clear error on successful connection
-   trackSuccessfulConnection();
-   startUsageTracking();
-  });
-
-  conn.on("data", (data: PeerMessage) => {
-   if (onMessageRef.current) onMessageRef.current(data);
-  });
-
-  conn.on("close", () => {
-   if (!mountedRef.current) return;
-   setStatus(ConnectionStatus.DISCONNECTED);
-   connRef.current = null;
-  });
-
-  conn.on("error", (err: any) => {
-   if (mountedRef.current) {
-    const msg = `Erro na conexão P2P com o host: ${
-     err.message || "Ocorreu um erro inesperado."
-    }. Por favor, tente reconectar.`;
-    console.warn("Connection Error:", err);
-    setErrorMessage(msg);
-    if (status === ConnectionStatus.CONNECTING) {
-     setStatus(ConnectionStatus.ERROR);
-    }
-   }
-  });
- };
-
- const cleanup = useCallback(() => {
-  if (retryTimeoutRef.current) {
-   clearTimeout(retryTimeoutRef.current);
-   retryTimeoutRef.current = null;
-  }
-  if (connRef.current) {
-   try {
-    connRef.current.close();
-   } catch (e) {}
-   connRef.current = null;
-  }
-  if (peerRef.current) {
-   try {
-    peerRef.current.destroy();
-   } catch (e) {}
-   peerRef.current = null;
-  }
- }, []);
-
- useEffect(() => {
-  mountedRef.current = true;
-  let retryCount = 0;
-  const MAX_RETRIES = 15;
+  // Callbacks storage
+  const onMessageRef = useRef<((data: PeerMessage) => void) | null>(null);
+  const setOnMessage = useCallback((cb: (data: PeerMessage) => void) => {
+    onMessageRef.current = cb;
+  }, []);
 
   /**
-   * @function loadPeerJSLibrary
-   * @description Carrega dinamicamente a biblioteca PeerJS.
-   * @returns {Promise<void>} Uma promessa que resolve quando a biblioteca é carregada.
+   * Configura os listeners para uma conexão de dados estabelecida.
+   * @param conn A conexão de dados do PeerJS.
    */
-  const loadPeerJSLibrary = (): Promise<void> => {
-   return new Promise((resolve, reject) => {
-    if (window.Peer) {
-     resolve();
-     return;
-    }
+  const setupConnection = (conn: any) => {
+    connRef.current = conn;
 
-    const script = document.createElement("script");
-    script.src = "https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js";
-    script.async = true;
-    script.onload = () => {
-     console.log("PeerJS library loaded successfully.");
-     resolve();
-    };
-    script.onerror = () => {
-     console.error("Failed to load PeerJS library.");
-     reject(new Error("Failed to load PeerJS library."));
-    };
-    document.head.appendChild(script);
-   });
-  };
-
-  const initRemote = async () => {
-   if (!mountedRef.current) return;
-
-   // Tenta carregar a biblioteca PeerJS
-   try {
-    await loadPeerJSLibrary();
-   } catch (error) {
-    console.error("PeerJS failed to load:", error);
-    setStatus(ConnectionStatus.ERROR);
-    return;
-   }
-
-   // Wait for library load
-   if (!window.Peer) {
-    if (retryCount < MAX_RETRIES) {
-     retryCount++;
-     retryTimeoutRef.current = setTimeout(initRemote, 500);
-     return;
-    }
-    const msg =
-     "Não foi possível carregar a biblioteca de conexão P2P. Verifique sua conexão com a internet ou tente novamente mais tarde.";
-    console.error(msg);
-    setErrorMessage(msg);
-    setStatus(ConnectionStatus.ERROR);
-    return;
-   }
-
-   // Don't re-init if healthy
-   if (peerRef.current && !peerRef.current.destroyed) return;
-
-   try {
-    const peer = new window.Peer(); // Auto-generate ID for remote
-    peerRef.current = peer;
-
-    peer.on("open", () => {
-     if (!mountedRef.current) return;
-     setStatus(ConnectionStatus.CONNECTING);
-
-     const conn = peer.connect(hostId, { reliable: true });
-     setupConnection(conn);
-     retryCount = 0;
+    conn.on("open", () => {
+      if (!mountedRef.current) return;
+      setStatus(ConnectionStatus.CONNECTED);
+      setErrorMessage(null); // Clear error on successful connection
+      trackSuccessfulConnection();
+      startUsageTracking();
     });
 
-    peer.on("error", (err: any) => {
-     const msg = getP2pErrorMessage(err, hostId);
-     console.warn("Peer Error:", err);
-     if (mountedRef.current) {
-      setErrorMessage(msg);
-      if (
-       [
-        "peer-unavailable",
-        "network",
-        "webrtc",
-        "browser-incompatible",
-        "invalid-id",
-        "ssl-unavailable",
-        "server-error",
-       ].includes(err.type)
-      ) {
-       setStatus(ConnectionStatus.ERROR);
-      } else if (err.type === "disconnected") {
-       setStatus(ConnectionStatus.DISCONNECTED);
+    conn.on("data", (data: PeerMessage) => {
+      if (onMessageRef.current) onMessageRef.current(data);
+    });
+
+    conn.on("close", () => {
+      if (!mountedRef.current) return;
+      setStatus(ConnectionStatus.DISCONNECTED);
+      connRef.current = null;
+    });
+
+    conn.on("error", (err: any) => {
+      if (mountedRef.current) {
+        const msg = `Erro na conexão P2P com o host: ${
+          err.message || "Ocorreu um erro inesperado."
+        }. Por favor, tente reconectar.`;
+        console.warn("Connection Error:", err);
+        setErrorMessage(msg);
+        if (status === ConnectionStatus.CONNECTING) {
+          setStatus(ConnectionStatus.ERROR);
+        }
       }
-     }
     });
+  };
 
-    peer.on("disconnected", () => {
-     if (peer && !peer.destroyed && mountedRef.current) {
+  /**
+   * Tenta reconectar explicitamente ao host.
+   * Útil quando a conexão é perdida temporariamente.
+   */
+  const attemptReconnect = useCallback(() => {
+    if (!peerRef.current || peerRef.current.destroyed) return;
+
+    // If we are disconnected but peer is alive, try to connect to host again
+    if (status === ConnectionStatus.DISCONNECTED || status === ConnectionStatus.ERROR) {
+      console.log("Attempting explicit reconnect...");
+      setStatus(ConnectionStatus.CONNECTING);
       try {
-       peer.reconnect();
-      } catch (e) {}
-     }
-     setErrorMessage(getP2pErrorMessage({ type: "disconnected" }, hostId));
-    });
-   } catch (e) {
-    console.error("Remote Init Error", e);
-    if (mountedRef.current) setStatus(ConnectionStatus.ERROR);
-   }
-  };
-
-  initRemote();
-
-  return () => {
-   mountedRef.current = false;
-   cleanup();
-   stopUsageTracking();
-  };
- }, [hostId, cleanup]);
-
- const sendMessage = useCallback((type: MessageType, payload?: any) => {
-  if (connRef.current && connRef.current.open) {
-   try {
-    connRef.current.send({ type, payload });
-   } catch (e) {
-    console.warn("Failed to send message", e);
-   }
-  }
- }, []);
-
- // Mobile Resilience: Auto-reconnect on visibility change
- useEffect(() => {
-  const handleVisibilityChange = () => {
-   if (document.visibilityState === "visible") {
-    if (status === ConnectionStatus.DISCONNECTED && peerRef.current && !peerRef.current.destroyed) {
-     attemptReconnect();
-    } else if (!peerRef.current || peerRef.current.destroyed) {
-     // Full reload if peer died
-     // Not ideal, but sometimes necessary on iOS
+        const conn = peerRef.current.connect(hostId, { reliable: true });
+        setupConnection(conn);
+      } catch (e) {
+        console.error("Reconnect failed", e);
+      }
     }
-   }
-  };
+  }, [hostId, status]);
 
-  document.addEventListener("visibilitychange", handleVisibilityChange);
-  return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
- }, [status, attemptReconnect]);
+  /**
+   * Envia uma mensagem para o host.
+   * @param type Tipo da mensagem (MessageType)
+   * @param payload Dados da mensagem
+   */
+  const sendMessage = useCallback((type: MessageType, payload?: any) => {
+    if (connRef.current && connRef.current.open) {
+      const msg: PeerMessage = { type, payload, timestamp: Date.now() };
+      try {
+        connRef.current.send(msg);
+      } catch (e) {
+        console.warn("Failed to send message to host", e);
+      }
+    }
+  }, []);
 
- return { status, sendMessage, setOnMessage, errorMessage };
+  /**
+   * Limpa recursos (timeouts, conexões e instância do Peer).
+   */
+  const cleanup = useCallback(() => {
+    if (retryTimeoutRef.current) {
+      clearTimeout(retryTimeoutRef.current);
+      retryTimeoutRef.current = null;
+    }
+    if (connRef.current) {
+      try {
+        connRef.current.close();
+      } catch (e) {}
+      connRef.current = null;
+    }
+    if (peerRef.current) {
+      try {
+        peerRef.current.destroy();
+      } catch (e) {}
+      peerRef.current = null;
+    }
+  }, []);
+
+  useEffect(() => {
+    mountedRef.current = true;
+    let retryCount = 0;
+
+    const initRemote = async () => {
+      if (!mountedRef.current) return;
+
+      // Don't re-init if healthy
+      if (peerRef.current && !peerRef.current.destroyed) return;
+
+      try {
+        const peer = new Peer(); // Auto-generate ID for remote
+        peerRef.current = peer;
+
+        peer.on("open", () => {
+          if (!mountedRef.current) return;
+          setStatus(ConnectionStatus.CONNECTING);
+
+          const conn = peer.connect(hostId, { reliable: true });
+          setupConnection(conn);
+          retryCount = 0;
+        });
+
+        peer.on("error", (err: any) => {
+          const msg = getP2pErrorMessage(err, hostId);
+          console.warn("Peer Error:", err);
+          if (mountedRef.current) {
+            setErrorMessage(msg);
+            if (
+              [
+                "peer-unavailable",
+                "network",
+                "webrtc",
+                "browser-incompatible",
+                "invalid-id",
+                "ssl-unavailable",
+                "server-error",
+              ].includes(err.type)
+            ) {
+              setStatus(ConnectionStatus.ERROR);
+            } else if (err.type === "disconnected") {
+              setStatus(ConnectionStatus.DISCONNECTED);
+            }
+          }
+        });
+
+        peer.on("disconnected", () => {
+          if (peer && !peer.destroyed && mountedRef.current) {
+            try {
+              peer.reconnect();
+            } catch (e) {}
+          }
+          setErrorMessage(getP2pErrorMessage({ type: "disconnected" }, hostId));
+        });
+      } catch (e) {
+        console.error("Remote Init Error", e);
+        if (mountedRef.current) setStatus(ConnectionStatus.ERROR);
+      }
+    };
+
+    initRemote();
+
+    return () => {
+      mountedRef.current = false;
+      cleanup();
+    };
+  }, [hostId, cleanup]);
+
+  return { status, errorMessage, attemptReconnect, setOnMessage, sendMessage };
 };

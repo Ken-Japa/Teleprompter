@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { ConnectionStatus, MessageType, PeerMessage, PrompterSettings } from "../types";
+import { ConnectionStatus, MessageType, PeerMessage, PrompterSettings, NavigationItem } from "../types";
 import { usePeerRemote } from "./usePeerRemote";
 import { useWakeLock } from "./useWakeLock";
 
@@ -13,6 +13,7 @@ export const useRemoteController = (hostId: string) => {
  const [settings, setSettings] = useState<PrompterSettings | null>(null);
   const [text, setText] = useState<string>("");
   const [elapsedTime, setElapsedTime] = useState<number>(0);
+  const [navigationMap, setNavigationMap] = useState<NavigationItem[]>([]);
 
   // Timer Logic (Local Approximation)
   useEffect(() => {
@@ -57,6 +58,10 @@ export const useRemoteController = (hostId: string) => {
     if (data.payload.settings) setSettings(data.payload.settings);
     if (data.payload.text !== undefined) setText(data.payload.text);
     if (data.payload.elapsedTime !== undefined) setElapsedTime(data.payload.elapsedTime);
+    if (data.payload.navigationMap !== undefined) setNavigationMap(data.payload.navigationMap);
+   }
+   if (data.type === MessageType.TIME_UPDATE) {
+    setElapsedTime(data.payload.elapsedTime);
    }
    if (data.type === MessageType.SCROLL_SYNC) {
     setProgress(data.payload.progress);
@@ -116,6 +121,7 @@ export const useRemoteController = (hostId: string) => {
  const handleStop = useCallback(() => {
     setIsPlaying(false);
     setElapsedTime(0);
+    setProgress(0); // Explicitly reset local progress
     sendMessage(MessageType.RESTART);
     vibrate(50);
  }, [sendMessage, vibrate]);
@@ -167,6 +173,7 @@ export const useRemoteController = (hostId: string) => {
    settings,
    text,
    elapsedTime,
+   navigationMap,
   },
   actions: {
    handleSpeedChange,

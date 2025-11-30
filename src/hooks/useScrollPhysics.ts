@@ -1,11 +1,11 @@
 import { useEffect, useRef, useCallback } from "react";
-import { RemoteScrollHandler } from "../types";
 
 interface PhysicsParams {
  isPlaying: boolean;
  isVoiceMode: boolean;
  speed: number;
  activeSentenceIndex: number;
+ isFlipVertical?: boolean; // Add this prop
  metricsRef: React.MutableRefObject<{
   scrollHeight: number;
   clientHeight: number;
@@ -15,11 +15,18 @@ interface PhysicsParams {
  onAutoStop: () => void;
 }
 
+/**
+ * Hook responsável pela física de rolagem do prompter.
+ * Gerencia auto-scroll, inércia, rolagem manual e controle por voz.
+ *
+ * @param params Parâmetros de configuração da física.
+ */
 export const useScrollPhysics = ({
  isPlaying,
  isVoiceMode,
  speed,
  activeSentenceIndex,
+ isFlipVertical,
  metricsRef,
  scrollContainerRef,
  onScrollUpdate,
@@ -31,14 +38,32 @@ export const useScrollPhysics = ({
  const internalScrollPos = useRef<number>(0);
  const lastFrameTimeRef = useRef<number>(0);
  const animationFrameRef = useRef<number | null>(null);
- const lastSyncTimeRef = useRef<number>(0);
  const isSleepingRef = useRef<boolean>(true);
  const retryTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+ // Refs for Mutable State (to avoid loop recreation)
+ const isPlayingRef = useRef(isPlaying);
+ const isVoiceModeRef = useRef(isVoiceMode);
+ const activeSentenceIndexRef = useRef(activeSentenceIndex);
+ const isFlipVerticalRef = useRef(isFlipVertical);
+
+ // Update Refs
+ useEffect(() => {
+  isPlayingRef.current = isPlaying;
+ }, [isPlaying]);
+ useEffect(() => {
+  isVoiceModeRef.current = isVoiceMode;
+ }, [isVoiceMode]);
+ useEffect(() => {
+  activeSentenceIndexRef.current = activeSentenceIndex;
+ }, [activeSentenceIndex]);
+ useEffect(() => {
+  isFlipVerticalRef.current = isFlipVertical;
+ }, [isFlipVertical]);
 
  // Interaction Flags
  const isUserTouchingRef = useRef<boolean>(false);
  const isManualScrollingRef = useRef<boolean>(false);
- const manualScrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
  const isHardStopRequestedRef = useRef<boolean>(false);
 
  // Voice Logic Refs
@@ -48,27 +73,32 @@ export const useScrollPhysics = ({
 
  // Update Velocity Cache when speed changes
  useEffect(() => {
+  // Fórmula empírica para velocidade confortável
   velocityCacheRef.current = Math.pow(speed, 1.4) * 40;
  }, [speed]);
 
- // The Main Loop definition
+ /**
+  * Loop principal de física (Game Loop pattern).
+  * Executado a cada frame via requestAnimationFrame.
+  */
  const loop = useCallback(
   (timestamp: number) => {
+   const _isPlaying = isPlayingRef.current;
+   const _isVoiceMode = isVoiceModeRef.current;
+   const _activeSentenceIndex = activeSentenceIndexRef.current;
+
    if (!scrollContainerRef.current) {
-    // If playing but ref not ready, retry with a small delay to allow mounting
-    if (isPlaying || (isVoiceMode && activeSentenceIndex !== -1)) {
-      if (!retryTimeoutRef.current) {
-         // Use a timeout to avoid spamming RAF if the DOM is taking time
-         retryTimeoutRef.current = setTimeout(() => {
-            retryTimeoutRef.current = null;
-            wakeUpLoop();
-         }, 100);
-      }
-      // Mark animation frame as null so we know we aren't in a RAF loop
-      animationFrameRef.current = null;
-      // Ensure loop is considered sleeping so wakeUpLoop can restart it
-      isSleepingRef.current = true;
-      return;
+    // Se estiver tocando e o container não estiver pronto, tenta novamente em breve
+    if (_isPlaying || (_isVoiceMode && _activeSentenceIndex !== -1)) {
+     if (!retryTimeoutRef.current) {
+      retryTimeoutRef.current = setTimeout(() => {
+       retryTimeoutRef.current = null;
+       wakeUpLoop();
+      }, 100);
+     }
+     animationFrameRef.current = null;
+     isSleepingRef.current = true;
+     return;
     }
     animationFrameRef.current = null;
     isSleepingRef.current = true;
@@ -76,7 +106,7 @@ export const useScrollPhysics = ({
    }
 
    if (!lastFrameTimeRef.current) lastFrameTimeRef.current = timestamp;
-   const deltaTime = Math.min(timestamp - lastFrameTimeRef.current, 64);
+   const deltaTime = Math.min(timestamp - lastFrameTimeRef.current, 64); // Cap delta time
    lastFrameTimeRef.current = timestamp;
    const timeScale = deltaTime / 16.67;
 
@@ -93,88 +123,62 @@ export const useScrollPhysics = ({
 
    // 2. Auto Scroll
    if (
-    isPlaying &&
+    _isPlaying &&
     !isUserTouchingRef.current &&
     !isManualScrollingRef.current &&
     Math.abs(momentumRef.current) < 0.5
    ) {
-    // Only attempt to scroll or auto-stop if content is larger than the viewport
     if (metrics.scrollHeight > metrics.clientHeight) {
      const moveAmount = (velocityCacheRef.current * deltaTime) / 1000;
-
-     // Debug Log (throttle or conditional)
-     if (Math.random() < 0.01) {
-      console.log("Physics Loop Active", {
-       speed,
-       velocity: velocityCacheRef.current,
-       deltaTime,
-       moveAmount,
-       pos: internalScrollPos.current,
-       metrics,
-      });
-     }
 
      if (internalScrollPos.current + metrics.clientHeight < metrics.scrollHeight - 2) {
       deltaScroll += moveAmount;
      } else {
-      console.warn("AutoStop Triggered by Physics Engine", {
-       internalScrollPos: internalScrollPos.current,
-       clientHeight: metrics.clientHeight,
-       scrollHeight: metrics.scrollHeight,
-       sum: internalScrollPos.current + metrics.clientHeight,
-       diff: metrics.scrollHeight - (internalScrollPos.current + metrics.clientHeight),
-      });
+      // Fim do conteúdo atingido
       onAutoStop();
      }
     } else {
-        // If playing but metrics are invalid (loading?), don't sleep yet.
-        // Force a re-loop to check again in next frame/soon
-        // This prevents the engine from stalling during initial load/resize
-        if (isPlaying) {
-            // Don't accumulate delta, just keep loop alive
-             // But maybe throttle it to avoid high CPU when idle?
-             // Actually, RAF is fine. Just ensure we don't exit below.
-             isSleepingRef.current = false; 
-             // We don't return here, we fall through.
-             // But we must ensure 'isMoving' or 'hasMomentum' doesn't kill it.
-        }
+     // Conteúdo menor que a tela, mantém o loop vivo se necessário
+     if (_isPlaying) {
+      isSleepingRef.current = false;
+     }
     }
    }
 
-   // 3. Momentum
+   // 3. Momentum (Inércia)
    if (Math.abs(momentumRef.current) > 0.01) {
     deltaScroll += momentumRef.current * timeScale;
     if (!isUserTouchingRef.current) {
-     momentumRef.current *= Math.pow(0.95, timeScale); // Glide
+     momentumRef.current *= Math.pow(0.95, timeScale); // Desaceleração natural
     } else {
-     momentumRef.current *= 0.8; // Friction
+     momentumRef.current *= 0.8; // Fricção ao tocar
     }
    } else if (!isUserTouchingRef.current) {
     momentumRef.current = 0;
    }
 
-   // 4. Voice
+   // 4. Voice Control Scroll
    if (
-    isVoiceMode &&
-    activeSentenceIndex !== -1 &&
-    !isPlaying &&
+    _isVoiceMode &&
+    _activeSentenceIndex !== -1 &&
+    !_isPlaying &&
     !isUserTouchingRef.current &&
     !isManualScrollingRef.current
    ) {
-    if (activeSentenceIndex !== lastVoiceIndexRef.current) {
-     const activeEl = document.getElementById(`sentence-${activeSentenceIndex}`);
+    if (_activeSentenceIndex !== lastVoiceIndexRef.current) {
+     const activeEl = document.getElementById(`sentence-${_activeSentenceIndex}`);
      if (activeEl) {
       currentActiveElementRef.current = activeEl;
       targetVoiceScrollRef.current =
        activeEl.offsetTop - metrics.clientHeight / 2 + activeEl.clientHeight / 2;
      }
-     lastVoiceIndexRef.current = activeSentenceIndex;
+     lastVoiceIndexRef.current = _activeSentenceIndex;
     }
 
     if (targetVoiceScrollRef.current !== null) {
      const diff = targetVoiceScrollRef.current - internalScrollPos.current;
      if (Math.abs(diff) > 1) {
-      deltaScroll += diff * (0.05 * timeScale);
+      deltaScroll += diff * (0.05 * timeScale); // Suavização (Lerp)
      }
     }
    }
@@ -183,10 +187,9 @@ export const useScrollPhysics = ({
 
    const isMoving = Math.abs(deltaScroll) > 0.01;
    const hasMomentum = Math.abs(momentumRef.current) > 0.01;
-   // Force awake if playing, even if not moving (waiting for metrics)
-   const shouldStayAwake = isPlaying; 
+   const shouldStayAwake = _isPlaying;
 
-   // IDLE CHECK: If not playing, no momentum, not voice moving, and not touching -> Sleep
+   // Verifica se pode dormir para economizar CPU
    if (
     !shouldStayAwake &&
     !hasMomentum &&
@@ -194,24 +197,25 @@ export const useScrollPhysics = ({
     !isUserTouchingRef.current &&
     !isManualScrollingRef.current
    ) {
-    // Check voice stability
     const voiceStable =
-     !isVoiceMode ||
+     !_isVoiceMode ||
      targetVoiceScrollRef.current === null ||
-     Math.abs(targetVoiceScrollRef.current - internalScrollPos.current) < 1;
+     Math.abs((targetVoiceScrollRef.current || 0) - internalScrollPos.current) < 1;
 
     if (voiceStable) {
      isSleepingRef.current = true;
      animationFrameRef.current = null;
-     return; // STOP LOOP
+     lastFrameTimeRef.current = 0;
+     return; // Encerra o loop
     }
    }
 
-   if (isMoving && !isManualScrollingRef.current) {
+   // Aplica o movimento
+   if (isMoving && scrollContainerRef.current) {
     internalScrollPos.current += deltaScroll;
-    const maxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
 
-    // Bounds clamping
+    // Clamp bounds
+    const maxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
     if (internalScrollPos.current < 0) {
      internalScrollPos.current = 0;
      momentumRef.current = 0;
@@ -221,122 +225,97 @@ export const useScrollPhysics = ({
     }
 
     scrollContainerRef.current.scrollTop = internalScrollPos.current;
+
+    // Reporta progresso (0 a 1)
+    const progress = maxScroll > 0 ? internalScrollPos.current / maxScroll : 0;
+    onScrollUpdate(Math.min(1, Math.max(0, progress)));
    }
 
-   // Sync Broadcast
-   const now = Date.now();
-   if (now - lastSyncTimeRef.current > 200) {
-    const maxScroll = Math.max(1, metrics.scrollHeight - metrics.clientHeight);
-    onScrollUpdate(internalScrollPos.current / maxScroll);
-    lastSyncTimeRef.current = now;
-   }
-
-   // Critical: Always use ref to latest loop to prevent stale closures while keeping stable rAF reference
-   animationFrameRef.current = requestAnimationFrame((t) => loopRef.current(t));
+   // Agenda o próximo frame
+   animationFrameRef.current = requestAnimationFrame(loop);
   },
-  [isPlaying, isVoiceMode, activeSentenceIndex, metricsRef, onAutoStop, onScrollUpdate]
+  [metricsRef, scrollContainerRef, onAutoStop, onScrollUpdate]
  );
 
- // Store latest loop in ref
- const loopRef = useRef(loop);
- useEffect(() => {
-  loopRef.current = loop;
- }, [loop]);
-
- // Internal loop starter
+ /**
+  * Acorda o loop de física se estiver dormindo.
+  */
  const wakeUpLoop = useCallback(() => {
   if (isSleepingRef.current) {
    isSleepingRef.current = false;
-   lastFrameTimeRef.current = 0; // Reset delta timer
-   if (!animationFrameRef.current) {
-    animationFrameRef.current = requestAnimationFrame((t) => loopRef.current(t));
-   }
+   lastFrameTimeRef.current = 0;
+   animationFrameRef.current = requestAnimationFrame(loop);
   }
+ }, [loop]);
+
+ // Start/Stop loop based on state
+ useEffect(() => {
+  if (isPlaying || (isVoiceMode && activeSentenceIndex !== -1)) {
+   wakeUpLoop();
+  }
+ }, [isPlaying, isVoiceMode, activeSentenceIndex, wakeUpLoop]);
+
+ // Cleanup
+ useEffect(() => {
+  return () => {
+   if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+   if (retryTimeoutRef.current) clearTimeout(retryTimeoutRef.current);
+  };
  }, []);
 
- // The Input Handler to be exposed
- const handleRemoteInput: RemoteScrollHandler = useCallback(
-  (delta, stop = false, hardStop = false) => {
+ // --- PUBLIC HANDLERS ---
+
+ const handleNativeScroll = useCallback(() => {
+  if (!scrollContainerRef.current || isPlayingRef.current || isVoiceModeRef.current) return;
+  // Sync internal state with native scroll (e.g. user dragged scrollbar)
+  internalScrollPos.current = scrollContainerRef.current.scrollTop;
+ }, [scrollContainerRef]);
+
+ const handleRemoteInput = useCallback(
+  (deltaY: number, stop: boolean = false, hardStop: boolean = false) => {
    if (stop) {
-    isUserTouchingRef.current = false;
+    // Se for stop, zera momentum ou faz hard stop
     if (hardStop) {
+     momentumRef.current = 0;
      isHardStopRequestedRef.current = true;
+    } else {
+     // Soft stop (lift finger) - keep some inertia or just standard decay
+     // momentumRef.current is handled in loop
     }
    } else {
-    momentumRef.current = delta;
-    isUserTouchingRef.current = true;
-    isHardStopRequestedRef.current = false;
+    // If flipped vertically, invert delta
+    const effectiveDelta = isFlipVerticalRef.current ? -deltaY : deltaY;
+    momentumRef.current += effectiveDelta * 2; // Sensibilidade remota
    }
-   wakeUpLoop(); // Input received, wake up
+   wakeUpLoop();
   },
   [wakeUpLoop]
  );
 
- // Handle Scroll To (0-1)
  const handleScrollTo = useCallback(
   (progress: number) => {
-   if (scrollContainerRef.current && metricsRef.current) {
-    const metrics = metricsRef.current;
-    const maxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
-    const newPos = Math.max(0, Math.min(maxScroll, maxScroll * progress));
-
-    internalScrollPos.current = newPos;
-    if (scrollContainerRef.current) {
-     scrollContainerRef.current.scrollTop = newPos;
-    }
-    wakeUpLoop();
-   }
+   if (!scrollContainerRef.current) return;
+   const metrics = metricsRef.current;
+   const maxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
+   // Progress is 0-1
+   const newPos = Math.min(Math.max(progress, 0), 1) * maxScroll;
+   internalScrollPos.current = newPos;
+   scrollContainerRef.current.scrollTop = newPos;
+   wakeUpLoop(); // Ensure physics knows about the change (though it might settle immediately)
   },
-  [scrollContainerRef, metricsRef, wakeUpLoop]
+  [metricsRef, scrollContainerRef, wakeUpLoop]
  );
-
- // Handle Native Scroll
- const handleNativeScroll = useCallback(() => {
-  if (scrollContainerRef.current) {
-   internalScrollPos.current = scrollContainerRef.current.scrollTop;
-   isManualScrollingRef.current = true;
-
-   if (manualScrollTimeoutRef.current) clearTimeout(manualScrollTimeoutRef.current);
-   manualScrollTimeoutRef.current = setTimeout(() => {
-    isManualScrollingRef.current = false;
-   }, 100);
-
-   wakeUpLoop(); // Wake up to process visual sync if needed
-  }
- }, [scrollContainerRef, wakeUpLoop]);
 
  const resetPhysics = useCallback(() => {
   internalScrollPos.current = 0;
   momentumRef.current = 0;
   targetVoiceScrollRef.current = null;
-  if (scrollContainerRef.current) scrollContainerRef.current.scrollTop = 0;
-  onScrollUpdate(0);
- }, [scrollContainerRef, onScrollUpdate]);
-
-  // Wake up when external triggers happen
-  useEffect(() => {
-    if (isPlaying || (isVoiceMode && activeSentenceIndex !== -1)) {
-      // Ensure physics state matches playing state immediately
-      wakeUpLoop();
-    }
-  }, [isPlaying, isVoiceMode, activeSentenceIndex, wakeUpLoop]);
-
-  // Mount check for auto-start
-  useEffect(() => {
-    if (isPlaying) {
-      // Force a wake up after a short delay to ensure DOM is ready
-      const t = setTimeout(wakeUpLoop, 150);
-      return () => clearTimeout(t);
-    }
-  }, []); // Only on mount
-
-  // Stop loop on unmount
-  useEffect(() => {
-    return () => {
-      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
-      if (retryTimeoutRef.current) clearTimeout(retryTimeoutRef.current);
-    };
-  }, []);
+  lastVoiceIndexRef.current = -1;
+  isHardStopRequestedRef.current = true;
+  if (scrollContainerRef.current) {
+   scrollContainerRef.current.scrollTop = 0;
+  }
+ }, [scrollContainerRef]);
 
  return {
   handleNativeScroll,
