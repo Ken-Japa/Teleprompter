@@ -54,7 +54,7 @@ export const useScrollPhysics = ({
  useEffect(() => {
   isPlayingRef.current = isPlaying;
   if (!isPlaying) {
-      momentumRef.current = 0; // Instant stop when paused
+   momentumRef.current = 0; // Instant stop when paused
   }
  }, [isPlaying]);
  useEffect(() => {
@@ -186,22 +186,21 @@ export const useScrollPhysics = ({
 
     // Calculate target continuously based on progress
     if (currentActiveElementRef.current) {
-      const activeEl = currentActiveElementRef.current;
-      // Calculate offset based on progress (0.0 to 1.0)
-      // This aligns the "current reading line" to the center of the viewport
-      const readingLineOffset = activeEl.clientHeight * _voiceProgress;
-      
-      // OPTIMIZATION: Adjusted target to be 35% from top instead of 50% (Center)
-      // This provides more "Lookahead" so the user can see the next sentence comfortably
-      targetVoiceScrollRef.current =
-       activeEl.offsetTop + readingLineOffset - metrics.clientHeight * 0.35;
+     const activeEl = currentActiveElementRef.current;
+     // Calculate offset based on progress (0.0 to 1.0)
+     // This aligns the "current reading line" to the center of the viewport
+     const readingLineOffset = activeEl.clientHeight * _voiceProgress;
+
+     // OPTIMIZATION: Adjusted target to be 35% from top instead of 50% (Center)
+     // This provides more "Lookahead" so the user can see the next sentence comfortably
+     targetVoiceScrollRef.current = activeEl.offsetTop + readingLineOffset - metrics.clientHeight * 0.2;
     }
 
     if (targetVoiceScrollRef.current !== null) {
      const diff = targetVoiceScrollRef.current - internalScrollPos.current;
      if (Math.abs(diff) > 1) {
       // Increased Lerp speed from 0.05 to 0.12 for better responsiveness
-      deltaScroll += diff * (0.12 * timeScale); 
+      deltaScroll += diff * (0.16 * timeScale);
      }
     }
    }
