@@ -95,20 +95,31 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
      .replace(/\s+/g, " ")
      .trim();
 
+   // Debug: Trace what is happening
+   console.log(`[Voice] Heard: "${cleanTranscript}"`);
+
    // Increased min length to 4 to avoid false positives with common short words (que, de, para, etc)
-   if (cleanTranscript.length < 4) return;
+   if (cleanTranscript.length < 4) {
+       console.log(`[Voice] Ignored (too short)`);
+       return;
+   }
 
    let absoluteIndex = fullCleanText.indexOf(cleanTranscript, lastMatchIndexRef.current);
+   console.log(`[Voice] Search from ${lastMatchIndexRef.current}: Found at ${absoluteIndex}`);
    
    if (absoluteIndex === -1 && lastMatchIndexRef.current > 0) {
     // Fallback: search from beginning if we lost track
     const candidateIndex = fullCleanText.indexOf(cleanTranscript, 0);
+    console.log(`[Voice] Fallback search: Found at ${candidateIndex}`);
     
     // Safety check: Only jump back to beginning if it's not a "huge" jump backwards
     // This prevents jumping to top when user says a common word that appears at start
     // We allow jumping back up to 200 characters (re-reading a recent sentence)
     if (candidateIndex !== -1 && (lastMatchIndexRef.current - candidateIndex) < 200) {
         absoluteIndex = candidateIndex;
+        console.log(`[Voice] Fallback accepted`);
+    } else {
+        console.log(`[Voice] Fallback rejected (too far back)`);
     }
    }
 
@@ -116,8 +127,11 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
     lastMatchIndexRef.current = absoluteIndex;
     if (absoluteIndex < charToSentenceMap.length) {
      const sentenceId = charToSentenceMap[absoluteIndex];
+     console.log(`[Voice] Matched Sentence ID: ${sentenceId}`);
      setActiveSentenceIndex(sentenceId);
     }
+   } else {
+       console.log(`[Voice] No match found`);
    }
   };
 
