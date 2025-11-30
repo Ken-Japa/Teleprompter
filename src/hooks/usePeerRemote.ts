@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { Peer } from "peerjs";
 import { ConnectionStatus, PeerDataConnection, PeerMessage, MessageType } from "../types";
 import { trackSuccessfulConnection, startUsageTracking } from "../utils/analytics";
+import { PEER_CONFIG } from "../utils/peerConfig";
 
 /**
  * Hook customizado para gerenciar a conexão P2P do lado do Controle Remoto.
@@ -132,7 +133,7 @@ export const usePeerRemote = (hostId: string) => {
       if (peerRef.current && !peerRef.current.destroyed) return;
 
       try {
-        const peer = new Peer(); // Auto-generate ID for remote
+        const peer = new Peer(PEER_CONFIG); // Auto-generate ID for remote
         peerRef.current = peer;
 
         peer.on("open", () => {

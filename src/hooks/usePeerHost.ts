@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { Peer } from "peerjs";
 import { ConnectionStatus, PeerMessage, MessageType } from "../types";
 import { trackSuccessfulConnection, startUsageTracking } from "../utils/analytics";
+import { PEER_CONFIG } from "../utils/peerConfig";
 
 /**
  * Hook customizado para gerenciar a conexão P2P do lado do Host (quem controla o prompter).
@@ -103,7 +104,7 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
 
    try {
     // Initialize Peer with default config (Cloud Server)
-    const peer = new Peer();
+    const peer = new Peer(PEER_CONFIG);
     peerRef.current = peer;
 
     peer.on("open", (id: string) => {
