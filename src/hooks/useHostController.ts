@@ -139,6 +139,7 @@ export const useHostController = () => {
  const [unlockKey, setUnlockKey] = useState<string>("");
  const [paywallErrorMessage, setPaywallErrorMessage] = useState<string | null>(null);
  const [showCountdownModal, setShowCountdownModal] = useState<boolean>(false);
+ const [isValidating, setIsValidating] = useState<boolean>(false);
 
  // Pause playback if Paywall triggers
  useEffect(() => {
@@ -187,7 +188,7 @@ export const useHostController = () => {
   [setSpeed]
  );
 
- const handleUnlock = () => {
+ const handleUnlock = async () => {
   setPaywallErrorMessage(null); // Clear previous errors
 
   if (!unlockKey) {
@@ -195,12 +196,17 @@ export const useHostController = () => {
    return;
   }
 
-  if (!unlockPro(unlockKey)) {
-   setPaywallErrorMessage(t("host.paywall.invalidKey"));
-   return;
+  setIsValidating(true);
+  try {
+   const result = await unlockPro(unlockKey);
+   if (!result.success) {
+    setPaywallErrorMessage(result.message || t("host.paywall.invalidKey"));
+   } else {
+    setUnlockKey("");
+   }
+  } finally {
+   setIsValidating(false);
   }
-
-  setUnlockKey("");
  };
 
  const handleClosePaywall = () => {
@@ -246,6 +252,7 @@ export const useHostController = () => {
    paywallErrorMessage,
    showCountdownModal,
    prompterSettings,
+   isValidating,
   },
   actions: {
    setText,

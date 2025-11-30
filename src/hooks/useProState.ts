@@ -48,15 +48,30 @@ export const useProState = (isPlaying: boolean) => {
   };
  }, [isPro, showPaywall, isPlaying]);
 
- const unlockPro = (key: string): boolean => {
-  if (key === "PRO-NINJA-2025") {
-   setIsPro(true);
-   setShowPaywall(false);
-   localStorage.setItem("promptninja_pro", "true");
-   if (timerRef.current) clearTimeout(timerRef.current);
-   return true;
+ const unlockPro = async (key: string): Promise<{ success: boolean; message?: string }> => {
+  try {
+   // Call the serverless function
+   const response = await fetch("/api/validate-key", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ key }),
+   });
+
+   const data = await response.json();
+
+   if (data.success) {
+    setIsPro(true);
+    setShowPaywall(false);
+    localStorage.setItem("promptninja_pro", "true");
+    if (timerRef.current) clearTimeout(timerRef.current);
+    return { success: true };
+   } else {
+    return { success: false, message: data.message || "Chave inválida ou já utilizada." };
+   }
+  } catch (error) {
+   console.error("Erro na validação:", error);
+   return { success: false, message: "Erro de conexão. Tente novamente." };
   }
-  return false;
  };
 
  return {
