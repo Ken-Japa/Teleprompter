@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
+import { PROMPTER_DEFAULTS } from "../config/constants";
 
 export const useProState = (isPlaying: boolean) => {
- const [isPro, setIsPro] = useState<boolean>(() => localStorage.getItem("promptninja_pro") === "true");
+ const [isPro, setIsPro] = useState<boolean>(() => localStorage.getItem(PROMPTER_DEFAULTS.STORAGE_KEYS.PRO_STATUS) === "true");
  const [showPaywall, setShowPaywall] = useState<boolean>(false);
 
  // Use refs to track timing without triggering re-renders
@@ -12,7 +13,7 @@ export const useProState = (isPlaying: boolean) => {
   window.togglePro = () => {
    const newState = !isPro;
    setIsPro(newState);
-   localStorage.setItem("promptninja_pro", String(newState));
+   localStorage.setItem(PROMPTER_DEFAULTS.STORAGE_KEYS.PRO_STATUS, String(newState));
    window.location.reload();
   };
   window.showPaywallModal = () => {
@@ -62,7 +63,7 @@ export const useProState = (isPlaying: boolean) => {
    if (data.success) {
     setIsPro(true);
     setShowPaywall(false);
-    localStorage.setItem("promptninja_pro", "true");
+    localStorage.setItem(PROMPTER_DEFAULTS.STORAGE_KEYS.PRO_STATUS, "true");
     if (timerRef.current) clearTimeout(timerRef.current);
     return { success: true };
    } else {

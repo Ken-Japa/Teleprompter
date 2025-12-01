@@ -117,10 +117,10 @@ export const ConnectSidebar: React.FC<ConnectSidebarProps> = memo(({ peerId, sta
                             ID: {peerId}
                         </div>
                         <S.ActionButtonsGrid>
-                            <button
+                            <S.SecondaryButton
                                 onClick={copyLink}
-                                className="flex items-center justify-center py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold rounded-lg border border-slate-700 transition"
-                                aria-label="Copy Link"
+                                size="sm"
+                                className="w-full"
                             >
                                 {copied ? (
                                     <CheckCircleIcon className="w-3 h-3 mr-1 text-emerald-400" />
@@ -128,14 +128,14 @@ export const ConnectSidebar: React.FC<ConnectSidebarProps> = memo(({ peerId, sta
                                     <CopyIcon className="w-3 h-3 mr-1" />
                                 )}
                                 {copied ? t("host.linkCopied") : t("host.copyLink")}
-                            </button>
-                            <button
+                            </S.SecondaryButton>
+                            <S.GhostButton
                                 onClick={() => window.open(`${window.location.pathname}#remote?id=${peerId}`, "_blank")}
-                                className="py-2 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 text-xs font-bold rounded-lg border border-indigo-500/30 transition"
-                                aria-label="Open Remote in New Tab"
+                                size="sm"
+                                className="w-full text-indigo-400 hover:bg-indigo-500/10 border-indigo-500/20"
                             >
                                 {t("host.openRemoteTab")}
-                            </button>
+                            </S.GhostButton>
                         </S.ActionButtonsGrid>
                     </div>
                 )}

@@ -16,13 +16,14 @@ export const PROMPTER_DEFAULTS = {
   IS_FLIP_VERTICAL: false,
   // LocalStorage Keys
   STORAGE_KEYS: {
-    FONT_SIZE: "neonprompt_font",
-    MARGIN: "neonprompt_margin",
-    MIRROR: "neonprompt_mirror",
-    THEME: "neonprompt_theme",
-    CAPS: "neonprompt_caps",
-    FOCUS: "neonprompt_focus",
-    FLIP_VERTICAL: "neonprompt_flipv",
+    FONT_SIZE: "promptninja_font",
+    MARGIN: "promptninja_margin",
+    MIRROR: "promptninja_mirror",
+    THEME: "promptninja_theme",
+    CAPS: "promptninja_caps",
+    FOCUS: "promptninja_focus",
+    FLIP_VERTICAL: "promptninja_flipv",
+    PRO_STATUS: "promptninja_pro",
   },
   // Theme Cycle Order
   THEME_ORDER: [

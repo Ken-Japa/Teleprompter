@@ -45,7 +45,7 @@ export const PrompterHUD = memo(
                         onClick={() => setShowQRModal(true)}
                         title={t("host.remoteConnect")}
                         aria-label={t("host.remoteConnect")}
-                        className="w-8 h-8 !rounded-lg !p-1.5 !bg-slate-800 hover:!bg-slate-700 text-slate-400 hover:text-white ml-2"
+                        className="w-8 h-8 ml-2"
                     >
                         <QrCodeIcon className="w-4 h-4" />
                     </S.IconButton>
@@ -79,10 +79,11 @@ export const PrompterHUD = memo(
 
                 <S.PrimaryButton
                     onClick={onExit}
-                    className="ml-4 bg-slate-800 hover:bg-slate-700 text-slate-200 shadow-none py-0.5 px-0.5 !rounded-xl text-xs sm:py-2 sm:px-4"
+                    size="sm"
+                    className="ml-4 bg-slate-800 hover:bg-slate-700 text-slate-200 shadow-none"
                 >
                     <span className="hidden sm:inline">{t("host.exit")}</span>
-                    <LogOutIcon className="inline sm:hidden w-5 h-5" />
+                    <LogOutIcon className="inline sm:hidden w-4 h-4" />
                 </S.PrimaryButton>
 
                 <TutorialModal isOpen={showTutorialModal} onClose={() => setShowTutorialModal(false)} />

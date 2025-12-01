@@ -84,15 +84,15 @@ describe("Host Component (Editor & Prompter)", () => {
         const startBtn = screen.getAllByLabelText(/Start Presentation Mode/i)[0];
         fireEvent.click(startBtn);
 
-        // Try to toggle a pro feature, e.g. Voice Control if button exists
-        // Note: Voice Control button might only be visible in Prompter mode and if voice is supported.
-        // Based on mocks, voice support might be default.
+        // Locate the Voice Control button which is a Pro feature
+        // Using the aria-label from en.ts
+        const voiceBtn = screen.getByLabelText(/Voice Control/i);
 
-        // Or check if Theme Control is locked.
-        // Let's assume default test state is NOT Pro.
+        // Click to toggle voice (should trigger paywall since isPro is false by default)
+        fireEvent.click(voiceBtn);
 
-        // TODO: Identify a clickable PRO feature in the UI to trigger the modal.
-        // For now, just checking if we are in Prompter mode is enough for the "Start" test.
-        // This test case needs specific steps to trigger paywall.
+        // Expect Paywall Modal to be visible
+        // Assuming the modal has some unique text like "Lifetime Access" or "Grab Your Lifetime Access"
+        expect(screen.getByText(/Lifetime Access/i)).toBeInTheDocument();
     });
 });

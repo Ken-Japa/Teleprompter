@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import tw from "tailwind-styled-components";
 
 export const ModalOverlay = tw.div`
-  fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4
+  fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fadeIn
 `;
 
 export const ModalContent = tw.div`

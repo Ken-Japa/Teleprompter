@@ -44,8 +44,8 @@ export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, o
                 <div className="flex items-center space-x-3">
 
                     <LanguageSelector />
-                    <S.PrimaryButton onClick={onStart} aria-label="Start Presentation Mode" className="!py-2 !px-3 sm:!py-2 sm:!px-5 sm:!text-xs">
-                        <PlayIcon className="w-5 h-5 mr-0 sm:w-3 sm:h-3 sm:mr-2" /> <span className="hidden sm:inline">{t("host.startPrompter")}</span>
+                    <S.PrimaryButton onClick={onStart} aria-label="Start Presentation Mode" size="sm">
+                        <PlayIcon className="w-4 h-4 sm:w-3 sm:h-3 sm:mr-2" /> <span className="hidden sm:inline">{t("host.startPrompter")}</span>
                     </S.PrimaryButton>
                 </div>
             </S.Header>

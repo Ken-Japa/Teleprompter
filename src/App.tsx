@@ -1,10 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { Host } from "./pages/Host";
-import { Remote } from "./pages/Remote";
-import { Landing } from "./pages/Landing";
+import React, { useEffect, useState, Suspense } from "react";
 import { TranslationProvider } from "./hooks/useTranslation";
 
+// Lazy load pages for performance optimization
+const Host = React.lazy(() => import("./pages/Host").then(module => ({ default: module.Host })));
+const Remote = React.lazy(() => import("./pages/Remote").then(module => ({ default: module.Remote })));
+const Landing = React.lazy(() => import("./pages/Landing").then(module => ({ default: module.Landing })));
+
 type ViewState = "LANDING" | "HOST" | "REMOTE";
+
+const LoadingSpinner = () => (
+    <div className="flex items-center justify-center h-screen bg-slate-950 text-white">
+        <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+    </div>
+);
 
 const App: React.FC = () => {
     const [view, setView] = useState<ViewState>("LANDING");
@@ -49,9 +57,11 @@ const App: React.FC = () => {
 
     return (
         <TranslationProvider>
-            {view === "REMOTE" && <Remote hostId={remoteId} />}
-            {view === "LANDING" && <Landing onLaunch={launchApp} />}
-            {view === "HOST" && <Host />}
+            <Suspense fallback={<LoadingSpinner />}>
+                {view === "REMOTE" && <Remote hostId={remoteId} />}
+                {view === "LANDING" && <Landing onLaunch={launchApp} />}
+                {view === "HOST" && <Host />}
+            </Suspense>
         </TranslationProvider>
     );
 };

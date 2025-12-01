@@ -19,8 +19,29 @@ export interface SpeechRecognitionErrorEvent {
  message: string;
 }
 
+export interface ISpeechRecognition extends EventTarget {
+ continuous: boolean;
+ interimResults: boolean;
+ lang: string;
+ start(): void;
+ stop(): void;
+ abort(): void;
+ onresult: ((event: SpeechRecognitionEvent) => void) | null;
+ onend: (() => void) | null;
+ onstart: (() => void) | null;
+ onerror: ((event: SpeechRecognitionErrorEvent) => void) | null;
+}
+
 // Global Window Extension
 declare global {
+ interface Window {
+  SpeechRecognition: {
+   new (): ISpeechRecognition;
+  };
+  webkitSpeechRecognition: {
+   new (): ISpeechRecognition;
+  };
+ }
  interface Document {
   permissionsPolicy?: {
    allowsFeature(feature: string): boolean;

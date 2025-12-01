@@ -2,6 +2,7 @@ import React from "react";
 
 // --- GENERIC CONTAINERS ---
 
+
 export const ScreenContainer = React.forwardRef<
     HTMLDivElement,
     {
@@ -11,10 +12,11 @@ export const ScreenContainer = React.forwardRef<
 >(({ children, className = "", ...props }, ref) => (
     <div ref={ref} className={`flex flex-col bg-[#020617] relative ${className}`} {...props}>
         {/* Subtle Noise Texture Overlay via CSS class */}
-        <div className="absolute inset-0 bg-noise opacity-50 pointer-events-none z-[1]"></div>
+        <div className="absolute inset-0 bg-noise opacity-[0.04] pointer-events-none z-[1]"></div>
 
         {/* Cinematic Ambient Lighting - Top Center Spotlight */}
-        <div className="absolute top-[-20%] left-[20%] right-[20%] h-[500px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+        <div className="absolute top-[-20%] left-[10%] right-[10%] h-[500px] bg-indigo-600/10 rounded-full blur-[150px] pointer-events-none z-0 mix-blend-screen"></div>
+        <div className="absolute bottom-[-20%] left-[30%] right-[30%] h-[300px] bg-purple-600/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
         {children}
     </div>
@@ -22,7 +24,7 @@ export const ScreenContainer = React.forwardRef<
 
 export const Header = ({ children }: { children: React.ReactNode }) => (
     <header className="flex items-center justify-between px-8 py-5 z-30 sticky top-0 transition-all duration-300">
-        <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-xl border-b border-white/5 z-[-1]"></div>
+        <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-xl border-b border-white/5 z-[-1] supports-[backdrop-filter]:bg-slate-950/50"></div>
         {children}
     </header>
 );
@@ -43,9 +45,9 @@ export const MainContent = ({
 
 export const EditorContainer = ({ children }: { children: React.ReactNode }) => (
     <div className="flex flex-col h-full bg-[#020617] relative overflow-hidden">
-        {/* Editor Background Grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none z-0"></div>
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
+        {/* Editor Background Grid - Refined */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none z-0"></div>
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-500/5 rounded-full blur-[150px] pointer-events-none z-0"></div>
         {children}
     </div>
 );
@@ -60,7 +62,7 @@ export const EditorTextArea = React.forwardRef<
 >(({ value, onChange, placeholder }, ref) => (
     <textarea
         ref={ref}
-        className="flex-1 min-h-[600px] bg-transparent p-8 md:p-12 text-lg md:text-xl font-mono text-slate-300 resize-none focus:outline-none focus:ring-0 scrollbar-thin scrollbar-thumb-slate-800 placeholder:text-slate-700 leading-relaxed max-w-5xl mx-auto w-full relative z-10 selection:bg-indigo-500/30"
+        className="flex-1 min-h-[600px] bg-transparent p-8 md:p-16 text-lg md:text-xl font-sans text-slate-200 resize-none focus:outline-none focus:ring-0 scrollbar-thin scrollbar-thumb-slate-800 placeholder:text-slate-700 leading-[2.5] max-w-4xl mx-auto w-full relative z-10 selection:bg-indigo-500/30 tracking-wide drop-shadow-sm transition-all duration-300"
         value={value}
         onChange={onChange}
         placeholder={placeholder}
@@ -70,7 +72,7 @@ export const EditorTextArea = React.forwardRef<
 ));
 
 export const SidebarWrapper = ({ children }: { children: React.ReactNode }) => (
-    <div className="w-full md:w-[400px] bg-[#050b1d] border-l border-white/5 p-8 flex flex-col items-center justify-center space-y-8 shadow-[0_0_100px_rgba(0,0,0,0.8)] z-20 relative">
+    <div className="w-full md:w-[400px] bg-[#050b1d]/90 backdrop-blur-md border-l border-white/5 p-8 flex flex-col items-center justify-center space-y-8 shadow-[0_0_100px_rgba(0,0,0,0.8)] z-20 relative">
         {children}
     </div>
 );
@@ -85,7 +87,7 @@ export const ActionButtonsGrid = ({ children }: { children: React.ReactNode }) =
 
 export const QRCodeBox = ({ children, hasId }: { children: React.ReactNode; hasId: boolean }) => (
     <div
-        className={`relative group p-1.5 bg-gradient-to-br from-indigo-500/30 via-purple-500/30 to-pink-500/30 rounded-3xl transition-all duration-700 max-w-fit mx-auto ${hasId ? "shadow-[0_0_60px_rgba(99,102,241,0.15)] scale-100" : "scale-95 opacity-50 grayscale"}`}
+        className={`relative group p-1.5 bg-gradient-to-br from-indigo-500/30 via-purple-500/30 to-pink-500/30 rounded-3xl transition-all duration-700 max-w-fit mx-auto ${hasId ? "shadow-[0_0_60px_rgba(99,102,241,0.2)] scale-100 hover:scale-105" : "scale-95 opacity-50 grayscale"}`}
     >
         <div className="bg-slate-950 p-4 rounded-[22px] relative z-10">
             <div className="bg-white p-3 rounded-xl">{children}</div>
@@ -94,8 +96,8 @@ export const QRCodeBox = ({ children, hasId }: { children: React.ReactNode; hasI
 );
 
 export const FormattingToolbar = ({ children }: { children: React.ReactNode }) => (
-    <div className="flex items-center space-x-2 px-6 py-4 border-b border-white/5 z-10 bg-slate-950/50 backdrop-blur-md">
-        <div className="max-w-5xl mx-auto w-full flex items-center">{children}</div>
+    <div className="flex items-center space-x-2 px-6 py-4 border-b border-white/5 z-10 bg-slate-950/60 backdrop-blur-xl sticky top-0">
+        <div className="max-w-4xl mx-auto w-full flex items-center">{children}</div>
     </div>
 );
 
@@ -136,20 +138,22 @@ export const PrompterScrollArea = React.forwardRef<
 export const FocusIndicator = () => (
     <div className="absolute top-1/2 left-0 w-full -translate-y-1/2 pointer-events-none z-20 mix-blend-overlay">
         {/* Line with fade - using currentColor to match theme */}
-        <div className="absolute inset-x-12 h-[2px] bg-gradient-to-r from-transparent via-current to-transparent opacity-30" />
+        <div className="absolute inset-x-12 h-[2px] bg-gradient-to-r from-transparent via-white to-transparent opacity-20" />
 
         {/* Left Arrow (Points Right) */}
-        <div className="absolute left-6 top-1/2 -translate-y-1/2 w-0 h-0 border-y-[8px] border-y-transparent border-l-[12px] border-l-current opacity-60 drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]" />
+        <div className="absolute left-6 top-1/2 -translate-y-1/2 w-0 h-0 border-y-[8px] border-y-transparent border-l-[12px] border-l-white opacity-40 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
 
         {/* Right Arrow (Points Left) */}
-        <div className="absolute right-6 top-1/2 -translate-y-1/2 w-0 h-0 border-y-[8px] border-y-transparent border-r-[12px] border-r-current opacity-60 drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]" />
+        <div className="absolute right-6 top-1/2 -translate-y-1/2 w-0 h-0 border-y-[8px] border-y-transparent border-r-[12px] border-r-white opacity-40 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
     </div>
 );
 
 export const HudContainer = ({ children, visible }: { children: React.ReactNode; visible: boolean }) => (
     <div
-        className={`fixed bottom-4 w-full px-4 sm:left-1/2 sm:-translate-x-1/2 sm:w-auto glass-panel py-2 rounded-xl sm:bottom-12 sm:px-6 sm:py-3 sm:rounded-full z-50 transition-all duration-500 cubic-bezier(0.16, 1, 0.3, 1) flex flex-wrap justify-center items-center gap-x-4 gap-y-3 sm:flex-nowrap sm:space-x-6 ring-1 ring-white/10 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.8)] ${visible ? "opacity-100 translate-y-0 scale-100 blur-0" : "opacity-0 translate-y-12 scale-90 blur-lg pointer-events-none"}`}
+        className={`fixed bottom-4 w-full px-4 sm:left-1/2 sm:-translate-x-1/2 sm:w-auto bg-[#0b0f1d]/80 backdrop-blur-2xl py-3 rounded-2xl sm:bottom-12 sm:px-6 sm:py-3 sm:rounded-full z-50 transition-all duration-500 cubic-bezier(0.16, 1, 0.3, 1) flex flex-wrap justify-center items-center gap-x-4 gap-y-3 sm:flex-nowrap sm:space-x-6 ring-1 ring-white/10 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.9)] ${visible ? "opacity-100 translate-y-0 scale-100 blur-0" : "opacity-0 translate-y-12 scale-90 blur-lg pointer-events-none"}`}
     >
+        {/* Top sheen for glass effect */}
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-full opacity-50"></div>
         {children}
     </div>
 );

@@ -1,5 +1,5 @@
 import { useRef, useState, useMemo, useEffect, useCallback } from "react";
-import { SpeechRecognitionEvent } from "../types";
+import { SpeechRecognitionEvent, ISpeechRecognition } from "../types";
 import { parseTextToSentences } from "../utils/textParser";
 import { logger } from "../utils/logger";
 import { findBestMatch } from "../utils/stringSimilarity";
@@ -13,7 +13,7 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
  const [voiceApiSupported, setVoiceApiSupported] = useState<boolean>(true);
  const [voiceApiError, setVoiceApiError] = useState<string | null>(null);
 
- const recognitionRef = useRef<any>(null);
+ const recognitionRef = useRef<ISpeechRecognition | null>(null);
  const lastMatchIndexRef = useRef<number>(0);
  const lastStartTimeRef = useRef<number>(0);
 

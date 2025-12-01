@@ -52,15 +52,16 @@ export const Header: React.FC<HeaderProps> = ({ onLaunch }) => {
                 </button>
             </nav>
 
+
             <div className="flex items-center space-x-4 relative">
                 <LanguageSelector />
-                <button
+                <S.PrimaryButton
                     onClick={onLaunch}
-                    className="text-sm font-bold bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2 rounded-lg transition shadow-lg shadow-indigo-500/20"
+                    size="sm"
                     aria-label="Launch App"
                 >
                     Login
-                </button>
+                </S.PrimaryButton>
             </div>
         </S.LandingNav>
     );
