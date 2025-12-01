@@ -1,6 +1,6 @@
 import React from "react";
 
-export const StatusBadge = ({ status, label }: { status: string; label: string }) => {
+export const StatusBadge = ({ status, label, className = "" }: { status: string; label: string; className?: string }) => {
   const getStatusStyles = () => {
     switch (status) {
       case "CONNECTED":
@@ -16,7 +16,7 @@ export const StatusBadge = ({ status, label }: { status: string; label: string }
 
   return (
     <span
-      className={`flex items-center gap-1.5 text-[10px] uppercase font-bold px-3 py-1 rounded-full border tracking-wider transition-all duration-300 backdrop-blur-sm ${getStatusStyles()}`}
+      className={`inline-flex items-center gap-1.5 text-[10px] uppercase font-bold px-3 py-1 rounded-full border tracking-wider transition-all duration-300 backdrop-blur-sm ${getStatusStyles()} ${className}`}
     >
       <span className={`w-1.5 h-1.5 rounded-full ${status === "CONNECTED" ? "bg-emerald-400 animate-pulse" : status === "ERROR" ? "bg-red-400" : "bg-current"}`} />
       {label}
