@@ -17,6 +17,19 @@ interface LandingProps {
 
 export const Landing: React.FC<LandingProps> = ({ onLaunch }) => {
     const { t } = useTranslation();
+
+    React.useEffect(() => {
+        if (window.location.hash === "#pricing") {
+            const element = document.getElementById("pricing");
+            if (element) {
+                // Small delay to ensure rendering
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: "smooth" });
+                }, 100);
+            }
+        }
+    }, []);
+
     return (
         <S.LandingContainer>
             <Header onLaunch={onLaunch} />

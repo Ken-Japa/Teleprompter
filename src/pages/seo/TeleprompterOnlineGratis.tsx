@@ -36,12 +36,12 @@ export const TeleprompterOnlineGratis: React.FC<Props> = ({ onLaunch }) => {
                 <li>Pronto! Seu celular virou um controle remoto para ajustar velocidade, tamanho da fonte e iniciar/pausar a rolagem.</li>
             </ol>
 
-            <div className="my-8 p-6 bg-slate-900 rounded-lg border border-slate-800">
+            <div className="my-8 p-6 bg-slate-900 rounded-lg border border-slate-800 text-center">
                 <h3 className="text-xl font-bold text-primary mb-2">Comece agora mesmo</h3>
-                <p className="mb-4">Não é necessário cadastro para testar. Experimente a liberdade de gravar vídeos com confiança.</p>
-                <button
+                <p className="mb-6">Não é necessário cadastro para testar. Experimente a liberdade de gravar vídeos com confiança.</p>
+                <button 
                     onClick={onLaunch}
-                    className="px-6 py-3 bg-primary text-white font-bold rounded hover:bg-primary/90 transition-colors"
+                    className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-bold py-4 px-8 rounded-lg text-lg shadow-2xl hover:scale-105 transition transform duration-200"
                 >
                     Abrir Teleprompter Grátis
                 </button>

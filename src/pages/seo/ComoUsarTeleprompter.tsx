@@ -13,7 +13,7 @@ export const ComoUsarTeleprompter: React.FC<Props> = ({ onLaunch }) => {
             onLaunch={onLaunch}
         >
             <h1 className="text-4xl font-bold text-white mb-6">Como Usar Teleprompter no Celular: O Guia Definitivo</h1>
-            
+
             <p className="mb-6">
                 Gravar vídeos longos sem esquecer o texto é um desafio para todo criador de conteúdo. O teleprompter é a ferramenta secreta dos profissionais de TV, e agora está acessível para qualquer pessoa com um celular ou computador.
             </p>
@@ -56,9 +56,9 @@ export const ComoUsarTeleprompter: React.FC<Props> = ({ onLaunch }) => {
             </ul>
 
             <div className="mt-10 text-center">
-                <button 
+                <button
                     onClick={onLaunch}
-                    className="px-8 py-4 bg-gradient-to-r from-primary to-purple-600 text-white font-bold text-lg rounded-lg hover:opacity-90 transition-opacity"
+                    className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-bold py-4 px-8 rounded-lg text-lg shadow-2xl hover:scale-105 transition transform duration-200"
                 >
                     Testar o PromptNinja Agora
                 </button>

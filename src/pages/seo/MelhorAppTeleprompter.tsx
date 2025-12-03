@@ -78,7 +78,7 @@ export const MelhorAppTeleprompter: React.FC<Props> = ({ onLaunch }) => {
             <div className="text-center mt-8">
                 <button 
                     onClick={onLaunch}
-                    className="px-6 py-3 border border-primary text-primary font-bold rounded hover:bg-primary hover:text-white transition-all"
+                    className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-bold py-4 px-8 rounded-lg text-lg shadow-2xl hover:scale-105 transition transform duration-200"
                 >
                     Experimentar o Vencedor (Grátis)
                 </button>

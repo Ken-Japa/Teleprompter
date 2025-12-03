@@ -10,8 +10,12 @@ const Landing = React.lazy(() => import("./pages/Landing").then(module => ({ def
 const TeleprompterOnlineGratis = React.lazy(() => import("./pages/seo/TeleprompterOnlineGratis").then(module => ({ default: module.TeleprompterOnlineGratis })));
 const ComoUsarTeleprompter = React.lazy(() => import("./pages/seo/ComoUsarTeleprompter").then(module => ({ default: module.ComoUsarTeleprompter })));
 const MelhorAppTeleprompter = React.lazy(() => import("./pages/seo/MelhorAppTeleprompter").then(module => ({ default: module.MelhorAppTeleprompter })));
+const AlternativasTeleprompterConcorrente = React.lazy(() => import("./pages/seo/AlternativasTeleprompterConcorrente").then(module => ({ default: module.AlternativasTeleprompterConcorrente })));
+const TeleprompterParaYoutubers = React.lazy(() => import("./pages/seo/TeleprompterParaYoutubers").then(module => ({ default: module.TeleprompterParaYoutubers })));
+const TeleprompterTravandoSolucao = React.lazy(() => import("./pages/seo/TeleprompterTravandoSolucao").then(module => ({ default: module.TeleprompterTravandoSolucao })));
+const TeleprompterCaseiroDIY = React.lazy(() => import("./pages/seo/TeleprompterCaseiroDIY").then(module => ({ default: module.TeleprompterCaseiroDIY })));
 
-type ViewState = "LANDING" | "HOST" | "REMOTE" | "SEO_GRATIS" | "SEO_TUTORIAL" | "SEO_MELHOR_APP";
+type ViewState = "LANDING" | "HOST" | "REMOTE" | "SEO_GRATIS" | "SEO_TUTORIAL" | "SEO_MELHOR_APP" | "SEO_ALTERNATIVAS" | "SEO_YOUTUBERS" | "SEO_TRAVANDO" | "SEO_DIY";
 
 const LoadingSpinner = () => (
     <div className="flex items-center justify-center h-screen bg-slate-950 text-white">
@@ -60,6 +64,22 @@ const App: React.FC = () => {
                 setView("SEO_MELHOR_APP");
                 return;
             }
+            if (cleanPath === "/alternativas-teleprompter-concorrente") {
+                setView("SEO_ALTERNATIVAS");
+                return;
+            }
+            if (cleanPath === "/teleprompter-para-youtubers-e-criadores") {
+                setView("SEO_YOUTUBERS");
+                return;
+            }
+            if (cleanPath === "/teleprompter-travando-solucao") {
+                setView("SEO_TRAVANDO");
+                return;
+            }
+            if (cleanPath === "/teleprompter-caseiro-diy") {
+                setView("SEO_DIY");
+                return;
+            }
 
             // 3. Default
             setView("LANDING");
@@ -92,6 +112,10 @@ const App: React.FC = () => {
                 {view === "SEO_GRATIS" && <TeleprompterOnlineGratis onLaunch={launchApp} />}
                 {view === "SEO_TUTORIAL" && <ComoUsarTeleprompter onLaunch={launchApp} />}
                 {view === "SEO_MELHOR_APP" && <MelhorAppTeleprompter onLaunch={launchApp} />}
+                {view === "SEO_ALTERNATIVAS" && <AlternativasTeleprompterConcorrente onLaunch={launchApp} />}
+                {view === "SEO_YOUTUBERS" && <TeleprompterParaYoutubers onLaunch={launchApp} />}
+                {view === "SEO_TRAVANDO" && <TeleprompterTravandoSolucao onLaunch={launchApp} />}
+                {view === "SEO_DIY" && <TeleprompterCaseiroDIY onLaunch={launchApp} />}
             </Suspense>
         </TranslationProvider>
     );
