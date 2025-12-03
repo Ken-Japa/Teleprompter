@@ -34,12 +34,14 @@ export const SeoPages = {
    default: module.TeleprompterCaseiroDIY,
   }))
  ),
- // Novas páginas
  OratoriaVideo: React.lazy(() =>
   import("../pages/seo/OratoriaVideo").then((module) => ({ default: module.OratoriaVideo }))
  ),
  ComoDecorarTexto: React.lazy(() =>
   import("../pages/seo/ComoDecorarTexto").then((module) => ({ default: module.ComoDecorarTexto }))
+ ),
+ WebRtcLatency: React.lazy(() =>
+  import("../pages/seo/WebRtcLatencyPage").then((module) => ({ default: module.WebRtcLatencyPage }))
  ),
 };
 
@@ -52,4 +54,5 @@ export type SeoRouteKey =
  | "SEO_TRAVANDO"
  | "SEO_DIY"
  | "SEO_ORATORIA"
- | "SEO_DECORAR";
+ | "SEO_DECORAR"
+ | "SEO_WEBRTC";

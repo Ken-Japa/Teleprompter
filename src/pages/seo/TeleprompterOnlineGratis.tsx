@@ -1,56 +1,50 @@
 import React from "react";
+import { useTranslation } from "../../hooks/useTranslation";
 import { SeoPageLayout } from "./SeoPageLayout";
+import { TeleprompterOnlineGratisPT } from "./content/teleprompter-online-gratis/pt";
+import { TeleprompterOnlineGratisEN } from "./content/teleprompter-online-gratis/en";
+import { TeleprompterOnlineGratisES } from "./content/teleprompter-online-gratis/es";
 
 interface Props {
     onLaunch: () => void;
 }
 
 export const TeleprompterOnlineGratis: React.FC<Props> = ({ onLaunch }) => {
+    const { lang } = useTranslation();
+
+    let Content = TeleprompterOnlineGratisPT;
+    let title = "Teleprompter Online Grátis - Funciona no Navegador";
+    let description = "Procurando um teleprompter online grátis? O PromptNinja funciona direto no seu navegador, sem baixar nada. Controle pelo celular via Wi-Fi.";
+    let ctaText = "Abrir Teleprompter Grátis";
+
+    if (lang === 'en') {
+        Content = TeleprompterOnlineGratisEN;
+        title = "Free Online Teleprompter - Works in Browser";
+        description = "Looking for a free online teleprompter? PromptNinja works directly in your browser, no download needed. Control via mobile over Wi-Fi.";
+        ctaText = "Open Free Teleprompter";
+    } else if (lang === 'es') {
+        Content = TeleprompterOnlineGratisES;
+        title = "Teleprompter Online Gratis - Funciona en el Navegador";
+        description = "¿Buscas un teleprompter online gratis? PromptNinja funciona directo en tu navegador, sin descargar nada. Controla desde el móvil vía Wi-Fi.";
+        ctaText = "Abrir Teleprompter Gratis";
+    }
+
     return (
         <SeoPageLayout
-            title="Teleprompter Online Grátis - Funciona no Navegador"
-            description="Procurando um teleprompter online grátis? O PromptNinja funciona direto no seu navegador, sem baixar nada. Controle pelo celular via Wi-Fi."
+            title={title}
+            description={description}
             onLaunch={onLaunch}
         >
-            <h1 className="text-4xl font-bold text-white mb-6">Teleprompter Online Grátis: A Solução Profissional no Seu Navegador</h1>
-
-            <p className="mb-6">
-                Se você está procurando uma maneira simples, rápida e gratuita de ler seus roteiros enquanto grava vídeos, você encontrou.
-                O <strong>PromptNinja</strong> é um teleprompter online que roda direto no seu navegador (Chrome, Edge, Safari, Firefox) sem a necessidade de instalar programas pesados ou aplicativos que ocupam espaço no seu celular.
-            </p>
-
-            <h2 className="text-2xl font-bold text-white mt-8 mb-4">Por que usar um Teleprompter Online?</h2>
-            <ul className="list-disc pl-6 mb-6 space-y-2">
-                <li><strong>Sem Downloads:</strong> Acesse e comece a usar imediatamente.</li>
-                <li><strong>Compatibilidade Universal:</strong> Funciona em Windows, Mac, Linux, Android e iOS.</li>
-                <li><strong>Sincronização em Tempo Real:</strong> Diferente de soluções básicas, o PromptNinja permite controlar a rolagem do texto usando outro dispositivo (como seu celular) como controle remoto.</li>
-            </ul>
-
-            <h2 className="text-2xl font-bold text-white mt-8 mb-4">Como funciona o PromptNinja?</h2>
-            <p className="mb-4">
-                O PromptNinja utiliza tecnologia P2P (Peer-to-Peer) para conectar seus dispositivos. Isso significa que o controle é instantâneo e não depende de servidores lentos.
-            </p>
-            <ol className="list-decimal pl-6 mb-6 space-y-2">
-                <li>Abra o PromptNinja no seu computador (onde o texto será exibido).</li>
-                <li>Escaneie o QR Code com seu celular.</li>
-                <li>Pronto! Seu celular virou um controle remoto para ajustar velocidade, tamanho da fonte e iniciar/pausar a rolagem.</li>
-            </ol>
+            <Content />
 
             <div className="my-8 p-6 bg-slate-900 rounded-lg border border-slate-800 text-center">
-                <h3 className="text-xl font-bold text-primary mb-2">Comece agora mesmo</h3>
-                <p className="mb-6">Não é necessário cadastro para testar. Experimente a liberdade de gravar vídeos com confiança.</p>
-                <button 
+                <button
                     onClick={onLaunch}
                     className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-bold py-4 px-8 rounded-lg text-lg shadow-2xl hover:scale-105 transition transform duration-200"
                 >
-                    Abrir Teleprompter Grátis
+                    {ctaText}
                 </button>
             </div>
-
-            <h2 className="text-2xl font-bold text-white mt-8 mb-4">Recursos Gratuitos</h2>
-            <p className="mb-6">
-                A versão gratuita do PromptNinja oferece tudo o que você precisa para começar: espelhamento de texto (para usar com hardware de teleprompter), ajuste de velocidade, controle de fonte e muito mais.
-            </p>
         </SeoPageLayout>
     );
 };
