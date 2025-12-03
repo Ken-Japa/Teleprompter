@@ -8,6 +8,8 @@ export default {
       display: ['Lexend Deca', 'sans-serif'],
     },
   },
- },
- plugins: [],
+  },
+ plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };

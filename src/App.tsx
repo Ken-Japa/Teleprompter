@@ -6,7 +6,12 @@ const Host = React.lazy(() => import("./pages/Host").then(module => ({ default: 
 const Remote = React.lazy(() => import("./pages/Remote").then(module => ({ default: module.Remote })));
 const Landing = React.lazy(() => import("./pages/Landing").then(module => ({ default: module.Landing })));
 
-type ViewState = "LANDING" | "HOST" | "REMOTE";
+// SEO Pages
+const TeleprompterOnlineGratis = React.lazy(() => import("./pages/seo/TeleprompterOnlineGratis").then(module => ({ default: module.TeleprompterOnlineGratis })));
+const ComoUsarTeleprompter = React.lazy(() => import("./pages/seo/ComoUsarTeleprompter").then(module => ({ default: module.ComoUsarTeleprompter })));
+const MelhorAppTeleprompter = React.lazy(() => import("./pages/seo/MelhorAppTeleprompter").then(module => ({ default: module.MelhorAppTeleprompter })));
+
+type ViewState = "LANDING" | "HOST" | "REMOTE" | "SEO_GRATIS" | "SEO_TUTORIAL" | "SEO_MELHOR_APP";
 
 const LoadingSpinner = () => (
     <div className="flex items-center justify-center h-screen bg-slate-950 text-white">
@@ -19,9 +24,11 @@ const App: React.FC = () => {
     const [remoteId, setRemoteId] = useState<string>("");
 
     useEffect(() => {
-        const handleHashChange = () => {
+        const handleRouting = () => {
             const hash = window.location.hash;
+            const path = window.location.pathname;
 
+            // 1. Priority: Hash Routing (App functionality)
             if (hash.startsWith("#remote")) {
                 const params = new URLSearchParams(hash.split("?")[1]);
                 const id = params.get("id");
@@ -32,22 +39,43 @@ const App: React.FC = () => {
                 }
             }
 
-            // Route Logic Update: Check if hash STARTS with #app to allow sub-routes like #app/play
             if (hash.startsWith("#app")) {
                 setView("HOST");
                 return;
             }
 
-            // Default to Landing for empty hash or root
+            // 2. SEO Paths (Pathname Routing)
+            // Check for SEO paths (remove trailing slash if present for consistency)
+            const cleanPath = path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
+
+            if (cleanPath === "/teleprompter-online-gratis") {
+                setView("SEO_GRATIS");
+                return;
+            }
+            if (cleanPath === "/como-usar-teleprompter-celular") {
+                setView("SEO_TUTORIAL");
+                return;
+            }
+            if (cleanPath === "/melhor-teleprompter-app") {
+                setView("SEO_MELHOR_APP");
+                return;
+            }
+
+            // 3. Default
             setView("LANDING");
         };
 
         // Initial check
-        handleHashChange();
+        handleRouting();
 
         // Listen for changes
-        window.addEventListener("hashchange", handleHashChange);
-        return () => window.removeEventListener("hashchange", handleHashChange);
+        window.addEventListener("hashchange", handleRouting);
+        window.addEventListener("popstate", handleRouting);
+
+        return () => {
+            window.removeEventListener("hashchange", handleRouting);
+            window.removeEventListener("popstate", handleRouting);
+        };
     }, []);
 
     const launchApp = () => {
@@ -61,6 +89,9 @@ const App: React.FC = () => {
                 {view === "REMOTE" && <Remote hostId={remoteId} />}
                 {view === "LANDING" && <Landing onLaunch={launchApp} />}
                 {view === "HOST" && <Host />}
+                {view === "SEO_GRATIS" && <TeleprompterOnlineGratis onLaunch={launchApp} />}
+                {view === "SEO_TUTORIAL" && <ComoUsarTeleprompter onLaunch={launchApp} />}
+                {view === "SEO_MELHOR_APP" && <MelhorAppTeleprompter onLaunch={launchApp} />}
             </Suspense>
         </TranslationProvider>
     );
