@@ -8,6 +8,7 @@ import { HowItWorks } from "../components/landing/HowItWorks";
 import { ComparisonTable } from "../components/landing/ComparisonTable";
 import { Pricing } from "../components/landing/Pricing";
 import { FAQ } from "../components/landing/FAQ";
+import { FinalCTA } from "../components/landing/FinalCTA";
 import { useTranslation } from "../hooks/useTranslation";
 
 interface LandingProps {
@@ -26,6 +27,7 @@ export const Landing: React.FC<LandingProps> = ({ onLaunch }) => {
             <ComparisonTable />
             <Pricing onLaunch={onLaunch} />
             <FAQ />
+            <FinalCTA onLaunch={onLaunch} />
 
             <footer className="py-12 border-t border-slate-900 text-center text-slate-500 text-sm bg-[#020617]">
                 <p>&copy; {new Date().getFullYear()} {t("footer.copyright")}</p>

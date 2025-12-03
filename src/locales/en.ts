@@ -15,8 +15,8 @@ export const en = {
    headline: "Your phone is the remote. Your home is the studio.",
    subheadline:
     "The only teleprompter that works offline, without tracking your data, with ultra-low latency remote control for live presentations.",
-   cta: "Start Free (20 min)",
-   ctaSecondary: "See How It Works",
+   cta: "🚀 Start Free (20 min)",
+   ctaSecondary: "▶️ See How It Works",
    versionLive: "Version 2.0 Live",
    userCount: "1,247",
    activeCreators: "Active Creators",
@@ -26,25 +26,25 @@ export const en = {
    privacyBadge: "Total Privacy",
   },
   problemSolution: {
-   title: "No more frustration when recording videos",
+   title: 'No more <span class="line-through text-red-500">frustration</span> when recording videos',
    before: {
     title: "Before",
     items: [
-     "Forgot the script mid-recording",
-     "Lost 3 hours re-recording the same video",
-     "Got up 15 times to pause/continue text",
-     "Spent money on complicated hardware teleprompters",
-     "Apps that crash or require login",
+     "🤦 Forgot the script mid-recording",
+     "⏰ Lost 3 hours re-recording the same video",
+     "🏃 Got up 15 times to pause/continue text",
+     "💸 Spent money on complicated hardware teleprompters",
+     "📱 Apps that crash or require login",
     ],
    },
    after: {
     title: "Now",
     items: [
-     "Script always visible on your laptop screen",
-     "Control everything from your phone (Play/Pause/Speed)",
-     "P2P Connection = Sub-millisecond latency",
-     "Data stays on YOUR device",
-     "Works offline (flight, no internet, live events)",
+     "🎯 Script always visible on your laptop screen",
+     "📱 Control everything from your phone (Play/Pause/Speed)",
+     "⚡ P2P Connection = Sub-millisecond latency",
+     "🔒 Data stays on YOUR device",
+     "🌐 Works offline (flight, no internet, live events)",
     ],
    },
   },
@@ -147,23 +147,18 @@ export const en = {
     price: "$ 0",
     period: "/forever",
     cta: "Start Free",
-    features: [
-     "20 minutes per session",
-     "Unlimited sessions",
-     "Full remote control",
-     "All themes",
-    ],
+    features: ["20 minutes per session", "Unlimited sessions", "Full remote control", "All themes"],
     missing: ["Discreet watermark", "Voice control"],
    },
    pro: {
-    badge: "LAUNCH PRICE",
+    badge: "🔥 LAUNCH PRICE",
     title: "Lifetime PRO",
     desc: "One-time payment, yours forever",
     price: "$ 19",
     originalPrice: "$ 49",
     priceNote: "Then $ 3/month or $ 49 lifetime",
-    cta: "Get Lifetime Access",
-    timer: "Price valid only for the first 500 users",
+    cta: "🚀 Get Lifetime Access",
+    timer: "⏰ Price valid only for the first 500 users",
     features: [
      "Unlimited sessions (no time limit)",
      "No watermark",
@@ -174,7 +169,7 @@ export const en = {
      "Early access to features",
     ],
    },
-   paymentInfo: "One-time payment via Card. 7-day guarantee.",
+   paymentInfo: "💳 One-time payment via Card. \n🔒 7-day guarantee.",
    // Keep old keys for backward compatibility
    lifetime: "Lifetime",
    oneTime: "one-time payment",
@@ -209,6 +204,13 @@ export const en = {
      a: "7-day guarantee. We refund 100% no questions asked.",
     },
    ],
+  },
+  finalCta: {
+   title: "Ready to record like a pro?",
+   subtitle: "Join creators who stopped re-recording the same video 15 times",
+   ctaPrimary: "Start Free (20 min)",
+   ctaSecondary: "See Pricing",
+   footer: "No credit card. No setup. No nonsense.",
   },
  },
  status: {
@@ -312,9 +314,7 @@ Paste your script here and customize your experience to start shining!`,
   theme: "Theme",
   language: "Language",
  },
- footer: {
-  copyright: "PromptNinja. All rights reserved.",
- },
+
  tutorial: {
   tips: {
    title: "Pro Tips",
@@ -362,5 +362,8 @@ Paste your script here and customize your experience to start shining!`,
     description: "Activate Focus Mode to highlight the reading line and dim the surrounding text.",
    },
   },
+ },
+ footer: {
+  copyright: "PromptNinja. All rights reserved.",
  },
 };

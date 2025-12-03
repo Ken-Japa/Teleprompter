@@ -24,7 +24,7 @@ export const ComparisonTable: React.FC = () => {
                             <tr className="border-b border-gray-800">
                                 <th className="py-4 pr-4 bg-black sticky left-0 z-10"></th>
                                 <th className="py-4 px-4 text-center min-w-[140px]">
-                                    <div className="bg-gradient-to-r from-indigo-600 to-blue-600 text-white px-4 py-2 rounded-lg font-bold shadow-lg shadow-indigo-500/20">
+                                    <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-lg font-bold shadow-lg shadow-indigo-500/20">
                                         {t("landing.comparison.columns.ninja")}
                                     </div>
                                 </th>
@@ -56,8 +56,8 @@ export const ComparisonTable: React.FC = () => {
                                     </td>
 
                                     {/* Hardware */}
-                                    <td className="py-6 px-4 text-center text-slate-500">
-                                         {row === 'price' ? '⚠️ ' : ''}
+                                    <td className={`py-6 px-4 text-center ${row === 'remote' ? 'text-yellow-400' : 'text-slate-500'}`}>
+                                         {row === 'price' || row === 'remote' ? '⚠️ ' : ''}
                                          {t(`landing.comparison.values.hardware.${row}`)}
                                     </td>
 

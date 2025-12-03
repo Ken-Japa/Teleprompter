@@ -1,6 +1,5 @@
 import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
-import * as S from "../ui/Styled";
 import { CheckIcon } from "../ui/Icons";
 import { trackConversion } from "../../utils/analytics";
 
@@ -29,7 +28,7 @@ export const Pricing: React.FC<PricingProps> = ({ onLaunch }) => {
                         <div className="text-4xl font-bold mb-6 text-white">
                             {t("landing.pricing.free.price")}<span className="text-lg text-slate-500 font-normal">{t("landing.pricing.free.period")}</span>
                         </div>
-                        
+
                         <ul className="space-y-4 mb-8 flex-grow">
                             {(t("landing.pricing.free.features") as unknown as string[]).map((feat, i) => (
                                 <li key={i} className="flex items-start gap-3 text-slate-300">
@@ -54,14 +53,14 @@ export const Pricing: React.FC<PricingProps> = ({ onLaunch }) => {
                     </div>
 
                     {/* PRO Plan */}
-                    <div className="bg-gradient-to-br from-indigo-900/40 to-purple-900/40 backdrop-blur border-2 border-indigo-500/50 rounded-3xl p-8 relative shadow-2xl shadow-indigo-500/20 flex flex-col">
-                        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-indigo-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-lg shadow-indigo-500/40 whitespace-nowrap">
+                    <div className="bg-gradient-to-br from-purple-900 to-blue-900 border-2 border-yellow-400 rounded-3xl p-8 relative shadow-2xl flex flex-col">
+                        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-black px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg whitespace-nowrap">
                             {t("landing.pricing.pro.badge")}
                         </div>
-                        
+
                         <h3 className="text-2xl font-bold mb-2 text-white">{t("landing.pricing.pro.title")}</h3>
                         <p className="text-indigo-200 mb-6">{t("landing.pricing.pro.desc")}</p>
-                        
+
                         <div className="flex items-baseline gap-3 mb-2">
                             <span className="text-5xl font-bold text-white">{t("landing.pricing.pro.price")}</span>
                             <span className="text-xl line-through text-slate-500">{t("landing.pricing.pro.originalPrice")}</span>
@@ -90,14 +89,14 @@ export const Pricing: React.FC<PricingProps> = ({ onLaunch }) => {
                         >
                             {t("landing.pricing.pro.cta")}
                         </button>
-                        
+
                         <p className="text-xs text-center text-slate-400 mt-4">
                             {t("landing.pricing.pro.timer")}
                         </p>
                     </div>
                 </div>
 
-                <div className="text-center mt-12 text-sm text-slate-500">
+                <div className="text-center mt-12 text-sm text-slate-500 whitespace-pre-line">
                     <p>{t("landing.pricing.paymentInfo")}</p>
                 </div>
             </div>

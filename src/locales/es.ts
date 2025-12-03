@@ -10,28 +10,131 @@ export const es = {
   pricing: "Precios",
   backToHome: "Volver a Inicio",
  },
+ common: {
+  loading: "Cargando...",
+  error: "Algo salió mal",
+  back: "Volver",
+  next: "Siguiente",
+  save: "Guardar",
+  cancel: "Cancelar",
+ },
  landing: {
   hero: {
-   headline: "Domina tu Presentación",
+   headline: "Tu celular es el control. Tu casa es el estudio.",
    subheadline:
-    "El teleprompter profesional de latencia cero con control remoto desde tu móvil — sin cables, sin apps, directamente en tu navegador.",
-   cta: "Iniciar Teleprompter Gratis",
-   versionLive: "Versión 2.0 en Línea",
+    "El único teleprompter que funciona offline, sin rastrear tus datos, con control remoto de latencia ultra baja para presentaciones en vivo.",
+   cta: "🚀 Empezar Gratis (20 min)",
+   ctaSecondary: "▶️ Ver Cómo Funciona",
+   versionLive: "Versión 2.0 Online",
+   userCount: "1.247",
+   activeCreators: "Creadores activos",
+   freeTrial: "Prueba gratis",
+   zeroSetup: "Cero Instalación",
+   offlineBadge: "Funciona Offline",
+   privacyBadge: "Privacidad Total",
+  },
+  problemSolution: {
+   title: 'Basta de <span class="line-through text-red-500">frustración</span> al grabar videos',
+   before: {
+    title: "Antes",
+    items: [
+     "🤦 Olvidaste el guion en medio de la grabación",
+     "⏰ Perdiste 3 horas regrabando el mismo video",
+     "🏃 Te levantaste 15 veces para pausar/continuar el texto",
+     "💸 Gastaste dinero en teleprompter físico complicado",
+     "📱 Apps que se traban o exigen login",
+    ],
+   },
+   after: {
+    title: "Ahora",
+    items: [
+     "🎯 Guion siempre visible en la pantalla de la notebook",
+     "📱 Controlas todo por el celular (Play/Pause/Velocidad)",
+     "⚡ Conexión P2P = Latencia sub-milisegundo",
+     "🔒 Tus datos quedan en TU dispositivo",
+     "🌐 Funciona offline (vuelo, sin internet, eventos en vivo)",
+    ],
+   },
+  },
+  howItWorks: {
+   title: "Tan simple que hasta tu abuela puede usarlo",
+   step1: {
+    title: "Pega tu guion",
+    desc: "Escribe o pega el texto de tu presentación en la notebook",
+   },
+   step2: {
+    title: "Escanea el QR Code",
+    desc: "Apunta la cámara del celular. Conexión automática en 2 segundos",
+   },
+   step3: {
+    title: "Graba como un PRO",
+    desc: "Controla la velocidad, pausa, vuelve al inicio. Todo por el celular",
+   },
+   cta: "Probar Ahora (Gratis)",
+  },
+  comparison: {
+   title: "¿Por qué PromptNinja?",
+   subtitle: "Comparación honesta con otras soluciones",
+   columns: {
+    ninja: "PromptNinja",
+    paid: "Apps Pagas",
+    hardware: "Hardware",
+    free: "Sitios Gratis",
+   },
+   rows: {
+    remote: "Control Remoto",
+    offline: "Funciona Offline",
+    privacy: "Privacidad Total",
+    latency: "Latencia",
+    price: "Precio",
+   },
+   values: {
+    ninja: {
+     remote: "Celular",
+     offline: "Sí",
+     privacy: "P2P",
+     latency: "<10ms",
+     price: "$ 19",
+    },
+    paid: {
+     remote: "No",
+     offline: "No",
+     privacy: "Cloud",
+     latency: "~100ms",
+     price: "$ 15/año",
+    },
+    hardware: {
+     remote: "Físico",
+     offline: "Sí",
+     privacy: "Sí",
+     latency: "<5ms",
+     price: "$ 100+",
+    },
+    free: {
+     remote: "No",
+     offline: "No",
+     privacy: "Rastrean",
+     latency: ">500ms",
+     price: "Gratis c/ Ads",
+    },
+   },
   },
   features: {
    sync: {
     title: "Sincronización Instantánea",
-    desc:
-     "La tecnología Peer-to-Peer (P2P) ofrece control en tiempo real sin demoras — sin latencia del servidor, solo sincronización instantánea.",
+    desc: "Lo que ves en la PC aparece en el celular al instante.",
    },
    offline: {
     title: "Modo Offline",
-    desc:
-     "Accede a tu teleprompter sin conexión. Tus guiones permanecen privados, nunca salen de tu dispositivo.",
+    desc: "Funciona sin internet gracias a la tecnología PWA.",
    },
    privacy: {
-    title: "Privacidad Total",
-    desc: "Privacidad total: Sin nube, sin servidores, tu guion se almacena solo en tu navegador.",
+    title: "Privacidad Primero",
+    desc: "Tus guiones nunca salen de tu dispositivo.",
+   },
+   noApp: {
+    title: "Sin App",
+    desc: "No necesitas instalar nada. Funciona en el navegador.",
    },
    voice: {
     title: "Control por Voz",
@@ -49,23 +152,78 @@ export const es = {
    },
   },
   pricing: {
-   title: "Acceso de por Vida",
-   subtitle: "Pago único para acceso de por vida. Sin cuotas recurrentes, nunca.",
-   lifetime: "De por Vida",
-   price: "€8",
+   title: "Precio Simple y Honesto",
+   subtitle: "Prueba gratis, actualiza cuando quieras",
+   free: {
+    title: "Gratis",
+    desc: "Para probar y validar",
+    price: "$ 0",
+    period: "/siempre",
+    cta: "Empezar Gratis",
+    features: ["20 minutos por sesión", "Sesiones ilimitadas", "Control remoto total", "Todos los temas"],
+    missing: ["Marca de agua discreta", "Control por voz"],
+   },
+   pro: {
+    badge: "🔥 PRECIO DE LANZAMIENTO",
+    title: "PRO Vitalicio",
+    desc: "Pago único, tuyo para siempre",
+    price: "$ 19",
+    originalPrice: "$ 49",
+    priceNote: "Luego $ 3/mes o $ 49 vitalicio",
+    cta: "🚀 Garantizar Acceso Vitalicio",
+    timer: "⏰ Precio válido solo para los primeros 500 usuarios",
+    features: [
+     "Sesiones ilimitadas (sin tiempo)",
+     "Sin marca de agua",
+     "Control por voz",
+     "Logo personalizado",
+     "Soporte prioritario",
+     'Badge "Early Supporter"',
+     "Acceso anticipado a funciones",
+    ],
+   },
+   paymentInfo: "💳 Pago único vía Tarjeta. \n🔒 Garantía de 7 días.",
+   // Keep old keys for backward compatibility
+   lifetime: "Vitalicio",
    oneTime: "pago único",
-   cta: "Obtener Acceso de por Vida",
    limitedOffer: "Oferta Limitada",
-   conversionNotice: "El valor final se convertirá a tu moneda local al finalizar la compra.",
-   features: [
-    "Sesiones Ilimitadas",
-    "Sin Marca de Agua",
-    "Sin Límite de Tiempo",
-    "Resaltado de Color",
-    "Control por Voz",
-    "Línea de Enfoque Dinámico",
-    "Soporte Prioritario",
+   conversionNotice: "El valor final será convertido a tu moneda local al finalizar la compra.",
+  },
+  faq: {
+   title: "Preguntas Frecuentes",
+   items: [
+    {
+     q: "¿Necesito instalar alguna app?",
+     a: "¡No! Funciona 100% en el navegador. Abre en la notebook, escanea con el celular, y listo. Es una PWA, así que PUEDES instalarla si quieres.",
+    },
+    {
+     q: "¿Funciona sin internet?",
+     a: "¡Sí! La conexión es P2P. Si ambos están en la misma red Wi-Fi o si ya abriste la app antes, funciona offline.",
+    },
+    {
+     q: "¿Dónde se guardan mis datos?",
+     a: "En TU dispositivo (localStorage). No enviamos nada al servidor. Cero tracking.",
+    },
+    {
+     q: "¿Qué pasa después de 20 minutos en la versión gratis?",
+     a: "Aparece una invitación para actualizar. Puedes iniciar una nueva sesión sin límites diarios.",
+    },
+    {
+     q: "¿En qué navegador funciona?",
+     a: "Chrome, Edge, Safari y Firefox. Recomendamos Chrome para mejor compatibilidad.",
+    },
+    {
+     q: "¿Y si no me gusta?",
+     a: "Garantía de 7 días. Devolvemos el 100% sin preguntas.",
+    },
    ],
+  },
+  finalCta: {
+   title: "¿Listo para grabar como un profesional?",
+   subtitle: "Únete a los creadores que ya dejaron de regrabar 15 veces el mismo video",
+   ctaPrimary: "Empezar Gratis (20 min)",
+   ctaSecondary: "Ver Precios",
+   footer: "Sin tarjeta de crédito. Sin instalación. Sin vueltas.",
   },
  },
  status: {
@@ -73,23 +231,24 @@ export const es = {
   connecting: "CONECTANDO...",
   connected: "CONECTADO",
   error: "ERROR DE RED",
+  copyright: "PromptNinja. Todos los derechos reservados.",
  },
  host: {
-  startPrompter: "Modo Presentación",
+  startPrompter: "Iniciar Teleprompter",
   editText: "Editar Guion",
-  mirror: "Espejo",
-  mirrorV: "Espejo Vertical",
-  remoteConnect: "Conexión Remota",
-  scanInstruction: "Escanea el Código QR para Controlar",
-  generatingId: "Generando Enlace...",
+  mirror: "Espejar",
+  mirrorV: "Espejar Verticalmente",
+  remoteConnect: "Conectar Control Remoto",
+  scanInstruction: "Escanea el QR para Controlar",
+  generatingId: "Generando Link...",
   idLabel: "ID de Sesión:",
-  editorPlaceholder: "Pega o escribe tu guion de discurso aquí para dominar tu presentación...",
-  localhostWarning: "Advertencia: Localhost detectado. Usa el botón de abajo para probar.",
+  editorPlaceholder: "Pega o escribe tu guion aquí...",
+  localhostWarning: "Atención: Localhost detectado.",
   openRemoteTab: "Abrir Control Remoto (Nueva Pestaña)",
-  copyLink: "Copiar Enlace",
+  copyLink: "Copiar Link",
   linkCopied: "¡Copiado!",
-  connectionLost: "CONEXIÓN PERDIDA",
-  watermark: "PROMPT NINJA VERSIÓN GRATUITA",
+  connectionLost: "Conexión Perdida",
+  watermark: "PromptNinja - Versión Gratuita",
   exit: "Salir",
   controls: {
    play: "Reproducir",
@@ -97,128 +256,75 @@ export const es = {
    reset: "Reiniciar",
    speed: "Velocidad",
    margin: "Margen",
-   size: "Texto",
-   timer: "Tiempo",
+   size: "Tamaño Texto",
+   timer: "Temporizador",
    caps: "Mayúsculas",
-   voice: "Control por Voz",
-   focusLine: "Línea de Enfoque",
+   voice: "Control de Voz",
+   focusLine: "Línea de Foco",
    theme: "Tema Visual",
-   fontSize: "Tamaño de Texto",
+   fontSize: "Tamaño Fuente",
   },
   themes: {
-   default: "Predeterminado",
-   ninja: "Ninja (Oscuro)",
-   paper: "Papel (Claro)",
-   contrast: "Contraste",
-   matrix: "Matrix",
-   cyber: "Cyberpunk",
-   cream: "Crema (Lector)",
+   default: "Estándar",
+   dark: "Oscuro",
+   light: "Claro",
   },
-  tips: {
-   title: "Consejos de Edición PRO",
-   desc: "Usa etiquetas para resaltar texto:",
-   red: "Resaltado Rojo",
-   yellow: "Resaltado Amarillo",
-   green: "Resaltado Verde",
-   caps: "El botón 'TT' activa el modo Mayúsculas.",
-   voice: "Activa el Micrófono para el desplazamiento automático por voz.",
-  },
-  paywall: {
-   title: "Función PRO Bloqueada",
-   desc: "Esta función es exclusiva para Ninjas PRO. Desbloquea para usar colores, voz y límite ilimitado.",
-   cta: "Desbloquear de por Vida",
-   inputPlaceholder: "Introduce tu clave PRO...",
-   button: "Activar PRO",
-   invalid: "Clave Inválida",
-   success: "¡Ninja Pro Activado!",
-   emptyKey: "Por favor, introduce una clave de desbloqueo.",
-   invalidKey: "Clave de desbloqueo inválida. Inténtalo de nuevo.",
-   countdownMessage: "Volviendo a la página en...",
-  },
-
-  voice: {
-   notSupported: "Tu navegador no soporta control por voz",
-  },
-  editor: {
-   highlight: "Resaltar",
-  },
-  defaultText: `Bienvenido a PromptNinja.
-
-El teleprompter definitivo para creadores de contenido.
-
-1. Escanee el Código QR para conectar.
-2. Controle la velocidad de desplazamiento con facilidad.
-3. Use el Trackpad para una navegación intuitiva.
-
-<r>ATENCIÓN:</r>
-Use etiquetas de color para resaltar momentos importantes en su guion.
-<y>Este texto está en amarillo para un énfasis ligero.</y>
-<g>Y este en verde para señalar calma o una transición suave.</g>
-
-¡Pegue su guion aquí y personalize su experiencia para empezar a brillar!`,
  },
  remote: {
-  connecting: "Buscando Ninja Host...",
-  targetId: "Objetivo: {{id}}",
+  connecting: "Buscando Host...",
+  targetId: "Target: {{id}}",
   touchArea: "TRACKPAD",
   speed: "Velocidad",
   reset: "Reiniciar",
-  start: "Iniciar",
-  pause: "Pausar",
-  stop: "Parar",
+  start: "Inicio",
+  pause: "Pausa",
+  stop: "Stop",
   theme: "Tema",
   language: "Idioma",
  },
- footer: {
-  copyright: "PromptNinja. Todos los derechos reservados.",
- },
  tutorial: {
   tips: {
-   title: "Consejos Pro",
-   tip1: "Usa el control por voz para operar con manos libres.",
-   tip2: "Escanea el código QR para controlar desde tu teléfono.",
+   title: "Tips Pro",
+   tip1: "Usa control por voz para manos libres.",
+   tip2: "Escanea el QR para controlar desde tu teléfono.",
   },
-  title: "PromptNinja: Guía de Inicio Rápido",
+  title: "PromptNinja: Guía Rápida",
   overview: {
-   title: "Visión General",
-   description:
-    "PromptNinja es un teleprompter profesional peer-to-peer que transforma tu navegador en un estudio completo y tu smartphone en un control remoto — sin apps, sin cuentas, sin dependencia de servidores.",
+   title: "Resumen",
+   description: "PromptNinja transforma tu navegador en un estudio de teleprompter.",
   },
   howToUse: {
    title: "Cómo Usar",
    step1: {
     title: "Escribe tu Guion",
-    description:
-     "Escribe o pega fácilmente tu guion de presentación. Usa etiquetas como <r>texto</r> para resaltar con colores.",
+    description: "Escribe o pega tu texto. Usa etiquetas <r>texto</r> para color.",
    },
    step2: {
     title: "Conecta tu Teléfono",
-    description:
-     "Conecta tu smartphone: Escanea el código QR para convertirlo en un control remoto para velocidad y desplazamiento.",
+    description: "Escanea el código QR para usarlo como control remoto.",
    },
    step3: {
-    title: "Modo de Presentación",
-    description:
-     "Activa el modo teleprompter: Haz clic en 'Iniciar Presentación' y controla con tu mando a distancia o voz.",
+    title: "Inicia la Presentación",
+    description: "Usa el control remoto para manejar la velocidad y el texto.",
    },
   },
   advancedFeatures: {
-   title: "Características Avanzadas",
+   title: "Funciones Avanzadas",
    voiceControl: {
-    title: "Control por Voz (Pro)",
-    description:
-     "Habilita el desplazamiento activado por voz: Tu teleprompter avanza automáticamente mientras hablas. (Función Pro)",
+    title: "Control de Voz",
+    description: "El texto avanza automáticamente al hablar.",
    },
    themes: {
     title: "Temas",
-    description:
-     "Personaliza la apariencia del teleprompter con diferentes temas para una mejor legibilidad en diversas condiciones de iluminación.",
+    description: "Personaliza los colores.",
    },
    focusMode: {
-    title: "Modo de Enfoque",
-    description:
-     "Activa el Modo de Enfoque para resaltar la línea de lectura y atenuar el texto circundante.",
+    title: "Modo Foco",
+    description: "Resalta la línea actual.",
    },
   },
+ },
+ footer: {
+  copyright: "PromptNinja. Todos los derechos reservados.",
  },
 };
