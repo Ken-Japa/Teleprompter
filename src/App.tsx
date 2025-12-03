@@ -6,16 +6,9 @@ const Host = React.lazy(() => import("./pages/Host").then(module => ({ default: 
 const Remote = React.lazy(() => import("./pages/Remote").then(module => ({ default: module.Remote })));
 const Landing = React.lazy(() => import("./pages/Landing").then(module => ({ default: module.Landing })));
 
-// SEO Pages
-const TeleprompterOnlineGratis = React.lazy(() => import("./pages/seo/TeleprompterOnlineGratis").then(module => ({ default: module.TeleprompterOnlineGratis })));
-const ComoUsarTeleprompter = React.lazy(() => import("./pages/seo/ComoUsarTeleprompter").then(module => ({ default: module.ComoUsarTeleprompter })));
-const MelhorAppTeleprompter = React.lazy(() => import("./pages/seo/MelhorAppTeleprompter").then(module => ({ default: module.MelhorAppTeleprompter })));
-const AlternativasTeleprompterConcorrente = React.lazy(() => import("./pages/seo/AlternativasTeleprompterConcorrente").then(module => ({ default: module.AlternativasTeleprompterConcorrente })));
-const TeleprompterParaYoutubers = React.lazy(() => import("./pages/seo/TeleprompterParaYoutubers").then(module => ({ default: module.TeleprompterParaYoutubers })));
-const TeleprompterTravandoSolucao = React.lazy(() => import("./pages/seo/TeleprompterTravandoSolucao").then(module => ({ default: module.TeleprompterTravandoSolucao })));
-const TeleprompterCaseiroDIY = React.lazy(() => import("./pages/seo/TeleprompterCaseiroDIY").then(module => ({ default: module.TeleprompterCaseiroDIY })));
+import { SeoPages, SeoRouteKey } from "./config/seoRoutes";
 
-type ViewState = "LANDING" | "HOST" | "REMOTE" | "SEO_GRATIS" | "SEO_TUTORIAL" | "SEO_MELHOR_APP" | "SEO_ALTERNATIVAS" | "SEO_YOUTUBERS" | "SEO_TRAVANDO" | "SEO_DIY";
+type ViewState = "LANDING" | "HOST" | "REMOTE" | SeoRouteKey;
 
 const LoadingSpinner = () => (
     <div className="flex items-center justify-center h-screen bg-slate-950 text-white">
@@ -80,6 +73,14 @@ const App: React.FC = () => {
                 setView("SEO_DIY");
                 return;
             }
+            if (cleanPath === "/dicas-oratoria-video") {
+                setView("SEO_ORATORIA");
+                return;
+            }
+            if (cleanPath === "/como-decorar-texto-rapido") {
+                setView("SEO_DECORAR");
+                return;
+            }
 
             // 3. Default
             setView("LANDING");
@@ -109,13 +110,15 @@ const App: React.FC = () => {
                 {view === "REMOTE" && <Remote hostId={remoteId} />}
                 {view === "LANDING" && <Landing onLaunch={launchApp} />}
                 {view === "HOST" && <Host />}
-                {view === "SEO_GRATIS" && <TeleprompterOnlineGratis onLaunch={launchApp} />}
-                {view === "SEO_TUTORIAL" && <ComoUsarTeleprompter onLaunch={launchApp} />}
-                {view === "SEO_MELHOR_APP" && <MelhorAppTeleprompter onLaunch={launchApp} />}
-                {view === "SEO_ALTERNATIVAS" && <AlternativasTeleprompterConcorrente onLaunch={launchApp} />}
-                {view === "SEO_YOUTUBERS" && <TeleprompterParaYoutubers onLaunch={launchApp} />}
-                {view === "SEO_TRAVANDO" && <TeleprompterTravandoSolucao onLaunch={launchApp} />}
-                {view === "SEO_DIY" && <TeleprompterCaseiroDIY onLaunch={launchApp} />}
+                {view === "SEO_GRATIS" && <SeoPages.TeleprompterOnlineGratis onLaunch={launchApp} />}
+                {view === "SEO_TUTORIAL" && <SeoPages.ComoUsarTeleprompter onLaunch={launchApp} />}
+                {view === "SEO_MELHOR_APP" && <SeoPages.MelhorAppTeleprompter onLaunch={launchApp} />}
+                {view === "SEO_ALTERNATIVAS" && <SeoPages.AlternativasTeleprompterConcorrente onLaunch={launchApp} />}
+                {view === "SEO_YOUTUBERS" && <SeoPages.TeleprompterParaYoutubers onLaunch={launchApp} />}
+                {view === "SEO_TRAVANDO" && <SeoPages.TeleprompterTravandoSolucao onLaunch={launchApp} />}
+                {view === "SEO_DIY" && <SeoPages.TeleprompterCaseiroDIY onLaunch={launchApp} />}
+                {view === "SEO_ORATORIA" && <SeoPages.OratoriaVideo onLaunch={launchApp} />}
+                {view === "SEO_DECORAR" && <SeoPages.ComoDecorarTexto onLaunch={launchApp} />}
             </Suspense>
         </TranslationProvider>
     );
