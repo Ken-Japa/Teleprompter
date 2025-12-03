@@ -12,11 +12,104 @@ export const en = {
  },
  landing: {
   hero: {
-   headline: "Master Your Presentations",
+   headline: "Your phone is the remote. Your home is the studio.",
    subheadline:
-    "The zero-latency professional teleprompter with remote phone control — no cables, no apps, just your browser.",
-   cta: "Start Your Free Teleprompter",
+    "The only teleprompter that works offline, without tracking your data, with ultra-low latency remote control for live presentations.",
+   cta: "Start Free (20 min)",
+   ctaSecondary: "See How It Works",
    versionLive: "Version 2.0 Live",
+   userCount: "1,247",
+   activeCreators: "Active Creators",
+   freeTrial: "Free Trial",
+   zeroSetup: "Zero Setup",
+   offlineBadge: "Works Offline",
+   privacyBadge: "Total Privacy",
+  },
+  problemSolution: {
+   title: "No more frustration when recording videos",
+   before: {
+    title: "Before",
+    items: [
+     "Forgot the script mid-recording",
+     "Lost 3 hours re-recording the same video",
+     "Got up 15 times to pause/continue text",
+     "Spent money on complicated hardware teleprompters",
+     "Apps that crash or require login",
+    ],
+   },
+   after: {
+    title: "Now",
+    items: [
+     "Script always visible on your laptop screen",
+     "Control everything from your phone (Play/Pause/Speed)",
+     "P2P Connection = Sub-millisecond latency",
+     "Data stays on YOUR device",
+     "Works offline (flight, no internet, live events)",
+    ],
+   },
+  },
+  howItWorks: {
+   title: "So simple even your grandma can use it",
+   step1: {
+    title: "Paste your script",
+    desc: "Write or paste your presentation text on your laptop",
+   },
+   step2: {
+    title: "Scan the QR Code",
+    desc: "Point your phone camera. Auto connect in 2 seconds",
+   },
+   step3: {
+    title: "Record like a PRO",
+    desc: "Control speed, pause, reset. All from your phone",
+   },
+   cta: "Test Now (Free)",
+  },
+  comparison: {
+   title: "Why PromptNinja?",
+   subtitle: "Honest comparison with other solutions",
+   columns: {
+    ninja: "PromptNinja",
+    paid: "Paid Apps",
+    hardware: "Hardware",
+    free: "Free Sites",
+   },
+   rows: {
+    remote: "Remote Control",
+    offline: "Works Offline",
+    privacy: "Total Privacy",
+    latency: "Latency",
+    price: "Price",
+   },
+   values: {
+    ninja: {
+     remote: "Phone",
+     offline: "Yes",
+     privacy: "P2P",
+     latency: "<10ms",
+     price: "$ 19",
+    },
+    paid: {
+     remote: "No",
+     offline: "No",
+     privacy: "Cloud",
+     latency: "~100ms",
+     price: "$ 15/yr",
+    },
+    hardware: {
+     remote: "Physical",
+     offline: "Yes",
+     privacy: "Yes",
+     latency: "<5ms",
+     price: "$ 100+",
+    },
+    free: {
+     remote: "No",
+     offline: "No",
+     privacy: "Trackers",
+     latency: ">500ms",
+     price: "Free w/ Ads",
+    },
+   },
   },
   features: {
    sync: {
@@ -46,22 +139,75 @@ export const en = {
    },
   },
   pricing: {
-   title: "Lifetime Access",
-   subtitle: "One-time payment for lifetime access. No recurring fees, ever.",
+   title: "Simple and Honest Pricing",
+   subtitle: "Free trial, upgrade whenever you want",
+   free: {
+    title: "Free",
+    desc: "To test and validate",
+    price: "$ 0",
+    period: "/forever",
+    cta: "Start Free",
+    features: [
+     "20 minutes per session",
+     "Unlimited sessions",
+     "Full remote control",
+     "All themes",
+    ],
+    missing: ["Discreet watermark", "Voice control"],
+   },
+   pro: {
+    badge: "LAUNCH PRICE",
+    title: "Lifetime PRO",
+    desc: "One-time payment, yours forever",
+    price: "$ 19",
+    originalPrice: "$ 49",
+    priceNote: "Then $ 3/month or $ 49 lifetime",
+    cta: "Get Lifetime Access",
+    timer: "Price valid only for the first 500 users",
+    features: [
+     "Unlimited sessions (no time limit)",
+     "No watermark",
+     "Voice control",
+     "Custom logo",
+     "Priority support",
+     'Badge "Early Supporter"',
+     "Early access to features",
+    ],
+   },
+   paymentInfo: "One-time payment via Card. 7-day guarantee.",
+   // Keep old keys for backward compatibility
    lifetime: "Lifetime",
-   price: "$ 9",
    oneTime: "one-time payment",
    limitedOffer: "Limited Offer",
    conversionNotice: "The final value will be converted to your local currency at checkout.",
-   cta: "Grab Your Lifetime Access",
-   features: [
-    "Unlimited Sessions",
-    "No Watermark",
-    "No Time Limit",
-    "Color Highlighting",
-    "Voice Control",
-    "Dynamic Focus Line",
-    "Priority Support",
+  },
+  faq: {
+   title: "Frequently Asked Questions",
+   items: [
+    {
+     q: "Do I need to install an app?",
+     a: "No! It works 100% in the browser. Open on laptop, scan with phone, and that's it. It's a PWA, so you CAN install it if you want.",
+    },
+    {
+     q: "Does it work offline?",
+     a: "Yes! The connection is P2P. If both are on the same Wi-Fi or if you've opened the app before, it works offline.",
+    },
+    {
+     q: "Where is my data saved?",
+     a: "On YOUR device (localStorage). We send nothing to servers. Zero tracking.",
+    },
+    {
+     q: "What happens after 20 minutes in the free version?",
+     a: "An upgrade invite appears. You can start a new session without daily limits.",
+    },
+    {
+     q: "Which browser does it work on?",
+     a: "Chrome, Edge, Safari, and Firefox. We recommend Chrome for best compatibility.",
+    },
+    {
+     q: "What if I don't like it?",
+     a: "7-day guarantee. We refund 100% no questions asked.",
+    },
    ],
   },
  },

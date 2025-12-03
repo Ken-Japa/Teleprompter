@@ -268,7 +268,13 @@ export const useScrollPhysics = ({
   if (!scrollContainerRef.current || isPlayingRef.current || isVoiceModeRef.current) return;
   // Sync internal state with native scroll (e.g. user dragged scrollbar)
   internalScrollPos.current = scrollContainerRef.current.scrollTop;
- }, [scrollContainerRef]);
+
+  // Update progress to keep remote/HUD in sync
+  const metrics = metricsRef.current;
+  const maxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
+  const progress = maxScroll > 0 ? internalScrollPos.current / maxScroll : 0;
+  onScrollUpdate(Math.min(1, Math.max(0, progress)));
+ }, [scrollContainerRef, metricsRef, onScrollUpdate]);
 
  const handleRemoteInput = useCallback(
   (deltaY: number, stop: boolean = false, hardStop: boolean = false) => {

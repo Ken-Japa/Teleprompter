@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PromptNinja - Teleprompter Profissional com Controle Remoto</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .float { animation: float 3s ease-in-out infinite; }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-black text-white">
+
+<!-- Hero Section -->
+<section class="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+  <!-- Background effects -->
+  <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20"></div>
+  <div class="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="text-center mb-12">
+      <!-- Badge "Como Visto Em" (placeholder para quando tiver) -->
+      <!-- <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur px-4 py-2 rounded-full mb-6">
+        <span class="text-sm text-gray-400">Destaque no Product Hunt</span>
+      </div> -->
+
+      <!-- Headline -->
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+        Seu celular é o controle.<br>
+        <span class="gradient-text">Sua casa é o estúdio.</span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+        O único teleprompter que funciona <strong>offline</strong>, sem rastrear seus dados,
+        com controle remoto de <strong>baixíssima latência</strong> para apresentações ao vivo.
+      </p>
+
+      <!-- CTA Principal -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+        <a href="/app" class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-bold py-4 px-8 rounded-lg text-lg shadow-2xl hover:scale-105 transition">
+          🚀 Começar Grátis (20 min)
+        </a>
+        <button onclick="document.getElementById('demo-video').scrollIntoView({behavior:'smooth'})" class="bg-white/10 hover:bg-white/20 backdrop-blur text-white font-medium py-4 px-8 rounded-lg text-lg border border-white/20 transition">
+          ▶️ Ver Como Funciona
+        </button>
+      </div>
+
+      <!-- Social Proof (quando tiver dados) -->
+      <div class="flex justify-center items-center gap-8 text-sm text-gray-400">
+        <div>
+          <span class="text-2xl font-bold text-white block" id="user-count">1.247</span>
+          <span>Criadores ativos</span>
+        </div>
+        <div class="w-px h-12 bg-gray-700"></div>
+        <div>
+          <span class="text-2xl font-bold text-white block">20min</span>
+          <span>Teste grátis</span>
+        </div>
+        <div class="w-px h-12 bg-gray-700"></div>
+        <div>
+          <span class="text-2xl font-bold text-white block">Zero</span>
+          <span>Instalação</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Demo Visual (placeholder) -->
+    <div class="relative max-w-4xl mx-auto">
+      <div class="bg-gradient-to-br from-purple-900/30 to-blue-900/30 backdrop-blur rounded-2xl p-8 border border-white/10 shadow-2xl">
+        <div class="aspect-video bg-black/50 rounded-lg flex items-center justify-center">
+          <span class="text-gray-500 text-lg">[ Vídeo Demo: QR Code → Conexão → Controle ]</span>
+        </div>
+      </div>
+      <!-- Floating elements -->
+      <div class="absolute -top-6 -right-6 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold float shadow-lg">
+        ✅ Funciona Offline
+      </div>
+      <div class="absolute -bottom-6 -left-6 bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-bold float shadow-lg" style="animation-delay: 1s">
+        🔒 Privacidade Total
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Problema/Solução Section -->
+<section class="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-16">
+      Chega de <span class="line-through text-red-500">frustração</span> ao gravar vídeos
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Problema -->
+      <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+        <h3 class="text-xl font-bold mb-4 text-red-400">❌ Antes</h3>
+        <ul class="space-y-3 text-gray-300">
+          <li>🤦 Esqueceu o roteiro no meio da gravação</li>
+          <li>⏰ Perdeu 3 horas regravando o mesmo vídeo</li>
+          <li>🏃 Levantou 15 vezes para pausar/continuar o texto</li>
+          <li>💸 Gastou R$ 400 em teleprompter físico que ninguém sabe usar</li>
+          <li>📱 Baixou 5 apps que travam ou exigem login</li>
+        </ul>
+      </div>
+
+      <!-- Solução -->
+      <div class="bg-green-500/10 border border-green-500/30 rounded-xl p-6">
+        <h3 class="text-xl font-bold mb-4 text-green-400">✅ Agora</h3>
+        <ul class="space-y-3 text-gray-300">
+          <li>🎯 Roteiro sempre visível na tela do notebook</li>
+          <li>📱 Controla tudo pelo celular (Play/Pause/Velocidade)</li>
+          <li>⚡ Conexão P2P = Latência sub-milissegundo</li>
+          <li>🔒 Seus dados ficam no SEU dispositivo</li>
+          <li>🌐 Funciona offline (voo, sem internet, eventos ao vivo)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Como Funciona (3 Passos) -->
+<section class="py-20 px-4 bg-gray-900">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-16">
+      Tão simples que até sua avó consegue
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="text-center">
+        <div class="bg-gradient-to-br from-purple-600 to-purple-800 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold shadow-lg">1</div>
+        <h3 class="text-xl font-bold mb-2">Cole seu roteiro</h3>
+        <p class="text-gray-400">Escreva ou cole o texto da sua apresentação no notebook</p>
+      </div>
+
+      <div class="text-center">
+        <div class="bg-gradient-to-br from-blue-600 to-blue-800 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold shadow-lg">2</div>
+        <h3 class="text-xl font-bold mb-2">Escaneie o QR Code</h3>
+        <p class="text-gray-400">Aponte a câmera do celular. Conexão automática em 2 segundos</p>
+      </div>
+
+      <div class="text-center">
+        <div class="bg-gradient-to-br from-green-600 to-green-800 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold shadow-lg">3</div>
+        <h3 class="text-xl font-bold mb-2">Grave como um PRO</h3>
+        <p class="text-gray-400">Controle a velocidade, pause, volte ao topo. Tudo pelo celular</p>
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="/app" class="inline-block bg-white text-black font-bold py-4 px-8 rounded-lg hover:bg-gray-200 transition text-lg shadow-xl">
+        Testar Agora (Grátis)
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Comparação (vs Concorrentes) -->
+<section class="py-20 px-4 bg-black">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-4">
+      Por que PromptNinja?
+    </h2>
+    <p class="text-center text-gray-400 mb-12">
+      Comparação honesta com outras soluções
+    </p>
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-left">
+        <thead>
+          <tr class="border-b border-gray-800">
+            <th class="py-4 pr-4"></th>
+            <th class="py-4 px-4 text-center">
+              <div class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-lg font-bold">
+                PromptNinja
+              </div>
+            </th>
+            <th class="py-4 px-4 text-center text-gray-400">Apps Pagos</th>
+            <th class="py-4 px-4 text-center text-gray-400">Hardware</th>
+            <th class="py-4 px-4 text-center text-gray-400">Sites Grátis</th>
+          </tr>
+        </thead>
+        <tbody class="text-sm">
+          <tr class="border-b border-gray-800">
+            <td class="py-4 pr-4">Controle Remoto</td>
+            <td class="py-4 px-4 text-center text-green-400 font-bold">✅ Celular</td>
+            <td class="py-4 px-4 text-center text-gray-500">❌</td>
+            <td class="py-4 px-4 text-center text-yellow-400">⚠️ Físico</td>
+            <td class="py-4 px-4 text-center text-gray-500">❌</td>
+          </tr>
+          <tr class="border-b border-gray-800">
+            <td class="py-4 pr-4">Funciona Offline</td>
+            <td class="py-4 px-4 text-center text-green-400 font-bold">✅</td>
+            <td class="py-4 px-4 text-center text-gray-500">❌</td>
+            <td class="py-4 px-4 text-center text-green-400">✅</td>
+            <td class="py-4 px-4 text-center text-gray-500">❌</td>
+          </tr>
+          <tr class="border-b border-gray-800">
+            <td class="py-4 pr-4">Privacidade Total</td>
+            <td class="py-4 px-4 text-center text-green-400 font-bold">✅ P2P</td>
+            <td class="py-4 px-4 text-center text-gray-500">❌ Cloud</td>
+            <td class="py-4 px-4 text-center text-green-400">✅</td>
+            <td class="py-4 px-4 text-center text-gray-500">❌ Rastreiam</td>
+          </tr>
+          <tr class="border-b border-gray-800">
+            <td class="py-4 pr-4">Latência</td>
+            <td class="py-4 px-4 text-center text-green-400 font-bold">&lt;10ms</td>
+            <td class="py-4 px-4 text-center text-yellow-400">~100ms</td>
+            <td class="py-4 px-4 text-center text-green-400">&lt;5ms</td>
+            <td class="py-4 px-4 text-center text-red-400">&gt;500ms</td>
+          </tr>
+          <tr>
+            <td class="py-4 pr-4 font-bold">Preço</td>
+            <td class="py-4 px-4 text-center text-green-400 font-bold">R$ 67</td>
+            <td class="py-4 px-4 text-center text-gray-400">R$ 80/ano</td>
+            <td class="py-4 px-4 text-center text-gray-400">R$ 400+</td>
+            <td class="py-4 px-4 text-center text-gray-400">Grátis c/ Ads</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing" class="py-20 px-4 bg-gradient-to-b from-gray-900 to-black">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-4">
+      Preço Simples e Honesto
+    </h2>
+    <p class="text-center text-gray-400 mb-12">
+      Teste grátis, atualize quando quiser
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <!-- Plano Free -->
+      <div class="bg-gray-800/50 backdrop-blur border border-gray-700 rounded-2xl p-8">
+        <h3 class="text-2xl font-bold mb-2">Grátis</h3>
+        <p class="text-gray-400 mb-6">Para testar e validar</p>
+        <div class="text-4xl font-bold mb-6">
+          R$ 0<span class="text-lg text-gray-400">/sempre</span>
+        </div>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-2">
+            <span class="text-green-400 mt-1">✓</span>
+            <span>20 minutos por sessão</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-400 mt-1">✓</span>
+            <span>Sessões ilimitadas</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-400 mt-1">✓</span>
+            <span>Controle remoto total</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-400 mt-1">✓</span>
+            <span>Todos os temas</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-gray-500 mt-1">✗</span>
+            <span class="text-gray-400">Marca d'água discreta</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-gray-500 mt-1">✗</span>
+            <span class="text-gray-400">Controle por voz</span>
+          </li>
+        </ul>
+        <a href="/app" class="block w-full bg-gray-700 hover:bg-gray-600 text-white text-center font-bold py-3 rounded-lg transition">
+          Começar Grátis
+        </a>
+      </div>
+
+      <!-- Plano PRO -->
+      <div class="bg-gradient-to-br from-purple-900 to-blue-900 border-2 border-yellow-400 rounded-2xl p-8 relative shadow-2xl">
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-black px-4 py-1 rounded-full text-sm font-bold">
+          🔥 PREÇO DE LANÇAMENTO
+        </div>
+        <h3 class="text-2xl font-bold mb-2">PRO Vitalício</h3>
+        <p class="text-gray-300 mb-6">Pagamento único, seu para sempre</p>
+        <div class="flex items-baseline gap-2 mb-2">
+          <span class="text-4xl font-bold">R$ 67</span>
+          <span class="text-lg line-through text-gray-400">R$ 147</span>
+        </div>
+        <p class="text-sm text-yellow-300 mb-6">
+          Depois vira R$ 12,90/mês ou R$ 147 vitalício
+        </p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-2">
+            <span class="text-green-400 mt-1 text-xl">✓</span>
+            <span><strong>Sessões ilimitadas</strong> (sem tempo)</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-400 mt-1 text-xl">✓</span>
+            <span><strong>Sem marca d'água</strong></span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-400 mt-1 text-xl">✓</span>
+            <span><strong>Controle por voz</strong></span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-400 mt-1 text-xl">✓</span>
+            <span>Logo personalizado</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-400 mt-1 text-xl">✓</span>
+            <span>Suporte prioritário</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-400 mt-1 text-xl">✓</span>
+            <span>Badge "Early Supporter"</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-400 mt-1 text-xl">✓</span>
+            <span>Acesso antecipado a features</span>
+          </li>
+        </ul>
+        <a href="/checkout" class="block w-full bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-black text-center font-bold py-4 rounded-lg transition shadow-xl text-lg">
+          🚀 Garantir Acesso Vitalício
+        </a>
+        <p class="text-xs text-center text-gray-300 mt-4">
+          ⏰ Preço válido apenas para os primeiros 500 usuários
+        </p>
+      </div>
+    </div>
+
+    <div class="text-center mt-12 text-sm text-gray-400">
+      <p>💳 Pagamento único via Cartão, PIX ou Boleto</p>
+      <p>🔒 Garantia de 7 dias (devolução sem perguntas)</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-20 px-4 bg-gray-900">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-12">
+      Perguntas Frequentes
+    </h2>
+
+    <div class="space-y-6">
+      <details class="bg-black/50 backdrop-blur border border-gray-800 rounded-lg p-6 cursor-pointer">
+        <summary class="font-bold text-lg">Preciso instalar algum app?</summary>
+        <p class="text-gray-400 mt-3">
+          Não! Funciona 100% no navegador. Abra no notebook, escaneie com o celular, e pronto.
+          É um PWA (Progressive Web App), então você PODE instalar se quiser, mas não é obrigatório.
+        </p>
+      </details>
+
+      <details class="bg-black/50 backdrop-blur border border-gray-800 rounded-lg p-6 cursor-pointer">
+        <summary class="font-bold text-lg">Funciona sem internet?</summary>
+        <p class="text-gray-400 mt-3">
+          Sim! A conexão entre seu notebook e celular é P2P (peer-to-peer), não passa por servidor.
+          Se ambos estiverem na mesma rede Wi-Fi ou se você já abriu o app antes, funciona offline.
+        </p>
+      </details>
+
+      <details class="bg-black/50 backdrop-blur border border-gray-800 rounded-lg p-6 cursor-pointer">
+        <summary class="font-bold text-lg">Meus dados ficam salvos onde?</summary>
+        <p class="text-gray-400 mt-3">
+          No SEU dispositivo (localStorage do navegador). Não enviamos nada para servidor. Zero tracking.
+          Por isso funciona offline e é 100% privado.
+        </p>
+      </details>
+
+      <details class="bg-black/50 backdrop-blur border border-gray-800 rounded-lg p-6 cursor-pointer">
+        <summary class="font-bold text-lg">O que acontece após 20 minutos na versão grátis?</summary>
+        <p class="text-gray-400 mt-3">
+          Aparece uma tela convidando você a fazer upgrade. Você pode clicar em "Nova Sessão" e usar de novo.
+          Sem limites diários, sem login forçado. A única diferença do PRO é ter sessões ilimitadas e sem marca d'água.
+        </p>
+      </details>
+
+      <details class="bg-black/50 backdrop-blur border border-gray-800 rounded-lg p-6 cursor-pointer">
+        <summary class="font-bold text-lg">Funciona em qual navegador?</summary>
+        <p class="text-gray-400 mt-3">
+          Chrome, Edge, Safari e Firefox. Recomendamos Chrome pela melhor compatibilidade com WebRTC.
+        </p>
+      </details>
+
+      <details class="bg-black/50 backdrop-blur border border-gray-800 rounded-lg p-6 cursor-pointer">
+        <summary class="font-bold text-lg">E se eu não gostar?</summary>
+        <p class="text-gray-400 mt-3">
+          Garantia de 7 dias. Manda um email para suporte@promptninja.app e devolvemos 100% sem perguntas.
+        </p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Final -->
+<section class="py-20 px-4 bg-gradient-to-br from-purple-900 via-black to-blue-900">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-5xl font-bold mb-6">
+      Pronto para gravar como um profissional?
+    </h2>
+    <p class="text-xl text-gray-300 mb-8">
+      Junte-se aos criadores que já pararam de regravar 15 vezes o mesmo vídeo
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/app" class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-bold py-4 px-8 rounded-lg text-lg shadow-2xl hover:scale-105 transition">
+        Começar Grátis (20 min)
+      </a>
+      <a href="#pricing" class="bg-white/10 hover:bg-white/20 backdrop-blur text-white font-medium py-4 px-8 rounded-lg text-lg border border-white/20 transition">
+        Ver Preços
+      </a>
+    </div>
+    <p class="text-sm text-gray-400 mt-6">
+      Sem cartão de crédito. Sem instalação. Sem enrolação.
+    </p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black border-t border-gray-800 py-8 px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <h4 class="font-bold mb-3">Produto</h4>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li><a href="/features" class="hover:text-white">Features</a></li>
+          <li><a href="/pricing" class="hover:text-white">Preços</a></li>
+          <li><a href="/changelog" class="hover:text-white">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-3">Suporte</h4>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li><a href="/help" class="hover:text-white">Central de Ajuda</a></li>
+          <li><a href="/contact" class="hover:text-white">Contato</a></li>
+          <li><a href="/connection-issues" class="hover:text-white">Problemas de Conexão</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-3">Legal</h4>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li><a href="/privacy" class="hover:text-white">Privacidade</a></li>
+          <li><a href="/terms" class="hover:text-white">Termos de Uso</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-3">Comunidade</h4>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li><a href="https://twitter.com/promptninja" class="hover:text-white">Twitter</a></li>
+          <li><a href="https://github.com/yourusername/promptninja" class="hover:text-white">GitHub</a></li>
+          <li><a href="https://producthunt.com" class="hover:text-white">Product Hunt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
+      <p>&copy; 2025 PromptNinja. Feito com ☕ no Brasil.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

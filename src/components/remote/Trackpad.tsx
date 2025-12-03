@@ -42,6 +42,11 @@ export const Trackpad: React.FC<TrackpadProps> = ({ onDelta, onStop, label }) =>
             lastTouchY.current = y;
             lastTouchTime.current = Date.now();
 
+            // Haptic Feedback
+            if (navigator.vibrate) {
+                navigator.vibrate(15); // Subtle click effect
+            }
+
             isTouching.current = true;
             updateCursorVisuals(e.touches[0].clientX, e.touches[0].clientY, true);
         };

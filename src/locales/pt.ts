@@ -12,11 +12,104 @@ export const pt = {
  },
  landing: {
   hero: {
-   headline: "Domine Suas Apresentações",
+   headline: "Seu celular é o controle. Sua casa é o estúdio.",
    subheadline:
-    "Controle seu teleprompter com o celular, sem cabos ou apps. Apresentações profissionais com latência zero, direto no navegador.",
-   cta: "Iniciar Teleprompter Grátis",
+    "O único teleprompter que funciona offline, sem rastrear seus dados, com controle remoto de baixíssima latência para apresentações ao vivo.",
+   cta: "Começar Grátis (20 min)",
+   ctaSecondary: "Ver Como Funciona",
    versionLive: "Versão 2.0 Online",
+   userCount: "1.247",
+   activeCreators: "Criadores ativos",
+   freeTrial: "Teste grátis",
+   zeroSetup: "Zero Instalação",
+   offlineBadge: "Funciona Offline",
+   privacyBadge: "Privacidade Total",
+  },
+  problemSolution: {
+   title: "Chega de frustração ao gravar vídeos",
+   before: {
+    title: "Antes",
+    items: [
+     "Esqueceu o roteiro no meio da gravação",
+     "Perdeu 3 horas regravando o mesmo vídeo",
+     "Levantou 15 vezes para pausar/continuar o texto",
+     "Gastou dinheiro em teleprompter físico complicado",
+     "Apps que travam ou exigem login",
+    ],
+   },
+   after: {
+    title: "Agora",
+    items: [
+     "Roteiro sempre visível na tela do notebook",
+     "Controla tudo pelo celular (Play/Pause/Velocidade)",
+     "Conexão P2P = Latência sub-milissegundo",
+     "Seus dados ficam no SEU dispositivo",
+     "Funciona offline (voo, sem internet, eventos ao vivo)",
+    ],
+   },
+  },
+  howItWorks: {
+   title: "Tão simples que até sua avó consegue",
+   step1: {
+    title: "Cole seu roteiro",
+    desc: "Escreva ou cole o texto da sua apresentação no notebook",
+   },
+   step2: {
+    title: "Escaneie o QR Code",
+    desc: "Aponte a câmera do celular. Conexão automática em 2 segundos",
+   },
+   step3: {
+    title: "Grave como um PRO",
+    desc: "Controle a velocidade, pause, volte ao topo. Tudo pelo celular",
+   },
+   cta: "Testar Agora (Grátis)",
+  },
+  comparison: {
+   title: "Por que PromptNinja?",
+   subtitle: "Comparação honesta com outras soluções",
+   columns: {
+    ninja: "PromptNinja",
+    paid: "Apps Pagos",
+    hardware: "Hardware",
+    free: "Sites Grátis",
+   },
+   rows: {
+    remote: "Controle Remoto",
+    offline: "Funciona Offline",
+    privacy: "Privacidade Total",
+    latency: "Latência",
+    price: "Preço",
+   },
+   values: {
+    ninja: {
+     remote: "Celular",
+     offline: "Sim",
+     privacy: "P2P",
+     latency: "<10ms",
+     price: "R$ 67",
+    },
+    paid: {
+     remote: "Não",
+     offline: "Não",
+     privacy: "Cloud",
+     latency: "~100ms",
+     price: "R$ 80/ano",
+    },
+    hardware: {
+     remote: "Físico",
+     offline: "Sim",
+     privacy: "Sim",
+     latency: "<5ms",
+     price: "R$ 400+",
+    },
+    free: {
+     remote: "Não",
+     offline: "Não",
+     privacy: "Rastreiam",
+     latency: ">500ms",
+     price: "Grátis c/ Ads",
+    },
+   },
   },
   features: {
    sync: {
@@ -49,22 +142,70 @@ export const pt = {
    },
   },
   pricing: {
-   title: "Acesso Vitalício ao PromptNinja PRO",
-   subtitle: "Invista uma vez, use para sempre. Sem mensalidades, sem surpresas.",
+   title: "Preço Simples e Honesto",
+   subtitle: "Teste grátis, atualize quando quiser",
+   free: {
+    title: "Grátis",
+    desc: "Para testar e validar",
+    price: "R$ 0",
+    period: "/sempre",
+    cta: "Começar Grátis",
+    features: ["20 minutos por sessão", "Sessões ilimitadas", "Controle remoto total", "Todos os temas"],
+    missing: ["Marca d'água discreta", "Controle por voz"],
+   },
+   pro: {
+    badge: "PREÇO DE LANÇAMENTO",
+    title: "PRO Vitalício",
+    desc: "Pagamento único, seu para sempre",
+    price: "R$ 67",
+    originalPrice: "R$ 147",
+    priceNote: "Depois vira R$ 12,90/mês ou R$ 147 vitalício",
+    cta: "Garantir Acesso Vitalício",
+    timer: "Preço válido apenas para os primeiros 500 usuários",
+    features: [
+     "Sessões ilimitadas (sem tempo)",
+     "Sem marca d'água",
+     "Controle por voz",
+     "Logo personalizado",
+     "Suporte prioritário",
+     'Badge "Early Supporter"',
+     "Acesso antecipado a features",
+    ],
+   },
+   paymentInfo: "Pagamento único via Cartão, PIX ou Boleto. Garantia de 7 dias.",
+   // Keep old keys for backward compatibility if needed during transition
    lifetime: "Vitalício",
-   price: "R$ 47",
    oneTime: "pagamento único",
-   cta: "Garanta Seu Acesso Vitalício PRO",
    limitedOffer: "Oferta Limitada",
    conversionNotice: "",
-   features: [
-    "Sessões de Teleprompter Ilimitadas",
-    "Sem Marca D'água (Versão PRO)",
-    "Uso Sem Limite de Tempo",
-    "Destaque de Texto Personalizável (Cores)",
-    "Controle por Voz Inteligente",
-    "Linha de Foco Dinâmico Aprimorada",
-    "Suporte Prioritário Exclusivo",
+  },
+  faq: {
+   title: "Perguntas Frequentes",
+   items: [
+    {
+     q: "Preciso instalar algum app?",
+     a: "Não! Funciona 100% no navegador. Abra no notebook, escaneie com o celular, e pronto. É um PWA, então você PODE instalar se quiser.",
+    },
+    {
+     q: "Funciona sem internet?",
+     a: "Sim! A conexão é P2P. Se ambos estiverem na mesma rede Wi-Fi ou se você já abriu o app antes, funciona offline.",
+    },
+    {
+     q: "Meus dados ficam salvos onde?",
+     a: "No SEU dispositivo (localStorage). Não enviamos nada para servidor. Zero tracking.",
+    },
+    {
+     q: "O que acontece após 20 minutos na versão grátis?",
+     a: "Aparece um convite para upgrade. Você pode iniciar uma nova sessão sem limites diários.",
+    },
+    {
+     q: "Funciona em qual navegador?",
+     a: "Chrome, Edge, Safari e Firefox. Recomendamos Chrome pela melhor compatibilidade.",
+    },
+    {
+     q: "E se eu não gostar?",
+     a: "Garantia de 7 dias. Devolvemos 100% sem perguntas.",
+    },
    ],
   },
  },

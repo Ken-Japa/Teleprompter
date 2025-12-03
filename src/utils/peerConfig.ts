@@ -13,6 +13,12 @@ export const PEER_CONFIG: PeerJSOption = {
    { urls: "stun:stun.services.mozilla.com" },
    // Twilio - Servidor STUN público (TURN requer credenciais pagas)
    { urls: "stun:global.stun.twilio.com:3478" },
+   // OpenRelay - Free TURN Project
+   {
+    urls: "turn:openrelay.metered.ca:80",
+    username: "openrelayproject",
+    credential: "openrelayproject",
+   },
   ],
  },
  // Debug level: 0=none, 1=errors, 2=warnings, 3=all

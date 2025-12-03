@@ -1,10 +1,43 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import * as admin from 'firebase-admin';
 import { db } from './_firebase';
+import * as crypto from 'crypto';
+
+const verifySignature = (payload: any, signature: string | string[] | undefined, secret: string): boolean => {
+    if (!signature || typeof signature !== 'string') return false;
+    
+    // Note: For robust verification, we should use the raw body buffer.
+    // Since Vercel parses the body automatically, we try to stringify it back.
+    // This might fail if the formatting differs. 
+    // Ideally, disable bodyParser in config and handle raw stream.
+    const payloadString = JSON.stringify(payload);
+    
+    // Try SHA256 (common)
+    const hash256 = crypto.createHmac('sha256', secret).update(payloadString).digest('hex');
+    if (hash256 === signature) return true;
+
+    // Try SHA1 (legacy)
+    const hash1 = crypto.createHmac('sha1', secret).update(payloadString).digest('hex');
+    if (hash1 === signature) return true;
+
+    return false;
+};
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  // Security: Signature Verification
+  const secret = process.env.KIWIFY_WEBHOOK_SECRET;
+  if (secret) {
+      const signature = req.headers['x-kiwify-signature'];
+      if (!verifySignature(req.body, signature, secret)) {
+          console.error('Invalid Kiwify signature');
+          return res.status(401).json({ error: 'Invalid signature' });
+      }
+  } else {
+      console.warn('KIWIFY_WEBHOOK_SECRET not set. Skipping signature verification.');
   }
 
   try {

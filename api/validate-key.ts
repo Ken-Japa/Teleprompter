@@ -1,6 +1,21 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import * as admin from 'firebase-admin';
 import { db } from './_firebase';
+import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
+
+// Initialize Ratelimit if env vars are present
+const redis = (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN)
+    ? Redis.fromEnv()
+    : null;
+
+const ratelimit = redis
+    ? new Ratelimit({
+        redis: redis,
+        limiter: Ratelimit.slidingWindow(5, "1 h"),
+        analytics: true,
+    })
+    : null;
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Allow CORS for local development or specific domains if needed
@@ -20,6 +35,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  // Rate Limiting
+  if (ratelimit) {
+    const ip = (req.headers['x-forwarded-for'] as string) || '127.0.0.1';
+    const { success } = await ratelimit.limit(ip);
+    if (!success) {
+       return res.status(429).json({ success: false, message: 'Muitas tentativas. Tente novamente mais tarde.' });
+    }
   }
 
   const { key } = req.body;

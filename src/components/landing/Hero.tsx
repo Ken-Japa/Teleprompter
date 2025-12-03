@@ -9,6 +9,10 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
     const { t } = useTranslation();
+    const headline = t("landing.hero.headline") as string;
+    const [firstPart, secondPart] = headline.includes(".") 
+        ? headline.split(".").map(s => s.trim()).filter(Boolean)
+        : [headline, ""];
 
     return (
         <S.HeroSection>
@@ -22,23 +26,16 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
                 </span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-9xl font-display font-black text-white mb-8 tracking-tight leading-[0.9] drop-shadow-2xl">
-                {(t("landing.hero.headline") as string).split(" ").map((word, i) => (
-                    <span
-                        key={i}
-                        className={
-                            i === 2 || i === 3 ? "text-gradient block md:inline relative z-10" : "block md:inline text-slate-100"
-                        }
-                    >
-                        {word}{" "}
-                    </span>
-                ))}
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-black text-white mb-8 tracking-tight leading-[1.1] drop-shadow-2xl">
+                <span className="block text-slate-100">{firstPart}{secondPart ? "." : ""}</span>
+                {secondPart && <span className="block text-gradient relative z-10">{secondPart}.</span>}
             </h1>
+            
             <p className="text-lg md:text-2xl text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed font-light tracking-wide">
                 {t("landing.hero.subheadline")}
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 relative z-10">
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 relative z-10 mb-16">
                 <S.PrimaryButton
                     onClick={onLaunch}
                     className="text-lg py-5 px-12 w-full sm:w-auto shadow-[0_0_50px_rgba(99,102,241,0.4)] hover:shadow-[0_0_80px_rgba(99,102,241,0.6)] transform hover:-translate-y-1 !rounded-2xl ring-2 ring-white/10"
@@ -46,6 +43,30 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
                 >
                     {t("landing.hero.cta")} <RocketIcon className="w-5 h-5 ml-2" />
                 </S.PrimaryButton>
+
+                <button 
+                    onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="text-lg py-5 px-12 w-full sm:w-auto bg-white/5 hover:bg-white/10 backdrop-blur text-white font-medium rounded-2xl border border-white/10 transition-all hover:scale-105"
+                >
+                    {t("landing.hero.ctaSecondary")}
+                </button>
+            </div>
+
+            <div className="flex justify-center items-center gap-8 text-sm text-gray-400 flex-wrap animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+                <div className="text-center">
+                  <span className="text-2xl font-bold text-white block">{t("landing.hero.userCount")}</span>
+                  <span>{t("landing.hero.activeCreators")}</span>
+                </div>
+                <div className="w-px h-12 bg-gray-800 hidden sm:block"></div>
+                 <div className="text-center">
+                  <span className="text-2xl font-bold text-white block">20min</span>
+                  <span>{t("landing.hero.freeTrial")}</span>
+                </div>
+                <div className="w-px h-12 bg-gray-800 hidden sm:block"></div>
+                 <div className="text-center">
+                  <span className="text-2xl font-bold text-white block">Zero</span>
+                  <span>{t("landing.hero.zeroSetup")}</span>
+                </div>
             </div>
         </S.HeroSection>
     );
