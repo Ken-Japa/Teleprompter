@@ -2,7 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import { PROMPTER_DEFAULTS } from "../config/constants";
 
 export const useProState = (isPlaying: boolean) => {
- const [isPro, setIsPro] = useState<boolean>(() => localStorage.getItem(PROMPTER_DEFAULTS.STORAGE_KEYS.PRO_STATUS) === "true");
+ const [isPro, setIsPro] = useState<boolean>(
+  () => localStorage.getItem(PROMPTER_DEFAULTS.STORAGE_KEYS.PRO_STATUS) === "true"
+ );
  const [showPaywall, setShowPaywall] = useState<boolean>(false);
 
  // Use refs to track timing without triggering re-renders
@@ -34,11 +36,11 @@ export const useProState = (isPlaying: boolean) => {
    return;
   }
 
-  // Start 5 minute timer (300000ms)
+  // Start 20 minute timer (1200000ms)
   if (!timerRef.current && !showPaywall) {
    timerRef.current = setTimeout(() => {
     setShowPaywall(true);
-   }, 300 * 1000);
+   }, 1200 * 1000);
   }
 
   return () => {

@@ -167,7 +167,7 @@ export const es = {
     badge: "🔥 PRECIO DE LANZAMIENTO",
     title: "PRO Vitalicio",
     desc: "Pago único, tuyo para siempre",
-    price: "$ 19",
+    price: "€ 19",
     originalPrice: "$ 49",
     priceNote: "Luego $ 3/mes o $ 49 vitalicio",
     cta: "🚀 Garantizar Acceso Vitalicio",
