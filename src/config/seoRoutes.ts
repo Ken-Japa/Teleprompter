@@ -43,6 +43,14 @@ export const SeoPages = {
  WebRtcLatency: React.lazy(() =>
   import("../pages/seo/WebRtcLatencyPage").then((module) => ({ default: module.WebRtcLatencyPage }))
  ),
+ TeleprompterPCWindows: React.lazy(() =>
+  import("../pages/seo/TeleprompterPCWindows").then((module) => ({ default: module.TeleprompterPCWindows }))
+ ),
+ TeleprompterZoomMeeting: React.lazy(() =>
+  import("../pages/seo/TeleprompterZoomMeeting").then((module) => ({
+   default: module.TeleprompterZoomMeeting,
+  }))
+ ),
 };
 
 export type SeoRouteKey =
@@ -55,4 +63,6 @@ export type SeoRouteKey =
  | "SEO_DIY"
  | "SEO_ORATORIA"
  | "SEO_DECORAR"
- | "SEO_WEBRTC";
+ | "SEO_WEBRTC"
+ | "SEO_PC_WINDOWS"
+ | "SEO_ZOOM";

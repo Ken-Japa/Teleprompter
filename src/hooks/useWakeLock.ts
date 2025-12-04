@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { logger } from "../utils/logger";
+import NoSleep from "nosleep.js";
 
 // Singleton instance for NoSleep to share across components and hooks
 let globalNoSleepInstance: any = null;
 
 const getNoSleep = () => {
  if (typeof window === "undefined") return null;
- if (!globalNoSleepInstance && window.NoSleep) {
+ if (!globalNoSleepInstance) {
   try {
-   globalNoSleepInstance = new window.NoSleep();
+   globalNoSleepInstance = new NoSleep();
   } catch (e) {
    logger.error("Failed to init NoSleep global instance", { error: e as Error });
   }

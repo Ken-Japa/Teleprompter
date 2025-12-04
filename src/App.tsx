@@ -85,6 +85,14 @@ const App: React.FC = () => {
                 setView("SEO_WEBRTC");
                 return;
             }
+            if (cleanPath === "/teleprompter-pc-windows") {
+                setView("SEO_PC_WINDOWS");
+                return;
+            }
+            if (cleanPath === "/teleprompter-zoom-meeting") {
+                setView("SEO_ZOOM");
+                return;
+            }
 
             // 3. Default
             setView("LANDING");
@@ -124,6 +132,8 @@ const App: React.FC = () => {
                 {view === "SEO_ORATORIA" && <SeoPages.OratoriaVideo onLaunch={launchApp} />}
                 {view === "SEO_DECORAR" && <SeoPages.ComoDecorarTexto onLaunch={launchApp} />}
                 {view === "SEO_WEBRTC" && <SeoPages.WebRtcLatency onLaunch={launchApp} />}
+                {view === "SEO_PC_WINDOWS" && <SeoPages.TeleprompterPCWindows onLaunch={launchApp} />}
+                {view === "SEO_ZOOM" && <SeoPages.TeleprompterZoomMeeting onLaunch={launchApp} />}
             </Suspense>
         </TranslationProvider>
     );
