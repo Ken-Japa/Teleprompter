@@ -9,6 +9,9 @@ interface SeoPageLayoutProps {
     title: string;
     description: string;
     canonicalUrl?: string;
+    ogImage?: string;
+    ogType?: 'website' | 'article';
+    schema?: object;
     onLaunch: () => void;
     children: React.ReactNode;
 }
@@ -17,11 +20,14 @@ export const SeoPageLayout: React.FC<SeoPageLayoutProps> = ({
     title,
     description,
     canonicalUrl,
+    ogImage,
+    ogType,
+    schema,
     onLaunch,
     children
 }) => {
     const { t } = useTranslation();
-    useSeo({ title, description, canonicalUrl });
+    useSeo({ title, description, canonicalUrl, ogImage, ogType, schema });
 
     return (
         <S.LandingContainer>

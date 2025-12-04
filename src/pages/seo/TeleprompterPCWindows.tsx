@@ -1,0 +1,74 @@
+import React from "react";
+import { useTranslation } from "../../hooks/useTranslation";
+import { SeoPageLayout } from "./SeoPageLayout";
+import { TeleprompterPCWindowsPT } from "./content/teleprompter-pc-windows/pt";
+import { TeleprompterPCWindowsEN } from "./content/teleprompter-pc-windows/en";
+import { TeleprompterPCWindowsES } from "./content/teleprompter-pc-windows/es";
+
+interface Props {
+    onLaunch: () => void;
+}
+
+export const TeleprompterPCWindows: React.FC<Props> = ({ onLaunch }) => {
+    const { lang } = useTranslation();
+
+    let Content = TeleprompterPCWindowsPT;
+    let title = "Teleprompter Grátis para PC e Windows (Sem Download)";
+    let description = "Use seu PC Windows como teleprompter profissional. Sem baixar programas, sem vírus e com controle remoto via celular. Funciona no Chrome e Edge.";
+    let ctaText = "Abrir Teleprompter no PC";
+
+    if (lang === 'en') {
+        Content = TeleprompterPCWindowsEN;
+        title = "Free Teleprompter for PC and Windows (No Download)";
+        description = "Use your Windows PC as a professional teleprompter. No downloads, no viruses, and with mobile remote control. Works on Chrome and Edge.";
+        ctaText = "Open Teleprompter on PC";
+    } else if (lang === 'es') {
+        Content = TeleprompterPCWindowsES;
+        title = "Teleprompter Gratis para PC y Windows (Sin Descarga)";
+        description = "Usa tu PC Windows como teleprompter profesional. Sin descargar programas, sin virus y con control remoto vía móvil. Funciona en Chrome y Edge.";
+        ctaText = "Abrir Teleprompter en PC";
+    }
+
+    // Schema.org JSON-LD
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "PromptNinja",
+        "headline": title,
+        "description": description,
+        "operatingSystem": "Windows, macOS, Linux",
+        "applicationCategory": "BusinessApplication",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "image": "https://promptninja.site/images/teleprompter-pc-windows.jpg",
+        "author": {
+            "@type": "Organization",
+            "name": "PromptNinja"
+        }
+    };
+
+    return (
+        <SeoPageLayout
+            title={title}
+            description={description}
+            onLaunch={onLaunch}
+            schema={schema}
+            ogType="website"
+        >
+            <Content />
+
+            <div className="text-center mt-10">
+                <button
+                    onClick={onLaunch}
+                    className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-bold py-4 px-8 rounded-lg text-lg shadow-2xl hover:scale-105 transition transform duration-200"
+                >
+                    {ctaText}
+                </button>
+            </div>
+        </SeoPageLayout>
+    );
+};

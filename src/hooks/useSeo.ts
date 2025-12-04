@@ -4,21 +4,44 @@ interface SeoProps {
  title: string;
  description: string;
  canonicalUrl?: string;
+ ogImage?: string;
+ ogType?: "website" | "article";
+ schema?: object; // JSON-LD structured data
 }
 
-export const useSeo = ({ title, description, canonicalUrl }: SeoProps) => {
+export const useSeo = ({
+ title,
+ description,
+ canonicalUrl,
+ ogImage = "https://promptninja.site/og-image.png", // Default placeholder, user should replace
+ ogType = "website",
+ schema,
+}: SeoProps) => {
  useEffect(() => {
   // Update Title
   document.title = `${title} | PromptNinja`;
 
+  // Helper to update or create meta tag
+  const updateMeta = (name: string, content: string, attribute: "name" | "property" = "name") => {
+   let element = document.querySelector(`meta[${attribute}="${name}"]`);
+   if (!element) {
+    element = document.createElement("meta");
+    element.setAttribute(attribute, name);
+    document.head.appendChild(element);
+   }
+   element.setAttribute("content", content);
+  };
+
   // Update Meta Description
-  let metaDescription = document.querySelector('meta[name="description"]');
-  if (!metaDescription) {
-   metaDescription = document.createElement("meta");
-   metaDescription.setAttribute("name", "description");
-   document.head.appendChild(metaDescription);
-  }
-  metaDescription.setAttribute("content", description);
+  updateMeta("description", description);
+
+  // Update Open Graph
+  updateMeta("og:title", title, "property");
+  updateMeta("og:description", description, "property");
+  updateMeta("og:type", ogType, "property");
+  updateMeta("og:url", canonicalUrl || window.location.href, "property");
+  updateMeta("og:image", ogImage, "property");
+  updateMeta("og:site_name", "PromptNinja", "property");
 
   // Update Canonical URL
   let linkCanonical = document.querySelector('link[rel="canonical"]');
@@ -27,15 +50,24 @@ export const useSeo = ({ title, description, canonicalUrl }: SeoProps) => {
    linkCanonical.setAttribute("rel", "canonical");
    document.head.appendChild(linkCanonical);
   }
-  if (canonicalUrl) {
-   linkCanonical.setAttribute("href", canonicalUrl);
-  } else {
-   linkCanonical.setAttribute("href", window.location.href);
+  linkCanonical.setAttribute("href", canonicalUrl || window.location.href);
+
+  // Update JSON-LD Schema
+  let scriptSchema = document.querySelector("#schema-json-ld");
+  if (schema) {
+   if (!scriptSchema) {
+    scriptSchema = document.createElement("script");
+    scriptSchema.setAttribute("type", "application/ld+json");
+    scriptSchema.setAttribute("id", "schema-json-ld");
+    document.head.appendChild(scriptSchema);
+   }
+   scriptSchema.textContent = JSON.stringify(schema);
+  } else if (scriptSchema) {
+   scriptSchema.remove();
   }
 
-  // Cleanup function to reset (optional, maybe reset to default app title)
   return () => {
-   // We might want to reset to default, but typically navigation will overwrite it.
+   // Cleanup logic if needed (rarely needed for SPA navigation unless full reset desired)
   };
- }, [title, description, canonicalUrl]);
+ }, [title, description, canonicalUrl, ogImage, ogType, schema]);
 };
