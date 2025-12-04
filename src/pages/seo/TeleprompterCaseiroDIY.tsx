@@ -1,60 +1,48 @@
 import React from "react";
+import { useTranslation } from "../../hooks/useTranslation";
 import { SeoPageLayout } from "./SeoPageLayout";
+import { TeleprompterCaseiroDIYPT } from "./content/teleprompter-caseiro-diy/pt";
+import { TeleprompterCaseiroDIYEN } from "./content/teleprompter-caseiro-diy/en";
+import { TeleprompterCaseiroDIYES } from "./content/teleprompter-caseiro-diy/es";
 
 interface Props {
     onLaunch: () => void;
 }
 
 export const TeleprompterCaseiroDIY: React.FC<Props> = ({ onLaunch }) => {
+    const { lang } = useTranslation();
+
+    let Content = TeleprompterCaseiroDIYPT;
+    let title = "Como Montar um Teleprompter Caseiro (DIY) Barato";
+    let description = "Aprenda a fazer um teleprompter caseiro com vidro e caixa de papelão. E use o PromptNinja como software gratuito para espelhar o texto.";
+    let ctaText = "Abrir Modo Espelho Agora";
+
+    if (lang === 'en') {
+        Content = TeleprompterCaseiroDIYEN;
+        title = "How to Make a Cheap Homemade Teleprompter (DIY)";
+        description = "Learn how to make a homemade teleprompter with glass and cardboard box. And use PromptNinja as free software to mirror the text.";
+        ctaText = "Open Mirror Mode Now";
+    } else if (lang === 'es') {
+        Content = TeleprompterCaseiroDIYES;
+        title = "Cómo Montar un Teleprompter Casero (DIY) Barato";
+        description = "Aprende a hacer un teleprompter casero con vidrio y caja de cartón. Y usa PromptNinja como software gratuito para espejar el texto.";
+        ctaText = "Abrir Modo Espejo Ahora";
+    }
+
     return (
         <SeoPageLayout
-            title="Como Montar um Teleprompter Caseiro (DIY) Barato"
-            description="Aprenda a fazer um teleprompter caseiro com vidro e caixa de papelão. E use o PromptNinja como software gratuito para espelhar o texto."
+            title={title}
+            description={description}
             onLaunch={onLaunch}
         >
-            <h1 className="text-4xl font-bold text-white mb-6">Como Fazer um Teleprompter Caseiro: Guia DIY</h1>
-            
-            <p className="mb-6">
-                Equipamentos profissionais de teleprompter podem custar milhares de reais. Mas você sabia que pode montar um em casa gastando quase nada? O princípio físico é simples: o "Fantasma de Pepper".
-            </p>
-
-            <h2 className="text-2xl font-bold text-white mt-8 mb-4">Lista de Materiais</h2>
-            <ul className="list-disc pl-6 mb-6 space-y-2">
-                <li>Uma moldura de quadro com vidro (ou um pedaço de vidro/acrílico transparente).</li>
-                <li>Uma caixa de papelão ou madeira preta.</li>
-                <li>Um tablet ou monitor (para exibir o texto).</li>
-                <li>Um pano preto (para cobrir a câmera).</li>
-            </ul>
-
-            <h2 className="text-2xl font-bold text-white mt-8 mb-4">A Parte Mais Importante: O Software</h2>
-            <p className="mb-4">
-                Depois de montar a estrutura física, você vai perceber um problema: quando você coloca o tablet embaixo do vidro, o texto reflete <strong>invertido</strong>.
-            </p>
-            <p className="mb-4">
-                É aqui que entra o <strong>PromptNinja</strong>. Ele possui uma função nativa de "Espelhamento" (Mirror Mode) que inverte o texto horizontalmente e verticalmente.
-            </p>
-            
-            <div className="bg-slate-800 p-6 rounded-lg my-6">
-                <h3 className="text-lg font-bold text-white mb-2">Passo a Passo do Software:</h3>
-                <ol className="list-decimal pl-6 space-y-2 text-slate-300">
-                    <li>Abra o PromptNinja no seu tablet/monitor.</li>
-                    <li>Cole seu texto.</li>
-                    <li>Clique no ícone de Configurações (engrenagem).</li>
-                    <li>Ative a opção <strong>"Espelhar Texto"</strong>.</li>
-                    <li>Coloque o dispositivo na sua estrutura caseira e comece a gravar!</li>
-                </ol>
-            </div>
-
-            <p className="mb-6">
-                Você não precisa gastar com software caro depois de economizar no hardware. O PromptNinja é grátis e resolve a parte técnica para seu projeto DIY.
-            </p>
+            <Content />
 
             <div className="text-center mt-10">
-                <button 
+                <button
                     onClick={onLaunch}
                     className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-bold py-4 px-8 rounded-lg text-lg shadow-2xl hover:scale-105 transition transform duration-200"
                 >
-                    Abrir Modo Espelho Agora
+                    {ctaText}
                 </button>
             </div>
         </SeoPageLayout>
