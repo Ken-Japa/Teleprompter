@@ -46,10 +46,10 @@ export const PrimaryButton = ({
     return (
         <button
             onClick={onClick}
-            className={`relative overflow-hidden group flex items-center justify-center ${sizeClasses} bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white rounded-xl font-semibold transition-all duration-300 shadow-[0_4px_20px_-4px_rgba(79,70,229,0.5)] hover:shadow-[0_8px_30px_-4px_rgba(79,70,229,0.6)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ring-1 ring-white/20 ${className}`}
+            className={`relative overflow-hidden group flex items-center justify-center ${sizeClasses} bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white rounded-xl font-semibold transition-all duration-300 shadow-[0_1px_2px_rgba(0,0,0,0.1),0_4px_14px_rgba(99,102,241,0.4)] hover:shadow-[0_6px_20px_rgba(99,102,241,0.5)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ring-1 ring-white/20 ${className}`}
             {...props}
         >
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out z-0"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out z-0"></div>
             <span className="relative z-10 flex items-center gap-2 tracking-wide">{children}</span>
         </button>
     );
@@ -72,10 +72,10 @@ export const SecondaryButton = ({
     return (
         <button
             onClick={onClick}
-            className={`${sizeClasses} bg-slate-800/40 backdrop-blur-sm hover:bg-slate-700/50 active:bg-slate-800/60 border border-white/10 hover:border-white/20 rounded-xl font-medium transition-all duration-200 text-slate-300 hover:text-white shadow-sm hover:shadow-md group ${className}`}
+            className={`${sizeClasses} bg-slate-800/40 backdrop-blur-md hover:bg-slate-700/60 active:bg-slate-800/80 border border-white/10 hover:border-white/20 rounded-xl font-medium transition-all duration-200 text-slate-200 hover:text-white shadow-sm hover:shadow-lg hover:shadow-indigo-500/10 group ${className}`}
             {...props}
         >
-            <span className="flex items-center justify-center gap-2">{children}</span>
+            <span className="flex items-center justify-center gap-2 relative z-10">{children}</span>
         </button>
     );
 };
@@ -96,7 +96,7 @@ export const GhostButton = ({
 } & React.ButtonHTMLAttributes<HTMLButtonElement>) => {
     const sizeClasses = size === "sm" ? "px-3 py-1.5 text-xs" : "px-6 py-2 text-sm";
     const activeClasses = active
-        ? "bg-indigo-500/10 text-indigo-400 border-indigo-500/20"
+        ? "bg-indigo-500/10 text-indigo-300 border-indigo-500/30"
         : "bg-transparent text-slate-400 hover:text-white hover:bg-white/5 border-transparent hover:border-white/10";
 
     return (

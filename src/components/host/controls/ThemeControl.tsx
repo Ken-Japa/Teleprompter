@@ -21,35 +21,43 @@ export const ThemeControl = memo(
         const { cycleTheme, setIsFocusMode } = actions;
 
         return (
-            <S.HudGroup>
-                <S.IconButton
-                    onClick={cycleTheme}
-                    title={`${t("host.controls.theme")}: ${t(`host.themes.${theme}`)}`}
-                    aria-label={t("host.controls.theme")}
-                    className="w-8 h-8 sm:w-10 sm:h-10"
-                >
-                    <PaletteIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                </S.IconButton>
-                <S.IconButton
-                    onClick={() => setIsFocusMode(!isFocusMode)}
-                    active={isFocusMode}
-                    title={t("host.controls.focusLine")}
-                    aria-label={t("host.controls.focusLine")}
-                    className="w-8 h-8 sm:w-10 sm:h-10"
-                >
-                    <MagicIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                </S.IconButton>
-                <S.IconButton
-                    onClick={toggleVoice}
-                    active={isVoiceMode}
-                    title={voiceApiSupported ? t("host.controls.voice") : t(voiceApiError || "")}
-                    aria-label={t("host.controls.voice")}
-                    className={`w-8 h-8 sm:w-10 sm:h-10 ${!isPro || !voiceApiSupported ? "opacity-50" : ""}`}
-                    disabled={!voiceApiSupported}
-                >
-                    {isPro ? <MicIcon className="w-4 h-4 sm:w-5 sm:h-5" /> : <LockIcon className="w-4 h-4 sm:w-5 sm:h-5" />}
-                </S.IconButton>
-            </S.HudGroup>
+            <>
+                <S.HudGroup label={t("host.hudLabels.theme")}>
+                    <S.IconButton
+                        onClick={cycleTheme}
+                        title={`${t("host.controls.theme")}: ${t(`host.themes.${theme}`)}`}
+                        aria-label={t("host.controls.theme")}
+                        className="w-9 h-9 rounded-full hover:bg-indigo-500/20 hover:text-indigo-400 border-transparent"
+                    >
+                        <PaletteIcon className="w-5 h-5" />
+                    </S.IconButton>
+                </S.HudGroup>
+
+                <S.HudGroup label={t("host.hudLabels.focus")}>
+                    <S.IconButton
+                        onClick={() => setIsFocusMode(!isFocusMode)}
+                        active={isFocusMode}
+                        title={t("host.controls.focusLine")}
+                        aria-label={t("host.controls.focusLine")}
+                        className={`w-9 h-9 rounded-full ${isFocusMode ? "bg-indigo-500/20 text-indigo-400 shadow-[0_0_10px_rgba(99,102,241,0.3)] border-indigo-500/30" : "hover:bg-white/10 border-transparent text-slate-400"}`}
+                    >
+                        <MagicIcon className="w-5 h-5" />
+                    </S.IconButton>
+                </S.HudGroup>
+
+                <S.HudGroup label={t("host.hudLabels.voice")}>
+                    <S.IconButton
+                        onClick={toggleVoice}
+                        active={isVoiceMode}
+                        title={voiceApiSupported ? t("host.controls.voice") : t(voiceApiError || "")}
+                        aria-label={t("host.controls.voice")}
+                        className={`w-9 h-9 rounded-full ${isVoiceMode ? "bg-red-500/20 text-red-400 shadow-[0_0_10px_rgba(248,113,113,0.3)] border-red-500/30 animate-pulse" : "hover:bg-white/10 border-transparent text-slate-400"} ${!isPro || !voiceApiSupported ? "opacity-50 cursor-not-allowed" : ""}`}
+                        disabled={!voiceApiSupported}
+                    >
+                        {isPro ? <MicIcon className="w-5 h-5" /> : <LockIcon className="w-4 h-4" />}
+                    </S.IconButton>
+                </S.HudGroup>
+            </>
         );
     }
 );

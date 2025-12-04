@@ -24,7 +24,11 @@ body {
  position: fixed;
  inset: 0;
  /* Deep, cinematic background base */
- background-image: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #020617 60%);
+ background-image: radial-gradient(circle at 50% 0%, #1e1b4b 0%, transparent 50%),
+  radial-gradient(circle at 85% 30%, rgba(79, 70, 229, 0.1) 0%, transparent 50%),
+  radial-gradient(circle at 15% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+  linear-gradient(to bottom, #020617, #0f172a);
+ background-attachment: fixed;
 }
 
 h1,
@@ -34,7 +38,7 @@ h4,
 h5,
 h6 {
  font-family: var(--font-display);
- letter-spacing: -0.02em; /* Tighter headings for modern feel */
+ letter-spacing: -0.025em; /* Tighter headings for modern feel */
 }
 
 html {
@@ -52,15 +56,15 @@ html {
 }
 
 ::selection {
- background-color: rgba(99, 102, 241, 0.4);
+ background-color: rgba(99, 102, 241, 0.3);
  color: #ffffff;
  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-/* Custom Scrollbar - Minimalist */
+/* Custom Scrollbar - Minimalist & Premium */
 ::-webkit-scrollbar {
- width: 4px; /* Thinner */
- height: 4px;
+ width: 6px;
+ height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -68,12 +72,14 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
- background: rgba(255, 255, 255, 0.1);
+ background: rgba(255, 255, 255, 0.08);
  border-radius: 99px;
+ border: 1px solid rgba(0, 0, 0, 0.1);
+ transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
- background: rgba(255, 255, 255, 0.2);
+ background: rgba(255, 255, 255, 0.15);
 }
 
 .scrollbar-hide::-webkit-scrollbar {
@@ -119,7 +125,64 @@ html {
  contain-intrinsic-size: auto calc(var(--prompter-font-size, 60px) * 1.5);
 }
 
-/* --- VISUAL UTILITIES --- */
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+ from {
+  opacity: 0;
+ }
+ to {
+  opacity: 1;
+ }
+}
+
+@keyframes fadeInUp {
+ from {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+ }
+ to {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+ }
+}
+
+@keyframes float {
+ 0% {
+  transform: translateY(0px);
+ }
+ 50% {
+  transform: translateY(-6px);
+ }
+ 100% {
+  transform: translateY(0px);
+ }
+}
+
+.animate-fade-in {
+ animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-fade-in-up {
+ opacity: 0;
+ animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float {
+ animation: float 4s ease-in-out infinite;
+}
+
+.animate-delay-100 {
+ animation-delay: 100ms;
+}
+.animate-delay-200 {
+ animation-delay: 200ms;
+}
+.animate-delay-300 {
+ animation-delay: 300ms;
+}
+.animate-delay-500 {
+ animation-delay: 500ms;
+}
 
 /* Softer, finer noise texture */
 .bg-noise {

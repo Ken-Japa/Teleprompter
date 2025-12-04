@@ -249,6 +249,14 @@ export const en = {
    focusLine: "Focus Line",
    theme: "Visual Theme",
    fontSize: "Font Size",
+   isMirrored: "Mirror Horizontal",
+   display: "Display",
+  },
+  hudLabels: {
+   theme: "Theme",
+   focus: "Focus",
+   voice: "Voice",
+   display: "Display",
   },
   themes: {
    default: "Default",

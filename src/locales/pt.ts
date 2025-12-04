@@ -253,6 +253,13 @@ export const pt = {
    theme: "Tema Visual do Teleprompter",
    fontSize: "Tamanho da Fonte",
    isMirrored: "Espelhar Horizontalmente",
+   display: "Exibição",
+  },
+  hudLabels: {
+   theme: "Tema",
+   focus: "Foco",
+   voice: "Voz",
+   display: "Exibição",
   },
   themes: {
    default: "Padrão",

@@ -263,6 +263,14 @@ export const es = {
    focusLine: "Línea de Foco",
    theme: "Tema Visual",
    fontSize: "Tamaño Fuente",
+   isMirrored: "Espejar Horizontalmente",
+   display: "Visualización",
+  },
+  hudLabels: {
+   theme: "Tema",
+   focus: "Foco",
+   voice: "Voz",
+   display: "Visualización",
   },
   themes: {
    default: "Estándar",
