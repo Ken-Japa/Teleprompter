@@ -116,7 +116,7 @@ export const PrompterScrollArea = React.forwardRef<
 >(({ children, onScroll, className = "", contentStyle, ...props }, ref) => (
     <div
         ref={ref}
-        className={`flex-1 overflow-y-scroll relative z-10 px-4 scrollbar-none ${className}`}
+        className={`flex-1 overflow-y-scroll relative z-10 px-4 scrollbar-none optimize-scroll ${className}`}
         onScroll={onScroll}
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         {...props}

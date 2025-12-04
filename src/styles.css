@@ -99,6 +99,15 @@ html {
  transform: translateZ(0);
 }
 
+.optimize-scroll {
+ will-change: scroll-position;
+ scroll-behavior: auto; /* Disable smooth scrolling for physics engine control */
+ overscroll-behavior: none;
+ backface-visibility: hidden;
+ perspective: 1000px;
+ transform: translateZ(0);
+}
+
 .text-optimize {
  text-rendering: optimizeLegibility;
  -webkit-font-smoothing: antialiased;
@@ -107,7 +116,7 @@ html {
 
 .content-visibility-auto {
  content-visibility: auto;
- contain-intrinsic-size: 1px 64px;
+ contain-intrinsic-size: auto calc(var(--prompter-font-size, 60px) * 1.5);
 }
 
 /* --- VISUAL UTILITIES --- */

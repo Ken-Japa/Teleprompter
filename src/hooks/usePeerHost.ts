@@ -31,12 +31,25 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void) => {
   onMessageRef.current = onRemoteMessage;
  }, [onRemoteMessage]);
 
+ // Throttling ref
+ const lastBroadcastTimeRef = useRef<number>(0);
+ const THROTTLE_MS = 50; // Limit to ~20fps for network efficiency
+
  /**
   * Envia uma mensagem para todos os peers conectados.
   * @param type Tipo da mensagem (MessageType)
   * @param payload Dados da mensagem
   */
  const broadcast = useCallback((type: MessageType, payload?: any) => {
+  // Throttle SCROLL_SYNC messages only
+  if (type === MessageType.SCROLL_SYNC) {
+    const now = Date.now();
+    if (now - lastBroadcastTimeRef.current < THROTTLE_MS) {
+        return;
+    }
+    lastBroadcastTimeRef.current = now;
+  }
+
   const msg: PeerMessage = { type, payload, timestamp: Date.now() };
   connectionsRef.current.forEach((conn) => {
    if (conn.open) {

@@ -1,38 +1,47 @@
 /**
  * Calculates the Levenshtein distance between two strings.
- * Lower distance means more similar strings.
+ * Optimized for memory usage (O(min(a,b)) space).
  */
 export const levenshteinDistance = (a: string, b: string): number => {
- const matrix = [];
+ if (a === b) return 0;
+ if (a.length === 0) return b.length;
+ if (b.length === 0) return a.length;
 
- // Increment along the first column of each row
- for (let i = 0; i <= b.length; i++) {
-  matrix[i] = [i];
+ // Ensure 'a' is the shorter string to minimize memory
+ if (a.length > b.length) {
+  [a, b] = [b, a];
  }
 
- // Increment each column in the first row
- for (let j = 0; j <= a.length; j++) {
-  matrix[0][j] = j;
+ const alen = a.length;
+ const blen = b.length;
+
+ // Use two rows instead of full matrix
+ let prevRow = new Int32Array(alen + 1);
+ let currentRow = new Int32Array(alen + 1);
+
+ // Initialize first row
+ for (let i = 0; i <= alen; i++) {
+  prevRow[i] = i;
  }
 
- // Fill in the rest of the matrix
- for (let i = 1; i <= b.length; i++) {
-  for (let j = 1; j <= a.length; j++) {
-   if (b.charAt(i - 1) === a.charAt(j - 1)) {
-    matrix[i][j] = matrix[i - 1][j - 1];
-   } else {
-    matrix[i][j] = Math.min(
-     matrix[i - 1][j - 1] + 1, // substitution
-     Math.min(
-      matrix[i][j - 1] + 1, // insertion
-      matrix[i - 1][j] + 1 // deletion
-     )
-    );
-   }
+ for (let i = 1; i <= blen; i++) {
+  currentRow[0] = i;
+  const bChar = b.charCodeAt(i - 1);
+
+  for (let j = 1; j <= alen; j++) {
+   const cost = a.charCodeAt(j - 1) === bChar ? 0 : 1;
+   currentRow[j] = Math.min(
+    currentRow[j - 1] + 1, // insertion
+    prevRow[j] + 1, // deletion
+    prevRow[j - 1] + cost // substitution
+   );
   }
+
+  // Swap rows
+  [prevRow, currentRow] = [currentRow, prevRow];
  }
 
- return matrix[b.length][a.length];
+ return prevRow[alen];
 };
 
 /**
@@ -68,24 +77,31 @@ export const findBestMatch = (
  // If the pattern is much longer/shorter than the text, a good match is unlikely
  // unless we are looking for a substring. But here we are fuzzy matching.
 
+ const patLen = pattern.length;
+ // Optimization: Pre-calculate threshold distance
+ const maxDist = Math.floor(patLen * threshold);
+
  // Step size optimization: if pattern is long, we don't need to check every single char index
  // We can skip a few chars, but for accuracy we'll stick to 1 for now or dynamic based on length
- const step = pattern.length > 50 ? 5 : 1;
+ const step = patLen > 50 ? 5 : 1;
 
  for (let i = actualStartIndex; i < searchEndIndex; i += step) {
-  // Check a few lengths
-  // For simplicity and speed in JS, just checking exact length is often "good enough" for sliding window
-  // if we have a generous threshold. But let's try exact length first.
-  const len = pattern.length;
-  if (i + len > text.length) break;
+  // Check bounds
+  if (i + patLen > text.length) break;
 
-  const candidate = text.substr(i, len);
+  // Quick check: First char must match OR be very close?
+  // Skipping this for now to maintain fuzzy quality, but it's a possible optimization.
 
-  // Quick optimization: If first and last chars don't match, it's likely not a match
-  // (This is risky for fuzzy search, so we skip it or make it soft)
+  const candidate = text.substring(i, i + patLen);
+
+  // Early exit if length diff is too big (not applicable here as we slice same length)
 
   const dist = levenshteinDistance(pattern, candidate);
-  const ratio = dist / pattern.length;
+
+  // Early rejection based on raw distance
+  if (dist > maxDist) continue;
+
+  const ratio = dist / patLen;
 
   if (ratio < bestMatch.ratio) {
    bestMatch = {
@@ -93,6 +109,9 @@ export const findBestMatch = (
     distance: dist,
     ratio: ratio,
    };
+
+   // Perfect match found? Stop immediately
+   if (dist === 0) break;
   }
  }
 
