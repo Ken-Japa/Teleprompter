@@ -31,7 +31,6 @@ export const ConnectSidebar: React.FC<ConnectSidebarProps> = memo(({ peerId, sta
                 script.src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js";
                 script.async = true;
                 script.onload = () => {
-                    console.log("QRCode.js library loaded successfully.");
                     resolve();
                 };
                 script.onerror = () => {

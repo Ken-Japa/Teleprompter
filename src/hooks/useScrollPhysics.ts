@@ -133,7 +133,10 @@ export const useScrollPhysics = ({
    // it's likely a stale metric from before the text rendered. Force a DOM read.
    if (_isPlaying && scrollContainerRef.current) {
     const calculatedMaxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
-    if (calculatedMaxScroll === 0) {
+
+    // If maxScroll is 0 OR we haven't scrolled yet (internalScrollPos == 0),
+    // we aggressively check if metrics changed (e.g. late image load, font load, layout shift)
+    if (calculatedMaxScroll === 0 || internalScrollPos.current === 0) {
      const realScrollHeight = scrollContainerRef.current.scrollHeight;
      const realClientHeight = scrollContainerRef.current.clientHeight;
 

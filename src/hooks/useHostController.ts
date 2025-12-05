@@ -68,11 +68,17 @@ export const useHostController = () => {
   (msg: PeerMessage) => {
    switch (msg.type) {
     case MessageType.PLAY:
-     setIsPlaying(true);
-     // Auto-enter presentation mode if not already in it
+     // Logic to handle auto-entry into presentation mode with safe mounting
      if (typeof window !== "undefined" && !window.location.hash.includes("/play")) {
       window.location.hash = "app/play";
       setIsEditMode(false);
+      // Critical: Add a small delay before starting playback to allow the Prompter component
+      // to mount, render text, and initialize physics/metrics correctly.
+      setTimeout(() => {
+       setIsPlaying(true);
+      }, 500);
+     } else {
+      setIsPlaying(true);
      }
      break;
     case MessageType.PAUSE:
