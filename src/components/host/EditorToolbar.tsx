@@ -49,7 +49,7 @@ export const EditorToolbar = memo(({ onInsertTag, onClear }: EditorToolbarProps)
                 onClick={() => setShowTutorialModal(true)}
                 title="Tutorial"
                 aria-label="Open Tutorial"
-                className="w-9 h-9 rounded-full p-0"
+                className="w-9 h-9 rounded-full !p-0 flex items-center justify-center"
             >
                 <InfoIcon className="w-4 h-4" />
             </S.IconButton>
