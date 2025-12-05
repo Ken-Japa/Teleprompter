@@ -48,7 +48,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Note: The exact field name for the access code depends on Kiwify's specific configuration
   // for "Deliverables" or if it's passed as a custom parameter.
   // We check for common fields.
-  const email = payload.customer?.email || payload.email;
+  const email = payload.Customer?.email || payload.email;
 
   // Assuming Kiwify sends the code in a field named 'access_token', 'key', or 'product_key'.
   // If the user configured Kiwify to send the 'order_id' as the key, we use that.
