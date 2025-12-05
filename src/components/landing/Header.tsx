@@ -66,11 +66,13 @@ export const Header: React.FC<HeaderProps> = ({ onLaunch }) => {
             <div className="flex items-center space-x-4 relative">
                 <LanguageSelector />
                 <S.PrimaryButton
-                    onClick={onLaunch}
+                    onClick={() => {
+                        window.location.hash = "app?redeem=true";
+                    }}
                     size="sm"
-                    aria-label="Launch App"
+                    aria-label="Validar Licença"
                 >
-                    Login
+                    Validar
                 </S.PrimaryButton>
             </div>
         </S.LandingNav>

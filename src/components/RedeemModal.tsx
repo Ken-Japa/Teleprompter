@@ -42,6 +42,13 @@ export const RedeemModal: React.FC<RedeemModalProps> = ({
         <S.PrimaryButton onClick={onUnlock} disabled={isValidating} className={isValidating ? "opacity-70 cursor-not-allowed" : ""}>
           {isValidating ? "Validando..." : t("host.paywall.button")}
         </S.PrimaryButton>
+
+        <button
+          onClick={() => window.open('https://pay.kiwify.com.br/dl571EZ', '_blank')}
+          className="w-full py-3 px-6 bg-slate-800 hover:bg-slate-700 text-brand-300 hover:text-white font-bold rounded-xl transition-all duration-300 mt-2 border border-slate-700 hover:border-brand-500"
+        >
+          Assinar / Comprar
+        </button>
       </div>
     </S.PaywallModal>
   );

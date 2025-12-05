@@ -40,7 +40,7 @@ export const useProState = (isPlaying: boolean) => {
   if (!timerRef.current && !showPaywall) {
    timerRef.current = setTimeout(() => {
     setShowPaywall(true);
-   }, 1200 * 1000);
+   }, 12 * 1000);
   }
 
   return () => {
@@ -54,7 +54,7 @@ export const useProState = (isPlaying: boolean) => {
  const unlockPro = async (key: string): Promise<{ success: boolean; message?: string }> => {
   try {
    // Call the serverless function
-   const response = await fetch("/api/validate-key", {
+   const response = await fetch("https://teleprompter-gules.vercel.app/api/validate-key", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ key }),

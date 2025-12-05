@@ -49,6 +49,14 @@ export const useHostController = () => {
  // 5. Pro & Paywall Logic
  const { isPro, showPaywall, setShowPaywall, unlockPro } = useProState(isPlaying);
 
+ // Check for redeem param in hash to open Paywall automatically
+ useEffect(() => {
+  if (typeof window !== "undefined" && window.location.hash.includes("redeem=true")) {
+   // Remove the param to avoid reopening on refresh/nav, but for now just open it
+   setShowPaywall(true);
+  }
+ }, [setShowPaywall]);
+
  // Prompter Settings (Lifted State)
  const { settings: prompterSettings, actions: prompterActions } = usePrompterSettings(isPro);
 

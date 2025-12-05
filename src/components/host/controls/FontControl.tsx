@@ -25,7 +25,7 @@ export const FontControl = memo(({ fontSize, setFontSize, onOpenFontSizeSlider }
      <TextSizeIcon className="w-3 h-3 sm:w-4 sm:h-4 opacity-70" />
     </S.IconButton>
     
-    <div className="flex flex-col items-center justify-center px-1">
+    <div className="relative flex items-center justify-center px-1">
         <S.RangeSlider
         value={fontSize}
         min={UI_LIMITS.FONT_SIZE.MIN}
@@ -34,7 +34,7 @@ export const FontControl = memo(({ fontSize, setFontSize, onOpenFontSizeSlider }
         width="w-20 sm:w-24"
         ariaLabel="Font Size"
         />
-        <span className="text-[9px] font-mono text-slate-400 mt-1 tabular-nums tracking-tight">{fontSize}px</span>
+        <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-[9px] font-mono text-slate-400 tabular-nums tracking-tight pointer-events-none">{fontSize}px</span>
     </div>
 
     <S.IconButton 

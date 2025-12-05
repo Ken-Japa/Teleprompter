@@ -52,7 +52,7 @@ export const Pricing: React.FC<PricingProps> = ({ onLaunch }) => {
                         }
                         onClick={() => {
                             trackConversion('Upgrade to Pro');
-                            onLaunch();
+                            window.open('https://pay.kiwify.com.br/dl571EZ', '_blank');
                         }}
                     />
                 </div>

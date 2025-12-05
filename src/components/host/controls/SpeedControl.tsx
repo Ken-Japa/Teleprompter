@@ -29,7 +29,7 @@ export const SpeedControl = memo(({ isPlaying, speed, onStateChange, onReset }: 
                     {isPlaying ? <PauseIcon className="w-5 h-5 fill-current" /> : <PlayIcon className="w-5 h-5 fill-current ml-0.5" />}
                 </button>
 
-                <div className="flex flex-col items-center justify-center px-2">
+                <div className="relative flex items-center justify-center px-2">
                     <S.RangeSlider
                         value={speed}
                         min={UI_LIMITS.SPEED.MIN}
@@ -40,7 +40,7 @@ export const SpeedControl = memo(({ isPlaying, speed, onStateChange, onReset }: 
                         ariaLabel={t("host.controls.speed")}
                         title={t("host.controls.speed")}
                     />
-                    <span className="text-[9px] font-mono text-slate-400 mt-1 tabular-nums tracking-tight">{speed}x</span>
+                    <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-[9px] font-mono text-slate-400 tabular-nums tracking-tight pointer-events-none">{speed}x</span>
                 </div>
             </div>
         </S.HudGroup>
