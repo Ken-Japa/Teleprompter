@@ -11,6 +11,8 @@ export const es = {
   backToHome: "Volver a Inicio",
  },
  common: {
+  sync: "Sincronizar",
+  refresh: "Actualizar",
   loading: "Cargando...",
   error: "Algo salió mal",
   back: "Volver",

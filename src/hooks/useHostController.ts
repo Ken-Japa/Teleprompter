@@ -61,6 +61,7 @@ export const useHostController = () => {
  const { settings: prompterSettings, actions: prompterActions } = usePrompterSettings(isPro);
 
  const prompterRef = useRef<PrompterHandle>(null);
+ const broadcastRef = useRef<any>(null);
 
  // 4. Peer Message Handling Strategy
  const handleRemoteMessage = useCallback(
@@ -76,6 +77,22 @@ export const useHostController = () => {
      break;
     case MessageType.PAUSE:
      setIsPlaying(false);
+     break;
+    case MessageType.REQUEST_SYNC:
+     // Force local wakeup first
+     if (prompterRef.current) {
+      prompterRef.current.wakeUp();
+     }
+     if (broadcastRef.current) {
+      broadcastRef.current(MessageType.SYNC_STATE, {
+       isPlaying,
+       speed,
+       settings: prompterSettings,
+       text: text.substring(0, 10000),
+       elapsedTime,
+       navigationMap,
+      });
+     }
      break;
     case MessageType.SPEED_UPDATE:
      if (typeof msg.payload === "number") {
@@ -144,10 +161,14 @@ export const useHostController = () => {
      break;
    }
   },
-  [setSpeed, setText, prompterActions]
+  [setSpeed, setText, prompterActions, isPlaying, speed, prompterSettings, text, elapsedTime, navigationMap]
  );
 
  const { peerId, status, broadcast, errorMessage } = usePeerHost(handleRemoteMessage);
+
+ useEffect(() => {
+  broadcastRef.current = broadcast;
+ }, [broadcast]);
 
  const [unlockKey, setUnlockKey] = useState<string>("");
  const [paywallErrorMessage, setPaywallErrorMessage] = useState<string | null>(null);
@@ -235,6 +256,25 @@ export const useHostController = () => {
   setElapsedTime(0);
  }, []);
 
+ const forceSync = useCallback(() => {
+  // 1. Force Physics WakeUp if Prompter is active
+  if (prompterRef.current) {
+   prompterRef.current.wakeUp();
+  }
+
+  // 2. Broadcast State
+  if (broadcast) {
+   broadcast(MessageType.SYNC_STATE, {
+    isPlaying,
+    speed,
+    settings: prompterSettings,
+    text: text.substring(0, 10000),
+    elapsedTime,
+    navigationMap,
+   });
+  }
+ }, [broadcast, isPlaying, speed, prompterSettings, text, elapsedTime, navigationMap]);
+
  const navigation = {
   startPresentation: () => {
    tryEnableNoSleep();
@@ -281,6 +321,7 @@ export const useHostController = () => {
    prompterActions,
    resetTimer,
    handleNavigationMapUpdate,
+   forceSync,
   },
   refs: {
    prompterRef,

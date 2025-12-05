@@ -60,6 +60,7 @@ export const Host: React.FC = () => {
                     onResetTimer={actions.resetTimer}
                     settings={prompterSettings}
                     actions={actions.prompterActions}
+                    onSync={actions.forceSync}
                 />
             )}
         </>

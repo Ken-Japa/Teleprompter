@@ -38,11 +38,12 @@ interface PrompterProps {
   onResetTimer?: () => void;
   settings: PrompterSettings;
   actions: PrompterActions;
+  onSync: () => void;
 }
 
 export const Prompter = memo(
   forwardRef<PrompterHandle, PrompterProps>(
-    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions }, ref) => {
+    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync }, ref) => {
 
       // Extracted Settings Logic
       const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical } = settings;
@@ -90,7 +91,7 @@ export const Prompter = memo(
       }, [onStateChange, externalState.speed]);
 
       // --- PHYSICS ENGINE INTEGRATION ---
-      const { handleNativeScroll, handleRemoteInput, handleScrollTo, resetPhysics, currentActiveElementRef } = useScrollPhysics({
+      const { handleNativeScroll, handleRemoteInput, handleScrollTo, resetPhysics, wakeUpLoop, currentActiveElementRef } = useScrollPhysics({
         isPlaying: externalState.isPlaying,
         isVoiceMode,
         speed: externalState.speed,
@@ -154,8 +155,9 @@ export const Prompter = memo(
           scrollTo: handleScrollTo,
           reset: resetPrompter,
           toggleVoice: toggleVoice,
+          wakeUp: wakeUpLoop,
         }),
-        [handleRemoteInput, handleScrollTo, resetPrompter, toggleVoice]
+        [handleRemoteInput, handleScrollTo, resetPrompter, toggleVoice, wakeUpLoop]
       );
 
       // Voice Active Element Highlighting (UI Side)
@@ -291,6 +293,7 @@ export const Prompter = memo(
             onResetPrompter={resetPrompter}
             toggleVoice={toggleVoice}
             onExit={onExit}
+            onSync={onSync}
           />
         </S.ScreenContainer>
       );

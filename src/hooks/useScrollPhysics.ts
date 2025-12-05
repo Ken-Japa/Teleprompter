@@ -126,7 +126,17 @@ export const useScrollPhysics = ({
    const timeScale = deltaTime / PHYSICS_CONSTANTS.TARGET_FRAME_TIME;
 
    let deltaScroll = 0;
-   const metrics = metricsRef.current;
+   let metrics = metricsRef.current;
+
+   // FAILSAFE: Se as métricas estiverem zeradas mas o container existe, leia diretamente do DOM.
+   // Isso corrige bugs onde o ResizeObserver ainda não disparou após a montagem.
+   if ((metrics.scrollHeight === 0 || metrics.clientHeight === 0) && scrollContainerRef.current) {
+    metrics = {
+     scrollHeight: scrollContainerRef.current.scrollHeight,
+     clientHeight: scrollContainerRef.current.clientHeight,
+    };
+    metricsRef.current = metrics;
+   }
 
    // --- PHYSICS LOGIC ---
 
@@ -137,7 +147,7 @@ export const useScrollPhysics = ({
    }
 
    // 2. Auto Scroll
-   deltaScroll += calculateAutoScroll(
+   const autoScrollDelta = calculateAutoScroll(
     _isPlaying,
     isUserTouchingRef.current,
     isManualScrollingRef.current,
@@ -148,6 +158,7 @@ export const useScrollPhysics = ({
     metrics,
     onAutoStop
    );
+   deltaScroll += isNaN(autoScrollDelta) ? 0 : autoScrollDelta;
 
    // 3. Momentum (Inércia)
    const momentumResult = calculateMomentum(momentumRef.current, isUserTouchingRef.current, timeScale);
@@ -212,6 +223,7 @@ export const useScrollPhysics = ({
    // Aplica o movimento
    if (isMoving && scrollContainerRef.current) {
     internalScrollPos.current += deltaScroll;
+    if (isNaN(internalScrollPos.current)) internalScrollPos.current = 0;
 
     // Clamp bounds
     const maxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
@@ -327,6 +339,7 @@ export const useScrollPhysics = ({
   handleRemoteInput,
   handleScrollTo,
   resetPhysics,
+  wakeUpLoop,
   currentActiveElementRef,
  };
 };

@@ -4,6 +4,10 @@ export const pt = {
   sub: "NINJA",
   remote: "CONTROLE",
  },
+ common: {
+  sync: "Sincronizar",
+  refresh: "Atualizar",
+ },
  menu: {
   home: "Início",
   features: "Recursos",

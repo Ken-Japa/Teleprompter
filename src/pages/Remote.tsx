@@ -6,6 +6,7 @@ import * as S from "../components/ui/Styled";
 import { Trackpad } from "../components/remote/Trackpad";
 import { ConnectionState } from "../components/remote/ConnectionState";
 import { useRemoteController } from "../hooks/useRemoteController";
+import { SyncButton } from "../components/ui/SyncButton";
 
 interface RemoteProps {
     hostId: string;
@@ -342,6 +343,15 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                 )}
                 {activeTab === 'settings' && settings && (
                     <div className="flex-1 overflow-y-auto p-6 space-y-8 bg-slate-950">
+
+                        {/* Connection Sync */}
+                        <div className="space-y-3">
+                            <div className="text-sm text-slate-400 uppercase tracking-widest font-bold">{t("common.sync") || "Sync"}</div>
+                            <div className="flex items-center justify-between bg-slate-900 p-4 rounded-xl border border-slate-800">
+                                <span className="text-sm font-medium text-slate-300">{t("common.refresh") || "Refresh Connection"}</span>
+                                <SyncButton onSync={actions.handleRequestSync} className="!w-10 !h-10 !bg-slate-800 hover:!bg-slate-700" />
+                            </div>
+                        </div>
 
                         {/* Font Size */}
                         <div className="space-y-3">

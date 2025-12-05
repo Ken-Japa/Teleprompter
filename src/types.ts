@@ -80,6 +80,7 @@ export enum MessageType {
  SETTINGS_UPDATE = "SETTINGS_UPDATE",
  TIME_UPDATE = "TIME_UPDATE",
  TOGGLE_VOICE = "TOGGLE_VOICE",
+ REQUEST_SYNC = "REQUEST_SYNC",
 }
 
 export interface PeerMessage {
@@ -123,6 +124,7 @@ export interface PrompterHandle {
  scrollTo: (progress: number) => void;
  reset: () => void;
  toggleVoice: () => void;
+ wakeUp: () => void; // Forces the physics loop to wake up
 }
 
 export interface TextFragment {

@@ -9,6 +9,7 @@ import { TutorialModal } from "../ui/TutorialModal";
 import { FontSizeModal } from "../ui/FontSizeModal";
 import { MarginModal } from "../ui/MarginModal";
 import { QRCodeModal } from "./QRCodeModal";
+import { SyncButton } from "../ui/SyncButton";
 
 interface PrompterHUDProps {
     showHud: boolean;
@@ -27,10 +28,11 @@ interface PrompterHUDProps {
     onResetPrompter: () => void;
     toggleVoice: () => void;
     onExit: () => void;
+    onSync: () => void;
 }
 
 export const PrompterHUD = memo(
-    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isVoiceMode, isPro, resetTimerSignal, onStateChange, onResetPrompter, toggleVoice, onExit, voiceApiSupported, voiceApiError }: PrompterHUDProps) => {
+    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isVoiceMode, isPro, resetTimerSignal, onStateChange, onResetPrompter, toggleVoice, onExit, voiceApiSupported, voiceApiError, onSync }: PrompterHUDProps) => {
         const { t } = useTranslation();
         const [showTutorialModal, setShowTutorialModal] = useState(false);
         const [showFontSizeModal, setShowFontSizeModal] = useState(false);
@@ -49,6 +51,7 @@ export const PrompterHUD = memo(
                     >
                         <QrCodeIcon className="w-4 h-4" />
                     </S.IconButton>
+                    <SyncButton onSync={onSync} className="w-8 h-8 ml-2" />
                     <PrompterTimer isPlaying={isPlaying} onReset={resetTimerSignal} />
                 </S.HudGroup>
 

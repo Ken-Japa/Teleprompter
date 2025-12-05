@@ -8,6 +8,9 @@ import { Redis } from "@upstash/redis";
 const redis =
  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN ? Redis.fromEnv() : null;
 
+// Define o limite de ativações
+const DEVICE_LIMIT = 3;
+
 const ratelimit = redis
  ? new Ratelimit({
     redis: redis,
@@ -61,21 +64,44 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const doc = snapshot.docs[0];
   const data = doc.data();
 
-  if (data.status === "active") {
-   return res.status(200).json({ success: false, message: "Esta chave já foi utilizada." });
+  const currentIP = (req.headers["x-forwarded-for"] as string) || req.socket.remoteAddress || "unknown";
+  // O campo devices pode não existir na primeira venda (se foi feita antes da atualização)
+  const currentDevices: string[] = data.devices || [];
+
+  // Cenário 1: Re-login no mesmo dispositivo. Sucesso imediato.
+  if (currentDevices.includes(currentIP)) {
+   return res.status(200).json({ success: true, message: "Acesso reativado com sucesso." });
   }
 
-  if (data.status === "unused") {
-   // Mark as active
-   await doc.ref.update({
-    status: "active",
-    // 🚨 USO CORRIGIDO: Usa FieldValue importado
-    activatedAt: FieldValue.serverTimestamp(),
-    activatedByIp: req.headers["x-forwarded-for"] || req.socket.remoteAddress || "unknown",
+  // Cenário 2: Chave já usada e limite atingido.
+  if (data.status === "active" && currentDevices.length >= DEVICE_LIMIT) {
+   return res.status(200).json({
+    success: false,
+    message: `Limite de ${DEVICE_LIMIT} dispositivos atingido para esta chave.`,
    });
+  }
+
+  // Cenário 3: Primeiro uso ('unused') ou novo dispositivo dentro do limite.
+  if (data.status === "unused" || currentDevices.length < DEVICE_LIMIT) {
+   const updateData: { [key: string]: any } = {
+    // Adiciona o IP atual à lista de dispositivos (usando FieldValue.arrayUnion)
+    devices: FieldValue.arrayUnion(currentIP),
+   };
+
+   // Se for a primeira ativação, atualiza o status para 'active' e registra o timestamp.
+   if (data.status === "unused") {
+    updateData.status = "active";
+    updateData.activatedAt = FieldValue.serverTimestamp();
+    updateData.activatedByIp = currentIP; // IP da primeira ativação
+   }
+
+   // ATENÇÃO: Faz uma única atualização no Firestore com todos os dados.
+   await doc.ref.update(updateData);
+
    return res.status(200).json({ success: true });
   }
 
+  // Cenário 4: Qualquer outro status (revogado)
   return res.status(200).json({ success: false, message: "Chave inválida ou revogada." });
  } catch (error) {
   console.error("Error validating key:", error);

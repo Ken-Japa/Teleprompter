@@ -130,6 +130,11 @@ export const useRemoteController = (hostId: string) => {
   sendMessage(MessageType.TOGGLE_VOICE);
  }, [sendMessage]);
 
+ const handleRequestSync = useCallback(() => {
+  sendMessage(MessageType.REQUEST_SYNC);
+  vibrate(50);
+ }, [sendMessage, vibrate]);
+
  const handleTrackpadDelta = useCallback((delta: number) => {
   accumulatedDelta.current += delta;
  }, []);
@@ -198,6 +203,7 @@ export const useRemoteController = (hostId: string) => {
    handleScrollTo,
    handleStop,
    handleToggleVoice,
+   handleRequestSync,
   },
  };
 };

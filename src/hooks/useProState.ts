@@ -54,7 +54,7 @@ export const useProState = (isPlaying: boolean) => {
  const unlockPro = async (key: string): Promise<{ success: boolean; message?: string }> => {
   try {
    // Call the serverless function
-   const response = await fetch("https://teleprompter-gules.vercel.app/api/validate-key", {
+   const response = await fetch("https://promptninja.solutionkit.com.br/api/validate-key", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ key }),

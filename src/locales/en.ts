@@ -4,6 +4,10 @@ export const en = {
   sub: "NINJA",
   remote: "CONTROL",
  },
+ common: {
+  sync: "Sync",
+  refresh: "Refresh",
+ },
  menu: {
   home: "Home",
   features: "Features",
@@ -280,6 +284,7 @@ export const en = {
    title: "PRO Feature Locked",
    desc: "This feature is exclusive to Ninja PROs. Unlock to use colors, voice, and unlimited time.",
    cta: "Unlock Lifetime",
+   close: "Close",
    inputPlaceholder: "Enter PRO key...",
    button: "Activate PRO",
    invalid: "Invalid Key",
