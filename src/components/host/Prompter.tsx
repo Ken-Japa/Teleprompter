@@ -104,6 +104,13 @@ export const Prompter = memo(
         onAutoStop: handleAutoStop,
       });
 
+      // Force wake up when critical props change or component mounts
+      useEffect(() => {
+        if (externalState.isPlaying) {
+           wakeUpLoop();
+        }
+      }, [externalState.isPlaying, text.length, wakeUpLoop]);
+
       const resetPrompter = useCallback(() => {
         onStateChange(false, externalState.speed);
         setResetTimerSignal((p) => !p);

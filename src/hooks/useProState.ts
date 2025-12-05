@@ -40,7 +40,7 @@ export const useProState = (isPlaying: boolean) => {
   if (!timerRef.current && !showPaywall) {
    timerRef.current = setTimeout(() => {
     setShowPaywall(true);
-   }, 12 * 1000);
+   }, 1200 * 1000);
   }
 
   return () => {

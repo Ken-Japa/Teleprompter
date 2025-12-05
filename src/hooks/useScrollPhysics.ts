@@ -128,14 +128,21 @@ export const useScrollPhysics = ({
    let deltaScroll = 0;
    let metrics = metricsRef.current;
 
-   // FAILSAFE: Se as métricas estiverem zeradas mas o container existe, leia diretamente do DOM.
-   // Isso corrige bugs onde o ResizeObserver ainda não disparou após a montagem.
-   if ((metrics.scrollHeight === 0 || metrics.clientHeight === 0) && scrollContainerRef.current) {
-    metrics = {
-     scrollHeight: scrollContainerRef.current.scrollHeight,
-     clientHeight: scrollContainerRef.current.clientHeight,
-    };
-    metricsRef.current = metrics;
+   // --- FAILSAFE & SELF-HEALING ---
+   // If we are playing but the physics engine thinks there is no room to scroll (maxScroll == 0),
+   // it's likely a stale metric from before the text rendered. Force a DOM read.
+   if (_isPlaying && scrollContainerRef.current) {
+    const calculatedMaxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
+    if (calculatedMaxScroll === 0) {
+     const realScrollHeight = scrollContainerRef.current.scrollHeight;
+     const realClientHeight = scrollContainerRef.current.clientHeight;
+
+     // Only update if different to avoid thrashing
+     if (realScrollHeight !== metrics.scrollHeight || realClientHeight !== metrics.clientHeight) {
+      metrics = { scrollHeight: realScrollHeight, clientHeight: realClientHeight };
+      metricsRef.current = metrics; // Update ref for next frame
+     }
+    }
    }
 
    // --- PHYSICS LOGIC ---
