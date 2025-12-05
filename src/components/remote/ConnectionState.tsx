@@ -133,7 +133,7 @@ export const ConnectionState: React.FC<ConnectionStateProps> = ({ status, hostId
     return (
         <div className="flex-1 flex flex-col items-center justify-center p-8 text-center space-y-6 animate-fadeIn">
             <div
-                className={`p-6 rounded-full ${status === ConnectionStatus.ERROR ? "bg-red-500/10 text-red-500" : "bg-indigo-500/10 text-indigo-500 animate-pulse"}`}
+                className={`p-6 rounded-full ${status === ConnectionStatus.ERROR ? "bg-red-500/10 text-red-500" : "bg-brand-500/10 text-brand-500 animate-pulse"}`}
             >
                 {status === ConnectionStatus.ERROR ? (
                     <WifiOffIcon className="w-12 h-12" />

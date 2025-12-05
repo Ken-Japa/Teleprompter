@@ -113,7 +113,7 @@ export const Trackpad: React.FC<TrackpadProps> = ({ onDelta, onStop, label }) =>
         >
             <div
                 ref={cursorRef}
-                className="absolute w-24 h-24 bg-indigo-500/20 rounded-full blur-xl pointer-events-none transition-opacity duration-150 opacity-0 border border-indigo-400/30 will-change-transform"
+                className="absolute w-24 h-24 bg-brand-500/20 rounded-full blur-xl pointer-events-none transition-opacity duration-150 opacity-0 border border-brand-400/30 will-change-transform"
                 style={{
                     top: 0,
                     left: 0,

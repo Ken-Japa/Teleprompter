@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "../../../hooks/useTranslation";
 
 export const StatusBadge = ({ status, label, className = "" }: { status: string; label: string; className?: string }) => {
   const getStatusStyles = () => {
@@ -34,66 +35,78 @@ export const ErrorToast = ({ message }: { message: string }) => (
 );
 
 export const PaywallModal = ({
-  title,
-  desc,
-  children,
   onClose,
+  onUpgrade,
+  children,
+  title,
+  desc
 }: {
-  title: string;
-  desc: string;
-  children: React.ReactNode;
   onClose?: () => void;
-}) => (
-  <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-md z-[100] flex items-center justify-center p-6 animate-fadeIn">
-    <div className="relative bg-slate-900/90 border border-indigo-500/30 p-10 rounded-[2rem] shadow-2xl shadow-indigo-500/20 max-w-md w-full text-center overflow-hidden group">
-      
-      {/* Ambient Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-32 bg-indigo-500/20 blur-3xl rounded-full -translate-y-1/2 pointer-events-none" />
-      
-      {onClose && (
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200 backdrop-blur-sm"
-          aria-label="Fechar"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="w-5 h-5"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      )}
-      
-      <div className="relative inline-block p-4 mb-6">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-2xl blur-lg transform group-hover:scale-110 transition-transform duration-500" />
-        <div className="relative bg-slate-950 p-3 rounded-2xl border border-white/10 shadow-xl">
-            <img
-            src="/assets/LogoPrompt.png"
-            alt="Logo PromptNinja"
-            className="w-10 h-10 object-contain drop-shadow-lg"
-            />
+  onUpgrade?: () => void;
+  children?: React.ReactNode;
+  title?: string;
+  desc?: string;
+}) => {
+  const { t } = useTranslation();
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-md bg-slate-950/80 animate-fadeIn">
+      <div className="relative w-full max-w-md bg-slate-900/90 rounded-3xl p-8 border border-brand-500/30 shadow-2xl shadow-brand-500/10 overflow-hidden">
+        {/* Glow Effects */}
+        <div className="absolute -top-20 -right-20 w-60 h-60 bg-brand-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div className="relative z-10 text-center space-y-6">
+          <div className="w-20 h-20 bg-gradient-to-br from-brand-500 to-purple-600 rounded-2xl mx-auto flex items-center justify-center shadow-lg shadow-brand-500/30 rotate-3">
+            <span className="text-4xl">👑</span>
+          </div>
+
+          <div className="space-y-2">
+            <h3 className="text-3xl font-bold font-display bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+              {title || t("host.paywall.title")}
+            </h3>
+            <p className="text-slate-400 leading-relaxed">
+              {desc || t("host.paywall.desc")}
+            </p>
+          </div>
+
+          {/* If children are provided (like Input field), show them. Otherwise show features list */}
+          {children ? (
+            <div className="py-2">{children}</div>
+          ) : (
+            <div className="grid grid-cols-2 gap-4 text-left">
+              {["Unlimited Scripts", "AI Writer Access", "Remote Control", "Cloud Sync"].map((feature, i) => (
+                <div key={i} className="flex items-center space-x-2 text-slate-300 text-sm">
+                  <div className="w-5 h-5 rounded-full bg-brand-500/20 flex items-center justify-center text-brand-400">✓</div>
+                  <span>{feature}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className="pt-2 space-y-3">
+            {onUpgrade && (
+              <button
+                onClick={onUpgrade}
+                className="w-full py-4 px-6 bg-gradient-to-r from-brand-600 to-purple-600 hover:from-brand-500 hover:to-purple-500 text-white font-bold rounded-xl shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+              >
+                {t("host.paywall.cta")}
+              </button>
+            )}
+            {onClose && (
+              <button
+                onClick={onClose}
+                className="text-slate-500 hover:text-white text-sm font-medium transition-colors"
+              >
+                {onUpgrade ? t("host.paywall.maybeLater") : t("host.paywall.close")}
+              </button>
+            )}
+          </div>
         </div>
       </div>
-      
-      <h2 className="text-3xl font-display font-black text-white mb-4 tracking-tight">
-        {title}
-      </h2>
-      
-      <p className="text-slate-400 mb-8 leading-relaxed text-sm font-medium">
-        {desc}
-      </p>
-      
-      <div className="relative z-10">
-        {children}
-      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const Watermark = ({ text, theme, style }: { text: string; theme?: string; style?: React.CSSProperties }) => {
   let color = "text-white opacity-[0.03]";
@@ -117,10 +130,10 @@ export const Watermark = ({ text, theme, style }: { text: string; theme?: string
 export const ProgressBar = ({ progress }: { progress: number }) => (
   <div className="w-full h-1 bg-slate-800/50 relative overflow-hidden backdrop-blur-sm rounded-full">
     <div
-      className="absolute top-0 left-0 h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-200 ease-linear shadow-[0_0_15px_rgba(99,102,241,0.6)]"
+      className="absolute top-0 left-0 h-full bg-gradient-to-r from-brand-500 to-purple-500 transition-all duration-200 ease-linear shadow-[0_0_15px_theme(colors.brand.500/0.6)]"
       style={{ width: `${Math.min(100, Math.max(0, progress * 100))}%` }}
     >
-        <div className="absolute right-0 top-0 bottom-0 w-2 bg-white/50 blur-[2px]" />
+      <div className="absolute right-0 top-0 bottom-0 w-2 bg-white/50 blur-[2px]" />
     </div>
   </div>
 );

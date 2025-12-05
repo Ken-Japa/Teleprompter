@@ -22,7 +22,7 @@ export const SpeedControl = memo(({ isPlaying, speed, onStateChange, onReset }: 
                 
                 <button
                     onClick={() => onStateChange(!isPlaying, speed)}
-                    className={`w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 shadow-lg hover:scale-105 active:scale-95 border ${isPlaying ? "bg-amber-500/90 hover:bg-amber-500 text-white border-amber-400/50 shadow-amber-500/30" : "bg-indigo-600 hover:bg-indigo-500 text-white border-indigo-400/50 shadow-indigo-500/30"}`}
+                    className={`w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 shadow-lg hover:scale-105 active:scale-95 border ${isPlaying ? "bg-amber-500/90 hover:bg-amber-500 text-white border-amber-400/50 shadow-amber-500/30" : "bg-brand-600 hover:bg-brand-500 text-white border-brand-400/50 shadow-brand-500/30"}`}
                     title={isPlaying ? t("host.controls.pause") : t("host.controls.play")}
                     aria-label={isPlaying ? t("host.controls.pause") : t("host.controls.play")}
                 >

@@ -27,7 +27,7 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({ isOpen, onClose })
         {/* Overview Section */}
         <section>
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-2 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+            <div className="p-2 rounded-lg bg-brand-500/10 border border-brand-500/20 text-brand-400">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                 <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm11.378-3.917c-.89-.777-2.366-.777-3.255 0a.75.75 0 01-.988-1.129c1.454-1.272 3.776-1.272 5.23 0 1.513 1.324 1.513 3.518 0 4.842a3.75 3.75 0 01-.837.552c-.676.328-1.028.774-1.028 1.152v.75a.75.75 0 01-1.5 0v-.75c0-.796.421-1.503 1.125-1.905a2.25 2.25 0 001.105-2.1c0-.765-.328-1.448-.852-1.912zm-2.482 8.434a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008z" clipRule="evenodd" />
               </svg>
@@ -66,9 +66,9 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({ isOpen, onClose })
 
         {/* How to Use Steps */}
         <section>
-           <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-4">
             <div className="p-2 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400">
-               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                 <path fillRule="evenodd" d="M9.315 7.584C12.195 3.883 16.695 1.5 21.75 1.5a.75.75 0 01.75.75c0 5.056-2.383 9.555-6.084 12.436h.008c.366.031.73.069 1.091.118 1.085.147 1.83.96 1.83 1.968v1.5c0 1.665-1.336 3.005-2.995 3.06L3.34 21.988a3.004 3.004 0 01-2.737-2.053c-.423-1.38.265-2.82 1.462-3.472l6.19-3.368c.516-.281 1.094-.444 1.68-.474a25.305 25.305 0 01-.62-5.037zm1.562.532a26.785 26.785 0 00-1.23 4.196c1.087.068 2.146.335 3.11.775a7.747 7.747 0 00-1.88-4.97z" clipRule="evenodd" />
               </svg>
             </div>
@@ -76,31 +76,31 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({ isOpen, onClose })
           </div>
           <div className="space-y-4">
             <div className="flex gap-4 group">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-sm font-bold text-slate-300 group-hover:bg-indigo-600 group-hover:text-white group-hover:border-indigo-500 transition-colors">1</div>
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-sm font-bold text-slate-300 group-hover:bg-brand-600 group-hover:text-white group-hover:border-brand-500 transition-colors">1</div>
               <div>
-                <h4 className="font-bold text-slate-200 mb-1 group-hover:text-indigo-300 transition-colors">{t('tutorial.howToUse.step1.title')}</h4>
+                <h4 className="font-bold text-slate-200 mb-1 group-hover:text-brand-300 transition-colors">{t('tutorial.howToUse.step1.title')}</h4>
                 <p className="text-sm text-slate-400">{t('tutorial.howToUse.step1.description')}</p>
               </div>
             </div>
             <div className="flex gap-4 group">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-sm font-bold text-slate-300 group-hover:bg-indigo-600 group-hover:text-white group-hover:border-indigo-500 transition-colors">2</div>
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-sm font-bold text-slate-300 group-hover:bg-brand-600 group-hover:text-white group-hover:border-brand-500 transition-colors">2</div>
               <div>
-                <h4 className="font-bold text-slate-200 mb-1 group-hover:text-indigo-300 transition-colors">{t('tutorial.howToUse.step2.title')}</h4>
+                <h4 className="font-bold text-slate-200 mb-1 group-hover:text-brand-300 transition-colors">{t('tutorial.howToUse.step2.title')}</h4>
                 <p className="text-sm text-slate-400">{t('tutorial.howToUse.step2.description')}</p>
               </div>
             </div>
             <div className="flex gap-4 group">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-sm font-bold text-slate-300 group-hover:bg-indigo-600 group-hover:text-white group-hover:border-indigo-500 transition-colors">3</div>
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-sm font-bold text-slate-300 group-hover:bg-brand-600 group-hover:text-white group-hover:border-brand-500 transition-colors">3</div>
               <div>
-                <h4 className="font-bold text-slate-200 mb-1 group-hover:text-indigo-300 transition-colors">{t('tutorial.howToUse.step3.title')}</h4>
+                <h4 className="font-bold text-slate-200 mb-1 group-hover:text-brand-300 transition-colors">{t('tutorial.howToUse.step3.title')}</h4>
                 <p className="text-sm text-slate-400">{t('tutorial.howToUse.step3.description')}</p>
               </div>
             </div>
           </div>
         </section>
-        
+
         {/* Advanced Features */}
-         <section>
+        <section>
           <div className="flex items-center gap-3 mb-4">
             <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-400">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -110,18 +110,18 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({ isOpen, onClose })
             <h3 className="text-xl font-bold text-white">{t('tutorial.advancedFeatures.title')}</h3>
           </div>
           <div className="bg-slate-900/50 rounded-xl p-4 border border-white/5 space-y-3">
-             <div className="flex items-start gap-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 flex-shrink-0"></div>
-                <p className="text-sm text-slate-400"><strong className="text-slate-200 block mb-0.5">{t('tutorial.advancedFeatures.voiceControl.title')}</strong> {t('tutorial.advancedFeatures.voiceControl.description')}</p>
-             </div>
-             <div className="flex items-start gap-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 flex-shrink-0"></div>
-                <p className="text-sm text-slate-400"><strong className="text-slate-200 block mb-0.5">{t('tutorial.advancedFeatures.themes.title')}</strong> {t('tutorial.advancedFeatures.themes.description')}</p>
-             </div>
-             <div className="flex items-start gap-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 flex-shrink-0"></div>
-                <p className="text-sm text-slate-400"><strong className="text-slate-200 block mb-0.5">{t('tutorial.advancedFeatures.focusMode.title')}</strong> {t('tutorial.advancedFeatures.focusMode.description')}</p>
-             </div>
+            <div className="flex items-start gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 flex-shrink-0"></div>
+              <p className="text-sm text-slate-400"><strong className="text-slate-200 block mb-0.5">{t('tutorial.advancedFeatures.voiceControl.title')}</strong> {t('tutorial.advancedFeatures.voiceControl.description')}</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 flex-shrink-0"></div>
+              <p className="text-sm text-slate-400"><strong className="text-slate-200 block mb-0.5">{t('tutorial.advancedFeatures.themes.title')}</strong> {t('tutorial.advancedFeatures.themes.description')}</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 flex-shrink-0"></div>
+              <p className="text-sm text-slate-400"><strong className="text-slate-200 block mb-0.5">{t('tutorial.advancedFeatures.focusMode.title')}</strong> {t('tutorial.advancedFeatures.focusMode.description')}</p>
+            </div>
           </div>
         </section>
       </div>

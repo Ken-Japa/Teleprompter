@@ -17,7 +17,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ onLaunch }) => {
 
                 <div className="grid md:grid-cols-3 gap-8 mb-16">
                     <div className="text-center group">
-                        <div className="bg-gradient-to-br from-indigo-600 to-violet-800 w-20 h-20 rounded-2xl rotate-3 flex items-center justify-center mx-auto mb-6 text-3xl font-bold shadow-lg shadow-indigo-500/20 group-hover:rotate-6 transition-transform duration-300 border border-white/10">
+                        <div className="bg-gradient-to-br from-brand-600 to-purple-800 w-20 h-20 rounded-2xl rotate-3 flex items-center justify-center mx-auto mb-6 text-3xl font-bold shadow-lg shadow-brand-500/20 group-hover:rotate-6 transition-transform duration-300 border border-white/10">
                             1
                         </div>
                         <h3 className="text-xl font-bold mb-3 text-white">{t("landing.howItWorks.step1.title")}</h3>
@@ -44,7 +44,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ onLaunch }) => {
                 <div className="text-center">
                     <button
                         onClick={onLaunch}
-                        className="inline-block bg-white text-slate-950 font-bold py-4 px-10 rounded-xl hover:bg-indigo-50 transition-all text-lg shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:-translate-y-1"
+                        className="inline-block bg-white text-slate-950 font-bold py-4 px-10 rounded-xl hover:bg-brand-50 transition-all text-lg shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:-translate-y-1"
                     >
                         {t("landing.howItWorks.cta")}
                     </button>

@@ -46,7 +46,7 @@ export const Pricing: React.FC<PricingProps> = ({ onLaunch }) => {
                         badge={t("landing.pricing.pro.badge")}
                         footer={
                             <div className="space-y-2">
-                                <p className="text-xs text-indigo-300">{t("landing.pricing.pro.priceNote")}</p>
+                                <p className="text-xs text-brand-300">{t("landing.pricing.pro.priceNote")}</p>
                                 <p className="text-xs text-slate-400">{t("landing.pricing.pro.timer")}</p>
                             </div>
                         }

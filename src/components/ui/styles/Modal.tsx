@@ -8,20 +8,20 @@ export const ModalOverlay = tw.div`
 
 export const ModalContent = tw.div`
   absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-  bg-[#0a0f1e] rounded-3xl shadow-[0_0_100px_-20px_rgba(99,102,241,0.3)] max-w-2xl w-full max-h-[90vh] overflow-y-auto
+  bg-[#0a0f1e] rounded-3xl shadow-2xl shadow-black/50 max-w-2xl w-full max-h-[90vh] overflow-y-auto
   transform transition-all duration-300 ease-out scale-100 opacity-100
-  dark:bg-[#0a0f1e] dark:text-slate-100 p-8 border border-indigo-500/30
+  dark:bg-[#0a0f1e] dark:text-slate-100 p-8 border border-white/10
   scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900
 `;
 
 export const ModalHeader = tw.div`
-  flex justify-between items-center pb-6 mb-6 border-b border-slate-700
+  flex justify-between items-center pb-6 mb-6 border-b border-white/5
 `;
 
 export const ModalTitle = tw.h2`
   text-3xl font-bold font-display
-  bg-gradient-to-r from-indigo-400 to-violet-300 bg-clip-text text-transparent
-  drop-shadow-[0_0_10px_rgba(139,92,246,0.3)]
+  bg-gradient-to-r from-brand-400 to-violet-300 bg-clip-text text-transparent
+  drop-shadow-sm
 `;
 
 export const CloseButton = tw.button`

@@ -16,37 +16,38 @@ export const DisplayControl = memo(({ settings, actions, onOpenMarginSlider }: D
   const { setIsMirrored, setIsUpperCase } = actions;
 
   return (
-    <S.HudGroup label={t("host.hudLabels.display")}>
-      <div className="flex items-center gap-2">
-          <div className="flex items-center bg-slate-950/50 rounded-full p-1 border border-slate-800/50">
-              <S.IconButton
-                onClick={() => setIsMirrored(!isMirrored)}
-                active={isMirrored}
-                title={t("host.mirror")}
-                aria-label={t("host.mirror")}
-                className={`w-8 h-8 rounded-full ${isMirrored ? "bg-indigo-500 text-white shadow-lg shadow-indigo-500/20" : "text-slate-400 hover:text-white hover:bg-white/5 border-transparent shadow-none"}`}
-              >
-                <FlipIcon className="w-4 h-4" />
-              </S.IconButton>
-              <S.IconButton
-                onClick={() => actions.setIsFlipVertical(!settings.isFlipVertical)}
-                active={settings.isFlipVertical}
-                title={t("host.mirrorV")}
-                aria-label={t("host.mirrorV")}
-                className={`w-8 h-8 rounded-full ${settings.isFlipVertical ? "bg-indigo-500 text-white shadow-lg shadow-indigo-500/20" : "text-slate-400 hover:text-white hover:bg-white/5 border-transparent shadow-none"}`}
-              >
-                <FlipIcon className="w-4 h-4 rotate-90" />
-              </S.IconButton>
-          </div>
+    <>
+      <S.HudGroup label={t("host.mirror")}>
+        <div className="flex items-center bg-slate-950/50 rounded-full p-2 border border-slate-800/50">
+          <S.IconButton
+            onClick={() => setIsMirrored(!isMirrored)}
+            active={isMirrored}
+            title={t("host.mirror")}
+            aria-label={t("host.mirror")}
+            className={`w-8 h-8 rounded-full ${isMirrored ? "bg-brand-500 text-white shadow-lg shadow-brand-500/20" : "text-slate-400 hover:text-white hover:bg-white/5 border-transparent shadow-none"}`}
+          >
+            <FlipIcon className="w-4 h-4" />
+          </S.IconButton>
+          <S.IconButton
+            onClick={() => actions.setIsFlipVertical(!settings.isFlipVertical)}
+            active={settings.isFlipVertical}
+            title={t("host.mirrorV")}
+            aria-label={t("host.mirrorV")}
+            className={`w-8 h-8 rounded-full ${settings.isFlipVertical ? "bg-brand-500 text-white shadow-lg shadow-brand-500/20" : "text-slate-400 hover:text-white hover:bg-white/5 border-transparent shadow-none"}`}
+          >
+            <FlipIcon className="w-4 h-4 rotate-90" />
+          </S.IconButton>
+        </div>
+      </S.HudGroup>
 
-          <div className="w-px h-8 bg-slate-800/50 mx-1" />
-
+      <S.HudGroup label={t("host.hudLabels.display")}>
+        <div className="flex items-center gap-2">
           <S.IconButton
             onClick={onOpenMarginSlider}
             active={margin > 0}
             title={t("host.controls.margin")}
             aria-label={t("host.controls.margin")}
-            className={`w-9 h-9 rounded-full ${margin > 0 ? "bg-indigo-500/20 text-indigo-400 border-indigo-500/30" : "hover:bg-white/10 border-transparent text-slate-400"}`}
+            className={`w-9 h-9 rounded-full ${margin > 0 ? "bg-brand-500/20 text-brand-400 border-brand-500/30" : "hover:bg-white/10 border-transparent text-slate-400"}`}
           >
             <MarginIcon className="w-5 h-5" />
           </S.IconButton>
@@ -55,11 +56,12 @@ export const DisplayControl = memo(({ settings, actions, onOpenMarginSlider }: D
             active={isUpperCase}
             title={t("host.controls.caps")}
             aria-label={t("host.controls.caps")}
-            className={`w-9 h-9 rounded-full ${isUpperCase ? "bg-indigo-500/20 text-indigo-400 border-indigo-500/30" : "hover:bg-white/10 border-transparent text-slate-400"}`}
+            className={`w-9 h-9 rounded-full ${isUpperCase ? "bg-brand-500/20 text-brand-400 border-brand-500/30" : "hover:bg-white/10 border-transparent text-slate-400"}`}
           >
             <CapsIcon className="w-5 h-5" />
           </S.IconButton>
-      </div>
-    </S.HudGroup>
+        </div>
+      </S.HudGroup>
+    </>
   );
 });

@@ -24,7 +24,7 @@ export const ComparisonTable: React.FC = () => {
                             <tr className="border-b border-gray-800">
                                 <th className="py-4 pr-4 bg-black sticky left-0 z-10"></th>
                                 <th className="py-4 px-4 text-center min-w-[140px]">
-                                    <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-lg font-bold shadow-lg shadow-indigo-500/20">
+                                    <div className="bg-gradient-to-r from-brand-600 to-purple-600 text-white px-4 py-2 rounded-lg font-bold shadow-lg shadow-brand-500/20">
                                         {t("landing.comparison.columns.ninja")}
                                     </div>
                                 </th>
@@ -41,7 +41,7 @@ export const ComparisonTable: React.FC = () => {
                                     </td>
                                     
                                     {/* Ninja */}
-                                    <td className="py-6 px-4 text-center bg-indigo-900/10 border-x border-indigo-500/10 relative">
+                                    <td className="py-6 px-4 text-center bg-brand-900/10 border-x border-brand-500/10 relative">
                                         {/* Highlight logic based on row content could be added here, but simple text is fine for now */}
                                         <span className="font-bold text-emerald-400">
                                             {row === 'offline' || row === 'privacy' ? '✅ ' : ''}

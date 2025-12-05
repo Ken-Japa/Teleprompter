@@ -134,7 +134,7 @@ export const ConnectSidebar: React.FC<ConnectSidebarProps> = memo(({ peerId, sta
                             <S.SecondaryButton
                                 onClick={() => window.open(`${window.location.pathname}#remote?id=${peerId}`, "_blank")}
                                 size="sm"
-                                className="w-full bg-indigo-600 hover:bg-indigo-500 text-white border-transparent shadow-lg shadow-indigo-500/20 group relative overflow-hidden"
+                                className="w-full bg-brand-600 hover:bg-brand-500 text-white border-transparent shadow-lg shadow-brand-500/20 group relative overflow-hidden"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                                 <span className="relative flex items-center justify-center gap-2">

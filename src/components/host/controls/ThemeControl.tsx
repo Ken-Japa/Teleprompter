@@ -27,7 +27,7 @@ export const ThemeControl = memo(
                         onClick={cycleTheme}
                         title={`${t("host.controls.theme")}: ${t(`host.themes.${theme}`)}`}
                         aria-label={t("host.controls.theme")}
-                        className="w-9 h-9 rounded-full hover:bg-indigo-500/20 hover:text-indigo-400 border-transparent"
+                        className="w-9 h-9 rounded-full hover:bg-brand-500/20 hover:text-brand-400 border-transparent"
                     >
                         <PaletteIcon className="w-5 h-5" />
                     </S.IconButton>
@@ -39,7 +39,7 @@ export const ThemeControl = memo(
                         active={isFocusMode}
                         title={t("host.controls.focusLine")}
                         aria-label={t("host.controls.focusLine")}
-                        className={`w-9 h-9 rounded-full ${isFocusMode ? "bg-indigo-500/20 text-indigo-400 shadow-[0_0_10px_rgba(99,102,241,0.3)] border-indigo-500/30" : "hover:bg-white/10 border-transparent text-slate-400"}`}
+                        className={`w-9 h-9 rounded-full ${isFocusMode ? "bg-brand-500/20 text-brand-400 shadow-[0_0_10px_theme(colors.brand.500/0.3)] border-brand-500/30" : "hover:bg-white/10 border-transparent text-slate-400"}`}
                     >
                         <MagicIcon className="w-5 h-5" />
                     </S.IconButton>

@@ -18,7 +18,7 @@ export const EditorToolbar = memo(({ onInsertTag, onClear }: EditorToolbarProps)
             <div className="flex items-center">
                 <span className="text-[10px] uppercase font-bold text-slate-500 mr-3 tracking-wider">{t("host.editor.highlight")}</span>
                 <div
-                    className="flex space-x-1.5 bg-slate-800/50 p-1.5 rounded-xl border border-slate-700/50 backdrop-blur-sm"
+                    className="flex space-x-1.5 bg-white/5 p-1.5 rounded-xl border border-white/5"
                     role="group"
                     aria-label="Text Highlights"
                 >
@@ -32,7 +32,7 @@ export const EditorToolbar = memo(({ onInsertTag, onClear }: EditorToolbarProps)
 
 
 
-            <span className="text-[10px] text-slate-600 hidden sm:inline-block ml-2 font-mono pl-3 border-l border-slate-800">
+            <span className="text-[10px] text-slate-600 hidden sm:inline-block ml-2 font-mono pl-3 border-l border-white/10">
                 {t("host.tips.desc")} &lt;tag&gt;
             </span>
             <S.ToolbarDivider />
@@ -49,6 +49,7 @@ export const EditorToolbar = memo(({ onInsertTag, onClear }: EditorToolbarProps)
                 onClick={() => setShowTutorialModal(true)}
                 title="Tutorial"
                 aria-label="Open Tutorial"
+                className="w-9 h-9 rounded-full p-0"
             >
                 <InfoIcon className="w-4 h-4" />
             </S.IconButton>

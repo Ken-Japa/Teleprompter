@@ -36,7 +36,7 @@ export const RedeemModal: React.FC<RedeemModalProps> = ({
           placeholder={t("host.paywall.inputPlaceholder")}
           value={unlockKey}
           onChange={(e) => onUnlockKeyChange(e.target.value)}
-          className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white text-center font-mono tracking-widest uppercase focus:outline-none focus:border-indigo-500 transition-colors disabled:opacity-50"
+          className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white text-center font-mono tracking-widest uppercase focus:outline-none focus:border-brand-500 transition-colors disabled:opacity-50"
           disabled={isValidating}
         />
         <S.PrimaryButton onClick={onUnlock} disabled={isValidating} className={isValidating ? "opacity-70 cursor-not-allowed" : ""}>

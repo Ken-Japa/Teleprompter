@@ -123,23 +123,23 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                         {/* Quick Play/Pause in Header */}
                         <button
                             onClick={actions.handlePlayToggle}
-                            className={`p-2 rounded-full ${isPlaying ? 'bg-amber-500/20 text-amber-500 border border-amber-500/50' : 'bg-indigo-500/20 text-indigo-500 border border-indigo-500/50'} transition-all active:scale-95`}
+                            className={`p-2 rounded-full ${isPlaying ? 'bg-amber-500/20 text-amber-500 border border-amber-500/50' : 'bg-brand-500/20 text-brand-500 border border-brand-500/50'} transition-all active:scale-95`}
                         >
                             {isPlaying ? <PauseIcon className="w-4 h-4 fill-current" /> : <PlayIcon className="w-4 h-4 fill-current ml-0.5" />}
                         </button>
                     </div>
 
                     <div className="flex gap-1 bg-slate-800 rounded-lg p-1">
-                        <button onClick={() => setActiveTab('control')} className={`p-2 rounded-md transition-all ${activeTab === 'control' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}>
+                        <button onClick={() => setActiveTab('control')} className={`p-2 rounded-md transition-all ${activeTab === 'control' ? 'bg-brand-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}>
                             <ControlIcon />
                         </button>
-                        <button onClick={() => setActiveTab('nav')} className={`p-2 rounded-md transition-all ${activeTab === 'nav' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}>
+                        <button onClick={() => setActiveTab('nav')} className={`p-2 rounded-md transition-all ${activeTab === 'nav' ? 'bg-brand-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}>
                             <NavIcon />
                         </button>
-                        <button onClick={() => setActiveTab('edit')} className={`p-2 rounded-md transition-all ${activeTab === 'edit' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}>
+                        <button onClick={() => setActiveTab('edit')} className={`p-2 rounded-md transition-all ${activeTab === 'edit' ? 'bg-brand-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}>
                             <EditIcon />
                         </button>
-                        <button onClick={() => setActiveTab('settings')} className={`p-2 rounded-md transition-all ${activeTab === 'settings' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}>
+                        <button onClick={() => setActiveTab('settings')} className={`p-2 rounded-md transition-all ${activeTab === 'settings' ? 'bg-brand-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}>
                             <GearIcon />
                         </button>
                     </div>
@@ -162,7 +162,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                 setLocalProgress(val);
                                 actions.handleScrollTo(val);
                             }}
-                            className="flex-1 h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                            className="flex-1 h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-brand-500"
                         />
                     </div>
                 </div>
@@ -179,7 +179,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                         {/* Timer Display - Moved UP */}
                         <div className="flex justify-center pt-6 pb-4">
                             <div className="bg-slate-900/50 px-6 py-2 rounded-xl border border-white/5 shadow-lg">
-                                <span className="font-mono text-4xl font-black text-indigo-400 tracking-widest drop-shadow-[0_0_15px_rgba(129,140,248,0.5)]">{formattedTime}</span>
+                                <span className="font-mono text-4xl font-black text-brand-400 tracking-widest drop-shadow-[0_0_15px_rgba(129,140,248,0.5)]">{formattedTime}</span>
                             </div>
                         </div>
 
@@ -252,7 +252,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                     <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-2">{t("remote.speed")}</span>
                                     <div className="flex flex-col items-center gap-2">
                                         <S.IconButton onClick={() => actions.handleSpeedChange(Math.min(10, speed + 0.5))} className="w-12 h-12 !rounded-2xl !bg-white/10 hover:!bg-white/20 border-white/10"><PlusIcon /></S.IconButton>
-                                        <span className="font-mono text-2xl font-black text-indigo-400 min-w-[3ch] text-center my-1 drop-shadow-md">{speed.toFixed(1)}</span>
+                                        <span className="font-mono text-2xl font-black text-brand-400 min-w-[3ch] text-center my-1 drop-shadow-md">{speed.toFixed(1)}</span>
                                         <S.IconButton onClick={() => actions.handleSpeedChange(Math.max(0, speed - 0.5))} className="w-12 h-12 !rounded-2xl !bg-white/10 hover:!bg-white/20 border-white/10"><MinusIcon /></S.IconButton>
                                     </div>
                                 </div>
@@ -262,7 +262,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                     {/* Play Button */}
                                     <button
                                         onClick={actions.handlePlayToggle}
-                                        className={`flex-1 rounded-[2rem] shadow-2xl transition-all duration-300 active:scale-95 border-t border-white/10 flex flex-col items-center justify-center gap-2 relative overflow-hidden group ${isPlaying ? "bg-gradient-to-b from-amber-500 to-amber-600 text-white shadow-[0_0_60px_-10px_rgba(245,158,11,0.4)]" : "bg-gradient-to-b from-indigo-600 to-indigo-700 text-white shadow-[0_0_60px_-10px_rgba(79,70,229,0.4)] hover:shadow-[0_0_80px_-10px_rgba(79,70,229,0.6)]"}`}
+                                        className={`flex-1 rounded-[2rem] shadow-2xl transition-all duration-300 active:scale-95 border-t border-white/10 flex flex-col items-center justify-center gap-2 relative overflow-hidden group ${isPlaying ? "bg-gradient-to-b from-amber-500 to-amber-600 text-white shadow-[0_0_60px_-10px_rgba(245,158,11,0.4)]" : "bg-gradient-to-b from-brand-600 to-brand-700 text-white shadow-lg shadow-brand-600/40 hover:shadow-brand-600/60"}`}
                                     >
                                         <div className="absolute inset-x-0 top-0 h-[1px] bg-white/40"></div>
                                         <div className="relative z-10 flex flex-col items-center">
@@ -310,7 +310,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                         // Optional: Auto-switch back to control? 
                                         // setActiveTab('control'); 
                                     }}
-                                    className="w-full text-left p-4 rounded-xl bg-slate-900/50 border border-slate-800 hover:bg-slate-800 hover:border-indigo-500/50 transition-all group"
+                                    className="w-full text-left p-4 rounded-xl bg-slate-900/50 border border-slate-800 hover:bg-slate-800 hover:border-brand-500/50 transition-all group"
                                 >
                                     <div className="flex items-start gap-3">
                                         <span className="text-[10px] font-mono text-slate-500 mt-1 w-8 text-right">{(seg.progress * 100).toFixed(0)}%</span>
@@ -328,7 +328,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                         <textarea
                             value={text}
                             onChange={(e) => actions.handleTextChange(e.target.value)}
-                            className="flex-1 w-full bg-slate-900/50 border border-slate-800 rounded-xl p-4 text-slate-200 font-mono text-sm focus:outline-none focus:border-indigo-500 resize-none h-full"
+                            className="flex-1 w-full bg-slate-900/50 border border-slate-800 rounded-xl p-4 text-slate-200 font-mono text-sm focus:outline-none focus:border-brand-500 resize-none h-full"
                             placeholder="Enter your script here..."
                         />
                     </div>
@@ -353,7 +353,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                 type="range" min="20" max="200" step="4"
                                 value={settings.fontSize}
                                 onChange={(e) => actions.handleSettingsChange({ fontSize: parseInt(e.target.value) })}
-                                className="w-full h-4 bg-slate-800 rounded-full appearance-none cursor-pointer accent-indigo-500"
+                                className="w-full h-4 bg-slate-800 rounded-full appearance-none cursor-pointer accent-brand-500"
                             />
                         </div>
 
@@ -367,7 +367,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                 type="range" min="0" max="40" step="1"
                                 value={settings.margin}
                                 onChange={(e) => actions.handleSettingsChange({ margin: parseInt(e.target.value) })}
-                                className="w-full h-4 bg-slate-800 rounded-full appearance-none cursor-pointer accent-indigo-500"
+                                className="w-full h-4 bg-slate-800 rounded-full appearance-none cursor-pointer accent-brand-500"
                             />
                         </div>
 
@@ -375,7 +375,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                         <div className="grid grid-cols-2 gap-4">
                             <button
                                 onClick={() => actions.handleSettingsChange({ isMirrored: !settings.isMirrored })}
-                                className={`p-4 rounded-xl border ${settings.isMirrored ? 'bg-indigo-600/20 border-indigo-500 text-indigo-300' : 'bg-slate-900 border-slate-800 text-slate-400'}`}
+                                className={`p-4 rounded-xl border ${settings.isMirrored ? 'bg-brand-600/20 border-brand-500 text-brand-300' : 'bg-slate-900 border-slate-800 text-slate-400'}`}
                             >
                                 <div className="font-bold mb-1">{t("host.mirror")}</div>
                                 <div className="text-xs opacity-60">{settings.isMirrored ? 'ON' : 'OFF'}</div>
@@ -383,7 +383,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
 
                             <button
                                 onClick={() => actions.handleSettingsChange({ isFlipVertical: !settings.isFlipVertical })}
-                                className={`p-4 rounded-xl border ${settings.isFlipVertical ? 'bg-indigo-600/20 border-indigo-500 text-indigo-300' : 'bg-slate-900 border-slate-800 text-slate-400'}`}
+                                className={`p-4 rounded-xl border ${settings.isFlipVertical ? 'bg-brand-600/20 border-brand-500 text-brand-300' : 'bg-slate-900 border-slate-800 text-slate-400'}`}
                             >
                                 <div className="font-bold mb-1">{t("host.mirrorV")}</div>
                                 <div className="text-xs opacity-60">{settings.isFlipVertical ? 'ON' : 'OFF'}</div>
@@ -391,7 +391,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
 
                             <button
                                 onClick={() => actions.handleSettingsChange({ isUpperCase: !settings.isUpperCase })}
-                                className={`p-4 rounded-xl border ${settings.isUpperCase ? 'bg-indigo-600/20 border-indigo-500 text-indigo-300' : 'bg-slate-900 border-slate-800 text-slate-400'}`}
+                                className={`p-4 rounded-xl border ${settings.isUpperCase ? 'bg-brand-600/20 border-brand-500 text-brand-300' : 'bg-slate-900 border-slate-800 text-slate-400'}`}
                             >
                                 <div className="font-bold mb-1">{t("host.controls.caps")}</div>
                                 <div className="text-xs opacity-60">{settings.isUpperCase ? 'ON' : 'OFF'}</div>
@@ -399,7 +399,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
 
                             <button
                                 onClick={() => actions.handleSettingsChange({ isFocusMode: !settings.isFocusMode })}
-                                className={`p-4 rounded-xl border ${settings.isFocusMode ? 'bg-indigo-600/20 border-indigo-500 text-indigo-300' : 'bg-slate-900 border-slate-800 text-slate-400'}`}
+                                className={`p-4 rounded-xl border ${settings.isFocusMode ? 'bg-brand-600/20 border-brand-500 text-brand-300' : 'bg-slate-900 border-slate-800 text-slate-400'}`}
                             >
                                 <div className="font-bold mb-1">{t("host.controls.focusLine")}</div>
                                 <div className="text-xs opacity-60">{settings.isFocusMode ? 'ON' : 'OFF'}</div>
@@ -428,19 +428,19 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                             <div className="grid grid-cols-3 gap-3">
                                 <button
                                     onClick={() => setLang('en')}
-                                    className={`p-3 rounded-lg border text-xs font-bold ${lang === 'en' ? 'bg-indigo-600 text-white border-indigo-500' : 'bg-slate-900 border-slate-800 text-slate-500'}`}
+                                    className={`p-3 rounded-lg border text-xs font-bold ${lang === 'en' ? 'bg-brand-600 text-white border-brand-500' : 'bg-slate-900 border-slate-800 text-slate-500'}`}
                                 >
                                     English
                                 </button>
                                 <button
                                     onClick={() => setLang('pt')}
-                                    className={`p-3 rounded-lg border text-xs font-bold ${lang === 'pt' ? 'bg-indigo-600 text-white border-indigo-500' : 'bg-slate-900 border-slate-800 text-slate-500'}`}
+                                    className={`p-3 rounded-lg border text-xs font-bold ${lang === 'pt' ? 'bg-brand-600 text-white border-brand-500' : 'bg-slate-900 border-slate-800 text-slate-500'}`}
                                 >
                                     Português
                                 </button>
                                 <button
                                     onClick={() => setLang('es')}
-                                    className={`p-3 rounded-lg border text-xs font-bold ${lang === 'es' ? 'bg-indigo-600 text-white border-indigo-500' : 'bg-slate-900 border-slate-800 text-slate-500'}`}
+                                    className={`p-3 rounded-lg border text-xs font-bold ${lang === 'es' ? 'bg-brand-600 text-white border-brand-500' : 'bg-slate-900 border-slate-800 text-slate-500'}`}
                                 >
                                     Español
                                 </button>
