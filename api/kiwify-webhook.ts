@@ -4,20 +4,16 @@ import { db } from "./_firebase.js";
 import * as crypto from "crypto";
 
 const verifySignature = (
- rawBody: string,
+ rawBodyBuffer: Buffer,
  signature: string | string[] | undefined,
  secret: string
 ): boolean => {
  if (!signature || typeof signature !== "string") return false;
 
- const payloadString = rawBody;
-
- // Try SHA256 (common)
- const hash256 = crypto.createHmac("sha256", secret).update(payloadString).digest("hex");
+ const hash256 = crypto.createHmac("sha256", secret).update(rawBodyBuffer).digest("hex");
  if (hash256 === signature) return true;
 
- // Try SHA1 (legacy)
- const hash1 = crypto.createHmac("sha1", secret).update(payloadString).digest("hex");
+ const hash1 = crypto.createHmac("sha1", secret).update(rawBodyBuffer).digest("hex");
  if (hash1 === signature) return true;
 
  return false;
@@ -46,13 +42,11 @@ async function kiwifyHandler(req: VercelRequest, res: VercelResponse) {
  const secret = process.env.KIWIFY_WEBHOOK_SECRET;
  if (secret) {
   const signature = req.headers["x-kiwify-signature"];
-  // Passa o rawBody (string) para verificação
-  if (!verifySignature(rawBody, signature, secret)) {
+  // 🚨 MUDANÇA na chamada: Passa o Buffer
+  if (!verifySignature(rawBodyBuffer, signature, secret)) {
    console.error("Invalid Kiwify signature");
    return res.status(401).json({ error: "Invalid signature" });
   }
- } else {
-  console.warn("KIWIFY_WEBHOOK_SECRET not set. Skipping signature verification.");
  }
 
  try {
