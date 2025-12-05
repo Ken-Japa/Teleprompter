@@ -1,14 +1,14 @@
 import * as admin from "firebase-admin";
 
-if (!admin.apps.length) {
+// 🚨 Mudança Crítica: Checa se apps existe antes de ler length
+if (!(admin.apps && admin.apps.length)) {
  try {
-  // Use um fallback para strings vazias se 'process.env' estiver undefined
   const projectId = process.env.FIREBASE_PROJECT_ID || "";
   const clientEmail = process.env.FIREBASE_CLIENT_EMAIL || "";
-  // Tratamento da chave privada
+  // Tratamento da chave privada (Esperando o formato de linha única com \n)
   const privateKey = (process.env.FIREBASE_PRIVATE_KEY || "").replace(/\\n/g, "\n");
 
-  // Se qualquer variável crítica estiver faltando, falhe explicitamente.
+  // Checagem para falhar antes do Admin SDK
   if (!projectId || !clientEmail || privateKey.length < 50) {
    throw new Error("Missing critical Firebase ENV variables.");
   }
@@ -21,7 +21,6 @@ if (!admin.apps.length) {
    }),
   });
  } catch (error) {
-  // O console.error no Vercel loga o erro de forma mais limpa.
   console.error("Firebase admin initialization error:", error);
  }
 }
