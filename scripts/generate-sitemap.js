@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DOMAIN = "https://promptninja.site";
+const DOMAIN = "https://teleprompter-gules.vercel.app";
 
 const routes = [
  { path: "/", changefreq: "weekly", priority: "1.0" },
