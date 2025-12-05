@@ -1,7 +1,8 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+import * as admin from "firebase-admin";
+import { FieldValue } from "firebase-admin/firestore";
 import { db } from "./_firebase.js";
 import * as crypto from "crypto";
-import * as admin from "firebase-admin";
 
 const verifySignature = (
  payload: object,
@@ -71,10 +72,12 @@ async function kiwifyHandler(req: VercelRequest, res: VercelResponse) {
    key: String(key),
    email: email,
    status: "unused",
-   createdAt: admin.firestore.FieldValue.serverTimestamp(),
+   createdAt: FieldValue.serverTimestamp(),
    source: "kiwify_webhook",
    originalPayload: payload,
   });
+
+  console.log(`Key saved: ${key} for ${email}`);
 
   console.log(`Key saved: ${key} for ${email}`);
 
