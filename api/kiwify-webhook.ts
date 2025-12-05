@@ -1,32 +1,24 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import * as admin from "firebase-admin";
 import { db } from "./_firebase.js";
 import * as crypto from "crypto";
+import * as admin from "firebase-admin";
 
 const verifySignature = (
- rawBodyBuffer: Buffer,
+ payload: object,
  signature: string | string[] | undefined,
  secret: string
 ): boolean => {
  if (!signature || typeof signature !== "string") return false;
 
- const hash256 = crypto.createHmac("sha256", secret).update(rawBodyBuffer).digest("hex");
- if (hash256 === signature) return true;
+ // 1. Stringify o objeto JSON (CONFORME DOCUMENTAÇÃO KIWIFY)
+ // O Node.js/Vercel já fez o parse para 'payload', agora stringificamos para calcular a hash.
+ const payloadString = JSON.stringify(payload);
 
- const hash1 = crypto.createHmac("sha1", secret).update(rawBodyBuffer).digest("hex");
- if (hash1 === signature) return true;
+ // 2. Calcula hmac_sha1 (CONFORME DOCUMENTAÇÃO KIWIFY)
+ const hash = crypto.createHmac("sha1", secret).update(payloadString).digest("hex");
 
- return false;
-};
-
-// Função auxiliar para obter o corpo RAW
-const getRawBody = (req: VercelRequest): Promise<Buffer> => {
- return new Promise((resolve, reject) => {
-  const bodyChunks: Uint8Array[] = [];
-  req.on("data", (chunk) => bodyChunks.push(chunk));
-  req.on("end", () => resolve(Buffer.concat(bodyChunks)));
-  req.on("error", reject);
- });
+ // Compara a hash gerada localmente com a assinatura que veio na URL
+ return hash === signature;
 };
 
 async function kiwifyHandler(req: VercelRequest, res: VercelResponse) {
@@ -34,28 +26,31 @@ async function kiwifyHandler(req: VercelRequest, res: VercelResponse) {
   return res.status(405).json({ error: "Method not allowed" });
  }
 
- // 1. Obter Corpo RAW
- const rawBodyBuffer = await getRawBody(req);
- const rawBody = rawBodyBuffer.toString("utf-8");
+ // A Vercel parseia automaticamente o corpo (req.body)
+ const payload = req.body;
 
- // 2. Segurança: Verificação de Assinatura
+ // Assinatura vem na query string (URL)
+ const signatureFromQuery = req.query.signature as string | undefined;
  const secret = process.env.KIWIFY_WEBHOOK_SECRET;
- if (secret) {
-  const signature = req.headers["x-kiwify-signature"];
-  // 🚨 MUDANÇA na chamada: Passa o Buffer
-  if (!verifySignature(rawBodyBuffer, signature, secret)) {
+
+ if (secret && signatureFromQuery) {
+  if (!verifySignature(payload, signatureFromQuery, secret)) {
    console.error("Invalid Kiwify signature");
    return res.status(401).json({ error: "Invalid signature" });
   }
+  console.log("Kiwify signature successfully verified.");
+ } else if (secret && !signatureFromQuery) {
+  console.error("KIWIFY_WEBHOOK_SECRET is set, but signature is missing from query string.");
+  return res.status(401).json({ error: "Signature missing" });
+ } else {
+  console.warn("KIWIFY_WEBHOOK_SECRET not set. Skipping signature verification.");
  }
 
  try {
-  // 3. Parsear o corpo RAW para obter o objeto JSON
-  const payload = JSON.parse(rawBody);
   console.log("Kiwify Webhook received:", JSON.stringify(payload, null, 2));
 
-  // 4. Extrair email e chave
-  const email = payload.Customer?.email || payload.email; // Já corrigido para 'Customer' maiúsculo
+  // Extrair email e chave
+  const email = payload.Customer?.email || payload.email;
   const key = payload.access_token || payload.key || payload.code || payload.order_id;
 
   if (!email || !key) {
@@ -63,7 +58,7 @@ async function kiwifyHandler(req: VercelRequest, res: VercelResponse) {
    return res.status(400).json({ error: "Missing email or key in payload" });
   }
 
-  // 5. Salvar/Checar no Firestore
+  // Salvar/Checar no Firestore
   const keysCollection = db.collection("keys");
   const snapshot = await keysCollection.where("key", "==", String(key)).limit(1).get();
 
@@ -89,12 +84,5 @@ async function kiwifyHandler(req: VercelRequest, res: VercelResponse) {
   return res.status(500).json({ error: "Internal server error" });
  }
 }
-
-// Configuração para desativar o parsing automático da Vercel
-export const config = {
- api: {
-  bodyParser: false,
- },
-};
 
 export default kiwifyHandler;
