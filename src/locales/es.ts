@@ -231,7 +231,6 @@ export const es = {
   connecting: "CONECTANDO...",
   connected: "CONECTADO",
   error: "ERROR DE RED",
-  copyright: "PromptNinja. Todos los derechos reservados.",
  },
  host: {
   startPrompter: "Iniciar Teleprompter",
@@ -311,6 +310,20 @@ export const es = {
   editor: {
    highlight: "Resaltado",
   },
+  defaultText: `Bienvenido a PromptNinja.
+
+El teleprompter definitivo para creadores de contenido.
+
+1. Escanea el código QR para conectar.
+2. Controla la velocidad de desplazamiento con facilidad.
+3. Usa el Trackpad para navegación intuitiva.
+
+<r>ATENCIÓN:</r>
+Usa las etiquetas de color para resaltar momentos importantes en tu guion.
+<y>Este texto está en amarillo para énfasis leve.</y>
+<g>Y este en verde para señalar calma o una transición suave.</g>
+
+¡Pega tu guion aquí y personaliza tu experiencia para empezar a brillar!`,
  },
  remote: {
   connecting: "Buscando Host...",
@@ -323,6 +336,7 @@ export const es = {
   stop: "Stop",
   theme: "Tema",
   language: "Idioma",
+  scanError: "Error al acceder a la cámara. Verifica los permisos o si estás usando HTTPS.",
  },
  tutorial: {
   tips: {

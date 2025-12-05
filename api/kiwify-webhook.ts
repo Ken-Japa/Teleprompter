@@ -3,14 +3,14 @@ import * as admin from "firebase-admin";
 import { db } from "./_firebase.js";
 import * as crypto from "crypto";
 
-const verifySignature = (payload: any, signature: string | string[] | undefined, secret: string): boolean => {
+const verifySignature = (
+ rawBody: string,
+ signature: string | string[] | undefined,
+ secret: string
+): boolean => {
  if (!signature || typeof signature !== "string") return false;
 
- // Note: For robust verification, we should use the raw body buffer.
- // Since Vercel parses the body automatically, we try to stringify it back.
- // This might fail if the formatting differs.
- // Ideally, disable bodyParser in config and handle raw stream.
- const payloadString = JSON.stringify(payload);
+ const payloadString = rawBody;
 
  // Try SHA256 (common)
  const hash256 = crypto.createHmac("sha256", secret).update(payloadString).digest("hex");
@@ -23,16 +23,31 @@ const verifySignature = (payload: any, signature: string | string[] | undefined,
  return false;
 };
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+// Função auxiliar para obter o corpo RAW
+const getRawBody = (req: VercelRequest): Promise<Buffer> => {
+ return new Promise((resolve, reject) => {
+  const bodyChunks: Uint8Array[] = [];
+  req.on("data", (chunk) => bodyChunks.push(chunk));
+  req.on("end", () => resolve(Buffer.concat(bodyChunks)));
+  req.on("error", reject);
+ });
+};
+
+async function kiwifyHandler(req: VercelRequest, res: VercelResponse) {
  if (req.method !== "POST") {
   return res.status(405).json({ error: "Method not allowed" });
  }
 
- // Security: Signature Verification
+ // 1. Obter Corpo RAW
+ const rawBodyBuffer = await getRawBody(req);
+ const rawBody = rawBodyBuffer.toString("utf-8");
+
+ // 2. Segurança: Verificação de Assinatura
  const secret = process.env.KIWIFY_WEBHOOK_SECRET;
  if (secret) {
   const signature = req.headers["x-kiwify-signature"];
-  if (!verifySignature(req.body, signature, secret)) {
+  // Passa o rawBody (string) para verificação
+  if (!verifySignature(rawBody, signature, secret)) {
    console.error("Invalid Kiwify signature");
    return res.status(401).json({ error: "Invalid signature" });
   }
@@ -41,19 +56,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
  }
 
  try {
-  const payload = req.body;
+  // 3. Parsear o corpo RAW para obter o objeto JSON
+  const payload = JSON.parse(rawBody);
   console.log("Kiwify Webhook received:", JSON.stringify(payload, null, 2));
 
-  // Extract email and access code
-  // Note: The exact field name for the access code depends on Kiwify's specific configuration
-  // for "Deliverables" or if it's passed as a custom parameter.
-  // We check for common fields.
-  const email = payload.Customer?.email || payload.email;
-
-  // Assuming Kiwify sends the code in a field named 'access_token', 'key', or 'product_key'.
-  // If the user configured Kiwify to send the 'order_id' as the key, we use that.
-  // Ideally, we should check the Kiwify documentation or the specific setup.
-  // For now, we try to find a key-like field.
+  // 4. Extrair email e chave
+  const email = payload.Customer?.email || payload.email; // Já corrigido para 'Customer' maiúsculo
   const key = payload.access_token || payload.key || payload.code || payload.order_id;
 
   if (!email || !key) {
@@ -61,7 +69,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
    return res.status(400).json({ error: "Missing email or key in payload" });
   }
 
-  // Check if key already exists to avoid duplicates
+  // 5. Salvar/Checar no Firestore
   const keysCollection = db.collection("keys");
   const snapshot = await keysCollection.where("key", "==", String(key)).limit(1).get();
 
@@ -70,7 +78,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
    return res.status(200).json({ success: true, message: "Key already exists" });
   }
 
-  // Save to Firestore
   await keysCollection.add({
    key: String(key),
    email: email,
@@ -88,3 +95,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   return res.status(500).json({ error: "Internal server error" });
  }
 }
+
+// Configuração para desativar o parsing automático da Vercel
+export const config = {
+ api: {
+  bodyParser: false,
+ },
+};
+
+export default kiwifyHandler;
