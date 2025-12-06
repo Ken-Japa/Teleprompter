@@ -2,6 +2,7 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { FieldValue } from "firebase-admin/firestore";
 import { db } from "./_firebase.js";
 import * as crypto from "crypto";
+import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 
 const verifySignature = (
  payload: object,
@@ -19,6 +20,46 @@ const verifySignature = (
 
  // Compara a hash gerada localmente com a assinatura que veio na URL
  return hash === signature;
+};
+
+const mailersendApiKey = process.env.MAILERSEND_API_KEY;
+
+const mailerSend = mailersendApiKey
+ ? new MailerSend({
+    apiKey: mailersendApiKey,
+   })
+ : null;
+
+const sendAccessEmail = async (toEmail: string, accessKey: string) => {
+ if (!mailerSend) {
+  console.log(`[EMAIL IGNORADO] Chave ${accessKey} para ${toEmail} (API Key ausente).`);
+  return;
+ }
+
+ // Altere 'seu-email-verificado@seu-dominio.com' para o e-mail que você verificou no MailerSend
+ const sender = new Sender("seu-email-verificado@seu-dominio.com", "PromptNinja");
+ const recipients = [new Recipient(toEmail)];
+
+ const emailParams = new EmailParams()
+  .setFrom(sender)
+  .setTo(recipients)
+  .setSubject("Seu Código de Acesso Exclusivo")
+  .setHtml(
+   `
+            <p>Parabéns pela sua compra! Use o código abaixo para ativar seu acesso profissional:</p>
+            <h2 style="color: #6C5CE7; padding: 10px; border: 1px dashed #6C5CE7; display: inline-block;">${accessKey}</h2>
+            <p>Para resgatar sua chave e iniciar, visite: <a href="https://promptninja.solutionkit.com.br/welcometopro">PromptNinja</a></p>
+            <p>Seu código é a chave mestra para desbloquear todos os recursos.</p>
+        `
+  )
+  .setText(`Seu código de acesso é: ${accessKey}. Acesse seu site para resgatar.`);
+
+ try {
+  await mailerSend.email.send(emailParams);
+  console.log(`Access email sent successfully to: ${toEmail} via MailerSend.`);
+ } catch (error) {
+  console.error("Error sending email via MailerSend:", error);
+ }
 };
 
 async function kiwifyHandler(req: VercelRequest, res: VercelResponse) {
@@ -77,8 +118,7 @@ async function kiwifyHandler(req: VercelRequest, res: VercelResponse) {
   });
 
   console.log(`Key saved: ${key} for ${email}`);
-
-  console.log(`Key saved: ${key} for ${email}`);
+  await sendAccessEmail(email, key);
 
   return res.status(200).json({ success: true });
  } catch (error) {
