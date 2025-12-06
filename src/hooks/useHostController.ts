@@ -47,7 +47,7 @@ export const useHostController = () => {
  // For now, we just keep it running. If we want to reset, we need a reset signal.
 
  // 5. Pro & Paywall Logic
- const { isPro, showPaywall, setShowPaywall, unlockPro } = useProState(isPlaying);
+ const { isPro, showPaywall, setShowPaywall, unlockPro } = useProState(elapsedTime);
 
  // Check for redeem param in hash to open Paywall automatically
  useEffect(() => {
@@ -251,7 +251,10 @@ export const useHostController = () => {
 
  const handleClosePaywall = () => {
   setShowPaywall(false);
-  setShowCountdownModal(true);
+  // Only show countdown if we are in Play Mode (not Edit Mode)
+  if (!isEditMode) {
+   setShowCountdownModal(true);
+  }
  };
 
  const handleCountdownEnd = () => {

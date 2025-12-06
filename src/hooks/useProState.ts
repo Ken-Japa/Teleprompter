@@ -1,14 +1,11 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { PROMPTER_DEFAULTS } from "../config/constants";
 
-export const useProState = (isPlaying: boolean) => {
+export const useProState = (elapsedTime: number) => {
  const [isPro, setIsPro] = useState<boolean>(
   () => localStorage.getItem(PROMPTER_DEFAULTS.STORAGE_KEYS.PRO_STATUS) === "true"
  );
  const [showPaywall, setShowPaywall] = useState<boolean>(false);
-
- // Use refs to track timing without triggering re-renders
- const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
  // Dev Helper exposed to window
  useEffect(() => {
@@ -24,32 +21,14 @@ export const useProState = (isPlaying: boolean) => {
  }, [isPro, setShowPaywall]);
 
  // Paywall Timer Logic - Optimized
- // We only trigger a re-render when the time is UP, not every second.
+ // Trigger Paywall when elapsed time reaches 20 minutes (1200 seconds)
  useEffect(() => {
   if (isPro) return;
-  // O timer só deve iniciar se a apresentação estiver em play
-  if (!isPlaying) {
-   if (timerRef.current) {
-    clearTimeout(timerRef.current);
-    timerRef.current = null;
-   }
-   return;
-  }
 
-  // Start 20 minute timer (1200000ms)
-  if (!timerRef.current && !showPaywall) {
-   timerRef.current = setTimeout(() => {
-    setShowPaywall(true);
-   }, 1200 * 1000);
+  if (!showPaywall && elapsedTime >= 1200) {
+   setShowPaywall(true);
   }
-
-  return () => {
-   if (timerRef.current) {
-    clearTimeout(timerRef.current);
-    timerRef.current = null;
-   }
-  };
- }, [isPro, showPaywall, isPlaying]);
+ }, [isPro, showPaywall, elapsedTime]);
 
  const unlockPro = async (key: string): Promise<{ success: boolean; message?: string }> => {
   try {
@@ -66,7 +45,6 @@ export const useProState = (isPlaying: boolean) => {
     setIsPro(true);
     setShowPaywall(false);
     localStorage.setItem(PROMPTER_DEFAULTS.STORAGE_KEYS.PRO_STATUS, "true");
-    if (timerRef.current) clearTimeout(timerRef.current);
     return { success: true };
    } else {
     return { success: false, message: data.message || "Chave inválida ou já utilizada." };
