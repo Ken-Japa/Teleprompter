@@ -68,3 +68,40 @@ export const UI_LIMITS = {
   TIMEOUT_MS: 3000,
  },
 };
+
+// Network & Peer Configuration
+export const NETWORK_CONFIG = {
+ RECONNECT: {
+  MAX_RETRIES: 5,
+  RETRY_DELAY_MS: 5000,
+ },
+ THROTTLE: {
+  BROADCAST_MS: 50, // ~20fps
+ },
+};
+
+// UI Components Configuration
+export const UI_CONFIG = {
+ COUNTDOWN: {
+  DEFAULT_DURATION_SEC: 3,
+  TICK_MS: 1000,
+  Z_INDEX: 101,
+ },
+};
+
+// SEO Routes
+export const SEO_ROUTES = {
+ GRATIS: "/teleprompter-online-gratis",
+ TUTORIAL: "/como-usar-teleprompter-celular",
+ MELHOR_APP: "/melhor-teleprompter-app",
+ ALTERNATIVAS: "/alternativas-teleprompter-concorrente",
+ YOUTUBERS: "/teleprompter-para-youtubers-e-criadores",
+ TRAVANDO: "/teleprompter-travando-solucao",
+ DIY: "/teleprompter-caseiro-diy",
+ ORATORIA: "/dicas-oratoria-video",
+ DECORAR: "/como-decorar-texto-rapido",
+ WEBRTC: "/tecnologia-webrtc-baixa-latencia",
+ PC_WINDOWS: "/teleprompter-pc-windows",
+ ZOOM: "/teleprompter-zoom-meeting",
+ PRO_WELCOME: "/welcometopro",
+};

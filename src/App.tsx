@@ -8,6 +8,7 @@ const Landing = React.lazy(() => import("./pages/Landing").then(module => ({ def
 const ThankYou = React.lazy(() => import("./pages/ThankYou").then(module => ({ default: module.ThankYou })));
 
 import { SeoPages, SeoRouteKey } from "./config/seoRoutes";
+import { SEO_ROUTES } from "./config/constants";
 
 type ViewState = "LANDING" | "HOST" | "REMOTE" | "THANK_YOU" | SeoRouteKey;
 
@@ -46,56 +47,56 @@ const App: React.FC = () => {
             // Check for SEO paths (remove trailing slash if present for consistency)
             const cleanPath = path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
 
-            if (cleanPath === "/welcometopro") {
+            if (cleanPath === SEO_ROUTES.PRO_WELCOME) {
                 setView("THANK_YOU");
                 return;
             }
 
-            if (cleanPath === "/teleprompter-online-gratis") {
+            if (cleanPath === SEO_ROUTES.GRATIS) {
                 setView("SEO_GRATIS");
                 return;
             }
-            if (cleanPath === "/como-usar-teleprompter-celular") {
+            if (cleanPath === SEO_ROUTES.TUTORIAL) {
                 setView("SEO_TUTORIAL");
                 return;
             }
-            if (cleanPath === "/melhor-teleprompter-app") {
+            if (cleanPath === SEO_ROUTES.MELHOR_APP) {
                 setView("SEO_MELHOR_APP");
                 return;
             }
-            if (cleanPath === "/alternativas-teleprompter-concorrente") {
+            if (cleanPath === SEO_ROUTES.ALTERNATIVAS) {
                 setView("SEO_ALTERNATIVAS");
                 return;
             }
-            if (cleanPath === "/teleprompter-para-youtubers-e-criadores") {
+            if (cleanPath === SEO_ROUTES.YOUTUBERS) {
                 setView("SEO_YOUTUBERS");
                 return;
             }
-            if (cleanPath === "/teleprompter-travando-solucao") {
+            if (cleanPath === SEO_ROUTES.TRAVANDO) {
                 setView("SEO_TRAVANDO");
                 return;
             }
-            if (cleanPath === "/teleprompter-caseiro-diy") {
+            if (cleanPath === SEO_ROUTES.DIY) {
                 setView("SEO_DIY");
                 return;
             }
-            if (cleanPath === "/dicas-oratoria-video") {
+            if (cleanPath === SEO_ROUTES.ORATORIA) {
                 setView("SEO_ORATORIA");
                 return;
             }
-            if (cleanPath === "/como-decorar-texto-rapido") {
+            if (cleanPath === SEO_ROUTES.DECORAR) {
                 setView("SEO_DECORAR");
                 return;
             }
-            if (cleanPath === "/tecnologia-webrtc-baixa-latencia") {
+            if (cleanPath === SEO_ROUTES.WEBRTC) {
                 setView("SEO_WEBRTC");
                 return;
             }
-            if (cleanPath === "/teleprompter-pc-windows") {
+            if (cleanPath === SEO_ROUTES.PC_WINDOWS) {
                 setView("SEO_PC_WINDOWS");
                 return;
             }
-            if (cleanPath === "/teleprompter-zoom-meeting") {
+            if (cleanPath === SEO_ROUTES.ZOOM) {
                 setView("SEO_ZOOM");
                 return;
             }
