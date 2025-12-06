@@ -43,7 +43,10 @@ export const useRemoteController = (hostId: string) => {
  useWakeLock(status === ConnectionStatus.CONNECTED);
 
  // 4.1 Voice Control (Local)
- const { startListening, stopListening, activeSentenceIndex, voiceProgress } = useVoiceControl(text, isPro);
+ const { startListening, stopListening, activeSentenceIndex, voiceProgress, resetVoice } = useVoiceControl(
+  text,
+  isPro
+ );
 
  // Sync voice state to host when acting as controller
  useEffect(() => {
@@ -94,6 +97,12 @@ export const useRemoteController = (hostId: string) => {
    }
    if (data.type === MessageType.SCROLL_SYNC) {
     setProgress(data.payload.progress);
+   }
+   if (data.type === MessageType.RESTART) {
+    setIsPlaying(false);
+    setElapsedTime(0);
+    setProgress(0);
+    resetVoice();
    }
   });
  }, [setOnMessage]);
@@ -153,7 +162,8 @@ export const useRemoteController = (hostId: string) => {
   setProgress(0); // Explicitly reset local progress
   sendMessage(MessageType.RESTART);
   vibrate(50);
- }, [sendMessage, vibrate]);
+  resetVoice();
+ }, [sendMessage, vibrate, resetVoice]);
 
  const handleToggleVoice = useCallback(() => {
   // Always toggle visual state on Host

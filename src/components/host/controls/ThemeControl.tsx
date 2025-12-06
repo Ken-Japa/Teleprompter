@@ -17,7 +17,7 @@ interface ThemeControlProps {
 export const ThemeControl = memo(
     ({ settings, actions, isVoiceMode, toggleVoice, isPro, voiceApiSupported, voiceApiError }: ThemeControlProps) => {
         const { t } = useTranslation();
-        const { theme, isFocusMode, voiceControlMode } = settings;
+        const { theme, isFocusMode, voiceControlMode = 'host' } = settings;
         const { cycleTheme, setIsFocusMode, setVoiceControlMode } = actions;
 
         const handleVoiceModeToggle = () => {
@@ -67,12 +67,12 @@ export const ThemeControl = memo(
                                 onClick={handleVoiceModeToggle}
                                 title={voiceControlMode === "remote" ? "Remote Control" : "Host Control"}
                                 aria-label="Toggle Voice Control Mode"
-                                className="w-6 h-6 rounded-full hover:bg-white/10 border-transparent text-slate-400"
+                                className="w-9 h-9 rounded-full hover:bg-white/10 border-transparent text-slate-400"
                             >
                                 {voiceControlMode === "remote" ? (
-                                    <SmartphoneIcon className="w-3 h-3" />
+                                    <SmartphoneIcon className="w-5 h-5" />
                                 ) : (
-                                    <LaptopIcon className="w-3 h-3" />
+                                    <LaptopIcon className="w-5 h-5" />
                                 )}
                             </S.IconButton>
                         )}

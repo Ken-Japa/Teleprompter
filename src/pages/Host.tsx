@@ -63,6 +63,7 @@ export const Host: React.FC = () => {
                     onSync={actions.forceSync}
                     onTextChange={actions.setText}
                     onVoiceModeChange={actions.setIsVoiceMode}
+                    onReset={actions.handleReset}
                 />
             )}
         </>

@@ -42,11 +42,12 @@ interface PrompterProps {
   onSync: () => void;
   onTextChange: (text: string) => void;
   onVoiceModeChange?: (isVoiceMode: boolean) => void;
+  onReset?: () => void;
 }
 
 export const Prompter = memo(
   forwardRef<PrompterHandle, PrompterProps>(
-    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange }, ref) => {
+    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onReset }, ref) => {
 
       // Extracted Settings Logic
       const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode } = settings;
@@ -133,12 +134,13 @@ export const Prompter = memo(
         setResetTimerSignal((p) => !p);
         if (onResetTimer) onResetTimer();
         resetVoice();
+        if (onReset) onReset();
         setRemoteVoiceState({ index: -1, progress: 0 });
         resetPhysics();
         if (currentActiveElementRef.current) {
           currentActiveElementRef.current.classList.remove("sentence-active");
         }
-      }, [onStateChange, externalState.speed, resetVoice, resetPhysics, currentActiveElementRef]);
+      }, [onStateChange, externalState.speed, resetVoice, resetPhysics, currentActiveElementRef, onReset]);
 
       // Voice control toggle
       const toggleVoice = useCallback(() => {

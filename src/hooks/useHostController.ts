@@ -309,6 +309,10 @@ export const useHostController = () => {
   },
  };
 
+ const handleReset = useCallback(() => {
+  broadcast(MessageType.RESTART);
+ }, [broadcast]);
+
  const prompterState = useMemo(() => ({ isPlaying, speed }), [isPlaying, speed]);
 
  return {
@@ -343,6 +347,7 @@ export const useHostController = () => {
    handleNavigationMapUpdate,
    forceSync,
    setIsVoiceMode,
+   handleReset,
   },
   refs: {
    prompterRef,
