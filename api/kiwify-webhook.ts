@@ -36,7 +36,7 @@ const sendAccessEmail = async (toEmail: string, accessKey: string) => {
   return;
  }
 
- const sender = new Sender("welcome@promptninja.solutionkit.com.br", "PromptNinja");
+ const sender = new Sender("welcome@solutionkit.com.br", "PromptNinja");
  const recipients = [new Recipient(toEmail)];
 
  const emailParams = new EmailParams()
