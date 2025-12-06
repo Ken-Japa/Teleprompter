@@ -344,15 +344,6 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                 {activeTab === 'settings' && settings && (
                     <div className="flex-1 overflow-y-auto p-6 space-y-8 bg-slate-950">
 
-                        {/* Connection Sync */}
-                        <div className="space-y-3">
-                            <div className="text-sm text-slate-400 uppercase tracking-widest font-bold">{t("common.sync") || "Sync"}</div>
-                            <div className="flex items-center justify-between bg-slate-900 p-4 rounded-xl border border-slate-800">
-                                <span className="text-sm font-medium text-slate-300">{t("common.refresh") || "Refresh Connection"}</span>
-                                <SyncButton onSync={actions.handleRequestSync} className="!w-10 !h-10 !bg-slate-800 hover:!bg-slate-700" />
-                            </div>
-                        </div>
-
                         {/* Font Size */}
                         <div className="space-y-3">
                             <div className="flex justify-between text-sm text-slate-400 uppercase tracking-widest font-bold">
@@ -429,6 +420,15 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                         {themeOption === Theme.DEFAULT ? "Ninja" : themeOption}
                                     </button>
                                 ))}
+                            </div>
+                        </div>
+
+                        {/* Connection Sync */}
+                        <div className="space-y-3">
+                            <div className="text-sm text-slate-400 uppercase tracking-widest font-bold">{t("common.sync") || "Sync"}</div>
+                            <div className="flex items-center justify-between bg-slate-900 p-4 rounded-xl border border-slate-800">
+                                <span className="text-sm font-medium text-slate-300">{t("common.refresh") || "Refresh Connection"}</span>
+                                <SyncButton onSync={actions.handleRequestSync} className="!w-10 !h-10 !bg-slate-800 hover:!bg-slate-700" />
                             </div>
                         </div>
 

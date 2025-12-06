@@ -7,6 +7,8 @@ export const pt = {
  common: {
   sync: "Sincronizar",
   refresh: "Atualizar",
+  save: "Salvar",
+  cancel: "Cancelar",
  },
  menu: {
   home: "Início",
@@ -387,7 +389,8 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
  },
  thankYou: {
   title: "Obrigado pela compra!",
-  subtitle: "Seu pagamento foi confirmado com sucesso. Agora você está a um passo de desbloquear todo o poder do PromptNinja Pro.",
+  subtitle:
+   "Seu pagamento foi confirmado com sucesso. Agora você está a um passo de desbloquear todo o poder do PromptNinja Pro.",
   success: {
    title: "PromptNinja Pro Ativado!",
    message: "Sua conta foi atualizada com sucesso. Aproveite todos os recursos ilimitados.",
@@ -395,7 +398,8 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
   },
   activation: {
    title: "Ativar sua licença",
-   description: "Insira o código de ativação que você recebeu no seu e-mail (ou na página de confirmação da Kiwify).",
+   description:
+    "Insira o código de ativação que você recebeu no seu e-mail (ou na página de confirmação da Kiwify).",
    label: "Código de Ativação",
    placeholder: "INSIRA SEU CÓDIGO AQUI",
    button: "Ativar PromptNinja Pro",
@@ -404,8 +408,8 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
    error: {
     invalid: "Código inválido ou já utilizado.",
     connection: "Erro de conexão. Verifique sua internet e tente novamente.",
-   }
+   },
   },
-  footer: "© {{year}} PromptNinja. Todos os direitos reservados."
- }
+  footer: "© {{year}} PromptNinja. Todos os direitos reservados.",
+ },
 };

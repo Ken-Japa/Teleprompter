@@ -12,7 +12,7 @@ interface DisplayControlProps {
 
 export const DisplayControl = memo(({ settings, actions, onOpenMarginSlider }: DisplayControlProps) => {
   const { t } = useTranslation();
-  const { isMirrored, isUpperCase, margin } = settings;
+  const { isMirrored, isUpperCase } = settings;
   const { setIsMirrored, setIsUpperCase } = actions;
 
   return (
@@ -44,10 +44,10 @@ export const DisplayControl = memo(({ settings, actions, onOpenMarginSlider }: D
         <div className="flex items-center gap-2">
           <S.IconButton
             onClick={onOpenMarginSlider}
-            active={margin > 0}
+            active={false}
             title={t("host.controls.margin")}
             aria-label={t("host.controls.margin")}
-            className={`w-9 h-9 rounded-full ${margin > 0 ? "bg-brand-500/20 text-brand-400 border-brand-500/30" : "hover:bg-white/10 border-transparent text-slate-400"}`}
+            className="w-9 h-9 rounded-full hover:bg-white/10 border-transparent text-slate-400"
           >
             <MarginIcon className="w-5 h-5" />
           </S.IconButton>

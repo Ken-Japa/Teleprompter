@@ -18,6 +18,7 @@ import { PrompterActions } from "../../hooks/usePrompterSettings";
 import { useElementMetrics } from "../../hooks/useElementMetrics";
 import { ScriptBoard } from "./ScriptBoard";
 import { PrompterHUD } from "./PrompterHUD";
+import { QuickEditModal } from "./QuickEditModal";
 import { trackConversion } from "../../utils/analytics";
 
 import { useNavigationMap } from "../../hooks/useNavigationMap";
@@ -39,11 +40,12 @@ interface PrompterProps {
   settings: PrompterSettings;
   actions: PrompterActions;
   onSync: () => void;
+  onTextChange: (text: string) => void;
 }
 
 export const Prompter = memo(
   forwardRef<PrompterHandle, PrompterProps>(
-    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync }, ref) => {
+    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange }, ref) => {
 
       // Extracted Settings Logic
       const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical } = settings;
@@ -51,6 +53,7 @@ export const Prompter = memo(
       // Ephemeral State
       const [isVoiceMode, setIsVoiceMode] = useState<boolean>(false);
       const [showHud, setShowHud] = useState<boolean>(true);
+      const [showEditModal, setShowEditModal] = useState<boolean>(false);
       const [resetTimerSignal, setResetTimerSignal] = useState<boolean>(false);
 
       // Refs
@@ -107,7 +110,7 @@ export const Prompter = memo(
       // Force wake up when critical props change or component mounts
       useEffect(() => {
         if (externalState.isPlaying) {
-           wakeUpLoop();
+          wakeUpLoop();
         }
       }, [externalState.isPlaying, text.length, wakeUpLoop]);
 
@@ -301,6 +304,18 @@ export const Prompter = memo(
             toggleVoice={toggleVoice}
             onExit={onExit}
             onSync={onSync}
+            onEdit={() => setShowEditModal(true)}
+          />
+          <QuickEditModal
+            isOpen={showEditModal}
+            onClose={() => setShowEditModal(false)}
+            text={text}
+            onSave={(newText) => {
+              if (externalState.isPlaying) {
+                onStateChange(false, externalState.speed);
+              }
+              onTextChange(newText);
+            }}
           />
         </S.ScreenContainer>
       );

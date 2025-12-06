@@ -61,6 +61,7 @@ export const Host: React.FC = () => {
                     settings={prompterSettings}
                     actions={actions.prompterActions}
                     onSync={actions.forceSync}
+                    onTextChange={actions.setText}
                 />
             )}
         </>

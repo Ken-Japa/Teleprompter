@@ -20,7 +20,7 @@ export const useProState = (elapsedTime: number) => {
   };
  }, [isPro, setShowPaywall]);
 
- // Paywall Timer Logic - Optimized
+ // Paywall Timer Logic
  // Trigger Paywall when elapsed time reaches 20 minutes (1200 seconds)
  useEffect(() => {
   if (isPro) return;

@@ -7,6 +7,8 @@ export const en = {
  common: {
   sync: "Sync",
   refresh: "Refresh",
+  save: "Save",
+  cancel: "Cancel",
  },
  menu: {
   home: "Home",
@@ -381,7 +383,8 @@ Paste your script here and customize your experience to start shining!`,
  },
  thankYou: {
   title: "Thank you for your purchase!",
-  subtitle: "Your payment has been successfully confirmed. You are now one step away from unlocking the full power of PromptNinja Pro.",
+  subtitle:
+   "Your payment has been successfully confirmed. You are now one step away from unlocking the full power of PromptNinja Pro.",
   success: {
    title: "PromptNinja Pro Activated!",
    message: "Your account has been successfully updated. Enjoy all unlimited features.",
@@ -398,8 +401,8 @@ Paste your script here and customize your experience to start shining!`,
    error: {
     invalid: "Invalid or already used code.",
     connection: "Connection error. Check your internet and try again.",
-   }
+   },
   },
-  footer: "© {{year}} PromptNinja. All rights reserved."
- }
+  footer: "© {{year}} PromptNinja. All rights reserved.",
+ },
 };

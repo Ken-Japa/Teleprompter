@@ -4,7 +4,7 @@ import { ConnectionStatus, PrompterSettings } from "../../types";
 import { PrompterActions } from "../../hooks/usePrompterSettings";
 import { useTranslation } from "../../hooks/useTranslation";
 import { PrompterTimer, SpeedControl, FontControl, DisplayControl, ThemeControl } from "./controls";
-import { QrCodeIcon, InfoIcon, LogOutIcon } from "../ui/Icons";
+import { QrCodeIcon, InfoIcon, LogOutIcon, EditIcon } from "../ui/Icons";
 import { TutorialModal } from "../ui/TutorialModal";
 import { FontSizeModal } from "../ui/FontSizeModal";
 import { MarginModal } from "../ui/MarginModal";
@@ -29,10 +29,11 @@ interface PrompterHUDProps {
     toggleVoice: () => void;
     onExit: () => void;
     onSync: () => void;
+    onEdit: () => void;
 }
 
 export const PrompterHUD = memo(
-    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isVoiceMode, isPro, resetTimerSignal, onStateChange, onResetPrompter, toggleVoice, onExit, voiceApiSupported, voiceApiError, onSync }: PrompterHUDProps) => {
+    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isVoiceMode, isPro, resetTimerSignal, onStateChange, onResetPrompter, toggleVoice, onExit, voiceApiSupported, voiceApiError, onSync, onEdit }: PrompterHUDProps) => {
         const { t } = useTranslation();
         const [showTutorialModal, setShowTutorialModal] = useState(false);
         const [showFontSizeModal, setShowFontSizeModal] = useState(false);
@@ -70,6 +71,15 @@ export const PrompterHUD = memo(
                     voiceApiSupported={voiceApiSupported}
                     voiceApiError={voiceApiError}
                 />
+
+                <S.IconButton
+                    onClick={onEdit}
+                    title={t("host.editText") || "Edit Text"}
+                    aria-label={t("host.editText") || "Edit Text"}
+                    className="ml-4 w-9 h-9 flex !p-0 !items-center !justify-center leading-none"
+                >
+                    <EditIcon className="w-5 h-5 block" />
+                </S.IconButton>
 
                 <S.IconButton
                     onClick={() => setShowTutorialModal(true)}
