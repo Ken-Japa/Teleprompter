@@ -385,4 +385,27 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
  footer: {
   copyright: "PromptNinja. Todos os direitos reservados.",
  },
+ thankYou: {
+  title: "Obrigado pela compra!",
+  subtitle: "Seu pagamento foi confirmado com sucesso. Agora você está a um passo de desbloquear todo o poder do PromptNinja Pro.",
+  success: {
+   title: "PromptNinja Pro Ativado!",
+   message: "Sua conta foi atualizada com sucesso. Aproveite todos os recursos ilimitados.",
+   button: "Começar a Usar Agora",
+  },
+  activation: {
+   title: "Ativar sua licença",
+   description: "Insira o código de ativação que você recebeu no seu e-mail (ou na página de confirmação da Kiwify).",
+   label: "Código de Ativação",
+   placeholder: "INSIRA SEU CÓDIGO AQUI",
+   button: "Ativar PromptNinja Pro",
+   validating: "Validando...",
+   skip: "Pular ativação e ir para o App Gratuito",
+   error: {
+    invalid: "Código inválido ou já utilizado.",
+    connection: "Erro de conexão. Verifique sua internet e tente novamente.",
+   }
+  },
+  footer: "© {{year}} PromptNinja. Todos os direitos reservados."
+ }
 };

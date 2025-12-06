@@ -385,4 +385,27 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
  footer: {
   copyright: "PromptNinja. Todos los derechos reservados.",
  },
+ thankYou: {
+  title: "¡Gracias por tu compra!",
+  subtitle: "Tu pago ha sido confirmado con éxito. Ahora estás a un paso de desbloquear todo el poder de PromptNinja Pro.",
+  success: {
+   title: "¡PromptNinja Pro Activado!",
+   message: "Tu cuenta ha sido actualizada con éxito. Disfruta de todas las funciones ilimitadas.",
+   button: "Empezar a Usar Ahora",
+  },
+  activation: {
+   title: "Activar tu licencia",
+   description: "Ingresa el código de activación que recibiste en tu correo (o en la página de confirmación de Kiwify).",
+   label: "Código de Activación",
+   placeholder: "INGRESA TU CÓDIGO AQUÍ",
+   button: "Activar PromptNinja Pro",
+   validating: "Validando...",
+   skip: "Saltar activación e ir a la App Gratuita",
+   error: {
+    invalid: "Código inválido o ya utilizado.",
+    connection: "Error de conexión. Verifica tu internet e intenta nuevamente.",
+   }
+  },
+  footer: "© {{year}} PromptNinja. Todos los derechos reservados."
+ }
 };

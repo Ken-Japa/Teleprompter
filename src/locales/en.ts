@@ -379,4 +379,27 @@ Paste your script here and customize your experience to start shining!`,
  footer: {
   copyright: "PromptNinja. All rights reserved.",
  },
+ thankYou: {
+  title: "Thank you for your purchase!",
+  subtitle: "Your payment has been successfully confirmed. You are now one step away from unlocking the full power of PromptNinja Pro.",
+  success: {
+   title: "PromptNinja Pro Activated!",
+   message: "Your account has been successfully updated. Enjoy all unlimited features.",
+   button: "Start Using Now",
+  },
+  activation: {
+   title: "Activate your license",
+   description: "Enter the activation code you received in your email (or on the Kiwify confirmation page).",
+   label: "Activation Code",
+   placeholder: "ENTER YOUR CODE HERE",
+   button: "Activate PromptNinja Pro",
+   validating: "Validating...",
+   skip: "Skip activation and go to Free App",
+   error: {
+    invalid: "Invalid or already used code.",
+    connection: "Connection error. Check your internet and try again.",
+   }
+  },
+  footer: "© {{year}} PromptNinja. All rights reserved."
+ }
 };

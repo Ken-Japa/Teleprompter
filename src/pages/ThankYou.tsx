@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import * as S from "../components/ui/Styled";
 import { PROMPTER_DEFAULTS } from "../config/constants";
 import { CheckCircleIcon, CrownIcon, RocketIcon } from "../components/ui/Icons";
+import { useTranslation } from "../hooks/useTranslation";
 
 export const ThankYou: React.FC<{ onLaunch: () => void }> = ({ onLaunch }) => {
+    const { t } = useTranslation();
     const [unlockKey, setUnlockKey] = useState("");
     const [status, setStatus] = useState<"idle" | "validating" | "success" | "error">("idle");
     const [errorMessage, setErrorMessage] = useState("");
@@ -29,12 +31,12 @@ export const ThankYou: React.FC<{ onLaunch: () => void }> = ({ onLaunch }) => {
                 // Optional: trigger a reload if needed by other components, but onLaunch should handle navigation
             } else {
                 setStatus("error");
-                setErrorMessage(data.message || "Código inválido ou já utilizado.");
+                setErrorMessage(data.message || t("thankYou.activation.error.invalid"));
             }
         } catch (error) {
             console.error("Erro na validação:", error);
             setStatus("error");
-            setErrorMessage("Erro de conexão. Verifique sua internet e tente novamente.");
+            setErrorMessage(t("thankYou.activation.error.connection"));
         }
     };
 
@@ -52,10 +54,10 @@ export const ThankYou: React.FC<{ onLaunch: () => void }> = ({ onLaunch }) => {
                         <CheckCircleIcon className="w-10 h-10 text-green-400" />
                     </div>
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                        Obrigado pela compra!
+                        {t("thankYou.title")}
                     </h1>
                     <p className="text-lg text-slate-300">
-                        Seu pagamento foi confirmado com sucesso. Agora você está a um passo de desbloquear todo o poder do PromptNinja Pro.
+                        {t("thankYou.subtitle")}
                     </p>
                 </div>
 
@@ -64,9 +66,9 @@ export const ThankYou: React.FC<{ onLaunch: () => void }> = ({ onLaunch }) => {
                         <div className="flex justify-center mb-4">
                             <CrownIcon className="w-16 h-16 text-yellow-400" />
                         </div>
-                        <h2 className="text-2xl font-bold text-white mb-2">PromptNinja Pro Ativado!</h2>
+                        <h2 className="text-2xl font-bold text-white mb-2">{t("thankYou.success.title")}</h2>
                         <p className="text-slate-300 mb-6">
-                            Sua conta foi atualizada com sucesso. Aproveite todos os recursos ilimitados.
+                            {t("thankYou.success.message")}
                         </p>
                         <S.PrimaryButton
                             onClick={() => {
@@ -78,7 +80,7 @@ export const ThankYou: React.FC<{ onLaunch: () => void }> = ({ onLaunch }) => {
                             className="w-full py-4 text-lg"
                         >
                             <RocketIcon className="w-5 h-5 mr-2" />
-                            Começar a Usar Agora
+                            {t("thankYou.success.button")}
                         </S.PrimaryButton>
                     </div>
                 ) : (
@@ -86,21 +88,21 @@ export const ThankYou: React.FC<{ onLaunch: () => void }> = ({ onLaunch }) => {
                         <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
                             <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
                                 <CrownIcon className="w-6 h-6 text-brand-400 mr-2" />
-                                Ativar sua licença
+                                {t("thankYou.activation.title")}
                             </h3>
                             <p className="text-slate-400 mb-6 text-sm">
-                                Insira o código de ativação que você recebeu no seu e-mail (ou na página de confirmação da Kiwify).
+                                {t("thankYou.activation.description")}
                             </p>
 
                             <div className="space-y-4">
                                 <div>
                                     <label htmlFor="code" className="block text-sm font-medium text-slate-300 mb-2">
-                                        Código de Ativação
+                                        {t("thankYou.activation.label")}
                                     </label>
                                     <input
                                         id="code"
                                         type="text"
-                                        placeholder="INSIRA SEU CÓDIGO AQUI"
+                                        placeholder={t("thankYou.activation.placeholder")}
                                         value={unlockKey}
                                         onChange={(e) => setUnlockKey(e.target.value)}
                                         className="w-full bg-slate-950 border border-slate-700 rounded-xl p-4 text-white text-center font-mono tracking-widest uppercase text-lg focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all placeholder:text-slate-600"
@@ -118,7 +120,7 @@ export const ThankYou: React.FC<{ onLaunch: () => void }> = ({ onLaunch }) => {
                                     disabled={status === "validating" || !unlockKey.trim()}
                                     className={`w-full py-4 text-lg ${status === "validating" ? "opacity-70 cursor-wait" : ""}`}
                                 >
-                                    {status === "validating" ? "Validando..." : "Ativar PromptNinja Pro"}
+                                    {status === "validating" ? t("thankYou.activation.validating") : t("thankYou.activation.button")}
                                 </S.PrimaryButton>
                             </div>
                         </div>
@@ -128,7 +130,7 @@ export const ThankYou: React.FC<{ onLaunch: () => void }> = ({ onLaunch }) => {
                                 onClick={onLaunch}
                                 className="text-slate-500 hover:text-white text-sm transition-colors"
                             >
-                                Pular ativação e ir para o App Gratuito &rarr;
+                                {t("thankYou.activation.skip")} &rarr;
                             </button>
                         </div>
                     </div>
@@ -136,7 +138,7 @@ export const ThankYou: React.FC<{ onLaunch: () => void }> = ({ onLaunch }) => {
             </div>
 
             <div className="mt-8 text-slate-500 text-sm">
-                &copy; {new Date().getFullYear()} PromptNinja
+                {t("thankYou.footer", { year: new Date().getFullYear() })}
             </div>
         </div>
     );
