@@ -101,10 +101,16 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
         return (
             <S.ScreenContainer className="bg-[#020617] min-h-screen h-[100dvh] flex flex-col">
                 {errorMessage && <S.ErrorToast message={errorMessage} />}
-                <S.Header>
-                    <S.LogoText main={t("title.main")} sub={t("title.remote")} />
-                    <S.StatusBadge status={status} label={t(`status.${status.toLowerCase()}`)} />
-                </S.Header>
+                {/* Custom Header for Disconnected State - Matches Connected State Style */}
+                <div className="fixed top-0 left-0 right-0 z-50 bg-[#020617]/90 backdrop-blur-xl border-b border-white/5">
+                    <div className="flex items-center justify-between px-4 py-3">
+                        <S.LogoText main={t("title.main")} sub={t("title.remote")} />
+                        <S.StatusBadge status={status} label={t(`status.${status.toLowerCase()}`)} />
+                    </div>
+                </div>
+                {/* Spacer for Fixed Header */}
+                <div className="h-[64px]"></div>
+                
                 <div className="flex-1 flex flex-col relative overflow-hidden z-10">
                     <ConnectionState status={status} hostId={hostId} />
                 </div>

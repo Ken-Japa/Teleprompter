@@ -25,14 +25,41 @@ export const StatusBadge = ({ status, label, className = "" }: { status: string;
   );
 };
 
-export const ErrorToast = ({ message }: { message: string }) => (
-  <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-red-950/90 backdrop-blur-md border border-red-500/30 text-red-200 px-6 py-3 rounded-full shadow-lg shadow-red-900/20 flex items-center gap-3 z-50 animate-slideDown">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-red-400">
-      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
-    </svg>
-    <span className="text-xs font-bold uppercase tracking-wide">{message}</span>
-  </div>
-);
+export const ErrorToast = ({ message }: { message: string }) => {
+  const [isVisible, setIsVisible] = React.useState(true);
+
+  React.useEffect(() => {
+    setIsVisible(true);
+    const timer = setTimeout(() => {
+      setIsVisible(false);
+    }, 6000);
+    return () => clearTimeout(timer);
+  }, [message]);
+
+  if (!isVisible) return null;
+
+  return (
+    <div className="fixed top-24 left-1/2 -translate-x-1/2 w-[90%] max-w-md bg-red-950/95 backdrop-blur-xl border border-red-500/30 text-red-200 px-6 py-4 rounded-2xl shadow-[0_10px_40px_-10px_rgba(220,38,38,0.5)] flex items-start gap-4 z-[100] animate-slideDown">
+      <div className="p-2 bg-red-500/10 rounded-full shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-red-400">
+          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
+        </svg>
+      </div>
+      <div className="flex-1 pt-1">
+        <p className="text-sm font-bold uppercase tracking-wide text-red-100 mb-1">Erro de Conexão</p>
+        <p className="text-xs text-red-300 leading-relaxed font-medium">{message}</p>
+      </div>
+      <button
+        onClick={() => setIsVisible(false)}
+        className="p-1 hover:bg-red-500/20 rounded-lg transition-colors text-red-400 hover:text-red-200"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+          <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+        </svg>
+      </button>
+    </div>
+  );
+};
 
 export const PaywallModal = ({
   onClose,

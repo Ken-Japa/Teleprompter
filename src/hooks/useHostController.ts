@@ -251,6 +251,7 @@ export const useHostController = () => {
 
  const handleClosePaywall = () => {
   setShowPaywall(false);
+  setElapsedTime(0); // Reset timer to allow another free session
   // Only show countdown if we are in Play Mode (not Edit Mode)
   if (!isEditMode) {
    setShowCountdownModal(true);

@@ -11,10 +11,10 @@ export const LogoText = ({ main, sub, className = "" }: { main?: string; sub?: s
             <img
                 src="/assets/LogoPrompt.png"
                 alt="Logo PromptNinja"
-                className="w-8 h-5 sm:w-8 sm:h-5 relative z-10 transition-all duration-300 drop-shadow-md"
+                className="w-8 h-auto max-h-6 object-contain relative z-10 transition-all duration-300 drop-shadow-md"
             />
         </div>
-        <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center font-display">
+        <h1 className="text-lg sm:text-2xl font-bold text-white tracking-tight flex items-center font-display">
             {main && (
                 <span className="text-slate-100 tracking-tight group-hover:text-white transition-colors drop-shadow-sm">{main}</span>
             )}
