@@ -11,6 +11,12 @@ const redis =
 // Define o limite de ativações
 const DEVICE_LIMIT = 3;
 
+if (redis) {
+ console.log("[REDIS] Serviço Upstash Redis inicializado. Rate Limiting está ativo. 🛡️");
+} else {
+ console.warn("[REDIS] Variáveis UPSTASH não configuradas. Rate Limiting está DESATIVADO. ⚠️");
+}
+
 const ratelimit = redis
  ? new Ratelimit({
     redis: redis,
