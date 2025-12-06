@@ -162,6 +162,11 @@ export const useHostController = () => {
       prompterRef.current.toggleVoice();
      }
      break;
+    case MessageType.VOICE_SYNC:
+     if (prompterRef.current && msg.payload) {
+      prompterRef.current.onRemoteVoiceUpdate(msg.payload.activeSentenceIndex, msg.payload.voiceProgress);
+     }
+     break;
     default:
      logger.warn("Received unknown message type", { context: { type: msg.type, message: msg } });
      break;
@@ -180,6 +185,7 @@ export const useHostController = () => {
  const [paywallErrorMessage, setPaywallErrorMessage] = useState<string | null>(null);
  const [showCountdownModal, setShowCountdownModal] = useState<boolean>(false);
  const [isValidating, setIsValidating] = useState<boolean>(false);
+ const [isVoiceMode, setIsVoiceMode] = useState<boolean>(false);
 
  // Pause playback if Paywall triggers
  useEffect(() => {
@@ -196,9 +202,11 @@ export const useHostController = () => {
     text: text.substring(0, 10000), // Limit text size just in case
     elapsedTime,
     navigationMap,
+    isPro,
+    isVoiceMode,
    });
   }
- }, [isPlaying, speed, status, broadcast, prompterSettings, text, navigationMap]);
+ }, [isPlaying, speed, status, broadcast, prompterSettings, text, navigationMap, isPro, isVoiceMode]);
 
  // 6.1 Time Broadcast (Lightweight)
  useEffect(() => {
@@ -281,9 +289,11 @@ export const useHostController = () => {
     text: text.substring(0, 10000),
     elapsedTime,
     navigationMap,
+    isPro,
+    isVoiceMode,
    });
   }
- }, [broadcast, isPlaying, speed, prompterSettings, text, elapsedTime, navigationMap]);
+ }, [broadcast, isPlaying, speed, prompterSettings, text, elapsedTime, navigationMap, isPro, isVoiceMode]);
 
  const navigation = {
   startPresentation: () => {
@@ -332,6 +342,7 @@ export const useHostController = () => {
    resetTimer,
    handleNavigationMapUpdate,
    forceSync,
+   setIsVoiceMode,
   },
   refs: {
    prompterRef,

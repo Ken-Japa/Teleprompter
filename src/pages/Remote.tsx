@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { ConnectionStatus, Theme } from "../types";
-import { MinusIcon, PauseIcon, PlayIcon, PlusIcon, StopIcon, MicIcon } from "../components/ui/Icons";
+import { MinusIcon, PauseIcon, PlayIcon, PlusIcon, StopIcon, MicIcon, LaptopIcon, SmartphoneIcon } from "../components/ui/Icons";
 import { useTranslation } from "../hooks/useTranslation";
 import * as S from "../components/ui/Styled";
 import { Trackpad } from "../components/remote/Trackpad";
@@ -21,7 +21,7 @@ const NavIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height=
 export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
     const { t, lang, setLang } = useTranslation();
     const { state, actions } = useRemoteController(hostId);
-    const { status, isPlaying, speed, progress, errorMessage, settings, text, elapsedTime, navigationMap } = state;
+    const { status, isPlaying, speed, progress, errorMessage, settings, text, elapsedTime, navigationMap, isVoiceMode, isPro } = state;
 
     const [activeTab, setActiveTab] = useState<'control' | 'edit' | 'settings' | 'nav'>('control');
 
@@ -110,7 +110,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                 </div>
                 {/* Spacer for Fixed Header */}
                 <div className="h-[64px]"></div>
-                
+
                 <div className="flex-1 flex flex-col relative overflow-hidden z-10">
                     <ConnectionState status={status} hostId={hostId} />
                 </div>
@@ -282,7 +282,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                     <div className="flex gap-3 h-14">
                                         <button
                                             onClick={actions.handleToggleVoice}
-                                            className="w-14 h-full rounded-2xl bg-purple-500/10 border border-purple-500/20 hover:bg-purple-500/20 text-purple-400 active:scale-95 transition-all flex items-center justify-center"
+                                            className={`w-14 h-full rounded-2xl border transition-all flex items-center justify-center ${isVoiceMode ? "bg-red-500/20 border-red-500/50 text-red-400 animate-pulse" : "bg-purple-500/10 border-purple-500/20 hover:bg-purple-500/20 text-purple-400"}`}
                                             title="Toggle Voice Control"
                                         >
                                             <MicIcon className="w-6 h-6" />
@@ -363,6 +363,29 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                 className="w-full h-4 bg-slate-800 rounded-full appearance-none cursor-pointer accent-brand-500"
                             />
                         </div>
+
+                        {/* Voice Control Mode */}
+                        {isPro && (
+                            <div className="space-y-3">
+                                <div className="text-sm text-slate-400 uppercase tracking-widest font-bold">{t("host.controls.voice") || "Voice Control"}</div>
+                                <div className="grid grid-cols-2 gap-4">
+                                    <button
+                                        onClick={() => actions.handleSettingsChange({ voiceControlMode: 'host' })}
+                                        className={`p-4 rounded-xl border flex flex-col items-center gap-2 ${settings.voiceControlMode === 'host' || !settings.voiceControlMode ? 'bg-brand-600/20 border-brand-500 text-brand-300' : 'bg-slate-900 border-slate-800 text-slate-400'}`}
+                                    >
+                                        <LaptopIcon className="w-6 h-6" />
+                                        <div className="font-bold text-xs">Host Control</div>
+                                    </button>
+                                    <button
+                                        onClick={() => actions.handleSettingsChange({ voiceControlMode: 'remote' })}
+                                        className={`p-4 rounded-xl border flex flex-col items-center gap-2 ${settings.voiceControlMode === 'remote' ? 'bg-brand-600/20 border-brand-500 text-brand-300' : 'bg-slate-900 border-slate-800 text-slate-400'}`}
+                                    >
+                                        <SmartphoneIcon className="w-6 h-6" />
+                                        <div className="font-bold text-xs">Remote Control</div>
+                                    </button>
+                                </div>
+                            </div>
+                        )}
 
                         {/* Margin */}
                         <div className="space-y-3">

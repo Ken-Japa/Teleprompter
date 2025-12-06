@@ -80,39 +80,43 @@ export enum MessageType {
  SETTINGS_UPDATE = "SETTINGS_UPDATE",
  TIME_UPDATE = "TIME_UPDATE",
  TOGGLE_VOICE = "TOGGLE_VOICE",
- REQUEST_SYNC = "REQUEST_SYNC",
+    REQUEST_SYNC = "REQUEST_SYNC",
+    VOICE_SYNC = "VOICE_SYNC",
 }
 
 export interface PeerMessage {
- type: MessageType;
- payload?: any;
- timestamp?: number;
+    type: MessageType;
+    payload?: any;
+    timestamp?: number;
 }
 
 export interface NavigationItem {
- id: string | number;
- label: string;
- progress: number; // 0 to 1
+    id: string | number;
+    label: string;
+    progress: number; // 0 to 1
 }
 
 export enum Theme {
- DEFAULT = "default", // Ninja
- PAPER = "paper",
- CONTRAST = "contrast",
- MATRIX = "matrix",
- CYBER = "cyber",
- CREAM = "cream",
+    DEFAULT = "default", // Ninja
+    PAPER = "paper",
+    CONTRAST = "contrast",
+    MATRIX = "matrix",
+    CYBER = "cyber",
+    CREAM = "cream",
 }
 
+export type VoiceControlMode = 'host' | 'remote';
+
 export interface PrompterSettings {
- fontSize: number;
- margin: number;
- // speed removed as it is external state
- isMirrored: boolean;
- isUpperCase: boolean;
- theme: Theme;
- isFocusMode: boolean;
- isFlipVertical: boolean;
+    fontSize: number;
+    margin: number;
+    // speed removed as it is external state
+    isMirrored: boolean;
+    isUpperCase: boolean;
+    theme: Theme;
+    isFocusMode: boolean;
+    isFlipVertical: boolean;
+    voiceControlMode?: VoiceControlMode;
 }
 
 export interface RemoteScrollHandler {
@@ -120,11 +124,12 @@ export interface RemoteScrollHandler {
 }
 
 export interface PrompterHandle {
- onRemoteScroll: RemoteScrollHandler;
- scrollTo: (progress: number) => void;
- reset: () => void;
- toggleVoice: () => void;
- wakeUp: () => void; // Forces the physics loop to wake up
+    onRemoteScroll: RemoteScrollHandler;
+    scrollTo: (progress: number) => void;
+    reset: () => void;
+    toggleVoice: () => void;
+    onRemoteVoiceUpdate: (index: number, progress: number) => void;
+    wakeUp: () => void; // Forces the physics loop to wake up
 }
 
 export interface TextFragment {

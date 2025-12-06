@@ -41,17 +41,27 @@ interface PrompterProps {
   actions: PrompterActions;
   onSync: () => void;
   onTextChange: (text: string) => void;
+  onVoiceModeChange?: (isVoiceMode: boolean) => void;
 }
 
 export const Prompter = memo(
   forwardRef<PrompterHandle, PrompterProps>(
-    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange }, ref) => {
+    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange }, ref) => {
 
       // Extracted Settings Logic
-      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical } = settings;
+      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode } = settings;
 
       // Ephemeral State
       const [isVoiceMode, setIsVoiceMode] = useState<boolean>(false);
+
+      // Notify parent of voice mode change
+      useEffect(() => {
+        if (onVoiceModeChange) {
+          onVoiceModeChange(isVoiceMode);
+        }
+      }, [isVoiceMode, onVoiceModeChange]);
+
+      const [remoteVoiceState, setRemoteVoiceState] = useState<{ index: number; progress: number }>({ index: -1, progress: 0 });
       const [showHud, setShowHud] = useState<boolean>(true);
       const [showEditModal, setShowEditModal] = useState<boolean>(false);
       const [resetTimerSignal, setResetTimerSignal] = useState<boolean>(false);
@@ -93,13 +103,17 @@ export const Prompter = memo(
         onStateChange(false, externalState.speed);
       }, [onStateChange, externalState.speed]);
 
+      // Determine effective voice state based on mode
+      const effectiveActiveSentenceIndex = voiceControlMode === "remote" ? remoteVoiceState.index : activeSentenceIndex;
+      const effectiveVoiceProgress = voiceControlMode === "remote" ? remoteVoiceState.progress : voiceProgress;
+
       // --- PHYSICS ENGINE INTEGRATION ---
       const { handleNativeScroll, handleRemoteInput, handleScrollTo, resetPhysics, wakeUpLoop, currentActiveElementRef } = useScrollPhysics({
         isPlaying: externalState.isPlaying,
         isVoiceMode,
         speed: externalState.speed,
-        activeSentenceIndex,
-        voiceProgress,
+        activeSentenceIndex: effectiveActiveSentenceIndex,
+        voiceProgress: effectiveVoiceProgress,
         isFlipVertical,
         metricsRef,
         scrollContainerRef,
@@ -119,6 +133,7 @@ export const Prompter = memo(
         setResetTimerSignal((p) => !p);
         if (onResetTimer) onResetTimer();
         resetVoice();
+        setRemoteVoiceState({ index: -1, progress: 0 });
         resetPhysics();
         if (currentActiveElementRef.current) {
           currentActiveElementRef.current.classList.remove("sentence-active");
@@ -144,7 +159,9 @@ export const Prompter = memo(
           setIsVoiceMode(true);
           // Pause auto-scroll when enabling voice mode
           onStateChange(false, externalState.speed);
-          startListening();
+          if (voiceControlMode !== "remote") {
+            startListening();
+          }
         }
       }, [
         isPro,
@@ -155,7 +172,23 @@ export const Prompter = memo(
         onStateChange,
         externalState.speed,
         currentActiveElementRef,
+        voiceControlMode
       ]);
+
+      // Handle Dynamic Mode Switching
+      useEffect(() => {
+        if (isVoiceMode) {
+          if (voiceControlMode === "remote") {
+            stopListening();
+          } else {
+            startListening();
+          }
+        }
+      }, [voiceControlMode, isVoiceMode, startListening, stopListening]);
+
+      const onRemoteVoiceUpdate = useCallback((index: number, progress: number) => {
+        setRemoteVoiceState({ index, progress });
+      }, []);
 
       // Expose methods to parent
       useImperativeHandle(
@@ -166,15 +199,16 @@ export const Prompter = memo(
           reset: resetPrompter,
           toggleVoice: toggleVoice,
           wakeUp: wakeUpLoop,
+          onRemoteVoiceUpdate,
         }),
-        [handleRemoteInput, handleScrollTo, resetPrompter, toggleVoice, wakeUpLoop]
+        [handleRemoteInput, handleScrollTo, resetPrompter, toggleVoice, wakeUpLoop, onRemoteVoiceUpdate]
       );
 
       // Voice Active Element Highlighting (UI Side)
       useEffect(() => {
         if (!isVoiceMode) return;
 
-        const newId = activeSentenceIndex;
+        const newId = effectiveActiveSentenceIndex;
         const oldElement = currentActiveElementRef.current;
         const newElement = document.getElementById(`sentence-${newId}`);
 
@@ -183,7 +217,7 @@ export const Prompter = memo(
           newElement.classList.add("sentence-active");
           currentActiveElementRef.current = newElement;
         }
-      }, [activeSentenceIndex, isVoiceMode, currentActiveElementRef]);
+      }, [effectiveActiveSentenceIndex, isVoiceMode, currentActiveElementRef]);
 
       const handleMouseMove = useCallback(() => {
         if (mouseMoveRafRef.current) return;

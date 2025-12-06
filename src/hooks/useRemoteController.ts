@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { ConnectionStatus, MessageType, PeerMessage, PrompterSettings, NavigationItem } from "../types";
 import { usePeerRemote } from "./usePeerRemote";
 import { useWakeLock } from "./useWakeLock";
+import { useVoiceControl } from "./useVoiceControl";
 
 const NETWORK_TICK_RATE = 33; // ~30fps
 
@@ -14,6 +15,9 @@ export const useRemoteController = (hostId: string) => {
  const [text, setText] = useState<string>("");
  const [elapsedTime, setElapsedTime] = useState<number>(0);
  const [navigationMap, setNavigationMap] = useState<NavigationItem[]>([]);
+ const [isPro, setIsPro] = useState<boolean>(false);
+ const [isVoiceActive, setIsVoiceActive] = useState<boolean>(false); // Local Mic State
+ const [isVoiceMode, setIsVoiceMode] = useState<boolean>(false); // Host State
 
  // Timer Logic (Local Approximation)
  useEffect(() => {
@@ -38,6 +42,29 @@ export const useRemoteController = (hostId: string) => {
  // 4. Wake Lock
  useWakeLock(status === ConnectionStatus.CONNECTED);
 
+ // 4.1 Voice Control (Local)
+ const { startListening, stopListening, activeSentenceIndex, voiceProgress } = useVoiceControl(text, isPro);
+
+ // Sync voice state to host when acting as controller
+ useEffect(() => {
+  if (settings?.voiceControlMode === "remote" && isVoiceActive) {
+   sendMessage(MessageType.VOICE_SYNC, { activeSentenceIndex, voiceProgress });
+  }
+ }, [activeSentenceIndex, voiceProgress, settings?.voiceControlMode, isVoiceActive, sendMessage]);
+
+ // 4.2 Manage Local Voice State based on Global State
+ useEffect(() => {
+  const shouldListen = settings?.voiceControlMode === "remote" && isVoiceMode;
+
+  if (shouldListen && !isVoiceActive) {
+   startListening();
+   setIsVoiceActive(true);
+  } else if (!shouldListen && isVoiceActive) {
+   stopListening();
+   setIsVoiceActive(false);
+  }
+ }, [settings?.voiceControlMode, isVoiceMode, isVoiceActive, startListening, stopListening]);
+
  // 5. Haptics Helper
  const vibrate = useCallback((pattern: number | number[]) => {
   if (typeof navigator !== "undefined" && typeof navigator.vibrate === "function") {
@@ -59,6 +86,8 @@ export const useRemoteController = (hostId: string) => {
     if (data.payload.text !== undefined) setText(data.payload.text);
     if (data.payload.elapsedTime !== undefined) setElapsedTime(data.payload.elapsedTime);
     if (data.payload.navigationMap !== undefined) setNavigationMap(data.payload.navigationMap);
+    if (data.payload.isPro !== undefined) setIsPro(data.payload.isPro);
+    if (data.payload.isVoiceMode !== undefined) setIsVoiceMode(data.payload.isVoiceMode);
    }
    if (data.type === MessageType.TIME_UPDATE) {
     setElapsedTime(data.payload.elapsedTime);
@@ -127,6 +156,7 @@ export const useRemoteController = (hostId: string) => {
  }, [sendMessage, vibrate]);
 
  const handleToggleVoice = useCallback(() => {
+  // Always toggle visual state on Host
   sendMessage(MessageType.TOGGLE_VOICE);
  }, [sendMessage]);
 
@@ -192,6 +222,8 @@ export const useRemoteController = (hostId: string) => {
    text,
    elapsedTime,
    navigationMap,
+   isVoiceMode,
+   isPro,
   },
   actions: {
    handleSpeedChange,

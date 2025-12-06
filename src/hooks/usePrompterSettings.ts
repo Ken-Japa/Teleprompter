@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useLocalStorage } from "./useLocalStorage";
-import { Theme, PrompterSettings } from "../types";
+import { Theme, PrompterSettings, VoiceControlMode } from "../types";
 import { PROMPTER_DEFAULTS } from "../config/constants";
 
 export type { PrompterSettings }; // Re-export type
@@ -13,6 +13,7 @@ export interface PrompterActions {
  setIsUpperCase: (val: boolean) => void;
  setIsFocusMode: (val: boolean) => void;
  setIsFlipVertical: (val: boolean) => void;
+ setVoiceControlMode: (val: VoiceControlMode) => void;
  cycleTheme: () => void;
 }
 
@@ -40,6 +41,10 @@ export const usePrompterSettings = (isPro: boolean) => {
   PROMPTER_DEFAULTS.STORAGE_KEYS.FLIP_VERTICAL,
   PROMPTER_DEFAULTS.IS_FLIP_VERTICAL
  );
+ const [voiceControlMode, setVoiceControlMode] = useLocalStorage<VoiceControlMode>(
+  PROMPTER_DEFAULTS.STORAGE_KEYS.VOICE_MODE,
+  "host"
+ );
 
  const cycleTheme = useCallback(() => {
   const themes = PROMPTER_DEFAULTS.THEME_ORDER;
@@ -54,6 +59,7 @@ export const usePrompterSettings = (isPro: boolean) => {
   isUpperCase,
   isFocusMode,
   isFlipVertical,
+  voiceControlMode,
  };
 
  const actions: PrompterActions = {
@@ -64,6 +70,7 @@ export const usePrompterSettings = (isPro: boolean) => {
   setIsUpperCase,
   setIsFocusMode,
   setIsFlipVertical,
+  setVoiceControlMode,
   cycleTheme,
  };
 
