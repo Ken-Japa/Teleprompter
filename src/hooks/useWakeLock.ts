@@ -95,6 +95,20 @@ export const useWakeLock = (active: boolean = true) => {
      const enableNoSleep = () => {
       if (!isCancelled) {
        noSleep.enable();
+
+       // Customize the Media Session (Notification) that appears on lock screen
+       if ("mediaSession" in navigator) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+         title: "PromptNinja Remote",
+         artist: "Mantendo Tela Ativa",
+         album: "PromptNinja",
+         artwork: [
+          { src: "/assets/web-app-manifest-192x192.png", sizes: "192x192", type: "image/png" },
+          { src: "/assets/web-app-manifest-512x512.png", sizes: "512x512", type: "image/png" },
+         ],
+        });
+       }
+
        setStatus("active");
       }
       cleanupNoSleepListeners();
