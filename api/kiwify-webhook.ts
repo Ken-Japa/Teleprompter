@@ -36,8 +36,7 @@ const sendAccessEmail = async (toEmail: string, accessKey: string) => {
   return;
  }
 
- // Altere 'seu-email-verificado@seu-dominio.com' para o e-mail que você verificou no MailerSend
- const sender = new Sender("seu-email-verificado@seu-dominio.com", "PromptNinja");
+ const sender = new Sender("promptninja.solutionkit.com.br", "PromptNinja");
  const recipients = [new Recipient(toEmail)];
 
  const emailParams = new EmailParams()
