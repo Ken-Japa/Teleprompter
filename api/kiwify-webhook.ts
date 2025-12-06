@@ -36,7 +36,7 @@ const sendAccessEmail = async (toEmail: string, accessKey: string) => {
   return;
  }
 
- const sender = new Sender("teste@promptninja.solutionkit.com.br", "PromptNinja");
+ const sender = new Sender("welcome@promptninja.solutionkit.com.br", "PromptNinja");
  const recipients = [new Recipient(toEmail)];
 
  const emailParams = new EmailParams()
@@ -115,9 +115,8 @@ async function kiwifyHandler(req: VercelRequest, res: VercelResponse) {
    source: "kiwify_webhook",
    originalPayload: payload,
   });
-  const TEST_EMAIL_DESTINATARIO = "teste@promptninja.solutionkit.com.br";
   console.log(`Key saved: ${key} for ${email}`);
-  await sendAccessEmail(TEST_EMAIL_DESTINATARIO, key);
+  await sendAccessEmail(email, key);
 
   return res.status(200).json({ success: true });
  } catch (error) {
