@@ -115,9 +115,9 @@ async function kiwifyHandler(req: VercelRequest, res: VercelResponse) {
    source: "kiwify_webhook",
    originalPayload: payload,
   });
-
+  const TEST_EMAIL_DESTINATARIO = "teleprompterninja@gmail.com";
   console.log(`Key saved: ${key} for ${email}`);
-  await sendAccessEmail(email, key);
+  await sendAccessEmail(TEST_EMAIL_DESTINATARIO, key);
 
   return res.status(200).json({ success: true });
  } catch (error) {
