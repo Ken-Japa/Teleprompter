@@ -5,10 +5,11 @@ import { TranslationProvider } from "./hooks/useTranslation";
 const Host = React.lazy(() => import("./pages/Host").then(module => ({ default: module.Host })));
 const Remote = React.lazy(() => import("./pages/Remote").then(module => ({ default: module.Remote })));
 const Landing = React.lazy(() => import("./pages/Landing").then(module => ({ default: module.Landing })));
+const ThankYou = React.lazy(() => import("./pages/ThankYou").then(module => ({ default: module.ThankYou })));
 
 import { SeoPages, SeoRouteKey } from "./config/seoRoutes";
 
-type ViewState = "LANDING" | "HOST" | "REMOTE" | SeoRouteKey;
+type ViewState = "LANDING" | "HOST" | "REMOTE" | "THANK_YOU" | SeoRouteKey;
 
 const LoadingSpinner = () => (
     <div className="flex items-center justify-center h-screen bg-slate-950 text-white">
@@ -44,6 +45,11 @@ const App: React.FC = () => {
             // 2. SEO Paths (Pathname Routing)
             // Check for SEO paths (remove trailing slash if present for consistency)
             const cleanPath = path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
+
+            if (cleanPath === "/welcometopro") {
+                setView("THANK_YOU");
+                return;
+            }
 
             if (cleanPath === "/teleprompter-online-gratis") {
                 setView("SEO_GRATIS");
@@ -121,6 +127,7 @@ const App: React.FC = () => {
             <Suspense fallback={<LoadingSpinner />}>
                 {view === "REMOTE" && <Remote hostId={remoteId} />}
                 {view === "LANDING" && <Landing onLaunch={launchApp} />}
+                {view === "THANK_YOU" && <ThankYou onLaunch={launchApp} />}
                 {view === "HOST" && <Host />}
                 {view === "SEO_GRATIS" && <SeoPages.TeleprompterOnlineGratis onLaunch={launchApp} />}
                 {view === "SEO_TUTORIAL" && <SeoPages.ComoUsarTeleprompter onLaunch={launchApp} />}
