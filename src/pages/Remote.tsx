@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { ConnectionStatus, Theme } from "../types";
+import { PROMPTER_DEFAULTS } from "../config/constants";
 import { MinusIcon, PauseIcon, PlayIcon, PlusIcon, StopIcon, MicIcon, LaptopIcon, SmartphoneIcon } from "../components/ui/Icons";
 import { useTranslation } from "../hooks/useTranslation";
 import * as S from "../components/ui/Styled";
@@ -21,7 +22,7 @@ const NavIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height=
 export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
     const { t, lang, setLang } = useTranslation();
     const { state, actions } = useRemoteController(hostId);
-    const { status, isPlaying, speed, progress, errorMessage, settings, text, elapsedTime, navigationMap, isVoiceMode, isPro } = state;
+    const { status, isPlaying, speed, progress, errorMessage, settings, text, elapsedTime, navigationMap, isVoiceMode, isPro, isRecording, hasRecordedData } = state;
 
     const [activeTab, setActiveTab] = useState<'control' | 'edit' | 'settings' | 'nav'>('control');
 
@@ -280,6 +281,44 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
 
                                     {/* Stop & Voice Buttons */}
                                     <div className="flex gap-3 h-14">
+                                        {/* Recording Controls Group */}
+                                        <div className={`flex items-center ${hasRecordedData ? "w-28" : "w-20"} h-full bg-slate-800/50 rounded-2xl border border-slate-700 p-1 gap-1 transition-all`}>
+                                            {hasRecordedData ? (
+                                                <>
+                                                    <button
+                                                        onClick={actions.downloadRecording}
+                                                        className="flex-1 h-full rounded-xl bg-green-500/20 text-green-400 hover:bg-green-500/30 flex items-center justify-center"
+                                                        title="Download Recording"
+                                                    >
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                                    </button>
+                                                    <button
+                                                        onClick={() => actions.handleToggleRecording()} // Start new
+                                                        className="w-8 h-full rounded-xl hover:bg-white/10 text-slate-400 flex items-center justify-center"
+                                                        title="Record New"
+                                                    >
+                                                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                                                    </button>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <button
+                                                        onClick={actions.handleToggleRecordingMode}
+                                                        className="w-8 h-full rounded-xl hover:bg-white/10 text-slate-400 flex items-center justify-center"
+                                                        title={settings?.recordingMode === "remote" ? "Record on Remote" : "Record on Host"}
+                                                    >
+                                                        {settings?.recordingMode === "remote" ? <SmartphoneIcon className="w-4 h-4" /> : <LaptopIcon className="w-4 h-4" />}
+                                                    </button>
+                                                    <button
+                                                        onClick={() => actions.handleToggleRecording()}
+                                                        className={`flex-1 h-full rounded-xl flex items-center justify-center gap-1 transition-all ${isRecording ? "bg-red-500 text-white animate-pulse" : "hover:bg-white/5"}`}
+                                                    >
+                                                        <div className={`w-3 h-3 rounded-full transition-all ${isRecording ? "bg-white rounded-sm scale-75" : "bg-red-500"}`}></div>
+                                                    </button>
+                                                </>
+                                            )}
+                                        </div>
+
                                         <button
                                             onClick={actions.handleToggleVoice}
                                             className={`w-14 h-full rounded-2xl border transition-all flex items-center justify-center ${isVoiceMode ? "bg-red-500/20 border-red-500/50 text-red-400 animate-pulse" : "bg-purple-500/10 border-purple-500/20 hover:bg-purple-500/20 text-purple-400"}`}
@@ -440,7 +479,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                         <div className="space-y-3">
                             <div className="text-sm text-slate-400 uppercase tracking-widest font-bold">{t("remote.theme")}</div>
                             <div className="grid grid-cols-3 gap-3">
-                                {([Theme.DEFAULT, Theme.PAPER, Theme.CONTRAST, Theme.MATRIX, Theme.CYBER, Theme.CREAM] as Theme[]).map(themeOption => (
+                                {PROMPTER_DEFAULTS.STANDARD_THEMES.map(themeOption => (
                                     <button
                                         key={themeOption}
                                         onClick={() => actions.handleSettingsChange({ theme: themeOption })}
@@ -449,6 +488,27 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                         {themeOption === Theme.DEFAULT ? "Ninja" : themeOption}
                                     </button>
                                 ))}
+                            </div>
+                        </div>
+
+                        {/* Chroma Key */}
+                        <div className="space-y-3">
+                            <div className="text-sm text-slate-400 uppercase tracking-widest font-bold">Chroma Key</div>
+                            <div className="grid grid-cols-2 gap-3">
+                                <button
+                                    onClick={() => actions.handleSettingsChange({ theme: Theme.CHROMA_GREEN })}
+                                    className={`p-3 rounded-lg border text-xs font-bold capitalize flex items-center justify-center gap-2 ${settings.theme === Theme.CHROMA_GREEN ? 'bg-[#00b140] text-white border-white' : 'bg-[#00b140]/10 border-[#00b140]/30 text-[#00b140]'}`}
+                                >
+                                    <div className={`w-3 h-3 rounded-full border ${settings.theme === Theme.CHROMA_GREEN ? 'bg-white border-transparent' : 'bg-[#00b140] border-transparent'}`}></div>
+                                    Green Screen
+                                </button>
+                                <button
+                                    onClick={() => actions.handleSettingsChange({ theme: Theme.CHROMA_BLUE })}
+                                    className={`p-3 rounded-lg border text-xs font-bold capitalize flex items-center justify-center gap-2 ${settings.theme === Theme.CHROMA_BLUE ? 'bg-[#0047bb] text-white border-white' : 'bg-[#0047bb]/10 border-[#0047bb]/30 text-[#0047bb]'}`}
+                                >
+                                    <div className={`w-3 h-3 rounded-full border ${settings.theme === Theme.CHROMA_BLUE ? 'bg-white border-transparent' : 'bg-[#0047bb] border-transparent'}`}></div>
+                                    Blue Screen
+                                </button>
                             </div>
                         </div>
 

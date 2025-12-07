@@ -80,43 +80,50 @@ export enum MessageType {
  SETTINGS_UPDATE = "SETTINGS_UPDATE",
  TIME_UPDATE = "TIME_UPDATE",
  TOGGLE_VOICE = "TOGGLE_VOICE",
-    REQUEST_SYNC = "REQUEST_SYNC",
-    VOICE_SYNC = "VOICE_SYNC",
+ REQUEST_SYNC = "REQUEST_SYNC",
+ VOICE_SYNC = "VOICE_SYNC",
+ TOGGLE_RECORDING = "TOGGLE_RECORDING",
+ START_REMOTE_RECORDING = "START_REMOTE_RECORDING",
+ STOP_REMOTE_RECORDING = "STOP_REMOTE_RECORDING",
 }
 
 export interface PeerMessage {
-    type: MessageType;
-    payload?: any;
-    timestamp?: number;
+ type: MessageType;
+ payload?: any;
+ timestamp?: number;
 }
 
 export interface NavigationItem {
-    id: string | number;
-    label: string;
-    progress: number; // 0 to 1
+ id: string | number;
+ label: string;
+ progress: number; // 0 to 1
 }
 
 export enum Theme {
-    DEFAULT = "default", // Ninja
-    PAPER = "paper",
-    CONTRAST = "contrast",
-    MATRIX = "matrix",
-    CYBER = "cyber",
-    CREAM = "cream",
+ DEFAULT = "default", // Ninja
+ PAPER = "paper",
+ CONTRAST = "contrast",
+ MATRIX = "matrix",
+ CYBER = "cyber",
+ CREAM = "cream",
+ CHROMA_GREEN = "chroma_green",
+ CHROMA_BLUE = "chroma_blue",
 }
 
-export type VoiceControlMode = 'host' | 'remote';
+export type VoiceControlMode = "host" | "remote";
+export type RecordingMode = "host" | "remote";
 
 export interface PrompterSettings {
-    fontSize: number;
-    margin: number;
-    // speed removed as it is external state
-    isMirrored: boolean;
-    isUpperCase: boolean;
-    theme: Theme;
-    isFocusMode: boolean;
-    isFlipVertical: boolean;
-    voiceControlMode?: VoiceControlMode;
+ fontSize: number;
+ margin: number;
+ // speed removed as it is external state
+ isMirrored: boolean;
+ isUpperCase: boolean;
+ theme: Theme;
+ isFocusMode: boolean;
+ isFlipVertical: boolean;
+ voiceControlMode?: VoiceControlMode;
+ recordingMode?: RecordingMode;
 }
 
 export interface RemoteScrollHandler {
@@ -124,12 +131,13 @@ export interface RemoteScrollHandler {
 }
 
 export interface PrompterHandle {
-    onRemoteScroll: RemoteScrollHandler;
-    scrollTo: (progress: number) => void;
-    reset: () => void;
-    toggleVoice: () => void;
-    onRemoteVoiceUpdate: (index: number, progress: number) => void;
-    wakeUp: () => void; // Forces the physics loop to wake up
+ onRemoteScroll: RemoteScrollHandler;
+ scrollTo: (progress: number) => void;
+ reset: () => void;
+ toggleVoice: () => void;
+ onRemoteVoiceUpdate: (index: number, progress: number) => void;
+ wakeUp: () => void; // Forces the physics loop to wake up
+ toggleRecording: () => void;
 }
 
 export interface TextFragment {

@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useLocalStorage } from "./useLocalStorage";
-import { Theme, PrompterSettings, VoiceControlMode } from "../types";
+import { Theme, PrompterSettings, VoiceControlMode, RecordingMode } from "../types";
 import { PROMPTER_DEFAULTS } from "../config/constants";
 
 export type { PrompterSettings }; // Re-export type
@@ -14,7 +14,9 @@ export interface PrompterActions {
  setIsFocusMode: (val: boolean) => void;
  setIsFlipVertical: (val: boolean) => void;
  setVoiceControlMode: (val: VoiceControlMode) => void;
+ setRecordingMode: (val: RecordingMode) => void;
  cycleTheme: () => void;
+ toggleChroma: () => void;
 }
 
 export const usePrompterSettings = (isPro: boolean) => {
@@ -45,10 +47,31 @@ export const usePrompterSettings = (isPro: boolean) => {
   PROMPTER_DEFAULTS.STORAGE_KEYS.VOICE_MODE,
   "host"
  );
+ const [recordingMode, setRecordingMode] = useLocalStorage<RecordingMode>(
+  PROMPTER_DEFAULTS.STORAGE_KEYS.RECORDING_MODE,
+  "host"
+ );
 
  const cycleTheme = useCallback(() => {
   const themes = PROMPTER_DEFAULTS.THEME_ORDER;
-  setTheme((prev) => themes[(themes.indexOf(prev) + 1) % themes.length]);
+  setTheme((prev) => {
+   const index = themes.indexOf(prev);
+   if (index === -1) return themes[0];
+   return themes[(index + 1) % themes.length];
+  });
+ }, [setTheme]);
+
+ const toggleChroma = useCallback(() => {
+  const chromaThemes = PROMPTER_DEFAULTS.CHROMA_THEMES;
+  setTheme((prev) => {
+   const index = chromaThemes.indexOf(prev);
+   // If not currently in a chroma theme, switch to first chroma (Green)
+   if (index === -1) return chromaThemes[0];
+   // If in last chroma theme (Blue), switch back to Default (Standard)
+   if (index === chromaThemes.length - 1) return Theme.DEFAULT;
+   // Otherwise cycle through chroma themes
+   return chromaThemes[index + 1];
+  });
  }, [setTheme]);
 
  const settings: PrompterSettings = {
@@ -60,6 +83,7 @@ export const usePrompterSettings = (isPro: boolean) => {
   isFocusMode,
   isFlipVertical,
   voiceControlMode,
+  recordingMode,
  };
 
  const actions: PrompterActions = {
@@ -71,7 +95,9 @@ export const usePrompterSettings = (isPro: boolean) => {
   setIsFocusMode,
   setIsFlipVertical,
   setVoiceControlMode,
+  setRecordingMode,
   cycleTheme,
+  toggleChroma,
  };
 
  return { settings, actions };

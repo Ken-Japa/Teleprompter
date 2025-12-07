@@ -4,6 +4,7 @@ import { ConnectionStatus, PrompterSettings } from "../../types";
 import { PrompterActions } from "../../hooks/usePrompterSettings";
 import { useTranslation } from "../../hooks/useTranslation";
 import { PrompterTimer, SpeedControl, FontControl, DisplayControl, ThemeControl } from "./controls";
+import { RecordingControls } from "./controls/RecordingControls";
 import { QrCodeIcon, InfoIcon, LogOutIcon, EditIcon } from "../ui/Icons";
 import { TutorialModal } from "../ui/TutorialModal";
 import { FontSizeModal } from "../ui/FontSizeModal";
@@ -30,11 +31,34 @@ interface PrompterHUDProps {
     onExit: () => void;
     onSync: () => void;
     onEdit: () => void;
+    togglePiP?: () => void;
+    isPiPActive?: boolean;
+    // Recording Props
+    recordingState?: {
+        isRecording: boolean;
+        isPaused: boolean;
+        recordingTime: string;
+        hasRecordedData: boolean;
+    };
+    recordingActions?: {
+        start: () => void;
+        stop: () => void;
+        pause: () => void;
+        resume: () => void;
+        download: () => void;
+    };
 }
 
 export const PrompterHUD = memo(
-    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isVoiceMode, isPro, resetTimerSignal, onStateChange, onResetPrompter, toggleVoice, onExit, voiceApiSupported, voiceApiError, onSync, onEdit }: PrompterHUDProps) => {
+    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isVoiceMode, isPro, resetTimerSignal, onStateChange, onResetPrompter, toggleVoice, onExit, voiceApiSupported, voiceApiError, onSync, onEdit, togglePiP, isPiPActive, recordingState, recordingActions }: PrompterHUDProps) => {
         const { t } = useTranslation();
+        const { recordingMode = 'host' } = settings;
+        const { setRecordingMode } = actions;
+
+        const handleToggleRecordingMode = () => {
+            setRecordingMode(recordingMode === "remote" ? "host" : "remote");
+        };
+
         const [showTutorialModal, setShowTutorialModal] = useState(false);
         const [showFontSizeModal, setShowFontSizeModal] = useState(false);
         const [showMarginModal, setShowMarginModal] = useState(false);
@@ -60,7 +84,13 @@ export const PrompterHUD = memo(
 
                 <FontControl fontSize={settings.fontSize} setFontSize={actions.setFontSize} onOpenFontSizeSlider={() => setShowFontSizeModal(true)} />
 
-                <DisplayControl settings={settings} actions={actions} onOpenMarginSlider={() => setShowMarginModal(true)} />
+                <DisplayControl
+                    settings={settings}
+                    actions={actions}
+                    onOpenMarginSlider={() => setShowMarginModal(true)}
+                    togglePiP={togglePiP}
+                    isPiPActive={isPiPActive}
+                />
 
                 <ThemeControl
                     settings={settings}
@@ -71,6 +101,24 @@ export const PrompterHUD = memo(
                     voiceApiSupported={voiceApiSupported}
                     voiceApiError={voiceApiError}
                 />
+
+                {recordingState && recordingActions && (
+                    <S.HudGroup label="REC">
+                        <RecordingControls
+                            isRecording={recordingState.isRecording}
+                            isPaused={recordingState.isPaused}
+                            recordingTime={recordingState.recordingTime}
+                            hasRecordedData={recordingState.hasRecordedData}
+                            recordingMode={recordingMode}
+                            onToggleMode={handleToggleRecordingMode}
+                            onStart={recordingActions.start}
+                            onStop={recordingActions.stop}
+                            onPause={recordingActions.pause}
+                            onResume={recordingActions.resume}
+                            onDownload={recordingActions.download}
+                        />
+                    </S.HudGroup>
+                )}
 
                 <S.IconButton
                     onClick={onEdit}

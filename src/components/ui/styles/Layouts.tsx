@@ -10,7 +10,7 @@ export const ScreenContainer = React.forwardRef<
         className?: string;
     } & React.HTMLAttributes<HTMLDivElement>
 >(({ children, className = "", ...props }, ref) => (
-    <div ref={ref} className={`flex flex-col bg-slate-950 relative ${className}`} {...props}>
+    <div ref={ref} className={`flex flex-col relative ${className}`} {...props}>
         {/* Subtle Noise Texture Overlay via CSS class */}
         <div className="absolute inset-0 bg-noise opacity-[0.02] pointer-events-none z-[1]"></div>
         {children}

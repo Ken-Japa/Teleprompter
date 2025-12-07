@@ -1,16 +1,18 @@
 import { memo } from "react";
 import { useTranslation } from "../../../hooks/useTranslation";
 import * as S from "../../ui/Styled";
-import { FlipIcon, MarginIcon, CapsIcon } from "../../ui/Icons";
+import { FlipIcon, MarginIcon, CapsIcon, PiPIcon } from "../../ui/Icons";
 import type { PrompterSettings, PrompterActions } from "../../../hooks/usePrompterSettings";
 
 interface DisplayControlProps {
   settings: PrompterSettings;
   actions: PrompterActions;
   onOpenMarginSlider: () => void;
+  togglePiP?: () => void;
+  isPiPActive?: boolean;
 }
 
-export const DisplayControl = memo(({ settings, actions, onOpenMarginSlider }: DisplayControlProps) => {
+export const DisplayControl = memo(({ settings, actions, onOpenMarginSlider, togglePiP, isPiPActive }: DisplayControlProps) => {
   const { t } = useTranslation();
   const { isMirrored, isUpperCase } = settings;
   const { setIsMirrored, setIsUpperCase } = actions;
@@ -60,6 +62,18 @@ export const DisplayControl = memo(({ settings, actions, onOpenMarginSlider }: D
           >
             <CapsIcon className="w-5 h-5" />
           </S.IconButton>
+
+          {togglePiP && (
+            <S.IconButton
+              onClick={togglePiP}
+              active={isPiPActive}
+              title="Picture-in-Picture"
+              aria-label="Picture-in-Picture"
+              className={`w-9 h-9 rounded-full ${isPiPActive ? "bg-brand-500/20 text-brand-400 border-brand-500/30" : "hover:bg-white/10 border-transparent text-slate-400"}`}
+            >
+              <PiPIcon className="w-5 h-5" />
+            </S.IconButton>
+          )}
         </div>
       </S.HudGroup>
     </>

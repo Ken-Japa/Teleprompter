@@ -14,6 +14,10 @@ export const usePrompterTheme = (theme: Theme) => {
                 return "bg-slate-900 text-pink-500 shadow-[inset_0_0_100px_rgba(236,72,153,0.1)]";
             case Theme.CREAM:
                 return "bg-[#fdfbf7] text-[#333]";
+            case Theme.CHROMA_GREEN:
+                return "bg-[#00b140] text-white";
+            case Theme.CHROMA_BLUE:
+                return "bg-[#0047bb] text-white";
             case Theme.DEFAULT:
             default:
                 return "bg-slate-950 text-slate-100";

@@ -260,12 +260,18 @@ export const pt = {
    fontSize: "Tamanho da Fonte",
    isMirrored: "Espelhar Horizontalmente",
    display: "Exibição",
+   chroma: "Chroma Key",
+   record: "Gravar",
+   stopRecord: "Parar Gravação",
+   downloadRecord: "Baixar Gravação",
+   recordNew: "Gravar Novo",
   },
   hudLabels: {
    theme: "Tema",
    focus: "Foco",
    voice: "Voz",
    display: "Exibição",
+   chroma: "Chroma Key",
   },
   themes: {
    default: "Padrão",
@@ -275,6 +281,8 @@ export const pt = {
    matrix: "Matrix",
    cyber: "Cyberpunk (Tecnológico)",
    cream: "Creme (Conforto Visual)",
+   chroma_green: "Chroma Key (Verde)",
+   chroma_blue: "Chroma Key (Azul)",
   },
   tips: {
    title: "Dicas PRO para Edição e Performance",

@@ -266,12 +266,18 @@ export const es = {
    fontSize: "Tamaño Fuente",
    isMirrored: "Espejar Horizontalmente",
    display: "Visualización",
+   chroma: "Chroma Key",
+   record: "Grabar",
+   stopRecord: "Detener Grabación",
+   downloadRecord: "Descargar Grabación",
+   recordNew: "Grabar Nuevo",
   },
   hudLabels: {
    theme: "Tema",
    focus: "Foco",
    voice: "Voz",
    display: "Visualización",
+   chroma: "Chroma Key",
   },
   themes: {
    default: "Estándar",
@@ -281,6 +287,8 @@ export const es = {
    matrix: "Matrix",
    cyber: "Cyberpunk (Tecnológico)",
    cream: "Crema (Confort Visual)",
+   chroma_green: "Chroma Key (Verde)",
+   chroma_blue: "Chroma Key (Azul)",
   },
   tips: {
    title: "Consejos PRO para Edición y Rendimiento",
@@ -387,7 +395,8 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
  },
  thankYou: {
   title: "¡Gracias por tu compra!",
-  subtitle: "Tu pago ha sido confirmado con éxito. Ahora estás a un paso de desbloquear todo el poder de PromptNinja Pro.",
+  subtitle:
+   "Tu pago ha sido confirmado con éxito. Ahora estás a un paso de desbloquear todo el poder de PromptNinja Pro.",
   success: {
    title: "¡PromptNinja Pro Activado!",
    message: "Tu cuenta ha sido actualizada con éxito. Disfruta de todas las funciones ilimitadas.",
@@ -395,7 +404,8 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
   },
   activation: {
    title: "Activar tu licencia",
-   description: "Ingresa el código de activación que recibiste en tu correo (o en la página de confirmación de Kiwify).",
+   description:
+    "Ingresa el código de activación que recibiste en tu correo (o en la página de confirmación de Kiwify).",
    label: "Código de Activación",
    placeholder: "INGRESA TU CÓDIGO AQUÍ",
    button: "Activar PromptNinja Pro",
@@ -404,8 +414,8 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
    error: {
     invalid: "Código inválido o ya utilizado.",
     connection: "Error de conexión. Verifica tu internet e intenta nuevamente.",
-   }
+   },
   },
-  footer: "© {{year}} PromptNinja. Todos los derechos reservados."
- }
+  footer: "© {{year}} PromptNinja. Todos los derechos reservados.",
+ },
 };

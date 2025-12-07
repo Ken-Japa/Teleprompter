@@ -24,9 +24,13 @@ export const PROMPTER_DEFAULTS = {
   FOCUS: "promptninja_focus",
   FLIP_VERTICAL: "promptninja_flipv",
   VOICE_MODE: "promptninja_voice_mode",
+  RECORDING_MODE: "promptninja_recording_mode",
   PRO_STATUS: "promptninja_pro",
  },
- // Theme Cycle Order
+ // Theme Definitions
+ STANDARD_THEMES: [Theme.DEFAULT, Theme.PAPER, Theme.CONTRAST, Theme.MATRIX, Theme.CYBER, Theme.CREAM],
+ CHROMA_THEMES: [Theme.CHROMA_GREEN, Theme.CHROMA_BLUE],
+ // Theme Cycle Order (Standard Only)
  THEME_ORDER: [Theme.DEFAULT, Theme.PAPER, Theme.CONTRAST, Theme.MATRIX, Theme.CYBER, Theme.CREAM],
 };
 
@@ -87,6 +91,15 @@ export const UI_CONFIG = {
   TICK_MS: 1000,
   Z_INDEX: 101,
  },
+};
+
+// Recording Configuration
+export const RECORDING_CONFIG = {
+ MIME_TYPE: "video/webm",
+ TIMESLICE_MS: 1000,
+ FILENAME_PREFIX: "prompt-ninja-recording-",
+ EXTENSION: ".webm",
+ TIMER_INTERVAL_MS: 1000,
 };
 
 // SEO Routes

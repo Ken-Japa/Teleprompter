@@ -3,6 +3,7 @@ import { ConnectionStatus, MessageType, PeerMessage, PrompterSettings, Navigatio
 import { usePeerRemote } from "./usePeerRemote";
 import { useWakeLock } from "./useWakeLock";
 import { useVoiceControl } from "./useVoiceControl";
+import { useMediaRecorder } from "./useMediaRecorder";
 
 const NETWORK_TICK_RATE = 33; // ~30fps
 
@@ -18,6 +19,7 @@ export const useRemoteController = (hostId: string) => {
  const [isPro, setIsPro] = useState<boolean>(false);
  const [isVoiceActive, setIsVoiceActive] = useState<boolean>(false); // Local Mic State
  const [isVoiceMode, setIsVoiceMode] = useState<boolean>(false); // Host State
+ const [isRecording, setIsRecording] = useState<boolean>(false); // Host Recording State
 
  // Timer Logic (Local Approximation)
  useEffect(() => {
@@ -47,6 +49,16 @@ export const useRemoteController = (hostId: string) => {
   text,
   isPro
  );
+
+ // 4.3 Local Recording
+ const {
+  isRecording: isLocalRecording,
+  recordingTime: localRecordingTime,
+  hasRecordedData,
+  startRecording: startLocalRecording,
+  stopRecording: stopLocalRecording,
+  downloadRecording,
+ } = useMediaRecorder();
 
  // Sync voice state to host when acting as controller
  useEffect(() => {
@@ -91,12 +103,19 @@ export const useRemoteController = (hostId: string) => {
     if (data.payload.navigationMap !== undefined) setNavigationMap(data.payload.navigationMap);
     if (data.payload.isPro !== undefined) setIsPro(data.payload.isPro);
     if (data.payload.isVoiceMode !== undefined) setIsVoiceMode(data.payload.isVoiceMode);
+    if (data.payload.isRecording !== undefined) setIsRecording(data.payload.isRecording);
    }
    if (data.type === MessageType.TIME_UPDATE) {
     setElapsedTime(data.payload.elapsedTime);
    }
    if (data.type === MessageType.SCROLL_SYNC) {
     setProgress(data.payload.progress);
+   }
+   if (data.type === MessageType.START_REMOTE_RECORDING) {
+    if (!isLocalRecording) startLocalRecording();
+   }
+   if (data.type === MessageType.STOP_REMOTE_RECORDING) {
+    if (isLocalRecording) stopLocalRecording();
    }
    if (data.type === MessageType.RESTART) {
     setIsPlaying(false);
@@ -221,6 +240,31 @@ export const useRemoteController = (hostId: string) => {
   [sendMessage]
  );
 
+ const handleToggleRecording = useCallback(() => {
+  if (settings?.recordingMode === "remote") {
+   if (isLocalRecording) {
+    stopLocalRecording();
+   } else {
+    startLocalRecording();
+   }
+  } else {
+   vibrate(50);
+   sendMessage(MessageType.TOGGLE_RECORDING);
+  }
+ }, [
+  sendMessage,
+  vibrate,
+  settings?.recordingMode,
+  isLocalRecording,
+  stopLocalRecording,
+  startLocalRecording,
+ ]);
+
+ const handleToggleRecordingMode = useCallback(() => {
+  const newMode = settings?.recordingMode === "remote" ? "host" : "remote";
+  sendMessage(MessageType.SETTINGS_UPDATE, { recordingMode: newMode });
+ }, [sendMessage, settings?.recordingMode]);
+
  return {
   state: {
    status,
@@ -234,6 +278,10 @@ export const useRemoteController = (hostId: string) => {
    navigationMap,
    isVoiceMode,
    isPro,
+   isVoiceActive,
+   isRecording: settings?.recordingMode === "remote" ? isLocalRecording : isRecording,
+   localRecordingTime,
+   hasRecordedData,
   },
   actions: {
    handleSpeedChange,
@@ -246,6 +294,9 @@ export const useRemoteController = (hostId: string) => {
    handleStop,
    handleToggleVoice,
    handleRequestSync,
+   handleToggleRecording,
+   handleToggleRecordingMode,
+   downloadRecording,
   },
  };
 };

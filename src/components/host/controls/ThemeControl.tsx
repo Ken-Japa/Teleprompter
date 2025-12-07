@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { useTranslation } from "../../../hooks/useTranslation";
 import * as S from "../../ui/Styled";
-import { PaletteIcon, MagicIcon, MicIcon, LockIcon, LaptopIcon, SmartphoneIcon } from "../../ui/Icons";
+import { PaletteIcon, MagicIcon, MicIcon, LockIcon, LaptopIcon, SmartphoneIcon, ApertureIcon } from "../../ui/Icons";
 import type { PrompterSettings, PrompterActions } from "../../../hooks/usePrompterSettings";
 
 interface ThemeControlProps {
@@ -18,7 +18,7 @@ export const ThemeControl = memo(
     ({ settings, actions, isVoiceMode, toggleVoice, isPro, voiceApiSupported, voiceApiError }: ThemeControlProps) => {
         const { t } = useTranslation();
         const { theme, isFocusMode, voiceControlMode = 'host' } = settings;
-        const { cycleTheme, setIsFocusMode, setVoiceControlMode } = actions;
+        const { cycleTheme, toggleChroma, setIsFocusMode, setVoiceControlMode } = actions;
 
         const handleVoiceModeToggle = () => {
             setVoiceControlMode(voiceControlMode === "remote" ? "host" : "remote");
@@ -27,14 +27,25 @@ export const ThemeControl = memo(
         return (
             <>
                 <S.HudGroup label={t("host.hudLabels.theme")}>
-                    <S.IconButton
-                        onClick={cycleTheme}
-                        title={`${t("host.controls.theme")}: ${t(`host.themes.${theme}`)}`}
-                        aria-label={t("host.controls.theme")}
-                        className="w-9 h-9 rounded-full hover:bg-brand-500/20 hover:text-brand-400 border-transparent"
-                    >
-                        <PaletteIcon className="w-5 h-5" />
-                    </S.IconButton>
+                    <div className="flex items-center gap-1">
+                        <S.IconButton
+                            onClick={cycleTheme}
+                            title={`${t("host.controls.theme")}: ${t(`host.themes.${theme}`)}`}
+                            aria-label={t("host.controls.theme")}
+                            className="w-9 h-9 rounded-full hover:bg-brand-500/20 hover:text-brand-400 border-transparent"
+                        >
+                            <PaletteIcon className="w-5 h-5" />
+                        </S.IconButton>
+
+                        <S.IconButton
+                            onClick={toggleChroma}
+                            title={`${t("host.controls.chroma")}`}
+                            aria-label={t("host.controls.chroma")}
+                            className="w-9 h-9 rounded-full hover:bg-brand-500/20 hover:text-brand-400 border-transparent"
+                        >
+                            <ApertureIcon className="w-5 h-5" />
+                        </S.IconButton>
+                    </div>
                 </S.HudGroup>
 
                 <S.HudGroup label={t("host.hudLabels.focus")}>

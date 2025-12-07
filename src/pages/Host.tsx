@@ -63,7 +63,10 @@ export const Host: React.FC = () => {
                     onSync={actions.forceSync}
                     onTextChange={actions.setText}
                     onVoiceModeChange={actions.setIsVoiceMode}
+                    onRecordingStatusChange={actions.setIsRecording}
                     onReset={actions.handleReset}
+                    onStartRemoteRecording={actions.startRemoteRecording}
+                    onStopRemoteRecording={actions.stopRemoteRecording}
                 />
             )}
         </>

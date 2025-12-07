@@ -155,6 +155,8 @@ export const useHostController = () => {
       if (s.isUpperCase !== undefined) prompterActions.setIsUpperCase(s.isUpperCase);
       if (s.isFocusMode !== undefined) prompterActions.setIsFocusMode(s.isFocusMode);
       if (s.isFlipVertical !== undefined) prompterActions.setIsFlipVertical(s.isFlipVertical);
+      if (s.recordingMode) prompterActions.setRecordingMode(s.recordingMode);
+      if (s.voiceControlMode) prompterActions.setVoiceControlMode(s.voiceControlMode);
      }
      break;
     case MessageType.TOGGLE_VOICE:
@@ -165,6 +167,11 @@ export const useHostController = () => {
     case MessageType.VOICE_SYNC:
      if (prompterRef.current && msg.payload) {
       prompterRef.current.onRemoteVoiceUpdate(msg.payload.activeSentenceIndex, msg.payload.voiceProgress);
+     }
+     break;
+    case MessageType.TOGGLE_RECORDING:
+     if (prompterRef.current) {
+      prompterRef.current.toggleRecording();
      }
      break;
     default:
@@ -186,6 +193,7 @@ export const useHostController = () => {
  const [showCountdownModal, setShowCountdownModal] = useState<boolean>(false);
  const [isValidating, setIsValidating] = useState<boolean>(false);
  const [isVoiceMode, setIsVoiceMode] = useState<boolean>(false);
+ const [isRecording, setIsRecording] = useState<boolean>(false);
 
  // Pause playback if Paywall triggers
  useEffect(() => {
@@ -204,9 +212,21 @@ export const useHostController = () => {
     navigationMap,
     isPro,
     isVoiceMode,
+    isRecording,
    });
   }
- }, [isPlaying, speed, status, broadcast, prompterSettings, text, navigationMap, isPro, isVoiceMode]);
+ }, [
+  isPlaying,
+  speed,
+  status,
+  broadcast,
+  prompterSettings,
+  text,
+  navigationMap,
+  isPro,
+  isVoiceMode,
+  isRecording,
+ ]);
 
  // 6.1 Time Broadcast (Lightweight)
  useEffect(() => {
@@ -291,9 +311,21 @@ export const useHostController = () => {
     navigationMap,
     isPro,
     isVoiceMode,
+    isRecording,
    });
   }
- }, [broadcast, isPlaying, speed, prompterSettings, text, elapsedTime, navigationMap, isPro, isVoiceMode]);
+ }, [
+  broadcast,
+  isPlaying,
+  speed,
+  prompterSettings,
+  text,
+  elapsedTime,
+  navigationMap,
+  isPro,
+  isVoiceMode,
+  isRecording,
+ ]);
 
  const navigation = {
   startPresentation: () => {
@@ -313,6 +345,14 @@ export const useHostController = () => {
   broadcast(MessageType.RESTART);
  }, [broadcast]);
 
+ const startRemoteRecording = useCallback(() => {
+  broadcast(MessageType.START_REMOTE_RECORDING);
+ }, [broadcast]);
+
+ const stopRemoteRecording = useCallback(() => {
+  broadcast(MessageType.STOP_REMOTE_RECORDING);
+ }, [broadcast]);
+
  const prompterState = useMemo(() => ({ isPlaying, speed }), [isPlaying, speed]);
 
  return {
@@ -330,6 +370,7 @@ export const useHostController = () => {
    showCountdownModal,
    prompterSettings,
    isValidating,
+   isRecording,
   },
   actions: {
    setText,
@@ -348,6 +389,9 @@ export const useHostController = () => {
    forceSync,
    setIsVoiceMode,
    handleReset,
+   setIsRecording,
+   startRemoteRecording,
+   stopRemoteRecording,
   },
   refs: {
    prompterRef,

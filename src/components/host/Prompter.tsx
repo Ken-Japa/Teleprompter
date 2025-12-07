@@ -8,12 +8,14 @@ import React, {
   forwardRef,
   useImperativeHandle,
 } from "react";
-import { ConnectionStatus, PrompterHandle, PrompterSettings, NavigationItem } from "../../types";
+import { createPortal } from "react-dom";
+import { ConnectionStatus, PrompterHandle, PrompterSettings, NavigationItem, Theme } from "../../types";
 import * as S from "../ui/Styled";
 import { useVoiceControl } from "../../hooks/useVoiceControl";
 import { useKeyboardShortcuts } from "../../hooks/useKeyboardShortcuts";
 import { useWakeLock } from "../../hooks/useWakeLock";
 import { useScrollPhysics } from "../../hooks/useScrollPhysics";
+import { usePictureInPicture } from "../../hooks/usePictureInPicture";
 import { PrompterActions } from "../../hooks/usePrompterSettings";
 import { useElementMetrics } from "../../hooks/useElementMetrics";
 import { ScriptBoard } from "./ScriptBoard";
@@ -22,6 +24,7 @@ import { QuickEditModal } from "./QuickEditModal";
 import { trackConversion } from "../../utils/analytics";
 
 import { useNavigationMap } from "../../hooks/useNavigationMap";
+import { useMediaRecorder } from "../../hooks/useMediaRecorder";
 import { usePrompterTheme } from "../../hooks/usePrompterTheme";
 import { UI_LIMITS } from "../../config/constants";
 
@@ -42,15 +45,18 @@ interface PrompterProps {
   onSync: () => void;
   onTextChange: (text: string) => void;
   onVoiceModeChange?: (isVoiceMode: boolean) => void;
+  onRecordingStatusChange?: (isRecording: boolean) => void;
   onReset?: () => void;
+  onStartRemoteRecording?: () => void;
+  onStopRemoteRecording?: () => void;
 }
 
 export const Prompter = memo(
   forwardRef<PrompterHandle, PrompterProps>(
-    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onReset }, ref) => {
+    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onReset, onStartRemoteRecording, onStopRemoteRecording }, ref) => {
 
       // Extracted Settings Logic
-      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode } = settings;
+      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode } = settings;
 
       // Ephemeral State
       const [isVoiceMode, setIsVoiceMode] = useState<boolean>(false);
@@ -75,6 +81,39 @@ export const Prompter = memo(
 
       // Theme Logic
       const { getThemeClass } = usePrompterTheme(theme);
+
+      // Picture-in-Picture
+      const { pipWindow, togglePiP, isPiPActive } = usePictureInPicture();
+
+      // Media Recorder
+      const {
+        isRecording,
+        isPaused,
+        recordingTime,
+        hasRecordedData,
+        startRecording,
+        stopRecording,
+        pauseRecording,
+        resumeRecording,
+        downloadRecording,
+        formatTime
+      } = useMediaRecorder();
+
+      const handleStartRecording = useCallback(async () => {
+        if (recordingMode === "remote") {
+          if (onStartRemoteRecording) onStartRemoteRecording();
+        } else {
+          await startRecording();
+        }
+      }, [recordingMode, startRecording, onStartRemoteRecording]);
+
+      const handleStopRecording = useCallback(() => {
+        if (recordingMode === "remote") {
+          if (onStopRemoteRecording) onStopRemoteRecording();
+        } else {
+          stopRecording();
+        }
+      }, [recordingMode, stopRecording, onStopRemoteRecording]);
 
       // Keyboard Shortcuts
       useKeyboardShortcuts({
@@ -202,9 +241,23 @@ export const Prompter = memo(
           toggleVoice: toggleVoice,
           wakeUp: wakeUpLoop,
           onRemoteVoiceUpdate,
+          toggleRecording: () => {
+            if (isRecording) {
+              stopRecording();
+            } else {
+              startRecording();
+            }
+          },
         }),
-        [handleRemoteInput, handleScrollTo, resetPrompter, toggleVoice, wakeUpLoop, onRemoteVoiceUpdate]
+        [handleRemoteInput, handleScrollTo, resetPrompter, toggleVoice, wakeUpLoop, onRemoteVoiceUpdate, isRecording, stopRecording, startRecording]
       );
+
+      // Notify parent of recording status change
+      useEffect(() => {
+        if (onRecordingStatusChange) {
+          onRecordingStatusChange(isRecording);
+        }
+      }, [isRecording, onRecordingStatusChange]);
 
       // Voice Active Element Highlighting (UI Side)
       useEffect(() => {
@@ -247,13 +300,18 @@ export const Prompter = memo(
 
       // Dynamic Focus Line Gradient
       const focusGradient = useMemo(() => {
+        // Chroma keys should not have focus gradient to ensure pure color
+        if (theme === Theme.CHROMA_GREEN || theme === Theme.CHROMA_BLUE) {
+          return 'none';
+        }
+
         const getThemeColor = (t: string) => {
           switch (t) {
-            case 'paper': return '#ffffff';
-            case 'contrast': return '#000000';
-            case 'matrix': return '#000000';
-            case 'cyber': return '#0f172a'; // slate-900
-            case 'cream': return '#fdfbf7';
+            case Theme.PAPER: return '#ffffff';
+            case Theme.CONTRAST: return '#000000';
+            case Theme.MATRIX: return '#000000';
+            case Theme.CYBER: return '#0f172a'; // slate-900
+            case Theme.CREAM: return '#fdfbf7';
             default: return '#020617'; // slate-950 (Ninja/Default)
           }
         };
@@ -284,7 +342,7 @@ export const Prompter = memo(
         [fontSize, margin]
       );
 
-      return (
+      const prompterContent = (
         <S.ScreenContainer
           ref={containerRef}
           className={`relative h-screen ${getThemeClass()}`}
@@ -301,7 +359,7 @@ export const Prompter = memo(
             }}
           ></div>
 
-          {isFocusMode && <S.FocusIndicator />}
+          {isFocusMode && ![Theme.CHROMA_GREEN, Theme.CHROMA_BLUE].includes(theme) && <S.FocusIndicator />}
 
           <S.MainContent onMouseMove={handleMouseMove}>
             <S.PrompterScrollArea
@@ -322,39 +380,112 @@ export const Prompter = memo(
             </S.PrompterScrollArea>
           </S.MainContent>
 
-          <PrompterHUD
-            showHud={showHud}
-            peerId={peerId}
-            status={status}
-            isPlaying={externalState.isPlaying}
-            speed={externalState.speed}
-            settings={settings}
-            actions={actions}
-            isVoiceMode={isVoiceMode}
-            isPro={isPro}
-            voiceApiSupported={voiceApiSupported}
-            voiceApiError={voiceApiError}
-            resetTimerSignal={resetTimerSignal}
-            onStateChange={onStateChange}
-            onResetPrompter={resetPrompter}
-            toggleVoice={toggleVoice}
-            onExit={onExit}
-            onSync={onSync}
-            onEdit={() => setShowEditModal(true)}
-          />
+          {!pipWindow && (
+            <PrompterHUD
+              showHud={showHud}
+              peerId={peerId}
+              status={status}
+              isPlaying={externalState.isPlaying}
+              speed={externalState.speed}
+              settings={settings}
+              actions={actions}
+              isVoiceMode={isVoiceMode}
+              isPro={isPro}
+              voiceApiSupported={voiceApiSupported}
+              voiceApiError={voiceApiError}
+              resetTimerSignal={resetTimerSignal}
+              onStateChange={onStateChange}
+              onResetPrompter={resetPrompter}
+              toggleVoice={toggleVoice}
+              onExit={onExit}
+              onSync={onSync}
+              onEdit={() => setShowEditModal(true)}
+              togglePiP={togglePiP}
+              isPiPActive={isPiPActive}
+              recordingState={{
+                isRecording,
+                isPaused,
+                recordingTime: formatTime(recordingTime),
+                hasRecordedData
+              }}
+              recordingActions={{
+                start: handleStartRecording,
+                stop: handleStopRecording,
+                pause: pauseRecording,
+                resume: resumeRecording,
+                download: downloadRecording
+              }}
+            />
+          )}
           <QuickEditModal
             isOpen={showEditModal}
             onClose={() => setShowEditModal(false)}
             text={text}
             onSave={(newText) => {
-              if (externalState.isPlaying) {
-                onStateChange(false, externalState.speed);
-              }
               onTextChange(newText);
+              setShowEditModal(false);
             }}
           />
         </S.ScreenContainer>
       );
+
+      if (pipWindow) {
+        return (
+          <>
+            {createPortal(prompterContent, pipWindow.document.body)}
+            {/* Keep HUD in the main window when PiP is active */}
+            <div className="flex flex-col items-center justify-center h-screen bg-slate-950 p-8 text-center space-y-8">
+              <div className="space-y-4">
+                <h2 className="text-2xl font-bold text-white">Modo Picture-in-Picture Ativo</h2>
+                <p className="text-slate-400 max-w-md mx-auto">
+                  O teleprompter está sendo exibido em uma janela flutuante.
+                  Use os controles abaixo para gerenciar a apresentação.
+                </p>
+              </div>
+
+              <div className="relative w-full max-w-2xl h-32">
+                <PrompterHUD
+                  showHud={true}
+                  peerId={peerId}
+                  status={status}
+                  isPlaying={externalState.isPlaying}
+                  speed={externalState.speed}
+                  settings={settings}
+                  actions={actions}
+                  isVoiceMode={isVoiceMode}
+                  isPro={isPro}
+                  voiceApiSupported={voiceApiSupported}
+                  voiceApiError={voiceApiError}
+                  resetTimerSignal={resetTimerSignal}
+                  onStateChange={onStateChange}
+                  onResetPrompter={resetPrompter}
+                  toggleVoice={toggleVoice}
+                  onExit={onExit}
+                  onSync={onSync}
+                  onEdit={() => setShowEditModal(true)}
+                  togglePiP={togglePiP}
+                  isPiPActive={isPiPActive}
+                  recordingState={{
+                    isRecording,
+                    isPaused,
+                    recordingTime: formatTime(recordingTime),
+                    hasRecordedData
+                  }}
+                  recordingActions={{
+                    start: handleStartRecording,
+                    stop: handleStopRecording,
+                    pause: pauseRecording,
+                    resume: resumeRecording,
+                    download: downloadRecording
+                  }}
+                />
+              </div>
+            </div>
+          </>
+        );
+      }
+
+      return prompterContent;
     }
   )
 );
