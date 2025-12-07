@@ -182,7 +182,7 @@ export const useHostController = () => {
   [setSpeed, setText, prompterActions, isPlaying, speed, prompterSettings, text, elapsedTime, navigationMap]
  );
 
- const { peerId, status, broadcast, errorMessage } = usePeerHost(handleRemoteMessage);
+ const { peerId, status, broadcast, errorMessage } = usePeerHost(handleRemoteMessage, isPro);
 
  useEffect(() => {
   broadcastRef.current = broadcast;

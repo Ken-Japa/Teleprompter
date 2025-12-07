@@ -168,6 +168,7 @@ export const en = {
     features: [
      "Unlimited sessions (no time limit)",
      "No watermark",
+     "Multiple remote controls (teams)",
      "Voice control",
      "Custom logo",
      "Priority support",

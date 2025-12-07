@@ -171,6 +171,7 @@ export const pt = {
     features: [
      "Sessões ilimitadas (sem tempo)",
      "Sem marca d'água",
+     "Múltiplos controles remotos (equipes)",
      "Controle por voz",
      "Logo personalizado",
      "Suporte prioritário",
