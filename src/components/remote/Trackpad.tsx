@@ -18,6 +18,21 @@ export const Trackpad: React.FC<TrackpadProps> = ({ onDelta, onStop, label }) =>
     const lastTouchY = useRef<number>(0);
     const lastTouchTime = useRef<number>(0);
     const isTouching = useRef<boolean>(false);
+    const accumulatedDistance = useRef<number>(0); // Para controlar a vibração por "fricção"
+
+    /**
+     * Helper seguro para acionar vibração
+     * Verifica suporte do navegador (Android suporta bem, iOS WebKit não suporta Vibration API)
+     */
+    const triggerHaptic = (pattern: number | number[]) => {
+        if (typeof navigator !== 'undefined' && navigator.vibrate) {
+            try {
+                navigator.vibrate(pattern);
+            } catch (e) {
+                // Silently fail if vibration is blocked
+            }
+        }
+    };
 
     const updateCursorVisuals = (clientX: number, clientY: number, active: boolean) => {
         if (cursorRef.current && padRectRef.current) {
@@ -41,11 +56,10 @@ export const Trackpad: React.FC<TrackpadProps> = ({ onDelta, onStop, label }) =>
             touchStartY.current = y;
             lastTouchY.current = y;
             lastTouchTime.current = Date.now();
+            accumulatedDistance.current = 0; // Resetar acumulador
 
-            // Haptic Feedback
-            if (navigator.vibrate) {
-                navigator.vibrate(15); // Subtle click effect
-            }
+            // Haptic Feedback Inicial (Click)
+            triggerHaptic(15);
 
             isTouching.current = true;
             updateCursorVisuals(e.touches[0].clientX, e.touches[0].clientY, true);
@@ -61,6 +75,17 @@ export const Trackpad: React.FC<TrackpadProps> = ({ onDelta, onStop, label }) =>
             // Update physics tracking
             lastTouchY.current = currentY;
             lastTouchTime.current = Date.now();
+
+            // Lógica de Vibração por Fricção (Haptic Feedback)
+            // Acumula a distância percorrida absoluta
+            accumulatedDistance.current += Math.abs(rawDiff);
+
+            // Se moveu mais que X pixels, vibra levemente para dar sensação de textura
+            const HAPTIC_THRESHOLD = 15; // pixels
+            if (accumulatedDistance.current > HAPTIC_THRESHOLD) {
+                triggerHaptic(5); // Vibração muito curta (5ms)
+                accumulatedDistance.current = 0; // Reseta o acumulador
+            }
 
             // Physics Optimization: Reduced gain for better control
             const gain = 0.8;

@@ -3,6 +3,7 @@ import { FieldValue } from "firebase-admin/firestore";
 import { db } from "./_firebase.js";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
+import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 
 // Initialize Ratelimit if env vars are present
 const redis =
@@ -18,6 +19,45 @@ const ratelimit = redis
     analytics: true,
    })
  : null;
+
+const mailersendApiKey = process.env.MAILERSEND_API_KEY;
+
+const mailerSend = mailersendApiKey
+ ? new MailerSend({
+    apiKey: mailersendApiKey,
+   })
+ : null;
+
+const sendWelcomeEmail = async (toEmail: string) => {
+ if (!mailerSend) {
+  console.log(`[EMAIL IGNORADO] E-mail de boas-vindas para ${toEmail} (API Key ausente).`);
+  return;
+ }
+
+ const sender = new Sender("welcome@solutionkit.com.br", "PromptNinja");
+ const recipients = [new Recipient(toEmail)];
+
+ const emailParams = new EmailParams()
+  .setFrom(sender)
+  .setTo(recipients)
+  .setSubject("Bem-vindo(a)! Seu Acesso PRO Está Ativo 🎉")
+  .setHtml(
+   `
+            <p>Seu acesso profissional ao PromptNinja foi ativado com sucesso! Você já pode desfrutar de todos os recursos premium.</p>
+            <p>Clique aqui para começar:</p>
+            <p><a href="https://promptninja.solutionkit.com.br">Acessar PromptNinja Agora</a></p>
+            <p>Se tiver qualquer dúvida, estamos à disposição para ajudar.</p>
+        `
+  )
+  .setText(`Seu acesso Pro foi ativado! Acesse seu site para começar.`);
+
+ try {
+  await mailerSend.email.send(emailParams);
+  console.log(`Welcome email sent successfully to: ${toEmail} via MailerSend.`);
+ } catch (error) {
+  console.error("Error sending welcome email via MailerSend:", error);
+ }
+};
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
  // Allow CORS for local development or specific domains if needed
@@ -93,6 +133,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     updateData.status = "active";
     updateData.activatedAt = FieldValue.serverTimestamp();
     updateData.activatedByIp = currentIP; // IP da primeira ativação
+    await sendWelcomeEmail(data.email);
    }
 
    // ATENÇÃO: Faz uma única atualização no Firestore com todos os dados.
