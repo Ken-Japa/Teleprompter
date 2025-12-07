@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://promptninja.solutionkit.com.br/</loc>
     <changefreq>weekly</changefreq>
@@ -9,60 +9,288 @@
     <loc>https://promptninja.solutionkit.com.br/teleprompter-online-gratis</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-online-gratis" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/free-online-teleprompter" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-online-gratis" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/free-online-teleprompter</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-online-gratis" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/free-online-teleprompter" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-online-gratis" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/teleprompter-online-gratis</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-online-gratis" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/free-online-teleprompter" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-online-gratis" />
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/como-usar-teleprompter-celular</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/como-usar-teleprompter-celular" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/how-to-use-teleprompter-mobile" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/como-usar-teleprompter-movil" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/how-to-use-teleprompter-mobile</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/como-usar-teleprompter-celular" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/how-to-use-teleprompter-mobile" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/como-usar-teleprompter-movil" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/como-usar-teleprompter-movil</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/como-usar-teleprompter-celular" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/how-to-use-teleprompter-mobile" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/como-usar-teleprompter-movil" />
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/melhor-teleprompter-app</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/melhor-teleprompter-app" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/best-teleprompter-app" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/mejor-app-teleprompter" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/best-teleprompter-app</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/melhor-teleprompter-app" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/best-teleprompter-app" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/mejor-app-teleprompter" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/mejor-app-teleprompter</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/melhor-teleprompter-app" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/best-teleprompter-app" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/mejor-app-teleprompter" />
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/alternativas-teleprompter-concorrente</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/alternativas-teleprompter-concorrente" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-alternatives" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/alternativas-teleprompter" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/teleprompter-alternatives</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/alternativas-teleprompter-concorrente" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-alternatives" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/alternativas-teleprompter" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/alternativas-teleprompter</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/alternativas-teleprompter-concorrente" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-alternatives" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/alternativas-teleprompter" />
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-para-youtubers-e-criadores</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-para-youtubers-e-criadores" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-for-youtubers-creators" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-youtubers-creadores" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/teleprompter-for-youtubers-creators</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-para-youtubers-e-criadores" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-for-youtubers-creators" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-youtubers-creadores" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/teleprompter-para-youtubers-creadores</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-para-youtubers-e-criadores" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-for-youtubers-creators" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-youtubers-creadores" />
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-travando-solucao</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-travando-solucao" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-freezing-solution" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/solucion-teleprompter-congelado" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/teleprompter-freezing-solution</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-travando-solucao" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-freezing-solution" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/solucion-teleprompter-congelado" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/solucion-teleprompter-congelado</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-travando-solucao" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-freezing-solution" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/solucion-teleprompter-congelado" />
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-caseiro-diy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-caseiro-diy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/diy-homemade-teleprompter" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-casero-diy" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/diy-homemade-teleprompter</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-caseiro-diy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/diy-homemade-teleprompter" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-casero-diy" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/teleprompter-casero-diy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-caseiro-diy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/diy-homemade-teleprompter" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-casero-diy" />
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/dicas-oratoria-video</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/dicas-oratoria-video" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/public-speaking-tips-video" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/consejos-oratoria-video" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/public-speaking-tips-video</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/dicas-oratoria-video" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/public-speaking-tips-video" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/consejos-oratoria-video" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/consejos-oratoria-video</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/dicas-oratoria-video" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/public-speaking-tips-video" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/consejos-oratoria-video" />
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/como-decorar-texto-rapido</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/como-decorar-texto-rapido" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/how-to-memorize-scripts-fast" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/como-memorizar-guiones-rapido" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/how-to-memorize-scripts-fast</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/como-decorar-texto-rapido" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/how-to-memorize-scripts-fast" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/como-memorizar-guiones-rapido" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/como-memorizar-guiones-rapido</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/como-decorar-texto-rapido" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/how-to-memorize-scripts-fast" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/como-memorizar-guiones-rapido" />
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/tecnologia-webrtc-baixa-latencia</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/tecnologia-webrtc-baixa-latencia" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/webrtc-low-latency-technology" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/tecnologia-webrtc-baja-latencia" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/webrtc-low-latency-technology</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/tecnologia-webrtc-baixa-latencia" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/webrtc-low-latency-technology" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/tecnologia-webrtc-baja-latencia" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/tecnologia-webrtc-baja-latencia</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/tecnologia-webrtc-baixa-latencia" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/webrtc-low-latency-technology" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/tecnologia-webrtc-baja-latencia" />
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-pc-windows</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-pc-windows" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-pc-windows" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-pc-windows" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/teleprompter-pc-windows</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-pc-windows" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-pc-windows" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-pc-windows" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/teleprompter-pc-windows</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-pc-windows" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-pc-windows" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-pc-windows" />
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-zoom-meeting</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-zoom-meeting" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-zoom-meeting" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-zoom-meeting" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/teleprompter-zoom-meeting</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-zoom-meeting" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-zoom-meeting" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-zoom-meeting" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/teleprompter-zoom-meeting</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-zoom-meeting" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-zoom-meeting" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-zoom-meeting" />
   </url>
 </urlset>

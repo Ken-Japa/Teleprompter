@@ -9,6 +9,9 @@ const ThankYou = React.lazy(() => import("./pages/ThankYou").then(module => ({ d
 
 import { SeoPages, SeoRouteKey } from "./config/seoRoutes";
 import { SEO_ROUTES } from "./config/constants";
+// @ts-ignore
+import { ROUTES_CONFIG } from "./config/routes.js";
+import { Language } from "./locales/index";
 
 type ViewState = "LANDING" | "HOST" | "REMOTE" | "THANK_YOU" | SeoRouteKey;
 
@@ -21,6 +24,7 @@ const LoadingSpinner = () => (
 const App: React.FC = () => {
     const [view, setView] = useState<ViewState>("LANDING");
     const [remoteId, setRemoteId] = useState<string>("");
+    const [currentLang, setCurrentLang] = useState<Language | undefined>(undefined);
 
     useEffect(() => {
         const handleRouting = () => {
@@ -52,53 +56,16 @@ const App: React.FC = () => {
                 return;
             }
 
-            if (cleanPath === SEO_ROUTES.GRATIS) {
-                setView("SEO_GRATIS");
-                return;
-            }
-            if (cleanPath === SEO_ROUTES.TUTORIAL) {
-                setView("SEO_TUTORIAL");
-                return;
-            }
-            if (cleanPath === SEO_ROUTES.MELHOR_APP) {
-                setView("SEO_MELHOR_APP");
-                return;
-            }
-            if (cleanPath === SEO_ROUTES.ALTERNATIVAS) {
-                setView("SEO_ALTERNATIVAS");
-                return;
-            }
-            if (cleanPath === SEO_ROUTES.YOUTUBERS) {
-                setView("SEO_YOUTUBERS");
-                return;
-            }
-            if (cleanPath === SEO_ROUTES.TRAVANDO) {
-                setView("SEO_TRAVANDO");
-                return;
-            }
-            if (cleanPath === SEO_ROUTES.DIY) {
-                setView("SEO_DIY");
-                return;
-            }
-            if (cleanPath === SEO_ROUTES.ORATORIA) {
-                setView("SEO_ORATORIA");
-                return;
-            }
-            if (cleanPath === SEO_ROUTES.DECORAR) {
-                setView("SEO_DECORAR");
-                return;
-            }
-            if (cleanPath === SEO_ROUTES.WEBRTC) {
-                setView("SEO_WEBRTC");
-                return;
-            }
-            if (cleanPath === SEO_ROUTES.PC_WINDOWS) {
-                setView("SEO_PC_WINDOWS");
-                return;
-            }
-            if (cleanPath === SEO_ROUTES.ZOOM) {
-                setView("SEO_ZOOM");
-                return;
+            // Check localized routes
+            for (const [key, config] of Object.entries(ROUTES_CONFIG as Record<string, any>)) {
+                const paths = config.paths;
+                for (const [lang, routePath] of Object.entries(paths)) {
+                    if (cleanPath === routePath) {
+                        setView(key as SeoRouteKey);
+                        setCurrentLang(lang as Language);
+                        return;
+                    }
+                }
             }
 
             // 3. Default
@@ -124,7 +91,7 @@ const App: React.FC = () => {
     };
 
     return (
-        <TranslationProvider>
+        <TranslationProvider initialLang={currentLang}>
             <Suspense fallback={<LoadingSpinner />}>
                 {view === "REMOTE" && <Remote hostId={remoteId} />}
                 {view === "LANDING" && <Landing onLaunch={launchApp} />}

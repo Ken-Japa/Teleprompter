@@ -39,8 +39,18 @@ const getInitialLanguage = (): Language => {
     return "pt";
 };
 
-export const TranslationProvider = ({ children }: { children: ReactNode }) => {
-    const [lang, setLangState] = useState<Language>(getInitialLanguage);
+export const TranslationProvider = ({ children, initialLang }: { children: ReactNode; initialLang?: Language }) => {
+    const [lang, setLangState] = useState<Language>(() => {
+        if (initialLang) return initialLang;
+        return getInitialLanguage();
+    });
+
+    // Update lang if initialLang changes (optional, depending on behavior desired)
+    useEffect(() => {
+        if (initialLang) {
+            setLangState(initialLang);
+        }
+    }, [initialLang]);
 
     // Atualiza o localStorage sempre que o idioma muda
     useEffect(() => {
