@@ -35,7 +35,7 @@ const viteConfig = defineConfig({
    },
    workbox: {
     maximumFileSizeToCacheInBytes: 3000000,
-    globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
+    globPatterns: ["**/*.{js,css,html,ico,svg,woff2}"],
    },
   }),
  ],
