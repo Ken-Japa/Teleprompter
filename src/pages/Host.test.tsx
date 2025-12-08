@@ -36,12 +36,6 @@ beforeEach(() => {
         constructor() { }
     } as any;
 
-    window.NoSleep = class {
-        enable = vi.fn().mockResolvedValue(true);
-        disable = vi.fn();
-        constructor() { }
-    } as any;
-
     mockPeer.on.mockImplementation((event, callback) => {
         if (event === "open") callback("mock-peer-id");
         if (event === "connection") callback(mockConn);
@@ -59,7 +53,7 @@ afterEach(() => {
 });
 
 const renderWithProvider = (ui: React.ReactNode) => {
-    return render(<TranslationProvider>{ui}</TranslationProvider>);
+    return render(<TranslationProvider initialLang="en">{ui}</TranslationProvider>);
 };
 
 describe("Host Component (Editor & Prompter)", () => {
@@ -92,7 +86,7 @@ describe("Host Component (Editor & Prompter)", () => {
         fireEvent.click(voiceBtn);
 
         // Expect Paywall Modal to be visible
-        // Assuming the modal has some unique text like "Lifetime Access" or "Grab Your Lifetime Access"
-        expect(screen.getByText(/Lifetime Access/i)).toBeInTheDocument();
+        // We check for the title "PRO Feature Locked"
+        expect(screen.getByText(/PRO Feature Locked/i)).toBeInTheDocument();
     });
 });
