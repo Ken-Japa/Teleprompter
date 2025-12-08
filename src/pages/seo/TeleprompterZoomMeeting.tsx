@@ -16,52 +16,71 @@ export const TeleprompterZoomMeeting: React.FC<Props> = ({ onLaunch }) => {
     let title = "Como usar Teleprompter no Zoom, Teams e Google Meet";
     let description = "Aprenda a ler seus scripts durante reuniões online sem desviar o olhar da câmera. Guia para Zoom, Teams e Google Meet com teleprompter gratuito.";
     let ctaText = "Abrir Teleprompter para Zoom";
-    let locale = "pt_BR";
+    let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-zoom-meeting";
+    let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+    let schema: object = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": title,
+        "description": description,
+        "url": canonicalUrl,
+        "image": ogImage,
+        "author": {
+            "@type": "Organization",
+            "name": "PromptNinja",
+            "url": "https://promptninja.solutionkit.com.br"
+        }
+    };
 
     if (lang === 'en') {
         Content = TeleprompterZoomMeetingEN;
         title = "How to use Teleprompter for Zoom, Teams and Google Meet";
         description = "Learn how to read your scripts during online meetings without looking away from the camera. Guide for Zoom, Teams, and Google Meet with free teleprompter.";
         ctaText = "Open Teleprompter for Zoom";
-        locale = "en_US";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-zoom-meeting";
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": title,
+            "description": description,
+            "url": canonicalUrl,
+            "image": ogImage,
+            "author": {
+                "@type": "Organization",
+                "name": "PromptNinja",
+                "url": "https://promptninja.solutionkit.com.br"
+            }
+        };
     } else if (lang === 'es') {
         Content = TeleprompterZoomMeetingES;
         title = "Cómo usar Teleprompter en Zoom, Teams y Google Meet";
         description = "Aprende a leer tus guiones durante reuniones online sin desviar la mirada de la cámara. Guía para Zoom, Teams y Google Meet con teleprompter gratuito.";
         ctaText = "Abrir Teleprompter para Zoom";
-        locale = "es_ES";
-    }
-
-    // Schema.org JSON-LD
-    const schema = {
-        "@context": "https://schema.org",
-        "@type": "TechArticle",
-        "headline": title,
-        "description": description,
-        "image": "https://promptninja.site/images/teleprompter-zoom-meeting.jpg",
-        "author": {
-            "@type": "Organization",
-            "name": "PromptNinja"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "PromptNinja",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://promptninja.site/logo.png"
+        canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-zoom-meeting";
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": title,
+            "description": description,
+            "url": canonicalUrl,
+            "image": ogImage,
+            "author": {
+                "@type": "Organization",
+                "name": "PromptNinja",
+                "url": "https://promptninja.solutionkit.com.br"
             }
-        },
-        "datePublished": "2024-01-15",
-        "dateModified": new Date().toISOString().split('T')[0]
-    };
+        };
+    }
 
     return (
         <SeoPageLayout
             title={title}
             description={description}
-            onLaunch={onLaunch}
+            canonicalUrl={canonicalUrl}
+            ogImage={ogImage}
             schema={schema}
-            ogType="article"
+            onLaunch={onLaunch}
+            ogType="website"
         >
             <Content />
 

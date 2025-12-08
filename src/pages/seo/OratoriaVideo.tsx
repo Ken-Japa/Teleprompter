@@ -15,6 +15,21 @@ export const OratoriaVideo: React.FC<Props> = ({ onLaunch }) => {
     let Content = OratoriaVideoPT;
     let title = "Dicas de Oratória para Vídeo: Como Falar com Confiança";
     let description = "Melhore sua presença em frente às câmeras. Aprenda técnicas de oratória e descubra como o teleprompter pode ajudar a eliminar os 'ééé' e 'hmmm' dos seus vídeos.";
+    let canonicalUrl = "https://promptninja.solutionkit.com.br/oratoria-video";
+    let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+    let schema: object = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": title,
+        "description": description,
+        "url": canonicalUrl,
+        "image": ogImage,
+        "author": {
+            "@type": "Organization",
+            "name": "PromptNinja",
+            "url": "https://promptninja.solutionkit.com.br"
+        }
+    };
     let ctaText = "Praticar com Teleprompter Grátis";
     let ctaSubText = "Comece a gravar vídeos profissionais hoje mesmo.";
 
@@ -22,12 +37,42 @@ export const OratoriaVideo: React.FC<Props> = ({ onLaunch }) => {
         Content = OratoriaVideoEN;
         title = "Video Speaking Tips: How to Speak with Confidence";
         description = "Improve your presence in front of cameras. Learn speaking techniques and discover how teleprompters can help eliminate filler words from your videos.";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/en/video-speaking-tips";
+        ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": title,
+            "description": description,
+            "url": canonicalUrl,
+            "image": ogImage,
+            "author": {
+                "@type": "Organization",
+                "name": "PromptNinja",
+                "url": "https://promptninja.solutionkit.com.br"
+            }
+        };
         ctaText = "Practice with Free Teleprompter";
         ctaSubText = "Start recording professional videos today.";
     } else if (lang === 'es') {
         Content = OratoriaVideoES;
         title = "Consejos de Oratoria para Video: Cómo Hablar con Confianza";
         description = "Mejora tu presencia frente a las cámaras. Aprende técnicas de oratoria y descubre cómo el teleprompter puede ayudar a eliminar las muletillas de tus videos.";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/es/consejos-oratoria-video";
+        ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": title,
+            "description": description,
+            "url": canonicalUrl,
+            "image": ogImage,
+            "author": {
+                "@type": "Organization",
+                "name": "PromptNinja",
+                "url": "https://promptninja.solutionkit.com.br"
+            }
+        };
         ctaText = "Practicar con Teleprompter Gratis";
         ctaSubText = "Empieza a grabar videos profesionales hoy mismo.";
     }
@@ -36,6 +81,9 @@ export const OratoriaVideo: React.FC<Props> = ({ onLaunch }) => {
         <SeoPageLayout
             title={title}
             description={description}
+            canonicalUrl={canonicalUrl}
+            ogImage={ogImage}
+            schema={schema}
             onLaunch={onLaunch}
         >
             <Content />

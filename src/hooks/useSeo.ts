@@ -13,7 +13,7 @@ export const useSeo = ({
  title,
  description,
  canonicalUrl,
- ogImage = "https://promptninja.site/og-image.png", // Default placeholder, user should replace
+ ogImage = "https://promptninja.solutionkit.com.br/og-image.webp",
  ogType = "website",
  schema,
 }: SeoProps) => {

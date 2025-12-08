@@ -15,17 +15,62 @@ export const ComoDecorarTexto: React.FC<Props> = ({ onLaunch }) => {
     let Content = ComoDecorarTextoPT;
     let title = "Como Decorar Texto Rápido: 5 Técnicas Infalíveis";
     let description = "Pare de sofrer tentando decorar roteiros longos. Conheça técnicas de memorização e a solução definitiva para nunca mais esquecer uma fala.";
+    let canonicalUrl = "https://promptninja.solutionkit.com.br/como-decorar-texto";
+    let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+    let schema: object = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": title,
+        "description": description,
+        "url": canonicalUrl,
+        "image": ogImage,
+        "author": {
+            "@type": "Organization",
+            "name": "PromptNinja",
+            "url": "https://promptninja.solutionkit.com.br"
+        }
+    };
     let ctaText = "Parar de Decorar e Começar a Gravar";
 
     if (lang === 'en') {
         Content = ComoDecorarTextoEN;
         title = "How to Memorize Lines Fast: 5 Fail-proof Techniques";
         description = "Stop struggling to memorize long scripts. Discover memory techniques and the definitive solution to never forget a line again.";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/en/how-to-memorize-lines-fast";
+        ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": title,
+            "description": description,
+            "url": canonicalUrl,
+            "image": ogImage,
+            "author": {
+                "@type": "Organization",
+                "name": "PromptNinja",
+                "url": "https://promptninja.solutionkit.com.br"
+            }
+        };
         ctaText = "Stop Memorizing and Start Recording";
     } else if (lang === 'es') {
         Content = ComoDecorarTextoES;
         title = "Cómo Memorizar Guiones Rápido: 5 Técnicas Infalibles";
         description = "Deja de sufrir intentando memorizar guiones largos. Conoce técnicas de memorización y la solución definitiva para no olvidar nunca una línea.";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/es/como-memorizar-guiones-rapido";
+        ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": title,
+            "description": description,
+            "url": canonicalUrl,
+            "image": ogImage,
+            "author": {
+                "@type": "Organization",
+                "name": "PromptNinja",
+                "url": "https://promptninja.solutionkit.com.br"
+            }
+        };
         ctaText = "Deja de Memorizar y Empieza a Grabar";
     }
 
@@ -33,6 +78,9 @@ export const ComoDecorarTexto: React.FC<Props> = ({ onLaunch }) => {
         <SeoPageLayout
             title={title}
             description={description}
+            canonicalUrl={canonicalUrl}
+            ogImage={ogImage}
+            schema={schema}
             onLaunch={onLaunch}
         >
             <Content />

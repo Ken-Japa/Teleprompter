@@ -9,7 +9,7 @@ export const LogoText = ({ main, sub, className = "" }: { main?: string; sub?: s
         <div className="relative bg-gradient-to-br from-brand-900/80 to-slate-950 p-2 rounded-xl border border-white/10 shadow-lg shadow-brand-500/10 transition-all duration-300 group-hover:border-brand-500/30 group-hover:shadow-brand-500/20 group-hover:scale-105">
             <div className="absolute inset-0 bg-brand-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <img
-                src="/assets/LogoPrompt.png"
+                src="/assets/LogoPrompt.webp"
                 alt="Logo PromptNinja"
                 className="w-8 h-auto max-h-6 object-contain relative z-10 transition-all duration-300 drop-shadow-md"
             />

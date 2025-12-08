@@ -21,6 +21,10 @@ export const es = {
   cancel: "Cancelar",
  },
  landing: {
+  meta: {
+   title: "PromptNinja | Teleprompter Profesional P2P | Control Remoto vía Móvil",
+   description: "El teleprompter web más rápido y privado. Control remoto vía móvil, funciona offline, sin apps ni cuentas. Perfecto para creadores de contenido y oradores.",
+  },
   hero: {
    headline: "Tu celular es el control. Tu casa es el estudio.",
    subheadline:

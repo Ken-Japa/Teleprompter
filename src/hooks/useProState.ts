@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { PROMPTER_DEFAULTS } from "../config/constants";
+import { PROMPTER_DEFAULTS, APP_CONSTANTS } from "../config/constants";
 
 export const useProState = (elapsedTime: number) => {
  const [isPro, setIsPro] = useState<boolean>(
@@ -25,7 +25,7 @@ export const useProState = (elapsedTime: number) => {
  useEffect(() => {
   if (isPro) return;
 
-  if (!showPaywall && elapsedTime >= 1200) {
+  if (!showPaywall && elapsedTime >= APP_CONSTANTS.REDEEM_MODAL_ELAPSED_TIME) {
    setShowPaywall(true);
   }
  }, [isPro, showPaywall, elapsedTime]);

@@ -17,6 +17,10 @@ export const en = {
   backToHome: "Back to Home",
  },
  landing: {
+  meta: {
+   title: "PromptNinja | Professional P2P Teleprompter | Remote Control via Mobile",
+   description: "The fastest and most private web teleprompter. Remote control via mobile, works offline, no apps or accounts. Perfect for content creators and speakers.",
+  },
   hero: {
    headline: "Your phone is the remote. Your home is the studio.",
    subheadline:

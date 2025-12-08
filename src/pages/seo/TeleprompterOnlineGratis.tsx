@@ -15,17 +15,62 @@ export const TeleprompterOnlineGratis: React.FC<Props> = ({ onLaunch }) => {
     let Content = TeleprompterOnlineGratisPT;
     let title = "Teleprompter Online Grátis - Funciona no Navegador";
     let description = "Procurando um teleprompter online grátis? O PromptNinja funciona direto no seu navegador, sem baixar nada. Controle pelo celular via Wi-Fi.";
+    let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-online-gratis";
+    let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+    let schema: object = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": title,
+        "description": description,
+        "url": canonicalUrl,
+        "image": ogImage,
+        "author": {
+            "@type": "Organization",
+            "name": "PromptNinja",
+            "url": "https://promptninja.solutionkit.com.br"
+        }
+    };
     let ctaText = "Abrir Teleprompter Grátis";
 
     if (lang === 'en') {
         Content = TeleprompterOnlineGratisEN;
         title = "Free Online Teleprompter - Works in Browser";
         description = "Looking for a free online teleprompter? PromptNinja works directly in your browser, no download needed. Control via mobile over Wi-Fi.";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/en/free-online-teleprompter";
+        ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": title,
+            "description": description,
+            "url": canonicalUrl,
+            "image": ogImage,
+            "author": {
+                "@type": "Organization",
+                "name": "PromptNinja",
+                "url": "https://promptninja.solutionkit.com.br"
+            }
+        };
         ctaText = "Open Free Teleprompter";
     } else if (lang === 'es') {
         Content = TeleprompterOnlineGratisES;
         title = "Teleprompter Online Gratis - Funciona en el Navegador";
         description = "¿Buscas un teleprompter online gratis? PromptNinja funciona directo en tu navegador, sin descargar nada. Controla desde el móvil vía Wi-Fi.";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-online-gratis";
+        ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": title,
+            "description": description,
+            "url": canonicalUrl,
+            "image": ogImage,
+            "author": {
+                "@type": "Organization",
+                "name": "PromptNinja",
+                "url": "https://promptninja.solutionkit.com.br"
+            }
+        };
         ctaText = "Abrir Teleprompter Gratis";
     }
 
@@ -33,6 +78,9 @@ export const TeleprompterOnlineGratis: React.FC<Props> = ({ onLaunch }) => {
         <SeoPageLayout
             title={title}
             description={description}
+            canonicalUrl={canonicalUrl}
+            ogImage={ogImage}
+            schema={schema}
             onLaunch={onLaunch}
         >
             <Content />

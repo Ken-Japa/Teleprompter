@@ -16,23 +16,69 @@ export const WebRtcLatencyPage: React.FC<Props> = ({ onLaunch }) => {
     let title = "Como o WebRTC Elimina a Latência em Teleprompters";
     let description = "Entenda a tecnologia por trás do PromptNinja. Descubra como usamos WebRTC e P2P para garantir rolagem suave e instantânea, superando o Bluetooth.";
     let ctaText = "Testar Tecnologia WebRTC Agora";
+    let canonicalUrl = "https://promptninja.solutionkit.com.br/tecnologia-webrtc-baixa-latencia";
+    let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+    let schema: object = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": title,
+        "description": description,
+        "url": canonicalUrl,
+        "image": ogImage,
+        "author": {
+            "@type": "Organization",
+            "name": "PromptNinja",
+            "url": "https://promptninja.solutionkit.com.br"
+        }
+    };
 
     if (lang === 'en') {
         Content = WebRtcLatencyContentEN;
         title = "How WebRTC Eliminates Latency in Teleprompters";
         description = "Understand the technology behind PromptNinja. Discover how we use WebRTC and P2P to ensure smooth, instant scrolling, beating Bluetooth.";
         ctaText = "Test WebRTC Technology Now";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/en/webrtc-low-latency-technology";
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": title,
+            "description": description,
+            "url": canonicalUrl,
+            "image": ogImage,
+            "author": {
+                "@type": "Organization",
+                "name": "PromptNinja",
+                "url": "https://promptninja.solutionkit.com.br"
+            }
+        };
     } else if (lang === 'es') {
         Content = WebRtcLatencyContentES;
         title = "Cómo WebRTC Elimina la Latencia en Teleprompters";
         description = "Entiende la tecnología detrás de PromptNinja. Descubre cómo usamos WebRTC y P2P para garantizar un desplazamiento suave e instantáneo, superando al Bluetooth.";
         ctaText = "Probar Tecnología WebRTC Ahora";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/es/tecnologia-webrtc-baja-latencia";
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": title,
+            "description": description,
+            "url": canonicalUrl,
+            "image": ogImage,
+            "author": {
+                "@type": "Organization",
+                "name": "PromptNinja",
+                "url": "https://promptninja.solutionkit.com.br"
+            }
+        };
     }
 
     return (
         <SeoPageLayout
             title={title}
             description={description}
+            canonicalUrl={canonicalUrl}
+            ogImage={ogImage}
+            schema={schema}
             onLaunch={onLaunch}
         >
             <Content />

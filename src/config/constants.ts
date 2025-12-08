@@ -7,6 +7,12 @@ import { Theme } from "../types";
  * Grouped by functionality for easier maintenance.
  */
 
+// Application-wide Constants
+export const APP_CONSTANTS = {
+ REDEEM_MODAL_ELAPSED_TIME: 1200,
+ DEVICE_AUTHENTICATION_LIMIT: 3,
+};
+
 // Prompter Default Settings
 export const PROMPTER_DEFAULTS = {
  FONT_SIZE: 64,

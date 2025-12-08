@@ -1,9 +1,14 @@
 interface Window {
-  Peer: any;
-  QRCode: any;
-  NoSleep: any;
-  SpeechRecognition: any;
-  webkitSpeechRecognition: any;
-  requestIdleCallback: ((callback: IdleRequestCallback, options?: IdleRequestOptions) => number) & typeof requestIdleCallback;
-  cancelIdleCallback: ((handle: number) => void) & typeof cancelIdleCallback;
+ togglePro: () => void;
+ showPaywallModal: () => void;
+ Peer: any;
+ QRCode: any;
+ NoSleep: any;
+ SpeechRecognition: any;
+ webkitSpeechRecognition: any;
+ requestIdleCallback: (
+  callback: (deadline: { readonly didTimeout: boolean; timeRemaining: () => number }) => void,
+  opts?: { timeout?: number }
+ ) => number;
+ cancelIdleCallback: (handle: number) => void;
 }

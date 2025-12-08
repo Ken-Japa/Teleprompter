@@ -9,7 +9,7 @@ interface TranslationContextType {
 
 const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
 
-const getInitialLanguage = (): Language => {
+export const getInitialLanguage = (): Language => {
     // 1. Tenta obter do parâmetro 'lang' da URL
     if (typeof window !== "undefined") {
         const urlParams = new URLSearchParams(window.location.search);

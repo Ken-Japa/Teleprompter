@@ -16,47 +16,70 @@ export const TeleprompterPCWindows: React.FC<Props> = ({ onLaunch }) => {
     let title = "Teleprompter Grátis para PC e Windows (Sem Download)";
     let description = "Use seu PC Windows como teleprompter profissional. Sem baixar programas, sem vírus e com controle remoto via celular. Funciona no Chrome e Edge.";
     let ctaText = "Abrir Teleprompter no PC";
+    let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-pc-windows";
+    let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+    let schema: object = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": title,
+        "description": description,
+        "url": canonicalUrl,
+        "image": ogImage,
+        "author": {
+            "@type": "Organization",
+            "name": "PromptNinja",
+            "url": "https://promptninja.solutionkit.com.br"
+        }
+    };
 
     if (lang === 'en') {
         Content = TeleprompterPCWindowsEN;
         title = "Free Teleprompter for PC and Windows (No Download)";
         description = "Use your Windows PC as a professional teleprompter. No downloads, no viruses, and with mobile remote control. Works on Chrome and Edge.";
         ctaText = "Open Teleprompter on PC";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-pc-windows";
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": title,
+            "description": description,
+            "url": canonicalUrl,
+            "image": ogImage,
+            "author": {
+                "@type": "Organization",
+                "name": "PromptNinja",
+                "url": "https://promptninja.solutionkit.com.br"
+            }
+        };
     } else if (lang === 'es') {
         Content = TeleprompterPCWindowsES;
         title = "Teleprompter Gratis para PC y Windows (Sin Descarga)";
         description = "Usa tu PC Windows como teleprompter profesional. Sin descargar programas, sin virus y con control remoto vía móvil. Funciona en Chrome y Edge.";
         ctaText = "Abrir Teleprompter en PC";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-pc-windows";
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": title,
+            "description": description,
+            "url": canonicalUrl,
+            "image": ogImage,
+            "author": {
+                "@type": "Organization",
+                "name": "PromptNinja",
+                "url": "https://promptninja.solutionkit.com.br"
+            }
+        };
     }
-
-    // Schema.org JSON-LD
-    const schema = {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "PromptNinja",
-        "headline": title,
-        "description": description,
-        "operatingSystem": "Windows, macOS, Linux",
-        "applicationCategory": "BusinessApplication",
-        "browserRequirements": "Requires JavaScript. Requires HTML5.",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "image": "https://promptninja.site/images/teleprompter-pc-windows.jpg",
-        "author": {
-            "@type": "Organization",
-            "name": "PromptNinja"
-        }
-    };
 
     return (
         <SeoPageLayout
             title={title}
             description={description}
-            onLaunch={onLaunch}
+            canonicalUrl={canonicalUrl}
+            ogImage={ogImage}
             schema={schema}
+            onLaunch={onLaunch}
             ogType="website"
         >
             <Content />

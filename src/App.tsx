@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Suspense } from "react";
-import { TranslationProvider } from "./hooks/useTranslation";
+import { TranslationProvider, useTranslation, getInitialLanguage } from "./hooks/useTranslation";
 
 // Lazy load pages for performance optimization
 const Host = React.lazy(() => import("./pages/Host").then(module => ({ default: module.Host })));
@@ -25,6 +25,44 @@ const App: React.FC = () => {
     const [view, setView] = useState<ViewState>("LANDING");
     const [remoteId, setRemoteId] = useState<string>("");
     const [currentLang, setCurrentLang] = useState<Language | undefined>(undefined);
+
+    const { t, lang } = useTranslation();
+
+    useEffect(() => {
+        // Update title
+        document.title = t('landing.meta.title');
+
+        // Update meta description
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription) {
+            metaDescription.setAttribute('content', t('landing.meta.description'));
+        }
+
+        // Update Open Graph description
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+        if (ogDescription) {
+            ogDescription.setAttribute('content', t('landing.meta.description'));
+        }
+
+        // Update Twitter description
+        const twitterDescription = document.querySelector('meta[property="twitter:description"]');
+        if (twitterDescription) {
+            twitterDescription.setAttribute('content', t('landing.meta.description'));
+        }
+
+        // Update Open Graph title
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) {
+            ogTitle.setAttribute('content', t('landing.meta.title'));
+        }
+
+        // Update Twitter title
+        const twitterTitle = document.querySelector('meta[property="twitter:title"]');
+        if (twitterTitle) {
+            twitterTitle.setAttribute('content', t('landing.meta.title'));
+        }
+
+    }, [view, lang, t]);
 
     useEffect(() => {
         const handleRouting = () => {
@@ -70,6 +108,7 @@ const App: React.FC = () => {
 
             // 3. Default
             setView("LANDING");
+            setCurrentLang(getInitialLanguage());
         };
 
         // Initial check

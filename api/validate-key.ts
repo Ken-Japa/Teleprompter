@@ -4,13 +4,14 @@ import { db } from "./_firebase.js";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
+import { APP_CONSTANTS } from "../src/config/constants";
 
 // Initialize Ratelimit if env vars are present
 const redis =
  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN ? Redis.fromEnv() : null;
 
 // Define o limite de ativações
-const DEVICE_LIMIT = 3;
+const DEVICE_LIMIT = APP_CONSTANTS.DEVICE_AUTHENTICATION_LIMIT;
 
 const ratelimit = redis
  ? new Ratelimit({

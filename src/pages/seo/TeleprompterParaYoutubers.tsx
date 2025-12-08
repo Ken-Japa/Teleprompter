@@ -16,23 +16,69 @@ export const TeleprompterParaYoutubers: React.FC<Props> = ({ onLaunch }) => {
     let title = "Melhor Teleprompter para YouTubers e Criadores de Curso";
     let description = "Grave vídeos longos sem errar o texto. Descubra como o PromptNinja ajuda YouTubers e professores online a gravar aulas perfeitas.";
     let ctaText = "Começar a Gravar Agora";
+    let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-para-youtubers-e-criadores";
+    let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+    let schema: object = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": title,
+        "description": description,
+        "url": canonicalUrl,
+        "image": ogImage,
+        "author": {
+            "@type": "Organization",
+            "name": "PromptNinja",
+            "url": "https://promptninja.solutionkit.com.br"
+        }
+    };
 
     if (lang === 'en') {
         Content = TeleprompterParaYoutubersEN;
         title = "Best Teleprompter for YouTubers and Course Creators";
         description = "Record long videos without missing the text. Discover how PromptNinja helps YouTubers and online teachers record perfect lessons.";
         ctaText = "Start Recording Now";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-for-youtubers-creators";
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": title,
+            "description": description,
+            "url": canonicalUrl,
+            "image": ogImage,
+            "author": {
+                "@type": "Organization",
+                "name": "PromptNinja",
+                "url": "https://promptninja.solutionkit.com.br"
+            }
+        };
     } else if (lang === 'es') {
         Content = TeleprompterParaYoutubersES;
         title = "Mejor Teleprompter para YouTubers y Creadores de Cursos";
         description = "Graba videos largos sin equivocarte en el texto. Descubre cómo PromptNinja ayuda a YouTubers y profesores online a grabar clases perfectas.";
         ctaText = "Empezar a Grabar Ahora";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-para-youtubers-creadores";
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": title,
+            "description": description,
+            "url": canonicalUrl,
+            "image": ogImage,
+            "author": {
+                "@type": "Organization",
+                "name": "PromptNinja",
+                "url": "https://promptninja.solutionkit.com.br"
+            }
+        };
     }
 
     return (
         <SeoPageLayout
             title={title}
             description={description}
+            canonicalUrl={canonicalUrl}
+            ogImage={ogImage}
+            schema={schema}
             onLaunch={onLaunch}
         >
             <Content />
