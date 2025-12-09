@@ -16,13 +16,38 @@ declare global {
  * @param eventName O nome do evento a ser rastreado.
  * @param props Propriedades opcionais para o evento.
  */
-function trackEvent(eventName: string, props?: Record<string, string | number | boolean>): void {
+export function trackEvent(eventName: string, props?: Record<string, string | number | boolean>): void {
  if (typeof window.gtag === "function") {
   // GA4 event structure
   window.gtag("event", eventName, props);
  } else {
   console.warn(`Google Analytics not loaded. Event '${eventName}' not tracked.`);
  }
+}
+
+/**
+ * Rastreia alterações nas configurações do teleprompter.
+ * @param settingName O nome da configuração alterada (ex: 'speed', 'fontSize', 'mirrorMode').
+ * @param value O novo valor da configuração.
+ */
+export function trackSettingChange(settingName: string, value: string | number | boolean): void {
+ trackEvent("setting_changed", { setting_name: settingName, value });
+}
+
+/**
+ * Rastreia o início da rolagem do teleprompter.
+ * @param speed A velocidade inicial da rolagem.
+ */
+export function trackTeleprompterPlay(speed: number): void {
+ trackEvent("teleprompter_play", { speed_start: speed });
+}
+
+/**
+ * Rastreia a pausa da rolagem do teleprompter.
+ * @param durationSinceStart O tempo em segundos desde o início da rolagem.
+ */
+export function trackTeleprompterPause(durationSinceStart: number): void {
+ trackEvent("teleprompter_pause", { duration_since_start: durationSinceStart });
 }
 
 /**

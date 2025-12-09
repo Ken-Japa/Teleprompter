@@ -1,5 +1,6 @@
 import React, { useEffect, useState, Suspense } from "react";
 import { TranslationProvider, useTranslation, getInitialLanguage } from "./hooks/useTranslation";
+import { trackEvent } from "./utils/analytics";
 
 // Lazy load pages for performance optimization
 const Host = React.lazy(() => import("./pages/Host").then(module => ({ default: module.Host })));
@@ -63,6 +64,10 @@ const App: React.FC = () => {
         }
 
     }, [view, lang, t]);
+
+    useEffect(() => {
+        trackEvent("app_launched");
+    }, []);
 
     useEffect(() => {
         const handleRouting = () => {

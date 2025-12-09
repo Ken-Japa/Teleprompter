@@ -1,8 +1,9 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import { useTranslation } from "../../../hooks/useTranslation";
 import * as S from "../../ui/Styled";
 import { FlipIcon, MarginIcon, CapsIcon, PiPIcon } from "../../ui/Icons";
 import type { PrompterSettings, PrompterActions } from "../../../hooks/usePrompterSettings";
+import { trackSettingChange } from "../../../utils/analytics";
 
 interface DisplayControlProps {
   settings: PrompterSettings;
@@ -14,15 +15,33 @@ interface DisplayControlProps {
 
 export const DisplayControl = memo(({ settings, actions, onOpenMarginSlider, togglePiP, isPiPActive }: DisplayControlProps) => {
   const { t } = useTranslation();
-  const { isMirrored, isUpperCase } = settings;
-  const { setIsMirrored, setIsUpperCase } = actions;
+  const { isMirrored, isUpperCase, isFlipVertical } = settings;
+  const { setIsMirrored, setIsUpperCase, setIsFlipVertical } = actions;
+
+  const handleMirrorToggle = useCallback(() => {
+    const newValue = !isMirrored;
+    trackSettingChange("mirror_mode", newValue);
+    setIsMirrored(newValue);
+  }, [isMirrored, setIsMirrored]);
+
+  const handleVerticalFlipToggle = useCallback(() => {
+    const newValue = !isFlipVertical;
+    trackSettingChange("vertical_flip", newValue);
+    setIsFlipVertical(newValue);
+  }, [isFlipVertical, setIsFlipVertical]);
+
+  const handleUpperCaseToggle = useCallback(() => {
+    const newValue = !isUpperCase;
+    trackSettingChange("upper_case", newValue);
+    setIsUpperCase(newValue);
+  }, [isUpperCase, setIsUpperCase]);
 
   return (
     <>
       <S.HudGroup label={t("host.mirror")}>
         <div className="flex items-center bg-slate-950/50 rounded-full p-2 border border-slate-800/50">
           <S.IconButton
-            onClick={() => setIsMirrored(!isMirrored)}
+            onClick={handleMirrorToggle}
             active={isMirrored}
             title={t("host.mirror")}
             aria-label={t("host.mirror")}
@@ -31,7 +50,7 @@ export const DisplayControl = memo(({ settings, actions, onOpenMarginSlider, tog
             <FlipIcon className="w-4 h-4" />
           </S.IconButton>
           <S.IconButton
-            onClick={() => actions.setIsFlipVertical(!settings.isFlipVertical)}
+            onClick={handleVerticalFlipToggle}
             active={settings.isFlipVertical}
             title={t("host.mirrorV")}
             aria-label={t("host.mirrorV")}
@@ -54,7 +73,7 @@ export const DisplayControl = memo(({ settings, actions, onOpenMarginSlider, tog
             <MarginIcon className="w-5 h-5" />
           </S.IconButton>
           <S.IconButton
-            onClick={() => setIsUpperCase(!isUpperCase)}
+            onClick={handleUpperCaseToggle}
             active={isUpperCase}
             title={t("host.controls.caps")}
             aria-label={t("host.controls.caps")}

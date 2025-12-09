@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { PROMPTER_DEFAULTS, APP_CONSTANTS } from "../config/constants";
+import { trackEvent } from "../utils/analytics";
 
 export const useProState = (elapsedTime: number) => {
  const [isPro, setIsPro] = useState<boolean>(
@@ -17,6 +18,7 @@ export const useProState = (elapsedTime: number) => {
   };
   window.showPaywallModal = () => {
    setShowPaywall(true);
+   trackEvent("paywall_view", { trigger: "manual" });
   };
  }, [isPro, setShowPaywall]);
 
@@ -27,6 +29,7 @@ export const useProState = (elapsedTime: number) => {
 
   if (!showPaywall && elapsedTime >= APP_CONSTANTS.REDEEM_MODAL_ELAPSED_TIME) {
    setShowPaywall(true);
+   trackEvent("paywall_view", { trigger: "timer" });
   }
  }, [isPro, showPaywall, elapsedTime]);
 
@@ -45,6 +48,7 @@ export const useProState = (elapsedTime: number) => {
     setIsPro(true);
     setShowPaywall(false);
     localStorage.setItem(PROMPTER_DEFAULTS.STORAGE_KEYS.PRO_STATUS, "true");
+    trackEvent("pro_key_redeemed");
     return { success: true };
    } else {
     return { success: false, message: data.message || "Chave inválida ou já utilizada." };

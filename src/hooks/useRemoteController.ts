@@ -4,6 +4,7 @@ import { usePeerRemote } from "./usePeerRemote";
 import { useWakeLock } from "./useWakeLock";
 import { useVoiceControl } from "./useVoiceControl";
 import { useMediaRecorder } from "./useMediaRecorder";
+import { trackSettingChange } from "../utils/analytics";
 
 const NETWORK_TICK_RATE = 33; // ~30fps
 
@@ -214,6 +215,10 @@ export const useRemoteController = (hostId: string) => {
  const handleSettingsChange = useCallback(
   (newSettings: Partial<PrompterSettings>) => {
    if (settings) {
+    // Track each setting change
+    Object.entries(newSettings).forEach(([key, value]) => {
+     trackSettingChange(key, value as string | number | boolean);
+    });
     setSettings({ ...settings, ...newSettings });
    }
    sendMessage(MessageType.SETTINGS_UPDATE, newSettings);

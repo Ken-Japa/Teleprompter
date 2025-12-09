@@ -1,8 +1,9 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import { useTranslation } from "../../../hooks/useTranslation";
 import * as S from "../../ui/Styled";
 import { PlayIcon, PauseIcon, StopIcon } from "../../ui/Icons";
 import { UI_LIMITS } from "../../../config/constants";
+import { trackTeleprompterPlay, trackTeleprompterPause, trackSettingChange } from "../../../utils/analytics";
 
 interface SpeedControlProps {
     isPlaying: boolean;
@@ -13,6 +14,23 @@ interface SpeedControlProps {
 
 export const SpeedControl = memo(({ isPlaying, speed, onStateChange, onReset }: SpeedControlProps) => {
     const { t } = useTranslation();
+
+    const handleStateChange = useCallback((newIsPlaying: boolean, newSpeed: number) => {
+        if (newIsPlaying !== isPlaying) {
+            if (newIsPlaying) {
+                trackTeleprompterPlay(newSpeed);
+            } else {
+                trackTeleprompterPause(0); // TODO: Passar a duração real
+            }
+        }
+
+        if (newSpeed !== speed) {
+            trackSettingChange("speed", newSpeed);
+        }
+
+        onStateChange(newIsPlaying, newSpeed);
+    }, [isPlaying, speed, onStateChange]);
+
     return (
         <S.HudGroup label={t("host.controls.speed")}>
             <div className="flex items-center gap-2">
@@ -21,7 +39,7 @@ export const SpeedControl = memo(({ isPlaying, speed, onStateChange, onReset }: 
                 </S.IconButton>
                 
                 <button
-                    onClick={() => onStateChange(!isPlaying, speed)}
+                    onClick={() => handleStateChange(!isPlaying, speed)}
                     className={`w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 shadow-lg hover:scale-105 active:scale-95 border ${isPlaying ? "bg-amber-500/90 hover:bg-amber-500 text-white border-amber-400/50 shadow-amber-500/30" : "bg-brand-600 hover:bg-brand-500 text-white border-brand-400/50 shadow-brand-500/30"}`}
                     title={isPlaying ? t("host.controls.pause") : t("host.controls.play")}
                     aria-label={isPlaying ? t("host.controls.pause") : t("host.controls.play")}
@@ -35,7 +53,7 @@ export const SpeedControl = memo(({ isPlaying, speed, onStateChange, onReset }: 
                         min={UI_LIMITS.SPEED.MIN}
                         max={UI_LIMITS.SPEED.MAX}
                         step={UI_LIMITS.SPEED.STEP}
-                        onChange={(s) => onStateChange(isPlaying, s)}
+                        onChange={(s) => handleStateChange(isPlaying, s)}
                         width="w-20 sm:w-24"
                         ariaLabel={t("host.controls.speed")}
                         title={t("host.controls.speed")}

@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useState, useCallback } from "react";
 import * as S from "../ui/Styled";
 import { ConnectionStatus, PrompterSettings } from "../../types";
 import { PrompterActions } from "../../hooks/usePrompterSettings";
@@ -11,6 +11,7 @@ import { FontSizeModal } from "../ui/FontSizeModal";
 import { MarginModal } from "../ui/MarginModal";
 import { QRCodeModal } from "./QRCodeModal";
 import { SyncButton } from "../ui/SyncButton";
+import { trackSettingChange } from "../../utils/analytics";
 
 interface PrompterHUDProps {
     showHud: boolean;
@@ -63,6 +64,12 @@ export const PrompterHUD = memo(
         const [showFontSizeModal, setShowFontSizeModal] = useState(false);
         const [showMarginModal, setShowMarginModal] = useState(false);
         const [showQRModal, setShowQRModal] = useState(false);
+
+        const handleSetMargin = useCallback((newMargin: number | ((v: number) => number)) => {
+            const finalMargin = typeof newMargin === 'function' ? newMargin(settings.margin) : newMargin;
+            trackSettingChange("margin", finalMargin);
+            actions.setMargin(newMargin);
+        }, [actions, settings.margin]);
 
         return (
             <S.HudContainer visible={showHud}>
@@ -158,7 +165,7 @@ export const PrompterHUD = memo(
                     isOpen={showMarginModal}
                     onClose={() => setShowMarginModal(false)}
                     margin={settings.margin}
-                    setMargin={actions.setMargin}
+                    setMargin={handleSetMargin}
                 />
                 <QRCodeModal
                     isOpen={showQRModal}

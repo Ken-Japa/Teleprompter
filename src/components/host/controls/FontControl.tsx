@@ -1,9 +1,10 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import { useTranslation } from "../../../hooks/useTranslation";
 import * as S from "../../ui/Styled";
 import { TextSizeIcon } from "../../ui/Icons";
 import { PrompterActions } from "../../../hooks/usePrompterSettings";
 import { UI_LIMITS } from "../../../config/constants";
+import { trackSettingChange } from "../../../utils/analytics";
 
 interface FontControlProps {
  fontSize: number;
@@ -13,12 +14,19 @@ interface FontControlProps {
 
 export const FontControl = memo(({ fontSize, setFontSize, onOpenFontSizeSlider }: FontControlProps) => {
  const { t } = useTranslation();
+
+ const handleSetFontSize = useCallback((newSize: number | ((prevSize: number) => number)) => {
+  const finalSize = typeof newSize === 'function' ? newSize(fontSize) : newSize;
+  trackSettingChange("font_size", finalSize);
+  setFontSize(newSize);
+ }, [fontSize, setFontSize]);
+
  return (
   <S.HudGroup label={t("host.controls.size")}>
    {/* Controles para telas maiores */}
    <div className="hidden sm:flex items-center gap-2">
     <S.IconButton 
-        onClick={() => setFontSize((f) => Math.max(UI_LIMITS.FONT_SIZE.MIN, f - UI_LIMITS.FONT_SIZE.STEP_BUTTON))} 
+        onClick={() => handleSetFontSize((f) => Math.max(UI_LIMITS.FONT_SIZE.MIN, f - UI_LIMITS.FONT_SIZE.STEP_BUTTON))} 
         aria-label="Decrease Font Size" 
         className="w-9 h-9 rounded-full hover:bg-white/10 border-transparent"
     >
@@ -30,7 +38,7 @@ export const FontControl = memo(({ fontSize, setFontSize, onOpenFontSizeSlider }
         value={fontSize}
         min={UI_LIMITS.FONT_SIZE.MIN}
         max={UI_LIMITS.FONT_SIZE.MAX}
-        onChange={setFontSize}
+        onChange={handleSetFontSize}
         width="w-20 sm:w-24"
         ariaLabel="Font Size"
         />
@@ -38,7 +46,7 @@ export const FontControl = memo(({ fontSize, setFontSize, onOpenFontSizeSlider }
     </div>
 
     <S.IconButton 
-        onClick={() => setFontSize((f) => Math.min(UI_LIMITS.FONT_SIZE.MAX, f + UI_LIMITS.FONT_SIZE.STEP_BUTTON))} 
+        onClick={() => handleSetFontSize((f) => Math.min(UI_LIMITS.FONT_SIZE.MAX, f + UI_LIMITS.FONT_SIZE.STEP_BUTTON))} 
         aria-label="Increase Font Size" 
         className="w-9 h-9 rounded-full hover:bg-white/10 border-transparent"
     >

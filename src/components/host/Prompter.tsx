@@ -21,7 +21,7 @@ import { useElementMetrics } from "../../hooks/useElementMetrics";
 import { ScriptBoard } from "./ScriptBoard";
 import { PrompterHUD } from "./PrompterHUD";
 import { QuickEditModal } from "./QuickEditModal";
-import { trackConversion } from "../../utils/analytics";
+import { trackEvent } from "../../utils/analytics";
 
 import { useNavigationMap } from "../../hooks/useNavigationMap";
 import { useMediaRecorder } from "../../hooks/useMediaRecorder";
@@ -184,7 +184,7 @@ export const Prompter = memo(
       // Voice control toggle
       const toggleVoice = useCallback(() => {
         if (!isPro) {
-          trackConversion('Attempted Pro Feature');
+          trackEvent("feature_error", { feature_name: "voice_control" });
           setShowPaywall(true);
           return;
         }
