@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { vi, describe, it, expect, beforeEach, afterEach } from "vitest";
 import App from "./App";
+import { TranslationProvider } from "./hooks/useTranslation";
 
 // Basic Mocks for Global Objects used in App
 const mockPeer = {
@@ -35,7 +36,11 @@ afterEach(() => {
 
 describe("App Routing Integration", () => {
     it("Should render Landing Page by default", async () => {
-        render(<App />);
+        render(
+            <TranslationProvider>
+                <App />
+            </TranslationProvider>
+        );
         // App defaults to EN in JSDOM (navigator.language is en-US)
         await waitFor(() => {
             // "PROMPT" appears in title and potentially elsewhere (e.g. promptninja.app)
@@ -52,7 +57,11 @@ describe("App Routing Integration", () => {
 
     it("Should route to Host (Editor) when hash is #app", async () => {
         window.location.hash = "#app";
-        render(<App />);
+        render(
+            <TranslationProvider>
+                <App />
+            </TranslationProvider>
+        );
         // App defaults to EN, so we look for "Presentation Mode"
         await waitFor(() => {
             expect(screen.getAllByLabelText(/Presentation Mode/i)[0]).toBeInTheDocument();
@@ -61,7 +70,11 @@ describe("App Routing Integration", () => {
 
     it("Should route to Remote when hash contains #remote", async () => {
         window.location.hash = "#remote?id=test-123";
-        render(<App />);
+        render(
+            <TranslationProvider>
+                <App />
+            </TranslationProvider>
+        );
         // App defaults to EN, so we look for "Searching Ninja Host..."
         await waitFor(() => {
             expect(screen.getByText(/Searching Ninja Host/i)).toBeInTheDocument();

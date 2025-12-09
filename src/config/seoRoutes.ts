@@ -53,6 +53,21 @@ export const SeoPages = {
  ),
 };
 
+export const seoKeyMap: Record<SeoRouteKey, keyof typeof SeoPages> = {
+    SEO_GRATIS: "TeleprompterOnlineGratis",
+    SEO_TUTORIAL: "ComoUsarTeleprompter",
+    SEO_MELHOR_APP: "MelhorAppTeleprompter",
+    SEO_ALTERNATIVAS: "AlternativasTeleprompterConcorrente",
+    SEO_YOUTUBERS: "TeleprompterParaYoutubers",
+    SEO_TRAVANDO: "TeleprompterTravandoSolucao",
+    SEO_DIY: "TeleprompterCaseiroDIY",
+    SEO_ORATORIA: "OratoriaVideo",
+    SEO_DECORAR: "ComoDecorarTexto",
+    SEO_WEBRTC: "WebRtcLatency",
+    SEO_PC_WINDOWS: "TeleprompterPCWindows",
+    SEO_ZOOM: "TeleprompterZoomMeeting",
+};
+
 export type SeoRouteKey =
  | "SEO_GRATIS"
  | "SEO_TUTORIAL"

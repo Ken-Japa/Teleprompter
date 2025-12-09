@@ -173,3 +173,4 @@ Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICE
 window.togglePro()
 PRO-NINJA-2025
 window.showPaywallModal()
+npx tsc --noEmit
