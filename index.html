@@ -67,7 +67,8 @@
   <!-- External Libs -->
   <!-- PeerJS and NoSleep are now bundled -->
 
-  <link rel="stylesheet" href="/src/styles.css" />
+  <link rel="preload" href="/src/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/src/styles.css"></noscript>
   <!-- Google Analytics (Tag Global) - Delayed -->
 <script src="/gtm.js" defer></script>
   <!-- Schema.org -->
@@ -110,6 +111,7 @@
   }
   </script>
   <script async src="https://t.contentsquare.net/uxa/9f676d4da3fcc.js"></script>
+  <noscript>Your browser does not support JavaScript!</noscript>
  </head>
  <body>
   <div id="root"></div>
