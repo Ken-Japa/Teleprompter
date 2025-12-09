@@ -76,7 +76,7 @@ export const OratoriaVideoES = () => (
         </ul>
 
         <div className="text-center mt-12">
-            <a href="https://promptninja.io" target="_blank" rel="noopener noreferrer" className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full text-xl transition duration-300 transform hover:scale-105">
+            <a href="https://promptninja.solutionkit.com.br" target="_blank" rel="noopener noreferrer" className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full text-xl transition duration-300 transform hover:scale-105">
                 Desbloquea tu Confianza. ¡Prueba PromptNinja Gratis!
             </a>
             <p className="text-slate-400 mt-4 text-sm">La herramienta que separa a los aficionados de los profesionales.</p>

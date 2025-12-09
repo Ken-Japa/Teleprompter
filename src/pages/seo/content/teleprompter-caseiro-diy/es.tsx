@@ -72,7 +72,7 @@ export const TeleprompterCaseiroDIYES = () => (
                 Ya has ahorrado en el hardware. Ahora, potencia tu teleprompter casero con un software gratuito y potente.
             </p>
             <a
-                href="https://promptninja.io"
+                href="https://promptninja.solutionkit.com.br"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-red-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-red-700 transition-colors"

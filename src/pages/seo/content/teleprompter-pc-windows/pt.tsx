@@ -62,7 +62,7 @@ export const TeleprompterPCWindowsPT = () => (
         </p>
 
         <div className="my-8 text-center">
-            <a href="https://promptninja.io" target="_blank" rel="noopener noreferrer" className="bg-red-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-red-700 transition-colors duration-300">
+            <a href="https://promptninja.solutionkit.com.br" target="_blank" rel="noopener noreferrer" className="bg-red-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-red-700 transition-colors duration-300">
                 Use o Teleprompter no seu PC Agora (Grátis)
             </a>
         </div>

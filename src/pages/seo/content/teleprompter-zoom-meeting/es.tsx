@@ -102,7 +102,7 @@ export const TeleprompterZoomMeetingES = () => (
         </dl>
 
         <div className="text-center mt-12">
-            <a href="https://promptninja.io" target="_blank" rel="noopener noreferrer" className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full text-xl transition duration-300">
+            <a href="https://promptninja.solutionkit.com.br" target="_blank" rel="noopener noreferrer" className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full text-xl transition duration-300">
                 Eleva Tus Presentaciones Hoy. ¡Prueba PromptNinja Gratis!
             </a>
         </div>

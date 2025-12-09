@@ -55,20 +55,20 @@ export const ComoUsarTeleprompterEN = () => (
         <div className="space-y-4">
             <div className="bg-slate-800 p-4 rounded-lg">
                 <h3 className="font-bold text-lg text-white">1. "Dancing" Eyes on the Screen</h3>
-                <p className="text-slate-300 mt-2"><strong>The Mistake:</strong> Your eyes visibly move from left to right as you read, giving away that you're using a teleprompter. <br/> <strong>The Solution:</strong> Increase the distance between you and the screen. The farther away you are, the less noticeable the eye movement will be. Also, narrow the width of the text box in the teleprompter so the lines are shorter.</p>
+                <p className="text-slate-300 mt-2"><strong>The Mistake:</strong> Your eyes visibly move from left to right as you read, giving away that you're using a teleprompter. <br /> <strong>The Solution:</strong> Increase the distance between you and the screen. The farther away you are, the less noticeable the eye movement will be. Also, narrow the width of the text box in the teleprompter so the lines are shorter.</p>
             </div>
             <div className="bg-slate-800 p-4 rounded-lg">
                 <h3 className="font-bold text-lg text-white">2. Monotonous and Robotic Rhythm</h3>
-                <p className="text-slate-300 mt-2"><strong>The Mistake:</strong> You enter "reading mode" and your voice loses emotion, sounding like a robot. <br/> <strong>The Solution:</strong> Don't write the script like a formal text. Use short sentences, punctuation that indicates pauses, and even notes like "(smile here)" or "(pause here)". Practice reading the text aloud once before recording to find the natural rhythm.</p>
+                <p className="text-slate-300 mt-2"><strong>The Mistake:</strong> You enter "reading mode" and your voice loses emotion, sounding like a robot. <br /> <strong>The Solution:</strong> Don't write the script like a formal text. Use short sentences, punctuation that indicates pauses, and even notes like "(smile here)" or "(pause here)". Practice reading the text aloud once before recording to find the natural rhythm.</p>
             </div>
             <div className="bg-slate-800 p-4 rounded-lg">
                 <h3 className="font-bold text-lg text-white">3. Incorrect Scrolling Speed</h3>
-                <p className="text-slate-300 mt-2"><strong>The Mistake:</strong> The scroll is too slow, creating awkward pauses, or too fast, causing you to stumble over your words. <br/> <strong>The Solution:</strong> Use the remote control feature to adjust the speed in real-time. Start a little slower and speed up as you get into the rhythm. A good tip is to always have the next line visible at the top of the screen.</p>
+                <p className="text-slate-300 mt-2"><strong>The Mistake:</strong> The scroll is too slow, creating awkward pauses, or too fast, causing you to stumble over your words. <br /> <strong>The Solution:</strong> Use the remote control feature to adjust the speed in real-time. Start a little slower and speed up as you get into the rhythm. A good tip is to always have the next line visible at the top of the screen.</p>
             </div>
         </div>
 
         <div className="text-center mt-12">
-            <a href="https://promptninja.io" target="_blank" rel="noopener noreferrer" className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full text-xl transition duration-300 transform hover:scale-105">
+            <a href="https://promptninja.solutionkit.com.br" target="_blank" rel="noopener noreferrer" className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full text-xl transition duration-300 transform hover:scale-105">
                 Transform Your Videos Today. Use PromptNinja for Free!
             </a>
             <p className="text-slate-400 mt-4 text-sm">Remote control, no installation, no time limit.</p>

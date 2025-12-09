@@ -90,7 +90,7 @@ export const TeleprompterOnlineGratisEN = () => (
                 Stop struggling with limited tools. Experience the freedom of an online teleprompter that is truly free and powerful by design.
             </p>
             <a
-                href="https://promptninja.io"
+                href="https://promptninja.solutionkit.com.br"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-red-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-red-700 transition-colors"

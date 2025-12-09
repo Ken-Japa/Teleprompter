@@ -78,7 +78,7 @@ export const TeleprompterPCWindowsES = () => (
                 Puedes obtener una experiencia similar a la nativa sin ninguno de los riesgos. PromptNinja se puede "instalar" como una Aplicación Web Progresiva (PWA) en Windows 10 y 11 usando Chrome o Edge.
             </p>
             <ol className="list-decimal pl-6 space-y-2">
-                <li>Abre <a href="https://promptninja.io" className="text-red-500 hover:underline">PromptNinja</a> en tu navegador.</li>
+                <li>Abre <a href="https://promptninja.solutionkit.com.br" className="text-red-500 hover:underline">PromptNinja</a> en tu navegador.</li>
                 <li>Haz clic en el ícono de "Instalar" que aparece en la barra de direcciones.</li>
                 <li>Confirma la instalación. Se agregará un acceso directo a tu Escritorio y Menú de Inicio.</li>
             </ol>
@@ -106,7 +106,7 @@ export const TeleprompterPCWindowsES = () => (
         </div>
 
         <div className="mt-12 text-center">
-            <a href="https://promptninja.io" className="bg-red-600 text-white font-bold py-4 px-8 rounded-lg text-xl hover:bg-red-700 transition-colors duration-300">
+            <a href="https://promptninja.solutionkit.com.br" className="bg-red-600 text-white font-bold py-4 px-8 rounded-lg text-xl hover:bg-red-700 transition-colors duration-300">
                 Prueba el Mejor Teleprompter para Windows Ahora
             </a>
             <p className="text-slate-400 mt-4">Gratis, instantáneo y seguro. No se requiere instalación.</p>

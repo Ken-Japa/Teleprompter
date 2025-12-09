@@ -58,7 +58,7 @@ export const AlternativasTeleprompterConcorrenteEN = () => (
                         <td className="py-3 px-4 text-green-400 font-bold text-center">Any browser (PC, Mac, iPhone, Android)</td>
                         <td className="py-3 px-4 text-center">Restricted to a specific App/OS</td>
                     </tr>
-                     <tr className="border-b border-slate-800">
+                    <tr className="border-b border-slate-800">
                         <td className="py-3 px-4">Script Privacy</td>
                         <td className="py-3 px-4 text-green-400 font-bold text-center">Maximum (data doesn't leave your Wi-Fi)</td>
                         <td className="py-3 px-4 text-center">Scripts saved on third-party servers</td>
@@ -84,7 +84,7 @@ export const AlternativasTeleprompterConcorrenteEN = () => (
         </div>
 
         <div className="text-center mt-12">
-            <a href="https://promptninja.io" target="_blank" rel="noopener noreferrer" className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full text-xl transition duration-300 transform hover:scale-105">
+            <a href="https://promptninja.solutionkit.com.br" target="_blank" rel="noopener noreferrer" className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full text-xl transition duration-300 transform hover:scale-105">
                 Experience the Future of Teleprompters. It's Free!
             </a>
         </div>

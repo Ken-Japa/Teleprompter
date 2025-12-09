@@ -58,7 +58,7 @@ export const AlternativasTeleprompterConcorrentePT = () => (
                         <td className="py-3 px-4 text-green-400 font-bold text-center">Qualquer navegador (PC, Mac, iPhone, Android)</td>
                         <td className="py-3 px-4 text-center">Restrito a um App/SO específico</td>
                     </tr>
-                     <tr className="border-b border-slate-800">
+                    <tr className="border-b border-slate-800">
                         <td className="py-3 px-4">Privacidade do Roteiro</td>
                         <td className="py-3 px-4 text-green-400 font-bold text-center">Máxima (dados não saem do seu Wi-Fi)</td>
                         <td className="py-3 px-4 text-center">Roteiros salvos em servidores de terceiros</td>
@@ -84,7 +84,7 @@ export const AlternativasTeleprompterConcorrentePT = () => (
         </div>
 
         <div className="text-center mt-12">
-            <a href="https://promptninja.io" target="_blank" rel="noopener noreferrer" className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full text-xl transition duration-300 transform hover:scale-105">
+            <a href="https://promptninja.solutionkit.com.br" target="_blank" rel="noopener noreferrer" className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full text-xl transition duration-300 transform hover:scale-105">
                 Experimente o Futuro dos Teleprompters. É Grátis!
             </a>
         </div>
