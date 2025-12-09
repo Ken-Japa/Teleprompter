@@ -1,64 +1,115 @@
 export const TeleprompterPCWindowsES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Teleprompter para PC y Windows (Sin Instalación)</h1>
+        <h1 className="text-4xl font-bold text-white mb-6">Teleprompter para PC y Windows (Sin Necesidad de Instalar)</h1>
 
-        <p className="mb-6">
-            Muchos usuarios buscan "Teleprompter para PC" o "Software de Teleprompter para Windows" y terminan descargando programas pesados, llenos de virus o que cuestan una fortuna.
-        </p>
+        <div className="bg-slate-800 p-6 rounded-lg shadow-lg">
+            <p className="mb-4 text-lg text-slate-300">
+                ¿Buscas un "Teleprompter para PC" o "Software de Teleprompter para Windows"? Muchos usuarios terminan en un viaje frustrante, descargando programas pesados, arriesgándose a virus o enfrentando costos inesperados. El software tradicional a menudo requiere derechos de administrador, satura tu sistema y plantea riesgos de seguridad.
+            </p>
+            <p className="text-lg text-slate-300">
+                PromptNinja ofrece una alternativa moderna, segura y eficiente. Funciona directamente en tu navegador, no requiere instalación y proporciona funciones profesionales sin comprometer el rendimiento o la seguridad de tu PC.
+            </p>
+        </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">¿Por qué usar un Teleprompter Online en PC?</h2>
-        <div className="overflow-x-auto mb-6">
-            <table className="w-full text-left border-collapse">
-                <thead>
-                    <tr className="border-b border-slate-700">
-                        <th className="py-4 px-2 text-slate-400">Característica</th>
-                        <th className="py-4 px-2 text-primary font-bold">PromptNinja (Web)</th>
-                        <th className="py-4 px-2 text-slate-500">Software Instalable</th>
+        <h2 className="text-3xl font-bold text-white mt-10 mb-6">Los Riesgos de Seguridad del Software .exe Tradicional</h2>
+        <div className="bg-slate-800 p-6 rounded-lg shadow-lg space-y-4 text-slate-300">
+            <p>
+                Cuando descargas y ejecutas un archivo ejecutable (.exe) de una fuente desconocida, le estás otorgando amplios permisos en tu sistema. Esto puede llevar a varios problemas:
+            </p>
+            <ul className="list-disc pl-6 space-y-2">
+                <li><strong>Virus y Malware:</strong> El software gratuito es a menudo un vehículo para código malicioso que puede robar tus datos o dañar tu computadora.</li>
+                <li><strong>Ralentización del Sistema:</strong> Los programas instalados ejecutan procesos en segundo plano que consumen RAM y CPU, incluso cuando no los estás usando.</li>
+                <li><strong>Permisos de Administrador:</strong> Muchos programas antiguos requieren derechos de administrador para instalarse, creando una importante vulnerabilidad de seguridad en tu sistema Windows.</li>
+                <li><strong>Desinstalación Difícil:</strong> Eliminar todos los rastros de un software mal hecho puede ser casi imposible, dejando archivos basura y entradas de registro no válidas.</li>
+            </ul>
+            <p className="font-semibold text-white">
+                PromptNinja evita todos estos problemas al ejecutarse dentro del entorno seguro de tu navegador. Sin instalación, sin derechos de administrador, sin riesgos.
+            </p>
+        </div>
+
+        <h2 className="text-3xl font-bold text-white mt-10 mb-6">Comparativa: PromptNinja vs. Software Antiguo de Windows</h2>
+        <div className="overflow-x-auto my-8">
+            <table className="min-w-full bg-slate-800 rounded-lg">
+                <thead className="bg-slate-700">
+                    <tr>
+                        <th className="p-4 text-left">Característica</th>
+                        <th className="p-4 text-center">PromptNinja (en el Navegador)</th>
+                        <th className="p-4 text-center">Software Antiguo de Windows</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr className="border-b border-slate-800">
-                        <td className="py-4 px-2">Instalación</td>
-                        <td className="py-4 px-2 text-green-400">Ninguna (Instantáneo)</td>
-                        <td className="py-4 px-2">Descarga lenta</td>
+                    <tr>
+                        <td className="p-4 border-t border-slate-700">Instalación</td>
+                        <td className="p-4 border-t border-slate-700 text-center text-green-400">✔ Ninguna</td>
+                        <td className="p-4 border-t border-slate-700 text-center text-red-400">✖ Requerida (lenta y arriesgada)</td>
                     </tr>
-                    <tr className="border-b border-slate-800">
-                        <td className="py-4 px-2">Compatibilidad</td>
-                        <td className="py-4 px-2 text-green-400">Windows 10, 11, 7, Linux, Mac</td>
-                        <td className="py-4 px-2">Específico del SO</td>
+                    <tr>
+                        <td className="p-4 border-t border-slate-700">Derechos de Admin</td>
+                        <td className="p-4 border-t border-slate-700 text-center text-green-400">✔ No son necesarios</td>
+                        <td className="p-4 border-t border-slate-700 text-center text-red-400">✖ A menudo requeridos</td>
                     </tr>
-                    <tr className="border-b border-slate-800">
-                        <td className="py-4 px-2">Control Remoto</td>
-                        <td className="py-4 px-2 text-green-400">Vía Wi-Fi (Móvil)</td>
-                        <td className="py-4 px-2">Requiere hardware extra</td>
+                    <tr>
+                        <td className="p-4 border-t border-slate-700">Seguridad</td>
+                        <td className="p-4 border-t border-slate-700 text-center text-green-400">✔ Alta (Sandbox del Navegador)</td>
+                        <td className="p-4 border-t border-slate-700 text-center text-red-400">✖ Baja (Acceso Directo al Sistema)</td>
+                    </tr>
+                    <tr>
+                        <td className="p-4 border-t border-slate-700">Compatibilidad</td>
+                        <td className="p-4 border-t border-slate-700 text-center text-green-400">✔ Windows 10, 11, Mac, Linux</td>
+                        <td className="p-4 border-t border-slate-700 text-center text-red-400">✖ Específico de la versión de Windows</td>
+                    </tr>
+                    <tr>
+                        <td className="p-4 border-t border-slate-700">Control Remoto</td>
+                        <td className="p-4 border-t border-slate-700 text-center text-green-400">✔ Con cualquier Smartphone (Código QR)</td>
+                        <td className="p-4 border-t border-slate-700 text-center text-red-400">✖ Requiere hardware/apps propietarios</td>
+                    </tr>
+                    <tr>
+                        <td className="p-4 border-t border-slate-700">Uso sin conexión</td>
+                        <td className="p-4 border-t border-slate-700 text-center text-green-400">✔ Sí (vía PWA)</td>
+                        <td className="p-4 border-t border-slate-700 text-center">Varía</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Cómo convertir tu PC en un Teleprompter Profesional</h2>
-        <p className="mb-4">
-            No necesitas un software nativo (.exe) para tener rendimiento. PromptNinja utiliza tecnologías web modernas (PWA y WebRTC) para garantizar que el texto se desplace suavemente a 60fps, aprovechando la tarjeta gráfica de tu PC.
-        </p>
+        <h2 className="text-3xl font-bold text-white mt-10 mb-6">Cómo Usar PromptNinja como una App Nativa en Windows</h2>
+        <div className="bg-slate-800 p-6 rounded-lg shadow-lg text-slate-300 space-y-4">
+            <p>
+                Puedes obtener una experiencia similar a la nativa sin ninguno de los riesgos. PromptNinja se puede "instalar" como una Aplicación Web Progresiva (PWA) en Windows 10 y 11 usando Chrome o Edge.
+            </p>
+            <ol className="list-decimal pl-6 space-y-2">
+                <li>Abre <a href="https://promptninja.io" className="text-red-500 hover:underline">PromptNinja</a> en tu navegador.</li>
+                <li>Haz clic en el ícono de "Instalar" que aparece en la barra de direcciones.</li>
+                <li>Confirma la instalación. Se agregará un acceso directo a tu Escritorio y Menú de Inicio.</li>
+            </ol>
+            <p>La aplicación se ejecutará en su propia ventana, como un programa nativo, e incluso estará disponible para su uso sin conexión. Es lo mejor de ambos mundos: rendimiento y comodidad sin el dolor de cabeza de la seguridad.</p>
+        </div>
 
-        <h3 className="text-xl font-bold text-white mt-6 mb-2">Instalar como App (Opcional)</h3>
-        <p className="mb-4">
-            Si usas Google Chrome o Edge en Windows, puedes instalar PromptNinja como una aplicación. Solo haz clic en el icono de "Instalar" en la barra de direcciones. ¡Esto coloca un acceso directo en tu escritorio y permite el uso sin conexión!
-        </p>
+        <h2 className="text-3xl font-bold text-white mt-10 mb-6">Preguntas Frecuentes (FAQ)</h2>
+        <div className="space-y-4">
+            <details className="bg-slate-800 p-4 rounded-lg">
+                <summary className="font-semibold text-white cursor-pointer">1. ¿Funciona en Windows 7?</summary>
+                <p className="mt-2 text-slate-300">¡Sí! Mientras tengas un navegador moderno como Google Chrome o Firefox, PromptNinja funcionará perfectamente en Windows 7, 8, 10 y 11.</p>
+            </details>
+            <details className="bg-slate-800 p-4 rounded-lg">
+                <summary className="font-semibold text-white cursor-pointer">2. ¿Necesito un PC potente para ejecutarlo?</summary>
+                <p className="mt-2 text-slate-300">No. PromptNinja es extremadamente ligero. Utiliza el motor de renderizado de tu navegador, que está altamente optimizado y usa aceleración por hardware (tu GPU) para un desplazamiento de texto suave. Cualquier PC capaz de navegar por la web puede ejecutarlo sin problemas.</p>
+            </details>
+            <details className="bg-slate-800 p-4 rounded-lg">
+                <summary className="font-semibold text-white cursor-pointer">3. ¿Puedo usarlo con OBS, Zoom o Teams en mi PC?</summary>
+                <p className="mt-2 text-slate-300">Absolutamente. Como PromptNinja se ejecuta en el navegador, no entra en conflicto con ningún software de grabación o transmisión. Puedes tener OBS, Zoom o Microsoft Teams capturando tu cámara y micrófono mientras lees tu guion en la ventana del teleprompter.</p>
+            </details>
+            <details className="bg-slate-800 p-4 rounded-lg">
+                <summary className="font-semibold text-white cursor-pointer">4. ¿Están seguros mis datos?</summary>
+                <p className="mt-2 text-slate-300">Sí. Todo el procesamiento de tu guion ocurre directamente en tu navegador. Tu texto nunca se envía a nuestros servidores, lo que garantiza una privacidad total. La conexión para el control remoto también está encriptada de extremo a extremo utilizando la tecnología WebRTC.</p>
+            </details>
+        </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Ideal para Múltiples Monitores</h2>
-        <p className="mb-6">
-            Si tienes una configuración de dos monitores en Windows, el flujo de trabajo es perfecto:
-        </p>
-        <ol className="list-decimal pl-6 space-y-2 mb-6 text-slate-300">
-            <li>Abre PromptNinja en el <strong>Monitor 2</strong> (que puede estar reflejado en un vidrio de teleprompter o posicionado sobre la cámara).</li>
-            <li>Activa el "Modo Espejo" si estás usando vidrio.</li>
-            <li>Usa tu móvil como control remoto para reproducir/pausar sin tener que mover el ratón a la segunda pantalla.</li>
-        </ol>
-
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Compatibilidad con Webcams y Micrófonos</h2>
-        <p className="mb-6">
-            A diferencia de los programas que "secuestran" tu cámara, PromptNinja se ejecuta pasivamente. Esto significa que puedes usar OBS Studio, Zoom, vMix o cualquier otro software de grabación simultáneamente sin conflictos de controladores.
-        </p>
+        <div className="mt-12 text-center">
+            <a href="https://promptninja.io" className="bg-red-600 text-white font-bold py-4 px-8 rounded-lg text-xl hover:bg-red-700 transition-colors duration-300">
+                Prueba el Mejor Teleprompter para Windows Ahora
+            </a>
+            <p className="text-slate-400 mt-4">Gratis, instantáneo y seguro. No se requiere instalación.</p>
+        </div>
     </>
 );
