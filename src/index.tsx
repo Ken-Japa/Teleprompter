@@ -18,7 +18,7 @@ if (!rootElement) {
     throw new Error("Could not find root element to mount to");
 }
 
-import { registerSW } from "virtual:pwa-register";
+
 
 const root = ReactDOM.createRoot(rootElement);
 root.render(
@@ -29,4 +29,4 @@ root.render(
     </React.StrictMode>
 );
 
-registerSW({ immediate: true });
+
