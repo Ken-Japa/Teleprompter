@@ -106,7 +106,11 @@ export const TeleprompterPCWindowsEN = () => (
         </div>
 
         <div className="mt-12 text-center">
-            <a href="https://promptninja.solutionkit.com.br" className="bg-red-600 text-white font-bold py-4 px-8 rounded-lg text-xl hover:bg-red-700 transition-colors duration-300">
+            <a
+                href="https://promptninja.solutionkit.com.br"
+                className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-6 rounded-lg transition hover:brightness-110"
+                style={{ color: 'white' }}
+            >
                 Try the Best Teleprompter for Windows Now
             </a>
             <p className="text-slate-400 mt-4">Free, instant, and secure. No installation required.</p>

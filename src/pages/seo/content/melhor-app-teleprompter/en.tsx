@@ -84,7 +84,11 @@ export const MelhorAppTeleprompterEN = () => (
         </div>
 
         <div className="text-center mt-12">
-            <a href="https://promptninja.solutionkit.com.br" target="_blank" rel="noopener noreferrer" className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full text-xl transition duration-300 transform hover:scale-105">
+            <a
+                href="https://promptninja.solutionkit.com.br"
+                className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mx-auto rounded-full transition hover:brightness-110"
+                style={{ color: 'white' }}
+            >
                 Stop Searching. Start Recording. Try PromptNinja for Free!
             </a>
             <p className="text-slate-400 mt-4 text-sm">The professional choice that fits in your pocket (and your browser).</p>

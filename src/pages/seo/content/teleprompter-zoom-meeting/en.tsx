@@ -102,7 +102,11 @@ export const TeleprompterZoomMeetingEN = () => (
         </dl>
 
         <div className="text-center mt-12">
-            <a href="https://promptninja.solutionkit.com.br" target="_blank" rel="noopener noreferrer" className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full text-xl transition duration-300">
+            <a
+                href="https://promptninja.solutionkit.com.br"
+                className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-6 rounded-lg transition hover:brightness-110"
+                style={{ color: 'white' }}
+            >
                 Elevate Your Presentations Today. Try PromptNinja for Free!
             </a>
         </div>

@@ -72,11 +72,7 @@ export const TeleprompterOnlineGratisES = () => (
             <li>¡Listo! La conexión es instantánea. No se necesita la misma red Wi-Fi.</li>
         </ol>
 
-        <div className="my-8 text-center">
-            <a href="https://promptninja.solutionkit.com.br" target="_blank" rel="noopener noreferrer" className="bg-red-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-red-700 transition-colors duration-300">
-                Prueba el Teleprompter Online Gratis Ahora
-            </a>
-        </div>
+
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">Preguntas Frecuentes (FAQ)</h2>
         <div className="space-y-4">

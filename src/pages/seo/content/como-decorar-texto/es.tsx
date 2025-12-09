@@ -108,7 +108,11 @@ export const ComoDecorarTextoES = () => (
         </div>
 
         <div className="mt-12 text-center">
-            <a href="https://promptninja.solutionkit.com.br" className="bg-red-600 text-white font-bold py-4 px-8 rounded-lg text-xl hover:bg-red-700 transition-colors duration-300">
+            <a
+                href="https://promptninja.solutionkit.com.br"
+                className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mb-8 mx-auto rounded-full transition hover:brightness-110"
+                style={{ color: 'white' }}
+            >
                 Deja de Memorizar y Empieza a Comunicar
             </a>
             <p className="text-slate-400 mt-4">Prueba PromptNinja gratis y ahorra horas de frustración.</p>

@@ -36,7 +36,7 @@ export const ComoUsarTeleprompterES = () => (
                 <p className="text-sm text-slate-500 mt-4"><strong>Desventaja:</strong> Es difícil controlar el desplazamiento sin interrumpir la grabación o desviar la mirada. Funciona mejor para vídeos cortos.</p>
             </div>
 
-            <div className="bg-slate-800 p-6 rounded-lg border-2 border-red-500">
+            <div className="bg-slate-800 p-6 rounded-lg border-2 border-blue-500">
                 <h3 className="font-bold text-xl text-white mb-3">Método 2: El Control Remoto (La Forma Profesional)</h3>
                 <p className="text-slate-400 mb-4">
                     Esta es la configuración que convierte tu espacio en un estudio. Usas un dispositivo para leer (pantalla principal) y otro como control remoto.
@@ -68,7 +68,11 @@ export const ComoUsarTeleprompterES = () => (
         </div>
 
         <div className="text-center mt-12">
-            <a href="hhttps://promptninja.solutionkit.com.br" target="_blank" rel="noopener noreferrer" className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full text-xl transition duration-300 transform hover:scale-105">
+            <a
+                href="https://promptninja.solutionkit.com.br"
+                className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mx-auto rounded-full transition hover:brightness-110"
+                style={{ color: 'white' }}
+            >
                 Transforma Tus Vídeos Hoy. ¡Usa PromptNinja Gratis!
             </a>
             <p className="text-slate-400 mt-4 text-sm">Control remoto, sin instalación, sin límite de tiempo.</p>

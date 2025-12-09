@@ -90,11 +90,11 @@ export const TeleprompterOnlineGratisPT = () => (
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Pare de lutar com ferramentas limitadas. Experimente a liberdade de um teleprompter online que é gratuito de verdade e poderoso por design.
             </p>
+
             <a
-                href="hhttps://promptninja.solutionkit.com.br"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-red-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-red-700 transition-colors"
+                href="https://promptninja.solutionkit.com.br"
+                className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mx-auto rounded-full transition hover:brightness-110"
+                style={{ color: 'white' }}
             >
                 Usar o PromptNinja de Graça Agora
             </a>
