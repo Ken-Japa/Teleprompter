@@ -20,6 +20,8 @@ if (!rootElement) {
 
 
 
+import { registerSW } from "virtual:pwa-register";
+
 const root = ReactDOM.createRoot(rootElement);
 root.render(
     <React.StrictMode>
@@ -28,5 +30,9 @@ root.render(
         </TranslationProvider>
     </React.StrictMode>
 );
+
+window.addEventListener('load', () => {
+    registerSW({ immediate: true });
+});
 
 
