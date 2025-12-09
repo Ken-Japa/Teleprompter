@@ -8,6 +8,11 @@
   />
   <meta name="theme-color" content="#020617" />
 
+  <!-- Preconnect to critical origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+
   <!-- PWA / App Manifest -->
   <link rel="manifest" href="/manifest.json" />
   <meta name="mobile-web-app-capable" content="yes">
@@ -63,14 +68,22 @@
   <!-- PeerJS and NoSleep are now bundled -->
 
   <link rel="stylesheet" href="/src/styles.css" />
-  <!-- Google Analytics (Tag Global) - Configure com seu ID real -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NCRFPBBJHF"></script>
+  <!-- Google Analytics (Tag Global) - Delayed -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  const loadGTM = () => {
+    const script = document.createElement('script');
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NCRFPBBJHF';
+    script.async = true;
+    document.head.appendChild(script);
 
-  gtag('config', 'G-NCRFPBBJHF');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NCRFPBBJHF');
+  };
+
+  // Delay GTM loading by 4 seconds
+  setTimeout(loadGTM, 4000);
 </script>
   <!-- Schema.org -->
   <script type="application/ld+json">

@@ -126,25 +126,30 @@ export const useScrollPhysics = ({
    const timeScale = deltaTime / PHYSICS_CONSTANTS.TARGET_FRAME_TIME;
 
    let deltaScroll = 0;
+
+   // --- DOM READ PHASE ---
+   // Read all necessary DOM properties at the beginning of the loop to avoid layout thrashing.
+   const readMetrics = () => {
+    if (!scrollContainerRef.current) {
+     return metricsRef.current; // Return stale metrics if no container
+    }
+    const realScrollHeight = scrollContainerRef.current.scrollHeight;
+    const realClientHeight = scrollContainerRef.current.clientHeight;
+    return { scrollHeight: realScrollHeight, clientHeight: realClientHeight };
+   };
+
    let metrics = metricsRef.current;
+   const calculatedMaxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
 
    // --- FAILSAFE & SELF-HEALING ---
-   // If we are playing but the physics engine thinks there is no room to scroll (maxScroll == 0),
-   // it's likely a stale metric from before the text rendered. Force a DOM read.
-   if (_isPlaying && scrollContainerRef.current) {
-    const calculatedMaxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
-
-    // If maxScroll is 0 OR we haven't scrolled yet (internalScrollPos == 0),
-    // we aggressively check if metrics changed (e.g. late image load, font load, layout shift)
-    if (calculatedMaxScroll === 0 || internalScrollPos.current === 0) {
-     const realScrollHeight = scrollContainerRef.current.scrollHeight;
-     const realClientHeight = scrollContainerRef.current.clientHeight;
-
-     // Only update if different to avoid thrashing
-     if (realScrollHeight !== metrics.scrollHeight || realClientHeight !== metrics.clientHeight) {
-      metrics = { scrollHeight: realScrollHeight, clientHeight: realClientHeight };
-      metricsRef.current = metrics; // Update ref for next frame
-     }
+   // If playing but physics engine thinks there's no scroll room, or if we are at the top,
+   // it might be stale metrics. Force a re-read.
+   if (_isPlaying && (calculatedMaxScroll === 0 || internalScrollPos.current === 0)) {
+    const newMetrics = readMetrics();
+    // Update metrics only if they have actually changed to prevent unnecessary re-renders.
+    if (newMetrics.scrollHeight !== metrics.scrollHeight || newMetrics.clientHeight !== metrics.clientHeight) {
+     metrics = newMetrics;
+     metricsRef.current = metrics; // Persist the fresh metrics
     }
    }
 
