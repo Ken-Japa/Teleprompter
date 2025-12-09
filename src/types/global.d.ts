@@ -4,8 +4,6 @@ interface Window {
  Peer: any;
  QRCode: any;
  NoSleep: any;
- SpeechRecognition: any;
- webkitSpeechRecognition: any;
  requestIdleCallback: (
   callback: (deadline: { readonly didTimeout: boolean; timeRemaining: () => number }) => void,
   opts?: { timeout?: number }
