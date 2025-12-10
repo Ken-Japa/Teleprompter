@@ -14,7 +14,14 @@ export const useMediaRecorder = () => {
 
  const startRecording = useCallback(async () => {
   try {
-   const stream = await navigator.mediaDevices.getUserMedia({ video: false, audio: true });
+   const stream = await navigator.mediaDevices.getUserMedia({
+    video: false,
+    audio: {
+     echoCancellation: true,
+     noiseSuppression: true,
+     autoGainControl: true,
+    },
+   });
    streamRef.current = stream;
 
    const options = MediaRecorder.isTypeSupported(RECORDING_CONFIG.MIME_TYPE)

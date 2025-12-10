@@ -126,6 +126,16 @@ export const Prompter = memo(
         }
       }, [recordingMode, stopRecording, onStopRemoteRecording]);
 
+      const handlePauseRecording = useCallback(() => {
+        pauseRecording();
+        onStateChange(false, externalState.speed);
+      }, [pauseRecording, onStateChange, externalState.speed]);
+
+      const handleResumeRecording = useCallback(() => {
+        resumeRecording();
+        onStateChange(true, externalState.speed);
+      }, [resumeRecording, onStateChange, externalState.speed]);
+
       // Keyboard Shortcuts
       useKeyboardShortcuts({
         isPlaying: externalState.isPlaying,
@@ -422,8 +432,8 @@ export const Prompter = memo(
               recordingActions={{
                 start: handleStartRecording,
                 stop: handleStopRecording,
-                pause: pauseRecording,
-                resume: resumeRecording,
+                pause: handlePauseRecording,
+                resume: handleResumeRecording,
                 download: downloadRecording
               }}
             />
@@ -485,8 +495,8 @@ export const Prompter = memo(
                   recordingActions={{
                     start: handleStartRecording,
                     stop: handleStopRecording,
-                    pause: pauseRecording,
-                    resume: resumeRecording,
+                    pause: handlePauseRecording,
+                    resume: handleResumeRecording,
                     download: downloadRecording
                   }}
                 />
