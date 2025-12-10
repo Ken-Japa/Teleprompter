@@ -78,7 +78,72 @@ describe('SEO Pages', () => {
                 description: "¿Buscas un teleprompter online gratis? PromptNinja funciona directo en tu navegador, sin descargar nada. Controla desde el móvil vía Wi-Fi.",
             },
         },
-        // TODO: Add other pages metadata here
+        SEO_TUTORIAL: {
+            pt: {
+                title: "Como Usar Teleprompter no Celular: Guia Completo",
+                description: "Aprenda como usar seu celular como teleprompter ou como controle remoto. Tutorial passo a passo para gravar vídeos profissionais.",
+            }
+        },
+        SEO_MELHOR_APP: {
+            pt: {
+                title: "Melhor App de Teleprompter para Celular e PC (2025)",
+                description: "Comparativo dos melhores aplicativos de teleprompter. Descubra qual é o melhor app grátis, com controle remoto e espelhamento.",
+            }
+        },
+        SEO_ALTERNATIVAS: {
+            pt: {
+                title: "Alternativa ao Teleprompter Pro e PrompterPro (Grátis e Online)",
+                description: "Procurando uma alternativa ao Teleprompter Pro? Conheça o PromptNinja: gratuito, sem login, funciona no PC e Celular com controle remoto.",
+            }
+        },
+        SEO_YOUTUBERS: {
+            pt: {
+                title: "Melhor Teleprompter para YouTubers e Criadores de Curso",
+                description: "Grave vídeos longos sem errar o texto. Descubra como o PromptNinja ajuda YouTubers e professores online a gravar aulas perfeitas.",
+            }
+        },
+        SEO_TRAVANDO: {
+            pt: {
+                title: "Teleprompter Travando ou Pulando Texto? Veja a Solução",
+                description: "Seu app de teleprompter está travando ou o texto não rola suavemente? Entenda por que isso acontece e como o PromptNinja resolve com P2P.",
+            }
+        },
+        SEO_DIY: {
+            pt: {
+                title: "Como Montar um Teleprompter Caseiro (DIY) Barato",
+                description: "Aprenda a fazer um teleprompter caseiro com vidro e caixa de papelão. E use o PromptNinja como software gratuito para espelhar o texto.",
+            }
+        },
+        SEO_ORATORIA: {
+            pt: {
+                title: "Dicas de Oratória para Vídeo: Como Falar com Confiança",
+                description: "Melhore sua presença em frente às câmeras. Aprenda técnicas de oratória e descubra como o teleprompter pode ajudar a eliminar os 'ééé' e 'hmmm' dos seus vídeos.",
+            }
+        },
+        SEO_DECORAR: {
+            pt: {
+                title: "Como Decorar Texto Rápido: 5 Técnicas Infalíveis",
+                description: "Pare de sofrer tentando decorar roteiros longos. Conheça técnicas de memorização e a solução definitiva para nunca mais esquecer uma fala.",
+            }
+        },
+        SEO_WEBRTC: {
+            pt: {
+                title: "Como o WebRTC Elimina a Latência em Teleprompters",
+                description: "Entenda a tecnologia por trás do PromptNinja. Descubra como usamos WebRTC e P2P para garantir rolagem suave e instantânea, superando o Bluetooth.",
+            }
+        },
+        SEO_PC_WINDOWS: {
+            pt: {
+                title: "Teleprompter Grátis para PC e Windows (Sem Download)",
+                description: "Use seu PC Windows como teleprompter profissional. Sem baixar programas, sem vírus e com controle remoto via celular. Funciona no Chrome e Edge.",
+            }
+        },
+        SEO_ZOOM: {
+            pt: {
+                title: "Como usar Teleprompter no Zoom, Teams e Google Meet",
+                description: "Aprenda a ler seus scripts durante reuniões online sem desviar o olhar da câmera. Guia para Zoom, Teams e Google Meet com teleprompter gratuito.",
+            }
+        },
     };
 
     (Object.keys(ROUTES_CONFIG) as Array<SeoRouteKey>).forEach(routeKey => {
@@ -95,11 +160,11 @@ describe('SEO Pages', () => {
             const SeoPageComponent = SeoPages[pageKey];
 
             if (SeoPageComponent) {
-                const { rerender } = render(
+                const { rerender } = await act(async () => render(
                     <React.Suspense fallback={<div>Loading...</div>}>
                         <SeoPageComponent onLaunch={() => { }} />
                     </React.Suspense>
-                );
+                ));
 
                 for (const lang of Object.keys(routeInfo.paths)) {
                     const metadata = pageMetadata[lang];
@@ -113,7 +178,7 @@ describe('SEO Pages', () => {
                         setLang: () => { },
                     });
 
-                    act(() => {
+                    await act(async () => {
                         rerender(
                             <React.Suspense fallback={<div>Loading...</div>}>
                                 <SeoPageComponent onLaunch={() => { }} />

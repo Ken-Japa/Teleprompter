@@ -11,6 +11,8 @@
 
 Desenvolvido para criadores de conteúdo, jornalistas, palestrantes e educadores que buscam uma solução robusta, gratuita e livre de bloatware.
 
+🚀 Live Demo: https://promptninja.solutionkit.com.br
+
 ---
 
 ## ✨ Funcionalidades Principais
@@ -40,7 +42,7 @@ Desenvolvido para criadores de conteúdo, jornalistas, palestrantes e educadores
 - **Trackpad Virtual:**
   - **Gestos Naturais:** Deslize para rolar, toque para pausar.
   - **Física de Inércia:** Sensação tátil e responsiva.
-- **Feedback Hápitco:** Vibrações sutis ao interagir com controles (em dispositivos suportados).
+- **Feedback Háptico:** Vibrações sutis ao interagir com controles (em dispositivos suportados).
 - **Sincronização Bidirecional:** O estado (velocidade, posição, play/pause) é mantido em perfeita sincronia entre Host e Remote.
 
 ### � Funcionalidades Pro (Opcional)
@@ -167,9 +169,8 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir Issues ou Pull R
 4. Push para a Branch (`git push origin feature/NovaFeature`).
 5. Abra um Pull Request.
 
-## 📄 Licença
+## Comandos Úteis
 
-Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
 window.togglePro()
 PRO-NINJA-2025
 window.showPaywallModal()

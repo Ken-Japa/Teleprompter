@@ -9,7 +9,7 @@ const viteConfig = defineConfig({
   VitePWA({
    registerType: "prompt",
    injectRegister: "script",
-   includeAssets: [],
+   includeAssets: ["assets/favicon.ico", "assets/apple-touch-icon.png", "assets/favicon.svg"],
    manifest: {
     name: "PromptNinja",
     short_name: "PromptNinja",
