@@ -7,7 +7,7 @@
   "dev": "vite --host",
   "build": "npm run build:sitemap && vite build",
   "build:sitemap": "node scripts/generate-sitemap.js",
-  "postbuild": "node ./scripts/indexnow.js",
+  "postbuild": "node ./scripts/indexnow.cjs",
   "test": "vitest",
   "preview": "vite preview"
  },
