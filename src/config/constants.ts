@@ -101,7 +101,7 @@ export const UI_CONFIG = {
 
 // Recording Configuration
 export const RECORDING_CONFIG = {
- MIME_TYPE: "video/webm",
+ MIME_TYPE: "audio/webm",
  TIMESLICE_MS: 1000,
  FILENAME_PREFIX: "prompt-ninja-recording-",
  EXTENSION: ".webm",

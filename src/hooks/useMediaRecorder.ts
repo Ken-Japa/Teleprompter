@@ -17,9 +17,15 @@ export const useMediaRecorder = () => {
    const stream = await navigator.mediaDevices.getUserMedia({ video: false, audio: true });
    streamRef.current = stream;
 
-   const mediaRecorder = new MediaRecorder(stream);
+   const options = MediaRecorder.isTypeSupported(RECORDING_CONFIG.MIME_TYPE)
+    ? { mimeType: RECORDING_CONFIG.MIME_TYPE }
+    : undefined;
+
+   const mediaRecorder = new MediaRecorder(stream, options);
    mediaRecorderRef.current = mediaRecorder;
    chunksRef.current = [];
+   setRecordingTime(0);
+   setHasRecordedData(false);
 
    mediaRecorder.ondataavailable = (e) => {
     if (e.data.size > 0) {

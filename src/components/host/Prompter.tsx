@@ -99,6 +99,17 @@ export const Prompter = memo(
         formatTime
       } = useMediaRecorder();
 
+      // Sync Recording Pause with Scroll Pause
+      useEffect(() => {
+        if (!isRecording) return;
+
+        if (externalState.isPlaying) {
+          if (isPaused) resumeRecording();
+        } else {
+          if (!isPaused) pauseRecording();
+        }
+      }, [externalState.isPlaying, isRecording, isPaused, resumeRecording, pauseRecording]);
+
       const handleStartRecording = useCallback(async () => {
         if (recordingMode === "remote") {
           if (onStartRemoteRecording) onStartRemoteRecording();
