@@ -100,8 +100,11 @@ export const RecordingControls = memo(({
     }
 
     return (
-        <div className="flex items-center gap-2 bg-red-900/20 rounded-full px-3 py-1 border border-red-500/30 animate-pulse">
-            <div className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
+        <div className="flex items-center gap-2 bg-red-900/20 rounded-full px-3 py-1 border border-red-500/30">
+            <div className="relative w-3 h-3 flex items-center justify-center mr-1">
+                 <div className="absolute inset-0 rounded-full bg-red-500 animate-ping opacity-75"></div>
+                 <div className="relative w-2 h-2 rounded-full bg-red-500"></div>
+            </div>
             <span className="text-xs font-mono text-red-200 min-w-[40px]">{recordingTime}</span>
             
             {isPaused ? (
@@ -109,18 +112,18 @@ export const RecordingControls = memo(({
                     onClick={onResume}
                     title={t("host.controls.record")}
                     aria-label={t("host.controls.record")}
-                    className="w-6 h-6 rounded-full hover:bg-white/10 text-white border-transparent"
+                    className="w-8 h-8 rounded-full hover:bg-white/10 text-white border-transparent"
                 >
-                    <PlayIcon className="w-3 h-3" />
+                    <PlayIcon className="w-4 h-4" />
                 </S.IconButton>
             ) : (
                 <S.IconButton
                     onClick={onPause}
                     title={t("host.controls.pause")}
                     aria-label={t("host.controls.pause")}
-                    className="w-6 h-6 rounded-full hover:bg-white/10 text-white border-transparent"
+                    className="w-8 h-8 rounded-full hover:bg-white/10 text-white border-transparent"
                 >
-                    <PauseIcon className="w-3 h-3" />
+                    <PauseIcon className="w-4 h-4" />
                 </S.IconButton>
             )}
 
@@ -128,9 +131,9 @@ export const RecordingControls = memo(({
                 onClick={onStop}
                 title={t("host.controls.stopRecord")}
                 aria-label={t("host.controls.stopRecord")}
-                className="w-6 h-6 rounded-full bg-red-500 text-white hover:bg-red-600 border-transparent"
+                className="w-8 h-8 rounded-full bg-red-500 text-white hover:bg-red-600 border-transparent"
             >
-                <StopIcon className="w-3 h-3 fill-current" />
+                <StopIcon className="w-4 h-4 fill-current" />
             </S.IconButton>
         </div>
     );

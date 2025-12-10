@@ -14,7 +14,7 @@ export const useMediaRecorder = () => {
 
  const startRecording = useCallback(async () => {
   try {
-   const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+   const stream = await navigator.mediaDevices.getUserMedia({ video: false, audio: true });
    streamRef.current = stream;
 
    const mediaRecorder = new MediaRecorder(stream);
