@@ -8,6 +8,9 @@
   />
   <meta name="theme-color" content="#020617" />
 
+  <!-- Content Security Policy (Fallback/Hardening) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://t.contentsquare.net https://vitals.vercel-insights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.contentsquare.net https://c.ba.contentsquare.net https://*.googletagmanager.com; worker-src 'self' blob:; frame-ancestors 'none'; form-action 'self'; object-src 'none'; base-uri 'self'; connect-src 'self' https://www.google-analytics.com https://vitals.vercel-insights.com https://*.contentsquare.net https://c.ba.contentsquare.net https://*.peerjs.com wss://*.peerjs.com https://0.peerjs.com stun: turn:;">
+
   <!-- Preconnect to critical origins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
