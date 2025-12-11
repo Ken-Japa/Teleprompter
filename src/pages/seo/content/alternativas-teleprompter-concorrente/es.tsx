@@ -8,20 +8,41 @@ export const AlternativasTeleprompterConcorrenteES = () => (
             Los creadores de contenido, educadores y profesionales del marketing a menudo se enfrentan a un dilema: invertir en costosos softwares de teleprompter como <strong>Teleprompter Pro</strong>, que prometen el oro y el moro, o conformarse con alternativas gratuitas que apenas funcionan. ¿Y si hubiera una tercera vía? Una herramienta que combina la potencia de las aplicaciones premium con la accesibilidad del software gratuito, sin requerir instalaciones, inicios de sesión ni tu tarjeta de crédito. Presentamos PromptNinja.
         </p>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">El Problema con los Teleprompters Tradicionales</h2>
-        <p className="mb-6">
-            La mayoría de las soluciones en el mercado sufren de problemas similares que frustran a los usuarios:
-        </p>
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Por Qué el Teleprompter de CapCut y BIGVU Dejan Mucho que Desear (En PC y Directos)</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
-                <h3 className="text-xl font-bold text-primary mb-3">Ecosistemas Cerrados y de Pago</h3>
-                <p>Muchas apps te encierran en un único sistema operativo (solo Apple o solo Android/Windows). ¿Quieres usar tu iPhone para controlar el teleprompter en tu PC con Windows? Generalmente, no es posible. Además, las funciones esenciales como el control remoto casi siempre son de pago.</p>
+                <h3 className="text-xl font-bold text-red-400 mb-3">El Problema con CapCut</h3>
+                <ul className="list-disc pl-5 text-slate-300 space-y-2">
+                    <li><strong>Enfoque en Móvil:</strong> Apps como CapCut son geniales para editar, pero la función de teleprompter es secundaria y mal adaptada para uso en PC/Zoom.</li>
+                    <li><strong>Sin Control Remoto Robusto:</strong> Falta una solución de control remoto dedicada y estable para escritorio sin instalar la app principal.</li>
+                </ul>
             </div>
             <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
-                <h3 className="text-xl font-bold text-primary mb-3">Privacidad y Seguridad de Datos</h3>
-                <p>Para usar la mayoría de los teleprompters en línea, necesitas crear una cuenta y guardar tus guiones en los servidores de la empresa. Esto expone tus datos a posibles filtraciones y significa que tu contenido se almacena en un lugar que no controlas.</p>
+                <h3 className="text-xl font-bold text-red-400 mb-3">El Problema con BIGVU</h3>
+                <ul className="list-disc pl-5 text-slate-300 space-y-2">
+                    <li><strong>Marca de Agua Intrusiva:</strong> BIGVU frecuentemente inserta una marca de agua en la versión gratuita, lo cual no es profesional.</li>
+                    <li><strong>Lag del Servidor:</strong> La mayoría de los controles remotos dependen de servidores, causando el lag que frustra al usuario.</li>
+                </ul>
             </div>
         </div>
+
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">PromptNinja vs. BIGVU (La Verdad sobre lo Gratuito)</h3>
+        <p className="text-slate-300 mb-4">
+            Mientras BIGVU limita tu experiencia gratuita, PromptNinja libera el potencial:
+        </p>
+        <ul className="list-disc pl-6 mb-8 text-slate-300 space-y-2">
+            <li><strong>Cero Marca de Agua:</strong> Tu video es tuyo. PromptNinja no pone logo en tu pantalla.</li>
+            <li><strong>Privacidad Total (Sin Login):</strong> PromptNinja NO exige inicio de sesión. Tus guiones quedan en tu dispositivo, garantizando privacidad absoluta.</li>
+        </ul>
+
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">PromptNinja vs. CapCut (Rendimiento en PC y Zoom)</h3>
+        <p className="text-slate-300 mb-4">
+            Para quien graba en computadora o hace directos, la diferencia es brutal:
+        </p>
+        <ul className="list-disc pl-6 mb-8 text-slate-300 space-y-2">
+            <li><strong>Control Remoto P2P Instantáneo:</strong> Nuestro control remoto es vía red local (P2P), garantizando latencia cero.</li>
+            <li><strong>Enfoque en Rendimiento y Directos:</strong> A diferencia de CapCut, que se enfoca en edición post-grabación, PromptNinja se enfoca en el rendimiento durante la grabación y transmisiones en vivo.</li>
+        </ul>
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">PromptNinja: La Solución Definitiva</h2>
         <p className="mb-8">

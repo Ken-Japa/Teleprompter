@@ -15,9 +15,9 @@ export const OratoriaVideoEN = () => (
                     In a conversation, we look into each other's eyes. On video, your audience's eyes are the camera lens. The most common mistake is looking at your own image on the screen. This instantly breaks the connection. Your gaze needs to be fixed and direct at the lens.
                 </p>
                 <div className="bg-slate-800 p-3 rounded-md mt-4 border-l-4 border-purple-500">
-                    <p className="text-sm font-semibold text-white">The Solution: Teleprompter</p>
+                    <p className="text-sm font-semibold text-white">The Solution: Resizable Window</p>
                     <p className="text-xs text-slate-400">
-                        A teleprompter like <strong>PromptNinja</strong> displays your script in front of the lens, allowing you to read while maintaining perfect, natural eye contact.
+                        <strong>PromptNinja's</strong> resizable window allows you to position the text exactly over your camera area (on Zoom or desktop). This keeps your eyes aligned with the lens naturally while reading.
                     </p>
                 </div>
             </div>
@@ -92,7 +92,7 @@ export const OratoriaVideoEN = () => (
                 <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">
                     <summary className="font-bold text-white text-lg">Won't using a teleprompter make me look robotic?</summary>
                     <p className="mt-2 text-slate-400">
-                        On the contrary. A good teleprompter, combined with good speed control (like PromptNinja's remote), allows you to speak at your natural pace. The robotic appearance comes from trying to memorize and recite, not from reading fluently.
+                        On the contrary. A good teleprompter, combined with <strong>PromptNinja's P2P remote control</strong>, allows you to adjust the speed in real-time, matching your natural speaking pace. The robotic appearance comes from trying to memorize and recite, not from reading fluently with the right tool.
                     </p>
                 </details>
                 <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">

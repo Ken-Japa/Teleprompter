@@ -6,6 +6,15 @@ export const TeleprompterZoomMeetingEN = () => (
             Maintaining eye contact during an online presentation is the secret to capturing attention and conveying confidence. However, the reality is a constant juggling act: if you look at your notes, you lose connection with the audience; if you look at the camera, you risk forgetting crucial points. PromptNinja emerges as the definitive solution to this dilemma, allowing you to read your script fluently while looking directly at the camera lens, creating powerful and authentic communication.
         </p>
 
+        <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-blue-500">
+            <h2 className="text-2xl font-bold text-white mb-2">The Secret to Fluidity: Why PromptNinja's P2P Remote Control Doesn't Lag on Zoom</h2>
+            <p className="text-slate-300">
+                Imagine this: you're live on Zoom, your internet fluctuates, and the teleprompter freezes. Panic. With PromptNinja, this doesn't happen.
+                <br /><br />
+                We use <strong>WebRTC (P2P)</strong> technology that creates a "local tunnel" between your phone and PC via Wi-Fi. The result? <strong>Zero Latency</strong>. Even if your internet is slow or unstable, the remote control responds instantly. You control the pace, not the server lag.
+            </p>
+        </div>
+
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">The Psychological Problem of the "Wandering Eye" in Video Calls</h2>
         <p className="mb-4">
             In a digital business environment, trust is the most valuable currency. In important sales meetings, job interviews, or executive presentations, direct eye contact is interpreted by the human brain as a sign of honesty, preparedness, and authority. When your eyes wander to read a script from paper or a side window, you involuntarily project an image of being unprepared, nervous, or even disinterested.
@@ -94,10 +103,6 @@ export const TeleprompterZoomMeetingEN = () => (
             <div>
                 <dt className="font-bold text-white text-lg">Does it work with an external webcam?</dt>
                 <dd className="text-slate-300 mt-1">Yes, perfectly. In fact, it's even better. Position the PromptNinja window just above or below your external webcam for ideal eye alignment.</dd>
-            </div>
-            <div>
-                <dt className="font-bold text-white text-lg">What if my internet is slow? Will the teleprompter lag?</dt>
-                <dd className="text-slate-300 mt-1">No. The PromptNinja remote control uses WebRTC (P2P) technology, creating a direct connection between your phone and computer over your local Wi-Fi network. The communication is instant and does not depend on your internet speed, ensuring smooth, lag-free scrolling.</dd>
             </div>
         </dl>
 

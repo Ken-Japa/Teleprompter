@@ -3,12 +3,31 @@ export const TeleprompterOnlineGratisEN = () => (
         <h1 className="text-4xl font-bold text-white mb-6">Free Online Teleprompter: The Ultimate Tool for Creators</h1>
 
         <p className="mb-6">
-            In the world of content creation, the search for a <strong>free online teleprompter</strong> is constant. Whether for YouTube videos, online courses, or corporate presentations, the ability to speak to the camera fluently without breaking eye contact is a game-changer. However, the word "free" often comes with frustrating limitations: invasive ads, locked features, or the need to install questionable software. What if there was a solution that was truly free and yet powerful?
+            In the world of content creation, the search for a <strong>free online teleprompter</strong> is constant. But beware: "free" doesn't always mean free. Many apps limit your recording time or stick a giant watermark on your video. PromptNinja is different: we offer <strong>unlimited usage time</strong>, <strong>no watermark</strong>, and no strings attached. Whether for YouTube videos, online courses, or corporate presentations, the ability to speak to the camera fluently is a right, not a luxury.
         </p>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">The Dilemma of Free Tools</h2>
+        <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
+            <h2 className="text-2xl font-bold text-white mb-2">Why is PromptNinja Different? (P2P Technology)</h2>
+            <p className="text-slate-300">
+                Most teleprompters "freeze" because they depend on your internet to scroll the text. PromptNinja uses <strong>WebRTC (P2P)</strong> technology, which connects your mobile to your PC directly over Wi-Fi. This ensures an <strong>instant response, without lag</strong>, regardless of your internet speed. It's professional stability, for free.
+            </p>
+        </div>
+
+        <h2 className="text-2xl font-bold text-white mt-8 mb-4">The Dilemma of Free Tools (Lag and Ads)</h2>
         <p className="mb-4">
-            Many free online teleprompters are actually bait. They offer a simple text box that scrolls at a constant speed. Need to pause? Adjust the speed in real-time? Use your phone as a remote control? These are almost always paid features. You end up wasting time setting up a tool that doesn't meet your basic needs at the time of recording.
+            Many free online teleprompters are actually bait. They hide serious problems that only appear when you're recording:
+        </p>
+        <ul className="list-disc pl-6 mb-6 text-slate-300 space-y-2">
+            <li><strong>LAG and Freezes:</strong> The text stutters while scrolling, making you lose your rhythm and look amateurish.</li>
+            <li><strong>Invasive Ads:</strong> Pop-ups that cover the text right in the middle of your best take.</li>
+            <li><strong>Artificial Limitations:</strong> "Pay to unlock remote control" or "Pay to remove watermark".</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Guaranteed Privacy: The Teleprompter that NEVER Sees Your Script (No Login!)</h2>
+        <p className="mb-6 text-slate-300">
+            Unlike other apps that force you to create an account and save your scripts to the "cloud" (where they can be leaked or read), PromptNinja operates with <strong>Local Privacy</strong>.
+            <br/><br/>
+            Since we don't require login, <strong>we never send your script to our servers</strong>. All processing happens inside your browser. Your data, your rules.
         </p>
 
         <div className="bg-slate-800 p-6 rounded-lg my-6">

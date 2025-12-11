@@ -63,7 +63,7 @@ export const ComoUsarTeleprompterES = () => (
             </div>
             <div className="bg-slate-800 p-4 rounded-lg">
                 <h3 className="font-bold text-lg text-white">3. Velocidad de Desplazamiento Incorrecta</h3>
-                <p className="text-slate-300 mt-2"><strong>El Error:</strong> El desplazamiento es demasiado lento, creando pausas extrañas, o demasiado rápido, haciéndote tropezar con las palabras. <br /> <strong>La Solución:</strong> Usa la función de control remoto para ajustar la velocidad en tiempo real. Empieza un poco más lento y acelera a medida que coges el ritmo. Un buen consejo es tener siempre la siguiente línea visible en la parte superior de la pantalla.</p>
+                <p className="text-slate-300 mt-2"><strong>El Error:</strong> El desplazamiento es demasiado lento, creando pausas extrañas, o demasiado rápido, haciéndote tropezar con las palabras. <br /> <strong>La Solución:</strong> Aquí es donde brilla el <strong>control remoto P2P de PromptNinja</strong>. Te permite ajustar la velocidad en tiempo real con latencia cero. Empieza un poco más lento y acelera a medida que coges el ritmo. Un buen consejo es tener siempre la siguiente línea visible en la parte superior de la pantalla.</p>
             </div>
         </div>
 

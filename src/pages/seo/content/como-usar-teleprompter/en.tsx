@@ -63,7 +63,7 @@ export const ComoUsarTeleprompterEN = () => (
             </div>
             <div className="bg-slate-800 p-4 rounded-lg">
                 <h3 className="font-bold text-lg text-white">3. Incorrect Scrolling Speed</h3>
-                <p className="text-slate-300 mt-2"><strong>The Mistake:</strong> The scroll is too slow, creating awkward pauses, or too fast, causing you to stumble over your words. <br /> <strong>The Solution:</strong> Use the remote control feature to adjust the speed in real-time. Start a little slower and speed up as you get into the rhythm. A good tip is to always have the next line visible at the top of the screen.</p>
+                <p className="text-slate-300 mt-2"><strong>The Mistake:</strong> The scroll is too slow, creating awkward pauses, or too fast, causing you to stumble over your words. <br /> <strong>The Solution:</strong> This is where <strong>PromptNinja's P2P remote control</strong> shines. It allows you to adjust the speed in real-time with zero latency. Start a little slower and speed up as you get into the rhythm. A good tip is to always have the next line visible at the top of the screen.</p>
             </div>
         </div>
 

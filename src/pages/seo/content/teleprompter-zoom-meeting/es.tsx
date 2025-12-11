@@ -6,6 +6,15 @@ export const TeleprompterZoomMeetingES = () => (
             Mantener el contacto visual durante una presentación en línea es el secreto para captar la atención y transmitir confianza. Sin embargo, la realidad es un malabarismo constante: si miras tus notas, pierdes la conexión con la audiencia; si miras a la cámara, corres el riesgo de olvidar puntos cruciales. PromptNinja surge como la solución definitiva a este dilema, permitiéndote leer tu guion con fluidez mientras miras directamente a la lente de la cámara, creando una comunicación poderosa y auténtica.
         </p>
 
+        <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-blue-500">
+            <h2 className="text-2xl font-bold text-white mb-2">El Secreto de la Fluidez: Por Qué el Control Remoto P2P de PromptNinja No se Traba en Zoom</h2>
+            <p className="text-slate-300">
+                Imagina esto: estás en vivo en Zoom, tu internet oscila y el teleprompter se congela. Pánico. Con PromptNinja, esto no sucede.
+                <br /><br />
+                Usamos tecnología <strong>WebRTC (P2P)</strong> que crea un "túnel local" entre tu celular y el PC vía Wi-Fi. ¿El resultado? <strong>Latencia Cero</strong>. Incluso si tu internet es lenta o inestable, el control remoto responde al instante. Tú controlas el ritmo, no el lag del servidor.
+            </p>
+        </div>
+
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">El Problema Psicológico de la "Mirada Desviada" en Videollamadas</h2>
         <p className="mb-4">
             En un entorno de negocios digital, la confianza es la moneda más valiosa. En reuniones de ventas importantes, entrevistas de trabajo o presentaciones ejecutivas, el contacto visual directo es interpretado por el cerebro humano como una señal de honestidad, preparación y autoridad. Cuando tus ojos deambulan para leer un guion en papel o en una ventana lateral, proyectas involuntariamente una imagen de falta de preparación, nerviosismo o incluso desinterés.
@@ -94,10 +103,6 @@ export const TeleprompterZoomMeetingES = () => (
             <div>
                 <dt className="font-bold text-white text-lg">¿Funciona con una webcam externa?</dt>
                 <dd className="text-slate-300 mt-1">Sí, perfectamente. De hecho, es aún mejor. Coloca la ventana de PromptNinja justo encima o debajo de tu webcam externa para una alineación ocular ideal.</dd>
-            </div>
-            <div>
-                <dt className="font-bold text-white text-lg">¿Y si mi internet va lento? ¿Se bloqueará el teleprompter?</dt>
-                <dd className="text-slate-300 mt-1">No. El control remoto de PromptNinja utiliza tecnología WebRTC (P2P), creando una conexión directa entre tu móvil y el ordenador a través de tu red Wi-Fi local. La comunicación es instantánea y no depende de la velocidad de tu internet, garantizando un desplazamiento suave y sin bloqueos.</dd>
             </div>
         </dl>
 

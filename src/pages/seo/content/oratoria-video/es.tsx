@@ -15,9 +15,9 @@ export const OratoriaVideoES = () => (
                     En una conversación, miramos a los ojos. En un vídeo, los ojos de tu audiencia son la lente de la cámara. El error más común es mirar tu propia imagen en la pantalla. Esto rompe la conexión al instante. Tu mirada debe ser fija y directa a la lente.
                 </p>
                 <div className="bg-slate-800 p-3 rounded-md mt-4 border-l-4 border-purple-500">
-                    <p className="text-sm font-semibold text-white">La Solución: Teleprompter</p>
+                    <p className="text-sm font-semibold text-white">La Solución: Ventana Redimensionable</p>
                     <p className="text-xs text-slate-400">
-                        Un teleprompter como <strong>PromptNinja</strong> muestra tu guion frente a la lente, permitiéndote leer mientras mantienes un contacto visual perfecto y natural.
+                        La ventana redimensionable de <strong>PromptNinja</strong> te permite colocar el texto exactamente sobre el área de tu cámara (en Zoom o escritorio). Esto mantiene tus ojos alineados con la lente de forma natural mientras lees.
                     </p>
                 </div>
             </div>
@@ -92,7 +92,7 @@ export const OratoriaVideoES = () => (
                 <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">
                     <summary className="font-bold text-white text-lg">¿Usar un teleprompter no me hará parecer un robot?</summary>
                     <p className="mt-2 text-slate-400">
-                        Al contrario. Un buen teleprompter, combinado con un buen control de velocidad (como el control remoto de PromptNinja), te permite hablar a tu ritmo natural. La apariencia robótica proviene de intentar memorizar y recitar, no de leer con fluidez.
+                        Al contrario. Un buen teleprompter, combinado con el <strong>control remoto P2P de PromptNinja</strong>, te permite ajustar la velocidad en tiempo real, coincidiendo con tu ritmo natural al hablar. La apariencia robótica proviene de intentar memorizar y recitar, no de leer con fluidez con la herramienta adecuada.
                     </p>
                 </details>
                 <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">

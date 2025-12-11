@@ -2,7 +2,31 @@ export const TeleprompterOnlineGratisES = () => (
     <>
         <h1 className="text-3xl font-bold text-white mb-4">Teleprompter Online Gratis: Graba con Confianza y Profesionalismo</h1>
         <p className="mb-6 text-lg text-slate-300">
-            ¿Buscas un <strong>teleprompter online gratis</strong> que sea simple, rápido y no requiera instalación? Has llegado al lugar correcto. PromptNinja es una herramienta moderna que funciona directamente en tu navegador, permitiéndote leer guiones con fluidez mientras grabas, sin necesidad de descargar aplicaciones pesadas o crear cuentas.
+            En el universo de la creación de contenido, la búsqueda de un <strong>teleprompter online gratis</strong> es constante. Pero cuidado: "gratis" no siempre significa libre. Muchas apps limitan tu tiempo de grabación o pegan una marca de agua gigante en tu video. PromptNinja es diferente: ofrecemos <strong>tiempo de uso ilimitado</strong>, <strong>sin marca de agua</strong> y sin trampas. Ya sea para videos en YouTube, cursos online o presentaciones corporativas, la capacidad de hablar a la cámara con fluidez es un derecho, no un lujo.
+        </p>
+
+        <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
+            <h2 className="text-2xl font-bold text-white mb-2">¿Por qué PromptNinja es Diferente? (Tecnología P2P)</h2>
+            <p className="text-slate-300">
+                La mayoría de los teleprompters se "traban" porque dependen de tu internet para desplazar el texto. PromptNinja usa tecnología <strong>WebRTC (P2P)</strong>, que conecta tu celular al PC directamente por Wi-Fi. Esto garantiza una <strong>respuesta instantánea, sin retrasos (LAG)</strong>, independientemente de la velocidad de tu internet. Es estabilidad profesional, gratis.
+            </p>
+        </div>
+
+        <h2 className="text-2xl font-bold text-white mt-8 mb-4">El Dilema de las Herramientas Gratuitas (Lag y Anuncios)</h2>
+        <p className="mb-4">
+            Muchos teleprompters online gratuitos son, en realidad, cebos. Ocultan problemas serios que solo aparecen a la hora de grabar:
+        </p>
+        <ul className="list-disc pl-6 mb-6 text-slate-300 space-y-2">
+            <li><strong>LAG y Congelamientos:</strong> El texto se atasca al desplazarse, haciéndote perder el ritmo y parecer amateur.</li>
+            <li><strong>Anuncios Intrusivos:</strong> Pop-ups que cubren el texto justo en medio de tu mejor toma.</li>
+            <li><strong>Limitaciones Artificiales:</strong> "Paga para desbloquear el control remoto" o "Paga para quitar la marca de agua".</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Privacidad Garantizada: El Teleprompter que NUNCA Ve Tu Guion (¡Sin Login!)</h2>
+        <p className="mb-6 text-slate-300">
+            A diferencia de otras apps que te obligan a crear una cuenta y guardan tus guiones en la "nube" (donde pueden filtrarse o ser leídos), PromptNinja opera con <strong>Privacidad Local</strong>.
+            <br /><br />
+            Como no exigimos inicio de sesión, <strong>nunca enviamos tu guion a nuestros servidores</strong>. Todo el procesamiento ocurre dentro de tu navegador. Tus datos, tus reglas.
         </p>
 
         <div className="my-8 p-6 bg-slate-800 rounded-lg">
