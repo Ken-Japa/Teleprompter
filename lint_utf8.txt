@@ -1,0 +1,166 @@
+﻿
+> prompt-ninja@1.0.0 lint
+> eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0
+
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\api\validate-key.ts
+  127:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\App.test.tsx
+  24:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  28:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\App.tsx
+   13:1   error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  103:88  warning  Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\components\host\HudControls.tsx
+  2:1  warning  This rule can't verify that `export *` only exports components  react-refresh/only-export-components
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\components\host\Prompter.tsx
+  203:10  warning  React Hook useCallback has a missing dependency: 'onResetTimer'. Either include it or remove the dependency array. If 'onResetTimer' changes too often, find the parent component that defines it and wrap that definition in useCallback  react-hooks/exhaustive-deps
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\components\landing\FAQ.tsx
+  15:60  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\components\remote\ConnectionState.tsx
+  17:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  79:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\components\ui\Styled.tsx
+  5:1  warning  This rule can't verify that `export *` only exports components  react-refresh/only-export-components
+  6:1  warning  This rule can't verify that `export *` only exports components  react-refresh/only-export-components
+  7:1  warning  This rule can't verify that `export *` only exports components  react-refresh/only-export-components
+  8:1  warning  This rule can't verify that `export *` only exports components  react-refresh/only-export-components
+  9:1  warning  This rule can't verify that `export *` only exports components  react-refresh/only-export-components
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\components\ui\styles\Modal.tsx
+  63:43  error  React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render   react-hooks/rules-of-hooks
+  65:3   error  React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render  react-hooks/rules-of-hooks
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\hooks\useElementMetrics.ts
+   8:91  warning  Unexpected any. Specify a different type                                                                                                                 @typescript-eslint/no-explicit-any
+  55:14  warning  React Hook useEffect has a spread element in its dependency array. This means we can't statically verify whether you've passed the correct dependencies  react-hooks/exhaustive-deps
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\hooks\useHostController.test.ts
+  24:7  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  28:7  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  34:7  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\hooks\useHostController.ts
+   15:48  error    React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render  react-hooks/rules-of-hooks
+   64:30  warning  Unexpected any. Specify a different type                                                                                     @typescript-eslint/no-explicit-any
+  218:5   warning  React Hook useEffect has a missing dependency: 'elapsedTime'. Either include it or remove the dependency array               react-hooks/exhaustive-deps
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\hooks\useLocalStorage.ts
+  43:5  warning  React Hook useEffect has a missing dependency: 'readValue'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\hooks\useNavigationMap.test.ts
+  49:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\hooks\useNavigationMap.ts
+  55:54  warning  Unexpected any. Specify a different type                                                                               @typescript-eslint/no-explicit-any
+  91:5   warning  React Hook useEffect has a missing dependency: 'scrollContainerRef'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\hooks\usePeerHost.ts
+   21:36  warning  Unexpected any. Specify a different type                                                                  @typescript-eslint/no-explicit-any
+   44:62  warning  Unexpected any. Specify a different type                                                                  @typescript-eslint/no-explicit-any
+  139:34  warning  Unexpected any. Specify a different type                                                                  @typescript-eslint/no-explicit-any
+  168:29  warning  Unexpected any. Specify a different type                                                                  @typescript-eslint/no-explicit-any
+  178:28  warning  Unexpected any. Specify a different type                                                                  @typescript-eslint/no-explicit-any
+  238:5   warning  React Hook useEffect has a missing dependency: 'isPro'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\hooks\usePeerRemote.ts
+   35:33  warning  Unexpected any. Specify a different type                                                                              @typescript-eslint/no-explicit-any
+   56:26  warning  Unexpected any. Specify a different type                                                                              @typescript-eslint/no-explicit-any
+   88:5   warning  React Hook useCallback has a missing dependency: 'setupConnection'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+   95:64  warning  Unexpected any. Specify a different type                                                                              @typescript-eslint/no-explicit-any
+  117:16  error    Empty block statement                                                                                                 no-empty
+  123:16  error    Empty block statement                                                                                                 no-empty
+  150:28  warning  Unexpected any. Specify a different type                                                                              @typescript-eslint/no-explicit-any
+  214:5   warning  React Hook useEffect has a missing dependency: 'setupConnection'. Either include it or remove the dependency array    react-hooks/exhaustive-deps
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\hooks\usePictureInPicture.ts
+  15:3  error  Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  22:4  error  Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\hooks\useRemoteController.ts
+  128:5   warning  React Hook useEffect has missing dependencies: 'isLocalRecording', 'resetVoice', 'startLocalRecording', and 'stopLocalRecording'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  156:16  error    Empty block statement                                                                                                                                                                 no-empty
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\hooks\useScriptStorage.ts
+  55:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\hooks\useScrollPhysics.ts
+  263:3  warning  React Hook useCallback has a missing dependency: 'wakeUpLoop'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\hooks\useTranslation.tsx
+  12:14  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  69:26  warning  Unexpected any. Specify a different type                                                                                        @typescript-eslint/no-explicit-any
+  96:14  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\hooks\useVoiceControl.test.ts
+  20:24  warning  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+  23:9   error    Unexpected aliasing of 'this' to local variable  @typescript-eslint/no-this-alias
+  43:61  warning  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+  44:67  warning  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+  48:27  warning  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+  49:27  warning  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\hooks\useVoiceControl.ts
+   40:17  error    Empty block statement                                                                                                                       no-empty
+   58:16  error    Empty block statement                                                                                                                       no-empty
+   80:17  error    Empty block statement                                                                                                                       no-empty
+  166:5   warning  React Hook useCallback has missing dependencies: 'activeSentenceIndex' and 'sentences'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  179:16  error    Empty block statement                                                                                                                       no-empty
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\hooks\useWakeLock.ts
+   6:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  46:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  75:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\pages\Host.test.tsx
+  33:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  37:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\pages\Remote.test.tsx
+  40:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  42:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  43:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  43:79  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\pages\Remote.tsx
+  100:13  warning  'charIndex' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\setupTests.ts
+  27:20  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  28:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\types.ts
+  92:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\types\global.d.ts
+  4:8   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  5:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  6:11  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\utils\analytics.ts
+   9:14  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  10:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\utils\logger.ts
+  17:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\utils\p2pErrorUtils.ts
+  7:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\utils\qr.ts
+  45:11  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  46:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  47:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Ken\Desktop\Projeto\PromptNinja\src\utils\textParser.ts
+  26:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+Ô£û 87 problems (14 errors, 73 warnings)
+

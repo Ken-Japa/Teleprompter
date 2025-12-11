@@ -58,8 +58,6 @@ interface ModalProps {
 }
 
 export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
-  if (!isOpen) return null;
-
   const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -71,6 +69,8 @@ export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
     }
     setPortalTarget(element);
   }, []);
+
+  if (!isOpen) return null;
 
   if (!portalTarget) {
     return null;

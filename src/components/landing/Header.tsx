@@ -4,10 +4,10 @@ import * as S from "../ui/Styled";
 import { LanguageSelector } from "../ui/LanguageSelector";
 
 interface HeaderProps {
-    onLaunch: () => void;
+    // onLaunch used to be here but is unused
 }
 
-export const Header: React.FC<HeaderProps> = ({ onLaunch }) => {
+export const Header: React.FC<HeaderProps> = () => {
     const { t } = useTranslation();
 
     const scrollToSection = (id: string) => {

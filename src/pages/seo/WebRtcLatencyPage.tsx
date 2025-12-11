@@ -17,7 +17,7 @@ export const WebRtcLatencyPage: React.FC<Props> = ({ onLaunch }) => {
     let description = "Entenda a tecnologia por trás do PromptNinja. Descubra como usamos WebRTC e P2P para garantir rolagem suave e instantânea, superando o Bluetooth.";
     let ctaText = "Testar Tecnologia WebRTC Agora";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/tecnologia-webrtc-baixa-latencia";
-    let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+    const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {
         "@context": "https://schema.org",
         "@type": "WebPage",

@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import * as S from "./Styled";
 import { useTranslation } from "../../hooks/useTranslation";
 

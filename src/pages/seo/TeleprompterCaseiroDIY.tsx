@@ -17,7 +17,7 @@ export const TeleprompterCaseiroDIY: React.FC<Props> = ({ onLaunch }) => {
     let description = "Aprenda a fazer um teleprompter caseiro com vidro e caixa de papelão. E use o PromptNinja como software gratuito para espelhar o texto.";
     let ctaText = "Abrir Modo Espelho Agora";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-caseiro-diy";
-    let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+    const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {
         "@context": "https://schema.org",
         "@type": "WebPage",

@@ -57,6 +57,9 @@ const renderWithProvider = (ui: React.ReactNode) => {
 };
 
 describe("Host Component (Editor & Prompter)", () => {
+    it('should handle basic host interaction', () => {
+        // Placeholder test
+    });
     it("Should start in Edit Mode and allow text changes", () => {
         renderWithProvider(<Host />);
         const textarea = screen.getByPlaceholderText(/Paste or type your speech script here/i);

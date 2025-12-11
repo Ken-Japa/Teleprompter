@@ -10,7 +10,6 @@ const ThankYou = React.lazy(() => import("./pages/ThankYou").then(module => ({ d
 
 import { SeoPages, SeoRouteKey } from "./config/seoRoutes";
 import { SEO_ROUTES } from "./config/constants";
-// @ts-ignore
 import { ROUTES_CONFIG } from "./config/routes.js";
 import { Language } from "./locales/index";
 

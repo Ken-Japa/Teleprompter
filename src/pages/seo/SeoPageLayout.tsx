@@ -31,8 +31,8 @@ export const SeoPageLayout: React.FC<SeoPageLayoutProps> = ({
 
     return (
         <S.LandingContainer>
-            <Header onLaunch={onLaunch} />
-            
+            <Header />
+
             <div className="relative pt-32 pb-16 md:pt-48 md:pb-32 overflow-hidden">
                 {/* Background Glow */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none z-0">

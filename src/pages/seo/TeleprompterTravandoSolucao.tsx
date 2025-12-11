@@ -17,7 +17,7 @@ export const TeleprompterTravandoSolucao: React.FC<Props> = ({ onLaunch }) => {
     let description = "Seu app de teleprompter está travando ou o texto não rola suavemente? Entenda por que isso acontece e como o PromptNinja resolve com P2P.";
     let ctaText = "Testar Rolagem Suave (Grátis)";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-travando-solucao";
-    let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+    const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {
         "@context": "https://schema.org",
         "@type": "WebPage",

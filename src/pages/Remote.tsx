@@ -119,6 +119,8 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
     }, [text, navigationMap]);
 
 
+
+
     if (status !== ConnectionStatus.CONNECTED) {
         return (
             <S.ScreenContainer className="bg-[#020617] min-h-screen h-[100dvh] flex flex-col">
@@ -280,9 +282,9 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                 <div className="flex flex-col items-center bg-white/5 p-3 rounded-3xl border border-white/5 backdrop-blur-md">
                                     <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-2">{t("remote.speed")}</span>
                                     <div className="flex flex-col items-center gap-2">
-                                        <S.IconButton onClick={() => actions.handleSpeedChange(Math.min(10, speed + 0.5))} className="w-12 h-12 !rounded-2xl !bg-white/10 hover:!bg-white/20 border-white/10"><PlusIcon /></S.IconButton>
+                                        <S.IconButton onClick={() => actions.handleSpeedChange(Math.min(10, speed + 0.5))} className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-white/20 border-white/10"><PlusIcon /></S.IconButton>
                                         <span className="font-mono text-2xl font-black text-brand-400 min-w-[3ch] text-center my-1 drop-shadow-md">{speed.toFixed(1)}</span>
-                                        <S.IconButton onClick={() => actions.handleSpeedChange(Math.max(0, speed - 0.5))} className="w-12 h-12 !rounded-2xl !bg-white/10 hover:!bg-white/20 border-white/10"><MinusIcon /></S.IconButton>
+                                        <S.IconButton onClick={() => actions.handleSpeedChange(Math.max(0, speed - 0.5))} className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-white/20 border-white/10"><MinusIcon /></S.IconButton>
                                     </div>
                                 </div>
 
@@ -541,7 +543,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                             <div className="text-sm text-slate-400 uppercase tracking-widest font-bold">{t("common.sync") || "Sync"}</div>
                             <div className="flex items-center justify-between bg-slate-900 p-4 rounded-xl border border-slate-800">
                                 <span className="text-sm font-medium text-slate-300">{t("common.refresh") || "Refresh Connection"}</span>
-                                <SyncButton onSync={actions.handleRequestSync} className="!w-10 !h-10 !bg-slate-800 hover:!bg-slate-700" />
+                                <SyncButton onSync={actions.handleRequestSync} className="w-10 h-10 bg-slate-800 hover:bg-slate-700" />
                             </div>
                         </div>
 

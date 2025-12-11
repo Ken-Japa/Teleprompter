@@ -17,7 +17,7 @@ export const TeleprompterZoomMeeting: React.FC<Props> = ({ onLaunch }) => {
     let description = "Aprenda a ler seus scripts durante reuniões online sem desviar o olhar da câmera. Guia para Zoom, Teams e Google Meet com teleprompter gratuito.";
     let ctaText = "Abrir Teleprompter para Zoom";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-zoom-meeting";
-    let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+    const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {
         "@context": "https://schema.org",
         "@type": "WebPage",

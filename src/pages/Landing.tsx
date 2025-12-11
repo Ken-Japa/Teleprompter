@@ -32,7 +32,7 @@ export const Landing: React.FC<LandingProps> = ({ onLaunch }) => {
 
     return (
         <S.LandingContainer>
-            <Header onLaunch={onLaunch} />
+            <Header />
             <Hero onLaunch={onLaunch} />
             <ProblemSolution />
             <HowItWorks onLaunch={onLaunch} />

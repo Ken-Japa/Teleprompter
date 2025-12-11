@@ -17,7 +17,7 @@ export const TeleprompterPCWindows: React.FC<Props> = ({ onLaunch }) => {
     let description = "Use seu PC Windows como teleprompter profissional. Sem baixar programas, sem vírus e com controle remoto via celular. Funciona no Chrome e Edge.";
     let ctaText = "Abrir Teleprompter no PC";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-pc-windows";
-    let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+    const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {
         "@context": "https://schema.org",
         "@type": "WebPage",

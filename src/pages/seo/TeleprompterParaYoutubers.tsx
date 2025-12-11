@@ -17,7 +17,7 @@ export const TeleprompterParaYoutubers: React.FC<Props> = ({ onLaunch }) => {
     let description = "Grave vídeos longos sem errar o texto. Descubra como o PromptNinja ajuda YouTubers e professores online a gravar aulas perfeitas.";
     let ctaText = "Começar a Gravar Agora";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-para-youtubers-e-criadores";
-    let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
+    const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {
         "@context": "https://schema.org",
         "@type": "WebPage",

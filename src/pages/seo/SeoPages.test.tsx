@@ -1,8 +1,8 @@
 
-
+/// <reference types="vite/client" />
 import { render, act } from '@testing-library/react';
 import React from 'react';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, type Mock } from 'vitest';
 import { ROUTES_CONFIG } from '../../config/routes';
 import type { RouteConfig } from '../../config/routes.d';
 import { SeoPages, SeoRouteKey, seoKeyMap } from '../../config/seoRoutes';
@@ -23,8 +23,6 @@ vi.mock('../../hooks/useTranslation', () => ({
 
 const sitemapPath = path.join(process.cwd(), 'public', 'sitemap.xml');
 const sitemap = fs.readFileSync(sitemapPath, 'utf8');
-
-const contentModules = import.meta.glob('./content/**/*.tsx');
 
 describe('SEO Pages', () => {
     it('should have a sitemap with all the routes and correct attributes', () => {
@@ -47,21 +45,6 @@ describe('SEO Pages', () => {
             });
         });
     });
-
-    const contentDirectoryMap: Record<SeoRouteKey, string> = {
-        SEO_GRATIS: "teleprompter-online-gratis",
-        SEO_TUTORIAL: "como-usar-teleprompter",
-        SEO_MELHOR_APP: "melhor-app-teleprompter",
-        SEO_ALTERNATIVAS: "alternativas-teleprompter-concorrente",
-        SEO_YOUTUBERS: "teleprompter-para-youtubers",
-        SEO_TRAVANDO: "teleprompter-travando-solucao",
-        SEO_DIY: "teleprompter-caseiro-diy",
-        SEO_ORATORIA: "oratoria-video",
-        SEO_DECORAR: "como-decorar-texto",
-        SEO_WEBRTC: "webrtc-latency",
-        SEO_PC_WINDOWS: "teleprompter-pc-windows",
-        SEO_ZOOM: "teleprompter-zoom-meeting",
-    };
 
     const metadataMap: Record<string, Record<string, { title: string; description: string }>> = {
         SEO_GRATIS: {
@@ -172,7 +155,7 @@ describe('SEO Pages', () => {
                         continue; // Skip if no metadata for this language
                     }
 
-                    (useTranslation as vi.Mock).mockReturnValue({
+                    (useTranslation as Mock).mockReturnValue({
                         t: (key: string) => key,
                         lang: lang as Language,
                         setLang: () => { },
