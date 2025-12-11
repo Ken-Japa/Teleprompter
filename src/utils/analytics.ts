@@ -83,7 +83,7 @@ export function startUsageTracking(): void {
    // Enviar como evento 'usage_tick' ou métrica personalizada
    trackEvent("usage_heartbeat", { duration_seconds: durationInSeconds });
   }
- }, 30000); // Rastreia a cada 30 segundos
+ }, 60000); // Rastreia a cada minuto
 }
 
 /**
