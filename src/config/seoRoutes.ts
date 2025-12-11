@@ -1,56 +1,91 @@
 import React from "react";
 
 export const SeoPages = {
- TeleprompterOnlineGratis: React.lazy(() =>
-  import("../pages/seo/TeleprompterOnlineGratis").then((module) => ({
-   default: module.TeleprompterOnlineGratis,
-  }))
- ),
- ComoUsarTeleprompter: React.lazy(() =>
-  import("../pages/seo/ComoUsarTeleprompter").then((module) => ({ default: module.ComoUsarTeleprompter }))
- ),
- MelhorAppTeleprompter: React.lazy(() =>
-  import("../pages/seo/MelhorAppTeleprompter").then((module) => ({
-   default: module.MelhorAppTeleprompter,
-  }))
- ),
- AlternativasTeleprompterConcorrente: React.lazy(() =>
-  import("../pages/seo/AlternativasTeleprompterConcorrente").then((module) => ({
-   default: module.AlternativasTeleprompterConcorrente,
-  }))
- ),
- TeleprompterParaYoutubers: React.lazy(() =>
-  import("../pages/seo/TeleprompterParaYoutubers").then((module) => ({
-   default: module.TeleprompterParaYoutubers,
-  }))
- ),
- TeleprompterTravandoSolucao: React.lazy(() =>
-  import("../pages/seo/TeleprompterTravandoSolucao").then((module) => ({
-   default: module.TeleprompterTravandoSolucao,
-  }))
- ),
- TeleprompterCaseiroDIY: React.lazy(() =>
-  import("../pages/seo/TeleprompterCaseiroDIY").then((module) => ({
-   default: module.TeleprompterCaseiroDIY,
-  }))
- ),
- OratoriaVideo: React.lazy(() =>
-  import("../pages/seo/OratoriaVideo").then((module) => ({ default: module.OratoriaVideo }))
- ),
- ComoDecorarTexto: React.lazy(() =>
-  import("../pages/seo/ComoDecorarTexto").then((module) => ({ default: module.ComoDecorarTexto }))
- ),
- WebRtcLatency: React.lazy(() =>
-  import("../pages/seo/WebRtcLatencyPage").then((module) => ({ default: module.WebRtcLatencyPage }))
- ),
- TeleprompterPCWindows: React.lazy(() =>
-  import("../pages/seo/TeleprompterPCWindows").then((module) => ({ default: module.TeleprompterPCWindows }))
- ),
- TeleprompterZoomMeeting: React.lazy(() =>
-  import("../pages/seo/TeleprompterZoomMeeting").then((module) => ({
-   default: module.TeleprompterZoomMeeting,
-  }))
- ),
+    TeleprompterOnlineGratis: React.lazy(() =>
+        import("../pages/seo/TeleprompterOnlineGratis").then((module) => ({
+            default: module.TeleprompterOnlineGratis,
+        }))
+    ),
+    ComoUsarTeleprompter: React.lazy(() =>
+        import("../pages/seo/ComoUsarTeleprompter").then((module) => ({ default: module.ComoUsarTeleprompter }))
+    ),
+    MelhorAppTeleprompter: React.lazy(() =>
+        import("../pages/seo/MelhorAppTeleprompter").then((module) => ({
+            default: module.MelhorAppTeleprompter,
+        }))
+    ),
+    AlternativasTeleprompterConcorrente: React.lazy(() =>
+        import("../pages/seo/AlternativasTeleprompterConcorrente").then((module) => ({
+            default: module.AlternativasTeleprompterConcorrente,
+        }))
+    ),
+    TeleprompterParaYoutubers: React.lazy(() =>
+        import("../pages/seo/TeleprompterParaYoutubers").then((module) => ({
+            default: module.TeleprompterParaYoutubers,
+        }))
+    ),
+    TeleprompterTravandoSolucao: React.lazy(() =>
+        import("../pages/seo/TeleprompterTravandoSolucao").then((module) => ({
+            default: module.TeleprompterTravandoSolucao,
+        }))
+    ),
+    TeleprompterCaseiroDIY: React.lazy(() =>
+        import("../pages/seo/TeleprompterCaseiroDIY").then((module) => ({
+            default: module.TeleprompterCaseiroDIY,
+        }))
+    ),
+    OratoriaVideo: React.lazy(() =>
+        import("../pages/seo/OratoriaVideo").then((module) => ({ default: module.OratoriaVideo }))
+    ),
+    ComoDecorarTexto: React.lazy(() =>
+        import("../pages/seo/ComoDecorarTexto").then((module) => ({ default: module.ComoDecorarTexto }))
+    ),
+    WebRtcLatency: React.lazy(() =>
+        import("../pages/seo/WebRtcLatencyPage").then((module) => ({ default: module.WebRtcLatencyPage }))
+    ),
+    TeleprompterPCWindows: React.lazy(() =>
+        import("../pages/seo/TeleprompterPCWindows").then((module) => ({ default: module.TeleprompterPCWindows }))
+    ),
+    TeleprompterZoomMeeting: React.lazy(() =>
+        import("../pages/seo/TeleprompterZoomMeeting").then((module) => ({
+            default: module.TeleprompterZoomMeeting,
+        }))
+    ),
+    TeleprompterTikTokShorts: React.lazy(() =>
+        import("../pages/seo/TeleprompterTikTokShorts").then((module) => ({
+            default: module.TeleprompterTikTokShorts,
+        }))
+    ),
+    TeleprompterObsStudio: React.lazy(() =>
+        import("../pages/seo/TeleprompterObsStudio").then((module) => ({
+            default: module.TeleprompterObsStudio,
+        }))
+    ),
+    TeleprompterCapCut: React.lazy(() =>
+        import("../pages/seo/TeleprompterCapCut").then((module) => ({
+            default: module.TeleprompterCapCut,
+        }))
+    ),
+    TeleprompterWebVsHardware: React.lazy(() =>
+        import("../pages/seo/TeleprompterWebVsHardware").then((module) => ({
+            default: module.TeleprompterWebVsHardware,
+        }))
+    ),
+    TeleprompterGoogleMeetTeams: React.lazy(() =>
+        import("../pages/seo/TeleprompterGoogleMeetTeams").then((module) => ({
+            default: module.TeleprompterGoogleMeetTeams,
+        }))
+    ),
+    TeleprompterIphoneIpad: React.lazy(() =>
+        import("../pages/seo/TeleprompterIphoneIpad").then((module) => ({
+            default: module.TeleprompterIphoneIpad,
+        }))
+    ),
+    TeleprompterApresentacoes: React.lazy(() =>
+        import("../pages/seo/TeleprompterApresentacoes").then((module) => ({
+            default: module.TeleprompterApresentacoes,
+        }))
+    ),
 };
 
 export const seoKeyMap: Record<SeoRouteKey, keyof typeof SeoPages> = {
@@ -66,18 +101,32 @@ export const seoKeyMap: Record<SeoRouteKey, keyof typeof SeoPages> = {
     SEO_WEBRTC: "WebRtcLatency",
     SEO_PC_WINDOWS: "TeleprompterPCWindows",
     SEO_ZOOM: "TeleprompterZoomMeeting",
+    SEO_TIKTOK: "TeleprompterTikTokShorts",
+    SEO_OBS: "TeleprompterObsStudio",
+    SEO_CAPCUT: "TeleprompterCapCut",
+    SEO_HARDWARE_VS_WEB: "TeleprompterWebVsHardware",
+    SEO_MEET_TEAMS: "TeleprompterGoogleMeetTeams",
+    SEO_IPHONE_IPAD: "TeleprompterIphoneIpad",
+    SEO_APRESENTACOES: "TeleprompterApresentacoes",
 };
 
 export type SeoRouteKey =
- | "SEO_GRATIS"
- | "SEO_TUTORIAL"
- | "SEO_MELHOR_APP"
- | "SEO_ALTERNATIVAS"
- | "SEO_YOUTUBERS"
- | "SEO_TRAVANDO"
- | "SEO_DIY"
- | "SEO_ORATORIA"
- | "SEO_DECORAR"
- | "SEO_WEBRTC"
- | "SEO_PC_WINDOWS"
- | "SEO_ZOOM";
+    | "SEO_GRATIS"
+    | "SEO_TUTORIAL"
+    | "SEO_MELHOR_APP"
+    | "SEO_ALTERNATIVAS"
+    | "SEO_YOUTUBERS"
+    | "SEO_TRAVANDO"
+    | "SEO_DIY"
+    | "SEO_ORATORIA"
+    | "SEO_DECORAR"
+    | "SEO_WEBRTC"
+    | "SEO_PC_WINDOWS"
+    | "SEO_ZOOM"
+    | "SEO_TIKTOK"
+    | "SEO_OBS"
+    | "SEO_CAPCUT"
+    | "SEO_HARDWARE_VS_WEB"
+    | "SEO_MEET_TEAMS"
+    | "SEO_IPHONE_IPAD"
+    | "SEO_APRESENTACOES";
