@@ -5,6 +5,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite --host",
+        "prebuild": "node scripts/update-integrity.js",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "build": "npm run build:sitemap && vite build",
         "build:sitemap": "node scripts/generate-sitemap.js",

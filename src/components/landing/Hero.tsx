@@ -169,7 +169,7 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
                     ) : (
                         <iframe
                             className="w-full h-auto aspect-video rounded-2xl relative z-0"
-                            src="https://www.youtube.com/embed/5BtubI8xvtk?autoplay=1&controls=1"
+                            src={`https://www.youtube.com/embed/5BtubI8xvtk?autoplay=1&mute=1&rel=0&origin=${window.location.origin}`}
                             title="PromptNinja Demo Video"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
