@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://t.contentsquare.net https://www.youtube.com/ https://vitals.vercel-insights.com https://cdnjs.cloudflare.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.contentsquare.net https://c.ba.contentsquare.net https://*.googletagmanager.com https://www.googleadservices.com https://www.google.com https://www.google.com.br https://www.google-analytics.com https://i.ytimg.com/vi/; worker-src 'self' blob:; frame-src 'self' https://www.googletagmanager.com https://www.youtube.com/; frame-ancestors 'none'; form-action 'self'; object-src 'none'; base-uri 'self'; connect-src 'self' https://www.google-analytics.com https://vitals.vercel-insights.com https://*.contentsquare.net https://c.ba.contentsquare.net https://*.peerjs.com wss://*.peerjs.com https://0.peerjs.com stun: turn: https://www.googleadservices.com https://www.youtube.com/ https://www.google.com https://www.google.com.br https://analytics.google.com https://stats.g.doubleclick.net;"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://t.contentsquare.net https://www.youtube.com/ https://vitals.vercel-insights.com https://cdnjs.cloudflare.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.contentsquare.net https://c.ba.contentsquare.net https://*.googletagmanager.com https://www.googleadservices.com https://www.google.com https://www.google.com.br https://www.google-analytics.com https://i.ytimg.com/vi/ https://img.youtube.com/; worker-src 'self' blob:; frame-src 'self' https://www.googletagmanager.com https://www.youtube.com/; frame-ancestors 'none'; form-action 'self'; object-src 'none'; base-uri 'self'; connect-src 'self' https://www.google-analytics.com https://vitals.vercel-insights.com https://*.contentsquare.net https://c.ba.contentsquare.net https://*.peerjs.com wss://*.peerjs.com https://0.peerjs.com stun: turn: https://www.googleadservices.com https://www.youtube.com/ https://www.google.com https://www.google.com.br https://analytics.google.com https://stats.g.doubleclick.net;"
         },
         {
           "key": "X-Content-Type-Options",
@@ -53,6 +53,10 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "Vary",
+          "value": "Accept-Encoding"
         }
       ]
     }

@@ -19,7 +19,14 @@ function calculateIntegrity(content) {
 }
 
 // Fetch the script content
-https.get(SCRIPT_URL, (res) => {
+const options = {
+    headers: {
+        'Accept-Encoding': 'identity',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
+};
+
+https.get(SCRIPT_URL, options, (res) => {
     if (res.statusCode !== 200) {
         console.error(`❌ Failed to fetch script. Status Code: ${res.statusCode}`);
         process.exit(1);
