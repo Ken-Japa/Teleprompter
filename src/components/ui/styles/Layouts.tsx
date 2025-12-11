@@ -91,7 +91,7 @@ export const QRCodeBox = ({ children, hasId }: { children: React.ReactNode; hasI
 
 export const FormattingToolbar = ({ children }: { children: React.ReactNode }) => (
     <div className="flex items-center space-x-2 px-6 py-3 border-b border-white/5 z-10 glass sticky top-0 shadow-sm">
-        <div className="max-w-4xl mx-auto w-full flex items-center">{children}</div>
+        <div className="max-w-4xl mx-auto w-full flex items-center overflow-x-auto scrollbar-none">{children}</div>
     </div>
 );
 
@@ -147,7 +147,7 @@ export const FocusIndicator = () => (
 
 export const HudContainer = ({ children, visible }: { children: React.ReactNode; visible: boolean }) => (
     <div
-        className={`fixed bottom-6 w-full px-4 sm:left-1/2 sm:-translate-x-1/2 sm:w-auto glass py-3 rounded-2xl sm:bottom-12 sm:px-8 sm:py-4 sm:rounded-full z-50 transition-all duration-500 cubic-bezier(0.16, 1, 0.3, 1) flex flex-wrap justify-center items-center gap-x-4 gap-y-3 sm:flex-nowrap sm:gap-0 shadow-2xl ${visible ? "opacity-100 translate-y-0 scale-100 blur-0" : "opacity-0 translate-y-12 scale-90 blur-lg pointer-events-none"}`}
+        className={`fixed bottom-4 w-full px-4 sm:left-1/2 sm:-translate-x-1/2 sm:w-auto glass py-3 rounded-2xl sm:bottom-12 sm:px-8 sm:py-4 sm:rounded-full z-50 transition-all duration-500 cubic-bezier(0.16, 1, 0.3, 1) flex flex-wrap justify-center items-center gap-x-4 gap-y-3 sm:flex-nowrap sm:gap-0 shadow-2xl ${visible ? "opacity-100 translate-y-0 scale-100 blur-0" : "opacity-0 translate-y-12 scale-90 blur-lg pointer-events-none"}`}
     >
         {/* Top sheen for glass effect */}
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-full opacity-50"></div>
@@ -159,7 +159,7 @@ export const HudGroup = ({ children, label }: { children: React.ReactNode; label
     <div className="flex flex-col items-center justify-center sm:border-r sm:border-white/10 sm:last:border-0 sm:px-6 group relative h-full">
         <div className="flex items-center justify-center sm:gap-3">{children}</div>
         {label && (
-            <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-[9px] uppercase text-slate-500 font-bold tracking-[0.2em] group-hover:text-brand-400 transition-colors whitespace-nowrap opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 duration-300 pointer-events-none">
+            <span className="hidden sm:block absolute -bottom-5 left-1/2 -translate-x-1/2 text-[9px] uppercase text-slate-500 font-bold tracking-[0.2em] group-hover:text-brand-400 transition-colors whitespace-nowrap opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 duration-300 pointer-events-none">
                 {label}
             </span>
         )}
