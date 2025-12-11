@@ -63,7 +63,7 @@ export const ComoUsarTeleprompterPT = () => (
             </div>
             <div className="bg-slate-800 p-4 rounded-lg">
                 <h3 className="font-bold text-lg text-white">3. Velocidade de Rolagem Incorreta</h3>
-                <p className="text-slate-300 mt-2"><strong>O Erro:</strong> A rolagem é muito lenta, criando pausas estranhas, ou muito rápida, fazendo você tropeçar nas palavras. <br /> <strong>A Solução:</strong> Use a função de controle remoto para ajustar a velocidade em tempo real. Comece um pouco mais lento e acelere conforme pega o ritmo. Uma boa dica é ter a próxima linha sempre visível no topo da tela.</p>
+                <p className="text-slate-300 mt-2"><strong>O Erro:</strong> A rolagem é muito lenta, criando pausas estranhas, ou muito rápida, fazendo você tropeçar nas palavras. <br /> <strong>A Solução:</strong> A solução é usar a função de controle remoto P2P do PromptNinja para ajustar a velocidade em tempo real, o que é impossível em apps gratuitos básicos. Comece um pouco mais lento e acelere conforme pega o ritmo.</p>
             </div>
         </div>
 

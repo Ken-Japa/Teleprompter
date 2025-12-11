@@ -139,6 +139,24 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
                     <span>{t("landing.hero.zeroSetup")}</span>
                 </div>
             </div>
+
+            {/* App Video Demo */}
+            <div className="relative max-w-4xl mx-auto mt-24 mb-12 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+                <div className="relative glass bg-slate-900/40 rounded-2xl shadow-2xl overflow-hidden border border-white/10 group">
+                    <div className="absolute inset-0 bg-brand-500/5 group-hover:bg-brand-500/10 transition-colors pointer-events-none z-10"></div>
+                    <video 
+                        className="w-full h-auto rounded-2xl relative z-0" 
+                        controls 
+                        playsInline
+                        preload="metadata"
+                    >
+                        <source src="/videos/PromptNinja.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                {/* Ambient Glow */}
+                <div className="absolute -inset-4 bg-brand-500/20 blur-3xl -z-10 rounded-[3rem] opacity-30"></div>
+            </div>
         </S.HeroSection>
     );
 };

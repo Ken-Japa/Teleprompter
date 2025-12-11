@@ -17,7 +17,7 @@ export const OratoriaVideoPT = () => (
                 <div className="bg-slate-800 p-3 rounded-md mt-4 border-l-4 border-purple-500">
                     <p className="text-sm font-semibold text-white">A Solução: Teleprompter</p>
                     <p className="text-xs text-slate-400">
-                        Um teleprompter como o <strong>PromptNinja</strong> exibe seu roteiro na frente da lente, permitindo que você leia e mantenha um contato visual perfeito e natural.
+                        Para conseguir isso, você precisa de um teleprompter que possa ser alinhado com a lente, como o <strong>PromptNinja</strong>, que pode ser redimensionado em uma janela flutuante para otimizar o alinhamento ocular.
                     </p>
                 </div>
             </div>
@@ -92,7 +92,7 @@ export const OratoriaVideoPT = () => (
                 <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">
                     <summary className="font-bold text-white text-lg">Usar um teleprompter não vai me deixar com uma aparência robótica?</summary>
                     <p className="mt-2 text-slate-400">
-                        Pelo contrário. Um bom teleprompter, combinado com um bom controle de velocidade (como o controle remoto do PromptNinja), permite que você fale no seu ritmo natural. A aparência robótica vem de tentar memorizar e recitar, não de ler com fluidez.
+                        A aparência robótica vem de tentar memorizar e recitar, não de ler com fluidez. É por isso que o controle remoto do PromptNinja é crucial, pois ele permite que você fale no seu ritmo natural, sem depender de uma rolagem automática forçada.
                     </p>
                 </details>
                 <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">

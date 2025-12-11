@@ -4,12 +4,31 @@ export const TeleprompterOnlineGratisPT = () => (
         <h1 className="text-4xl font-bold text-white mb-6">Teleprompter Online Grátis: A Ferramenta Definitiva para Criadores</h1>
 
         <p className="mb-6">
-            No universo da criação de conteúdo, a busca por um <strong>teleprompter online grátis</strong> é constante. Seja para vídeos no YouTube, cursos online, ou apresentações corporativas, a capacidade de falar para a câmera com fluidez, sem desviar o olhar, é um divisor de águas. No entanto, a palavra "grátis" muitas vezes vem acompanhada de limitações frustrantes: anúncios invasivos, funcionalidades bloqueadas, ou a necessidade de instalar softwares duvidosos. E se existisse uma solução que fosse verdadeiramente gratuita e, ainda assim, poderosa?
+            No universo da criação de conteúdo, a busca por um <strong>teleprompter online grátis</strong> é constante. Mas cuidado: "grátis" nem sempre significa livre. Muitos apps limitam seu tempo de gravação ou colam uma marca d'água gigante no seu vídeo. O PromptNinja é diferente: oferecemos <strong>tempo de uso ilimitado</strong>, <strong>sem marca d'água</strong> e sem pegadinhas. Seja para vídeos no YouTube, cursos online, ou apresentações corporativas, a capacidade de falar para a câmera com fluidez é um direito, não um luxo.
         </p>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">O Dilema das Ferramentas Gratuitas</h2>
+        <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
+            <h2 className="text-2xl font-bold text-white mb-2">Por que o PromptNinja é Diferente? (Tecnologia P2P)</h2>
+            <p className="text-slate-300">
+                A maioria dos teleprompters "trava" porque depende da sua internet para rolar o texto. O PromptNinja usa tecnologia <strong>WebRTC (P2P)</strong>, que conecta seu celular ao PC diretamente pelo Wi-Fi. Isso garante uma <strong>resposta instantânea, sem atrasos (LAG)</strong>, independentemente da velocidade da sua internet. É estabilidade profissional, de graça.
+            </p>
+        </div>
+
+        <h2 className="text-2xl font-bold text-white mt-8 mb-4">O Dilema das Ferramentas Gratuitas (Lag e Anúncios)</h2>
         <p className="mb-4">
-            Muitos teleprompters online gratuitos são, na verdade, iscas. Eles oferecem uma caixa de texto simples que rola a uma velocidade constante. Precisa pausar? Ajustar a velocidade em tempo real? Usar seu celular como controle remoto? Essas são, quase sempre, funcionalidades pagas. Você acaba perdendo tempo configurando uma ferramenta que não atende às suas necessidades básicas no momento da gravação.
+            Muitos teleprompters online gratuitos são, na verdade, iscas. Eles escondem problemas sérios que só aparecem na hora de gravar:
+        </p>
+        <ul className="list-disc pl-6 mb-6 text-slate-300 space-y-2">
+            <li><strong>LAG e Travamentos:</strong> O texto engasga na rolagem, fazendo você perder o ritmo e parecer amador.</li>
+            <li><strong>Anúncios Invasivos:</strong> Pop-ups que cobrem o texto bem no meio da sua melhor tomada.</li>
+            <li><strong>Limitações Artificiais:</strong> "Pague para desbloquear o controle remoto" ou "Pague para remover a marca d'água".</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Privacidade Garantida: O Teleprompter que NUNCA Vê Seu Roteiro (Sem Login!)</h2>
+        <p className="mb-6 text-slate-300">
+            Diferente de outros apps que obrigam você a criar conta e salvam seus roteiros na "nuvem" (onde podem ser vazados ou lidos), o PromptNinja opera com <strong>Privacidade Local</strong>.
+            <br/><br/>
+            Como não exigimos login, <strong>nunca enviamos seu roteiro para nossos servidores</strong>. Todo o processamento acontece dentro do seu navegador. Seus dados, suas regras.
         </p>
 
         <div className="bg-slate-800 p-6 rounded-lg my-6">

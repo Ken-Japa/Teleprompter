@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef } from "react";
 import { ConnectionStatus, Theme } from "../types";
 import { PROMPTER_DEFAULTS } from "../config/constants";
 import { MinusIcon, PauseIcon, PlayIcon, PlusIcon, StopIcon, MicIcon, LaptopIcon, SmartphoneIcon } from "../components/ui/Icons";
@@ -8,6 +8,8 @@ import { Trackpad } from "../components/remote/Trackpad";
 import { ConnectionState } from "../components/remote/ConnectionState";
 import { useRemoteController } from "../hooks/useRemoteController";
 import { SyncButton } from "../components/ui/SyncButton";
+import { ColorMenu } from "../components/ui/ColorMenu";
+import { insertTagInText } from "../utils/editorHelpers";
 
 interface RemoteProps {
     hostId: string;
@@ -44,6 +46,25 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
         const secs = (elapsedTime % 60).toString().padStart(2, "0");
         return `${mins}:${secs}`;
     }, [elapsedTime]);
+
+    const remoteTextAreaRef = useRef<HTMLTextAreaElement>(null);
+
+    const handleRemoteInsertTag = (tag: string) => {
+        const textarea = remoteTextAreaRef.current;
+        if (!textarea) return;
+
+        const result = insertTagInText(textarea.value, tag, textarea.selectionStart, textarea.selectionEnd);
+        actions.handleTextChange(result.newText);
+
+        setTimeout(() => {
+            if (remoteTextAreaRef.current) {
+                remoteTextAreaRef.current.focus();
+                const start = Math.max(0, result.newSelectionStart);
+                const end = Math.max(0, result.newSelectionEnd);
+                remoteTextAreaRef.current.setSelectionRange(start, end);
+            }
+        }, 0);
+    };
 
     // Parse text for Navigation
     const textSegments = useMemo(() => {
@@ -332,7 +353,6 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                             className="flex-1 h-full rounded-2xl bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 text-red-400 active:scale-95 transition-all flex items-center justify-center gap-2"
                                         >
                                             <StopIcon className="w-5 h-5 fill-current" />
-                                            <span className="text-xs font-bold uppercase tracking-widest">{t("remote.stop")}</span>
                                         </button>
                                     </div>
                                 </div>
@@ -371,7 +391,11 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                 {/* EDIT TAB */}
                 {activeTab === 'edit' && (
                     <div className="flex-1 flex flex-col p-4 bg-slate-950 overflow-hidden">
+                        <div className="mb-4">
+                            <ColorMenu onInsertTag={handleRemoteInsertTag} />
+                        </div>
                         <textarea
+                            ref={remoteTextAreaRef}
                             value={text}
                             onChange={(e) => actions.handleTextChange(e.target.value)}
                             className="flex-1 w-full bg-slate-900/50 border border-slate-800 rounded-xl p-4 text-slate-200 font-mono text-sm focus:outline-none focus:border-brand-500 resize-none h-full"
