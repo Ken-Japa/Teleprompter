@@ -175,3 +175,25 @@ window.togglePro()
 PRO-NINJA-2025
 window.showPaywallModal()
 npx tsc --noEmit
+
+## Analytics Events
+
+This project uses Google Analytics 4 (GA4) custom events to track user engagement and system health. Below is a list of all configured events:
+
+| Event Name | Description | Parameters |
+| :--- | :--- | :--- |
+| `page_heartbeat` | Triggered every 60s while Host page is open | `duration_seconds` |
+| `page_duration` | Triggered when leaving Host page | `duration_seconds` |
+| `usage_heartbeat` | Triggered every 60s during active P2P connection | `duration_seconds` |
+| `session_duration` | Triggered when P2P connection ends | `duration_seconds` |
+| `successful_connection` | Triggered on successful P2P handshake | - |
+| `setting_changed` | Triggered when any setting is modified | `setting_name`, `value` |
+| `teleprompter_play` | Triggered when scroll starts | `speed_start` |
+| `teleprompter_pause` | Triggered when scroll pauses | `duration_since_start` |
+| `conversion` | Triggered on specific goals (Signup/Upgrade) | `type` |
+| `recording_start` | Triggered when recording starts | `mode` (host/remote) |
+| `recording_stop` | Triggered when recording stops | `mode`, `duration` |
+| `app_error` | Generic application errors (incl. P2P) | `error_type`, `message` |
+| `feature_error` | Feature prevented (e.g. voice control without Pro) | `feature_name` |
+| `paywall_view` | Paywall modal displayed | `trigger` (manual/timer) |
+| `paywall_cta_click` | Interaction with paywall button | `cta_type` |

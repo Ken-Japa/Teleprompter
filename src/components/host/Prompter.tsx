@@ -115,6 +115,7 @@ export const Prompter = memo(
           if (onStartRemoteRecording) onStartRemoteRecording();
         } else {
           await startRecording();
+          trackEvent("recording_start", { mode: recordingMode || "host" });
         }
       }, [recordingMode, startRecording, onStartRemoteRecording]);
 
@@ -123,8 +124,9 @@ export const Prompter = memo(
           if (onStopRemoteRecording) onStopRemoteRecording();
         } else {
           stopRecording();
+          trackEvent("recording_stop", { mode: recordingMode || "host", duration: recordingTime });
         }
-      }, [recordingMode, stopRecording, onStopRemoteRecording]);
+      }, [recordingMode, stopRecording, onStopRemoteRecording, recordingTime]);
 
       const handlePauseRecording = useCallback(() => {
         pauseRecording();

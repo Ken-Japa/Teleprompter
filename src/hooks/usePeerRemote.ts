@@ -2,7 +2,7 @@ import { getP2pErrorMessage } from "../utils/p2pErrorUtils";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { Peer } from "peerjs";
 import { ConnectionStatus, PeerDataConnection, PeerMessage, MessageType } from "../types";
-import { trackSuccessfulConnection, startUsageTracking } from "../utils/analytics";
+import { trackSuccessfulConnection, startUsageTracking, trackError } from "../utils/analytics";
 import { PEER_CONFIG } from "../utils/peerConfig";
 
 /**
@@ -59,6 +59,7 @@ export const usePeerRemote = (hostId: string) => {
                     }. Por favor, tente reconectar.`;
                 console.warn("Connection Error:", err);
                 setErrorMessage(msg);
+                trackError("remote_connection_error", err.type || err.message);
                 if (status === ConnectionStatus.CONNECTING) {
                     setStatus(ConnectionStatus.ERROR);
                 }
@@ -149,6 +150,7 @@ export const usePeerRemote = (hostId: string) => {
                 peer.on("error", (err: any) => {
                     const msg = getP2pErrorMessage(err, hostId);
                     console.warn("Peer Error:", err);
+                    trackError("remote_peer_error", err.type || err.message);
                     if (mountedRef.current) {
                         setErrorMessage(msg);
                         if (

@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "../hooks/useTranslation";
+import { startPageUsageTracking, stopPageUsageTracking } from "../utils/analytics";
 import * as S from "../components/ui/Styled";
 import { Editor } from "../components/host/Editor";
 import { Prompter } from "../components/host/Prompter";
@@ -9,6 +10,13 @@ import { RedeemModal } from "../components/RedeemModal";
 
 export const Host: React.FC = () => {
     const { t } = useTranslation();
+
+    React.useEffect(() => {
+        startPageUsageTracking();
+        return () => {
+            stopPageUsageTracking();
+        };
+    }, []);
 
     // Separation of Concerns: Host is now a dumb component
     const { state, actions, refs } = useHostController();
