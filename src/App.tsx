@@ -184,12 +184,14 @@ const App: React.FC = () => {
                 {view === "SEO_PWA_INSTALL" && <SeoPages.ComoInstalarPwa onLaunch={launchApp} />}
                 {view === "SEO_PRIVACY" && <SeoPages.PrivacidadeSeguranca onLaunch={launchApp} />}
 
+
                 {/* Script Pages */}
                 {view === "SEO_SCRIPTS" && <SeoPages.TeleprompterScriptsPage onLaunch={launchApp} />}
                 {view === "SEO_SCRIPTS_YOUTUBE" && <SeoPages.TeleprompterScriptCategory categoryId="youtube" onLaunch={launchApp} />}
                 {view === "SEO_SCRIPTS_TIKTOK" && <SeoPages.TeleprompterScriptCategory categoryId="tiktok-reels" onLaunch={launchApp} />}
                 {view === "SEO_SCRIPTS_SALES" && <SeoPages.TeleprompterScriptCategory categoryId="sales" onLaunch={launchApp} />}
                 {view === "SEO_SCRIPTS_CLASSES" && <SeoPages.TeleprompterScriptCategory categoryId="classes" onLaunch={launchApp} />}
+                {view === "SEO_SCRIPTS_INSTITUTIONAL" && <SeoPages.TeleprompterScriptCategory categoryId="institutional" onLaunch={launchApp} />}
             </Suspense>
         </TranslationProvider>
     );

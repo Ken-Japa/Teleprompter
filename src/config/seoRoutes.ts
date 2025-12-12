@@ -135,6 +135,7 @@ export const seoKeyMap: Record<SeoRouteKey, keyof typeof SeoPages> = {
     SEO_SCRIPTS_TIKTOK: "TeleprompterScriptCategory",
     SEO_SCRIPTS_SALES: "TeleprompterScriptCategory",
     SEO_SCRIPTS_CLASSES: "TeleprompterScriptCategory",
+    SEO_SCRIPTS_INSTITUTIONAL: "TeleprompterScriptCategory",
 };
 
 export type SeoRouteKey =
@@ -163,4 +164,5 @@ export type SeoRouteKey =
     | "SEO_SCRIPTS_YOUTUBE"
     | "SEO_SCRIPTS_TIKTOK"
     | "SEO_SCRIPTS_SALES"
-    | "SEO_SCRIPTS_CLASSES";
+    | "SEO_SCRIPTS_CLASSES"
+    | "SEO_SCRIPTS_INSTITUTIONAL";

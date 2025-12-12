@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import { SeoPageLayout } from './SeoPageLayout';
 import { useTranslation } from '../../hooks/useTranslation';
 import { SCRIPTS_DATA, Script } from '../../data/teleprompterScripts';
+import { SEO_CONTENT } from '../../data/seoContent';
 
 export const TeleprompterScriptsPage: React.FC<{ onLaunch: () => void }> = ({ onLaunch }) => {
     const { t, lang } = useTranslation();
     const currentLang = (['pt', 'en', 'es'].includes(lang) ? lang : 'pt') as 'pt' | 'en' | 'es';
+    const content = SEO_CONTENT.scripts;
 
     const [copiedScriptId, setCopiedScriptId] = useState<string | null>(null);
 
@@ -50,11 +52,28 @@ export const TeleprompterScriptsPage: React.FC<{ onLaunch: () => void }> = ({ on
         >
             <div className="mb-12">
                 <p>
-                    {currentLang === 'pt' ?
-                        "Bem-vindo à maior biblioteca de scripts gratuitos para teleprompter. Aqui você encontra modelos validados para seus vídeos, aulas e apresentações. Basta copiar ou abrir direto no app." :
-                        "Welcome to the largest library of free teleprompter scripts. Here you find validated templates for your videos, classes, and presentations. Just copy or open directly in the app."
-                    }
+                    {content.header_intro[currentLang]}
                 </p>
+            </div>
+
+            {/* Header Category Navigation */}
+            <div className="flex flex-wrap justify-center gap-3 mb-16">
+                {SCRIPTS_DATA.map(category => (
+                    <a
+                        key={category.id}
+                        href={`#${category.id}`}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            const element = document.getElementById(category.id);
+                            if (element) {
+                                element.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }}
+                        className="px-4 py-2 bg-slate-800/80 hover:bg-purple-600 text-slate-300 hover:text-white rounded-full border border-slate-700 hover:border-purple-500 transition-all text-sm font-medium backdrop-blur-sm"
+                    >
+                        {category.title[currentLang]}
+                    </a>
+                ))}
             </div>
 
             {SCRIPTS_DATA.map((category) => (
@@ -130,6 +149,74 @@ export const TeleprompterScriptsPage: React.FC<{ onLaunch: () => void }> = ({ on
                     </div>
                 </div>
             ))}
+
+            {/* Category Navigation */}
+            <div className="mb-24 flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+                <a href={currentLang === 'pt' ? '/scripts-para-youtube' : currentLang === 'es' ? '/es/guiones-para-youtube' : '/en/scripts-for-youtube'}
+                    className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-colors border border-slate-700 font-semibold">
+                    YouTube
+                </a>
+                <a href={currentLang === 'pt' ? '/scripts-para-tiktok-reels' : currentLang === 'es' ? '/es/guiones-para-tiktok-shorts' : '/en/scripts-for-tiktok-shorts'}
+                    className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-colors border border-slate-700 font-semibold">
+                    TikTok & Reels
+                </a>
+                <a href={currentLang === 'pt' ? '/scripts-para-vendas' : currentLang === 'es' ? '/es/guiones-para-ventas' : '/en/scripts-for-sales'}
+                    className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-colors border border-slate-700 font-semibold">
+                    {currentLang === 'pt' ? 'Vendas' : currentLang === 'es' ? 'Ventas' : 'Sales'}
+                </a>
+                <a href={currentLang === 'pt' ? '/scripts-para-aulas' : currentLang === 'es' ? '/es/guiones-para-clases' : '/en/scripts-for-classes'}
+                    className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-colors border border-slate-700 font-semibold">
+                    {currentLang === 'pt' ? 'Aulas' : currentLang === 'es' ? 'Clases' : 'Classes'}
+                </a>
+                <a href={currentLang === 'pt' ? '/scripts-institucionais' : currentLang === 'es' ? '/es/guiones-institucionales' : '/en/institutional-scripts'}
+                    className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-colors border border-slate-700 font-semibold">
+                    {currentLang === 'pt' ? 'Institucional' : 'Institutional'}
+                </a>
+            </div>
+
+            {/* Editorial Content Section */}
+            <div className="mt-24 mb-16 max-w-4xl mx-auto">
+                <article className="prose prose-invert prose-lg max-w-none">
+                    <h2 className="text-3xl font-bold text-purple-400 mb-6">{content.intro[currentLang].title}</h2>
+                    <p className="text-slate-300 mb-6 leading-relaxed">
+                        {content.intro[currentLang].p1}
+                    </p>
+                    <p className="text-slate-300 mb-6 leading-relaxed">
+                        {content.intro[currentLang].p2}
+                    </p>
+                    <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 my-8">
+                        <h3 className="text-xl font-bold text-white mb-4 mt-0">{content.intro[currentLang].h2_1}</h3>
+                        <ul className="space-y-2 mb-0">
+                            {content.intro[currentLang].ul_1.map((item, i) => (
+                                <li key={i} className="text-slate-300 flex items-start gap-2">
+                                    <span className="text-purple-500 mt-1.5">•</span>
+                                    <span>{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <p className="text-slate-300 mb-6 leading-relaxed">
+                        {content.intro[currentLang].p3}
+                    </p>
+                </article>
+            </div>
+
+            {/* FAQ Section */}
+            <div className="mb-24 max-w-3xl mx-auto">
+                <h2 className="text-3xl font-bold text-center text-white mb-12">{content.faq.title[currentLang]}</h2>
+                <div className="grid gap-6">
+                    {content.faq.items.map((item, index) => (
+                        <div key={index} className="bg-slate-900/40 border border-slate-800/60 rounded-xl p-6 hover:bg-slate-900/60 transition-colors">
+                            <h3 className="text-lg font-bold text-purple-300 mb-3 !mt-0">
+                                {item.q[currentLang]}
+                            </h3>
+                            <p className="text-slate-400 leading-relaxed m-0">
+                                {item.a[currentLang]}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </div>
 
             <div className="mt-16 p-8 bg-slate-900 rounded-2xl border border-slate-800 text-center">
                 <h2 className="text-2xl font-semibold text-white mb-4 !mt-0">

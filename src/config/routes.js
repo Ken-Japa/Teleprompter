@@ -233,4 +233,13 @@ export const ROUTES_CONFIG = {
             es: "/es/guiones-para-clases",
         },
     },
+    SEO_SCRIPTS_INSTITUTIONAL: {
+        priority: "0.9",
+        changefreq: "weekly",
+        paths: {
+            pt: "/scripts-institucionais",
+            en: "/en/institutional-scripts",
+            es: "/es/guiones-institucionales",
+        },
+    },
 };
