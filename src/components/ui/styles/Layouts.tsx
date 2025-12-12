@@ -90,12 +90,12 @@ export const QRCodeBox = ({ children, hasId }: { children: React.ReactNode; hasI
 );
 
 export const FormattingToolbar = ({ children }: { children: React.ReactNode }) => (
-    <div className="flex items-center space-x-2 px-6 py-3 border-b border-white/5 z-10 glass sticky top-0 shadow-sm">
-        <div className="max-w-4xl mx-auto w-full flex items-center overflow-x-auto scrollbar-none">{children}</div>
+    <div className="flex items-center space-x-2 px-4 sm:px-6 py-3 border-b border-white/5 z-10 sticky top-0 shadow-lg backdrop-blur-xl bg-slate-950/80 supports-[backdrop-filter]:bg-slate-950/60">
+        <div className="max-w-4xl mx-auto w-full flex items-center overflow-x-auto scrollbar-none gap-2">{children}</div>
     </div>
 );
 
-export const ToolbarDivider = () => <div className="h-5 w-[1px] bg-white/10 mx-4 shrink-0" />;
+export const ToolbarDivider = () => <div className="h-5 w-[1px] bg-white/10 mx-2 sm:mx-4 shrink-0" />;
 
 // --- PROMPTER & HUD ---
 
@@ -147,10 +147,12 @@ export const FocusIndicator = () => (
 
 export const HudContainer = ({ children, visible }: { children: React.ReactNode; visible: boolean }) => (
     <div
-        className={`fixed bottom-4 w-full px-4 sm:left-1/2 sm:-translate-x-1/2 sm:w-auto glass py-3 rounded-2xl sm:bottom-12 sm:px-8 sm:py-4 sm:rounded-full z-50 transition-all duration-500 cubic-bezier(0.16, 1, 0.3, 1) flex flex-wrap justify-center items-center gap-x-4 gap-y-3 sm:flex-nowrap sm:gap-0 shadow-2xl ${visible ? "opacity-100 translate-y-0 scale-100 blur-0" : "opacity-0 translate-y-12 scale-90 blur-lg pointer-events-none"}`}
+        className={`fixed bottom-6 w-[95%] sm:w-auto left-1/2 -translate-x-1/2 px-4 py-3 rounded-2xl sm:bottom-12 sm:px-8 sm:py-4 sm:rounded-full z-50 transition-all duration-500 cubic-bezier(0.16, 1, 0.3, 1) flex flex-wrap justify-center items-center gap-x-4 gap-y-3 sm:flex-nowrap sm:gap-0 shadow-2xl backdrop-blur-2xl bg-slate-900/80 border border-white/10 ${visible ? "opacity-100 translate-y-0 scale-100 blur-0" : "opacity-0 translate-y-12 scale-90 blur-lg pointer-events-none"}`}
     >
         {/* Top sheen for glass effect */}
-        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-full opacity-50"></div>
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-full opacity-50"></div>
+        {/* Bottom shine */}
+        <div className="absolute bottom-0 left-0 right-0 h-[10px] bg-gradient-to-t from-brand-500/5 to-transparent rounded-full pointer-events-none"></div>
         {children}
     </div>
 );

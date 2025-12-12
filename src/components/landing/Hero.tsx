@@ -10,9 +10,10 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
     const { t } = useTranslation();
     const [isPlaying, setIsPlaying] = useState(false);
     const headline = t("landing.hero.headline") as string;
-    const [firstPart, secondPart] = headline.includes(".")
-        ? headline.split(".").map(s => s.trim()).filter(Boolean)
-        : [headline, ""];
+    // Split by dot but preserve robustness if no dot exists
+    const parts = headline.split(".").map(s => s.trim()).filter(Boolean);
+    const firstPart = parts[0];
+    const secondPart = parts.length > 1 ? parts.slice(1).join(". ") : null;
 
     return (
         <S.HeroSection>

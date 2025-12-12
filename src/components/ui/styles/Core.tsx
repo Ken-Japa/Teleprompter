@@ -199,16 +199,16 @@ export const ColorButton = ({
     label: string;
 }) => {
     const styles = {
-        red: "bg-red-500/90 hover:bg-red-500 shadow-red-500/30",
-        yellow: "bg-amber-400/90 hover:bg-amber-400 shadow-amber-400/30",
-        green: "bg-emerald-500/90 hover:bg-emerald-500 shadow-emerald-500/30",
-        blue: "bg-cyan-400/90 hover:bg-cyan-400 shadow-cyan-400/30",
+        red: "bg-red-500 hover:bg-red-400 shadow-red-500/40 ring-red-500/50",
+        yellow: "bg-amber-400 hover:bg-amber-300 shadow-amber-400/40 ring-amber-400/50",
+        green: "bg-emerald-500 hover:bg-emerald-400 shadow-emerald-500/40 ring-emerald-500/50",
+        blue: "bg-cyan-400 hover:bg-cyan-300 shadow-cyan-400/40 ring-cyan-400/50",
     };
 
     return (
         <button
             onClick={onClick}
-            className={`w-6 h-6 rounded-full hover:scale-110 active:scale-95 transition-all duration-200 shadow-md ${styles[color]}`}
+            className={`w-8 h-8 rounded-full hover:scale-110 active:scale-95 transition-all duration-200 shadow-lg ring-2 ring-transparent hover:ring-offset-2 hover:ring-offset-slate-900 ${styles[color]}`}
             title={label}
             aria-label={label}
         ></button>

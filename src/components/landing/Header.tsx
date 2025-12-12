@@ -129,26 +129,27 @@ export const Header: React.FC<HeaderProps> = () => {
                 </div>
             </S.LandingNav>
 
-            {/* Mobile Menu Overlay - Moved OUTSIDE S.LandingNav to avoid stacking context issues */}
+            {/* Mobile Menu Overlay - Full Screen Immersive */}
             {isMobileMenuOpen && (
-                <>
-                    {/* Backdrop */}
+                <div className="fixed inset-0 z-[100] md:hidden">
+                    {/* Backdrop with blur */}
                     <div
-                        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[90] md:hidden animate-fade-in"
-                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="absolute inset-0 bg-slate-950/90 backdrop-blur-xl animate-fade-in"
                         aria-hidden="true"
                     />
 
-                    {/* Mobile Menu - Floating Card Style */}
+                    {/* Menu Content */}
                     <nav
-                        className="fixed top-4 right-4 w-72 bg-slate-950 border border-white/10 rounded-2xl z-[100] md:hidden animate-scale-in shadow-2xl origin-top-right overflow-hidden"
+                        className="relative h-full flex flex-col p-6 animate-scale-in"
                         role="navigation"
                     >
-                        {/* Close Button - Restored */}
-                        <div className="flex justify-end p-4 border-b border-white/10">
+                        {/* Header with Logo and Close Button */}
+                        <div className="flex items-center justify-between mb-8">
+                            <S.LogoText main={t("title.main")} sub={t("title.sub")} className="scale-90 origin-left" />
+
                             <button
                                 onClick={() => setIsMobileMenuOpen(false)}
-                                className="p-2 text-slate-400 hover:text-white transition rounded-lg hover:bg-white/5 touch-target"
+                                className="p-2.5 text-slate-400 hover:text-white transition rounded-full hover:bg-white/10 touch-target border border-transparent hover:border-white/10"
                                 aria-label="Close menu"
                             >
                                 <svg
@@ -167,41 +168,47 @@ export const Header: React.FC<HeaderProps> = () => {
                             </button>
                         </div>
 
-                        <div className="flex flex-col p-6 space-y-4">
+                        {/* Navigation Links */}
+                        <div className="flex-1 flex flex-col justify-center items-center space-y-6">
                             <button
                                 onClick={() => scrollToSection("hero")}
-                                className="text-left text-lg font-medium text-slate-300 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/5 touch-target"
+                                className="text-3xl font-display font-bold text-slate-300 hover:text-white transition-colors py-4 w-full text-center active:scale-95 duration-200"
                             >
                                 {t("menu.home")}
                             </button>
                             <button
                                 onClick={() => scrollToSection("features")}
-                                className="text-left text-lg font-medium text-slate-300 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/5 touch-target"
+                                className="text-3xl font-display font-bold text-slate-300 hover:text-white transition-colors py-4 w-full text-center active:scale-95 duration-200"
                             >
                                 {t("menu.features")}
                             </button>
                             <button
                                 onClick={() => scrollToSection("pricing")}
-                                className="text-left text-lg font-medium text-slate-300 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/5 touch-target"
+                                className="text-3xl font-display font-bold text-slate-300 hover:text-white transition-colors py-4 w-full text-center active:scale-95 duration-200"
                             >
                                 {t("menu.pricing")}
                             </button>
+                        </div>
 
-                            <div className="pt-6 border-t border-white/10">
-                                <S.PrimaryButton
-                                    onClick={() => {
-                                        window.location.hash = "app?redeem=true";
-                                        setIsMobileMenuOpen(false);
-                                    }}
-                                    className="w-full touch-target"
-                                    aria-label={t("menu.validateLicense")}
-                                >
-                                    {t("menu.validateLicense")}
-                                </S.PrimaryButton>
+                        {/* Footer Actions */}
+                        <div className="mt-auto pt-8 flex flex-col space-y-6">
+                            <div className="flex justify-center">
+                                <LanguageSelector />
                             </div>
+
+                            <S.PrimaryButton
+                                onClick={() => {
+                                    window.location.hash = "app?redeem=true";
+                                    setIsMobileMenuOpen(false);
+                                }}
+                                className="w-full py-4 text-lg shadow-xl shadow-brand-500/20"
+                                aria-label={t("menu.validateLicense")}
+                            >
+                                {t("menu.validateLicense")}
+                            </S.PrimaryButton>
                         </div>
                     </nav>
-                </>
+                </div>
             )}
         </>
     );
