@@ -26,7 +26,7 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
                 </span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-black text-white mb-8 tracking-tight leading-[1.1] drop-shadow-2xl">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-black text-white mb-8 tracking-tight leading-[1.1] drop-shadow-2xl">
                 <span className="block text-slate-100">{firstPart}{secondPart ? "." : ""}</span>
                 {secondPart && <span className="block text-gradient relative z-10">{secondPart}.</span>}
             </h1>
@@ -89,12 +89,12 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
                             {/* Main Editor Area */}
                             <div className="flex-1 p-8 flex flex-col items-center justify-center relative bg-gradient-to-b from-slate-950/0 to-slate-950/50">
                                 {/* Teleprompter Text Effect */}
-                                <div className="max-w-3xl text-center space-y-6 mask-image-gradient">
-                                    <div className="text-4xl md:text-5xl font-display font-bold text-slate-600 blur-[2px] transition-all duration-500">Welcome to PromptNinja</div>
-                                    <div className="text-5xl md:text-6xl font-display font-bold text-white scale-110 transition-all duration-500 text-shadow-glow">The Professional</div>
-                                    <div className="text-5xl md:text-6xl font-display font-bold text-brand-400 scale-105 transition-all duration-500">Teleprompter App</div>
-                                    <div className="text-4xl md:text-5xl font-display font-bold text-slate-600 blur-[1px] transition-all duration-500">For Content Creators</div>
-                                    <div className="text-4xl md:text-5xl font-display font-bold text-slate-700 blur-[3px] transition-all duration-500">Streamline your workflow</div>
+                                <div className="max-w-3xl text-center space-y-4 sm:space-y-6 mask-image-gradient">
+                                    <div className="text-2xl sm:text-4xl md:text-5xl font-display font-bold text-slate-600 blur-[2px] transition-all duration-500">Welcome to PromptNinja</div>
+                                    <div className="text-3xl sm:text-5xl md:text-6xl font-display font-bold text-white scale-110 transition-all duration-500 text-shadow-glow">The Professional</div>
+                                    <div className="text-3xl sm:text-5xl md:text-6xl font-display font-bold text-brand-400 scale-105 transition-all duration-500">Teleprompter App</div>
+                                    <div className="text-2xl sm:text-4xl md:text-5xl font-display font-bold text-slate-600 blur-[1px] transition-all duration-500">For Content Creators</div>
+                                    <div className="text-2xl sm:text-4xl md:text-5xl font-display font-bold text-slate-700 blur-[3px] transition-all duration-500">Streamline your workflow</div>
                                 </div>
 
                                 {/* Overlay Gradients */}
@@ -111,16 +111,16 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
                 <div className="absolute -inset-4 bg-brand-500/20 blur-3xl -z-10 rounded-[3rem] opacity-40"></div>
 
                 {/* Floating Badges - Improved */}
-                <div className="absolute -top-8 -right-8 glass px-5 py-3 rounded-2xl flex items-center gap-3 animate-float shadow-xl border border-white/10" style={{ animationDelay: '0s' }}>
-                    <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-bold text-white tracking-wide">{t("landing.hero.offlineBadge")}</span>
+                <div className="absolute -top-4 sm:-top-8 -right-4 sm:-right-8 glass px-4 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl flex items-center gap-2 sm:gap-3 animate-float shadow-xl border border-white/10" style={{ animationDelay: '0s' }}>
+                    <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+                    <span className="text-xs sm:text-sm font-bold text-white tracking-wide">{t("landing.hero.offlineBadge")}</span>
                 </div>
 
-                <div className="absolute -bottom-8 -left-8 glass px-5 py-3 rounded-2xl flex items-center gap-3 animate-float shadow-xl border border-white/10" style={{ animationDelay: '1.5s' }}>
+                <div className="absolute -bottom-4 sm:-bottom-8 -left-4 sm:-left-8 glass px-4 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl flex items-center gap-2 sm:gap-3 animate-float shadow-xl border border-white/10" style={{ animationDelay: '1.5s' }}>
                     <div className="text-brand-400">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
                     </div>
-                    <span className="text-sm font-bold text-white tracking-wide">{t("landing.hero.privacyBadge")}</span>
+                    <span className="text-xs sm:text-sm font-bold text-white tracking-wide">{t("landing.hero.privacyBadge")}</span>
                 </div>
             </div>
 
@@ -157,7 +157,7 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
             </div>
 
 
-            <div className="flex justify-center items-center gap-8 text-sm text-slate-400 flex-wrap animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+            <div className="flex justify-center items-center gap-8 text-sm text-slate-300 flex-wrap animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
                 <div className="text-center">
                     <span className="text-2xl font-bold text-white block">{t("landing.hero.userCount")}</span>
                     <span>{t("landing.hero.activeCreators")}</span>

@@ -5,6 +5,7 @@ export const ComparisonTable: React.FC = () => {
     const { t } = useTranslation();
 
     const rows = ["remote", "offline", "privacy", "latency", "price"];
+    const columns = ["ninja", "paid", "hardware", "free"];
 
     return (
         <section className="py-24 px-4 bg-black border-t border-white/5">
@@ -13,16 +14,61 @@ export const ComparisonTable: React.FC = () => {
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                         {t("landing.comparison.title")}
                     </h2>
-                    <p className="text-slate-400">
+                    <p className="text-slate-300 text-sm md:text-base">
                         {t("landing.comparison.subtitle")}
                     </p>
                 </div>
 
-                <div className="overflow-x-auto border border-gray-800 rounded-2xl overflow-hidden">
+                {/* Mobile: Card Layout */}
+                <div className="md:hidden space-y-6">
+                    {rows.map((row) => (
+                        <div key={row} className="bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden">
+                            <div className="bg-slate-800/50 px-4 py-3 border-b border-slate-700">
+                                <h3 className="font-bold text-white text-center">{t(`landing.comparison.rows.${row}`)}</h3>
+                            </div>
+                            <div className="p-4 space-y-3">
+                                {columns.map((col) => {
+                                    const isNinja = col === 'ninja';
+                                    const value = t(`landing.comparison.values.${col}.${row}`);
+                                    let emoji = '';
+                                    let textColor = 'text-slate-400';
+
+                                    if (isNinja) {
+                                        textColor = 'text-emerald-400';
+                                        if (row === 'offline' || row === 'privacy') emoji = '✅ ';
+                                    } else if (col === 'paid') {
+                                        if (row === 'remote' || row === 'offline') emoji = '❌ ';
+                                    } else if (col === 'hardware') {
+                                        if (row === 'price' || row === 'remote') {
+                                            emoji = '⚠️ ';
+                                            textColor = 'text-yellow-400';
+                                        }
+                                    } else if (col === 'free') {
+                                        if (row === 'privacy' || row === 'latency') emoji = '❌ ';
+                                    }
+
+                                    return (
+                                        <div key={col} className={`flex items-center justify-between p-3 rounded-lg ${isNinja ? 'bg-brand-900/20 border border-brand-500/20' : 'bg-slate-800/30'}`}>
+                                            <span className={`text-sm font-medium ${isNinja ? 'text-brand-300' : 'text-slate-400'}`}>
+                                                {t(`landing.comparison.columns.${col}`)}
+                                            </span>
+                                            <span className={`text-sm font-bold ${textColor}`}>
+                                                {emoji}{value}
+                                            </span>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Desktop: Table Layout */}
+                <div className="hidden md:block overflow-x-auto border border-gray-800 rounded-2xl overflow-hidden">
                     <table className="w-full text-left border-collapse">
                         <thead>
-                            <tr className="border-b border-gray-800 ">
-                                <th className="py-4 pr-4 bg-black sticky left-0 z-10"></th>
+                            <tr className="border-b border-gray-800">
+                                <th className="py-4 px-4 bg-black"></th>
                                 <th className="py-4 px-4 text-center min-w-[140px]">
                                     <div className="bg-gradient-to-r from-brand-600 to-purple-600 text-white px-4 py-2 rounded-lg font-bold shadow-lg shadow-brand-500/20">
                                         {t("landing.comparison.columns.ninja")}
@@ -36,13 +82,12 @@ export const ComparisonTable: React.FC = () => {
                         <tbody className="text-sm md:text-base">
                             {rows.map((row) => (
                                 <tr key={row} className="border-b border-gray-800 hover:bg-white/5 transition-colors">
-                                    <td className="py-6 pr-4 font-medium text-center text-slate-300 bg-black sticky left-0 z-10 border-r border-gray-800/50 md:border-none">
+                                    <td className="py-6 px-4 font-medium text-center text-slate-300 bg-black">
                                         {t(`landing.comparison.rows.${row}`)}
                                     </td>
 
                                     {/* Ninja */}
                                     <td className="py-6 px-4 text-center bg-brand-900/10 border-x border-brand-500/10 relative">
-                                        {/* Highlight logic based on row content could be added here, but simple text is fine for now */}
                                         <span className="font-bold text-emerald-400">
                                             {row === 'offline' || row === 'privacy' ? '✅ ' : ''}
                                             {t(`landing.comparison.values.ninja.${row}`)}

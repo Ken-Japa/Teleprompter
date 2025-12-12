@@ -17,7 +17,7 @@ export const Pricing: React.FC<PricingProps> = ({ onLaunch }) => {
             <div className="max-w-6xl mx-auto px-6">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl font-bold text-white mb-4">{t("landing.pricing.title")}</h2>
-                    <p className="text-slate-400">{t("landing.pricing.subtitle")}</p>
+                    <p className="text-slate-300">{t("landing.pricing.subtitle")}</p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-start">

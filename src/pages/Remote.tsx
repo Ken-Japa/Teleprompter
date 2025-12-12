@@ -277,14 +277,14 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                         </div>
 
                         <S.ControlsContainer>
-                            <div className="flex items-center justify-between px-6 pb-safe gap-6">
+                            <div className="flex items-center justify-between px-4 sm:px-6 pb-safe gap-4 sm:gap-6">
                                 {/* Speed Control */}
                                 <div className="flex flex-col items-center bg-white/5 p-3 rounded-3xl border border-white/5 backdrop-blur-md">
                                     <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-2">{t("remote.speed")}</span>
                                     <div className="flex flex-col items-center gap-2">
-                                        <S.IconButton onClick={() => actions.handleSpeedChange(Math.min(10, speed + 0.5))} className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-white/20 border-white/10"><PlusIcon /></S.IconButton>
+                                        <S.IconButton onClick={() => actions.handleSpeedChange(Math.min(10, speed + 0.5))} className="w-14 h-14 rounded-2xl bg-white/10 hover:bg-white/20 border-white/10"><PlusIcon /></S.IconButton>
                                         <span className="font-mono text-2xl font-black text-brand-400 min-w-[3ch] text-center my-1 drop-shadow-md">{speed.toFixed(1)}</span>
-                                        <S.IconButton onClick={() => actions.handleSpeedChange(Math.max(0, speed - 0.5))} className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-white/20 border-white/10"><MinusIcon /></S.IconButton>
+                                        <S.IconButton onClick={() => actions.handleSpeedChange(Math.max(0, speed - 0.5))} className="w-14 h-14 rounded-2xl bg-white/10 hover:bg-white/20 border-white/10"><MinusIcon /></S.IconButton>
                                     </div>
                                 </div>
 
@@ -303,9 +303,9 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                                     </button>
 
                                     {/* Stop & Voice Buttons */}
-                                    <div className="flex gap-3 h-14">
+                                    <div className="flex gap-2 sm:gap-3 h-14 sm:h-16">
                                         {/* Recording Controls Group */}
-                                        <div className={`flex items-center ${hasRecordedData ? "w-28" : "w-20"} h-full bg-slate-800/50 rounded-2xl border border-slate-700 p-1 gap-1 transition-all`}>
+                                        <div className={`flex items-center ${hasRecordedData ? "w-28 sm:w-32" : "w-20 sm:w-24"} h-full bg-slate-800/50 rounded-2xl border border-slate-700 p-1 gap-1 transition-all`}>
                                             {hasRecordedData ? (
                                                 <>
                                                     <button
@@ -344,7 +344,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
 
                                         <button
                                             onClick={actions.handleToggleVoice}
-                                            className={`w-14 h-full rounded-2xl border transition-all flex items-center justify-center ${isVoiceMode ? "bg-red-500/20 border-red-500/50 text-red-400 animate-pulse" : "bg-purple-500/10 border-purple-500/20 hover:bg-purple-500/20 text-purple-400"}`}
+                                            className={`w-14 sm:w-16 h-full rounded-2xl border transition-all flex items-center justify-center ${isVoiceMode ? "bg-red-500/20 border-red-500/50 text-red-400 animate-pulse" : "bg-purple-500/10 border-purple-500/20 hover:bg-purple-500/20 text-purple-400"}`}
                                             title="Toggle Voice Control"
                                         >
                                             <MicIcon className="w-6 h-6" />
@@ -352,7 +352,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
 
                                         <button
                                             onClick={() => actions.handleStop()}
-                                            className="flex-1 h-full rounded-2xl bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 text-red-400 active:scale-95 transition-all flex items-center justify-center gap-2"
+                                            className="flex-1 min-w-[44px] h-full rounded-2xl bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 text-red-400 active:scale-95 transition-all flex items-center justify-center gap-2"
                                         >
                                             <StopIcon className="w-5 h-5 fill-current" />
                                         </button>

@@ -154,3 +154,17 @@ html {
     background-size: 200% auto;
     animation: gradient-move 6s linear infinite;
 }
+
+/* Performance optimizations for mobile */
+@media (max-width: 640px) {
+    /* Reduce blur effects on mobile for better performance */
+    .glass {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+    
+    /* Simplify animations on mobile */
+    .animate-pulse-slow {
+        animation: none;
+    }
+}
