@@ -4,6 +4,7 @@ import { Header } from "../components/landing/Header";
 import { Hero } from "../components/landing/Hero";
 import { ProblemSolution } from "../components/landing/ProblemSolution";
 import { Features } from "../components/landing/Features";
+import { PwaSection } from "../components/landing/PwaSection";
 import { HowItWorks } from "../components/landing/HowItWorks";
 import { ComparisonTable } from "../components/landing/ComparisonTable";
 import { Pricing } from "../components/landing/Pricing";
@@ -37,6 +38,7 @@ export const Landing: React.FC<LandingProps> = ({ onLaunch }) => {
             <ProblemSolution />
             <HowItWorks onLaunch={onLaunch} />
             <Features />
+            <PwaSection />
             <ComparisonTable />
             <Pricing onLaunch={onLaunch} />
             <FAQ />

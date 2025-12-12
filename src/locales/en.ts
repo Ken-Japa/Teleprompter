@@ -1,321 +1,337 @@
 export const en = {
- title: {
-  main: "PROMPT",
-  sub: "NINJA",
-  remote: "CONTROL",
- },
- common: {
-  sync: "Sync",
-  refresh: "Refresh",
-  save: "Save",
-  cancel: "Cancel",
- },
- menu: {
-  home: "Home",
-  features: "Features",
-  pricing: "Pricing",
-  backToHome: "Back to Home",
- },
- landing: {
-  meta: {
-   title: "PromptNinja | Professional P2P Teleprompter | Remote Control via Mobile",
-   description: "The fastest and most private web teleprompter. Remote control via mobile, works offline, no apps or accounts. Perfect for content creators and speakers.",
+  title: {
+    main: "PROMPT",
+    sub: "NINJA",
+    remote: "CONTROL",
   },
-  hero: {
-   headline: "Your phone is the remote. Your home is the studio.",
-   subheadline:
-    "The only teleprompter that works offline, without tracking your data, with ultra-low latency remote control for live presentations.",
-   cta: "🚀 Start Free (20 min)",
-   ctaSecondary: "▶️ See How It Works",
-   versionLive: "Version 2.0 Live",
-   userCount: "1,247",
-   activeCreators: "Active Creators",
-   freeTrial: "Free Trial",
-   zeroSetup: "Zero Setup",
-   offlineBadge: "Works Offline",
-   privacyBadge: "Total Privacy",
+  common: {
+    sync: "Sync",
+    refresh: "Refresh",
+    save: "Save",
+    cancel: "Cancel",
   },
-  problemSolution: {
-   title: 'No more <span class="line-through text-red-500">frustration</span> when recording videos',
-   before: {
-    title: "Before",
-    items: [
-     "🤦 Forgot the script mid-recording",
-     "⏰ Lost 3 hours re-recording the same video",
-     "🏃 Got up 15 times to pause/continue text",
-     "💸 Spent money on complicated hardware teleprompters",
-     "📱 Apps that crash or require login",
-    ],
-   },
-   after: {
-    title: "Now",
-    items: [
-     "🎯 Script always visible on your laptop screen",
-     "📱 Control everything from your phone (Play/Pause/Speed)",
-     "⚡ P2P Connection = Sub-millisecond latency",
-     "🔒 Data stays on YOUR device",
-     "🌐 Works offline (flight, no internet, live events)",
-    ],
-   },
+  menu: {
+    home: "Home",
+    features: "Features",
+    pricing: "Pricing",
+    backToHome: "Back to Home",
   },
-  howItWorks: {
-   title: "So simple even your grandma can use it",
-   step1: {
-    title: "Paste your script",
-    desc: "Write or paste your presentation text on your laptop",
-   },
-   step2: {
-    title: "Scan the QR Code",
-    desc: "Point your phone camera. Auto connect in 2 seconds",
-   },
-   step3: {
-    title: "Record like a PRO",
-    desc: "Control speed, pause, reset. All from your phone",
-   },
-   cta: "Test Now (Free)",
-  },
-  comparison: {
-   title: "Why PromptNinja?",
-   subtitle: "Honest comparison with other solutions",
-   columns: {
-    ninja: "PromptNinja",
-    paid: "Paid Apps",
-    hardware: "Hardware",
-    free: "Free Sites",
-   },
-   rows: {
-    remote: "Remote Control",
-    offline: "Works Offline",
-    privacy: "Total Privacy",
-    latency: "Latency",
-    price: "Price",
-   },
-   values: {
-    ninja: {
-     remote: "Phone",
-     offline: "Yes",
-     privacy: "P2P",
-     latency: "<10ms",
-     price: "$ 19",
+  landing: {
+    meta: {
+      title: "PromptNinja | Professional P2P Teleprompter | Remote Control via Mobile",
+      description: "The fastest and most private web teleprompter. Remote control via mobile, works offline, no apps or accounts. Perfect for content creators and speakers.",
     },
-    paid: {
-     remote: "No",
-     offline: "No",
-     privacy: "Cloud",
-     latency: "~100ms",
-     price: "$ 15/yr",
+    hero: {
+      headline: "Your phone is the remote. Your home is the studio.",
+      subheadline:
+        "The only teleprompter that works offline, without tracking your data, with ultra-low latency remote control for live presentations.",
+      cta: "🚀 Start Free (20 min)",
+      ctaSecondary: "▶️ See How It Works",
+      versionLive: "Version 2.0 Live",
+      userCount: "1,247",
+      activeCreators: "Active Creators",
+      freeTrial: "Free Trial",
+      zeroSetup: "Zero Setup",
+      offlineBadge: "Works Offline",
+      privacyBadge: "Total Privacy",
+      p2pSection: {
+        headline: "Your local network is the tunnel. Zero lag is the rule.",
+        subheadline: "Forget the 3-second delay of common apps. With WebRTC P2P technology, what you tap on your phone happens on screen in the same millisecond.",
+        badge: "⚡ Latency < 10ms",
+      },
+      privacySection: {
+        headline: "Your data is yours. And yours alone.",
+        subheadline: "No accounts, no servers, no cloud. What you type in PromptNinja never leaves your device. Privacy by design, not by promise.",
+        badge: "🔒 Zero Tracking",
+      },
+      pwaSection: {
+        headline: "An app that doesn't eat your memory.",
+        subheadline: "Install PromptNinja as a native app. Works offline, in full screen, and loads instantly.",
+        cta: "📱 Install App on Mobile",
+        guideCta: "How to install on iPhone/Android",
+      },
     },
-    hardware: {
-     remote: "Physical",
-     offline: "Yes",
-     privacy: "Yes",
-     latency: "<5ms",
-     price: "$ 100+",
+    problemSolution: {
+      title: 'No more <span class="line-through text-red-500">frustration</span> when recording videos',
+      before: {
+        title: "Before",
+        items: [
+          "🤦 Forgot the script mid-recording",
+          "⏰ Lost 3 hours re-recording the same video",
+          "🏃 Got up 15 times to pause/continue text",
+          "💸 Spent money on complicated hardware teleprompters",
+          "📱 Apps that crash or require login",
+        ],
+      },
+      after: {
+        title: "Now",
+        items: [
+          "🎯 Script always visible on your laptop screen",
+          "📱 Control everything from your phone (Play/Pause/Speed)",
+          "⚡ P2P Connection = Sub-millisecond latency",
+          "🔒 Data stays on YOUR device",
+          "🌐 Works offline (flight, no internet, live events)",
+        ],
+      },
     },
-    free: {
-     remote: "No",
-     offline: "No",
-     privacy: "Trackers",
-     latency: ">500ms",
-     price: "Free w/ Ads",
+    howItWorks: {
+      title: "So simple even your grandma can use it",
+      step1: {
+        title: "Paste your script",
+        desc: "Write or paste your presentation text on your laptop",
+      },
+      step2: {
+        title: "Scan the QR Code",
+        desc: "Point your phone camera. Auto connect in 2 seconds",
+      },
+      step3: {
+        title: "Record like a PRO",
+        desc: "Control speed, pause, reset. All from your phone",
+      },
+      cta: "Test Now (Free)",
     },
-   },
-  },
-  features: {
-   sync: {
-    title: "Instant Sync",
-    desc:
-     "Peer-to-Peer (P2P) technology delivers zero-delay real-time control — no server lag, just instant sync.",
-   },
-   offline: {
-    title: "Offline Mode",
-    desc: "Access your teleprompter offline. Your scripts stay private, never leaving your device.",
-   },
-   privacy: {
-    title: "Total Privacy",
-    desc: "Ultimate privacy: No cloud, no servers, your script is stored only in your browser.",
-   },
-   voice: {
-    title: "Voice Control",
-    desc: "Hands-free teleprompter: Your script scrolls automatically with your voice, keeping you focused.",
-   },
-   focus: {
-    title: "Dynamic Focus",
-    desc: "Dynamic focus line: Smart highlighting tracks your reading, ensuring you never lose your place.",
-   },
-   themes: {
-    title: "Visual Themes",
-    desc: "Dark, Light, Matrix, and High Contrast modes for any environment.",
-   },
-  },
-  pricing: {
-   title: "Simple and Honest Pricing",
-   subtitle: "Free trial, upgrade whenever you want",
-   free: {
-    title: "Free",
-    desc: "To test and validate",
-    price: "$ 0",
-    period: "/forever",
-    cta: "Start Free",
-    features: ["20 minutes per session", "Unlimited sessions", "Full remote control", "All themes"],
-    missing: ["Discreet watermark", "Voice control"],
-   },
-   pro: {
-    badge: "🔥 LAUNCH PRICE",
-    title: "Lifetime PRO",
-    desc: "One-time payment, yours forever",
-    price: "$ 19",
-    originalPrice: "$ 49",
-    priceNote: "Then $ 3/month or $ 49 lifetime",
-    cta: "🚀 Get Lifetime Access",
-    timer: "⏰ Price valid only for the first 500 users",
-    features: [
-     "Unlimited sessions (no time limit)",
-     "No watermark",
-     "Multiple remote controls (teams)",
-     "Voice control",
-     "Custom logo",
-     "Priority support",
-     'Badge "Early Supporter"',
-     "Early access to features",
-    ],
-   },
-   paymentInfo: "💳 One-time payment via Card. \n🔒 7-day guarantee.",
-   // Keep old keys for backward compatibility
-   lifetime: "Lifetime",
-   oneTime: "one-time payment",
-   limitedOffer: "Limited Offer",
-   conversionNotice: "The final value will be converted to your local currency at checkout.",
-  },
-  faq: {
-   title: "Frequently Asked Questions",
-   items: [
-    {
-     q: "Do I need to install an app?",
-     a: "No! It works 100% in the browser. Open on laptop, scan with phone, and that's it. It's a PWA, so you CAN install it if you want.",
+    comparison: {
+      title: "Why PromptNinja?",
+      subtitle: "Honest comparison with other solutions",
+      columns: {
+        ninja: "PromptNinja",
+        paid: "Paid Apps",
+        hardware: "Hardware",
+        free: "Free Sites",
+      },
+      rows: {
+        remote: "Remote Control",
+        offline: "Works Offline",
+        privacy: "Total Privacy",
+        latency: "Latency",
+        price: "Price",
+      },
+      values: {
+        ninja: {
+          remote: "Phone",
+          offline: "Yes",
+          privacy: "P2P",
+          latency: "<10ms",
+          price: "$ 19",
+        },
+        paid: {
+          remote: "No",
+          offline: "No",
+          privacy: "Cloud",
+          latency: "~100ms",
+          price: "$ 15/yr",
+        },
+        hardware: {
+          remote: "Physical",
+          offline: "Yes",
+          privacy: "Yes",
+          latency: "<5ms",
+          price: "$ 100+",
+        },
+        free: {
+          remote: "No",
+          offline: "No",
+          privacy: "Trackers",
+          latency: ">500ms",
+          price: "Free w/ Ads",
+        },
+      },
     },
-    {
-     q: "Does it work offline?",
-     a: "Yes! The connection is P2P. If both are on the same Wi-Fi or if you've opened the app before, it works offline.",
+    features: {
+      sync: {
+        title: "Instant Sync",
+        desc:
+          "Peer-to-Peer (P2P) technology delivers zero-delay real-time control — no server lag, just instant sync.",
+      },
+      offline: {
+        title: "Offline Mode",
+        desc: "Access your teleprompter offline. Your scripts stay private, never leaving your device.",
+      },
+      privacy: {
+        title: "Total Privacy",
+        desc: "Ultimate privacy: No cloud, no servers, your script is stored only in your browser.",
+      },
+      voice: {
+        title: "Voice Control",
+        desc: "Hands-free teleprompter: Your script scrolls automatically with your voice, keeping you focused.",
+      },
+      focus: {
+        title: "Dynamic Focus",
+        desc: "Dynamic focus line: Smart highlighting tracks your reading, ensuring you never lose your place.",
+      },
+      themes: {
+        title: "Visual Themes",
+        desc: "Dark, Light, Matrix, and High Contrast modes for any environment.",
+      },
     },
-    {
-     q: "Where is my data saved?",
-     a: "On YOUR device (localStorage). We send nothing to servers. Zero tracking.",
+    pricing: {
+      title: "Simple and Honest Pricing",
+      subtitle: "Free trial, upgrade whenever you want",
+      free: {
+        title: "Free",
+        desc: "To test and validate",
+        price: "$ 0",
+        period: "/forever",
+        cta: "Start Free",
+        features: ["20 minutes per session", "Unlimited sessions", "Full remote control", "All themes"],
+        missing: ["Discreet watermark", "Voice control"],
+      },
+      pro: {
+        badge: "🔥 LAUNCH PRICE",
+        title: "Lifetime PRO",
+        desc: "One-time payment, yours forever",
+        price: "$ 19",
+        originalPrice: "$ 49",
+        priceNote: "Then $ 3/month or $ 49 lifetime",
+        cta: "🚀 Get Lifetime Access",
+        timer: "⏰ Price valid only for the first 500 users",
+        features: [
+          "Unlimited sessions (no time limit)",
+          "No watermark",
+          "Multiple remote controls (teams)",
+          "Voice control",
+          "Custom logo",
+          "Priority support",
+          'Badge "Early Supporter"',
+          "Early access to features",
+        ],
+      },
+      paymentInfo: "💳 One-time payment via Card. \n🔒 7-day guarantee.",
+      // Keep old keys for backward compatibility
+      lifetime: "Lifetime",
+      oneTime: "one-time payment",
+      limitedOffer: "Limited Offer",
+      conversionNotice: "The final value will be converted to your local currency at checkout.",
     },
-    {
-     q: "What happens after 20 minutes in the free version?",
-     a: "An upgrade invite appears. You can start a new session without daily limits.",
+    faq: {
+      title: "Frequently Asked Questions",
+      items: [
+        {
+          q: "Do I need to install an app?",
+          a: "No! It works 100% in the browser. Open on laptop, scan with phone, and that's it. It's a PWA, so you CAN install it if you want.",
+        },
+        {
+          q: "Does it work offline?",
+          a: "Yes! The connection is P2P. If both are on the same Wi-Fi or if you've opened the app before, it works offline.",
+        },
+        {
+          q: "Where is my data saved?",
+          a: "On YOUR device (localStorage). We send nothing to servers. Zero tracking.",
+        },
+        {
+          q: "What happens after 20 minutes in the free version?",
+          a: "An upgrade invite appears. You can start a new session without daily limits.",
+        },
+        {
+          q: "Which browser does it work on?",
+          a: "Chrome, Edge, Safari, and Firefox. We recommend Chrome for best compatibility.",
+        },
+        {
+          q: "What if I don't like it?",
+          a: "7-day guarantee. We refund 100% no questions asked.",
+        },
+      ],
     },
-    {
-     q: "Which browser does it work on?",
-     a: "Chrome, Edge, Safari, and Firefox. We recommend Chrome for best compatibility.",
+    finalCta: {
+      title: "Ready to record like a pro?",
+      subtitle: "Join creators who stopped re-recording the same video 15 times",
+      ctaPrimary: "Start Free (20 min)",
+      ctaSecondary: "See Pricing",
+      footer: "No credit card. No setup. No nonsense.",
     },
-    {
-     q: "What if I don't like it?",
-     a: "7-day guarantee. We refund 100% no questions asked.",
+  },
+  status: {
+    disconnected: "DISCONNECTED",
+    connecting: "CONNECTING...",
+    connected: "CONNECTED",
+    error: "NETWORK ERROR",
+  },
+  host: {
+    startPrompter: "Presentation Mode",
+    editText: "Edit Your Script",
+    mirror: "Mirror",
+    mirrorV: "Mirror Vertical",
+    remoteConnect: "Remote Connect",
+    scanInstruction: "Scan the QR Code to Control",
+    generatingId: "Generating Link...",
+    idLabel: "Session ID:",
+    editorPlaceholder: "Paste or type your speech script here to master your delivery...",
+    localhostWarning: "Warning: Localhost detected. Use the button below to test.",
+    openRemoteTab: "Open Remote (New Tab)",
+    copyLink: "Copy Link",
+    linkCopied: "Copied!",
+    connectionLost: "CONNECTION LOST",
+    watermark: "PROMPT NINJA FREE VERSION",
+    exit: "Exit",
+    controls: {
+      play: "Play",
+      pause: "Pause",
+      reset: "Reset",
+      speed: "Speed",
+      margin: "Margin",
+      size: "Text",
+      timer: "Time",
+      caps: "All Caps",
+      voice: "Voice Control",
+      focusLine: "Focus Line",
+      theme: "Visual Theme",
+      fontSize: "Font Size",
+      isMirrored: "Flip Horizontally",
+      display: "Display",
+      chroma: "Chroma Key",
+      record: "Record",
+      stopRecord: "Stop Recording",
+      downloadRecord: "Download Recording",
+      recordNew: "Record New",
     },
-   ],
-  },
-  finalCta: {
-   title: "Ready to record like a pro?",
-   subtitle: "Join creators who stopped re-recording the same video 15 times",
-   ctaPrimary: "Start Free (20 min)",
-   ctaSecondary: "See Pricing",
-   footer: "No credit card. No setup. No nonsense.",
-  },
- },
- status: {
-  disconnected: "DISCONNECTED",
-  connecting: "CONNECTING...",
-  connected: "CONNECTED",
-  error: "NETWORK ERROR",
- },
- host: {
-  startPrompter: "Presentation Mode",
-  editText: "Edit Your Script",
-  mirror: "Mirror",
-  mirrorV: "Mirror Vertical",
-  remoteConnect: "Remote Connect",
-  scanInstruction: "Scan the QR Code to Control",
-  generatingId: "Generating Link...",
-  idLabel: "Session ID:",
-  editorPlaceholder: "Paste or type your speech script here to master your delivery...",
-  localhostWarning: "Warning: Localhost detected. Use the button below to test.",
-  openRemoteTab: "Open Remote (New Tab)",
-  copyLink: "Copy Link",
-  linkCopied: "Copied!",
-  connectionLost: "CONNECTION LOST",
-  watermark: "PROMPT NINJA FREE VERSION",
-  exit: "Exit",
-  controls: {
-   play: "Play",
-   pause: "Pause",
-   reset: "Reset",
-   speed: "Speed",
-   margin: "Margin",
-   size: "Text",
-   timer: "Time",
-   caps: "All Caps",
-   voice: "Voice Control",
-   focusLine: "Focus Line",
-   theme: "Visual Theme",
-   fontSize: "Font Size",
-   isMirrored: "Flip Horizontally",
-   display: "Display",
-   chroma: "Chroma Key",
-   record: "Record",
-   stopRecord: "Stop Recording",
-   downloadRecord: "Download Recording",
-   recordNew: "Record New",
-  },
-  hudLabels: {
-   theme: "Theme",
-   focus: "Focus",
-   voice: "Voice",
-   display: "Display",
-   chroma: "Chroma Key",
-  },
-  themes: {
-   default: "Default",
-   ninja: "Ninja (Dark)",
-   paper: "Paper (Light)",
-   contrast: "Contrast",
-   matrix: "Matrix",
-   cyber: "Cyberpunk",
-   cream: "Cream (Reader)",
-   chroma_green: "Chroma Key (Green)",
-   chroma_blue: "Chroma Key (Blue)",
-  },
-  tips: {
-   title: "PRO Editing Tips",
-   desc: "Use tags to highlight text:",
-   red: "Red Highlight",
-   yellow: "Yellow Highlight",
-   green: "Green Highlight",
-   caps: "Use 'TT' button for All Caps mode.",
-   voice: "Enable Mic for voice-activated scrolling.",
-  },
-  paywall: {
-   title: "PRO Feature Locked",
-   desc: "This feature is exclusive to Ninja PROs. Unlock to use colors, voice, and unlimited time.",
-   cta: "Unlock Lifetime",
-   close: "Close",
-   inputPlaceholder: "Enter PRO key...",
-   button: "Activate PRO",
-   invalid: "Invalid Key",
-   success: "Ninja Pro Activated!",
-   emptyKey: "Please enter an unlock key.",
-   invalidKey: "Invalid unlock key. Please try again.",
-   countdownMessage: "Returning to the page in...",
-  },
+    hudLabels: {
+      theme: "Theme",
+      focus: "Focus",
+      voice: "Voice",
+      display: "Display",
+      chroma: "Chroma Key",
+    },
+    themes: {
+      default: "Default",
+      ninja: "Ninja (Dark)",
+      paper: "Paper (Light)",
+      contrast: "Contrast",
+      matrix: "Matrix",
+      cyber: "Cyberpunk",
+      cream: "Cream (Reader)",
+      chroma_green: "Chroma Key (Green)",
+      chroma_blue: "Chroma Key (Blue)",
+    },
+    tips: {
+      title: "PRO Editing Tips",
+      desc: "Use tags to highlight text:",
+      red: "Red Highlight",
+      yellow: "Yellow Highlight",
+      green: "Green Highlight",
+      caps: "Use 'TT' button for All Caps mode.",
+      voice: "Enable Mic for voice-activated scrolling.",
+    },
+    paywall: {
+      title: "PRO Feature Locked",
+      desc: "This feature is exclusive to Ninja PROs. Unlock to use colors, voice, and unlimited time.",
+      cta: "Unlock Lifetime",
+      close: "Close",
+      inputPlaceholder: "Enter PRO key...",
+      button: "Activate PRO",
+      invalid: "Invalid Key",
+      success: "Ninja Pro Activated!",
+      emptyKey: "Please enter an unlock key.",
+      invalidKey: "Invalid unlock key. Please try again.",
+      countdownMessage: "Returning to the page in...",
+    },
 
-  voice: {
-   notSupported: "Your browser does not support voice control",
-  },
-  editor: {
-   highlight: "Highlight",
-  },
-  defaultText: `Welcome to PromptNinja.
+    voice: {
+      notSupported: "Your browser does not support voice control",
+    },
+    editor: {
+      highlight: "Highlight",
+    },
+    defaultText: `Welcome to PromptNinja.
 
 The ultimate teleprompter for content creators.
 
@@ -329,93 +345,93 @@ Use color tags to highlight important moments in your script.
 <g>And this in green to signal calm or a smooth transition.</g>
 
 Paste your script here and customize your experience to start shining!`,
- },
- remote: {
-  connecting: "Searching Ninja Host...",
-  targetId: "Target: {{id}}",
-  touchArea: "TRACKPAD",
-  speed: "Speed",
-  reset: "Reset",
-  start: "Start",
-  pause: "Pause",
-  stop: "Stop",
-  theme: "Theme",
-  language: "Language",
- },
+  },
+  remote: {
+    connecting: "Searching Ninja Host...",
+    targetId: "Target: {{id}}",
+    touchArea: "TRACKPAD",
+    speed: "Speed",
+    reset: "Reset",
+    start: "Start",
+    pause: "Pause",
+    stop: "Stop",
+    theme: "Theme",
+    language: "Language",
+  },
 
- tutorial: {
-  tips: {
-   title: "Pro Tips",
-   tip1: "Use voice control for hands-free operation.",
-   tip2: "Scan the QR code to control from your phone.",
+  tutorial: {
+    tips: {
+      title: "Pro Tips",
+      tip1: "Use voice control for hands-free operation.",
+      tip2: "Scan the QR code to control from your phone.",
+    },
+    title: "PromptNinja: Your Quick Start Guide",
+    overview: {
+      title: "Overview",
+      description:
+        "PromptNinja is a peer-to-peer professional teleprompter that transforms your browser into a full studio and your smartphone into a remote control — no apps, no accounts, no server reliance.",
+    },
+    howToUse: {
+      title: "How to Use",
+      step1: {
+        title: "Write Your Script",
+        description:
+          "Easily type or paste your presentation script. Use tags like <r>text</r> for color highlighting.",
+      },
+      step2: {
+        title: "Connect Your Phone",
+        description:
+          "Connect your smartphone: Scan the QR code to turn it into a remote control for speed and scrolling.",
+      },
+      step3: {
+        title: "Presentation Mode",
+        description:
+          "Activate teleprompter mode: Click 'Start Presentation' then control with your remote or voice.",
+      },
+    },
+    advancedFeatures: {
+      title: "Advanced Features",
+      voiceControl: {
+        title: "Voice Control (Pro)",
+        description:
+          "Enable voice-activated scrolling: Your teleprompter advances automatically as you speak. (Pro feature)",
+      },
+      themes: {
+        title: "Themes",
+        description:
+          "Customize the teleprompter's appearance with different themes for better readability in various lighting conditions.",
+      },
+      focusMode: {
+        title: "Focus Mode",
+        description: "Activate Focus Mode to highlight the reading line and dim the surrounding text.",
+      },
+    },
   },
-  title: "PromptNinja: Your Quick Start Guide",
-  overview: {
-   title: "Overview",
-   description:
-    "PromptNinja is a peer-to-peer professional teleprompter that transforms your browser into a full studio and your smartphone into a remote control — no apps, no accounts, no server reliance.",
+  footer: {
+    copyright: "PromptNinja. All rights reserved.",
   },
-  howToUse: {
-   title: "How to Use",
-   step1: {
-    title: "Write Your Script",
-    description:
-     "Easily type or paste your presentation script. Use tags like <r>text</r> for color highlighting.",
-   },
-   step2: {
-    title: "Connect Your Phone",
-    description:
-     "Connect your smartphone: Scan the QR code to turn it into a remote control for speed and scrolling.",
-   },
-   step3: {
-    title: "Presentation Mode",
-    description:
-     "Activate teleprompter mode: Click 'Start Presentation' then control with your remote or voice.",
-   },
+  thankYou: {
+    title: "Thank you for your purchase!",
+    subtitle:
+      "Your payment has been successfully confirmed. You are now one step away from unlocking the full power of PromptNinja Pro.",
+    success: {
+      title: "PromptNinja Pro Activated!",
+      message: "Your account has been successfully updated. Enjoy all unlimited features.",
+      button: "Start Using Now",
+    },
+    activation: {
+      title: "Activate your license",
+      description: "Enter the activation code you received in your email (or on the Kiwify confirmation page).",
+      label: "Activation Code",
+      placeholder: "ENTER YOUR CODE HERE",
+      button: "Activate PromptNinja Pro",
+      validating: "Validating...",
+      skip: "Skip activation and go to Free App",
+      error: {
+        invalid: "Invalid or already used code.",
+        connection: "Connection error. Check your internet and try again.",
+      },
+    },
+    footer: "© {{year}} PromptNinja. All rights reserved.",
   },
-  advancedFeatures: {
-   title: "Advanced Features",
-   voiceControl: {
-    title: "Voice Control (Pro)",
-    description:
-     "Enable voice-activated scrolling: Your teleprompter advances automatically as you speak. (Pro feature)",
-   },
-   themes: {
-    title: "Themes",
-    description:
-     "Customize the teleprompter's appearance with different themes for better readability in various lighting conditions.",
-   },
-   focusMode: {
-    title: "Focus Mode",
-    description: "Activate Focus Mode to highlight the reading line and dim the surrounding text.",
-   },
-  },
- },
- footer: {
-  copyright: "PromptNinja. All rights reserved.",
- },
- thankYou: {
-  title: "Thank you for your purchase!",
-  subtitle:
-   "Your payment has been successfully confirmed. You are now one step away from unlocking the full power of PromptNinja Pro.",
-  success: {
-   title: "PromptNinja Pro Activated!",
-   message: "Your account has been successfully updated. Enjoy all unlimited features.",
-   button: "Start Using Now",
-  },
-  activation: {
-   title: "Activate your license",
-   description: "Enter the activation code you received in your email (or on the Kiwify confirmation page).",
-   label: "Activation Code",
-   placeholder: "ENTER YOUR CODE HERE",
-   button: "Activate PromptNinja Pro",
-   validating: "Validating...",
-   skip: "Skip activation and go to Free App",
-   error: {
-    invalid: "Invalid or already used code.",
-    connection: "Connection error. Check your internet and try again.",
-   },
-  },
-  footer: "© {{year}} PromptNinja. All rights reserved.",
- },
 };

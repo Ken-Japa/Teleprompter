@@ -170,4 +170,22 @@ export const ROUTES_CONFIG = {
             es: "/es/teleprompter-para-presentaciones",
         },
     },
+    SEO_PWA_INSTALL: {
+        priority: "0.8",
+        changefreq: "monthly",
+        paths: {
+            pt: "/como-instalar-app-teleprompter-pwa",
+            en: "/en/how-to-install-teleprompter-app-pwa",
+            es: "/es/como-instalar-app-teleprompter-pwa",
+        },
+    },
+    SEO_PRIVACY: {
+        priority: "0.8",
+        changefreq: "monthly",
+        paths: {
+            pt: "/teleprompter-privacidade-seguranca",
+            en: "/en/teleprompter-privacy-security",
+            es: "/es/teleprompter-privacidad-seguridad",
+        },
+    },
 };

@@ -124,6 +124,39 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
                 </div>
             </div>
 
+
+            {/* P2P Section - Differential 1 */}
+            <div className="mt-24 mb-16 max-w-4xl mx-auto text-center px-4 relative z-10">
+                <div className="inline-block glass px-4 py-1.5 rounded-full text-brand-300 font-bold text-sm mb-6 uppercase tracking-wider border border-brand-500/20">
+                    {t("landing.hero.p2pSection.badge")}
+                </div>
+                <h2 className="text-4xl md:text-6xl font-display font-black text-white mb-8 leading-tight">
+                    {t("landing.hero.p2pSection.headline").split(".")[0]}.
+                    <span className="block mt-2 pb-4 text-gradient-emerald">
+                        {t("landing.hero.p2pSection.headline").split(".")[1]}.
+                    </span>
+                </h2>
+                <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                    {t("landing.hero.p2pSection.subheadline")}
+                </p>
+                <div className="mt-8 flex justify-center">
+                    <div className="bg-slate-900/50 p-4 rounded-xl border border-emerald-500/20 shadow-lg shadow-emerald-500/10">
+                        <div className="flex items-center gap-8 text-emerald-400 font-mono text-sm">
+                            <div className="text-center">
+                                <div className="text-white font-bold text-lg">PROMPTNINJA</div>
+                                <div className="text-xs text-slate-500">P2P DIRECT</div>
+                            </div>
+                            <div className="flex-1 h-px bg-emerald-500/50 w-32 relative">
+                                <div className="absolute top-1/2 left-0 -translate-y-1/2 w-2 h-2 bg-emerald-400 rounded-full animate-ping" style={{ animationDuration: "1.5s", top: "calc(50% - 2.5px)" }}></div>
+                                <div className="absolute top-1/2 right-0 -translate-y-1/2 w-2 h-2 bg-emerald-400 rounded-full animate-ping" style={{ animationDuration: "1.5s", animationDelay: "0.75s", top: "calc(50% - 2.5px)" }}></div>
+                            </div>
+                            <div className="text-white font-bold text-xl">~4ms</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div className="flex justify-center items-center gap-8 text-sm text-slate-400 flex-wrap animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
                 <div className="text-center">
                     <span className="text-2xl font-bold text-white block">{t("landing.hero.userCount")}</span>
@@ -181,6 +214,23 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
                 {/* Ambient Glow */}
                 <div className="absolute -inset-4 bg-brand-500/20 blur-3xl -z-10 rounded-[3rem] opacity-30"></div>
             </div>
+
+            {/* Privacy Section - Differential 2 */}
+            <div className="mt-24 max-w-4xl mx-auto text-center px-4 relative z-10">
+                <div className="inline-block glass px-4 py-1.5 rounded-full text-purple-300 font-bold text-sm mb-6 uppercase tracking-wider border border-purple-500/20">
+                    {t("landing.hero.privacySection.badge")}
+                </div>
+                <h2 className="text-4xl md:text-6xl font-display font-black mb-6 leading-tight">
+                    <span className="text-white">{t("landing.hero.privacySection.headline").split(".")[0]}.</span>
+                    <span className="block mt-2 pb-4 text-gradient-emerald">
+                        {t("landing.hero.privacySection.headline").split(".")[1]}.
+                    </span>
+                </h2>
+                <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                    {t("landing.hero.privacySection.subheadline")}
+                </p>
+            </div>
+
         </S.HeroSection>
     );
 };

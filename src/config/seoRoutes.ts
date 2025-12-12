@@ -86,6 +86,16 @@ export const SeoPages = {
             default: module.TeleprompterApresentacoes,
         }))
     ),
+    ComoInstalarPwa: React.lazy(() =>
+        import("../pages/seo/ComoInstalarPwa").then((module) => ({
+            default: module.ComoInstalarPwa,
+        }))
+    ),
+    PrivacidadeSeguranca: React.lazy(() =>
+        import("../pages/seo/PrivacidadeSeguranca").then((module) => ({
+            default: module.PrivacidadeSeguranca,
+        }))
+    ),
 };
 
 export const seoKeyMap: Record<SeoRouteKey, keyof typeof SeoPages> = {
@@ -108,6 +118,8 @@ export const seoKeyMap: Record<SeoRouteKey, keyof typeof SeoPages> = {
     SEO_MEET_TEAMS: "TeleprompterGoogleMeetTeams",
     SEO_IPHONE_IPAD: "TeleprompterIphoneIpad",
     SEO_APRESENTACOES: "TeleprompterApresentacoes",
+    SEO_PWA_INSTALL: "ComoInstalarPwa",
+    SEO_PRIVACY: "PrivacidadeSeguranca",
 };
 
 export type SeoRouteKey =
@@ -129,4 +141,6 @@ export type SeoRouteKey =
     | "SEO_HARDWARE_VS_WEB"
     | "SEO_MEET_TEAMS"
     | "SEO_IPHONE_IPAD"
-    | "SEO_APRESENTACOES";
+    | "SEO_APRESENTACOES"
+    | "SEO_PWA_INSTALL"
+    | "SEO_PRIVACY";

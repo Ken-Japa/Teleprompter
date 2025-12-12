@@ -152,6 +152,15 @@ const App: React.FC = () => {
                 {view === "SEO_WEBRTC" && <SeoPages.WebRtcLatency onLaunch={launchApp} />}
                 {view === "SEO_PC_WINDOWS" && <SeoPages.TeleprompterPCWindows onLaunch={launchApp} />}
                 {view === "SEO_ZOOM" && <SeoPages.TeleprompterZoomMeeting onLaunch={launchApp} />}
+                {view === "SEO_TIKTOK" && <SeoPages.TeleprompterTikTokShorts onLaunch={launchApp} />}
+                {view === "SEO_OBS" && <SeoPages.TeleprompterObsStudio onLaunch={launchApp} />}
+                {view === "SEO_CAPCUT" && <SeoPages.TeleprompterCapCut onLaunch={launchApp} />}
+                {view === "SEO_HARDWARE_VS_WEB" && <SeoPages.TeleprompterWebVsHardware onLaunch={launchApp} />}
+                {view === "SEO_MEET_TEAMS" && <SeoPages.TeleprompterGoogleMeetTeams onLaunch={launchApp} />}
+                {view === "SEO_IPHONE_IPAD" && <SeoPages.TeleprompterIphoneIpad onLaunch={launchApp} />}
+                {view === "SEO_APRESENTACOES" && <SeoPages.TeleprompterApresentacoes onLaunch={launchApp} />}
+                {view === "SEO_PWA_INSTALL" && <SeoPages.ComoInstalarPwa onLaunch={launchApp} />}
+                {view === "SEO_PRIVACY" && <SeoPages.PrivacidadeSeguranca onLaunch={launchApp} />}
             </Suspense>
         </TranslationProvider>
     );
