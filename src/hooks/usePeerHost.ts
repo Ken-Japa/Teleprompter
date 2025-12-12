@@ -13,7 +13,15 @@ import { PEER_CONFIG } from "../utils/peerConfig";
  * @returns Objeto contendo o ID do peer, status da conexão, mensagem de erro, função de broadcast e função de limpeza.
  */
 export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void, isPro: boolean = false) => {
-    const [peerId, setPeerId] = useState<string>("");
+    // Attempt to hydrate peerId from localStorage for offline support (or persistent ID)
+    const [peerId, setPeerId] = useState<string>(() => {
+        if (typeof window !== "undefined") {
+            const saved = localStorage.getItem("promptninja_peer_id");
+            if (saved) return saved;
+        }
+        return "";
+    });
+
     const [status, setStatus] = useState<ConnectionStatus>(ConnectionStatus.DISCONNECTED);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -120,8 +128,25 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void, isPro: 
             }
 
             try {
-                // Initialize Peer with default config (Cloud Server)
-                const peer = new Peer(PEER_CONFIG);
+                // Determine ID to use: existing state (from localStorage) or undefined (let PeerJS generate)
+                // If we don't have one in state yet, we won't pass one, and PeerJS will assign one.
+                // WE SHOULDN'T pass empty string to constructor.
+                const peerOptions = { ...PEER_CONFIG };
+
+                // If we have a stored ID, try to reuse it
+                let idToUse = peerId;
+                if (!idToUse) {
+                    // Generate one if missing to behave optimistically? 
+                    // Or let PeerJS generate and then save it?
+                    // To solve "Offline QR Code", we MUST have an ID before connection involves.
+                    // So we generate a UUID ourselves if missing.
+                    idToUse = crypto.randomUUID();
+                    setPeerId(idToUse);
+                    localStorage.setItem("promptninja_peer_id", idToUse);
+                }
+
+                // Initialize Peer with specific ID (Cloud Server)
+                const peer = new Peer(idToUse, peerOptions);
                 peerRef.current = peer;
 
                 peer.on("open", (id: string) => {
@@ -129,7 +154,12 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void, isPro: 
                         peer.destroy();
                         return;
                     }
-                    setPeerId(id);
+                    // Ensure state matches (it should)
+                    if (id !== peerId) {
+                        setPeerId(id);
+                        localStorage.setItem("promptninja_peer_id", id);
+                    }
+
                     setErrorMessage(null); // Clear error on successful open
                     setStatus(ConnectionStatus.CONNECTING);
                     startUsageTracking();
@@ -143,7 +173,6 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void, isPro: 
                     }
 
                     // Limite Pro: Múltiplos; Free: 1 só
-                    // Adicione check em usePeerHost.ts. Limite Free a 1
                     if (!isPro && connectionsRef.current.size >= 1) {
                         conn.close(); // Rejeita conexão extra
                         setErrorMessage("Limite atingido: Apenas 1 controle remoto no plano gratuito. Atualize para Pro!");
@@ -178,8 +207,23 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void, isPro: 
                 peer.on("error", (err: any) => {
                     console.warn("Peer Error:", err);
                     trackError("peer_error", err.type || err.message);
+
+                    if (err.type === 'unavailable-id') {
+                        // ID collision or still alive on server -> Generate new one
+                        // Clear storage and state, then retry will pick up new generation logic (if we handled it rights)
+                        // Actually better: just generate new one here and retry immediately
+                        localStorage.removeItem("promptninja_peer_id");
+                        setPeerId(""); // Clear state
+                        // Force logic to create new ID on next retry
+                        if (mountedRef.current && retryCountRef.current < MAX_RETRIES) {
+                            retryCountRef.current += 1;
+                            retryTimeoutRef.current = setTimeout(initPeer, 100);
+                        }
+                        return;
+                    }
+
                     // Critical errors that require UI update
-                    if (["browser-incompatible", "invalid-id", "ssl-unavailable", "server-error"].includes(err.type)) {
+                    if (["browser-incompatible", "ssl-unavailable", "server-error"].includes(err.type)) {
                         if (mountedRef.current) setStatus(ConnectionStatus.ERROR);
                     }
 
@@ -191,6 +235,8 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void, isPro: 
                         err.type === "disconnected"
                     ) {
                         if (retryCountRef.current < MAX_RETRIES) {
+                            // If network error, we prefer to keep status as DISCONNECTED or ERROR but we KEEP perId in state
+                            // so QR code keeps showing
                             console.log(`Retrying connection... Attempt ${retryCountRef.current + 1}`);
                             retryCountRef.current += 1;
                             retryTimeoutRef.current = setTimeout(initPeer, RETRY_DELAY);
@@ -236,7 +282,7 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void, isPro: 
             clearTimeout(startTimeout);
             destroyPeer();
         };
-    }, [destroyPeer]);
+    }, [destroyPeer]); // Removed peerId dependency to avoid loops, initialization logic handles reading it
 
     return { peerId, status, errorMessage, broadcast };
 };
