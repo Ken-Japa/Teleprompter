@@ -1,9 +1,10 @@
 import React from "react";
 import { TextSegment } from "../../hooks/useRemoteTextHandling";
+import { RemoteActions } from "../../types";
 
 interface RemoteNavigationProps {
     textSegments: TextSegment[];
-    actions: any; // Ideally typed
+    actions: RemoteActions;
     // Optional: setActiveTab prop if we want to auto-switch
 }
 

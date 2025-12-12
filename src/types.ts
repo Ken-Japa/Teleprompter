@@ -2,51 +2,51 @@
 
 // Web Speech API Types
 export interface SpeechRecognitionEvent {
- resultIndex: number;
- results: {
-  [index: number]: {
-   [index: number]: {
-    transcript: string;
-   };
-   isFinal: boolean;
-  };
-  length: number;
- };
+    resultIndex: number;
+    results: {
+        [index: number]: {
+            [index: number]: {
+                transcript: string;
+            };
+            isFinal: boolean;
+        };
+        length: number;
+    };
 }
 
 export interface SpeechRecognitionErrorEvent {
- error: string;
- message: string;
+    error: string;
+    message: string;
 }
 
 export interface ISpeechRecognition extends EventTarget {
- continuous: boolean;
- interimResults: boolean;
- lang: string;
- start(): void;
- stop(): void;
- abort(): void;
- onresult: ((event: SpeechRecognitionEvent) => void) | null;
- onend: (() => void) | null;
- onstart: (() => void) | null;
- onerror: ((event: SpeechRecognitionErrorEvent) => void) | null;
+    continuous: boolean;
+    interimResults: boolean;
+    lang: string;
+    start(): void;
+    stop(): void;
+    abort(): void;
+    onresult: ((event: SpeechRecognitionEvent) => void) | null;
+    onend: (() => void) | null;
+    onstart: (() => void) | null;
+    onerror: ((event: SpeechRecognitionErrorEvent) => void) | null;
 }
 
 // Global Window Extension
 declare global {
- interface Window {
-  SpeechRecognition: {
-   new (): ISpeechRecognition;
-  };
-  webkitSpeechRecognition: {
-   new (): ISpeechRecognition;
-  };
- }
- interface Document {
-  permissionsPolicy?: {
-   allowsFeature(feature: string): boolean;
-  };
- }
+    interface Window {
+        SpeechRecognition: {
+            new(): ISpeechRecognition;
+        };
+        webkitSpeechRecognition: {
+            new(): ISpeechRecognition;
+        };
+    }
+    interface Document {
+        permissionsPolicy?: {
+            allowsFeature(feature: string): boolean;
+        };
+    }
 }
 
 // --- DOMAIN TYPES (App Specific) ---
@@ -57,98 +57,115 @@ import { DataConnection } from "peerjs";
 export type PeerDataConnection = DataConnection;
 
 export enum ConnectionStatus {
- DISCONNECTED = "DISCONNECTED",
- CONNECTING = "CONNECTING",
- CONNECTED = "CONNECTED",
- ERROR = "ERROR",
+    DISCONNECTED = "DISCONNECTED",
+    CONNECTING = "CONNECTING",
+    CONNECTED = "CONNECTED",
+    ERROR = "ERROR",
 }
 
 export enum MessageType {
- PLAY = "PLAY",
- PAUSE = "PAUSE",
- SPEED_UPDATE = "SPEED_UPDATE",
- SCROLL_DELTA = "SCROLL_DELTA",
- SCROLL_STOP = "SCROLL_STOP", // New exact stop command
- SCROLL_SYNC = "SCROLL_SYNC",
- RESTART = "RESTART",
- SYNC_STATE = "SYNC_STATE",
- MIRROR_TOGGLE = "MIRROR_TOGGLE",
- FONT_SIZE_UPDATE = "FONT_SIZE_UPDATE", // New
- MARGIN_UPDATE = "MARGIN_UPDATE", // New
- TEXT_UPDATE = "TEXT_UPDATE",
- SCROLL_TO = "SCROLL_TO",
- SETTINGS_UPDATE = "SETTINGS_UPDATE",
- TIME_UPDATE = "TIME_UPDATE",
- TOGGLE_VOICE = "TOGGLE_VOICE",
- REQUEST_SYNC = "REQUEST_SYNC",
- VOICE_SYNC = "VOICE_SYNC",
- TOGGLE_RECORDING = "TOGGLE_RECORDING",
- START_REMOTE_RECORDING = "START_REMOTE_RECORDING",
- STOP_REMOTE_RECORDING = "STOP_REMOTE_RECORDING",
+    PLAY = "PLAY",
+    PAUSE = "PAUSE",
+    SPEED_UPDATE = "SPEED_UPDATE",
+    SCROLL_DELTA = "SCROLL_DELTA",
+    SCROLL_STOP = "SCROLL_STOP", // New exact stop command
+    SCROLL_SYNC = "SCROLL_SYNC",
+    RESTART = "RESTART",
+    SYNC_STATE = "SYNC_STATE",
+    MIRROR_TOGGLE = "MIRROR_TOGGLE",
+    FONT_SIZE_UPDATE = "FONT_SIZE_UPDATE", // New
+    MARGIN_UPDATE = "MARGIN_UPDATE", // New
+    TEXT_UPDATE = "TEXT_UPDATE",
+    SCROLL_TO = "SCROLL_TO",
+    SETTINGS_UPDATE = "SETTINGS_UPDATE",
+    TIME_UPDATE = "TIME_UPDATE",
+    TOGGLE_VOICE = "TOGGLE_VOICE",
+    REQUEST_SYNC = "REQUEST_SYNC",
+    VOICE_SYNC = "VOICE_SYNC",
+    TOGGLE_RECORDING = "TOGGLE_RECORDING",
+    START_REMOTE_RECORDING = "START_REMOTE_RECORDING",
+    STOP_REMOTE_RECORDING = "STOP_REMOTE_RECORDING",
 }
 
 export interface PeerMessage {
- type: MessageType;
- payload?: any;
- timestamp?: number;
+    type: MessageType;
+    payload?: any;
+    timestamp?: number;
 }
 
 export interface NavigationItem {
- id: string | number;
- label: string;
- progress: number; // 0 to 1
+    id: string | number;
+    label: string;
+    progress: number; // 0 to 1
 }
 
 export enum Theme {
- DEFAULT = "default", // Ninja
- PAPER = "paper",
- CONTRAST = "contrast",
- MATRIX = "matrix",
- CYBER = "cyber",
- CREAM = "cream",
- CHROMA_GREEN = "chroma_green",
- CHROMA_BLUE = "chroma_blue",
+    DEFAULT = "default", // Ninja
+    PAPER = "paper",
+    CONTRAST = "contrast",
+    MATRIX = "matrix",
+    CYBER = "cyber",
+    CREAM = "cream",
+    CHROMA_GREEN = "chroma_green",
+    CHROMA_BLUE = "chroma_blue",
 }
 
 export type VoiceControlMode = "host" | "remote";
 export type RecordingMode = "host" | "remote";
 
 export interface PrompterSettings {
- fontSize: number;
- margin: number;
- // speed removed as it is external state
- isMirrored: boolean;
- isUpperCase: boolean;
- theme: Theme;
- isFocusMode: boolean;
- isFlipVertical: boolean;
- voiceControlMode?: VoiceControlMode;
- recordingMode?: RecordingMode;
+    fontSize: number;
+    margin: number;
+    // speed removed as it is external state
+    isMirrored: boolean;
+    isUpperCase: boolean;
+    theme: Theme;
+    isFocusMode: boolean;
+    isFlipVertical: boolean;
+    voiceControlMode?: VoiceControlMode;
+    recordingMode?: RecordingMode;
 }
 
 export interface RemoteScrollHandler {
- (deltaY: number, stop?: boolean, hardStop?: boolean): void;
+    (deltaY: number, stop?: boolean, hardStop?: boolean): void;
 }
 
 export interface PrompterHandle {
- onRemoteScroll: RemoteScrollHandler;
- scrollTo: (progress: number) => void;
- reset: () => void;
- toggleVoice: () => void;
- onRemoteVoiceUpdate: (index: number, progress: number) => void;
- wakeUp: () => void; // Forces the physics loop to wake up
- toggleRecording: () => void;
+    onRemoteScroll: RemoteScrollHandler;
+    scrollTo: (progress: number) => void;
+    reset: () => void;
+    toggleVoice: () => void;
+    onRemoteVoiceUpdate: (index: number, progress: number) => void;
+    wakeUp: () => void; // Forces the physics loop to wake up
+    toggleRecording: () => void;
 }
 
 export interface TextFragment {
- text: string;
- type: "normal" | "red" | "yellow" | "green" | "blue";
- isHighlight?: boolean;
+    text: string;
+    type: "normal" | "red" | "yellow" | "green" | "blue";
+    isHighlight?: boolean;
 }
 
+
 export interface Sentence {
- id: number;
- cleanContent: string;
- startIndex?: number;
- fragments: TextFragment[];
+    id: number;
+    cleanContent: string;
+    startIndex?: number;
+    fragments: TextFragment[];
+}
+
+export interface RemoteActions {
+    handleSpeedChange: (newSpeed: number) => void;
+    handlePlayToggle: () => void;
+    handleTrackpadDelta: (delta: number) => void;
+    handleTrackpadStop: (hardStop: boolean) => void;
+    handleSettingsChange: (newSettings: Partial<PrompterSettings>) => void;
+    handleTextChange: (newText: string) => void;
+    handleScrollTo: (newProgress: number) => void;
+    handleStop: () => void;
+    handleToggleVoice: () => void;
+    handleRequestSync: () => void;
+    handleToggleRecording: () => void;
+    handleToggleRecordingMode: () => void;
+    downloadRecording: () => void;
 }

@@ -3,7 +3,7 @@ import { useTranslation } from "../../hooks/useTranslation";
 import { MinusIcon, PauseIcon, PlayIcon, PlusIcon, StopIcon, MicIcon, LaptopIcon, SmartphoneIcon } from "../ui/Icons";
 import { Trackpad } from "./Trackpad";
 import * as S from "../ui/Styled";
-import { NavigationItem, PrompterSettings } from "../../types";
+import { NavigationItem, PrompterSettings, RemoteActions } from "../../types";
 
 interface RemoteControlsProps {
     formattedTime: string;
@@ -16,7 +16,7 @@ interface RemoteControlsProps {
     isRecording: boolean;
     isVoiceMode: boolean;
     settings?: PrompterSettings;
-    actions: any; // We'll clean this up with a proper type later or import it
+    actions: RemoteActions;
 }
 
 export const RemoteControls: React.FC<RemoteControlsProps> = ({

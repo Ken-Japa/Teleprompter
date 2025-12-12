@@ -1,10 +1,11 @@
 import React, { useRef } from "react";
 import { ColorMenu } from "../ui/ColorMenu";
 import { insertTagInText } from "../../utils/editorHelpers";
+import { RemoteActions } from "../../types";
 
 interface RemoteEditorProps {
     text: string;
-    actions: any; // Ideally typed
+    actions: RemoteActions;
 }
 
 export const RemoteEditor: React.FC<RemoteEditorProps> = ({ text, actions }) => {

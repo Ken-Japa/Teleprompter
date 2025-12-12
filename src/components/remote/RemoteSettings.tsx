@@ -1,13 +1,13 @@
 import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
-import { Theme, PrompterSettings } from "../../types";
+import { Theme, PrompterSettings, RemoteActions } from "../../types";
 import { PROMPTER_DEFAULTS } from "../../config/constants";
 import { LaptopIcon, SmartphoneIcon } from "../ui/Icons";
 import { SyncButton } from "../ui/SyncButton";
 
 interface RemoteSettingsProps {
     settings: PrompterSettings | null | undefined;
-    actions: any; // Ideally typed from useRemoteController
+    actions: RemoteActions;
     lang: string;
     setLang: (lang: string) => void;
     isPro: boolean;
