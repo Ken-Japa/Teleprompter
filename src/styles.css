@@ -157,14 +157,183 @@ html {
 
 /* Performance optimizations for mobile */
 @media (max-width: 640px) {
+
     /* Reduce blur effects on mobile for better performance */
     .glass {
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
     }
-    
+
     /* Simplify animations on mobile */
     .animate-pulse-slow {
         animation: none;
+    }
+}
+
+/* Safe Container - Prevents overflow on small screens */
+.safe-container {
+    max-width: calc(100vw - 2rem);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Smooth Transitions */
+.transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover Lift Effect */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover Glow Effect */
+.hover-glow {
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4), 0 0 40px rgba(99, 102, 241, 0.2);
+    transform: scale(1.02);
+}
+
+/* Button Press Animation */
+.btn-press:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+}
+
+/* Card Depth - Enhanced Shadows */
+.card-depth {
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.card-depth-hover:hover {
+    box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.2),
+        0 10px 10px -5px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Improved Text Contrast */
+.text-contrast-safe {
+    color: #cbd5e1;
+    /* slate-300 instead of slate-400 for better contrast */
+}
+
+/* Icon Hover Rotation */
+.icon-hover-rotate {
+    transition: transform 0.3s ease;
+}
+
+.icon-hover-rotate:hover {
+    transform: rotate(5deg) scale(1.1);
+}
+
+/* Stagger Animation for Lists */
+@keyframes stagger-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stagger-item {
+    animation: stagger-fade-in 0.5s ease forwards;
+    opacity: 0;
+}
+
+.stagger-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.stagger-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.stagger-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.stagger-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.stagger-item:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.stagger-item:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+/* Ripple Effect */
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.ripple-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple-effect::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.ripple-effect:active::after {
+    width: 300px;
+    height: 300px;
+    animation: ripple 0.6s ease-out;
+}
+
+/* Enhanced Glassmorphism - Unified */
+.glass-unified {
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-unified-hover:hover {
+    background: rgba(30, 41, 59, 0.75);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Mobile Safe Touch Targets */
+@media (max-width: 768px) {
+    .touch-target {
+        min-width: 44px;
+        min-height: 44px;
     }
 }

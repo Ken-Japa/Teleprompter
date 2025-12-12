@@ -9,6 +9,8 @@ export const es = {
     features: "Características",
     pricing: "Precios",
     backToHome: "Volver a Inicio",
+    validate: "Validar",
+    validateLicense: "Validar Licencia",
   },
   common: {
     sync: "Sincronizar",
@@ -142,6 +144,8 @@ export const es = {
       },
     },
     features: {
+      title: "Características",
+      subtitle: "Todo lo que necesitas para un teleprompter profesional",
       sync: {
         title: "Sincronización Instantánea",
         desc: "Lo que ves en la PC aparece en el celular al instante.",

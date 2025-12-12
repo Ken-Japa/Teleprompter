@@ -99,7 +99,7 @@ export const PricingCard = ({
 
                 {/* Featured Badge */}
                 {badge && (
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-500 to-purple-500 text-white px-4 py-1 rounded-b-xl text-xs font-bold tracking-wider shadow-lg z-20">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-500 to-purple-500 text-white px-4 py-1 rounded-b-xl text-xs font-bold tracking-wider shadow-lg z-20 animate-glow-pulse">
                         {badge}
                     </div>
                 )}
@@ -150,9 +150,9 @@ export const PricingCard = ({
                 {/* CTA */}
                 <button
                     onClick={onClick}
-                    className={`w-full py-3.5 rounded-xl font-bold transition-all duration-300 ${isFeatured
-                        ? "bg-gradient-to-r from-brand-600 to-purple-600 hover:from-brand-500 hover:to-purple-500 text-white shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:-translate-y-0.5"
-                        : "bg-white/10 hover:bg-white/15 text-white border border-white/5"
+                    className={`w-full py-3.5 rounded-xl font-bold transition-smooth btn-press ${isFeatured
+                        ? "bg-gradient-to-r from-brand-600 to-purple-600 hover:from-brand-500 hover:to-purple-500 text-white shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:-translate-y-0.5 hover-glow"
+                        : "bg-white/10 hover:bg-white/15 text-white border border-white/5 hover:border-white/10"
                         }`}
                 >
                     {ctaText}

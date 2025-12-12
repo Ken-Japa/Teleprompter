@@ -15,6 +15,8 @@ export const en = {
     features: "Features",
     pricing: "Pricing",
     backToHome: "Back to Home",
+    validate: "Validate",
+    validateLicense: "Validate License",
   },
   landing: {
     meta: {
@@ -138,6 +140,8 @@ export const en = {
       },
     },
     features: {
+      title: "Features",
+      subtitle: "Everything you need for professional teleprompting",
       sync: {
         title: "Instant Sync",
         desc:

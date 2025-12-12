@@ -46,7 +46,7 @@ export const PrimaryButton = ({
     return (
         <button
             onClick={onClick}
-            className={`relative overflow-hidden group flex items-center justify-center ${sizeClasses} bg-brand-600 hover:bg-brand-500 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-brand-500/30 hover:shadow-xl hover:shadow-brand-500/40 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ring-1 ring-white/20 ${className}`}
+            className={`relative overflow-hidden group flex items-center justify-center ${sizeClasses} bg-brand-600 hover:bg-brand-500 text-white rounded-xl font-semibold transition-smooth shadow-lg shadow-brand-500/30 hover:shadow-xl hover:shadow-brand-500/40 hover:-translate-y-0.5 active:translate-y-0 btn-press ring-1 ring-white/20 hover-glow ${className}`}
             {...props}
         >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out z-0"></div>
@@ -72,7 +72,7 @@ export const SecondaryButton = ({
     return (
         <button
             onClick={onClick}
-            className={`${sizeClasses} glass hover:bg-slate-800/80 active:bg-slate-900 rounded-xl font-medium transition-all duration-200 text-slate-200 hover:text-white shadow-sm hover:shadow-lg hover:shadow-brand-500/10 group ${className}`}
+            className={`${sizeClasses} glass hover:bg-slate-800/80 active:bg-slate-900 rounded-xl font-medium transition-smooth text-slate-200 hover:text-white shadow-sm hover:shadow-lg hover:shadow-brand-500/10 btn-press group ${className}`}
             {...props}
         >
             <span className="flex items-center justify-center gap-2 relative z-10">{children}</span>
@@ -102,7 +102,7 @@ export const GhostButton = ({
     return (
         <button
             onClick={onClick}
-            className={`${sizeClasses} ${activeClasses} border rounded-lg font-medium transition-all duration-200 flex items-center justify-center gap-2 ${className}`}
+            className={`${sizeClasses} ${activeClasses} border rounded-lg font-medium transition-smooth flex items-center justify-center gap-2 ${className}`}
             {...props}
         >
             {children}
@@ -124,9 +124,9 @@ export const IconButton = ({
 } & React.ButtonHTMLAttributes<HTMLButtonElement>) => (
     <button
         onClick={onClick}
-        className={`p-2.5 rounded-lg transition-all duration-200 border flex items-center justify-center backdrop-blur-sm ${active
+        className={`p-2.5 rounded-lg transition-smooth border flex items-center justify-center backdrop-blur-sm ${active
             ? "bg-brand-600 text-white border-brand-500 shadow-md shadow-brand-500/20 scale-105"
-            : "bg-white/5 border-white/5 hover:bg-white/10 text-slate-400 hover:text-white hover:border-white/20 hover:shadow-sm"
+            : "bg-white/5 border-white/5 hover:bg-white/10 text-slate-400 hover:text-white hover:border-white/20 hover:shadow-sm hover:scale-105"
             } ${className}`}
         {...props}
     >

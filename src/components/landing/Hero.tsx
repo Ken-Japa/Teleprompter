@@ -38,7 +38,7 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 relative z-10 mb-16">
                 <S.PrimaryButton
                     onClick={onLaunch}
-                    className="text-lg py-5 px-12 w-full sm:w-auto !rounded-2xl shadow-brand-500/40 hover:shadow-brand-500/60"
+                    className="text-lg py-5 px-12 w-full sm:w-auto !rounded-2xl shadow-brand-500/40 hover:shadow-brand-500/60 hover-glow btn-press transition-smooth"
                     aria-label="Launch Web App"
                 >
                     {t("landing.hero.cta")}
@@ -46,15 +46,15 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
 
                 <button
                     onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="text-lg py-5 px-12 w-full sm:w-auto glass hover:bg-white/10 text-white font-medium rounded-2xl transition-all hover:scale-105 hover:border-white/20"
+                    className="text-lg py-5 px-12 w-full sm:w-auto glass hover:bg-white/10 text-white font-medium rounded-2xl transition-smooth hover:scale-105 hover:border-white/20 btn-press"
                 >
                     {t("landing.hero.ctaSecondary")}
                 </button>
             </div>
 
             {/* Demo Visual - App Mockup */}
-            <div className="relative max-w-5xl mx-auto mb-24 animate-fade-in-up perspective-1000" style={{ animationDelay: '0.3s' }}>
-                <div className="relative glass bg-slate-900/40 rounded-2xl shadow-2xl overflow-hidden transform rotate-x-2 transition-transform duration-500 hover:rotate-x-0 hover:scale-[1.01] group border border-white/10">
+            <div className="relative max-w-5xl mx-auto mb-24 animate-fade-in-up perspective-1000 safe-container px-4" style={{ animationDelay: '0.3s' }}>
+                <div className="relative glass bg-slate-900/40 rounded-2xl shadow-2xl overflow-hidden transform rotate-x-2 transition-transform duration-500 hover:rotate-x-0 hover:scale-[1.01] group border border-white/10 card-depth">
 
                     {/* Browser Chrome */}
                     <div className="h-10 glass border-b border-white/5 flex items-center px-4 space-x-2">
@@ -110,17 +110,17 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
                 {/* Ambient Glow behind the mockup */}
                 <div className="absolute -inset-4 bg-brand-500/20 blur-3xl -z-10 rounded-[3rem] opacity-40"></div>
 
-                {/* Floating Badges - Improved */}
-                <div className="absolute -top-4 sm:-top-8 -right-4 sm:-right-8 glass px-4 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl flex items-center gap-2 sm:gap-3 animate-float shadow-xl border border-white/10" style={{ animationDelay: '0s' }}>
+                {/* Floating Badges - Improved with Safe Positioning */}
+                <div className="absolute top-2 right-2 sm:-top-8 sm:-right-8 glass px-3 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl flex items-center gap-2 sm:gap-3 animate-float shadow-xl border border-white/10 max-w-[calc(100%-1rem)]" style={{ animationDelay: '0s' }}>
                     <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-emerald-500 rounded-full animate-pulse"></div>
-                    <span className="text-xs sm:text-sm font-bold text-white tracking-wide">{t("landing.hero.offlineBadge")}</span>
+                    <span className="text-xs sm:text-sm font-bold text-white tracking-wide whitespace-nowrap">{t("landing.hero.offlineBadge")}</span>
                 </div>
 
-                <div className="absolute -bottom-4 sm:-bottom-8 -left-4 sm:-left-8 glass px-4 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl flex items-center gap-2 sm:gap-3 animate-float shadow-xl border border-white/10" style={{ animationDelay: '1.5s' }}>
+                <div className="absolute bottom-2 left-2 sm:-bottom-8 sm:-left-8 glass px-3 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl flex items-center gap-2 sm:gap-3 animate-float shadow-xl border border-white/10 max-w-[calc(100%-1rem)]" style={{ animationDelay: '1.5s' }}>
                     <div className="text-brand-400">
                         <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
                     </div>
-                    <span className="text-xs sm:text-sm font-bold text-white tracking-wide">{t("landing.hero.privacyBadge")}</span>
+                    <span className="text-xs sm:text-sm font-bold text-white tracking-wide whitespace-nowrap">{t("landing.hero.privacyBadge")}</span>
                 </div>
             </div>
 
@@ -139,18 +139,18 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
                 <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
                     {t("landing.hero.p2pSection.subheadline")}
                 </p>
-                <div className="mt-8 flex justify-center">
-                    <div className="bg-slate-900/50 p-4 rounded-xl border border-emerald-500/20 shadow-lg shadow-emerald-500/10">
-                        <div className="flex items-center gap-8 text-emerald-400 font-mono text-sm">
-                            <div className="text-center">
-                                <div className="text-white font-bold text-lg">PROMPTNINJA</div>
+                <div className="mt-8 flex justify-center px-4">
+                    <div className="bg-slate-900/50 p-4 rounded-xl border border-emerald-500/20 shadow-lg shadow-emerald-500/10 w-full max-w-md">
+                        <div className="flex items-center gap-4 sm:gap-8 text-emerald-400 font-mono text-sm">
+                            <div className="text-center flex-shrink-0">
+                                <div className="text-white font-bold text-sm sm:text-lg">PROMPTNINJA</div>
                                 <div className="text-xs text-slate-500">P2P DIRECT</div>
                             </div>
-                            <div className="flex-1 h-px bg-emerald-500/50 w-32 relative">
+                            <div className="flex-1 h-px bg-emerald-500/50 min-w-[60px] max-w-[120px] relative">
                                 <div className="absolute top-1/2 left-0 -translate-y-1/2 w-2 h-2 bg-emerald-400 rounded-full animate-ping" style={{ animationDuration: "1.5s", top: "calc(50% - 2.5px)" }}></div>
                                 <div className="absolute top-1/2 right-0 -translate-y-1/2 w-2 h-2 bg-emerald-400 rounded-full animate-ping" style={{ animationDuration: "1.5s", animationDelay: "0.75s", top: "calc(50% - 2.5px)" }}></div>
                             </div>
-                            <div className="text-white font-bold text-xl">~4ms</div>
+                            <div className="text-white font-bold text-lg sm:text-xl flex-shrink-0">~4ms</div>
                         </div>
                     </div>
                 </div>
@@ -175,8 +175,8 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
             </div>
 
             {/* App Video Demo */}
-            <div className="relative max-w-4xl mx-auto mt-24 mb-12 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-                <div className="relative glass bg-slate-900/40 rounded-2xl shadow-2xl overflow-hidden border border-white/10 group">
+            <div className="relative max-w-4xl mx-auto mt-24 mb-12 animate-fade-in-up safe-container px-4" style={{ animationDelay: '0.6s' }}>
+                <div className="relative glass bg-slate-900/40 rounded-2xl shadow-2xl overflow-hidden border border-white/10 group card-depth hover-lift">
                     {!isPlaying ? (
                         <div
                             className="w-full h-auto aspect-video rounded-2xl relative z-0 cursor-pointer"

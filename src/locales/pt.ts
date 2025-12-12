@@ -15,6 +15,8 @@ export const pt = {
     features: "Recursos",
     pricing: "Preços",
     backToHome: "Voltar para Página Inicial",
+    validate: "Validar",
+    validateLicense: "Validar Licença",
   },
   landing: {
     meta: {
@@ -138,6 +140,8 @@ export const pt = {
       },
     },
     features: {
+      title: "Recursos",
+      subtitle: "Tudo o que você precisa para um teleprompter profissional",
       sync: {
         title: "Sincronização Instantânea",
         desc:
