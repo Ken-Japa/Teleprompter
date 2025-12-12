@@ -42,6 +42,7 @@ const viteConfig = defineConfig({
         }),
     ],
     build: {
+        cssCodeSplit: true, // Enable CSS code splitting
         rollupOptions: {
             output: {
                 manualChunks: {
@@ -58,6 +59,9 @@ const viteConfig = defineConfig({
                 drop_console: true,
                 drop_debugger: true,
             },
+        },
+        modulePreload: {
+            polyfill: true, // Ensure module preload works on all browsers
         },
     },
 });
