@@ -438,4 +438,10 @@ Paste your script here and customize your experience to start shining!`,
     },
     footer: "© {{year}} PromptNinja. All rights reserved.",
   },
+  seo: {
+    scripts: {
+      title: "Teleprompter Ready-to-Use Scripts",
+      description: "Complete collection of free scripts for your videos.",
+    },
+  },
 };

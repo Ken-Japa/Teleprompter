@@ -188,4 +188,49 @@ export const ROUTES_CONFIG = {
             es: "/es/teleprompter-privacidad-seguridad",
         },
     },
+    SEO_SCRIPTS: {
+        priority: "0.9",
+        changefreq: "weekly",
+        paths: {
+            pt: "/scripts-teleprompter",
+            en: "/en/teleprompter-scripts",
+            es: "/es/guiones-teleprompter",
+        },
+    },
+    SEO_SCRIPTS_YOUTUBE: {
+        priority: "0.9",
+        changefreq: "weekly",
+        paths: {
+            pt: "/scripts-para-youtube",
+            en: "/en/scripts-for-youtube",
+            es: "/es/guiones-para-youtube",
+        },
+    },
+    SEO_SCRIPTS_TIKTOK: {
+        priority: "0.9",
+        changefreq: "weekly",
+        paths: {
+            pt: "/scripts-para-tiktok-reels",
+            en: "/en/scripts-for-tiktok-shorts",
+            es: "/es/guiones-para-tiktok-shorts",
+        },
+    },
+    SEO_SCRIPTS_SALES: {
+        priority: "0.9",
+        changefreq: "weekly",
+        paths: {
+            pt: "/scripts-para-vendas",
+            en: "/en/scripts-for-sales",
+            es: "/es/guiones-para-ventas",
+        },
+    },
+    SEO_SCRIPTS_CLASSES: {
+        priority: "0.9",
+        changefreq: "weekly",
+        paths: {
+            pt: "/scripts-para-aulas",
+            en: "/en/scripts-for-classes",
+            es: "/es/guiones-para-clases",
+        },
+    },
 };

@@ -72,6 +72,28 @@ const App: React.FC = () => {
         const handleRouting = () => {
             const hash = window.location.hash;
             const path = window.location.pathname;
+            const searchParams = new URLSearchParams(window.location.search);
+            const scriptParam = searchParams.get("script");
+
+            // 0. Priority: Script Injection (Open in Teleprompter)
+            if (scriptParam) {
+                try {
+                    const decodedScript = decodeURIComponent(scriptParam);
+                    if (decodedScript) {
+                        localStorage.setItem("neonprompt_text", decodedScript);
+
+                        // Clear the query param to avoid re-injecting on reload
+                        // and redirect to the app
+                        const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + "#app";
+                        window.history.replaceState({ path: newUrl }, "", newUrl);
+
+                        setView("HOST");
+                        return;
+                    }
+                } catch (e) {
+                    console.error("Failed to decode script param", e);
+                }
+            }
 
             // 1. Priority: Hash Routing (App functionality)
             if (hash.startsWith("#remote")) {
@@ -161,6 +183,13 @@ const App: React.FC = () => {
                 {view === "SEO_APRESENTACOES" && <SeoPages.TeleprompterApresentacoes onLaunch={launchApp} />}
                 {view === "SEO_PWA_INSTALL" && <SeoPages.ComoInstalarPwa onLaunch={launchApp} />}
                 {view === "SEO_PRIVACY" && <SeoPages.PrivacidadeSeguranca onLaunch={launchApp} />}
+
+                {/* Script Pages */}
+                {view === "SEO_SCRIPTS" && <SeoPages.TeleprompterScriptsPage onLaunch={launchApp} />}
+                {view === "SEO_SCRIPTS_YOUTUBE" && <SeoPages.TeleprompterScriptCategory categoryId="youtube" onLaunch={launchApp} />}
+                {view === "SEO_SCRIPTS_TIKTOK" && <SeoPages.TeleprompterScriptCategory categoryId="tiktok-reels" onLaunch={launchApp} />}
+                {view === "SEO_SCRIPTS_SALES" && <SeoPages.TeleprompterScriptCategory categoryId="sales" onLaunch={launchApp} />}
+                {view === "SEO_SCRIPTS_CLASSES" && <SeoPages.TeleprompterScriptCategory categoryId="classes" onLaunch={launchApp} />}
             </Suspense>
         </TranslationProvider>
     );

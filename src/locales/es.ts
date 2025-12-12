@@ -443,4 +443,10 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
     },
     footer: "© {{year}} PromptNinja. Todos los derechos reservados.",
   },
+  seo: {
+    scripts: {
+      title: "Guiones Listos para Teleprompter",
+      description: "Colección completa de guiones gratuitos para tus videos.",
+    },
+  },
 };

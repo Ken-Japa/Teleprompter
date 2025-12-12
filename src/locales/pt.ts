@@ -445,4 +445,10 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
     },
     footer: "© {{year}} PromptNinja. Todos os direitos reservados.",
   },
+  seo: {
+    scripts: {
+      title: "Scripts Prontos para Teleprompter",
+      description: "Coleção completa de roteiros gratuitos para seus vídeos.",
+    },
+  },
 };

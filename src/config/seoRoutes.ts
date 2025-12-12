@@ -96,6 +96,16 @@ export const SeoPages = {
             default: module.PrivacidadeSeguranca,
         }))
     ),
+    TeleprompterScriptsPage: React.lazy(() =>
+        import("../pages/seo/TeleprompterScriptsPage").then((module) => ({
+            default: module.TeleprompterScriptsPage,
+        }))
+    ),
+    TeleprompterScriptCategory: React.lazy(() =>
+        import("../pages/seo/ScriptCategoryPage").then((module) => ({
+            default: module.ScriptCategoryPage,
+        }))
+    ),
 };
 
 export const seoKeyMap: Record<SeoRouteKey, keyof typeof SeoPages> = {
@@ -120,6 +130,11 @@ export const seoKeyMap: Record<SeoRouteKey, keyof typeof SeoPages> = {
     SEO_APRESENTACOES: "TeleprompterApresentacoes",
     SEO_PWA_INSTALL: "ComoInstalarPwa",
     SEO_PRIVACY: "PrivacidadeSeguranca",
+    SEO_SCRIPTS: "TeleprompterScriptsPage",
+    SEO_SCRIPTS_YOUTUBE: "TeleprompterScriptCategory",
+    SEO_SCRIPTS_TIKTOK: "TeleprompterScriptCategory",
+    SEO_SCRIPTS_SALES: "TeleprompterScriptCategory",
+    SEO_SCRIPTS_CLASSES: "TeleprompterScriptCategory",
 };
 
 export type SeoRouteKey =
@@ -143,4 +158,9 @@ export type SeoRouteKey =
     | "SEO_IPHONE_IPAD"
     | "SEO_APRESENTACOES"
     | "SEO_PWA_INSTALL"
-    | "SEO_PRIVACY";
+    | "SEO_PRIVACY"
+    | "SEO_SCRIPTS"
+    | "SEO_SCRIPTS_YOUTUBE"
+    | "SEO_SCRIPTS_TIKTOK"
+    | "SEO_SCRIPTS_SALES"
+    | "SEO_SCRIPTS_CLASSES";
