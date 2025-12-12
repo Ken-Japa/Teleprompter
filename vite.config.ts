@@ -47,6 +47,8 @@ const viteConfig = defineConfig({
                 manualChunks: {
                     vendor: ["react", "react-dom"],
                     ui: ["@fontsource/inter", "@fontsource/outfit", "tailwind-styled-components"],
+                    peer: ["peerjs"],
+                    nosleep: ["nosleep.js"],
                 },
             },
         },

@@ -21,6 +21,7 @@ if (!rootElement) {
 
 
 import { registerSW } from "virtual:pwa-register";
+import { initLazyAnalytics } from "./utils/lazyAnalytics";
 
 const root = ReactDOM.createRoot(rootElement);
 root.render(
@@ -33,6 +34,6 @@ root.render(
 
 window.addEventListener('load', () => {
     registerSW({ immediate: true });
+    initLazyAnalytics();
 });
-
 
