@@ -105,7 +105,7 @@ export const PricingCard = ({
                 )}
 
                 {/* Header */}
-                <div className="mb-8 text-center">
+                <div className={`mb-8 text-center ${badge ? 'pt-8' : ''}`}>
                     <h3 className={`text-lg font-bold mb-2 ${isFeatured ? "text-white" : "text-slate-200"}`}>
                         {title}
                     </h3>

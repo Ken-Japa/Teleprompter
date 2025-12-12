@@ -131,7 +131,7 @@ export const ConnectionState: React.FC<ConnectionStateProps> = ({ status, hostId
     }
 
     return (
-        <div className="flex-1 flex flex-col items-center justify-center p-8 text-center space-y-6 animate-fadeIn">
+        <div className="flex-1 flex flex-col items-center justify-start p-8 text-center space-y-6 animate-fadeIn overflow-y-auto pb-safe">
             <div
                 className={`p-6 rounded-full ${status === ConnectionStatus.ERROR ? "bg-red-500/10 text-red-500" : "bg-brand-500/10 text-brand-500 animate-pulse"}`}
             >
@@ -147,7 +147,7 @@ export const ConnectionState: React.FC<ConnectionStateProps> = ({ status, hostId
                     {t("remote.targetId", { id: hostId })}
                 </p>
             </div>
-            <div className="flex flex-col gap-3 w-full max-w-xs">
+            <div className="flex flex-col gap-3 w-full max-w-xs pb-8">
                 <S.SecondaryButton onClick={() => window.location.reload()}>{t("host.controls.reset")}</S.SecondaryButton>
 
                 {/* Show Scan button if disconnected or error */}

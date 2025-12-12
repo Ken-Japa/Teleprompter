@@ -39,7 +39,7 @@ export const MainContent = ({
 // --- EDITOR & SIDEBAR ---
 
 export const EditorContainer = ({ children }: { children: React.ReactNode }) => (
-    <div className="flex flex-col h-screen bg-slate-950 relative overflow-hidden">
+    <div className="flex flex-col h-screen bg-slate-950 relative">
         {/* Editor Background Grid - Refined */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_40%,transparent_100%)] pointer-events-none z-0"></div>
         {children}
@@ -66,7 +66,7 @@ export const EditorTextArea = React.forwardRef<
 ));
 
 export const SidebarWrapper = ({ children }: { children: React.ReactNode }) => (
-    <div className="w-full md:w-[400px] glass border-l border-white/5 p-8 flex flex-col items-center justify-center space-y-8 shadow-2xl z-20 relative">
+    <div className="w-full md:w-[400px] glass border-l border-white/5 p-8 pb-safe flex flex-col items-center justify-start space-y-8 shadow-2xl z-20 relative overflow-y-auto min-h-[500px]">
         {children}
     </div>
 );

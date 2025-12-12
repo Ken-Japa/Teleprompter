@@ -135,7 +135,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                 {/* Spacer for Fixed Header */}
                 <div className="h-[64px]"></div>
 
-                <div className="flex-1 flex flex-col relative overflow-hidden z-10">
+                <div className="flex-1 flex flex-col relative z-10">
                     <ConnectionState status={status} hostId={hostId} />
                 </div>
             </S.ScreenContainer>

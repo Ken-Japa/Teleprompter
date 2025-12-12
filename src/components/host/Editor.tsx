@@ -50,7 +50,7 @@ export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, o
                 </div>
             </S.Header>
 
-            <div className="flex-1 flex flex-col md:flex-row overflow-hidden relative">
+            <div className="flex-1 flex flex-col md:flex-row md:overflow-hidden relative">
                 <div className="flex-1 relative flex flex-col h-full bg-slate-950">
                     <EditorToolbar onInsertTag={handleInsertTag} onClear={handleClear} />
 
