@@ -11,55 +11,23 @@ interface ConnectSidebarProps {
 
 export const ConnectSidebar: React.FC<ConnectSidebarProps> = memo(({ peerId, status }) => {
     const { t } = useTranslation();
-    const qrRef = useRef<HTMLDivElement>(null);
+    const qrRef = useRef<HTMLCanvasElement>(null);
     const [copied, setCopied] = useState(false);
 
     useEffect(() => {
-        /**
-         * @function loadQRCodeLibrary
-         * @description Carrega dinamicamente a biblioteca QRCode.js.
-         * @returns {Promise<void>} Uma promessa que resolve quando a biblioteca é carregada.
-         */
-        const loadQRCodeLibrary = (): Promise<void> => {
-            return new Promise((resolve, reject) => {
-                if (window.QRCode) {
-                    resolve();
-                    return;
-                }
-
-                const script = document.createElement("script");
-                script.src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js";
-                script.async = true;
-                script.onload = () => {
-                    resolve();
-                };
-                script.onerror = () => {
-                    console.error("Failed to load QRCode.js library.");
-                    reject(new Error("Failed to load QRCode.js library."));
-                };
-                document.head.appendChild(script);
-            });
-        };
-
         const generateQrCode = async () => {
             if (!peerId || !qrRef.current) return;
 
             try {
-                await loadQRCodeLibrary();
-                if (!window.QRCode) {
-                    console.error("QRCode.js not available after loading attempt.");
-                    return;
-                }
+                const QRCode = (await import('qrcode')).default;
 
-                qrRef.current.innerHTML = "";
-                const url = `${window.location.protocol}//${window.location.host}${window.location.pathname}#remote?id=${peerId}`;
-                new window.QRCode(qrRef.current, {
-                    text: url,
+                await QRCode.toCanvas(qrRef.current, `${window.location.protocol}//${window.location.host}${window.location.pathname}#remote?id=${peerId}`, {
                     width: 140,
-                    height: 140,
-                    colorDark: "#020617",
-                    colorLight: "#ffffff",
-                    correctLevel: window.QRCode.CorrectLevel.L,
+                    margin: 0,
+                    color: {
+                        dark: "#020617",
+                        light: "#ffffff"
+                    }
                 });
             } catch (e) {
                 console.error("QR Generation failed", e);
@@ -101,7 +69,7 @@ export const ConnectSidebar: React.FC<ConnectSidebarProps> = memo(({ peerId, sta
                 </div>
                 <S.QRCodeBox hasId={!!peerId}>
                     {peerId ? (
-                        <div ref={qrRef} className="mx-auto" />
+                        <canvas ref={qrRef} className="mx-auto" />
                     ) : (
                         <div className="animate-pulse text-slate-400 text-xs h-[140px] w-[140px] flex items-center justify-center">
                             {t("host.generatingId")}

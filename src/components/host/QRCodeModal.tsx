@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { Modal } from "../ui/styles/Modal";
-import { loadQRCodeLibrary } from "../../utils/qr";
+
 import { useTranslation } from "../../hooks/useTranslation";
 import { CheckCircleIcon, CopyIcon } from "../ui/Icons";
 
@@ -13,7 +13,7 @@ interface QRCodeModalProps {
 
 export const QRCodeModal: React.FC<QRCodeModalProps> = ({ isOpen, onClose, peerId }) => {
   const { t } = useTranslation();
-  const qrRef = useRef<HTMLDivElement>(null);
+  const qrRef = useRef<HTMLCanvasElement>(null);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -30,23 +30,18 @@ export const QRCodeModal: React.FC<QRCodeModalProps> = ({ isOpen, onClose, peerI
 
     const generate = async () => {
       try {
-        await loadQRCodeLibrary();
-
         // Double check if component is still mounted and refs are valid
-        if (!isMounted || !qrRef.current || !window.QRCode) return;
+        if (!isMounted || !qrRef.current) return;
 
-        // Clear again just in case
-        qrRef.current.innerHTML = "";
+        const QRCode = (await import('qrcode')).default;
 
-        const url = `${window.location.protocol}//${window.location.host}${window.location.pathname}#remote?id=${peerId}`;
-
-        new window.QRCode(qrRef.current, {
-          text: url,
+        await QRCode.toCanvas(qrRef.current, `${window.location.protocol}//${window.location.host}${window.location.pathname}#remote?id=${peerId}`, {
           width: 256,
-          height: 256,
-          colorDark: "#020617",
-          colorLight: "#ffffff",
-          correctLevel: window.QRCode.CorrectLevel.L,
+          margin: 0,
+          color: {
+            dark: "#020617",
+            light: "#ffffff"
+          }
         });
       } catch (e) {
         console.error("QR Generation failed", e);
@@ -93,7 +88,7 @@ export const QRCodeModal: React.FC<QRCodeModalProps> = ({ isOpen, onClose, peerI
           {!peerId ? (
             <div className="animate-pulse text-slate-400 font-mono text-sm">{t("host.generatingId")}</div>
           ) : (
-            <div ref={qrRef} style={{ width: 256, height: 256 }} />
+            <canvas ref={qrRef} style={{ width: 256, height: 256 }} />
           )}
         </div>
 
