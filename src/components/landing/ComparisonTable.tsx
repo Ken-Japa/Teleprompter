@@ -18,10 +18,10 @@ export const ComparisonTable: React.FC = () => {
                     </p>
                 </div>
 
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto border border-gray-800 rounded-2xl overflow-hidden">
                     <table className="w-full text-left border-collapse">
                         <thead>
-                            <tr className="border-b border-gray-800">
+                            <tr className="border-b border-gray-800 ">
                                 <th className="py-4 pr-4 bg-black sticky left-0 z-10"></th>
                                 <th className="py-4 px-4 text-center min-w-[140px]">
                                     <div className="bg-gradient-to-r from-brand-600 to-purple-600 text-white px-4 py-2 rounded-lg font-bold shadow-lg shadow-brand-500/20">
@@ -36,10 +36,10 @@ export const ComparisonTable: React.FC = () => {
                         <tbody className="text-sm md:text-base">
                             {rows.map((row) => (
                                 <tr key={row} className="border-b border-gray-800 hover:bg-white/5 transition-colors">
-                                    <td className="py-6 pr-4 font-medium text-slate-300 bg-black sticky left-0 z-10 border-r border-gray-800/50 md:border-none">
+                                    <td className="py-6 pr-4 font-medium text-center text-slate-300 bg-black sticky left-0 z-10 border-r border-gray-800/50 md:border-none">
                                         {t(`landing.comparison.rows.${row}`)}
                                     </td>
-                                    
+
                                     {/* Ninja */}
                                     <td className="py-6 px-4 text-center bg-brand-900/10 border-x border-brand-500/10 relative">
                                         {/* Highlight logic based on row content could be added here, but simple text is fine for now */}
@@ -51,20 +51,20 @@ export const ComparisonTable: React.FC = () => {
 
                                     {/* Paid */}
                                     <td className="py-6 px-4 text-center text-slate-500">
-                                         {row === 'remote' || row === 'offline' ? '❌ ' : ''}
-                                         {t(`landing.comparison.values.paid.${row}`)}
+                                        {row === 'remote' || row === 'offline' ? '❌ ' : ''}
+                                        {t(`landing.comparison.values.paid.${row}`)}
                                     </td>
 
                                     {/* Hardware */}
                                     <td className={`py-6 px-4 text-center ${row === 'remote' ? 'text-yellow-400' : 'text-slate-500'}`}>
-                                         {row === 'price' || row === 'remote' ? '⚠️ ' : ''}
-                                         {t(`landing.comparison.values.hardware.${row}`)}
+                                        {row === 'price' || row === 'remote' ? '⚠️ ' : ''}
+                                        {t(`landing.comparison.values.hardware.${row}`)}
                                     </td>
 
                                     {/* Free */}
                                     <td className="py-6 px-4 text-center text-slate-500">
-                                         {row === 'privacy' || row === 'latency' ? '❌ ' : ''}
-                                         {t(`landing.comparison.values.free.${row}`)}
+                                        {row === 'privacy' || row === 'latency' ? '❌ ' : ''}
+                                        {t(`landing.comparison.values.free.${row}`)}
                                     </td>
                                 </tr>
                             ))}
