@@ -457,6 +457,12 @@ Paste your script here and customize your experience to start shining!`,
   },
   footer: {
     copyright: "PromptNinja. All rights reserved.",
+    links: {
+      resources: "Resources",
+      oratory: "Public Speaking Tips",
+      alternatives: "Alternatives",
+      whatIs: "What Is Teleprompter",
+    },
   },
   thankYou: {
     title: "Thank you for your purchase!",

@@ -465,6 +465,12 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
   },
   footer: {
     copyright: "PromptNinja. Todos os direitos reservados.",
+    links: {
+      resources: "Recursos",
+      oratory: "Dicas de Oratória",
+      alternatives: "Alternativas",
+      whatIs: "O Que É Teleprompter",
+    },
   },
   thankYou: {
     title: "Obrigado pela compra!",

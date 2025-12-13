@@ -33,7 +33,7 @@ export const ComoDecorarTextoEN = () => (
             Think about news anchors, politicians, and CEOs at major events. They seem to speak impromptu with impressive clarity. The secret? They aren't memorizing. They are reading. Television has used teleprompters since the 1950s for a reason: it works.
         </p>
         <p className="mb-8">
-            Today, this technology, which once cost thousands of dollars, is accessible to anyone with an internet browser. Using a teleprompter isn't "cheating." It's using a professional tool to get a professional result.
+            Today, this technology, which once cost thousands of dollars, is accessible to anyone with an internet browser. Using a teleprompter isn't "cheating." It's using a professional tool to get a professional result. <a href="/en/public-speaking-tips-video" className="text-purple-400 hover:text-purple-300 underline">Also check our video speaking tips</a> to maximize your results.
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border border-slate-700 my-8">

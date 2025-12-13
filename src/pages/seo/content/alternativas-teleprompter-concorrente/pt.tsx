@@ -91,6 +91,10 @@ export const AlternativasTeleprompterConcorrentePT = () => (
             </table>
         </div>
 
+        <p className="mb-12">
+            Ter a ferramenta certa é o primeiro passo. O próximo é dominar sua presença em vídeo. Confira nossas <a href="/dicas-oratoria-video" className="text-purple-400 hover:text-purple-300 underline">5 dicas de oratória para vídeo</a> e leve suas apresentações para outro nível.
+        </p>
+
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Perguntas Frequentes (FAQ)</h2>
         <div className="space-y-4">
             <div className="bg-slate-800 p-4 rounded-lg">

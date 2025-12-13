@@ -460,6 +460,12 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
   },
   footer: {
     copyright: "PromptNinja. Todos los derechos reservados.",
+    links: {
+      resources: "Recursos",
+      oratory: "Consejos de Oratoria",
+      alternatives: "Alternativas",
+      whatIs: "Que Es Teleprompter",
+    },
   },
   thankYou: {
     title: "¡Gracias por tu compra!",

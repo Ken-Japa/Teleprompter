@@ -41,7 +41,7 @@ export const SeoPageLayout: React.FC<SeoPageLayoutProps> = ({
                 </div>
 
                 <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-                    <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400 mb-6 leading-tight">
+                    <h1 className="text-4xl md:text-6xl pb-4 font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400 mb-6 leading-tight">
                         {title.split(":")[0]}
                         {title.includes(":") && (
                             <span className="block text-2xl md:text-3xl mt-4 font-normal text-slate-400">

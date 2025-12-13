@@ -23,6 +23,10 @@ export const TeleprompterOQueEES = () => (
             </li>
         </ul>
 
+        <p>
+            ¿Quieres verlo en acción? Consulta nuestro tutorial completo sobre <a href="/es/como-usar-teleprompter-movil" className="text-purple-400 hover:text-purple-300 underline">cómo usar el teleprompter en móvil y portátil</a>.
+        </p>
+
         <h2>¿Por qué usar un Teleprompter?</h2>
         <p>
             El uso de un teleprompter aporta diversos beneficios inmediatos a tu producción de vídeo:

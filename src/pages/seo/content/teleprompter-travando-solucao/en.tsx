@@ -44,6 +44,10 @@ export const TeleprompterTravandoSolucaoEN = () => (
             <li><strong>Ignoring Updates:</strong> Using an outdated browser or operating system can deprive the teleprompter of crucial performance and security optimizations.</li>
         </ol>
 
+        <p className="mb-8 pl-6">
+            Want to deeply understand how we eliminate delay? Read our technical article on <a href="/en/webrtc-low-latency-technology" className="text-purple-400 hover:text-purple-300 underline">low latency with WebRTC</a>.
+        </p>
+
         <h2 className="text-3xl font-bold text-white mt-10 mb-4">Frequently Asked Questions (FAQ)</h2>
         <dl className="space-y-6 text-slate-300">
             <div>

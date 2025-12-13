@@ -17,7 +17,7 @@ export const TeleprompterParaYoutubersPT = () => (
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">PromptNinja: O Teleprompter Pensado para o Criador Solo</h2>
         <p className="mb-4">
-            Muitos YouTubers gravam sozinhos em seus home studios. A última coisa que você quer é ter que levantar a cada take para ajustar o roteiro ou reiniciar o software. O PromptNinja foi desenhado para resolver exatamente isso, funcionando como um ecossistema perfeito para o criador de conteúdo moderno.
+            Muitos YouTubers gravam sozinhos em seus home studios. A última coisa que você quer é ter que levantar a cada take para ajustar o roteiro ou reiniciar o software. O PromptNinja foi desenhado para resolver exatamente isso. <a href="/melhor-teleprompter-app" className="text-purple-400 hover:text-purple-300 underline">Veja por que é considerado o melhor app de teleprompter</a> para criadores independentes.
         </p>
 
         <div className="overflow-x-auto my-8">

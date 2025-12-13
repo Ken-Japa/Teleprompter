@@ -72,7 +72,7 @@ export const ComoDecorarTextoPT = () => (
             Pense nos âncoras de telejornais, políticos em discursos importantes e CEOs em grandes eventos. Eles falam com uma clareza e confiança impressionantes. O segredo? Eles não estão memorizando. Eles estão lendo. A indústria audiovisual usa teleprompters (TPs) há décadas por uma razão simples: funciona.
         </p>
         <p className="mb-8 text-slate-300">
-            Hoje, essa tecnologia, antes restrita a estúdios de TV e orçamentos gigantescos, está ao seu alcance. Usar um teleprompter online como o PromptNinja não é "trapacear". É usar uma ferramenta profissional para alcançar um resultado profissional, permitindo que você se concentre no que realmente importa: sua performance e a conexão com sua audiência.
+            Hoje, essa tecnologia, antes restrita a estúdios de TV e orçamentos gigantescos, está ao seu alcance. Usar um teleprompter online como o PromptNinja não é "trapacear". É usar uma ferramenta profissional para alcançar um resultado profissional. <a href="/dicas-oratoria-video" className="text-purple-400 hover:text-purple-300 underline">Confira também nossas dicas de oratória para vídeo</a> para maximizar seu resultado.
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border border-slate-700 my-8">

@@ -91,6 +91,10 @@ export const AlternativasTeleprompterConcorrenteEN = () => (
             </table>
         </div>
 
+        <p className="mb-12">
+            Having the right tool is the first step. The next is mastering your video presence. Check out our <a href="/en/public-speaking-tips-video" className="text-purple-400 hover:text-purple-300 underline">5 video speaking tips</a> and take your presentations to the next level.
+        </p>
+
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Frequently Asked Questions (FAQ)</h2>
         <div className="space-y-4">
             <div className="bg-slate-800 p-4 rounded-lg">

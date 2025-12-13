@@ -20,7 +20,7 @@ export const TeleprompterCaseiroDIYPT = () => (
             Após montar sua estrutura, você enfrentará o principal obstáculo técnico: ao colocar o tablet sob o vidro em um ângulo de 45 graus, o texto refletido para você aparecerá <strong>espelhado e invertido</strong>. Ler assim é impossível.
         </p>
         <p className="mb-4">
-            É aqui que um software especializado se torna indispensável. Mas os problemas não param no espelhamento. Como você controla a velocidade da rolagem? E se precisar pausar para improvisar? E se estiver gravando sozinho?
+            É aqui que um software especializado se torna indispensável. Mas os problemas não param no espelhamento. A solução? Usar um <a href="/teleprompter-online-gratis" className="text-purple-400 hover:text-purple-300 underline">teleprompter online grátis</a> como o PromptNinja.
         </p>
 
         <div className="bg-slate-800 p-6 rounded-lg my-6">

@@ -23,6 +23,10 @@ export const TeleprompterOQueEPT = () => (
             </li>
         </ul>
 
+        <p>
+            Quer ver na prática? Confira nosso tutorial completo sobre <a href="/como-usar-teleprompter-celular" className="text-purple-400 hover:text-purple-300 underline">como usar o teleprompter no celular e notebook</a>.
+        </p>
+
         <h2>Por que usar um Teleprompter?</h2>
         <p>
             O uso de um teleprompter traz diversos benefícios imediatos para sua produção de vídeo:

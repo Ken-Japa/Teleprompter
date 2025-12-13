@@ -23,6 +23,10 @@ export const TeleprompterOQueEEN = () => (
             </li>
         </ul>
 
+        <p>
+            Want to see it in action? Check out our complete tutorial on <a href="/en/how-to-use-teleprompter-mobile" className="text-purple-400 hover:text-purple-300 underline">how to use a teleprompter on mobile and laptop</a>.
+        </p>
+
         <h2>Why Use a Teleprompter?</h2>
         <p>
             Using a teleprompter offers immediate benefits to your video production workflow:

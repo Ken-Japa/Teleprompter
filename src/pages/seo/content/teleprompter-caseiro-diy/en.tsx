@@ -20,7 +20,7 @@ export const TeleprompterCaseiroDIYEN = () => (
             After assembling your structure, you'll face the main technical hurdle: when you place the tablet under the glass at a 45-degree angle, the text reflected at you will appear <strong>mirrored and inverted</strong>. Reading it like that is impossible.
         </p>
         <p className="mb-4">
-            This is where specialized software becomes essential. But the problems don't stop at mirroring. How do you control the scrolling speed? What if you need to pause to improvise? What if you're recording alone?
+            This is where specialized software becomes essential. But the problems don't stop at mirroring. The solution? Use a <a href="/en/free-online-teleprompter" className="text-purple-400 hover:text-purple-300 underline">free online teleprompter</a> like PromptNinja.
         </p>
 
         <div className="bg-slate-800 p-6 rounded-lg my-6">
