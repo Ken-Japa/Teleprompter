@@ -91,16 +91,20 @@ export const AlternativasTeleprompterConcorrenteEN = () => (
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Frequently Asked Questions (FAQ)</h2>
         <div className="space-y-4">
             <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">1. Is PromptNinja really free? What's the catch?</h3>
-                <p className="text-slate-300 mt-2">Yes, it's 100% free. There's no catch. We believe essential tools for content creators should be accessible. The remote control, text mirroring, and all core features are free and always will be.</p>
+                <h3 className="font-bold text-lg text-white">1. Is PromptNinja really free?</h3>
+                <p className="text-slate-300 mt-2">Yes, PromptNinja offers a robust free plan that includes remote control, mirroring, and offline mode. The free version is perfect for most creators.</p>
             </div>
             <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">2. How does the remote control work without installing an app?</h3>
-                <p className="text-slate-300 mt-2">We use WebRTC technology and a P2P (Peer-to-Peer) connection over your local Wi-Fi. By scanning a QR Code, your phone connects directly to your computer, with no intermediaries. This ensures instant, low-latency control, faster than many paid solutions.</p>
+                <h3 className="font-bold text-lg text-white">2. Is there a time limit on the free version?</h3>
+                <p className="text-slate-300 mt-2">The free version allows continuous sessions of up to 20 minutes. After that, you can simply start a new session. The number of sessions is unlimited.</p>
             </div>
             <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">3. Are my scripts secure?</h3>
-                <p className="text-slate-300 mt-2">Absolutely. Since we don't require a login and use a P2P connection, your scripts are never sent to or stored on our servers. They remain exclusively on your devices, ensuring complete privacy.</p>
+                <h3 className="font-bold text-lg text-white">3. How does PromptNinja achieve Zero Lag?</h3>
+                <p className="text-slate-300 mt-2">We use WebRTC P2P (Peer-to-Peer) technology. The command goes directly from your phone to your computer over your local Wi-Fi, without passing through external servers. This ensures an instant, millisecond response.</p>
+            </div>
+            <div className="bg-slate-800 p-4 rounded-lg">
+                <h3 className="font-bold text-lg text-white">4. Are my scripts secure?</h3>
+                <p className="text-slate-300 mt-2">Absolutely. Since we don't require login, your scripts are saved only in your browser's memory (localStorage). They are never sent to the cloud, ensuring total privacy.</p>
             </div>
         </div>
 
@@ -110,7 +114,7 @@ export const AlternativasTeleprompterConcorrenteEN = () => (
                 className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mx-auto rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >
-                Experience the Future of Teleprompters. It's Free!
+                🚀 Start using PromptNinja for FREE
             </a>
         </div>
     </>

@@ -5,7 +5,7 @@ export const AlternativasTeleprompterConcorrentePT = () => (
         </h1>
 
         <p className="text-lg text-slate-300 mb-8">
-            Criadores de conteúdo, educadores e profissionais de marketing frequentemente se deparam com um dilema: investir em softwares de teleprompter caros como o <strong>Teleprompter Pro</strong>, que prometem mundos e fundos, ou se contentar com alternativas gratuitas que mal funcionam. E se houvesse uma terceira via? Uma ferramenta que combina a potência dos aplicativos premium com a acessibilidade do software gratuito, sem exigir instalações, logins ou seu cartão de crédito. Apresentamos o PromptNinja.
+            Criadores de conteúdo, educadores e profissionais de marketing frequentemente se deparam com um dilema: investir em softwares de teleprompter caros como o <strong>Teleprompter Pro</strong>, ou perder horas tentando <strong>montar teleprompter</strong> caseiro com caixas e vidros. E se houvesse uma terceira via? Uma ferramenta que combina a potência dos aplicativos premium com a acessibilidade do software gratuito, sem exigir instalações, logins ou seu cartão de crédito. Apresentamos o PromptNinja.
         </p>
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Por Que o Teleprompter do CapCut e o BIGVU Deixam a Desejar (No PC e em Lives)</h2>
@@ -114,7 +114,7 @@ export const AlternativasTeleprompterConcorrentePT = () => (
                 className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mx-auto rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >
-                Experimente o Futuro dos Teleprompters. É Grátis!
+                🚀 Começar a Usar o PromptNinja GRATUITO
             </a>
         </div>
     </>

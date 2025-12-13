@@ -13,8 +13,8 @@ export const OratoriaVideo: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = OratoriaVideoPT;
-    let title = "Dicas de Oratória para Vídeo: Como Falar com Confiança";
-    let description = "Melhore sua presença em frente às câmeras. Aprenda técnicas de oratória e descubra como o teleprompter pode ajudar a eliminar os 'ééé' e 'hmmm' dos seus vídeos.";
+    let title = "5 Dicas de Oratória em Vídeo que VÃO te Fazer Parar de Regravar";
+    let description = "Pare de travar e perder tempo! 5 técnicas rápidas para falar bem no vídeo. Bônus: Teleprompter GRÁTIS para aplicar a técnica instantaneamente.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/oratoria-video";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {

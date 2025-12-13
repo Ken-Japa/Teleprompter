@@ -25,7 +25,7 @@ export const es = {
   landing: {
     meta: {
       title: "PromptNinja: Teleprompter Gratis Online | Cero Lag, Sin Instalación",
-      description: "El teleprompter online GRATIS con cero lag. Controla tu guion al instante con tu móvil (P2P). Ideal para YouTube, TikTok y presentaciones. ¡Sin instalación!",
+      description: "El teleprompter online GRATIS más rápido. Úsalo en tu PC o como teleprompter para tu móvil. P2P, sin retardo y sin necesidad de apps. Perfecto para creadores.",
     },
     hero: {
       headline: "Teleprompter Online GRATIS. Úsalo en PC, Laptop o Móvil.",

@@ -1,14 +1,14 @@
 export const OratoriaVideoES = () => (
     <div className="text-slate-300">
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 text-center">
-            Oratoria para Vídeo: 7 Consejos para Hablar con Confianza y Conectar con tu Audiencia
+            Como Hablar con Confianza y Conectar con tu Audiencia
         </h1>
 
         <p className="mb-8 text-lg text-center max-w-3xl mx-auto">
             La luz roja de la cámara se enciende y, de repente, tu mente se queda en blanco. Hablarle a una lente de cristal no es natural y puede intimidar incluso a los comunicadores más experimentados. La buena noticia es que la oratoria para vídeo no es un don, sino una habilidad que se puede desarrollar. Con las técnicas y herramientas adecuadas, puedes transformar tu ansiedad en autenticidad.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
                 <h3 className="font-bold text-white text-xl mb-3">1. El Contacto Visual es Conexión</h3>
                 <p className="text-sm">
@@ -47,6 +47,37 @@ export const OratoriaVideoES = () => (
                     </p>
                 </div>
             </div>
+
+            <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
+                <h3 className="font-bold text-white text-xl mb-3">4. El Poder de la Pausa</h3>
+                <p className="text-sm">
+                    El silencio es tan importante como el habla. Las pausas estratégicas dan tiempo a la audiencia para absorber la información y crean anticipación. No tengas prisa. Usa las comas y los puntos de tu guion como momentos para respirar y dejar que el mensaje brille.
+                </p>
+            </div>
+
+            <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
+                <h3 className="font-bold text-white text-xl mb-3">5. Lenguaje Corporal Abierto</h3>
+                <p className="text-sm">
+                    Cruzar los brazos o encoger los hombros transmite inseguridad. Mantén los hombros relajados y abiertos. Usa las manos para enfatizar puntos importantes, pero evita movimientos repetitivos que distraigan. Ocupar espacio transmite confianza.
+                </p>
+            </div>
+        </div>
+
+        {/* CTA Contextualizado */}
+        <div className="bg-indigo-900/40 p-8 rounded-xl my-12 border-l-4 border-indigo-500 shadow-xl relative overflow-hidden group hover:bg-indigo-900/50 transition duration-300">
+            <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-indigo-500 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition duration-500"></div>
+
+            <h3 className="font-bold text-2xl text-white mb-3 relative z-10">¡Deja de depender de la memoria!</h3>
+            <p className="text-slate-200 mb-6 relative z-10 max-w-2xl">
+                Las técnicas de oratoria funcionan, pero si aún te sientes inseguro o pierdes el hilo, el mejor consejo es: <strong>Usa PromptNinja</strong>. Te permite leer con fluidez, eliminando la ansiedad, los blancos y la necesidad de memorizar guiones.
+            </p>
+
+            <a
+                href="https://promptninja.solutionkit.com.br/#app"
+                className="inline-block relative z-10 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-indigo-500/25 transform hover:-translate-y-1 transition duration-200"
+            >
+                Practicar con Teleprompter GRATIS
+            </a>
         </div>
 
         <div className="bg-slate-900 p-8 rounded-2xl border border-slate-800 shadow-lg mt-12">

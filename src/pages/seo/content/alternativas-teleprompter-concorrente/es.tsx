@@ -91,16 +91,20 @@ export const AlternativasTeleprompterConcorrenteES = () => (
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Preguntas Frecuentes (FAQ)</h2>
         <div className="space-y-4">
             <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">1. ¿PromptNinja es realmente gratis? ¿Cuál es el truco?</h3>
-                <p className="text-slate-300 mt-2">Sí, es 100% gratis. No hay ningún truco. Creemos que las herramientas esenciales para los creadores de contenido deben ser accesibles. El control remoto, el modo espejo y todas las funciones principales son gratuitas y siempre lo serán.</p>
+                <h3 className="font-bold text-lg text-white">1. ¿PromptNinja es realmente gratis?</h3>
+                <p className="text-slate-300 mt-2">Sí, PromptNinja ofrece un plan gratuito robusto que incluye control remoto, modo espejo y funcionamiento offline. La versión gratuita es perfecta para la mayoría de los creadores.</p>
             </div>
             <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">2. ¿Cómo funciona el control remoto sin instalar una aplicación?</h3>
-                <p className="text-slate-300 mt-2">Utilizamos la tecnología WebRTC y una conexión P2P (Peer-to-Peer) a través de tu Wi-Fi local. Al escanear un código QR, tu móvil se conecta directamente a tu ordenador, sin intermediarios. Esto garantiza un control instantáneo y de bajísima latencia, más rápido que muchas soluciones de pago.</p>
+                <h3 className="font-bold text-lg text-white">2. ¿Hay límite de tiempo en la versión gratuita?</h3>
+                <p className="text-slate-300 mt-2">La versión gratuita permite sesiones continuas de hasta 20 minutos. Después de eso, simplemente puedes iniciar una nueva sesión. El número de sesiones es ilimitado.</p>
             </div>
             <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">3. ¿Están seguros mis guiones?</h3>
-                <p className="text-slate-300 mt-2">Absolutamente. Como no requerimos inicio de sesión y usamos una conexión P2P, tus guiones nunca se envían ni se almacenan en nuestros servidores. Permanecen exclusivamente en tus dispositivos, garantizando una privacidad total.</p>
+                <h3 className="font-bold text-lg text-white">3. ¿Cómo logra PromptNinja Cero Lag (Sin Retraso)?</h3>
+                <p className="text-slate-300 mt-2">Utilizamos tecnología WebRTC P2P (Peer-to-Peer). El comando va directamente de tu móvil a tu ordenador a través de tu Wi-Fi local, sin pasar por servidores externos. Esto garantiza una respuesta instantánea, en milisegundos.</p>
+            </div>
+            <div className="bg-slate-800 p-4 rounded-lg">
+                <h3 className="font-bold text-lg text-white">4. ¿Están seguros mis guiones?</h3>
+                <p className="text-slate-300 mt-2">Absolutamente. Como no requerimos inicio de sesión, tus guiones se guardan solo en la memoria de tu navegador (localStorage). Nunca se envían a la nube, garantizando una privacidad total.</p>
             </div>
         </div>
 
@@ -110,7 +114,7 @@ export const AlternativasTeleprompterConcorrenteES = () => (
                 className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mx-auto rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >
-                Prueba el Futuro de los Teleprompters. ¡Es Gratis!
+                🚀 Comienza a usar PromptNinja GRATIS
             </a>
         </div>
     </>

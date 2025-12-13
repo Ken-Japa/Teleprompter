@@ -21,7 +21,7 @@ export const pt = {
   landing: {
     meta: {
       title: "PromptNinja: Teleprompter Grátis | Online, P2P e sem Instalação",
-      description: "O teleprompter web mais rápido e privado. Controle remoto via celular, funciona offline, sem apps ou contas. Perfeito para criadores de conteúdo e palestrantes.",
+      description: "O teleprompter online GRATUITO mais rápido. Use no PC ou como teleprompter para celular. P2P, Zero Lag e sem apps. Perfeito para criadores.",
     },
     hero: {
       headline: "Teleprompter Online GRÁTIS. Use no PC, Notebook ou Celular.",
@@ -61,6 +61,7 @@ export const pt = {
           "🤦 Esqueceu o roteiro no meio da gravação",
           "⏰ Perdeu 3 horas regravando o mesmo vídeo",
           "🏃 Levantou 15 vezes para pausar/continuar o texto",
+          "📦 Chega de tentar montar teleprompter com caixas de papelão e fitas",
           "💸 Gastou com teleprompter físico complicado ou sem compatibilidade",
           "📱 Baixou 5 apps que travam ou exigem login",
         ],

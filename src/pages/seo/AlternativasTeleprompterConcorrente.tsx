@@ -13,8 +13,8 @@ export const AlternativasTeleprompterConcorrente: React.FC<Props> = ({ onLaunch 
     const { lang } = useTranslation();
 
     let Content = AlternativasTeleprompterConcorrentePT;
-    let title = "Alternativa ao Teleprompter Pro e PrompterPro (Grátis e Online)";
-    let description = "Procurando uma alternativa ao Teleprompter Pro? Conheça o PromptNinja: gratuito, sem login, funciona no PC e Celular com controle remoto.";
+    let title = "A ÚNICA Alternativa GRATUITA ao Teleprompter Pro (Zero Lag)";
+    let description = "Cansado de apps caros ou com delay? O PromptNinja é a alternativa GRATUITA que você procurava. Use no PC/Celular, P2P e sem instalação.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/alternativas-teleprompter-concorrente";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {
