@@ -197,3 +197,7 @@ This project uses Google Analytics 4 (GA4) custom events to track user engagemen
 | `feature_error` | Feature prevented (e.g. voice control without Pro) | `feature_name` |
 | `paywall_view` | Paywall modal displayed | `trigger` (manual/timer) |
 | `paywall_cta_click` | Interaction with paywall button | `cta_type` |
+| `open_script` | Script loaded | `source` (url_param) |
+| `start_pacing` | Scroll started | `speed_start`, `mode` (auto/voice) |
+| `finish_reading` | Reached end of script | `duration_seconds` (placeholder) |
+| `remote_connected` | Remote device connected | `role` (host/remote) |

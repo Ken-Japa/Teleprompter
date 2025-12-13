@@ -21,7 +21,7 @@ import { useElementMetrics } from "../../hooks/useElementMetrics";
 import { ScriptBoard } from "./ScriptBoard";
 import { PrompterHUD } from "./PrompterHUD";
 import { QuickEditModal } from "./QuickEditModal";
-import { trackEvent } from "../../utils/analytics";
+import { trackEvent, trackFinishReading } from "../../utils/analytics";
 
 import { useNavigationMap } from "../../hooks/useNavigationMap";
 import { useMediaRecorder } from "../../hooks/useMediaRecorder";
@@ -164,6 +164,11 @@ export const Prompter = memo(
 
       const handleAutoStop = useCallback(() => {
         onStateChange(false, externalState.speed);
+        // Track finish reading
+        // Estimate duration based on word count/speed is hard here without start time,
+        // but we can just track the event for now. Ideally we'd pass duration.
+        // For now, let's track the event.
+        trackFinishReading(0); // 0 acts as placeholder or we can measure if we had start time state locally
       }, [onStateChange, externalState.speed]);
 
       // Determine effective voice state based on mode

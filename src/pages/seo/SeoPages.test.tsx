@@ -69,14 +69,14 @@ describe('SEO Pages', () => {
         },
         SEO_MELHOR_APP: {
             pt: {
-                title: "Melhor App de Teleprompter para Celular e PC (2025)",
+                title: "Melhor App de Teleprompter para Celular e PC (2026)",
                 description: "Comparativo dos melhores aplicativos de teleprompter. Descubra qual é o melhor app grátis, com controle remoto e espelhamento.",
             }
         },
         SEO_ALTERNATIVAS: {
             pt: {
-                title: "Alternativa ao Teleprompter Pro e PrompterPro (Grátis e Online)",
-                description: "Procurando uma alternativa ao Teleprompter Pro? Conheça o PromptNinja: gratuito, sem login, funciona no PC e Celular com controle remoto.",
+                title: "A ÚNICA Alternativa GRATUITA ao Teleprompter Pro (Zero Lag)",
+                description: "Procurando uma alternativa ao Teleprompter Pro? Não perca tempo. O PromptNinja é a melhor opção GRATUITA para PC, Notebook e como teleprompter para iPhone.",
             }
         },
         SEO_YOUTUBERS: {
@@ -99,8 +99,8 @@ describe('SEO Pages', () => {
         },
         SEO_ORATORIA: {
             pt: {
-                title: "Dicas de Oratória para Vídeo: Como Falar com Confiança",
-                description: "Melhore sua presença em frente às câmeras. Aprenda técnicas de oratória e descubra como o teleprompter pode ajudar a eliminar os 'ééé' e 'hmmm' dos seus vídeos.",
+                title: "5 Dicas de Oratória em Vídeo que VÃO te Fazer Parar de Regravar",
+                description: "Pare de travar e perder tempo! 5 técnicas rápidas para falar bem no vídeo. Bônus: Teleprompter GRÁTIS para aplicar a técnica instantaneamente.",
             }
         },
         SEO_DECORAR: {

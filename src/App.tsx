@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Suspense } from "react";
 import { TranslationProvider, useTranslation, getInitialLanguage } from "./hooks/useTranslation";
-import { trackEvent } from "./utils/analytics";
+import { trackEvent, trackOpenScript } from "./utils/analytics";
 
 // Lazy load pages for performance optimization
 const Host = React.lazy(() => import("./pages/Host").then(module => ({ default: module.Host })));
@@ -81,6 +81,7 @@ const App: React.FC = () => {
                     const decodedScript = decodeURIComponent(scriptParam);
                     if (decodedScript) {
                         localStorage.setItem("neonprompt_text", decodedScript);
+                        trackOpenScript("url_param");
 
                         // Clear the query param to avoid re-injecting on reload
                         // and redirect to the app

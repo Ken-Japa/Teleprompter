@@ -146,3 +146,36 @@ export function trackError(errorType: string, message: string): void {
     trackEvent("app_error", { error_type: errorType, message: message });
 }
 
+/**
+ * Rastreia a abertura de um script via URL ou seleção.
+ * @param source A origem do script (ex: 'url_param', 'selection').
+ */
+export function trackOpenScript(source: string): void {
+    trackEvent("open_script", { source });
+}
+
+/**
+ * Rastreia o início da apresentação (pacing).
+ * @param speed A velocidade definida.
+ * @param mode O modo de controle (ex: 'auto', 'voice', 'remote').
+ */
+export function trackStartPacing(speed: number, mode: string): void {
+    trackEvent("start_pacing", { speed_start: speed, mode });
+}
+
+/**
+ * Rastreia o término da leitura (chegou ao fim do texto).
+ * @param duration O tempo total da leitura em segundos.
+ */
+export function trackFinishReading(duration: number): void {
+    trackEvent("finish_reading", { duration_seconds: duration });
+}
+
+/**
+ * Rastreia quando um dispositivo remoto se conecta com sucesso.
+ * @param role O papel do dispositivo ('host' ou 'remote').
+ */
+export function trackRemoteConnected(role: 'host' | 'remote'): void {
+    trackEvent("remote_connected", { role });
+}
+

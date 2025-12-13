@@ -8,6 +8,7 @@ import { useLocalStorage } from "./useLocalStorage";
 import { useTranslation } from "./useTranslation";
 import { usePrompterSettings } from "./usePrompterSettings";
 import { tryEnableNoSleep } from "./useWakeLock";
+import { trackStartPacing } from "../utils/analytics";
 
 export const useHostController = () => {
   const { t } = useTranslation();
@@ -250,10 +251,14 @@ export const useHostController = () => {
   const handlePrompterStateChange = useCallback(
     (playing: boolean, newSpeed: number) => {
       console.log(`Prompter State Change: Playing=${playing}, Speed=${newSpeed}`);
+      if (playing && !isPlaying) {
+        trackStartPacing(newSpeed, isVoiceMode ? "voice" : "auto");
+      }
       setIsPlaying(playing);
       setSpeed(newSpeed);
     },
-    [setSpeed]
+    [setSpeed, isPlaying, isVoiceMode]
+
   );
 
   const handleUnlock = async () => {

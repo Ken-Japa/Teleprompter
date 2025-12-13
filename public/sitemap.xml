@@ -653,4 +653,28 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/institutional-scripts" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/guiones-institucionales" />
   </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/teleprompter-o-que-e</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-o-que-e" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-what-is-it" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-que-es" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/teleprompter-what-is-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-o-que-e" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-what-is-it" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-que-es" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/teleprompter-que-es</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-o-que-e" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-what-is-it" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-que-es" />
+  </url>
 </urlset>

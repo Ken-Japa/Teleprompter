@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { ConnectionStatus } from "../types";
+import { trackRemoteConnected } from "../utils/analytics";
 import { useTranslation } from "../hooks/useTranslation";
 import * as S from "../components/ui/Styled";
 import { ConnectionState } from "../components/remote/ConnectionState";
@@ -44,6 +45,13 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
 
     // Hook for text logic
     const { textSegments } = useRemoteTextHandling(text, navigationMap);
+
+    // Track connection
+    React.useEffect(() => {
+        if (status === ConnectionStatus.CONNECTED) {
+            trackRemoteConnected('remote');
+        }
+    }, [status]);
 
     if (status !== ConnectionStatus.CONNECTED) {
         return (
