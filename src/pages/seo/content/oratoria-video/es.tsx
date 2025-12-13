@@ -5,7 +5,7 @@ export const OratoriaVideoES = () => (
         </h1>
 
         <p className="mb-8 text-lg text-center max-w-3xl mx-auto">
-            La luz roja de la cámara se enciende y, de repente, tu mente se queda en blanco. Hablarle a una lente de cristal no es natural y puede intimidar incluso a los comunicadores más experimentados. La buena noticia es que la oratoria para vídeo no es un don, sino una habilidad que se puede desarrollar. Con las técnicas y herramientas adecuadas, puedes transformar tu ansiedad en autenticidad.
+            La luz roja de la cámara se enciende y, de repente, tu mente se queda en blanco. Hablarle a una lente de cristal no es natural y puede intimidar incluso a los comunicadores más experimentados. La buena noticia es que la oratoria para vídeo no es un don, sino una habilidad que se puede desarrollar. Con las técnicas y herramientas adecuadas, puedes transformar tu ansiedad en autenticidad. Si aún no tienes una herramienta, <a href="/es/alternativas-teleprompter" className="text-purple-400 hover:text-purple-300 underline">mira la mejor alternativa gratuita a Teleprompter Pro aquí</a>.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">

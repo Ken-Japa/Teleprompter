@@ -4,7 +4,7 @@ export const TeleprompterObsStudioES = () => (
         <h1 className="text-4xl font-bold text-white mb-6">Cómo Usar Teleprompter en OBS Studio: La Guía Definitiva para Streamers</h1>
 
         <p className="lead text-xl text-slate-300 mb-8">
-            Para streamers y creadores de contenido en vivo, cambiar de ventana para leer el guion es una pesadilla. PromptNinja ofrece la solución perfecta: integra el teleprompter directamente en OBS Studio como una fuente de navegador transparente o úsalo en un monitor secundario con control remoto P2P.
+            Para streamers y creadores de contenido en vivo, cambiar de ventana para leer el guion es una pesadilla. PromptNinja ofrece la solución perfecta: integra el teleprompter directamente en OBS Studio como una fuente de navegador transparente o úsalo en un monitor secundario con control remoto P2P. Usa nuestros <strong>temas Chroma Key (verde y azul)</strong> para eliminar el fondo y dejar solo el texto flotando sobre tu escena.
         </p>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-blue-600">
@@ -29,7 +29,7 @@ export const TeleprompterObsStudioES = () => (
                     <strong>Stream Deck Móvil:</strong> Con PromptNinja abierto en OBS, conecta tu móvil vía QR Code. Ahora tienes un controlador dedicado para tus guiones.
                 </li>
                 <li>
-                    <strong>Tip de Transparencia:</strong> Usa el tema "Chroma Key" en PromptNinja y aplica el filtro "Chroma Key" en OBS para eliminar el fondo.
+                    <strong>Temas Chroma Key (Verde/Azul):</strong> Activa el tema <strong>Chroma Green</strong> o <strong>Chroma Blue</strong> en PromptNinja. En OBS, aplica el filtro "Chroma Key" a la fuente del navegador para eliminar completamente el fondo de color, dejando solo el texto flotando de forma profesional sobre tu gameplay o cámara. Perfecto para ese look de presentador de noticias.
                 </li>
             </ol>
         </div>

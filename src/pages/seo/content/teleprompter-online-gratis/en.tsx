@@ -3,8 +3,9 @@ export const TeleprompterOnlineGratisEN = () => (
         <h1 className="text-4xl font-bold text-white mb-6">Free Online Teleprompter: The Ultimate Tool for Creators</h1>
 
         <p className="mb-6">
-            In the world of content creation, the search for a <strong>free online teleprompter</strong> is constant. But beware: "free" doesn't always mean free. Many apps limit your recording time or stick a giant watermark on your video. PromptNinja is different: we offer <strong>unlimited usage time</strong>, <strong>no watermark</strong>, and no strings attached. Whether for YouTube videos, online courses, or corporate presentations, the ability to speak to the camera fluently is a right, not a luxury.
+            In the world of content creation, the search for a <strong>free online teleprompter</strong> is constant. But beware: "free" doesn't always mean free. Many apps limit your recording time or stick a giant watermark on your video. PromptNinja is different: we offer <strong>unlimited usage time</strong>, <strong>no watermark</strong>, and no strings attached. Whether for YouTube videos, online courses, or corporate presentations, the ability to speak to the camera fluently is a right, not a luxury. Also commonly referred to as an <strong>autocue</strong> in professional broadcasting, this tool helps you deliver your lines perfectly.
         </p>
+
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
             <h2 className="text-2xl font-bold text-white mb-2">Why is PromptNinja Different? (P2P Technology)</h2>
@@ -26,7 +27,7 @@ export const TeleprompterOnlineGratisEN = () => (
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">Guaranteed Privacy: The Teleprompter that NEVER Sees Your Script (No Login!)</h2>
         <p className="mb-6 text-slate-300">
             Unlike other apps that force you to create an account and save your scripts to the "cloud" (where they can be leaked or read), PromptNinja operates with <strong>Local Privacy</strong>.
-            <br/><br/>
+            <br /><br />
             Since we don't require login, <strong>we never send your script to our servers</strong>. All processing happens inside your browser. Your data, your rules.
         </p>
 

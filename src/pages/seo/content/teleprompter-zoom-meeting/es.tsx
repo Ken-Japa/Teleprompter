@@ -43,7 +43,7 @@ export const TeleprompterZoomMeetingES = () => (
                     <strong>El Control Remoto Invisible:</strong> El talón de Aquiles de muchos presentadores es su interacción con el ordenador. El sonido de un clic del ratón o el movimiento del hombro para alcanzar el teclado son señales claras de que estás operando la máquina. PromptNinja elimina esto con su control remoto por Código QR. Tu móvil se convierte en un pasador de diapositivas silencioso y discreto, manteniendo el foco totalmente en ti.
                 </li>
                 <li>
-                    <strong>Modo Presentador (Consejo Pro):</strong> ¿Necesitas ver diapositivas, el chat o las caras de los participantes? No sacrifiques el contacto visual. Reduce el ancho de la ventana del teleprompter para que ocupe solo una delgada franja en la parte superior. Así, puedes leer tu guion y monitorear la reunión simultáneamente, como un profesional.
+                    <strong>Modo Foco (Modo Reunión):</strong> Activa el <strong>Modo Foco</strong> en la configuración. Esto hace que el fondo del teleprompter sea semi-transparente o elimina elementos innecesarios, creando una visualización minimalista perfecta para superponer en tu ventana de Zoom o Teams sin bloquear tu visión de los participantes.
                 </li>
             </ol>
         </div>
@@ -61,6 +61,22 @@ export const TeleprompterZoomMeetingES = () => (
         <p className="mb-8">
             <strong>Recordatorio Crucial:</strong> <em>No</em> necesitas compartir tu pantalla para que el teleprompter funcione. Es una herramienta solo para tus ojos. Si necesitas mostrar una presentación, comparte solo la ventana específica (PowerPoint, Google Slides, PDF) y mantén PromptNinja flotando discretamente en la parte superior, visible solo para ti.
         </p>
+
+        <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-purple-500">
+            <h2 className="text-2xl font-bold text-white mb-4">Consejo Pro: Teleprompter Transparente en Zoom con OBS (Chroma Key)</h2>
+            <p className="text-slate-300 mb-4">
+                ¿Quieres un nivel aún mayor de profesionalismo? Puedes hacer que el texto flote "mágicamente" en tu pantalla usando OBS Studio.
+            </p>
+            <ol className="list-decimal pl-6 space-y-2 text-slate-300">
+                <li>Abre PromptNinja y cambia el tema a <strong>Chroma Green</strong> o <strong>Chroma Blue</strong>.</li>
+                <li>En OBS Studio, añade el navegador (Browser Source) con el enlace de tu teleprompter.</li>
+                <li>Aplica el filtro de efecto <strong>Chroma Key</strong> para eliminar el fondo coloreado.</li>
+                <li>Inicia la <strong>Cámara Virtual</strong> en OBS y selecciónala como tu cámara en Zoom/Teams.</li>
+            </ol>
+            <p className="text-slate-300 mt-4 text-sm">
+                Esto te permite ver tus diapositivas y el público *a través* del texto, como en un telediario real.
+            </p>
+        </div>
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Errores Comunes a Evitar para No Sonar como un Robot</h2>
         <ul className="list-disc pl-6 mb-8 space-y-3">

@@ -24,7 +24,7 @@ export const MelhorAppTeleprompterPT = () => (
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">A Evolução: Teleprompters Baseados na Web com Tecnologia P2P</h2>
         <p className="text-slate-300 mb-8">
-            A verdadeira inovação não está em mais um app para baixar, mas em uma ferramenta que funciona diretamente no navegador, utilizando tecnologias modernas para resolver os problemas antigos. É aqui que o <strong>PromptNinja</strong> se destaca.
+            A verdadeira inovação não está em mais um app para baixar, mas em uma ferramenta que funciona diretamente no navegador, utilizando tecnologias modernas para resolver os problemas antigos. É aqui que o <strong>PromptNinja</strong> se destaca como um <strong>PWA (Progressive Web App)</strong>. Ele não ocupa espaço no seu celular, <strong>funciona offline</strong> e pode ser instalado em 1 segundo sem passar pela loja de aplicativos.
         </p>
 
         <h3 className="text-2xl font-bold text-white mt-8 mb-4">Tabela Comparativa: PromptNinja vs. Concorrentes</h3>

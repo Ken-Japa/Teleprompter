@@ -4,8 +4,9 @@ export const TeleprompterOnlineGratisPT = () => (
         <h1 className="text-4xl font-bold text-white mb-6">Teleprompter Online Grátis: A Ferramenta Definitiva para Criadores</h1>
 
         <p className="mb-6">
-            No universo da criação de conteúdo, a busca por um <strong>teleprompter online grátis</strong> é constante. Mas cuidado: "grátis" nem sempre significa livre. Muitos apps limitam seu tempo de gravação ou colam uma marca d'água gigante no seu vídeo. O PromptNinja é diferente: oferecemos <strong>tempo de uso ilimitado</strong>, <strong>sem marca d'água</strong> e sem pegadinhas. Seja para vídeos no YouTube, cursos online, ou apresentações corporativas, a capacidade de falar para a câmera com fluidez é um direito, não um luxo.
+            No universo da criação de conteúdo, a busca por um <strong>teleprompter online grátis</strong> é constante. Mas cuidado: "grátis" nem sempre significa livre. Muitos apps limitam seu tempo de gravação ou colam uma marca d'água gigante no seu vídeo. O PromptNinja é diferente: oferecemos <strong>tempo de uso ilimitado</strong>, <strong>sem marca d'água</strong> e sem pegadinhas. Seja para vídeos no YouTube, cursos online, ou apresentações corporativas, a capacidade de falar para a câmera com fluidez é um direito, não um luxo. Também conhecido em Portugal e em estúdios profissionais como <strong>teleponto</strong>, esta ferramenta é essencial para quem busca profissionalismo.
         </p>
+
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
             <h2 className="text-2xl font-bold text-white mb-2">Por que o PromptNinja é Diferente? (Tecnologia P2P)</h2>
@@ -27,7 +28,7 @@ export const TeleprompterOnlineGratisPT = () => (
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">Privacidade Garantida: O Teleprompter que NUNCA Vê Seu Roteiro (Sem Login!)</h2>
         <p className="mb-6 text-slate-300">
             Diferente de outros apps que obrigam você a criar conta e salvam seus roteiros na "nuvem" (onde podem ser vazados ou lidos), o PromptNinja opera com <strong>Privacidade Local</strong>.
-            <br/><br/>
+            <br /><br />
             Como não exigimos login, <strong>nunca enviamos seu roteiro para nossos servidores</strong>. Todo o processamento acontece dentro do seu navegador. Seus dados, suas regras.
         </p>
 

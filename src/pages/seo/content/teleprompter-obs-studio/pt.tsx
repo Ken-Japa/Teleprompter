@@ -4,7 +4,7 @@ export const TeleprompterObsStudioPT = () => (
         <h1 className="text-4xl font-bold text-white mb-6">Como Usar Teleprompter no OBS Studio: O Guia Definitivo para Streamers</h1>
 
         <p className="lead text-xl text-slate-300 mb-8">
-            Para streamers e criadores de conteúdo ao vivo, alternar entre janelas para ler o roteiro é um pesadelo que quebra a imersão. O PromptNinja oferece a solução perfeita: integre o teleprompter diretamente no OBS Studio como uma fonte de navegador transparente ou use-o em um monitor secundário com controle remoto P2P.
+            Para streamers e criadores de conteúdo ao vivo, alternar entre janelas para ler o roteiro é um pesadelo que quebra a imersão. O PromptNinja oferece a solução perfeita: integre o teleprompter diretamente no OBS Studio como uma fonte de navegador transparente ou use-o em um monitor secundário com controle remoto P2P. Use nossos <strong>temas Chroma Key (verde e azul)</strong> para remover o fundo e deixar apenas o texto flutuando sobre sua cena.
         </p>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-blue-600">
@@ -29,7 +29,7 @@ export const TeleprompterObsStudioPT = () => (
                     <strong>Use o Celular como Stream Deck:</strong> Com o PromptNinja aberto no OBS, conecte seu celular via QR Code. Agora você tem um controlador dedicado para seus roteiros, sem precisar de Alt-Tab.
                 </li>
                 <li>
-                    <strong>Dica de Transparência:</strong> Use o tema "Chroma Key" no PromptNinja e aplique o filtro "Chroma Key" no OBS para remover o fundo, deixando apenas o texto flutuando sobre sua cena.
+                    <strong>Temas Chroma Key (Verde/Azul):</strong> Ative o tema <strong>Chroma Green</strong> ou <strong>Chroma Blue</strong> no PromptNinja. No OBS, aplique o filtro "Chroma Key" na fonte do navegador para remover completamente o fundo colorido, deixando apenas o texto flutuando de forma profissional sobre sua gameplay ou câmera. Perfeito para quem quer parecer um apresentador de telejornal.
                 </li>
             </ol>
         </div>

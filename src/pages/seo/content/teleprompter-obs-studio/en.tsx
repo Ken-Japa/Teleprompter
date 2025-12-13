@@ -4,7 +4,7 @@ export const TeleprompterObsStudioEN = () => (
         <h1 className="text-4xl font-bold text-white mb-6">How to Use Teleprompter in OBS Studio: The Ultimate Guide for Streamers</h1>
 
         <p className="lead text-xl text-slate-300 mb-8">
-            For streamers and live content creators, alt-tabbing to read scripts is a nightmare that breaks immersion. PromptNinja offers the perfect solution: integrate the teleprompter directly into OBS Studio as a transparent browser source or use it on a secondary monitor with P2P remote control.
+            For streamers and live content creators, alt-tabbing to read scripts is a nightmare that breaks immersion. PromptNinja offers the perfect solution: integrate the teleprompter directly into OBS Studio as a transparent browser source or use it on a secondary monitor with P2P remote control. Use our <strong>Chroma Key themes (green and blue)</strong> to remove the background and leave only floating text over your scene.
         </p>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-blue-600">
@@ -29,7 +29,7 @@ export const TeleprompterObsStudioEN = () => (
                     <strong>Mobile Stream Deck:</strong> With PromptNinja open in OBS, connect your phone via QR Code. Now you have a dedicated controller for your scripts, zero Alt-Tab required.
                 </li>
                 <li>
-                    <strong>Transparency Tip:</strong> Use the "Chroma Key" theme in PromptNinja and apply the "Chroma Key" filter in OBS to remove the background, leaving only floating text.
+                    <strong>Chroma Key Themes (Green/Blue):</strong> Enable the <strong>Chroma Green</strong> or <strong>Chroma Blue</strong> theme in PromptNinja. In OBS, apply the "Chroma Key" filter to the browser source to completely remove the colored background, leaving only professional floating text over your gameplay or camera. Perfect for that news anchor look.
                 </li>
             </ol>
         </div>

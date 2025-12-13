@@ -5,7 +5,7 @@ export const OratoriaVideoPT = () => (
         </h1>
 
         <p className="mb-8 text-lg text-center max-w-3xl mx-auto">
-            A luz vermelha da câmera acende e, de repente, sua mente fica em branco. Falar para uma lente de vidro não é natural e pode intimidar até os comunicadores mais experientes. A boa notícia é que a oratória para vídeo não é um dom, mas uma habilidade que pode ser desenvolvida. Com as técnicas certas e as ferramentas adequadas, você pode transformar sua ansiedade em autenticidade.
+            A luz vermelha da câmera acende e, de repente, sua mente fica em branco. Falar para uma lente de vidro não é natural e pode intimidar até os comunicadores mais experientes. A boa notícia é que a oratória para vídeo não é um dom, mas uma habilidade que pode ser desenvolvida. Com as técnicas certas e as ferramentas adequadas, você pode transformar sua ansiedade em autenticidade. Se você ainda não tem uma ferramenta, <a href="/alternativas-teleprompter-concorrente" className="text-purple-400 hover:text-purple-300 underline">confira a melhor alternativa gratuita ao Teleprompter Pro aqui</a>.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -67,7 +67,7 @@ export const OratoriaVideoPT = () => (
         <div className="bg-indigo-900/40 p-8 rounded-xl my-12 border-l-4 border-indigo-500 shadow-xl relative overflow-hidden group hover:bg-indigo-900/50 transition duration-300">
             <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-indigo-500 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition duration-500"></div>
 
-            <h3 className="font-bold text-2xl text-white mb-3 relative z-10">Pare de depender da memória!</h3>
+            <h3 className="font-bold text-2xl text-white mb-3 relative z-10">Chega de Travar: O Segredo da Fluidez</h3>
             <p className="text-slate-200 mb-6 relative z-10 max-w-2xl">
                 As técnicas de oratória funcionam, mas se você ainda se sente inseguro ou perde o raciocínio, a melhor dica é: <strong>Use o PromptNinja</strong>. Ele permite que você leia com fluidez, eliminando a ansiedade, os brancos e a necessidade de decorar textos.
             </p>

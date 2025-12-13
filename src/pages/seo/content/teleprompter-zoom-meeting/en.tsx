@@ -43,7 +43,7 @@ export const TeleprompterZoomMeetingEN = () => (
                     <strong>The Invisible Remote Control:</strong> The Achilles' heel of many presenters is their interaction with the computer. The sound of a mouse click or the shoulder movement to reach the keyboard are clear signs that you are operating the machine. PromptNinja eliminates this with its QR Code remote. Your phone becomes a silent and discreet slide advancer, keeping the focus entirely on you.
                 </li>
                 <li>
-                    <strong>Presenter Mode (Pro Tip):</strong> Need to see slides, the chat, or participants' faces? Don't sacrifice eye contact. Reduce the width of the teleprompter window so it occupies only a thin strip at the top. This way, you can read your script and monitor the meeting simultaneously, like a pro.
+                    <strong>Focus Mode (Meeting Mode):</strong> Enable <strong>Focus Mode</strong> in settings. This makes the teleprompter background semi-transparent or removes unnecessary elements, creating a minimalist view perfect for overlaying on your Zoom or Teams window without blocking your view of participants.
                 </li>
             </ol>
         </div>
@@ -61,6 +61,22 @@ export const TeleprompterZoomMeetingEN = () => (
         <p className="mb-8">
             <strong>Crucial Reminder:</strong> You do <em>not</em> need to share your screen for the teleprompter to work. It is a tool for your eyes only. If you need to show a presentation, share only the specific window (PowerPoint, Google Slides, PDF) and keep PromptNinja floating discreetly at the top, visible only to you.
         </p>
+
+        <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-purple-500">
+            <h2 className="text-2xl font-bold text-white mb-4">Pro Tip: Transparent Teleprompter in Zoom with OBS (Chroma Key)</h2>
+            <p className="text-slate-300 mb-4">
+                Want an even higher level of professionalism? You can make the text float "magically" on your screen using OBS Studio.
+            </p>
+            <ol className="list-decimal pl-6 space-y-2 text-slate-300">
+                <li>Open PromptNinja and switch the theme to <strong>Chroma Green</strong> or <strong>Chroma Blue</strong>.</li>
+                <li>In OBS Studio, add the browser (Browser Source) with your teleprompter link.</li>
+                <li>Apply the <strong>Chroma Key</strong> effect filter to remove the colored background.</li>
+                <li>Start the <strong>Virtual Camera</strong> in OBS and select it as your camera in Zoom/Teams.</li>
+            </ol>
+            <p className="text-slate-300 mt-4 text-sm">
+                This allows you to see your slides and audience *through* the text, just like a real news broadcast.
+            </p>
+        </div>
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Common Mistakes to Avoid So You Don't Sound Like a Robot</h2>
         <ul className="list-disc pl-6 mb-8 space-y-3">

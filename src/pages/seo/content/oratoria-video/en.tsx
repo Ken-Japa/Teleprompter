@@ -5,7 +5,7 @@ export const OratoriaVideoEN = () => (
         </h1>
 
         <p className="mb-8 text-lg text-center max-w-3xl mx-auto">
-            The red camera light turns on, and suddenly, your mind goes blank. Speaking to a cold glass lens isn't natural and can intimidate even the most seasoned communicators. The good news is that on-camera public speaking isn't a gift, but a skill that can be developed. With the right techniques and the right tools, you can turn your anxiety into authenticity.
+            The red camera light turns on, and suddenly, your mind goes blank. Speaking to a cold glass lens isn't natural and can intimidate even the most seasoned communicators. The good news is that on-camera public speaking isn't a gift, but a skill that can be developed. With the right techniques and the right tools, you can turn your anxiety into authenticity. If you don't have a tool yet, <a href="/en/teleprompter-alternatives" className="text-purple-400 hover:text-purple-300 underline">check out the best free alternative to Teleprompter Pro here</a>.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
