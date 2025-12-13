@@ -24,11 +24,11 @@ export const es = {
   },
   landing: {
     meta: {
-      title: "PromptNinja: Teleprompter Gratis Online | Cero Lag, Sin Instalación",
-      description: "El teleprompter online GRATIS más rápido. Úsalo en tu PC o como teleprompter para tu móvil. P2P, sin retardo y sin necesidad de apps. Perfecto para creadores.",
+      title: "PromptNinja: Teleprompter gratuito | Online, P2P, móvil y portátil | No requiere instalación",
+      description: "El teleprompter online GRATIS más rápido. Funciona en PC, portátiles y como teleprompter para móviles o iPhone. P2P, sin retardo y sin necesidad de instalar aplicaciones.",
     },
     hero: {
-      headline: "Teleprompter Online GRATIS. Úsalo en PC, Laptop o Móvil.",
+      headline: "Teleprompter Online GRATIS. Úsalo en PC, Laptop o Móvil (iPhone/Android).",
       subheadline:
         "Tu móvil es el control remoto. Conexión P2P instantánea, sin retrasos, para videos perfectos.",
       cta: "🚀 Empezar Gratis (20 min)",

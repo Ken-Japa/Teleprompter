@@ -242,4 +242,13 @@ export const ROUTES_CONFIG = {
             es: "/es/guiones-institucionales",
         },
     },
+    SEO_O_QUE_E: {
+        priority: "0.8",
+        changefreq: "monthly",
+        paths: {
+            pt: "/teleprompter-o-que-e",
+            en: "/en/teleprompter-what-is-it",
+            es: "/es/teleprompter-que-es",
+        },
+    },
 };

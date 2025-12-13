@@ -43,7 +43,10 @@ export const AlternativasTeleprompterConcorrenteEN = () => (
             <li><strong>Instant P2P Remote Control:</strong> Our remote control is via local network (P2P), ensuring zero latency.</li>
             <li><strong>Focus on Performance and Lives:</strong> Unlike CapCut, which focuses on post-recording editing, PromptNinja focuses on performance during recording and live streams.</li>
         </ul>
-
+        <h3 className="text-xl font-bold text-red-400 mb-3">The Problem with CapCut (And Other Teleprompter Apps)</h3>
+        <p className="text-lg text-slate-300 mb-8">
+            Many apps, like CapCut and other <strong className="text-white">teleprompter apps</strong>, are heavy, require download, and lock your phone. The PromptNinja, being a web P2P solution, offers the performance you seek, whether on your PC, Notebook, or as a <strong className="text-white">free teleprompter for iPhone</strong>.
+        </p>
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">PromptNinja: The Ultimate Solution</h2>
         <p className="mb-8">
             PromptNinja was designed to solve these exact problems, offering a superior experience at no cost.

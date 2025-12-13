@@ -44,6 +44,10 @@ export const AlternativasTeleprompterConcorrenteES = () => (
             <li><strong>Enfoque en Rendimiento y Directos:</strong> A diferencia de CapCut, que se enfoca en edición post-grabación, PromptNinja se enfoca en el rendimiento durante la grabación y transmisiones en vivo.</li>
         </ul>
 
+        <h3 className="text-xl font-bold text-red-400 mb-3">El Problema con el CapCut (Y Otros Aplicativos Teleprompter)</h3>
+        <p className="text-lg text-slate-300 mb-8">
+            Muchos apps, como el CapCut y otros <strong className="text-white">aplicativos teleprompter</strong>, son pesados, requieren descarga y bloquean tu celular. El PromptNinja, por ser una solución web P2P, ofrece el rendimiento que buscas, sea en tu PC, Notebook o como un <strong className="text-white">teleprompter gratuito para iPhone</strong>.
+        </p>
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">PromptNinja: La Solución Definitiva</h2>
         <p className="mb-8">
             PromptNinja fue diseñado para resolver exactamente estos problemas, ofreciendo una experiencia superior sin costo alguno.

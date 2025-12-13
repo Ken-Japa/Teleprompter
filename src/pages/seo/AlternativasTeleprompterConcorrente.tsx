@@ -14,7 +14,7 @@ export const AlternativasTeleprompterConcorrente: React.FC<Props> = ({ onLaunch 
 
     let Content = AlternativasTeleprompterConcorrentePT;
     let title = "A ÚNICA Alternativa GRATUITA ao Teleprompter Pro (Zero Lag)";
-    let description = "Cansado de apps caros ou com delay? O PromptNinja é a alternativa GRATUITA que você procurava. Use no PC/Celular, P2P e sem instalação.";
+    let description = "Procurando uma alternativa ao Teleprompter Pro? Não perca tempo. O PromptNinja é a melhor opção GRATUITA para PC, Notebook e como teleprompter para iPhone.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/alternativas-teleprompter-concorrente";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {
@@ -34,8 +34,8 @@ export const AlternativasTeleprompterConcorrente: React.FC<Props> = ({ onLaunch 
 
     if (lang === 'en') {
         Content = AlternativasTeleprompterConcorrenteEN;
-        title = "Alternative to Teleprompter Pro and PrompterPro (Free & Online)";
-        description = "Looking for a Teleprompter Pro alternative? Meet PromptNinja: free, no login, works on PC and Mobile with remote control.";
+        title = "The ONLY FREE Alternative to Teleprompter Pro (Zero Lag)";
+        description = "Looking for an alternative to Teleprompter Pro? Don't waste any time. PromptNinja is the best FREE option for PC, Notebook, and as a teleprompter for iPhone.";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/alternative-to-teleprompter-pro";
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {
@@ -54,8 +54,8 @@ export const AlternativasTeleprompterConcorrente: React.FC<Props> = ({ onLaunch 
         ctaText = "Switch to PromptNinja (No Install Needed)";
     } else if (lang === 'es') {
         Content = AlternativasTeleprompterConcorrenteES;
-        title = "Alternativa a Teleprompter Pro y PrompterPro (Gratis y Online)";
-        description = "¿Buscas una alternativa a Teleprompter Pro? Conoce PromptNinja: gratis, sin registro, funciona en PC y Móvil con control remoto.";
+        title = "La ÚNICA alternativa GRATUITA a Teleprompter Pro (sin retrasos)";
+        description = "¿Buscas una alternativa a Teleprompter Pro? No pierdas tiempo. PromptNinja es la mejor opción GRATUITA para PC, portátiles y como teleprompter para iPhone.";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/alternativa-teleprompter-pro";
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {

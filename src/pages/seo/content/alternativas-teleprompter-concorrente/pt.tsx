@@ -43,7 +43,10 @@ export const AlternativasTeleprompterConcorrentePT = () => (
             <li><strong>Controle Remoto P2P Instantâneo:</strong> Nosso controle remoto é via rede local (P2P), garantindo latência zero.</li>
             <li><strong>Foco em Performance e Lives:</strong> Diferente do CapCut, que é focado em edição pós-gravação, o PromptNinja é focado na performance durante a gravação e transmissões ao vivo.</li>
         </ul>
-
+        <h3 className="text-xl font-bold text-red-400 mb-3">O Problema com o CapCut (E Outros Aplicativos Teleprompter)</h3>
+        <p className="text-lg text-slate-300 mb-8">
+            Muitos apps, como o CapCut e outros <strong className="text-white">aplicativos teleprompter</strong>, são pesados, exigem download e travam seu celular. O PromptNinja, por ser uma solução web P2P, oferece a performance que você busca, seja no seu PC, Notebook ou como um <strong className="text-white">teleprompter gratuito para iPhone</strong>.
+        </p>
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">PromptNinja: A Solução Definitiva</h2>
         <p className="mb-8">
             O PromptNinja foi desenhado para resolver exatamente esses problemas, oferecendo uma experiência superior sem nenhum custo.

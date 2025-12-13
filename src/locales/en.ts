@@ -20,11 +20,11 @@ export const en = {
   },
   landing: {
     meta: {
-      title: "PromptNinja: Free Online Teleprompter | No Lag, No Install",
-      description: "The fastest FREE online teleprompter. Use it on your PC or as a teleprompter for your mobile phone. P2P, Zero Lag, and no apps required. Perfect for creators.",
+      title: "PromptNinja: Free Teleprompter | Online, P2P, Mobile and Laptop | No Installation Required",
+      description: "The ONLY free online autocue with zero lag. Use your mobile as a P2P remote. Perfect for YouTube, live streams, and speeches. No apps to install.",
     },
     hero: {
-      headline: "Free Online Teleprompter. Use on PC, Laptop, or Phone.",
+      headline: "Free Online Autocue. Use on PC, Laptop, or Mobile.",
       subheadline:
         "Your phone is the remote control. Instant P2P connection with zero lag for perfect videos.",
       cta: "🚀 Start Free (20 min)",
