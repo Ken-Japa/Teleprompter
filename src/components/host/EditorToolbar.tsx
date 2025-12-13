@@ -1,17 +1,20 @@
 import { memo, useState } from "react";
 import * as S from "../ui/Styled";
-import { TrashIcon, InfoIcon } from "../ui/Icons";
+import { TrashIcon, InfoIcon, TimerIcon } from "../ui/Icons";
 import { useTranslation } from "../../hooks/useTranslation";
 import { TutorialModal } from "../ui/TutorialModal";
+import { PacingModal } from "../ui/PacingModal";
 
 interface EditorToolbarProps {
     onInsertTag: (tag: string) => void;
     onClear: () => void;
+    text: string;
 }
 
-export const EditorToolbar = memo(({ onInsertTag, onClear }: EditorToolbarProps) => {
+export const EditorToolbar = memo(({ onInsertTag, onClear, text }: EditorToolbarProps) => {
     const { t } = useTranslation();
     const [showTutorialModal, setShowTutorialModal] = useState(false);
+    const [showPacingModal, setShowPacingModal] = useState(false);
 
     return (
         <S.FormattingToolbar>
@@ -31,15 +34,26 @@ export const EditorToolbar = memo(({ onInsertTag, onClear }: EditorToolbarProps)
                         <S.ColorButton color="green" label="Green Highlight" onClick={() => onInsertTag("g")} />
                         <S.ColorButton color="blue" label="Blue Highlight" onClick={() => onInsertTag("b")} />
                     </div>
+
+                    {/* Hint text closer to color menu */}
+                    <span className="text-[10px] text-slate-600 hidden md:inline-block font-mono ml-2">
+                        {t("host.tips.desc")} &lt;tag&gt;
+                    </span>
                 </div>
 
                 <div className="flex-1"></div>
 
                 {/* Actions */}
-                <div className="flex items-center gap-2 border-l border-white/10 pl-4">
-                    <span className="text-[10px] text-slate-600 hidden md:inline-block font-mono">
-                        {t("host.tips.desc")} &lt;tag&gt;
-                    </span>
+                <div className="flex items-center gap-2">
+                    {/* Enhanced Pacing Button */}
+                    <S.IconButton
+                        onClick={() => setShowPacingModal(true)}
+                        title={t("pacing.button")}
+                        aria-label="Open Pacing Tool"
+                        className="w-9 h-9 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 text-purple-300 hover:from-purple-500/30 hover:to-pink-500/30 hover:text-purple-200 border border-purple-500/30 hover:border-purple-400/50 transition-all hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
+                    >
+                        <TimerIcon className="w-5 h-5" />
+                    </S.IconButton>
 
                     <S.IconButton
                         onClick={onClear}
@@ -61,6 +75,7 @@ export const EditorToolbar = memo(({ onInsertTag, onClear }: EditorToolbarProps)
                 </div>
             </div>
             <TutorialModal isOpen={showTutorialModal} onClose={() => setShowTutorialModal(false)} />
+            <PacingModal isOpen={showPacingModal} onClose={() => setShowPacingModal(false)} text={text} />
         </S.FormattingToolbar>
     );
 });

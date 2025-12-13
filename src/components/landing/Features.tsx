@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import * as S from "../ui/Styled";
-import { MagicIcon, MicIcon, PaletteIcon, ShieldIcon, ZapIcon, CrownIcon } from "../ui/Icons";
+import { MagicIcon, MicIcon, PaletteIcon, ShieldIcon, ZapIcon, CrownIcon, TimerIcon } from "../ui/Icons";
 
 export const Features: React.FC = () => {
     const { t } = useTranslation();
@@ -48,6 +48,13 @@ export const Features: React.FC = () => {
                             icon={<ShieldIcon className="w-6 h-6 icon-hover-rotate" />}
                             title={t("landing.features.offline.title")}
                             desc={t("landing.features.offline.desc")}
+                        />
+                    </div>
+                    <div className="stagger-item">
+                        <S.FeatureCard
+                            icon={<TimerIcon className="w-6 h-6 icon-hover-rotate" />}
+                            title={t("landing.features.pacing.title")}
+                            desc={t("landing.features.pacing.desc")}
                         />
                     </div>
                     <div className="stagger-item">

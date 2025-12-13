@@ -176,6 +176,10 @@ export const es = {
         title: "Temas Visuales",
         desc: "Modos Oscuro, Claro, Matrix y Alto Contraste para cualquier entorno.",
       },
+      pacing: {
+        title: "Calculadora de Tiempo",
+        desc: "Calcula el tiempo estimado de lectura de tu guion (WPM). Ajusta el texto para 60 segundos (TikTok/Reels) o 5 minutos (YouTube). Produce contenido optimizado para cada plataforma.",
+      },
     },
     pricing: {
       title: "Precio Simple y Honesto",
@@ -359,6 +363,31 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
 <g>Y este en verde para señalar calma o una transición suave.</g>
 
 ¡Pega tu guion aquí y personaliza tu experiencia para empezar a brillar!`,
+  },
+  pacing: {
+    title: "Calculadora de Tiempo de Lectura",
+    wordCount: "Palabras",
+    estimatedTime: "Tiempo Estimado",
+    wpmLabel: "Palabras por Minuto (WPM)",
+    slow: "Lento (120 WPM)",
+    medium: "Medio (150 WPM)",
+    fast: "Rápido (180 WPM)",
+    platforms: {
+      title: "Recomendaciones por Plataforma",
+      tiktok: "TikTok/Reels (60s)",
+      youtube: "YouTube (5 min)",
+    },
+    suggestions: {
+      tooLong: "Tu guion es largo. Considera reducir a ~{{words}} palabras.",
+      tooShort: "Tu guion es corto. Considera agregar ~{{words}} palabras.",
+      perfect: "¡Perfecto!",
+    },
+    custom: {
+      title: "WPM Personalizado",
+      label: "Tu Velocidad (WPM)",
+      result: "Tiempo Estimado",
+    },
+    button: "Calcular Tiempo",
   },
   remote: {
     connecting: "Buscando Host...",

@@ -172,6 +172,10 @@ export const pt = {
         title: "Temas Visuais",
         desc: "Modos Escuro, Claro, Matrix e Alto Contraste para qualquer ambiente.",
       },
+      pacing: {
+        title: "Calculadora de Tempo",
+        desc: "Calcule o tempo estimado de leitura do seu roteiro (WPM). Ajuste o texto para caber em 60 segundos (TikTok/Reels) ou 5 minutos (YouTube). Produza conteúdo otimizado para cada plataforma.",
+      },
     },
     pricing: {
       title: "Preço Simples e Honesto",
@@ -356,6 +360,31 @@ Use as tags de cor para destacar momentos importantes no seu roteiro.
 <g>E este em verde para sinalizar calma ou uma transição suave.</g>
 
 Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
+  },
+  pacing: {
+    title: "Calculadora de Tempo de Leitura",
+    wordCount: "Palavras",
+    estimatedTime: "Tempo Estimado",
+    wpmLabel: "Palavras por Minuto (WPM)",
+    slow: "Lento (120 WPM)",
+    medium: "Médio (150 WPM)",
+    fast: "Rápido (180 WPM)",
+    platforms: {
+      title: "Recomendações por Plataforma",
+      tiktok: "TikTok/Reels (60s)",
+      youtube: "YouTube (5 min)",
+    },
+    suggestions: {
+      tooLong: "Seu roteiro está longo. Considere reduzir para ~{{words}} palavras.",
+      tooShort: "Seu roteiro está curto. Considere adicionar ~{{words}} palavras.",
+      perfect: "Perfeito!",
+    },
+    custom: {
+      title: "WPM Personalizado",
+      label: "Sua Velocidade (WPM)",
+      result: "Tempo Estimado",
+    },
+    button: "Calcular Tempo",
   },
   remote: {
     connecting: "Buscando Conexão com o Teleprompter...",

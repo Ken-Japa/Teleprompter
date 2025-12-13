@@ -167,6 +167,10 @@ export const en = {
         title: "Visual Themes",
         desc: "Dark, Light, Matrix, and High Contrast modes for any environment.",
       },
+      pacing: {
+        title: "Pacing Calculator",
+        desc: "Calculate your script's estimated reading time (WPM). Adjust text to fit 60 seconds (TikTok/Reels) or 5 minutes (YouTube). Produce optimized content for each platform.",
+      },
     },
     pricing: {
       title: "Simple and Honest Pricing",
@@ -349,6 +353,31 @@ Use color tags to highlight important moments in your script.
 <g>And this in green to signal calm or a smooth transition.</g>
 
 Paste your script here and customize your experience to start shining!`,
+  },
+  pacing: {
+    title: "Reading Time Calculator",
+    wordCount: "Words",
+    estimatedTime: "Estimated Time",
+    wpmLabel: "Words Per Minute (WPM)",
+    slow: "Slow (120 WPM)",
+    medium: "Medium (150 WPM)",
+    fast: "Fast (180 WPM)",
+    platforms: {
+      title: "Platform Recommendations",
+      tiktok: "TikTok/Reels (60s)",
+      youtube: "YouTube (5 min)",
+    },
+    suggestions: {
+      tooLong: "Your script is long. Consider reducing to ~{{words}} words.",
+      tooShort: "Your script is short. Consider adding ~{{words}} words.",
+      perfect: "Perfect!",
+    },
+    custom: {
+      title: "Custom WPM",
+      label: "Your Speed (WPM)",
+      result: "Estimated Time",
+    },
+    button: "Calculate Time",
   },
   remote: {
     connecting: "Searching Ninja Host...",
