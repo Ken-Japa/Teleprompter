@@ -20,20 +20,20 @@ export const en = {
   },
   landing: {
     meta: {
-      title: "PromptNinja | Professional P2P Teleprompter | Remote Control via Mobile",
-      description: "The fastest and most private web teleprompter. Remote control via mobile, works offline, no apps or accounts. Perfect for content creators and speakers.",
+      title: "PromptNinja: Free Online Teleprompter | No Lag, No Install",
+      description: "The free online teleprompter with zero lag. Control your script instantly with your phone (P2P). Perfect for YouTube, TikTok, and corporate presentations. No install.",
     },
     hero: {
-      headline: "Your phone is the remote. Your home is the studio.",
+      headline: "Free Online Teleprompter. Use on PC, Laptop, or Phone.",
       subheadline:
-        "The only teleprompter that works offline, without tracking your data, with ultra-low latency remote control for live presentations.",
+        "Your phone is the remote control. Instant P2P connection with zero lag for perfect videos.",
       cta: "🚀 Start Free (20 min)",
       ctaSecondary: "▶️ See How It Works",
       versionLive: "Version 2.0 Live",
       userCount: "1,247",
       activeCreators: "Active Creators",
       freeTrial: "Free Trial",
-      zeroSetup: "Zero Setup",
+      zeroSetup: "Zero Setup. No Install.",
       offlineBadge: "Works Offline",
       privacyBadge: "Total Privacy",
       p2pSection: {
@@ -61,7 +61,7 @@ export const en = {
           "🤦 Forgot the script mid-recording",
           "⏰ Lost 3 hours re-recording the same video",
           "🏃 Got up 15 times to pause/continue text",
-          "💸 Spent money on complicated hardware teleprompters",
+          "💸 Spent money on complicated or incompatible hardware teleprompters",
           "📱 Apps that crash or require login",
         ],
       },
@@ -70,7 +70,7 @@ export const en = {
         items: [
           "🎯 Script always visible on your laptop screen",
           "📱 Control everything from your phone (Play/Pause/Speed)",
-          "⚡ P2P Connection = Sub-millisecond latency",
+          "⚡ P2P Connection = Zero Lag. Flawless videos.",
           "🔒 Data stays on YOUR device",
           "🌐 Works offline (flight, no internet, live events)",
         ],
@@ -90,7 +90,7 @@ export const en = {
         title: "Record like a PRO",
         desc: "Control speed, pause, reset. All from your phone",
       },
-      cta: "Test Now (Free)",
+      cta: "🚀 Start Free",
     },
     comparison: {
       title: "Why PromptNinja?",
@@ -106,7 +106,7 @@ export const en = {
         offline: "Works Offline",
         privacy: "Total Privacy",
         latency: "Latency",
-        price: "Price",
+        price: "Upfront Cost",
       },
       values: {
         ninja: {
@@ -114,7 +114,7 @@ export const en = {
           offline: "Yes",
           privacy: "P2P",
           latency: "<10ms",
-          price: "$ 19",
+          price: "Free / $19",
         },
         paid: {
           remote: "No",

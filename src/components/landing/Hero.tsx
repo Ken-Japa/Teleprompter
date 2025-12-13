@@ -28,8 +28,8 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-black text-white mb-8 tracking-tight leading-[1.1] drop-shadow-2xl">
-                <span className="block text-slate-100">{firstPart}{secondPart ? "." : ""}</span>
-                {secondPart && <span className="block text-gradient relative z-10">{secondPart}.</span>}
+                <span className="block text-gradient">{firstPart}{secondPart ? "." : ""}</span>
+                {secondPart && <span className="block text-slate-100 relative z-10">{secondPart}.</span>}
             </h1>
 
             <p className="text-lg md:text-2xl text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed font-light tracking-wide">

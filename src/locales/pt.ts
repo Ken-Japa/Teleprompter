@@ -20,20 +20,20 @@ export const pt = {
   },
   landing: {
     meta: {
-      title: "PromptNinja | Teleprompter Profissional P2P | Controle Remoto via Celular",
+      title: "PromptNinja: Teleprompter Grátis | Online, P2P e sem Instalação",
       description: "O teleprompter web mais rápido e privado. Controle remoto via celular, funciona offline, sem apps ou contas. Perfeito para criadores de conteúdo e palestrantes.",
     },
     hero: {
-      headline: "Seu celular é o controle. Sua casa é o estúdio.",
+      headline: "Teleprompter Online GRÁTIS. Use no PC, Notebook ou Celular.",
       subheadline:
-        "O único teleprompter que funciona offline, sem rastrear seus dados, com controle remoto de baixíssima latência para apresentações ao vivo.",
+        "Seu celular é o controle remoto. Conexão P2P, instantânea e sem atrasos, para vídeos perfeitos.",
       cta: "🚀 Começar Grátis (20 min)",
       ctaSecondary: "▶️ Ver Como Funciona",
       versionLive: "Versão 2.0 Online",
       userCount: "1.247",
       activeCreators: "Criadores ativos",
       freeTrial: "Teste grátis",
-      zeroSetup: "Zero Instalação",
+      zeroSetup: "Zero Setup. Sem Instalação.",
       offlineBadge: "Funciona Offline",
       privacyBadge: "Privacidade Total",
       p2pSection: {
@@ -61,7 +61,7 @@ export const pt = {
           "🤦 Esqueceu o roteiro no meio da gravação",
           "⏰ Perdeu 3 horas regravando o mesmo vídeo",
           "🏃 Levantou 15 vezes para pausar/continuar o texto",
-          "💸 Gastou R$ 400 em teleprompter físico que ninguém sabe usar",
+          "💸 Gastou com teleprompter físico complicado ou sem compatibilidade",
           "📱 Baixou 5 apps que travam ou exigem login",
         ],
       },
@@ -70,7 +70,7 @@ export const pt = {
         items: [
           "🎯 Roteiro sempre visível na tela do notebook",
           "📱 Controla tudo pelo celular (Play/Pause/Velocidade)",
-          "⚡ Conexão P2P = Latência sub-milissegundo",
+          "⚡ Conexão P2P = Zero delay. Vídeos sem cortes.",
           "🔒 Seus dados ficam no SEU dispositivo",
           "🌐 Funciona offline (voo, sem internet, eventos ao vivo)",
         ],
@@ -90,7 +90,7 @@ export const pt = {
         title: "Grave como um PRO",
         desc: "Controle a velocidade, pause, volte ao topo. Tudo pelo celular",
       },
-      cta: "Testar Agora (Grátis)",
+      cta: "🚀 Começar Grátis",
     },
     comparison: {
       title: "Por que PromptNinja?",
@@ -106,7 +106,7 @@ export const pt = {
         offline: "Funciona Offline",
         privacy: "Privacidade Total",
         latency: "Latência",
-        price: "Preço",
+        price: "Custo Inicial",
       },
       values: {
         ninja: {
@@ -114,7 +114,7 @@ export const pt = {
           offline: "Sim",
           privacy: "P2P",
           latency: "<10ms",
-          price: "R$ 67",
+          price: "Grátis / R$ 67",
         },
         paid: {
           remote: "Não",

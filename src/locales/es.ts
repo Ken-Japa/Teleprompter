@@ -24,20 +24,20 @@ export const es = {
   },
   landing: {
     meta: {
-      title: "PromptNinja | Teleprompter Profesional P2P | Control Remoto vía Móvil",
-      description: "El teleprompter web más rápido y privado. Control remoto vía móvil, funciona offline, sin apps ni cuentas. Perfecto para creadores de contenido y oradores.",
+      title: "PromptNinja: Teleprompter Gratis Online | Cero Lag, Sin Instalación",
+      description: "El teleprompter online GRATIS con cero lag. Controla tu guion al instante con tu móvil (P2P). Ideal para YouTube, TikTok y presentaciones. ¡Sin instalación!",
     },
     hero: {
-      headline: "Tu celular es el control. Tu casa es el estudio.",
+      headline: "Teleprompter Online GRATIS. Úsalo en PC, Laptop o Móvil.",
       subheadline:
-        "El único teleprompter que funciona offline, sin rastrear tus datos, con control remoto de latencia ultra baja para presentaciones en vivo.",
+        "Tu móvil es el control remoto. Conexión P2P instantánea, sin retrasos, para videos perfectos.",
       cta: "🚀 Empezar Gratis (20 min)",
       ctaSecondary: "▶️ Ver Cómo Funciona",
       versionLive: "Versión 2.0 Online",
       userCount: "1.247",
       activeCreators: "Creadores activos",
       freeTrial: "Prueba gratis",
-      zeroSetup: "Cero Instalación",
+      zeroSetup: "Cero Configuración. Sin Instalación.",
       offlineBadge: "Funciona Offline",
       privacyBadge: "Privacidad Total",
       p2pSection: {
@@ -65,7 +65,7 @@ export const es = {
           "🤦 Olvidaste el guion en medio de la grabación",
           "⏰ Perdiste 3 horas regrabando el mismo video",
           "🏃 Te levantaste 15 veces para pausar/continuar el texto",
-          "💸 Gastaste dinero en teleprompter físico complicado",
+          "💸 Gastó en teleprompter físico complicado o sin compatibilidad",
           "📱 Apps que se traban o exigen login",
         ],
       },
@@ -74,7 +74,7 @@ export const es = {
         items: [
           "🎯 Guion siempre visible en la pantalla de la notebook",
           "📱 Controlas todo por el celular (Play/Pause/Velocidad)",
-          "⚡ Conexión P2P = Latencia sub-milisegundo",
+          "⚡ Conexión P2P = Cero Lag. Videos impecables.",
           "🔒 Tus datos quedan en TU dispositivo",
           "🌐 Funciona offline (vuelo, sin internet, eventos en vivo)",
         ],
@@ -110,7 +110,7 @@ export const es = {
         offline: "Funciona Offline",
         privacy: "Privacidad Total",
         latency: "Latencia",
-        price: "Precio",
+        price: "Costo Inicial",
       },
       values: {
         ninja: {
@@ -118,7 +118,7 @@ export const es = {
           offline: "Sí",
           privacy: "P2P",
           latency: "<10ms",
-          price: "$ 19",
+          price: "Gratis / $19",
         },
         paid: {
           remote: "No",
