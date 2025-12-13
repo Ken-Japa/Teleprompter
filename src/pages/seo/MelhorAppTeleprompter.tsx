@@ -48,7 +48,7 @@ export const MelhorAppTeleprompter: React.FC<Props> = ({ onLaunch }) => {
             "author": {
                 "@type": "Organization",
                 "name": "PromptNinja",
-                "url": "https://promptninja.solutionkit.com.br"
+                "url": "https://promptninja.solutionkit.com.br/?lang=en"
             }
         };
         ctaText = "Try the Winner (Free)";
@@ -68,7 +68,7 @@ export const MelhorAppTeleprompter: React.FC<Props> = ({ onLaunch }) => {
             "author": {
                 "@type": "Organization",
                 "name": "PromptNinja",
-                "url": "https://promptninja.solutionkit.com.br"
+                "url": "https://promptninja.solutionkit.com.br/?lang=es"
             }
         };
         ctaText = "Probar el Ganador (Gratis)";

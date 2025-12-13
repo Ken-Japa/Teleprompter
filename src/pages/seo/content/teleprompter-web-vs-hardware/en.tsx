@@ -10,7 +10,7 @@ export const TeleprompterWebVsHardwareEN = () => (
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
             <h2 className="text-2xl font-bold text-white mb-2">Quick Verdict</h2>
             <p className="text-slate-300">
-                If you use a phone or webcam and want mobility, <strong>PromptNinja</strong> wins on value and ease of use. If you use a heavy DSLR in a fixed studio, dedicated hardware might be useful, but PromptNinja can still replace it via a secondary monitor.
+                If you use a phone or webcam and want mobility, <strong>PromptNinja</strong> wins on value and ease of use. If you use a heavy DSLR in a fixed studio, dedicated hardware might be useful, but PromptNinja can still replace it via a secondary monitor. On a budget? You can even build a <a href="/en/teleprompter-web-vs-hardware-comparison" className="text-purple-400 hover:text-purple-300 underline">DIY home teleprompter</a> to use with our app.
             </p>
         </div>
 
@@ -51,7 +51,7 @@ export const TeleprompterWebVsHardwareEN = () => (
 
         <div className="text-center mt-12">
             <a
-                href="https://promptninja.solutionkit.com.br/en"
+                href="https://promptninja.solutionkit.com.br/?lang=en/#app"
                 className="inline-block bg-gradient-to-r from-green-600 to-teal-600 font-bold py-3 px-6 rounded-lg transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

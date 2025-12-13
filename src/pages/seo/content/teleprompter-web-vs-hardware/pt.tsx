@@ -10,7 +10,7 @@ export const TeleprompterWebVsHardwarePT = () => (
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
             <h2 className="text-2xl font-bold text-white mb-2">Veredito Rápido</h2>
             <p className="text-slate-300">
-                Se você usa celular ou webcam e quer mobilidade, o <strong>PromptNinja</strong> vence em custo-benefício e facilidade de uso. Se você usa uma câmera DSLR pesada em estúdio fixo, um hardware dedicado pode ser útil, mas o PromptNinja ainda pode substituí-lo via monitor secundário.
+                Se você usa celular ou webcam e quer mobilidade, o <strong>PromptNinja</strong> vence em custo-benefício e facilidade de uso. Se você usa uma câmera DSLR pesada em estúdio fixo, um hardware dedicado pode ser útil, mas o PromptNinja ainda pode substituí-lo via monitor secundário. Se o orçamento está apertado, você pode até montar um <a href="/teleprompter-caseiro-diy" className="text-purple-400 hover:text-purple-300 underline">teleprompter caseiro DIY</a> usando nosso app.
             </p>
         </div>
 

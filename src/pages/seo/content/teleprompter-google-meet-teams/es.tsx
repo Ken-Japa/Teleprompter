@@ -33,7 +33,7 @@ export const TeleprompterGoogleMeetTeamsES = () => (
 
         <div className="text-center mt-12">
             <a
-                href="https://promptninja.solutionkit.com.br/es"
+                href="https://promptninja.solutionkit.com.br/?lang=es/#app"
                 className="inline-block bg-gradient-to-r from-indigo-600 to-blue-800 font-bold py-3 px-6 rounded-lg transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

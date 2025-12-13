@@ -48,7 +48,7 @@ export const AlternativasTeleprompterConcorrente: React.FC<Props> = ({ onLaunch 
             "author": {
                 "@type": "Organization",
                 "name": "PromptNinja",
-                "url": "https://promptninja.solutionkit.com.br"
+                "url": "https://promptninja.solutionkit.com.br/?lang=en"
             }
         };
         ctaText = "Switch to PromptNinja (No Install Needed)";
@@ -68,7 +68,7 @@ export const AlternativasTeleprompterConcorrente: React.FC<Props> = ({ onLaunch 
             "author": {
                 "@type": "Organization",
                 "name": "PromptNinja",
-                "url": "https://promptninja.solutionkit.com.br"
+                "url": "https://promptninja.solutionkit.com.br/?lang=es"
             }
         };
         ctaText = "Cambiar a PromptNinja (Sin Instalación)";

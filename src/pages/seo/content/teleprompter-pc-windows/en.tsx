@@ -75,7 +75,7 @@ export const TeleprompterPCWindowsEN = () => (
         <h2 className="text-3xl font-bold text-white mt-10 mb-6">How to Use PromptNinja as a Native App on Windows</h2>
         <div className="bg-slate-800 p-6 rounded-lg shadow-lg text-slate-300 space-y-4">
             <p>
-                You can get a native-like experience without any of the risks. PromptNinja can be "installed" as a Progressive Web App (PWA) on Windows 10 and 11 using Chrome or Edge.
+                You can get a native-like experience without any of the risks. PromptNinja can be "installed" as a Progressive Web App (PWA) on Windows 10 and 11 using Chrome or Edge. <a href="/en/how-to-install-teleprompter-app-pwa" className="text-purple-400 hover:text-purple-300 underline">See our step-by-step PWA installation guide</a>.
             </p>
             <ol className="list-decimal pl-6 space-y-2">
                 <li>Open <a href="https://promptninja.solutionkit.com.br" className="text-red-500 hover:underline">PromptNinja</a> in your browser.</li>

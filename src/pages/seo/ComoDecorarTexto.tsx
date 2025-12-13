@@ -48,7 +48,7 @@ export const ComoDecorarTexto: React.FC<Props> = ({ onLaunch }) => {
             "author": {
                 "@type": "Organization",
                 "name": "PromptNinja",
-                "url": "https://promptninja.solutionkit.com.br"
+                "url": "https://promptninja.solutionkit.com.br/?lang=en"
             }
         };
         ctaText = "Stop Memorizing and Start Recording";
@@ -68,7 +68,7 @@ export const ComoDecorarTexto: React.FC<Props> = ({ onLaunch }) => {
             "author": {
                 "@type": "Organization",
                 "name": "PromptNinja",
-                "url": "https://promptninja.solutionkit.com.br"
+                "url": "https://promptninja.solutionkit.com.br/?lang=es"
             }
         };
         ctaText = "Deja de Memorizar y Empieza a Grabar";

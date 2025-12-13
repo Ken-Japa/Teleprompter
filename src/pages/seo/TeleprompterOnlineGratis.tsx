@@ -48,7 +48,7 @@ export const TeleprompterOnlineGratis: React.FC<Props> = ({ onLaunch }) => {
             "author": {
                 "@type": "Organization",
                 "name": "PromptNinja",
-                "url": "https://promptninja.solutionkit.com.br"
+                "url": "https://promptninja.solutionkit.com.br/?lang=en"
             }
         };
         ctaText = "Open Free Teleprompter";
@@ -68,7 +68,7 @@ export const TeleprompterOnlineGratis: React.FC<Props> = ({ onLaunch }) => {
             "author": {
                 "@type": "Organization",
                 "name": "PromptNinja",
-                "url": "https://promptninja.solutionkit.com.br"
+                "url": "https://promptninja.solutionkit.com.br/?lang=es"
             }
         };
         ctaText = "Abrir Teleprompter Gratis";

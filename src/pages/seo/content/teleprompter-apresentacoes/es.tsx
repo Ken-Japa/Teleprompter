@@ -33,7 +33,7 @@ export const TeleprompterApresentacoesES = () => (
 
         <div className="text-center mt-12">
             <a
-                href="https://promptninja.solutionkit.com.br/es"
+                href="https://promptninja.solutionkit.com.br/?lang=es/#app"
                 className="inline-block bg-gradient-to-r from-orange-500 to-red-600 font-bold py-3 px-6 rounded-lg transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

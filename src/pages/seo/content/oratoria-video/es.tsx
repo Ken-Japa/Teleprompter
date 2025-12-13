@@ -73,7 +73,7 @@ export const OratoriaVideoES = () => (
             </p>
 
             <a
-                href="https://promptninja.solutionkit.com.br/#app"
+                href="https://promptninja.solutionkit.com.br/?lang=es/#app"
                 className="inline-block relative z-10 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-indigo-500/25 transform hover:-translate-y-1 transition duration-200"
             >
                 Practicar con Teleprompter GRATIS

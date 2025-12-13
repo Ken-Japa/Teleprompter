@@ -48,7 +48,7 @@ export const TeleprompterTravandoSolucao: React.FC<Props> = ({ onLaunch }) => {
             "author": {
                 "@type": "Organization",
                 "name": "PromptNinja",
-                "url": "https://promptninja.solutionkit.com.br"
+                "url": "https://promptninja.solutionkit.com.br/?lang=en"
             }
         };
     } else if (lang === 'es') {
@@ -67,7 +67,7 @@ export const TeleprompterTravandoSolucao: React.FC<Props> = ({ onLaunch }) => {
             "author": {
                 "@type": "Organization",
                 "name": "PromptNinja",
-                "url": "https://promptninja.solutionkit.com.br"
+                "url": "https://promptninja.solutionkit.com.br/?lang=es"
             }
         };
     }

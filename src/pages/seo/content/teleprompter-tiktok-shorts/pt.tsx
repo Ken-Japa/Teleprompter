@@ -33,7 +33,7 @@ export const TeleprompterTikTokShortsPT = () => (
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Domine o Algoritmo com Consistência</h2>
         <p className="mb-6">
-            O segredo do crescimento no TikTok e Instagram é a consistência. Com um teleprompter, você elimina os "ehhh", "ahhh" e as regravações por esquecimento.
+            O segredo do crescimento no TikTok e Instagram é a consistência. Com um teleprompter, você elimina os "ehhh", "ahhh" e as regravações por esquecimento. Se você tem dificuldade em memorizar, <a href="/como-decorar-texto-rapido" className="text-purple-400 hover:text-purple-300 underline">veja nossas técnicas para "decorar" textos sem esforço</a>.
         </p>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             <li className="bg-slate-900 p-3 rounded"><strong>Grave em Lote:</strong> Prepare 5 roteiros, carregue no PromptNinja e grave todos de uma vez.</li>

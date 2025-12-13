@@ -58,7 +58,7 @@ export const TeleprompterPCWindowsPT = () => (
             "Baseado na web" não significa lento. O PromptNinja é um Progressive Web App (PWA) que utiliza a aceleração de hardware do seu PC. Isso garante uma rolagem de texto perfeitamente suave (a 60fps), sem travamentos, mesmo com roteiros longos. Ele se comporta como um aplicativo nativo, mas sem a dor de cabeça da instalação.
         </p>
         <p className="mb-4">
-            Para uma experiência ainda mais integrada no Windows, você pode "instalar" o PromptNinja como um app. No Chrome ou Edge, clique no ícone na barra de endereço. Isso cria um atalho na sua área de trabalho e abre o teleprompter em uma janela dedicada, sem abas ou distrações.
+            Para uma experiência ainda mais integrada no Windows, você pode "instalar" o PromptNinja como um app. <a href="/como-instalar-app-teleprompter-pwa" className="text-purple-400 hover:text-purple-300 underline">Veja o passo a passo de como instalar o PWA</a>. No Chrome ou Edge, clique no ícone na barra de endereço. Isso cria um atalho na sua área de trabalho e abre o teleprompter em uma janela dedicada, sem abas ou distrações.
         </p>
 
         <div className="my-8 text-center">

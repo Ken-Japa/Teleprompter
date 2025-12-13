@@ -33,7 +33,7 @@ export const TeleprompterIphoneIpadEN = () => (
 
         <div className="text-center mt-12">
             <a
-                href="https://promptninja.solutionkit.com.br/en"
+                href="https://promptninja.solutionkit.com.br/?lang=en/#app"
                 className="inline-block bg-gradient-to-r from-slate-600 to-slate-500 font-bold py-3 px-6 rounded-lg transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

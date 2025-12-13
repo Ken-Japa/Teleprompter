@@ -49,7 +49,7 @@ export const OratoriaVideo: React.FC<Props> = ({ onLaunch }) => {
             "author": {
                 "@type": "Organization",
                 "name": "PromptNinja",
-                "url": "https://promptninja.solutionkit.com.br"
+                "url": "https://promptninja.solutionkit.com.br/?lang=en"
             }
         };
         ctaText = "Practice with Free Teleprompter";
@@ -70,7 +70,7 @@ export const OratoriaVideo: React.FC<Props> = ({ onLaunch }) => {
             "author": {
                 "@type": "Organization",
                 "name": "PromptNinja",
-                "url": "https://promptninja.solutionkit.com.br"
+                "url": "https://promptninja.solutionkit.com.br/?lang=es"
             }
         };
         ctaText = "Practicar con Teleprompter Gratis";
