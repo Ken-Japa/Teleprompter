@@ -11,7 +11,7 @@ export const TeleprompterParaYoutubersES = () => (
                 Grabar sin un teleprompter generalmente resulta en un ciclo frustrante: empiezas a hablar, olvidas una parte crucial, detienes la grabación, respiras hondo y lo intentas de nuevo. Repite esto docenas de veces y un video de 10 minutos tarda horas en grabarse. ¿El resultado? Un material lleno de cortes, vacilaciones y una mirada que se desvía constantemente de la cámara, rompiendo la conexión con el espectador.
             </p>
             <p>
-                Aquí es donde un <strong>teleprompter para YouTubers</strong> deja de ser un lujo y se convierte en una herramienta esencial de productividad y profesionalismo. Te permite leer tu guion de manera fluida, manteniendo el contacto visual y la naturalidad, como si estuvieras conversando directamente con tu público.
+                Aquí es donde un <strong>teleprompter para YouTubers</strong> deja de ser un lujo y se convierte en una herramienta esencial de productividad y profesionalismo. Te permite leer tu guion de manera fluida, manteniendo el contacto visual y la naturalidad, como si estuvieras conversando directamente con tu público. <a href="/es/guiones-para-youtube" className="text-purple-400 hover:text-purple-300 underline">¿Necesitas inspiración? Mira nuestros modelos de guion para YouTube</a>.
             </p>
         </div>
 

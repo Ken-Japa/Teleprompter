@@ -12,7 +12,7 @@ export const TeleprompterApresentacoesPT = () => (
             <p className="text-slate-300">
                 Não lote seus slides de texto. Use os slides para o visual e o PromptNinja para o conteúdo falado.
                 <br /><br />
-                Ao usar nossa ferramenta como seu roteiro invisível, você pode manter seus slides limpos e impactantes, enquanto fala com a autoridade de quem domina o assunto, sem precisar memorizar cada vírgula.
+                Ao usar nossa ferramenta como seu roteiro invisível, você pode manter seus slides limpos e impactantes, enquanto fala com a autoridade de quem domina o assunto, sem precisar memorizar cada vírgula. <a href="/scripts-institucionais" className="text-purple-400 hover:text-purple-300 underline">Estruture sua fala com nossos exemplos de roteiros corporativos</a>.
             </p>
         </div>
 

@@ -12,7 +12,7 @@ export const TeleprompterApresentacoesEN = () => (
             <p className="text-slate-300">
                 Don't clutter your slides with text. Use slides for visuals and PromptNinja for spoken content.
                 <br /><br />
-                By using our tool as your invisible script, you can keep your slides clean and impactful while speaking with authority, without memorizing every word.
+                By using our tool as your invisible script, you can keep your slides clean and impactful while speaking with authority, without memorizing every word. <a href="/en/institutional-scripts" className="text-purple-400 hover:text-purple-300 underline">Structure your speech with our corporate script examples</a>.
             </p>
         </div>
 

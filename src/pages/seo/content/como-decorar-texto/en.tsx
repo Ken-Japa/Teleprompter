@@ -30,7 +30,7 @@ export const ComoDecorarTextoEN = () => (
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">The Ultimate Solution: Don't Memorize, Read Intelligently</h2>
         <p className="mb-6">
-            Think about news anchors, politicians, and CEOs at major events. They seem to speak impromptu with impressive clarity. The secret? They aren't memorizing. They are reading. Television has used teleprompters since the 1950s for a reason: it works.
+            Think about news anchors, politicians, and CEOs at major events. They seem to speak impromptu with impressive clarity. The secret? They aren't memorizing. They are reading. Television has used teleprompters since the 1950s for a reason: it works. <a href="/en/teleprompter-scripts" className="text-purple-400 hover:text-purple-300 underline">Practice reading with our library of ready-made scripts</a>.
         </p>
         <p className="mb-8">
             Today, this technology, which once cost thousands of dollars, is accessible to anyone with an internet browser. Using a teleprompter isn't "cheating." It's using a professional tool to get a professional result. <a href="/en/public-speaking-tips-video" className="text-purple-400 hover:text-purple-300 underline">Also check our video speaking tips</a> to maximize your results.

@@ -43,9 +43,7 @@ export const ComoDecorarTextoES = () => (
 
         <h2 className="text-3xl font-bold text-white mt-10 mb-6">La Solución Profesional: ¡No Memorices, Lee!</h2>
         <div className="bg-slate-800 p-6 rounded-lg shadow-lg text-slate-300 space-y-4">
-            <p className="text-xl">
-                ¿Por qué los presentadores de noticias suenan tan fluidos y seguros? ¿Por qué los políticos dan discursos de una hora sin una sola nota en la mano? <strong>El secreto no es una memoria sobrehumana. Es un teleprompter.</strong>
-            </p>
+            ¿Por qué los presentadores de noticias suenan tan fluidos y seguros? ¿Por qué los políticos dan discursos de una hora sin una sola nota en la mano? <strong>El secreto no es una memoria sobrehumana. Es un teleprompter.</strong> <a href="/es/guiones-teleprompter" className="text-purple-400 hover:text-purple-300 underline">Practica tu lectura con nuestra biblioteca de guiones listos</a>.
             <p>
                 Un teleprompter es un dispositivo que muestra el texto que debes leer, permitiéndote mirar directamente a la cámara. Hoy, esta tecnología ya no está reservada para los estudios de televisión. Con herramientas como PromptNinja, puedes tener un teleprompter profesional en tu navegador. <a href="/es/consejos-oratoria-video" className="text-purple-400 hover:text-purple-300 underline">Consulta también nuestros consejos de oratoria para video</a> para maximizar tus resultados.
             </p>

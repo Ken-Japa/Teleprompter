@@ -20,7 +20,7 @@ export const TeleprompterTikTokShortsES = () => (
         <div className="bg-slate-800 p-6 rounded-lg my-6">
             <ol className="list-decimal pl-6 space-y-6 text-slate-300">
                 <li>
-                    <strong>Guiones Optimizados:</strong> Escribe guiones cortos y directos. Usa nuestro editor para resaltar palabras clave en colores (rojo para énfasis, amarillo para pausas).
+                    <strong>Guiones Optimizados:</strong> Escribe guiones cortos y directos. Usa nuestro editor para resaltar palabras clave en colores (rojo para énfasis, amarillo para pausas). <a href="/es/guiones-para-tiktok-shorts" className="text-purple-400 hover:text-purple-300 underline">Empieza rápido con nuestras plantillas virales</a>.
                 </li>
                 <li>
                     <strong>Posicionamiento Vertical:</strong> Coloca el texto en la parte superior de la pantalla de tu móvil, justo al lado de la cámara frontal. Esto asegura que tus ojos miren directamente al espectador.

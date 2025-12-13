@@ -20,7 +20,7 @@ export const TeleprompterTikTokShortsEN = () => (
         <div className="bg-slate-800 p-6 rounded-lg my-6">
             <ol className="list-decimal pl-6 space-y-6 text-slate-300">
                 <li>
-                    <strong>Optimized Scripts:</strong> Write short, punchy scripts. Use our editor to highlight keywords in colors (red for emphasis, yellow for pauses).
+                    <strong>Optimized Scripts:</strong> Write short, punchy scripts. Use our editor to highlight keywords in colors (red for emphasis, yellow for pauses). <a href="/en/scripts-for-tiktok-shorts" className="text-purple-400 hover:text-purple-300 underline">Start fast with our viral templates</a>.
                 </li>
                 <li>
                     <strong>Vertical Positioning:</strong> Place the text at the top of your phone screen, right next to the front camera. This ensures your eyes look directly at the viewer, creating instant connection.

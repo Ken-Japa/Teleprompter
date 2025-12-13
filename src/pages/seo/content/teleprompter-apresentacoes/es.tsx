@@ -12,7 +12,7 @@ export const TeleprompterApresentacoesES = () => (
             <p className="text-slate-300">
                 No llenes tus diapositivas de texto. Usa las diapositivas para lo visual y PromptNinja para el contenido hablado.
                 <br /><br />
-                Al usar nuestra herramienta como tu guion invisible, puedes mantener tus diapositivas limpias e impactantes, mientras hablas con autoridad, sin necesidad de memorizar.
+                Al usar nuestra herramienta como tu guion invisible, puedes mantener tus diapositivas limpias e impactantes, mientras hablas con autoridad, sin necesidad de memorizar. <a href="/es/guiones-institucionales" className="text-purple-400 hover:text-purple-300 underline">Estructura tu discurso con nuestros ejemplos de guiones corporativos</a>.
             </p>
         </div>
 

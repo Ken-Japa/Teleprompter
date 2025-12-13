@@ -11,7 +11,7 @@ export const TeleprompterParaYoutubersEN = () => (
                 Recording without a teleprompter often results in a frustrating cycle: you start talking, forget a crucial part, stop the recording, take a deep breath, and try again. Repeat this dozens of times, and a 10-minute video takes hours to shoot. The result? Material full of cuts, hesitations, and a gaze that constantly shifts away from the camera, breaking the connection with the viewer.
             </p>
             <p>
-                This is where a <strong>teleprompter for YouTubers</strong> ceases to be a luxury and becomes an essential tool for productivity and professionalism. It allows you to read your script smoothly while maintaining eye contact and naturalness, as if you were having a direct conversation with your audience.
+                This is where a <strong>teleprompter for YouTubers</strong> ceases to be a luxury and becomes an essential tool for productivity and professionalism. It allows you to read your script smoothly while maintaining eye contact and naturalness, as if you were having a direct conversation with your audience. <a href="/en/scripts-for-youtube" className="text-purple-400 hover:text-purple-300 underline">Need inspiration? Check out our YouTube script templates</a>.
             </p>
         </div>
 

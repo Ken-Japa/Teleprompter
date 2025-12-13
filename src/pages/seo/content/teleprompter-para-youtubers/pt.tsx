@@ -11,7 +11,7 @@ export const TeleprompterParaYoutubersPT = () => (
                 Gravar sem um teleprompter geralmente resulta em um ciclo frustrante: você começa a falar, esquece uma parte crucial, para a gravação, respira fundo e tenta de novo. Repita isso dezenas de vezes e um vídeo de 10 minutos leva horas para ser gravado. O resultado? Um material cheio de cortes, hesitações e um olhar que desvia constantemente da câmera, quebrando a conexão com o espectador.
             </p>
             <p>
-                É aqui que um <strong>teleprompter para YouTubers</strong> deixa de ser um luxo e se torna uma ferramenta essencial de produtividade e profissionalismo. Ele permite que você leia seu roteiro de forma fluida, mantendo o contato visual e a naturalidade, como se estivesse conversando diretamente com seu público.
+                É aqui que um <strong>teleprompter para YouTubers</strong> deixa de ser um luxo e se torna uma ferramenta essencial de produtividade e profissionalismo. Ele permite que você leia seu roteiro de forma fluida, mantendo o contato visual e a naturalidade, como se estivesse conversando diretamente com seu público. <a href="/scripts-para-youtube" className="text-purple-400 hover:text-purple-300 underline">Precisa de inspiração? Veja nossos modelos de roteiro para YouTube</a>.
             </p>
         </div>
 
