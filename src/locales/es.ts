@@ -30,7 +30,7 @@ export const es = {
     hero: {
       headline: "Teleprompter Online GRATIS. Úsalo en PC, Laptop o Móvil (iPhone/Android).",
       subheadline:
-        "Tu móvil es el control remoto. Conexión P2P instantánea, sin retrasos, para videos perfectos.",
+        "Tu móvil es el control remoto. Control por Voz, Conexión P2P instantánea, sin retrasos, para videos perfectos.",
       cta: "🚀 Empezar Gratis (20 min)",
       ctaSecondary: "▶️ Ver Cómo Funciona",
       versionLive: "Versión 2.0 Online",
@@ -78,7 +78,7 @@ export const es = {
           "🔒 Tus datos quedan en TU dispositivo",
           "🌐 Funciona offline (vuelo, sin internet, eventos en vivo)",
           "📹 Graba y descarga el audio del guion para revisión posterior",
-          "🎨 Personaliza visual con temas y chroma key profesional",
+          "🎨 Personaliza visual con temas y chroma key",
         ],
       },
     },
@@ -165,9 +165,9 @@ export const es = {
         desc: "No necesitas instalar nada. Funciona en el navegador.",
       },
       voice: {
-        title: "Control por Voz",
-        desc:
-          "Teleprompter manos libres: Tu guion se desplaza automáticamente con tu voz, manteniéndote enfocado.",
+        title: "Función PRO: Control por Voz",
+        desc: "Desbloquea el poder del manos libres. El guion avanza a tu ritmo de voz. Prueba la versión gratuita.",
+        cta: "Desbloquear Función PRO 🎤",
       },
       focus: {
         title: "Enfoque Dinámico",
@@ -189,6 +189,10 @@ export const es = {
       pacing: {
         title: "Calculadora de Tiempo",
         desc: "Calcula el tiempo estimado de lectura de tu guion (WPM). Ajusta el texto para 60 segundos (TikTok/Reels) o 5 minutos (YouTube). Produce contenido optimizado para cada plataforma.",
+      },
+      shortcuts: {
+        title: "Atajos de Teclado",
+        desc: "Control total con el teclado. Espacio para reproducir/pausar, flechas para velocidad.",
       },
     },
     pricing: {

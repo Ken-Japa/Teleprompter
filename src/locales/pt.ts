@@ -26,7 +26,7 @@ export const pt = {
     hero: {
       headline: "Teleprompter Online GRÁTIS. Use no PC, Notebook ou Celular (iPhone/Android).",
       subheadline:
-        "Seu celular é o controle remoto. Conexão P2P, instantânea e sem atrasos, para vídeos perfeitos.",
+        "Seu celular é o controle remoto. Controle por Voz, Conexão P2P, instantânea e sem atrasos, para vídeos perfeitos.",
       cta: "🚀 Começar Grátis (20 min)",
       ctaSecondary: "▶️ Ver Como Funciona",
       versionLive: "Versão 2.0 Online",
@@ -76,7 +76,7 @@ export const pt = {
           "🔒 Seus dados ficam no SEU dispositivo",
           "🌐 Funciona offline (voo, sem internet, eventos ao vivo)",
           "📹 Grave e baixe o áudio do roteiro para revisão posterior",
-          "🎨 Personalize visual com temas e chroma key profissional",
+          "🎨 Personalize visual com temas e chroma key",
         ],
       },
     },
@@ -162,8 +162,9 @@ export const pt = {
           "Seu roteiro é salvo apenas no seu navegador. Sem nuvem, sem servidores, garantindo privacidade total.",
       },
       voice: {
-        title: "Controle por Voz",
-        desc: "Teleprompter mãos-livres: Seu roteiro rola automaticamente com sua voz, mantendo você focado.",
+        title: "Recurso PRO: Controle por Voz",
+        desc: "Destrave o Poder do Hands-Free. Deixe o roteiro rolar no seu ritmo de fala. Experimente o Free Trial.",
+        cta: "Desbloqueie o Recurso PRO 🎤",
       },
       focus: {
         title: "Foco Dinâmico",
@@ -185,6 +186,10 @@ export const pt = {
       pacing: {
         title: "Calculadora de Tempo",
         desc: "Calcule o tempo estimado de leitura do seu roteiro (WPM). Ajuste o texto para caber em 60 segundos (TikTok/Reels) ou 5 minutos (YouTube). Produza conteúdo otimizado para cada plataforma.",
+      },
+      shortcuts: {
+        title: "Atalhos de Teclado",
+        desc: "Controle total pelo teclado. Espaço para play/pause, setas para ajustar velocidade.",
       },
     },
     pricing: {

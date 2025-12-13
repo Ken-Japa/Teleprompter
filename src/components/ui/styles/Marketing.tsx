@@ -34,12 +34,16 @@ export const FeatureCard = ({
     title,
     desc,
     icon,
+    children,
+    className = "",
 }: {
     title: string;
     desc: string;
     icon: React.ReactNode;
+    children?: React.ReactNode;
+    className?: string;
 }) => (
-    <div className="relative group h-full perspective-1000">
+    <div className={`relative group h-full perspective-1000 ${className}`}>
         <div className="absolute inset-0 bg-gradient-to-b from-brand-500/20 to-transparent rounded-3xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
         <div className="h-full p-[1px] rounded-3xl bg-gradient-to-b from-white/10 via-white/5 to-transparent transition-colors duration-500 group-hover:from-brand-500/40 group-hover:via-brand-500/10 group-hover:to-transparent">
             <div className="bg-[#0a0f1e]/80 backdrop-blur-md h-full p-8 rounded-[23px] relative z-10 overflow-hidden transition-all duration-500 group-hover:bg-[#0a0f1e]/90 group-hover:translate-y-[-4px]">
@@ -49,7 +53,8 @@ export const FeatureCard = ({
                         {icon}
                     </div>
                     <h3 className="text-xl font-display font-bold text-white mb-3 tracking-tight">{title}</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed text-balance group-hover:text-slate-300 transition-colors">{desc}</p>
+                    <p className="text-slate-400 text-sm leading-relaxed text-balance group-hover:text-slate-300 transition-colors mb-6">{desc}</p>
+                    {children && <div className="mt-auto">{children}</div>}
                 </div>
             </div>
         </div>

@@ -26,7 +26,7 @@ export const en = {
     hero: {
       headline: "Free Online Autocue. Use on PC, Laptop, or Mobile.",
       subheadline:
-        "Your phone is the remote control. Instant P2P connection with zero lag for perfect videos.",
+        "Your phone is the remote control. Voice Control, Instant P2P connection with zero lag for perfect videos.",
       cta: "🚀 Start Free (20 min)",
       ctaSecondary: "▶️ See How It Works",
       versionLive: "Version 2.0 Live",
@@ -74,7 +74,7 @@ export const en = {
           "🔒 Data stays on YOUR device",
           "🌐 Works offline (flight, no internet, live events)",
           "📹 Record and download script audio for later review",
-          "🎨 Customize visuals with themes and professional chroma key",
+          "🎨 Customize visuals with themes and chroma key",
         ],
       },
     },
@@ -158,8 +158,9 @@ export const en = {
         desc: "Ultimate privacy: No cloud, no servers, your script is stored only in your browser.",
       },
       voice: {
-        title: "Voice Control",
-        desc: "Hands-free teleprompter: Your script scrolls automatically with your voice, keeping you focused.",
+        title: "Voice Control (PRO)",
+        desc: "Unlock the power of hands-free. Your script scrolls automatically with your voice, keeping you focused.",
+        cta: "Unlock PRO Feature 🎤",
       },
       focus: {
         title: "Dynamic Focus",
@@ -180,6 +181,10 @@ export const en = {
       pacing: {
         title: "Pacing Calculator",
         desc: "Calculate your script's estimated reading time (WPM). Adjust text to fit 60 seconds (TikTok/Reels) or 5 minutes (YouTube). Produce optimized content for each platform.",
+      },
+      shortcuts: {
+        title: "Keyboard Shortcuts",
+        desc: "Control everything with your keyboard. Space to play/pause, arrows to adjust speed.",
       },
     },
     pricing: {
