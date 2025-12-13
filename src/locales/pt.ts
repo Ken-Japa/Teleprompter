@@ -75,6 +75,8 @@ export const pt = {
           "⚡ Conexão P2P = Zero delay. Vídeos sem cortes.",
           "🔒 Seus dados ficam no SEU dispositivo",
           "🌐 Funciona offline (voo, sem internet, eventos ao vivo)",
+          "📹 Grave e baixe o áudio do roteiro para revisão posterior",
+          "🎨 Personalize visual com temas e chroma key profissional",
         ],
       },
     },
@@ -170,7 +172,15 @@ export const pt = {
       },
       themes: {
         title: "Temas Visuais",
-        desc: "Modos Escuro, Claro, Matrix e Alto Contraste para qualquer ambiente.",
+        desc: "Modos Escuro, Claro, Matrix, Alto Contraste e Chroma Key (verde/azul) para gravações profissionais com fundo removível.",
+      },
+      pip: {
+        title: "Modo Picture-in-Picture",
+        desc: "Mantenha o teleprompter sempre visível em uma janela flutuante enquanto trabalha em outros aplicativos.",
+      },
+      recording: {
+        title: "Gravação de Áudio",
+        desc: "Grave a narração do seu roteiro e baixe o áudio para revisão, edição ou backup do seu conteúdo.",
       },
       pacing: {
         title: "Calculadora de Tempo",

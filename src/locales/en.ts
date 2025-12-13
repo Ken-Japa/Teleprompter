@@ -73,6 +73,8 @@ export const en = {
           "⚡ P2P Connection = Zero Lag. Flawless videos.",
           "🔒 Data stays on YOUR device",
           "🌐 Works offline (flight, no internet, live events)",
+          "📹 Record and download script audio for later review",
+          "🎨 Customize visuals with themes and professional chroma key",
         ],
       },
     },
@@ -165,7 +167,15 @@ export const en = {
       },
       themes: {
         title: "Visual Themes",
-        desc: "Dark, Light, Matrix, and High Contrast modes for any environment.",
+        desc: "Dark, Light, Matrix, High Contrast, and Chroma Key (green/blue) modes for professional recordings with removable backgrounds.",
+      },
+      pip: {
+        title: "Picture-in-Picture Mode",
+        desc: "Keep the teleprompter always visible in a floating window while working in other applications.",
+      },
+      recording: {
+        title: "Audio Recording",
+        desc: "Record your script narration and download the audio for review, editing, or content backup.",
       },
       pacing: {
         title: "Pacing Calculator",
