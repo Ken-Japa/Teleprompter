@@ -1,4 +1,6 @@
 import puppeteer from 'puppeteer';
+import puppeteerCore from 'puppeteer-core';
+import chromium from '@sparticuz/chromium';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -11,8 +13,11 @@ const DIST_DIR = path.join(__dirname, '..', 'dist');
 const PORT = 4173;
 const BASE_URL = `http://localhost:${PORT}`;
 
+const isVercel = process.env.VERCEL === '1';
+
 async function prerender() {
     console.log('🚀 Starting Prerender Process...');
+    console.log(`Environment: ${isVercel ? 'Vercel (CI)' : 'Local'}`);
 
     // 1. Start static server (using vite preview)
     console.log('📦 Starting preview server...');
@@ -35,9 +40,22 @@ async function prerender() {
     console.log(`✅ Server running at ${BASE_URL}`);
 
     // 2. Launch Puppeteer
-    const browser = await puppeteer.launch({
-        headless: "new"
-    });
+    let browser;
+    if (isVercel) {
+        console.log('☁️ Launching Vercel Chromium...');
+        browser = await puppeteerCore.launch({
+            args: chromium.args,
+            defaultViewport: chromium.defaultViewport,
+            executablePath: await chromium.executablePath(),
+            headless: chromium.headless,
+        });
+    } else {
+        console.log('💻 Launching Local Chrome...');
+        browser = await puppeteer.launch({
+            headless: "new"
+        });
+    }
+
     const page = await browser.newPage();
 
     // 3. Collect routes
