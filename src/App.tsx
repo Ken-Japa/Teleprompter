@@ -185,6 +185,7 @@ const App: React.FC = () => {
                 {view === "SEO_PWA_INSTALL" && <SeoPages.ComoInstalarPwa onLaunch={launchApp} />}
                 {view === "SEO_PRIVACY" && <SeoPages.PrivacidadeSeguranca onLaunch={launchApp} />}
                 {view === "SEO_O_QUE_E" && <SeoPages.TeleprompterOQueE onLaunch={launchApp} />}
+                {view === "SEO_MODO_MUSICO" && <SeoPages.TeleprompterModoMusico onLaunch={launchApp} />}
 
                 {/* Script Pages */}
                 {view === "SEO_SCRIPTS" && <SeoPages.TeleprompterScriptsPage onLaunch={launchApp} />}

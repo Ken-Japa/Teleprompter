@@ -166,6 +166,11 @@ export const pt = {
         desc: "Destrave o Poder do Hands-Free. Deixe o roteiro rolar no seu ritmo de fala. Experimente o Free Trial.",
         cta: "Desbloqueie o Recurso PRO 🎤",
       },
+      musician: {
+        title: "Modo Músico",
+        desc: "Exiba letras e cifras perfeitamente alinhadas. Ideal para músicos que precisam acompanhar acordes e letras durante apresentações.",
+        cta: "Saiba Mais sobre o Modo Músico 🎸",
+      },
       focus: {
         title: "Foco Dinâmico",
         desc:

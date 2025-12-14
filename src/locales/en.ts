@@ -162,6 +162,11 @@ export const en = {
         desc: "Unlock the power of hands-free. Your script scrolls automatically with your voice, keeping you focused.",
         cta: "Unlock PRO Feature 🎤",
       },
+      musician: {
+        title: "Musician Mode",
+        desc: "Display lyrics and chords perfectly aligned. Ideal for musicians who need to follow chords and lyrics during performances.",
+        cta: "Learn More about Musician Mode 🎸",
+      },
       focus: {
         title: "Dynamic Focus",
         desc: "Dynamic focus line: Smart highlighting tracks your reading, ensuring you never lose your place.",

@@ -169,6 +169,11 @@ export const es = {
         desc: "Desbloquea el poder del manos libres. El guion avanza a tu ritmo de voz. Prueba la versión gratuita.",
         cta: "Desbloquear Función PRO 🎤",
       },
+      musician: {
+        title: "Modo Músico",
+        desc: "Muestra letras y acordes perfectamente alineados. Ideal para músicos que necesitan seguir acordes y letras durante presentaciones.",
+        cta: "Más Información sobre el Modo Músico 🎸",
+      },
       focus: {
         title: "Enfoque Dinámico",
         desc:

@@ -251,4 +251,13 @@ export const ROUTES_CONFIG = {
             es: "/es/teleprompter-que-es",
         },
     },
+    SEO_MODO_MUSICO: {
+        priority: "0.8",
+        changefreq: "monthly",
+        paths: {
+            pt: "/teleprompter-modo-musico",
+            en: "/en/teleprompter-musician-mode",
+            es: "/es/teleprompter-modo-musico",
+        },
+    },
 };

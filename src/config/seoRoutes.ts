@@ -111,6 +111,11 @@ export const SeoPages = {
             default: module.TeleprompterOQueE,
         }))
     ),
+    TeleprompterModoMusico: React.lazy(() =>
+        import("../pages/seo/TeleprompterModoMusico").then((module) => ({
+            default: module.TeleprompterModoMusico,
+        }))
+    ),
 };
 
 export const seoKeyMap: Record<SeoRouteKey, keyof typeof SeoPages> = {
@@ -142,6 +147,7 @@ export const seoKeyMap: Record<SeoRouteKey, keyof typeof SeoPages> = {
     SEO_SCRIPTS_CLASSES: "TeleprompterScriptCategory",
     SEO_SCRIPTS_INSTITUTIONAL: "TeleprompterScriptCategory",
     SEO_O_QUE_E: "TeleprompterOQueE",
+    SEO_MODO_MUSICO: "TeleprompterModoMusico",
 };
 
 export type SeoRouteKey =
@@ -172,4 +178,5 @@ export type SeoRouteKey =
     | "SEO_SCRIPTS_SALES"
     | "SEO_SCRIPTS_CLASSES"
     | "SEO_SCRIPTS_INSTITUTIONAL"
-    | "SEO_O_QUE_E";
+    | "SEO_O_QUE_E"
+    | "SEO_MODO_MUSICO";
