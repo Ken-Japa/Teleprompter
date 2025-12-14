@@ -85,6 +85,7 @@ export enum MessageType {
     TOGGLE_RECORDING = "TOGGLE_RECORDING",
     START_REMOTE_RECORDING = "START_REMOTE_RECORDING",
     STOP_REMOTE_RECORDING = "STOP_REMOTE_RECORDING",
+    TEXT_COMMAND_TRIGGERED = "TEXT_COMMAND_TRIGGERED",
 }
 
 export interface PeerMessage {
@@ -148,12 +149,18 @@ export interface TextFragment {
 }
 
 
+export interface TextCommand {
+    type: 'STOP' | 'PAUSE';
+    duration?: number; // in seconds, only for PAUSE
+}
+
 export interface Sentence {
     id: number;
     cleanContent: string;
     startIndex?: number;
     fragments: TextFragment[];
     isChord?: boolean;
+    command?: TextCommand;
 }
 
 export interface RemoteActions {

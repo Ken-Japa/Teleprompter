@@ -75,7 +75,8 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
       cleanContent: text,
       fragments: [{ text, type: original.fragments[0]?.type || "normal" }],
       isChord: original.isChord,
-      startIndex: original.startIndex
+      startIndex: original.startIndex,
+      command: original.command
     });
 
     for (let i = 0; i < sentences.length; i++) {
@@ -185,7 +186,7 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
           style={{ fontSize: "var(--prompter-font-size)" }}
         >
           {processedSentences.map((s: Sentence) => (
-            <SentenceItem key={s.id} id={s.id} fragments={s.fragments} isChord={s.isChord} isMusicianMode={isMusicianMode} />
+            <SentenceItem key={s.id} id={s.id} fragments={s.fragments} isChord={s.isChord} isMusicianMode={isMusicianMode} command={s.command} />
           ))}
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { Sentence, TextFragment } from "../types";
+import { Sentence, TextFragment, TextCommand } from "../types";
 
 export const parseTextToSentences = (
     text: string
@@ -63,12 +63,14 @@ export const parseTextToSentences = (
     const finalizeSentence = (force = false) => {
         const trimmedContent = currentCleanContent.trim();
         if (trimmedContent.length > 0 || force) {
+            const command = detectTextCommand(trimmedContent);
             processedSentences.push({
                 id: sentenceIdCounter++,
                 cleanContent: trimmedContent,
                 fragments: currentFragments,
                 startIndex: globalCharIndex,
                 isChord: isChordLine(trimmedContent),
+                command,
             });
             globalCharIndex += trimmedContent.length + 1; // +1 for space
         }
@@ -161,6 +163,35 @@ export const parseTextToSentences = (
         fullCleanText: builtString,
         charToSentenceMap: map,
     };
+};
+
+// --- TEXT COMMAND DETECTION LOGIC ---
+// Detect special commands in text: [STOP], [PAUSE X]
+// Multilingual support: [STOP], [PARAR], [PARE] (PT), [STOP] (EN/ES)
+// [PAUSE X], [PAUSA X] for timed pauses
+
+const COMMAND_STOP_REGEX = /\[(stop|parar|pare)\]/gi;
+const COMMAND_PAUSE_REGEX = /\[(pause|pausa)\s+(\d+)\]/gi;
+
+const detectTextCommand = (text: string): TextCommand | undefined => {
+    // Check for STOP command (case-insensitive, multilingual)
+    if (COMMAND_STOP_REGEX.test(text)) {
+        return { type: 'STOP' };
+    }
+
+    // Reset regex state
+    COMMAND_PAUSE_REGEX.lastIndex = 0;
+
+    // Check for PAUSE command with duration
+    const pauseMatch = COMMAND_PAUSE_REGEX.exec(text);
+    if (pauseMatch && pauseMatch[2]) {
+        const duration = parseInt(pauseMatch[2], 10);
+        if (!isNaN(duration) && duration > 0) {
+            return { type: 'PAUSE', duration };
+        }
+    }
+
+    return undefined;
 };
 
 // --- CHORD DETECTION LOGIC ---

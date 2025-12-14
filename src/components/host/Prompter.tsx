@@ -27,6 +27,7 @@ import { useNavigationMap } from "../../hooks/useNavigationMap";
 import { useMediaRecorder } from "../../hooks/useMediaRecorder";
 import { usePrompterTheme } from "../../hooks/usePrompterTheme";
 import { UI_LIMITS } from "../../config/constants";
+import { TextCommand } from "../../types";
 
 interface PrompterProps {
   text: string;
@@ -60,6 +61,7 @@ export const Prompter = memo(
 
       // Ephemeral State
       const [isVoiceMode, setIsVoiceMode] = useState<boolean>(false);
+      const [pauseTimeoutId, setPauseTimeoutId] = useState<ReturnType<typeof setTimeout> | null>(null);
 
       // Notify parent of voice mode change
       useEffect(() => {
@@ -162,6 +164,26 @@ export const Prompter = memo(
       // Abstraction: Handle DOM measurements
       const metricsRef = useElementMetrics(scrollContainerRef, [sentences, fontSize, margin, isUpperCase]);
 
+      // Command Detection and Execution
+      const handleCommandTriggered = useCallback((command: TextCommand) => {
+        if (command.type === 'STOP') {
+          onStateChange(false, externalState.speed);
+        } else if (command.type === 'PAUSE' && command.duration) {
+          onStateChange(false, externalState.speed);
+          const timeoutId = setTimeout(() => {
+            onStateChange(true, externalState.speed);
+          }, command.duration * 1000);
+          setPauseTimeoutId(timeoutId);
+        }
+      }, [onStateChange, externalState.speed]);
+
+      // Cleanup pause timeout on unmount
+      useEffect(() => {
+        return () => {
+          if (pauseTimeoutId) clearTimeout(pauseTimeoutId);
+        };
+      }, [pauseTimeoutId]);
+
       useWakeLock();
 
       const handleAutoStop = useCallback(() => {
@@ -189,6 +211,7 @@ export const Prompter = memo(
         scrollContainerRef,
         onScrollUpdate,
         onAutoStop: handleAutoStop,
+        onCommandTriggered: handleCommandTriggered,
       });
 
       // Force wake up when critical props change or component mounts
