@@ -14,6 +14,11 @@ export const parseTextToSentences = (
             charToSentenceMap: new Int32Array(0),
         };
 
+    // 0. Pre-process: Convert bracketed/parenthesized text to red tags for Musician Mode
+    // This allows [...] and (...) to be formatted in red and ignored by voice control
+    const BRACKET_REGEX = /(\[.*?\]|\(.*?\))/g;
+    text = text.replace(BRACKET_REGEX, (match) => `<r>${match}</r>`);
+
     // 1. Tokenize: Convert raw text into a flat list of styled tokens
     const tokens: {
         text: string;
