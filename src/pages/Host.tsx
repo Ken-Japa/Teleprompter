@@ -50,7 +50,10 @@ export const Host: React.FC = () => {
                     setText={actions.setText}
                     peerId={peerId}
                     status={status}
-                    onStart={actions.navigation.startPresentation}
+                    onStart={() => {
+                        actions.prompterActions.setIsHudless(false);
+                        actions.navigation.startPresentation();
+                    }}
                     onStartHudless={() => {
                         actions.prompterActions.setIsHudless(true);
                         actions.navigation.startPresentation();

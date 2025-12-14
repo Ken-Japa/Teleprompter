@@ -208,6 +208,17 @@ export const Header: React.FC<HeaderProps> = () => {
 
                             <S.PrimaryButton
                                 onClick={() => {
+                                    window.location.hash = "app";
+                                    setIsMobileMenuOpen(false);
+                                }}
+                                className="w-full py-4 text-lg shadow-xl shadow-brand-500/20 bg-slate-700 hover:bg-slate-600"
+                                aria-label={t("menu.start")}
+                            >
+                                {t("menu.start")}
+                            </S.PrimaryButton>
+
+                            <S.PrimaryButton
+                                onClick={() => {
                                     window.location.hash = "app?redeem=true";
                                     setIsMobileMenuOpen(false);
                                 }}

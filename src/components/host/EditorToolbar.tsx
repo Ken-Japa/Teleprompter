@@ -26,35 +26,15 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
     const [showHotkeyModal, setShowHotkeyModal] = useState(false);
 
     return (
-        <S.FormattingToolbar>
-            {/* Container with wrapping for mobile */}
-            <div className="flex flex-wrap sm:flex-nowrap items-center gap-y-4 gap-x-2 w-full justify-between">
+        // Wrapper replaces S.FormattingToolbar to allow custom sticky logic
+        // Desktop: Sticky Top (whole bar). Mobile: Static (children handle sticky).
+        <div className="md:sticky md:top-0 md:z-30 w-full bg-slate-950/80 backdrop-blur-xl border-b border-white/5 md:shadow-lg transition-all duration-300">
 
-                {/* Highlight Section - Full width on very small screens, or auto */}
-                <div className="order-2 sm:order-1 flex items-center gap-2 justify-center sm:justify-start w-full sm:w-auto mt-2 sm:mt-0 border-t border-white/5 pt-3 sm:border-0 sm:pt-0">
-                    <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider hidden md:block">
-                        {t("host.editor.highlight")}
-                    </span>
-                    <div
-                        className="flex items-center gap-3 bg-white/5 px-3 py-1.5 rounded-full border border-white/5"
-                        role="group"
-                        aria-label="Text Highlights"
-                    >
-                        <S.ColorButton color="red" label="Red Highlight" onClick={() => onInsertTag("r")} />
-                        <S.ColorButton color="yellow" label="Yellow Highlight" onClick={() => onInsertTag("y")} />
-                        <S.ColorButton color="green" label="Green Highlight" onClick={() => onInsertTag("g")} />
-                        <S.ColorButton color="blue" label="Blue Highlight" onClick={() => onInsertTag("b")} />
-                    </div>
+            {/* Flex Container */}
+            <div className="flex flex-col md:flex-row items-center md:gap-4 w-full md:px-6 md:py-3 max-w-4xl mx-auto">
 
-                    {/* Hint text closer to color menu */}
-                    <span className="text-[10px] text-slate-600 hidden lg:inline-block font-mono ml-2">
-                        {t("host.tips.desc")} &lt;tag&gt;
-                    </span>
-                </div>
-
-                {/* Central Musician Mode Toggle - High Prominence */}
-                {/* On mobile: Order 1 (Top Center) */}
-                <div className="order-1 sm:order-2 flex-none sm:flex-1 flex justify-center w-full sm:w-auto mb-2 sm:mb-0">
+                {/* 1. Musician Mode (Top on Mobile, First on Desktop) */}
+                <div className="w-full md:w-auto flex justify-center py-3 md:py-0 border-b border-white/5 md:border-0 order-1">
                     <S.IconButton
                         onClick={onToggleMusicianMode}
                         title={t("host.editor.musicianMode")}
@@ -69,11 +49,8 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                     </S.IconButton>
                 </div>
 
-                {/* Actions */}
-                {/* On mobile: Order 3 (Below Highlight on small screens if wrapped, or next to it) */}
-                {/* We'll make it wrap to a new line if needed or stay on the right */}
-                <div className="order-3 flex items-center justify-center sm:justify-end gap-2 w-full sm:w-auto">
-                    {/* Enhanced Pacing Button */}
+                {/* 2. Actions (Middle on Mobile, Middle on Desktop) */}
+                <div className="order-2 w-full md:w-auto flex flex-wrap justify-center gap-2 py-3 md:py-0 border-b border-white/5 md:border-0">
                     <S.IconButton
                         onClick={() => setShowPacingModal(true)}
                         title={t("pacing.button")}
@@ -119,15 +96,34 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                         <InfoIcon className="w-5 h-5" />
                     </S.IconButton>
 
-                    {/* Share Button - Last Item */}
-                    <div className="w-px h-6 bg-white/10 mx-1"></div>
+                    <div className="w-px h-6 bg-white/10 mx-1 hidden sm:block"></div>
                     <ShareButton variant="icon" className="w-9 h-9 rounded-full bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500/20 hover:text-indigo-300 border border-indigo-500/20" />
                 </div>
+
+                {/* 3. Color Section - Highlight (Bottom Sticky on Mobile, Last on Desktop) */}
+                <div className="order-3 md:ml-auto w-full md:w-auto sticky top-0 z-20 md:static bg-slate-950/90 md:bg-transparent backdrop-blur-md md:backdrop-blur-none border-b border-white/10 md:border-0 py-3 md:py-0 transition-all shadow-lg md:shadow-none">
+                    <div className="flex items-center justify-center md:justify-end gap-2">
+                        <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider hidden lg:block">
+                            {t("host.editor.highlight")}
+                        </span>
+                        <div
+                            className="flex items-center gap-3 bg-white/5 px-3 py-1.5 rounded-full border border-white/5"
+                            role="group"
+                            aria-label="Text Highlights"
+                        >
+                            <S.ColorButton color="red" label="Red Highlight" onClick={() => onInsertTag("r")} />
+                            <S.ColorButton color="yellow" label="Yellow Highlight" onClick={() => onInsertTag("y")} />
+                            <S.ColorButton color="green" label="Green Highlight" onClick={() => onInsertTag("g")} />
+                            <S.ColorButton color="blue" label="Blue Highlight" onClick={() => onInsertTag("b")} />
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <TutorialModal isOpen={showTutorialModal} onClose={() => setShowTutorialModal(false)} />
             <PacingModal isOpen={showPacingModal} onClose={() => setShowPacingModal(false)} text={text} />
             <HotkeyConfigModal isOpen={showHotkeyModal} onClose={() => setShowHotkeyModal(false)} isPro={isPro} onUnlockPro={onUnlockPro} />
-        </S.FormattingToolbar >
+        </div>
     );
 });
