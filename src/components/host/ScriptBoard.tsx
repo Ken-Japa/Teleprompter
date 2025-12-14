@@ -68,15 +68,16 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
     const maxChars = Math.max(15, Math.floor(availableWidth / charWidth));
 
     const newSentences: Sentence[] = [];
-    let idCounter = 10000;
+    let fragmentCounter = 0; // Counter for unique fragment IDs
 
-    const createFragment = (text: string, original: Sentence): Sentence => ({
-      id: idCounter++,
+    const createFragment = (text: string, original: Sentence, fragmentIndex: number): Sentence => ({
+      id: original.id * 10000 + fragmentIndex, // Unique ID (e.g., 0, 1, 2 becomes 10000, 10001, 20000, 20001)
       cleanContent: text,
       fragments: [{ text, type: original.fragments[0]?.type || "normal" }],
       isChord: original.isChord,
       startIndex: original.startIndex,
-      command: original.command
+      command: original.command,
+      originalSentenceId: original.id // Store original ID for voice control
     });
 
     for (let i = 0; i < sentences.length; i++) {
@@ -115,8 +116,8 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
           }
 
           // Push Splitted Parts
-          newSentences.push(createFragment(chordText.substring(0, splitIndex), current));
-          newSentences.push(createFragment(lyricText.substring(0, splitIndex), next));
+          newSentences.push(createFragment(chordText.substring(0, splitIndex), current, fragmentCounter++));
+          newSentences.push(createFragment(lyricText.substring(0, splitIndex), next, fragmentCounter++));
 
           // Advance
           chordText = chordText.substring(splitIndex);
@@ -125,8 +126,8 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
 
         // Push Remainder
         if (chordText || lyricText) {
-          newSentences.push(createFragment(chordText, current));
-          newSentences.push(createFragment(lyricText, next));
+          newSentences.push(createFragment(chordText, current, fragmentCounter++));
+          newSentences.push(createFragment(lyricText, next, fragmentCounter++));
         }
 
         i++; // Skip next since we processed it as a pair
@@ -143,10 +144,10 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
               break;
             }
           }
-          newSentences.push(createFragment(text.substring(0, splitIndex), current));
+          newSentences.push(createFragment(text.substring(0, splitIndex), current, fragmentCounter++));
           text = text.substring(splitIndex);
         }
-        if (text) newSentences.push(createFragment(text, current));
+        if (text) newSentences.push(createFragment(text, current, fragmentCounter++));
       }
     }
     return newSentences;
@@ -186,7 +187,7 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
           style={{ fontSize: "var(--prompter-font-size)" }}
         >
           {processedSentences.map((s: Sentence) => (
-            <SentenceItem key={s.id} id={s.id} fragments={s.fragments} isChord={s.isChord} isMusicianMode={isMusicianMode} command={s.command} />
+            <SentenceItem key={s.id} id={s.id} fragments={s.fragments} isChord={s.isChord} isMusicianMode={isMusicianMode} command={s.command} originalSentenceId={s.originalSentenceId} />
           ))}
         </div>
       </div>

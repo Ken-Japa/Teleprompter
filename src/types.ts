@@ -162,6 +162,7 @@ export interface Sentence {
     fragments: TextFragment[];
     isChord?: boolean;
     command?: TextCommand;
+    originalSentenceId?: number; // For voice control when sentence is split in musician mode
 }
 
 export interface RemoteActions {

@@ -327,7 +327,12 @@ export const Prompter = memo(
 
         const newId = effectiveActiveSentenceIndex;
         const oldElement = currentActiveElementRef.current;
-        const newElement = document.getElementById(`sentence-${newId}`);
+
+        // Try direct ID first, fallback to data attribute for musician mode
+        let newElement = document.getElementById(`sentence-${newId}`);
+        if (!newElement) {
+          newElement = document.querySelector(`[data-original-sentence-id="${newId}"]`) as HTMLElement | null;
+        }
 
         if (oldElement && oldElement !== newElement) oldElement.classList.remove("sentence-active");
         if (newElement && oldElement !== newElement) {

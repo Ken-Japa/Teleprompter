@@ -11,7 +11,14 @@ export const calculateVoiceTarget = (
 ): number | null => {
   // Update active element cache if index changed
   if (activeSentenceIndex !== lastVoiceIndexRef.current) {
-    const activeEl = document.getElementById(`sentence-${activeSentenceIndex}`);
+    // Try direct ID first (works for normal mode and unsplit sentences)
+    let activeEl = document.getElementById(`sentence-${activeSentenceIndex}`);
+
+    // Fallback: Search by data-original-sentence-id (for musician mode split sentences)
+    if (!activeEl) {
+      activeEl = document.querySelector(`[data-original-sentence-id="${activeSentenceIndex}"]`) as HTMLElement | null;
+    }
+
     if (activeEl) {
       currentActiveElementRef.current = activeEl;
     }

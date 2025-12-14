@@ -8,10 +8,11 @@ interface SentenceItemProps {
     isChord?: boolean;
     isMusicianMode?: boolean;
     command?: TextCommand;
+    originalSentenceId?: number; // For voice control in musician mode
 }
 
 export const SentenceItem = memo(
-    ({ id, fragments, isChord, isMusicianMode, command }: SentenceItemProps) => {
+    ({ id, fragments, isChord, isMusicianMode, command, originalSentenceId }: SentenceItemProps) => {
         // Musician Mode Styling Logic
         const className = `sentence-item content-visibility-auto block min-h-[1em] ${isMusicianMode
             ? `font-mono whitespace-pre ${isChord ? "text-yellow-400 font-bold" : "text-white"}`
@@ -21,6 +22,7 @@ export const SentenceItem = memo(
         return (
             <span
                 id={`sentence-${id}`}
+                data-original-sentence-id={originalSentenceId} // For voice control matching
                 className={className}
                 data-command={command ? JSON.stringify(command) : undefined}
             >
@@ -35,5 +37,6 @@ export const SentenceItem = memo(
         prev.fragments === next.fragments &&
         prev.isMusicianMode === next.isMusicianMode &&
         prev.isChord === next.isChord &&
-        prev.command === next.command
+        prev.command === next.command &&
+        prev.originalSentenceId === next.originalSentenceId
 );
