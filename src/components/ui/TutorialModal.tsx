@@ -122,6 +122,18 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({ isOpen, onClose })
               <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 flex-shrink-0"></div>
               <p className="text-sm text-slate-400"><strong className="text-slate-200 block mb-0.5">{t('tutorial.advancedFeatures.focusMode.title')}</strong> {t('tutorial.advancedFeatures.focusMode.description')}</p>
             </div>
+            <div className="flex items-start gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 flex-shrink-0"></div>
+              <p className="text-sm text-slate-400"><strong className="text-slate-200 block mb-0.5">{t('tutorial.advancedFeatures.textCommands.title')}</strong> {t('tutorial.advancedFeatures.textCommands.description')}</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 flex-shrink-0"></div>
+              <p className="text-sm text-slate-400"><strong className="text-slate-200 block mb-0.5">{t('tutorial.advancedFeatures.noControls.title')}</strong> {t('tutorial.advancedFeatures.noControls.description')}</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 flex-shrink-0"></div>
+              <p className="text-sm text-slate-400"><strong className="text-slate-200 block mb-0.5">{t('tutorial.advancedFeatures.musicianMode.title')}</strong> {t('tutorial.advancedFeatures.musicianMode.description')}</p>
+            </div>
           </div>
         </section>
       </div>

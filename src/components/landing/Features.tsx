@@ -18,7 +18,7 @@ export const Features: React.FC = () => {
                 <div className="mb-12 stagger-item">
                     <S.FeatureCard
                         className="md:col-span-3 border-emerald-500/30 max-w-4xl mx-auto text-center"
-                        icon={<MicIcon className="w-8 h-8 text-emerald-400 icon-hover-rotate" />}
+                        icon={<MicIcon className="w-10 h-10 text-emerald-400 icon-hover-rotate mx-auto" />}
                         title={t("landing.features.voice.title")}
                         desc={t("landing.features.voice.desc")}
                     >
@@ -37,7 +37,7 @@ export const Features: React.FC = () => {
                 <div className="mb-12 stagger-item">
                     <S.FeatureCard
                         className="md:col-span-3 border-yellow-500/30 max-w-4xl mx-auto text-center"
-                        icon={<MusicIcon className="w-8 h-8 text-yellow-400 icon-hover-rotate" />}
+                        icon={<MusicIcon className="w-10 h-10 text-yellow-400 icon-hover-rotate mx-auto" />}
                         title={t("landing.features.musician.title")}
                         desc={t("landing.features.musician.desc")}
                     >

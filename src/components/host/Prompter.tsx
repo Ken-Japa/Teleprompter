@@ -142,21 +142,7 @@ export const Prompter = memo(
         onStateChange(true, externalState.speed);
       }, [resumeRecording, onStateChange, externalState.speed]);
 
-      // Keyboard Shortcuts
-      useKeyboardShortcuts({
-        isPlaying: externalState.isPlaying,
-        onTogglePlay: () => onStateChange(!externalState.isPlaying, externalState.speed),
-        speed: externalState.speed,
-        onSpeedChange: (val) => onStateChange(externalState.isPlaying, val),
-        fontSize: fontSize,
-        onFontSizeChange: actions.setFontSize,
-        onToggleMirror: () => actions.setIsMirrored(!isMirrored),
-        onToggleFlip: () => actions.setIsFlipVertical(!isFlipVertical),
-        onToggleFocus: () => actions.setIsFocusMode(!isFocusMode),
-        onExit: onExit,
-        onReset: resetPrompter,
-        onToggleHud: () => actions.setIsHudless(!isHudless), // Toggles HUD-less mode setting
-      });
+
 
       // Voice Control
       const { startListening, stopListening, resetVoice, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError } = useVoiceControl(
@@ -236,6 +222,22 @@ export const Prompter = memo(
           currentActiveElementRef.current.classList.remove("sentence-active");
         }
       }, [onStateChange, externalState.speed, resetVoice, resetPhysics, currentActiveElementRef, onReset]);
+
+      // Keyboard Shortcuts (Moved here to access resetPrompter)
+      useKeyboardShortcuts({
+        isPlaying: externalState.isPlaying,
+        onTogglePlay: () => onStateChange(!externalState.isPlaying, externalState.speed),
+        speed: externalState.speed,
+        onSpeedChange: (val) => onStateChange(externalState.isPlaying, val),
+        fontSize: fontSize,
+        onFontSizeChange: actions.setFontSize,
+        onToggleMirror: () => actions.setIsMirrored(!isMirrored),
+        onToggleFlip: () => actions.setIsFlipVertical(!isFlipVertical),
+        onToggleFocus: () => actions.setIsFocusMode(!isFocusMode),
+        onExit: onExit,
+        onReset: resetPrompter,
+        onToggleHud: () => actions.setIsHudless(!isHudless),
+      });
 
       // Voice control toggle
       const toggleVoice = useCallback(() => {

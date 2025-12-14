@@ -17,6 +17,7 @@ export const en = {
     backToHome: "Back to Home",
     validate: "Validate",
     validateLicense: "Validate License",
+    start: "Start",
   },
   landing: {
     meta: {
@@ -189,7 +190,7 @@ export const en = {
       },
       shortcuts: {
         title: "Keyboard Shortcuts",
-        desc: "Control everything with your keyboard. Space to play/pause, arrows to adjust speed.",
+        desc: "Full keyboard control, or use text commands like STOP and RESET for automatic script control.",
       },
     },
     pricing: {
@@ -222,6 +223,7 @@ export const en = {
           "Priority support",
           'Badge "Early Supporter"',
           "Early access to features",
+          "Customize Keyboard Shortcuts",
         ],
       },
       paymentInfo: "💳 One-time payment via Card. \n🔒 7-day guarantee.",
@@ -463,6 +465,21 @@ Paste your script here and customize your experience to start shining!`,
       focusMode: {
         title: "Focus Mode",
         description: "Activate Focus Mode to highlight the reading line and dim the surrounding text.",
+      },
+      textCommands: {
+        title: "In-Script Text Commands",
+        description:
+          "Type '[STOP]' or '[PAUSE]' on a separate line in your script to automatically pause scrolling at that point. Great for dramatic pauses or topic changes. For example: '[PAUSE 5]' will pause for 5 seconds. '[STOP]' will stop the scrolling.",
+      },
+      noControls: {
+        title: "No Controls Mode (HUD-less)",
+        description:
+          "For a cleaner experience, enable No Controls mode. The interface hides, but you maintain full control via mobile remote or keyboard shortcuts.",
+      },
+      musicianMode: {
+        title: "Musician Mode",
+        description:
+          "Perfect for chords and lyrics. This mode preserves original formatting and prevents unwanted line breaks, ideal for playing and singing along.",
       },
     },
   },

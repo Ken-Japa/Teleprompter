@@ -17,6 +17,7 @@ export const pt = {
     backToHome: "Voltar para Página Inicial",
     validate: "Validar",
     validateLicense: "Validar Licença",
+    start: "Iniciar",
   },
   landing: {
     meta: {
@@ -194,7 +195,7 @@ export const pt = {
       },
       shortcuts: {
         title: "Atalhos de Teclado",
-        desc: "Controle total pelo teclado. Espaço para play/pause, setas para ajustar velocidade.",
+        desc: "Controle total pelo teclado ou use comandos de texto como STOP e PARAR para controle automático no roteiro.",
       },
     },
     pricing: {
@@ -227,6 +228,7 @@ export const pt = {
           "Suporte prioritário",
           'Badge "Early Supporter"',
           "Acesso antecipado a features",
+          "Customizar Atalhos de Teclado",
         ],
       },
       paymentInfo:
@@ -468,6 +470,21 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
         title: "Modo Foco Dinâmico",
         description:
           "Ative o modo de foco dinâmico para destacar a linha de texto atual, auxiliando você a manter a concentração e a fluidez durante a leitura.",
+      },
+      textCommands: {
+        title: "Comandos de Texto no Roteiro",
+        description:
+          "Escreva '[STOP ]' ou '[PAUSE X]' em uma linha separada no seu roteiro para pausar por X segundos a rolagem automaticamente naquele ponto. Útil para pausas dramáticas ou mudanças de assunto. Por exemplo '[PAUSE 5]' irá pausar por 5 segundos.",
+      },
+      noControls: {
+        title: "Modo Sem Controles",
+        description:
+          "Para uma experiência mais limpa, ative o modo sem controles (HUD-less). A interface some, mas você continua controlando tudo pelo celular ou atalhos de teclado.",
+      },
+      musicianMode: {
+        title: "Modo Músico",
+        description:
+          "Ideal para cifras e letras. Este modo mantém a formatação original e evita quebras de linha indesejadas, perfeito para tocar e cantar.",
       },
     },
   },

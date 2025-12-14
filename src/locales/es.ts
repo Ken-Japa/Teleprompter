@@ -11,6 +11,7 @@ export const es = {
     backToHome: "Volver a Inicio",
     validate: "Validar",
     validateLicense: "Validar Licencia",
+    start: "Iniciar",
   },
   common: {
     sync: "Sincronizar",
@@ -197,7 +198,7 @@ export const es = {
       },
       shortcuts: {
         title: "Atajos de Teclado",
-        desc: "Control total con el teclado. Espacio para reproducir/pausar, flechas para velocidad.",
+        desc: "Control total con el teclado, o usa comandos de texto como STOP y PARAR para control automático en el guion.",
       },
     },
     pricing: {
@@ -230,6 +231,7 @@ export const es = {
           "Soporte prioritario",
           'Badge "Early Supporter"',
           "Acceso anticipado a funciones",
+          "Personalizar Atajos de Teclado",
         ],
       },
       paymentInfo: "💳 Pago único vía Tarjeta. \n🔒 Garantía de 7 días.",
@@ -466,6 +468,21 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
       focusMode: {
         title: "Modo Foco",
         description: "Resalta la línea actual.",
+      },
+      textCommands: {
+        title: "Comandos de Texto en el Guion",
+        description:
+          "Escribe '[STOP]' o '[PAUSE X]' en una línea separada en tu guion para pausar el desplazamiento automáticamente en ese punto. Por ejemplo '[PAUSE 5]' irá pausar por 5 segundos. Útil para pausas dramáticas.",
+      },
+      noControls: {
+        title: "Modo Sin Controles",
+        description:
+          "Para una experiencia más limpia, activa el modo sin controles. La interfaz desaparece, pero mantienes el control vía celular o atajos.",
+      },
+      musicianMode: {
+        title: "Modo Músico",
+        description:
+          "Ideal para acordes y letras. Este modo mantiene el formato original y evita saltos de línea no deseados, perfecto para tocar y cantar.",
       },
     },
   },

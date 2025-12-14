@@ -96,6 +96,16 @@ export const Header: React.FC<HeaderProps> = () => {
                     <LanguageSelector />
                     <S.PrimaryButton
                         onClick={() => {
+                            window.location.hash = "app";
+                        }}
+                        size="sm"
+                        aria-label={t("menu.start")}
+                        className="hidden sm:block bg-slate-700 hover:bg-slate-600"
+                    >
+                        {t("menu.start")}
+                    </S.PrimaryButton>
+                    <S.PrimaryButton
+                        onClick={() => {
                             window.location.hash = "app?redeem=true";
                         }}
                         size="sm"
