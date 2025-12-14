@@ -18,7 +18,7 @@ export const VOICE_CONFIG = {
    * Keeps the active line very close to the top, maximizing visible space below
    * for reading upcoming chords and lyrics while playing.
    */
-  LOOKAHEAD_POSITION: 0.02,
+  LOOKAHEAD_POSITION: 0.018,
 
   /**
    * SCROLL_LERP_FACTOR (0.0 - 1.0)
@@ -33,7 +33,7 @@ export const VOICE_CONFIG = {
    * Current Value: 0.45 - MUSICIAN MODE OPTIMIZED
    * Faster response to keep up with singing pace and reduce perceived lag.
    */
-  SCROLL_LERP_FACTOR: 0.45,
+  SCROLL_LERP_FACTOR: 0.4,
 
   /**
    * PROGRESS_THRESHOLD (0.0 - 1.0)

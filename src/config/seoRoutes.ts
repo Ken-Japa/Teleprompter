@@ -116,6 +116,26 @@ export const SeoPages = {
             default: module.TeleprompterModoMusico,
         }))
     ),
+    TeleprompterPacingTimer: React.lazy(() =>
+        import("../pages/seo/TeleprompterPacingTimer").then((module) => ({
+            default: module.TeleprompterPacingTimer,
+        }))
+    ),
+    TeleprompterShortcuts: React.lazy(() =>
+        import("../pages/seo/TeleprompterShortcuts").then((module) => ({
+            default: module.TeleprompterShortcuts,
+        }))
+    ),
+    TeleprompterGamers: React.lazy(() =>
+        import("../pages/seo/TeleprompterGamers").then((module) => ({
+            default: module.TeleprompterGamers,
+        }))
+    ),
+    TeleprompterSlides: React.lazy(() =>
+        import("../pages/seo/TeleprompterSlides").then((module) => ({
+            default: module.TeleprompterSlides,
+        }))
+    ),
 };
 
 export const seoKeyMap: Record<SeoRouteKey, keyof typeof SeoPages> = {
@@ -148,6 +168,10 @@ export const seoKeyMap: Record<SeoRouteKey, keyof typeof SeoPages> = {
     SEO_SCRIPTS_INSTITUTIONAL: "TeleprompterScriptCategory",
     SEO_O_QUE_E: "TeleprompterOQueE",
     SEO_MODO_MUSICO: "TeleprompterModoMusico",
+    SEO_PACING: "TeleprompterPacingTimer",
+    SEO_SHORTCUTS: "TeleprompterShortcuts",
+    SEO_GAMER: "TeleprompterGamers",
+    SEO_SLIDES_SYNC: "TeleprompterSlides",
 };
 
 export type SeoRouteKey =
@@ -179,4 +203,8 @@ export type SeoRouteKey =
     | "SEO_SCRIPTS_CLASSES"
     | "SEO_SCRIPTS_INSTITUTIONAL"
     | "SEO_O_QUE_E"
-    | "SEO_MODO_MUSICO";
+    | "SEO_MODO_MUSICO"
+    | "SEO_PACING"
+    | "SEO_SHORTCUTS"
+    | "SEO_GAMER"
+    | "SEO_SLIDES_SYNC";

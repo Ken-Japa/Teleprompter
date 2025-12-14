@@ -260,4 +260,40 @@ export const ROUTES_CONFIG = {
             es: "/es/teleprompter-modo-musico",
         },
     },
+    SEO_PACING: {
+        priority: "0.9",
+        changefreq: "monthly",
+        paths: {
+            pt: "/teleprompter-pacing-timer-online",
+            en: "/en/teleprompter-pacing-timer-online",
+            es: "/es/teleprompter-pacing-timer-online",
+        },
+    },
+    SEO_SHORTCUTS: {
+        priority: "0.9",
+        changefreq: "monthly",
+        paths: {
+            pt: "/teleprompter-com-atalhos-de-teclado",
+            en: "/en/teleprompter-keyboard-shortcuts",
+            es: "/es/teleprompter-atajos-teclado",
+        },
+    },
+    SEO_GAMER: {
+        priority: "0.9",
+        changefreq: "monthly",
+        paths: {
+            pt: "/teleprompter-gamers-streaming",
+            en: "/en/teleprompter-gamers-streaming",
+            es: "/es/teleprompter-gamers-streaming",
+        },
+    },
+    SEO_SLIDES_SYNC: {
+        priority: "0.9",
+        changefreq: "monthly",
+        paths: {
+            pt: "/teleprompter-sincronizar-powerpoint-slides",
+            en: "/en/teleprompter-sync-powerpoint-slides",
+            es: "/es/teleprompter-sincronizar-powerpoint-slides",
+        },
+    },
 };
