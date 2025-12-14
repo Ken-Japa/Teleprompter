@@ -165,7 +165,7 @@ export const en = {
       },
       musician: {
         title: "Musician Mode",
-        desc: "Display lyrics and chords perfectly aligned. Ideal for musicians who need to follow chords and lyrics during performances.",
+        desc: "Scroll the screen with lyrics and chords perfectly aligned. Ideal for musicians who need to follow chords and lyrics during performances.",
         cta: "Learn More about Musician Mode 🎸",
       },
       focus: {
@@ -190,7 +190,7 @@ export const en = {
       },
       shortcuts: {
         title: "Keyboard Shortcuts",
-        desc: "Full keyboard control, or use text commands like STOP and RESET for automatic script control.",
+        desc: "Full keyboard control, or use text commands like STOP and PAUSE for automatic script control.",
       },
     },
     pricing: {

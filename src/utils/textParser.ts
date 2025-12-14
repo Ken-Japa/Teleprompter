@@ -205,6 +205,9 @@ const isChordLine = (text: string): boolean => {
     // Color tags are added at line 20 BEFORE this check, so we must remove them
     const cleanFromTags = text.replace(/<[rygb]>([\s\S]*?)<\/[rygb]>/g, "$1");
 
+    // DEBUG: Log classification
+    console.log(`[Parser] Processing: "${text}" -> Cleaned: "${cleanFromTags}"`);
+
     // 1. Clean the text, remove extra spaces
     const clean = cleanFromTags.trim();
     if (clean.length === 0) return false;
@@ -214,6 +217,7 @@ const isChordLine = (text: string): boolean => {
     // e.g. E|-----------------|, G|--2--4--|
     // Heuristic: Starts with letter+pipe, OR contains mostly dashes/numbers/pipes
     if (/^[A-Za-z]?\|[-0-9pPhHxX\\/\s]+\|?/.test(clean)) {
+        console.log(`[Parser] Identified TAB: ${clean}`);
         return true;
     }
     // Fallback for tabs without opening key: mostly dashes and numbers (> 80%)

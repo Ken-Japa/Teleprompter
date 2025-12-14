@@ -100,11 +100,21 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
                 return;
             }
 
+            // DEBUG: Log transcript
+            console.log(`[Voice] Heard: "${cleanTranscript}"`);
+
             // Fuzzy Search Strategy
             // 1. Try to find fuzzy match starting from last known position
             // We allow up to 40% error (0.4) to handle bad recognition like "PromptNinja" -> "próprio ninja"
             // OPTIMIZATION: Reduced search window from 1000 to 600 for performance
             let match = findBestMatch(fullCleanText, cleanTranscript, lastMatchIndexRef.current, 600, 0.4);
+
+            // DEBUG: Log Match
+            if (match) {
+                console.log(`[Voice] Match Found! Index: ${match.index}, Ratio: ${match.ratio}`);
+            } else {
+                console.log(`[Voice] No Match. LastIndex: ${lastMatchIndexRef.current}`);
+            }
 
             // Fallback logic
             if (!match && lastMatchIndexRef.current > 0) {
@@ -116,6 +126,7 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
                     // UNLESS the match is very good (ratio < 0.2) which means user definitely restarted reading
                     if (lastMatchIndexRef.current - fallbackMatch.index < 200 || fallbackMatch.ratio < 0.2) {
                         match = fallbackMatch;
+                        console.log(`[Voice] Fallback Match! Index: ${match.index}`);
                     }
                 }
             }

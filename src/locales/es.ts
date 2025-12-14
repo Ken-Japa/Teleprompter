@@ -198,7 +198,7 @@ export const es = {
       },
       shortcuts: {
         title: "Atajos de Teclado",
-        desc: "Control total con el teclado, o usa comandos de texto como STOP y PARAR para control automático en el guion.",
+        desc: "Control total con el teclado, o usa comandos de texto como STOP y PAUSE para control automático en el guion.",
       },
     },
     pricing: {

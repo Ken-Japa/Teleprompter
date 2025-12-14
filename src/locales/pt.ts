@@ -169,7 +169,7 @@ export const pt = {
       },
       musician: {
         title: "Modo Músico",
-        desc: "Exiba letras e cifras perfeitamente alinhadas. Ideal para músicos que precisam acompanhar acordes e letras durante apresentações.",
+        desc: "Rolagem de tela com letras e cifras perfeitamente alinhadas. Ideal para músicos que precisam acompanhar acordes e letras durante apresentações.",
         cta: "Saiba Mais sobre o Modo Músico 🎸",
       },
       focus: {
@@ -195,7 +195,7 @@ export const pt = {
       },
       shortcuts: {
         title: "Atalhos de Teclado",
-        desc: "Controle total pelo teclado ou use comandos de texto como STOP e PARAR para controle automático no roteiro.",
+        desc: "Controle total pelo teclado ou use comandos de texto como STOP e PAUSE para controle automático no roteiro.",
       },
     },
     pricing: {
