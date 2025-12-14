@@ -45,20 +45,31 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onLaunch }) => {
             </button>
           </div>
 
-          {/* Share additional CTA */}
-          <div className="mt-4 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 inline-flex flex-col items-center gap-3">
-              <span className="text-sm text-slate-400 font-medium uppercase tracking-wider">
-                {t("share.cardDescription") || "Gostou? Compartilhe com amigos!"}
-              </span>
-              <ShareButton variant="primary" className="shadow-lg shadow-brand-500/20" />
+          <p className="text-sm text-gray-400 mt-10">
+            {t("landing.finalCta.footer")}
+          </p>
+
+          {/* Share additional CTA - Elegant minimal style */}
+          <div className="mt-8 animate-fade-in-up flex items-center justify-center" style={{ animationDelay: '0.2s' }}>
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative flex items-center gap-3 bg-black/40 backdrop-blur-xl border border-white/10 rounded-full pl-5 pr-2 py-2 hover:bg-black/50 transition-colors">
+                <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
+                  {t("share.cardDescription")?.split("?")[0] + "?" || "Curtiu?"}
+                </span>
+
+                <div className="h-4 w-px bg-white/10"></div>
+
+                <ShareButton
+                  variant="primary"
+                  className="!py-1.5 !px-4 !text-xs !bg-white/10 hover:!bg-white/20 !border-white/5 !shadow-none"
+                />
+              </div>
             </div>
           </div>
         </div>
 
-        <p className="text-sm text-gray-400 mt-10">
-          {t("landing.finalCta.footer")}
-        </p>
+
       </div>
     </section>
   );

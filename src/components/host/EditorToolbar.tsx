@@ -27,10 +27,12 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
 
     return (
         <S.FormattingToolbar>
-            <div className="flex items-center gap-4 w-full">
-                {/* Highlight Section */}
-                <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-                    <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider hidden sm:block">
+            {/* Container with wrapping for mobile */}
+            <div className="flex flex-wrap sm:flex-nowrap items-center gap-y-4 gap-x-2 w-full justify-between">
+
+                {/* Highlight Section - Full width on very small screens, or auto */}
+                <div className="order-2 sm:order-1 flex items-center gap-2 justify-center sm:justify-start w-full sm:w-auto mt-2 sm:mt-0 border-t border-white/5 pt-3 sm:border-0 sm:pt-0">
+                    <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider hidden md:block">
                         {t("host.editor.highlight")}
                     </span>
                     <div
@@ -45,15 +47,14 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                     </div>
 
                     {/* Hint text closer to color menu */}
-                    <span className="text-[10px] text-slate-600 hidden md:inline-block font-mono ml-2">
+                    <span className="text-[10px] text-slate-600 hidden lg:inline-block font-mono ml-2">
                         {t("host.tips.desc")} &lt;tag&gt;
                     </span>
                 </div>
 
-
-
                 {/* Central Musician Mode Toggle - High Prominence */}
-                <div className="flex-1 flex justify-center px-4">
+                {/* On mobile: Order 1 (Top Center) */}
+                <div className="order-1 sm:order-2 flex-none sm:flex-1 flex justify-center w-full sm:w-auto mb-2 sm:mb-0">
                     <S.IconButton
                         onClick={onToggleMusicianMode}
                         title={t("host.editor.musicianMode")}
@@ -69,10 +70,9 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center gap-2">
-                    {/* Share Button */}
-                    <ShareButton variant="icon" className="w-9 h-9 rounded-full bg-brand-500/10 text-brand-400 hover:bg-brand-500/20 hover:text-brand-300 border border-brand-500/20" />
-
+                {/* On mobile: Order 3 (Below Highlight on small screens if wrapped, or next to it) */}
+                {/* We'll make it wrap to a new line if needed or stay on the right */}
+                <div className="order-3 flex items-center justify-center sm:justify-end gap-2 w-full sm:w-auto">
                     {/* Enhanced Pacing Button */}
                     <S.IconButton
                         onClick={() => setShowPacingModal(true)}
@@ -118,8 +118,13 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                     >
                         <InfoIcon className="w-5 h-5" />
                     </S.IconButton>
+
+                    {/* Share Button - Last Item */}
+                    <div className="w-px h-6 bg-white/10 mx-1"></div>
+                    <ShareButton variant="icon" className="w-9 h-9 rounded-full bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500/20 hover:text-indigo-300 border border-indigo-500/20" />
                 </div>
             </div>
+
             <TutorialModal isOpen={showTutorialModal} onClose={() => setShowTutorialModal(false)} />
             <PacingModal isOpen={showPacingModal} onClose={() => setShowPacingModal(false)} text={text} />
             <HotkeyConfigModal isOpen={showHotkeyModal} onClose={() => setShowHotkeyModal(false)} isPro={isPro} onUnlockPro={onUnlockPro} />
