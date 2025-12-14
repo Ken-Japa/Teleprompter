@@ -4,6 +4,7 @@ import { Theme, PrompterSettings, RemoteActions } from "../../types";
 import { PROMPTER_DEFAULTS } from "../../config/constants";
 import { LaptopIcon, SmartphoneIcon } from "../ui/Icons";
 import { SyncButton } from "../ui/SyncButton";
+import { ShareButton } from "../ui/ShareButton";
 
 interface RemoteSettingsProps {
     settings: PrompterSettings | null | undefined;
@@ -169,6 +170,9 @@ export const RemoteSettings: React.FC<RemoteSettingsProps> = ({ settings, action
                     <SyncButton onSync={actions.handleRequestSync} className="w-10 h-10 bg-slate-800 hover:bg-slate-700" />
                 </div>
             </div>
+
+            {/* Share Section */}
+            <ShareButton variant="card" />
 
             {/* Language */}
             <div className="space-y-3 pt-4 border-t border-white/5">

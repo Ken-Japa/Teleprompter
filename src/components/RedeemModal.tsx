@@ -50,6 +50,22 @@ export const RedeemModal: React.FC<RedeemModalProps> = ({
         >
           Assinar / Comprar
         </button>
+
+        <div className="text-center mt-8 pt-8 border-t border-slate-700">
+          <p className="text-sm text-slate-400 mb-3 font-semibold">
+            {t("host.paywall.freeAlternativeTitle")}
+          </p>
+          <button
+            onClick={() => {
+              trackEvent('paywall_cta_click', { cta_type: 'leave_review_free' });
+              window.open('https://search.google.com/local/writereview?placeid=ChIJdcYvDRJ7y5QR-6UakXLxbkg', '_blank');
+              onClose();
+            }}
+            className="w-full py-3 px-6 text-sm text-blue-400 hover:text-blue-200 transition-colors"
+          >
+            {t("host.paywall.leaveReviewCta")}
+          </button>
+        </div>
       </div>
     </S.PaywallModal>
   );

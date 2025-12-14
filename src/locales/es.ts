@@ -254,7 +254,7 @@ export const es = {
         },
         {
           q: "¿Dónde se guardan mis datos?",
-          a: "En TU dispositivo (localStorage). No enviamos nada al servidor. Cero tracking.",
+          a: "No. Utilizamos tecnología P2P para mantener tus datos y scripts localmente en tus dispositivos. Tu privacidad está garantizada.",
         },
         {
           q: "¿Qué pasa después de 20 minutos en la versión gratis?",
@@ -364,6 +364,8 @@ export const es = {
       countdownMessage: "Regresando a la página en...",
       close: "Cerrar",
       maybeLater: "Quizás después",
+      freeAlternativeTitle: "¡Usa GRATIS y Ayúdanos!",
+      leaveReviewCta: "⭐ Continuar Usando Gratis y Dejar 5 Estrellas en Google",
     },
     voice: {
       notSupported: "Tu navegador no soporta control por voz",
@@ -428,6 +430,15 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
     theme: "Tema",
     language: "Idioma",
     scanError: "Error al acceder a la cámara. Verifica los permisos o si estás usando HTTPS.",
+  },
+  share: {
+    button: "Compartir PromptNinja",
+    title: "¡Comparte PromptNinja!",
+    text: "¡Mis videos quedaron perfectos! 🎬 Descubrí PromptNinja - teleprompter online GRATIS, P2P y sin retrasos. ¡Uso mi celular como control remoto!",
+    success: "¡Gracias por compartir! ❤️",
+    notSupported: "Compartir no disponible en este navegador",
+    cardTitle: "Compartir",
+    cardDescription: "¿Te gustó PromptNinja? ¡Comparte con amigos y ayuda a otros creadores!",
   },
   tutorial: {
     tips: {

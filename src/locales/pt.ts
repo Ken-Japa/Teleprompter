@@ -251,8 +251,8 @@ export const pt = {
           a: "Sim! A conexão é P2P. Se ambos estiverem na mesma rede Wi-Fi ou se você já abriu o app antes, funciona offline.",
         },
         {
-          q: "Meus dados ficam salvos onde?",
-          a: "No SEU dispositivo (localStorage). Não enviamos nada para servidor. Zero tracking.",
+          q: "O PromptNinja armazena meus dados?",
+          a: "Não. Usamos tecnologia P2P para manter seus dados e scripts localmente em seus dispositivos. Sua privacidade é total.",
         },
         {
           q: "O que acontece após 20 minutos na versão grátis?",
@@ -361,6 +361,8 @@ export const pt = {
       countdownMessage: "Retornando à página em...",
       close: "Fechar",
       maybeLater: "Talvez depois",
+      freeAlternativeTitle: "Use GRÁTIS e Nos Ajude!",
+      leaveReviewCta: "⭐ Continuar Usando Grátis e Deixar 5 Estrelas no Google",
     },
     voice: {
       notSupported: "Seu navegador não suporta controle por voz",
@@ -423,6 +425,15 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
     theme: "Tema",
     language: "Idioma",
     scanError: "Falha ao acessar a câmera. Verifique as permissões ou se está usando HTTPS.",
+  },
+  share: {
+    button: "Compartilhar PromptNinja",
+    title: "Compartilhe o PromptNinja!",
+    text: "Meus vídeos estão perfeitos! 🎬 Descobri o PromptNinja - teleprompter online, GRÁTIS, P2P e sem atrasos. Uso meu celular como controle remoto!",
+    success: "Obrigado por compartilhar! ❤️",
+    notSupported: "Compartilhamento não disponível neste navegador",
+    cardTitle: "Compartilhar",
+    cardDescription: "Gostou do PromptNinja? Compartilhe com amigos e ajude outros criadores!",
   },
   tutorial: {
     tips: {

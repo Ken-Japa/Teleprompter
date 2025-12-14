@@ -118,7 +118,7 @@ export const UI_CONFIG = {
 export const RECORDING_CONFIG = {
     MIME_TYPE: "audio/webm",
     TIMESLICE_MS: 1000,
-    FILENAME_PREFIX: "prompt-ninja-recording-",
+    FILENAME_PREFIX: "prompt-ninja-p2p-zero-lag-recording-",
     EXTENSION: ".webm",
     TIMER_INTERVAL_MS: 1000,
 };

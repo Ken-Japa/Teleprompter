@@ -245,8 +245,8 @@ export const en = {
           a: "Yes! The connection is P2P. If both are on the same Wi-Fi or if you've opened the app before, it works offline.",
         },
         {
-          q: "Where is my data saved?",
-          a: "On YOUR device (localStorage). We send nothing to servers. Zero tracking.",
+          q: "Does PromptNinja store my data?",
+          a: "No. We use P2P technology to keep your data and scripts locally on your devices. Your privacy is guaranteed.",
         },
         {
           q: "What happens after 20 minutes in the free version?",
@@ -354,6 +354,8 @@ export const en = {
       emptyKey: "Please enter an unlock key.",
       invalidKey: "Invalid unlock key. Please try again.",
       countdownMessage: "Returning to the page in...",
+      freeAlternativeTitle: "Use FREE and Help Us!",
+      leaveReviewCta: "⭐ Continue Using Free and Leave 5 Stars on Google",
     },
 
     voice: {
@@ -418,6 +420,15 @@ Paste your script here and customize your experience to start shining!`,
     stop: "Stop",
     theme: "Theme",
     language: "Language",
+  },
+  share: {
+    button: "Share PromptNinja",
+    title: "Share PromptNinja!",
+    text: "My videos are perfect now! 🎬 I found PromptNinja - FREE online teleprompter, P2P with zero lag. My phone is the remote control!",
+    success: "Thanks for sharing! ❤️",
+    notSupported: "Sharing not available in this browser",
+    cardTitle: "Share",
+    cardDescription: "Enjoying PromptNinja? Share with friends and help other creators!",
   },
 
   tutorial: {

@@ -6,6 +6,7 @@ import { TutorialModal } from "../ui/TutorialModal";
 import { PacingModal } from "../ui/PacingModal";
 import { HotkeyConfigModal } from "../ui/HotkeyConfigModal";
 import { KeyboardIcon } from "../ui/Icons";
+import { ShareButton } from "../ui/ShareButton";
 
 interface EditorToolbarProps {
     onInsertTag: (tag: string) => void;
@@ -69,6 +70,9 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
 
                 {/* Actions */}
                 <div className="flex items-center gap-2">
+                    {/* Share Button */}
+                    <ShareButton variant="icon" className="w-9 h-9 rounded-full bg-brand-500/10 text-brand-400 hover:bg-brand-500/20 hover:text-brand-300 border border-brand-500/20" />
+
                     {/* Enhanced Pacing Button */}
                     <S.IconButton
                         onClick={() => setShowPacingModal(true)}

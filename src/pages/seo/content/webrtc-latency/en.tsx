@@ -1,5 +1,6 @@
 export const WebRtcLatencyContentEN = () => (
     <>
+        <h1 className="text-4xl font-bold text-white mb-6">FREE Autocue / Teleprompter: Why WebRTC P2P Guarantees Zero Lag and Total Privacy</h1>
         <p className="lead text-xl text-slate-300 mb-8">
             You hit the "pause" button on the remote. The text keeps scrolling for another half-second. You lose your place, stutter, and have to re-record.
             This "lag" (latency) is every presenter's nightmare. In this technical article, we explain how WebRTC technology has solved this problem for good.
@@ -23,7 +24,7 @@ export const WebRtcLatencyContentEN = () => (
 
         <h2>Enter WebRTC (Web Real-Time Communication)</h2>
         <p>
-            WebRTC is an open-source technology developed by Google (and adopted by Apple, Microsoft, and Mozilla) that enables direct communication between browsers.
+            WebRTC is an open-source technology developed by Google (and adopted by Apple, Microsoft, and Mozilla) that enables direct communication between browsers. This is crucial for privacy: since the signal goes directly from your mobile to your PC, your scripts are never passed through or stored on our server. Completely private and local.
             It's the same technology used in Google Meet and Zoom. But PromptNinja uses it differently: <strong>Data Channels</strong>.
         </p>
 
