@@ -337,3 +337,31 @@ html {
         min-height: 44px;
     }
 }
+
+/* GLOBAL HIGHLIGHT STYLE */
+.sentence-active {
+    color: #ef4444 !important;
+    /* red-500 force override */
+    text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+    background: rgba(239, 68, 68, 0.15);
+    border-radius: 6px;
+    transition: all 0.2s ease-out;
+    transform: scale(1.02);
+    transform-origin: center left;
+    display: inline-block;
+    /* Ensure transform works */
+    width: 100%;
+    /* For block-like highlight in musician mode */
+}
+
+/* Musician Mode Specific Adjustments */
+.font-mono.sentence-active {
+    font-weight: 900;
+    color: #fca5a5 !important;
+    /* Lighter red for dark bg contrast */
+    background: rgba(239, 68, 68, 0.25);
+    box-shadow: -4px 0 0 #ef4444;
+    /* Left border indicator */
+    padding-left: 8px;
+    /* Space for border */
+}

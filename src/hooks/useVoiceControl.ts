@@ -101,7 +101,7 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
             }
 
             // DEBUG: Log transcript
-            console.log(`[Voice] Heard: "${cleanTranscript}"`);
+            console.warn(`[Voice] Heard: "${cleanTranscript}"`);
 
             // Fuzzy Search Strategy
             // 1. Try to find fuzzy match starting from last known position
@@ -111,9 +111,9 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
 
             // DEBUG: Log Match
             if (match) {
-                console.log(`[Voice] Match Found! Index: ${match.index}, Ratio: ${match.ratio}`);
+                console.warn(`[Voice] Match Found! Index: ${match.index}, Ratio: ${match.ratio}`);
             } else {
-                console.log(`[Voice] No Match. LastIndex: ${lastMatchIndexRef.current}`);
+                console.warn(`[Voice] No Match. LastIndex: ${lastMatchIndexRef.current}`);
             }
 
             // Fallback logic
@@ -126,7 +126,7 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
                     // UNLESS the match is very good (ratio < 0.2) which means user definitely restarted reading
                     if (lastMatchIndexRef.current - fallbackMatch.index < 200 || fallbackMatch.ratio < 0.2) {
                         match = fallbackMatch;
-                        console.log(`[Voice] Fallback Match! Index: ${match.index}`);
+                        console.warn(`[Voice] Fallback Match! Index: ${match.index}`);
                     }
                 }
             }
