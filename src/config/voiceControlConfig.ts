@@ -14,10 +14,11 @@ export const VOICE_CONFIG = {
    * - 0.5: Center of the screen
    * - 1.0: Bottom of the screen
    * 
-   * Current Value: 0.05 (5% from the top) - Keeps the current sentence near the top
-   * so the user can see upcoming text.
+   * Current Value: 0.02 (2% from the top) - MUSICIAN MODE OPTIMIZED
+   * Keeps the active line very close to the top, maximizing visible space below
+   * for reading upcoming chords and lyrics while playing.
    */
-  LOOKAHEAD_POSITION: 0.05,
+  LOOKAHEAD_POSITION: 0.02,
 
   /**
    * SCROLL_LERP_FACTOR (0.0 - 1.0)
@@ -29,9 +30,10 @@ export const VOICE_CONFIG = {
    * - 0.3: Balanced responsiveness
    * - 1.0: Instant jump
    * 
-   * Current Value: 0.3 - Increased for better responsiveness based on user feedback.
+   * Current Value: 0.45 - MUSICIAN MODE OPTIMIZED
+   * Faster response to keep up with singing pace and reduce perceived lag.
    */
-  SCROLL_LERP_FACTOR: 0.3,
+  SCROLL_LERP_FACTOR: 0.45,
 
   /**
    * PROGRESS_THRESHOLD (0.0 - 1.0)
