@@ -7,8 +7,11 @@ export const PwaSection: React.FC = () => {
 
     useEffect(() => {
         const handler = (e: any) => {
+            // Prevent default browser install prompt
             e.preventDefault();
+            // Store the event for later use
             setDeferredPrompt(e);
+            console.log("💾 PWA install prompt ready");
         };
 
         window.addEventListener("beforeinstallprompt", handler);

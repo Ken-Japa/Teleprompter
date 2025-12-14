@@ -677,4 +677,124 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-what-is-it" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-que-es" />
   </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/teleprompter-modo-musico</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-modo-musico" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-musician-mode" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-modo-musico" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/teleprompter-musician-mode</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-modo-musico" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-musician-mode" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-modo-musico" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/teleprompter-modo-musico</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-modo-musico" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-musician-mode" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-modo-musico" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/teleprompter-pacing-timer-online</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-pacing-timer-online" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-pacing-timer-online" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-pacing-timer-online" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/teleprompter-pacing-timer-online</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-pacing-timer-online" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-pacing-timer-online" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-pacing-timer-online" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/teleprompter-pacing-timer-online</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-pacing-timer-online" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-pacing-timer-online" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-pacing-timer-online" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/teleprompter-com-atalhos-de-teclado</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-com-atalhos-de-teclado" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-keyboard-shortcuts" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-atajos-teclado" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/teleprompter-keyboard-shortcuts</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-com-atalhos-de-teclado" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-keyboard-shortcuts" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-atajos-teclado" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/teleprompter-atajos-teclado</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-com-atalhos-de-teclado" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-keyboard-shortcuts" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-atajos-teclado" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/teleprompter-gamers-streaming</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-gamers-streaming" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-gamers-streaming" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-gamers-streaming" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/teleprompter-gamers-streaming</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-gamers-streaming" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-gamers-streaming" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-gamers-streaming" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/teleprompter-gamers-streaming</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-gamers-streaming" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-gamers-streaming" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-gamers-streaming" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/teleprompter-sincronizar-powerpoint-slides</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-sincronizar-powerpoint-slides" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-sync-powerpoint-slides" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-sincronizar-powerpoint-slides" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/teleprompter-sync-powerpoint-slides</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-sincronizar-powerpoint-slides" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-sync-powerpoint-slides" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-sincronizar-powerpoint-slides" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/teleprompter-sincronizar-powerpoint-slides</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-sincronizar-powerpoint-slides" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-sync-powerpoint-slides" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-sincronizar-powerpoint-slides" />
+  </url>
 </urlset>

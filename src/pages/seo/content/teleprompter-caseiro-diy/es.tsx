@@ -1,6 +1,6 @@
 export const TeleprompterCaseiroDIYES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Cómo Hacer un Teleprompter Casero: Guía DIY Completa</h1>
+        <h1 className="text-4xl font-bold text-white mb-6">Teleprompter Casero DIY: Guía Completa y el Software GRATIS Ideal para Tu Proyecto</h1>
 
         <p className="mb-6">
             Grabar vídeos con aspecto profesional requiere fluidez y confianza, pero memorizar guiones es un desafío. Los equipos de teleprompter profesionales lo resuelven, pero son caros. ¿La buena noticia? Puedes construir un teleprompter casero (DIY) con materiales sencillos y obtener resultados impresionantes. El principio físico detrás de esto es el "Fantasma de Pepper", una ilusión óptica utilizada en teatros desde el siglo XIX.

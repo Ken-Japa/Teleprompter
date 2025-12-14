@@ -21,8 +21,8 @@ export const en = {
   },
   landing: {
     meta: {
-      title: "PromptNinja: Free Teleprompter | Online, P2P, Mobile and Laptop | No Installation Required",
-      description: "The ONLY free online autocue with zero lag. Use your mobile as a P2P remote. Perfect for YouTube, live streams, and speeches. No apps to install.",
+      title: "⭐ PromptNinja: Free Teleprompter | FREE Autocue Online, P2P, Zero Lag Mobile and Laptop | No Installation Required",
+      description: "The ONLY FREE Autocue Teleprompter designed for zero lag and perfect eye contact. Use your phone as a P2P remote control. Essential for YouTube, Zoom, and professional speeches.",
     },
     hero: {
       headline: "Free Online Autocue. Use on PC, Laptop, or Mobile.",

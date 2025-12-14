@@ -13,8 +13,8 @@ export const TeleprompterCaseiroDIY: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterCaseiroDIYPT;
-    let title = "Como Montar um Teleprompter Caseiro (DIY) Barato";
-    let description = "Aprenda a fazer um teleprompter caseiro com vidro e caixa de papelão. E use o PromptNinja como software gratuito para espelhar o texto.";
+    let title = "Teleprompter Caseiro (DIY) Barato + Software GRÁTIS";
+    let description = "Guia DIY completo para montar seu teleprompter caseiro. Use nosso software GRÁTIS, P2P e sem travamentos para espelhar o texto do seu roteiro com perfeição.";
     let ctaText = "Abrir Modo Espelho Agora";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-caseiro-diy";
     const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
@@ -34,8 +34,8 @@ export const TeleprompterCaseiroDIY: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = TeleprompterCaseiroDIYEN;
-        title = "How to Make a Cheap Homemade Teleprompter (DIY)";
-        description = "Learn how to make a homemade teleprompter with glass and cardboard box. And use PromptNinja as free software to mirror the text.";
+        title = "Cheap Homemade Teleprompter DIY + FREE Software";
+        description = "Complete DIY guide to build your homemade teleprompter. Use our FREE, P2P, zero-lag software for perfect text mirroring and remote control.";
         ctaText = "Open Mirror Mode Now";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/diy-homemade-teleprompter";
         schema = {
@@ -53,8 +53,8 @@ export const TeleprompterCaseiroDIY: React.FC<Props> = ({ onLaunch }) => {
         };
     } else if (lang === 'es') {
         Content = TeleprompterCaseiroDIYES;
-        title = "Cómo Montar un Teleprompter Casero (DIY) Barato";
-        description = "Aprende a hacer un teleprompter casero con vidrio y caja de cartón. Y usa PromptNinja como software gratuito para espejar el texto.";
+        title = "Teleprompter Casero (DIY) Barato + Software GRATIS";
+        description = "Guía DIY completa para armar tu teleprompter casero. Usa nuestro software GRATIS, P2P y sin lag para espejar el texto de tu guion con perfección.";
         ctaText = "Abrir Modo Espejo Ahora";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-casero-diy";
         schema = {

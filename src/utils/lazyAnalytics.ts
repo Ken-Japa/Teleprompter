@@ -11,6 +11,14 @@
 export const initLazyAnalytics = (): void => {
     let loaded = false;
 
+    // Only load analytics in production
+    const isProduction = window.location.hostname === 'promptninja.solutionkit.com.br';
+
+    if (!isProduction) {
+        console.log("📊 Analytics disabled (not in production)");
+        return;
+    }
+
     const loadAnalytics = () => {
         if (loaded) return;
         loaded = true;
@@ -35,7 +43,7 @@ export const initLazyAnalytics = (): void => {
         csScript.defer = true;
         document.head.appendChild(csScript);
 
-        // Load Microsoft Clarity
+        // Initialize Microsoft Clarity with config
         const clarityScript = document.createElement("script");
         clarityScript.type = "text/javascript";
         clarityScript.text = `

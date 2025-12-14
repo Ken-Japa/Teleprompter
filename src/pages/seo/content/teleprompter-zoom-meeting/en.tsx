@@ -1,6 +1,6 @@
 export const TeleprompterZoomMeetingEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">How to Use a Teleprompter for Zoom, Teams, and Google Meet for High-Impact Presentations</h1>
+        <h1 className="text-4xl font-bold text-white mb-6">FREE Teleprompter for Zoom, Teams & Google Meet: The Secret to Perfect Eye Contact</h1>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Maintaining eye contact during an online presentation is the secret to capturing attention and conveying confidence. However, the reality is a constant juggling act: if you look at your notes, you lose connection with the audience; if you look at the camera, you risk forgetting crucial points. PromptNinja emerges as the definitive solution to this dilemma, allowing you to read your script fluently while looking directly at the camera lens, creating powerful and authentic communication.

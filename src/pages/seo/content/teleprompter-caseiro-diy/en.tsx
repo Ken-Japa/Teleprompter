@@ -1,6 +1,6 @@
 export const TeleprompterCaseiroDIYEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">How to Make a Homemade Teleprompter: A Complete DIY Guide</h1>
+        <h1 className="text-4xl font-bold text-white mb-6">Homemade Teleprompter DIY: Complete Guide and the Best FREE Software for Your Project</h1>
 
         <p className="mb-6">
             Recording professional-looking videos requires fluency and confidence, but memorizing scripts is a challenge. Professional teleprompter equipment solves this, but it's expensive. The good news? You can build a DIY teleprompter at home with simple materials and achieve impressive results. The physical principle behind it is "Pepper's Ghost," an optical illusion used in theaters since the 19th century.

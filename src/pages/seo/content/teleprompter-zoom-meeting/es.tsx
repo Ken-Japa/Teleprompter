@@ -1,6 +1,6 @@
 export const TeleprompterZoomMeetingES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Cómo Usar un Teleprompter en Zoom, Teams y Google Meet para Presentaciones de Alto Impacto</h1>
+        <h1 className="text-4xl font-bold text-white mb-6">Teleprompter GRATIS para Zoom, Teams y Google Meet: El Secreto del Contacto Visual Perfecto</h1>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Mantener el contacto visual durante una presentación en línea es el secreto para captar la atención y transmitir confianza. Sin embargo, la realidad es un malabarismo constante: si miras tus notas, pierdes la conexión con la audiencia; si miras a la cámara, corres el riesgo de olvidar puntos cruciales. PromptNinja surge como la solución definitiva a este dilema, permitiéndote leer tu guion con fluidez mientras miras directamente a la lente de la cámara, creando una comunicación poderosa y auténtica.

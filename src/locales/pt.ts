@@ -25,7 +25,7 @@ export const pt = {
       description: "O teleprompter online GRATUITO mais rápido. Funciona no PC, Notebook e como teleprompter para celular ou iPhone. P2P, Zero Lag e sem apps para instalar.",
     },
     hero: {
-      headline: "Teleprompter Online GRÁTIS. Use no PC, Notebook ou Celular (iPhone/Android).",
+      headline: "Teleprompter Profissional GRÁTIS Online. Use no PC/Notebook e Celular (iPhone/Android).",
       subheadline:
         "Seu celular é o controle remoto. Controle por Voz, Conexão P2P, instantânea e sem atrasos, para vídeos perfeitos.",
       cta: "🚀 Começar Grátis (20 min)",
