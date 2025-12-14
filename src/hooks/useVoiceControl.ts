@@ -95,8 +95,9 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
                 .replace(/\s+/g, " ")
                 .trim();
 
-            // Increased min length to 4 to avoid false positives with common short words (que, de, para, etc)
-            if (cleanTranscript.length < 4) {
+            // MUSICIAN MODE OPTIMIZATION: Increased min length to 6 to reduce false positives
+            // from instrument noise (guitar, piano, etc) when singing
+            if (cleanTranscript.length < 6) {
                 return;
             }
 
@@ -116,17 +117,28 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
                 console.warn(`[Voice] No Match. LastIndex: ${lastMatchIndexRef.current}`);
             }
 
-            // Fallback logic
+            // Fallback logic for repeated phrases
             if (!match && lastMatchIndexRef.current > 0) {
                 // Fallback: search from beginning if we lost track
                 const fallbackMatch = findBestMatch(fullCleanText, cleanTranscript, 0, 2000, 0.4);
 
                 if (fallbackMatch) {
-                    // Safety check: Only jump back to beginning if it's not a "huge" jump backwards
-                    // UNLESS the match is very good (ratio < 0.2) which means user definitely restarted reading
-                    if (lastMatchIndexRef.current - fallbackMatch.index < 200 || fallbackMatch.ratio < 0.2) {
+                    // IMPROVED LOGIC FOR REPEATED PHRASES:
+                    // Only accept backward jumps if the match is VERY good (almost perfect)
+                    // This prevents jumping back to previous repetitions of the same phrase
+                    const isBackwardJump = fallbackMatch.index < lastMatchIndexRef.current;
+                    const isVeryGoodMatch = fallbackMatch.ratio < 0.15; // Stricter than before (was 0.2)
+                    const isSmallJump = Math.abs(lastMatchIndexRef.current - fallbackMatch.index) < 200;
+
+                    // Accept if:
+                    // 1. Going forward (always good)
+                    // 2. Small backward jump (nearby repetition)
+                    // 3. Very high quality match (user definitely restarted or jumped intentionally)
+                    if (!isBackwardJump || isSmallJump || isVeryGoodMatch) {
                         match = fallbackMatch;
-                        console.warn(`[Voice] Fallback Match! Index: ${match.index}`);
+                        console.warn(`[Voice] Fallback Match! Index: ${match.index}, Backward: ${isBackwardJump}`);
+                    } else {
+                        console.warn(`[Voice] Rejected backward jump. Ratio: ${fallbackMatch.ratio}, Distance: ${lastMatchIndexRef.current - fallbackMatch.index}`);
                     }
                 }
             }
