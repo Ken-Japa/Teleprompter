@@ -173,15 +173,27 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
         } catch (e) {
             logger.error("Voice start error", { error: e as Error });
         }
-    }, [fullCleanText, charToSentenceMap, lang]);
+    }, [lang, activeSentenceIndex]); // Dependencies for startRecognitionInstance
 
     const startListening = useCallback(() => {
         if (!isPro) return;
+        if (!voiceApiSupported) {
+            console.warn("[VoiceHook] Voice API not supported");
+            return;
+        }
+        if (isListening) {
+            console.warn("[VoiceHook] Already listening, ignoring start request");
+            return;
+        }
+
+        console.warn("[VoiceHook] Starting recognition...");
+
         intentionallyStoppedRef.current = false;
         startRecognitionInstance();
-    }, [isPro, startRecognitionInstance]);
+    }, [isPro, isListening, voiceApiSupported, startRecognitionInstance]);
 
     const stopListening = useCallback(() => {
+        console.warn("[VoiceHook] Stopping recognition...");
         intentionallyStoppedRef.current = true;
         if (recognitionRef.current) {
             try {
@@ -192,8 +204,10 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
     }, []);
 
     const resetVoice = useCallback(() => {
+        console.warn("[VoiceHook] Resetting voice state");
         stopListening();
         lastMatchIndexRef.current = 0;
+        setVoiceProgress(0);
         setActiveSentenceIndex(-1);
     }, [stopListening]);
 
