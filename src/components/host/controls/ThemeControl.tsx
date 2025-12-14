@@ -26,27 +26,29 @@ export const ThemeControl = memo(
 
         return (
             <>
-                <S.HudGroup label={t("host.hudLabels.theme")}>
-                    <div className="flex items-center gap-1">
-                        <S.IconButton
-                            onClick={cycleTheme}
-                            title={`${t("host.controls.theme")}: ${t(`host.themes.${theme}`)}`}
-                            aria-label={t("host.controls.theme")}
-                            className="w-9 h-9 rounded-full hover:bg-brand-500/20 hover:text-brand-400 border-transparent"
-                        >
-                            <PaletteIcon className="w-5 h-5" />
-                        </S.IconButton>
+                {!settings.isMusicianMode && (
+                    <S.HudGroup label={t("host.hudLabels.theme")}>
+                        <div className="flex items-center gap-1">
+                            <S.IconButton
+                                onClick={cycleTheme}
+                                title={`${t("host.controls.theme")}: ${t(`host.themes.${theme}`)}`}
+                                aria-label={t("host.controls.theme")}
+                                className="w-9 h-9 rounded-full hover:bg-brand-500/20 hover:text-brand-400 border-transparent"
+                            >
+                                <PaletteIcon className="w-5 h-5" />
+                            </S.IconButton>
 
-                        <S.IconButton
-                            onClick={toggleChroma}
-                            title={`${t("host.controls.chroma")}`}
-                            aria-label={t("host.controls.chroma")}
-                            className="w-9 h-9 rounded-full hover:bg-brand-500/20 hover:text-brand-400 border-transparent"
-                        >
-                            <ApertureIcon className="w-5 h-5" />
-                        </S.IconButton>
-                    </div>
-                </S.HudGroup>
+                            <S.IconButton
+                                onClick={toggleChroma}
+                                title={`${t("host.controls.chroma")}`}
+                                aria-label={t("host.controls.chroma")}
+                                className="w-9 h-9 rounded-full hover:bg-brand-500/20 hover:text-brand-400 border-transparent"
+                            >
+                                <ApertureIcon className="w-5 h-5" />
+                            </S.IconButton>
+                        </div>
+                    </S.HudGroup>
+                )}
 
                 <S.HudGroup label={t("host.hudLabels.focus")}>
                     <S.IconButton

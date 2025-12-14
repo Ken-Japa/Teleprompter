@@ -124,6 +124,7 @@ export interface PrompterSettings {
     isFlipVertical: boolean;
     voiceControlMode?: VoiceControlMode;
     recordingMode?: RecordingMode;
+    isMusicianMode: boolean; // New mode
 }
 
 export interface RemoteScrollHandler {
@@ -152,6 +153,7 @@ export interface Sentence {
     cleanContent: string;
     startIndex?: number;
     fragments: TextFragment[];
+    isChord?: boolean;
 }
 
 export interface RemoteActions {

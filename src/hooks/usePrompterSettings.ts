@@ -18,6 +18,7 @@ export interface PrompterActions {
     setRecordingMode: (val: RecordingMode) => void;
     cycleTheme: () => void;
     toggleChroma: () => void;
+    setIsMusicianMode: (val: boolean) => void;
 }
 
 export const usePrompterSettings = (isPro: boolean) => {
@@ -51,6 +52,10 @@ export const usePrompterSettings = (isPro: boolean) => {
     const [recordingMode, setRecordingMode] = useLocalStorage<RecordingMode>(
         PROMPTER_DEFAULTS.STORAGE_KEYS.RECORDING_MODE,
         "host"
+    );
+    const [isMusicianMode, setIsMusicianMode] = useLocalStorage<boolean>(
+        "neonprompt_musician_mode",
+        false
     );
 
     const cycleTheme = useCallback(() => {
@@ -103,6 +108,7 @@ export const usePrompterSettings = (isPro: boolean) => {
         isFlipVertical,
         voiceControlMode,
         recordingMode,
+        isMusicianMode,
     };
 
     const actions: PrompterActions = {
@@ -117,6 +123,7 @@ export const usePrompterSettings = (isPro: boolean) => {
         setRecordingMode: wrapSetter(setRecordingMode, "recording_mode"),
         cycleTheme,
         toggleChroma,
+        setIsMusicianMode: wrapToggle(setIsMusicianMode, "musician_mode"),
     };
 
     return { settings, actions };

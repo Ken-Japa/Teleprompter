@@ -362,6 +362,7 @@ export const es = {
     },
     editor: {
       highlight: "Resaltado",
+      musicianMode: "Modo Músico",
     },
     defaultText: `Bienvenido a PromptNinja.
 

@@ -1,153 +1,210 @@
 import { Sentence, TextFragment } from "../types";
 
 export const parseTextToSentences = (
- text: string
+    text: string
 ): {
- sentences: Sentence[];
- fullCleanText: string;
- charToSentenceMap: Int32Array;
+    sentences: Sentence[];
+    fullCleanText: string;
+    charToSentenceMap: Int32Array;
 } => {
- if (!text)
-  return {
-   sentences: [],
-   fullCleanText: "",
-   charToSentenceMap: new Int32Array(0),
-  };
+    if (!text)
+        return {
+            sentences: [],
+            fullCleanText: "",
+            charToSentenceMap: new Int32Array(0),
+        };
 
- // 1. Tokenize: Convert raw text into a flat list of styled tokens
- const tokens: {
-  text: string;
-  type: "normal" | "red" | "yellow" | "green" | "blue";
- }[] = [];
- const TAG_REGEX = /<([rygb])>([\s\S]*?)<\/\1>/g; // \s\S matches newlines too
- let lastIndex = 0;
- let match;
+    // 1. Tokenize: Convert raw text into a flat list of styled tokens
+    const tokens: {
+        text: string;
+        type: "normal" | "red" | "yellow" | "green" | "blue";
+    }[] = [];
+    const TAG_REGEX = /<([rygb])>([\s\S]*?)<\/\1>/g; // \s\S matches newlines too
+    let lastIndex = 0;
+    let match;
 
- const colorMap: Record<string, any> = {
-  r: "red",
-  y: "yellow",
-  g: "green",
-  b: "blue",
- };
+    const colorMap: Record<string, any> = {
+        r: "red",
+        y: "yellow",
+        g: "green",
+        b: "blue",
+    };
 
- while ((match = TAG_REGEX.exec(text)) !== null) {
-  // Push normal text before the tag
-  if (match.index > lastIndex) {
-   tokens.push({
-    text: text.substring(lastIndex, match.index),
-    type: "normal",
-   });
-  }
-  // Push the tagged text
-  const code = match[1];
-  tokens.push({ text: match[2], type: colorMap[code] || "normal" });
-  lastIndex = TAG_REGEX.lastIndex;
- }
- // Push remaining text
- if (lastIndex < text.length) {
-  tokens.push({ text: text.substring(lastIndex), type: "normal" });
- }
-
- // 2. Sentence Splitting: Iterate tokens and break on punctuation
- const processedSentences: Sentence[] = [];
- let currentFragments: TextFragment[] = [];
- let currentCleanContent = "";
- let globalCharIndex = 0;
- let sentenceIdCounter = 0;
-
- const finalizeSentence = (force = false) => {
-  const trimmedContent = currentCleanContent.trim();
-  if (trimmedContent.length > 0 || force) {
-   processedSentences.push({
-    id: sentenceIdCounter++,
-    cleanContent: trimmedContent,
-    fragments: currentFragments,
-    startIndex: globalCharIndex,
-   });
-   globalCharIndex += trimmedContent.length + 1; // +1 for space
-  }
-  currentFragments = [];
-  currentCleanContent = "";
- };
-
- tokens.forEach((token) => {
-  // Split by sentence terminators, keeping the delimiters
-  // Regex logic: Split on [.!?] or newline, but include them in the result
-  const parts = token.text.split(/([.!?\n]+)/);
-
-  for (let i = 0; i < parts.length; i++) {
-   const part = parts[i];
-   if (!part) continue;
-
-   const isDelimiter = /[.!?\n]+/.test(part);
-
-   if (isDelimiter) {
-    // Append delimiter to the last fragment or create new one
-    if (currentFragments.length > 0 && currentFragments[currentFragments.length - 1].type === token.type) {
-     currentFragments[currentFragments.length - 1].text += part;
-    } else {
-     currentFragments.push({ text: part, type: token.type });
+    while ((match = TAG_REGEX.exec(text)) !== null) {
+        // Push normal text before the tag
+        if (match.index > lastIndex) {
+            tokens.push({
+                text: text.substring(lastIndex, match.index),
+                type: "normal",
+            });
+        }
+        // Push the tagged text
+        const code = match[1];
+        tokens.push({ text: match[2], type: colorMap[code] || "normal" });
+        lastIndex = TAG_REGEX.lastIndex;
     }
-    currentCleanContent += part;
+    // Push remaining text
+    if (lastIndex < text.length) {
+        tokens.push({ text: text.substring(lastIndex), type: "normal" });
+    }
 
-    // A delimiter marks the end of a sentence
-    finalizeSentence();
-   } else {
-    // Regular text
-    currentFragments.push({ text: part, type: token.type });
-    currentCleanContent += part;
-   }
-  }
- });
+    // 2. Sentence Splitting: Iterate tokens and break on punctuation
+    const processedSentences: Sentence[] = [];
+    let currentFragments: TextFragment[] = [];
+    let currentCleanContent = "";
+    let globalCharIndex = 0;
+    let sentenceIdCounter = 0;
 
- // Final flush if any text remains
- if (currentCleanContent.trim().length > 0) {
-  finalizeSentence();
- }
+    const finalizeSentence = (force = false) => {
+        const trimmedContent = currentCleanContent.trim();
+        if (trimmedContent.length > 0 || force) {
+            processedSentences.push({
+                id: sentenceIdCounter++,
+                cleanContent: trimmedContent,
+                fragments: currentFragments,
+                startIndex: globalCharIndex,
+                isChord: isChordLine(trimmedContent),
+            });
+            globalCharIndex += trimmedContent.length + 1; // +1 for space
+        }
+        currentFragments = [];
+        currentCleanContent = "";
+    };
 
- // 3. Build Mapping for Voice Matching
- // We need a "voice-friendly" version of the text:
- // - Lowercase
- // - No punctuation
- // - No newlines
- // - Single spaces between words
+    tokens.forEach((token) => {
+        // Split by sentence terminators, keeping the delimiters
+        // Regex logic: Split on [.!?] or newline, but include them in the result
+        const parts = token.text.split(/([.!?\n]+)/);
 
- let builtString = "";
- const tempMap: number[] = [];
+        for (let i = 0; i < parts.length; i++) {
+            const part = parts[i];
+            if (!part) continue;
 
- processedSentences.forEach((s) => {
-  // Create a clean version: Lowercase, remove punctuation, normalize spaces
-  // Using Unicode properties to keep letters/numbers but remove symbols
-  const clean = s.cleanContent
-   .toLowerCase()
-   .replace(/[^\p{L}\p{N}\s]/gu, "")
-   .replace(/\s+/g, " ")
-   .trim();
+            const isDelimiter = /[.!?\n]+/.test(part);
 
-  if (clean.length === 0) return; // Skip sentences that are just punctuation/newlines
+            if (isDelimiter) {
+                // Append delimiter to the last fragment or create new one
+                if (currentFragments.length > 0 && currentFragments[currentFragments.length - 1].type === token.type) {
+                    currentFragments[currentFragments.length - 1].text += part;
+                } else {
+                    currentFragments.push({ text: part, type: token.type });
+                }
+                currentCleanContent += part;
 
-  // If not the first item, add a space separator
-  if (builtString.length > 0) {
-   builtString += " ";
-   // Map the space to the NEXT sentence (lookahead) or CURRENT?
-   // Usually mapping to the current one being added is safer so that
-   // if the match overlaps the space, it counts as this sentence.
-   tempMap.push(s.id);
-  }
+                // A delimiter marks the end of a sentence
+                finalizeSentence();
+            } else {
+                // Regular text
+                currentFragments.push({ text: part, type: token.type });
+                currentCleanContent += part;
+            }
+        }
+    });
 
-  // Append chars and fill map
-  for (let i = 0; i < clean.length; i++) {
-   tempMap.push(s.id);
-  }
-  builtString += clean;
- });
+    // Final flush if any text remains
+    if (currentCleanContent.trim().length > 0) {
+        finalizeSentence();
+    }
 
- // Convert to Int32Array for performance
- const map = new Int32Array(tempMap);
+    // 3. Build Mapping for Voice Matching
+    // We need a "voice-friendly" version of the text:
+    // - Lowercase
+    // - No punctuation
+    // - No newlines
+    // - Single spaces between words
 
- return {
-  sentences: processedSentences,
-  fullCleanText: builtString,
-  charToSentenceMap: map,
- };
+    let builtString = "";
+    const tempMap: number[] = [];
+
+    processedSentences.forEach((s) => {
+        // Strip out content in brackets [Intro] or parentheses (Chorus) using regex
+        // We do this BEFORE cleaning everything else to explicitly ignore these sections
+        let voiceText = s.cleanContent;
+        voiceText = voiceText.replace(/\[.*?\]/g, "").replace(/\(.*?\)/g, "");
+
+        // Create a clean version: Lowercase, remove punctuation, normalize spaces
+        // Using Unicode properties to keep letters/numbers but remove symbols
+        const clean = voiceText
+            .toLowerCase()
+            .replace(/[^\p{L}\p{N}\s]/gu, "")
+            .replace(/\s+/g, " ")
+            .trim();
+
+        if (clean.length === 0) return; // Skip sentences that are just punctuation/newlines
+
+        // VOICE CONTROL OPTIMIZATION: Skip chord lines
+        if (s.isChord) return;
+
+        // If not the first item, add a space separator
+        if (builtString.length > 0) {
+            builtString += " ";
+            tempMap.push(s.id);
+        }
+
+        // Append chars and fill map
+        for (let i = 0; i < clean.length; i++) {
+            tempMap.push(s.id);
+        }
+        builtString += clean;
+    });
+
+    // Convert to Int32Array for performance
+    const map = new Int32Array(tempMap);
+
+    return {
+        sentences: processedSentences,
+        fullCleanText: builtString,
+        charToSentenceMap: map,
+    };
 };
+
+// --- CHORD DETECTION LOGIC ---
+// Heuristic: A line is a chord line if it consists mostly of chord symbols.
+// Valid chord symbols: A-G, potentially followed by #, b, m, min, maj, dim, aug, sus, add, 2-13, /, etc.
+const CHORD_REGEX = /^[A-G](?:[#b])?(?:m|min|maj|dim|aug|sus|add)?(?:[2-9]|1[0-3])?(?:[#b][59])?(?:\/[A-G](?:[#b])?)?$/;
+
+const isChordLine = (text: string): boolean => {
+    // 1. Clean the text, remove extra spaces
+    const clean = text.trim();
+    if (clean.length === 0) return false;
+
+    // --- TAB DETECTION --- 
+    // Detect typical Tab lines: "E|---" or "e|---" or just numbers/dashes/p/h/x
+    // e.g. E|-----------------|, G|--2--4--|
+    // Heuristic: Starts with letter+pipe, OR contains mostly dashes/numbers/pipes
+    if (/^[A-Za-z]?\|[-0-9pPhHxX\\\/\s]+\|?/.test(clean)) {
+        return true;
+    }
+    // Fallback for tabs without opening key: mostly dashes and numbers (> 80%)
+    const dashNumCount = (clean.match(/[-0-9|]/g) || []).length;
+    if (dashNumCount / clean.length > 0.8) {
+        return true;
+    }
+
+    // 2. Split into tokens
+    const tokens = clean.split(/\s+/);
+
+    // 3. Check each token
+    let chordCount = 0;
+    for (const token of tokens) {
+        // Special case: "|" dividers often used in tabs, and "/" for split chords if spaced
+        if (token === "|" || token === "||" || token === "/") {
+            chordCount++;
+            continue;
+        }
+
+        // Remove common non-chord punctuation that might be attached (e.g., (G))
+        const stripped = token.replace(/[()[\]]/g, "");
+        if (CHORD_REGEX.test(stripped)) {
+            chordCount++;
+        }
+    }
+
+    // 4. Threshold: 
+    // "A / G" -> 3 tokens. 
+    // If strict > 0.75, we need 3/3 (100%) or > 75%. 
+    // 2/3 = 66%. So 0.66.
+    // Let's set to >= 0.65 to capture "A / G" and "Am C (opt)" styles without triggering on "A man" (50%).
+    return (chordCount / tokens.length) >= 0.65;
+};
+

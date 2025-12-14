@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 import * as S from "../ui/Styled";
-import { TrashIcon, InfoIcon, TimerIcon } from "../ui/Icons";
+import { TrashIcon, InfoIcon, TimerIcon, MusicIcon } from "../ui/Icons";
 import { useTranslation } from "../../hooks/useTranslation";
 import { TutorialModal } from "../ui/TutorialModal";
 import { PacingModal } from "../ui/PacingModal";
@@ -9,9 +9,11 @@ interface EditorToolbarProps {
     onInsertTag: (tag: string) => void;
     onClear: () => void;
     text: string;
+    isMusicianMode: boolean;
+    onToggleMusicianMode: () => void;
 }
 
-export const EditorToolbar = memo(({ onInsertTag, onClear, text }: EditorToolbarProps) => {
+export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode, onToggleMusicianMode }: EditorToolbarProps) => {
     const { t } = useTranslation();
     const [showTutorialModal, setShowTutorialModal] = useState(false);
     const [showPacingModal, setShowPacingModal] = useState(false);
@@ -41,7 +43,23 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text }: EditorToolbar
                     </span>
                 </div>
 
-                <div className="flex-1"></div>
+
+
+                {/* Central Musician Mode Toggle - High Prominence */}
+                <div className="flex-1 flex justify-center px-4">
+                    <S.IconButton
+                        onClick={onToggleMusicianMode}
+                        title={t("host.editor.musicianMode")}
+                        aria-label="Toggle Musician Mode"
+                        className={`w-10 h-10 rounded-2xl transition-all duration-300 border backdrop-blur-md group ${isMusicianMode
+                            ? "bg-gradient-to-br from-amber-500/20 to-yellow-600/20 text-yellow-400 border-yellow-500/60 shadow-[0_0_20px_-3px_rgba(234,179,8,0.4)] ring-1 ring-yellow-500/30 scale-105"
+                            : "bg-white/5 text-slate-500 border-white/5 hover:text-yellow-200 hover:bg-yellow-500/10 hover:border-yellow-500/30 grayscale hover:grayscale-0"
+                            }`}
+                        active={isMusicianMode}
+                    >
+                        <MusicIcon className={`w-6 h-6 transition-transform duration-300 ${isMusicianMode ? "scale-110 drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]" : "group-hover:scale-110"}`} />
+                    </S.IconButton>
+                </div>
 
                 {/* Actions */}
                 <div className="flex items-center gap-2">
@@ -76,6 +94,6 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text }: EditorToolbar
             </div>
             <TutorialModal isOpen={showTutorialModal} onClose={() => setShowTutorialModal(false)} />
             <PacingModal isOpen={showPacingModal} onClose={() => setShowPacingModal(false)} text={text} />
-        </S.FormattingToolbar>
+        </S.FormattingToolbar >
     );
 });

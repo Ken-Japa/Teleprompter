@@ -56,7 +56,7 @@ export const Prompter = memo(
     ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onReset, onStartRemoteRecording, onStopRemoteRecording }, ref) => {
 
       // Extracted Settings Logic
-      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode } = settings;
+      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode, isMusicianMode } = settings;
 
       // Ephemeral State
       const [isVoiceMode, setIsVoiceMode] = useState<boolean>(false);
@@ -80,7 +80,9 @@ export const Prompter = memo(
       const mouseMoveRafRef = useRef<number | null>(null);
 
       // Theme Logic
-      const { getThemeClass } = usePrompterTheme(theme);
+      // FORCE DARK THEME if Musician Mode is active (overriding user theme preference)
+      const effectiveTheme = isMusicianMode ? Theme.DEFAULT : theme;
+      const { getThemeClass } = usePrompterTheme(effectiveTheme);
 
       // Picture-in-Picture
       const { pipWindow, togglePiP, isPiPActive } = usePictureInPicture();
@@ -329,7 +331,7 @@ export const Prompter = memo(
       // Dynamic Focus Line Gradient
       const focusGradient = useMemo(() => {
         // Chroma keys should not have focus gradient to ensure pure color
-        if (theme === Theme.CHROMA_GREEN || theme === Theme.CHROMA_BLUE) {
+        if (effectiveTheme === Theme.CHROMA_GREEN || effectiveTheme === Theme.CHROMA_BLUE) {
           return 'none';
         }
 
@@ -344,7 +346,7 @@ export const Prompter = memo(
           }
         };
 
-        const color = getThemeColor(theme);
+        const color = getThemeColor(effectiveTheme);
 
         // If Focus Mode is active, we narrow the transparent window significantly
         // Expanded the window as requested: from 42-58% to 35-65% (30% of screen height)
@@ -370,14 +372,21 @@ export const Prompter = memo(
         [fontSize, margin]
       );
 
+      // effectiveTheme is now defined at the top
+
+
       const prompterContent = (
         <S.ScreenContainer
           ref={containerRef}
-          className={`relative h-screen ${getThemeClass()}`}
-          data-theme={theme}
+          className={`relative h-screen ${getThemeClass()}`} // getThemeClass depends on global current theme or passed one?
+          // We need to ensure getThemeClass respects this override. 
+          // But usePrompterTheme returns getThemeClass based on the hook input `theme`.
+          // We passed `theme` to the hook earlier!
+
+          data-theme={effectiveTheme}
           style={containerStyle}
         >
-          {theme === "matrix" && (
+          {effectiveTheme === "matrix" && (
             <div className="absolute inset-0 pointer-events-none opacity-10 "></div>
           )}
           <div
@@ -387,7 +396,7 @@ export const Prompter = memo(
             }}
           ></div>
 
-          {isFocusMode && ![Theme.CHROMA_GREEN, Theme.CHROMA_BLUE].includes(theme) && <S.FocusIndicator />}
+          {isFocusMode && ![Theme.CHROMA_GREEN, Theme.CHROMA_BLUE].includes(effectiveTheme) && <S.FocusIndicator />}
 
           <S.MainContent onMouseMove={handleMouseMove}>
             <S.PrompterScrollArea
@@ -404,7 +413,7 @@ export const Prompter = memo(
                 paddingBottom: '50vh'
               }}
             >
-              <ScriptBoard sentences={sentences} isMirrored={isMirrored} isFlipVertical={isFlipVertical} isUpperCase={isUpperCase} isPro={isPro} theme={theme} />
+              <ScriptBoard sentences={sentences} isMirrored={isMirrored} isFlipVertical={isFlipVertical} isUpperCase={isUpperCase} isPro={isPro} theme={effectiveTheme} isMusicianMode={isMusicianMode} fontSize={fontSize} margin={margin} />
             </S.PrompterScrollArea>
           </S.MainContent>
 

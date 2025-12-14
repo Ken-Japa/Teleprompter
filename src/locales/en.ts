@@ -353,6 +353,7 @@ export const en = {
     },
     editor: {
       highlight: "Highlight",
+      musicianMode: "Musician Mode",
     },
     defaultText: `Welcome to PromptNinja.
 

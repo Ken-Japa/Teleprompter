@@ -360,6 +360,7 @@ export const pt = {
     exit: "Sair",
     editor: {
       highlight: "Destaque",
+      musicianMode: "Modo Músico",
     },
     defaultText: `Bem-vindo ao PromptNinja.
 

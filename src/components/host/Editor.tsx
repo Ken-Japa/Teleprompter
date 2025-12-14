@@ -14,9 +14,11 @@ interface EditorProps {
     peerId: string;
     status: ConnectionStatus;
     onStart: () => void;
+    isMusicianMode: boolean;
+    onToggleMusicianMode: () => void;
 }
 
-export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, onStart }) => {
+export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, onStart, isMusicianMode, onToggleMusicianMode }) => {
     const { t } = useTranslation();
 
     // Separation of Concerns: Logic is now in the hook
@@ -52,7 +54,13 @@ export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, o
 
             <div className="flex-1 flex flex-col md:flex-row md:overflow-hidden relative">
                 <div className="flex-1 relative flex flex-col h-full bg-slate-950">
-                    <EditorToolbar onInsertTag={handleInsertTag} onClear={handleClear} text={localText} />
+                    <EditorToolbar
+                        onInsertTag={handleInsertTag}
+                        onClear={handleClear}
+                        text={localText}
+                        isMusicianMode={isMusicianMode}
+                        onToggleMusicianMode={onToggleMusicianMode}
+                    />
 
                     <S.EditorTextArea
                         ref={textAreaRef}

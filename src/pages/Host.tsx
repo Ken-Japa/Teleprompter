@@ -51,6 +51,8 @@ export const Host: React.FC = () => {
                     peerId={peerId}
                     status={status}
                     onStart={actions.navigation.startPresentation}
+                    isMusicianMode={prompterSettings.isMusicianMode}
+                    onToggleMusicianMode={() => actions.prompterActions.setIsMusicianMode(!prompterSettings.isMusicianMode)}
                 />
             ) : (
                 <Prompter
