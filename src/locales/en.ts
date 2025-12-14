@@ -500,4 +500,8 @@ Paste your script here and customize your experience to start shining!`,
       description: "Complete collection of free scripts for your videos.",
     },
   },
+  hudless: {
+    button: "Start HUD-less",
+    tooltip: "Starts teleprompter without visible controls. Control via mobile or hotkeys.",
+  },
 };

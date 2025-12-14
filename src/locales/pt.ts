@@ -509,4 +509,8 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
       description: "Coleção completa de roteiros gratuitos para seus vídeos.",
     },
   },
+  hudless: {
+    button: "Iniciar Sem Interface",
+    tooltip: "Inicia o teleprompter sem interface visível. Controle via celular ou teclas.",
+  },
 };

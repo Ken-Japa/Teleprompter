@@ -10,6 +10,7 @@ interface KeyboardShortcutsProps {
   onToggleMirror: () => void;
   onToggleFlip: () => void;
   onToggleFocus: () => void;
+  onExit?: () => void;
 }
 
 /**
@@ -26,7 +27,8 @@ export const useKeyboardShortcuts = ({
   onFontSizeChange,
   onToggleMirror,
   onToggleFlip,
-  onToggleFocus
+  onToggleFocus,
+  onExit
 }: KeyboardShortcutsProps) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -68,10 +70,13 @@ export const useKeyboardShortcuts = ({
         case 'KeyF':
           onToggleFocus();
           break;
+        case 'Escape':
+          if (onExit) onExit();
+          break;
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isPlaying, onTogglePlay, speed, onSpeedChange, fontSize, onFontSizeChange, onToggleMirror, onToggleFlip, onToggleFocus]);
+  }, [isPlaying, onTogglePlay, speed, onSpeedChange, fontSize, onFontSizeChange, onToggleMirror, onToggleFlip, onToggleFocus, onExit]);
 };

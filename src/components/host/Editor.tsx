@@ -14,11 +14,12 @@ interface EditorProps {
     peerId: string;
     status: ConnectionStatus;
     onStart: () => void;
+    onStartHudless: () => void;
     isMusicianMode: boolean;
     onToggleMusicianMode: () => void;
 }
 
-export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, onStart, isMusicianMode, onToggleMusicianMode }) => {
+export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, onStart, onStartHudless, isMusicianMode, onToggleMusicianMode }) => {
     const { t } = useTranslation();
 
     // Separation of Concerns: Logic is now in the hook
@@ -60,6 +61,7 @@ export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, o
                         text={localText}
                         isMusicianMode={isMusicianMode}
                         onToggleMusicianMode={onToggleMusicianMode}
+                        onStartHudless={onStartHudless}
                     />
 
                     <S.EditorTextArea

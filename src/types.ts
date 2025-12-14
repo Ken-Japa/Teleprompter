@@ -123,6 +123,7 @@ export interface PrompterSettings {
     theme: Theme;
     isFocusMode: boolean;
     isFlipVertical: boolean;
+    isHudless?: boolean;
     voiceControlMode?: VoiceControlMode;
     recordingMode?: RecordingMode;
     isMusicianMode: boolean; // New mode

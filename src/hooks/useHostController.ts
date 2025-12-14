@@ -343,6 +343,7 @@ export const useHostController = () => {
       window.location.hash = "app";
       // Force state update immediately
       setIsEditMode(true);
+      prompterActions.setIsHudless(false);
     },
   };
 

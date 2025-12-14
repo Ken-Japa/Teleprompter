@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 import * as S from "../ui/Styled";
-import { TrashIcon, InfoIcon, TimerIcon, MusicIcon } from "../ui/Icons";
+import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LaptopIcon } from "../ui/Icons";
 import { useTranslation } from "../../hooks/useTranslation";
 import { TutorialModal } from "../ui/TutorialModal";
 import { PacingModal } from "../ui/PacingModal";
@@ -11,9 +11,10 @@ interface EditorToolbarProps {
     text: string;
     isMusicianMode: boolean;
     onToggleMusicianMode: () => void;
+    onStartHudless: () => void;
 }
 
-export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode, onToggleMusicianMode }: EditorToolbarProps) => {
+export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode, onToggleMusicianMode, onStartHudless }: EditorToolbarProps) => {
     const { t } = useTranslation();
     const [showTutorialModal, setShowTutorialModal] = useState(false);
     const [showPacingModal, setShowPacingModal] = useState(false);
@@ -71,6 +72,15 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                         className="w-9 h-9 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 text-purple-300 hover:from-purple-500/30 hover:to-pink-500/30 hover:text-purple-200 border border-purple-500/30 hover:border-purple-400/50 transition-all hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
                     >
                         <TimerIcon className="w-5 h-5" />
+                    </S.IconButton>
+
+                    <S.IconButton
+                        onClick={onStartHudless}
+                        className="hover:text-blue-400 w-9 h-9"
+                        aria-label={t("hudless.button")}
+                        title={t("hudless.tooltip")}
+                    >
+                        <LaptopIcon className="w-5 h-5" />
                     </S.IconButton>
 
                     <S.IconButton

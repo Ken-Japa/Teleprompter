@@ -504,4 +504,8 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
       description: "Colección completa de guiones gratuitos para tus videos.",
     },
   },
+  hudless: {
+    button: "Iniciar Sin Interfaz",
+    tooltip: "Inicia el teleprompter sin interfaz visible. Controla vía celular o teclas.",
+  },
 };

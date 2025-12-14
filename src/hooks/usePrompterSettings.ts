@@ -19,6 +19,7 @@ export interface PrompterActions {
     cycleTheme: () => void;
     toggleChroma: () => void;
     setIsMusicianMode: (val: boolean) => void;
+    setIsHudless: (val: boolean) => void;
 }
 
 export const usePrompterSettings = (isPro: boolean) => {
@@ -55,6 +56,10 @@ export const usePrompterSettings = (isPro: boolean) => {
     );
     const [isMusicianMode, setIsMusicianMode] = useLocalStorage<boolean>(
         "neonprompt_musician_mode",
+        false
+    );
+    const [isHudless, setIsHudless] = useLocalStorage<boolean>(
+        "neonprompt_hudless_mode",
         false
     );
 
@@ -109,6 +114,7 @@ export const usePrompterSettings = (isPro: boolean) => {
         voiceControlMode,
         recordingMode,
         isMusicianMode,
+        isHudless,
     };
 
     const actions: PrompterActions = {
@@ -124,6 +130,7 @@ export const usePrompterSettings = (isPro: boolean) => {
         cycleTheme,
         toggleChroma,
         setIsMusicianMode: wrapToggle(setIsMusicianMode, "musician_mode"),
+        setIsHudless: wrapToggle(setIsHudless, "hudless_mode"),
     };
 
     return { settings, actions };

@@ -57,7 +57,7 @@ export const Prompter = memo(
     ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onReset, onStartRemoteRecording, onStopRemoteRecording }, ref) => {
 
       // Extracted Settings Logic
-      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode, isMusicianMode } = settings;
+      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode, isMusicianMode, isHudless } = settings;
 
       // Ephemeral State
       const [isVoiceMode, setIsVoiceMode] = useState<boolean>(false);
@@ -153,6 +153,7 @@ export const Prompter = memo(
         onToggleMirror: () => actions.setIsMirrored(!isMirrored),
         onToggleFlip: () => actions.setIsFlipVertical(!isFlipVertical),
         onToggleFocus: () => actions.setIsFocusMode(!isFocusMode),
+        onExit: onExit,
       });
 
       // Voice Control
@@ -440,7 +441,7 @@ export const Prompter = memo(
             </S.PrompterScrollArea>
           </S.MainContent>
 
-          {!pipWindow && (
+          {!pipWindow && !isHudless && (
             <PrompterHUD
               showHud={showHud}
               peerId={peerId}
