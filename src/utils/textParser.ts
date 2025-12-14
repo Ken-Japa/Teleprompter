@@ -169,15 +169,20 @@ export const parseTextToSentences = (
 const CHORD_REGEX = /^[A-G](?:[#b])?(?:m|min|maj|dim|aug|sus|add)?(?:[2-9]|1[0-3])?(?:[#b][59])?(?:\/[A-G](?:[#b])?)?$/;
 
 const isChordLine = (text: string): boolean => {
+    // 0. CRITICAL FIX: Strip color/style tags before analysis
+    // This ensures text like "<r>[Am C D]</r>" is analyzed as "[Am C D]"
+    // Color tags are added at line 20 BEFORE this check, so we must remove them
+    const cleanFromTags = text.replace(/<[rygb]>([\s\S]*?)<\/[rygb]>/g, "$1");
+
     // 1. Clean the text, remove extra spaces
-    const clean = text.trim();
+    const clean = cleanFromTags.trim();
     if (clean.length === 0) return false;
 
     // --- TAB DETECTION --- 
     // Detect typical Tab lines: "E|---" or "e|---" or just numbers/dashes/p/h/x
     // e.g. E|-----------------|, G|--2--4--|
     // Heuristic: Starts with letter+pipe, OR contains mostly dashes/numbers/pipes
-    if (/^[A-Za-z]?\|[-0-9pPhHxX\\\/\s]+\|?/.test(clean)) {
+    if (/^[A-Za-z]?\|[-0-9pPhHxX\\/\s]+\|?/.test(clean)) {
         return true;
     }
     // Fallback for tabs without opening key: mostly dashes and numbers (> 80%)
