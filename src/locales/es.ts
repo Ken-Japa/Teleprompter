@@ -349,6 +349,7 @@ export const es = {
     },
     paywall: {
       title: "Recurso Exclusivo PRO",
+      unlock: "Desbloquear PRO",
       desc:
         "¡Desbloquea todo el poder de PromptNinja! Las funciones PRO incluyen colores personalizados, control por voz avanzado y uso ilimitado.",
       cta: "Desbloquear Acceso Vitalicio PRO",
@@ -408,6 +409,10 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
       result: "Tiempo Estimado",
     },
     button: "Calcular Tiempo",
+  },
+  paywall: {
+    title: "Personaizar Atajos de Teclado",
+    unlock: "Desbloquear PRO",
   },
   remote: {
     connecting: "Buscando Host...",
@@ -507,5 +512,24 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
   hudless: {
     button: "Iniciar Sin Interfaz",
     tooltip: "Inicia el teleprompter sin interfaz visible. Controla vía celular o teclas.",
+  },
+  hotkeys: {
+    title: "Atajos de Teclado",
+    proDescription: "Personalizar atajos es una función PRO.",
+    reset: "Restaurar Predeterminados",
+    pressKey: "Presiona la tecla...",
+    actions: {
+      TOGGLE_PLAY: "Reproducir / Pausar",
+      SPEED_UP: "Aumentar Velocidad",
+      SPEED_DOWN: "Disminuir Velocidad",
+      FONT_INCREASE: "Aumentar Fuente",
+      FONT_DECREASE: "Disminuir Fuente",
+      TOGGLE_MIRROR: "Espejar",
+      TOGGLE_FLIP: "Invertir Vertical",
+      TOGGLE_FOCUS: "Modo Foco",
+      EXIT: "Salir",
+      RESET: "Reiniciar",
+      TOGGLE_HUD: "Mostrar/Ocultar Interfaz",
+    },
   },
 };

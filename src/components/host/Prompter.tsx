@@ -154,6 +154,8 @@ export const Prompter = memo(
         onToggleFlip: () => actions.setIsFlipVertical(!isFlipVertical),
         onToggleFocus: () => actions.setIsFocusMode(!isFocusMode),
         onExit: onExit,
+        onReset: resetPrompter,
+        onToggleHud: () => actions.setIsHudless(!isHudless), // Toggles HUD-less mode setting
       });
 
       // Voice Control

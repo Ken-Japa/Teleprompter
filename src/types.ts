@@ -179,3 +179,19 @@ export interface RemoteActions {
     handleToggleRecordingMode: () => void;
     downloadRecording: () => void;
 }
+
+export enum HotkeyAction {
+    TOGGLE_PLAY = "TOGGLE_PLAY",
+    SPEED_UP = "SPEED_UP",
+    SPEED_DOWN = "SPEED_DOWN",
+    FONT_INCREASE = "FONT_INCREASE",
+    FONT_DECREASE = "FONT_DECREASE",
+    TOGGLE_MIRROR = "TOGGLE_MIRROR",
+    TOGGLE_FLIP = "TOGGLE_FLIP",
+    TOGGLE_FOCUS = "TOGGLE_FOCUS",
+    EXIT = "EXIT",
+    RESET = "RESET",
+    TOGGLE_HUD = "TOGGLE_HUD",
+}
+
+export type HotkeyConfig = Record<HotkeyAction, string>;

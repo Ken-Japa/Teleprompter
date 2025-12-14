@@ -55,8 +55,11 @@ export const Host: React.FC = () => {
                         actions.prompterActions.setIsHudless(true);
                         actions.navigation.startPresentation();
                     }}
+
                     isMusicianMode={prompterSettings.isMusicianMode}
                     onToggleMusicianMode={() => actions.prompterActions.setIsMusicianMode(!prompterSettings.isMusicianMode)}
+                    isPro={isPro}
+                    onUnlockPro={() => actions.setShowPaywall(true)}
                 />
             ) : (
                 <Prompter

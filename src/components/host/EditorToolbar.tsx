@@ -4,6 +4,8 @@ import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LaptopIcon } from "../ui/Ico
 import { useTranslation } from "../../hooks/useTranslation";
 import { TutorialModal } from "../ui/TutorialModal";
 import { PacingModal } from "../ui/PacingModal";
+import { HotkeyConfigModal } from "../ui/HotkeyConfigModal";
+import { KeyboardIcon } from "../ui/Icons";
 
 interface EditorToolbarProps {
     onInsertTag: (tag: string) => void;
@@ -12,12 +14,15 @@ interface EditorToolbarProps {
     isMusicianMode: boolean;
     onToggleMusicianMode: () => void;
     onStartHudless: () => void;
+    isPro?: boolean;
+    onUnlockPro?: () => void;
 }
 
-export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode, onToggleMusicianMode, onStartHudless }: EditorToolbarProps) => {
+export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode, onToggleMusicianMode, onStartHudless, isPro = false, onUnlockPro = () => { } }: EditorToolbarProps) => {
     const { t } = useTranslation();
     const [showTutorialModal, setShowTutorialModal] = useState(false);
     const [showPacingModal, setShowPacingModal] = useState(false);
+    const [showHotkeyModal, setShowHotkeyModal] = useState(false);
 
     return (
         <S.FormattingToolbar>
@@ -93,6 +98,15 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                     </S.IconButton>
 
                     <S.IconButton
+                        onClick={() => setShowHotkeyModal(true)}
+                        title={t("hotkeys.title") || "Keyboard Shortcuts"}
+                        aria-label="Configure Hotkeys"
+                        className="w-9 h-9 rounded-full bg-slate-800 text-slate-400 hover:text-white border border-slate-700"
+                    >
+                        <KeyboardIcon className="w-5 h-5" />
+                    </S.IconButton>
+
+                    <S.IconButton
                         onClick={() => setShowTutorialModal(true)}
                         title="Tutorial"
                         aria-label="Open Tutorial"
@@ -104,6 +118,7 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
             </div>
             <TutorialModal isOpen={showTutorialModal} onClose={() => setShowTutorialModal(false)} />
             <PacingModal isOpen={showPacingModal} onClose={() => setShowPacingModal(false)} text={text} />
+            <HotkeyConfigModal isOpen={showHotkeyModal} onClose={() => setShowHotkeyModal(false)} isPro={isPro} onUnlockPro={onUnlockPro} />
         </S.FormattingToolbar >
     );
 });

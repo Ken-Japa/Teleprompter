@@ -16,10 +16,13 @@ interface EditorProps {
     onStart: () => void;
     onStartHudless: () => void;
     isMusicianMode: boolean;
-    onToggleMusicianMode: () => void;
+    onToggleMusicianMode: () => void; // Restored
+
+    isPro: boolean;
+    onUnlockPro: () => void;
 }
 
-export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, onStart, onStartHudless, isMusicianMode, onToggleMusicianMode }) => {
+export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, onStart, onStartHudless, isMusicianMode, onToggleMusicianMode, isPro, onUnlockPro }) => {
     const { t } = useTranslation();
 
     // Separation of Concerns: Logic is now in the hook
@@ -61,7 +64,10 @@ export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, o
                         text={localText}
                         isMusicianMode={isMusicianMode}
                         onToggleMusicianMode={onToggleMusicianMode}
+
                         onStartHudless={onStartHudless}
+                        isPro={isPro}
+                        onUnlockPro={onUnlockPro}
                     />
 
                     <S.EditorTextArea

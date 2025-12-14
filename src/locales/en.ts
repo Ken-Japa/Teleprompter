@@ -341,6 +341,7 @@ export const en = {
     },
     paywall: {
       title: "PRO Feature Locked",
+      unlock: "Unlock PRO",
       desc: "This feature is exclusive to Ninja PROs. Unlock to use colors, voice, and unlimited time.",
       cta: "Unlock Lifetime",
       close: "Close",
@@ -399,6 +400,10 @@ Paste your script here and customize your experience to start shining!`,
       result: "Estimated Time",
     },
     button: "Calculate Time",
+  },
+  paywall: {
+    title: "Customize Keyboard Shortcuts",
+    unlock: "Unlock PRO",
   },
   remote: {
     connecting: "Searching Ninja Host...",
@@ -503,5 +508,24 @@ Paste your script here and customize your experience to start shining!`,
   hudless: {
     button: "Start HUD-less",
     tooltip: "Starts teleprompter without visible controls. Control via mobile or hotkeys.",
+  },
+  hotkeys: {
+    title: "Keyboard Shortcuts",
+    proDescription: "Customizing hotkeys is a PRO feature.",
+    reset: "Reset Defaults",
+    pressKey: "Press key...",
+    actions: {
+      TOGGLE_PLAY: "Play / Pause",
+      SPEED_UP: "Speed Up",
+      SPEED_DOWN: "Speed Down",
+      FONT_INCREASE: "Increase Font",
+      FONT_DECREASE: "Decrease Font",
+      TOGGLE_MIRROR: "Mirror",
+      TOGGLE_FLIP: "Flip Vertical",
+      TOGGLE_FOCUS: "Focus Mode",
+      EXIT: "Exit",
+      RESET: "Reset",
+      TOGGLE_HUD: "Toggle HUD",
+    },
   },
 };
