@@ -21,7 +21,14 @@ export function trackEvent(eventName: string, props?: Record<string, string | nu
         // GA4 event structure
         window.gtag("event", eventName, props || {});
     } else {
-        console.warn(`Google Analytics not loaded. Event '${eventName}' not tracked.`);
+        // Fallback: Queue directly to dataLayer if gtag() is not ready yet
+        // This ensures zero event loss even if scripts are slow
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': eventName,
+            ...props
+        });
+        console.warn(`GA shim not found. Queued '${eventName}' directly to dataLayer.`);
     }
 }
 
