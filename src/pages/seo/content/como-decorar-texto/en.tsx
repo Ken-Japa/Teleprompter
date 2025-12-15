@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const ComoDecorarTextoEN = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
@@ -57,17 +59,19 @@ export const ComoDecorarTextoEN = () => (
             </ul>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Frequently Asked Questions (FAQ)</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">1. Won't using a teleprompter make my reading look obvious?</h3>
-                <p className="text-slate-300 mt-2">Not if used correctly. The key is to position the screen as close to the camera lens as possible and adjust the scrolling speed to match your natural speaking pace. With a little practice, no one will notice you're reading.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">2. Do I need any special equipment?</h3>
-                <p className="text-slate-300 mt-2">No! You just need two devices with access to a browser and the same Wi-Fi network. For example, your laptop to display the text and your phone to control the scrolling. It's simple, fast, and requires no expensive hardware.</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title="Frequently Asked Questions (FAQ)"
+            items={[
+                {
+                    question: "1. Won't using a teleprompter make my reading look obvious?",
+                    answer: "Not if used correctly. The key is to position the screen as close to the camera lens as possible and adjust the scrolling speed to match your natural speaking pace. With a little practice, no one will notice you're reading."
+                },
+                {
+                    question: "2. Do I need any special equipment?",
+                    answer: "No! You just need two devices with access to a browser and the same Wi-Fi network. For example, your laptop to display the text and your phone to control the scrolling. It's simple, fast, and requires no expensive hardware."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

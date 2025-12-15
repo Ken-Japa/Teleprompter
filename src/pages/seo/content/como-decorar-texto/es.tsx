@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const ComoDecorarTextoES = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6">Cómo Memorizar un Texto Rápido: La Guía Definitiva (y por qué no deberías hacerlo)</h1>
@@ -89,21 +91,25 @@ export const ComoDecorarTextoES = () => (
             </table>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-10 mb-6">Preguntas Frecuentes (FAQ)</h2>
-        <div className="space-y-4">
-            <details className="bg-slate-800 p-4 rounded-lg">
-                <summary className="font-semibold text-white cursor-pointer">1. ¿No se notará que estoy leyendo?</summary>
-                <p className="mt-2 text-slate-300">No, si lo usas correctamente. Coloca la ventana del navegador con PromptNinja lo más cerca posible de la lente de tu cámara. Tu mirada se moverá mínimamente y para tu audiencia, parecerá que les estás mirando directamente a los ojos. ¡Es el mismo truco que usan en la TV!</p>
-            </details>
-            <details className="bg-slate-800 p-4 rounded-lg">
-                <summary className="font-semibold text-white cursor-pointer">2. ¿Es complicado de configurar?</summary>
-                <p className="mt-2 text-slate-300">Es increíblemente simple. Abres <a href="https://promptninja.solutionkit.com.br" className="text-red-500 hover:underline">PromptNinja</a> en el navegador de tu PC o tablet, y abres una página de control en tu móvil escaneando un código QR. No hay que instalar nada. En 30 segundos estás listo para grabar.</p>
-            </details>
-            <details className="bg-slate-800 p-4 rounded-lg">
-                <summary className="font-semibold text-white cursor-pointer">3. ¿Cómo controlo el ritmo del texto?</summary>
-                <p className="mt-2 text-slate-300">Con tu móvil. La página de control te permite iniciar, pausar, rebobinar y ajustar la velocidad del texto en tiempo real. Esto te da un control total para que el guion siga tu ritmo natural de habla, no al revés.</p>
-            </details>
-        </div>
+        <SEOContentFAQ
+            title="Preguntas Frecuentes (FAQ)"
+            items={[
+                {
+                    question: "1. ¿No se notará que estoy leyendo?",
+                    answer: "No, si lo usas correctamente. Coloca la ventana del navegador con PromptNinja lo más cerca posible de la lente de tu cámara. Tu mirada se moverá mínimamente y para tu audiencia, parecerá que les estás mirando directamente a los ojos. ¡Es el mismo truco que usan en la TV!",
+                    schemaAnswer: "No, si lo usas correctamente. Coloca la ventana del navegador con PromptNinja lo más cerca posible de la lente de tu cámara. Tu mirada se moverá mínimamente y para tu audiencia, parecerá que les estás mirando directamente a los ojos. ¡Es el mismo truco que usan en la TV!"
+                },
+                {
+                    question: "2. ¿Es complicado de configurar?",
+                    answer: <>Es increíblemente simple. Abres <a href="https://promptninja.solutionkit.com.br" className="text-red-500 hover:underline">PromptNinja</a> en el navegador de tu PC o tablet, y abres una página de control en tu móvil escaneando un código QR. No hay que instalar nada. En 30 segundos estás listo para grabar.</>,
+                    schemaAnswer: "Es increíblemente simple. Abres PromptNinja en el navegador de tu PC o tablet, y abres una página de control en tu móvil escaneando un código QR. No hay que instalar nada. En 30 segundos estás listo para grabar."
+                },
+                {
+                    question: "3. ¿Cómo controlo el ritmo del texto?",
+                    answer: "Con tu móvil. La página de control te permite iniciar, pausar, rebobinar y ajustar la velocidad del texto en tiempo real. Esto te da un control total para que el guion siga tu ritmo natural de habla, no al revés."
+                }
+            ]}
+        />
 
         <div className="mt-12 text-center">
             <a

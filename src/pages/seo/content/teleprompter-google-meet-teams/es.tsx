@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterGoogleMeetTeamsES = () => (
     <>
@@ -40,5 +41,23 @@ export const TeleprompterGoogleMeetTeamsES = () => (
                 Domina tus Reuniones Online Ahora
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Preguntas Frecuentes sobre Reuniones Online"
+            items={[
+                {
+                    question: "¿Aparece el teleprompter para los otros participantes?",
+                    answer: "No. PromptNinja es una ventana independiente en tu navegador. Si compartes solo una pestaña de Chrome (con tu presentación) o simplemente hablas a la cámara, nadie verá el texto desplazándose."
+                },
+                {
+                    question: "¿Funciona si solo tengo un monitor?",
+                    answer: "Sí. Recomendamos usar el modo 'Ventana' y hacerla estrecha, posicionada justo debajo de la webcam, superponiendo parcialmente Teams/Meet. Ajusta la transparencia si es necesario."
+                },
+                {
+                    question: "¿Es seguro para información confidencial?",
+                    answer: "Totalmente. PromptNinja opera localmente en tu navegador. El texto que pegas en él no se envía a servidores en la nube, garantizando la privacidad de los datos de tu empresa."
+                }
+            ]}
+        />
     </>
 );

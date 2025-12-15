@@ -1,4 +1,4 @@
-
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterOQueEPT = () => (
     <>
@@ -53,5 +53,24 @@ export const TeleprompterOQueEPT = () => (
         <p>
             Comece agora mesmo a gravar vídeos como um profissional. Experimente o PromptNinja e veja como sua produtividade na criação de conteúdo vai decolar.
         </p>
+
+
+        <SEOContentFAQ
+            title="Dúvidas Comuns sobre Teleprompters"
+            items={[
+                {
+                    question: "Qual a diferença entre um teleprompter online e de software?",
+                    answer: "A principal diferença é a acessibilidade. Softwares exigem instalação e muitas vezes são pagos. Teleprompters online como o PromptNinja rodam no navegador, são gratuitos e funcionam em qualquer sistema operacional (Windows, Mac, Linux, Android, iOS) instantaneamente."
+                },
+                {
+                    question: "É realmente gratuito?",
+                    answer: "Sim, o PromptNinja é 100% gratuito. Acreditamos em democratizar a criação de conteúdo. Oferecemos recursos profissionais sem custo."
+                },
+                {
+                    question: "Onde meus roteiros ficam salvos?",
+                    answer: "Seus textos são salvos automaticamente na memória do seu navegador (Local Storage). Isso garante privacidade total, pois seus dados nunca são enviados para a nuvem."
+                }
+            ]}
+        />
     </>
 );

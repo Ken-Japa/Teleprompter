@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";;
 
 export const TeleprompterCapCutPT = () => (
     <>
@@ -43,5 +44,23 @@ export const TeleprompterCapCutPT = () => (
                 Experimente o Combo PromptNinja + CapCut
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Dúvidas: CapCut e PromptNinja"
+            items={[
+                {
+                    question: "O PromptNinja exporta direto para o CapCut?",
+                    answer: "Não diretamente. Você grava o vídeo no PromptNinja, ele salva na galeria do seu celular, e aí você abre o CapCut e importa o vídeo da galeria. Simples assim."
+                },
+                {
+                    question: "Posso usar os efeitos do CapCut?",
+                    answer: "Sim! A ideia é gravar o vídeo 'limpo' (sem texto na tela) usando o PromptNinja para leitura, e depois adicionar toda a mágica (efeitos, legendas, música) no CapCut."
+                },
+                {
+                    question: "A qualidade do vídeo é boa?",
+                    answer: "Sim. O PromptNinja usa a câmera nativa do seu dispositivo na resolução máxima permitida pelo navegador (geralmente Full HD ou 4K, dependendo do celular)."
+                }
+            ]}
+        />
     </>
 );

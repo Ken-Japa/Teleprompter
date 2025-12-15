@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterObsStudioPT = () => (
     <>
@@ -48,5 +49,23 @@ export const TeleprompterObsStudioPT = () => (
                 Turbine sua Stream com PromptNinja
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Perguntas Frequentes sobre OBS e Teleprompter"
+            items={[
+                {
+                    question: "Como removo o fundo do texto no OBS?",
+                    answer: "No PromptNinja, mude o tema para 'Chroma Green'. No OBS, clique com o botão direito na fonte do navegador, vá em Filtros e adicione 'Chroma Key'. O verde ficará transparente."
+                },
+                {
+                    question: "Funciona também com Streamlabs e Twitch Studio?",
+                    answer: "Sim. A lógica é a mesma: adicione como uma 'Fonte de Navegador' (Browser Source). O PromptNinja é compatível com qualquer software de transmissão que aceite fontes web."
+                },
+                {
+                    question: "Existe atraso (delay) no controle remoto?",
+                    answer: "Virtualmente zero. Usamos tecnologia WebRTC que conecta seu celular e PC diretamente via rede local, garantindo latência abaixo de 20ms, imperceptível para uso humano."
+                }
+            ]}
+        />
     </>
 );

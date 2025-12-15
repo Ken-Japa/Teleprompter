@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const AlternativasTeleprompterConcorrentePT = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
@@ -95,25 +97,27 @@ export const AlternativasTeleprompterConcorrentePT = () => (
             Ter a ferramenta certa é o primeiro passo. O próximo é dominar sua presença em vídeo. Confira nossas <a href="/dicas-oratoria-video" className="text-purple-400 hover:text-purple-300 underline">5 dicas de oratória para vídeo</a> e leve suas apresentações para outro nível.
         </p>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Perguntas Frequentes (FAQ)</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">1. O PromptNinja é realmente gratuito?</h3>
-                <p className="text-slate-300 mt-2">Sim, o PromptNinja oferece um plano gratuito robusto que inclui controle remoto, espelhamento e funcionamento offline. A versão gratuita é perfeita para a maioria dos criadores.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">2. O PromptNinja tem limite de tempo na versão gratuita?</h3>
-                <p className="text-slate-300 mt-2">A versão gratuita permite sessões de até 20 minutos contínuos. Após esse tempo, você pode simplesmente iniciar uma nova sessão. O número de sessões é ilimitado.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">3. Como o PromptNinja consegue Zero Lag (Sem Atraso)?</h3>
-                <p className="text-slate-300 mt-2">Utilizamos tecnologia WebRTC P2P (Peer-to-Peer). O comando sai do seu celular e vai direto para o computador pela sua rede Wi-Fi, sem passar por servidores externos. Isso garante uma resposta instantânea, em milissegundos.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">4. Meus roteiros estão seguros?</h3>
-                <p className="text-slate-300 mt-2">Absolutamente. Como não exigimos login, seus roteiros ficam salvos apenas na memória do seu navegador (localStorage). Eles nunca são enviados para a nuvem, garantindo privacidade total.</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title="Perguntas Frequentes (FAQ)"
+            items={[
+                {
+                    question: "1. O PromptNinja é realmente gratuito?",
+                    answer: "Sim, o PromptNinja oferece um plano gratuito robusto que inclui controle remoto, espelhamento e funcionamento offline. A versão gratuita é perfeita para a maioria dos criadores."
+                },
+                {
+                    question: "2. O PromptNinja tem limite de tempo na versão gratuita?",
+                    answer: "A versão gratuita permite sessões de até 20 minutos contínuos. Após esse tempo, você pode simplesmente iniciar uma nova sessão. O número de sessões é ilimitado."
+                },
+                {
+                    question: "3. Como o PromptNinja consegue Zero Lag (Sem Atraso)?",
+                    answer: "Utilizamos tecnologia WebRTC P2P (Peer-to-Peer). O comando sai do seu celular e vai direto para o computador pela sua rede Wi-Fi, sem passar por servidores externos. Isso garante uma resposta instantânea, em milissegundos."
+                },
+                {
+                    question: "4. Meus roteiros estão seguros?",
+                    answer: "Absolutamente. Como não exigimos login, seus roteiros ficam salvos apenas na memória do seu navegador (localStorage). Eles nunca são enviados para a nuvem, garantindo privacidade total."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

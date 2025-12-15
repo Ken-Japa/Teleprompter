@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const TeleprompterOnlineGratisEN = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6">Free Online Teleprompter: The Ultimate Tool for Creators</h1>
@@ -88,21 +90,23 @@ export const TeleprompterOnlineGratisEN = () => (
             </table>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">FAQ: Free Online Teleprompter</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Is PromptNinja really free?</h3>
-                <p className="text-slate-300 mt-2">Yes. All essential features, including remote control, text mirroring, and font/speed adjustments, are 100% free with no strings attached. We offer a Pro version with advanced features like voice recognition, but the core tool is free forever.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Are my scripts saved anywhere?</h3>
-                <p className="text-slate-300 mt-2">No. Your privacy is a priority. All text you paste into PromptNinja is processed locally in your browser and is never sent to or stored on our servers. When you close the tab, the text is gone.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Do I need a strong internet connection for the remote control?</h3>
-                <p className="text-slate-300 mt-2">No. The remote control uses WebRTC (P2P) technology that connects your devices directly over your local Wi-Fi network. This ensures an instant, lag-free response, regardless of your internet speed.</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title="FAQ: Free Online Teleprompter"
+            items={[
+                {
+                    question: "Is PromptNinja really free?",
+                    answer: "Yes. All essential features, including remote control, text mirroring, and font/speed adjustments, are 100% free with no strings attached. We offer a Pro version with advanced features like voice recognition, but the core tool is free forever."
+                },
+                {
+                    question: "Are my scripts saved anywhere?",
+                    answer: "No. Your privacy is a priority. All text you paste into PromptNinja is processed locally in your browser and is never sent to or stored on our servers. When you close the tab, the text is gone."
+                },
+                {
+                    question: "Do I need a strong internet connection for the remote control?",
+                    answer: "No. The remote control uses WebRTC (P2P) technology that connects your devices directly over your local Wi-Fi network. This ensures an instant, lag-free response, regardless of your internet speed."
+                }
+            ]}
+        />
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
             <h2 className="text-3xl font-bold text-white mb-4">Your Search for a Free Teleprompter is Over</h2>

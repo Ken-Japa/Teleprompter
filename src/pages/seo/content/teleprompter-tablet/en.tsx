@@ -1,4 +1,4 @@
-
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterTabletEN = () => (
     <>
@@ -86,5 +86,23 @@ export const TeleprompterTabletEN = () => (
                 Launch App on Tablet
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Tablet & iPad FAQs"
+            items={[
+                {
+                    question: "Do I need to buy an app from the App Store?",
+                    answer: "No. PromptNinja runs directly in Safari or Chrome on your tablet. You can use the 'Add to Home Screen' function to make it work like a native app, but free."
+                },
+                {
+                    question: "How do I mirror text for glass teleprompters?",
+                    answer: "It's very simple. In the bottom toolbar (or 'M' shortcut), click the mirror icon. The text will flip horizontally, ready for reflection."
+                },
+                {
+                    question: "Can I control my iPad using my phone?",
+                    answer: "Yes! Open PromptNinja on the iPad, click the Link/Remote icon, and scan the QR Code with your phone. Your smartphone becomes an instant remote control."
+                }
+            ]}
+        />
     </>
 );

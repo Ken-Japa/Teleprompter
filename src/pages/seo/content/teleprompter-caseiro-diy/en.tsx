@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const TeleprompterCaseiroDIYEN = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6">Homemade Teleprompter DIY: Complete Guide and the Best FREE Software for Your Project</h1>
@@ -58,20 +60,23 @@ export const TeleprompterCaseiroDIYEN = () => (
         </ul>
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">FAQ: Common Questions About Homemade Teleprompters</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Do I need special glass?</h3>
-                <p className="text-slate-300 mt-2">No. A regular picture frame glass works well. Professional "beam splitter" glass is better, but for a DIY setup, the difference is minimal and the cost is much higher.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">How do I prevent the camera from recording the text?</h3>
-                <p className="text-slate-300 mt-2">The secret is the 45-degree angle of the glass and the black cloth. The camera, positioned behind the glass, captures the image in front of you, while the reflected text from the tablet below is only visible to the person in front of the glass (you).</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Does the PromptNinja remote work with any phone?</h3>
-                <p className="text-slate-300 mt-2">Yes. If your phone can read a QR code and has a browser, it can be used as a remote control. No need to install any app on it.</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title=""
+            items={[
+                {
+                    question: "Do I need special glass?",
+                    answer: "No. A regular picture frame glass works well. Professional \"beam splitter\" glass is better, but for a DIY setup, the difference is minimal and the cost is much higher."
+                },
+                {
+                    question: "How do I prevent the camera from recording the text?",
+                    answer: "The secret is the 45-degree angle of the glass and the black cloth. The camera, positioned behind the glass, captures the image in front of you, while the reflected text from the tablet below is only visible to the person in front of the glass (you)."
+                },
+                {
+                    question: "Does the PromptNinja remote work with any phone?",
+                    answer: "Yes. If your phone can read a QR code and has a browser, it can be used as a remote control. No need to install any app on it."
+                }
+            ]}
+        />
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
             <h2 className="text-3xl font-bold text-white mb-4">Turn Your DIY Project into a Professional Tool</h2>

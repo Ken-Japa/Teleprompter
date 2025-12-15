@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterTikTokShortsES = () => (
     <>
@@ -43,5 +44,23 @@ export const TeleprompterTikTokShortsES = () => (
                 Crea Videos Virales Ahora - ¡Es Gratis!
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Preguntas de Creadores de Video Vertical"
+            items={[
+                {
+                    question: "¿Cómo evito parecer que estoy leyendo?",
+                    answer: "El secreto es el posicionamiento. En el móvil, coloca el texto en la parte superior de la pantalla, pegado a la cámara frontal. Usa una fuente más pequeña y aléjate un poco si es posible."
+                },
+                {
+                    question: "¿Hay una app de PromptNinja para descargar?",
+                    answer: "PromptNinja es una Web App. Esto significa que no necesitas descargar nada de la tienda. Solo accede por Chrome o Safari y se adapta perfectamente a la pantalla de tu móvil."
+                },
+                {
+                    question: "¿Cómo grabo solo a distancia?",
+                    answer: "Usa nuestra función de Control Remoto. Abre PromptNinja en el móvil que grabará y usa otro móvil u ordenador en tu mano para dar play y controlar la velocidad sin moverte."
+                }
+            ]}
+        />
     </>
 );

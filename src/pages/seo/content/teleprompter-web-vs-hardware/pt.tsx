@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterWebVsHardwarePT = () => (
     <>
@@ -63,5 +64,23 @@ export const TeleprompterWebVsHardwarePT = () => (
                 Teste a Evolução do Teleprompter
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Dúvidas: Software vs Hardware"
+            items={[
+                {
+                    question: "O PromptNinja substitui um teleprompter de vidro?",
+                    answer: "Depende do seu uso. Para câmeras frontais de celular e webcam, sim, é até melhor pois o olho fica na lente. Para câmeras DSLR profissionais a 2 metros de distância, você pode usar o PromptNinja EM CONJUNTO com o vidro (modo espelho)."
+                },
+                {
+                    question: "Preciso de internet rápida?",
+                    answer: "Não. O PromptNinja carrega uma vez e funciona offline. A tecnologia P2P usa sua rede local (Wi-Fi), não a internet de fora, garantindo velocidade máxima."
+                },
+                {
+                    question: "Posso usar em um monitor antigo?",
+                    answer: "Sim! Qualquer tela que tenha um navegador (Chrome, Edge) serve. Você pode dar vida nova a um monitor velho ou tablet antigo usando-o apenas como tela de leitura."
+                }
+            ]}
+        />
     </>
 );

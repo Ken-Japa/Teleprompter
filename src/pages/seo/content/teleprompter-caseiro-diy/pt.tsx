@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const TeleprompterCaseiroDIYPT = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6">Teleprompter Caseiro (DIY): Guia Completo e o Software GRÁTIS Ideal para o Seu Projeto</h1>
@@ -58,20 +60,23 @@ export const TeleprompterCaseiroDIYPT = () => (
         </ul>
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">FAQ: Perguntas Comuns sobre Teleprompter Caseiro</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Preciso de um vidro especial?</h3>
-                <p className="text-slate-300 mt-2">Não. Um vidro de porta-retrato comum funciona bem. Vidros "beam splitter" profissionais são melhores, mas para um setup DIY, a diferença é mínima e o custo é muito maior.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Como evito que a câmera grave o texto?</h3>
-                <p className="text-slate-300 mt-2">O segredo é o ângulo de 45 graus do vidro e o pano preto. A câmera, posicionada atrás do vidro, captura a imagem à sua frente, enquanto o texto refletido do tablet abaixo só é visível para quem está na frente do vidro (você).</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">O controle remoto do PromptNinja funciona com qualquer celular?</h3>
-                <p className="text-slate-300 mt-2">Sim. Se o seu celular consegue ler um QR code e tem um navegador, ele pode ser usado como controle remoto. Não é preciso instalar nenhum aplicativo nele.</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title=""
+            items={[
+                {
+                    question: "Preciso de um vidro especial?",
+                    answer: "Não. Um vidro de porta-retrato comum funciona bem. Vidros \"beam splitter\" profissionais são melhores, mas para um setup DIY, a diferença é mínima e o custo é muito maior."
+                },
+                {
+                    question: "Como evito que a câmera grave o texto?",
+                    answer: "O segredo é o ângulo de 45 graus do vidro e o pano preto. A câmera, posicionada atrás do vidro, captura a imagem à sua frente, enquanto o texto refletido do tablet abaixo só é visível para quem está na frente do vidro (você)."
+                },
+                {
+                    question: "O controle remoto do PromptNinja funciona com qualquer celular?",
+                    answer: "Sim. Se o seu celular consegue ler um QR code e tem um navegador, ele pode ser usado como controle remoto. Não é preciso instalar nenhum aplicativo nele."
+                }
+            ]}
+        />
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
             <h2 className="text-3xl font-bold text-white mb-4">Transforme seu Projeto DIY em uma Ferramenta Profissional</h2>

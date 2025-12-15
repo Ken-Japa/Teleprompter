@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const TeleprompterPCWindowsPT = () => (
     <>
         <h1 className="text-3xl font-bold text-white mb-4">Teleprompter para PC Windows: A Solução Moderna (Sem Instalação)</h1>
@@ -72,19 +74,22 @@ export const TeleprompterPCWindowsPT = () => (
         </div>
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">Perguntas Frequentes (FAQ) para Usuários Windows</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-white">O PromptNinja funciona offline no meu PC?</h3>
-                <p>Sim. Uma vez que a página do PromptNinja é carregada, o teleprompter principal e o controle de rolagem funcionam mesmo que sua internet caia. Você só precisa de conexão para carregar a página inicialmente e para sincronizar o controle remoto.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-white">É seguro para o meu computador?</h3>
-                <p>Totalmente. Por rodar dentro do ambiente seguro (sandbox) do seu navegador, o PromptNinja não tem acesso aos seus arquivos ou sistema. Seus roteiros são processados localmente e nunca são enviados para nossos servidores na versão gratuita.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-white">Vai deixar meu PC lento durante a gravação com OBS ou vMix?</h3>
-                <p>Não. O PromptNinja é extremamente leve e consome poucos recursos. Ele foi projetado para rodar em paralelo com softwares de gravação e streaming sem causar conflitos de driver ou queda de performance.</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title=""
+            items={[
+                {
+                    question: "O PromptNinja funciona offline no meu PC?",
+                    answer: "Sim. Uma vez que a página do PromptNinja é carregada, o teleprompter principal e o controle de rolagem funcionam mesmo que sua internet caia. Você só precisa de conexão para carregar a página inicialmente e para sincronizar o controle remoto."
+                },
+                {
+                    question: "É seguro para o meu computador?",
+                    answer: "Totalmente. Por rodar dentro do ambiente seguro (sandbox) do seu navegador, o PromptNinja não tem acesso aos seus arquivos ou sistema. Seus roteiros são processados localmente e nunca são enviados para nossos servidores na versão gratuita."
+                },
+                {
+                    question: "Vai deixar meu PC lento durante a gravação com OBS ou vMix?",
+                    answer: "Não. O PromptNinja é extremamente leve e consome poucos recursos. Ele foi projetado para rodar em paralelo com softwares de gravação e streaming sem causar conflitos de driver ou queda de performance."
+                }
+            ]}
+        />
     </>
 );

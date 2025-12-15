@@ -1,4 +1,6 @@
 
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const TeleprompterModoMusicoPT = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6">Teleprompter Modo Músico: A Solução Definitiva para Acompanhar Letras e Cifras</h1>
@@ -84,7 +86,7 @@ export const TeleprompterModoMusicoPT = () => (
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">Como Formatar Letras e Cifras para o Modo Músico</h2>
         <p className="mb-4">
-            O Modo Músico detecta automaticamente linhas que contêm acordes (identificadas por padrões como "Am", "G7", "C#m", etc.) e aplica formatação monoespaçada para garantir alinhamento perfeito. Veja um exemplo:
+            O Modo Músico detecta automáticamente linhas que contêm acordes (identificadas por padrões como "Am", "G7", "C#m", etc.) e aplica formatação monoespaçada para garantir alinhamento perfeito. Veja um exemplo:
         </p>
         <div className="bg-slate-900 p-6 rounded-lg my-6 font-mono text-sm">
             <pre className="text-yellow-400">
@@ -99,24 +101,27 @@ export const TeleprompterModoMusicoPT = () => (
         </p>
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">FAQ: Modo Músico</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">O Modo Músico é um recurso pago?</h3>
-                <p className="text-slate-300 mt-2">Não! O Modo Músico é <strong>100% gratuito</strong> no PromptNinja. Você só precisa ativar o botão no editor. O recurso PRO separado é o <strong>Controle de Voz</strong>, que rola automaticamente enquanto você canta.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Funciona com tablaturas (tabs)?</h3>
-                <p className="text-slate-300 mt-2">Sim! A fonte monoespaçada do Modo Músico é perfeita para exibir tablaturas ASCII, mantendo o alinhamento correto de todas as linhas.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Posso usar em apresentações ao ar livre (sem internet)?</h3>
-                <p className="text-slate-300 mt-2">Sim! O PromptNinja é um PWA que funciona <strong>totalmente offline</strong>. Basta abrir uma vez com internet, e depois funciona sem conexão. O controle remoto usa conexão P2P local (Wi-Fi), não precisa de internet.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Como transportar acordes (mudar tom)?</h3>
-                <p className="text-slate-300 mt-2">Use ferramentas externas de transposição de acordes antes de colar no PromptNinja. Nossa função é exibir perfeitamente o que você preparou. (Função de transposição automática pode vir em versões futuras!)</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title=""
+            items={[
+                {
+                    question: "O Modo Músico é um recurso pago?",
+                    answer: "Não! O Modo Músico é **100% gratuito** no PromptNinja. Você só precisa ativar o botão no editor. O recurso PRO separado é o **Controle de Voz**, que rola automaticamente enquanto você canta."
+                },
+                {
+                    question: "Funciona com tablaturas (tabs)?",
+                    answer: "Sim! A fonte monoespaçada do Modo Músico é perfeita para exibir tablaturas ASCII, mantendo o alinhamento correto de todas as linhas."
+                },
+                {
+                    question: "Posso usar em apresentações ao ar livre (sem internet)?",
+                    answer: "Sim! O PromptNinja é um PWA que funciona **totalmente offline**. Basta abrir uma vez com internet, e depois funciona sem conexão. O controle remoto usa conexão P2P local (Wi-Fi), não precisa de internet."
+                },
+                {
+                    question: "Como transportar acordes (mudar tom)?",
+                    answer: "Use ferramentas externas de transposição de acordes antes de colar no PromptNinja. Nossa função é exibir perfeitamente o que você preparou. (Função de transposição automática pode vir em versões futuras!)"
+                }
+            ]}
+        />
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
             <h2 className="text-3xl font-bold text-white mb-4">Pronto para Transformar suas Apresentações Musicais?</h2>

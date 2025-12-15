@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterSlidesES = () => (
     <>
@@ -63,5 +64,23 @@ export const TeleprompterSlidesES = () => (
                 Crear Presentación Ahora
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Preguntas sobre Diapositivas y Presentación"
+            items={[
+                {
+                    question: "¿PromptNinja cambia la diapositiva de PowerPoint solo?",
+                    answer: "No. PromptNinja controla TU GUION (texto). Tú sigues usando tu pasador de diapositivas o mouse para cambiar en PowerPoint, pero el comando [STOP] asegura que nunca pierdas tu lugar en la lectura."
+                },
+                {
+                    question: "¿Qué pasadores de diapositivas son compatibles?",
+                    answer: "Prácticamente todos (Logitech R400, R800, genéricos). Si el pasador funciona simulando las flechas del teclado o RePág/AvPág, funcionará nativamente en PromptNinja."
+                },
+                {
+                    question: "¿Funciona en Zoom o Teams?",
+                    answer: "Perfectamente. En presentaciones online, la técnica estándar es compartir solo la ventana de la presentación y mantener el teleprompter flotando encima para leer."
+                }
+            ]}
+        />
     </>
 );

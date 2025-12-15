@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const ComoDecorarTextoPT = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
@@ -100,25 +102,27 @@ export const ComoDecorarTextoPT = () => (
             </ul>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Perguntas Frequentes (FAQ)</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-6 rounded-lg">
-                <h3 className="font-bold text-lg text-white">1. Usar um teleprompter não vai fazer minha leitura parecer óbvia?</h3>
-                <p className="text-slate-300 mt-2">Não, se usado corretamente. O segredo é posicionar a janela do navegador com o texto o mais próximo possível da lente da câmera. Ajuste a velocidade de rolagem para que ela acompanhe seu ritmo natural de fala. Com um pouco de prática, sua entrega será fluida e natural, e ninguém notará que você está lendo.</p>
-            </div>
-            <div className="bg-slate-800 p-6 rounded-lg">
-                <h3 className="font-bold text-lg text-white">2. Preciso de algum equipamento especial ou aplicativo?</h3>
-                <p className="text-slate-300 mt-2">Absolutamente nada. O PromptNinja funciona diretamente no seu navegador. Você só precisa de dois dispositivos (ex: notebook + celular) na mesma rede Wi-Fi. Não há necessidade de instalar softwares, criar contas ou fornecer permissões de administrador. É abrir o site e usar.</p>
-            </div>
-            <div className="bg-slate-800 p-6 rounded-lg">
-                <h3 className="font-bold text-lg text-white">3. Como o controle remoto com o celular funciona?</h3>
-                <p className="text-slate-300 mt-2">É incrivelmente simples. A tela principal (seu PC ou tablet) exibe um QR Code. Você o escaneia com a câmera do seu celular, e a conexão é estabelecida instantaneamente via WebRTC (P2P), sem intermediários. Seu celular se transforma em um controle remoto seguro e sem atrasos.</p>
-            </div>
-            <div className="bg-slate-800 p-6 rounded-lg">
-                <h3 className="font-bold text-lg text-white">4. É realmente gratuito?</h3>
-                <p className="text-slate-300 mt-2">Sim, a versão principal do PromptNinja é 100% gratuita e oferece todos os recursos essenciais, como o controle remoto, modo espelho e ajuste de texto. Oferecemos uma versão Pro opcional com funcionalidades avançadas como o Controle por Voz.</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title="Perguntas Frequentes (FAQ)"
+            items={[
+                {
+                    question: "1. Usar um teleprompter não vai fazer minha leitura parecer óbvia?",
+                    answer: "Não, se usado corretamente. O segredo é posicionar a janela do navegador com o texto o mais próximo possível da lente da câmera. Ajuste a velocidade de rolagem para que ela acompanhe seu ritmo natural de fala. Com um pouco de prática, sua entrega será fluida e natural, e ninguém notará que você está lendo."
+                },
+                {
+                    question: "2. Preciso de algum equipamento especial ou aplicativo?",
+                    answer: "Absolutamente nada. O PromptNinja funciona diretamente no seu navegador. Você só precisa de dois dispositivos (ex: notebook + celular) na mesma rede Wi-Fi. Não há necessidade de instalar softwares, criar contas ou fornecer permissões de administrador. É abrir o site e usar."
+                },
+                {
+                    question: "3. Como o controle remoto com o celular funciona?",
+                    answer: "É incrivelmente simples. A tela principal (seu PC ou tablet) exibe um QR Code. Você o escaneia com a câmera do seu celular, e a conexão é estabelecida instantaneamente via WebRTC (P2P), sem intermediários. Seu celular se transforma em um controle remoto seguro e sem atrasos."
+                },
+                {
+                    question: "4. É realmente gratuito?",
+                    answer: "Sim, a versão principal do PromptNinja é 100% gratuita e oferece todos os recursos essenciais, como o controle remoto, modo espelho e ajuste de texto. Oferecemos uma versão Pro opcional com funcionalidades avançadas como o Controle por Voz."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

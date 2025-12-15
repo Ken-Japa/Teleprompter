@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterWebVsHardwareEN = () => (
     <>
@@ -58,5 +59,23 @@ export const TeleprompterWebVsHardwareEN = () => (
                 Try the Teleprompter Evolution
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Software vs Hardware Questions"
+            items={[
+                {
+                    question: "Does PromptNinja replace a glass teleprompter?",
+                    answer: "It depends on your usage. For selfie cameras and webcams, yes, it's often better as your eyes stay on the lens. For pro DSLR setups at a distance, you can use PromptNinja WITH the glass kit (mirror mode)."
+                },
+                {
+                    question: "Do I need fast internet?",
+                    answer: "No. PromptNinja loads once and works offline. The P2P technology uses your local Wi-Fi, not the WAN, ensuring maximum speed."
+                },
+                {
+                    question: "Can I use it on an old monitor?",
+                    answer: "Yes! Any screen with a browser (Chrome, Edge) works. You can repurpose an old monitor or tablet just as a reading display."
+                }
+            ]}
+        />
     </>
 );

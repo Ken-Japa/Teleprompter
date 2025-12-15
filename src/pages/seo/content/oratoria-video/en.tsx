@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const OratoriaVideoEN = () => (
     <div className="text-slate-300">
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 text-center">
@@ -118,27 +120,23 @@ export const OratoriaVideoEN = () => (
         </div>
 
         <div className="mt-16">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Frequently Asked Questions (FAQ)</h2>
-            <div className="space-y-4 max-w-3xl mx-auto">
-                <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">
-                    <summary className="font-bold text-white text-lg">Won't using a teleprompter make me look robotic?</summary>
-                    <p className="mt-2 text-slate-400">
-                        On the contrary. A good teleprompter, combined with <strong>PromptNinja's P2P remote control</strong>, allows you to adjust the speed in real-time, matching your natural speaking pace. The robotic appearance comes from trying to memorize and recite, not from reading fluently with the right tool.
-                    </p>
-                </details>
-                <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">
-                    <summary className="font-bold text-white text-lg">Do I need expensive equipment to use PromptNinja?</summary>
-                    <p className="mt-2 text-slate-400">
-                        No. You only need two devices with browser access: one to be the screen (like a laptop or tablet) and another to be the remote (your phone). No additional hardware is required.
-                    </p>
-                </details>
-                <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">
-                    <summary className="font-bold text-white text-lg">Is it hard to set up?</summary>
-                    <p className="mt-2 text-slate-400">
-                        It takes less than 30 seconds. Go to the website, paste your script, click "start," and scan the QR code with your phone. It's the fastest and simplest way to have a professional teleprompter system.
-                    </p>
-                </details>
-            </div>
+            <SEOContentFAQ
+                title="Frequently Asked Questions (FAQ)"
+                items={[
+                    {
+                        question: "Won't using a teleprompter make me look robotic?",
+                        answer: "On the contrary. A good teleprompter, combined with PromptNinja's P2P remote control, allows you to adjust the speed in real-time, matching your natural speaking pace. The robotic appearance comes from trying to memorize and recite, not from reading fluently with the right tool."
+                    },
+                    {
+                        question: "Do I need expensive equipment to use PromptNinja?",
+                        answer: "No. You only need two devices with browser access: one to be the screen (like a laptop or tablet) and another to be the remote (your phone). No additional hardware is required."
+                    },
+                    {
+                        question: "Is it hard to set up?",
+                        answer: "It takes less than 30 seconds. Go to the website, paste your script, click \"start,\" and scan the QR code with your phone. It's the fastest and simplest way to have a professional teleprompter system."
+                    }
+                ]}
+            />
         </div>
     </div>
 );

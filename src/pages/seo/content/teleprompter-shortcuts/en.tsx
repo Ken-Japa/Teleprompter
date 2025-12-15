@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterShortcutsEN = () => (
     <>
@@ -84,5 +85,23 @@ export const TeleprompterShortcutsEN = () => (
                 Try Shortcuts Now
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Shortcuts & Control FAQs"
+            items={[
+                {
+                    question: "Can I customize the hotkeys?",
+                    answer: "Yes, in the PromptNinja PRO version you can fully remap all functions (start, stop, speed, mirror) to any key you prefer."
+                },
+                {
+                    question: "Does it work with foot pedals and clickers?",
+                    answer: "Yes! Most of these devices simulate keyboard strokes (like Space or Arrow keys). PromptNinja recognizes these signals natively, without needing extra drivers."
+                },
+                {
+                    question: "What does the 'H' key do?",
+                    answer: "The 'H' key hides the User Interface (HUD). It's perfect for screen recording (gameplay, tutorials) when you want only the text to appear, with no distracting buttons or menus."
+                }
+            ]}
+        />
     </>
 );

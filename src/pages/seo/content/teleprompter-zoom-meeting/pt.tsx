@@ -1,4 +1,6 @@
 
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const TeleprompterZoomMeetingPT = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6">Teleprompter GRÁTIS para Zoom, Teams e Google Meet: O Segredo do Contato Visual Perfeito</h1>
@@ -109,22 +111,23 @@ export const TeleprompterZoomMeetingPT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Perguntas Frequentes (FAQ)</h2>
-        <dl className="space-y-6">
-            <div>
-                <dt className="font-bold text-white text-lg">As pessoas realmente não vão saber que estou lendo?</dt>
-                <dd className="text-slate-300 mt-1">Se você seguir as dicas de posicionamento da janela, tamanho da fonte e, principalmente, praticar para falar com naturalidade, a leitura será imperceptível. O segredo é usar o texto como um guia, não como uma prisão.</dd>
-            </div>
-            <div>
-                <dt className="font-bold text-white text-lg">O teleprompter aparece na gravação da reunião?</dt>
-                <dd className="text-slate-300 mt-1">Não. O PromptNinja é uma janela do seu navegador, visível apenas para você. A gravação do Zoom, Teams ou Meet captura apenas o feed da sua câmera, então o teleprompter permanece seu segredo.</dd>
-            </div>
-            <div>
-                <dt className="font-bold text-white text-lg">Funciona com uma webcam externa?</dt>
-                <dd className="text-slate-300 mt-1">Sim, perfeitamente. Na verdade, é ainda melhor. Posicione a janela do PromptNinja logo acima ou abaixo da sua webcam externa para um alinhamento ocular ideal.</dd>
-            </div>
-
-        </dl>
+        <SEOContentFAQ
+            title="Perguntas Frequentes (FAQ)"
+            items={[
+                {
+                    question: "As pessoas realmente não vão saber que estou lendo?",
+                    answer: "Se você seguir as dicas de posicionamento da janela, tamanho da fonte e, principalmente, praticar para falar com naturalidade, a leitura será imperceptível. O segredo é usar o texto como um guia, não como uma prisão."
+                },
+                {
+                    question: "O teleprompter aparece na gravação da reunião?",
+                    answer: "Não. O PromptNinja é uma janela do seu navegador, visível apenas para você. A gravação do Zoom, Teams ou Meet captura apenas o feed da sua câmera, então o teleprompter permanece seu segredo."
+                },
+                {
+                    question: "Funciona com uma webcam externa?",
+                    answer: "Sim, perfeitamente. Na verdade, é ainda melhor. Posicione a janela do PromptNinja logo acima ou abaixo da sua webcam externa para um alinhamento ocular ideal."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

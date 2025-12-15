@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const TeleprompterPCWindowsES = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6">Teleprompter para PC y Windows (Sin Necesidad de Instalar)</h1>
@@ -86,24 +88,27 @@ export const TeleprompterPCWindowsES = () => (
         </div>
 
         <h2 className="text-3xl font-bold text-white mt-10 mb-6">Preguntas Frecuentes (FAQ)</h2>
-        <div className="space-y-4">
-            <details className="bg-slate-800 p-4 rounded-lg">
-                <summary className="font-semibold text-white cursor-pointer">1. ¿Funciona en Windows 7?</summary>
-                <p className="mt-2 text-slate-300">¡Sí! Mientras tengas un navegador moderno como Google Chrome o Firefox, PromptNinja funcionará perfectamente en Windows 7, 8, 10 y 11.</p>
-            </details>
-            <details className="bg-slate-800 p-4 rounded-lg">
-                <summary className="font-semibold text-white cursor-pointer">2. ¿Necesito un PC potente para ejecutarlo?</summary>
-                <p className="mt-2 text-slate-300">No. PromptNinja es extremadamente ligero. Utiliza el motor de renderizado de tu navegador, que está altamente optimizado y usa aceleración por hardware (tu GPU) para un desplazamiento de texto suave. Cualquier PC capaz de navegar por la web puede ejecutarlo sin problemas.</p>
-            </details>
-            <details className="bg-slate-800 p-4 rounded-lg">
-                <summary className="font-semibold text-white cursor-pointer">3. ¿Puedo usarlo con OBS, Zoom o Teams en mi PC?</summary>
-                <p className="mt-2 text-slate-300">Absolutamente. Como PromptNinja se ejecuta en el navegador, no entra en conflicto con ningún software de grabación o transmisión. Puedes tener OBS, Zoom o Microsoft Teams capturando tu cámara y micrófono mientras lees tu guion en la ventana del teleprompter.</p>
-            </details>
-            <details className="bg-slate-800 p-4 rounded-lg">
-                <summary className="font-semibold text-white cursor-pointer">4. ¿Están seguros mis datos?</summary>
-                <p className="mt-2 text-slate-300">Sí. Todo el procesamiento de tu guion ocurre directamente en tu navegador. Tu texto nunca se envía a nuestros servidores, lo que garantiza una privacidad total. La conexión para el control remoto también está encriptada de extremo a extremo utilizando la tecnología WebRTC.</p>
-            </details>
-        </div>
+        <SEOContentFAQ
+            title=""
+            items={[
+                {
+                    question: "¿Funciona en Windows 7?",
+                    answer: "¡Sí! Mientras tengas un navegador moderno como Google Chrome o Firefox, PromptNinja funcionará perfectamente en Windows 7, 8, 10 y 11."
+                },
+                {
+                    question: "¿Necesito un PC potente para ejecutarlo?",
+                    answer: "No. PromptNinja es extremadamente ligero. Utiliza el motor de renderizado de tu navegador, que está altamente optimizado y usa aceleración por hardware (tu GPU) para un desplazamiento de texto suave. Cualquier PC capaz de navegar por la web puede ejecutarlo sin problemas."
+                },
+                {
+                    question: "¿Puedo usarlo con OBS, Zoom o Teams en mi PC?",
+                    answer: "Absolutamente. Como PromptNinja se ejecuta en el navegador, no entra en conflicto con ningún software de grabación o transmisión. Puedes tener OBS, Zoom o Microsoft Teams capturando tu cámara y micrófono mientras lees tu guion en la ventana del teleprompter."
+                },
+                {
+                    question: "¿Están seguros mis datos?",
+                    answer: "Sí. Todo el procesamiento de tu guion ocurre directamente en tu navegador. Tu texto nunca se envía a nuestros servidores, lo que garantiza una privacidad total. La conexión para el control remoto también está encriptada de extremo a extremo utilizando la tecnología WebRTC."
+                }
+            ]}
+        />
 
         <div className="mt-12 text-center">
             <a

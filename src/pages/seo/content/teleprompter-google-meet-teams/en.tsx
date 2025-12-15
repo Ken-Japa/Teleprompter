@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterGoogleMeetTeamsEN = () => (
     <>
@@ -40,5 +41,23 @@ export const TeleprompterGoogleMeetTeamsEN = () => (
                 Master Your Online Meetings Now
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Online Meeting FAQs"
+            items={[
+                {
+                    question: "Does the teleprompter show up for other participants?",
+                    answer: "No. PromptNinja is an independent window in your browser. If you share only a specific Chrome tab (with your presentation) or just speak to the camera, no one will see the scrolling text."
+                },
+                {
+                    question: "Does it work if I only have one monitor?",
+                    answer: "Yes. We recommend using 'Window' mode and making it narrow, positioned just below the webcam, partially overlaying Teams/Meet. Adjust transparency if needed."
+                },
+                {
+                    question: "Is it safe for confidential information?",
+                    answer: "Totally. PromptNinja operates locally in your browser. The text you paste into it is not sent to cloud servers, ensuring your company's data privacy."
+                }
+            ]}
+        />
     </>
 );

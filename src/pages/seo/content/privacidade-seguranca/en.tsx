@@ -1,4 +1,6 @@
 
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const PrivacidadeSegurancaEN = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6">Privacy & Security: How PromptNinja Protects Your Data</h1>
@@ -75,5 +77,24 @@ export const PrivacidadeSegurancaEN = () => (
                 Your scripts are yours. PromptNinja is just the tool that displays them. We don't see, store, or sell your texts. It's security by design, not by policy.
             </p>
         </div>
+
+
+        <SEOContentFAQ
+            title="Privacy Frequently Asked Questions"
+            items={[
+                {
+                    question: "Does PromptNinja access my camera?",
+                    answer: "Only when you use the teleprompter, and all video processing is done locally in your browser. No images are sent to us."
+                },
+                {
+                    question: "Where are my texts saved?",
+                    answer: "In your own browser's LocalStorage. If you clear your browser cache, the texts disappear. We don't have backups because we don't have your data."
+                },
+                {
+                    question: "Is it safe for confidential scripts?",
+                    answer: "Yes. Since there is no transmission of text data to the cloud, server-side leaks are impossible. It's like writing in Notepad on your PC."
+                }
+            ]}
+        />
     </>
 );

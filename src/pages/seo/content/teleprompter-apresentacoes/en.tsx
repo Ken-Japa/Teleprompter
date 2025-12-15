@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterApresentacoesEN = () => (
     <>
@@ -40,5 +41,23 @@ export const TeleprompterApresentacoesEN = () => (
                 Deliver Memorable Presentations
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Presentation FAQs"
+            items={[
+                {
+                    question: "Will the audience see I'm reading?",
+                    answer: "If you verify positioning near the webcam (online) or glance at your laptop naturally (in-person), it's unnoticeable. The trick is frequent eye contact."
+                },
+                {
+                    question: "Does it work with PowerPoint?",
+                    answer: "Yes. In online meetings, share ONLY the PowerPoint window, not your full screen. Keep the teleprompter overlay on top; the audience won't see it."
+                },
+                {
+                    question: "How do I mark slide changes?",
+                    answer: "Type visual markers in your script like [SLIDE 1] or use different colors in the PromptNinja editor to visually signal when to click next."
+                }
+            ]}
+        />
     </>
 );

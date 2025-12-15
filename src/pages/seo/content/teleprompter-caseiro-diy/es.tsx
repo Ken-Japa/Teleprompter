@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const TeleprompterCaseiroDIYES = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6">Teleprompter Casero DIY: Guía Completa y el Software GRATIS Ideal para Tu Proyecto</h1>
@@ -58,20 +60,23 @@ export const TeleprompterCaseiroDIYES = () => (
         </ul>
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">FAQ: Preguntas Frecuentes sobre Teleprompters Caseros</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">¿Necesito un vidrio especial?</h3>
-                <p className="text-slate-300 mt-2">No. El vidrio de un marco de fotos común funciona bien. Los vidrios "beam splitter" profesionales son mejores, pero para una configuración DIY, la diferencia es mínima y el costo es mucho mayor.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">¿Cómo evito que la cámara grabe el texto?</h3>
-                <p className="text-slate-300 mt-2">El secreto es el ángulo de 45 grados del vidrio y la tela negra. La cámara, posicionada detrás del vidrio, captura la imagen frente a ti, mientras que el texto reflejado desde la tablet de abajo solo es visible para la persona frente al vidrio (tú).</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">¿El control remoto de PromptNinja funciona con cualquier móvil?</h3>
-                <p className="text-slate-300 mt-2">Sí. Si tu móvil puede leer un código QR y tiene un navegador, se puede usar como control remoto. No es necesario instalar ninguna aplicación en él.</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title=""
+            items={[
+                {
+                    question: "¿Necesito un vidrio especial?",
+                    answer: "No. El vidrio de un marco de fotos común funciona bien. Los vidrios \"beam splitter\" profesionales son mejores, pero para una configuración DIY, la diferencia es mínima y el costo es mucho mayor."
+                },
+                {
+                    question: "¿Cómo evito que la cámara grabe el texto?",
+                    answer: "El secreto es el ángulo de 45 grados del vidrio y la tela negra. La cámara, posicionada detrás del vidrio, captura la imagen frente a ti, mientras que el texto reflejado desde la tablet de abajo solo es visible para la persona frente al vidrio (tú)."
+                },
+                {
+                    question: "¿El control remoto de PromptNinja funciona con cualquier móvil?",
+                    answer: "Sí. Si tu móvil puede leer un código QR y tiene un navegador, se puede usar como control remoto. No es necesario instalar ninguna aplicación en él."
+                }
+            ]}
+        />
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
             <h2 className="text-3xl font-bold text-white mb-4">Convierte tu Proyecto DIY en una Herramienta Profesional</h2>

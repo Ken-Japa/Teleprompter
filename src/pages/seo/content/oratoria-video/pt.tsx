@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const OratoriaVideoPT = () => (
     <div className="text-slate-300">
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 text-center">
@@ -118,27 +120,23 @@ export const OratoriaVideoPT = () => (
         </div>
 
         <div className="mt-16">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Perguntas Frequentes (FAQ)</h2>
-            <div className="space-y-4 max-w-3xl mx-auto">
-                <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">
-                    <summary className="font-bold text-white text-lg">Usar um teleprompter não vai me deixar com uma aparência robótica?</summary>
-                    <p className="mt-2 text-slate-400">
-                        A aparência robótica vem de tentar memorizar e recitar, não de ler com fluidez. É por isso que o controle remoto do PromptNinja é crucial, pois ele permite que você fale no seu ritmo natural, sem depender de uma rolagem automática forçada.
-                    </p>
-                </details>
-                <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">
-                    <summary className="font-bold text-white text-lg">Preciso de equipamento caro para usar o PromptNinja?</summary>
-                    <p className="mt-2 text-slate-400">
-                        Não. Você só precisa de dois dispositivos com acesso a um navegador: um para ser a tela (como um laptop ou tablet) e outro para ser o controle (seu celular). Não é necessário hardware adicional.
-                    </p>
-                </details>
-                <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">
-                    <summary className="font-bold text-white text-lg">É difícil de configurar?</summary>
-                    <p className="mt-2 text-slate-400">
-                        Leva menos de 30 segundos. Acesse o site, cole seu roteiro, clique em "iniciar" e escaneie o QR code com seu celular. É a forma mais rápida e simples de ter um sistema de teleprompter profissional.
-                    </p>
-                </details>
-            </div>
+            <SEOContentFAQ
+                title="Perguntas Frequentes (FAQ)"
+                items={[
+                    {
+                        question: "Usar um teleprompter não vai me deixar com uma aparência robótica?",
+                        answer: "A aparência robótica vem de tentar memorizar e recitar, não de ler com fluidez. É por isso que o controle remoto do PromptNinja é crucial, pois ele permite que você fale no seu ritmo natural, sem depender de uma rolagem automática forçada."
+                    },
+                    {
+                        question: "Preciso de equipamento caro para usar o PromptNinja?",
+                        answer: "Não. Você só precisa de dois dispositivos com acesso a um navegador: um para ser a tela (como um laptop ou tablet) e outro para ser o controle (seu celular). Não é necessário hardware adicional."
+                    },
+                    {
+                        question: "É difícil de configurar?",
+                        answer: "Leva menos de 30 segundos. Acesse o site, cole seu roteiro, clique em \"iniciar\" e escanea o QR code com seu celular. É a forma mais rápida e simples de ter um sistema de teleprompter profissional."
+                    }
+                ]}
+            />
         </div>
     </div>
 );

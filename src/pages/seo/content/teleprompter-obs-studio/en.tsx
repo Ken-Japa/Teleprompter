@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterObsStudioEN = () => (
     <>
@@ -43,5 +44,23 @@ export const TeleprompterObsStudioEN = () => (
                 Boost Your Stream with PromptNinja
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="OBS & Teleprompter FAQs"
+            items={[
+                {
+                    question: "How do I remove the background in OBS?",
+                    answer: "In PromptNinja, switch the theme to 'Chroma Green'. In OBS, right-click the browser source, go to Filters, and add 'Chroma Key'. The green will become transparent."
+                },
+                {
+                    question: "Does it work with Streamlabs and Twitch Studio too?",
+                    answer: "Yes. The logic is the same: add it as a 'Browser Source'. PromptNinja is compatible with any broadcasting software that accepts web sources."
+                },
+                {
+                    question: "Is there any delay/lag on the remote control?",
+                    answer: "Virtually zero. We use WebRTC technology that connects your phone and PC directly via local network, ensuring latency below 20ms, imperceptible to humans."
+                }
+            ]}
+        />
     </>
 );

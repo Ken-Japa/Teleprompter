@@ -1,4 +1,6 @@
 
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const TeleprompterPacingTimerES = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6">Teleprompter con Pacing y Comandos de Texto: Duración Exacta para tus Videos</h1>
@@ -47,20 +49,23 @@ export const TeleprompterPacingTimerES = () => (
         </div>
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">FAQ: Comandos y Temporizador</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">¿Cómo uso el comando de pausa?</h3>
-                <p className="text-slate-300 mt-2">Simplemente escribe <strong>[PAUSE X]</strong> en tu guion, donde X es el número de segundos. Ejemplo: "Y el secreto es... [PAUSE 3] La constancia." El teleprompter se detendrá por 3 segundos en esa línea y volverá a desplazarse automáticamente.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">¿El comando [STOP] necesita clic para volver?</h3>
-                <p className="text-slate-300 mt-2">Sí. Cuando el texto encuentra un <strong>[STOP]</strong>, detiene el desplazamiento indefinidamente. Para continuar, puedes presionar la barra espaciadora, hacer clic en la pantalla o usar el control remoto.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">¿Estas funciones son de pago?</h3>
-                <p className="text-slate-300 mt-2">¡El temporizador básico y los comandos de texto son gratuitos! Queremos que tengas control total de tu presentación sin barreras.</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title=""
+            items={[
+                {
+                    question: "¿Cómo uso el comando de pausa?",
+                    answer: "Simplemente escribe **[PAUSE X]** en tu guion, donde X es el número de segundos. Ejemplo: \"Y el secreto es... [PAUSE 3] La constancia.\" El teleprompter se detendrá por 3 segundos en esa línea y volverá a desplazarse automáticamente."
+                },
+                {
+                    question: "¿El comando [STOP] necesita clic para volver?",
+                    answer: "Sí. Cuando el texto encuentra un **[STOP]**, detiene el desplazamiento indefinidamente. Para continuar, puedes presionar la barra espaciadora, hacer clic en la pantalla o usar el control remoto."
+                },
+                {
+                    question: "¿Estas funciones son de pago?",
+                    answer: "¡El temporizador básico y los comandos de texto son gratuitos! Queremos que tengas control total de tu presentación sin barreras."
+                }
+            ]}
+        />
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
             <h2 className="text-3xl font-bold text-white mb-4">Domina el Tiempo de tu Video</h2>

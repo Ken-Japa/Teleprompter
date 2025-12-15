@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const TeleprompterPCWindowsEN = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6">Teleprompter for PC and Windows (No Install Needed)</h1>
@@ -86,24 +88,27 @@ export const TeleprompterPCWindowsEN = () => (
         </div>
 
         <h2 className="text-3xl font-bold text-white mt-10 mb-6">Frequently Asked Questions (FAQ)</h2>
-        <div className="space-y-4">
-            <details className="bg-slate-800 p-4 rounded-lg">
-                <summary className="font-semibold text-white cursor-pointer">1. Does it work on Windows 7?</summary>
-                <p className="mt-2 text-slate-300">Yes! As long as you have a modern browser like Google Chrome or Firefox, PromptNinja will work perfectly on Windows 7, 8, 10, and 11.</p>
-            </details>
-            <details className="bg-slate-800 p-4 rounded-lg">
-                <summary className="font-semibold text-white cursor-pointer">2. Do I need a powerful PC to run it?</summary>
-                <p className="mt-2 text-slate-300">No. PromptNinja is extremely lightweight. It uses your browser's rendering engine, which is highly optimized and uses hardware acceleration (your GPU) for smooth text scrolling. Any PC capable of browsing the web can run it flawlessly.</p>
-            </details>
-            <details className="bg-slate-800 p-4 rounded-lg">
-                <summary className="font-semibold text-white cursor-pointer">3. Can I use it with OBS, Zoom, or Teams on my PC?</summary>
-                <p className="mt-2 text-slate-300">Absolutely. Since PromptNinja runs in the browser, it doesn't conflict with any recording or streaming software. You can have OBS, Zoom, or Microsoft Teams capturing your camera and microphone while you read your script in the teleprompter window.</p>
-            </details>
-            <details className="bg-slate-800 p-4 rounded-lg">
-                <summary className="font-semibold text-white cursor-pointer">4. Is my data secure?</summary>
-                <p className="mt-2 text-slate-300">Yes. All your script processing happens directly in your browser. Your text is never sent to our servers, ensuring complete privacy. The connection for the remote control is also end-to-end encrypted using WebRTC technology.</p>
-            </details>
-        </div>
+        <SEOContentFAQ
+            title=""
+            items={[
+                {
+                    question: "Does it work on Windows 7?",
+                    answer: "Yes! As long as you have a modern browser like Google Chrome or Firefox, PromptNinja will work perfectly on Windows 7, 8, 10, and 11."
+                },
+                {
+                    question: "Do I need a powerful PC to run it?",
+                    answer: "No. PromptNinja is extremely lightweight. It uses your browser's rendering engine, which is highly optimized and uses hardware acceleration (your GPU) for smooth text scrolling. Any PC capable of browsing the web can run it flawlessly."
+                },
+                {
+                    question: "Can I use it with OBS, Zoom, or Teams on my PC?",
+                    answer: "Absolutely. Since PromptNinja runs in the browser, it doesn't conflict with any recording or streaming software. You can have OBS, Zoom, or Microsoft Teams capturing your camera and microphone while you read your script in the teleprompter window."
+                },
+                {
+                    question: "Is my data secure?",
+                    answer: "Yes. All your script processing happens directly in your browser. Your text is never sent to our servers, ensuring complete privacy. The connection for the remote control is also end-to-end encrypted using WebRTC technology."
+                }
+            ]}
+        />
 
         <div className="mt-12 text-center">
             <a

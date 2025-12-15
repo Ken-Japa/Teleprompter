@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const ComoUsarTeleprompterPT = () => (
     <>
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
@@ -51,21 +53,27 @@ export const ComoUsarTeleprompterPT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Erros Comuns ao Usar um Teleprompter (e Como Evitá-los)</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">1. Olhos "Dançando" na Tela</h3>
-                <p className="text-slate-300 mt-2"><strong>O Erro:</strong> Seus olhos se movem visivelmente da esquerda para a direita enquanto você lê, denunciando o uso do teleprompter. <br /> <strong>A Solução:</strong> Aumente a distância entre você e a tela. Quanto mais longe, menor será o movimento ocular percebido. Além disso, diminua a largura da caixa de texto no teleprompter para que as linhas sejam mais curtas.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">2. Ritmo Monótono e Robótico</h3>
-                <p className="text-slate-300 mt-2"><strong>O Erro:</strong> Você entra no "modo de leitura" e sua voz perde a emoção, soando como um robô. <br /> <strong>A Solução:</strong> Não escreva o roteiro como um texto formal. Use frases curtas, pontuação que indique pausas e até mesmo anotações como "(sorria aqui)" ou "(faça uma pausa)". Pratique ler o texto em voz alta uma vez antes de gravar para encontrar o ritmo natural.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">3. Velocidade de Rolagem Incorreta</h3>
-                <p className="text-slate-300 mt-2"><strong>O Erro:</strong> A rolagem é muito lenta, criando pausas estranhas, ou muito rápida, fazendo você tropeçar nas palavras. <br /> <strong>A Solução:</strong> A solução é usar a função de controle remoto P2P do PromptNinja para ajustar a velocidade em tempo real, o que é impossível em apps gratuitos básicos. Comece um pouco mais lento e acelere conforme pega o ritmo.</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title="Perguntas Frequentes (FAQ)"
+            items={[
+                {
+                    question: "1. Preciso baixar algum aplicativo?",
+                    answer: "Não. O PromptNinja é 100% baseado na web. Funciona no Chrome, Safari, Firefox ou Edge, tanto no computador quanto no celular. Sem downloads, sem instalações suspeitas."
+                },
+                {
+                    question: "2. O controle remoto funciona mesmo?",
+                    answer: "Sim, e é instantâneo. Usamos tecnologia P2P (Peer-to-Peer) que conecta seus dispositivos diretamente via Wi-Fi local. Não há servidores intermediários para causar atrasos."
+                },
+                {
+                    question: "3. Posso usar offline?",
+                    answer: "Sim! O PromptNinja é um PWA (Progressive Web App). Uma vez carregado, ele funciona mesmo sem internet, garantindo que você nunca fique na mão na hora da gravação."
+                },
+                {
+                    question: "4. É realmente grátis?",
+                    answer: "A versão principal com todas as funcionalidades essenciais é gratuita e ilimitada. Temos uma versão Pro para recursos avançados como reconhecimento de voz, mas o teleprompter manual é grátis para sempre."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

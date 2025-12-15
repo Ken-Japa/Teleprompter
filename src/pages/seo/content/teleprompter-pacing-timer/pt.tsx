@@ -1,4 +1,6 @@
 
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const TeleprompterPacingTimerPT = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6">Teleprompter com Pacing e Comandos de Texto: Duração Exata para Seus Vídeos</h1>
@@ -24,7 +26,7 @@ export const TeleprompterPacingTimerPT = () => (
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">Por que o Ritmo (Pacing) é Vital para a Oratória?</h2>
         <p className="mb-4">
-            Falar no ritmo certo é uma das mais importantes <a href="/dicas-oratoria-video" className="text-blue-400 hover:text-blue-300 underline">dicas de oratória para vídeo</a>. Se você fala muito rápido, o público não absorve a informação. Se fala muito devagar, eles perdem o interesse.
+            Falar no ritmo certo é uma das mais importantes <a href="/dicas-oratoria-video" className="text-blue-400 hover:text-blue-300 underline">dicas de oratória para vídeo</a>. Se você fala muito rápido, o público não absorve a informação. Se você fala muito devagar, eles perdem o interesse.
         </p>
         <p className="mb-6">
             Com o cronômetro integrado e o ajuste fino de velocidade do PromptNinja, você treina seu cérebro para manter uma cadência profissional. O indicador de tempo (Timer) mostra exatamente quanto tempo você já falou e uma estimativa de quanto falta, permitindo ajustes em tempo real.
@@ -47,20 +49,23 @@ export const TeleprompterPacingTimerPT = () => (
         </div>
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">FAQ: Comandos e Temporizador</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Como uso o comando de pausa?</h3>
-                <p className="text-slate-300 mt-2">Basta escrever <strong>[PAUSE X]</strong> no seu roteiro, onde X é o número de segundos. Exemplo: "E o segredo é... [PAUSE 3] A consistência." O teleprompter vai parar por 3 segundos nessa linha e voltar a rolar automaticamente.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">O comando [STOP] precisa de clique para voltar?</h3>
-                <p className="text-slate-300 mt-2">Sim. Quando o texto encontra um <strong>[STOP]</strong>, ele para a rolagem indefinidamente. Para continuar, você pode apertar a barra de espaço, clicar na tela ou usar o controle remoto.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Essas funções são pagas?</h3>
-                <p className="text-slate-300 mt-2">O temporizador básico e os comandos de texto são gratuitos! Queremos que você tenha controle total da sua apresentação sem barreiras.</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title=""
+            items={[
+                {
+                    question: "Como uso o comando de pausa?",
+                    answer: "Basta escrever **[PAUSE X]** no seu roteiro, onde X é o número de segundos. Exemplo: \"E o segredo é... [PAUSE 3] A consistência.\" O teleprompter vai parar por 3 segundos nessa linha e voltar a rolar automaticamente."
+                },
+                {
+                    question: "O comando [STOP] precisa de clique para voltar?",
+                    answer: "Sim. Quando o texto encontra um **[STOP]**, ele para a rolagem indefinidamente. Para continuar, você pode apertar a barra de espaço, clicar na tela ou usar o controle remoto."
+                },
+                {
+                    question: "Essas funções são pagas?",
+                    answer: "O temporizador básico e os comandos de texto são gratuitos! Queremos que você tenha controle total da sua apresentação sem barreiras."
+                }
+            ]}
+        />
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
             <h2 className="text-3xl font-bold text-white mb-4">Domine o Tempo do Seu Vídeo</h2>

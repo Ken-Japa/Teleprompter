@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterGamersEN = () => (
     <>
@@ -61,5 +62,23 @@ export const TeleprompterGamersEN = () => (
                 Open Gamer Mode
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Streamer FAQs"
+            items={[
+                {
+                    question: "Does it work with OBS and Streamlabs?",
+                    answer: "Yes! You have two options: use 'Window Capture' to show the text on stream (using our transparent/chroma key themes) or just keep the window open on your secondary monitor for personal use, invisible to the stream."
+                },
+                {
+                    question: "Can I control the text without leaving the game?",
+                    answer: "Absolutely. With the P2P remote control feature, you use your phone to pause, rewind, or speed up the text. That way, you don't need to Alt-Tab and risk freezing your game."
+                },
+                {
+                    question: "Does it use a lot of CPU/GPU?",
+                    answer: "No. PromptNinja is extremely lightweight and runs in the browser. It doesn't compete for significant resources with your game or streaming encoding software."
+                }
+            ]}
+        />
     </>
 );

@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const TeleprompterParaYoutubersES = () => (
     <>
         <h1 className="text-3xl font-bold text-white mb-4">Teleprompter para YouTubers: La Guía Definitiva para Grabaciones Profesionales</h1>
@@ -75,20 +77,23 @@ export const TeleprompterParaYoutubersES = () => (
             </a>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Preguntas Frecuentes (FAQ)</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-white">¿La gente notará que estoy leyendo?</h3>
-                <p>No, si se usa correctamente. El secreto es colocar la pantalla del teleprompter lo más cerca posible de la lente de la cámara. Con PromptNinja, puedes ajustar el tamaño de la fuente y los márgenes para que tus ojos se muevan mínimamente, haciendo que la lectura sea imperceptible.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-white">¿Necesito un equipo de teleprompter caro?</h3>
-                <p>¡No! Puedes empezar usando un portátil, una tablet o incluso un segundo monitor colocado encima o debajo de tu cámara. Si más adelante inviertes en hardware de teleprompter (con cristal de espejo), PromptNinja tiene un <strong>Modo Espejo</strong> gratuito que invierte el texto por ti.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-white">¿El control remoto funciona en cualquier móvil?</h3>
-                <p>Sí. El control remoto funciona en cualquier smartphone (iPhone o Android) con una cámara y un navegador de internet. La conexión es a través de WebRTC (P2P), lo que la hace instantánea y no requiere que los dispositivos estén en la misma red Wi-Fi.</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title="Preguntas Frecuentes (FAQ)"
+            items={[
+                {
+                    question: "¿La gente notará que estoy leyendo?",
+                    answer: "No, si se usa correctamente. El secreto es colocar la pantalla del teleprompter lo más cerca posible de la lente de la cámara. Con PromptNinja, puedes ajustar el tamaño de la fuente y los márgenes para que tus ojos se muevan mínimamente, haciendo que la lectura sea imperceptible."
+                },
+                {
+                    question: "¿Necesito un equipo de teleprompter caro?",
+                    answer: <>¡No! Puedes empezar usando un portátil, una tablet o incluso un segundo monitor colocado encima o debajo de tu cámara. Si más adelante inviertes en hardware de teleprompter (con cristal de espejo), PromptNinja tiene un <strong>Modo Espejo</strong> gratuito que invierte el texto por ti.</>,
+                    schemaAnswer: "¡No! Puedes empezar usando un portátil, una tablet o incluso un segundo monitor colocado encima o debajo de tu cámara. Si más adelante inviertes en hardware de teleprompter (con cristal de espejo), PromptNinja tiene un Modo Espejo gratuito que invierte el texto por ti."
+                },
+                {
+                    question: "¿El control remoto funciona en cualquier móvil?",
+                    answer: "Sí. El control remoto funciona en cualquier smartphone (iPhone o Android) con una cámara y un navegador de internet. La conexión es a través de WebRTC (P2P), lo que la hace instantánea y no requiere que los dispositivos estén en la misma red Wi-Fi."
+                }
+            ]}
+        />
     </>
 );

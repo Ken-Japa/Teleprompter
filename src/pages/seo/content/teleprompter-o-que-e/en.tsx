@@ -1,4 +1,4 @@
-
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterOQueEEN = () => (
     <>
@@ -53,5 +53,24 @@ export const TeleprompterOQueEEN = () => (
         <p>
             Start recording videos like a pro today. Try PromptNinja now and watch your content creation productivity soar.
         </p>
+
+
+        <SEOContentFAQ
+            title="Common Questions About Teleprompters"
+            items={[
+                {
+                    question: "What is the difference between an online and software teleprompter?",
+                    answer: "The main difference is accessibility. Software requires installation and is often paid. Online teleprompters like PromptNinja run in the browser, are free, and work on any operating system (Windows, Mac, Linux, Android, iOS) instantly."
+                },
+                {
+                    question: "Is it really free?",
+                    answer: "Yes, PromptNinja is 100% free. We believe in democratizing content creation. We offer professional features at no cost."
+                },
+                {
+                    question: "Where are my scripts saved?",
+                    answer: "Your scripts are automatically saved in your browser's memory (Local Storage). This ensures total privacy as your data is never sent to the cloud."
+                }
+            ]}
+        />
     </>
 );

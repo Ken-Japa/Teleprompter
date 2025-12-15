@@ -1,4 +1,6 @@
 
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const ComoInstalarPwaPT = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6">Como Instalar o PromptNinja (App PWA)</h1>
@@ -7,7 +9,7 @@ export const ComoInstalarPwaPT = () => (
         </p>
 
         <div className="grid md:grid-cols-2 gap-8 mt-12">
-            
+
             {/* iOS Guide */}
             <div className="bg-slate-800 p-8 rounded-xl border border-slate-700">
                 <div className="flex items-center gap-4 mb-6">
@@ -58,7 +60,7 @@ export const ComoInstalarPwaPT = () => (
                     <strong>Dica:</strong> O app é extremamente leve (menos de 2MB) e atualiza automaticamente sempre que você o abre conectado à internet.
                 </div>
             </div>
-            
+
         </div>
 
         <div className="mt-16 bg-slate-800/50 p-8 rounded-xl text-center">
@@ -78,5 +80,23 @@ export const ComoInstalarPwaPT = () => (
                 </div>
             </div>
         </div>
+
+        <SEOContentFAQ
+            title="Dúvidas sobre Instalação (PWA)"
+            items={[
+                {
+                    question: "É seguro instalar? Tem vírus?",
+                    answer: "Sim, é 100% seguro. PWAs rodam dentro da 'caixa de areia' (sandbox) do navegador, o que significa que eles não têm acesso aos seus arquivos pessoais ou sistema sem sua permissão."
+                },
+                {
+                    question: "Funciona sem internet?",
+                    answer: "Sim. Após a instalação (ou primeiro acesso), o app salva os arquivos essenciais no seu dispositivo para funcionar offline."
+                },
+                {
+                    question: "Ocupa muito espaço?",
+                    answer: "Não. Diferente de apps nativos que podem pesar 100MB+, o PromptNinja geralmente ocupa menos de 2MB, pois reutiliza recursos do navegador."
+                }
+            ]}
+        />
     </>
 );

@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterTikTokShortsEN = () => (
     <>
@@ -43,5 +44,23 @@ export const TeleprompterTikTokShortsEN = () => (
                 Create Viral Videos Now - It's Free!
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Vertical Video Creator FAQs"
+            items={[
+                {
+                    question: "How do I stop looking like I'm reading?",
+                    answer: "Positioning is key. On mobile, keep the text at the very top of the screen, right next to the front camera. Use a smaller font and stand a bit further back if possible."
+                },
+                {
+                    question: "Is there a PromptNinja app to download?",
+                    answer: "PromptNinja is a Web App. This means you don't need to download anything from the store. Just access it via Chrome or Safari and it adapts perfectly to your mobile screen."
+                },
+                {
+                    question: "How do I record solo from a distance?",
+                    answer: "Use our Remote Control feature. Open PromptNinja on the recording phone and use another phone or laptop in your hand to hit play and control speed without moving."
+                }
+            ]}
+        />
     </>
 );

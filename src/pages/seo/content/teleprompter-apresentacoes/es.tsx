@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterApresentacoesES = () => (
     <>
@@ -40,5 +41,23 @@ export const TeleprompterApresentacoesES = () => (
                 Haz Presentaciones Memorables
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Preguntas sobre Presentaciones"
+            items={[
+                {
+                    question: "¿El público notará que leo?",
+                    answer: "Si posicionas bien cerca de la cámara (online) o miras tu portátil naturalmente (presencial), es imperceptible. El truco es mirar al público/cámara a menudo."
+                },
+                {
+                    question: "¿Funciona con PowerPoint?",
+                    answer: "Sí. En reuniones online, comparte SOLO la ventana de PowerPoint. Mantén el teleprompter flotando encima; la audiencia no lo verá."
+                },
+                {
+                    question: "¿Cómo marco el cambio de diapositiva?",
+                    answer: "Escribe marcadores visuales como [DIAPOSITIVA 1] o usa colores distintos en el editor de PromptNinja para indicar visualmente cuándo avanzar."
+                }
+            ]}
+        />
     </>
 );

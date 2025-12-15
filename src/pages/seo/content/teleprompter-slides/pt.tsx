@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterSlidesPT = () => (
     <>
@@ -63,5 +64,23 @@ export const TeleprompterSlidesPT = () => (
                 Criar Apresentação Agora
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Dúvidas sobre Slides e Apresentações"
+            items={[
+                {
+                    question: "O PromptNinja muda o slide do PowerPoint sozinho?",
+                    answer: "Não. O PromptNinja controla o SEU ROTEIRO (texto). Você continua usando seu passador de slides ou mouse para mudar o slide no PowerPoint, mas o comando [STOP] garante que você nunca se perca na leitura."
+                },
+                {
+                    question: "Quais passadores de slides são compatíveis?",
+                    answer: "Praticamente todos (Logitech R400, R800, genéricos). Se o passador funciona simulando as setas do teclado ou PageUp/PageDown, ele funcionará nativamente no PromptNinja."
+                },
+                {
+                    question: "Funciona no Zoom ou Teams?",
+                    answer: "Perfeitamente. Em apresentações online, a técnica mais comum é compartilhar apenas a janela da apresentação e deixar o teleprompter flutuando por cima para leitura."
+                }
+            ]}
+        />
     </>
 );

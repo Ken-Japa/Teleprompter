@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const MelhorAppTeleprompterPT = () => (
     <>
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
@@ -67,21 +69,23 @@ export const MelhorAppTeleprompterPT = () => (
             </table>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Perguntas Frequentes (FAQ)</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">1. Por que o controle remoto do PromptNinja é melhor?</h3>
-                <p className="text-slate-300 mt-2">Utilizamos WebRTC, a mesma tecnologia de videochamadas, para criar uma conexão P2P (ponto-a-ponto) direta entre seus dispositivos na mesma rede Wi-Fi. Isso significa latência quase zero e uma conexão que não depende da velocidade da sua internet, ao contrário do Bluetooth que é suscetível a interferências.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">2. Preciso de algum equipamento especial?</h3>
-                <p className="text-slate-300 mt-2">Não! Você só precisa de dois dispositivos com um navegador moderno (como Chrome ou Safari). Pode ser um notebook e um celular, um tablet e um celular, ou qualquer combinação. Sem cabos, sem apps, sem complicações.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">3. A versão gratuita é realmente funcional?</h3>
-                <p className="text-slate-300 mt-2">Sim. Acreditamos que o controle remoto é uma função essencial, não um luxo. Por isso, nossa funcionalidade principal é 100% gratuita e sem limite de tempo. Oferecemos uma versão Pro com recursos avançados como reconhecimento de voz, mas o núcleo da ferramenta está disponível para todos.</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title="Perguntas Frequentes (FAQ)"
+            items={[
+                {
+                    question: "1. Por que o controle remoto do PromptNinja é melhor?",
+                    answer: "Utilizamos WebRTC, a mesma tecnologia de videochamadas, para criar uma conexão P2P (ponto-a-ponto) direta entre seus dispositivos na mesma rede Wi-Fi. Isso significa latência quase zero e uma conexão que não depende da velocidade da sua internet, ao contrário do Bluetooth que é suscetível a interferências."
+                },
+                {
+                    question: "2. Preciso de algum equipamento especial?",
+                    answer: "Não! Você só precisa de dois dispositivos com um navegador moderno (como Chrome ou Safari). Pode ser um notebook e um celular, um tablet e um celular, ou qualquer combinação. Sem cabos, sem apps, sem complicações."
+                },
+                {
+                    question: "3. A versão gratuita é realmente funcional?",
+                    answer: "Sim. Acreditamos que o controle remoto é uma função essencial, não um luxo. Por isso, nossa funcionalidade principal é 100% gratuita e sem limite de tempo. Oferecemos uma versão Pro com recursos avançados como reconhecimento de voz, mas o núcleo da ferramenta está disponível para todos."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

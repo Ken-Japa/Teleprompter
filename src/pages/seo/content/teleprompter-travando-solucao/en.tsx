@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const TeleprompterTravandoSolucaoEN = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-4">The Definitive Solution: Why Teleprompters Lag and How P2P Solves It (FREE)</h1>
@@ -49,20 +51,23 @@ export const TeleprompterTravandoSolucaoEN = () => (
         </p>
 
         <h2 className="text-3xl font-bold text-white mt-10 mb-4">Frequently Asked Questions (FAQ)</h2>
-        <dl className="space-y-6 text-slate-300">
-            <div>
-                <dt className="font-bold text-white text-lg">Does PromptNinja work offline?</dt>
-                <dd className="mt-1">Once the teleprompter page is loaded, the communication between the remote and the screen is 100% local via Wi-Fi. You only need internet to load the page initially, but the operation itself is immune to internet outages.</dd>
-            </div>
-            <div>
-                <dt className="font-bold text-white text-lg">Do I need to install any app on my phone or computer?</dt>
-                <dd className="mt-1">No. PromptNinja is 100% browser-based. There is nothing to install, which means less resource consumption and zero chance of software conflicts. Just open a link and scan a QR Code.</dd>
-            </div>
-            <div>
-                <dt className="font-bold text-white text-lg">What if my Wi-Fi is slow?</dt>
-                <dd className="mt-1">Your "internet" speed (connection to the outside world) doesn't matter. What matters is the stability of your "local" network (the communication between devices in your home or office). As long as your phone and computer are on the same Wi-Fi network, the P2P connection will be ultra-fast.</dd>
-            </div>
-        </dl>
+        <SEOContentFAQ
+            title=""
+            items={[
+                {
+                    question: "Does PromptNinja work offline?",
+                    answer: "Once the teleprompter page is loaded, the communication between the remote and the screen is 100% local via Wi-Fi. You only need internet to load the page initially, but the operation itself is immune to internet outages."
+                },
+                {
+                    question: "Do I need to install any app on my phone or computer?",
+                    answer: "No. PromptNinja is 100% browser-based. There is nothing to install, which means less resource consumption and zero chance of software conflicts. Just open a link and scan a QR Code."
+                },
+                {
+                    question: "What if my Wi-Fi is slow?",
+                    answer: "Your \"internet\" speed (connection to the outside world) doesn't matter. What matters is the stability of your \"local\" network (the communication between devices in your home or office). As long as your phone and computer are on the same Wi-Fi network, the P2P connection will be ultra-fast."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

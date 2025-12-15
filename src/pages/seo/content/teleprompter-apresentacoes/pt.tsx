@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterApresentacoesPT = () => (
     <>
@@ -40,5 +41,23 @@ export const TeleprompterApresentacoesPT = () => (
                 Faça Apresentações Memoráveis
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Dúvidas sobre Apresentações"
+            items={[
+                {
+                    question: "O público vai ver que estou lendo?",
+                    answer: "Se você posicionar o PromptNinja próximo à webcam (em chamadas online) ou usar como 'cola' no notebook (presencial), é imperceptível. O segredo é olhar para o público/câmera, não fixamente para o texto."
+                },
+                {
+                    question: "Funciona junto com o PowerPoint?",
+                    answer: "Sim. Em reuniões online, compartilhe APENAS a janela do PowerPoint, não a tela inteira. Assim você pode deixar o teleprompter aberto por cima de tudo e ninguém verá."
+                },
+                {
+                    question: "Como marco a hora de mudar o slide?",
+                    answer: "Digite marcadores visuais no seu roteiro, como [SLIDE 1] ou use cores diferentes no editor do PromptNinja para indicar visualmente o momento da transição."
+                }
+            ]}
+        />
     </>
 );

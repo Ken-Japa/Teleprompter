@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const WebRtcLatencyContentEN = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6">FREE Autocue / Teleprompter: Why WebRTC P2P Guarantees Zero Lag and Total Privacy</h1>
@@ -84,5 +86,23 @@ export const WebRtcLatencyContentEN = () => (
                 </tbody>
             </table>
         </div>
+
+        <SEOContentFAQ
+            title="Technical Latency FAQs"
+            items={[
+                {
+                    question: "What causes teleprompter lag?",
+                    answer: "Usually slow communication between remote and screen. With Bluetooth and WebSockets, the signal takes a long detour. In our P2P system, it goes direct."
+                },
+                {
+                    question: "Is it secure? Do my scripts go to a server?",
+                    answer: "Yes, extremely secure. Because the connection is P2P (Peer-to-Peer), your script text and commands travel only within your local network. Nothing is stored on our servers."
+                },
+                {
+                    question: "Does it work if the internet goes down?",
+                    answer: "As long as your router is on (keeping the local network active), yes. External internet is not required after the initial page load."
+                }
+            ]}
+        />
     </>
 );

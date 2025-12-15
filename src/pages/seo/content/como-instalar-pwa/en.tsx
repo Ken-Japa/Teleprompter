@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const ComoInstalarPwaEN = () => (
     <>
@@ -78,5 +79,23 @@ export const ComoInstalarPwaEN = () => (
                 </div>
             </div>
         </div>
+
+        <SEOContentFAQ
+            title="Installation FAQs (PWA)"
+            items={[
+                {
+                    question: "Is it safe? Any viruses?",
+                    answer: "Yes, 100% safe. PWAs run inside the browser's sandbox, meaning they don't have access to your personal files or system without your permission."
+                },
+                {
+                    question: "Does it work without internet?",
+                    answer: "Yes. After installation (or first visit), the app saves essential files to your device to work offline."
+                },
+                {
+                    question: "Does it take much space?",
+                    answer: "No. Unlike native apps that can weigh 100MB+, PromptNinja usually takes less than 2MB, as it reuses browser resources."
+                }
+            ]}
+        />
     </>
 );

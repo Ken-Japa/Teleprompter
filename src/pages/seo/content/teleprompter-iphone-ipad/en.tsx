@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterIphoneIpadEN = () => (
     <>
@@ -40,5 +41,23 @@ export const TeleprompterIphoneIpadEN = () => (
                 Use on Your iPhone or iPad Now
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="iOS User FAQs"
+            items={[
+                {
+                    question: "Do I need to download an app from the App Store?",
+                    answer: "No. PromptNinja is a Web App (PWA). You access it via Safari and can add it to your Home Screen to work exactly like a native app, but without taking up space and completely free."
+                },
+                {
+                    question: "Does it work offline?",
+                    answer: "Yes! After loading the page for the first time, the app is cached on your iPhone/iPad and works even in airplane mode, ensuring you're never stranded during a shoot."
+                },
+                {
+                    question: "Can I control my iPad using my iPhone?",
+                    answer: "Absolutely. This is our users' favorite setup. Open the text on the iPad (which acts as the screen) and scan the QR Code with the iPhone to turn it into an instant remote control."
+                }
+            ]}
+        />
     </>
 );

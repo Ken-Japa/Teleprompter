@@ -1,4 +1,4 @@
-
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterOQueEES = () => (
     <>
@@ -53,5 +53,24 @@ export const TeleprompterOQueEES = () => (
         <p>
             Empieza ahora mismo a grabar vídeos como un profesional. Prueba PromptNinja y verás cómo tu productividad en la creación de contenido despega.
         </p>
+
+
+        <SEOContentFAQ
+            title="Dudas Comunes sobre Teleprompters"
+            items={[
+                {
+                    question: "¿Cuál es la diferencia entre un teleprompter online y de software?",
+                    answer: "La principal diferencia es la accesibilidad. El software requiere instalación y a menudo es de pago. Los teleprompters online como PromptNinja corren en el navegador, son gratuitos y funcionan en cualquier sistema operativo (Windows, Mac, Linux, Android, iOS) al instante."
+                },
+                {
+                    question: "¿Es realmente gratis?",
+                    answer: "Sí, PromptNinja es 100% gratuito. Creemos en democratizar la creación de contenido. Ofrecemos funciones profesionales sin costo."
+                },
+                {
+                    question: "¿Dónde se guardan mis guiones?",
+                    answer: "Tus textos se guardan automáticamente en la memoria de tu navegador (Local Storage). Esto garantiza privacidad total, ya que tus datos nunca se envían a la nube."
+                }
+            ]}
+        />
     </>
 );

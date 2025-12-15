@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterShortcutsPT = () => (
     <>
@@ -84,5 +85,23 @@ export const TeleprompterShortcutsPT = () => (
                 Testar Atalhos Agora
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Dúvidas sobre Atalhos e Controle"
+            items={[
+                {
+                    question: "Posso mudar as teclas de atalho?",
+                    answer: "Sim, na versão PromptNinja PRO você pode remapear completamente todas as funções (iniciar, parar, velocidade, espelhar) para qualquer tecla que preferir."
+                },
+                {
+                    question: "Funciona com pedais e clickers de apresentação?",
+                    answer: "Sim! A maioria desses dispositivos simula toques de teclado (como Espaço ou Setas). O PromptNinja reconhece esses sinais nativamente, sem necessidade de drivers extras."
+                },
+                {
+                    question: "Para que serve a tecla 'H'?",
+                    answer: "A tecla 'H' serve para ocultar a interface (HUD). É perfeita para quem grava a tela do computador (gameplays, tutoriais) e quer que apenas o texto apareça, sem botões ou menus atrapalhando."
+                }
+            ]}
+        />
     </>
 );

@@ -1,4 +1,4 @@
-
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterTabletPT = () => (
     <>
@@ -86,5 +86,23 @@ export const TeleprompterTabletPT = () => (
                 Abrir App no Tablet
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Perguntas Frequentes sobre Tablet e iPad"
+            items={[
+                {
+                    question: "Preciso comprar um app na App Store?",
+                    answer: "Não. O PromptNinja roda diretamente no Safari ou Chrome do seu tablet. Você pode usar a função 'Adicionar à Tela de Início' para que ele funcione como um aplicativo nativo, só que gratuito."
+                },
+                {
+                    question: "Como espelhar o texto para usar com vidro?",
+                    answer: "É muito simples. Na barra de ferramentas inferior (ou atalho 'M'), clique no ícone de espelho. O texto ficará invertido horizontalmente, pronto para reflexão."
+                },
+                {
+                    question: "Posso controlar meu iPad usando meu celular?",
+                    answer: "Sim! Abra o PromptNinja no iPad, clique no ícone de Link/Remoto e escaneie o QR Code com seu celular. Seu smartphone vira um controle remoto instantâneo."
+                }
+            ]}
+        />
     </>
 );

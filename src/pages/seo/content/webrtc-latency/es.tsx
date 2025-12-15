@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const WebRtcLatencyContentES = () => (
     <>
         <p className="lead text-xl text-slate-300 mb-8">
@@ -83,5 +85,23 @@ export const WebRtcLatencyContentES = () => (
                 </tbody>
             </table>
         </div>
+
+        <SEOContentFAQ
+            title="Preguntas Técnicas sobre Latencia"
+            items={[
+                {
+                    question: "¿Qué causa el retraso en el teleprompter?",
+                    answer: "Generalmente es la comunicación lenta entre control y pantalla. En Bluetooth y WebSockets, la señal da una vuelta larga. En nuestro sistema P2P, va directo."
+                },
+                {
+                    question: "¿Es seguro? ¿Mis datos pasan por el servidor?",
+                    answer: "Sí, es extremadamente seguro. Como la conexión es P2P, tu guion y comandos viajan solo dentro de tu red local. Nada se almacena en nuestros servidores."
+                },
+                {
+                    question: "¿Funciona si se cae el internet?",
+                    answer: "Mientras el router esté encendido (manteniendo la red local activa), sí. Internet externo no es necesario tras la carga inicial."
+                }
+            ]}
+        />
     </>
 );

@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const MelhorAppTeleprompterES = () => (
     <div className="text-slate-300">
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 text-center">
@@ -107,33 +109,27 @@ export const MelhorAppTeleprompterES = () => (
         </div>
 
         <div className="mt-16">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Preguntas Frecuentes (FAQ)</h2>
-            <div className="space-y-4 max-w-3xl mx-auto">
-                <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">
-                    <summary className="font-bold text-white text-lg">¿Necesito instalar algo para usar PromptNinja?</summary>
-                    <p className="mt-2 text-slate-400">
-                        Absolutamente no. PromptNinja funciona directamente en tu navegador (Chrome, Safari, Firefox) en cualquier dispositivo: PC, Mac, tablet o smartphone. Sin descargas, sin instalaciones.
-                    </p>
-                </details>
-                <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">
-                    <summary className="font-bold text-white text-lg">¿El control remoto es realmente gratis?</summary>
-                    <p className="mt-2 text-slate-400">
-                        Sí. El control remoto es una de nuestras funciones principales y es 100% gratuito. Usamos tecnología P2P (Peer-to-Peer) a través de un código QR. Simplemente escanea el código con tu teléfono para convertirlo instantáneamente en un control remoto para la pantalla de tu PC o tablet. Es rápido, seguro y no depende de Bluetooth.
-                    </p>
-                </details>
-                <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">
-                    <summary className="font-bold text-white text-lg">¿Funciona si mi Wi-Fi es lento?</summary>
-                    <p className="mt-2 text-slate-400">
-                        Sí. La conexión P2P para el control remoto se establece en tu red local (Wi-Fi). No depende de la velocidad de tu internet, solo de que ambos dispositivos estén en la misma red. Esto garantiza una respuesta instantánea y sin demoras.
-                    </p>
-                </details>
-                <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">
-                    <summary className="font-bold text-white text-lg">¿Qué obtengo si me actualizo a Pro?</summary>
-                    <p className="mt-2 text-slate-400">
-                        La versión Pro está diseñada para profesionales que necesitan la máxima eficiencia. Incluye funciones avanzadas como el control por reconocimiento de voz (la app avanza el texto mientras hablas), almacenamiento en la nube para tus guiones y soporte prioritario.
-                    </p>
-                </details>
-            </div>
+            <SEOContentFAQ
+                title="Preguntas Frecuentes (FAQ)"
+                items={[
+                    {
+                        question: "¿Necesito instalar algo para usar PromptNinja?",
+                        answer: "Absolutamente no. PromptNinja funciona directamente en tu navegador (Chrome, Safari, Firefox) en cualquier dispositivo: PC, Mac, tablet o smartphone. Sin descargas, sin instalaciones."
+                    },
+                    {
+                        question: "¿El control remoto es realmente gratis?",
+                        answer: "Sí. El control remoto es una de nuestras funciones principales y es 100% gratuito. Usamos tecnología P2P (Peer-to-Peer) a través de un código QR. Simplemente escanea el código con tu teléfono para convertirlo instantáneamente en un control remoto para la pantalla de tu PC o tablet. Es rápido, seguro y no depende de Bluetooth."
+                    },
+                    {
+                        question: "¿Funciona si mi Wi-Fi es lento?",
+                        answer: "Sí. La conexión P2P para el control remoto se establece en tu red local (Wi-Fi). No depende de la velocidad de tu internet, solo de que ambos dispositivos estén en la misma red. Esto garantiza una respuesta instantánea y sin demoras."
+                    },
+                    {
+                        question: "¿Qué obtengo si me actualizo a Pro?",
+                        answer: "La versión Pro está diseñada para profesionales que necesitan la máxima eficiencia. Incluye funciones avanzadas como el control por reconocimiento de voz (la app avanza el texto mientras hablas), almacenamiento en la nube para tus guiones y soporte prioritario."
+                    }
+                ]}
+            />
         </div>
     </div>
 );

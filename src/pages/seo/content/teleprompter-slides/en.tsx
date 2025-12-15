@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterSlidesEN = () => (
     <>
@@ -63,5 +64,23 @@ export const TeleprompterSlidesEN = () => (
                 Create Presentation Now
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Slides & Presentation FAQs"
+            items={[
+                {
+                    question: "Does PromptNinja change PowerPoint slides automatically?",
+                    answer: "No. PromptNinja controls YOUR SCRIPT. You keep using your clicker or mouse to change slides in PowerPoint, but the [STOP] command ensures you never lose your place in the text."
+                },
+                {
+                    question: "Which clickers are supported?",
+                    answer: "Virtually all (Logitech R400, R800, generic ones). If the clicker works by simulating keyboard arrows or PageUp/PageDown, it works natively in PromptNinja."
+                },
+                {
+                    question: "Does it work on Zoom or Teams?",
+                    answer: "Perfectly. In online presentations, the standard technique is to share only the presentation window and keep the teleprompter floating on top for reading."
+                }
+            ]}
+        />
     </>
 );

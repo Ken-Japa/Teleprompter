@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const ComoInstalarPwaES = () => (
     <>
@@ -78,5 +79,23 @@ export const ComoInstalarPwaES = () => (
                 </div>
             </div>
         </div>
+
+        <SEOContentFAQ
+            title="Dudas sobre Instalación (PWA)"
+            items={[
+                {
+                    question: "¿Es seguro? ¿Tiene virus?",
+                    answer: "Sí, es 100% seguro. Las PWAs se ejecutan dentro del 'sandbox' del navegador, lo que significa que no tienen acceso a tus archivos sin permiso."
+                },
+                {
+                    question: "¿Funciona sin internet?",
+                    answer: "Sí. Tras la instalación (o primera visita), la app guarda los archivos esenciales en tu dispositivo para funcionar offline."
+                },
+                {
+                    question: "¿Ocupa mucho espacio?",
+                    answer: "No. A diferencia de las apps nativas que pueden pesar 100MB+, PromptNinja suele ocupar menos de 2MB, ya que reutiliza recursos del navegador."
+                }
+            ]}
+        />
     </>
 );

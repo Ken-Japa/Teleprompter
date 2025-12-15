@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const MelhorAppTeleprompterEN = () => (
     <>
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
@@ -67,21 +69,23 @@ export const MelhorAppTeleprompterEN = () => (
             </table>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Frequently Asked Questions (FAQ)</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">1. Why is PromptNinja's remote control better?</h3>
-                <p className="text-slate-300 mt-2">We use WebRTC, the same technology as video calls, to create a direct P2P (peer-to-peer) connection between your devices on the same Wi-Fi network. This means near-zero latency and a connection that doesn't depend on your internet speed, unlike Bluetooth which is susceptible to interference.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">2. Do I need any special equipment?</h3>
-                <p className="text-slate-300 mt-2">No! You just need two devices with a modern browser (like Chrome or Safari). It can be a laptop and a phone, a tablet and a phone, or any combination. No cables, no apps, no hassle.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-lg text-white">3. Is the free version really functional?</h3>
-                <p className="text-slate-300 mt-2">Yes. We believe that remote control is an essential feature, not a luxury. That's why our core functionality is 100% free and with no time limit. We offer a Pro version with advanced features like voice recognition, but the core tool is available to everyone.</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title="Frequently Asked Questions (FAQ)"
+            items={[
+                {
+                    question: "1. Why is PromptNinja's remote control better?",
+                    answer: "We use WebRTC, the same technology as video calls, to create a direct P2P (peer-to-peer) connection between your devices on the same Wi-Fi network. This means near-zero latency and a connection that doesn't depend on your internet speed, unlike Bluetooth which is susceptible to interference."
+                },
+                {
+                    question: "2. Do I need any special equipment?",
+                    answer: "No! You just need two devices with a modern browser (like Chrome or Safari). It can be a laptop and a phone, a tablet and a phone, or any combination. No cables, no apps, no hassle."
+                },
+                {
+                    question: "3. Is the free version really functional?",
+                    answer: "Yes. We believe that remote control is an essential feature, not a luxury. That's why our core functionality is 100% free and with no time limit. We offer a Pro version with advanced features like voice recognition, but the core tool is available to everyone."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

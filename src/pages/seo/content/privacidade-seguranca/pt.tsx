@@ -1,4 +1,6 @@
 
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const PrivacidadeSegurancaPT = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6">Privacidade e Segurança: Como o PromptNinja Protege Seus Dados</h1>
@@ -75,5 +77,24 @@ export const PrivacidadeSegurancaPT = () => (
                 Seus roteiros são seus. O PromptNinja é apenas a ferramenta que os exibe. Não vemos, não guardamos e não vendemos seus textos. É segurança por design, não por política.
             </p>
         </div>
+
+
+        <SEOContentFAQ
+            title="Perguntas Frequentes sobre Privacidade"
+            items={[
+                {
+                    question: "O PromptNinja tem acesso à minha câmera?",
+                    answer: "Apenas quando você usa o teleprompter, e todo o processamento de vídeo é feito localmente no seu navegador. Nenhuma imagem é enviada para nós."
+                },
+                {
+                    question: "Onde meus textos são salvos?",
+                    answer: "No armazenamento local (LocalStorage) do seu próprio navegador. Se você limpar o cache do navegador, os textos somem. Nós não temos backup porque não temos seus dados."
+                },
+                {
+                    question: "É seguro para roteiros confidenciais?",
+                    answer: "Sim. Como não há transmissão de dados de texto para a nuvem, é impossível haver vazamento por parte do servidor. É como escrever no Bloco de Notas do seu PC."
+                }
+            ]}
+        />
     </>
 );

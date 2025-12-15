@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const OratoriaVideoES = () => (
     <div className="text-slate-300">
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 text-center">
@@ -14,7 +16,7 @@ export const OratoriaVideoES = () => (
                 <p className="text-sm">
                     En una conversación, miramos a los ojos. En un vídeo, los ojos de tu audiencia son la lente de la cámara. El error más común es mirar tu propia imagen en la pantalla. Esto rompe la conexión al instante. Tu mirada debe ser fija y directa a la lente.
                 </p>
-                <div className="bg-slate-800 p-3 rounded-md mt-4 border-l-4 border-purple-500">
+                <div className="bg-slate-900 p-3 rounded-md mt-4 border-l-4 border-purple-500">
                     <p className="text-sm font-semibold text-white">La Solución: Ventana Redimensionable</p>
                     <p className="text-xs text-slate-400">
                         La ventana redimensionable de <strong>PromptNinja</strong> te permite colocar el texto exactamente sobre el área de tu cámara (en Zoom o escritorio). Esto mantiene tus ojos alineados con la lente de forma natural mientras lees.
@@ -27,7 +29,7 @@ export const OratoriaVideoES = () => (
                 <p className="text-sm">
                     "Eeeh...", "o sea...", "¿sabes?". Estos rellenos surgen cuando el cerebro busca la siguiente palabra. Minan tu credibilidad y distraen al espectador. La fluidez verbal demuestra autoridad en el tema.
                 </p>
-                <div className="bg-slate-800 p-3 rounded-md mt-4 border-l-4 border-purple-500">
+                <div className="bg-slate-900 p-3 rounded-md mt-4 border-l-4 border-purple-500">
                     <p className="text-sm font-semibold text-white">La Solución: Guion Guiado</p>
                     <p className="text-xs text-slate-400">
                         Con el guion desplazándose suavemente por la pantalla, tu cerebro no necesita "cazar" palabras. <strong>PromptNinja</strong> asegura que tu mensaje se entregue de forma limpia y profesional.
@@ -40,7 +42,7 @@ export const OratoriaVideoES = () => (
                 <p className="text-sm">
                     La cámara tiende a "aplanar" tu energía. Lo que parece normal en persona puede parecer monótono en vídeo. Proyecta tu voz, gesticula y sonríe un poco más de lo normal. Piensa en elevar tu energía entre un 10 y un 20%.
                 </p>
-                <div className="bg-slate-800 p-3 rounded-md mt-4 border-l-4 border-purple-500">
+                <div className="bg-slate-900 p-3 rounded-md mt-4 border-l-4 border-purple-500">
                     <p className="text-sm font-semibold text-white">La Solución: Foco en la Actuación</p>
                     <p className="text-xs text-slate-400">
                         Al liberar tu mente de la tarea de memorizar, puedes concentrarte al 100% en tu entrega, energía y lenguaje corporal. El teleprompter se encarga del texto.
@@ -102,7 +104,7 @@ export const OratoriaVideoES = () => (
             </li>
             <li className="bg-slate-800 p-4 rounded-lg border border-slate-700">
                 <h3 className="font-bold text-white">Hablas y el Texto te Sigue (Función Pro)</h3>
-                <p className="text-sm text-slate-400">Con nuestro reconocimiento de voz, el guion avanza mientras hablas. Es la experiencia de teleprompter más fluida y profesional que existe.</p>
+                <p className="text-sm text-slate-400">Con nuestro reconocimiento de voz, el guion avanza mientras hablas. Es la experiencia de teleprompter más fluida e profesional que existe.</p>
             </li>
         </ul>
 
@@ -118,27 +120,23 @@ export const OratoriaVideoES = () => (
         </div>
 
         <div className="mt-16">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Preguntas Frecuentes (FAQ)</h2>
-            <div className="space-y-4 max-w-3xl mx-auto">
-                <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">
-                    <summary className="font-bold text-white text-lg">¿Usar un teleprompter no me hará parecer un robot?</summary>
-                    <p className="mt-2 text-slate-400">
-                        Al contrario. Un buen teleprompter, combinado con el <strong>control remoto P2P de PromptNinja</strong>, te permite ajustar la velocidad en tiempo real, coincidiendo con tu ritmo natural al hablar. La apariencia robótica proviene de intentar memorizar y recitar, no de leer con fluidez con la herramienta adecuada.
-                    </p>
-                </details>
-                <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">
-                    <summary className="font-bold text-white text-lg">¿Necesito equipo caro para usar PromptNinja?</summary>
-                    <p className="mt-2 text-slate-400">
-                        No. Solo necesitas dos dispositivos con acceso a un navegador: uno para la pantalla (como un portátil o una tablet) y otro para el control (tu móvil). No se requiere hardware adicional.
-                    </p>
-                </details>
-                <details className="bg-slate-900 p-4 rounded-lg cursor-pointer border border-slate-800">
-                    <summary className="font-bold text-white text-lg">¿Es difícil de configurar?</summary>
-                    <p className="mt-2 text-slate-400">
-                        Tarda menos de 30 segundos. Accede a la web, pega tu guion, haz clic en "iniciar" y escanea el código QR con tu móvil. Es la forma más rápida y sencilla de tener un sistema de teleprompter profesional.
-                    </p>
-                </details>
-            </div>
+            <SEOContentFAQ
+                title="Preguntas Frecuentes (FAQ)"
+                items={[
+                    {
+                        question: "¿Usar un teleprompter no me hará parecer un robot?",
+                        answer: "Al contrario. Un buen teleprompter, combinado con el control remoto P2P de PromptNinja, te permite ajustar la velocidad en tiempo real, coincidiendo con tu ritmo natural al hablar. La apariencia robótica proviene de intentar memorizar y recitar, no de leer con fluidez con la herramienta adecuada."
+                    },
+                    {
+                        question: "¿Necesito equipo caro para usar PromptNinja?",
+                        answer: "No. Solo necesitas dos dispositivos con acceso a un navegador: uno para la pantalla (como un portátil o una tablet) y otro para el control (tu móvil). No se requiere hardware adicional."
+                    },
+                    {
+                        question: "¿Es difícil de configurar?",
+                        answer: "Tarda menos de 30 segundos. Accede a la web, pega tu guion, haz clic en \"iniciar\" y escanea el código QR con tu móvil. Es la forma más rápida y sencilla de tener un sistema de teleprompter profesional."
+                    }
+                ]}
+            />
         </div>
     </div>
 );

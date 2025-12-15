@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const TeleprompterOnlineGratisES = () => (
     <>
         <h1 className="text-3xl font-bold text-white mb-4">Teleprompter Online Gratis: Graba con Confianza y Profesionalismo</h1>
@@ -96,22 +98,22 @@ export const TeleprompterOnlineGratisES = () => (
             <li>¡Listo! La conexión es instantánea. No se necesita la misma red Wi-Fi.</li>
         </ol>
 
-
-
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Preguntas Frecuentes (FAQ)</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-white">¿Mis guiones están seguros?</h3>
-                <p>Absolutamente. A diferencia de otros sitios que suben tu texto a un servidor, PromptNinja procesa todo localmente en tu navegador. Tu guion nunca sale de tu dispositivo, garantizando total privacidad.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-white">¿Necesito crear una cuenta?</h3>
-                <p>No. Puedes usar todas las funciones gratuitas, incluido el control remoto y el modo espejo, sin necesidad de registrarte. Una cuenta solo es necesaria para la versión Pro, que incluye control por voz y guardado de guiones en la nube.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-bold text-white">¿Funciona en cualquier dispositivo?</h3>
-                <p>Sí. PromptNinja es compatible con todos los navegadores modernos en Windows, macOS, Linux, Android e iOS. Solo necesitas una conexión a internet para acceder al sitio.</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title="Preguntas Frecuentes (FAQ)"
+            items={[
+                {
+                    question: "¿Mis guiones están seguros?",
+                    answer: "Absolutamente. A diferencia de otros sitios que suben tu texto a un servidor, PromptNinja procesa todo localmente en tu navegador. Tu guion nunca sale de tu dispositivo, garantizando total privacidad."
+                },
+                {
+                    question: "¿Necesito crear una cuenta?",
+                    answer: "No. Puedes usar todas las funciones gratuitas, incluido el control remoto y el modo espejo, sin necesidad de registrarte. Una cuenta solo es necesaria para la versión Pro, que incluye control por voz y guardado de guiones en la nube."
+                },
+                {
+                    question: "¿Funciona en cualquier dispositivo?",
+                    answer: "Sí. PromptNinja es compatible con todos los navegadores modernos en Windows, macOS, Linux, Android e iOS. Solo necesitas una conexión a internet para acceder al sitio."
+                }
+            ]}
+        />
     </>
 );

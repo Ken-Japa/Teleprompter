@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterShortcutsES = () => (
     <>
@@ -84,5 +85,23 @@ export const TeleprompterShortcutsES = () => (
                 Probar Atajos Ahora
             </a>
         </div>
+
+        <SEOContentFAQ
+            title="Preguntas Frecuentes sobre Atajos"
+            items={[
+                {
+                    question: "¿Puedo personalizar las teclas de atajo?",
+                    answer: "Sí, en la versión PromptNinja PRO puedes reasignar completamente todas las funciones (iniciar, parar, velocidad, espejo) a cualquier tecla que prefieras."
+                },
+                {
+                    question: "¿Funciona con pedales y presentadores?",
+                    answer: "¡Sí! La mayoría de estos dispositivos simulan pulsaciones de teclado (como Espacio o Flechas). PromptNinja reconoce estas señales nativamente, sin necesidad de drivers extra."
+                },
+                {
+                    question: "¿Para qué sirve la tecla 'H'?",
+                    answer: "La tecla 'H' oculta la interfaz (HUD). Es perfecta para grabar la pantalla del ordenador (gameplays, tutoriales) cuando quieres que solo aparezca el texto, sin botones ni menús molestos."
+                }
+            ]}
+        />
     </>
 );

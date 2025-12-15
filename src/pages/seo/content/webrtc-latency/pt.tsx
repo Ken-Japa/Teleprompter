@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const WebRtcLatencyContentPT = () => (
     <>
         <p className="lead text-xl text-slate-300 mb-8">
@@ -91,5 +93,23 @@ export const WebRtcLatencyContentPT = () => (
         <p>
             O PromptNinja é um dos poucos teleprompters do mundo a utilizar essa arquitetura avançada de forma gratuita e acessível direto no navegador.
         </p>
+
+        <SEOContentFAQ
+            title="Perguntas Técnicas sobre Latência"
+            items={[
+                {
+                    question: "O que causa o atraso (latência) no teleprompter?",
+                    answer: "Geralmente é a comunicação lenta entre o controle e a tela. Em Bluetooth e WebSockets (internet), o sinal dá uma volta longa. No nosso sistema P2P, ele vai direto."
+                },
+                {
+                    question: "É seguro? Meus dados passam pelo servidor?",
+                    answer: "Sim, é extremamente seguro. Como a conexão é P2P (Ponto a Ponto), o texto do seu roteiro e os comandos viajam apenas dentro da sua rede local. Nada é armazenado em nossos servidores."
+                },
+                {
+                    question: "Funciona se o Wi-Fi cair?",
+                    answer: "Desde que o roteador esteja ligado (mantendo a rede local ativa), sim. A internet externa não é necessária após o carregamento inicial da página."
+                }
+            ]}
+        />
     </>
 );

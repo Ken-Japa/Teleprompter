@@ -1,4 +1,6 @@
 
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const TeleprompterPacingTimerEN = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6">Teleprompter with Pacing & Text Commands: Perfect Timing for Your Videos</h1>
@@ -47,20 +49,23 @@ export const TeleprompterPacingTimerEN = () => (
         </div>
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">FAQ: Commands & Timer</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">How do I use the pause command?</h3>
-                <p className="text-slate-300 mt-2">Simply write <strong>[PAUSE X]</strong> in your script, where X is the number of seconds. Example: "And the secret is... [PAUSE 3] Consistency." The teleprompter will pause for 3 seconds at that line and resume scrolling automatically.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Does the [STOP] command need a click to resume?</h3>
-                <p className="text-slate-300 mt-2">Yes. When the text encounters a <strong>[STOP]</strong>, it halts scrolling indefinitely. To continue, you can press the spacebar, click the screen, or use the remote control.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Are these features free?</h3>
-                <p className="text-slate-300 mt-2">The basic timer and text commands are free! We want you to have full control of your presentation without barriers.</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title=""
+            items={[
+                {
+                    question: "How do I use the pause command?",
+                    answer: "Simply write **[PAUSE X]** in your script, where X is the number of seconds. Example: \"And the secret is... [PAUSE 3] Consistency.\" The teleprompter will pause for 3 seconds at that line and resume scrolling automatically."
+                },
+                {
+                    question: "Does the [STOP] command need a click to resume?",
+                    answer: "Yes. When the text encounters a **[STOP]**, it halts scrolling indefinitely. To continue, you can press the spacebar, click the screen, or use the remote control."
+                },
+                {
+                    question: "Are these features free?",
+                    answer: "The basic timer and text commands are free! We want you to have full control of your presentation without barriers."
+                }
+            ]}
+        />
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
             <h2 className="text-3xl font-bold text-white mb-4">Master Your Video Timing</h2>

@@ -1,4 +1,6 @@
 
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const TeleprompterModoMusicoEN = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6">Teleprompter Musician Mode: The Ultimate Solution for Following Lyrics and Chords</h1>
@@ -99,24 +101,27 @@ export const TeleprompterModoMusicoEN = () => (
         </p>
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">FAQ: Musician Mode</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Is Musician Mode a paid feature?</h3>
-                <p className="text-slate-300 mt-2">No! Musician Mode is <strong>100% free</strong> in PromptNinja. You just need to activate the button in the editor. The separate PRO feature is <strong>Voice Control</strong>, which scrolls automatically while you sing.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Does it work with tablature (tabs)?</h3>
-                <p className="text-slate-300 mt-2">Yes! Musician Mode's monospaced font is perfect for displaying ASCII tablature, maintaining correct alignment of all lines.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Can I use it for outdoor performances (without internet)?</h3>
-                <p className="text-slate-300 mt-2">Yes! PromptNinja is a PWA that works <strong>completely offline</strong>. Just open it once with internet, then it works without connection. Remote control uses local P2P connection (Wi-Fi), doesn't need internet.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">How do I transpose chords (change key)?</h3>
-                <p className="text-slate-300 mt-2">Use external chord transposition tools before pasting into PromptNinja. Our function is to perfectly display what you've prepared. (Automatic transposition feature may come in future versions!)</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title=""
+            items={[
+                {
+                    question: "Is Musician Mode a paid feature?",
+                    answer: "No! Musician Mode is **100% free** in PromptNinja. You just need to activate the button in the editor. The separate PRO feature is **Voice Control**, which scrolls automatically while you sing."
+                },
+                {
+                    question: "Does it work with tablature (tabs)?",
+                    answer: "Yes! Musician Mode's monospaced font is perfect for displaying ASCII tablature, maintaining correct alignment of all lines."
+                },
+                {
+                    question: "Can I use it for outdoor performances (without internet)?",
+                    answer: "Yes! PromptNinja is a PWA that works **completely offline**. Just open it once with internet, then it works without connection. Remote control uses local P2P connection (Wi-Fi), doesn't need internet."
+                },
+                {
+                    question: "How do I transpose chords (change key)?",
+                    answer: "Use external chord transposition tools before pasting into PromptNinja. Our function is to perfectly display what you've prepared. (Automatic transposition feature may come in future versions!)"
+                }
+            ]}
+        />
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
             <h2 className="text-3xl font-bold text-white mb-4">Ready to Transform Your Musical Performances?</h2>

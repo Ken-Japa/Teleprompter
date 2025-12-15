@@ -1,3 +1,5 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+
 export const TeleprompterTravandoSolucaoPT = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-4">Solução Definitiva: Por que Teleprompters Travam e Como o P2P Resolve (GRÁTIS)</h1>
@@ -49,20 +51,23 @@ export const TeleprompterTravandoSolucaoPT = () => (
         </p>
 
         <h2 className="text-3xl font-bold text-white mt-10 mb-4">Perguntas Frequentes (FAQ)</h2>
-        <dl className="space-y-6 text-slate-300">
-            <div>
-                <dt className="font-bold text-white text-lg">O PromptNinja funciona offline?</dt>
-                <dd className="mt-1">Uma vez que a página do teleprompter é carregada, a comunicação entre o controle remoto e a tela é 100% local via Wi-Fi. Você precisa de internet apenas para carregar a página inicialmente, mas a operação em si é imune a quedas de internet.</dd>
-            </div>
-            <div>
-                <dt className="font-bold text-white text-lg">Preciso instalar algum aplicativo no celular ou computador?</dt>
-                <dd className="mt-1">Não. O PromptNinja é 100% baseado no navegador. Não há nada para instalar, o que significa menos consumo de recursos e zero chance de conflitos de software. Basta abrir um link e escanear um QR Code.</dd>
-            </div>
-            <div>
-                <dt className="font-bold text-white text-lg">E se meu Wi-Fi for lento?</dt>
-                <dd className="mt-1">A velocidade da sua "internet" (conexão com o mundo exterior) não importa. O que importa é a estabilidade da sua rede "local" (a comunicação entre dispositivos na sua casa ou escritório). Desde que seu celular e computador estejam na mesma rede Wi-Fi, a conexão P2P será ultrarrápida.</dd>
-            </div>
-        </dl>
+        <SEOContentFAQ
+            title=""
+            items={[
+                {
+                    question: "O PromptNinja funciona offline?",
+                    answer: "Uma vez que a página do teleprompter é carregada, a comunicação entre o controle remoto e a tela é 100% local via Wi-Fi. Você precisa de internet apenas para carregar a página inicialmente, mas a operação em si é imune a quedas de internet."
+                },
+                {
+                    question: "Preciso instalar algum aplicativo no celular ou computador?",
+                    answer: "Não. O PromptNinja é 100% baseado no navegador. Não há nada para instalar, o que significa menos consumo de recursos e zero chance de conflitos de software. Basta abrir um link e escanear um QR Code."
+                },
+                {
+                    question: "E se meu Wi-Fi for lento?",
+                    answer: "A velocidade da sua \"internet\" (conexão com o mundo exterior) não importa. O que importa é a estabilidade da sua rede \"local\" (a comunicação entre dispositivos na sua casa ou escritório). Desde que seu celular e computador estejam na mesma rede Wi-Fi, a conexão P2P será ultrarrápida."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a
