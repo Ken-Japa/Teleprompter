@@ -217,6 +217,15 @@ export function trackGoogleAdsInterest(url: string): void {
         callback();
     }
 
-    // Retorna false para evitar comportamento padrão em onclicks inline, se necessário
     // return false; 
+}
+
+/**
+ * Rastreia a micro-conversão de usuário engajado (uso por > 3min + rolagem).
+ */
+export function trackEngagedUser(): void {
+    trackEvent("micro_conversion_engaged_user", {
+        duration_minutes: 3,
+        product_status: 'freemium'
+    });
 }

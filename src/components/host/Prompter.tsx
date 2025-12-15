@@ -21,7 +21,7 @@ import { useElementMetrics } from "../../hooks/useElementMetrics";
 import { ScriptBoard } from "./ScriptBoard";
 import { PrompterHUD } from "./PrompterHUD";
 import { QuickEditModal } from "./QuickEditModal";
-import { trackEvent, trackFinishReading } from "../../utils/analytics";
+import { trackEvent, trackFinishReading, trackEngagedUser } from "../../utils/analytics";
 
 import { useNavigationMap } from "../../hooks/useNavigationMap";
 import { useMediaRecorder } from "../../hooks/useMediaRecorder";
@@ -78,8 +78,35 @@ export const Prompter = memo(
       // Refs
       const containerRef = useRef<HTMLDivElement>(null);
       const scrollContainerRef = useRef<HTMLDivElement>(null);
+
       const hudTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
       const mouseMoveRafRef = useRef<number | null>(null);
+
+      // Engaged User Tracking (Micro-conversion)
+      const hasStartedScrollingRef = useRef<boolean>(false);
+      const engagedUserTrackedRef = useRef<boolean>(false);
+      const startTimeRef = useRef<number>(Date.now());
+
+      useEffect(() => {
+        if (externalState.isPlaying) {
+          hasStartedScrollingRef.current = true;
+        }
+      }, [externalState.isPlaying]);
+
+      useEffect(() => {
+        const interval = setInterval(() => {
+          // 3 minutes = 180,000 ms
+          const timeElapsed = Date.now() - startTimeRef.current;
+
+          if (!engagedUserTrackedRef.current && hasStartedScrollingRef.current && timeElapsed >= 180000) {
+            trackEngagedUser();
+            engagedUserTrackedRef.current = true;
+            console.log("[Prompter] Engaged user event fired");
+          }
+        }, 60000); // Check every minute
+
+        return () => clearInterval(interval);
+      }, []);
 
       // Theme Logic
       // FORCE DARK THEME if Musician Mode is active (overriding user theme preference)
