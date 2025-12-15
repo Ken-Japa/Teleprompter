@@ -1,3 +1,4 @@
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterOnlineGratisPT = () => (
     <>
@@ -89,21 +90,23 @@ export const TeleprompterOnlineGratisPT = () => (
             </table>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">FAQ: Teleprompter Online Grátis</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">O PromptNinja é realmente gratuito?</h3>
-                <p className="text-slate-300 mt-2">Sim. Todas as funcionalidades essenciais, incluindo o controle remoto, espelhamento de texto, e ajustes de fonte/velocidade, são 100% gratuitas e sem pegadinhas. Oferecemos uma versão Pro com recursos avançados como reconhecimento de voz, mas o núcleo da ferramenta é gratuito para sempre.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Meus roteiros ficam salvos em algum lugar?</h3>
-                <p className="text-slate-300 mt-2">Não. Sua privacidade é prioridade. Todo o texto que você cola no PromptNinja é processado localmente no seu navegador e nunca é enviado ou armazenado em nossos servidores. Quando você fecha a aba, o texto se vai.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">Preciso de uma conexão de internet forte para o controle remoto?</h3>
-                <p className="text-slate-300 mt-2">Não. O controle remoto usa tecnologia WebRTC (P2P) que conecta seus dispositivos diretamente através da sua rede Wi-Fi local. Isso garante uma resposta instantânea, sem atrasos, independentemente da velocidade da sua internet.</p>
-            </div>
-        </div>
+        <SEOContentFAQ
+            title="FAQ: Teleprompter Online Grátis"
+            items={[
+                {
+                    question: "O PromptNinja é realmente gratuito?",
+                    answer: "Sim. Todas as funcionalidades essenciais, incluindo o controle remoto, espelhamento de texto, e ajustes de fonte/velocidade, são 100% gratuitas e sem pegadinhas. Oferecemos uma versão Pro com recursos avançados como reconhecimento de voz, mas o núcleo da ferramenta é gratuito para sempre."
+                },
+                {
+                    question: "Meus roteiros ficam salvos em algum lugar?",
+                    answer: "Não. Sua privacidade é prioridade. Todo o texto que você cola no PromptNinja é processado localmente no seu navegador e nunca é enviado ou armazenado em nossos servidores. Quando você fecha a aba, o texto se vai."
+                },
+                {
+                    question: "Preciso de uma conexão de internet forte para o controle remoto?",
+                    answer: "Não. O controle remoto usa tecnologia WebRTC (P2P) que conecta seus dispositivos diretamente através da sua rede Wi-Fi local. Isso garante uma resposta instantânea, sem atrasos, independentemente da velocidade da sua internet."
+                }
+            ]}
+        />
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
             <h2 className="text-3xl font-bold text-white mb-4">Sua Busca por um Teleprompter Grátis Acabou</h2>

@@ -1,8 +1,12 @@
 import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
+import { useFAQSchema } from "../../hooks/useFAQSchema";
 
 export const FAQ: React.FC = () => {
     const { t } = useTranslation();
+    const faqItems = (t("landing.faq.items") as unknown as any[]);
+
+    useFAQSchema(faqItems);
 
     return (
         <section className="py-24 px-6 bg-[#020617]">

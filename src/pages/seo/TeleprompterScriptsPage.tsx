@@ -4,11 +4,20 @@ import { SeoPageLayout } from './SeoPageLayout';
 import { useTranslation } from '../../hooks/useTranslation';
 import { SCRIPTS_DATA, Script } from '../../data/teleprompterScripts';
 import { SEO_CONTENT } from '../../data/seoContent';
+import { useFAQSchema } from '../../hooks/useFAQSchema';
 
 export const TeleprompterScriptsPage: React.FC<{ onLaunch: () => void }> = ({ onLaunch }) => {
     const { t, lang } = useTranslation();
     const currentLang = (['pt', 'en', 'es'].includes(lang) ? lang : 'pt') as 'pt' | 'en' | 'es';
     const content = SEO_CONTENT.scripts;
+
+    // Prepare FAQ data for schema
+    const faqItems = content.faq.items.map(item => ({
+        q: item.q[currentLang],
+        a: item.a[currentLang]
+    }));
+
+    useFAQSchema(faqItems);
 
     const [copiedScriptId, setCopiedScriptId] = useState<string | null>(null);
 
