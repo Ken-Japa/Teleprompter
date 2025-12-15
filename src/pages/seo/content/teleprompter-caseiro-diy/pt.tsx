@@ -15,6 +15,13 @@ export const TeleprompterCaseiroDIYPT = () => (
             <li><strong>Câmera:</strong> Qualquer câmera DSLR, mirrorless ou até mesmo a do seu smartphone.</li>
         </ul>
 
+        <div className="bg-slate-800 p-4 rounded-lg mb-6 border-l-4 border-purple-500">
+            <h3 className="font-bold text-white mb-2">Vai usar um Tablet ou iPad?</h3>
+            <p className="text-slate-300 text-sm">
+                Tablets são excelentes para teleprompter caseiro devido ao tamanho da tela. Se você planeja usar um, confira nosso guia específico sobre <a href="/teleprompter-para-tablet-ipad-android" className="text-purple-400 hover:text-purple-300 underline">como usar teleprompter no tablet</a> para dicas de posicionamento e apps.
+            </p>
+        </div>
+
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">O Desafio do Software: Mais do que Apenas Texto Invertido</h2>
         <p className="mb-4">
             Após montar sua estrutura, você enfrentará o principal obstáculo técnico: ao colocar o tablet sob o vidro em um ângulo de 45 graus, o texto refletido para você aparecerá <strong>espelhado e invertido</strong>. Ler assim é impossível.

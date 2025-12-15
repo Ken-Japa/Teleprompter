@@ -15,6 +15,13 @@ export const TeleprompterCaseiroDIYEN = () => (
             <li><strong>Camera:</strong> Any DSLR, mirrorless, or even your smartphone's camera.</li>
         </ul>
 
+        <div className="bg-slate-800 p-4 rounded-lg mb-6 border-l-4 border-purple-500">
+            <h3 className="font-bold text-white mb-2">Using a Tablet or iPad?</h3>
+            <p className="text-slate-300 text-sm">
+                Tablets are excellent for DIY teleprompters due to their screen size. If you plan to use one, check out our specific guide on <a href="/en/teleprompter-app-for-tablet-ipad" className="text-purple-400 hover:text-purple-300 underline">how to use a teleprompter on a tablet</a> for positioning tips and apps.
+            </p>
+        </div>
+
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">The Software Challenge: More Than Just Flipped Text</h2>
         <p className="mb-4">
             After assembling your structure, you'll face the main technical hurdle: when you place the tablet under the glass at a 45-degree angle, the text reflected at you will appear <strong>mirrored and inverted</strong>. Reading it like that is impossible.

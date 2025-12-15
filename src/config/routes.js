@@ -296,4 +296,13 @@ export const ROUTES_CONFIG = {
             es: "/es/teleprompter-sincronizar-powerpoint-slides",
         },
     },
+    SEO_TABLET: {
+        priority: "0.9",
+        changefreq: "monthly",
+        paths: {
+            pt: "/teleprompter-para-tablet-ipad-android",
+            en: "/en/teleprompter-app-for-tablet-ipad",
+            es: "/es/teleprompter-para-tablet-ipad-android",
+        },
+    },
 };

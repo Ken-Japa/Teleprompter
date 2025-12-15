@@ -189,6 +189,7 @@ const App: React.FC = () => {
                 {view === "SEO_PACING" && <SeoPages.TeleprompterPacingTimer onLaunch={launchApp} />}
                 {view === "SEO_SHORTCUTS" && <SeoPages.TeleprompterShortcuts onLaunch={launchApp} />}
                 {view === "SEO_GAMER" && <SeoPages.TeleprompterGamers onLaunch={launchApp} />}
+                {view === "SEO_TABLET" && <SeoPages.TeleprompterTablet onLaunch={launchApp} />}
                 {view === "SEO_SLIDES_SYNC" && <SeoPages.TeleprompterSlides onLaunch={launchApp} />}
 
                 {/* Script Pages */}
