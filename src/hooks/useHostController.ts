@@ -8,7 +8,7 @@ import { useLocalStorage } from "./useLocalStorage";
 import { useTranslation } from "./useTranslation";
 import { usePrompterSettings } from "./usePrompterSettings";
 import { tryEnableNoSleep } from "./useWakeLock";
-import { trackStartPacing } from "../utils/analytics";
+import { trackStartPacing, trackGoogleAdsPurchase } from "../utils/analytics";
 
 export const useHostController = () => {
   const { t } = useTranslation();
@@ -275,6 +275,7 @@ export const useHostController = () => {
       if (!result.success) {
         setPaywallErrorMessage(result.message || t("host.paywall.invalidKey"));
       } else {
+        trackGoogleAdsPurchase();
         setUnlockKey("");
       }
     } finally {

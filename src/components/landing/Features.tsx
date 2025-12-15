@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import * as S from "../ui/Styled";
 import { MagicIcon, MicIcon, PaletteIcon, ShieldIcon, ZapIcon, CrownIcon, TimerIcon, PiPIcon, RecordIcon, KeyboardIcon, MusicIcon } from "../ui/Icons";
+import { trackGoogleAdsInterest } from "../../utils/analytics";
 
 export const Features: React.FC = () => {
     const { t, lang } = useTranslation();
@@ -26,6 +27,10 @@ export const Features: React.FC = () => {
                             href="https://pay.kiwify.com.br/dl571EZ"
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                trackGoogleAdsInterest('https://pay.kiwify.com.br/dl571EZ');
+                            }}
                             className="inline-flex items-center justify-center px-6 py-3 text-base font-bold text-white transition-all transform bg-emerald-600 rounded-xl hover:bg-emerald-500 hover:scale-105 shadow-lg shadow-emerald-500/25 group-hover:shadow-emerald-500/40"
                         >
                             {t("landing.features.voice.cta") || "Unlock PRO Feature 🎤"}

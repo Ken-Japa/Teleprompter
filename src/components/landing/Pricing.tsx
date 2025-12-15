@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
-import { trackConversion } from "../../utils/analytics";
+import { trackConversion, trackGoogleAdsInterest } from "../../utils/analytics";
 import { PricingCard } from "../ui/styles/Marketing";
 
 interface PricingProps {
@@ -55,7 +55,7 @@ export const Pricing: React.FC<PricingProps> = ({ onLaunch }) => {
                             }
                             onClick={() => {
                                 trackConversion('Upgrade to Pro');
-                                window.open('https://pay.kiwify.com.br/dl571EZ', '_blank');
+                                trackGoogleAdsInterest('https://pay.kiwify.com.br/dl571EZ');
                             }}
                         />
                     </div>

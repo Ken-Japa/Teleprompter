@@ -179,3 +179,44 @@ export function trackRemoteConnected(role: 'host' | 'remote'): void {
     trackEvent("remote_connected", { role });
 }
 
+/**
+ * Rastreia a conversão de compra/resgate de chave no Google Ads.
+ * @param transactionId ID da transação (opcional).
+ */
+export function trackGoogleAdsPurchase(transactionId: string = ''): void {
+    if (typeof window.gtag === "function") {
+        window.gtag('event', 'conversion', {
+            'send_to': 'AW-17795014366/RdpSCO2kvdEbEN69qaVC',
+            'transaction_id': transactionId
+        });
+    } else {
+        console.warn("Google Analytics (gtag) not loaded. Conversion not tracked.");
+    }
+}
+
+/**
+ * Rastreia o interesse de compra (clique no botão de comprar) no Google Ads.
+ * Utiliza callback para redirecionar após o evento ser registrado.
+ * @param url A URL de destino (página de checkout).
+ */
+export function trackGoogleAdsInterest(url: string): void {
+    const callback = () => {
+        if (typeof url !== 'undefined') {
+            window.location.href = url;
+        }
+    };
+
+    if (typeof window.gtag === "function") {
+        window.gtag('event', 'conversion', {
+            'send_to': 'AW-17795014366/_3RZCNLTxtEbEN69qaVC',
+            'event_callback': callback
+        });
+    } else {
+        // Fallback se o GA não estiver carregado
+        console.warn("Google Analytics (gtag) not loaded. Redirecting without tracking.");
+        callback();
+    }
+
+    // Retorna false para evitar comportamento padrão em onclicks inline, se necessário
+    // return false; 
+}
