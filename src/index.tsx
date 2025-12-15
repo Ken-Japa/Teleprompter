@@ -21,7 +21,6 @@ if (!rootElement) {
 
 
 import { registerSW } from "virtual:pwa-register";
-import { initLazyAnalytics } from "./utils/lazyAnalytics";
 
 const root = ReactDOM.createRoot(rootElement);
 root.render(
@@ -32,8 +31,9 @@ root.render(
     </React.StrictMode>
 );
 
-// Analytics is now loaded manually in index.html for stability
-// initLazyAnalytics();
+// Analytics compatibility (Gtag shim + Extra scripts like Clarity)
+import { initAnalyticsCompatibility } from "./utils/lazyAnalytics";
+initAnalyticsCompatibility();
 
 window.addEventListener('load', () => {
     registerSW({ immediate: true });
