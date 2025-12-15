@@ -19,7 +19,7 @@ declare global {
 export function trackEvent(eventName: string, props?: Record<string, string | number | boolean>): void {
     if (typeof window.gtag === "function") {
         // GA4 event structure
-        window.gtag("event", eventName, props);
+        window.gtag("event", eventName, props || {});
     } else {
         console.warn(`Google Analytics not loaded. Event '${eventName}' not tracked.`);
     }

@@ -11,9 +11,13 @@
 // Initialize the shim immediately to ensure no events are dropped
 export const initAnalyticsShim = (): void => {
     // Only load in production
-    if (window.location.hostname !== 'promptninja.solutionkit.com.br') {
-        console.log("📊 Analytics shim skipped (not in production)");
-        // Define a dummy gtag for development to prevent errors if we removed the check in analytics.ts
+    const hostname = window.location.hostname;
+    // Allow both root domain and www subdomain
+    const isProduction = hostname === 'promptninja.solutionkit.com.br' || hostname === 'www.promptninja.solutionkit.com.br';
+
+    if (!isProduction) {
+        console.warn("📊 Analytics shim skipped (not in production). Hostname:", hostname);
+        // Define a dummy gtag for development to prevent errors
         if (!window.gtag) {
             window.gtag = function () { console.log("📊 [Dev] gtag:", arguments); };
         }
@@ -28,19 +32,23 @@ export const initAnalyticsShim = (): void => {
         };
     }
 
-    // Configure default command
+    // Configure default command with debug_mode for easier troubleshooting
     window.gtag("js", new Date());
-    window.gtag("config", "G-NCRFPBBJHF");
+    window.gtag("config", "G-NCRFPBBJHF", {
+        'debug_mode': true
+    });
 
-    console.log("📊 Analytics shim initialized");
+    console.log("📊 Analytics shim initialized for:", hostname);
 };
 
 /**
  * Loads the actual analytics scripts (GTM, Clarity, etc.)
  */
 export const loadAnalyticsScripts = (): void => {
-    // Check if we are in production (again, to be safe, though shim handles 'gtag' creation)
-    const isProduction = window.location.hostname === 'promptninja.solutionkit.com.br';
+    // Check if we are in production
+    const hostname = window.location.hostname;
+    const isProduction = hostname === 'promptninja.solutionkit.com.br' || hostname === 'www.promptninja.solutionkit.com.br';
+
     if (!isProduction) return;
 
     // Avoid double loading
