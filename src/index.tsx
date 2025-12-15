@@ -32,8 +32,10 @@ root.render(
     </React.StrictMode>
 );
 
+// Initialize analytics immediately (shim is instant, heavy scripts are lazy)
+initLazyAnalytics();
+
 window.addEventListener('load', () => {
     registerSW({ immediate: true });
-    initLazyAnalytics();
 });
 
