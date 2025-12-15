@@ -7,6 +7,9 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, interactive-widget=resizes-content, viewport-fit=cover" />
   <meta name="theme-color" content="#020617" />
 
+  <script async custom-element="amp-consent" src="https://cdn.ampproject.org/v0/amp-consent-0.1.js"></script>
+  <meta name="amp-consent-blocking" content="amp-ad">
+
   <!-- Preconnect to critical origins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -213,6 +216,20 @@ Experimente agora!" />
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3FFHDCD" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
+  <amp-consent id="ConsentManager" layout="nodisplay" type="ConsentManager">
+    <script type="application/json">
+    {
+      "postPromptUI": "postPromptUI",
+      "clientConfig": {
+        "cdid": "eeb4c9b9a28f7",
+        "params": ""
+      }
+    }
+  </script>
+    <div id="postPromptUI">
+      <button on="tap:ConsentManager.prompt()" role="button">Manage privacy settings</button>
+    </div>
+  </amp-consent>
   <div id="root">
     <noscript>Your browser does not support JavaScript!</noscript>
   </div>
