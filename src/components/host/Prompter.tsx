@@ -478,11 +478,11 @@ export const Prompter = memo(
           {isWidgetMode && isCameraMode && (
             <style>{`
               .prompter-scroll-area {
-                width: 70% !important;
-                height: 40% !important;
+                width: 90% !important;
+                height: 50% !important;
                 position: absolute !important;
-                top: 10% !important;
-                left: 15% !important;
+                top: 15% !important;
+                left: 5% !important;
                 border-radius: 20px !important;
                 border: 2px solid rgba(255, 255, 255, 0.1) !important;
                 background: rgba(0, 0, 0, 0.6) !important; /* Semi-transparent background for readability */

@@ -171,7 +171,7 @@ export const PrompterHUD = memo(
                     settings={settings}
                     actions={actions}
                     onOpenMarginSlider={() => setShowMarginModal(true)}
-                    togglePiP={settings.isCameraMode ? undefined : togglePiP} // Hide Native PiP in Camera Mode
+                    togglePiP={togglePiP}
                     isPiPActive={isPiPActive}
                 />
 
