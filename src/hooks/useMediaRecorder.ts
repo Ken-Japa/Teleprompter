@@ -11,6 +11,7 @@ export const useMediaRecorder = (externalVideoStream?: MediaStream | null) => {
     const chunksRef = useRef<Blob[]>([]);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
     const streamRef = useRef<MediaStream | null>(null);
+    const mimeTypeRef = useRef<string>(RECORDING_CONFIG.MIME_TYPE); // Store used mime type
 
     const startRecording = useCallback(async () => {
         try {
@@ -39,9 +40,21 @@ export const useMediaRecorder = (externalVideoStream?: MediaStream | null) => {
 
             streamRef.current = finalStream;
 
-            const options = MediaRecorder.isTypeSupported(RECORDING_CONFIG.MIME_TYPE)
-                ? { mimeType: RECORDING_CONFIG.MIME_TYPE }
-                : undefined;
+            // Determine supported MIME type
+            let mimeType = RECORDING_CONFIG.MIME_TYPE;
+            if (MediaRecorder.isTypeSupported("video/mp4")) {
+                mimeType = "video/mp4";
+            } else if (MediaRecorder.isTypeSupported("video/webm")) {
+                mimeType = "video/webm";
+            } else if (MediaRecorder.isTypeSupported("audio/mp4")) { // Fallback for audio-only scenarios preference
+                mimeType = "audio/mp4";
+            }
+            // Update ref
+            mimeTypeRef.current = mimeType;
+
+            const options: MediaRecorderOptions = {
+                mimeType: mimeType
+            };
 
             const mediaRecorder = new MediaRecorder(finalStream, options);
             mediaRecorderRef.current = mediaRecorder;
@@ -77,9 +90,16 @@ export const useMediaRecorder = (externalVideoStream?: MediaStream | null) => {
             mediaRecorder.start(RECORDING_CONFIG.TIMESLICE_MS); // Collect data every second
             setIsRecording(true);
             startTimer();
-        } catch (err) {
+        } catch (err: any) {
             console.error("Error accessing media devices:", err);
-            alert("Não foi possível acessar a câmera ou microfone. Verifique as permissões.");
+            // More specific error handling
+            if (err.name === 'NotAllowedError') {
+                alert("Permissão negada. Por favor, permita o acesso ao microfone e câmera no seu navegador.");
+            } else if (err.name === 'NotFoundError') {
+                alert("Nenhum dispositivo de microfone ou câmera encontrado.");
+            } else {
+                alert(`Erro ao acessar dispositivos: ${err.message || err.name}`);
+            }
         }
     }, [externalVideoStream]);
 
@@ -108,8 +128,17 @@ export const useMediaRecorder = (externalVideoStream?: MediaStream | null) => {
     const downloadRecording = useCallback(() => {
         if (chunksRef.current.length === 0) return;
 
-        const blob = new Blob(chunksRef.current, { type: RECORDING_CONFIG.MIME_TYPE });
+        const blob = new Blob(chunksRef.current, { type: mimeTypeRef.current });
         const url = URL.createObjectURL(blob);
+
+        // Determine extension based on mime type
+        let extension = RECORDING_CONFIG.EXTENSION;
+        if (mimeTypeRef.current.includes("mp4")) {
+            extension = ".mp4";
+        } else if (mimeTypeRef.current.includes("webm")) {
+            extension = ".webm";
+        }
+
         const a = document.createElement("a");
         document.body.appendChild(a);
         a.style.display = "none";
@@ -117,7 +146,7 @@ export const useMediaRecorder = (externalVideoStream?: MediaStream | null) => {
         a.download = `${RECORDING_CONFIG.FILENAME_PREFIX}${new Date()
             .toISOString()
             .slice(0, 19)
-            .replace(/:/g, "-")}${RECORDING_CONFIG.EXTENSION}`;
+            .replace(/:/g, "-")}${extension}`;
         a.click();
         window.URL.revokeObjectURL(url);
         document.body.removeChild(a);
