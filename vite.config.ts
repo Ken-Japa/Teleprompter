@@ -45,12 +45,8 @@ const viteConfig = defineConfig({
         cssCodeSplit: true, // Enable CSS code splitting
         rollupOptions: {
             output: {
-                manualChunks: {
-                    vendor: ["react", "react-dom"],
-                    ui: ["@fontsource/inter", "@fontsource/outfit", "tailwind-styled-components"],
-                    peer: ["peerjs"],
-                    nosleep: ["nosleep.js"],
-                },
+                // Let Vite/Rollup handle chunking automatically for better granular performance
+                // manualChunks removed to prevent forcing huge blocking vendor files
             },
         },
         minify: "terser",

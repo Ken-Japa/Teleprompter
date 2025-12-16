@@ -33,7 +33,16 @@ root.render(
 
 // Analytics compatibility (Gtag shim + Extra scripts like Clarity)
 import { initAnalyticsCompatibility } from "./utils/lazyAnalytics";
+import { landingSchema } from "./config/landingSchema";
+
+// Inject Schema.org JSON-LD
+const script = document.createElement('script');
+script.type = 'application/ld+json';
+script.text = JSON.stringify(landingSchema);
+document.head.appendChild(script);
+
 initAnalyticsCompatibility();
+
 
 window.addEventListener('load', () => {
     registerSW({ immediate: true });

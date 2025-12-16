@@ -207,6 +207,7 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
                             title="PromptNinja Demo Video"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            sandbox="allow-scripts allow-same-origin allow-popups allow-presentation"
                             allowFullScreen
                         >
                         </iframe>

@@ -59,6 +59,15 @@
           "value": "Accept-Encoding"
         }
       ]
+    },
+    {
+      "source": "/(.*)\\.(ico|png|svg|jpg|jpeg|webp|txt|xml)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
     }
   ],
   "rewrites": [

@@ -29,6 +29,22 @@ export const initAnalyticsCompatibility = (): void => {
 
     const loadExtras = () => {
         // Avoid double loading if already present
+        if (window.document.querySelector('script[src*="googletagmanager.com/gtm.js"]')) {
+            console.log("📊 GTM already loaded, skipping...");
+        } else {
+            console.log("📊 Loading GTM...");
+            (function (w: any, d: any, s: string, l: string, i: string) {
+                w[l] = w[l] || [];
+                w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s) as HTMLScriptElement,
+                    dl = l !== 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode!.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-N3FFHDCD');
+        }
+
         if (window.document.querySelector('script[src*="contentsquare"]')) return;
 
         console.log("📊 Loading extra analytics scripts (Clarity, Contentsquare)...");
