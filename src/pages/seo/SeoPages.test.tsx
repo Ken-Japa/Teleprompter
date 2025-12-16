@@ -143,9 +143,14 @@ describe('SEO Pages', () => {
             const SeoPageComponent = SeoPages[pageKey];
 
             if (SeoPageComponent) {
+                const props: any = { onLaunch: () => { } };
+                if (routeKey.startsWith('SEO_SCRIPTS_') && routeKey !== 'SEO_SCRIPTS') {
+                    props.categoryId = 'test-category';
+                }
+
                 const { rerender } = await act(async () => render(
                     <React.Suspense fallback={<div>Loading...</div>}>
-                        <SeoPageComponent onLaunch={() => { }} />
+                        <SeoPageComponent {...props} />
                     </React.Suspense>
                 ));
 
@@ -164,7 +169,7 @@ describe('SEO Pages', () => {
                     await act(async () => {
                         rerender(
                             <React.Suspense fallback={<div>Loading...</div>}>
-                                <SeoPageComponent onLaunch={() => { }} />
+                                <SeoPageComponent {...props} />
                             </React.Suspense>
                         );
                     });
