@@ -509,11 +509,6 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
         title: "Modo Foco",
         description: "Resalta la línea actual.",
       },
-      textCommands: {
-        title: "Comandos de Texto en el Guion",
-        description:
-          "Escribe '[STOP]' o '[PAUSE X]' en una línea separada en tu guion para pausar el desplazamiento automáticamente en ese punto. Por ejemplo '[PAUSE 5]' irá pausar por 5 segundos. Útil para pausas dramáticas.",
-      },
       noControls: {
         title: "Modo Sin Controles",
         description:
@@ -528,6 +523,40 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
         title: "Modo Bilingüe",
         description:
           "Muestra dos textos uno al lado del otro. Ideal para aprender idiomas o presentaciones multilingües. Incluye seguimiento de control por voz seleccionable.",
+      },
+    },
+    commands: {
+      title: "Comandos de Texto Inteligentes",
+      subtitle: "Automatiza tu guion con comandos entre corchetes",
+      speed: {
+        title: "Velocidad Dinámica",
+        desc: "Cambia la velocidad de desplazamiento automáticamente.",
+        example: "[SPEED 5]",
+      },
+      loop: {
+        title: "Bucle / Repetición",
+        desc: "Crea bucles para ejercicios o estribillos. Repite la sección entre START y la cantidad definida.",
+        example: "[LOOP START] ... [LOOP 3]",
+      },
+      pause: {
+        title: "Pausa Programada",
+        desc: "Pausa el desplazamiento por X segundos y reanuda automáticamente.",
+        example: "[PAUSE 5]",
+      },
+      stop: {
+        title: "Parar",
+        desc: "Detiene el desplazamiento automaticamente.",
+        example: "[STOP]",
+      },
+      count: {
+        title: "Conteo",
+        desc: "Conteo de repeticiones. Ideal para ejercicios (hecho para integración con control de voz).",
+        example: "[COUNT 10]",
+      },
+      rest: {
+        title: "Descanso",
+        desc: "Descanso por X segundos e retoma automaticamente. Ideal para ejercicios.",
+        example: "[REST 5]",
       },
     },
   },

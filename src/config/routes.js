@@ -314,4 +314,13 @@ export const ROUTES_CONFIG = {
             es: "/es/teleprompter-modo-bilingue",
         },
     },
+    SEO_FITNESS: {
+        priority: "0.9",
+        changefreq: "monthly",
+        paths: {
+            pt: "/teleprompter-para-fitness-treino",
+            en: "/en/teleprompter-for-fitness-workout",
+            es: "/es/teleprompter-para-fitness-entrenamiento",
+        },
+    },
 };

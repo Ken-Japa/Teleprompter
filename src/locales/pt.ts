@@ -513,11 +513,6 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
         description:
           "Ative o modo de foco dinâmico para destacar a linha de texto atual, auxiliando você a manter a concentração e a fluidez durante a leitura.",
       },
-      textCommands: {
-        title: "Comandos de Texto no Roteiro",
-        description:
-          "Escreva '[STOP ]' ou '[PAUSE X]' em uma linha separada no seu roteiro para pausar por X segundos a rolagem automaticamente naquele ponto. Útil para pausas dramáticas ou mudanças de assunto. Por exemplo '[PAUSE 5]' irá pausar por 5 segundos.",
-      },
       noControls: {
         title: "Modo Sem Controles",
         description:
@@ -532,6 +527,40 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
         title: "Modo Bilíngue",
         description:
           "Exiba dois textos lado a lado. Ideal para aprendizagem de idiomas ou apresentações multilíngues. Inclui controle de voz selecionável.",
+      },
+    },
+    commands: {
+      title: "Comandos de Texto Inteligentes",
+      subtitle: "Automatize seu roteiro com comandos entre colchetes",
+      speed: {
+        title: "Velocidade Dinâmica",
+        desc: "Altere a velocidade de rolagem automaticamente.",
+        example: "[SPEED 5]",
+      },
+      loop: {
+        title: "Loop / Repetição",
+        desc: "Crie loops para exercícios ou refrões. Repete o trecho entre START e o número de vezes definido.",
+        example: "[LOOP START] ... [LOOP 3]",
+      },
+      pause: {
+        title: "Pausa Programada",
+        desc: "Pausa a rolagem por X segundos e retoma automaticamente.",
+        example: "[PAUSE 5]",
+      },
+      stop: {
+        title: "Parar",
+        desc: "Pare a rolagem automaticamente.",
+        example: "[STOP]",
+      },
+      count: {
+        title: "Contagem",
+        desc: "Contagem de repetições. Ideal para exercícios (feito para integração com controle de voz).",
+        example: "[COUNT 10]",
+      },
+      rest: {
+        title: "Descanse",
+        desc: "Descanse por X segundos e retoma automaticamente. Ideal para exercícios.",
+        example: "[REST 5]",
       },
     },
   },

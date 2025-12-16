@@ -504,11 +504,6 @@ Paste your script here and customize your experience to start shining!`,
         title: "Focus Mode",
         description: "Activate Focus Mode to highlight the reading line and dim the surrounding text.",
       },
-      textCommands: {
-        title: "In-Script Text Commands",
-        description:
-          "Type '[STOP]' or '[PAUSE]' on a separate line in your script to automatically pause scrolling at that point. Great for dramatic pauses or topic changes. For example: '[PAUSE 5]' will pause for 5 seconds. '[STOP]' will stop the scrolling.",
-      },
       noControls: {
         title: "No Controls Mode (HUD-less)",
         description:
@@ -523,6 +518,40 @@ Paste your script here and customize your experience to start shining!`,
         title: "Bilingual Mode",
         description:
           "Display two texts side-by-side. Ideal for language learning or multilingual presentations. Includes selectable voice control tracking.",
+      },
+    },
+    commands: {
+      title: "Smart Text Commands",
+      subtitle: "Automate your script with bracket commands",
+      speed: {
+        title: "Dynamic Speed",
+        desc: "Change scroll speed automatically.",
+        example: "[SPEED 5]",
+      },
+      loop: {
+        title: "Loop / Repeat",
+        desc: "Create loops for exercises or choruses. Repeats section between START and count.",
+        example: "[LOOP START] ... [LOOP 3]",
+      },
+      pause: {
+        title: "Scheduled Pause",
+        desc: "Pauses scrolling for X seconds then resumes automatically.",
+        example: "[PAUSE 5]",
+      },
+      stop: {
+        title: "Stop",
+        desc: "Stops scrolling automatically.",
+        example: "[STOP]",
+      },
+      count: {
+        title: "Count",
+        desc: "Count of repetitions. Ideal for exercises (made for integration with voice control).",
+        example: "[COUNT 10]",
+      },
+      rest: {
+        title: "Rest",
+        desc: "Rest for X seconds then resumes automatically. Ideal for exercises.",
+        example: "[REST 5]",
       },
     },
   },

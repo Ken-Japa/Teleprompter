@@ -165,10 +165,14 @@ export interface TextFragment {
 }
 
 
-export interface TextCommand {
-    type: 'STOP' | 'PAUSE';
-    duration?: number; // in seconds, only for PAUSE
-}
+export type TextCommand =
+    | { type: 'STOP' }
+    | { type: 'PAUSE'; duration: number }
+    | { type: 'SPEED'; value: number }
+    | { type: 'LOOP_START' }
+    | { type: 'LOOP_END'; value: number }
+    | { type: 'COUNT'; value: number }
+    | { type: 'REST'; duration: number };
 
 export interface Sentence {
     id: number;

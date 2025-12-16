@@ -172,22 +172,75 @@ export const parseTextToSentences = (
 
 const COMMAND_STOP_REGEX = /\[(stop|parar|pare)\]/gi;
 const COMMAND_PAUSE_REGEX = /\[(pause|pausa)\s+(\d+)\]/gi;
+const COMMAND_SPEED_REGEX = /\[(speed|velocidade)\s+(\d+)\]/gi;
+const COMMAND_LOOP_START_REGEX = /\[(loop start|início loop)\]/gi;
+const COMMAND_LOOP_END_REGEX = /\[(loop)\s+(\d+)\]/gi;
+
+// [COUNT X], [CONTAR X] for voice reps
+const COMMAND_COUNT_REGEX = /\[(count|contar|conta)\s+(\d+)\]/gi;
+// [REST X], [DESCANSO X] for workout rest
+const COMMAND_REST_REGEX = /\[(rest|descanso|repouso)\s+(\d+)\]/gi;
 
 const detectTextCommand = (text: string): TextCommand | undefined => {
-    // Check for STOP command (case-insensitive, multilingual)
+    // Check for STOP command
     if (COMMAND_STOP_REGEX.test(text)) {
         return { type: 'STOP' };
     }
 
-    // Reset regex state
-    COMMAND_PAUSE_REGEX.lastIndex = 0;
+    // Check for LOOP START
+    if (COMMAND_LOOP_START_REGEX.test(text)) {
+        return { type: 'LOOP_START' };
+    }
 
-    // Check for PAUSE command with duration
+    // Reset regex state for stateful regexes
+    COMMAND_PAUSE_REGEX.lastIndex = 0;
+    COMMAND_SPEED_REGEX.lastIndex = 0;
+    COMMAND_LOOP_END_REGEX.lastIndex = 0;
+    COMMAND_COUNT_REGEX.lastIndex = 0;
+    COMMAND_REST_REGEX.lastIndex = 0;
+
+    // Check for PAUSE command
     const pauseMatch = COMMAND_PAUSE_REGEX.exec(text);
     if (pauseMatch && pauseMatch[2]) {
         const duration = parseInt(pauseMatch[2], 10);
         if (!isNaN(duration) && duration > 0) {
             return { type: 'PAUSE', duration };
+        }
+    }
+
+    // Check for SPEED command
+    const speedMatch = COMMAND_SPEED_REGEX.exec(text);
+    if (speedMatch && speedMatch[2]) {
+        const speed = parseInt(speedMatch[2], 10);
+        if (!isNaN(speed) && speed >= 0 && speed <= 100) {
+            return { type: 'SPEED', value: speed };
+        }
+    }
+
+    // Check for LOOP END X command
+    const loopEndMatch = COMMAND_LOOP_END_REGEX.exec(text);
+    if (loopEndMatch && loopEndMatch[2]) {
+        const iterations = parseInt(loopEndMatch[2], 10);
+        if (!isNaN(iterations) && iterations > 0) {
+            return { type: 'LOOP_END', value: iterations };
+        }
+    }
+
+    // Check for COUNT X command
+    const countMatch = COMMAND_COUNT_REGEX.exec(text);
+    if (countMatch && countMatch[2]) {
+        const count = parseInt(countMatch[2], 10);
+        if (!isNaN(count) && count > 0) {
+            return { type: 'COUNT', value: count };
+        }
+    }
+
+    // Check for REST X command
+    const restMatch = COMMAND_REST_REGEX.exec(text);
+    if (restMatch && restMatch[2]) {
+        const duration = parseInt(restMatch[2], 10);
+        if (!isNaN(duration) && duration > 0) {
+            return { type: 'REST', duration };
         }
     }
 

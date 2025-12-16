@@ -146,6 +146,11 @@ export const SeoPages = {
             default: module.TeleprompterModoBilingue,
         }))
     ),
+    TeleprompterFitness: React.lazy(() =>
+        import("../pages/seo/TeleprompterFitness").then((module) => ({
+            default: module.TeleprompterFitness,
+        }))
+    ),
 };
 
 export const seoKeyMap: Record<SeoRouteKey, keyof typeof SeoPages> = {
@@ -184,6 +189,7 @@ export const seoKeyMap: Record<SeoRouteKey, keyof typeof SeoPages> = {
     SEO_SLIDES_SYNC: "TeleprompterSlides",
     SEO_TABLET: "TeleprompterTablet",
     SEO_MODO_BILINGUE: "TeleprompterModoBilingue",
+    SEO_FITNESS: "TeleprompterFitness",
 };
 
 export type SeoRouteKey =
@@ -221,4 +227,5 @@ export type SeoRouteKey =
     | "SEO_GAMER"
     | "SEO_SLIDES_SYNC"
     | "SEO_TABLET"
-    | "SEO_MODO_BILINGUE";
+    | "SEO_MODO_BILINGUE"
+    | "SEO_FITNESS";

@@ -124,10 +124,6 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({ isOpen, onClose })
             </div>
             <div className="flex items-start gap-3">
               <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 flex-shrink-0"></div>
-              <p className="text-sm text-slate-400"><strong className="text-slate-200 block mb-0.5">{t('tutorial.advancedFeatures.textCommands.title')}</strong> {t('tutorial.advancedFeatures.textCommands.description')}</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 flex-shrink-0"></div>
               <p className="text-sm text-slate-400"><strong className="text-slate-200 block mb-0.5">{t('tutorial.advancedFeatures.noControls.title')}</strong> {t('tutorial.advancedFeatures.noControls.description')}</p>
             </div>
             <div className="flex items-start gap-3">
@@ -137,6 +133,74 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({ isOpen, onClose })
             <div className="flex items-start gap-3">
               <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 flex-shrink-0"></div>
               <p className="text-sm text-slate-400"><strong className="text-slate-200 block mb-0.5">{t('tutorial.advancedFeatures.bilingualMode.title')}</strong> {t('tutorial.advancedFeatures.bilingualMode.description')}</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Text Commands Section */}
+        <section>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                <path fillRule="evenodd" d="M14.447 3.027a.75.75 0 01.527.92l-4.5 16.5a.75.75 0 01-1.448-.394l4.5-16.5a.75.75 0 01.921-.526zM16.72 6.22a.75.75 0 011.06 0l5.25 5.25a.75.75 0 010 1.06l-5.25 5.25a.75.75 0 11-1.06-1.06L21.44 12l-4.72-4.72a.75.75 0 010-1.06zm-9.44 0a.75.75 0 010 1.06L2.56 12l4.72 4.72a.75.75 0 11-1.06 1.06L.97 12.53a.75.75 0 010-1.06l5.25-5.25a.75.75 0 011.06 0z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-white">{t('tutorial.commands.title')}</h3>
+              <p className="text-sm text-slate-400">{t('tutorial.commands.subtitle')}</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* SPEED */}
+            <div className="bg-slate-900/50 rounded-xl p-4 border border-white/5 hover:border-cyan-500/30 transition-colors">
+              <code className="block bg-slate-950 rounded px-2 py-1 text-cyan-400 font-mono text-sm mb-2 w-fit">
+                {t('tutorial.commands.speed.example')}
+              </code>
+              <h4 className="font-bold text-slate-200 mb-1">{t('tutorial.commands.speed.title')}</h4>
+              <p className="text-sm text-slate-400">{t('tutorial.commands.speed.desc')}</p>
+            </div>
+
+            {/* LOOP */}
+            <div className="bg-slate-900/50 rounded-xl p-4 border border-white/5 hover:border-cyan-500/30 transition-colors">
+              <code className="block bg-slate-950 rounded px-2 py-1 text-cyan-400 font-mono text-sm mb-2 w-fit">
+                {t('tutorial.commands.loop.example')}
+              </code>
+              <h4 className="font-bold text-slate-200 mb-1">{t('tutorial.commands.loop.title')}</h4>
+              <p className="text-sm text-slate-400">{t('tutorial.commands.loop.desc')}</p>
+            </div>
+
+            {/* PAUSE */}
+            <div className="bg-slate-900/50 rounded-xl p-4 border border-white/5 hover:border-cyan-500/30 transition-colors">
+              <code className="block bg-slate-950 rounded px-2 py-1 text-cyan-400 font-mono text-sm mb-2 w-fit">
+                {t('tutorial.commands.pause.example')}
+              </code>
+              <h4 className="font-bold text-slate-200 mb-1">{t('tutorial.commands.pause.title')}</h4>
+              <p className="text-sm text-slate-400">{t('tutorial.commands.pause.desc')}</p>
+            </div>
+            {/* stop */}
+            <div className="bg-slate-900/50 rounded-xl p-4 border border-white/5 hover:border-cyan-500/30 transition-colors">
+              <code className="block bg-slate-950 rounded px-2 py-1 text-cyan-400 font-mono text-sm mb-2 w-fit">
+                {t('tutorial.commands.stop.example')}
+              </code>
+              <h4 className="font-bold text-slate-200 mb-1">{t('tutorial.commands.stop.title')}</h4>
+              <p className="text-sm text-slate-400">{t('tutorial.commands.stop.desc')}</p>
+            </div>
+            {/* count */}
+            <div className="bg-slate-900/50 rounded-xl p-4 border border-white/5 hover:border-cyan-500/30 transition-colors">
+              <code className="block bg-slate-950 rounded px-2 py-1 text-cyan-400 font-mono text-sm mb-2 w-fit">
+                {t('tutorial.commands.count.example')}
+              </code>
+              <h4 className="font-bold text-slate-200 mb-1">{t('tutorial.commands.count.title')}</h4>
+              <p className="text-sm text-slate-400">{t('tutorial.commands.count.desc')}</p>
+            </div>
+            {/* REST */}
+            <div className="bg-slate-900/50 rounded-xl p-4 border border-white/5 hover:border-cyan-500/30 transition-colors">
+              <code className="block bg-slate-950 rounded px-2 py-1 text-cyan-400 font-mono text-sm mb-2 w-fit">
+                {t('tutorial.commands.rest.example')}
+              </code>
+              <h4 className="font-bold text-slate-200 mb-1">{t('tutorial.commands.rest.title')}</h4>
+              <p className="text-sm text-slate-400">{t('tutorial.commands.rest.desc')}</p>
             </div>
           </div>
         </section>

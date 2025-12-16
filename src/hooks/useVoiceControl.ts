@@ -5,7 +5,8 @@ import { logger } from "../utils/logger";
 import { findBestMatch } from "../utils/stringSimilarity";
 import { useTranslation } from "./useTranslation";
 
-export const useVoiceControl = (text: string, isPro: boolean) => {
+// callback for raw transcript, useful for custom commands like [COUNT]
+export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (transcript: string) => void) => {
     const { lang } = useTranslation();
     const [isListening, setIsListening] = useState<boolean>(false);
     const [activeSentenceIndex, setActiveSentenceIndex] = useState<number>(-1);
@@ -94,6 +95,11 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
                 .replace(/[^\p{L}\p{N}\s]/gu, "")
                 .replace(/\s+/g, " ")
                 .trim();
+
+            // Allow parent to inspect transcript (e.g. for counting reps)
+            if (onSpeechResult && cleanTranscript.length > 0) {
+                onSpeechResult(cleanTranscript);
+            }
 
             // MUSICIAN MODE OPTIMIZATION: Increased min length to 6 to reduce false positives
             // from instrument noise (guitar, piano, etc) when singing
@@ -185,7 +191,7 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
         } catch (e) {
             logger.error("Voice start error", { error: e as Error });
         }
-    }, [lang, activeSentenceIndex]); // Dependencies for startRecognitionInstance
+    }, [lang, activeSentenceIndex, onSpeechResult]); // Dependencies for startRecognitionInstance
 
     const startListening = useCallback(() => {
         if (!isPro) return;
@@ -236,3 +242,5 @@ export const useVoiceControl = (text: string, isPro: boolean) => {
         voiceApiError,
     };
 };
+
+

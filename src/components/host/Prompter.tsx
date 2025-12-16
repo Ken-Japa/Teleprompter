@@ -30,6 +30,9 @@ import { usePrompterTheme } from "../../hooks/usePrompterTheme";
 import { UI_LIMITS } from "../../config/constants";
 import { TextCommand } from "../../types";
 import { MobileCameraOverlay } from "./MobileCameraOverlay";
+import { FitnessHUD } from "../overlay/FitnessHUD";
+import { parseSpokenNumber } from "../../utils/numberParser";
+import { useTranslation } from "../../hooks/useTranslation";
 
 interface PrompterProps {
   text: string;
@@ -65,6 +68,17 @@ export const Prompter = memo(
       const [cameraStream, setCameraStream] = useState<MediaStream | null>(null);
       const [isVoiceMode, setIsVoiceMode] = useState<boolean>(false);
       const [pauseTimeoutId, setPauseTimeoutId] = useState<ReturnType<typeof setTimeout> | null>(null);
+
+      // Fitness Mode State
+      const [fitnessMode, setFitnessMode] = useState<'REST' | 'COUNT' | null>(null);
+      const [fitnessValue, setFitnessValue] = useState<number>(0);
+      const [fitnessTarget, setFitnessTarget] = useState<number | undefined>(undefined);
+      const fitnessIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+      const { lang } = useTranslation();
+
+      // Loop Logic Refs
+      const loopStartStackRef = useRef<number[]>([]);
+      const loopCountersRef = useRef<Map<number, number>>(new Map());
 
       // Notify parent of voice mode change
       useEffect(() => {
@@ -184,9 +198,33 @@ export const Prompter = memo(
         return text;
       }, [isBilingualMode, bilingualConfig, text]);
 
+      const handleSpeechResult = useCallback((transcript: string) => {
+        if (fitnessMode === 'COUNT' && fitnessTarget) {
+          const currentLang = (['pt', 'en', 'es'].includes(lang) ? lang : 'en') as 'pt' | 'en' | 'es';
+          const number = parseSpokenNumber(transcript, currentLang);
+
+          if (number !== null) {
+            // Check if user said next number or current number + 1
+            // We allow saying the current number (confirmation) or next number
+            if (number === fitnessValue + 1) {
+              setFitnessValue(number);
+              // Beep or feedback
+              if (number >= fitnessTarget) {
+                // Done!
+                setFitnessMode(null);
+                setFitnessValue(0);
+                setFitnessTarget(undefined);
+                onStateChange(true, externalState.speed);
+              }
+            }
+          }
+        }
+      }, [fitnessMode, fitnessTarget, fitnessValue, lang, onStateChange, externalState.speed]);
+
       const { startListening, stopListening, resetVoice, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError } = useVoiceControl(
         voiceControlText,
-        isPro
+        isPro,
+        handleSpeechResult
       );
 
       // Bilingual Sentences Processing
@@ -202,7 +240,7 @@ export const Prompter = memo(
       const metricsRef = useElementMetrics(scrollContainerRef, [sentences, fontSize, margin, isUpperCase]);
 
       // Command Detection and Execution
-      const handleCommandTriggered = useCallback((command: TextCommand) => {
+      const handleCommandTriggered = useCallback((command: TextCommand, sentenceId: number) => {
         if (command.type === 'STOP') {
           onStateChange(false, externalState.speed);
         } else if (command.type === 'PAUSE' && command.duration) {
@@ -211,13 +249,87 @@ export const Prompter = memo(
             onStateChange(true, externalState.speed);
           }, command.duration * 1000);
           setPauseTimeoutId(timeoutId);
+        } else if (command.type === 'SPEED' && command.value !== undefined) {
+          onStateChange(externalState.isPlaying, command.value);
+        } else if (command.type === 'COUNT' && command.value) {
+          onStateChange(false, externalState.speed);
+          setFitnessMode('COUNT');
+          setFitnessValue(0);
+          setFitnessTarget(command.value);
+          // Ensure voice listening is active if valid
+          if (!isVoiceMode && isPro) {
+            // Auto-enable voice temporarily? For now assume user has voice enabled if using voice commands
+            // OR we can force enable:
+            // setIsVoiceMode(true); startListening(); 
+          }
+        } else if (command.type === 'REST' && command.duration) {
+          onStateChange(false, externalState.speed);
+          setFitnessMode('REST');
+          setFitnessValue(command.duration);
+
+          if (fitnessIntervalRef.current) clearInterval(fitnessIntervalRef.current);
+
+          fitnessIntervalRef.current = setInterval(() => {
+            setFitnessValue((prev) => {
+              if (prev <= 1) {
+                if (fitnessIntervalRef.current) clearInterval(fitnessIntervalRef.current);
+                setFitnessMode(null);
+                onStateChange(true, externalState.speed);
+                return 0;
+              }
+              return prev - 1;
+            });
+          }, 1000);
+
+        } else if (command.type === 'LOOP_START') {
+          // Push this start point to the stack
+          // Prevent duplicate pushes if we are just re-scrolling slightly
+          const stack = loopStartStackRef.current;
+          if (stack.length === 0 || stack[stack.length - 1] !== sentenceId) {
+            stack.push(sentenceId);
+          }
+        } else if (command.type === 'LOOP_END') {
+          const iterations = command.value || 1;
+          const currentCount = loopCountersRef.current.get(sentenceId) || 0;
+
+          // Get the corresponding start point (Top of stack)
+          const stack = loopStartStackRef.current;
+          const targetId = stack.length > 0 ? stack[stack.length - 1] : null;
+
+          if (currentCount < iterations) {
+            // Perform Loop
+            if (targetId !== null) {
+              const targetEl = document.getElementById(`sentence-${targetId}`);
+              if (targetEl && scrollContainerRef.current) {
+                const offsetCtx = scrollContainerRef.current.clientHeight * 0.1;
+                const targetPos = Math.max(0, targetEl.offsetTop - offsetCtx);
+
+                const maxScroll = scrollContainerRef.current.scrollHeight - scrollContainerRef.current.clientHeight;
+                const progress = maxScroll > 0 ? targetPos / maxScroll : 0;
+
+                if (physicsMethodsRef.current) {
+                  physicsMethodsRef.current.scrollTo(progress);
+                  physicsMethodsRef.current.clearCommands(targetId, sentenceId);
+                  loopCountersRef.current.set(sentenceId, currentCount + 1);
+                }
+              }
+            }
+          } else {
+            // Loop finished
+            loopCountersRef.current.delete(sentenceId);
+            // Only pop if we matched a start point
+            if (targetId !== null) {
+              stack.pop();
+            }
+          }
         }
-      }, [onStateChange, externalState.speed]);
+      }, [onStateChange, externalState.speed, externalState.isPlaying, isVoiceMode, isPro, lang]);
 
       // Cleanup pause timeout on unmount
       useEffect(() => {
         return () => {
           if (pauseTimeoutId) clearTimeout(pauseTimeoutId);
+          if (fitnessIntervalRef.current) clearInterval(fitnessIntervalRef.current);
         };
       }, [pauseTimeoutId]);
 
@@ -237,7 +349,7 @@ export const Prompter = memo(
       const effectiveVoiceProgress = voiceControlMode === "remote" ? remoteVoiceState.progress : voiceProgress;
 
       // --- PHYSICS ENGINE INTEGRATION ---
-      const { handleNativeScroll, handleRemoteInput, handleScrollTo, resetPhysics, wakeUpLoop, currentActiveElementRef } = useScrollPhysics({
+      const { handleNativeScroll, handleRemoteInput, handleScrollTo, resetPhysics, wakeUpLoop, currentActiveElementRef, clearProcessedCommands } = useScrollPhysics({
         isPlaying: externalState.isPlaying,
         isVoiceMode,
         speed: externalState.speed,
@@ -251,12 +363,34 @@ export const Prompter = memo(
         onCommandTriggered: handleCommandTriggered,
       });
 
+      // Ref to store physics methods for access inside handleCommandTriggered
+      // This is necessary because handleCommandTriggered is defined before useScrollPhysics
+      const physicsMethodsRef = useRef<{ scrollTo: (p: number) => void; clearCommands: (s: number, e: number) => void } | null>(null);
+      useEffect(() => {
+        physicsMethodsRef.current = {
+          scrollTo: handleScrollTo,
+          clearCommands: clearProcessedCommands
+        };
+      }, [handleScrollTo, clearProcessedCommands]);
+
       // Force wake up when critical props change or component mounts
       useEffect(() => {
         if (externalState.isPlaying) {
           wakeUpLoop();
         }
       }, [externalState.isPlaying, text.length, wakeUpLoop]);
+
+      // Implement Loop Logic inside handleCommandTriggered using the ref
+      // Redefining handleCommandTriggered properly requires access to scrollContainerRef (which we have)
+      // and physicsMethodsRef. Since we can't change the order easily without large refactor,
+      // we check physicsMethodsRef inside the callback.
+
+      // Update the callback implementation (RE-WRITING COMMAND HANDLER TO USE REF)
+      // We will perform a second replacement to fix the body of handleCommandTriggered now that we have the Ref plan.
+      // Actually I can just do it all in one go, but the previous chunk set up the structure.
+      // I will refine the body of handleCommandTriggered in a subsequent tool call or fix it now.
+      // I'll fix it now by replacing the content I just wrote in chunk 2 if possible? No, I must write it correct first time.
+      // Let's adjust the Chunks.
 
       const resetPrompter = useCallback(() => {
         onStateChange(false, externalState.speed);
@@ -266,6 +400,10 @@ export const Prompter = memo(
         if (onReset) onReset();
         setRemoteVoiceState({ index: -1, progress: 0 });
         resetPhysics();
+        loopCountersRef.current.clear(); // Clear loop counters
+        loopStartStackRef.current = [];
+        setFitnessMode(null); // Reset fitness mode
+        if (fitnessIntervalRef.current) clearInterval(fitnessIntervalRef.current);
         if (currentActiveElementRef.current) {
           currentActiveElementRef.current.classList.remove("sentence-active");
         }
@@ -509,6 +647,9 @@ export const Prompter = memo(
           ></div>
 
           {isFocusMode && ![Theme.CHROMA_GREEN, Theme.CHROMA_BLUE].includes(effectiveTheme) && <S.FocusIndicator />}
+
+          <FitnessHUD mode={fitnessMode} value={fitnessValue} target={fitnessTarget} />
+
 
           <S.MainContent onMouseMove={handleMouseMove}>
             <S.PrompterScrollArea

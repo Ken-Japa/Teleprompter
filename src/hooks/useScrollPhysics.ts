@@ -19,7 +19,7 @@ interface PhysicsParams {
   scrollContainerRef: React.RefObject<HTMLDivElement | null>;
   onScrollUpdate: (progress: number) => void;
   onAutoStop: () => void;
-  onCommandTriggered?: (command: TextCommand) => void;
+  onCommandTriggered?: (command: TextCommand, sentenceId: number) => void;
 }
 
 /**
@@ -286,8 +286,8 @@ export const useScrollPhysics = ({
               if (elementTop <= triggerPoint && elementTop > (triggerPoint - metrics.clientHeight)) {
                 try {
                   const command = JSON.parse(el.dataset.command || '{}');
-                  onCommandTriggered(command);
                   processedCommandsRef.current.add(sentenceId);
+                  onCommandTriggered(command, sentenceId);
                 } catch (e) { console.error('Command Parse Error', e); }
               }
             }
@@ -389,6 +389,12 @@ export const useScrollPhysics = ({
     }
   }, [scrollContainerRef]);
 
+  const clearProcessedCommands = useCallback((startId: number, endId: number) => {
+    for (let i = startId; i <= endId; i++) {
+      processedCommandsRef.current.delete(i);
+    }
+  }, []);
+
   return {
     handleNativeScroll,
     handleRemoteInput,
@@ -396,5 +402,6 @@ export const useScrollPhysics = ({
     resetPhysics,
     wakeUpLoop,
     currentActiveElementRef,
+    clearProcessedCommands,
   };
 };
