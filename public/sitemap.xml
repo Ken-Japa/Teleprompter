@@ -821,4 +821,28 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-app-for-tablet-ipad" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-tablet-ipad-android" />
   </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/teleprompter-modo-bilingue</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-modo-bilingue" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-bilingual-mode" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-modo-bilingue" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/teleprompter-bilingual-mode</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-modo-bilingue" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-bilingual-mode" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-modo-bilingue" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/teleprompter-modo-bilingue</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-modo-bilingue" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-bilingual-mode" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-modo-bilingue" />
+  </url>
 </urlset>

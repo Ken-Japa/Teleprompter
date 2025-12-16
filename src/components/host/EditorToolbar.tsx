@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 import * as S from "../ui/Styled";
-import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LaptopIcon, LanguagesIcon } from "../ui/Icons";
+import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LaptopIcon, LanguagesIcon, CameraIcon } from "../ui/Icons";
 import { useTranslation } from "../../hooks/useTranslation";
 import { TutorialModal } from "../ui/TutorialModal";
 import { PacingModal } from "../ui/PacingModal";
@@ -17,11 +17,13 @@ interface EditorToolbarProps {
     isBilingualMode: boolean;
     onToggleBilingualMode: () => void;
     onStartHudless: () => void;
+    isCameraMode: boolean;
+    onToggleCameraMode: () => void;
     isPro?: boolean;
     onUnlockPro?: () => void;
 }
 
-export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode, onToggleMusicianMode, isBilingualMode, onToggleBilingualMode, onStartHudless, isPro = false, onUnlockPro = () => { } }: EditorToolbarProps) => {
+export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode, onToggleMusicianMode, isBilingualMode, onToggleBilingualMode, onStartHudless, isCameraMode, onToggleCameraMode, isPro = false, onUnlockPro = () => { } }: EditorToolbarProps) => {
     const { t } = useTranslation();
     const [showTutorialModal, setShowTutorialModal] = useState(false);
     const [showPacingModal, setShowPacingModal] = useState(false);
@@ -82,6 +84,20 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                         active={isBilingualMode}
                     >
                         <LanguagesIcon className={`w-6 h-6 transition-transform duration-300 ${isBilingualMode ? "scale-110 drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]" : "group-hover:scale-110"}`} />
+                    </S.IconButton>
+
+                    {/* Camera Mode */}
+                    <S.IconButton
+                        onClick={onToggleCameraMode}
+                        title="Camera Mode (Mobile)"
+                        aria-label="Toggle Camera Mode"
+                        className={`w-10 h-10 rounded-2xl transition-all duration-300 border backdrop-blur-md group ${isCameraMode
+                            ? "bg-gradient-to-br from-rose-500/20 to-pink-600/20 text-rose-400 border-rose-500/60 shadow-[0_0_20px_-3px_rgba(244,63,94,0.4)] ring-1 ring-rose-500/30 scale-105"
+                            : "bg-white/5 text-slate-500 border-white/5 hover:text-rose-200 hover:bg-rose-500/10 hover:border-rose-500/30 grayscale hover:grayscale-0"
+                            }`}
+                        active={isCameraMode}
+                    >
+                        <CameraIcon className={`w-6 h-6 transition-transform duration-300 ${isCameraMode ? "scale-110 drop-shadow-[0_0_8px_rgba(244,63,94,0.5)]" : "group-hover:scale-110"}`} />
                     </S.IconButton>
                 </div>
 

@@ -138,6 +138,7 @@ export interface PrompterSettings {
     voiceControlMode?: VoiceControlMode;
     recordingMode?: RecordingMode;
     isMusicianMode: boolean; // New mode
+    isCameraMode: boolean; // Mobile Camera Overlay
     isBilingualMode: boolean; // Bilingual mode
     bilingualConfig?: BilingualConfig; // Bilingual configuration
 }
@@ -191,6 +192,7 @@ export interface RemoteActions {
     handleRequestSync: () => void;
     handleToggleRecording: () => void;
     handleToggleRecordingMode: () => void;
+    handleToggleCameraMode: () => void;
     downloadRecording: () => void;
 }
 
@@ -205,6 +207,7 @@ export enum HotkeyAction {
     TOGGLE_FOCUS = "TOGGLE_FOCUS",
     EXIT = "EXIT",
     RESET = "RESET",
+    TOGGLE_CAMERA = "TOGGLE_CAMERA",
     TOGGLE_HUD = "TOGGLE_HUD",
 }
 

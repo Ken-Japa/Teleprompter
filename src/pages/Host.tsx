@@ -63,6 +63,8 @@ export const Host: React.FC = () => {
                     onToggleMusicianMode={() => actions.prompterActions.setIsMusicianMode(!prompterSettings.isMusicianMode)}
                     isBilingualMode={prompterSettings.isBilingualMode}
                     onToggleBilingualMode={() => actions.prompterActions.setIsBilingualMode(!prompterSettings.isBilingualMode)}
+                    isCameraMode={prompterSettings.isCameraMode}
+                    onToggleCameraMode={() => actions.prompterActions.setIsCameraMode(!prompterSettings.isCameraMode)}
                     bilingualTexts={bilingualTexts}
                     onBilingualTextsChange={actions.handleBilingualTextsChange}
                     bilingualVoiceTrackLanguage={prompterSettings.bilingualConfig?.voiceTrackLanguage}

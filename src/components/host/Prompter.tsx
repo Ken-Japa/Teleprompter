@@ -29,6 +29,7 @@ import { useMediaRecorder } from "../../hooks/useMediaRecorder";
 import { usePrompterTheme } from "../../hooks/usePrompterTheme";
 import { UI_LIMITS } from "../../config/constants";
 import { TextCommand } from "../../types";
+import { MobileCameraOverlay } from "./MobileCameraOverlay";
 
 interface PrompterProps {
   text: string;
@@ -58,7 +59,7 @@ export const Prompter = memo(
     ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onReset, onStartRemoteRecording, onStopRemoteRecording }, ref) => {
 
       // Extracted Settings Logic
-      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode, isMusicianMode, isBilingualMode, bilingualConfig, isHudless } = settings;
+      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode, isMusicianMode, isBilingualMode, bilingualConfig, isHudless, isCameraMode } = settings;
 
       // Ephemeral State
       const [isVoiceMode, setIsVoiceMode] = useState<boolean>(false);
@@ -469,6 +470,9 @@ export const Prompter = memo(
           data-theme={effectiveTheme}
           style={containerStyle}
         >
+          {/* Camera Overlay Layer - Bottom Most */}
+          <MobileCameraOverlay isActive={!!isCameraMode} />
+
           {effectiveTheme === "matrix" && (
             <div className="absolute inset-0 pointer-events-none opacity-10 "></div>
           )}
