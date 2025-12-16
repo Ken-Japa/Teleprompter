@@ -200,6 +200,11 @@ export const es = {
         title: "Atajos de Teclado",
         desc: "Control total con el teclado, o usa comandos de texto como STOP y PAUSE para control automático en el guion.",
       },
+      bilingual: {
+        title: "Nuevo: Modo Bilingüe",
+        desc: "Visualiza dos idiomas lado a lado. Perfecto para aprender nuevos idiomas o para presentaciones internacionales. Usa el control de voz para rastrear el idioma de tu elección.",
+        cta: "Conocer el Modo Bilingüe 🌐",
+      },
     },
     pricing: {
       title: "Precio Simple y Honesto",

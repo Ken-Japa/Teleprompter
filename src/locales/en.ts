@@ -190,7 +190,12 @@ export const en = {
       },
       shortcuts: {
         title: "Keyboard Shortcuts",
-        desc: "Full keyboard control, or use text commands like STOP and PAUSE for automatic script control.",
+        desc: "Full keyboard control, or use text commands like STOP and PAUSE for automatic control within the script.",
+      },
+      bilingual: {
+        title: "New: Bilingual Mode",
+        desc: "View two languages side-by-side. Perfect for language learning or international presentations. Use voice control to track the language of your choice.",
+        cta: "Explore Bilingual Mode 🌐",
       },
     },
     pricing: {

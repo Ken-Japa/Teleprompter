@@ -305,4 +305,13 @@ export const ROUTES_CONFIG = {
             es: "/es/teleprompter-para-tablet-ipad-android",
         },
     },
+    SEO_MODO_BILINGUE: {
+        priority: "0.9",
+        changefreq: "monthly",
+        paths: {
+            pt: "/teleprompter-modo-bilingue",
+            en: "/en/teleprompter-bilingual-mode",
+            es: "/es/teleprompter-modo-bilingue",
+        },
+    },
 };

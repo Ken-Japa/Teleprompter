@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import * as S from "../ui/Styled";
-import { MagicIcon, MicIcon, PaletteIcon, ShieldIcon, ZapIcon, CrownIcon, TimerIcon, PiPIcon, RecordIcon, KeyboardIcon, MusicIcon } from "../ui/Icons";
+import { MagicIcon, MicIcon, PaletteIcon, ShieldIcon, ZapIcon, CrownIcon, TimerIcon, PiPIcon, RecordIcon, KeyboardIcon, MusicIcon, LanguagesIcon } from "../ui/Icons";
 import { trackGoogleAdsInterest } from "../../utils/analytics";
 
 export const Features: React.FC = () => {
@@ -57,6 +57,29 @@ export const Features: React.FC = () => {
                             className="inline-flex items-center justify-center px-6 py-3 text-base font-bold text-white transition-all transform bg-yellow-600 rounded-xl hover:bg-yellow-500 hover:scale-105 shadow-lg shadow-yellow-500/25 group-hover:shadow-yellow-500/40"
                         >
                             {t("landing.features.musician.cta") || "Saiba Mais sobre o Modo Músico 🎸"}
+                        </a>
+                    </S.FeatureCard>
+                </div>
+
+                {/* Bilingual Mode Feature - New Section */}
+                <div className="mb-12 stagger-item">
+                    <S.FeatureCard
+                        className="md:col-span-3 border-blue-500/30 max-w-4xl mx-auto text-center"
+                        icon={<LanguagesIcon className="w-10 h-10 text-blue-400 icon-hover-rotate mx-auto" />}
+                        title={t("landing.features.bilingual.title")}
+                        desc={t("landing.features.bilingual.desc")}
+                    >
+                        <a
+                            href={
+                                lang === 'en'
+                                    ? '/en/teleprompter-bilingual-mode'
+                                    : lang === 'es'
+                                        ? '/es/teleprompter-modo-bilingue'
+                                        : '/teleprompter-modo-bilingue'
+                            }
+                            className="inline-flex items-center justify-center px-6 py-3 text-base font-bold text-white transition-all transform bg-blue-600 rounded-xl hover:bg-blue-500 hover:scale-105 shadow-lg shadow-blue-500/25 group-hover:shadow-blue-500/40"
+                        >
+                            {t("landing.features.bilingual.cta") || "Conhecer o Modo Bilíngue 🌐"}
                         </a>
                     </S.FeatureCard>
                 </div>

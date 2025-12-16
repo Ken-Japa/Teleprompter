@@ -191,6 +191,7 @@ const App: React.FC = () => {
                 {view === "SEO_GAMER" && <SeoPages.TeleprompterGamers onLaunch={launchApp} />}
                 {view === "SEO_TABLET" && <SeoPages.TeleprompterTablet onLaunch={launchApp} />}
                 {view === "SEO_SLIDES_SYNC" && <SeoPages.TeleprompterSlides onLaunch={launchApp} />}
+                {view === "SEO_MODO_BILINGUE" && <SeoPages.TeleprompterModoBilingue onLaunch={launchApp} />}
 
                 {/* Script Pages */}
                 {view === "SEO_SCRIPTS" && <SeoPages.TeleprompterScriptsPage onLaunch={launchApp} />}

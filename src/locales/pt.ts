@@ -195,7 +195,12 @@ export const pt = {
       },
       shortcuts: {
         title: "Atalhos de Teclado",
-        desc: "Controle total pelo teclado ou use comandos de texto como STOP e PAUSE para controle automático no roteiro.",
+        desc: "Controle total via teclado, ou use comandos de texto como STOP e PAUSE para controle automático no script.",
+      },
+      bilingual: {
+        title: "Novo: Modo Bilíngue",
+        desc: "Visualize dois idiomas lado a lado. Perfeito para aprender novas línguas ou para apresentações internacionais. Use o controle de voz para rastrear o idioma da sua escolha.",
+        cta: "Conhecer o Modo Bilíngue 🌐",
       },
     },
     pricing: {
