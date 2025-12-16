@@ -396,6 +396,10 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
     slow: "Lento (120 WPM)",
     medium: "Médio (150 WPM)",
     fast: "Rápido (180 WPM)",
+    totalWithPauses: {
+      details: "Sem pausas:",
+      pauses: "Com pausas:",
+    },
     platforms: {
       title: "Recomendações por Plataforma",
       tiktok: "TikTok/Reels (60s)",

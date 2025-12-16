@@ -103,6 +103,38 @@ export const PacingModal: React.FC<PacingModalProps> = ({ isOpen, onClose, text 
                     </div>
                 </section>
 
+                {/* Total Time with Pauses (if applicable) */}
+                {(() => {
+                    const pauseMatches = text.matchAll(/\[(pause|pausa)\s+(\d+)\]/gi);
+                    let totalPauseSeconds = 0;
+                    for (const match of pauseMatches) {
+                        const duration = parseInt(match[2], 10);
+                        if (!isNaN(duration)) {
+                            totalPauseSeconds += duration;
+                        }
+                    }
+
+                    if (totalPauseSeconds > 0) {
+                        const totalWithPauses = customTime + totalPauseSeconds;
+                        return (
+                            <section className="animate-fade-in">
+                                <h3 className="text-lg font-semibold text-white mb-4">{t("pacing.totalWithPauses.title", "Total Duration (with Pauses)")}</h3>
+                                <div className="bg-gradient-to-r from-blue-900/40 to-indigo-900/40 rounded-xl p-4 border border-blue-500/30">
+                                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                                        <div className="text-sm text-blue-200">
+                                            {t("pacing.totalWithPauses.details", "Reading Time")} ({formatTime(customTime)}) + {t("pacing.totalWithPauses.pauses", "Pauses")} ({formatTime(totalPauseSeconds)})
+                                        </div>
+                                        <div className="text-3xl font-bold text-blue-400 drop-shadow-lg">
+                                            {formatTime(totalWithPauses)}
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        );
+                    }
+                    return null;
+                })()}
+
                 {/* Platform Recommendations */}
                 <section>
                     <h3 className="text-lg font-semibold text-white mb-4">{t("pacing.platforms.title")}</h3>
@@ -116,8 +148,8 @@ export const PacingModal: React.FC<PacingModalProps> = ({ isOpen, onClose, text 
                                 <div
                                     key={platformKey}
                                     className={`p-4 rounded-lg border ${isPerfect
-                                            ? "bg-green-500/10 border-green-500/30"
-                                            : "bg-slate-800/30 border-slate-700/50"
+                                        ? "bg-green-500/10 border-green-500/30"
+                                        : "bg-slate-800/30 border-slate-700/50"
                                         }`}
                                 >
                                     <div className="flex items-center justify-between mb-2">

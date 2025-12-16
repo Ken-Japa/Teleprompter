@@ -25,7 +25,7 @@ export const es = {
   },
   landing: {
     meta: {
-      title: "PromptNinja: Teleprompter gratuito | Online, P2P, móvil y portátil | No requiere instalación",
+      title: "⭐ PromptNinja Teleprompter gratuito Online P2P, móvil y portátil",
       description: "El teleprompter online GRATIS más rápido. Funciona en PC, portátiles y como teleprompter para móviles o iPhone. P2P, sin retardo y sin necesidad de instalar aplicaciones.",
     },
     hero: {
@@ -397,6 +397,10 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
     slow: "Lento (120 WPM)",
     medium: "Medio (150 WPM)",
     fast: "Rápido (180 WPM)",
+    totalWithPauses: {
+      details: "Sin pausas:",
+      pauses: "Con pausas:",
+    },
     platforms: {
       title: "Recomendaciones por Plataforma",
       tiktok: "TikTok/Reels (60s)",

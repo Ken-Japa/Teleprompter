@@ -21,7 +21,7 @@ export const en = {
   },
   landing: {
     meta: {
-      title: "⭐ PromptNinja: Free Teleprompter | FREE Autocue Online, P2P, Zero Lag Mobile and Laptop | No Installation Required",
+      title: "⭐ PromptNinja Free Teleprompter Autocue Online, P2P, Zero Lag Mobile and Laptop",
       description: "The ONLY FREE Autocue Teleprompter designed for zero lag and perfect eye contact. Use your phone as a P2P remote control. Essential for YouTube, Zoom, and professional speeches.",
     },
     hero: {
@@ -388,6 +388,10 @@ Paste your script here and customize your experience to start shining!`,
     slow: "Slow (120 WPM)",
     medium: "Medium (150 WPM)",
     fast: "Fast (180 WPM)",
+    totalWithPauses: {
+      details: "Without pauses:",
+      pauses: "With pauses:",
+    },
     platforms: {
       title: "Platform Recommendations",
       tiktok: "TikTok/Reels (60s)",

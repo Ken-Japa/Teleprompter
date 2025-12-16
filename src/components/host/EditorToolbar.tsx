@@ -33,8 +33,27 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
             {/* Flex Container */}
             <div className="flex flex-col md:flex-row items-center md:gap-4 w-full md:px-6 md:py-3 max-w-4xl mx-auto">
 
-                {/* 1. Musician Mode (Top on Mobile, First on Desktop) */}
-                <div className="w-full md:w-auto flex justify-center py-3 md:py-0 border-b border-white/5 md:border-0 order-1">
+                {/* 3. Color Section - Highlight (Bottom Sticky on Mobile, First on Desktop) */}
+                <div className="order-3 md:order-1 md:mr-auto w-full md:w-auto sticky top-0 z-20 md:static bg-slate-950/90 md:bg-transparent backdrop-blur-md md:backdrop-blur-none border-b border-white/10 md:border-0 py-3 md:py-0 transition-all shadow-lg md:shadow-none">
+                    <div className="flex items-center justify-center md:justify-start gap-2">
+                        <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider hidden lg:block">
+                            {t("host.editor.highlight")}
+                        </span>
+                        <div
+                            className="flex items-center gap-3 bg-white/5 px-3 py-1.5 rounded-full border border-white/5"
+                            role="group"
+                            aria-label="Text Highlights"
+                        >
+                            <S.ColorButton color="red" label="Red Highlight" onClick={() => onInsertTag("r")} />
+                            <S.ColorButton color="yellow" label="Yellow Highlight" onClick={() => onInsertTag("y")} />
+                            <S.ColorButton color="green" label="Green Highlight" onClick={() => onInsertTag("g")} />
+                            <S.ColorButton color="blue" label="Blue Highlight" onClick={() => onInsertTag("b")} />
+                        </div>
+                    </div>
+                </div>
+
+                {/* 1. Musician Mode (Top on Mobile, Middle on Desktop) */}
+                <div className="w-full md:w-auto flex justify-center py-3 md:py-0 border-b border-white/5 md:border-0 order-1 md:order-2">
                     <S.IconButton
                         onClick={onToggleMusicianMode}
                         title={t("host.editor.musicianMode")}
@@ -49,8 +68,8 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                     </S.IconButton>
                 </div>
 
-                {/* 2. Actions (Middle on Mobile, Middle on Desktop) */}
-                <div className="order-2 w-full md:w-auto flex flex-wrap justify-center gap-2 py-3 md:py-0 border-b border-white/5 md:border-0">
+                {/* 2. Actions (Middle on Mobile, Last on Desktop) */}
+                <div className="order-2 md:order-3 w-full md:w-auto flex flex-wrap justify-center gap-2 py-3 md:py-0 border-b border-white/5 md:border-0">
                     <S.IconButton
                         onClick={() => setShowPacingModal(true)}
                         title={t("pacing.button")}
@@ -100,24 +119,7 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                     <ShareButton variant="icon" className="w-9 h-9 rounded-full bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500/20 hover:text-indigo-300 border border-indigo-500/20" />
                 </div>
 
-                {/* 3. Color Section - Highlight (Bottom Sticky on Mobile, Last on Desktop) */}
-                <div className="order-3 md:ml-auto w-full md:w-auto sticky top-0 z-20 md:static bg-slate-950/90 md:bg-transparent backdrop-blur-md md:backdrop-blur-none border-b border-white/10 md:border-0 py-3 md:py-0 transition-all shadow-lg md:shadow-none">
-                    <div className="flex items-center justify-center md:justify-end gap-2">
-                        <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider hidden lg:block">
-                            {t("host.editor.highlight")}
-                        </span>
-                        <div
-                            className="flex items-center gap-3 bg-white/5 px-3 py-1.5 rounded-full border border-white/5"
-                            role="group"
-                            aria-label="Text Highlights"
-                        >
-                            <S.ColorButton color="red" label="Red Highlight" onClick={() => onInsertTag("r")} />
-                            <S.ColorButton color="yellow" label="Yellow Highlight" onClick={() => onInsertTag("y")} />
-                            <S.ColorButton color="green" label="Green Highlight" onClick={() => onInsertTag("g")} />
-                            <S.ColorButton color="blue" label="Blue Highlight" onClick={() => onInsertTag("b")} />
-                        </div>
-                    </div>
-                </div>
+
 
             </div>
 

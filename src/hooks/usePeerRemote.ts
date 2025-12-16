@@ -147,6 +147,22 @@ export const usePeerRemote = (hostId: string) => {
                     retryCountRef.current = 0;
                 });
 
+                // HEARTBEAT LOGIC
+                // Send a heartbeat every 3s to let host know we are alive
+                // Only if connected
+                const heartbeatInterval = setInterval(() => {
+                    if (connRef.current && connRef.current.open) {
+                        try {
+                            connRef.current.send({ type: MessageType.HEARTBEAT, timestamp: Date.now() });
+                        } catch (e) { /* ignore */ }
+                    }
+                }, 3000);
+
+                // Clear interval when peer destroys or re-inits
+                peer.on("close", () => clearInterval(heartbeatInterval));
+                peer.on("disconnected", () => clearInterval(heartbeatInterval));
+                peer.on("error", () => clearInterval(heartbeatInterval));
+
                 peer.on("error", (err: any) => {
                     const msg = getP2pErrorMessage(err, hostId);
                     console.warn("Peer Error:", err);

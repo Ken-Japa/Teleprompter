@@ -180,10 +180,17 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void, isPro: 
                     }
 
                     connectionsRef.current.add(conn);
+                    (conn as any).openTimestamp = Date.now();
+                    (conn as any).lastHeartbeat = Date.now();
                     setStatus(ConnectionStatus.CONNECTED);
                     trackSuccessfulConnection();
 
                     conn.on("data", (data: PeerMessage) => {
+                        // Intercept Heartbeat
+                        if (data.type === MessageType.HEARTBEAT) {
+                            (conn as any).lastHeartbeat = Date.now();
+                            return;
+                        }
                         if (onMessageRef.current) onMessageRef.current(data);
                     });
 
@@ -277,9 +284,30 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void, isPro: 
         // Delay start slightly to allow React Strict Mode to settle
         const startTimeout = setTimeout(initPeer, 100);
 
+        // Stale Connection Check Interval
+        const checkInterval = setInterval(() => {
+            const now = Date.now();
+            connectionsRef.current.forEach(conn => {
+                // If connection is open but no heartbeat for > 15s, close it
+                // We give 15s grace period (heartbeat is every 3s)
+                const lastHeartbeat = (conn as any).lastHeartbeat || (conn as any).openTimestamp;
+
+                if (lastHeartbeat && (now - lastHeartbeat > 10000)) {
+                    console.warn(`Connection ${conn.peer} timed out due to missing heartbeat.`);
+                    conn.close();
+                    connectionsRef.current.delete(conn);
+                    // If no connections left, update status
+                    if (connectionsRef.current.size === 0 && mountedRef.current) {
+                        setStatus(ConnectionStatus.CONNECTING);
+                    }
+                }
+            });
+        }, 5000);
+
         return () => {
             mountedRef.current = false;
             clearTimeout(startTimeout);
+            clearInterval(checkInterval);
             destroyPeer();
         };
     }, [destroyPeer]); // Removed peerId dependency to avoid loops, initialization logic handles reading it
