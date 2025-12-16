@@ -5,14 +5,26 @@ interface FitnessHUDProps {
     value: number; // Current time left or current rep count
     target?: number; // Target reps (only for COUNT)
     label?: string; // Optional label (e.g. "REST", "PUSH-UPS")
+    onSkip?: () => void; // Function to manually skip/close the HUD
 }
 
-export const FitnessHUD: React.FC<FitnessHUDProps> = ({ mode, value, target }) => {
+export const FitnessHUD: React.FC<FitnessHUDProps> = ({ mode, value, target, onSkip }) => {
     if (!mode) return null;
 
     return (
-        <div className="absolute inset-0 z-50 flex items-center justify-center pointer-events-none bg-black/60 backdrop-blur-sm animate-fade-in">
-            <div className="flex flex-col items-center justify-center">
+        <div className="absolute inset-0 z-50 flex items-center justify-center pointer-events-auto bg-black/60 backdrop-blur-sm animate-fade-in">
+            <div className="flex flex-col items-center justify-center relative">
+                {/* Skip Button */}
+                <button
+                    onClick={onSkip}
+                    className="absolute -top-16 right-0 p-2 bg-slate-800/80 hover:bg-red-500/80 rounded-full text-white transition-colors border border-white/10 z-50 pointer-events-auto"
+                    title="Skip / Close"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
                 {/* Ring / Circle Container */}
                 <div className="relative">
                     {/* Outer Glow */}

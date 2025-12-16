@@ -204,13 +204,15 @@ export const Prompter = memo(
           const number = parseSpokenNumber(transcript, currentLang);
 
           if (number !== null) {
-            // Check if user said next number or current number + 1
-            // We allow saying the current number (confirmation) or next number
-            if (number === fitnessValue + 1) {
+            // "Catch-up" Logic: 
+            // If user says a number higher than current, jump to it (they might have counted fast or we missed one).
+            // Only strict rule: must be > current value.
+            // Also allow repeating current value (confirmation).
+            if (number > fitnessValue || number === fitnessValue + 1) {
               setFitnessValue(number);
-              // Beep or feedback
+
+              // Done!
               if (number >= fitnessTarget) {
-                // Done!
                 setFitnessMode(null);
                 setFitnessValue(0);
                 setFitnessTarget(undefined);
@@ -220,6 +222,8 @@ export const Prompter = memo(
           }
         }
       }, [fitnessMode, fitnessTarget, fitnessValue, lang, onStateChange, externalState.speed]);
+
+
 
       const { startListening, stopListening, resetVoice, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError } = useVoiceControl(
         voiceControlText,
@@ -591,6 +595,14 @@ export const Prompter = memo(
         )`;
       }, [theme, isFocusMode, effectiveTheme]); // Added effectiveTheme dependency
 
+      const handleFitnessSkip = useCallback(() => {
+        setFitnessMode(null);
+        setFitnessValue(0);
+        setFitnessTarget(undefined);
+        if (fitnessIntervalRef.current) clearInterval(fitnessIntervalRef.current);
+        onStateChange(true, externalState.speed);
+      }, [onStateChange, externalState.speed]);
+
       const containerStyle = useMemo(
         () =>
           ({
@@ -653,7 +665,8 @@ export const Prompter = memo(
 
           {isFocusMode && ![Theme.CHROMA_GREEN, Theme.CHROMA_BLUE].includes(effectiveTheme) && <S.FocusIndicator />}
 
-          <FitnessHUD mode={fitnessMode} value={fitnessValue} target={fitnessTarget} />
+          <FitnessHUD mode={fitnessMode} value={fitnessValue} target={fitnessTarget} onSkip={handleFitnessSkip} />
+
 
 
           <S.MainContent onMouseMove={handleMouseMove}>
