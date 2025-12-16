@@ -398,8 +398,9 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
     medium: "Medio (150 WPM)",
     fast: "Rápido (180 WPM)",
     totalWithPauses: {
-      details: "Sin pausas:",
-      pauses: "Con pausas:",
+      title: "Tempo Total",
+      details: "Sin pausas -",
+      pauses: "Con pausas -",
     },
     platforms: {
       title: "Recomendaciones por Plataforma",

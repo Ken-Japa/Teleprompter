@@ -118,11 +118,11 @@ export const PacingModal: React.FC<PacingModalProps> = ({ isOpen, onClose, text 
                         const totalWithPauses = customTime + totalPauseSeconds;
                         return (
                             <section className="animate-fade-in">
-                                <h3 className="text-lg font-semibold text-white mb-4">{t("pacing.totalWithPauses.title", "Total Duration (with Pauses)")}</h3>
+                                <h3 className="text-lg font-semibold text-white mb-4">{t("pacing.totalWithPauses.title")}</h3>
                                 <div className="bg-gradient-to-r from-blue-900/40 to-indigo-900/40 rounded-xl p-4 border border-blue-500/30">
                                     <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                                         <div className="text-sm text-blue-200">
-                                            {t("pacing.totalWithPauses.details", "Reading Time")} ({formatTime(customTime)}) + {t("pacing.totalWithPauses.pauses", "Pauses")} ({formatTime(totalPauseSeconds)})
+                                            {t("pacing.totalWithPauses.details")} ({formatTime(customTime)}) + {t("pacing.totalWithPauses.pauses")} ({formatTime(totalPauseSeconds)})
                                         </div>
                                         <div className="text-3xl font-bold text-blue-400 drop-shadow-lg">
                                             {formatTime(totalWithPauses)}

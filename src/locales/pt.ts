@@ -397,8 +397,9 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
     medium: "Médio (150 WPM)",
     fast: "Rápido (180 WPM)",
     totalWithPauses: {
-      details: "Sem pausas:",
-      pauses: "Com pausas:",
+      title: "Tempo Total",
+      details: "Sem pausas -",
+      pauses: "Com pausas -",
     },
     platforms: {
       title: "Recomendações por Plataforma",

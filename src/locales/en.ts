@@ -389,8 +389,9 @@ Paste your script here and customize your experience to start shining!`,
     medium: "Medium (150 WPM)",
     fast: "Fast (180 WPM)",
     totalWithPauses: {
-      details: "Without pauses:",
-      pauses: "With pauses:",
+      title: "Total Duration",
+      details: "Without pauses -",
+      pauses: "With pauses -",
     },
     platforms: {
       title: "Platform Recommendations",
