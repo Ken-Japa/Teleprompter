@@ -373,6 +373,7 @@ export const es = {
     editor: {
       highlight: "Resaltado",
       musicianMode: "Modo Músico",
+      bilingualMode: "Modo Bilingue",
     },
     defaultText: `Bienvenido a PromptNinja.
 
@@ -388,6 +389,20 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
 <g>Y este en verde para señalar calma o una transición suave.</g>
 
 ¡Pega tu guion aquí y personaliza tu experiencia para empezar a brillar!`,
+  },
+  bilingual: {
+    mode: "Modo Bilingüe",
+    primaryLanguage: "Idioma Principal (Idioma 1)",
+    secondaryLanguage: "Idioma Secundario (Idioma 2)",
+    primaryPlaceholder: "Pega el texto en el idioma principal aquí...",
+    secondaryPlaceholder: "Pega el texto en el idioma secundario aquí...",
+    voiceTrackLabel: "Control de Voz Rastrea:",
+    voiceTrackPrimary: "Idioma Principal",
+    voiceTrackSecondary: "Idioma Secundario",
+    description: "Muestra dos textos lado a lado para aprender idiomas o presentaciones multilingües.",
+    columnInfo: "Las dos columnas se mostrarán lado a lado con una proporción 50/50.",
+    alignmentTip: "Consejo: Usa [ALIGN]palabra[/ALIGN] en ambos textos para sincronizar palabras específicas durante el desplazamiento.",
+    landscapeTip: "💡 Para mejor experiencia en móvil, gira a modo paisaje (horizontal)",
   },
   pacing: {
     title: "Calculadora de Tiempo de Lectura",

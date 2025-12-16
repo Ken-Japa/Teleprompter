@@ -364,6 +364,7 @@ export const en = {
     editor: {
       highlight: "Highlight",
       musicianMode: "Musician Mode",
+      bilingualMode: "Bilingual Mode",
     },
     defaultText: `Welcome to PromptNinja.
 
@@ -379,6 +380,20 @@ Use color tags to highlight important moments in your script.
 <g>And this in green to signal calm or a smooth transition.</g>
 
 Paste your script here and customize your experience to start shining!`,
+  },
+  bilingual: {
+    mode: "Bilingual Mode",
+    primaryLanguage: "Primary Language (Language 1)",
+    secondaryLanguage: "Secondary Language (Language 2)",
+    primaryPlaceholder: "Paste the primary language text here...",
+    secondaryPlaceholder: "Paste the secondary language text here...",
+    voiceTrackLabel: "Voice Control Tracks:",
+    voiceTrackPrimary: "Primary Language",
+    voiceTrackSecondary: "Secondary Language",
+    description: "Display two texts side by side for language learning or multilingual presentations.",
+    columnInfo: "The two columns will be displayed side by side with a 50/50 ratio.",
+    alignmentTip: "Tip: Use [ALIGN]word[/ALIGN] in both texts to sync specific words during scroll.",
+    landscapeTip: "💡 For best mobile experience, rotate to landscape mode (horizontal)",
   },
   pacing: {
     title: "Reading Time Calculator",
