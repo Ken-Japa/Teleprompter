@@ -844,3 +844,5 @@ export const CameraIcon = ({ className }: { className?: string }) => (
         <circle cx="12" cy="13" r="4"></circle>
     </svg>
 );
+
+export const WidgetIcon = MinimizeIcon;

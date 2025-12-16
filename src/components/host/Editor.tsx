@@ -22,6 +22,8 @@ interface EditorProps {
     onToggleBilingualMode: () => void;
     isCameraMode: boolean;
     onToggleCameraMode: () => void;
+    isWidgetMode: boolean;
+    onToggleWidgetMode: () => void;
     bilingualTexts?: {
         primary: string;
         secondary: string;
@@ -38,7 +40,7 @@ interface EditorProps {
 export const Editor: React.FC<EditorProps> = ({
     text, setText, peerId, status, onStart, onStartHudless,
     isMusicianMode, onToggleMusicianMode, isBilingualMode, onToggleBilingualMode,
-    isCameraMode, onToggleCameraMode,
+    isCameraMode, onToggleCameraMode, isWidgetMode, onToggleWidgetMode,
     bilingualTexts, onBilingualTextsChange,
     bilingualVoiceTrackLanguage, onBilingualVoiceTrackChange,
     isPro, onUnlockPro
@@ -89,6 +91,8 @@ export const Editor: React.FC<EditorProps> = ({
                         onStartHudless={onStartHudless}
                         isCameraMode={isCameraMode}
                         onToggleCameraMode={onToggleCameraMode}
+                        isWidgetMode={isWidgetMode}
+                        onToggleWidgetMode={onToggleWidgetMode}
                         isPro={isPro}
                         onUnlockPro={onUnlockPro}
                     />

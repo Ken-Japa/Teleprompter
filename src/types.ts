@@ -139,6 +139,7 @@ export interface PrompterSettings {
     recordingMode?: RecordingMode;
     isMusicianMode: boolean; // New mode
     isCameraMode: boolean; // Mobile Camera Overlay
+    isWidgetMode: boolean; // Mobile Widget/PiP Mode
     isBilingualMode: boolean; // Bilingual mode
     bilingualConfig?: BilingualConfig; // Bilingual configuration
 }
@@ -208,6 +209,7 @@ export enum HotkeyAction {
     EXIT = "EXIT",
     RESET = "RESET",
     TOGGLE_CAMERA = "TOGGLE_CAMERA",
+    TOGGLE_WIDGET = "TOGGLE_WIDGET",
     TOGGLE_HUD = "TOGGLE_HUD",
 }
 

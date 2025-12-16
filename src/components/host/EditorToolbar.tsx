@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 import * as S from "../ui/Styled";
-import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LaptopIcon, LanguagesIcon, CameraIcon } from "../ui/Icons";
+import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LaptopIcon, LanguagesIcon, CameraIcon, WidgetIcon } from "../ui/Icons";
 import { useTranslation } from "../../hooks/useTranslation";
 import { TutorialModal } from "../ui/TutorialModal";
 import { PacingModal } from "../ui/PacingModal";
@@ -19,11 +19,13 @@ interface EditorToolbarProps {
     onStartHudless: () => void;
     isCameraMode: boolean;
     onToggleCameraMode: () => void;
+    isWidgetMode: boolean;
+    onToggleWidgetMode: () => void;
     isPro?: boolean;
     onUnlockPro?: () => void;
 }
 
-export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode, onToggleMusicianMode, isBilingualMode, onToggleBilingualMode, onStartHudless, isCameraMode, onToggleCameraMode, isPro = false, onUnlockPro = () => { } }: EditorToolbarProps) => {
+export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode, onToggleMusicianMode, isBilingualMode, onToggleBilingualMode, onStartHudless, isCameraMode, onToggleCameraMode, onToggleWidgetMode, isWidgetMode, isPro = false, onUnlockPro = () => { } }: EditorToolbarProps) => {
     const { t } = useTranslation();
     const [showTutorialModal, setShowTutorialModal] = useState(false);
     const [showPacingModal, setShowPacingModal] = useState(false);
@@ -99,6 +101,21 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                     >
                         <CameraIcon className={`w-6 h-6 transition-transform duration-300 ${isCameraMode ? "scale-110 drop-shadow-[0_0_8px_rgba(244,63,94,0.5)]" : "group-hover:scale-110"}`} />
                     </S.IconButton>
+                    {/* Widget Mode (Only if Camera Mode is Active) */}
+                    {isCameraMode && (
+                        <S.IconButton
+                            onClick={onToggleWidgetMode}
+                            title="Widget / PiP Mode"
+                            aria-label="Toggle Widget Mode"
+                            className={`w-10 h-10 rounded-2xl transition-all duration-300 border backdrop-blur-md group ${isWidgetMode
+                                ? "bg-gradient-to-br from-emerald-500/20 to-teal-600/20 text-emerald-400 border-emerald-500/60 shadow-[0_0_20px_-3px_rgba(16,185,129,0.4)] ring-1 ring-emerald-500/30 scale-105"
+                                : "bg-white/5 text-slate-500 border-white/5 hover:text-emerald-200 hover:bg-emerald-500/10 hover:border-emerald-500/30 grayscale hover:grayscale-0"
+                                }`}
+                            active={isWidgetMode}
+                        >
+                            <WidgetIcon className={`w-6 h-6 transition-transform duration-300 ${isWidgetMode ? "scale-110 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]" : "group-hover:scale-110"}`} />
+                        </S.IconButton>
+                    )}
                 </div>
 
                 {/* 2. Actions (Middle on Mobile, Last on Desktop) */}

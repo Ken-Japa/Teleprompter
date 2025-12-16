@@ -59,9 +59,10 @@ export const Prompter = memo(
     ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onReset, onStartRemoteRecording, onStopRemoteRecording }, ref) => {
 
       // Extracted Settings Logic
-      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode, isMusicianMode, isBilingualMode, bilingualConfig, isHudless, isCameraMode } = settings;
+      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode, isMusicianMode, isBilingualMode, bilingualConfig, isHudless, isCameraMode, isWidgetMode } = settings;
 
       // Ephemeral State
+      const [cameraStream, setCameraStream] = useState<MediaStream | null>(null);
       const [isVoiceMode, setIsVoiceMode] = useState<boolean>(false);
       const [pauseTimeoutId, setPauseTimeoutId] = useState<ReturnType<typeof setTimeout> | null>(null);
 
@@ -130,7 +131,7 @@ export const Prompter = memo(
         resumeRecording,
         downloadRecording,
         formatTime
-      } = useMediaRecorder();
+      } = useMediaRecorder(cameraStream);
 
       // Sync Recording Pause with Scroll Pause
       useEffect(() => {
@@ -445,15 +446,15 @@ export const Prompter = memo(
           rgba(0,0,0,0) ${end}, 
           ${color} 100%
         )`;
-      }, [theme, isFocusMode]);
+      }, [theme, isFocusMode, effectiveTheme]); // Added effectiveTheme dependency
 
       const containerStyle = useMemo(
         () =>
           ({
             "--prompter-font-size": `${fontSize}px`,
-            "--prompter-content-width": `calc(50% + ${margin}%)`,
+            "--prompter-content-width": isWidgetMode ? "100%" : `calc(50% + ${margin}%)`, // Widget Mode uses full width of the smaller container
           }) as React.CSSProperties,
-        [fontSize, margin]
+        [fontSize, margin, isWidgetMode]
       );
 
       // effectiveTheme is now defined at the top
@@ -471,7 +472,31 @@ export const Prompter = memo(
           style={containerStyle}
         >
           {/* Camera Overlay Layer - Bottom Most */}
-          <MobileCameraOverlay isActive={!!isCameraMode} />
+          <MobileCameraOverlay isActive={!!isCameraMode} onStreamReady={setCameraStream} />
+
+          {/* Widget Mode Style Overrides */}
+          {isWidgetMode && isCameraMode && (
+            <style>{`
+              .prompter-scroll-area {
+                width: 70% !important;
+                height: 40% !important;
+                position: absolute !important;
+                top: 10% !important;
+                left: 15% !important;
+                border-radius: 20px !important;
+                border: 2px solid rgba(255, 255, 255, 0.1) !important;
+                background: rgba(0, 0, 0, 0.6) !important; /* Semi-transparent background for readability */
+                box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+                backdrop-filter: blur(4px) !important;
+                z-index: 20 !important; /* Above camera, below HUD */
+                overflow: hidden !important;
+              }
+              /* Adjust Focus Indicator for Widget Mode */
+              .focus-indicator {
+                display: none !important; 
+              }
+            `}</style>
+          )}
 
           {effectiveTheme === "matrix" && (
             <div className="absolute inset-0 pointer-events-none opacity-10 "></div>

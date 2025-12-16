@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 
 interface MobileCameraOverlayProps {
     isActive: boolean;
+    onStreamReady?: (stream: MediaStream | null) => void;
 }
 
-export const MobileCameraOverlay: React.FC<MobileCameraOverlayProps> = ({ isActive }) => {
+export const MobileCameraOverlay: React.FC<MobileCameraOverlayProps> = ({ isActive, onStreamReady }) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [error, setError] = useState<string | null>(null);
     const streamRef = useRef<MediaStream | null>(null);
@@ -19,6 +20,7 @@ export const MobileCameraOverlay: React.FC<MobileCameraOverlayProps> = ({ isActi
             if (videoRef.current) {
                 videoRef.current.srcObject = null;
             }
+            if (onStreamReady) onStreamReady(null);
             return;
         }
 
@@ -35,6 +37,7 @@ export const MobileCameraOverlay: React.FC<MobileCameraOverlayProps> = ({ isActi
                 if (videoRef.current) {
                     videoRef.current.srcObject = stream;
                 }
+                if (onStreamReady) onStreamReady(stream);
                 setError(null);
             } catch (err) {
                 console.error("Error accessing camera:", err);
@@ -49,6 +52,7 @@ export const MobileCameraOverlay: React.FC<MobileCameraOverlayProps> = ({ isActi
                 streamRef.current.getTracks().forEach(track => track.stop());
                 streamRef.current = null;
             }
+            if (onStreamReady) onStreamReady(null);
         };
     }, [isActive]);
 

@@ -21,6 +21,7 @@ export interface PrompterActions {
     setIsMusicianMode: (val: boolean) => void;
     setIsHudless: (val: boolean) => void;
     setIsCameraMode: (val: boolean) => void;
+    setIsWidgetMode: (val: boolean) => void;
     setIsBilingualMode: (val: boolean) => void;
     setBilingualConfig: (config: Partial<BilingualConfig>) => void;
 }
@@ -67,6 +68,10 @@ export const usePrompterSettings = (isPro: boolean) => {
     );
     const [isCameraMode, setIsCameraMode] = useLocalStorage<boolean>(
         "neonprompt_camera_mode",
+        false
+    );
+    const [isWidgetMode, setIsWidgetMode] = useLocalStorage<boolean>(
+        "neonprompt_widget_mode",
         false
     );
     const [isBilingualMode, setIsBilingualMode] = useLocalStorage<boolean>(
@@ -136,6 +141,7 @@ export const usePrompterSettings = (isPro: boolean) => {
         isMusicianMode,
         isHudless,
         isCameraMode,
+        isWidgetMode,
         isBilingualMode,
         bilingualConfig,
     };
@@ -162,6 +168,7 @@ export const usePrompterSettings = (isPro: boolean) => {
         },
         setIsHudless: wrapToggle(setIsHudless, "hudless_mode"),
         setIsCameraMode: wrapToggle(setIsCameraMode, "camera_mode"),
+        setIsWidgetMode: wrapToggle(setIsWidgetMode, "widget_mode"),
         setIsBilingualMode: (val: boolean) => {
             // Modo bilingue e modo músico são mutuamente exclusivos
             if (val && isMusicianMode) {
