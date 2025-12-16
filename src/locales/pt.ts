@@ -371,6 +371,7 @@ export const pt = {
     editor: {
       highlight: "Destaque",
       musicianMode: "Modo Músico",
+      bilingualMode: "Modo Bilíngue",
     },
     defaultText: `Bem-vindo ao PromptNinja.
 
@@ -387,6 +388,22 @@ Use as tags de cor para destacar momentos importantes no seu roteiro.
 
 Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
   },
+
+  bilingual: {
+    mode: "Modo Bilíngue",
+    primaryLanguage: "Idioma Principal (Língua 1)",
+    secondaryLanguage: "Idioma Secundário (Língua 2)",
+    primaryPlaceholder: "Cole o texto no idioma principal aqui...",
+    secondaryPlaceholder: "Cole o texto no idioma secundário aqui...",
+    voiceTrackLabel: "Controle de Voz Rastreia:",
+    voiceTrackPrimary: "Idioma Principal",
+    voiceTrackSecondary: "Idioma Secundário",
+    description: "Exiba dois textos lado a lado para estudar idiomas ou apresentações multilíngues.",
+    columnInfo: "As duas colunas serão exibidas lado a lado com proporção 50/50.",
+    alignmentTip: "Dica: Use [ALIGN]palavra[/ALIGN] em ambos os textos para sincronizar palavras específicas durante o scroll.",
+    landscapeTip: "💡 Para melhor experiência em celular, gire para o modo paisagem (horizontal)",
+  },
+
 
   pacing: {
     title: "Calculadora de Tempo de Leitura",

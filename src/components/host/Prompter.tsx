@@ -12,6 +12,7 @@ import { createPortal } from "react-dom";
 import { ConnectionStatus, PrompterHandle, PrompterSettings, NavigationItem, Theme } from "../../types";
 import * as S from "../ui/Styled";
 import { useVoiceControl } from "../../hooks/useVoiceControl";
+import { parseTextToSentences } from "../../utils/textParser";
 import { useKeyboardShortcuts } from "../../hooks/useKeyboardShortcuts";
 import { useWakeLock } from "../../hooks/useWakeLock";
 import { useScrollPhysics } from "../../hooks/useScrollPhysics";
@@ -57,7 +58,7 @@ export const Prompter = memo(
     ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onReset, onStartRemoteRecording, onStopRemoteRecording }, ref) => {
 
       // Extracted Settings Logic
-      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode, isMusicianMode, isHudless } = settings;
+      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode, isMusicianMode, isBilingualMode, bilingualConfig, isHudless } = settings;
 
       // Ephemeral State
       const [isVoiceMode, setIsVoiceMode] = useState<boolean>(false);
@@ -171,11 +172,29 @@ export const Prompter = memo(
 
 
 
-      // Voice Control
+      // Voice Control - Use correct text based on bilingual config
+      const voiceControlText = useMemo(() => {
+        if (isBilingualMode && bilingualConfig) {
+          return bilingualConfig.voiceTrackLanguage === 'primary'
+            ? bilingualConfig.primaryText
+            : bilingualConfig.secondaryText;
+        }
+        return text;
+      }, [isBilingualMode, bilingualConfig, text]);
+
       const { startListening, stopListening, resetVoice, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError } = useVoiceControl(
-        text,
+        voiceControlText,
         isPro
       );
+
+      // Bilingual Sentences Processing
+      const bilingualSentences = useMemo(() => {
+        if (!isBilingualMode || !bilingualConfig) return null;
+        return {
+          primary: parseTextToSentences(bilingualConfig.primaryText).sentences,
+          secondary: parseTextToSentences(bilingualConfig.secondaryText).sentences
+        };
+      }, [isBilingualMode, bilingualConfig]);
 
       // Abstraction: Handle DOM measurements
       const metricsRef = useElementMetrics(scrollContainerRef, [sentences, fontSize, margin, isUpperCase]);
@@ -477,7 +496,19 @@ export const Prompter = memo(
                 paddingBottom: '50vh'
               }}
             >
-              <ScriptBoard sentences={sentences} isMirrored={isMirrored} isFlipVertical={isFlipVertical} isUpperCase={isUpperCase} isPro={isPro} theme={effectiveTheme} isMusicianMode={isMusicianMode} fontSize={fontSize} margin={margin} />
+              <ScriptBoard
+                sentences={sentences}
+                isMirrored={isMirrored}
+                isFlipVertical={isFlipVertical}
+                isUpperCase={isUpperCase}
+                isPro={isPro}
+                theme={effectiveTheme}
+                isMusicianMode={isMusicianMode}
+                isBilingualMode={isBilingualMode}
+                bilingualSentences={bilingualSentences || undefined}
+                fontSize={fontSize}
+                margin={margin}
+              />
             </S.PrompterScrollArea>
           </S.MainContent>
 

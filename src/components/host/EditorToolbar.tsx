@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 import * as S from "../ui/Styled";
-import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LaptopIcon } from "../ui/Icons";
+import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LaptopIcon, LanguagesIcon } from "../ui/Icons";
 import { useTranslation } from "../../hooks/useTranslation";
 import { TutorialModal } from "../ui/TutorialModal";
 import { PacingModal } from "../ui/PacingModal";
@@ -14,12 +14,14 @@ interface EditorToolbarProps {
     text: string;
     isMusicianMode: boolean;
     onToggleMusicianMode: () => void;
+    isBilingualMode: boolean;
+    onToggleBilingualMode: () => void;
     onStartHudless: () => void;
     isPro?: boolean;
     onUnlockPro?: () => void;
 }
 
-export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode, onToggleMusicianMode, onStartHudless, isPro = false, onUnlockPro = () => { } }: EditorToolbarProps) => {
+export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode, onToggleMusicianMode, isBilingualMode, onToggleBilingualMode, onStartHudless, isPro = false, onUnlockPro = () => { } }: EditorToolbarProps) => {
     const { t } = useTranslation();
     const [showTutorialModal, setShowTutorialModal] = useState(false);
     const [showPacingModal, setShowPacingModal] = useState(false);
@@ -52,8 +54,9 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                     </div>
                 </div>
 
-                {/* 1. Musician Mode (Top on Mobile, Middle on Desktop) */}
-                <div className="w-full md:w-auto flex justify-center py-3 md:py-0 border-b border-white/5 md:border-0 order-1 md:order-2">
+                {/* 1. Mode Buttons (Top on Mobile, Middle on Desktop) */}
+                <div className="w-full md:w-auto flex justify-center gap-2 py-3 md:py-0 border-b border-white/5 md:border-0 order-1 md:order-2">
+                    {/* Musician Mode */}
                     <S.IconButton
                         onClick={onToggleMusicianMode}
                         title={t("host.editor.musicianMode")}
@@ -65,6 +68,20 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                         active={isMusicianMode}
                     >
                         <MusicIcon className={`w-6 h-6 transition-transform duration-300 ${isMusicianMode ? "scale-110 drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]" : "group-hover:scale-110"}`} />
+                    </S.IconButton>
+
+                    {/* Bilingual Mode */}
+                    <S.IconButton
+                        onClick={onToggleBilingualMode}
+                        title={t("host.editor.bilingualMode")}
+                        aria-label="Toggle Bilingual Mode"
+                        className={`w-10 h-10 rounded-2xl transition-all duration-300 border backdrop-blur-md group ${isBilingualMode
+                            ? "bg-gradient-to-br from-blue-500/20 to-cyan-600/20 text-blue-400 border-blue-500/60 shadow-[0_0_20px_-3px_rgba(59,130,246,0.4)] ring-1 ring-blue-500/30 scale-105"
+                            : "bg-white/5 text-slate-500 border-white/5 hover:text-blue-200 hover:bg-blue-500/10 hover:border-blue-500/30 grayscale hover:grayscale-0"
+                            }`}
+                        active={isBilingualMode}
+                    >
+                        <LanguagesIcon className={`w-6 h-6 transition-transform duration-300 ${isBilingualMode ? "scale-110 drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]" : "group-hover:scale-110"}`} />
                     </S.IconButton>
                 </div>
 

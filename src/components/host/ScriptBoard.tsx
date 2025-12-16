@@ -12,11 +12,16 @@ interface ScriptBoardProps {
   isPro: boolean;
   theme: string;
   isMusicianMode?: boolean;
+  isBilingualMode?: boolean;
+  bilingualSentences?: {
+    primary: Sentence[];
+    secondary: Sentence[];
+  };
   fontSize?: number;
   margin?: number;
 }
 
-export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, theme, isMusicianMode, fontSize = 60, margin = 10 }: ScriptBoardProps) => {
+export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, theme, isMusicianMode, isBilingualMode, bilingualSentences, fontSize = 60, margin = 10 }: ScriptBoardProps) => {
   const { t } = useTranslation();
 
   const watermarkIndexes = useMemo(() => {
@@ -153,6 +158,89 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
     return newSentences;
   }, [sentences, isMusicianMode, fontSize, margin]);
 
+  // Bilingual Mode Rendering
+  if (isBilingualMode && bilingualSentences) {
+    return (
+      <div style={{ position: "relative", width: "100%" }}>
+        {/* Watermarks */}
+        {!isPro && watermarkIndexes.map((idx, i) => (
+          <S.Watermark
+            key={i}
+            text={t('host.watermark')}
+            theme={theme}
+            style={{
+              position: "absolute",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "100vw",
+              zIndex: 0,
+              top: `${(idx / Math.max(bilingualSentences.primary.length, bilingualSentences.secondary.length)) * 100}%`,
+              pointerEvents: "none"
+            }}
+          />
+        ))}
+
+        {/* Bilingual: Two Columns Side by Side */}
+        <div
+          className={`w-full max-w-7xl mx-auto transition-transform duration-300 ${isUpperCase ? "uppercase" : ""} hardware-accelerated`}
+          style={{
+            transform: transforms,
+            paddingLeft: "var(--prompter-margin)",
+            paddingRight: "var(--prompter-margin)",
+          }}
+        >
+          {/* Landscape Tip for Mobile Portrait Users */}
+          <div className="block sm:hidden portrait:block landscape:hidden text-center py-4 px-6 mb-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+            <p className="text-sm text-blue-300">
+              📱 {t("bilingual.landscapeTip") || "Para melhor experiência, gire seu celular para o modo paisagem (horizontal)"}
+            </p>
+          </div>
+
+          {/* Two Columns Side by Side */}
+          <div className="flex flex-row gap-4 md:gap-6">
+            {/* Primary Language Column */}
+            <div className="flex-1">
+              <div
+                className="font-sans font-bold whitespace-pre-wrap text-center leading-tight outline-none transition-colors duration-500 text-optimize"
+                style={{ fontSize: "var(--prompter-font-size)" }}
+              >
+                {bilingualSentences.primary.map((s: Sentence) => (
+                  <SentenceItem
+                    key={`primary-${s.id}`}
+                    id={s.id}
+                    fragments={s.fragments}
+                    command={s.command}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Visual Separator */}
+            <div className="w-px bg-gradient-to-b from-transparent via-slate-700/50 to-transparent" />
+
+            {/* Secondary Language Column */}
+            <div className="flex-1">
+              <div
+                className="font-sans font-bold whitespace-pre-wrap text-center leading-tight outline-none transition-colors duration-500 text-optimize"
+                style={{ fontSize: "var(--prompter-font-size)" }}
+              >
+                {bilingualSentences.secondary.map((s: Sentence) => (
+                  <SentenceItem
+                    key={`secondary-${s.id}`}
+                    id={s.id}
+                    fragments={s.fragments}
+                    command={s.command}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Standard Rendering (Existing Code)
   return (
     <div style={{ position: "relative", width: "100%" }}>
       {/* Watermarks atravessando toda a tela, mas texto centralizado */}

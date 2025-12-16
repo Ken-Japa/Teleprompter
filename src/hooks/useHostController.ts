@@ -15,6 +15,12 @@ export const useHostController = () => {
   // 1. Data Persistence
   const [text, setText] = useScriptStorage();
 
+  // Bilingual Mode State
+  const [bilingualTexts, setBilingualTexts] = useState<{
+    primary: string;
+    secondary: string;
+  }>({ primary: "", secondary: "" });
+
   // 2. Routing Logic (Hash-based)
   const [isEditMode, setIsEditMode] = useState<boolean>(
     typeof window !== "undefined" ? !window.location.hash.includes("/play") : true
@@ -60,6 +66,16 @@ export const useHostController = () => {
 
   // Prompter Settings (Lifted State)
   const { settings: prompterSettings, actions: prompterActions } = usePrompterSettings(isPro);
+
+  // Sync bilingual texts with config
+  useEffect(() => {
+    if (prompterSettings.isBilingualMode && prompterSettings.bilingualConfig) {
+      setBilingualTexts({
+        primary: prompterSettings.bilingualConfig.primaryText,
+        secondary: prompterSettings.bilingualConfig.secondaryText
+      });
+    }
+  }, [prompterSettings.isBilingualMode, prompterSettings.bilingualConfig]);
 
   const prompterRef = useRef<PrompterHandle>(null);
   const broadcastRef = useRef<any>(null);
@@ -362,6 +378,15 @@ export const useHostController = () => {
 
   const prompterState = useMemo(() => ({ isPlaying, speed }), [isPlaying, speed]);
 
+  // Handler for bilingual text changes
+  const handleBilingualTextsChange = useCallback((texts: { primary: string; secondary: string }) => {
+    setBilingualTexts(texts);
+    prompterActions.setBilingualConfig({
+      primaryText: texts.primary,
+      secondaryText: texts.secondary
+    });
+  }, [prompterActions]);
+
   return {
     state: {
       text,
@@ -378,6 +403,7 @@ export const useHostController = () => {
       prompterSettings,
       isValidating,
       isRecording,
+      bilingualTexts,
     },
     actions: {
       setText,
@@ -399,6 +425,7 @@ export const useHostController = () => {
       setIsRecording,
       startRemoteRecording,
       stopRemoteRecording,
+      handleBilingualTextsChange,
     },
     refs: {
       prompterRef,

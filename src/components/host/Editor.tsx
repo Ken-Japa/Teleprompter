@@ -5,6 +5,7 @@ import { useTranslation } from "../../hooks/useTranslation";
 import { HomeIcon, PlayIcon } from "../ui/Icons";
 import { ConnectSidebar } from "./ConnectSidebar";
 import { EditorToolbar } from "./EditorToolbar";
+import { BilingualTextEditor } from "./BilingualTextEditor";
 import { useEditorLogic } from "../../hooks/useEditorLogic";
 import { LanguageSelector } from "../ui/LanguageSelector";
 
@@ -16,13 +17,20 @@ interface EditorProps {
     onStart: () => void;
     onStartHudless: () => void;
     isMusicianMode: boolean;
-    onToggleMusicianMode: () => void; // Restored
+    onToggleMusicianMode: () => void;
+    isBilingualMode: boolean;
+    onToggleBilingualMode: () => void;
+    bilingualTexts?: {
+        primary: string;
+        secondary: string;
+    };
+    onBilingualTextsChange?: (texts: { primary: string; secondary: string }) => void;
 
     isPro: boolean;
     onUnlockPro: () => void;
 }
 
-export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, onStart, onStartHudless, isMusicianMode, onToggleMusicianMode, isPro, onUnlockPro }) => {
+export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, onStart, onStartHudless, isMusicianMode, onToggleMusicianMode, isBilingualMode, onToggleBilingualMode, bilingualTexts, onBilingualTextsChange, isPro, onUnlockPro }) => {
     const { t } = useTranslation();
 
     // Separation of Concerns: Logic is now in the hook
@@ -64,18 +72,27 @@ export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, o
                         text={localText}
                         isMusicianMode={isMusicianMode}
                         onToggleMusicianMode={onToggleMusicianMode}
-
+                        isBilingualMode={isBilingualMode}
+                        onToggleBilingualMode={onToggleBilingualMode}
                         onStartHudless={onStartHudless}
                         isPro={isPro}
                         onUnlockPro={onUnlockPro}
                     />
 
-                    <S.EditorTextArea
-                        ref={textAreaRef}
-                        value={localText}
-                        onChange={handleChange}
-                        placeholder={t("host.editorPlaceholder")}
-                    />
+                    {isBilingualMode ? (
+                        <BilingualTextEditor
+                            primaryText={bilingualTexts?.primary || ""}
+                            secondaryText={bilingualTexts?.secondary || ""}
+                            onChange={onBilingualTextsChange || (() => { })}
+                        />
+                    ) : (
+                        <S.EditorTextArea
+                            ref={textAreaRef}
+                            value={localText}
+                            onChange={handleChange}
+                            placeholder={t("host.editorPlaceholder")}
+                        />
+                    )}
                 </div>
 
                 <ConnectSidebar peerId={peerId} status={status} />

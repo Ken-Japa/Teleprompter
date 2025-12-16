@@ -115,6 +115,16 @@ export enum Theme {
 export type VoiceControlMode = "host" | "remote";
 export type RecordingMode = "host" | "remote";
 
+// Bilingual Mode Configuration
+export interface BilingualConfig {
+    isActive: boolean;
+    primaryText: string;
+    secondaryText: string;
+    primaryLanguage?: string; // opcional: 'pt', 'en', etc
+    secondaryLanguage?: string;
+    voiceTrackLanguage: 'primary' | 'secondary'; // qual idioma o voice control rastreia
+}
+
 export interface PrompterSettings {
     fontSize: number;
     margin: number;
@@ -128,6 +138,8 @@ export interface PrompterSettings {
     voiceControlMode?: VoiceControlMode;
     recordingMode?: RecordingMode;
     isMusicianMode: boolean; // New mode
+    isBilingualMode: boolean; // Bilingual mode
+    bilingualConfig?: BilingualConfig; // Bilingual configuration
 }
 
 export interface RemoteScrollHandler {

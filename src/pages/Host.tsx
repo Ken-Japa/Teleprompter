@@ -20,7 +20,7 @@ export const Host: React.FC = () => {
 
     // Separation of Concerns: Host is now a dumb component
     const { state, actions, refs } = useHostController();
-    const { text, isEditMode, peerId, status, isPro, showPaywall, unlockKey, prompterState, errorMessage, paywallErrorMessage, showCountdownModal, prompterSettings, isValidating } = state;
+    const { text, isEditMode, peerId, status, isPro, showPaywall, unlockKey, prompterState, errorMessage, paywallErrorMessage, showCountdownModal, prompterSettings, isValidating, bilingualTexts } = state;
 
     return (
         <>
@@ -61,6 +61,10 @@ export const Host: React.FC = () => {
 
                     isMusicianMode={prompterSettings.isMusicianMode}
                     onToggleMusicianMode={() => actions.prompterActions.setIsMusicianMode(!prompterSettings.isMusicianMode)}
+                    isBilingualMode={prompterSettings.isBilingualMode}
+                    onToggleBilingualMode={() => actions.prompterActions.setIsBilingualMode(!prompterSettings.isBilingualMode)}
+                    bilingualTexts={bilingualTexts}
+                    onBilingualTextsChange={actions.handleBilingualTextsChange}
                     isPro={isPro}
                     onUnlockPro={() => actions.setShowPaywall(true)}
                 />

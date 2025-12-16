@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { trackSettingChange } from "../utils/analytics";
 import { useLocalStorage } from "./useLocalStorage";
-import { Theme, PrompterSettings, VoiceControlMode, RecordingMode } from "../types";
+import { Theme, PrompterSettings, VoiceControlMode, RecordingMode, BilingualConfig } from "../types";
 import { PROMPTER_DEFAULTS } from "../config/constants";
 
 export type { PrompterSettings }; // Re-export type
@@ -20,6 +20,8 @@ export interface PrompterActions {
     toggleChroma: () => void;
     setIsMusicianMode: (val: boolean) => void;
     setIsHudless: (val: boolean) => void;
+    setIsBilingualMode: (val: boolean) => void;
+    setBilingualConfig: (config: Partial<BilingualConfig>) => void;
 }
 
 export const usePrompterSettings = (isPro: boolean) => {
@@ -61,6 +63,19 @@ export const usePrompterSettings = (isPro: boolean) => {
     const [isHudless, setIsHudless] = useLocalStorage<boolean>(
         "neonprompt_hudless_mode",
         false
+    );
+    const [isBilingualMode, setIsBilingualMode] = useLocalStorage<boolean>(
+        "neonprompt_bilingual_mode",
+        false
+    );
+    const [bilingualConfig, setBilingualConfig] = useLocalStorage<BilingualConfig>(
+        "neonprompt_bilingual_config",
+        {
+            isActive: false,
+            primaryText: "",
+            secondaryText: "",
+            voiceTrackLanguage: "primary"
+        }
     );
 
     const cycleTheme = useCallback(() => {
@@ -115,6 +130,8 @@ export const usePrompterSettings = (isPro: boolean) => {
         recordingMode,
         isMusicianMode,
         isHudless,
+        isBilingualMode,
+        bilingualConfig,
     };
 
     const actions: PrompterActions = {
@@ -129,8 +146,27 @@ export const usePrompterSettings = (isPro: boolean) => {
         setRecordingMode: wrapSetter(setRecordingMode, "recording_mode"),
         cycleTheme,
         toggleChroma,
-        setIsMusicianMode: wrapToggle(setIsMusicianMode, "musician_mode"),
+        setIsMusicianMode: (val: boolean) => {
+            // Modo músico e modo bilíngue são mutuamente exclusivos
+            if (val && isBilingualMode) {
+                setIsBilingualMode(false);
+            }
+            setIsMusicianMode(val);
+            trackSettingChange("musician_mode", String(val));
+        },
         setIsHudless: wrapToggle(setIsHudless, "hudless_mode"),
+        setIsBilingualMode: (val: boolean) => {
+            // Modo bilingue e modo músico são mutuamente exclusivos
+            if (val && isMusicianMode) {
+                setIsMusicianMode(false);
+            }
+            setIsBilingualMode(val);
+            trackSettingChange("bilingual_mode", String(val));
+        },
+        setBilingualConfig: (config: Partial<BilingualConfig>) => {
+            setBilingualConfig(prev => ({ ...prev, ...config }));
+            trackSettingChange("bilingual_config", JSON.stringify(config));
+        },
     };
 
     return { settings, actions };
