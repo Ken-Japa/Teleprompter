@@ -6,6 +6,7 @@ import { findBestMatch } from "../utils/stringSimilarity";
 import { useTranslation } from "./useTranslation";
 
 // callback for raw transcript, useful for custom commands like [COUNT]
+// callback for raw transcript, useful for custom commands like [COUNT]
 export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (transcript: string) => void) => {
     const { lang } = useTranslation();
     const [isListening, setIsListening] = useState<boolean>(false);
@@ -17,6 +18,12 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
     const recognitionRef = useRef<ISpeechRecognition | null>(null);
     const lastMatchIndexRef = useRef<number>(0);
     const lastStartTimeRef = useRef<number>(0);
+
+    // Keep latest callback in ref to avoid restarting recognition on every state change
+    const onSpeechResultRef = useRef(onSpeechResult);
+    useEffect(() => {
+        onSpeechResultRef.current = onSpeechResult;
+    }, [onSpeechResult]);
 
     // Resilience: Track if user INTENDED to stop. If false and 'end' event fires, we restart.
     const intentionallyStoppedRef = useRef<boolean>(false);
@@ -97,8 +104,8 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                 .trim();
 
             // Allow parent to inspect transcript (e.g. for counting reps)
-            if (onSpeechResult && cleanTranscript.length > 0) {
-                onSpeechResult(cleanTranscript);
+            if (onSpeechResultRef.current && cleanTranscript.length > 0) {
+                onSpeechResultRef.current(cleanTranscript);
             }
 
             // MUSICIAN MODE OPTIMIZATION: Increased min length to 6 to reduce false positives
@@ -191,7 +198,7 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
         } catch (e) {
             logger.error("Voice start error", { error: e as Error });
         }
-    }, [lang, activeSentenceIndex, onSpeechResult]); // Dependencies for startRecognitionInstance
+    }, [lang, activeSentenceIndex]); // Dependencies for startRecognitionInstance
 
     const startListening = useCallback(() => {
         if (!isPro) return;

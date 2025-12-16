@@ -252,16 +252,21 @@ export const Prompter = memo(
         } else if (command.type === 'SPEED' && command.value !== undefined) {
           onStateChange(externalState.isPlaying, command.value);
         } else if (command.type === 'COUNT' && command.value) {
+          // Safety: If not Pro or Voice not supported, ignore command to prevent getting stuck
+          if (!isPro || !voiceApiSupported) {
+            return;
+          }
+
+          // Auto-enable voice if off
+          if (!isVoiceMode) {
+            setIsVoiceMode(true);
+          }
+          startListening();
+
           onStateChange(false, externalState.speed);
           setFitnessMode('COUNT');
           setFitnessValue(0);
           setFitnessTarget(command.value);
-          // Ensure voice listening is active if valid
-          if (!isVoiceMode && isPro) {
-            // Auto-enable voice temporarily? For now assume user has voice enabled if using voice commands
-            // OR we can force enable:
-            // setIsVoiceMode(true); startListening(); 
-          }
         } else if (command.type === 'REST' && command.duration) {
           onStateChange(false, externalState.speed);
           setFitnessMode('REST');
