@@ -25,12 +25,21 @@ interface EditorProps {
         secondary: string;
     };
     onBilingualTextsChange?: (texts: { primary: string; secondary: string }) => void;
+    // New Props for Voice Tracking
+    bilingualVoiceTrackLanguage?: 'primary' | 'secondary';
+    onBilingualVoiceTrackChange?: (lang: 'primary' | 'secondary') => void;
 
     isPro: boolean;
     onUnlockPro: () => void;
 }
 
-export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, onStart, onStartHudless, isMusicianMode, onToggleMusicianMode, isBilingualMode, onToggleBilingualMode, bilingualTexts, onBilingualTextsChange, isPro, onUnlockPro }) => {
+export const Editor: React.FC<EditorProps> = ({
+    text, setText, peerId, status, onStart, onStartHudless,
+    isMusicianMode, onToggleMusicianMode, isBilingualMode, onToggleBilingualMode,
+    bilingualTexts, onBilingualTextsChange,
+    bilingualVoiceTrackLanguage, onBilingualVoiceTrackChange,
+    isPro, onUnlockPro
+}) => {
     const { t } = useTranslation();
 
     // Separation of Concerns: Logic is now in the hook
@@ -84,6 +93,8 @@ export const Editor: React.FC<EditorProps> = ({ text, setText, peerId, status, o
                             primaryText={bilingualTexts?.primary || ""}
                             secondaryText={bilingualTexts?.secondary || ""}
                             onChange={onBilingualTextsChange || (() => { })}
+                            voiceTrackLanguage={bilingualVoiceTrackLanguage}
+                            onVoiceTrackLanguageChange={onBilingualVoiceTrackChange}
                         />
                     ) : (
                         <S.EditorTextArea

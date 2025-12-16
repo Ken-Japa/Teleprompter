@@ -172,6 +172,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                     <RemoteEditor
                         text={text}
                         actions={actions}
+                        isBilingualMode={settings?.isBilingualMode}
                     />
                 )}
 

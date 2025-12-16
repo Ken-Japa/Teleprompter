@@ -2,14 +2,33 @@ import React, { useRef } from "react";
 import { ColorMenu } from "../ui/ColorMenu";
 import { insertTagInText } from "../../utils/editorHelpers";
 import { RemoteActions } from "../../types";
+import { useTranslation } from "../../hooks/useTranslation";
 
 interface RemoteEditorProps {
     text: string;
     actions: RemoteActions;
+    isBilingualMode?: boolean;
 }
 
-export const RemoteEditor: React.FC<RemoteEditorProps> = ({ text, actions }) => {
+export const RemoteEditor: React.FC<RemoteEditorProps> = ({ text, actions, isBilingualMode }) => {
+    const { t } = useTranslation();
     const remoteTextAreaRef = useRef<HTMLTextAreaElement>(null);
+
+    if (isBilingualMode) {
+        return (
+            <div className="flex-1 flex flex-col items-center justify-center p-8 bg-slate-950 text-center">
+                <div className="bg-slate-900/50 p-6 rounded-2xl border border-white/5 shadow-lg max-w-sm">
+                    <div className="text-4xl mb-4">🔒</div>
+                    <h3 className="text-xl text-white font-bold mb-2">
+                        {t("remote.bilingualEditTitle") || "Edição Bloqueada"}
+                    </h3>
+                    <p className="text-slate-400">
+                        {t("remote.bilingualEditWarning") || "A edição de texto está desabilitada no Modo Bilíngue. Por favor, faça alterações no computador principal."}
+                    </p>
+                </div>
+            </div>
+        );
+    }
 
     const handleRemoteInsertTag = (tag: string) => {
         const textarea = remoteTextAreaRef.current;

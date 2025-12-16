@@ -65,6 +65,11 @@ export const Host: React.FC = () => {
                     onToggleBilingualMode={() => actions.prompterActions.setIsBilingualMode(!prompterSettings.isBilingualMode)}
                     bilingualTexts={bilingualTexts}
                     onBilingualTextsChange={actions.handleBilingualTextsChange}
+                    bilingualVoiceTrackLanguage={prompterSettings.bilingualConfig?.voiceTrackLanguage}
+                    onBilingualVoiceTrackChange={(lang) => actions.prompterActions.setBilingualConfig({
+                        ...prompterSettings.bilingualConfig, // Preserve other config fields
+                        voiceTrackLanguage: lang
+                    } as any)}
                     isPro={isPro}
                     onUnlockPro={() => actions.setShowPaywall(true)}
                 />

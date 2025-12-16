@@ -400,9 +400,11 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
     voiceTrackPrimary: "Idioma Principal",
     voiceTrackSecondary: "Idioma Secundario",
     description: "Muestra dos textos lado a lado para aprender idiomas o presentaciones multilingües.",
-    columnInfo: "Las dos columnas se mostrarán lado a lado con una proporción 50/50.",
+    columnInfo: "Ambas columnas se mostrarán una al lado de la otra con una división 50/50.",
     alignmentTip: "Consejo: Usa [ALIGN]palabra[/ALIGN] en ambos textos para sincronizar palabras específicas durante el desplazamiento.",
-    landscapeTip: "💡 Para mejor experiencia en móvil, gira a modo paisaje (horizontal)",
+    trackLanguage: "Rastrear este idioma (Control por Voz)",
+    tracking: "Rastreando",
+    landscapeTip: "💡 Para la mejor experiencia en móvil, gira a modo paisaje (horizontal)",
   },
   pacing: {
     title: "Calculadora de Tiempo de Lectura",
@@ -449,6 +451,8 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
     stop: "Stop",
     theme: "Tema",
     language: "Idioma",
+    bilingualEditTitle: "Edición Bloqueada",
+    bilingualEditWarning: "La edición está desactivada en modo bilingüe. Use la computadora principal.",
     scanError: "Error al acceder a la cámara. Verifica los permisos o si estás usando HTTPS.",
   },
   share: {
@@ -513,7 +517,12 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
       musicianMode: {
         title: "Modo Músico",
         description:
-          "Ideal para acordes y letras. Este modo mantiene el formato original y evita saltos de línea no deseados, perfecto para tocar y cantar.",
+          "Perfecto para acordes y letras. Este modo conserva el formato original y evita saltos de línea no deseados, ideal para tocar y cantar.",
+      },
+      bilingualMode: {
+        title: "Modo Bilingüe",
+        description:
+          "Muestra dos textos uno al lado del otro. Ideal para aprender idiomas o presentaciones multilingües. Incluye seguimiento de control por voz seleccionable.",
       },
     },
   },

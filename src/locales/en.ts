@@ -440,6 +440,8 @@ Paste your script here and customize your experience to start shining!`,
     stop: "Stop",
     theme: "Theme",
     language: "Language",
+    bilingualEditTitle: "Editing Locked",
+    bilingualEditWarning: "Editing is disabled in bilingual mode. Use the main computer.",
   },
   share: {
     button: "Share PromptNinja",
@@ -511,6 +513,11 @@ Paste your script here and customize your experience to start shining!`,
         title: "Musician Mode",
         description:
           "Perfect for chords and lyrics. This mode preserves original formatting and prevents unwanted line breaks, ideal for playing and singing along.",
+      },
+      bilingualMode: {
+        title: "Bilingual Mode",
+        description:
+          "Display two texts side-by-side. Ideal for language learning or multilingual presentations. Includes selectable voice control tracking.",
       },
     },
   },

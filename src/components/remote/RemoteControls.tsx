@@ -36,6 +36,19 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
 
     // Helper to get text preview (reused logic)
     const getTextPreview = () => {
+        // Handle Bilingual Mode
+        if (settings?.isBilingualMode && settings?.bilingualConfig) {
+            const primary = settings.bilingualConfig.primaryText || "";
+            // Use primary text for preview
+            if (!primary) return "Bilingual Mode - No text loaded";
+
+            const offset = 350;
+            const centerIdx = Math.min(primary.length, Math.floor(primary.length * localProgress) + offset);
+            const start = Math.max(0, centerIdx - 100);
+            const end = Math.min(primary.length, centerIdx + 100);
+            return "..." + primary.substring(start, end).replace(/\n/g, ' ') + "...";
+        }
+
         if (!text) return "No text loaded";
 
         // 1. Try to find current segment from Navigation Map
