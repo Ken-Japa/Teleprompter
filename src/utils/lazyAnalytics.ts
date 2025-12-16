@@ -27,52 +27,27 @@ export const initAnalyticsCompatibility = (): void => {
         return;
     }
 
-    const loadExtras = () => {
-        // Avoid double loading if already present
-        if (window.document.querySelector('script[src*="googletagmanager.com/gtm.js"]')) {
-            console.log("📊 GTM already loaded, skipping...");
-        } else {
-            console.log("📊 Loading GTM...");
-            (function (w: any, d: any, s: string, l: string, i: string) {
-                w[l] = w[l] || [];
-                w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-                var f = d.getElementsByTagName(s)[0],
-                    j = d.createElement(s) as HTMLScriptElement,
-                    dl = l !== 'dataLayer' ? '&l=' + l : '';
-                j.async = true;
-                j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-                f.parentNode!.insertBefore(j, f);
-            })(window, document, 'script', 'dataLayer', 'GTM-N3FFHDCD');
-        }
+    if (window.document.querySelector('script[src*="contentsquare"]')) return;
 
-        if (window.document.querySelector('script[src*="contentsquare"]')) return;
+    console.log("📊 Loading extra analytics scripts (Clarity, Contentsquare)...");
 
-        console.log("📊 Loading extra analytics scripts (Clarity, Contentsquare)...");
+    // Load Contentsquare
+    const csScript = document.createElement("script");
+    csScript.src = "https://t.contentsquare.net/uxa/9f676d4da3fcc.js";
+    csScript.defer = true;
+    document.head.appendChild(csScript);
 
-        // Load Contentsquare
-        const csScript = document.createElement("script");
-        csScript.src = "https://t.contentsquare.net/uxa/9f676d4da3fcc.js";
-        csScript.defer = true;
-        document.head.appendChild(csScript);
-
-        // Initialize Microsoft Clarity
-        const clarityScript = document.createElement("script");
-        clarityScript.type = "text/javascript";
-        clarityScript.text = `
+    // Initialize Microsoft Clarity
+    const clarityScript = document.createElement("script");
+    clarityScript.type = "text/javascript";
+    clarityScript.text = `
             (function(c,l,a,r,i,t,y){
                 c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
                 t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
                 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
             })(window, document, "clarity", "script", "uke5r12yig");
         `;
-        document.head.appendChild(clarityScript);
-    };
-
-    // Lazy load extras after 3s or interaction
-    if ("requestIdleCallback" in window) {
-        window.requestIdleCallback(loadExtras, { timeout: 3000 });
-    } else {
-        setTimeout(loadExtras, 3000);
-    }
+    document.head.appendChild(clarityScript);
 };
+
 
