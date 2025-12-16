@@ -514,7 +514,7 @@ export const Prompter = memo(
             <S.PrompterScrollArea
               ref={scrollContainerRef}
               onScroll={handleNativeScroll}
-              className="hardware-accelerated"
+              className="hardware-accelerated prompter-scroll-area"
               style={{
                 paddingLeft: `${margin}%`,
                 paddingRight: `${margin}%`,
@@ -541,43 +541,43 @@ export const Prompter = memo(
             </S.PrompterScrollArea>
           </S.MainContent>
 
-          {!pipWindow && !isHudless && (
-            <PrompterHUD
-              showHud={showHud}
-              peerId={peerId}
-              status={status}
-              isPlaying={externalState.isPlaying}
-              speed={externalState.speed}
-              settings={settings}
-              actions={actions}
-              isVoiceMode={isVoiceMode}
-              isPro={isPro}
-              voiceApiSupported={voiceApiSupported}
-              voiceApiError={voiceApiError}
-              resetTimerSignal={resetTimerSignal}
-              onStateChange={onStateChange}
-              onResetPrompter={resetPrompter}
-              toggleVoice={toggleVoice}
-              onExit={onExit}
-              onSync={onSync}
-              onEdit={() => setShowEditModal(true)}
-              togglePiP={togglePiP}
-              isPiPActive={isPiPActive}
-              recordingState={{
-                isRecording,
-                isPaused,
-                recordingTime: formatTime(recordingTime),
-                hasRecordedData
-              }}
-              recordingActions={{
-                start: handleStartRecording,
-                stop: handleStopRecording,
-                pause: handlePauseRecording,
-                resume: handleResumeRecording,
-                download: downloadRecording
-              }}
-            />
-          )}
+          <PrompterHUD
+            showHud={showHud}
+            peerId={peerId}
+            status={status}
+            isPlaying={externalState.isPlaying}
+            speed={externalState.speed}
+            settings={settings}
+            isCameraMode={isCameraMode}
+            actions={actions}
+            isVoiceMode={isVoiceMode}
+            isPro={isPro}
+            voiceApiSupported={voiceApiSupported}
+            voiceApiError={voiceApiError}
+            resetTimerSignal={resetTimerSignal}
+            onStateChange={onStateChange}
+            onResetPrompter={resetPrompter}
+            toggleVoice={toggleVoice}
+            onExit={onExit}
+            onSync={onSync}
+            onEdit={() => setShowEditModal(true)}
+            togglePiP={togglePiP}
+            isPiPActive={isPiPActive}
+            recordingState={{
+              isRecording,
+              isPaused,
+              recordingTime: formatTime(recordingTime),
+              hasRecordedData
+            }}
+            recordingActions={{
+              start: handleStartRecording,
+              stop: handleStopRecording,
+              pause: handlePauseRecording,
+              resume: handleResumeRecording,
+              download: downloadRecording
+            }}
+          />
+
           <QuickEditModal
             isOpen={showEditModal}
             onClose={() => setShowEditModal(false)}

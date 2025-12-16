@@ -35,6 +35,7 @@ interface PrompterHUDProps {
     onEdit: () => void;
     togglePiP?: () => void;
     isPiPActive?: boolean;
+    isCameraMode?: boolean;
     // Recording Props
     recordingState?: {
         isRecording: boolean;
@@ -170,7 +171,7 @@ export const PrompterHUD = memo(
                     settings={settings}
                     actions={actions}
                     onOpenMarginSlider={() => setShowMarginModal(true)}
-                    togglePiP={togglePiP}
+                    togglePiP={settings.isCameraMode ? undefined : togglePiP} // Hide Native PiP in Camera Mode
                     isPiPActive={isPiPActive}
                 />
 
