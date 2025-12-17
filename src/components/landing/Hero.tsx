@@ -37,17 +37,25 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 relative z-10 mb-16">
-                <S.PrimaryButton
-                    onClick={onLaunch}
-                    className="text-lg py-5 px-12 w-full sm:w-auto !rounded-2xl shadow-brand-500/40 hover:shadow-brand-500/60 hover-glow btn-press transition-smooth"
-                    aria-label="Launch Web App"
-                >
-                    {t("landing.hero.cta")}
-                </S.PrimaryButton>
+                <div className="relative group">
+                    {/* Hint only visible on mobile now, as desktop has it in the header */}
+                    <div className="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none z-20 sm:hidden">
+                        <p className="text-slate-400 text-sm font-medium animate-bounce bg-slate-900/80 backdrop-blur px-3 py-1 rounded-full border border-brand-500/30 shadow-lg">
+                            👇 {t("landing.hero.startHint") || "Comece aqui"}
+                        </p>
+                    </div>
+                    <S.PrimaryButton
+                        onClick={onLaunch}
+                        className="text-xl font-bold py-5 px-12 w-full sm:w-auto !rounded-2xl !bg-brand-600 hover:!bg-brand-500 !text-white shadow-brand-500/50 hover:shadow-brand-500/80 hover-glow btn-press transition-smooth border-2 border-brand-400/50 relative z-10"
+                        aria-label="Launch Web App"
+                    >
+                        {t("landing.hero.cta")}
+                    </S.PrimaryButton>
+                </div>
 
                 <button
                     onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="text-lg py-5 px-12 w-full sm:w-auto glass hover:bg-white/10 text-white font-medium rounded-2xl transition-smooth hover:scale-105 hover:border-white/20 btn-press"
+                    className="text-lg py-5 px-12 w-full sm:w-auto glass hover:bg-white/5 text-slate-300 font-medium rounded-2xl transition-smooth hover:scale-105 hover:border-white/10 btn-press border border-white/5"
                 >
                     {t("landing.hero.ctaSecondary")}
                 </button>

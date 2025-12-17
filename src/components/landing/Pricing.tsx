@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
-import { trackConversion, trackGoogleAdsInterest } from "../../utils/analytics";
+import { trackConversion } from "../../utils/analytics";
 import { PricingCard } from "../ui/styles/Marketing";
 
 interface PricingProps {
@@ -55,7 +55,12 @@ export const Pricing: React.FC<PricingProps> = ({ onLaunch }) => {
                             }
                             onClick={() => {
                                 trackConversion('Upgrade to Pro');
-                                trackGoogleAdsInterest('https://pay.kiwify.com.br/dl571EZ');
+                                // trackGoogleAdsInterest('https://pay.kiwify.com.br/dl571EZ'); // Removed to avoid double redirect
+                                // We can manually track the event logic here or just rely on the conversion event
+                                window.gtag('event', 'conversion', {
+                                    'send_to': 'AW-17795014366/_3RZCNLTxtEbEN69qaVC',
+                                });
+                                window.open('https://pay.kiwify.com.br/dl571EZ', '_blank');
                             }}
                         />
                     </div>

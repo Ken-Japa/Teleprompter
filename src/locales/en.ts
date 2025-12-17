@@ -9,6 +9,8 @@ export const en = {
     refresh: "Refresh",
     save: "Save",
     cancel: "Cancel",
+    more: "More options...",
+    less: "Less",
   },
   menu: {
     home: "Home",
@@ -18,6 +20,7 @@ export const en = {
     validate: "Validate",
     validateLicense: "Validate License",
     start: "Start",
+    startHint: "Press PLAY to start",
   },
   landing: {
     meta: {
@@ -28,7 +31,8 @@ export const en = {
       headline: "Free Online Autocue. Use on PC, Laptop, or Mobile.",
       subheadline:
         "Your phone is the remote control. Voice Control, Instant P2P connection with zero lag for perfect videos.",
-      cta: "🚀 Start Free (20 min)",
+      cta: "🚀 Try for Free Now",
+      startHint: "Start Here",
       ctaSecondary: "▶️ See How It Works",
       versionLive: "Version 2.0 Live",
       userCount: "1,247",
@@ -372,6 +376,8 @@ export const en = {
       bilingualMode: "Bilingual Mode",
     },
     defaultText: `Welcome to PromptNinja.
+
+Click on PLAY and read looking at the camera.
 
 The ultimate teleprompter for content creators.
 

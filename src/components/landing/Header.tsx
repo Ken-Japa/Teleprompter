@@ -94,16 +94,22 @@ export const Header: React.FC<HeaderProps> = () => {
 
                 <div className="flex items-center space-x-4 relative">
                     <LanguageSelector />
-                    <S.PrimaryButton
-                        onClick={() => {
-                            window.location.hash = "app";
-                        }}
-                        size="sm"
-                        aria-label={t("menu.start")}
-                        className="hidden sm:block bg-slate-700 hover:bg-slate-600"
-                    >
-                        {t("menu.start")}
-                    </S.PrimaryButton>
+                    <div className="relative group hidden sm:block">
+                        <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 sm:opacity-100">
+                            <p className="text-slate-400 text-xs font-medium animate-bounce bg-slate-900/90 backdrop-blur px-2 py-1 rounded-full border border-brand-500/30 shadow-lg flex items-center gap-1">
+                                <span className="text-sm">👆</span> {t("landing.hero.startHint") || "Comece aqui"}
+                            </p>
+                        </div>
+                        <S.PrimaryButton
+                            onClick={() => {
+                                window.location.hash = "app";
+                            }}
+                            aria-label={t("menu.start")}
+                            className="bg-brand-600 hover:bg-brand-500 text-white font-bold shadow-brand-500/20 shadow-lg hover:scale-105 transition-transform py-3 px-6 text-sm"
+                        >
+                            {t("menu.start")}
+                        </S.PrimaryButton>
+                    </div>
                     <S.PrimaryButton
                         onClick={() => {
                             window.location.hash = "app?redeem=true";

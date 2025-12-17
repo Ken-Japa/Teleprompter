@@ -11,7 +11,8 @@ export const es = {
     backToHome: "Volver a Inicio",
     validate: "Validar",
     validateLicense: "Validar Licencia",
-    start: "Iniciar",
+    start: "Empezar",
+    startHint: "Pulsa PLAY para empezar",
   },
   common: {
     sync: "Sincronizar",
@@ -22,6 +23,8 @@ export const es = {
     next: "Siguiente",
     save: "Guardar",
     cancel: "Cancelar",
+    more: "Más opciones...",
+    less: "Menos",
   },
   landing: {
     meta: {
@@ -32,7 +35,8 @@ export const es = {
       headline: "Teleprompter Online GRATIS. Úsalo en PC, Laptop o Móvil (iPhone/Android).",
       subheadline:
         "Tu móvil es el control remoto. Control por Voz, Conexión P2P instantánea, sin retrasos, para videos perfectos.",
-      cta: "🚀 Empezar Gratis (20 min)",
+      cta: "🚀 Prueba Gratis Ahora",
+      startHint: "Comienza Aquí",
       ctaSecondary: "▶️ Ver Cómo Funciona",
       versionLive: "Versión 2.0 Online",
       userCount: "1.247",
@@ -381,6 +385,8 @@ export const es = {
       bilingualMode: "Modo Bilingue",
     },
     defaultText: `Bienvenido a PromptNinja.
+
+Haz clic en REPRODUCIR y lee mientras miras a la cámara.
 
 El teleprompter definitivo para creadores de contenido.
 

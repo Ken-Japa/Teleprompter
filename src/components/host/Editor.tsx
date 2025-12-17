@@ -56,24 +56,39 @@ export const Editor: React.FC<EditorProps> = ({
     return (
         <S.EditorContainer>
             <S.Header>
-                <div className="flex items-center space-x-6">
+                <div className="flex items-center sm:space-x-6">
                     <S.LogoText main={t("title.main")} sub={t("title.sub")} className="hidden sm:flex" />
-                    <S.LogoText sub={t("title.main")} className="sm:hidden" />
+                    <S.LogoText main={t("title.main")} className="!block sm:!hidden scale-90 origin-left -ml-2 !space-x-1" />
                     <button
                         onClick={() => {
                             window.location.hash = "";
                         }}
-                        className="flex items-center text-xs font-bold text-slate-500 hover:text-white transition"
+                        className="flex items-center text-xs font-bold text-slate-500 hover:text-white ml-2 transition"
                         aria-label="Back to Home"
                     >
-                        <HomeIcon className="w-4 h-4 mr-1" /> <span className="hidden sm:inline">{t("menu.backToHome")}</span>
+                        <HomeIcon className="w-6 h-6 mr-1" /> <span className="hidden sm:inline">{t("menu.backToHome")}</span>
                     </button>
                 </div>
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-3 relative">
+                    {/* Visual Hint */}
+                    {/* Visual Hint - Positioned BELOW on mobile/desktop to avoid being cut off by top edge */}
+                    <div className="absolute top-full mt-4 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none z-50">
+                        <p className="text-slate-400 text-xs sm:text-sm font-medium animate-bounce bg-slate-900/90 backdrop-blur px-3 py-1.5 rounded-full border border-brand-500/30 shadow-xl shadow-black/50 flex items-center gap-2">
+                            <span className="sm:hidden">{t("menu.startHintShort") || "Aperte PLAY"}</span><span className="hidden sm:inline">{t("menu.startHint") || "Aperte PLAY para começar"}</span> <span className="text-lg">👆</span>
+                        </p>
+                    </div>
 
                     <LanguageSelector />
-                    <S.PrimaryButton onClick={onStart} aria-label="Start Presentation Mode" size="sm">
-                        <PlayIcon className="w-4 h-4 sm:w-3 sm:h-3 sm:mr-2" /> <span className="hidden sm:inline">{t("host.startPrompter")}</span>
+                    <S.PrimaryButton
+                        onClick={onStart}
+                        aria-label="Start Presentation Mode"
+                        // Removed invalid size="lg" prop, relying on className below
+                        className="!py-2 !px-3 !text-sm sm:!py-3 sm:!px-6 sm:!text-lg shadow-brand-500/50 shadow-lg hover:shadow-brand-500/70 hover:scale-105 transition-all duration-300" // Added custom styles for prominence
+                    >
+                        <PlayIcon className="w-5 h-5 sm:w-6 sm:h-6 mr-1.5 sm:mr-2" /> {/* Increased icon size */}
+                        <span className="font-bold tracking-wide">
+                            {t("host.startPrompter").split(' ')[0]} <span className="hidden sm:inline">{t("host.startPrompter").split(' ').slice(1).join(' ')}</span>
+                        </span>
                     </S.PrimaryButton>
                 </div>
             </S.Header>

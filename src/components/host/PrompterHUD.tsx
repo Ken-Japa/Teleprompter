@@ -94,6 +94,22 @@ export const PrompterHUD = memo(
             actions.setMargin(newMargin);
         }, [actions, settings.margin]);
 
+        // Advanced Controls Visibility Logic (Smart Persistence)
+        const [isAdvancedOpen, setIsAdvancedOpen] = useState(() => {
+            if (typeof window !== 'undefined') {
+                return localStorage.getItem('neonprompt_advanced_seen') === 'true';
+            }
+            return false;
+        });
+
+        const handleToggleAdvanced = () => {
+            const newState = !isAdvancedOpen;
+            setIsAdvancedOpen(newState);
+            if (newState) {
+                localStorage.setItem('neonprompt_advanced_seen', 'true');
+            }
+        };
+
         if (isMinimized) {
             return (
                 <S.HudContainer visible={showHud}>
@@ -129,7 +145,13 @@ export const PrompterHUD = memo(
                     </div>
 
                     <S.IconButton
-                        onClick={() => setIsMinimized(false)}
+                        onClick={() => {
+                            setIsMinimized(false);
+                            setIsAdvancedOpen(true);
+                            if (typeof window !== 'undefined') {
+                                localStorage.setItem('neonprompt_advanced_seen', 'true');
+                            }
+                        }}
                         className="w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 text-brand-400 border border-brand-500/30 shadow-lg shadow-brand-500/20"
                         title="Maximize Controls"
                     >
@@ -149,6 +171,7 @@ export const PrompterHUD = memo(
 
         return (
             <S.HudContainer visible={showHud}>
+                {/* Primary Controls (Always Visible) */}
                 <S.HudGroup>
                     <S.StatusBadge status={status} label={status === "CONNECTED" ? t("status.connected") : t("status.disconnected")} />
                     <S.IconButton
@@ -163,63 +186,71 @@ export const PrompterHUD = memo(
                     <PrompterTimer isPlaying={isPlaying} onReset={resetTimerSignal} />
                 </S.HudGroup>
 
-                <SpeedControl isPlaying={isPlaying} speed={speed} onStateChange={onStateChange} onReset={onResetPrompter} />
+                <div className="flex items-center justify-center gap-2 w-full">
+                    <SpeedControl isPlaying={isPlaying} speed={speed} onStateChange={onStateChange} onReset={onResetPrompter} />
+                    <FontControl fontSize={settings.fontSize} setFontSize={actions.setFontSize} onOpenFontSizeSlider={() => setShowFontSizeModal(true)} />
+                    <S.IconButton
+                        onClick={onEdit}
+                        title={t("host.editText") || "Edit Text"}
+                        aria-label={t("host.editText") || "Edit Text"}
+                        className="w-10 h-10 flex !p-0 !items-center !justify-center leading-none bg-slate-800/80 border border-white/5 shadow-md"
+                    >
+                        <EditIcon className="w-5 h-5 block" />
+                    </S.IconButton>
+                </div>
 
-                <FontControl fontSize={settings.fontSize} setFontSize={actions.setFontSize} onOpenFontSizeSlider={() => setShowFontSizeModal(true)} />
+                {/* Show More / Advanced Toggle */}
+                <div className="hidden sm:flex items-center">
+                    <button
+                        onClick={handleToggleAdvanced}
+                        className="text-xs text-slate-400 hover:text-brand-400 underline decoration-dotted transition-colors mx-2 whitespace-nowrap"
+                    >
+                        {isAdvancedOpen ? (t("common.less") || "Menos") : (t("common.more") || "Mais opções...")}
+                    </button>
+                </div>
 
-                <DisplayControl
-                    settings={settings}
-                    actions={actions}
-                    onOpenMarginSlider={() => setShowMarginModal(true)}
-                    togglePiP={togglePiP}
-                    isPiPActive={isPiPActive}
-                />
+                {/* Advanced Controls (Conditionally Rendered) */}
+                {isAdvancedOpen && (
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-2 w-full sm:w-auto p-1.5 sm:p-0 rounded-xl bg-slate-900/50 sm:bg-transparent border border-white/5 sm:border-none mt-0.5 sm:mt-0">
 
-                <ThemeControl
-                    settings={settings}
-                    actions={actions}
-                    isVoiceMode={isVoiceMode}
-                    toggleVoice={toggleVoice}
-                    isPro={isPro}
-                    voiceApiSupported={voiceApiSupported}
-                    voiceApiError={voiceApiError}
-                />
+                        <div className="hidden sm:block w-px h-8 bg-white/10 mx-2"></div> {/* Separator Desktop only */}
 
-                {recordingState && recordingActions && (
-                    <S.HudGroup label="REC">
-                        <RecordingControls
-                            isRecording={recordingState.isRecording}
-                            isPaused={recordingState.isPaused}
-                            recordingTime={recordingState.recordingTime}
-                            hasRecordedData={recordingState.hasRecordedData}
-                            recordingMode={recordingMode}
-                            onToggleMode={handleToggleRecordingMode}
-                            onStart={recordingActions.start}
-                            onStop={recordingActions.stop}
-                            onPause={recordingActions.pause}
-                            onResume={recordingActions.resume}
-                            onDownload={recordingActions.download}
-                        />
-                    </S.HudGroup>
-                )}
+                        {/* Row 1: Font & Display (Mobile) / All inline (Desktop) */}
+                        {/* Row 1: Display (Mobile) / All inline (Desktop) */}
+                        <div className="flex items-center gap-2">
+                            {/* Font moved to main row */}
+                            <DisplayControl
+                                settings={settings}
+                                actions={actions}
+                                onOpenMarginSlider={() => setShowMarginModal(true)}
+                                togglePiP={togglePiP}
+                                isPiPActive={isPiPActive}
+                            />
+                        </div>
 
-                <S.IconButton
-                    onClick={onEdit}
-                    title={t("host.editText") || "Edit Text"}
-                    aria-label={t("host.editText") || "Edit Text"}
-                    className="ml-4 w-9 h-9 flex !p-0 !items-center !justify-center leading-none"
-                >
-                    <EditIcon className="w-5 h-5 block" />
-                </S.IconButton>
-
-                <S.IconButton
-                    onClick={() => setShowTutorialModal(true)}
-                    title="Tutorial"
-                    aria-label="Open Tutorial"
-                    className="ml-4 w-9 h-9 hidden sm:flex !p-0 !items-center !justify-center leading-none"
-                >
-                    <InfoIcon className="w-5 h-5 block" />
-                </S.IconButton>
+                        {/* Row 2: Theme & Edit (Mobile) / All inline (Desktop) */}
+                        <div className="flex items-center gap-2">
+                            <ThemeControl
+                                settings={settings}
+                                actions={actions}
+                                isVoiceMode={isVoiceMode}
+                                toggleVoice={toggleVoice}
+                                isPro={isPro}
+                                voiceApiSupported={voiceApiSupported}
+                                voiceApiError={voiceApiError}
+                            />
+                            <S.IconButton
+                                onClick={() => setShowTutorialModal(true)}
+                                title="Tutorial"
+                                aria-label="Open Tutorial"
+                                className="hidden sm:flex ml-1 w-9 h-9 !p-0 !items-center !justify-center leading-none"
+                            >
+                                <InfoIcon className="w-5 h-5 block" />
+                            </S.IconButton>
+                        </div>
+                    </div>
+                )
+                }
 
                 {/* Minimize Button - Visible on Mobile mainly, but can be useful everywhere */}
                 <S.IconButton
@@ -228,7 +259,27 @@ export const PrompterHUD = memo(
                     className="ml-2 w-9 h-9 flex sm:hidden items-center justify-center text-slate-400 hover:text-white"
                 >
                     <MinimizeIcon className="w-5 h-5" />
-                </S.IconButton>
+                </S.IconButton >
+
+                {recordingState && recordingActions && (
+                    <div className="mx-2 scale-90 origin-bottom">
+                        <S.HudGroup label="REC">
+                            <RecordingControls
+                                isRecording={recordingState.isRecording}
+                                isPaused={recordingState.isPaused}
+                                recordingTime={recordingState.recordingTime}
+                                hasRecordedData={recordingState.hasRecordedData}
+                                recordingMode={recordingMode}
+                                onToggleMode={handleToggleRecordingMode}
+                                onStart={recordingActions.start}
+                                onStop={recordingActions.stop}
+                                onPause={recordingActions.pause}
+                                onResume={recordingActions.resume}
+                                onDownload={recordingActions.download}
+                            />
+                        </S.HudGroup>
+                    </div>
+                )}
 
                 <S.PrimaryButton
                     onClick={onExit}
@@ -257,7 +308,7 @@ export const PrompterHUD = memo(
                     onClose={() => setShowQRModal(false)}
                     peerId={peerId}
                 />
-            </S.HudContainer>
+            </S.HudContainer >
         );
     }
 );
