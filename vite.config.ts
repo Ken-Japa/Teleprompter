@@ -7,7 +7,7 @@ const viteConfig = defineConfig({
     plugins: [
         react(),
         VitePWA({
-            registerType: "prompt",
+            registerType: "autoUpdate",
             injectRegister: "script-defer",
             includeAssets: ["assets/favicon.ico", "assets/apple-touch-icon.png"],
             manifest: {
@@ -52,7 +52,7 @@ const viteConfig = defineConfig({
         minify: "terser",
         terserOptions: {
             compress: {
-                drop_console: true,
+                drop_console: false, // Enabled for GA4 debugging
                 drop_debugger: true,
             },
         },
