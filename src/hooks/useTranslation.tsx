@@ -13,7 +13,7 @@ export const getInitialLanguage = (): Language => {
     // 1. Tenta obter do parâmetro 'lang' da URL
     if (typeof window !== "undefined") {
         const urlParams = new URLSearchParams(window.location.search);
-        const urlLang = urlParams.get("lang");
+        const urlLang = urlParams.get("lang")?.trim().replace(/\/$/, ""); // Remove trailing slash and whitespace
         if (urlLang === "pt" || urlLang === "en" || urlLang === "es") {
             return urlLang as Language;
         }
