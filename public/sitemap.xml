@@ -845,4 +845,28 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-bilingual-mode" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-modo-bilingue" />
   </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/teleprompter-para-fitness-treino</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-para-fitness-treino" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-for-fitness-workout" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-fitness-entrenamiento" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/en/teleprompter-for-fitness-workout</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-para-fitness-treino" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-for-fitness-workout" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-fitness-entrenamiento" />
+  </url>
+  <url>
+    <loc>https://promptninja.solutionkit.com.br/es/teleprompter-para-fitness-entrenamiento</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-para-fitness-treino" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-for-fitness-workout" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-fitness-entrenamiento" />
+  </url>
 </urlset>
