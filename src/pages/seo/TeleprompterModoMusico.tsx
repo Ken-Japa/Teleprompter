@@ -44,7 +44,7 @@ export const TeleprompterModoMusico: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = TeleprompterModoMusicoEN;
-        title = "Teleprompter Musician Mode: The Ultimate Solution for Following Lyrics and Chords";
+        title = "Lyrics & Chords Teleprompter: The Ultimate Solution for Musicians | PromptNinja";
         description = "Discover how PromptNinja's Musician Mode transforms how musicians follow lyrics and chords. Perfect alignment, remote control, and voice integration.";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-musician-mode";
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
