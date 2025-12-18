@@ -98,8 +98,10 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
             let cleanTranscript = interimTranscript.toLowerCase();
             // Apply the same cleaning logic as the parser to ensure matching works
+            // FLEXIBLE NUMBER MATCHING: Remove digit sequences to allow natural number speech
             cleanTranscript = cleanTranscript
                 .replace(/[^\p{L}\p{N}\s]/gu, "")
+                .replace(/\b\d+\b/g, " ") // Remove isolated numbers (flexible matching)
                 .replace(/\s+/g, " ")
                 .trim();
 

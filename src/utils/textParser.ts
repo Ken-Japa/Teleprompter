@@ -131,9 +131,12 @@ export const parseTextToSentences = (
 
         // Create a clean version: Lowercase, remove punctuation, normalize spaces
         // Using Unicode properties to keep letters/numbers but remove symbols
+        // FLEXIBLE NUMBER MATCHING: Remove digit sequences to allow natural number speech
+        // e.g., script "199 reais" matches speech "cento e noventa e nove reais"
         const clean = voiceText
             .toLowerCase()
             .replace(/[^\p{L}\p{N}\s]/gu, "")
+            .replace(/\b\d+\b/g, " ") // Remove isolated numbers (flexible matching)
             .replace(/\s+/g, " ")
             .trim();
 
