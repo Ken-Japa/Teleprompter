@@ -45,7 +45,7 @@ export const MelhorAppTeleprompterES = () => (
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6 text-center">La Evolución: PWA (Progressive Web App)</h2>
         <p className="mb-8 text-center max-w-3xl mx-auto">
-            La verdadera innovación no está en otra app para descargar, sino en una herramienta que funciona directamente en el navegador. PromptNinja es un <strong>PWA (Progressive Web App)</strong>: no ocupa espacio en tu móvil, <strong>funciona sin conexión</strong> y se instala en 1 segundo sin pasar por la tienda de aplicaciones.
+            La verdadera innovación no está en otra app para descargar, sino en una herramienta que funciona directamente en el navegador. PromptNinja es un <strong>PWA (Progressive Web App)</strong>: no ocupa espacio en tu móvil, <strong>funciona sin conexión</strong> y se instala en 1 segundo sin pasar por la tienda de aplicaciones. <a href="/es/como-instalar-app-teleprompter-pwa" className="text-purple-400 hover:text-purple-300 underline">Aprende cómo instalar la PWA aquí</a>.
         </p>
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6 text-center">Comparativa: PromptNinja vs. Apps Genéricas</h2>
@@ -89,6 +89,12 @@ export const MelhorAppTeleprompterES = () => (
                         <td className="p-4 border border-slate-700 text-center text-green-400">Gratis (funciones esenciales)</td>
                         <td className="p-4 border border-slate-700 text-center">Suscripción mensual</td>
                         <td className="p-4 border border-slate-700 text-center">Gratis con anuncios invasivos</td>
+                    </tr>
+                    <tr>
+                        <td className="p-4 border border-slate-700">Control por Voz (IA)</td>
+                        <td className="p-4 border border-slate-700 text-center text-green-400">Sí (Reconocimiento de Voz)</td>
+                        <td className="p-4 border border-slate-700 text-center">No</td>
+                        <td className="p-4 border border-slate-700 text-center">No</td>
                     </tr>
                 </tbody>
             </table>

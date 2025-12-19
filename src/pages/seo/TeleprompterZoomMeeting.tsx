@@ -13,8 +13,8 @@ export const TeleprompterZoomMeeting: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterZoomMeetingPT;
-    let title = "⭐ Truque: Teleprompter GRÁTIS no Zoom, Teams e Meet (Sem Instalar Nada!)";
-    let description = "Use o Teleprompter P2P GRÁTIS do PromptNinja para ler roteiros sem desviar o olhar. Sem travar e 100% online. Guia definitivo para reuniões de impacto.";
+    let title = "⭐ Truque: Teleprompter GRÁTIS para Zoom e Google Meet: Leitura Transparente ";
+    let description = "Use o Teleprompter Transparente do PromptNinja para ler roteiros em reuniões no Zoom, Teams e Google Meet sem desviar o olhar. 100% Grátis e Online.";
     let ctaText = "Abrir Teleprompter para Zoom";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-zoom-meeting";
     const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
@@ -34,8 +34,8 @@ export const TeleprompterZoomMeeting: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = TeleprompterZoomMeetingEN;
-        title = "⭐ Secret: FREE Teleprompter for Zoom, Teams & Meet (Zero Downloads!)";
-        description = "Use the FREE P2P Teleprompter to read scripts without breaking eye contact. Zero lag, 100% online. Ultimate guide for professional online meetings.";
+        title = "Teleprompter for Zoom & Google Meet: Transparent Reading (Free)";
+        description = "Use PromptNinja's Transparent Teleprompter to read scripts in Zoom, Teams & Meet calls without breaking eye contact. 100% Free & Online.";
         ctaText = "Open Teleprompter for Zoom";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-zoom-meeting";
         schema = {
@@ -53,8 +53,8 @@ export const TeleprompterZoomMeeting: React.FC<Props> = ({ onLaunch }) => {
         };
     } else if (lang === 'es') {
         Content = TeleprompterZoomMeetingES;
-        title = "⭐ Truco: Teleprompter GRATIS en Zoom, Teams y Meet (¡Sin Descargas!)";
-        description = "Usa el Teleprompter P2P GRATIS para leer guiones sin perder contacto visual. Cero lag, 100% online. Guía definitiva para profesionales de reuniones.";
+        title = "Teleprompter para Zoom y Google Meet: Lectura Transparente (Gratis)";
+        description = "Usa el Teleprompter Transparente de PromptNinja para leer guiones en Zoom, Teams y Meet sin perder contacto visual. 100% Gratis y Online.";
         ctaText = "Abrir Teleprompter para Zoom";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-zoom-meeting";
         schema = {

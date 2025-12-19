@@ -21,6 +21,9 @@ export const TeleprompterParaYoutubersEN = () => (
         <p className="mb-4">
             Many YouTubers record alone in their home studios. The last thing you want is to have to get up after every take to adjust the script or restart the software. PromptNinja was designed to solve exactly that. <a href="/en/best-teleprompter-app" className="text-purple-400 hover:text-purple-300 underline">See why it is considered the best teleprompter app</a> for independent creators.
         </p>
+        <p className="mb-4">
+            Furthermore, it's perfect if you also do live streams or video calls. You can use it as a <a href="/en/teleprompter-zoom-meeting" className="text-purple-400 hover:text-purple-300 underline">teleprompter for Zoom and Google Meet</a>, ensuring a professional presence on every occasion.
+        </p>
 
         <div className="overflow-x-auto my-8">
             <table className="min-w-full bg-slate-800 rounded-lg">
@@ -54,6 +57,16 @@ export const TeleprompterParaYoutubersEN = () => (
                 </tbody>
             </table>
         </div>
+
+        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Choosing Your Setup: DIY vs Professional</h2>
+        <p className="mb-4">
+            You don't need to spend a lot to get started. Many YouTubers begin by improvising a <a href="/en/diy-homemade-teleprompter" className="text-purple-400 hover:text-purple-300 underline">DIY homemade teleprompter</a> with simple materials.
+        </p>
+        <ul className="list-disc pl-6 mb-6 text-slate-300 space-y-2">
+            <li><strong>Beginner (Zero Cost):</strong> Use PromptNinja on a laptop positioned just below the camera.</li>
+            <li><strong>Intermediate:</strong> Use a <a href="/en/teleprompter-app-for-tablet-ipad" className="text-purple-400 hover:text-purple-300 underline">tablet or iPad</a> as a projection screen for better portability.</li>
+            <li><strong>Professional:</strong> Get a glass stand (beam splitter) and use it with your tablet and PromptNinja's Mirror Mode to read directly "through" the lens.</li>
+        </ul>
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">A YouTuber's Workflow with PromptNinja</h2>
         <p className="mb-4">

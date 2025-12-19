@@ -26,7 +26,7 @@ export const MelhorAppTeleprompterEN = () => (
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">The Evolution: Web-Based Teleprompters with P2P Technology</h2>
         <p className="text-slate-300 mb-8">
-            The real innovation isn't in another app to download, but in a tool that works directly in the browser, using modern technologies to solve old problems. This is where <strong>PromptNinja</strong> stands out as a <strong>PWA (Progressive Web App)</strong>. It doesn't take up space on your phone, <strong>works offline</strong>, and can be installed in 1 second without going through the app store.
+            The real innovation isn't in another app to download, but in a tool that works directly in the browser, using modern technologies to solve old problems. This is where <strong>PromptNinja</strong> stands out as a <strong>PWA (Progressive Web App)</strong>. It doesn't take up space on your phone, <strong>works offline</strong>, and can be installed in 1 second without going through the app store. <a href="/en/how-to-install-teleprompter-app-pwa" className="text-purple-400 hover:text-purple-300 underline">Learn how to install the PWA here</a>.
         </p>
 
         <h3 className="text-2xl font-bold text-white mt-8 mb-4">Comparison Chart: PromptNinja vs. Competitors</h3>
@@ -64,6 +64,12 @@ export const MelhorAppTeleprompterEN = () => (
                         <td className="p-4 border border-slate-700 text-center text-green-400">Free</td>
                         <td className="p-4 border border-slate-700 text-center">Free (with limitations)</td>
                         <td className="p-4 border border-slate-700 text-center">Paid (Subscription)</td>
+                    </tr>
+                    <tr>
+                        <td className="p-4 border border-slate-700">Voice Control (AI)</td>
+                        <td className="p-4 border border-slate-700 text-center text-green-400">Yes (Speech Recognition)</td>
+                        <td className="p-4 border border-slate-700 text-center">No</td>
+                        <td className="p-4 border border-slate-700 text-center">No</td>
                     </tr>
                 </tbody>
             </table>

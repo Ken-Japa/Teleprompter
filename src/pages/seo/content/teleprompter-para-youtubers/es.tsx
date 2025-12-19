@@ -21,6 +21,9 @@ export const TeleprompterParaYoutubersES = () => (
         <p className="mb-4">
             Muchos YouTubers graban solos en sus estudios caseros. Lo último que quieres es tener que levantarte en cada toma para ajustar el guion o reiniciar el software. PromptNinja fue diseñado para resolver exactamente eso. <a href="/es/mejor-app-teleprompter" className="text-purple-400 hover:text-purple-300 underline">Mira por qué es considerada la mejor app de teleprompter</a> para creadores independientes.
         </p>
+        <p className="mb-4">
+            Además, es perfecto si también haces transmisiones en vivo o videollamadas. Puedes usarlo como un <a href="/es/teleprompter-zoom-meeting" className="text-purple-400 hover:text-purple-300 underline">teleprompter para Zoom y Google Meet</a>, asegurando una presencia profesional en todas las ocasiones.
+        </p>
 
         <div className="overflow-x-auto my-8">
             <table className="min-w-full bg-slate-800 rounded-lg">
@@ -54,6 +57,16 @@ export const TeleprompterParaYoutubersES = () => (
                 </tbody>
             </table>
         </div>
+
+        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Eligiendo tu Configuración: Casera vs Profesional</h2>
+        <p className="mb-4">
+            No necesitas gastar mucho para empezar. Muchos YouTubers comienzan improvisando un <a href="/es/teleprompter-casero-diy" className="text-purple-400 hover:text-purple-300 underline">teleprompter casero (DIY)</a> con materiales simples.
+        </p>
+        <ul className="list-disc pl-6 mb-6 text-slate-300 space-y-2">
+            <li><strong>Principiante (Costo Cero):</strong> Usa PromptNinja en un portátil colocado justo debajo de la cámara.</li>
+            <li><strong>Intermedio:</strong> Usa una <a href="/es/teleprompter-para-tablet-ipad-android" className="text-purple-400 hover:text-purple-300 underline">tablet o iPad</a> como pantalla de proyección para mayor portabilidad.</li>
+            <li><strong>Profesional:</strong> Adquiere un soporte de vidrio (beam splitter) y úsalo con tu tablet y el Modo Espejo de PromptNinja para leer directamente "a través" de la lente.</li>
+        </ul>
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">Flujo de Trabajo de un YouTuber con PromptNinja</h2>
         <p className="mb-4">

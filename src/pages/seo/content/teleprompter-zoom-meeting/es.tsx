@@ -126,6 +126,31 @@ export const TeleprompterZoomMeetingES = () => (
             ]}
         />
 
+
+        <div className="bg-slate-800 p-6 rounded-lg mt-8 mb-8">
+            <h3 className="text-xl font-bold text-white mb-3">Ver También: Domina el Video Online</h3>
+            <ul className="space-y-2">
+                <li>
+                    <a href="/es/teleprompter-online-gratis" className="text-purple-400 hover:text-purple-300 underline flex items-center">
+                        <span className="mr-2">📺</span>
+                        Teleprompter Online Gratis (Funciona en el Navegador)
+                    </a>
+                </li>
+                <li>
+                    <a href="/es/teleprompter-caseiro-diy" className="text-purple-400 hover:text-purple-300 underline flex items-center">
+                        <span className="mr-2">🛠️</span>
+                        Cómo Hacer un Teleprompter Casero (DIY)
+                    </a>
+                </li>
+                <li>
+                    <a href="/es/webrtc-latency" className="text-purple-400 hover:text-purple-300 underline flex items-center">
+                        <span className="mr-2">⚡</span>
+                        Por qué PromptNinja no tiene retraso (Zero Latency)
+                    </a>
+                </li>
+            </ul>
+        </div>
+
         <div className="text-center mt-12">
             <a
                 href="https://promptninja.solutionkit.com.br"
