@@ -36,12 +36,61 @@ const viteConfig = defineConfig({
             },
             workbox: {
                 maximumFileSizeToCacheInBytes: 3000000,
-                globPatterns: ["**/*.{js,css,html,svg,woff2}"],
+                globPatterns: ["**/*.{js,css,html,svg,woff2,png,jpg,jpeg,webp}"],
                 ignoreURLParametersMatching: [/^__WB_REVISION__$/],
+                // Runtime caching strategies for better offline support
+                runtimeCaching: [
+                    {
+                        // Cache Google Fonts stylesheets
+                        urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+                        handler: "CacheFirst",
+                        options: {
+                            cacheName: "google-fonts-stylesheets",
+                            expiration: {
+                                maxEntries: 10,
+                                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
+                            },
+                            cacheableResponse: {
+                                statuses: [0, 200],
+                            },
+                        },
+                    },
+                    {
+                        // Cache Google Fonts webfont files
+                        urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+                        handler: "CacheFirst",
+                        options: {
+                            cacheName: "google-fonts-webfonts",
+                            expiration: {
+                                maxEntries: 30,
+                                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
+                            },
+                            cacheableResponse: {
+                                statuses: [0, 200],
+                            },
+                        },
+                    },
+                    {
+                        // Cache images with CacheFirst strategy
+                        urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|ico)$/i,
+                        handler: "CacheFirst",
+                        options: {
+                            cacheName: "images-cache",
+                            expiration: {
+                                maxEntries: 60,
+                                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+                            },
+                            cacheableResponse: {
+                                statuses: [0, 200],
+                            },
+                        },
+                    },
+                ],
             },
         }),
     ],
     build: {
+        sourcemap: true,
         cssCodeSplit: true, // Enable CSS code splitting
         rollupOptions: {
             output: {

@@ -176,28 +176,124 @@ PRO-NINJA-2025
 window.showPaywallModal()
 npx tsc --noEmit
 
-## Analytics Events
+## 📊 Analytics Events
 
-This project uses Google Analytics 4 (GA4) custom events to track user engagement and system health. Below is a list of all configured events:
+Este projeto utiliza Google Analytics 4 (GA4) para rastrear engajamento do usuário e saúde do sistema. Abaixo está a documentação completa de todos os eventos configurados.
 
-| Event Name | Description | Parameters |
+### Eventos Automáticos do GA4
+
+Estes eventos são rastreados automaticamente pelo Google Analytics 4 (não requerem configuração):
+
+| Evento | Descrição |
+| :--- | :--- |
+| `first_visit` | Primeira visita do usuário ao site |
+| `session_start` | Início de uma nova sessão de usuário |
+| `page_view` | Visualização de página |
+| `user_engagement` | Engajamento do usuário (tempo ativo na página) |
+| `scroll` | Usuário rolou a página até 90% de profundidade |
+
+### Eventos Personalizados do PromptNinja
+
+Estes eventos foram implementados especificamente para rastrear funcionalidades do PromptNinja:
+
+#### Ciclo de Vida da Aplicação
+
+| Evento | Descrição | Parâmetros |
 | :--- | :--- | :--- |
-| `page_heartbeat` | Triggered every 60s while Host page is open | `duration_seconds` |
-| `page_duration` | Triggered when leaving Host page | `duration_seconds` |
-| `usage_heartbeat` | Triggered every 60s during active P2P connection | `duration_seconds` |
-| `session_duration` | Triggered when P2P connection ends | `duration_seconds` |
-| `successful_connection` | Triggered on successful P2P handshake | - |
-| `setting_changed` | Triggered when any setting is modified | `setting_name`, `value` |
-| `teleprompter_play` | Triggered when scroll starts | `speed_start` |
-| `teleprompter_pause` | Triggered when scroll pauses | `duration_since_start` |
-| `conversion` | Triggered on specific goals (Signup/Upgrade) | `type` |
-| `recording_start` | Triggered when recording starts | `mode` (host/remote) |
-| `recording_stop` | Triggered when recording stops | `mode`, `duration` |
-| `app_error` | Generic application errors (incl. P2P) | `error_type`, `message` |
-| `feature_error` | Feature prevented (e.g. voice control without Pro) | `feature_name` |
-| `paywall_view` | Paywall modal displayed | `trigger` (manual/timer) |
-| `paywall_cta_click` | Interaction with paywall button | `cta_type` |
-| `open_script` | Script loaded | `source` (url_param) |
-| `start_pacing` | Scroll started | `speed_start`, `mode` (auto/voice) |
-| `finish_reading` | Reached end of script | `duration_seconds` (placeholder) |
-| `remote_connected` | Remote device connected | `role` (host/remote) |
+| `app_launched` | Aplicação iniciada | - |
+| `app_error` | Erro genérico da aplicação | `error_type` (string), `message` (string) |
+| `feature_error` | Funcionalidade bloqueada (ex: voice control sem Pro) | `feature_name` (string) |
+
+#### Teleprompter & Rolagem
+
+| Evento | Descrição | Parâmetros |
+| :--- | :--- | :--- |
+| `teleprompter_play` | Rolagem do teleprompter iniciada | `speed_start` (number) |
+| `teleprompter_pause` | Rolagem do teleprompter pausada | `duration_since_start` (number) |
+| `start_pacing` | Apresentação iniciada com timer/pacer | `speed_start` (number), `mode` (string: auto/voice) |
+| `finish_reading` | Usuário chegou ao final do roteiro | `duration_seconds` (number) |
+
+#### Conexão P2P & Remoto
+
+| Evento | Descrição | Parâmetros |
+| :--- | :--- | :--- |
+| `successful_connection` | Handshake P2P bem-sucedido | - |
+| `remote_connected` | Dispositivo remoto conectado | `role` (string: host/remote) |
+
+#### Configurações & Personalização
+
+| Evento | Descrição | Parâmetros |
+| :--- | :--- | :--- |
+| `setting_changed` | Qualquer configuração foi modificada | `setting_name` (string), `value` (string\|number\|boolean) |
+
+#### Compartilhamento & Social
+
+| Evento | Descrição | Parâmetros |
+| :--- | :--- | :--- |
+| `share_button_clicked` | Botão de compartilhar clicado | `lang` (string), `url` (string) |
+| `share_copied_to_clipboard` | URL copiada para área de transferência | `lang` (string), `url` (string) |
+
+#### Monetização & Conversão
+
+| Evento | Descrição | Parâmetros |
+| :--- | :--- | :--- |
+| `paywall_view` | Modal de paywall exibido | `trigger` (string: manual/timer) |
+| `paywall_cta_click` | Botão do paywall clicado | `cta_type` (string) |
+| `pro_key_redeemed` | Chave Pro resgatada com sucesso | - |
+
+#### Gravação
+
+| Evento | Descrição | Parâmetros |
+| :--- | :--- | :--- |
+| `recording_start` | Gravação de vídeo iniciada | `mode` (string: host/remote) |
+| `recording_stop` | Gravação de vídeo finalizada | `mode` (string), `duration` (number) |
+
+#### Métricas de Engajamento
+
+| Evento | Descrição | Parâmetros |
+| :--- | :--- | :--- |
+| `page_heartbeat` | Enviado a cada 60s enquanto a página Host está aberta | `duration_seconds` (number) |
+| `page_duration` | Enviado ao sair da página Host | `duration_seconds` (number) |
+| `usage_heartbeat` | Enviado a cada 60s durante conexão P2P ativa | `duration_seconds` (number) |
+
+### 🔍 Como Visualizar Parâmetros no GA4
+
+Os eventos listados acima **possuem parâmetros** (quando indicado), mas eles não aparecem nos relatórios padrão do GA4. Para visualizá-los:
+
+#### Opção 1: DebugView (Recomendado para Desenvolvimento)
+1. Acesse **Admin → DebugView** no console do GA4
+2. Visualize eventos em tempo real com todos os parâmetros detalhados
+3. Note: O projeto já está configurado com `debug_mode: true`
+
+#### Opção 2: Análise Livre (Produção)
+1. Acesse **Explorar → Análise livre** no GA4
+2. Selecione o evento desejado
+3. Adicione os parâmetros como **dimensões personalizadas**
+4. Crie relatórios customizados agrupando por parâmetros
+
+#### Opção 3: Dimensões Personalizadas
+1. Acesse **Admin → Definições personalizadas → Criar dimensão personalizada**
+2. Mapeie parâmetros importantes (ex: `error_type`, `setting_name`, `cta_type`)
+3. Aguarde 24-48h para os dados começarem a aparecer nos relatórios padrão
+
+### 📝 Exemplos de Uso dos Parâmetros
+
+```javascript
+// Rastreando erro com detalhes
+trackEvent("app_error", { 
+  error_type: "p2p_connection", 
+  message: "Failed to establish peer connection" 
+});
+
+// Rastreando mudança de configuração
+trackEvent("setting_changed", { 
+  setting_name: "fontSize", 
+  value: 48 
+});
+
+// Rastreando início de apresentação com voice control
+trackEvent("start_pacing", { 
+  speed_start: 150, 
+  mode: "voice" 
+});
+```

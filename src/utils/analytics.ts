@@ -10,7 +10,7 @@ declare global {
         gtag: (...args: any[]) => void;
     }
 }
-
+import * as Sentry from "@sentry/react";
 /**
  * Rastreia um evento personalizado no Google Analytics.
  * @param eventName O nome do evento a ser rastreado.
@@ -150,7 +150,15 @@ export function stopPageUsageTracking(): void {
  * @param message A mensagem de erro ou detalhes.
  */
 export function trackError(errorType: string, message: string): void {
+    // Send to Google Analytics
     trackEvent("app_error", { error_type: errorType, message: message });
+
+    // Send to Sentry (if initialized)
+    if (Sentry.isInitialized()) {
+        Sentry.captureException(new Error(message), {
+            tags: { error_type: errorType },
+        });
+    }
 }
 
 /**

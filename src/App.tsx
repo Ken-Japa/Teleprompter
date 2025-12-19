@@ -12,6 +12,8 @@ import { SeoPages, SeoRouteKey } from "./config/seoRoutes";
 import { SEO_ROUTES } from "./config/constants";
 import { ROUTES_CONFIG } from "./config/routes.js";
 import { Language } from "./locales/index";
+import { OfflineIndicator } from "./components/ui/OfflineIndicator";
+
 
 type ViewState = "LANDING" | "HOST" | "REMOTE" | "THANK_YOU" | SeoRouteKey;
 
@@ -158,6 +160,7 @@ const App: React.FC = () => {
 
     return (
         <TranslationProvider initialLang={currentLang}>
+            <OfflineIndicator />
             <Suspense fallback={<LoadingSpinner />}>
                 {view === "REMOTE" && <Remote hostId={remoteId} />}
                 {view === "LANDING" && <Landing onLaunch={launchApp} />}
