@@ -106,7 +106,7 @@ export const TeleprompterCaseiroDIY: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = TeleprompterCaseiroDIYEN;
-        title = "How to Make a DIY Teleprompter: Complete Guide + FREE Software";
+        title = "DIY Homemade Teleprompter Guide + FREE Mirror Mode Software 🔄";
         description = "Learn how to build a professional DIY teleprompter at home on a budget. Step-by-step guide with materials list. Includes free online teleprompter software with mirror mode.";
         ctaText = "Open Mirror Mode Now";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/diy-homemade-teleprompter";
@@ -169,6 +169,14 @@ export const TeleprompterCaseiroDIY: React.FC<Props> = ({ onLaunch }) => {
                     "mainEntity": [
                         {
                             "@type": "Question",
+                            "name": "Why does the text look backwards on my DIY teleprompter?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "This happens because of the physical reflection on the glass. To fix this, use PromptNinja and toggle 'Mirror Mode', which horizontally flips the text so it's readable in the reflection."
+                            }
+                        },
+                        {
+                            "@type": "Question",
                             "name": "Do I need special glass for a teleprompter?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
@@ -197,7 +205,7 @@ export const TeleprompterCaseiroDIY: React.FC<Props> = ({ onLaunch }) => {
         };
     } else if (lang === 'es') {
         Content = TeleprompterCaseiroDIYES;
-        title = "Cómo Hacer un Teleprompter Casero (DIY): Guía Completa + Software GRATIS";
+        title = "Teleprompter Casero: Guía DIY + Software con Modo Espejo GRATIS 🔄";
         description = "Aprende a construir un teleprompter casero profesional con poco dinero. Guía paso a paso. Incluye software de teleprompter online gratis con modo espejo.";
         ctaText = "Abrir Modo Espejo Ahora";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-casero-diy";
@@ -258,6 +266,14 @@ export const TeleprompterCaseiroDIY: React.FC<Props> = ({ onLaunch }) => {
                 {
                     "@type": "FAQPage",
                     "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "¿Por qué el texto se ve al revés en mi teleprompter casero?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Esto sucede por la reflexión física en el vidrio. Para solucionarlo, usa PromptNinja y activa el botón de 'Modo Espejo', que invierte el texto horizontalmente para que sea legible en el reflejo."
+                            }
+                        },
                         {
                             "@type": "Question",
                             "name": "¿Necesito un vidrio especial para teleprompter?",

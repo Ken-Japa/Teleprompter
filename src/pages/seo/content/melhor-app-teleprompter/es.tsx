@@ -48,6 +48,30 @@ export const MelhorAppTeleprompterES = () => (
             La verdadera innovación no está en otra app para descargar, sino en una herramienta que funciona directamente en el navegador. PromptNinja es un <strong>PWA (Progressive Web App)</strong>: no ocupa espacio en tu móvil, <strong>funciona sin conexión</strong> y se instala en 1 segundo sin pasar por la tienda de aplicaciones. <a href="/es/como-instalar-app-teleprompter-pwa" className="text-purple-400 hover:text-purple-300 underline">Aprende cómo instalar la PWA aquí</a>.
         </p>
 
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6 text-center">Funciones Profesionales que Mereces (Gratis)</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+            <div className="p-4 bg-slate-800 rounded-lg border border-slate-700">
+                <div className="text-purple-400 text-2xl mb-2">🎙️</div>
+                <h3 className="font-bold text-white mb-2">Control por Voz (IA)</h3>
+                <p className="text-sm text-slate-400">El texto avanza automáticamente mientras hablas. Sin manos, pura magia.</p>
+            </div>
+            <div className="p-4 bg-slate-800 rounded-lg border border-slate-700">
+                <div className="text-blue-400 text-2xl mb-2">🪞</div>
+                <h3 className="font-bold text-white mb-2">Modo Espejo</h3>
+                <p className="text-sm text-slate-400">Refleja el texto (ejes X e Y) para usar con cristales y telemprompters profesionales.</p>
+            </div>
+            <div className="p-4 bg-slate-800 rounded-lg border border-slate-700">
+                <div className="text-green-400 text-2xl mb-2">🔒</div>
+                <h3 className="font-bold text-white mb-2">100% Privado</h3>
+                <p className="text-sm text-slate-400">Tus guiones se guardan en tu navegador. Nada se envía a la nube.</p>
+            </div>
+            <div className="p-4 bg-slate-800 rounded-lg border border-slate-700">
+                <div className="text-yellow-400 text-2xl mb-2">⚡</div>
+                <h3 className="font-bold text-white mb-2">Totalmente Offline</h3>
+                <p className="text-sm text-slate-400">¿Sin internet? No hay problema. La PWA funciona perfectamente sin conexión.</p>
+            </div>
+        </div>
+
         <h2 className="text-3xl font-bold text-white mt-12 mb-6 text-center">Comparativa: PromptNinja vs. Apps Genéricas</h2>
         <div className="overflow-x-auto bg-slate-900 p-4 rounded-lg border border-slate-800">
             <table className="w-full text-left border-collapse">

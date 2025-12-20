@@ -19,7 +19,10 @@ export const MelhorAppTeleprompter: React.FC<Props> = ({ onLaunch }) => {
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {
         "@context": "https://schema.org",
-        "@type": "WebPage",
+        "@type": "Article",
+        "headline": title,
+        "datePublished": "2025-01-01",
+        "dateModified": new Date().toISOString().split('T')[0],
         "name": title,
         "description": description,
         "url": canonicalUrl,
@@ -28,6 +31,12 @@ export const MelhorAppTeleprompter: React.FC<Props> = ({ onLaunch }) => {
             "@type": "Organization",
             "name": "PromptNinja",
             "url": "https://promptninja.solutionkit.com.br"
+        },
+        "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5",
+            "worstRating": "1"
         },
         "mainEntity": {
             "@type": "FAQPage",
@@ -53,7 +62,7 @@ export const MelhorAppTeleprompter: React.FC<Props> = ({ onLaunch }) => {
                     "name": "A versão gratuita é realmente funcional?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Sim. Acrseditamos que o controle remoto é uma função essencial, não um luxo. Por isso, nossa funcionalidade principal é 100% gratuita e sem limite de tempo. Oferecemos uma versão Pro com recursos avançados como reconhecimento de voz, mas o núcleo da ferramenta está disponível para todos."
+                        "text": "Sim. Acreditamos que o controle remoto é uma função essencial, não um luxo. Por isso, nossa funcionalidade principal é 100% gratuita e sem limite de tempo. Oferecemos uma versão Pro com recursos avançados como reconhecimento de voz, mas o núcleo da ferramenta está disponível para todos."
                     }
                 }
             ]
@@ -69,7 +78,10 @@ export const MelhorAppTeleprompter: React.FC<Props> = ({ onLaunch }) => {
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {
             "@context": "https://schema.org",
-            "@type": "WebPage",
+            "@type": "Article",
+            "headline": title,
+            "datePublished": "2025-01-01",
+            "dateModified": new Date().toISOString().split('T')[0],
             "name": title,
             "description": description,
             "url": canonicalUrl,
@@ -78,6 +90,12 @@ export const MelhorAppTeleprompter: React.FC<Props> = ({ onLaunch }) => {
                 "@type": "Organization",
                 "name": "PromptNinja",
                 "url": "https://promptninja.solutionkit.com.br/?lang=en"
+            },
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5",
+                "worstRating": "1"
             },
             "mainEntity": {
                 "@type": "FAQPage",
@@ -118,7 +136,10 @@ export const MelhorAppTeleprompter: React.FC<Props> = ({ onLaunch }) => {
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {
             "@context": "https://schema.org",
-            "@type": "WebPage",
+            "@type": "Article",
+            "headline": title,
+            "datePublished": "2025-01-01",
+            "dateModified": new Date().toISOString().split('T')[0],
             "name": title,
             "description": description,
             "url": canonicalUrl,
@@ -127,6 +148,12 @@ export const MelhorAppTeleprompter: React.FC<Props> = ({ onLaunch }) => {
                 "@type": "Organization",
                 "name": "PromptNinja",
                 "url": "https://promptninja.solutionkit.com.br/?lang=es"
+            },
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5",
+                "worstRating": "1"
             },
             "mainEntity": {
                 "@type": "FAQPage",

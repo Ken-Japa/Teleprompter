@@ -45,6 +45,22 @@ export const TeleprompterCaseiroDIYEN = () => (
             </div>
         </div>
 
+        <div className="bg-yellow-900/20 border-l-4 border-yellow-500 p-4 mb-6 rounded-r-lg">
+            <div className="flex">
+                <div className="flex-shrink-0">
+                    <span className="text-2xl">⚠️</span>
+                </div>
+                <div className="ml-3">
+                    <h3 className="text-sm font-bold text-yellow-500">Beware of the Mirror Effect!</h3>
+                    <div className="mt-2 text-sm text-yellow-200">
+                        <p>
+                            When using glass to reflect text, it will appear reversed. You'll need software that supports <strong>Mirror Mode</strong>. PromptNinja includes it for free so you can start recording right away.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div className="bg-slate-800 p-4 rounded-lg mb-6 border-l-4 border-purple-500">
             <h3 className="font-bold text-white mb-2">📱 Using a Tablet or iPad?</h3>
             <p className="text-slate-300 text-sm">
@@ -214,6 +230,10 @@ export const TeleprompterCaseiroDIYEN = () => (
         <SEOContentFAQ
             title=""
             items={[
+                {
+                    question: "Why does the text look backwards on my DIY teleprompter?",
+                    answer: "This happens because of the physical reflection on the glass. To fix this, use PromptNinja and toggle 'Mirror Mode', which horizontally flips the text so it's readable in the reflection."
+                },
                 {
                     question: "Do I need special glass or does regular glass work?",
                     answer: "Regular picture frame glass works perfectly! Professional \"beam splitter\" glass (50/50) is better, but for a DIY homemade setup the difference is minimal and the cost is 10x higher. The important thing is that the glass is clean and scratch-free."

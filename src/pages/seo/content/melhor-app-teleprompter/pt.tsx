@@ -10,16 +10,35 @@ export const MelhorAppTeleprompterPT = () => (
             Você pesquisou na App Store, testou dezenas de aplicativos e a frustração é sempre a mesma: apps de teleprompter que travam, cobram por funções básicas ou simplesmente não funcionam quando você mais precisa. Escolher o melhor app de teleprompter não é sobre qual tem mais downloads, mas sim qual resolve o seu problema de forma eficiente e profissional.
         </p>
 
-        <div className="bg-slate-900 p-6 rounded-lg border border-slate-800 mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">O Dilema dos Apps de Teleprompter Tradicionais</h2>
-            <p className="text-slate-300 mb-4">
+        <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
+            <h2 className="text-3xl font-bold text-white mb-6">O Dilema dos Apps Tradicionais</h2>
+            <p className="text-slate-300 mb-6">
                 O mercado está saturado de soluções que parecem boas no papel, mas falham na prática. Os problemas mais comuns são:
             </p>
-            <ul className="list-disc list-inside space-y-2 text-slate-400">
-                <li><strong>Controles Remotos via Bluetooth:</strong> A conexão é instável, o emparelhamento falha e a latência entre o comando e a rolagem do texto causa erros de timing.</li>
-                <li><strong>Modelos de Assinatura Abusivos:</strong> Funções essenciais, como salvar mais de um roteiro ou remover marcas d'água, são trancadas atrás de pagamentos mensais caros.</li>
-                <li><strong>Exclusividade de Plataforma:</strong> Um app que funciona bem no iPad pode não ter uma versão para Android ou PC, prendendo você a um único ecossistema.</li>
-                <li><strong>Consumo de Bateria e Recursos:</strong> Apps nativos podem drenar a bateria do seu dispositivo rapidamente, interrompendo gravações longas.
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <li className="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                    <h3 className="font-bold text-white text-lg mb-2">1. Controle via Bluetooth Instável</h3>
+                    <p className="text-sm text-slate-400">
+                        A conexão cai, o emparelhamento falha e a latência entre o comando e a rolagem causa erros graves de timing na sua fala.
+                    </p>
+                </li>
+                <li className="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                    <h3 className="font-bold text-white text-lg mb-2">2. Assinaturas Abusivas</h3>
+                    <p className="text-sm text-slate-400">
+                        Funções básicas como salvar roteiros ou remover a marca d'água ficam trancadas atrás de mensalidades caras.
+                    </p>
+                </li>
+                <li className="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                    <h3 className="font-bold text-white text-lg mb-2">3. Sem Sincronia Real</h3>
+                    <p className="text-sm text-slate-400">
+                        Tentar usar o celular para controlar o tablet ou PC é um pesadelo de compatibilidade entre sistemas diferentes.
+                    </p>
+                </li>
+                <li className="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                    <h3 className="font-bold text-white text-lg mb-2">4. Drenagem de Bateria</h3>
+                    <p className="text-sm text-slate-400">
+                        Apps nativos pesados consomem a bateria rapidamente, arriscando interromper suas gravações longas no meio.
+                    </p>
                 </li>
             </ul>
         </div>
@@ -28,6 +47,30 @@ export const MelhorAppTeleprompterPT = () => (
         <p className="text-slate-300 mb-8">
             A verdadeira inovação não está em mais um app para baixar, mas em uma ferramenta que funciona diretamente no navegador, utilizando tecnologias modernas para resolver os problemas antigos. É aqui que o <strong>PromptNinja</strong> se destaca como um <strong>PWA (Progressive Web App)</strong>. Ele não ocupa espaço no seu celular, <strong>funciona offline</strong> e pode ser instalado em 1 segundo sem passar pela loja de aplicativos. <a href="/como-instalar-app-teleprompter-pwa" className="text-purple-400 hover:text-purple-300 underline">Saiba como instalar o PWA aqui</a>.
         </p>
+
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Recursos Profissionais que Você Merece (Grátis)</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+            <div className="p-4 bg-slate-800 rounded-lg border border-slate-700">
+                <div className="text-purple-400 text-2xl mb-2">🎙️</div>
+                <h3 className="font-bold text-white mb-2">Controle por Voz (IA)</h3>
+                <p className="text-sm text-slate-400">O texto rola automaticamente conforme você fala. Sem as mãos, sem controles, pura mágica.</p>
+            </div>
+            <div className="p-4 bg-slate-800 rounded-lg border border-slate-700">
+                <div className="text-blue-400 text-2xl mb-2">🪞</div>
+                <h3 className="font-bold text-white mb-2">Modo Espelho</h3>
+                <p className="text-sm text-slate-400">Espelhe o texto (x e y) para usar com equipamentos profissionais de teleprompter e vidro refletor.</p>
+            </div>
+            <div className="p-4 bg-slate-800 rounded-lg border border-slate-700">
+                <div className="text-green-400 text-2xl mb-2">🔒</div>
+                <h3 className="font-bold text-white mb-2">100% Privado</h3>
+                <p className="text-sm text-slate-400">Seus roteiros ficam salvos no seu navegador. Nada é enviado para servidores na nuvem.</p>
+            </div>
+            <div className="p-4 bg-slate-800 rounded-lg border border-slate-700">
+                <div className="text-yellow-400 text-2xl mb-2">⚡</div>
+                <h3 className="font-bold text-white mb-2">Totalmente Offline</h3>
+                <p className="text-sm text-slate-400">Caiu a internet? Sem problemas. O PWA continua funcionando perfeitamente sem conexão.</p>
+            </div>
+        </div>
 
         <h3 className="text-2xl font-bold text-white mt-8 mb-4">Tabela Comparativa: PromptNinja vs. Concorrentes</h3>
         <div className="overflow-x-auto">
@@ -55,9 +98,21 @@ export const MelhorAppTeleprompterPT = () => (
                     </tr>
                     <tr>
                         <td className="p-4 border border-slate-700">Necessita Instalação</td>
-                        <td className="p-4 border border-slate-700 text-center text-green-400">Não</td>
+                        <td className="p-4 border border-slate-700 text-center text-green-400">Não (Roda no Navegador)</td>
                         <td className="p-4 border border-slate-700 text-center text-red-400">Sim</td>
                         <td className="p-4 border border-slate-700 text-center text-red-400">Sim</td>
+                    </tr>
+                    <tr>
+                        <td className="p-4 border border-slate-700">Sincronia Multiplataforma</td>
+                        <td className="p-4 border border-slate-700 text-center text-green-400">Nativa (PC, Tablet, Celular)</td>
+                        <td className="p-4 border border-slate-700 text-center">Limitada</td>
+                        <td className="p-4 border border-slate-700 text-center">Não</td>
+                    </tr>
+                    <tr>
+                        <td className="p-4 border border-slate-700">Modo Espelho (Mirror)</td>
+                        <td className="p-4 border border-slate-700 text-center text-green-400">Grátis</td>
+                        <td className="p-4 border border-slate-700 text-center">Pago</td>
+                        <td className="p-4 border border-slate-700 text-center">Pago</td>
                     </tr>
                     <tr>
                         <td className="p-4 border border-slate-700">Preço Base</td>

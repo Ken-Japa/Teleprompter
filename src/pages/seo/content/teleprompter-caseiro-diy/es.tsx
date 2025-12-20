@@ -45,6 +45,22 @@ export const TeleprompterCaseiroDIYES = () => (
             </div>
         </div>
 
+        <div className="bg-yellow-900/20 border-l-4 border-yellow-500 p-4 mb-6 rounded-r-lg">
+            <div className="flex">
+                <div className="flex-shrink-0">
+                    <span className="text-2xl">⚠️</span>
+                </div>
+                <div className="ml-3">
+                    <h3 className="text-sm font-bold text-yellow-500">¡Cuidado con el Efecto Espejo!</h3>
+                    <div className="mt-2 text-sm text-yellow-200">
+                        <p>
+                            Al usar un vidrio para reflejar el texto, este aparecerá invertido. Necesitarás un software que soporte <strong>Modo Espejo (Mirror Mode)</strong>. PromptNinja lo incluye gratis para que puedas empezar a grabar de inmediato.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div className="bg-slate-800 p-4 rounded-lg mb-6 border-l-4 border-purple-500">
             <h3 className="font-bold text-white mb-2">📱 ¿Vas a usar una Tablet o iPad?</h3>
             <p className="text-slate-300 text-sm">
@@ -214,6 +230,10 @@ export const TeleprompterCaseiroDIYES = () => (
         <SEOContentFAQ
             title=""
             items={[
+                {
+                    question: "¿Por qué el texto se ve al revés en mi teleprompter casero?",
+                    answer: "Esto sucede por la reflexión física en el vidrio. Para solucionarlo, usa PromptNinja y activa el botón de 'Modo Espejo', que invierte el texto horizontalmente para que sea legible en el reflejo."
+                },
                 {
                     question: "¿Necesito un vidrio especial o el vidrio común sirve?",
                     answer: "¡Un vidrio de marco de fotos común funciona perfectamente! Los vidrios profesionales \"beam splitter\" (50/50) son mejores, pero para una configuración DIY casera la diferencia es mínima y el costo es 10 veces mayor. Lo importante es que el vidrio esté limpio y sin arañazos."
