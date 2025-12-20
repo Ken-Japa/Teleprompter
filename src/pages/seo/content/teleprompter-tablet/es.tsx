@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTabletES = () => (
     <>
@@ -50,16 +51,22 @@ export const TeleprompterTabletES = () => (
         <p className="mb-4">
             Existen dos formas principales de usar tu tablet como teleprompter:
         </p>
-        <ol className="list-decimal pl-6 mb-6 space-y-4">
-            <li>
-                <strong>Lectura Directa (Posición Cercana a la Cámara):</strong>
-                <p className="text-slate-300 mt-1">Coloca la tablet lo más cerca posible de la lente de la cámara. Aumenta la distancia entre la cámara y tú. Esto minimiza el movimiento de los ojos. Genial para setups rápidos y sin costos extra.</p>
-            </li>
-            <li>
-                <strong>Con Hardware de Teleprompter (Espejo/Vidrio):</strong>
-                <p className="text-slate-300 mt-1">Acuesta la tablet bajo un vidrio reflector (beam splitter). La cámara va detrás del vidrio. PromptNinja invierte el texto para que lo leas correctamente en el reflejo. Es el método más profesional y las tablets proveen el brillo y tamaño de pantalla perfectos.</p>
-            </li>
-        </ol>
+        <SEOContentHowTo
+            title="Cómo Armar un Setup con Tablet"
+            schemaTitle="Cómo Usar Tablet como Teleprompter"
+            totalTime="PT15M"
+            tools={["Tablet", "PromptNinja", "Trípode"]}
+            steps={[
+                {
+                    title: "Método 1: Lectura Directa",
+                    text: "Coloca la tablet lo más cerca posible de la lente de la cámara. Aumenta la distancia entre la cámara y tú. Esto minimiza el movimiento de los ojos. Genial para setups rápidos y sin costos extra."
+                },
+                {
+                    title: "Método 2: Con Hardware de Teleprompter",
+                    text: "Acuesta la tablet bajo un vidrio reflector (beam splitter). La cámara va detrás del vidrio. PromptNinja invierte el texto para que lo leas correctamente en el reflejo. Es el método más profesional."
+                }
+            ]}
+        />
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">Compatibilidad Total</h2>
         <p className="mb-4">

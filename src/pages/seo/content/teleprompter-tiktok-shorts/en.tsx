@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTikTokShortsEN = () => (
     <>
@@ -17,23 +18,27 @@ export const TeleprompterTikTokShortsEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">How to Record Professional TikToks with a Teleprompter</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>Optimized Scripts:</strong> Write short, punchy scripts. Use our editor to highlight keywords in colors (red for emphasis, yellow for pauses). <a href="/en/scripts-for-tiktok-shorts" className="text-purple-400 hover:text-purple-300 underline">Start fast with our viral templates</a>.
-                </li>
-                <li>
-                    <strong>Vertical Positioning:</strong> Place the text at the top of your phone screen, right next to the front camera. This ensures your eyes look directly at the viewer, creating instant connection.
-                </li>
-                <li>
-                    <strong>Discreet Control:</strong> Use PromptNinja on a second device to control scrolling. No need to reach out to pause recording or restart text, saving hours of editing.
-                </li>
-            </ol>
-            <p className="mt-6 text-slate-300">
-                Struggling to remember your lines? Check our guide on <a href="/en/how-to-memorize-scripts-fast" className="text-purple-400 hover:text-purple-300 underline">how to memorize scripts fast</a> (or why you shouldn't).
-            </p>
-        </div>
+
+        <SEOContentHowTo
+            title="How to Record Professional TikToks with a Teleprompter"
+            schemaTitle="How to Record Vertical Videos with Teleprompter"
+            totalTime="PT5M"
+            tools={["Smartphone", "PromptNinja", "Tripod"]}
+            steps={[
+                {
+                    title: "Step 1: Optimized Scripts",
+                    text: "Write short, punchy scripts. Use our editor to highlight keywords in colors (red for emphasis, yellow for pauses)."
+                },
+                {
+                    title: "Step 2: Vertical Positioning",
+                    text: "Place the text at the top of your phone screen, right next to the front camera. This ensures your eyes look directly at the viewer, creating instant connection."
+                },
+                {
+                    title: "Step 3: Discreet Control",
+                    text: "Use PromptNinja on a second device to control scrolling. No need to reach out to pause recording or restart text, saving hours of editing."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

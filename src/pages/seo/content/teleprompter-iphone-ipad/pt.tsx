@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterIphoneIpadPT = () => (
     <>
@@ -16,21 +17,26 @@ export const TeleprompterIphoneIpadPT = () => (
                 Além disso, você pode adicionar o PromptNinja à sua tela de início ("Add to Home Screen") para uma experiência de aplicativo de tela cheia, sem barras de navegação.
             </p>
         </div>
-
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Configuração Ideal para Criadores iOS</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>iPad como Monitor Principal:</strong> A tela grande do iPad é perfeita para leitura a média distância. Coloque-o logo abaixo da lente da sua câmera DSLR para um setup profissional de estúdio.
-                </li>
-                <li>
-                    <strong>iPhone como Controle Remoto:</strong> Abra o roteiro no iPad e escaneie o QR Code com a câmera do seu iPhone. Seu celular agora controla a velocidade e play/pause do iPad instantaneamente.
-                </li>
-                <li>
-                    <strong>Vlog com iPhone:</strong> Vai gravar um story ou TikTok? Abra o PromptNinja no próprio iPhone, posicione o texto no topo e grave sem perder o contato visual.
-                </li>
-            </ol>
-        </div>
+        <SEOContentHowTo
+            title="Configuração Ideal para Criadores iOS"
+            schemaTitle="Como Configurar Teleprompter no iPhone e iPad"
+            totalTime="PT5M"
+            tools={["iPhone", "iPad", "DSLR (Opcional)"]}
+            steps={[
+                {
+                    title: "Opção 1: iPad como Monitor Principal",
+                    text: "A tela grande do iPad é perfeita para leitura a média distância. Coloque-o logo abaixo da lente da sua câmera DSLR para um setup profissional de estúdio."
+                },
+                {
+                    title: "Opção 2: iPhone como Controle Remoto",
+                    text: "Abra o roteiro no iPad e escaneie o QR Code com a câmera do seu iPhone. Seu celular agora controla a velocidade e play/pause do iPad instantaneamente."
+                },
+                {
+                    title: "Opção 3: Vlog com iPhone",
+                    text: "Vai gravar um story ou TikTok? Abra o PromptNinja no próprio iPhone, posicione o texto no topo e grave sem perder o contato visual."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

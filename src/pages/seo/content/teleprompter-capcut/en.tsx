@@ -1,5 +1,6 @@
 
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterCapCutEN = () => (
     <>
@@ -18,23 +19,30 @@ export const TeleprompterCapCutEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Winning Workflow: PromptNinja + CapCut</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>Prep:</strong> Write your script in PromptNinja. Use colors to mark where you'll make cuts or apply visual effects in CapCut.
-                </li>
-                <li>
-                    <strong>Recording:</strong> Open PromptNinja on mobile, position vertically, and record. Use a second device to control scrolling remotely, avoiding reaching arms in the shot.
-                </li>
-                <li>
-                    <strong>Editing in CapCut:</strong> Import the recorded video. Since you didn't fluff your lines (thanks to the prompter), your timeline will be clean.
-                </li>
-                <li>
-                    <strong>Dynamic Captions:</strong> Use CapCut's "Auto Captions". Since your diction was guided by the script, captions will be generated with much higher accuracy.
-                </li>
-            </ol>
-        </div>
+        <SEOContentHowTo
+            title="Winning Workflow: PromptNinja + CapCut"
+            schemaTitle="How to Use Teleprompter with CapCut"
+            totalTime="PT10M"
+            tools={["CapCut", "PromptNinja", "Smartphone"]}
+            steps={[
+                {
+                    title: "Step 1: Prep",
+                    text: "Write your script in PromptNinja. Use colors to mark where you'll make cuts or apply visual effects in CapCut."
+                },
+                {
+                    title: "Step 2: Recording",
+                    text: "Open PromptNinja on mobile, position vertically, and record. Use a second device to control scrolling remotely."
+                },
+                {
+                    title: "Step 3: Editing in CapCut",
+                    text: "Import the recorded video. Since you didn't fluff your lines (thanks to the prompter), your timeline will be clean."
+                },
+                {
+                    title: "Step 4: Dynamic Captions",
+                    text: "Use CapCut's \"Auto Captions\". Since your diction was guided by the script, captions will be generated with high accuracy."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

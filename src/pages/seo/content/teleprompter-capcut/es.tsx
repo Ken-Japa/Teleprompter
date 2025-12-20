@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterCapCutES = () => (
     <>
@@ -16,24 +17,30 @@ export const TeleprompterCapCutES = () => (
                 Con PromptNinja, obtienes <strong>Control Remoto P2P</strong> (usa otro móvil para controlar la velocidad mientras grabas), <strong>Control por Voz</strong> y formato de texto avanzado. Graba el video crudo a la perfección en PromptNinja y llévalo a CapCut solo para el pulido final.
             </p>
         </div>
-
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Flujo de Trabajo Ganador: PromptNinja + CapCut</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>Preparación:</strong> Escribe tu guion en PromptNinja. Usa colores para marcar cortes o efectos.
-                </li>
-                <li>
-                    <strong>Grabación:</strong> Abre PromptNinja en el móvil y graba. Usa un segundo dispositivo para controlar el desplazamiento remotamente.
-                </li>
-                <li>
-                    <strong>Edición en CapCut:</strong> Importa el video grabado. Como no te equivocaste en el texto, tu línea de tiempo estará limpia.
-                </li>
-                <li>
-                    <strong>Subtítulos Dinámicos:</strong> Usa "Subtítulos Automáticos" de CapCut. Gracias a tu dicción guiada, serán mucho más precisos.
-                </li>
-            </ol>
-        </div>
+        <SEOContentHowTo
+            title="Flujo de Trabajo Ganador: PromptNinja + CapCut"
+            schemaTitle="Cómo Usar Teleprompter con CapCut"
+            totalTime="PT10M"
+            tools={["CapCut", "PromptNinja", "Smartphone"]}
+            steps={[
+                {
+                    title: "Paso 1: Preparación",
+                    text: "Escribe tu guion en PromptNinja. Usa colores para marcar cortes o efectos."
+                },
+                {
+                    title: "Paso 2: Grabación",
+                    text: "Abre PromptNinja en el móvil y graba. Usa un segundo dispositivo para controlar el desplazamiento remotamente."
+                },
+                {
+                    title: "Paso 3: Edición en CapCut",
+                    text: "Importa el video grabado. Como no te equivocaste en el texto, tu línea de tiempo estará limpia."
+                },
+                {
+                    title: "Paso 4: Subtítulos Dinámicos",
+                    text: "Usa \"Subtítulos Automáticos\" de CapCut. Gracias a tu dicción guiada, serán mucho más precisos."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

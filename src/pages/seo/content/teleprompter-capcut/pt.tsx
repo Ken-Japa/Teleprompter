@@ -1,4 +1,5 @@
-import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";;
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterCapCutPT = () => (
     <>
@@ -17,23 +18,31 @@ export const TeleprompterCapCutPT = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Workflow Vencedor: PromptNinja + CapCut</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>Preparação:</strong> Escreva seu roteiro no PromptNinja. Use cores para marcar onde você fará cortes ou aplicará efeitos visuais no CapCut.
-                </li>
-                <li>
-                    <strong>Gravação:</strong> Abra o PromptNinja no celular, posicione-o na vertical e grave. Use um segundo dispositivo para controlar a rolagem remotamente, evitando braços esticados na filmagem.
-                </li>
-                <li>
-                    <strong>Edição no CapCut:</strong> Importe o vídeo gravado. Como você não errou o texto (graças ao teleprompter), sua linha do tempo estará limpa.
-                </li>
-                <li>
-                    <strong>Legendas Dinâmicas:</strong> Use a função "Legendas Automáticas" do CapCut. Como sua dicção foi guiada pelo roteiro, as legendas serão geradas com muito mais precisão.
-                </li>
-            </ol>
-        </div>
+
+        <SEOContentHowTo
+            title="Workflow Vencedor: PromptNinja + CapCut"
+            schemaTitle="Como Usar Teleprompter com CapCut"
+            totalTime="PT10M"
+            tools={["CapCut", "PromptNinja", "Smartphone"]}
+            steps={[
+                {
+                    title: "Passo 1: Preparação",
+                    text: "Escreva seu roteiro no PromptNinja. Use cores para marcar onde você fará cortes ou aplicará efeitos visuais no CapCut."
+                },
+                {
+                    title: "Passo 2: Gravação",
+                    text: "Abra o PromptNinja no celular, posicione-o na vertical e grave. Use um segundo dispositivo para controlar a rolagem remotamente."
+                },
+                {
+                    title: "Passo 3: Edição no CapCut",
+                    text: "Importe o vídeo gravado. Como você não errou o texto (graças ao teleprompter), sua linha do tempo estará limpa."
+                },
+                {
+                    title: "Passo 4: Legendas Dinâmicas",
+                    text: "Use a função \"Legendas Automáticas\" do CapCut. Como sua dicção foi guiada pelo roteiro, as legendas serão geradas com muito mais precisão."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

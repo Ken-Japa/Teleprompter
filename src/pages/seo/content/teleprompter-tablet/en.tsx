@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTabletEN = () => (
     <>
@@ -50,16 +51,22 @@ export const TeleprompterTabletEN = () => (
         <p className="mb-4">
             There are two main ways to use your tablet as a teleprompter:
         </p>
-        <ol className="list-decimal pl-6 mb-6 space-y-4">
-            <li>
-                <strong>Direct Reading (Positioned Near Camera):</strong>
-                <p className="text-slate-300 mt-1">Place the tablet as close as possible to the camera lens. Increase the distance between the camera and yourself. This minimizes eye movement. Great for quick setups with zero extra cost.</p>
-            </li>
-            <li>
-                <strong>With Teleprompter Hardware (Mirror/Glass):</strong>
-                <p className="text-slate-300 mt-1">Lay the tablet flat under a reflector glass (beam splitter). The camera sits behind the glass. PromptNinja flips the text so you read it correctly in the reflection. This is the most professional method, and tablets provide the perfect brightness and screen size for it.</p>
-            </li>
-        </ol>
+        <SEOContentHowTo
+            title="How to Set Up with a Tablet"
+            schemaTitle="How to Use Tablet as Teleprompter"
+            totalTime="PT15M"
+            tools={["Tablet", "PromptNinja", "Tripod"]}
+            steps={[
+                {
+                    title: "Method 1: Direct Reading",
+                    text: "Place the tablet as close as possible to the camera lens. Increase the distance between the camera and yourself. This minimizes eye movement. Great for quick setups with zero extra cost."
+                },
+                {
+                    title: "Method 2: With Teleprompter Hardware",
+                    text: "Lay the tablet flat under a reflector glass (beam splitter). The camera sits behind the glass. PromptNinja flips the text so you read it correctly in the reflection. This is the most professional method."
+                }
+            ]}
+        />
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">Full Compatibility</h2>
         <p className="mb-4">

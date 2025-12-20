@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTikTokShortsES = () => (
     <>
@@ -17,23 +18,26 @@ export const TeleprompterTikTokShortsES = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Cómo Grabar TikToks Profesionales con Teleprompter</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>Guiones Optimizados:</strong> Escribe guiones cortos y directos. Usa nuestro editor para resaltar palabras clave en colores (rojo para énfasis, amarillo para pausas). <a href="/es/guiones-para-tiktok-shorts" className="text-purple-400 hover:text-purple-300 underline">Empieza rápido con nuestras plantillas virales</a>.
-                </li>
-                <li>
-                    <strong>Posicionamiento Vertical:</strong> Coloca el texto en la parte superior de la pantalla de tu móvil, justo al lado de la cámara frontal. Esto asegura que tus ojos miren directamente al espectador.
-                </li>
-                <li>
-                    <strong>Control Discreto:</strong> Usa PromptNinja en un segundo dispositivo para controlar el desplazamiento. No necesitas estirar el brazo para pausar la grabación o reiniciar el texto.
-                </li>
-            </ol>
-            <p className="mt-6 text-slate-300">
-                ¿Te cuesta recordar tus líneas? Consulta nuestra guía sobre <a href="/es/como-memorizar-guiones-rapido" className="text-purple-400 hover:text-purple-300 underline">cómo memorizar guiones rápido</a>.
-            </p>
-        </div>
+        <SEOContentHowTo
+            title="Cómo Grabar TikToks Profesionales con Teleprompter"
+            schemaTitle="Cómo Grabar Videos Verticales con Teleprompter"
+            totalTime="PT5M"
+            tools={["Smartphone", "PromptNinja", "Trípode"]}
+            steps={[
+                {
+                    title: "Paso 1: Guiones Optimizados",
+                    text: "Escribe guiones cortos y directos. Usa nuestro editor para resaltar palabras clave en colores (rojo para énfasis, amarillo para pausas)."
+                },
+                {
+                    title: "Paso 2: Posicionamiento Vertical",
+                    text: "Coloca el texto en la parte superior de la pantalla de tu móvil, justo al lado de la cámara frontal. Esto asegura que tus ojos miren directamente al espectador."
+                },
+                {
+                    title: "Paso 3: Control Discreto",
+                    text: "Usa PromptNinja en un segundo dispositivo para controlar el desplazamiento. No necesitas estirar el brazo para pausar la grabación o reiniciar el texto."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

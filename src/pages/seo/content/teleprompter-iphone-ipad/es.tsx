@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterIphoneIpadES = () => (
     <>
@@ -16,21 +17,26 @@ export const TeleprompterIphoneIpadES = () => (
                 Además, puedes añadirlo a la pantalla de inicio ("Add to Home Screen") para una experiencia de app a pantalla completa.
             </p>
         </div>
-
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Configuración Ideal para Creadores iOS</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>iPad como Monitor Principal:</strong> La pantalla grande del iPad es perfecta para lectura a media distancia. Colócalo bajo la lente de tu DSLR para un setup pro.
-                </li>
-                <li>
-                    <strong>iPhone como Mando:</strong> Abre el guion en el iPad, escanea el QR con el iPhone. Tu móvil ahora controla la velocidad y pausa del iPad al instante.
-                </li>
-                <li>
-                    <strong>Vlogging con iPhone:</strong> ¿Grabas Stories o TikToks? Abre PromptNinja en el propio iPhone, coloca el texto arriba y graba sin perder contacto visual.
-                </li>
-            </ol>
-        </div>
+        <SEOContentHowTo
+            title="Configuración Ideal para Creadores iOS"
+            schemaTitle="Cómo Configurar Teleprompter en iPhone y iPad"
+            totalTime="PT5M"
+            tools={["iPhone", "iPad", "DSLR (Opcional)"]}
+            steps={[
+                {
+                    title: "Opción 1: iPad como Monitor Principal",
+                    text: "La pantalla grande del iPad es perfecta para lectura a media distancia. Colócalo bajo la lente de tu DSLR para un setup pro."
+                },
+                {
+                    title: "Opción 2: iPhone como Mando",
+                    text: "Abre el guion en el iPad, escanea el QR con el iPhone. Tu móvil ahora controla la velocidad y pausa del iPad al instante."
+                },
+                {
+                    title: "Opción 3: Vlogging con iPhone",
+                    text: "¿Grabas Stories o TikToks? Abre PromptNinja en el propio iPhone, coloca el texto arriba y graba sin perder contacto visual."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

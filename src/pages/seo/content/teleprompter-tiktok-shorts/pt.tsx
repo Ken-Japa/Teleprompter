@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTikTokShortsPT = () => (
     <>
@@ -16,21 +17,26 @@ export const TeleprompterTikTokShortsPT = () => (
                 Além disso, com nosso exclusivo controle <strong>P2P (Peer-to-Peer)</strong>, você pode posicionar seu celular no tripé e controlar o texto (start/stop/velocidade) usando outro dispositivo (como um notebook ou outro celular) na sua mão, sem precisar tocar na tela de gravação.
             </p>
         </div>
-
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Como Gravar TikToks Profissionais com Teleprompter</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>Roteiro Otimizado:</strong> Escreva roteiros curtos e diretos. Use nossa ferramenta de edição para destacar palavras-chave em cores (vermelho para ênfase, amarelo para pausas).
-                </li>
-                <li>
-                    <strong>Posicionamento Vertical:</strong> Coloque o texto no topo da tela do celular, bem próximo à câmera frontal. Isso garante que seus olhos pareçam estar olhando para o espectador, criando conexão imediata.
-                </li>
-                <li>
-                    <strong>Controle Discreto:</strong> Use o PromptNinja em um segundo dispositivo para controlar a rolagem. Assim, você não precisa esticar o braço para pausar a gravação ou reiniciar o texto, economizando horas de edição.
-                </li>
-            </ol>
-        </div>
+        <SEOContentHowTo
+            title="Como Gravar TikToks Profissionais com Teleprompter"
+            schemaTitle="Como Gravar Vídeos Verticais com Teleprompter"
+            totalTime="PT5M"
+            tools={["Smartphone", "PromptNinja", "Tripé"]}
+            steps={[
+                {
+                    title: "Passo 1: Roteiro Otimizado",
+                    text: "Escreva roteiros curtos e diretos. Use nossa ferramenta de edição para destacar palavras-chave em cores (vermelho para ênfase, amarelo para pausas)."
+                },
+                {
+                    title: "Passo 2: Posicionamento Vertical",
+                    text: "Coloque o texto no topo da tela do celular, bem próximo à câmera frontal. Isso garante que seus olhos pareçam estar olhando para o espectador, criando conexão imediata."
+                },
+                {
+                    title: "Passo 3: Controle Discreto",
+                    text: "Use o PromptNinja em um segundo dispositivo para controlar a rolagem. Assim, você não precisa esticar o braço para pausar a gravação ou reiniciar o texto."
+                }
+            ]}
+        />
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Domine o Algoritmo com Consistência</h2>
         <p className="mb-6">

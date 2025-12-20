@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterIphoneIpadEN = () => (
     <>
@@ -17,20 +18,26 @@ export const TeleprompterIphoneIpadEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Ideal Setup for iOS Creators</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>iPad as Main Monitor:</strong> The iPad's large screen is perfect for medium-distance reading. Place it just below your DSLR lens for a pro studio setup.
-                </li>
-                <li>
-                    <strong>iPhone as Remote:</strong> Open script on iPad, scan QR Code with iPhone camera. Your phone now controls scroll speed and play/pause on the iPad instantly.
-                </li>
-                <li>
-                    <strong>Vlogging with iPhone:</strong> Recording a Story or TikTok? Open PromptNinja on the iPhone itself, position text at the top, and record maintaining eye contact.
-                </li>
-            </ol>
-        </div>
+        <SEOContentHowTo
+            title="Ideal Setup for iOS Creators"
+            schemaTitle="How to Setup Teleprompter on iPhone and iPad"
+            totalTime="PT5M"
+            tools={["iPhone", "iPad", "DSLR (Optional)"]}
+            steps={[
+                {
+                    title: "Option 1: iPad as Main Monitor",
+                    text: "The iPad's large screen is perfect for medium-distance reading. Place it just below your DSLR lens for a pro studio setup."
+                },
+                {
+                    title: "Option 2: iPhone as Remote",
+                    text: "Open script on iPad, scan QR Code with iPhone camera. Your phone now controls scroll speed and play/pause on the iPad instantly."
+                },
+                {
+                    title: "Option 3: Vlogging with iPhone",
+                    text: "Recording a Story or TikTok? Open PromptNinja on the iPhone itself, position text at the top, and record maintaining eye contact."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a
