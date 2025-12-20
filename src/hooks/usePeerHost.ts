@@ -40,6 +40,12 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void, isPro: 
         onMessageRef.current = onRemoteMessage;
     }, [onRemoteMessage]);
 
+    // Keep peerId ref in sync for internal logic access without adding dependency
+    const peerIdRef = useRef(peerId);
+    useEffect(() => {
+        peerIdRef.current = peerId;
+    }, [peerId]);
+
     // Throttling ref
     const lastBroadcastTimeRef = useRef<number>(0);
     const THROTTLE_MS = 50; // Limit to ~20fps for network efficiency
@@ -134,13 +140,17 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void, isPro: 
                 const peerOptions = { ...PEER_CONFIG };
 
                 // If we have a stored ID, try to reuse it
-                let idToUse = peerId;
+                // Make sure to use ref to get latest value during retries
+                let idToUse = peerIdRef.current;
+
                 if (!idToUse) {
                     // Generate one if missing to behave optimistically? 
                     // Or let PeerJS generate and then save it?
                     // To solve "Offline QR Code", we MUST have an ID before connection involves.
                     // So we generate a UUID ourselves if missing.
                     idToUse = crypto.randomUUID();
+                    // Update both state and ref immediately
+                    peerIdRef.current = idToUse;
                     setPeerId(idToUse);
                     localStorage.setItem("promptninja_peer_id", idToUse);
                 }
@@ -155,7 +165,8 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void, isPro: 
                         return;
                     }
                     // Ensure state matches (it should)
-                    if (id !== peerId) {
+                    if (id !== peerIdRef.current) {
+                        peerIdRef.current = id;
                         setPeerId(id);
                         localStorage.setItem("promptninja_peer_id", id);
                     }
@@ -220,7 +231,11 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void, isPro: 
                         // Clear storage and state, then retry will pick up new generation logic (if we handled it rights)
                         // Actually better: just generate new one here and retry immediately
                         localStorage.removeItem("promptninja_peer_id");
-                        setPeerId(""); // Clear state
+
+                        // Critical: update REF so next initPeer sees empty and generates new one
+                        peerIdRef.current = "";
+                        setPeerId("");
+
                         // Force logic to create new ID on next retry
                         if (mountedRef.current && retryCountRef.current < MAX_RETRIES) {
                             retryCountRef.current += 1;
