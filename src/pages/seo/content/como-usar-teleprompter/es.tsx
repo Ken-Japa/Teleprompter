@@ -1,3 +1,5 @@
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+
 export const ComoUsarTeleprompterES = () => (
     <>
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
@@ -20,7 +22,7 @@ export const ComoUsarTeleprompterES = () => (
             Existen dos maneras principales de usar un teleprompter, especialmente con herramientas web como PromptNinja, que no requieren la compra de equipos costosos.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="mb-12 space-y-8">
             <div className="bg-slate-800 p-6 rounded-lg">
                 <h3 className="font-bold text-xl text-white mb-3">Método 1: El Dispositivo Único (El Inicio Rápido)</h3>
                 <p className="text-slate-400 mb-4">
@@ -36,19 +38,32 @@ export const ComoUsarTeleprompterES = () => (
                 <p className="text-sm text-slate-500 mt-4"><strong>Desventaja:</strong> Es difícil controlar el desplazamiento sin interrumpir la grabación o desviar la mirada. Funciona mejor para vídeos cortos.</p>
             </div>
 
-            <div className="bg-slate-800 p-6 rounded-lg border-2 border-blue-500">
-                <h3 className="font-bold text-xl text-white mb-3">Método 2: El Control Remoto (La Forma Profesional)</h3>
-                <p className="text-slate-400 mb-4">
-                    Esta es la configuración que convierte tu espacio en un estudio. Usas un dispositivo para leer (pantalla principal) y otro como control remoto.
-                </p>
-                <ol className="list-decimal list-inside space-y-2 text-slate-300">
-                    <li>Abre PromptNinja en el dispositivo que servirá de pantalla (portátil, tablet, otro monitor).</li>
-                    <li>En tu móvil, abre PromptNinja y selecciona la opción "Control Remoto".</li>
-                    <li>Escanea el código QR que aparece en la pantalla principal con la cámara de tu móvil.</li>
-                    <li>¡Listo! Tu móvil es ahora un control remoto. Dale al play, pausa, ajusta la velocidad y el texto sin moverte de tu sitio.</li>
-                </ol>
-                <p className="text-sm text-green-400 mt-4"><strong>Ventaja:</strong> Control total sobre el flujo de la grabación, permitiendo pausas dramáticas, aceleración y una presentación mucho más dinámica y natural.</p>
-            </div>
+            <SEOContentHowTo
+                title="Método 2: El Control Remoto (La Forma Profesional)"
+                schemaTitle="Cómo usar Teleprompter con Control Remoto"
+                tools={["Ordenador o Tablet", "Smartphone"]}
+                totalTime="PT2M"
+                className="border-2 border-blue-500 rounded-lg p-4"
+                steps={[
+                    {
+                        title: "Prepara la Pantalla Principal",
+                        text: "Abre PromptNinja en el dispositivo que servirá de pantalla (portátil, tablet, otro monitor). Esta será la pantalla que leerás."
+                    },
+                    {
+                        title: "Activa el Control Remoto",
+                        text: "En tu móvil, abre PromptNinja y selecciona la opción \"Control Remoto\" en el menú inicial."
+                    },
+                    {
+                        title: "Conecta los Dispositivos",
+                        text: "Escanea el código QR que aparece en la pantalla principal con la cámara de tu móvil. La conexión es P2P (Peer-to-Peer) vía Wi-Fi, instantánea y segura."
+                    },
+                    {
+                        title: "Controla tu Grabación",
+                        text: "¡Listo! Tu móvil es ahora un control remoto. Dale al play, pausa, ajusta la velocidad y edita el texto sin moverte de tu sitio."
+                    }
+                ]}
+            />
+            <p className="text-sm text-green-400 mt-2 px-4"><strong>Ventaja:</strong> Control total sobre el flujo de la grabación, permitiendo pausas dramáticas, aceleración y una presentación mucho más dinámica y natural.</p>
         </div>
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Errores Comunes al Usar un Teleprompter (y Cómo Evitarlos)</h2>

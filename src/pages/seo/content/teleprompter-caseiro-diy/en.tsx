@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterCaseiroDIYEN = () => (
     <>
@@ -51,74 +52,36 @@ export const TeleprompterCaseiroDIYEN = () => (
             </p>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Step-by-Step: How to Build a Homemade Teleprompter</h2>
-
-        <div className="space-y-6 mb-8">
-            <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-blue-500">
-                <h3 className="text-xl font-bold text-white mb-3">Step 1: Prepare the Base Structure</h3>
-                <p className="text-slate-300 mb-3">
-                    Take your cardboard box and cut a front opening for the camera and a bottom opening for the tablet to sit at a 45-degree angle. If using wood, build a box in an inverted "L" shape.
-                </p>
-                <p className="text-slate-400 text-sm">
-                    💡 <strong>Tip:</strong> Paint the entire interior matte black to eliminate reflections that might appear in the video.
-                </p>
-            </div>
-
-            <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-green-500">
-                <h3 className="text-xl font-bold text-white mb-3">Step 2: Position the Glass/Acrylic</h3>
-                <p className="text-slate-300 mb-3">
-                    Attach the glass or acrylic at a <strong>45-degree angle</strong> between the camera (which will be behind) and you (who will be in front). This angle is crucial so the text reflection is only visible to you, not the camera.
-                </p>
-                <p className="text-slate-400 text-sm">
-                    💡 <strong>Tip:</strong> Use hot glue or double-sided tape. Test the angle before permanently securing it.
-                </p>
-            </div>
-
-            <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-purple-500">
-                <h3 className="text-xl font-bold text-white mb-3">Step 3: Position the Tablet/Monitor</h3>
-                <p className="text-slate-300 mb-3">
-                    Place the tablet or monitor at the bottom of the structure, facing upward toward the glass. The text on the screen will reflect in the glass and appear in your line of sight, just below the camera lens.
-                </p>
-                <p className="text-slate-400 text-sm">
-                    💡 <strong>Tip:</strong> Set the tablet's screen brightness to maximum for better reflection visibility.
-                </p>
-            </div>
-
-            <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-yellow-500">
-                <h3 className="text-xl font-bold text-white mb-3">Step 4: Block Light with Black Cloth</h3>
-                <p className="text-slate-300 mb-3">
-                    Create a "tunnel" with black cloth around the camera and glass. This prevents external light from interfering with the reflection and ensures the camera doesn't appear reflected in the glass.
-                </p>
-                <p className="text-slate-400 text-sm">
-                    💡 <strong>Tip:</strong> Leave enough space to adjust the camera and check framing.
-                </p>
-            </div>
-
-            <div className="bg-gradient-to-r from-purple-900 to-blue-900 p-6 rounded-lg border-l-4 border-purple-400">
-                <h3 className="text-xl font-bold text-white mb-3">Step 5: Configure the Software (PromptNinja)</h3>
-                <p className="text-slate-300 mb-3">
-                    Here's the <strong>most important step</strong>: the text on the tablet needs to be mirrored (flipped both horizontally AND vertically) to appear correctly in the glass reflection. This is where PromptNinja comes in and solves everything with 1 click.
-                </p>
-                <div className="bg-slate-800 p-4 rounded mt-4">
-                    <p className="text-white font-bold mb-2">How to set up:</p>
-                    <ol className="list-decimal pl-6 text-slate-300 space-y-2">
-                        <li>Go to <a href="https://promptninja.solutionkit.com.br/?lang=en/#app" className="text-purple-400 hover:text-purple-300 underline">promptninja.solutionkit.com.br</a> on your tablet</li>
-                        <li>Paste your script into the editor</li>
-                        <li>Click the mirror icon (🪞) to activate <strong>Mirror Mode</strong></li>
-                        <li>Scan the QR code with your phone to use it as a remote control</li>
-                        <li>Done! The text will appear perfectly readable in the glass reflection</li>
-                    </ol>
-                </div>
-                <div className="text-center mt-4">
-                    <a
-                        href="https://promptninja.solutionkit.com.br/?lang=en/#app"
-                        className="inline-block bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 px-6 rounded-lg transition"
-                    >
-                        Try Mirror Mode Now (Free)
-                    </a>
-                </div>
-            </div>
-        </div>
+        <SEOContentHowTo
+            title="Step-by-Step: How to Build a Homemade Teleprompter"
+            schemaTitle="How to Make a DIY Teleprompter"
+            estimatedCost={{ currency: "USD", value: "15" }}
+            totalTime="PT30M"
+            supplies={["Cardboard Box or Wood", "Glass or Clear Acrylic", "Black Cloth", "Tape or Hot Glue"]}
+            tools={["Scissors or Box Cutter", "Smartphone or Tablet (to display text)", "Camera (to record)"]}
+            steps={[
+                {
+                    title: "Step 1: Prepare the Base Structure",
+                    text: "Take your cardboard box and cut a front opening for the camera and a bottom opening for the tablet to sit at a 45-degree angle. If using wood, build a box in an inverted \"L\" shape. Tip: Paint the entire interior matte black to eliminate reflections that might appear in the video."
+                },
+                {
+                    title: "Step 2: Position the Glass/Acrylic",
+                    text: "Attach the glass or acrylic at a 45-degree angle between the camera (which will be behind) and you (who will be in front). This angle is crucial so the text reflection is only visible to you, not the camera. Use hot glue or double-sided tape."
+                },
+                {
+                    title: "Step 3: Position the Tablet/Monitor",
+                    text: "Place the tablet or monitor at the bottom of the structure, facing upward toward the glass. The text on the screen will reflect in the glass and appear in your line of sight, just below the camera lens. Set the tablet's screen brightness to maximum."
+                },
+                {
+                    title: "Step 4: Block Light with Black Cloth",
+                    text: "Create a \"tunnel\" with black cloth around the camera and glass. This prevents external light from interfering with the reflection and ensures the camera doesn't appear reflected in the glass."
+                },
+                {
+                    title: "Step 5: Configure the Software (PromptNinja)",
+                    text: "The most important step: the text on the tablet needs to be mirrored. 1. Go to promptninja.solutionkit.com.br on your tablet. 2. Paste your script. 3. Click the mirror icon (🪞). 4. Scan the QR code with your phone to use it as a remote control. Done!"
+                }
+            ]}
+        />
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">Why PromptNinja is Perfect for Your DIY Teleprompter</h2>
 

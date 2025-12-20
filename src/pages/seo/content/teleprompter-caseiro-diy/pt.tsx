@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterCaseiroDIYPT = () => (
     <>
@@ -51,74 +52,36 @@ export const TeleprompterCaseiroDIYPT = () => (
             </p>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Passo a Passo: Como Montar um Teleprompter Caseiro</h2>
-
-        <div className="space-y-6 mb-8">
-            <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-blue-500">
-                <h3 className="text-xl font-bold text-white mb-3">Passo 1: Prepare a Estrutura Base</h3>
-                <p className="text-slate-300 mb-3">
-                    Pegue sua caixa de papelão e corte uma abertura frontal para a câmera e uma abertura inferior para o tablet ficar em um ângulo de 45 graus. Se estiver usando madeira, monte uma caixa em formato de "L" invertido.
-                </p>
-                <p className="text-slate-400 text-sm">
-                    💡 <strong>Dica:</strong> Pinte todo o interior de preto fosco para eliminar reflexos que possam aparecer no vídeo.
-                </p>
-            </div>
-
-            <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-green-500">
-                <h3 className="text-xl font-bold text-white mb-3">Passo 2: Posicione o Vidro/Acrílico</h3>
-                <p className="text-slate-300 mb-3">
-                    Fixe o vidro ou acrílico em um ângulo de <strong>45 graus</strong> entre a câmera (que ficará atrás) e você (que ficará na frente). Este ângulo é crucial para que o reflexo do texto seja visível apenas para você, e não para a câmera.
-                </p>
-                <p className="text-slate-400 text-sm">
-                    💡 <strong>Dica:</strong> Use suportes de cola quente ou fita adesiva dupla face. Teste o ângulo antes de fixar permanentemente.
-                </p>
-            </div>
-
-            <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-purple-500">
-                <h3 className="text-xl font-bold text-white mb-3">Passo 3: Posicione o Tablet/Monitor</h3>
-                <p className="text-slate-300 mb-3">
-                    Coloque o tablet ou monitor na parte inferior da estrutura, virado para cima em direção ao vidro. O texto na tela será refletido no vidro e aparecerá na sua linha de visão, logo abaixo da lente da câmera.
-                </p>
-                <p className="text-slate-400 text-sm">
-                    💡 <strong>Dica:</strong> Ajuste o brilho da tela do tablet para o máximo para melhor visibilidade do reflexo.
-                </p>
-            </div>
-
-            <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-yellow-500">
-                <h3 className="text-xl font-bold text-white mb-3">Passo 4: Bloqueie a Luz com Pano Preto</h3>
-                <p className="text-slate-300 mb-3">
-                    Crie um "túnel" com pano preto ao redor da câmera e do vidro. Isso evita que luz externa interfira no reflexo e garante que a câmera não apareça refletida no vidro.
-                </p>
-                <p className="text-slate-400 text-sm">
-                    💡 <strong>Dica:</strong> Deixe espaço suficiente para ajustar a câmera e verificar o enquadramento.
-                </p>
-            </div>
-
-            <div className="bg-gradient-to-r from-purple-900 to-blue-900 p-6 rounded-lg border-l-4 border-purple-400">
-                <h3 className="text-xl font-bold text-white mb-3">Passo 5: Configure o Software (PromptNinja)</h3>
-                <p className="text-slate-300 mb-3">
-                    Aqui está o <strong>passo mais importante</strong>: o texto no tablet precisa estar espelhado (invertido horizontalmente E verticalmente) para aparecer corretamente no reflexo do vidro. É aqui que o PromptNinja entra e resolve tudo com 1 clique.
-                </p>
-                <div className="bg-slate-800 p-4 rounded mt-4">
-                    <p className="text-white font-bold mb-2">Como configurar:</p>
-                    <ol className="list-decimal pl-6 text-slate-300 space-y-2">
-                        <li>Acesse <a href="https://promptninja.solutionkit.com.br/#app" className="text-purple-400 hover:text-purple-300 underline">promptninja.solutionkit.com.br</a> no tablet</li>
-                        <li>Cole seu roteiro no editor</li>
-                        <li>Clique no ícone de espelho (🪞) para ativar o <strong>Modo Espelho</strong></li>
-                        <li>Escaneie o QR code com seu celular para ter um controle remoto</li>
-                        <li>Pronto! O texto aparecerá perfeitamente legível no reflexo do vidro</li>
-                    </ol>
-                </div>
-                <div className="text-center mt-4">
-                    <a
-                        href="https://promptninja.solutionkit.com.br/#app"
-                        className="inline-block bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 px-6 rounded-lg transition"
-                    >
-                        Testar o Modo Espelho Agora (Grátis)
-                    </a>
-                </div>
-            </div>
-        </div>
+        <SEOContentHowTo
+            title="Passo a Passo: Como Montar um Teleprompter Caseiro"
+            schemaTitle="Como Fazer um Teleprompter Caseiro (DIY)"
+            estimatedCost={{ currency: "BRL", value: "50" }}
+            totalTime="PT30M"
+            supplies={["Caixa de Papelão ou Madeira", "Vidro ou Acrílico Transparente", "Pano Preto", "Fita Adesiva ou Cola Quente"]}
+            tools={["Tesoura ou Estilete", "Smartphone ou Tablet (para exibir o texto)", "Câmera (para gravar)"]}
+            steps={[
+                {
+                    title: "Passo 1: Prepare a Estrutura Base",
+                    text: "Pegue sua caixa de papelão e corte uma abertura frontal para a câmera e uma abertura inferior para o tablet ficar em um ângulo de 45 graus. Se estiver usando madeira, monte uma caixa em formato de \"L\" invertido. Dica: Pinte todo o interior de preto fosco para eliminar reflexos que possam aparecer no vídeo."
+                },
+                {
+                    title: "Passo 2: Posicione o Vidro/Acrílico",
+                    text: "Fixe o vidro ou acrílico em um ângulo de 45 graus entre a câmera (que ficará atrás) e você (que ficará na frente). Este ângulo é crucial para que o reflexo do texto seja visível apenas para você, e não para a câmera. Use suportes de cola quente ou fita adesiva dupla face."
+                },
+                {
+                    title: "Passo 3: Posicione o Tablet/Monitor",
+                    text: "Coloque o tablet ou monitor na parte inferior da estrutura, virado para cima em direção ao vidro. O texto na tela será refletido no vidro e aparecerá na sua linha de visão, logo abaixo da lente da câmera. Ajuste o brilho da tela do tablet para o máximo."
+                },
+                {
+                    title: "Passo 4: Bloqueie a Luz com Pano Preto",
+                    text: "Crie um \"túnel\" com pano preto ao redor da câmera e do vidro. Isso evita que luz externa interfira no reflexo e garante que a câmera não apareça refletida no vidro."
+                },
+                {
+                    title: "Passo 5: Configure o Software (PromptNinja)",
+                    text: "O passo mais importante: o texto no tablet precisa estar espelhado. 1. Acesse promptninja.solutionkit.com.br no tablet. 2. Cole seu roteiro. 3. Clique no ícone de espelho (🪞). 4. Escaneie o QR code com seu celular para usar como controle remoto. Pronto!"
+                }
+            ]}
+        />
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">Por Que o PromptNinja é Perfeito para Seu Teleprompter Caseiro</h2>
 

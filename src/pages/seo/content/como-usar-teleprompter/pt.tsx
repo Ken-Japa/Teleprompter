@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoUsarTeleprompterPT = () => (
     <>
@@ -22,7 +23,7 @@ export const ComoUsarTeleprompterPT = () => (
             Existem duas maneiras principais de usar um teleprompter, especialmente com ferramentas web como o PromptNinja, que não exigem a compra de equipamentos caros.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="mb-12 space-y-8">
             <div className="bg-slate-800 p-6 rounded-lg">
                 <h3 className="font-bold text-xl text-white mb-3">Método 1: O Dispositivo Único (O Início Rápido)</h3>
                 <p className="text-slate-400 mb-4">
@@ -38,19 +39,32 @@ export const ComoUsarTeleprompterPT = () => (
                 <p className="text-sm text-slate-500 mt-4"><strong>Desvantagem:</strong> É difícil controlar a rolagem sem interromper a gravação ou desviar o olhar. Funciona melhor para vídeos curtos.</p>
             </div>
 
-            <div className="bg-slate-800 p-6 rounded-lg border-2 border-blue-500">
-                <h3 className="font-bold text-xl text-white mb-3">Método 2: O Controle Remoto (O Jeito Profissional)</h3>
-                <p className="text-slate-400 mb-4">
-                    Esta é a configuração que transforma seu espaço em um estúdio. Você usa um dispositivo para ler (tela principal) e outro como controle remoto.
-                </p>
-                <ol className="list-decimal list-inside space-y-2 text-slate-300">
-                    <li>Abra o PromptNinja no dispositivo que servirá de tela (notebook, tablet, outro monitor).</li>
-                    <li>No seu celular, abra o PromptNinja e selecione a opção "Controle Remoto".</li>
-                    <li>Escaneie o QR Code que aparece na tela principal com a câmera do seu celular.</li>
-                    <li>Pronto! Seu celular agora é um controle remoto. Dê play, pause, ajuste a velocidade e o texto sem sair da sua posição.</li>
-                </ol>
-                <p className="text-sm text-green-400 mt-4"><strong>Vantagem:</strong> Controle total sobre o fluxo da gravação, permitindo pausas dramáticas, aceleração e uma apresentação muito mais dinâmica e natural.</p>
-            </div>
+            <SEOContentHowTo
+                title="Método 2: O Controle Remoto (O Jeito Profissional)"
+                schemaTitle="Como usar Teleprompter com Controle Remoto"
+                tools={["Computador ou Tablet", "Smartphone"]}
+                totalTime="PT2M"
+                className="border-2 border-blue-500 rounded-lg p-4"
+                steps={[
+                    {
+                        title: "Prepare a Tela Principal",
+                        text: "Abra o PromptNinja no dispositivo que servirá de tela (notebook, tablet, outro monitor). Esta será a tela que você lerá."
+                    },
+                    {
+                        title: "Ative o Controle Remoto",
+                        text: "No seu celular, abra o PromptNinja e selecione a opção \"Controle Remoto\" no menu inicial."
+                    },
+                    {
+                        title: "Conecte os Dispositivos",
+                        text: "Escaneie o QR Code que aparece na tela principal com a câmera do seu celular. A conexão é P2P (Peer-to-Peer) via Wi-Fi, instantânea e segura."
+                    },
+                    {
+                        title: "Controle sua Gravação",
+                        text: "Pronto! Seu celular agora é um controle remoto. Dê play, pause, ajuste a velocidade e edite o texto sem sair da sua posição de gravação."
+                    }
+                ]}
+            />
+            <p className="text-sm text-green-400 mt-2 px-4"><strong>Vantagem:</strong> Controle total sobre o fluxo da gravação, permitindo pausas dramáticas, aceleração e uma apresentação muito mais dinâmica e natural.</p>
         </div>
 
         <SEOContentFAQ

@@ -1,3 +1,5 @@
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+
 export const ComoUsarTeleprompterEN = () => (
     <>
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
@@ -20,7 +22,7 @@ export const ComoUsarTeleprompterEN = () => (
             There are two main ways to use a teleprompter, especially with web-based tools like PromptNinja, which don't require purchasing expensive equipment.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="mb-12 space-y-8">
             <div className="bg-slate-800 p-6 rounded-lg">
                 <h3 className="font-bold text-xl text-white mb-3">Method 1: The Single Device (The Quick Start)</h3>
                 <p className="text-slate-400 mb-4">
@@ -36,19 +38,32 @@ export const ComoUsarTeleprompterEN = () => (
                 <p className="text-sm text-slate-500 mt-4"><strong>Disadvantage:</strong> It's hard to control the scroll without interrupting the recording or looking away. Works best for short videos.</p>
             </div>
 
-            <div className="bg-slate-800 p-6 rounded-lg border-2 border-blue-500">
-                <h3 className="font-bold text-xl text-white mb-3">Method 2: The Remote Control (The Professional Way)</h3>
-                <p className="text-slate-400 mb-4">
-                    This is the setup that turns your space into a studio. You use one device to read (main screen) and another as a remote control.
-                </p>
-                <ol className="list-decimal list-inside space-y-2 text-slate-300">
-                    <li>Open PromptNinja on the device that will serve as the screen (notebook, tablet, another monitor).</li>
-                    <li>On your phone, open PromptNinja and select the "Remote Control" option.</li>
-                    <li>Scan the QR Code that appears on the main screen with your phone's camera.</li>
-                    <li>Done! Your phone is now a remote control. Play, pause, adjust the speed and text without leaving your position.</li>
-                </ol>
-                <p className="text-sm text-green-400 mt-4"><strong>Advantage:</strong> Full control over the recording flow, allowing for dramatic pauses, acceleration, and a much more dynamic and natural presentation.</p>
-            </div>
+            <SEOContentHowTo
+                title="Method 2: The Remote Control (The Professional Way)"
+                schemaTitle="How to Use Teleprompter with Remote Control"
+                tools={["Computer or Tablet", "Smartphone"]}
+                totalTime="PT2M"
+                className="border-2 border-blue-500 rounded-lg p-4"
+                steps={[
+                    {
+                        title: "Prepare the Main Screen",
+                        text: "Open PromptNinja on the device that will serve as the screen (notebook, tablet, or another monitor). This will be the screen you read from."
+                    },
+                    {
+                        title: "Activate Remote Control",
+                        text: "On your phone, open PromptNinja and select the \"Remote Control\" option from the main menu."
+                    },
+                    {
+                        title: "Connect Devices",
+                        text: "Scan the QR Code that appears on the main screen with your phone's camera. The connection is P2P (Peer-to-Peer) via Wi-Fi, instant and secure."
+                    },
+                    {
+                        title: "Control Your Recording",
+                        text: "Done! Your phone is now a remote control. Play, pause, adjust speed, and edit text without leaving your recording position."
+                    }
+                ]}
+            />
+            <p className="text-sm text-green-400 mt-2 px-4"><strong>Advantage:</strong> Full control over the recording flow, allowing for dramatic pauses, acceleration, and a much more dynamic and natural presentation.</p>
         </div>
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Common Mistakes When Using a Teleprompter (and How to Avoid Them)</h2>
