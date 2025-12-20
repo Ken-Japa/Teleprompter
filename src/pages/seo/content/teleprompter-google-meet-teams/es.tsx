@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterGoogleMeetTeamsES = () => (
     <>
@@ -16,21 +17,26 @@ export const TeleprompterGoogleMeetTeamsES = () => (
                 Seguridad es prioridad: todos los guiones se guardan localmente. Nada se envía a la nube, garantizando conformidad con políticas de datos sensibles.
             </p>
         </div>
-
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Cómo Hacer Presentaciones Ejecutivas Impecables</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>Superposición:</strong> Redimensiona la ventana de PromptNinja para que sea estrecha y colócala arriba, centrada bajo la webcam.
-                </li>
-                <li>
-                    <strong>Google Meet/Teams:</strong> Abre tu app de reunión. Coloca PromptNinja estratégicamente para leer sin desviar la mirada.
-                </li>
-                <li>
-                    <strong>Control Discreto:</strong> Conecta tu móvil corporativo como control remoto. Controla el desplazamiento con toques sutiles, sin clics de ratón audibles.
-                </li>
-            </ol>
-        </div>
+        <SEOContentHowTo
+            title="Cómo Hacer Presentaciones Ejecutivas Impecables"
+            schemaTitle="Cómo Usar Teleprompter en Google Meet y Microsoft Teams"
+            totalTime="PT3M"
+            tools={["Google Meet o Teams", "PromptNinja", "Móvil Corporativo"]}
+            steps={[
+                {
+                    title: "Paso 1: Superposición",
+                    text: "Redimensiona la ventana de PromptNinja para que sea estrecha y colócala arriba, centrada bajo la webcam."
+                },
+                {
+                    title: "Paso 2: Configuración de la Reunión",
+                    text: "Abre tu app de reunión. Coloca PromptNinja estratégicamente para leer sin desviar la mirada."
+                },
+                {
+                    title: "Paso 3: Control Discreto",
+                    text: "Conecta tu móvil corporativo como control remoto. Controla el desplazamiento con toques sutiles, sin clics de ratón audibles."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

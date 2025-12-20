@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterObsStudioEN = () => (
     <>
@@ -16,24 +17,30 @@ export const TeleprompterObsStudioEN = () => (
                 Plus, the "Chroma Key" theme allows you to overlay text directly onto your game screen or camera feed, visible only to you (if using projection) or your audience (if you want live captions).
             </p>
         </div>
-
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Tutorial: PromptNinja in OBS Studio</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>Browser Source:</strong> In OBS, add a new "Browser Source". Paste the URL of your PromptNinja session ID.
-                </li>
-                <li>
-                    <strong>Interact:</strong> Right-click the source and select "Interact" to make initial adjustments if needed.
-                </li>
-                <li>
-                    <strong>Mobile Stream Deck:</strong> With PromptNinja open in OBS, connect your phone via QR Code. Now you have a dedicated controller for your scripts, zero Alt-Tab required.
-                </li>
-                <li>
-                    <strong>Chroma Key Themes (Green/Blue):</strong> Enable the <strong>Chroma Green</strong> or <strong>Chroma Blue</strong> theme in PromptNinja. In OBS, apply the "Chroma Key" filter to the browser source to completely remove the colored background, leaving only professional floating text over your gameplay or camera. Perfect for that news anchor look.
-                </li>
-            </ol>
-        </div>
+        <SEOContentHowTo
+            title="Tutorial: PromptNinja in OBS Studio"
+            schemaTitle="How to Use Teleprompter in OBS Studio"
+            totalTime="PT5M"
+            tools={["OBS Studio", "Computer", "Smartphone"]}
+            steps={[
+                {
+                    title: "Step 1: Browser Source",
+                    text: "In OBS, add a new \"Browser Source\". Paste the URL of your PromptNinja session ID."
+                },
+                {
+                    title: "Step 2: Interact",
+                    text: "Right-click the source and select \"Interact\" to make initial adjustments if needed."
+                },
+                {
+                    title: "Step 3: Mobile Stream Deck",
+                    text: "With PromptNinja open in OBS, connect your phone via QR Code. Now you have a dedicated controller for your scripts, zero Alt-Tab required."
+                },
+                {
+                    title: "Step 4: Chroma Key Themes",
+                    text: "Enable the Chroma Green or Chroma Blue theme in PromptNinja. In OBS, apply the \"Chroma Key\" filter to the browser source to completely remove the colored background, leaving only professional floating text."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

@@ -1,5 +1,6 @@
 
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoInstalarPwaPT = () => (
     <>
@@ -11,55 +12,54 @@ export const ComoInstalarPwaPT = () => (
         <div className="grid md:grid-cols-2 gap-8 mt-12">
 
             {/* iOS Guide */}
-            <div className="bg-slate-800 p-8 rounded-xl border border-slate-700">
-                <div className="flex items-center gap-4 mb-6">
-                    <span className="text-5xl">🍎</span>
-                    <h2 className="text-2xl font-bold text-white">iPhone / iPad (iOS)</h2>
-                </div>
-                <ol className="space-y-6 text-slate-300 list-decimal pl-5 marker:text-blue-500 marker:font-bold">
-                    <li>
-                        Abra o <strong>PromptNinja</strong> no <strong>Safari</strong>.
-                        <p className="text-sm text-slate-400 mt-1">(PWAs só instalam pelo Safari no iOS)</p>
-                    </li>
-                    <li>
-                        Toque no botão <strong>Compartilhar</strong> (ícone do quadrado com a seta para cima) na barra inferior.
-                    </li>
-                    <li>
-                        Role para baixo e toque em <strong>"Adicionar à Tela de Início"</strong> (Add to Home Screen).
-                    </li>
-                    <li>
-                        Toque em <strong>Adicionar</strong> no canto superior direito.
-                    </li>
-                </ol>
-                <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg text-sm text-blue-200">
-                    <strong>Dica:</strong> Uma vez instalado, o PromptNinja aparecerá como um app nativo na sua tela inicial, rodando em tela cheia e sem barras de navegação.
-                </div>
-            </div>
+            <SEOContentHowTo
+                title="iPhone / iPad (iOS)"
+                schemaTitle="Como Instalar o PromptNinja no iPhone (iOS)"
+                steps={[
+                    {
+                        title: "Passo 1",
+                        text: "Abra o PromptNinja no Safari. (Importante: PWAs só instalam pelo Safari no iOS)."
+                    },
+                    {
+                        title: "Passo 2",
+                        text: "Toque no botão Compartilhar (ícone do quadrado com a seta para cima) na barra inferior."
+                    },
+                    {
+                        title: "Passo 3",
+                        text: "Role para baixo e toque em \"Adicionar à Tela de Início\" (Add to Home Screen)."
+                    },
+                    {
+                        title: "Passo 4",
+                        text: "Toque em Adicionar no canto superior direito."
+                    }
+                ]}
+                className="bg-slate-800 p-8 rounded-xl border border-slate-700 h-full"
+            />
 
             {/* Android Guide */}
-            <div className="bg-slate-800 p-8 rounded-xl border border-slate-700">
-                <div className="flex items-center gap-4 mb-6">
-                    <span className="text-5xl">🤖</span>
-                    <h2 className="text-2xl font-bold text-white">Android (Chrome)</h2>
-                </div>
-                <ol className="space-y-6 text-slate-300 list-decimal pl-5 marker:text-green-500 marker:font-bold">
-                    <li>
-                        Abra o <strong>PromptNinja</strong> no <strong>Google Chrome</strong>.
-                    </li>
-                    <li>
-                        Toque no botão de <strong>Menu</strong> (três pontinhos) no canto superior direito.
-                    </li>
-                    <li>
-                        Toque em <strong>"Instalar aplicativo"</strong> ou <strong>"Adicionar à tela inicial"</strong>.
-                    </li>
-                    <li>
-                        Confirme tocando em <strong>Instalar</strong>.
-                    </li>
-                </ol>
-                <div className="mt-6 p-4 bg-green-500/10 border border-green-500/20 rounded-lg text-sm text-green-200">
-                    <strong>Dica:</strong> O app é extremamente leve (menos de 2MB) e atualiza automaticamente sempre que você o abre conectado à internet.
-                </div>
-            </div>
+            <SEOContentHowTo
+                title="Android (Chrome)"
+                schemaTitle="Como Instalar o PromptNinja no Android"
+                steps={[
+                    {
+                        title: "Passo 1",
+                        text: "Abra o PromptNinja no Google Chrome."
+                    },
+                    {
+                        title: "Passo 2",
+                        text: "Toque no botão de Menu (três pontinhos) no canto superior direito."
+                    },
+                    {
+                        title: "Passo 3",
+                        text: "Toque em \"Instalar aplicativo\" ou \"Adicionar à tela inicial\"."
+                    },
+                    {
+                        title: "Passo 4",
+                        text: "Confirme tocando em Instalar."
+                    }
+                ]}
+                className="bg-slate-800 p-8 rounded-xl border border-slate-700 h-full"
+            />
 
         </div>
 

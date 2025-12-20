@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterZoomMeetingES = () => (
     <>
@@ -41,23 +42,30 @@ export const TeleprompterZoomMeetingES = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">La Guía Definitiva Paso a Paso para una Presentación en Línea Perfecta</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>Posicionamiento Estratégico de la Ventana:</strong> Abre PromptNinja en tu navegador y redimensiona la ventana a una franja estrecha. Arrástrala a la parte superior de la pantalla, centrada justo debajo de tu webcam. Una ventana estrecha obliga a que el texto tenga menos palabras por línea, reduciendo el movimiento horizontal de los ojos y haciendo que la lectura sea imperceptible.
-                </li>
-                <li>
-                    <strong>Configuración Optimizada del Texto:</strong> Aumenta el tamaño de la fuente para una lectura cómoda a distancia y disminuye el ancho de los márgenes. Esto concentra el texto en un área más pequeña, alineada verticalmente con la cámara, para que tus ojos solo se muevan hacia abajo, un movimiento natural y discreto.
-                </li>
-                <li>
-                    <strong>El Control Remoto Invisible:</strong> El talón de Aquiles de muchos presentadores es su interacción con el ordenador. El sonido de un clic del ratón o el movimiento del hombro para alcanzar el teclado son señales claras de que estás operando la máquina. PromptNinja elimina esto con su control remoto por Código QR. Tu móvil se convierte en un pasador de diapositivas silencioso y discreto, manteniendo el foco totalmente en ti.
-                </li>
-                <li>
-                    <strong>Modo Foco (Modo Reunión):</strong> Activa el <strong>Modo Foco</strong> en la configuración. Esto hace que el fondo del teleprompter sea semi-transparente o elimina elementos innecesarios, creando una visualización minimalista perfecta para superponer en tu ventana de Zoom o Teams sin bloquear tu visión de los participantes.
-                </li>
-            </ol>
-        </div>
+        <SEOContentHowTo
+            title="La Guía Definitiva Paso a Paso para una Presentación en Línea Perfecta"
+            schemaTitle="Cómo Usar Teleprompter en Zoom y Teams"
+            totalTime="PT2M"
+            tools={["Zoom o Teams", "PromptNinja", "Webcam"]}
+            steps={[
+                {
+                    title: "Paso 1: Posicionamiento Estratégico",
+                    text: "Abre PromptNinja en tu navegador y redimensiona la ventana a una franja estrecha. Arrástrala a la parte superior de la pantalla, centrada justo debajo de tu webcam."
+                },
+                {
+                    title: "Paso 2: Configuración Optimizada",
+                    text: "Aumenta el tamaño de la fuente para una lectura cómoda a distancia y disminuye el ancho de los márgenes. Esto concentra el texto en un área más pequeña, alineada verticalmente con la cámara."
+                },
+                {
+                    title: "Paso 3: Control Remoto Invisible",
+                    text: "PromptNinja elimina los clics del ratón con su control remoto por Código QR. Tu móvil se convierte en un pasador de diapositivas silencioso y discreto."
+                },
+                {
+                    title: "Paso 4: Modo Foco",
+                    text: "Activa el Modo Foco en la configuración. Esto hace que el fondo del teleprompter sea semi-transparente o elimina elementos innecesarios, creando una visualización minimalista."
+                }
+            ]}
+        />
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Compatibilidad Universal: Libertad para Presentar</h2>
         <p className="mb-6">

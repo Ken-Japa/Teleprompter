@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterGoogleMeetTeamsPT = () => (
     <>
@@ -16,21 +17,26 @@ export const TeleprompterGoogleMeetTeamsPT = () => (
                 Segurança é prioridade: todos os roteiros ficam salvos localmente no seu dispositivo. Nada é enviado para a nuvem, garantindo total conformidade com políticas de dados sensíveis.
             </p>
         </div>
-
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Como Fazer Apresentações Executivas Impecáveis</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>Overlay Transparente (Dica):</strong> Redimensione a janela do browser do PromptNinja para ficar bem estreita e posicione-a no topo da tela, centralizada logo abaixo da webcam.
-                </li>
-                <li>
-                    <strong>Google Meet/Teams:</strong> Abra o aplicativo de reunião em tela cheia (ou quase). O PromptNinja ficará "flutuando" acima se você usar um utilitário de "Always on Top" ou simplesmente posicionar as janelas lado a lado estrategicamente.
-                </li>
-                <li>
-                    <strong>Controle Discreto:</strong> Conecte seu celular corporativo como controle remoto. Mantenha as mãos sobre a mesa e controle a rolagem com toques sutis, sem cliques de mouse perceptíveis no áudio.
-                </li>
-            </ol>
-        </div>
+        <SEOContentHowTo
+            title="Como Fazer Apresentações Executivas Impecáveis"
+            schemaTitle="Como Usar Teleprompter no Google Meet e Microsoft Teams"
+            totalTime="PT3M"
+            tools={["Google Meet ou Teams", "PromptNinja", "Celular Corporativo"]}
+            steps={[
+                {
+                    title: "Passo 1: Overlay Transparente",
+                    text: "Redimensione a janela do browser do PromptNinja para ficar bem estreita e posicione-a no topo da tela, centralizada logo abaixo da webcam."
+                },
+                {
+                    title: "Passo 2: Configuração da Reunião",
+                    text: "Abra o aplicativo de reunião em tela cheia (ou quase). O PromptNinja ficará \"flutuando\" acima ou ao lado, estrategicamente posicionado."
+                },
+                {
+                    title: "Passo 3: Controle Discreto",
+                    text: "Conecte seu celular corporativo como controle remoto. Mantenha as mãos sobre a mesa e controle a rolagem com toques sutis."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

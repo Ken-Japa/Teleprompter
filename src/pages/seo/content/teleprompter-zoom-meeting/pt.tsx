@@ -1,5 +1,6 @@
 
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterZoomMeetingPT = () => (
     <>
@@ -32,25 +33,30 @@ export const TeleprompterZoomMeetingPT = () => (
                 Estudos de comunicação indicam que mais de 55% do impacto de uma mensagem é transmitido através da linguagem corporal, incluindo o contato visual. Em videochamadas, onde o corpo está parcialmente visível, os olhos ganham um peso ainda maior na comunicação.
             </p>
         </div>
-
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Passo a Passo Definitivo para uma Apresentação Online Perfeita</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>Posicionamento Estratégico da Janela:</strong> Abra o PromptNinja em seu navegador e redimensione a janela para que ela se torne uma faixa estreita. Arraste-a para o topo da tela, centralizada logo abaixo da sua webcam. Uma janela estreita força o texto a ter menos palavras por linha, reduzindo o movimento horizontal dos olhos e tornando a leitura imperceptível.
-                </li>
-                <li>
-                    <strong>Configuração Otimizada do Texto:</strong> Aumente o tamanho da fonte para uma leitura confortável à distância e diminua a largura das margens. Isso concentra o texto em uma área menor, alinhada verticalmente com a câmera, para que seus olhos apenas se movam para baixo, um movimento natural e discreto.
-                </li>
-                <li>
-                    <strong>O Controle Remoto Invisível:</strong> O calcanhar de Aquiles de muitos apresentadores é a interação com o computador. O som do clique do mouse ou o movimento dos ombros para alcançar o teclado são sinais claros de que você está operando a máquina. O PromptNinja elimina isso com seu controle remoto via QR Code. Seu celular se transforma em um passador de slides silencioso e discreto, mantendo o foco total em você.
-                </li>
-                <li>
-                    <strong>Modo Foco (Modo Reunião):</strong> Ative o <strong>Modo Foco</strong> nas configurações. Isso torna o fundo do teleprompter semi-transparente ou remove elementos desnecessários, criando uma visualização minimalista perfeita para sobrepor à janela do Zoom ou Teams sem bloquear sua visão dos participantes.
-                </li>
-
-            </ol>
-        </div>
+        <SEOContentHowTo
+            title="Passo a Passo Definitivo para uma Apresentação Online Perfeita"
+            schemaTitle="Como Usar Teleprompter no Zoom e Teams"
+            totalTime="PT2M"
+            tools={["Zoom ou Teams", "PromptNinja", "Webcam"]}
+            steps={[
+                {
+                    title: "Passo 1: Posicionamento Estratégico",
+                    text: "Abra o PromptNinja em seu navegador e redimensione a janela para que ela se torne uma faixa estreita. Arraste-a para o topo da tela, centralizada logo abaixo da sua webcam."
+                },
+                {
+                    title: "Passo 2: Configuração Otimizada",
+                    text: "Aumente o tamanho da fonte para uma leitura confortável à distância e diminua a largura das margens. Isso concentra o texto em uma área menor, alinhada verticalmente com a câmera."
+                },
+                {
+                    title: "Passo 3: Controle Remoto Invisível",
+                    text: "O PromptNinja elimina cliques de mouse com seu controle remoto via QR Code. Seu celular se transforma em um passador de slides silencioso e discreto."
+                },
+                {
+                    title: "Passo 4: Modo Foco",
+                    text: "Ative o Modo Foco nas configurações. Isso torna o fundo do teleprompter semi-transparente ou remove elementos desnecessários, criando uma visualização minimalista."
+                }
+            ]}
+        />
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Compatibilidade Universal: Liberdade para se Apresentar</h2>
         <p className="mb-6">

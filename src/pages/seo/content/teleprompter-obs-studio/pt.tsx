@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterObsStudioPT = () => (
     <>
@@ -17,23 +18,30 @@ export const TeleprompterObsStudioPT = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Tutorial: PromptNinja no OBS Studio</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>Fonte de Navegador (Browser Source):</strong> No OBS, adicione uma nova "Fonte de Navegador". Cole a URL do seu ID de sessão do PromptNinja (que você gera ao clicar em "Espelhar" ou "Conectar Remoto").
-                </li>
-                <li>
-                    <strong>Interaja com a Fonte:</strong> Clique com o botão direito na fonte e selecione "Interagir" para fazer ajustes iniciais, se necessário.
-                </li>
-                <li>
-                    <strong>Use o Celular como Stream Deck:</strong> Com o PromptNinja aberto no OBS, conecte seu celular via QR Code. Agora você tem um controlador dedicado para seus roteiros, sem precisar de Alt-Tab.
-                </li>
-                <li>
-                    <strong>Temas Chroma Key (Verde/Azul):</strong> Ative o tema <strong>Chroma Green</strong> ou <strong>Chroma Blue</strong> no PromptNinja. No OBS, aplique o filtro "Chroma Key" na fonte do navegador para remover completamente o fundo colorido, deixando apenas o texto flutuando de forma profissional sobre sua gameplay ou câmera. Perfeito para quem quer parecer um apresentador de telejornal.
-                </li>
-            </ol>
-        </div>
+        <SEOContentHowTo
+            title="Tutorial: PromptNinja no OBS Studio"
+            schemaTitle="Como Usar Teleprompter no OBS Studio"
+            totalTime="PT5M"
+            tools={["OBS Studio", "Computador", "Smartphone"]}
+            steps={[
+                {
+                    title: "Passo 1: Fonte de Navegador",
+                    text: "No OBS, adicione uma nova \"Fonte de Navegador\". Cole a URL do seu ID de sessão do PromptNinja (que você gera ao clicar em \"Espelhar\" ou \"Conectar Remoto\")."
+                },
+                {
+                    title: "Passo 2: Interaja com a Fonte",
+                    text: "Clique com o botão direito na fonte e selecione \"Interagir\" para fazer ajustes iniciais, se necessário."
+                },
+                {
+                    title: "Passo 3: Use o Celular como Stream Deck",
+                    text: "Com o PromptNinja aberto no OBS, conecte seu celular via QR Code. Agora você tem um controlador dedicado para seus roteiros, sem precisar de Alt-Tab."
+                },
+                {
+                    title: "Passo 4: Temas Chroma Key",
+                    text: "Ative o tema Chroma Green ou Chroma Blue no PromptNinja. No OBS, aplique o filtro \"Chroma Key\" na fonte do navegador para remover completamente o fundo colorido, deixando apenas o texto flutuando."
+                }
+            ]}
+        />
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Melhore sua Retenção em Lives</h2>
         <p className="mb-6">

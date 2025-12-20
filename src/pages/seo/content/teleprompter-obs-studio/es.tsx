@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterObsStudioES = () => (
     <>
@@ -17,23 +18,30 @@ export const TeleprompterObsStudioES = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Tutorial: PromptNinja en OBS Studio</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>Fuente de Navegador:</strong> En OBS, añade una nueva "Fuente de Navegador". Pega la URL de tu sesión de PromptNinja.
-                </li>
-                <li>
-                    <strong>Interactuar:</strong> Haz clic derecho en la fuente y selecciona "Interactuar" para ajustes iniciales.
-                </li>
-                <li>
-                    <strong>Stream Deck Móvil:</strong> Con PromptNinja abierto en OBS, conecta tu móvil vía QR Code. Ahora tienes un controlador dedicado para tus guiones.
-                </li>
-                <li>
-                    <strong>Temas Chroma Key (Verde/Azul):</strong> Activa el tema <strong>Chroma Green</strong> o <strong>Chroma Blue</strong> en PromptNinja. En OBS, aplica el filtro "Chroma Key" a la fuente del navegador para eliminar completamente el fondo de color, dejando solo el texto flotando de forma profesional sobre tu gameplay o cámara. Perfecto para ese look de presentador de noticias.
-                </li>
-            </ol>
-        </div>
+        <SEOContentHowTo
+            title="Tutorial: PromptNinja en OBS Studio"
+            schemaTitle="Cómo Usar Teleprompter en OBS Studio"
+            totalTime="PT5M"
+            tools={["OBS Studio", "Ordenador", "Smartphone"]}
+            steps={[
+                {
+                    title: "Paso 1: Fuente de Navegador",
+                    text: "En OBS, añade una nueva \"Fuente de Navegador\". Pega la URL de tu sesión de PromptNinja."
+                },
+                {
+                    title: "Paso 2: Interactuar",
+                    text: "Haz clic derecho en la fuente y selecciona \"Interactuar\" para realizar ajustes iniciales si es necesario."
+                },
+                {
+                    title: "Paso 3: Stream Deck Móvil",
+                    text: "Con PromptNinja abierto en OBS, conecta tu móvil vía QR Code. Ahora tienes un controlador dedicado para tus guiones sin necesidad de Alt-Tab."
+                },
+                {
+                    title: "Paso 4: Temas Chroma Key",
+                    text: "Activa el tema Chroma Green o Chroma Blue en PromptNinja. En OBS, aplica el filtro \"Chroma Key\" a la fuente del navegador para eliminar completamente el fondo de color, dejando solo el texto flotando."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

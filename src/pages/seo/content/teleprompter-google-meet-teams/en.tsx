@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterGoogleMeetTeamsEN = () => (
     <>
@@ -16,21 +17,26 @@ export const TeleprompterGoogleMeetTeamsEN = () => (
                 Security is priority: all scripts are saved locally on your device. Nothing is sent to the cloud, ensuring full compliance with sensitive data policies.
             </p>
         </div>
-
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">How to Deliver Flawless Executive Presentations</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>Transparent Overlay (Tip):</strong> Resize the PromptNinja browser window to be very narrow and position it at the top of the screen, centered just below the webcam.
-                </li>
-                <li>
-                    <strong>Google Meet/Teams:</strong> Open your meeting app. Position PromptNinja "floating" above or side-by-side strategically.
-                </li>
-                <li>
-                    <strong>Discreet Control:</strong> Connect your corporate phone as a remote. Keep hands on the desk and control scrolling with subtle taps, no audible mouse clicks.
-                </li>
-            </ol>
-        </div>
+        <SEOContentHowTo
+            title="How to Deliver Flawless Executive Presentations"
+            schemaTitle="How to Use Teleprompter on Google Meet and Microsoft Teams"
+            totalTime="PT3M"
+            tools={["Google Meet or Teams", "PromptNinja", "Phone"]}
+            steps={[
+                {
+                    title: "Step 1: Transparent Overlay",
+                    text: "Resize the PromptNinja browser window to be very narrow and position it at the top of the screen, centered just below the webcam."
+                },
+                {
+                    title: "Step 2: Meeting Setup",
+                    text: "Open your meeting app. Position PromptNinja \"floating\" above or side-by-side strategically."
+                },
+                {
+                    title: "Step 3: Discreet Control",
+                    text: "Connect your corporate phone as a remote. Keep hands on the desk and control scrolling with subtle taps, no audible mouse clicks."
+                }
+            ]}
+        />
 
         <div className="text-center mt-12">
             <a

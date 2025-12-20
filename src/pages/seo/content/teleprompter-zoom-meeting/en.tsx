@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterZoomMeetingEN = () => (
     <>
@@ -32,23 +33,30 @@ export const TeleprompterZoomMeetingEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">The Ultimate Step-by-Step Guide for a Perfect Online Presentation</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>Strategic Window Positioning:</strong> Open PromptNinja in your browser and resize the window to a narrow strip. Drag it to the top of the screen, centered just below your webcam. A narrow window forces the text to have fewer words per line, reducing horizontal eye movement and making the reading imperceptible.
-                </li>
-                <li>
-                    <strong>Optimized Text Configuration:</strong> Increase the font size for comfortable reading at a distance and decrease the margin width. This concentrates the text in a smaller area, vertically aligned with the camera, so your eyes only move downwards—a natural and discreet motion.
-                </li>
-                <li>
-                    <strong>The Invisible Remote Control:</strong> The Achilles' heel of many presenters is their interaction with the computer. The sound of a mouse click or the shoulder movement to reach the keyboard are clear signs that you are operating the machine. PromptNinja eliminates this with its QR Code remote. Your phone becomes a silent and discreet slide advancer, keeping the focus entirely on you.
-                </li>
-                <li>
-                    <strong>Focus Mode (Meeting Mode):</strong> Enable <strong>Focus Mode</strong> in settings. This makes the teleprompter background semi-transparent or removes unnecessary elements, creating a minimalist view perfect for overlaying on your Zoom or Teams window without blocking your view of participants.
-                </li>
-            </ol>
-        </div>
+        <SEOContentHowTo
+            title="The Ultimate Step-by-Step Guide for a Perfect Online Presentation"
+            schemaTitle="How to Use Teleprompter on Zoom and Teams"
+            totalTime="PT2M"
+            tools={["Zoom or Teams", "PromptNinja", "Webcam"]}
+            steps={[
+                {
+                    title: "Step 1: Strategic Positioning",
+                    text: "Open PromptNinja in your browser and resize the window to a narrow strip. Drag it to the top of the screen, centered just below your webcam."
+                },
+                {
+                    title: "Step 2: Optimized Text",
+                    text: "Increase the font size for comfortable reading at a distance and decrease the margin width. This concentrates the text in a smaller area, vertically aligned with the camera."
+                },
+                {
+                    title: "Step 3: Invisible Remote",
+                    text: "PromptNinja eliminates mouse clicks with its QR Code remote. Your phone becomes a silent and discreet slide advancer."
+                },
+                {
+                    title: "Step 4: Focus Mode",
+                    text: "Enable Focus Mode in settings. This makes the teleprompter background semi-transparent or removes unnecessary elements, creating a minimalist view."
+                }
+            ]}
+        />
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Universal Compatibility: Freedom to Present</h2>
         <p className="mb-6">
