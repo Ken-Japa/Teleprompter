@@ -11,6 +11,23 @@ declare global {
     }
 }
 import * as Sentry from "@sentry/react";
+
+/**
+ * Sets the analytics storage consent status based on user activity.
+ * When inactive (isActive=false), we deny 'analytics_storage' to stop engagement time tracking.
+ * @param isActive Whether the user is currently active.
+ */
+export function setAnalyticsActive(isActive: boolean): void {
+    if (typeof window.gtag === "function") {
+        const consentState = isActive ? 'granted' : 'denied';
+        console.log(`📊 Analytics consent ${isActive ? 'resumed' : 'paused'} (analytics_storage: ${consentState})`);
+
+        window.gtag('consent', 'update', {
+            'analytics_storage': consentState
+        });
+    }
+}
+
 /**
  * Rastreia um evento personalizado no Google Analytics.
  * @param eventName O nome do evento a ser rastreado.

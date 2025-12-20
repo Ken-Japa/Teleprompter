@@ -1,6 +1,8 @@
 import React, { useEffect, useState, Suspense } from "react";
 import { TranslationProvider, useTranslation, getInitialLanguage } from "./hooks/useTranslation";
-import { trackEvent, trackOpenScript } from "./utils/analytics";
+import { trackEvent, trackOpenScript, setAnalyticsActive } from "./utils/analytics";
+import { useInactivity } from "./hooks/useInactivity";
+
 
 // Lazy load pages for performance optimization
 const Host = React.lazy(() => import("./pages/Host").then(module => ({ default: module.Host })));
@@ -29,6 +31,13 @@ const App: React.FC = () => {
     const [currentLang, setCurrentLang] = useState<Language | undefined>(undefined);
 
     const { t, lang } = useTranslation();
+
+    // Inactivity check
+    const isActive = useInactivity(30 * 60 * 1000); // 30 minutes
+    useEffect(() => {
+        setAnalyticsActive(isActive);
+    }, [isActive]);
+
 
     useEffect(() => {
         // Update title
