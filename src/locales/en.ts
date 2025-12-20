@@ -340,6 +340,7 @@ export const en = {
       cream: "Cream (Reader)",
       chroma_green: "Chroma Key (Green)",
       chroma_blue: "Chroma Key (Blue)",
+      transparent: "Transparent",
     },
     tips: {
       title: "PRO Editing Tips",

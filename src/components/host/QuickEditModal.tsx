@@ -56,6 +56,8 @@ export const QuickEditModal: React.FC<QuickEditModalProps> = ({
                 <ColorMenu onInsertTag={handleInsertTag} />
                 <textarea
                     ref={textAreaRef}
+                    id="quick-edit-text"
+                    name="quickEditText"
                     className="w-full h-96 p-4 bg-slate-800/50 border border-slate-700 rounded-xl text-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none resize-none font-sans text-lg leading-relaxed"
                     value={localText}
                     onChange={(e) => setLocalText(e.target.value)}

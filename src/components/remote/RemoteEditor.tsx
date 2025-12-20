@@ -54,6 +54,8 @@ export const RemoteEditor: React.FC<RemoteEditorProps> = ({ text, actions, isBil
             </div>
             <textarea
                 ref={remoteTextAreaRef}
+                id="remote-script-editor"
+                name="remoteScriptText"
                 value={text}
                 onChange={(e) => actions.handleTextChange(e.target.value)}
                 className="flex-1 w-full bg-slate-900/50 border border-slate-800 rounded-xl p-4 text-slate-200 font-mono text-sm focus:outline-none focus:border-brand-500 resize-none h-full"

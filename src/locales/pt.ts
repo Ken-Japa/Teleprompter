@@ -346,6 +346,7 @@ export const pt = {
       cream: "Creme (Conforto Visual)",
       chroma_green: "Chroma Key (Verde)",
       chroma_blue: "Chroma Key (Azul)",
+      transparent: "Transparente",
     },
     tips: {
       title: "Dicas PRO para Edição e Performance",

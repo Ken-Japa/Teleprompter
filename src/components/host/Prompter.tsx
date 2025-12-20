@@ -473,13 +473,11 @@ export const Prompter = memo(
       useEffect(() => {
         if (isVoiceMode) {
           if (voiceControlMode !== "remote") {
-            console.warn(`[Prompter] Starting Voice Listening. Mode: ${voiceControlMode}`);
             startListening();
           } else {
             console.warn("[Prompter] Voice Mode is Remote - Not starting local listener");
           }
         } else {
-          console.warn("[Prompter] Voice Mode OFF - Stopping listening");
           stopListening();
         }
       }, [voiceControlMode, isVoiceMode, startListening, stopListening]);

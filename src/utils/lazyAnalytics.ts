@@ -39,17 +39,18 @@ export const initAnalyticsCompatibility = (): void => {
         csScript.defer = true;
         document.head.appendChild(csScript);
 
-        // Initialize Microsoft Clarity
-        const clarityScript = document.createElement("script");
-        clarityScript.type = "text/javascript";
-        clarityScript.text = `
-            (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "uke5r12yig");
-        `;
-        document.head.appendChild(clarityScript);
+        // Initialize Microsoft Clarity directly (avoiding CSP violation)
+        // Execute the initialization code directly instead of creating an inline script
+        (function (c: any, l: Document, a: string, r: string, i: string) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+            const t = l.createElement(r) as HTMLScriptElement;
+            t.async = true;
+            t.src = "https://www.clarity.ms/tag/" + i;
+            const y = l.getElementsByTagName(r)[0];
+            if (y && y.parentNode) {
+                y.parentNode.insertBefore(t, y);
+            }
+        })(window, document, "clarity", "script", "uke5r12yig");
     };
 
     // Lazy load extras after 3s or interaction

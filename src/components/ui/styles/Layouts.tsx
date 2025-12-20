@@ -56,6 +56,8 @@ export const EditorTextArea = React.forwardRef<
 >(({ value, onChange, placeholder }, ref) => (
     <textarea
         ref={ref}
+        id="editor-script-input"
+        name="scriptText"
         className="flex-1 min-h-[500px] bg-transparent p-8 md:p-16 text-lg md:text-2xl font-sans text-slate-200 resize-none focus:outline-none focus:ring-0 scrollbar-thin scrollbar-thumb-slate-800 placeholder:text-slate-700 leading-[1.8] max-w-7xl mx-auto w-full relative z-10 selection:bg-brand-500/30 tracking-wide transition-all duration-300"
         value={value}
         onChange={onChange}

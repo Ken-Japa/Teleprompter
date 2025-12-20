@@ -116,8 +116,6 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                 return;
             }
 
-            // DEBUG: Log transcript
-            console.warn(`[Voice] Heard: "${cleanTranscript}"`);
 
             // Fuzzy Search Strategy
             // 1. Try to find fuzzy match starting from last known position
@@ -125,12 +123,6 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             // OPTIMIZATION: Reduced search window from 1000 to 600 for performance
             let match = findBestMatch(fullCleanText, cleanTranscript, lastMatchIndexRef.current, 600, 0.4);
 
-            // DEBUG: Log Match
-            if (match) {
-                console.warn(`[Voice] Match Found! Index: ${match.index}, Ratio: ${match.ratio}`);
-            } else {
-                console.warn(`[Voice] No Match. LastIndex: ${lastMatchIndexRef.current}`);
-            }
 
             // Fallback logic for repeated phrases
             if (!match && lastMatchIndexRef.current > 0) {
@@ -151,7 +143,6 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                     // 3. Very high quality match (user definitely restarted or jumped intentionally)
                     if (!isBackwardJump || isSmallJump || isVeryGoodMatch) {
                         match = fallbackMatch;
-                        console.warn(`[Voice] Fallback Match! Index: ${match.index}, Backward: ${isBackwardJump}`);
                     } else {
                         console.warn(`[Voice] Rejected backward jump. Ratio: ${fallbackMatch.ratio}, Distance: ${lastMatchIndexRef.current - fallbackMatch.index}`);
                     }
@@ -209,18 +200,14 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             return;
         }
         if (isListening) {
-            console.warn("[VoiceHook] Already listening, ignoring start request");
             return;
         }
-
-        console.warn("[VoiceHook] Starting recognition...");
 
         intentionallyStoppedRef.current = false;
         startRecognitionInstance();
     }, [isPro, isListening, voiceApiSupported, startRecognitionInstance]);
 
     const stopListening = useCallback(() => {
-        console.warn("[VoiceHook] Stopping recognition...");
         intentionallyStoppedRef.current = true;
         if (recognitionRef.current) {
             try {
@@ -231,7 +218,6 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
     }, []);
 
     const resetVoice = useCallback(() => {
-        console.warn("[VoiceHook] Resetting voice state");
         stopListening();
         lastMatchIndexRef.current = 0;
         setVoiceProgress(0);
