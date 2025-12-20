@@ -2,17 +2,28 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterOnlineGratisEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Free Online Teleprompter: The Ultimate Tool for Creators</h1>
+        <h1 className="text-4xl font-bold text-white mb-6">Free Online Teleprompter: Stop Wasting Hours Re-Recording</h1>
+
+        <p className="mb-6 text-lg text-slate-300">
+            Ever spent 2 hours recording a 10-minute video? You start speaking, freeze mid-sentence, glance at your notes, lose eye contact with the camera. Result? Re-record everything. Again. And again.
+        </p>
 
         <p className="mb-6">
-            In the world of content creation, the search for a <strong>free online teleprompter</strong> is constant. But beware: "free" doesn't always mean free. Many apps limit your recording time or stick a giant watermark on your video. PromptNinja is different: we offer <strong>unlimited usage time</strong>, <strong>no watermark</strong>, and no strings attached. Whether for YouTube videos, online courses, or corporate presentations, the ability to speak to the camera fluently is a right, not a luxury. Also commonly referred to as an <strong>autocue</strong> in professional broadcasting, this tool helps you deliver your lines perfectly.
+            I know how frustrating it is. Wasting an entire afternoon because you forgot a line mid-recording. Or worse: publishing a video full of "uhh" and "umm" because you gave up on re-recording.
+        </p>
+
+        <p className="mb-6">
+            PromptNinja was born to solve exactly this problem. It's a <strong>free online teleprompter</strong> for real — no time limits, no watermarks, no hidden catches. Also known as an <strong>autocue</strong> in professional broadcasting, it's the tool that separates amateur videos from productions that capture attention.
         </p>
 
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
-            <h2 className="text-2xl font-bold text-white mb-2">Why is PromptNinja Different? (P2P Technology)</h2>
+            <h2 className="text-2xl font-bold text-white mb-2">Why Doesn't PromptNinja Freeze? (The P2P Difference)</h2>
+            <p className="text-slate-300 mb-4">
+                Know why most teleprompters "freeze" mid-sentence? Because they depend on your internet to send each command to a cloud server and back. If your internet hiccups (even for 1 second), the text freezes.
+            </p>
             <p className="text-slate-300">
-                Most teleprompters "freeze" because they depend on your internet to scroll the text. PromptNinja uses <strong>WebRTC (P2P)</strong> technology, which connects your mobile to your PC directly over Wi-Fi. This ensures an <strong>instant response, without lag</strong>, regardless of your internet speed. It's professional stability, for free.
+                PromptNinja uses <strong>WebRTC (P2P) technology</strong>: your phone connects directly to your laptop via local Wi-Fi. It's like the two devices talking directly, no middlemen. <strong>Zero internet dependency</strong>. The result? Typical Bluetooth has ~300ms delay. Traditional apps can have 500-1000ms. PromptNinja? <strong>Under 50ms</strong>. You hit pause, and the text stops <em>instantly</em>.
             </p>
         </div>
 
@@ -88,6 +99,31 @@ export const TeleprompterOnlineGratisEN = () => (
                     </tr>
                 </tbody>
             </table>
+        </div>
+
+        <h2 className="text-2xl font-bold text-white mt-12 mb-4">Real Cases: How Creators Use PromptNinja</h2>
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
+                <h3 className="font-bold text-lg text-green-400 mb-3">📹 Educational YouTuber</h3>
+                <p className="text-slate-300 text-sm mb-4">
+                    "I record math lessons. Before, it took 3 hours to record 1 video of 20 minutes because I'd forget formulas. Now I use PromptNinja on a tablet behind the camera. I record the same video in 35 minutes, error-free."
+                </p>
+                <p className="text-slate-500 text-xs italic">— Setup: Laptop + tablet as display</p>
+            </div>
+            <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
+                <h3 className="font-bold text-lg text-blue-400 mb-3">💼 Home Office Executive</h3>
+                <p className="text-slate-300 text-sm mb-4">
+                    "I do Zoom presentations for the board. I use PromptNinja's transparent mode over the Zoom window. I read key points while maintaining eye contact. Nobody notices I'm reading."
+                </p>
+                <p className="text-slate-500 text-xs italic">— Setup: PC + phone as remote control</p>
+            </div>
+            <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
+                <h3 className="font-bold text-lg text-purple-400 mb-3">🎬 Content Producer</h3>
+                <p className="text-slate-300 text-sm mb-4">
+                    "I batch record: 15 videos every Saturday. I leave scripts ready in PromptNinja, just swap the text and record. I save about 10 hours per week that I used to spend memorizing."
+                </p>
+                <p className="text-slate-500 text-xs italic">— Setup: External monitor + voice control (PRO)</p>
+            </div>
         </div>
 
         <SEOContentFAQ

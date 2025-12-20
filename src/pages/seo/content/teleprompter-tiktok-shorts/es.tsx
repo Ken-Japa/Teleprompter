@@ -3,10 +3,18 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTikTokShortsES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Teleprompter para TikTok, Reels y Shorts: Graba Videos Verticales Perfectos</h1>
+        <h1 className="text-4xl font-bold text-white mb-6">Teleprompter para TikTok y Reels: Viraliza Sin Parecer Robot</h1>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            La revolución de los videos cortos exige rapidez y precisión. En TikTok, Reels o YouTube Shorts, tienes segundos para captar la atención. PromptNinja es el teleprompter ideal para creadores de contenido vertical, permitiéndote grabar con confianza, mantener la mirada en la cámara y producir videos virales en tiempo récord.
+        <p className="lead text-xl text-slate-300 mb-6">
+            ¿Grabas 30 tomas del mismo video y ninguna queda bien? Empiezas a hablar, olvidas la frase, desvías la mirada, pierdes energía. ¿Resultado? Ese video de 15 segundos tardó 40 minutos en grabar y todavía quedó mediocre.
+        </p>
+
+        <p className="mb-6">
+            En TikTok, Reels y Shorts, tienes <strong>3 segundos</strong> para captar la atención. Si tropiezas, miras hacia otro lado o pierdes el ritmo, los espectadores hacen scroll. Game over.
+        </p>
+
+        <p className="mb-6">
+            PromptNinja es el teleprompter hecho a medida para creadores móviles. Posicionas el texto junto a la cámara frontal, controlas vía celular (u otro dispositivo), y grabas con confianza manteniendo contacto visual. Sin memorizar. Sin regravar infinitamente. Directo al punto.
         </p>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-pink-500">
@@ -39,6 +47,75 @@ export const TeleprompterTikTokShortsES = () => (
             ]}
         />
 
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Setups de Creadores Virales: De Básico a Pro</h2>
+        <p className="text-slate-300 mb-8">
+            No necesitas equipo caro para empezar. Mira cómo los creadores usan PromptNinja en diferentes niveles:
+        </p>
+
+        <div className="space-y-6 mb-12">
+            <div className="bg-slate-900 p-6 rounded-xl border border-slate-800">
+                <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl">🔴</span>
+                    <h3 className="text-2xl font-bold text-white">Nivel 1: Principiante (1 Celular)</h3>
+                </div>
+                <p className="text-slate-300 mb-4">
+                    <strong>Setup:</strong> Solo tu celular. Abre PromptNinja en el navegador, posiciona el texto en la parte superior (cerca de la cámara frontal), y graba.
+                </p>
+                <p className="text-slate-400 text-sm mb-3"><strong>Ventaja:</strong> Cero inversión. Empieza hoy.</p>
+                <p className="text-slate-400 text-sm"><strong>Limitación:</strong> Necesitas pausar manualmente tocando pantalla (puede temblar cámara).</p>
+            </div>
+
+            <div className="bg-slate-900 p-6 rounded-xl border border-slate-800">
+                <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl">🟡</span>
+                    <h3 className="text-2xl font-bold text-white">Nivel 2: Intermedio (2 Dispositivos)</h3>
+                </div>
+                <p className="text-slate-300 mb-4">
+                    <strong>Setup:</strong> Celular en trípode grabando + otro celular o laptop en mano como control remoto.
+                </p>
+                <p className="text-slate-400 text-sm mb-3"><strong>Ventaja:</strong> Controlas play/pausa/velocidad sin tocar el celular que graba. Cámara queda estable.</p>
+                <p className="text-slate-400 text-sm"><strong>Ideal para:</strong> Grabar en lote (5-10 videos de una vez).</p>
+            </div>
+
+            <div className="bg-slate-900 p-6 rounded-xl border border-slate-800">
+                <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl">🟢</span>
+                    <h3 className="text-2xl font-bold text-white">Nivel 3: Profesional (Control por Voz)</h3>
+                </div>
+                <p className="text-slate-300 mb-4">
+                    <strong>Setup:</strong> PromptNinja PRO con reconocimiento de voz. El texto se desplaza automáticamente mientras hablas.
+                </p>
+                <p className="text-slate-400 text-sm mb-3"><strong>Ventaja:</strong> Manos 100% libres. Flujo natural. Parece que hablas desde el corazón, no leyendo.</p>
+                <p className="text-slate-400 text-sm"><strong>Ideal para:</strong> Creadores full-time que graban diariamente.</p>
+            </div>
+        </div>
+
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">5 Errores Fatales que Matan Videos Verticales</h2>
+        <div className="bg-gradient-to-r from-red-900/20 to-slate-900 p-8 rounded-xl border border-red-500/30 mb-12">
+            <ol className="space-y-4 text-slate-300">
+                <li>
+                    <strong className="text-red-400">❌ Error #1: Mirada Desviada</strong><br />
+                    <span className="text-sm text-slate-400">Colocar texto lejos de cámara frontal. ¿Resultado? Miras "a la nada" y pierdes conexión. <strong className="text-green-400">Solución:</strong> Texto pegado arriba, lo más cerca posible del lente.</span>
+                </li>
+                <li>
+                    <strong className="text-red-400">❌ Error #2: Fuente Gigante</strong><br />
+                    <span className="text-sm text-slate-400">Texto muy grande fuerza tus ojos a moverse mucho. Parece que lees un libro. <strong className="text-green-400">Solución:</strong> Fuente más pequeña + alejarte del celular.</span>
+                </li>
+                <li>
+                    <strong className="text-red-400">❌ Error #3: Velocidad Incorrecta</strong><br />
+                    <span className="text-sm text-slate-400">Muy rápido = corres y te quedas sin aliento. Muy lento = pierdes energía. <strong className="text-green-400">Solución:</strong> Prueba 2-3 velocidades antes de grabar en serio.</span>
+                </li>
+                <li>
+                    <strong className="text-red-400">❌ Error #4: Olvidar Pausas Dramáticas</strong><br />
+                    <span className="text-sm text-slate-400">Hablar corrido sin respirar. Videos virales tienen ritmo. <strong className="text-green-400">Solución:</strong> Marca pausas en el guión (usa Enter doble o [...]).</span>
+                </li>
+                <li>
+                    <strong className="text-red-400">❌ Error #5: No Probar el Ángulo</strong><br />
+                    <span className="text-sm text-slate-400">Grabar sin ver cómo quedó. <strong className="text-green-400">Solución:</strong> Siempre graba prueba de 5 segundos y mira antes de grabar serie.</span>
+                </li>
+            </ol>
+        </div>
+
         <div className="text-center mt-12">
             <a
                 href="https://promptninja.solutionkit.com.br/?lang=es/#app"
@@ -63,6 +140,14 @@ export const TeleprompterTikTokShortsES = () => (
                 {
                     question: "¿Cómo grabo solo a distancia?",
                     answer: "Usa nuestra función de Control Remoto. Abre PromptNinja en el móvil que grabará y usa otro móvil u ordenador en tu mano para dar play y controlar la velocidad sin moverte."
+                },
+                {
+                    question: "¿Funciona para Stories y Reels de Instagram?",
+                    answer: "¡Sí! La interfaz vertical funciona perfectamente para cualquier plataforma de video vertical: TikTok, Instagram Reels, Stories, YouTube Shorts, Kwai, etc. El formato es el mismo."
+                },
+                {
+                    question: "¿Puedo usarlo con ring light y micrófono externo?",
+                    answer: "Por supuesto. PromptNinja no interfiere con ningún equipo. Configura tu setup normalmente (trípode, ring light, micrófono) y luego solo añade el teleprompter al workflow."
                 }
             ]}
         />

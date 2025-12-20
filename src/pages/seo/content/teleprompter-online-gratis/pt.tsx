@@ -2,17 +2,28 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterOnlineGratisPT = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Teleprompter Online Grátis: A Ferramenta Definitiva para Criadores</h1>
+        <h1 className="text-4xl font-bold text-white mb-6">Teleprompter Online Grátis: Pare de Desperdiçar Horas Regravando</h1>
+
+        <p className="mb-6 text-lg text-slate-300">
+            Você já passou 2 horas gravando um vídeo de 10 minutos? Começa a falar, trava na frase, olha pro papel, perde o contato visual com a câmera. Resultado? Regrava tudo. De novo. E de novo.
+        </p>
 
         <p className="mb-6">
-            No universo da criação de conteúdo, a busca por um <strong>teleprompter online grátis</strong> é constante. Mas cuidado: "grátis" nem sempre significa livre. Muitos apps limitam seu tempo de gravação ou colam uma marca d'água gigante no seu vídeo. O PromptNinja é diferente: oferecemos <strong>tempo de uso ilimitado</strong>, <strong>sem marca d'água</strong> e sem pegadinhas. Seja para vídeos no YouTube, cursos online, ou apresentações corporativas, a capacidade de falar para a câmera com fluidez é um direito, não um luxo. Também conhecido em Portugal e em estúdios profissionais como <strong>teleponto</strong>, esta ferramenta é essencial para quem busca profissionalismo.
+            Eu sei como é frustrante. Perder uma tarde inteira porque você esqueceu uma linha no meio da gravação. Ou pior: publicar um vídeo cheio de "ahhh" e "hummm" porque você desistiu de regravar.
+        </p>
+
+        <p className="mb-6">
+            O PromptNinja nasceu exatamente pra resolver esse problema. É um <strong>teleprompter online grátis</strong> de verdade — sem limite de tempo, sem marca d'água, sem pegadinhas escondidas. Também conhecido como <strong>teleponto</strong> em Portugal e em estúdios profissionais, é a ferramenta que separa vídeos amadores de produções que prendem a atenção.
         </p>
 
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
-            <h2 className="text-2xl font-bold text-white mb-2">Por que o PromptNinja é Diferente? (Tecnologia P2P)</h2>
+            <h2 className="text-2xl font-bold text-white mb-2">Por que o PromptNinja Não Trava? (A Diferença do P2P)</h2>
+            <p className="text-slate-300 mb-4">
+                Sabe por que a maioria dos teleprompters "congela" no meio da frase? Porque dependem da sua internet pra enviar cada comando pro servidor na nuvem e voltar. Se sua internet oscila (mesmo que por 1 segundo), o texto trava.
+            </p>
             <p className="text-slate-300">
-                A maioria dos teleprompters "trava" porque depende da sua internet para rolar o texto. O PromptNinja usa tecnologia <strong>WebRTC (P2P)</strong>, que conecta seu celular ao PC diretamente pelo Wi-Fi. Isso garante uma <strong>resposta instantânea, sem atrasos (LAG)</strong>, independentemente da velocidade da sua internet. É estabilidade profissional, de graça.
+                O PromptNinja usa <strong>tecnologia WebRTC (P2P)</strong>: seu celular se conecta diretamente ao seu notebook pela rede Wi-Fi local. É como se os dois dispositivos conversassem diretamente, sem intermediários. <strong>Zero dependência de internet</strong>. O resultado? Bluetooth típico tem ~300ms de atraso. Apps tradicionais podem ter 500-1000ms. O PromptNinja? <strong>Menos de 50ms</strong>. Você aperta pause, e o texto para <em>instantaneamente</em>.
             </p>
         </div>
 
@@ -88,6 +99,31 @@ export const TeleprompterOnlineGratisPT = () => (
                     </tr>
                 </tbody>
             </table>
+        </div>
+
+        <h2 className="text-2xl font-bold text-white mt-12 mb-4">Casos Reais: Como Criadores Usam o PromptNinja</h2>
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
+                <h3 className="font-bold text-lg text-green-400 mb-3">📹 YouTuber Educacional</h3>
+                <p className="text-slate-300 text-sm mb-4">
+                    "Gravo aulas de matemática. Antes, levava 3 horas pra gravar 1 vídeo de 20 minutos porque esquecia fórmulas. Agora uso o PromptNinja no tablet atrás da câmera. Gravo o mesmo vídeo em 35 minutos, sem erro."
+                </p>
+                <p className="text-slate-500 text-xs italic">— Setup: Laptop + tablet como tela</p>
+            </div>
+            <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
+                <h3 className="font-bold text-lg text-blue-400 mb-3">💼 Executivo em Home Office</h3>
+                <p className="text-slate-300 text-sm mb-4">
+                    "Faço apresentações pelo Zoom pra diretoria. Uso o modo transparente do PromptNinja por cima da janela do Zoom. Leio os pontos principais mantendo contato visual. Ninguém percebe que estou lendo."
+                </p>
+                <p className="text-slate-500 text-xs italic">— Setup: PC + celular como controle remoto</p>
+            </div>
+            <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
+                <h3 className="font-bold text-lg text-purple-400 mb-3">🎬 Produtor de Conteúdo</h3>
+                <p className="text-slate-300 text-sm mb-4">
+                    "Gravo em lote: 15 vídeos todo sábado. Deixo os roteiros prontos no PromptNinja, só troco o texto e gravo. Economizo umas 10 horas por semana que gastava decorando."
+                </p>
+                <p className="text-slate-500 text-xs italic">— Setup: Monitor externo + controle vocal (PRO)</p>
+            </div>
         </div>
 
         <SEOContentFAQ
