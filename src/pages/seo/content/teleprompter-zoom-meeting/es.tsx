@@ -2,11 +2,20 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterZoomMeetingES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Teleprompter GRATIS para Zoom, Teams y Google Meet: El Secreto del Contacto Visual Perfecto</h1>
+        <h1 className="text-4xl font-bold text-white mb-6">Teleprompter Virtual GRATIS para Zoom, Teams y Google Meet: El Secreto del Contacto Visual Perfecto</h1>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Mantener el contacto visual durante una presentación en línea es el secreto para captar la atención y transmitir confianza. Sin embargo, la realidad es un malabarismo constante: si miras tus notas, pierdes la conexión con la audiencia; si miras a la cámara, corres el riesgo de olvidar puntos cruciales. PromptNinja surge como la solución definitiva a este dilema, permitiéndote leer tu guion con fluidez mientras miras directamente a la lente de la cámara, creando una comunicación poderosa y auténtica.
         </p>
+
+        <div className="bg-slate-800/50 p-6 rounded-lg mb-8 border border-slate-700">
+            <h3 className="text-lg font-bold text-white mb-3">🚀 Cómo usar en 3 pasos:</h3>
+            <ol className="list-decimal pl-5 space-y-2 text-slate-300">
+                <li><strong>Abre PromptNinja:</strong> Inicia la aplicación en tu navegador.</li>
+                <li><strong>Pon la ventana transparente:</strong> Colócala sobre Zoom, justo debajo de tu cámara.</li>
+                <li><strong>Controla desde tu móvil:</strong> Usa tu teléfono para pasar el texto sin tocar el teclado.</li>
+            </ol>
+        </div>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-blue-500">
             <h2 className="text-2xl font-bold text-white mb-2">El Secreto de la Fluidez: Por Qué el Control Remoto P2P de PromptNinja No se Traba en Zoom</h2>
@@ -111,6 +120,10 @@ export const TeleprompterZoomMeetingES = () => (
         <SEOContentFAQ
             title="Preguntas Frecuentes (FAQ)"
             items={[
+                {
+                    question: "¿Es seguro usar teleprompter en Zoom?",
+                    answer: "Sí, con PromptNinja el teleprompter es una capa transparente que solo tú ves, manteniendo el contacto visual total."
+                },
                 {
                     question: "¿La gente realmente no sabrá que estoy leyendo?",
                     answer: "Si sigues los consejos de posicionamiento de la ventana, tamaño de la fuente y, lo más importante, practicas para hablar con naturalidad, la lectura será imperceptible. El secreto es usar el texto como una guía, no como una prisión."
