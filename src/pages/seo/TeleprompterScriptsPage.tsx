@@ -56,7 +56,7 @@ export const TeleprompterScriptsPage: React.FC<{ onLaunch: () => void }> = ({ on
         <SeoPageLayout
             title={t('seo.scripts.title') || (currentLang === 'pt' ? "Scripts Prontos para Teleprompter: Modelos de Roteiro Grátis" : "Ready-to-Use Teleprompter Scripts: Free Templates")}
             description={t('seo.scripts.description') || "Coleção completa de scripts para teleprompter. Roteiros para YouTube, TikTok, Vendas e Aulas prontos para usar."}
-            canonicalUrl={`https://promptninja.com/${currentLang}/scripts-teleprompter`}
+            canonicalUrl={`https://promptninja.solutionkit.com.br${currentLang === 'en' ? '/en/teleprompter-scripts' : currentLang === 'es' ? '/es/guiones-teleprompter' : '/scripts-teleprompter'}`}
             onLaunch={onLaunch}
         >
             <div className="mb-12">

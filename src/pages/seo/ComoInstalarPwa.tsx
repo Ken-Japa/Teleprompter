@@ -15,7 +15,7 @@ export const ComoInstalarPwa: React.FC<Props> = ({ onLaunch }) => {
     let Content = ComoInstalarPwaPT;
     let title = "Como Instalar o App PromptNinja (PWA) - iPhone e Android";
     let description = "Aprenda a instalar o PromptNinja como um aplicativo nativo no seu iPhone (iOS) ou Android. Mais performance, funcionamento offline e tela cheia.";
-    let canonicalUrl = "https://promptninja.solutionkit.com.br/como-instalar-app-teleprompter";
+    let canonicalUrl = "https://promptninja.solutionkit.com.br/como-instalar-app-teleprompter-pwa";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {
         "@context": "https://schema.org",
@@ -41,13 +41,13 @@ export const ComoInstalarPwa: React.FC<Props> = ({ onLaunch }) => {
         Content = ComoInstalarPwaEN;
         title = "How to Install PromptNinja App (PWA) - iPhone & Android";
         description = "Learn how to install PromptNinja as a native app on your iPhone (iOS) or Android. Better performance, offline mode, and full screen.";
-        canonicalUrl = "https://promptninja.solutionkit.com.br/en/how-to-install-teleprompter-app";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/en/how-to-install-teleprompter-app-pwa";
         ctaText = "Open Teleprompter Now";
     } else if (lang === 'es') {
         Content = ComoInstalarPwaES;
         title = "Cómo Instalar la App PromptNinja (PWA) - iPhone y Android";
         description = "Aprende a instalar PromptNinja como una app nativa en tu iPhone (iOS) o Android. Mejor rendimiento, modo offline y pantalla completa.";
-        canonicalUrl = "https://promptninja.solutionkit.com.br/es/como-instalar-app-teleprompter";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/es/como-instalar-app-teleprompter-pwa";
         ctaText = "Abrir Teleprompter Ahora";
     }
 

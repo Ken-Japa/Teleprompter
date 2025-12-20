@@ -15,7 +15,7 @@ export const ComoDecorarTexto: React.FC<Props> = ({ onLaunch }) => {
     let Content = ComoDecorarTextoPT;
     let title = "Como Decorar Texto Rápido: 5 Técnicas Infalíveis";
     let description = "Pare de sofrer tentando decorar roteiros longos. Conheça técnicas de memorização e a solução definitiva para nunca mais esquecer uma fala.";
-    let canonicalUrl = "https://promptninja.solutionkit.com.br/como-decorar-texto";
+    let canonicalUrl = "https://promptninja.solutionkit.com.br/como-decorar-texto-rapido";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {
         "@context": "https://schema.org",
@@ -36,7 +36,7 @@ export const ComoDecorarTexto: React.FC<Props> = ({ onLaunch }) => {
         Content = ComoDecorarTextoEN;
         title = "How to Memorize Lines Fast: 5 Fail-proof Techniques";
         description = "Stop struggling to memorize long scripts. Discover memory techniques and the definitive solution to never forget a line again.";
-        canonicalUrl = "https://promptninja.solutionkit.com.br/en/how-to-memorize-lines-fast";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/en/how-to-memorize-scripts-fast";
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {
             "@context": "https://schema.org",

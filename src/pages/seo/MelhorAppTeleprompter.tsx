@@ -15,7 +15,7 @@ export const MelhorAppTeleprompter: React.FC<Props> = ({ onLaunch }) => {
     let Content = MelhorAppTeleprompterPT;
     let title = "Pare de Pagar! O Melhor Teleprompter App para Celular e PC é GRÁTIS (2026)";
     let description = "Comparativo final: Descubra o App de Teleprompter GRÁTIS e Online com Latência Zero. Funciona com Controle Remoto (Celular) e Sem Instalação. Veja o ganhador de 2026!";
-    let canonicalUrl = "https://promptninja.solutionkit.com.br/melhor-app-teleprompter";
+    let canonicalUrl = "https://promptninja.solutionkit.com.br/melhor-teleprompter-app";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {
         "@context": "https://schema.org",

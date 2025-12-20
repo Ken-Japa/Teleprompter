@@ -55,7 +55,7 @@ export const ScriptCategoryPage: React.FC<ScriptCategoryPageProps> = ({ category
         <SeoPageLayout
             title={category.title[currentLang]}
             description={category.description[currentLang]}
-            canonicalUrl={`https://promptninja.com/${currentLang}/${category.slug[currentLang]}`}
+            canonicalUrl={`https://promptninja.solutionkit.com.br${currentLang === 'en' ? `/en/${category.slug.en}` : currentLang === 'es' ? `/es/${category.slug.es}` : `/${category.slug.pt}`}`}
             onLaunch={onLaunch}
         >
             <div className="mb-12">

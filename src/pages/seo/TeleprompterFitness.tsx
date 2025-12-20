@@ -146,7 +146,7 @@ WORKOUT DONE!`;
         <SeoPageLayout
             title={content.title[currentLang]}
             description={content.description[currentLang]}
-            canonicalUrl={`https://promptninja.com/${currentLang}/${currentLang === 'pt' ? 'teleprompter-para-fitness-treino' : currentLang === 'es' ? 'teleprompter-para-fitness-entrenamiento' : 'teleprompter-for-fitness-workout'}`}
+            canonicalUrl={`https://promptninja.solutionkit.com.br${currentLang === 'en' ? '/en/teleprompter-for-fitness-workout' : currentLang === 'es' ? '/es/teleprompter-para-fitness-entrenamiento' : '/teleprompter-para-fitness-treino'}`}
             onLaunch={onLaunch}
         >
             {/* Hero Section */}

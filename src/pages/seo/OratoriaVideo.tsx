@@ -15,7 +15,9 @@ export const OratoriaVideo: React.FC<Props> = ({ onLaunch }) => {
     let Content = OratoriaVideoPT;
     let title = "5 Dicas de Oratória em Vídeo que VÃO te Fazer Parar de Regravar";
     let description = "Pare de travar e perder tempo! 5 técnicas rápidas para falar bem no vídeo. Bônus: Teleprompter GRÁTIS para aplicar a técnica instantaneamente.";
-    let canonicalUrl = "https://promptninja.solutionkit.com.br/oratoria-video";
+    let canonicalUrl = "https://promptninja.solutionkit.com.br/dicas-oratoria-video";
+
+
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {
         "@context": "https://schema.org",
@@ -37,7 +39,7 @@ export const OratoriaVideo: React.FC<Props> = ({ onLaunch }) => {
         Content = OratoriaVideoEN;
         title = "Video Speaking Tips: How to Speak with Confidence";
         description = "Improve your presence in front of cameras. Learn speaking techniques and discover how teleprompters can help eliminate filler words from your videos.";
-        canonicalUrl = "https://promptninja.solutionkit.com.br/en/video-speaking-tips";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/en/public-speaking-tips-video";
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {
             "@context": "https://schema.org",

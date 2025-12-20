@@ -36,7 +36,7 @@ export const AlternativasTeleprompterConcorrente: React.FC<Props> = ({ onLaunch 
         Content = AlternativasTeleprompterConcorrenteEN;
         title = "The ONLY FREE Alternative to Teleprompter Pro (Zero Lag)";
         description = "Looking for an alternative to Teleprompter Pro? Don't waste any time. PromptNinja is the best FREE option for PC, Notebook, and as a teleprompter for iPhone.";
-        canonicalUrl = "https://promptninja.solutionkit.com.br/en/alternative-to-teleprompter-pro";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-alternatives";
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {
             "@context": "https://schema.org",
@@ -56,7 +56,7 @@ export const AlternativasTeleprompterConcorrente: React.FC<Props> = ({ onLaunch 
         Content = AlternativasTeleprompterConcorrenteES;
         title = "La ÚNICA alternativa GRATUITA a Teleprompter Pro (sin retrasos)";
         description = "¿Buscas una alternativa a Teleprompter Pro? No pierdas tiempo. PromptNinja es la mejor opción GRATUITA para PC, portátiles y como teleprompter para iPhone.";
-        canonicalUrl = "https://promptninja.solutionkit.com.br/es/alternativa-teleprompter-pro";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/es/alternativas-teleprompter";
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {
             "@context": "https://schema.org",

@@ -15,7 +15,7 @@ export const ComoUsarTeleprompter: React.FC<Props> = ({ onLaunch }) => {
     let Content = ComoUsarTeleprompterPT;
     let title = "Como Usar Teleprompter no Celular: Guia Completo";
     let description = "Aprenda como usar seu celular como teleprompter ou como controle remoto. Tutorial passo a passo para gravar vídeos profissionais.";
-    let canonicalUrl = "https://promptninja.solutionkit.com.br/como-usar-teleprompter";
+    let canonicalUrl = "https://promptninja.solutionkit.com.br/como-usar-teleprompter-celular";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {
         "@context": "https://schema.org",
@@ -36,7 +36,7 @@ export const ComoUsarTeleprompter: React.FC<Props> = ({ onLaunch }) => {
         Content = ComoUsarTeleprompterEN;
         title = "How to Use Teleprompter on Mobile: Complete Guide";
         description = "Learn how to use your phone as a teleprompter or remote control. Step-by-step tutorial to record professional videos.";
-        canonicalUrl = "https://promptninja.solutionkit.com.br/en/how-to-use-teleprompter";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/en/how-to-use-teleprompter-mobile";
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {
             "@context": "https://schema.org",
@@ -56,7 +56,7 @@ export const ComoUsarTeleprompter: React.FC<Props> = ({ onLaunch }) => {
         Content = ComoUsarTeleprompterES;
         title = "Cómo Usar Teleprompter en el Móvil: Guía Completa";
         description = "Aprende a usar tu móvil como teleprompter o control remoto. Tutorial paso a paso para grabar videos profesionales.";
-        canonicalUrl = "https://promptninja.solutionkit.com.br/es/como-usar-teleprompter";
+        canonicalUrl = "https://promptninja.solutionkit.com.br/es/como-usar-teleprompter-movil";
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {
             "@context": "https://schema.org",
