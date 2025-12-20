@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterParaYoutubersEN = () => (
     <>
@@ -72,13 +73,32 @@ export const TeleprompterParaYoutubersEN = () => (
         <p className="mb-4">
             Imagine this scenario: you're in your studio, the camera is set, the lighting is perfect. Now, instead of stressing over the script, you follow these steps:
         </p>
-        <ol className="list-decimal pl-6 mb-6 space-y-3">
-            <li><strong>Open Your Browser:</strong> On your laptop or tablet positioned near the camera, go to the PromptNinja website. No installation is required.</li>
-            <li><strong>Paste Your Script:</strong> Copy and paste your script directly onto the screen. Adjust the font size and margins for comfortable reading from your recording position.</li>
-            <li><strong>Activate Remote Control:</strong> With one click, generate a QR Code. Scan it with your phone's camera.</li>
-            <li><strong>Full Control in Your Hand:</strong> Your phone is now a remote control. Sit down, frame yourself in the camera, and use your thumb to start, pause, and adjust the text scrolling speed. You'll never have to get up during a recording session again.</li>
-            <li><strong>(Pro) Activate Voice Control:</strong> For maximum fluency, the Pro version allows the text to scroll automatically as you speak, pausing when you pause. It's the most natural teleprompter experience possible.</li>
-        </ol>
+        <div className="bg-slate-800 p-6 rounded-lg my-6 border border-slate-700">
+            <SEOContentHowTo
+                title=""
+                schemaTitle="How to Use PromptNinja for YouTube"
+                totalTime="PT5M"
+                tools={["PromptNinja", "Camera", "Laptop/Tablet"]}
+                steps={[
+                    {
+                        title: "Step 1: Access",
+                        text: "Open PromptNinja on your laptop or tablet browser, positioned near the camera."
+                    },
+                    {
+                        title: "Step 2: Setup Script",
+                        text: "Paste your text and adjust font size and margins for comfortable reading."
+                    },
+                    {
+                        title: "Step 3: Remote Control (Optional)",
+                        text: "Generate the QR Code and scan with your phone to use it as a remote."
+                    },
+                    {
+                        title: "Step 4: Record",
+                        text: "Sit down, frame yourself, and use Voice Mode or manual control to read while recording."
+                    }
+                ]}
+            />
+        </div>
 
         <div className="my-8 text-center">
             <a

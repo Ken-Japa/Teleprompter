@@ -1,5 +1,6 @@
 
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterPacingTimerEN = () => (
     <>
@@ -15,13 +16,29 @@ export const TeleprompterPacingTimerEN = () => (
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-purple-500">
             <h2 className="text-2xl font-bold text-white mb-2">New: Smart Text Commands [STOP] and [PAUSE]</h2>
-            <p className="text-slate-300">
+            <p className="text-slate-300 mb-4">
                 Now you can program scrolling behavior directly into your script. PromptNinja understands special commands you type along with your text:
             </p>
-            <ul className="list-disc pl-6 mt-4 text-slate-300 space-y-2">
-                <li><strong>[STOP]</strong>: Scrolling stops completely when it reaches this word. Perfect for moments where you need to show a slide, demonstrate a product, or interact with the audience without rushing. You resume scrolling with a click or hotkey.</li>
-                <li><strong>[PAUSE 3]</strong>: Triggers an automated, timed pause (e.g., 3 seconds) and then resumes scrolling automatically. Ideal for emphasizing a powerful statement or taking a breath between topics.</li>
-            </ul>
+            <SEOContentHowTo
+                title=""
+                schemaTitle="How to Use Pacing Commands ([STOP], [PAUSE])"
+                totalTime="PT1M"
+                tools={["PromptNinja", "Text Editor"]}
+                steps={[
+                    {
+                        title: "Step 1: [STOP] Command",
+                        text: "Write [STOP] (uppercase, brackets) for an indefinite pause. Scrolling halts until you click."
+                    },
+                    {
+                        title: "Step 2: [PAUSE X] Command",
+                        text: "Write [PAUSE 3] for scrolling to pause for 3 seconds and then resume automatically."
+                    },
+                    {
+                        title: "Step 3: Application",
+                        text: "Use [STOP] for interactions and [PAUSE] for breathing or dramatic emphasis."
+                    }
+                ]}
+            />
         </div>
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">Why is Pacing Vital for Public Speaking?</h2>

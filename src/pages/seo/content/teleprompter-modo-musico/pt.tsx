@@ -1,5 +1,6 @@
 
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterModoMusicoPT = () => (
     <>
@@ -47,20 +48,33 @@ export const TeleprompterModoMusicoPT = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Integração com Controle de Voz PRO (Hands-Free Total)</h2>
+        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Integração com Controle de Voz PRO (Mãos Livres Total)</h2>
         <p className="mb-4">
-            Para músicos que usam as duas mãos no instrumento, o <strong>Controle de Voz PRO</strong> é um game-changer. Ative o microfone e o teleprompter <strong>rola automaticamente</strong> seguindo o ritmo da sua fala/canto.
+            Para músicos que usam as duas mãos no instrumento, o <strong>Controle de Voz PRO</strong> muda o jogo. Ative o microfone e o teleprompter <strong>rola automaticamente</strong> seguindo o ritmo da sua fala/canto.
         </p>
         <div className="bg-gradient-to-r from-slate-800 to-slate-700 p-6 rounded-lg my-6 border border-yellow-500/30">
-            <h3 className="text-xl font-bold text-yellow-400 mb-3">🎤 Como Funciona o Controle de Voz para Músicos</h3>
-            <ol className="list-decimal pl-6 text-slate-300 space-y-2">
-                <li>Ative o Modo Músico e depois o Controle de Voz (recurso PRO)</li>
-                <li>O PromptNinja detecta quando você está cantando/falando</li>
-                <li>O texto avança automaticamente no seu ritmo natural</li>
-                <li>Pausou de cantar? O scroll para. Retomou? Ele continua.</li>
-            </ol>
+            <SEOContentHowTo
+                title=""
+                schemaTitle="Como Usar o Controle de Voz para Músicos"
+                totalTime="PT2M"
+                tools={["PromptNinja PRO", "Microfone"]}
+                steps={[
+                    {
+                        title: "Passo 1: Ativar Modos",
+                        text: "Ative o Modo Músico e, em seguida, o Controle de Voz (recurso PRO)."
+                    },
+                    {
+                        title: "Passo 2: Calibrar",
+                        text: "O PromptNinja detecta o som ambiente. Comece a cantar ou falar o texto."
+                    },
+                    {
+                        title: "Passo 3: Rolagem Automática",
+                        text: "O texto avança automaticamente no seu ritmo. Parou de cantar? A rolagem para."
+                    }
+                ]}
+            />
             <p className="text-slate-300 mt-4 text-sm">
-                <strong>Perfeito para:</strong> Shows ao vivo, gravações de cover, aulas de música online, ensaios solo.
+                <strong>Perfeito para:</strong> Shows ao vivo, gravação de covers, aulas de música online, ensaios solo.
             </p>
         </div>
 

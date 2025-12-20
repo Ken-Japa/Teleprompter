@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterApresentacoesEN = () => (
     <>
@@ -19,17 +20,26 @@ export const TeleprompterApresentacoesEN = () => (
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">How to Sync Speech and Slides</h2>
         <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>Slide Markers:</strong> In the PromptNinja editor, use visual markers (like [SLIDE 1], [SLIDE 2]) in yellow or red to know exactly when to advance the slide.
-                </li>
-                <li>
-                    <strong>Two-Screen Setup:</strong> If presenting in person, use your laptop as the teleprompter (visible only to you) and the projector for slides.
-                </li>
-                <li>
-                    <strong>Online Presentation:</strong> In virtual meetings, share only the PowerPoint window. Keep PromptNinja floating on top to read your script while advancing slides.
-                </li>
-            </ol>
+            <SEOContentHowTo
+                title=""
+                schemaTitle="How to Sync Teleprompter with Slides"
+                totalTime="PT2M"
+                tools={["PromptNinja", "PowerPoint or Google Slides"]}
+                steps={[
+                    {
+                        title: "Step 1: Markers",
+                        text: "Use visual markers (e.g., [SLIDE 1]) in your script to highlight when to advance."
+                    },
+                    {
+                        title: "Step 2: In-Person Setup",
+                        text: "Use your laptop as the teleprompter (private view) and the projector for slides."
+                    },
+                    {
+                        title: "Step 3: Online Setup",
+                        text: "Share strictly the PowerPoint window. Keep PromptNinja floating on top to read the script."
+                    }
+                ]}
+            />
         </div>
 
         <div className="text-center mt-12">

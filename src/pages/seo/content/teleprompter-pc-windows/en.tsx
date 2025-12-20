@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterPCWindowsEN = () => (
     <>
@@ -77,13 +78,28 @@ export const TeleprompterPCWindowsEN = () => (
         <h2 className="text-3xl font-bold text-white mt-10 mb-6">How to Use PromptNinja as a Native App on Windows</h2>
         <div className="bg-slate-800 p-6 rounded-lg shadow-lg text-slate-300 space-y-4">
             <p>
-                You can get a native-like experience without any of the risks. PromptNinja can be "installed" as a Progressive Web App (PWA) on Windows 10 and 11 using Chrome or Edge. <a href="/en/how-to-install-teleprompter-app-pwa" className="text-purple-400 hover:text-purple-300 underline">See our step-by-step PWA installation guide</a>.
+                You can get a native-like experience without any of the risks. PromptNinja can be "installed" as a Progressive Web App (PWA) on Windows 10 and 11 using Chrome or Edge.
             </p>
-            <ol className="list-decimal pl-6 space-y-2">
-                <li>Open <a href="https://promptninja.solutionkit.com.br" className="text-red-500 hover:underline">PromptNinja</a> in your browser.</li>
-                <li>Click the "Install" icon that appears in the address bar.</li>
-                <li>Confirm the installation. A shortcut will be added to your Desktop and Start Menu.</li>
-            </ol>
+            <SEOContentHowTo
+                title=""
+                schemaTitle="How to Install Teleprompter on PC (PWA)"
+                totalTime="PT2M"
+                tools={["Windows PC", "Google Chrome or Edge"]}
+                steps={[
+                    {
+                        title: "Step 1: Open Website",
+                        text: "Open PromptNinja in your browser (Chrome or Edge)."
+                    },
+                    {
+                        title: "Step 2: Click Install",
+                        text: "Look for the '+' icon or 'Install App' button in the address bar (right side)."
+                    },
+                    {
+                        title: "Step 3: Confirm",
+                        text: "Confirm installation. A shortcut will be added to your Desktop/Start Menu."
+                    }
+                ]}
+            />
             <p>The app will run in its own window, just like a native program, and will even be available for offline use. It's the best of both worlds: performance and convenience without the security headache.</p>
         </div>
 

@@ -1,6 +1,7 @@
 import React from "react";
 import * as S from "../../../../components/ui/Styled";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterModoBilingueEN: React.FC = () => {
     return (
@@ -35,12 +36,28 @@ export const TeleprompterModoBilingueEN: React.FC = () => {
 
             <div className="space-y-6 text-gray-300 text-lg mb-12">
                 <p>
-                    Activating bilingual mode is simple and instant. In the PromptNinja editor, just click the <strong>"Bilingual Mode"</strong> button. The screen will split into two columns:
+                    Activating bilingual mode is simple and instant. In the PromptNinja editor, just click the <strong>"Bilingual Mode"</strong> button.
                 </p>
-                <ul className="list-disc pl-6 space-y-2">
-                    <li><strong>Primary Language (Left):</strong> Where you place your base text.</li>
-                    <li><strong>Secondary Language (Right):</strong> Where you place the translation or support notes.</li>
-                </ul>
+                <SEOContentHowTo
+                    title=""
+                    schemaTitle="How to Use Bilingual Mode"
+                    totalTime="PT1M"
+                    tools={["PromptNinja", "Original Text", "Translation"]}
+                    steps={[
+                        {
+                            title: "Step 1: Activate",
+                            text: "Click the 'Bilingual Mode' button. The screen splits into two columns."
+                        },
+                        {
+                            title: "Step 2: Insert Texts",
+                            text: "Paste base text on the left (Primary) and translation/notes on the right (Secondary)."
+                        },
+                        {
+                            title: "Step 3: Synchronize",
+                            text: "Use Voice Control or manual scroll. Both texts scroll together."
+                        }
+                    ]}
+                />
                 <p>
                     During teleprompter scrolling, both texts move in sync. If you use our exclusive <strong>Voice Control</strong>, you can choose which of the two languages the system should "listen" to in order to advance the text automatically!
                 </p>

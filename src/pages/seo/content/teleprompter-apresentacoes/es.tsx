@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterApresentacoesES = () => (
     <>
@@ -19,17 +20,26 @@ export const TeleprompterApresentacoesES = () => (
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Cómo Sincronizar Discurso y Diapositivas</h2>
         <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>Marcadores de Diapositiva:</strong> En el editor de PromptNinja, usa marcadores visuales (como [DIAPOSITIVA 1]) en amarillo o rojo para saber cuándo avanzar.
-                </li>
-                <li>
-                    <strong>Setup de Dos Pantallas:</strong> Si presentas en persona, usa tu portátil como teleprompter (visible solo para ti) y el proyector para las diapositivas.
-                </li>
-                <li>
-                    <strong>Presentación Online:</strong> En reuniones virtuales, comparte solo la ventana de PowerPoint. Mantén PromptNinja flotando encima para leer tu guion.
-                </li>
-            </ol>
+            <SEOContentHowTo
+                title=""
+                schemaTitle="Cómo Sincronizar Teleprompter y Diapositivas"
+                totalTime="PT2M"
+                tools={["PromptNinja", "PowerPoint o Google Slides"]}
+                steps={[
+                    {
+                        title: "Paso 1: Marcadores",
+                        text: "Usa marcadores visuales (ej: [DIAPOSITIVA 1]) en tu guion para saber cuándo avanzar."
+                    },
+                    {
+                        title: "Paso 2: Setup Presencial",
+                        text: "Usa tu portátil como teleprompter (vista privada) y el proyector para las diapositivas."
+                    },
+                    {
+                        title: "Paso 3: Setup Online",
+                        text: "Comparte solo la ventana de PowerPoint. Mantén PromptNinja flotando encima para leer."
+                    }
+                ]}
+            />
         </div>
 
         <div className="text-center mt-12">

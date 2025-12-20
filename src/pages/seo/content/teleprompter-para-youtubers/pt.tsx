@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterParaYoutubersPT = () => (
     <>
@@ -72,13 +73,32 @@ export const TeleprompterParaYoutubersPT = () => (
         <p className="mb-4">
             Imagine este cenário: você está em seu estúdio, a câmera está posicionada, a iluminação está perfeita. Agora, em vez de se estressar com o roteiro, você segue estes passos:
         </p>
-        <ol className="list-decimal pl-6 mb-6 space-y-3">
-            <li><strong>Abra o Navegador:</strong> Em seu notebook ou tablet posicionado perto da câmera, acesse o site do PromptNinja. Nenhuma instalação é necessária.</li>
-            <li><strong>Cole seu Roteiro:</strong> Copie e cole seu roteiro diretamente na tela. Ajuste o tamanho da fonte e as margens para uma leitura confortável da sua posição de gravação.</li>
-            <li><strong>Ative o Controle Remoto:</strong> Com um clique, gere um QR Code. Escaneie com a câmera do seu celular.</li>
-            <li><strong>Controle Total na Sua Mão:</strong> Seu celular agora é um controle remoto. Sente-se, enquadre-se na câmera e use o polegar para iniciar, pausar, e ajustar a velocidade da rolagem do texto. Você nunca mais precisará levantar durante uma sessão de gravação.</li>
-            <li><strong>(Pro) Ative o Controle por Voz:</strong> Para o máximo de fluidez, a versão Pro permite que o texto role automaticamente conforme você fala, pausando quando você pausa. É a experiência de teleprompter mais natural possível.</li>
-        </ol>
+        <div className="bg-slate-800 p-6 rounded-lg my-6 border border-slate-700">
+            <SEOContentHowTo
+                title=""
+                schemaTitle="Como Usar o PromptNinja para YouTube"
+                totalTime="PT5M"
+                tools={["PromptNinja", "Câmera", "Notebook/Tablet"]}
+                steps={[
+                    {
+                        title: "Passo 1: Acessar",
+                        text: "Abra o PromptNinja no navegador do seu notebook ou tablet, posicionado perto da câmera."
+                    },
+                    {
+                        title: "Passo 2: Configurar Roteiro",
+                        text: "Cole seu texto e ajuste o tamanho da fonte e margens para leitura confortável."
+                    },
+                    {
+                        title: "Passo 3: Controle Remoto (Opcional)",
+                        text: "Gere o QR Code e escaneie com seu celular para usá-lo como controle remoto."
+                    },
+                    {
+                        title: "Passo 4: Gravar",
+                        text: "Sente-se, enquadre-se e use o Modo de Voz ou controle manual para ler enquanto grava."
+                    }
+                ]}
+            />
+        </div>
 
         <div className="my-8 text-center">
             <a

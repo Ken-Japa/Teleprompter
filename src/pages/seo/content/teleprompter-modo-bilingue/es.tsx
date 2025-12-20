@@ -1,6 +1,7 @@
 import React from "react";
 import * as S from "../../../../components/ui/Styled";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterModoBilingueES: React.FC = () => {
     return (
@@ -35,12 +36,28 @@ export const TeleprompterModoBilingueES: React.FC = () => {
 
             <div className="space-y-6 text-gray-300 text-lg mb-12">
                 <p>
-                    Activar el modo bilingüe es simple e inmediato. En el editor de PromptNinja, simplemente haz clic en el botón <strong>"Modo Bilingüe"</strong>. La pantalla se dividirá en dos columnas:
+                    Activar el modo bilingüe es simple e inmediato. En el editor de PromptNinja, simplemente haz clic en el botón <strong>"Modo Bilingüe"</strong>.
                 </p>
-                <ul className="list-disc pl-6 space-y-2">
-                    <li><strong>Idioma Principal (Izquierda):</strong> Donde colocas tu texto base.</li>
-                    <li><strong>Idioma Secundario (Derecha):</strong> Donde colocas la traducción o notas de apoyo.</li>
-                </ul>
+                <SEOContentHowTo
+                    title=""
+                    schemaTitle="Cómo Usar el Modo Bilingüe"
+                    totalTime="PT1M"
+                    tools={["PromptNinja", "Texto Original", "Traducción"]}
+                    steps={[
+                        {
+                            title: "Paso 1: Activar",
+                            text: "Haz clic en el botón 'Modo Bilingüe'. La pantalla se divide en dos columnas."
+                        },
+                        {
+                            title: "Paso 2: Insertar Textos",
+                            text: "Pega el texto base a la izquierda (Principal) y la traducción/notas a la derecha (Secundario)."
+                        },
+                        {
+                            title: "Paso 3: Sincronizar",
+                            text: "Usa Control de Voz o scroll manual. Ambos textos se desplazan juntos."
+                        }
+                    ]}
+                />
                 <p>
                     Durante el desplazamiento del teleprompter, ambos textos se mueven en sincronía. Si usas nuestro exclusivo <strong>Control por Voz</strong>, ¡puedes elegir a cuál de los dos idiomas el sistema debe "escuchar" para avanzar el texto automáticamente!
                 </p>

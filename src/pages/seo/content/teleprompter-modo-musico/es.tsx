@@ -1,5 +1,6 @@
 
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterModoMusicoES = () => (
     <>
@@ -52,13 +53,26 @@ export const TeleprompterModoMusicoES = () => (
             Para músicos que usan ambas manos en el instrumento, el <strong>Control de Voz PRO</strong> cambia las reglas del juego. Activa el micrófono y el teleprompter <strong>se desplaza automáticamente</strong> siguiendo el ritmo de tu habla/canto.
         </p>
         <div className="bg-gradient-to-r from-slate-800 to-slate-700 p-6 rounded-lg my-6 border border-yellow-500/30">
-            <h3 className="text-xl font-bold text-yellow-400 mb-3">🎤 Cómo Funciona el Control de Voz para Músicos</h3>
-            <ol className="list-decimal pl-6 text-slate-300 space-y-2">
-                <li>Activa el Modo Músico y luego el Control de Voz (función PRO)</li>
-                <li>PromptNinja detecta cuando estás cantando/hablando</li>
-                <li>El texto avanza automáticamente a tu ritmo natural</li>
-                <li>¿Dejaste de cantar? El scroll se detiene. ¿Retomaste? Continúa.</li>
-            </ol>
+            <SEOContentHowTo
+                title=""
+                schemaTitle="Cómo Usar Control de Voz para Músicos"
+                totalTime="PT2M"
+                tools={["PromptNinja PRO", "Micrófono"]}
+                steps={[
+                    {
+                        title: "Paso 1: Activar Modos",
+                        text: "Activa el Modo Músico y luego el Control de Voz (función PRO)."
+                    },
+                    {
+                        title: "Paso 2: Calibrar",
+                        text: "PromptNinja detecta el sonido ambiente. Comienza a cantar o hablar el texto."
+                    },
+                    {
+                        title: "Paso 3: Scroll Automático",
+                        text: "El texto avanza automáticamente a tu ritmo natural. ¿Dejaste de cantar? El scroll se detiene."
+                    }
+                ]}
+            />
             <p className="text-slate-300 mt-4 text-sm">
                 <strong>Perfecto para:</strong> Shows en vivo, grabaciones de covers, clases de música online, ensayos en solitario.
             </p>

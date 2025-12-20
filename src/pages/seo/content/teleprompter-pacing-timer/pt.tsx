@@ -1,5 +1,6 @@
 
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterPacingTimerPT = () => (
     <>
@@ -15,13 +16,29 @@ export const TeleprompterPacingTimerPT = () => (
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-purple-500">
             <h2 className="text-2xl font-bold text-white mb-2">Novidade: Comandos de Texto Inteligentes [STOP] e [PAUSE]</h2>
-            <p className="text-slate-300">
+            <p className="text-slate-300 mb-4">
                 Agora você pode programar o comportamento da rolagem diretamente no seu roteiro. O PromptNinja entende comandos especiais que você digita junto com o texto:
             </p>
-            <ul className="list-disc pl-6 mt-4 text-slate-300 space-y-2">
-                <li><strong>[STOP]</strong>: A rolagem para totalmente quando chega nessa palavra. Perfeito para momentos onde você precisa mostrar um slide, demonstrar um produto ou interagir com a plateia sem pressa. Você retoma a rolagem com um clique ou atalho.</li>
-                <li><strong>[PAUSE 3]</strong>: Faz uma pausa automática e cronometrada (ex: 3 segundos) e depois continua rolando sozinho. Ideal para dar ênfase a uma frase impactante ou respirar entre tópicos.</li>
-            </ul>
+            <SEOContentHowTo
+                title=""
+                schemaTitle="Como Usar Comandos de Ritmo ([STOP], [PAUSE])"
+                totalTime="PT1M"
+                tools={["PromptNinja", "Editor de Texto"]}
+                steps={[
+                    {
+                        title: "Passo 1: Comando [STOP]",
+                        text: "Escreva [STOP] (maiúsculas, entre colchetes) onde deseja uma pausa indefinida. A rolagem para até você clicar."
+                    },
+                    {
+                        title: "Passo 2: Comando [PAUSE X]",
+                        text: "Escreva [PAUSE 3] para que a rolagem pare por 3 segundos e retome sozinha automaticamente."
+                    },
+                    {
+                        title: "Passo 3: Aplicação",
+                        text: "Use [STOP] para interações e [PAUSE] para respiração ou ênfase dramática."
+                    }
+                ]}
+            />
         </div>
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">Por que o Ritmo (Pacing) é Vital para a Oratória?</h2>

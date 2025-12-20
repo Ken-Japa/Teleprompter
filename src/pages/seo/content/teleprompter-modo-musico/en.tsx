@@ -1,5 +1,6 @@
 
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterModoMusicoEN = () => (
     <>
@@ -52,13 +53,26 @@ export const TeleprompterModoMusicoEN = () => (
             For musicians using both hands on their instrument, <strong>PRO Voice Control</strong> is a game-changer. Activate the microphone and the teleprompter <strong>scrolls automatically</strong> following the pace of your speech/singing.
         </p>
         <div className="bg-gradient-to-r from-slate-800 to-slate-700 p-6 rounded-lg my-6 border border-yellow-500/30">
-            <h3 className="text-xl font-bold text-yellow-400 mb-3">🎤 How Voice Control Works for Musicians</h3>
-            <ol className="list-decimal pl-6 text-slate-300 space-y-2">
-                <li>Activate Musician Mode then Voice Control (PRO feature)</li>
-                <li>PromptNinja detects when you're singing/speaking</li>
-                <li>Text advances automatically at your natural pace</li>
-                <li>Stopped singing? Scroll stops. Resumed? It continues.</li>
-            </ol>
+            <SEOContentHowTo
+                title=""
+                schemaTitle="How to Use Voice Control for Musicians"
+                totalTime="PT2M"
+                tools={["PromptNinja PRO", "Microphone"]}
+                steps={[
+                    {
+                        title: "Step 1: Activate Modes",
+                        text: "Activate Musician Mode then Voice Control (PRO feature)."
+                    },
+                    {
+                        title: "Step 2: Calibrate",
+                        text: "PromptNinja detects ambient sound. Start singing or speaking the text."
+                    },
+                    {
+                        title: "Step 3: Auto Scroll",
+                        text: "Text advances automatically at your natural pace. Stopped singing? Scroll stops."
+                    }
+                ]}
+            />
             <p className="text-slate-300 mt-4 text-sm">
                 <strong>Perfect for:</strong> Live shows, cover recordings, online music lessons, solo rehearsals.
             </p>

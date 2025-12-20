@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterSlidesPT = () => (
     <>
@@ -14,17 +15,29 @@ export const TeleprompterSlidesPT = () => (
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-orange-500">
             <h2 className="text-2xl font-bold text-white mb-2">O Segredo: Comando [STOP]</h2>
-            <p className="text-slate-300">
-                A lógica é simples: seu roteiro deve esperar por você, não o contrário. Ao inserir a tag <strong>[STOP]</strong> no seu texto, você cria "pontos de parada" obrigatórios.
+            <p className="text-slate-300 mb-4">
+                A lógica é simples: seu roteiro deve esperar por você. Ao inserir a tag <strong>[STOP]</strong>, você cria pontos de parada obrigatórios.
             </p>
-            <div className="bg-slate-900 p-4 rounded mt-4 font-mono text-sm text-green-400">
-                "...e como vemos neste gráfico de vendas:<br />
-                [STOP]<br />
-                Observem que o crescimento foi de 40% no último trimestre..."
-            </div>
-            <p className="text-slate-300 mt-4">
-                Quando o teleprompter atinge o <strong>[STOP]</strong>, ele pausa automaticamente. Você tem todo o tempo do mundo para mudar seu slide no PowerPoint, beber água ou responder uma pergunta. Quando estiver pronto, um simples clique (ou aperto no passador de slides) retoma a rolagem.
-            </p>
+            <SEOContentHowTo
+                title=""
+                schemaTitle="Como Usar o Comando [STOP] em Slides"
+                totalTime="PT2M"
+                tools={["PromptNinja", "PowerPoint"]}
+                steps={[
+                    {
+                        title: "Passo 1: Inserir Tag",
+                        text: "Digite [STOP] (maiúsculas, entre colchetes) no seu roteiro onde deseja pausar para mudar o slide."
+                    },
+                    {
+                        title: "Passo 2: Pausa Automática",
+                        text: "O teleprompter rola até encontrar o [STOP] e pausa sozinho."
+                    },
+                    {
+                        title: "Passo 3: Mudar Slide e Retomar",
+                        text: "Mude seu slide, explique o gráfico, e clique (ou use o passador) para retomar a rolagem."
+                    }
+                ]}
+            />
         </div>
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">Compatível com Passadores de Slides (Clickers)</h2>

@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterApresentacoesPT = () => (
     <>
@@ -19,17 +20,26 @@ export const TeleprompterApresentacoesPT = () => (
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Como Sincronizar Fala e Slides</h2>
         <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <ol className="list-decimal pl-6 space-y-6 text-slate-300">
-                <li>
-                    <strong>Marcações de Slide:</strong> No editor do PromptNinja, use marcadores visuais (como [SLIDE 1], [SLIDE 2]) em amarelo ou vermelho para saber exatamente quando avançar o slide na apresentação.
-                </li>
-                <li>
-                    <strong>Setup de Duas Telas:</strong> Se estiver apresentando presencialmente, use seu notebook como teleprompter (visível apenas para você) e o projetor para os slides.
-                </li>
-                <li>
-                    <strong>Apresentação Online:</strong> Em reuniões virtuais, compartilhe apenas a janela do PowerPoint. Mantenha o PromptNinja flutuando por cima para ler seu roteiro enquanto avança os slides.
-                </li>
-            </ol>
+            <SEOContentHowTo
+                title=""
+                schemaTitle="Como Sincronizar Teleprompter e Slides"
+                totalTime="PT2M"
+                tools={["PromptNinja", "PowerPoint ou Google Slides"]}
+                steps={[
+                    {
+                        title: "Passo 1: Marcadores",
+                        text: "No editor, use marcadores visuais (ex: [SLIDE 1]) em destaque para saber quando avançar."
+                    },
+                    {
+                        title: "Passo 2: Setup Presencial",
+                        text: "Use seu notebook como teleprompter (visível só para você) e o projetor para os slides."
+                    },
+                    {
+                        title: "Passo 3: Setup Online",
+                        text: "Compartilhe apenas a janela do PowerPoint. Mantenha o PromptNinja flutuando por cima para ler o roteiro."
+                    }
+                ]}
+            />
         </div>
 
         <div className="text-center mt-12">

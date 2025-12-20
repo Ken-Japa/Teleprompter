@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterSlidesES = () => (
     <>
@@ -14,17 +15,29 @@ export const TeleprompterSlidesES = () => (
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-orange-500">
             <h2 className="text-2xl font-bold text-white mb-2">El Secreto: Comando [STOP]</h2>
-            <p className="text-slate-300">
-                La lógica es simple: tu guion debe esperarte a ti, no al revés. Al insertar la etiqueta <strong>[STOP]</strong> en tu texto, creas "puntos de parada" obligatorios.
+            <p className="text-slate-300 mb-4">
+                La lógica es simple: tu guion debe esperarte. Al insertar la etiqueta <strong>[STOP]</strong>, creas puntos de parada obligatorios.
             </p>
-            <div className="bg-slate-900 p-4 rounded mt-4 font-mono text-sm text-green-400">
-                "...y como vemos en este gráfico de ventas:<br />
-                [STOP]<br />
-                Observen que el crecimiento fue del 40% en el último trimestre..."
-            </div>
-            <p className="text-slate-300 mt-4">
-                Cuando el teleprompter llega al <strong>[STOP]</strong>, se pausa automáticamente. Tienes todo el tiempo del mundo para cambiar tu diapositiva en PowerPoint, beber agua o responder una pregunta. Cuando estés listo, un simple clic (o presión en tu pasador de diapositivas) reanuda el desplazamiento.
-            </p>
+            <SEOContentHowTo
+                title=""
+                schemaTitle="Cómo Usar el Comando [STOP] en Diapositivas"
+                totalTime="PT2M"
+                tools={["PromptNinja", "PowerPoint"]}
+                steps={[
+                    {
+                        title: "Paso 1: Insertar Etiqueta",
+                        text: "Escribe [STOP] (mayúsculas, corchetes) en tu guion donde quieras pausar para cambiar diapositiva."
+                    },
+                    {
+                        title: "Paso 2: Pausa Automática",
+                        text: "El teleprompter se desplaza hasta encontrar [STOP] y se pausa solo."
+                    },
+                    {
+                        title: "Paso 3: Cambiar Diapositiva y Reanudar",
+                        text: "Cambia tu diapositiva, explica el gráfico y haz clic (o usa el pasador) para reanudar el scroll."
+                    }
+                ]}
+            />
         </div>
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">Compatible con Pasadores de Diapositivas (Clickers)</h2>

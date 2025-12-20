@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterPCWindowsES = () => (
     <>
@@ -77,13 +78,28 @@ export const TeleprompterPCWindowsES = () => (
         <h2 className="text-3xl font-bold text-white mt-10 mb-6">Cómo Usar PromptNinja como una App Nativa en Windows</h2>
         <div className="bg-slate-800 p-6 rounded-lg shadow-lg text-slate-300 space-y-4">
             <p>
-                Puedes obtener una experiencia similar a la nativa sin ninguno de los riesgos. PromptNinja se puede "instalar" como una Aplicación Web Progresiva (PWA) en Windows 10 y 11 usando Chrome o Edge. <a href="/es/como-instalar-app-teleprompter-pwa" className="text-purple-400 hover:text-purple-300 underline">Mira nuestra guía paso a paso para instalar la PWA</a>.
+                Puedes obtener una experiencia similar a la nativa sin ninguno de los riesgos. PromptNinja se puede "instalar" como una Aplicación Web Progresiva (PWA) en Windows 10 y 11 usando Chrome o Edge.
             </p>
-            <ol className="list-decimal pl-6 space-y-2">
-                <li>Abre <a href="https://promptninja.solutionkit.com.br" className="text-red-500 hover:underline">PromptNinja</a> en tu navegador.</li>
-                <li>Haz clic en el ícono de "Instalar" que aparece en la barra de direcciones.</li>
-                <li>Confirma la instalación. Se agregará un acceso directo a tu Escritorio y Menú de Inicio.</li>
-            </ol>
+            <SEOContentHowTo
+                title=""
+                schemaTitle="Cómo Instalar Teleprompter en PC (PWA)"
+                totalTime="PT2M"
+                tools={["PC Windows", "Google Chrome o Edge"]}
+                steps={[
+                    {
+                        title: "Paso 1: Abre el Sitio",
+                        text: "Abre PromptNinja en tu navegador (Chrome o Edge)."
+                    },
+                    {
+                        title: "Paso 2: Clic en Instalar",
+                        text: "Busca el ícono de '+' o 'Instalar App' en la barra de direcciones (derecha)."
+                    },
+                    {
+                        title: "Paso 3: Confirma",
+                        text: "Confirma la instalación. Se creará un acceso directo en tu Escritorio y Menú Inicio."
+                    }
+                ]}
+            />
             <p>La aplicación se ejecutará en su propia ventana, como un programa nativo, e incluso estará disponible para su uso sin conexión. Es lo mejor de ambos mundos: rendimiento y comodidad sin el dolor de cabeza de la seguridad.</p>
         </div>
 

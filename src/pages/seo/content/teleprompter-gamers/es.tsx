@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 export const TeleprompterGamersES = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6">Teleprompter Minimalista para Gamers y Streamers</h1>
@@ -13,9 +14,29 @@ export const TeleprompterGamersES = () => (
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
             <h2 className="text-2xl font-bold text-white mb-2">Modo "No HUD" (Interfaz Invisible)</h2>
-            <p className="text-slate-300">
+            <p className="text-slate-300 mb-4">
                 Presiona la tecla <kbd className="bg-slate-700 px-2 py-1 rounded text-white mx-1">H</kbd> y mira la magia suceder. Todos los botones, barras de progreso y menús desaparecen instantáneamente.
             </p>
+            <SEOContentHowTo
+                title=""
+                schemaTitle="Cómo Activar Modo Gamer (Sin Interfaz)"
+                totalTime="PT1M"
+                tools={["PromptNinja", "Teclado"]}
+                steps={[
+                    {
+                        title: "Paso 1: Abre la App",
+                        text: "Accede a PromptNinja y pega tu texto normalmente."
+                    },
+                    {
+                        title: "Paso 2: Presiona 'H'",
+                        text: "Presiona la tecla H en tu teclado. Esto activa el modo 'Hide HUD'."
+                    },
+                    {
+                        title: "Paso 3: Modo Transparente",
+                        text: "Toda la interfaz desaparece, dejando solo el texto flotante. Presiona H nuevamente para traer los controles de vuelta."
+                    }
+                ]}
+            />
             <p className="text-slate-300 mt-2">
                 Solo queda tu texto flotando en la pantalla. Esto es perfecto para:
             </p>

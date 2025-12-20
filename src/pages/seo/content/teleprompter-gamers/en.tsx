@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterGamersEN = () => (
     <>
@@ -14,11 +15,31 @@ export const TeleprompterGamersEN = () => (
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
             <h2 className="text-2xl font-bold text-white mb-2">"No HUD" Mode (Invisible Interface)</h2>
-            <p className="text-slate-300">
+            <p className="text-slate-300 mb-4">
                 Press the <kbd className="bg-slate-700 px-2 py-1 rounded text-white mx-1">H</kbd> key and watch the magic happen. All buttons, progress bars, and menus disappear instantly.
             </p>
+            <SEOContentHowTo
+                title=""
+                schemaTitle="How to Enable Gamer Mode (No HUD)"
+                totalTime="PT1M"
+                tools={["PromptNinja", "Keyboard"]}
+                steps={[
+                    {
+                        title: "Step 1: Open App",
+                        text: "Access PromptNinja and paste your text as usual."
+                    },
+                    {
+                        title: "Step 2: Press 'H'",
+                        text: "Press the H key on your keyboard. This activates 'Hide HUD' mode."
+                    },
+                    {
+                        title: "Step 3: Transparent Mode",
+                        text: "The entire interface vanishes, leaving only floating text. Press H again to bring back controls."
+                    }
+                ]}
+            />
             <p className="text-slate-300 mt-2">
-                Only your text remains floating on the screen. This is perfect for:
+                This is perfect for:
             </p>
             <ul className="list-disc pl-6 mt-4 text-slate-300 space-y-2">
                 <li><strong>Speedrunners:</strong> Keep your notes and splits visible without distractions.</li>

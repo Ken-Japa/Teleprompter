@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterGamersPT = () => (
     <>
@@ -14,11 +15,31 @@ export const TeleprompterGamersPT = () => (
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
             <h2 className="text-2xl font-bold text-white mb-2">Modo "No HUD" (Interface Invisível)</h2>
-            <p className="text-slate-300">
+            <p className="text-slate-300 mb-4">
                 Aperte a tecla <kbd className="bg-slate-700 px-2 py-1 rounded text-white mx-1">H</kbd> e veja a mágica acontecer. Todos os botões, barras de progresso e menus desaparecem instantaneamente.
             </p>
+            <SEOContentHowTo
+                title=""
+                schemaTitle="Como Ativar o Modo Gamer (Sem Interface)"
+                totalTime="PT1M"
+                tools={["PromptNinja", "Teclado"]}
+                steps={[
+                    {
+                        title: "Passo 1: Abra o App",
+                        text: "Acesse o PromptNinja e cole seu texto normalmente."
+                    },
+                    {
+                        title: "Passo 2: Aperte 'H'",
+                        text: "Pressione a tecla H do seu teclado. Isso ativa o modo 'Hide HUD'."
+                    },
+                    {
+                        title: "Passo 3: Modo Transparente",
+                        text: "Toda a interface some, sobrando apenas o texto flutuante. Aperte H novamente para voltar os controles."
+                    }
+                ]}
+            />
             <p className="text-slate-300 mt-2">
-                Sobra apenas o seu texto flutuando na tela. Isso é perfeito para:
+                Isso é perfeito para:
             </p>
             <ul className="list-disc pl-6 mt-4 text-slate-300 space-y-2">
                 <li><strong>Speedrunners:</strong> Tenha suas notas e "splits" visíveis sem distrações.</li>

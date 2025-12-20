@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterPCWindowsPT = () => (
     <>
@@ -59,8 +60,33 @@ export const TeleprompterPCWindowsPT = () => (
         <p className="mb-4">
             "Baseado na web" não significa lento. O PromptNinja é um Progressive Web App (PWA) que utiliza a aceleração de hardware do seu PC. Isso garante uma rolagem de texto perfeitamente suave (a 60fps), sem travamentos, mesmo com roteiros longos. Ele se comporta como um aplicativo nativo, mas sem a dor de cabeça da instalação.
         </p>
+        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Como "Instalar" o PromptNinja (PWA) no Windows</h2>
         <p className="mb-4">
-            Para uma experiência ainda mais integrada no Windows, você pode "instalar" o PromptNinja como um app. <a href="/como-instalar-app-teleprompter-pwa" className="text-purple-400 hover:text-purple-300 underline">Veja o passo a passo de como instalar o PWA</a>. No Chrome ou Edge, clique no ícone na barra de endereço. Isso cria um atalho na sua área de trabalho e abre o teleprompter em uma janela dedicada, sem abas ou distrações.
+            Para uma experiência ainda mais integrada no Windows, você pode "instalar" o PromptNinja como um app.
+        </p>
+
+        <SEOContentHowTo
+            title=""
+            schemaTitle="Como Instalar Teleprompter no PC (PWA)"
+            totalTime="PT2M"
+            tools={["PC Windows", "Google Chrome ou Edge"]}
+            steps={[
+                {
+                    title: "Passo 1: Acesse o Site",
+                    text: "Abra o PromptNinja no seu navegador (Chrome ou Edge)."
+                },
+                {
+                    title: "Passo 2: Clique em Instalar",
+                    text: "Procure pelo ícone de '+' ou 'Instalar App' na barra de endereço (canto direito)."
+                },
+                {
+                    title: "Passo 3: Confirme",
+                    text: "Confirme a instalação. Um atalho será criado na sua área de trabalho e o PromptNinja abrirá como um programa nativo."
+                }
+            ]}
+        />
+        <p className="mb-4 mt-4">
+            O app rodará em uma janela dedicada, sem abas ou distrações.
         </p>
 
         <div className="my-8 text-center">

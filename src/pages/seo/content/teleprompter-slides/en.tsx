@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterSlidesEN = () => (
     <>
@@ -14,17 +15,29 @@ export const TeleprompterSlidesEN = () => (
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-orange-500">
             <h2 className="text-2xl font-bold text-white mb-2">The Secret: [STOP] Command</h2>
-            <p className="text-slate-300">
-                The logic is simple: your script should wait for you, not the other way around. By inserting the <strong>[STOP]</strong> tag into your text, you create mandatory "stop points".
+            <p className="text-slate-300 mb-4">
+                The logic is simple: your script should wait for you. By inserting the <strong>[STOP]</strong> tag, you create mandatory stop points.
             </p>
-            <div className="bg-slate-900 p-4 rounded mt-4 font-mono text-sm text-green-400">
-                "...and as we see in this sales chart:<br />
-                [STOP]<br />
-                Notice that growth was 40% in the last quarter..."
-            </div>
-            <p className="text-slate-300 mt-4">
-                When the teleprompter reaches the <strong>[STOP]</strong>, it pauses automatically. You have all the time in the world to change your slide in PowerPoint, take a sip of water, or answer a question. When ready, a simple click (or press on your slide clicker) resumes scrolling.
-            </p>
+            <SEOContentHowTo
+                title=""
+                schemaTitle="How to Use [STOP] Command for Slides"
+                totalTime="PT2M"
+                tools={["PromptNinja", "PowerPoint"]}
+                steps={[
+                    {
+                        title: "Step 1: Insert Tag",
+                        text: "Type [STOP] (uppercase, brackets) in your script where you want to pause to change slides."
+                    },
+                    {
+                        title: "Step 2: Auto Pause",
+                        text: "The teleprompter scrolls until it hits [STOP] and pauses automatically."
+                    },
+                    {
+                        title: "Step 3: Change Slide & Resume",
+                        text: "Switch your slide, explain the chart, and click (or use clicker) to resume scrolling."
+                    }
+                ]}
+            />
         </div>
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">Compatible with Slide Clickers</h2>
