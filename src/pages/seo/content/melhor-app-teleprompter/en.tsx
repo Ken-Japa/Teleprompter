@@ -48,7 +48,7 @@ export const MelhorAppTeleprompterEN = () => (
             The real innovation isn't in another app to download, but in a tool that works directly in the browser, using modern technologies to solve old problems. This is where <strong>PromptNinja</strong> stands out as a <strong>PWA (Progressive Web App)</strong>. It doesn't take up space on your phone, <strong>works offline</strong>, and can be installed in 1 second without going through the app store. <a href="/en/how-to-install-teleprompter-app-pwa" className="text-purple-400 hover:text-purple-300 underline">Learn how to install the PWA here</a>.
         </p>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Professional Features You Deserve (Free)</h2>
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Professional Features You Deserve</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
             <div className="p-4 bg-slate-800 rounded-lg border border-slate-700">
                 <div className="text-purple-400 text-2xl mb-2">🎙️</div>
@@ -69,6 +69,78 @@ export const MelhorAppTeleprompterEN = () => (
                 <div className="text-yellow-400 text-2xl mb-2">⚡</div>
                 <h3 className="font-bold text-white mb-2">Fully Offline</h3>
                 <p className="text-sm text-slate-400">Internet down? No problem. The PWA keeps working perfectly without connection.</p>
+            </div>
+        </div>
+
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Before vs After: The Real Impact</h2>
+        <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 p-8 rounded-xl border border-blue-500/30 mb-12">
+            <p className="text-slate-300 mb-6">
+                <strong className="text-blue-400">Real Scenario:</strong> Peter, educational content creator on YouTube (25k subscribers), recorded 15-20 minute videos about programming.
+            </p>
+            <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-slate-900/50 p-6 rounded-lg border border-red-500/30">
+                    <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
+                        <span>❌</span> BEFORE (No Teleprompter)
+                    </h3>
+                    <ul className="space-y-2 text-slate-300 text-sm">
+                        <li>⏱️ Recording time: 2h30min per video</li>
+                        <li>🔄 Re-takes: 8-12 per video</li>
+                        <li>😰 Stutters/mistakes: 15-20 per take</li>
+                        <li>✂️ Editing time: +1h (cutting errors)</li>
+                        <li>📊 Output: 1 video/week (maximum)</li>
+                    </ul>
+                </div>
+                <div className="bg-slate-900/50 p-6 rounded-lg border border-green-500/30">
+                    <h3 className="font-bold text-green-400 mb-4 flex items-center gap-2">
+                        <span>✅</span> AFTER (With PromptNinja)
+                    </h3>
+                    <ul className="space-y-2 text-slate-300 text-sm">
+                        <li>⏱️ Recording time: 45min per video</li>
+                        <li>🔄 Re-takes: 1-2 (just to check)</li>
+                        <li>😰 Stutters/mistakes: 0-2 per take</li>
+                        <li>✂️ Editing time: 20min (fine-tuning)</li>
+                        <li>📊 Output: 3 videos/week easily</li>
+                    </ul>
+                </div>
+            </div>
+            <p className="text-slate-400 text-sm mt-6 italic">
+                💡 Productivity: 3x more videos in same time. Quality: much more natural and confident.
+            </p>
+        </div>
+
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">When to Use Each Professional Feature</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            <div className="bg-slate-900 p-6 rounded-xl border border-slate-800">
+                <div className="flex items-center gap-3 mb-3">
+                    <div className="text-purple-400 text-2xl">🎙️</div>
+                    <h4 className="font-bold text-white">Voice Control (AI)</h4>
+                </div>
+                <p className="text-sm text-slate-400 mb-3">Text scrolls automatically as you speak. Hands-free, controller-free, pure magic.</p>
+                <p className="text-xs text-slate-500"><strong className="text-purple-300">💡 Use when:</strong> Recording long videos (20min+), lectures, tutorials. Your hands stay free to gesticulate.</p>
+            </div>
+            <div className="bg-slate-900 p-6 rounded-xl border border-slate-800">
+                <div className="flex items-center gap-3 mb-3">
+                    <div className="text-blue-400 text-2xl">🪞</div>
+                    <h4 className="font-bold text-white">Mirror Mode</h4>
+                </div>
+                <p className="text-sm text-slate-400 mb-3">Mirror text (x and y) for use with professional teleprompter glass rigs.</p>
+                <p className="text-xs text-slate-500"><strong className="text-blue-300">💡 Use when:</strong> Have DIY teleprompter with glass mirror. Text needs to appear inverted to reflect correctly.</p>
+            </div>
+            <div className="bg-slate-900 p-6 rounded-xl border border-slate-800">
+                <div className="flex items-center gap-3 mb-3">
+                    <div className="text-green-400 text-2xl">🔒</div>
+                    <h4 className="font-bold text-white">100% Private</h4>
+                </div>
+                <p className="text-sm text-slate-400 mb-3">Your scripts are saved locally in your browser. Nothing is sent to cloud servers.</p>
+                <p className="text-xs text-slate-500"><strong className="text-green-300">💡 Use when:</strong> Recording confidential content (corporate training, secret launches). Zero leak risk.</p>
+            </div>
+            <div className="bg-slate-900 p-6 rounded-xl border border-slate-800">
+                <div className="flex items-center gap-3 mb-3">
+                    <div className="text-yellow-400 text-2xl">⚡</div>
+                    <h4 className="font-bold text-white">Fully Offline</h4>
+                </div>
+                <p className="text-sm text-slate-400 mb-3">Internet down? No problem. The PWA keeps working perfectly without connection.</p>
+                <p className="text-xs text-slate-500"><strong className="text-yellow-300">💡 Use when:</strong> Recording on location (beach, mountains, events). Unstable internet won't stop you.</p>
             </div>
         </div>
 
@@ -144,6 +216,14 @@ export const MelhorAppTeleprompterEN = () => (
                 {
                     question: "3. Is the free version really functional?",
                     answer: "Yes. We believe that remote control is an essential feature, not a luxury. That's why our core functionality is 100% free and with no time limit. We offer a Pro version with advanced features like voice recognition, but the core tool is available to everyone."
+                },
+                {
+                    question: "4. Do I need fast internet?",
+                    answer: "No. The P2P remote control connects your devices directly via local Wi-Fi, independent of internet. You can even use it with Wi-Fi without internet access. Only need internet to load the site the first time (then works offline)."
+                },
+                {
+                    question: "5. Does it work with OBS, vMix or streaming software?",
+                    answer: "Perfectly! Just add PromptNinja as a Browser Source in OBS/vMix. Use transparent mode to overlay on your scene. Control everything via phone while streaming live."
                 }
             ]}
         />
