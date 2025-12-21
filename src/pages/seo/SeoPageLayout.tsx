@@ -1,5 +1,6 @@
 import React from "react";
 import * as S from "../../components/ui/Styled";
+import { ROUTES_CONFIG } from "../../config/routes";
 import { Header } from "../../components/landing/Header";
 import { FinalCTA } from "../../components/landing/FinalCTA";
 import { useTranslation } from "../../hooks/useTranslation";
@@ -26,7 +27,7 @@ export const SeoPageLayout: React.FC<SeoPageLayoutProps> = ({
     onLaunch,
     children
 }) => {
-    const { t } = useTranslation();
+    const { t, lang } = useTranslation();
     useSeo({ title, description, canonicalUrl, ogImage, ogType, schema });
 
     return (
@@ -66,8 +67,29 @@ export const SeoPageLayout: React.FC<SeoPageLayoutProps> = ({
                 </article>
             </main>
 
-            <FinalCTA onLaunch={onLaunch} />
 
+            {/* Hub Guide Link Section */}
+            <div className="bg-[#020617] border-slate-900 mb-16 text-center">
+                <p className="text-slate-400 mb-4 text-sm">
+                    {lang === "pt" ? "Explore mais conteúdos" :
+                        lang === "es" ? "Explora más contenido" :
+                            "Explore more content"}
+                </p>
+                <a
+                    href={
+                        lang === "pt" ? ROUTES_CONFIG.SEO_HUB_GUIDE.paths.pt :
+                            lang === "es" ? ROUTES_CONFIG.SEO_HUB_GUIDE.paths.es :
+                                ROUTES_CONFIG.SEO_HUB_GUIDE.paths.en
+                    }
+                    className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 hover:brightness-110 transition-all border-b border-purple-500/30 hover:border-purple-500 pb-1"
+                >
+                    {lang === "pt" ? "📖 Guia Completo de Teleprompter" :
+                        lang === "es" ? "📖 Guía Definitiva de Teleprompter" :
+                            "📖 Ultimate Teleprompter Guide"}
+                </a>
+            </div>
+
+            <FinalCTA onLaunch={onLaunch} />
             <footer className="py-12 border-t border-slate-900 text-center text-slate-500 text-sm bg-[#020617]">
                 <p>&copy; {new Date().getFullYear()} {t("footer.copyright")}</p>
             </footer>

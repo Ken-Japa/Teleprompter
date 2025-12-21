@@ -210,7 +210,7 @@ export const TeleprompterGamersEN = () => (
                 PRO Streamer = invisible script + zero lag + hands-free control. Everything you need, nothing you don't.
             </p>
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="/?lang=en#app"
                 className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 font-bold py-3 px-8 rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

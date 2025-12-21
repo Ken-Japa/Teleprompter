@@ -175,7 +175,7 @@ export const TeleprompterTabletES = () => (
                 No dejes tu iPad juntando polvo. Es el equipo de $1,000 que ya tienes y no estás usando para mejorar tus videos.
             </p>
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="/?lang=es#app"
                 className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 font-bold py-3 px-8 rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

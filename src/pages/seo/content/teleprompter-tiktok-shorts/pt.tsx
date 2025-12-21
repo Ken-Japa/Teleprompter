@@ -393,7 +393,7 @@ export const TeleprompterTikTokShortsPT = () => (
 
         <div className="text-center mt-12 mb-12">
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="/?lang=pt#app"
                 className="inline-block bg-gradient-to-r from-pink-500 to-purple-600 font-bold py-4 px-10 rounded-full transition hover:brightness-110 hover:scale-105 transform shadow-lg text-lg"
                 style={{ color: 'white' }}
             >
@@ -482,7 +482,7 @@ export const TeleprompterTikTokShortsPT = () => (
                 Chega de lutar contra sua memória. Chega de gastar 40 minutos pra gravar 15 segundos. Comece a produzir como os grandes: com sistema, consistência e resultados.
             </p>
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="/?lang=pt#app"
                 className="inline-block bg-gradient-to-r from-pink-500 to-purple-500 font-bold py-4 px-10 rounded-full transition hover:brightness-110 hover:scale-105 transform shadow-lg text-lg"
                 style={{ color: 'white' }}
             >

@@ -210,7 +210,7 @@ export const TeleprompterGamersES = () => (
                 Streamer PRO = guion invisible + cero lag + control manos libres. Todo lo que necesitas, nada que no necesites.
             </p>
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="/?lang=es#app"
                 className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 font-bold py-3 px-8 rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

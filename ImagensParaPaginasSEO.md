@@ -55,6 +55,26 @@ Este documento lista as recomendações de imagens, GIFs e vídeos para enriquec
     *   *Descrição:* Ilustração de um rosto com olhos olhando para extrema esquerda e extrema direita (Errado). Ao lado, rosto com olhos fixos no centro (Certo - PromptNinja com margens estreitas).
     *   *Legenda:* "Evite o 'Olhar de Tênis' ajustando as margens laterais."
 
+### 7. `/teleprompter-para-lives` (OBS Studio)
+*   **Screenshot de Overlay:**
+    *   *Descrição:* Uma captura de tela inteira mostrando o OBS Studio aberto com um jogo de fundo. No topo, uma pequena faixa semitransparente com o texto do PromptNinja, mostrando como o streamer vê.
+    *   *Legenda:* "O Segredo dos Streamers: Overlay Invisível."
+
+### 8. `/teleprompter-vs-telelestrador` (Comparativo)
+*   **Colagem Histórica:**
+    *   *Descrição:* Esquerda: Foto antiga em preto e branco de alguém segurando cartazes de papelão (Cue Cards). Direita: Foto moderna de um iPad com teleprompter espelhado.
+    *   *Legenda:* "A Evolução: Do Papelão ao Vidro Beam Splitter."
+
+### 9. `/teleprompter-acessibilidade`
+*   **Comparativo de Fontes:**
+    *   *Descrição:* GIF animado ou imagem estática dividida. Cima: Fonte Arial padrão (difícil para disléxicos). Baixo: Fonte OpenDyslexic (letras com base pesada) facilitando a leitura.
+    *   *Legenda:* "Fonte OpenDyslexic: Projetada para o seu cérebro não pular linhas."
+
+### 10. `/futuro-teleprompters-ai` (IA)
+*   **Ilustração de Conceito (Correção de Olhar):**
+    *   *Descrição:* Close no rosto de uma pessoa. Uma linha pontilhada verde sai dos olhos dela em direção à câmera, corrigindo o ângulo original que estaria lendo um texto abaixo. (Estilo Cyberpunk/Tech).
+    *   *Legenda:* "O Futuro: IA que corrige seus olhos automaticamente."
+
 ---
 
 ## 🛠️ Especificações Técnicas para as Mídias

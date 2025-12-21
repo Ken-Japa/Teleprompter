@@ -112,7 +112,7 @@ export const TeleprompterWebVsHardwareES = () => (
                 Antes de invertir en vidrio, trípode pesado y soportes, intenta grabar un video con PromptNinja bien configurado. 95% de usuarios desisten de comprar hardware tras probar.
             </p>
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="/?lang=es#app"
                 className="inline-block bg-gradient-to-r from-green-500 to-emerald-600 font-bold py-3 px-8 rounded-full transition hover:brightness-110 text-white shadow-lg"
             >
                 🎯 Probar Gratis Ahora

@@ -332,4 +332,94 @@ export const ROUTES_CONFIG = {
             es: "/es/guia-definitiva-teleprompter",
         },
     },
+    SEO_VS_TELELESTRADOR: {
+        priority: "0.8",
+        changefreq: "monthly",
+        paths: {
+            pt: "/teleprompter-vs-telelestrador",
+            en: "/en/teleprompter-vs-telelestrador",
+            es: "/es/teleprompter-vs-telelestrador",
+        },
+    },
+    SEO_HISTORY: {
+        priority: "0.7",
+        changefreq: "monthly",
+        paths: {
+            pt: "/historia-do-teleprompter",
+            en: "/en/history-of-teleprompter",
+            es: "/es/historia-del-teleprompter",
+        },
+    },
+    SEO_CELEBRITIES: {
+        priority: "0.8",
+        changefreq: "monthly",
+        paths: {
+            pt: "/celebridades-usam-teleprompter",
+            en: "/en/celebrities-use-teleprompter",
+            es: "/es/famosos-usan-teleprompter",
+        },
+    },
+    SEO_COMMON_MISTAKES: {
+        priority: "0.9",
+        changefreq: "monthly",
+        paths: {
+            pt: "/erros-comuns-teleprompter",
+            en: "/en/common-teleprompter-mistakes",
+            es: "/es/errores-comunes-teleprompter",
+        },
+    },
+    SEO_BUYING_GUIDE: {
+        priority: "0.8",
+        changefreq: "yearly",
+        paths: {
+            pt: "/como-escolher-teleprompter",
+            en: "/en/how-to-choose-teleprompter",
+            es: "/es/como-elegir-teleprompter",
+        },
+    },
+    SEO_LIVES: {
+        priority: "0.8",
+        changefreq: "monthly",
+        paths: {
+            pt: "/teleprompter-para-lives",
+            en: "/en/teleprompter-for-live-streaming",
+            es: "/es/teleprompter-para-directos",
+        },
+    },
+    SEO_PODCAST: {
+        priority: "0.8",
+        changefreq: "monthly",
+        paths: {
+            pt: "/teleprompter-para-podcast",
+            en: "/en/teleprompter-for-podcast",
+            es: "/es/teleprompter-para-podcast",
+        },
+    },
+    SEO_READING_SPEED: {
+        priority: "0.7",
+        changefreq: "yearly",
+        paths: {
+            pt: "/velocidade-leitura-teleprompter",
+            en: "/en/teleprompter-reading-speed",
+            es: "/es/velocidad-lectura-teleprompter",
+        },
+    },
+    SEO_ACCESSIBILITY: {
+        priority: "0.8",
+        changefreq: "yearly",
+        paths: {
+            pt: "/teleprompter-acessibilidade",
+            en: "/en/teleprompter-accessibility",
+            es: "/es/teleprompter-accesibilidad",
+        },
+    },
+    SEO_FUTURE_AI: {
+        priority: "0.7",
+        changefreq: "yearly",
+        paths: {
+            pt: "/futuro-teleprompters-ai",
+            en: "/en/future-teleprompters-ai",
+            es: "/es/futuro-teleprompters-ai",
+        },
+    },
 };

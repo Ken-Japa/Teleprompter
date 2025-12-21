@@ -156,6 +156,56 @@ export const SeoPages = {
             default: module.HubGuidePage,
         }))
     ),
+    TeleprompterVsTelelestrador: React.lazy(() =>
+        import("../pages/seo/TeleprompterVsTelelestrador").then((module) => ({
+            default: module.TeleprompterVsTelelestrador,
+        }))
+    ),
+    HistoriaDoTeleprompter: React.lazy(() =>
+        import("../pages/seo/HistoriaDoTeleprompter").then((module) => ({
+            default: module.HistoriaDoTeleprompter,
+        }))
+    ),
+    CelebridadesUsamTeleprompter: React.lazy(() =>
+        import("../pages/seo/CelebridadesUsamTeleprompter").then((module) => ({
+            default: module.CelebridadesUsamTeleprompter,
+        }))
+    ),
+    ErrosComunsTeleprompter: React.lazy(() =>
+        import("../pages/seo/ErrosComunsTeleprompter").then((module) => ({
+            default: module.ErrosComunsTeleprompter,
+        }))
+    ),
+    ComoEscolherTeleprompter: React.lazy(() =>
+        import("../pages/seo/ComoEscolherTeleprompter").then((module) => ({
+            default: module.ComoEscolherTeleprompter,
+        }))
+    ),
+    TeleprompterParaLives: React.lazy(() =>
+        import("../pages/seo/TeleprompterParaLives").then((module) => ({
+            default: module.TeleprompterParaLives,
+        }))
+    ),
+    TeleprompterParaPodcast: React.lazy(() =>
+        import("../pages/seo/TeleprompterParaPodcast").then((module) => ({
+            default: module.TeleprompterParaPodcast,
+        }))
+    ),
+    VelocidadeLeituraTeleprompter: React.lazy(() =>
+        import("../pages/seo/VelocidadeLeituraTeleprompter").then((module) => ({
+            default: module.VelocidadeLeituraTeleprompter,
+        }))
+    ),
+    TeleprompterAcessibilidade: React.lazy(() =>
+        import("../pages/seo/TeleprompterAcessibilidade").then((module) => ({
+            default: module.TeleprompterAcessibilidade,
+        }))
+    ),
+    FuturoTelepromptersAi: React.lazy(() =>
+        import("../pages/seo/FuturoTelepromptersAi").then((module) => ({
+            default: module.FuturoTelepromptersAi,
+        }))
+    ),
 };
 
 export const seoKeyMap: Record<SeoRouteKey, keyof typeof SeoPages> = {
@@ -196,6 +246,16 @@ export const seoKeyMap: Record<SeoRouteKey, keyof typeof SeoPages> = {
     SEO_MODO_BILINGUE: "TeleprompterModoBilingue",
     SEO_FITNESS: "TeleprompterFitness",
     SEO_HUB_GUIDE: "HubGuidePage",
+    SEO_VS_TELELESTRADOR: "TeleprompterVsTelelestrador",
+    SEO_HISTORY: "HistoriaDoTeleprompter",
+    SEO_CELEBRITIES: "CelebridadesUsamTeleprompter",
+    SEO_COMMON_MISTAKES: "ErrosComunsTeleprompter",
+    SEO_BUYING_GUIDE: "ComoEscolherTeleprompter",
+    SEO_LIVES: "TeleprompterParaLives",
+    SEO_PODCAST: "TeleprompterParaPodcast",
+    SEO_READING_SPEED: "VelocidadeLeituraTeleprompter",
+    SEO_ACCESSIBILITY: "TeleprompterAcessibilidade",
+    SEO_FUTURE_AI: "FuturoTelepromptersAi",
 };
 
 export type SeoRouteKey =
@@ -235,4 +295,14 @@ export type SeoRouteKey =
     | "SEO_TABLET"
     | "SEO_MODO_BILINGUE"
     | "SEO_FITNESS"
-    | "SEO_HUB_GUIDE";
+    | "SEO_HUB_GUIDE"
+    | "SEO_VS_TELELESTRADOR"
+    | "SEO_HISTORY"
+    | "SEO_CELEBRITIES"
+    | "SEO_COMMON_MISTAKES"
+    | "SEO_BUYING_GUIDE"
+    | "SEO_LIVES"
+    | "SEO_PODCAST"
+    | "SEO_READING_SPEED"
+    | "SEO_ACCESSIBILITY"
+    | "SEO_FUTURE_AI";

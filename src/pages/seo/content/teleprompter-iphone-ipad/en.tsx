@@ -207,7 +207,7 @@ export const TeleprompterIphoneIpadEN = () => (
                 PRO camera deserves PRO teleprompter. Zero App Store, zero subscription, zero limits.
             </p>
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="/?lang=en#app"
                 className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

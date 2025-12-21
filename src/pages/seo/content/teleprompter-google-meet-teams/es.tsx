@@ -171,7 +171,7 @@ export const TeleprompterGoogleMeetTeamsES = () => (
                 No dejes que la tecnología estorbe tu conexión. Úsala para amplificar tu presencia.
             </p>
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="/?lang=es#app"
                 className="inline-block bg-gradient-to-r from-indigo-500 to-blue-600 font-bold py-3 px-8 rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

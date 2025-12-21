@@ -71,7 +71,7 @@ export const TeleprompterSlidesES = () => (
                 Nunca más te preocupes por "perder" el texto. Con PromptNinja, tú controlas el show.
             </p>
             <a
-                href="https://promptninja.solutionkit.com.br/?lang=es/#app"
+                href="/?lang=es#app"
                 className="inline-block bg-white text-slate-900 font-bold py-3 px-8 mx-auto rounded-full transition hover:bg-slate-200"
             >
                 Crear Presentación Ahora

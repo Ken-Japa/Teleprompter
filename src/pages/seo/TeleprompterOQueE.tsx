@@ -114,7 +114,7 @@ export const TeleprompterOQueE: React.FC<Props> = ({ onLaunch }) => {
                 </p>
                 <button
                     onClick={onLaunch}
-                    className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-bold py-4 px-8 rounded-lg text-lg shadow-2xl hover:scale-105 transition transform duration-200"
+                    className="bg-gradient-to-r from-purple-700 to-blue-700 hover:from-purple-500 hover:to-blue-500 text-white font-bold py-4 px-8 rounded-lg text-lg shadow-2xl hover:scale-105 transition transform duration-200"
                 >
                     {ctaText}
                 </button>

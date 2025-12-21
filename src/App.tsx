@@ -175,6 +175,7 @@ const App: React.FC = () => {
                 {view === "LANDING" && <Landing onLaunch={launchApp} />}
                 {view === "THANK_YOU" && <ThankYou onLaunch={launchApp} />}
                 {view === "HOST" && <Host />}
+                {view === "SEO_HUB_GUIDE" && <SeoPages.HubGuidePage onLaunch={launchApp} />}
                 {view === "SEO_GRATIS" && <SeoPages.TeleprompterOnlineGratis onLaunch={launchApp} />}
                 {view === "SEO_TUTORIAL" && <SeoPages.ComoUsarTeleprompter onLaunch={launchApp} />}
                 {view === "SEO_MELHOR_APP" && <SeoPages.MelhorAppTeleprompter onLaunch={launchApp} />}
@@ -205,7 +206,16 @@ const App: React.FC = () => {
                 {view === "SEO_SLIDES_SYNC" && <SeoPages.TeleprompterSlides onLaunch={launchApp} />}
                 {view === "SEO_MODO_BILINGUE" && <SeoPages.TeleprompterModoBilingue onLaunch={launchApp} />}
                 {view === "SEO_FITNESS" && <SeoPages.TeleprompterFitness onLaunch={launchApp} />}
-                {view === "SEO_HUB_GUIDE" && <SeoPages.HubGuidePage onLaunch={launchApp} />}
+                {view === "SEO_VS_TELELESTRADOR" && <SeoPages.TeleprompterVsTelelestrador onLaunch={launchApp} />}
+                {view === "SEO_CELEBRITIES" && <SeoPages.CelebridadesUsamTeleprompter onLaunch={launchApp} />}
+                {view === "SEO_COMMON_MISTAKES" && <SeoPages.ErrosComunsTeleprompter onLaunch={launchApp} />}
+                {view === "SEO_BUYING_GUIDE" && <SeoPages.ComoEscolherTeleprompter onLaunch={launchApp} />}
+                {view === "SEO_LIVES" && <SeoPages.TeleprompterParaLives onLaunch={launchApp} />}
+                {view === "SEO_PODCAST" && <SeoPages.TeleprompterParaPodcast onLaunch={launchApp} />}
+                {view === "SEO_READING_SPEED" && <SeoPages.VelocidadeLeituraTeleprompter onLaunch={launchApp} />}
+                {view === "SEO_ACCESSIBILITY" && <SeoPages.TeleprompterAcessibilidade onLaunch={launchApp} />}
+                {view === "SEO_HISTORY" && <SeoPages.HistoriaDoTeleprompter onLaunch={launchApp} />}
+                {view === "SEO_FUTURE_AI" && <SeoPages.FuturoTelepromptersAi onLaunch={launchApp} />}
 
                 {/* Script Pages */}
                 {view === "SEO_SCRIPTS" && <SeoPages.TeleprompterScriptsPage onLaunch={launchApp} />}

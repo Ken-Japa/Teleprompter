@@ -132,7 +132,7 @@ export const TeleprompterShortcutsEN = () => (
                 In PRO version, you can <strong>force</strong> which key does what. Total freedom.
             </p>
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="/?lang=en#app"
                 className="inline-block bg-white text-slate-900 font-bold py-3 px-8 rounded-full transition hover:bg-slate-200"
             >
                 Configure Shortcuts Now

@@ -609,6 +609,7 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
       },
     },
     footer: "© {{year}} PromptNinja. Todos os direitos reservados.",
+
   },
   seo: {
     scripts: {

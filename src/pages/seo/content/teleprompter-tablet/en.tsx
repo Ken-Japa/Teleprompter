@@ -175,7 +175,7 @@ export const TeleprompterTabletEN = () => (
                 Don't leave your iPad gathering dust. It's the $1,000 equipment you already own and aren't using to improve your videos.
             </p>
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="/?lang=en#app"
                 className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 font-bold py-3 px-8 rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

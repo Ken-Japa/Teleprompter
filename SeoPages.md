@@ -39,6 +39,16 @@ O objetivo é manter o conteúdo organizado, facilitando a análise de desempenh
 | `TeleprompterTablet.tsx` | `/teleprompter-para-tablet-ipad-android` | Teleprompter para Tablet e iPad (App Online Grátis) | Otimização da interface para telas maiores (tablets). |
 | `TeleprompterModoBilingue.tsx` | `/teleprompter-modo-bilingue` | Teleprompter Modo Bilíngue: Scripts Lado a Lado | Recurso de visualizar dois textos lado a lado (ex: idioma original e tradução). |
 | `TeleprompterFitness.tsx` | `/teleprompter-para-fitness-treino` | Teleprompter para Fitness e Crossfit: Treine sem Tocar | Uso "criativo" do teleprompter como timer de treino (Crossfit/HIIT). |
+| `TeleprompterVsTelelestrador.tsx` | `/teleprompter-vs-telelestrador` | Teleprompter vs Telelestrador: Qual a Diferença? | Comparativo técnico explicando a diferença entre tecnologias de reflexão e anotação. |
+| `HistoriaDoTeleprompter.tsx` | `/historia-do-teleprompter` | A História Secreta do Teleprompter | Conteúdo de curiosidade/viral sobre a origem dos teleprompters (Presidentes, TV). |
+| `CelebridadesUsamTeleprompter.tsx` | `/celebridades-usam-teleprompter` | 7 Celebridades e Gigantes que Usam Teleprompter | Lista de famosos que usam a ferramenta para quebrar o estigma de que é "trapaça". |
+| `ErrosComunsTeleprompter.tsx` | `/erros-comuns-teleprompter` | 5 Erros Amadores ao Usar Teleprompter (e Como Evitar) | Guia de "troubleshooting" de performance (olhos de tênis, voz de robô). |
+| `ComoEscolherTeleprompter.tsx` | `/como-escolher-teleprompter` | Como Escolher o Teleprompter Ideal em 2026 | Guia de compra para iniciantes: App vs iPad vs Hardware Profissional. |
+| `TeleprompterParaLives.tsx` | `/teleprompter-para-lives` | Teleprompter para Lives e Streamers (OBS Studio Overlay) | Tutorial de uso em transmissões ao vivo com OBS e Twitch. |
+| `TeleprompterParaPodcast.tsx` | `/teleprompter-para-podcast` | Teleprompter para Podcast: O Segredo das Intros | Foco no uso específico para introduções e leitura de anúncios (Ad Reads). |
+| `VelocidadeLeituraTeleprompter.tsx` | `/velocidade-leitura-teleprompter` | Qual a Velocidade Ideal para o Teleprompter? (WPM) | Guia técnico sobre ritmo de fala, palavras por minuto e Voice Control. |
+| `TeleprompterAcessibilidade.tsx` | `/teleprompter-acessibilidade` | Teleprompter para TDAH e Dislexia | Foco em inclusão, fonte OpenDyslexic e recursos para neurodivergentes. |
+| `FuturoTelepromptersAi.tsx` | `/futuro-teleprompters-ai` | O Futuro dos Teleprompters com IA | Artigo de tendência sobre reconhecimento de voz e correção de olhar por IA. |
 
 ## Observações
 - **Padrão de URL:** Quase todas as URLs seguem o padrão `/nome-da-pagina` em PT, e `/en/english-slug` e `/es/slug-espanol` nas outras línguas.

@@ -255,7 +255,7 @@ export const TeleprompterObsStudioEN = () => (
 
         <div className="text-center mt-12 mb-12">
             <a
-                href="https://promptninja.solutionkit.com.br?lang=en"
+                href="/?lang=en#app"
                 className="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 font-bold py-4 px-10 rounded-full transition hover:brightness-110 hover:scale-105 transform shadow-lg text-lg"
                 style={{ color: 'white' }}
             >
@@ -308,7 +308,7 @@ export const TeleprompterObsStudioEN = () => (
                 Stop improvising intros. Stop forgetting sponsors. Stop looking at second monitor and losing viewers. Set up once, use forever.
             </p>
             <a
-                href="https://promptninja.solutionkit.com.br?lang=en"
+                href="/?lang=en#app"
                 className="inline-block bg-gradient-to-r from-purple-500 to-indigo-500 font-bold py-4 px-10 rounded-full transition hover:brightness-110 hover:scale-105 transform shadow-lg text-lg"
                 style={{ color: 'white' }}
             >

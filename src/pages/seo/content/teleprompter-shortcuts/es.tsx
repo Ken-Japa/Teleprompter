@@ -132,7 +132,7 @@ export const TeleprompterShortcutsES = () => (
                 En versión PRO, puedes <strong>forzar</strong> qué tecla hace qué. Libertad total.
             </p>
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="/?lang=es#app"
                 className="inline-block bg-white text-slate-900 font-bold py-3 px-8 rounded-full transition hover:bg-slate-200"
             >
                 Configurar Atajos Ahora
