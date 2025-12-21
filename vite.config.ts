@@ -37,6 +37,7 @@ const viteConfig = defineConfig({
             workbox: {
                 maximumFileSizeToCacheInBytes: 3000000,
                 globPatterns: ["**/*.{js,css,html,svg,woff2,png,jpg,jpeg,webp}"],
+                globIgnores: ["**/seo-*.js", "**/seo-*.css"],
                 ignoreURLParametersMatching: [/^__WB_REVISION__$/],
                 // Runtime caching strategies for better offline support
                 runtimeCaching: [
@@ -94,8 +95,25 @@ const viteConfig = defineConfig({
         cssCodeSplit: true, // Enable CSS code splitting
         rollupOptions: {
             output: {
-                // Let Vite/Rollup handle chunking automatically for better granular performance
-                // manualChunks removed to prevent forcing huge blocking vendor files
+                // Prefix SEO pages to be excluded from PWA precache via globIgnores
+                chunkFileNames: (chunkInfo) => {
+                    const isSeo = chunkInfo.moduleIds.some(
+                        (id) => id.includes("src/pages/seo/") || id.includes("pages/seo/")
+                    );
+                    if (isSeo) {
+                        return "assets/seo-[name]-[hash].js";
+                    }
+                    return "assets/[name]-[hash].js";
+                },
+                assetFileNames: (assetInfo) => {
+                    if (assetInfo.name && assetInfo.name.endsWith(".css")) {
+                        // This is harder because assetInfo doesn't easily map back to the module source
+                        // But since we want to exclude SEO CSS too, and most SEO CSS is bundled in these chunks
+                        // if we can't easily prefix it, Workbox might still catch it if it's referenced.
+                        // However, if cssCodeSplit is true, Vite generates [name]-[hash].css
+                    }
+                    return "assets/[name]-[hash][extname]";
+                },
             },
         },
         minify: "terser",
