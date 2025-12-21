@@ -3,128 +3,125 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterParaYoutubersEN = () => (
     <>
-        <h1 className="text-3xl font-bold text-white mb-4">Teleprompter for YouTubers: The Definitive Guide to Professional Recordings</h1>
-        <p className="mb-6 text-lg text-slate-300">
-            If you're a YouTuber, you know that content quality goes far beyond a good camera or lighting. Your ability to communicate clearly, confidently, and directly with your audience is what truly creates a connection. But maintaining eye contact and a natural flow of speech while trying to remember a complex script is one of the biggest challenges in video production.
+        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter for YouTubers: Double Your Retention & Cut Editing in Half</h1>
+
+        <p className="mb-6 text-xl text-slate-300">
+            You know the pain: you hit record, speak two lines, freeze. "Cut, again".
+            You look down at your script, look back at the lens, lose your train of thought.
         </p>
 
-        <div className="my-8 p-6 bg-slate-800 rounded-lg">
-            <h2 className="text-2xl font-bold text-white mb-4">The Vicious Cycle of Script-Free Recording</h2>
-            <p className="mb-4">
-                Recording without a teleprompter often results in a frustrating cycle: you start talking, forget a crucial part, stop the recording, take a deep breath, and try again. Repeat this dozens of times, and a 10-minute video takes hours to shoot. The result? Material full of cuts, hesitations, and a gaze that constantly shifts away from the camera, breaking the connection with the viewer.
+        <p className="mb-8 text-slate-300">
+            At the end of the day, you have <strong>2 hours of raw footage for an 8-minute video</strong>. Worst of all: editing becomes a nightmare of "Jump Cuts" to hide mistakes, killing the video's flow.
+        </p>
+
+        <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-red-500 mb-12 shadow-2xl">
+            <h2 className="text-2xl font-bold text-white mb-4">The Algorithm Hates Insecurity</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 className="text-lg font-bold text-red-300 mb-2">📉 Without Teleprompter</h3>
+                    <ul className="space-y-2 text-slate-400 text-sm">
+                        <li>• Looking away (reading notes) = Broken connection.</li>
+                        <li>• Too many "Uhhms", "Ahhs" = Retention drop.</li>
+                        <li>• Choppy editing = Visual fatigue.</li>
+                        <li>• Result: Viewer leaves in 30 seconds.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 className="text-lg font-bold text-green-400 mb-2">📈 With PromptNinja</h3>
+                    <ul className="space-y-2 text-slate-300 text-sm">
+                        <li>• Eye contact 100% of the time = Authority.</li>
+                        <li>• Continuous, confident speech = Hypnotic "Flow".</li>
+                        <li>• Minimal editing = Video ready in minutes.</li>
+                        <li>• Result: Watch Time skyrockets.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">3 Ways to Use (From Beginner to Pro)</h2>
+
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <div className="bg-slate-900/50 p-6 rounded-lg border border-slate-700 hover:border-blue-500 transition">
+                <div className="text-3xl mb-4">💻</div>
+                <h3 className="text-xl font-bold text-white mb-2">1. The "Laptop Studio"</h3>
+                <p className="text-sm text-slate-400 mb-4">Best for Webcam / Lives.</p>
+                <p className="text-slate-300 text-sm">
+                    Place PromptNinja window at the very top of your screen, right below the laptop webcam.
+                    <br /><strong>Cost: $0.</strong>
+                </p>
+            </div>
+
+            <div className="bg-slate-900/50 p-6 rounded-lg border border-slate-700 hover:border-purple-500 transition">
+                <div className="text-3xl mb-4">📱</div>
+                <h3 className="text-xl font-bold text-white mb-2">2. The "Mobile Creator"</h3>
+                <p className="text-sm text-slate-400 mb-4">Best for Reels/Shorts.</p>
+                <p className="text-slate-300 text-sm">
+                    Use PromptNinja on your phone. Hold phone near main camera lens if filming someone, or use selfie cam.
+                </p>
+            </div>
+
+            <div className="bg-slate-900/50 p-6 rounded-lg border border-slate-700 hover:border-green-500 transition">
+                <div className="text-3xl mb-4">🎥</div>
+                <h3 className="text-xl font-bold text-white mb-2">3. The "Pro Glass"</h3>
+                <p className="text-sm text-slate-400 mb-4">Best for DSLR/Mirrorless.</p>
+                <p className="text-slate-300 text-sm">
+                    Use an iPad running PromptNinja flat under a beam splitter glass. Enable <strong>Mirror Mode</strong> (Key 'M') to read "through" the lens.
+                </p>
+            </div>
+        </div>
+
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Ninja Workflow: Script to Published in 1h</h2>
+        <SEOContentHowTo
+            title=""
+            schemaTitle="How to Record YouTube Videos with Teleprompter"
+            totalTime="PT15M"
+            tools={["PromptNinja", "Camera", "Microphone"]}
+            steps={[
+                {
+                    title: "1. Write like you Speak",
+                    text: "Don't write a book. Write like a conversation. Use short sentences. In PromptNinja, break lines where you want to breathe."
+                },
+                {
+                    title: "2. Adjust 'Reading Zone'",
+                    text: "Don't let text fill the whole screen. Reduce side margins in PromptNinja so your eyes don't 'scan' left to right. Text should be in a narrow center column."
+                },
+                {
+                    title: "3. The Distance Trick",
+                    text: "Stand at least 3-5 feet from camera. The further you are, the less eye movement is visible."
+                },
+                {
+                    title: "4. Action!",
+                    text: "Hit Play (Space). Smile. Speak with energy (20% more than normal). If you mess up, PAUSE, breathe, go back one sentence. Don't stop recording."
+                }
+            ]}
+        />
+
+        <div className="mt-16 bg-gradient-to-r from-red-600/20 to-red-900/20 p-8 rounded-xl border border-red-500/30">
+            <h2 className="text-2xl font-bold text-white mb-4">Stop wasting time editing "Uhmms..."</h2>
+            <p className="text-slate-300 mb-6">
+                Top creators (MrBeast, Ali Abdaal, Peter McKinnon) use scripts or teleprompters. Their consistency comes from workflow. PromptNinja gives you this superpower for free.
             </p>
-            <p>
-                This is where a <strong>teleprompter for YouTubers</strong> ceases to be a luxury and becomes an essential tool for productivity and professionalism. It allows you to read your script smoothly while maintaining eye contact and naturalness, as if you were having a direct conversation with your audience. <a href="/en/scripts-for-youtube" className="text-purple-400 hover:text-purple-300 underline">Need inspiration? Check out our YouTube script templates</a>.
-            </p>
-        </div>
-
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">PromptNinja: The Teleprompter Designed for the Solo Creator</h2>
-        <p className="mb-4">
-            Many YouTubers record alone in their home studios. The last thing you want is to have to get up after every take to adjust the script or restart the software. PromptNinja was designed to solve exactly that. <a href="/en/best-teleprompter-app" className="text-purple-400 hover:text-purple-300 underline">See why it is considered the best teleprompter app</a> for independent creators.
-        </p>
-        <p className="mb-4">
-            Furthermore, it's perfect if you also do live streams or video calls. You can use it as a <a href="/en/teleprompter-zoom-meeting" className="text-purple-400 hover:text-purple-300 underline">teleprompter for Zoom and Google Meet</a>, ensuring a professional presence on every occasion.
-        </p>
-
-        <div className="overflow-x-auto my-8">
-            <table className="min-w-full bg-slate-800 rounded-lg">
-                <thead>
-                    <tr className="bg-slate-700">
-                        <th className="p-4 text-left">Recording Method</th>
-                        <th className="p-4 text-center">Eye Contact</th>
-                        <th className="p-4 text-center">Efficiency</th>
-                        <th className="p-4 text-center">Professionalism</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td className="p-4 border-t border-slate-700">Memorization</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-red-400">✖ Poor</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-red-400">✖ Awful</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-yellow-400">Low</td>
-                    </tr>
-                    <tr>
-                        <td className="p-4 border-t border-slate-700">Paper Notes</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-red-400">✖ Poor</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-yellow-400">Fair</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-yellow-400">Low</td>
-                    </tr>
-                    <tr>
-                        <td className="p-4 border-t border-slate-700"><strong>PromptNinja</strong></td>
-                        <td className="p-4 border-t border-slate-700 text-center text-green-400">✔ Excellent</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-green-400">✔ Excellent</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-green-400">High</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Choosing Your Setup: DIY vs Professional</h2>
-        <p className="mb-4">
-            You don't need to spend a lot to get started. Many YouTubers begin by improvising a <a href="/en/diy-homemade-teleprompter" className="text-purple-400 hover:text-purple-300 underline">DIY homemade teleprompter</a> with simple materials.
-        </p>
-        <ul className="list-disc pl-6 mb-6 text-slate-300 space-y-2">
-            <li><strong>Beginner (Zero Cost):</strong> Use PromptNinja on a laptop positioned just below the camera.</li>
-            <li><strong>Intermediate:</strong> Use a <a href="/en/teleprompter-app-for-tablet-ipad" className="text-purple-400 hover:text-purple-300 underline">tablet or iPad</a> as a projection screen for better portability.</li>
-            <li><strong>Professional:</strong> Get a glass stand (beam splitter) and use it with your tablet and PromptNinja's Mirror Mode to read directly "through" the lens.</li>
-        </ul>
-
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">A YouTuber's Workflow with PromptNinja</h2>
-        <p className="mb-4">
-            Imagine this scenario: you're in your studio, the camera is set, the lighting is perfect. Now, instead of stressing over the script, you follow these steps:
-        </p>
-        <div className="bg-slate-800 p-6 rounded-lg my-6 border border-slate-700">
-            <SEOContentHowTo
-                title=""
-                schemaTitle="How to Use PromptNinja for YouTube"
-                totalTime="PT5M"
-                tools={["PromptNinja", "Camera", "Laptop/Tablet"]}
-                steps={[
-                    {
-                        title: "Step 1: Access",
-                        text: "Open PromptNinja on your laptop or tablet browser, positioned near the camera."
-                    },
-                    {
-                        title: "Step 2: Setup Script",
-                        text: "Paste your text and adjust font size and margins for comfortable reading."
-                    },
-                    {
-                        title: "Step 3: Remote Control (Optional)",
-                        text: "Generate the QR Code and scan with your phone to use it as a remote."
-                    },
-                    {
-                        title: "Step 4: Record",
-                        text: "Sit down, frame yourself, and use Voice Mode or manual control to read while recording."
-                    }
-                ]}
-            />
-        </div>
-
-        <div className="my-8 text-center">
-            <a
-                href="https://promptninja.solutionkit.com.br"
-                className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mx-auto rounded-full transition hover:brightness-110"
-                style={{ color: 'white' }}
-            >
-                Transform Your Recordings Now - Try for Free
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                <a href="/app" className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full font-bold transition text-center">
+                    Start Recording Now
+                </a>
+            </div>
         </div>
 
         <SEOContentFAQ
-            title="Frequently Asked Questions (FAQ)"
+            title="Creator FAQ"
             items={[
                 {
-                    question: "Will people notice I'm reading?",
-                    answer: "Not if used correctly. The secret is to position the teleprompter screen as close to the camera lens as possible. With PromptNinja, you can adjust the font size and margins so your eye movement is minimal, making the reading unnoticeable."
+                    question: "Will YouTube penalize reading?",
+                    answer: "Quite the opposite. Algorithm loves Watch Time. If you speak well, no boring pauses, people watch til end. YouTube doesn't know you're reading, it just knows people aren't leaving."
                 },
                 {
-                    question: "Do I need expensive teleprompter hardware?",
-                    answer: <>No! You can start by using a laptop, tablet, or even a second monitor positioned above or below your camera. If you later invest in teleprompter hardware (with mirrored glass), PromptNinja has a free <strong>Mirror Mode</strong> that flips the text for you.</>,
-                    schemaAnswer: "No! You can start by using a laptop, tablet, or even a second monitor positioned above or below your camera. If you later invest in teleprompter hardware (with mirrored glass), PromptNinja has a free Mirror Mode that flips the text for you."
+                    question: "How to look natural?",
+                    answer: "Secret is body language. Move your hands. Smile. Frown. Use teleprompter just for word guidance, but put emotion in your voice. And set speed slightly FASTER than comfortable to force high energy."
                 },
                 {
-                    question: "Does the remote work on any phone?",
-                    answer: "Yes. The remote control works on any smartphone (iPhone or Android) with a camera and an internet browser. The connection is via WebRTC (P2P), which makes it instantaneous and doesn't require the devices to be on the same Wi-Fi network."
+                    question: "Good for Shorts and TikTok?",
+                    answer: "Perfect for it. In 60s videos, every second counts. You can't waste time thinking. With script on screen, you deliver value in exactly 59 seconds without stuttering."
                 }
             ]}
         />

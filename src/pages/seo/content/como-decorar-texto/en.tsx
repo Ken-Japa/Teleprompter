@@ -1,74 +1,95 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoDecorarTextoEN = () => (
     <>
         <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
-            How to Memorize a Script Fast (The Technique That Beats All Others)
+            How to Memorize Lines Fast (The Secret is NOT to Memorize)
         </h1>
 
         <p className="text-lg text-slate-300 mb-8">
-            Professional actors spend years perfecting the art of memorization. But you, needing to record a YouTube video, a work presentation, or an online class for tomorrow, don't have that luxury. The pressure of speaking to the camera is already high; adding the obligation to remember every word of a script is a recipe for disaster. But there is a smart way out.
+            You have a presentation tomorrow. Script is 5 pages long. Your heart races just thinking about forgetting a line and freezing on camera.
+            The brutal truth? <strong>Trying to memorize is amateur.</strong>
         </p>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">The Failure of Rote Memorization: Why Trying to Memorize Destroys Your Performance</h2>
-        <p className="mb-6">
-            Trying to memorize a script word-for-word is proven to be the most inefficient and stressful way to prepare for a recording. The result is almost always the same:
+        <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-yellow-500 mb-12 shadow-2xl">
+            <h2 className="text-2xl font-bold text-white mb-4">The Myth of Perfect Memory</h2>
+            <p className="text-slate-300 mb-4">
+                We think news anchors, politicians, and big YouTubers have photographic memories. Lie. They have <strong>Teleprompters</strong>.
+            </p>
+            <p className="text-slate-300">
+                TV industry discovered 50 years ago that human brain wasn't made to recite. It was made to converse. When you try to recall words, your eyes go blank ("dead fish eyes") and your voice goes robotic.
+            </p>
+        </div>
+
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">The "Invisible Gaze" Technique</h2>
+        <p className="mb-6 text-slate-300">
+            "But if I read, they will notice!"
+            Not if you use the right technique. The secret isn't what you read, but <strong>how you set up the screen.</strong>
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
-                <h3 className="text-xl font-bold text-primary mb-3">Robotic and Unnatural Speech</h3>
-                <p>Your mind becomes so focused on remembering the next word that you lose connection with the message. Your tone of voice becomes monotonous, gestures disappear, and your personality fades. You sound like a robot reading a manual.</p>
+
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="bg-red-900/10 p-6 rounded border border-red-500/30">
+                <h3 className="font-bold text-red-400 mb-2">❌ The Common Mistake</h3>
+                <p className="text-sm text-slate-300">
+                    Putting text full width on a widescreen monitor.
+                    <br /><strong>Result:</strong> Your eyes dart side to side like watching a tennis match. Everyone notices.
+                </p>
             </div>
-            <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
-                <h3 className="text-xl font-bold text-primary mb-3">The Constant Fear of "Going Blank"</h3>
-                <p>The tension of forgetting a single word creates a cycle of anxiety. When your mind goes blank, panic sets in. You freeze, stutter, and often have to restart the recording, undermining your confidence and draining your energy.</p>
+            <div className="bg-green-900/10 p-6 rounded border border-green-500/50">
+                <h3 className="font-bold text-green-400 mb-2">✅ The Ninja Technique</h3>
+                <p className="text-sm text-slate-300">
+                    Narrowing text margin to just 3 or 4 words per line, right in the center.
+                    <br /><strong>Result:</strong> Your eyes stay fixed in center. To the viewer, you are looking deep into their soul.
+                </p>
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Traditional Techniques vs. The Content Creator's Reality</h2>
-        <p className="mb-6">
-            There are various memorization techniques, like creating "memory palaces" or using topic cards. While useful for other purposes, they are impractical for those who need speed. Organizing a script into topics helps, but it doesn't solve the core problem: the need for precision and fluency.
-        </p>
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Step-by-Step: From Reading to Performance</h2>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">The Ultimate Solution: Don't Memorize, Read Intelligently</h2>
-        <p className="mb-6">
-            Think about news anchors, politicians, and CEOs at major events. They seem to speak impromptu with impressive clarity. The secret? They aren't memorizing. They are reading. Television has used teleprompters since the 1950s for a reason: it works. <a href="/en/teleprompter-scripts" className="text-purple-400 hover:text-purple-300 underline">Practice reading with our library of ready-made scripts</a>.
-        </p>
-        <p className="mb-8">
-            Today, this technology, which once cost thousands of dollars, is accessible to anyone with an internet browser. Using a teleprompter isn't "cheating." It's using a professional tool to get a professional result. <a href="/en/public-speaking-tips-video" className="text-purple-400 hover:text-purple-300 underline">Also check our video speaking tips</a> to maximize your results.
-        </p>
+        <SEOContentHowTo
+            title=""
+            schemaTitle="How to Read Teleprompter Naturally"
+            totalTime="PT5M"
+            tools={["PromptNinja", "Text"]}
+            steps={[
+                {
+                    title: "1. The Funnel Setup",
+                    text: "In PromptNinja, increase side margins until text is a thin column in the center. Increase font size to giant."
+                },
+                {
+                    title: "2. The Magic Distance",
+                    text: "Step back from screen. The further you are, the smaller the angle of your eye movement. Minimum 3 feet (1 meter)."
+                },
+                {
+                    title: "3. Body Language",
+                    text: "Audience forgives a glance, but not lack of energy. Move hands. Nod. Smile. When your body moves, your lively eyes disguise reading."
+                }
+            ]}
+        />
 
-        <div className="bg-slate-800 p-8 rounded-xl border border-slate-700 my-8">
-            <h3 className="text-2xl font-bold text-white mb-4">PromptNinja: Your Free and Infallible "External Memory"</h3>
-            <p className="mb-6">
-                PromptNinja turns any screen (PC, Mac, tablet) into a professional teleprompter and allows you to control it discreetly with your phone. It's the tool that eliminates the need to memorize forever.
+        <div className="mt-12 bg-slate-900 p-8 rounded-xl border border-slate-700">
+            <h3 className="text-2xl font-bold text-white mb-4">The Science of "Cognitive Relief"</h3>
+            <p className="text-slate-300">
+                When you don't spend 90% of your brain power trying to remember next word, that energy is freed for <strong>Acting</strong>.
+                You can finally put emotion, irony, and pauses in your speech. Teleprompter doesn't trap you; it frees you.
             </p>
-            <ul className="space-y-3 mb-8 text-slate-300">
-                <li className="flex items-start">
-                    <span className="text-green-400 mr-3 mt-1">✓</span>
-                    <span><strong>Record with Precision and Confidence:</strong> Say exactly what you planned, without forgetting details, data, or that killer line.</span>
-                </li>
-                <li className="flex items-start">
-                    <span className="text-green-400 mr-3 mt-1">✓</span>
-                    <span><strong>Save Hours of Work:</strong> Write the script and start recording immediately. The time you would spend memorizing (and getting frustrated) can be used to create more content.</span>
-                </li>
-                <li className="flex items-start">
-                    <span className="text-green-400 mr-3 mt-1">✓</span>
-                    <span><strong>Quick and Simple Editing:</strong> Fewer speech errors mean fewer cuts and patches in post-production. Your workflow becomes incredibly faster.</span>
-                </li>
-            </ul>
         </div>
 
         <SEOContentFAQ
-            title="Frequently Asked Questions (FAQ)"
+            title="Reading FAQ"
             items={[
                 {
-                    question: "1. Won't using a teleprompter make my reading look obvious?",
-                    answer: "Not if used correctly. The key is to position the screen as close to the camera lens as possible and adjust the scrolling speed to match your natural speaking pace. With a little practice, no one will notice you're reading."
+                    question: "What if I lose rhythm?",
+                    answer: "PromptNinja bas 'Voice Activated Scroll' in Pro version, which listens to your voice and scrolls text automatically. If you stop to sneeze or improvise, it waits for you."
                 },
                 {
-                    question: "2. Do I need any special equipment?",
-                    answer: "No! You just need two devices with access to a browser and the same Wi-Fi network. For example, your laptop to display the text and your phone to control the scrolling. It's simple, fast, and requires no expensive hardware."
+                    question: "Works with glasses?",
+                    answer: "Yes! Actually better, as frames sometimes hide micro-eye movements. Just watch out for screen reflection in lens (increase room brightness or change angle)."
+                },
+                {
+                    question: "How much time do I save?",
+                    answer: "Studies show teleprompter reduces recording time by 60% and editing time by 80% (eliminates error cuts). It is the ultimate productivity tool."
                 }
             ]}
         />
@@ -76,10 +97,9 @@ export const ComoDecorarTextoEN = () => (
         <div className="text-center mt-12">
             <a
                 href="https://promptninja.solutionkit.com.br"
-                className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mb-8 mx-auto rounded-full transition hover:brightness-110"
-                style={{ color: 'white' }}
+                className="inline-block bg-white text-slate-900 font-bold py-3 px-8 mx-auto rounded-full transition hover:bg-slate-200"
             >
-                Stop Memorizing and Start Communicating. Try PromptNinja for Free!
+                Open Teleprompter Now (No Login)
             </a>
         </div>
     </>

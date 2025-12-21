@@ -1,155 +1,89 @@
-
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
-import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterModoMusicoES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Teleprompter Modo Músico: La Solución Definitiva para Seguir Letras y Acordes</h1>
+        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para Músicos: Nunca Más Olvides Letra en Escenario
+        </h1>
 
-        <p className="mb-6">
-            Si eres músico, has experimentado la frustración de intentar leer letras y acordes en una tablet que se cae en medio de la presentación, o tener que pasar páginas de partituras en el momento crucial de una canción. El <strong>Modo Músico de PromptNinja</strong> fue creado específicamente para resolver estos problemas, ofreciendo una experiencia perfecta para seguir tus letras y acordes durante presentaciones en vivo, ensayos o grabaciones.
+        <p className="mb-6 text-xl text-slate-300">
+            Pesadilla de todo cantante: estás a medio show, banda toca, público mira... y te quedas en blanco. Olvidas primer verso de siguiente estrofa.
         </p>
 
-        <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-yellow-500">
-            <h2 className="text-2xl font-bold text-white mb-2">¿Por qué los Músicos Necesitan una Solución Especial?</h2>
-            <p className="text-slate-300">
-                A diferencia de los presentadores que leen texto continuo, los músicos necesitan <strong>alineación vertical perfecta</strong> entre acordes y letras. Un solo carácter desalineado puede hacerte tocar el acorde equivocado en el momento inadecuado. El Modo Músico usa <strong>fuente monoespaciada</strong> y formato especial para garantizar que cada acorde quede exactamente sobre la sílaba correcta.
-            </p>
-        </div>
+        <p className="mb-8 text-slate-300">
+            Grandes artistas (de Bono a Caetano) usan teleprompters en escenario. No es vergüenza, es <strong>seguridad profesional</strong>. PromptNinja tiene un "Modo Músico" secreto que debes conocer.
+        </p>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Los Problemas que Todo Músico Conoce</h2>
-        <ul className="list-disc pl-6 mb-6 text-slate-300 space-y-2">
-            <li><strong>Partituras de Papel:</strong> Difíciles de leer en ambientes oscuros, se las lleva el viento, y necesitas dejar de tocar para pasar la página.</li>
-            <li><strong>Tablets que se Resbalan:</strong> Pantallas pequeñas, reflejos de luces del escenario, y siempre cuando más lo necesitas, se acaba la batería.</li>
-            <li><strong>Apps Genéricas:</strong> No están hechas para músicos. Los acordes se desalinean, el texto es muy pequeño, y el scroll automático no funciona con el ritmo de la música.</li>
-            <li><strong>Dependencia de la Memoria:</strong> Presión de memorizar docenas de canciones, miedo de olvidar la letra en medio del show.</li>
-        </ul>
-
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Cómo el Modo Músico de PromptNinja lo Resuelve Todo</h2>
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <h3 className="text-xl font-bold text-white mb-4">Características Exclusivas del Modo Músico</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-slate-700 p-4 rounded-lg">
-                    <h4 className="font-bold text-white mb-2">🎸 Alineación Perfecta de Acordes</h4>
-                    <p className="text-sm text-slate-300">La fuente monoespaciada garantiza que los acordes queden exactamente sobre las sílabas correctas. Detecta automáticamente líneas con acordes y aplica formato especial.</p>
+        <div className="bg-slate-800 p-8 rounded-xl border border-purple-500/30 mb-12">
+            <h2 className="text-2xl font-bold text-white mb-4">Diferente a un Discurso</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 className="text-lg font-bold text-slate-200 mb-2">🎤 Problema de Carpetas</h3>
+                    <p className="text-sm text-slate-400">
+                        Carpetas con hojas papel vuelan con viento, necesitan luz externa para leerse en oscuro escenario y exigen que pares de tocar para voltear página.
+                    </p>
                 </div>
-                <div className="bg-slate-700 p-4 rounded-lg">
-                    <h4 className="font-bold text-white mb-2">📱 Control Remoto por Móvil</h4>
-                    <p className="text-sm text-slate-300">Pega la letra en la notebook y controla por el móvil. Pausa, ajusta velocidad, o salta a un estribillo específico - todo sin soltar el instrumento.</p>
-                </div>
-                <div className="bg-slate-700 p-4 rounded-lg">
-                    <h4 className="font-bold text-white mb-2">📺 Pantalla Grande y Legible</h4>
-                    <p className="text-sm text-slate-300">Usa el monitor de la PC/laptop para mostrar letras en tamaño grande. Perfecto para leer a distancia en el escenario o durante ensayos.</p>
-                </div>
-                <div className="bg-slate-700 p-4 rounded-lg">
-                    <h4 className="font-bold text-white mb-2">⚡ Conexión P2P Instantánea</h4>
-                    <p className="text-sm text-slate-300">La tecnología peer-to-peer significa cero retraso. Cuando presionas play en el móvil, sucede instantáneamente en la pantalla.</p>
+                <div>
+                    <h3 className="text-lg font-bold text-purple-400 mb-2">🎸 Solución Digital</h3>
+                    <p className="text-sm text-slate-300">
+                        Pantalla iluminada (visible en oscuro), scroll automático (manos libres) y letras gigantes (legible desde suelo).
+                    </p>
                 </div>
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Integración con Control de Voz PRO (Manos Libres Total)</h2>
-        <p className="mb-4">
-            Para músicos que usan ambas manos en el instrumento, el <strong>Control de Voz PRO</strong> cambia las reglas del juego. Activa el micrófono y el teleprompter <strong>se desplaza automáticamente</strong> siguiendo el ritmo de tu habla/canto.
-        </p>
-        <div className="bg-gradient-to-r from-slate-800 to-slate-700 p-6 rounded-lg my-6 border border-yellow-500/30">
-            <SEOContentHowTo
-                title=""
-                schemaTitle="Cómo Usar Control de Voz para Músicos"
-                totalTime="PT2M"
-                tools={["PromptNinja PRO", "Micrófono"]}
-                steps={[
-                    {
-                        title: "Paso 1: Activar Modos",
-                        text: "Activa el Modo Músico y luego el Control de Voz (función PRO)."
-                    },
-                    {
-                        title: "Paso 2: Calibrar",
-                        text: "PromptNinja detecta el sonido ambiente. Comienza a cantar o hablar el texto."
-                    },
-                    {
-                        title: "Paso 3: Scroll Automático",
-                        text: "El texto avanza automáticamente a tu ritmo natural. ¿Dejaste de cantar? El scroll se detiene."
-                    }
-                ]}
-            />
-            <p className="text-slate-300 mt-4 text-sm">
-                <strong>Perfecto para:</strong> Shows en vivo, grabaciones de covers, clases de música online, ensayos en solitario.
-            </p>
-        </div>
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Configurando "Escenario Ninja"</h2>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Casos de Uso Reales</h2>
-        <div className="space-y-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">🎭 Presentaciones en Vivo</h3>
-                <p className="text-slate-300 mt-2">Posiciona tu laptop cerca de ti en el escenario. Usa el móvil en el bolsillo o en un soporte para controlar discretamente. La audiencia nunca lo nota.</p>
+        <div className="space-y-6 mb-12">
+            <div className="flex gap-4">
+                <div className="text-3xl">🦶</div>
+                <div>
+                    <h3 className="text-xl font-bold text-white">1. Pedal Pasapáginas</h3>
+                    <p className="text-slate-300">
+                        PromptNinja acepta atajos teclado. Si compras pedal Bluetooth (como PageFlip o iRig), configúralo para simular tecla "Espacio".
+                        <br /><strong>Resultado:</strong> Pisas, letra rueda. Tus manos siguen en guitarra/teclado.
+                    </p>
+                </div>
             </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">🎬 Grabaciones y Covers para YouTube</h3>
-                <p className="text-slate-300 mt-2">Posiciona el monitor detrás de la cámara. Lees la letra mientras mantienes contacto visual con la lente. Resultado: videos más naturales y profesionales.</p>
+
+            <div className="flex gap-4">
+                <div className="text-3xl">📱</div>
+                <div>
+                    <h3 className="text-xl font-bold text-white">2. Tablet en Pie de Micro</h3>
+                    <p className="text-slate-300">
+                        Usa soporte de tablet que agarre al pedestal micrófono. Pon PromptNinja en pantalla completa. Ajusta fondo a negro total y texto blanco para no iluminar tu cara desde abajo ("efecto fantasma").
+                    </p>
+                </div>
             </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">🏫 Clases de Música</h3>
-                <p className="text-slate-300 mt-2">Comparte la pantalla con alumnos vía Zoom/Meet. Todos siguen la letra y acordes mientras demuestras en el instrumento.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white">🎵 Ensayos con la Banda</h3>
-                <p className="text-slate-300 mt-2">Conecta a un proyector o TV. Toda la banda ve la misma letra/acordes sincronizados - ideal para ensayar canciones nuevas.</p>
+
+            <div className="flex gap-4">
+                <div className="text-3xl">🎼</div>
+                <div>
+                    <h3 className="text-xl font-bold text-white">3. Formato de Acordes</h3>
+                    <p className="text-slate-300">
+                        PromptNinja respeta saltos de línea. Puedes pegar letra con acordes encima.
+                        <br /><span className="font-mono text-yellow-400 text-sm">G                D                Em<br />En este largo camino de vida...</span>
+                    </p>
+                </div>
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Cómo Formatear Letras y Acordes para el Modo Músico</h2>
-        <p className="mb-4">
-            El Modo Músico detecta automáticamente líneas que contienen acordes (identificadas por patrones como "Am", "G7", "C#m", etc.) y aplica formato monoespaciado para garantizar alineación perfecta. Ve un ejemplo:
-        </p>
-        <div className="bg-slate-900 p-6 rounded-lg my-6 font-mono text-sm">
-            <pre className="text-yellow-400">
-                {'    C        Am        F         G\n'}
-                <span className="text-white">Yo solo quiero un amor que sea de verdad</span>
-                {'\n    Dm       G7        C         E7\n'}
-                <span className="text-white">No tiene que ser eterno ya que eterno siempre acaba</span>
-            </pre>
-        </div>
-        <p className="text-slate-300 mb-6">
-            <strong>Tip PRO:</strong> Usa espacios (no tabs) para posicionar acordes. La alineación monoespaciada garantiza que funcionará perfectamente en cualquier pantalla.
-        </p>
-
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">FAQ: Modo Músico</h2>
         <SEOContentFAQ
-            title=""
+            title="FAQ de Banda"
             items={[
                 {
-                    question: "¿El Modo Músico es una función de pago?",
-                    answer: "¡No! El Modo Músico es **100% gratuito** en PromptNinja. Solo necesitas activar el botón en el editor. La función PRO separada es el **Control de Voz**, que se desplaza automáticamente mientras cantas."
+                    question: "¿Funciona offline en show?",
+                    answer: "¡Sí! Instala PWA (App) de PromptNinja. Una vez cargado, no necesita Wi-Fi. Internet del escenario puede caer, tu letra sigue ahí."
                 },
                 {
-                    question: "¿Funciona con tablaturas (tabs)?",
-                    answer: "¡Sí! La fuente monoespaciada del Modo Músico es perfecta para mostrar tablaturas ASCII, manteniendo la alineación correcta de todas las líneas."
+                    question: "¿Cómo sincronizar con banda?",
+                    answer: "Puedes definir velocidad exacta de scroll (BPM Visual). O mejor, deja control a baterista vía pedal, ya que él lleva el tiempo."
                 },
                 {
-                    question: "¿Puedo usar en presentaciones al aire libre (sin internet)?",
-                    answer: "¡Sí! PromptNinja es una PWA que funciona **completamente offline**. Solo ábrelo una vez con internet, y luego funciona sin conexión. El control remoto usa conexión P2P local (Wi-Fi), no necesita internet."
-                },
-                {
-                    question: "¿Cómo transportar acordes (cambiar tono)?",
-                    answer: "Usa herramientas externas de transposición de acordes antes de pegar en PromptNinja. Nuestra función es mostrar perfectamente lo que preparaste. (¡La función de transposición automática puede venir en versiones futuras!)"
+                    question: "¿Y si canción tiene solo largo?",
+                    answer: "Inserta varios saltos de línea vacíos en texto entre estrofas. Así, texto 'camina' en espacio blanco durante solo y siguiente estrofa llega a tiempo."
                 }
             ]}
         />
-
-        <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
-            <h2 className="text-3xl font-bold text-white mb-4">¿Listo para Transformar tus Presentaciones Musicales?</h2>
-            <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
-                Deja de luchar con partituras que se caen, tablets que se apagan, y apps que no fueron hechas para músicos. Prueba el Modo Músico de PromptNinja gratis y ve la diferencia.
-            </p>
-
-            <a
-                href="https://promptninja.solutionkit.com.br/?lang=es/#app"
-                className="inline-block bg-gradient-to-r from-yellow-500 to-amber-500 font-bold py-3 px-8 mx-auto rounded-full transition hover:brightness-110"
-                style={{ color: 'white' }}
-            >
-                Probar Modo Músico Gratis 🎸
-            </a>
-        </div>
     </>
 );

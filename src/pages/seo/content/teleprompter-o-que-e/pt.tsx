@@ -2,73 +2,68 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterOQueEPT = () => (
     <>
-        <h2>O que é um Teleprompter?</h2>
-        <p>
-            Um <strong>teleprompter</strong> (também conhecido como "suporte de texto" ou "prompter") é um dispositivo que exibe um texto rolando em uma tela, permitindo que o apresentador leia o conteúdo enquanto olha diretamente para a câmera. Isso cria a ilusão de que a pessoa está falando naturalmente, sem ler, o que aumenta a conexão com o público e a autoridade do vídeo.
-        </p>
-        <p>
-            Originalmente usado apenas em estúdios de TV, hoje o teleprompter é uma ferramenta essencial para Youtubers, criadores de conteúdo, professores e palestrantes que desejam gravar vídeos profissionais sem precisar decorar textos longos.
+        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+            O Que é Teleprompter? A História da "Cola" Profissional
+        </h1>
+
+        <p className="mb-6 text-xl text-slate-300">
+            Você vê o Presidente olhando diretamente para a câmera, falando eloquentemente por 30 minutos sem olhar nenhum papel. Gênio? Não. Tecnologia.
         </p>
 
-        <h2>Como Funciona um Teleprompter?</h2>
-        <p>
-            O funcionamento básico pode ser dividido em dois tipos:
-        </p>
-        <ul>
-            <li>
-                <strong>Teleprompter de Espelho (Hardware):</strong> Utiliza um vidro semi-reflexivo (beam splitter) posicionado na frente da lente da câmera. Um monitor ou tablet projeta o texto invertido no vidro, que reflete para o apresentador mas é invisível para a câmera.
-            </li>
-            <li>
-                <strong>Teleprompter Digital (Software/App):</strong> É um aplicativo ou site (como o PromptNinja) que exibe o texto rolando na tela do seu computador ou celular. Você posiciona a câmera o mais próximo possível do texto para simular o contato visual.
-            </li>
-        </ul>
+        <div className="bg-slate-800 p-8 rounded-xl border border-slate-700 mb-12">
+            <h2 className="text-2xl font-bold text-white mb-4">Como Funciona a Mágica (O Espelho)</h2>
+            <div className="flex flex-col md:flex-row gap-8 items-center">
+                <div className="flex-1">
+                    <p className="text-slate-300 mb-4">
+                        A mágica está num vidro especial chamado <strong>"Beam Splitter" (Divisor de Feixe)</strong>.
+                    </p>
+                    <ul className="list-disc pl-6 text-slate-300 space-y-2">
+                        <li>De um lado (plateia/câmera), ele é transparente 🪟.</li>
+                        <li>Do outro (apresentador), ele é um espelho 🪞.</li>
+                    </ul>
+                    <p className="text-slate-300 mt-4">
+                        Isso permite que uma tela colocada no chão reflita o texto no vidro. O apresentador lê o reflexo, mas a câmera filma através do vidro transparente sem ver o texto.
+                        Resultado: O apresentador olha <strong>diretamente nos olhos</strong> da lente enquanto lê.
+                    </p>
+                </div>
+                <div className="bg-black p-4 rounded-lg border border-slate-600 font-mono text-xs text-green-400 w-full md:w-1/3">
+                    <div className="text-center mb-2">📷 Câmera (Não vê nada)</div>
+                    <div className="border-b border-slate-500 my-2 text-center text-slate-500">| | Vidro Inclinado 45° | |</div>
+                    <div className="text-center mt-2">👁️ Apresentador (Vê texto)</div>
+                    <div className="mt-4 text-center text-yellow-400">📱 Tablet (Emite luz)</div>
+                </div>
+            </div>
+        </div>
 
-        <p>
-            Quer ver na prática? Confira nosso tutorial completo sobre <a href="/como-usar-teleprompter-celular" className="text-purple-400 hover:text-purple-300 underline">como usar o teleprompter no celular e notebook</a>.
-        </p>
-
-        <h2>Por que usar um Teleprompter?</h2>
-        <p>
-            O uso de um teleprompter traz diversos benefícios imediatos para sua produção de vídeo:
-        </p>
-        <ul>
-            <li><strong>Economia de Tempo:</strong> Reduz drasticamente o número de cortes e regravações, pois você não esquece o texto.</li>
-            <li><strong>Precisão:</strong> Garante que você fale exatamente o que foi planejado, sem omitir informações importantes.</li>
-            <li><strong>Profissionalismo:</strong> Mantém o contato visual constante com a audiência, transmitindo mais confiança.</li>
-            <li><strong>Fluidez:</strong> Elimina os "ééé...", "hmmm..." e pausas para pensar, tornando a oratória mais dinâmica.</li>
-        </ul>
-
-        <h2>PromptNinja: A Melhor Opção de Teleprompter Online Grátis</h2>
-        <p>
-            Se você não quer investir em equipamentos caros ou softwares complicados, o <strong>PromptNinja</strong> é a solução ideal. Diferente de outros apps, ele é 100% online, gratuito e funciona direto no navegador.
-        </p>
-        <h3>Principais Vantagens do PromptNinja:</h3>
-        <ul>
-            <li><strong>Totalmente Grátis:</strong> Sem marcas d'água, sem limite de tempo e sem assinaturas escondidas.</li>
-            <li><strong>Sem Instalação:</strong> Acesse e use. Não ocupa espaço no seu computador ou celular.</li>
-            <li><strong>Controle Inteligente:</strong> Use seu próprio celular como controle remoto para ajustar a velocidade e pausar o texto via Wi-Fi (conexão P2P segura).</li>
-            <li><strong>Compatibilidade Universal:</strong> Funciona em PC (Windows/Mac/Linux), Android e iOS (iPhone/iPad).</li>
-            <li><strong>Gravação de Voz (Voice Control):</strong> (Em breve) O texto rola automaticamente conforme você fala.</li>
-        </ul>
-        <p>
-            Comece agora mesmo a gravar vídeos como um profissional. Experimente o PromptNinja e veja como sua produtividade na criação de conteúdo vai decolar.
-        </p>
-
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div>
+                <h3 className="text-xl font-bold text-white mb-2">1950: O Rolo de Papel</h3>
+                <p className="text-sm text-slate-400">
+                    O primeiro teleprompter (usado na série <em>The First Hundred Years</em>) era literalmente um rolo de papel de açougueiro motorizado, operado por alguém que girava uma manivela. Se o ator falasse rápido demais, o operador tinha que girar mais rápido!
+                </p>
+            </div>
+            <div>
+                <h3 className="text-xl font-bold text-white mb-2">1952: Eisenhower e a Política</h3>
+                <p className="text-sm text-slate-400">
+                    Dwight Eisenhower foi o primeiro presidente dos EUA a usar um TP em campanha. Ele percebeu que olhar para o público (via câmera) passava muito mais sinceridade do que ler discursos na mesa. Desde então, nenhum político vive sem um.
+                </p>
+            </div>
+        </div>
 
         <SEOContentFAQ
-            title="Dúvidas Comuns sobre Teleprompters"
+            title="Curiosidades do Teleprompter"
             items={[
                 {
-                    question: "Qual a diferença entre um teleprompter online e de software?",
-                    answer: "A principal diferença é a acessibilidade. Softwares exigem instalação e muitas vezes são pagos. Teleprompters online como o PromptNinja rodam no navegador, são gratuitos e funcionam em qualquer sistema operacional (Windows, Mac, Linux, Android, iOS) instantaneamente."
+                    question: "O que é um 'Presidential Teleprompter'?",
+                    answer: "São aqueles dois vidros de pé, um de cada lado do pódio. Eles são invisíveis para a plateia (parecem vidro fumê), mas refletem o texto vindo de monitores no chão. O político alterna o olhar entre esquerda e direita para parecer que está olhando para todo o público."
                 },
                 {
-                    question: "É realmente gratuito?",
-                    answer: "Sim, o PromptNinja é 100% gratuito. Acreditamos em democratizar a criação de conteúdo. Oferecemos recursos profissionais sem custo."
+                    question: "Por que se chama 'Teleprompter'?",
+                    answer: "Vem de 'Tele' (Distância) + 'Prompter' (Aquele que sopra/lembra). No teatro antigo, o 'Ponto' (Prompter) era a pessoa escondida no palco que soprava a fala caso o ator esquecesse."
                 },
                 {
-                    question: "Onde meus roteiros ficam salvos?",
-                    answer: "Seus textos são salvos automaticamente na memória do seu navegador (Local Storage). Isso garante privacidade total, pois seus dados nunca são enviados para a nuvem."
+                    question: "Posso fazer um em casa?",
+                    answer: "Sim! Um vidro de porta-retrato comum funciona (com um pouco de reflexo duplo/fantasmas). Para qualidade profissional, você precisa de um vidro especial '70/30 Beam Splitter'."
                 }
             ]}
         />

@@ -1,94 +1,54 @@
-
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
-import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterPacingTimerES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Teleprompter con Pacing y Comandos de Texto: Duración Exacta para tus Videos</h1>
+        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+            Domina el Tiempo: Cómo No Ser Cortado en tu Pitch o Charla
+        </h1>
 
-        <p className="mb-6">
-            ¿Alguna vez grabaste un video completo solo para descubrir que era demasiado largo para Reels o demasiado corto para YouTube? ¿O peor, sentiste que estabas hablando demasiado rápido, atropellando las palabras? <strong>PromptNinja</strong> resuelve esto con funcionalidades exclusivas de <strong>Pacing (Ritmo)</strong> y <strong>Comandos de Texto inteligentes</strong>.
+        <p className="mb-6 text-xl text-slate-300">
+            "Su tiempo acabó." Nada es más vergonzoso que ser interrumpido a media conclusión en una Charla o Pitch de Ventas porque hablaste de más.
         </p>
 
-        <p className="mb-6">
-            A diferencia de un <a href="/es/teleprompter-online-gratis" className="text-blue-400 hover:text-blue-300 underline">teleprompter online gratis</a> común, que simplemente desplaza el texto infinitamente, nuestra herramienta ofrece control total sobre el tiempo y la entonación de tu habla. Es como tener un director de escena digital guiando tu presentación.
-        </p>
-
-        <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-purple-500">
-            <h2 className="text-2xl font-bold text-white mb-2">Novedad: Comandos de Texto Inteligentes [STOP] y [PAUSE]</h2>
+        <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-orange-500 mb-12">
+            <h2 className="text-2xl font-bold text-white mb-4">Trampa de Adrenalina</h2>
             <p className="text-slate-300 mb-4">
-                Ahora puedes programar el comportamiento del desplazamiento directamente en tu guion. PromptNinja entiende comandos especiales que escribes junto con el texto:
+                Cuando nerviosos, nuestra percepción de tiempo se distorsiona. Creemos que hablamos por 2 minutos, pero fueron 5. O corremos y acabamos en 30 segundos.
             </p>
-            <SEOContentHowTo
-                title=""
-                schemaTitle="Cómo Usar Comandos de Ritmo ([STOP], [PAUSE])"
-                totalTime="PT1M"
-                tools={["PromptNinja", "Editor de Texto"]}
-                steps={[
-                    {
-                        title: "Paso 1: Comando [STOP]",
-                        text: "Escribe [STOP] (mayúsculas, corchetes) para una pausa indefinida. El scroll para hasta que hagas clic."
-                    },
-                    {
-                        title: "Paso 2: Comando [PAUSE X]",
-                        text: "Escribe [PAUSE 3] para que el scroll pare por 3 segundos y retome solo automáticamente."
-                    },
-                    {
-                        title: "Paso 3: Aplicación",
-                        text: "Usa [STOP] para interacciones y [PAUSE] para respirar o dar énfasis dramático."
-                    }
-                ]}
-            />
+            <p className="text-slate-300">
+                El Teleprompter es tu metrónomo visual. Si texto acaba en 3 minutos a velocidad X, <strong>siempre</strong> acabará en 3 minutos, sin importar cuánto tu corazón lata.
+            </p>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">¿Por qué el Ritmo (Pacing) es Vital para la Oratoria?</h2>
-        <p className="mb-4">
-            Hablar al ritmo correcto es uno de los <a href="/es/consejos-oratoria-video" className="text-blue-400 hover:text-blue-300 underline">consejos de oratoria para video</a> más importantes. Si hablas muy rápido, tu audiencia no absorbe la información. Si hablas muy lento, pierden el interés.
-        </p>
-        <p className="mb-6">
-            Con el cronómetro integrado y el ajuste fino de velocidad de PromptNinja, entrenas tu cerebro para mantener una cadencia profesional. El indicador de tiempo (Timer) muestra exactamente cuánto tiempo has estado hablando y una estimación de cuánto falta, permitiendo ajustes en tiempo real.
-        </p>
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Técnicas de Pacing (Ritmo)</h2>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Ideal para Todos los Formatos de Video</h2>
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
-            <div className="bg-slate-900 p-4 rounded-lg border border-slate-700">
-                <h3 className="text-xl font-bold text-white mb-2">Shorts & Reels</h3>
-                <p className="text-sm text-slate-300">El tiempo es oro. Usa el temporizador para asegurar que tu guion quepa exactamente en 60 o 90 segundos sin necesidad de cortar contenido en la edición.</p>
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="bg-slate-900/50 p-6 rounded border border-slate-700">
+                <h3 className="text-xl font-bold text-white mb-2">⏱️ Método TED Talk</h3>
+                <p className="text-slate-300 text-sm">
+                    Charlas TED tienen 18 minutos rígidos. Oradores entrenan con teleprompter para internalizar ese ritmo. Usa cronómetro integrado en HUD de PromptNinja para monitorizar tiempo real vs estimado.
+                </p>
             </div>
-            <div className="bg-slate-900 p-4 rounded-lg border border-slate-700">
-                <h3 className="text-xl font-bold text-white mb-2">Clases y Webinars</h3>
-                <p className="text-sm text-slate-300">Usa el comando <strong>[STOP]</strong> para pausar el texto mientras respondes preguntas del chat o cambias de diapositiva en tu presentación.</p>
-            </div>
-            <div className="bg-slate-900 p-4 rounded-lg border border-slate-700">
-                <h3 className="text-xl font-bold text-white mb-2">Videos de Ventas</h3>
-                <p className="text-sm text-slate-300">Usa <strong>[PAUSE 2]</strong> después de revelar el precio o el beneficio principal para dejar que la información "asiente" en la mente del cliente.</p>
+            <div className="bg-slate-900/50 p-6 rounded border border-slate-700">
+                <h3 className="text-xl font-bold text-white mb-2">🐢 Pausas Dramáticas</h3>
+                <p className="text-slate-300 text-sm">
+                    Escribe <code>[PAUSA LARGA]</code> o salta 5 líneas en tu guion. Esto te obliga a respirar y mirar audiencia, creando impacto. El silencio es tan importante como el habla.
+                </p>
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">FAQ: Comandos y Temporizador</h2>
         <SEOContentFAQ
-            title=""
+            title="FAQ de Tiempo"
             items={[
                 {
-                    question: "¿Cómo uso el comando de pausa?",
-                    answer: "Simplemente escribe **[PAUSE X]** en tu guion, donde X es el número de segundos. Ejemplo: \"Y el secreto es... [PAUSE 3] La constancia.\" El teleprompter se detendrá por 3 segundos en esa línea y volverá a desplazarse automáticamente."
+                    question: "¿Cuántas palabras por minuto (PPM)?",
+                    answer: "Promedio de habla conversacional es 130-150 PPM. Para videos educativos, busca 140 PPM. Para anuncios energéticos (ventas), sube a 160 PPM. PromptNinja calcula tu PPM estimado automáticamente."
                 },
                 {
-                    question: "¿El comando [STOP] necesita clic para volver?",
-                    answer: "Sí. Cuando el texto encuentra un **[STOP]**, detiene el desplazamiento indefinidamente. Para continuar, puedes presionar la barra espaciadora, hacer clic en la pantalla o usar el control remoto."
-                },
-                {
-                    question: "¿Estas funciones son de pago?",
-                    answer: "¡El temporizador básico y los comandos de texto son gratuitos! Queremos que tengas control total de tu presentación sin barreras."
+                    question: "¿Cronómetro para si pauso?",
+                    answer: "Sí. El contador de tiempo de PromptNinja está vinculado al movimiento del texto. Si pausas texto para responder pregunta de audiencia, tiempo estimado para."
                 }
             ]}
         />
-
-        <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
-            <h2 className="text-3xl font-bold text-white mb-4">Domina el Tiempo de tu Video</h2>
-            <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
-                No dejes la duración de tu video al azar. Usa los comandos de texto y el timer de PromptNinja para grabar con precisión quirúrgica.
-            </p>
-        </div>
     </>
 );
