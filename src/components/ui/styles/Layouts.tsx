@@ -160,7 +160,7 @@ export const HudContainer = ({ children, visible }: { children: React.ReactNode;
 );
 
 export const HudGroup = ({ children, label }: { children: React.ReactNode; label?: string }) => (
-    <div className="flex flex-col items-center justify-center sm:border-r sm:border-white/10 sm:last:border-0 sm:px-6 group relative h-full">
+    <div className="flex flex-col items-center justify-center  sm:border-white/10 sm:last:border-0 sm:px-4 group relative h-full">
         <div className="flex items-center justify-center sm:gap-3">{children}</div>
         {label && (
             <span className="hidden sm:block absolute -bottom-5 left-1/2 -translate-x-1/2 text-[9px] uppercase text-slate-500 font-bold tracking-[0.2em] group-hover:text-brand-400 transition-colors whitespace-nowrap opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 duration-300 pointer-events-none">

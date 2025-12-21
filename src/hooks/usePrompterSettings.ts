@@ -24,6 +24,7 @@ export interface PrompterActions {
     setIsWidgetMode: (val: boolean) => void;
     setIsBilingualMode: (val: boolean) => void;
     setBilingualConfig: (config: Partial<BilingualConfig>) => void;
+    setFontFamily: (val: string) => void;
 }
 
 export const usePrompterSettings = (isPro: boolean) => {
@@ -31,6 +32,10 @@ export const usePrompterSettings = (isPro: boolean) => {
     const [fontSize, setFontSize] = useLocalStorage<number>(
         PROMPTER_DEFAULTS.STORAGE_KEYS.FONT_SIZE,
         PROMPTER_DEFAULTS.FONT_SIZE
+    );
+    const [fontFamily, setFontFamily] = useLocalStorage<string>(
+        PROMPTER_DEFAULTS.STORAGE_KEYS.FONT_FAMILY,
+        PROMPTER_DEFAULTS.FONT_FAMILY
     );
     const [margin, setMargin] = useLocalStorage<number>(
         PROMPTER_DEFAULTS.STORAGE_KEYS.MARGIN,
@@ -130,6 +135,7 @@ export const usePrompterSettings = (isPro: boolean) => {
 
     const settings: PrompterSettings = {
         fontSize,
+        fontFamily,
         margin,
         isMirrored,
         theme,
@@ -148,6 +154,7 @@ export const usePrompterSettings = (isPro: boolean) => {
 
     const actions: PrompterActions = {
         setFontSize: (v) => { setFontSize(v); /* Rate limit in UI usually, tracking here might be noisy */ },
+        setFontFamily: wrapSetter(setFontFamily, "font_family"),
         setMargin: (v) => { setMargin(v); },
         setIsMirrored: wrapToggle(setIsMirrored, "mirror_mode"),
         setTheme: (v) => { setTheme(v); trackSettingChange("theme", String(v)); }, // Basic direct set

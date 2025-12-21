@@ -142,6 +142,7 @@ export interface PrompterSettings {
     isWidgetMode: boolean; // Mobile Widget/PiP Mode
     isBilingualMode: boolean; // Bilingual mode
     bilingualConfig?: BilingualConfig; // Bilingual configuration
+    fontFamily: string;
 }
 
 export interface RemoteScrollHandler {

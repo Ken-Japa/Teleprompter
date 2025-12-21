@@ -811,6 +811,25 @@ export const MusicIcon = ({ className }: { className?: string }) => (
     </svg>
 );
 
+export const FontFamilyIcon = ({ className }: { className?: string }) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+    >
+        <path d="M5 20h14" />
+        <path d="M12 4v16" />
+        <path d="M8 8h8" />
+    </svg>
+);
+
 export const LanguagesIcon = ({ className }: { className?: string }) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"

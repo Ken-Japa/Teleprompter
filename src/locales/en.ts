@@ -322,6 +322,7 @@ export const en = {
       stopRecord: "Stop Recording",
       downloadRecord: "Download Recording",
       recordNew: "Record New",
+      fontConfig: "Font Configuration",
     },
     hudLabels: {
       theme: "Theme",

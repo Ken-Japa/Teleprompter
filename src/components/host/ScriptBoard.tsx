@@ -271,8 +271,12 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
         }}
       >
         <div
-          className={`${isMusicianMode ? "font-mono whitespace-pre text-left" : "font-sans font-bold whitespace-pre-wrap text-center"} leading-tight outline-none transition-colors duration-500 text-optimize`}
-          style={{ fontSize: "var(--prompter-font-size)" }}
+          className={`${isMusicianMode ? "font-mono whitespace-pre text-left" : "whitespace-pre-wrap text-center"} leading-tight outline-none transition-colors duration-500 text-optimize`}
+          style={{
+            fontSize: "var(--prompter-font-size)",
+            fontFamily: "var(--prompter-font-family)",
+            fontWeight: "bold"
+          }}
         >
           {processedSentences.map((s: Sentence) => (
             <SentenceItem key={s.id} id={s.id} fragments={s.fragments} isChord={s.isChord} isMusicianMode={isMusicianMode} command={s.command} originalSentenceId={s.originalSentenceId} />

@@ -602,12 +602,20 @@ export const Prompter = memo(
       }, [onStateChange, externalState.speed]);
 
       const containerStyle = useMemo(
-        () =>
-          ({
+        () => {
+          let fontFamilyValue = 'var(--font-primary)';
+          if (settings.fontFamily === 'OpenDyslexic') fontFamilyValue = '"OpenDyslexic", sans-serif';
+          else if (settings.fontFamily === 'Roboto Mono') fontFamilyValue = '"Roboto Mono", monospace';
+          else if (settings.fontFamily === 'Poppins') fontFamilyValue = '"Poppins", sans-serif';
+          else if (settings.fontFamily === 'Lexend') fontFamilyValue = '"Lexend", sans-serif';
+
+          return {
             "--prompter-font-size": `${fontSize}px`,
-            "--prompter-content-width": isWidgetMode ? "100%" : `calc(50% + ${margin}%)`, // Widget Mode uses full width of the smaller container
-          }) as React.CSSProperties,
-        [fontSize, margin, isWidgetMode]
+            "--prompter-font-family": fontFamilyValue,
+            "--prompter-content-width": isWidgetMode ? "100%" : `calc(50% + ${margin}%)`,
+          } as React.CSSProperties;
+        },
+        [fontSize, margin, isWidgetMode, settings.fontFamily]
       );
 
       // effectiveTheme is now defined at the top

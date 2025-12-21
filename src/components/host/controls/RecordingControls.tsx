@@ -18,42 +18,42 @@ interface RecordingControlsProps {
     onDownload: () => void;
 }
 
-export const RecordingControls = memo(({ 
-    isRecording, 
-    isPaused, 
-    recordingTime, 
+export const RecordingControls = memo(({
+    isRecording,
+    isPaused,
+    recordingTime,
     hasRecordedData,
     recordingMode,
     onToggleMode,
-    onStart, 
-    onStop, 
-    onPause, 
-    onResume, 
-    onDownload 
+    onStart,
+    onStop,
+    onPause,
+    onResume,
+    onDownload
 }: RecordingControlsProps) => {
     const { t } = useTranslation();
-    
+
     if (!isRecording && !hasRecordedData) {
         return (
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-2">
                 <S.IconButton
                     onClick={onStart}
                     title={t("host.controls.record")}
                     aria-label={t("host.controls.record")}
-                    className="w-9 h-9 rounded-full hover:bg-red-500/20 hover:text-red-400 border-transparent text-slate-400"
+                    className="w-10 h-10 rounded-full hover:bg-red-500/20 hover:text-red-400 border-transparent text-slate-400"
                 >
-                    <RecordIcon className="w-5 h-5" />
+                    <RecordIcon className="w-6 h-6" />
                 </S.IconButton>
                 <S.IconButton
                     onClick={onToggleMode}
                     title={recordingMode === "remote" ? "Record on Remote" : "Record on Host"}
                     aria-label="Toggle Recording Mode"
-                    className="w-9 h-9 rounded-full hover:bg-white/10 border-transparent text-slate-400"
+                    className="w-10 h-10 rounded-full hover:bg-white/10 border-transparent text-slate-400"
                 >
                     {recordingMode === "remote" ? (
-                        <SmartphoneIcon className="w-5 h-5" />
+                        <SmartphoneIcon className="w-6 h-6" />
                     ) : (
-                        <LaptopIcon className="w-5 h-5" />
+                        <LaptopIcon className="w-6 h-6" />
                     )}
                 </S.IconButton>
             </div>
@@ -63,7 +63,7 @@ export const RecordingControls = memo(({
     if (hasRecordedData && !isRecording) {
         return (
             <div className="flex items-center gap-2 bg-slate-900/80 rounded-full px-2 py-1 border border-white/10">
-                 <S.IconButton
+                <S.IconButton
                     onClick={onDownload}
                     title={t("host.controls.downloadRecord")}
                     aria-label={t("host.controls.downloadRecord")}
@@ -102,11 +102,11 @@ export const RecordingControls = memo(({
     return (
         <div className="flex items-center gap-2 bg-red-900/20 rounded-full px-3 py-1 border border-red-500/30">
             <div className="relative w-3 h-3 flex items-center justify-center mr-1">
-                 <div className="absolute inset-0 rounded-full bg-red-500 animate-ping opacity-75"></div>
-                 <div className="relative w-2 h-2 rounded-full bg-red-500"></div>
+                <div className="absolute inset-0 rounded-full bg-red-500 animate-ping opacity-75"></div>
+                <div className="relative w-2 h-2 rounded-full bg-red-500"></div>
             </div>
             <span className="text-xs font-mono text-red-200 min-w-[40px]">{recordingTime}</span>
-            
+
             {isPaused ? (
                 <S.IconButton
                     onClick={onResume}

@@ -330,6 +330,7 @@ export const es = {
       stopRecord: "Detener Grabación",
       downloadRecord: "Descargar Grabación",
       recordNew: "Grabar Nuevo",
+      fontConfig: "Configurar Fonte",
     },
     hudLabels: {
       theme: "Tema",

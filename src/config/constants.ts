@@ -17,12 +17,14 @@ export const APP_CONSTANTS = {
 export const PROMPTER_DEFAULTS = {
     FONT_SIZE: 64,
     MARGIN: 10,
+    FONT_FAMILY: "sans-serif", // 'sans-serif' (Inter/Outfit) or 'OpenDyslexic'
     IS_MIRRORED: false,
     IS_UPPERCASE: false,
     IS_FLIP_VERTICAL: false,
     // LocalStorage Keys
     STORAGE_KEYS: {
         FONT_SIZE: "promptninja_font",
+        FONT_FAMILY: "promptninja_font_family",
         MARGIN: "promptninja_margin",
         MIRROR: "promptninja_mirror",
         THEME: "promptninja_theme",

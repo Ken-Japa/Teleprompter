@@ -328,6 +328,7 @@ export const pt = {
       stopRecord: "Parar Gravação",
       downloadRecord: "Baixar Gravação",
       recordNew: "Gravar Novo",
+      fontConfig: "Configurar Fonte",
     },
     hudLabels: {
       theme: "Tema",

@@ -4,9 +4,10 @@ import { ConnectionStatus, PrompterSettings } from "../../types";
 import { PrompterActions } from "../../hooks/usePrompterSettings";
 import { useTranslation } from "../../hooks/useTranslation";
 import { PrompterTimer, SpeedControl, FontControl, DisplayControl, ThemeControl } from "./controls";
+import { FontSettingsModal } from "../ui/FontSettingsModal";
 import { UI_LIMITS } from "../../config/constants";
 import { RecordingControls } from "./controls/RecordingControls";
-import { QrCodeIcon, InfoIcon, LogOutIcon, EditIcon, PlayIcon, PauseIcon, MaximizeIcon, MinimizeIcon, StopIcon } from "../ui/Icons";
+import { QrCodeIcon, InfoIcon, LogOutIcon, EditIcon, PlayIcon, PauseIcon, MaximizeIcon, MinimizeIcon, StopIcon, FontFamilyIcon, PlusIcon, MinusIcon } from "../ui/Icons";
 import { TutorialModal } from "../ui/TutorialModal";
 import { FontSizeModal } from "../ui/FontSizeModal";
 import { MarginModal } from "../ui/MarginModal";
@@ -64,6 +65,7 @@ export const PrompterHUD = memo(
 
         const [showTutorialModal, setShowTutorialModal] = useState(false);
         const [showFontSizeModal, setShowFontSizeModal] = useState(false);
+        const [showFontSettingsModal, setShowFontSettingsModal] = useState(false);
         const [showMarginModal, setShowMarginModal] = useState(false);
         const [showQRModal, setShowQRModal] = useState(false);
         const [isMinimized, setIsMinimized] = useState(false);
@@ -178,26 +180,29 @@ export const PrompterHUD = memo(
                         onClick={() => setShowQRModal(true)}
                         title={t("host.remoteConnect")}
                         aria-label={t("host.remoteConnect")}
-                        className="w-8 h-8 ml-2"
+                        className="w-8 h-8"
                     >
                         <QrCodeIcon className="w-4 h-4" />
                     </S.IconButton>
-                    <SyncButton onSync={onSync} className="w-8 h-8 ml-2" />
+                    <SyncButton onSync={onSync} className="w-8 h-8" />
                     <PrompterTimer isPlaying={isPlaying} onReset={resetTimerSignal} />
                 </S.HudGroup>
 
-                <div className="flex items-center justify-center gap-2 w-full">
+                <div className="flex items-center justify-center w-full">
                     <SpeedControl isPlaying={isPlaying} speed={speed} onStateChange={onStateChange} onReset={onResetPrompter} />
                     <FontControl fontSize={settings.fontSize} setFontSize={actions.setFontSize} onOpenFontSizeSlider={() => setShowFontSizeModal(true)} />
                     <S.IconButton
                         onClick={onEdit}
                         title={t("host.editText") || "Edit Text"}
                         aria-label={t("host.editText") || "Edit Text"}
-                        className="w-10 h-10 flex !p-0 !items-center !justify-center leading-none bg-slate-800/80 border border-white/5 shadow-md"
+                        className="w-10 h-10 flex ml-2 !p-0 !items-center !justify-center leading-none bg-slate-800/80 border border-white/5 shadow-md"
                     >
                         <EditIcon className="w-5 h-5 block" />
                     </S.IconButton>
+
+
                 </div>
+
 
                 {/* Show More / Advanced Toggle */}
                 <div className="hidden sm:flex items-center">
@@ -205,20 +210,16 @@ export const PrompterHUD = memo(
                         onClick={handleToggleAdvanced}
                         className="text-xs text-slate-400 hover:text-brand-400 underline decoration-dotted transition-colors mx-2 whitespace-nowrap"
                     >
-                        {isAdvancedOpen ? (t("common.less") || "Menos") : (t("common.more") || "Mais opções...")}
+                        {isAdvancedOpen ? <MinusIcon className="w-5 h-5" /> : <PlusIcon className="w-5 h-5" />}
                     </button>
                 </div>
 
+
                 {/* Advanced Controls (Conditionally Rendered) */}
                 {isAdvancedOpen && (
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-2 w-full sm:w-auto p-1.5 sm:p-0 rounded-xl bg-slate-900/50 sm:bg-transparent border border-white/5 sm:border-none mt-0.5 sm:mt-0">
-
-                        <div className="hidden sm:block w-px h-8 bg-white/10 mx-2"></div> {/* Separator Desktop only */}
-
-                        {/* Row 1: Font & Display (Mobile) / All inline (Desktop) */}
-                        {/* Row 1: Display (Mobile) / All inline (Desktop) */}
-                        <div className="flex items-center gap-2">
-                            {/* Font moved to main row */}
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-2 w-full sm:w-auto p-1.5 sm:p-2 rounded-xl bg-slate-900/50 sm:bg-slate-900/80 border border-white/5 mt-0.5 sm:mt-0 animate-in fade-in slide-in-from-top-2 duration-200">
+                        {/* Unified Control Group */}
+                        <div className="flex flex-wrap sm:flex-nowrap justify-center items-center gap-2 sm:gap-1 max-w-[280px] sm:max-w-none">
                             <DisplayControl
                                 settings={settings}
                                 actions={actions}
@@ -226,10 +227,16 @@ export const PrompterHUD = memo(
                                 togglePiP={togglePiP}
                                 isPiPActive={isPiPActive}
                             />
-                        </div>
 
-                        {/* Row 2: Theme & Edit (Mobile) / All inline (Desktop) */}
-                        <div className="flex items-center gap-2">
+                            <S.IconButton
+                                onClick={() => setShowFontSettingsModal(true)}
+                                title={t("host.controls.fontConfig") || "Configurar Fonte"}
+                                aria-label="Font Settings"
+                                className="w-9 h-9 rounded-full hover:bg-white/10 border-transparent text-slate-400"
+                            >
+                                <FontFamilyIcon className="w-6 h-6" />
+                            </S.IconButton>
+
                             <ThemeControl
                                 settings={settings}
                                 actions={actions}
@@ -239,18 +246,18 @@ export const PrompterHUD = memo(
                                 voiceApiSupported={voiceApiSupported}
                                 voiceApiError={voiceApiError}
                             />
+
                             <S.IconButton
                                 onClick={() => setShowTutorialModal(true)}
                                 title="Tutorial"
                                 aria-label="Open Tutorial"
-                                className="hidden sm:flex ml-1 w-9 h-9 !p-0 !items-center !justify-center leading-none"
+                                className="w-9 h-9 rounded-full hover:bg-white/10 border-transparent text-slate-400"
                             >
                                 <InfoIcon className="w-5 h-5 block" />
                             </S.IconButton>
                         </div>
                     </div>
-                )
-                }
+                )}
 
                 {/* Minimize Button - Visible on Mobile mainly, but can be useful everywhere */}
                 <S.IconButton
@@ -262,7 +269,7 @@ export const PrompterHUD = memo(
                 </S.IconButton >
 
                 {recordingState && recordingActions && (
-                    <div className="mx-2 scale-90 origin-bottom">
+                    <div className="scale-90 origin-bottom">
                         <S.HudGroup label="REC">
                             <RecordingControls
                                 isRecording={recordingState.isRecording}
@@ -284,7 +291,7 @@ export const PrompterHUD = memo(
                 <S.PrimaryButton
                     onClick={onExit}
                     size="sm"
-                    className="ml-4 bg-slate-800 hover:bg-slate-700 text-slate-200 shadow-none"
+                    className="ml-2 bg-slate-800 hover:bg-slate-700 text-slate-200 shadow-none"
                 >
                     <span className="hidden sm:inline">{t("host.exit")}</span>
                     <LogOutIcon className="inline sm:hidden w-4 h-4" />
@@ -302,6 +309,12 @@ export const PrompterHUD = memo(
                     onClose={() => setShowMarginModal(false)}
                     margin={settings.margin}
                     setMargin={handleSetMargin}
+                />
+                <FontSettingsModal
+                    isOpen={showFontSettingsModal}
+                    onClose={() => setShowFontSettingsModal(false)}
+                    fontFamily={settings.fontFamily}
+                    setFontFamily={actions.setFontFamily}
                 />
                 <QRCodeModal
                     isOpen={showQRModal}
