@@ -1,105 +1,162 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterShortcutsPT = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Teleprompter com Atalhos de Teclado: O Workflow dos Profissionais</h1>
+        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Atalhos de Teclado no Teleprompter: O Segredo da Produtividade em Vídeo</h1>
 
-        <p className="mb-6">
-            Você sabia que cada vez que você tira a mão do teclado para mexer no mouse, você quebra seu fluxo criativo? Para profissionais de vídeo que gravam sozinhos, agilidade não é luxo, é necessidade. O <strong>PromptNinja</strong> é o único <a href="/teleprompter-pc-windows" className="text-blue-400 hover:text-blue-300 underline">teleprompter para PC e Windows</a> desenhado com filosofia "Keyboard First".
+        <p className="mb-6 text-lg text-slate-300">
+            Você já cronometrou quanto tempo perde em uma gravação apenas indo até a câmera, apertando REC, voltando para a posição, errando, levantando de novo para pausar...?
         </p>
 
         <p className="mb-6">
-            Nossa interface foi otimizada para que você possa controlar absolutamente tudo sem tocar no mouse. Isso é essencial para quem grava longe do computador ou usa pedais Bluetooth mapeados como teclas.
+            Editores de vídeo profissionais no Adobe Premiere ou DaVinci Resolve raramente tocam no mouse. Eles sabem que <strong>atalhos de teclado = velocidade</strong>.
         </p>
 
-        <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-blue-500">
-            <h2 className="text-2xl font-bold text-white mb-4">Lista de Atalhos Padrão (Hotkeys)</h2>
-            <div className="grid md:grid-cols-2 gap-4 text-slate-300">
+        <p className="mb-8">
+            O PromptNinja é o único teleprompter online desenhado com a filosofia "Keyboard First". Isso significa que você pode controlar 100% da sua gravação sem nunca tirar as mãos do teclado (ou do seu pedal/clicker).
+        </p>
+
+        <div className="bg-slate-800 p-8 rounded-xl border border-blue-500/30 mb-12 shadow-2xl">
+            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+                ⌨️ Tabela Mestre de Comandos
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                    <h3 className="font-bold text-white border-b border-slate-600 pb-2 mb-2">Controle de Reprodução</h3>
-                    <ul className="space-y-2">
-                        <li><kbd className="bg-slate-700 px-2 py-1 rounded">Espaço</kbd> ou <kbd className="bg-slate-700 px-2 py-1 rounded">Enter</kbd> : Iniciar / Pausar</li>
-                        <li><kbd className="bg-slate-700 px-2 py-1 rounded">ESC</kbd> : Sair do modo tela cheia / Voltar</li>
-                        <li><kbd className="bg-slate-700 px-2 py-1 rounded">R</kbd> : Reiniciar o texto (Reset)</li>
+                    <h3 className="text-xl font-bold text-blue-400 mb-4 border-b border-blue-500/20 pb-2">Controle de Fluxo</h3>
+                    <ul className="space-y-3">
+                        <li className="flex justify-between items-center text-slate-300">
+                            <span>Iniciar / Pausar Scroll</span>
+                            <kbd className="bg-slate-700 text-white px-3 py-1 rounded font-mono border border-slate-600">ESPAÇO</kbd>
+                        </li>
+                        <li className="flex justify-between items-center text-slate-300">
+                            <span>Reiniciar Texto (Topo)</span>
+                            <kbd className="bg-slate-700 text-white px-3 py-1 rounded font-mono border border-slate-600">R</kbd>
+                        </li>
+                        <li className="flex justify-between items-center text-slate-300">
+                            <span>Sair / Voltar</span>
+                            <kbd className="bg-slate-700 text-white px-3 py-1 rounded font-mono border border-slate-600">ESC</kbd>
+                        </li>
                     </ul>
                 </div>
+
                 <div>
-                    <h3 className="font-bold text-white border-b border-slate-600 pb-2 mb-2">Ajustes Visuais</h3>
-                    <ul className="space-y-2">
-                        <li><kbd className="bg-slate-700 px-2 py-1 rounded">↑</kbd> / <kbd className="bg-slate-700 px-2 py-1 rounded">↓</kbd> : Aumentar / Diminuir Velocidade</li>
-                        <li><kbd className="bg-slate-700 px-2 py-1 rounded">+</kbd> / <kbd className="bg-slate-700 px-2 py-1 rounded">-</kbd> : Aumentar / Diminuir Fonte</li>
-                        <li><kbd className="bg-slate-700 px-2 py-1 rounded">M</kbd> : Espelhar Texto (Mirror)</li>
+                    <h3 className="text-xl font-bold text-purple-400 mb-4 border-b border-purple-500/20 pb-2">Ajustes Dinâmicos</h3>
+                    <ul className="space-y-3">
+                        <li className="flex justify-between items-center text-slate-300">
+                            <span>Velocidade (+ / -)</span>
+                            <div className="flex gap-2">
+                                <kbd className="bg-slate-700 text-white px-2 py-1 rounded font-mono border border-slate-600">↑</kbd>
+                                <kbd className="bg-slate-700 text-white px-2 py-1 rounded font-mono border border-slate-600">↓</kbd>
+                            </div>
+                        </li>
+                        <li className="flex justify-between items-center text-slate-300">
+                            <span>Tamanho Fonte (+ / -)</span>
+                            <div className="flex gap-2">
+                                <kbd className="bg-slate-700 text-white px-2 py-1 rounded font-mono border border-slate-600">+</kbd>
+                                <kbd className="bg-slate-700 text-white px-2 py-1 rounded font-mono border border-slate-600">-</kbd>
+                            </div>
+                        </li>
+                        <li className="flex justify-between items-center text-slate-300">
+                            <span>Espelhar (Mirror)</span>
+                            <kbd className="bg-slate-700 text-white px-3 py-1 rounded font-mono border border-slate-600">M</kbd>
+                        </li>
                     </ul>
                 </div>
-                <div className="md:col-span-2">
-                    <h3 className="font-bold text-white border-b border-slate-600 pb-2 mb-2">Modos Especiais</h3>
-                    <ul className="space-y-2">
-                        <li><kbd className="bg-slate-700 px-2 py-1 rounded">H</kbd> : Esconder Interface (HUD) - <em>Modo Gamer/Minimalista</em></li>
-                        <li><kbd className="bg-slate-700 px-2 py-1 rounded">F</kbd> : Modo Foco (Escurece as laterais)</li>
-                        <li><kbd className="bg-slate-700 px-2 py-1 rounded">V</kbd> : Flip Vertical</li>
-                    </ul>
+            </div>
+
+            <div className="mt-8 bg-black/30 p-4 rounded-lg border border-yellow-500/20">
+                <h3 className="text-lg font-bold text-yellow-500 mb-2">🎮 Modo Gamer / Streamer (Exclusivo)</h3>
+                <div className="flex justify-between items-center text-slate-300">
+                    <p className="text-sm">Oculta toda a interface (botões, menus), deixando apenas o texto flutuante. Perfeito para gravar gameplays ou tutoriais de software.</p>
+                    <kbd className="bg-yellow-600/20 text-yellow-400 px-4 py-2 rounded font-mono border border-yellow-500/50 text-xl font-bold ml-4">H</kbd>
                 </div>
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Compatível com Apresentadores e Pedais (Elgato Stream Deck)</h2>
-        <p className="mb-4">
-            Como usamos atalhos de teclado padrão, o PromptNinja é nativamente compatível com qualquer dispositivo que emule um teclado.
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Integração com Hardware Externo</h2>
+        <p className="mb-6 text-slate-300">
+            A beleza de usar atalhos de teclado padrão é que qualquer dispositivo que emule um teclado funciona nativamente com o PromptNinja.
         </p>
-        <ul className="list-disc pl-6 mb-6 text-slate-300 space-y-2">
-            <li><strong>Elgato Stream Deck:</strong> Configure botões para "Espaço", "R" ou "M".</li>
-            <li><strong>Pedais USB:</strong> Use os pés para dar play/pause enquanto suas mãos gesticulam livremente.</li>
-            <li><strong>Apresentadores Multimídia:</strong> A maioria dos controles de slides (clickers) usa as setas do teclado, funcionando perfeitamente para controlar a velocidade.</li>
-        </ul>
 
-        <div className="bg-gradient-to-r from-slate-800 to-slate-900 p-6 rounded-lg my-8 border border-yellow-600">
-            <h2 className="text-2xl font-bold text-yellow-500 mb-2 flex items-center">
-                <span className="bg-yellow-500 text-black text-xs px-2 py-1 rounded mr-3">PRO</span>
-                Configuração de Teclado Personalizada
-            </h2>
-            <p className="text-slate-300 mb-4">
-                Precisa de atalhos diferentes? Na versão <strong>PromptNinja PRO</strong>, você tem liberdade total para remapear todas as teclas.
-            </p>
-            <p className="text-slate-300 text-sm">
-                Isso é vital se você usa layout de teclado não-padrão (Dvorak, AZERTY) ou se seus dispositivos externos enviam comandos específicos que não podem ser alterados. Adapte o software ao seu hardware, e não o contrário.
-            </p>
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <div className="bg-slate-800 p-6 rounded-lg border-t-4 border-blue-500">
+                <h3 className="font-bold text-white mb-2">Elgato Stream Deck</h3>
+                <p className="text-sm text-slate-400 mb-3">O queridinho dos streamers.</p>
+                <p className="text-slate-300 text-sm">
+                    Basta arrastar a ação "Hotkey" no software da Elgato e atribuir a tecla <strong>SPACE</strong> para um botão físico. Adicione outro para <strong>R</strong> (Reset) e tenha um centro de comando na sua mesa.
+                </p>
+            </div>
+            <div className="bg-slate-800 p-6 rounded-lg border-t-4 border-green-500">
+                <h3 className="font-bold text-white mb-2">Pedais USB</h3>
+                <p className="text-sm text-slate-400 mb-3">Para músicos e "mãos ocupadas".</p>
+                <p className="text-slate-300 text-sm">
+                    Se você faz unboxing ou toca violão, suas mãos estão ocupadas. Use um pedal USB configurado como "Espaço" para iniciar/pausar o texto com os pés.
+                </p>
+            </div>
+            <div className="bg-slate-800 p-6 rounded-lg border-t-4 border-purple-500">
+                <h3 className="font-bold text-white mb-2">Apresentadores (Clickers)</h3>
+                <p className="text-sm text-slate-400 mb-3">Logitech R400, R800, etc.</p>
+                <p className="text-slate-300 text-sm">
+                    A maioria dos clickers de slide envia comandos de "Seta Direita/Esquerda" ou "Page Up/Down". O PromptNinja interpreta isso inteligentemente para controle de scroll.
+                </p>
+            </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Dica para Gamers e Streamers: O Atalho "H"</h2>
-        <p className="mb-6">
-            Vai gravar gameplay ou reagir a um vídeo e não quer que os botões do teleprompter apareçam na captura do OBS? Simplesmente aperte a tecla <kbd className="bg-slate-700 px-2 py-1 rounded text-white">H</kbd>.
-        </p>
-        <p className="mb-6">
-            Isso ativa o modo "No UI" (Sem Interface), deixando apenas o texto visível com fundo transparente (se configurado). É a solução mais limpa para sobreposição em lives.
-        </p>
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Workflow Ninja: Edite e Grave em Segundos</h2>
+        <SEOContentHowTo
+            title=""
+            schemaTitle="Como Otimizar Gravação com Atalhos"
+            totalTime="PT5M"
+            tools={["PC/Mac", "Teclado", "PromptNinja"]}
+            steps={[
+                {
+                    title: "Prepare o Texto",
+                    text: "Cole seu roteiro. Use ENTER para quebrar frases longas em blocos visuais."
+                },
+                {
+                    title: "Ajuste Visual (Sem Mouse)",
+                    text: "Use '+' e '-' para deixar a fonte gigante (leitura confortável). Use 'M' se estiver usando vidro."
+                },
+                {
+                    title: "O Pulo do Gato: Loop de Erro",
+                    text: "Errou a frase? Não xingue. Aperte ESPAÇO (Pausa). Respire. Aperte Seta Cima (Volta um pouco). Aperte ESPAÇO (Play). Continue gravando. Na edição, você verá a pausa visualmente na waveform do áudio e cortará fácil."
+                }
+            ]}
+        />
 
-        <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
-            <h2 className="text-3xl font-bold text-white mb-4">Acelere Sua Produção</h2>
+        <div className="text-center bg-slate-800 p-8 rounded-lg my-10 border border-slate-700">
+            <h2 className="text-3xl font-bold text-white mb-4">PromptNinja PRO: Mapeamento Total</h2>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
-                Experimente gravar usando apenas o teclado. Você vai perceber que sobra mais energia para o que importa: sua performance.
+                Usa teclado Dvorak? Tem um controle remoto específico que envia a tecla "F5"?
+                Na versão PRO, você pode <strong>impor</strong> qual tecla faz o que. Liberdade total.
             </p>
             <a
-                href="https://promptninja.solutionkit.com.br/#app"
-                className="inline-block bg-white text-slate-900 font-bold py-3 px-8 mx-auto rounded-full transition hover:bg-slate-200"
+                href="https://promptninja.solutionkit.com.br"
+                className="inline-block bg-white text-slate-900 font-bold py-3 px-8 rounded-full transition hover:bg-slate-200"
             >
-                Testar Atalhos Agora
+                Configurar Atalhos Agora
             </a>
         </div>
 
         <SEOContentFAQ
-            title="Dúvidas sobre Atalhos e Controle"
+            title="Dúvidas Técnicas sobre Teclado"
             items={[
                 {
-                    question: "Posso mudar as teclas de atalho?",
-                    answer: "Sim, na versão PromptNinja PRO você pode remapear completamente todas as funções (iniciar, parar, velocidade, espelhar) para qualquer tecla que preferir."
+                    question: "Os atalhos funcionam se eu estiver em outra janela (ex: OBS)?",
+                    answer: "Não nativamente (limitação de segurança dos navegadores). O PromptNinja precisa estar 'em foco' (janela ativa). Dica: Use um segundo monitor para o PromptNinja e clique nele antes de começar."
                 },
                 {
-                    question: "Funciona com pedais e clickers de apresentação?",
-                    answer: "Sim! A maioria desses dispositivos simula toques de teclado (como Espaço ou Setas). O PromptNinja reconhece esses sinais nativamente, sem necessidade de drivers extras."
+                    question: "Funciona com teclados Bluetooth de iPad?",
+                    answer: "Sim! O iPadOS reconhece teclados externos perfeitamente e o PromptNinja responde aos mesmos atalhos (Espaço, Setas) no Safari/Chrome móvel."
                 },
                 {
-                    question: "Para que serve a tecla 'H'?",
-                    answer: "A tecla 'H' serve para ocultar a interface (HUD). É perfeita para quem grava a tela do computador (gameplays, tutoriais) e quer que apenas o texto apareça, sem botões ou menus atrapalhando."
+                    question: "Posso usar um controle de videogame (Xbox/PS5)?",
+                    answer: "Diretamente não, mas se você usar um software como 'JoyToKey' (Windows) ou 'Mapper' (Mac) para transformar botões do joystick em teclas (A = Espaço), funciona perfeitamente!"
+                },
+                {
+                    question: "A tecla 'H' (Hide) esconde o texto também?",
+                    answer: "Não, ela esconde apenas a UI (Interface de Usuário) - botões, menus, logo. O texto continua lá, flutuando. Se o fundo estiver transparente, parece mágica sobre seu vídeo."
                 }
             ]}
         />

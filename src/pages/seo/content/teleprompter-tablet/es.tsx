@@ -3,111 +3,217 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTabletES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Teleprompter para Tablet y iPad: Transforma tu Dispositivo en un Estudio Profesional</h1>
+        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para Tablet y iPad: El Punto Dulce de la Creación de Video</h1>
+
+        <p className="mb-6 text-lg text-slate-300">
+            Intentas grabar con el móvil, pero la pantalla es minúscula y fuerzas la vista. Intentas usar la laptop, pero es pesada e imposible de poner en un trípode. Estás atrapado en el "limbo del equipo": o muy pequeño, o muy torpe.
+        </p>
 
         <p className="mb-6">
-            Las tablets como el <strong>iPad, Samsung Galaxy Tab</strong> y otros modelos Android son herramientas increíbles para la creación de contenido. ¿Pero sabías que son el dispositivo perfecto para funcionar como un teleprompter profesional? Con el tamaño de pantalla ideal y alta portabilidad, tu tablet puede elevar la calidad de tus videos instantáneamente.
+            ¿El resultado? Videos con ojos entrecerrados (tratando de leer letras chicas), postura rígida y cansancio visual después de 15 minutos. Tu actuación sufre, y tu video parece amateur.
         </p>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">¿Por qué usar una Tablet como Teleprompter?</h2>
-        <ul className="list-disc pl-6 mb-6 space-y-2">
-            <li><strong>Tamaño de Pantalla Ideal:</strong> A diferencia de los celulares, las tablets ofrecen pantallas de 10 a 13 pulgadas, permitiendo leer el guion desde una mayor distancia y con letras más grandes, sin forzar la vista.</li>
-            <li><strong>Portabilidad Extrema:</strong> Lleva tu estudio en la mochila. Una tablet y un trípode es todo lo que necesitas para grabar en cualquier lugar.</li>
-            <li><strong>Batería de Larga Duración:</strong> Graba por horas sin preocuparte por quedarte sin energía en medio de una toma importante.</li>
-            <li><strong>Versatilidad:</strong> Usa la tablet como la propia cámara o solo como la pantalla de visualización (reflejada en un vidrio o lectura directa).</li>
-        </ul>
-
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">PromptNinja: La Mejor App de Teleprompter para Tablet (Online y Gratis)</h2>
-        <p className="mb-4">
-            Muchas aplicaciones de teleprompter en la App Store o Google Play Store son caras, pesadas o llenas de compras en la aplicación. <strong>PromptNinja</strong> cambia este juego.
-        </p>
-        <p className="mb-4">
-            Siendo una aplicación web progresiva (PWA), PromptNinja funciona directamente en el navegador de tu tablet (Safari, Chrome, Edge), sin ocupar espacio en la memoria y totalmente gratis.
+        <p className="mb-8">
+            La Tablet (sea iPad, Samsung Tab o Kindle Fire) es la herramienta de oro ignorada por 90% de los creadores. Con la pantalla perfecta de 10-12 pulgadas y portabilidad extrema, transforma cualquier rincón en un estudio de TV profesional – si tienes el software correcto.
         </p>
 
-        <div className="bg-slate-800 p-6 rounded-lg my-6">
-            <h3 className="text-xl font-bold text-white mb-4">Funciones Perfectas para Tablet</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-slate-700 p-4 rounded-lg">
-                    <h4 className="font-bold text-white mb-2">Modo Espejo (Mirror Mode)</h4>
-                    <p className="text-sm text-slate-300">¿Vas a usar la tablet dentro de un teleprompter de vidrio? Activa el modo espejo con un clic. Perfecto para iPads y tablets Android.</p>
+        <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 p-8 rounded-xl border border-slate-700 mb-12">
+            <h2 className="text-3xl font-bold text-white mb-6">Tablet vs Celular vs Laptop: La Batalla de Pantallas</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+                <div className="bg-slate-900/70 p-6 rounded-lg border border-red-500/30">
+                    <h3 className="font-bold text-red-400 mb-4 text-center">📱 Celular (Smartphone)</h3>
+                    <ul className="space-y-3 text-slate-300 text-sm">
+                        <li>❌ <strong>Pantalla:</strong> Muy pequeña (6"). Exige fuente minúscula o lectura muy rápida.</li>
+                        <li>❌ <strong>Distancia:</strong> Solo funciona a menos de 50cm. Queda "encima" de la cámara.</li>
+                        <li>❌ <strong>Vidrio:</strong> Muy pequeño para teleprompters de vidrio profesionales.</li>
+                    </ul>
                 </div>
-                <div className="bg-slate-700 p-4 rounded-lg">
-                    <h4 className="font-bold text-white mb-2">Control Remoto vía Celular</h4>
-                    <p className="text-sm text-slate-300">Usa tu smartphone para controlar el texto que pasa en la tablet. Solo escanea el código QR. Sin instalaciones complejas, todo vía Wi-Fi.</p>
+                <div className="bg-slate-900/70 p-6 rounded-lg border border-red-500/30">
+                    <h3 className="font-bold text-red-400 mb-4 text-center">💻 Laptop / Monitor</h3>
+                    <ul className="space-y-3 text-slate-300 text-sm">
+                        <li>❌ <strong>Montaje:</strong> Pesado. Difícil montar en trípodes sin accesorios caros.</li>
+                        <li>❌ <strong>Movilidad:</strong> Exige mesa o soporte. Te ata al estudio.</li>
+                        <li>❌ <strong>Complejidad:</strong> Cables, mouse, teclado... setup demora 15min.</li>
+                    </ul>
                 </div>
-                <div className="bg-slate-700 p-4 rounded-lg">
-                    <h4 className="font-bold text-white mb-2">Editor de Guion Integrado</h4>
-                    <p className="text-sm text-slate-300">La pantalla grande de la tablet es genial para editar. Ajusta tu texto, colores y tamaño de fuente con facilidad antes de grabar.</p>
-                </div>
-                <div className="bg-slate-700 p-4 rounded-lg">
-                    <h4 className="font-bold text-white mb-2">Comando de Voz Inteligente</h4>
-                    <p className="text-sm text-slate-300">En la versión Pro, el texto se desplaza automáticamente a medida que hablas. Ideal para quien graba solo usando una tablet.</p>
+                <div className="bg-slate-900/70 p-6 rounded-lg border border-green-500/30 shadow-lg shadow-green-900/20 transform scale-105">
+                    <h3 className="font-bold text-green-400 mb-4 text-center">✨ Tablet / iPad</h3>
+                    <ul className="space-y-3 text-slate-300 text-sm">
+                        <li>✅ <strong>Pantalla:</strong> Perfecta (10-12"). Lectura cómoda a 2-3 metros.</li>
+                        <li>✅ <strong>Montaje:</strong> Ligero. Cualquier soporte de $15 aguanta en trípode.</li>
+                        <li>✅ <strong>Profesional:</strong> Tamaño estándar para teleprompters de vidrio de estudio.</li>
+                    </ul>
                 </div>
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Cómo Armar un Setup con Tablet</h2>
-        <p className="mb-4">
-            Existen dos formas principales de usar tu tablet como teleprompter:
-        </p>
-        <SEOContentHowTo
-            title="Cómo Armar un Setup con Tablet"
-            schemaTitle="Cómo Usar Tablet como Teleprompter"
-            totalTime="PT15M"
-            tools={["Tablet", "PromptNinja", "Trípode"]}
-            steps={[
-                {
-                    title: "Método 1: Lectura Directa",
-                    text: "Coloca la tablet lo más cerca posible de la lente de la cámara. Aumenta la distancia entre la cámara y tú. Esto minimiza el movimiento de los ojos. Genial para setups rápidos y sin costos extra."
-                },
-                {
-                    title: "Método 2: Con Hardware de Teleprompter",
-                    text: "Acuesta la tablet bajo un vidrio reflector (beam splitter). La cámara va detrás del vidrio. PromptNinja invierte el texto para que lo leas correctamente en el reflejo. Es el método más profesional."
-                }
-            ]}
-        />
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">3 Setups Profesionales con Tablet</h2>
+        <div className="space-y-8 mb-12">
+            <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-cyan-500">
+                <div className="flex flex-col md:flex-row gap-6">
+                    <div className="flex-1">
+                        <h3 className="text-xl font-bold text-cyan-400 mb-3">Setup #1: El "Estudio de Mochila" (Mobile Creator)</h3>
+                        <p className="text-slate-300 mb-4">
+                            Ideal para quien graba solo en locaciones externas o home studios compactos.
+                        </p>
+                        <ul className="list-disc list-inside space-y-2 text-slate-300 text-sm">
+                            <li><strong>Hardware:</strong> iPad/Tablet + Trípode con soporte simple.</li>
+                            <li><strong>Cámara:</strong> Usa la PROPIA cámara frontal del tablet.</li>
+                            <li><strong>Posicionamiento:</strong> Tablet a la altura de los ojos. Lente limpia.</li>
+                            <li><strong>PromptNinja:</strong> Texto centrado arriba, cerca del lente de cámara.</li>
+                            <li><strong>Ventaja:</strong> Setup de 30 segundos. Calidad 4K (en mayoría de iPads nuevos). Cero cables.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Compatibilidad Total</h2>
-        <p className="mb-4">
-            No importa la marca o modelo. Si tiene un navegador, funciona:
-        </p>
-        <ul className="list-disc pl-6 mb-6 grid grid-cols-2 gap-2">
-            <li>iPad (Todos los modelos: Pro, Air, Mini, Estándar)</li>
-            <li>Samsung Galaxy Tab S / A Series</li>
-            <li>Amazon Fire Tablets</li>
-            <li>Lenovo Tab</li>
-            <li>Microsoft Surface (Windows)</li>
-            <li>Cualquier tablet Android genérica</li>
-        </ul>
+            <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-purple-500">
+                <div className="flex flex-col md:flex-row gap-6">
+                    <div className="flex-1">
+                        <h3 className="text-xl font-bold text-purple-400 mb-3">Setup #2: El "Pro Glass" (Para DSLRs/Mirrorless)</h3>
+                        <p className="text-slate-300 mb-4">
+                            El estándar oro de YouTubers grandes y TV. Requiere hardware de teleprompter (beam splitter).
+                        </p>
+                        <ul className="list-disc list-inside space-y-2 text-slate-300 text-sm">
+                            <li><strong>Hardware:</strong> Cámara DSLR en trípode + Teleprompter de vidrio + Tablet acostado en base.</li>
+                            <li><strong>Cómo Funciona:</strong> Tablet refleja texto en vidrio. Cámara graba a través del vidrio.</li>
+                            <li><strong>Configuración PromptNinja:</strong> Activa <strong>Modo Espejo (Mirror Mode)</strong> con un clic (icono 'M').</li>
+                            <li><strong>Control:</strong> Usa tu celular como control remoto para variar velocidad mientras grabas.</li>
+                            <li><strong>Ventaja:</strong> Mirada 100% en el lente. Calidad de cine. Tablet es solo el monitor.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-yellow-500">
+                <div className="flex flex-col md:flex-row gap-6">
+                    <div className="flex-1">
+                        <h3 className="text-xl font-bold text-yellow-400 mb-3">Setup #3: El "Sidekick" (Híbrido para Lives)</h3>
+                        <p className="text-slate-300 mb-4">
+                            Perfecto para lives en Instagram/TikTok o Webinars donde usas PC para transmitir.
+                        </p>
+                        <ul className="list-disc list-inside space-y-2 text-slate-300 text-sm">
+                            <li><strong>Hardware:</strong> PC/Gamer Setup + Tablet en brazo articulado.</li>
+                            <li><strong>Posicionamiento:</strong> Tablet posicionado EXACTAMENTE bajo webcam principal o junto monitor gamer.</li>
+                            <li><strong>Uso:</strong> Tablet corre guion (PromptNinja) independientemente del PC.</li>
+                            <li><strong>Ventaja:</strong> Libera 100% de monitores del PC para juego/chat/OBS. Guion no "roba" espacio de pantalla Windows.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Cómo Instalar (Sin App Store)</h2>
+        <div className="bg-slate-800 p-6 rounded-lg my-6">
+            <p className="text-slate-300 mb-6">
+                PromptNinja es una PWA (Progressive Web App). Significa que no descargas de la tienda, "instalas" directo del navegador. Ahorra 200MB espacio y garantiza actualizaciones instantáneas.
+            </p>
+            <SEOContentHowTo
+                title=""
+                schemaTitle="Cómo Instalar PromptNinja en iPad y Android"
+                totalTime="PT2M"
+                tools={["Tablet (iPad o Android)", "Navegador (Safari o Chrome)"]}
+                steps={[
+                    {
+                        title: "En iPad (Safari)",
+                        text: "1. Abre 'promptninja.solutionkit.com.br' en Safari.\n2. Toca botón 'Compartir' (cuadrado con flecha arriba).\n3. Baja y toca 'Agregar a Pantalla de Inicio' (Add to Home Screen).\n4. El ícono morado aparecerá junto con tus otras apps."
+                    },
+                    {
+                        title: "En Android (Chrome)",
+                        text: "1. Abre sitio en Chrome.\n2. Toca los tres puntos (menú) en esquina superior derecha.\n3. Selecciona 'Instalar aplicación' o 'Agregar a pantalla principal'.\n4. Confirma y listo, app instalada."
+                    },
+                    {
+                        title: "Modo Offline",
+                        text: "Una vez agregado a pantalla inicio, abre la app. Carga instantáneamente y funciona INCLUSO si apagas Wi-Fi (modo avión recomendado para evitar notificaciones)."
+                    }
+                ]}
+            />
+        </div>
+
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">5 Errores Fatales al Usar Tablet como Teleprompter</h2>
+        <div className="space-y-4 mb-12">
+            <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
+                <h4 className="font-bold text-red-400 mb-2">Error #1: Olvidar Bloquear Rotación de Pantalla</h4>
+                <p className="text-slate-300 text-sm">
+                    Mueves trípode y tablet gira pantalla horizontal/vertical en medio grabación. Texto realinea y pierdes punto.
+                    <span className="text-green-400 block mt-2">✅ <strong>Solución:</strong> Activa "Orientation Lock" en centro control iPad/Android ANTES de empezar.</span>
+                </p>
+            </div>
+            <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
+                <h4 className="font-bold text-red-400 mb-2">Error #2: Brillo de Pantalla al Máximo (Reflejo Fantasma)</h4>
+                <p className="text-slate-300 text-sm">
+                    En teleprompters de vidrio, brillo 100% causa "halo" o doble reflejo en lente cámara, dejando imagen lechosa.
+                    <span className="text-green-400 block mt-2">✅ <strong>Solución:</strong> Usa brillo al 60-70%. Suficiente para ver texto en reflejo, pero no quema imagen de cámara.</span>
+                </p>
+            </div>
+            <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
+                <h4 className="font-bold text-red-400 mb-2">Error #3: Notificaciones "Pop-up" en Video</h4>
+                <p className="text-slate-300 text-sm">
+                    A media frase inspiradora, aparece: "TINDER: Nuevo Match!". Arruina grabación (y tal vez reputación si compartes pantalla).
+                    <span className="text-green-400 block mt-2">✅ <strong>Solución:</strong> Modo No Molestar o Modo Avión son OBLIGATORIOS. PromptNinja funciona offline, apaga Wi-Fi si posible.</span>
+                </p>
+            </div>
+            <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
+                <h4 className="font-bold text-red-400 mb-2">Error #4: Tamaño de Fuente Incorrecto para Distancia</h4>
+                <p className="text-slate-300 text-sm">
+                    Usar fuente tamaño 40 (estándar celular) en tablet a 2 metros. Entrecierras ojos para leer (squinting).
+                    <span className="text-green-400 block mt-2">✅ <strong>Solución:</strong> Regla es: entre más lejos tablet, MÁS GRANDE fuente. En tablets a 2m, usa tamaño 70-90px. Prueba legibilidad antes de grabar.</span>
+                </p>
+            </div>
+            <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
+                <h4 className="font-bold text-red-400 mb-2">Error #5: Intentar Controlar Tocando Pantalla (Lejos)</h4>
+                <p className="text-slate-300 text-sm">
+                    Tablet está a 2 metros. Erras una línea. Tienes que pararte, ir al trípode, rebobinar, volver, sentarte... Rompe flujo.
+                    <span className="text-green-400 block mt-2">✅ <strong>Solución:</strong> Usa función "Remote Control". Deja celular en regazo. ¿Error? Pausa y vuelve por celular, sin salir de la silla.</span>
+                </p>
+            </div>
+        </div>
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
-            <h2 className="text-3xl font-bold text-white mb-4">Empieza a Grabar con tu Tablet Ahora</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">Transforma tu Tablet en Estudio</h2>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
-                Transforma tu iPad o tablet Android en un teleprompter profesional gratis. Sin descargas, sin complicaciones.
+                No dejes tu iPad juntando polvo. Es el equipo de $1,000 que ya tienes y no estás usando para mejorar tus videos.
             </p>
             <a
-                href="https://promptninja.solutionkit.com.br/?lang=es"
-                className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mx-auto rounded-full transition hover:brightness-110 text-white"
+                href="https://promptninja.solutionkit.com.br"
+                className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 font-bold py-3 px-8 rounded-full transition hover:brightness-110"
+                style={{ color: 'white' }}
             >
-                Abrir App en Tablet
+                🚀 Abrir PromptNinja en Tablet
             </a>
+            <p className="text-slate-400 mt-4 text-sm">Compatible con iPadOS, Android y Fire OS</p>
         </div>
 
         <SEOContentFAQ
-            title="Preguntas Frecuentes sobre Tablet y iPad"
+            title="Preguntas Frecuentes - Tablets y iPads"
             items={[
                 {
-                    question: "¿Necesito comprar una app en la App Store?",
-                    answer: "No. PromptNinja corre directamente en Safari o Chrome de tu tablet. Puedes usar la función 'Añadir a Pantalla de Inicio' para que funcione como una app nativa, pero gratis."
+                    question: "¿Funciona en iPads antiguos (ej: iPad 2)?",
+                    answer: "¡Sí! Como corremos en navegador, compatibilidad es altísima. Si tablet abre sitios modernos, corre PromptNinja. Damos vida nueva a iPads de 2013 que estaban en cajones."
                 },
                 {
-                    question: "¿Cómo espejar el texto para usar con vidrio?",
-                    answer: "Es muy simple. En la barra de herramientas inferior (o atajo 'M'), haz clic en el icono de espejo. El texto se invertirá horizontalmente, listo para reflejarse."
+                    question: "¿Necesito control remoto Bluetooth?",
+                    answer: "No necesariamente. PromptNinja tiene sistema exclusivo control vía Wi-Fi (P2P). Usas tu propio celular para controlar tablet. Pero si prefieres, también soportamos pasadores slide y teclados bluetooth."
                 },
                 {
-                    question: "¿Puedo controlar mi iPad usando mi móvil?",
-                    answer: "¡Sí! Abre PromptNinja en el iPad, haz clic en el icono de Link/Remoto y escanea el código QR con tu móvil. Tu smartphone se convierte en un control remoto instantáneo."
+                    question: "¿Cómo hago para espejar texto para usar con vidrio?",
+                    answer: "Muy simple. Toca pantalla para abrir menú, clic icono 'Configuración' (engranaje) o busca botón 'M' (Mirror). Texto invierte horizontalmente al instante. Configuración se guarda para próxima vez."
+                },
+                {
+                    question: "¿La app gasta mucha batería del tablet?",
+                    answer: "Muy poco. Por ser optimizado y usar fondo negro (OLED friendly), consumo es mínimo. Recomendamos usar brillo al 70%, lo que ahorra aún más energía en pantallas AMOLED (Samsung) y dura horas."
+                },
+                {
+                    question: "¿Cuál es tamaño de tablet ideal para teleprompter?",
+                    answer: "Depende de distancia. Para uso a 1 metro (mesa), tablets de 7-8 pulgadas (iPad Mini) son geniales. Para uso a 2-3 metros (estudio de pie), recomendamos 10 pulgadas o más (iPad Air/Pro, Galaxy Tab S)."
+                },
+                {
+                    question: "¿Puedo importar guiones de Word o Google Docs en tablet?",
+                    answer: "Sí. Manera más fácil es copiar texto en PC/Celular y pegar en PromptNinja. Si logueado (o usando Sync P2P), texto aparece magicamente en tablet sin necesitar digitar en pantalla de vidrio."
+                },
+                {
+                    question: "¿Funciona con tablet vertical (Portrait) o solo horizontal?",
+                    answer: "¡Ambos! PromptNinja es responsivo. Vertical es genial para grabar TikToks/Reels (texto estrecho, menos movimiento ocular). Horizontal es mejor para videos largos YouTube y setups de vidrio tradicionales."
                 }
             ]}
         />

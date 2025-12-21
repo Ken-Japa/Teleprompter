@@ -1,105 +1,162 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterShortcutsEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Teleprompter with Keyboard Shortcuts: The Professional Workflow</h1>
+        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter Keyboard Shortcuts: The Video Productivity Secret</h1>
 
-        <p className="mb-6">
-            Did you know that every time you take your hand off the keyboard to use the mouse, you break your creative flow? For video professionals recording solo, agility is not a luxury, it's a necessity. <strong>PromptNinja</strong> is the only <a href="/en/teleprompter-pc-windows" className="text-blue-400 hover:text-blue-300 underline">teleprompter for PC & Windows</a> designed with a "Keyboard First" philosophy.
+        <p className="mb-6 text-lg text-slate-300">
+            Have you ever timed how much recording time you lose just walking to the camera, hitting REC, walking back, messing up, getting up to pause again...?
         </p>
 
         <p className="mb-6">
-            Our interface has been built ensuring you can control absolutely everything without touching the mouse. This is essential for those recording away from the computer or using Bluetooth pedals mapped as keys.
+            Pro video editors in Adobe Premiere or DaVinci Resolve rarely touch the mouse. They know that <strong>keyboard shortcuts = speed</strong>.
         </p>
 
-        <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-blue-500">
-            <h2 className="text-2xl font-bold text-white mb-4">Default Hotkeys List</h2>
-            <div className="grid md:grid-cols-2 gap-4 text-slate-300">
+        <p className="mb-8">
+            PromptNinja is the only online teleprompter designed with a "Keyboard First" philosophy. This means you can control 100% of your recording without ever lifting your hands from the keyboard (or your pedal/clicker).
+        </p>
+
+        <div className="bg-slate-800 p-8 rounded-xl border border-blue-500/30 mb-12 shadow-2xl">
+            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+                ⌨️ Master Command Table
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                    <h3 className="font-bold text-white border-b border-slate-600 pb-2 mb-2">Playback Control</h3>
-                    <ul className="space-y-2">
-                        <li><kbd className="bg-slate-700 px-2 py-1 rounded">Space</kbd> or <kbd className="bg-slate-700 px-2 py-1 rounded">Enter</kbd> : Start / Pause</li>
-                        <li><kbd className="bg-slate-700 px-2 py-1 rounded">ESC</kbd> : Exit Full Screen / Back</li>
-                        <li><kbd className="bg-slate-700 px-2 py-1 rounded">R</kbd> : Reset Text to Top</li>
+                    <h3 className="text-xl font-bold text-blue-400 mb-4 border-b border-blue-500/20 pb-2">Flow Control</h3>
+                    <ul className="space-y-3">
+                        <li className="flex justify-between items-center text-slate-300">
+                            <span>Start / Pause Scroll</span>
+                            <kbd className="bg-slate-700 text-white px-3 py-1 rounded font-mono border border-slate-600">SPACE</kbd>
+                        </li>
+                        <li className="flex justify-between items-center text-slate-300">
+                            <span>Reset Text (Top)</span>
+                            <kbd className="bg-slate-700 text-white px-3 py-1 rounded font-mono border border-slate-600">R</kbd>
+                        </li>
+                        <li className="flex justify-between items-center text-slate-300">
+                            <span>Exit / Back</span>
+                            <kbd className="bg-slate-700 text-white px-3 py-1 rounded font-mono border border-slate-600">ESC</kbd>
+                        </li>
                     </ul>
                 </div>
+
                 <div>
-                    <h3 className="font-bold text-white border-b border-slate-600 pb-2 mb-2">Visual Adjustments</h3>
-                    <ul className="space-y-2">
-                        <li><kbd className="bg-slate-700 px-2 py-1 rounded">↑</kbd> / <kbd className="bg-slate-700 px-2 py-1 rounded">↓</kbd> : Increase / Decrease Speed</li>
-                        <li><kbd className="bg-slate-700 px-2 py-1 rounded">+</kbd> / <kbd className="bg-slate-700 px-2 py-1 rounded">-</kbd> : Increase / Decrease Font Size</li>
-                        <li><kbd className="bg-slate-700 px-2 py-1 rounded">M</kbd> : Mirror Text</li>
+                    <h3 className="text-xl font-bold text-purple-400 mb-4 border-b border-purple-500/20 pb-2">Dynamic Adjustments</h3>
+                    <ul className="space-y-3">
+                        <li className="flex justify-between items-center text-slate-300">
+                            <span>Speed (+ / -)</span>
+                            <div className="flex gap-2">
+                                <kbd className="bg-slate-700 text-white px-2 py-1 rounded font-mono border border-slate-600">↑</kbd>
+                                <kbd className="bg-slate-700 text-white px-2 py-1 rounded font-mono border border-slate-600">↓</kbd>
+                            </div>
+                        </li>
+                        <li className="flex justify-between items-center text-slate-300">
+                            <span>Font Size (+ / -)</span>
+                            <div className="flex gap-2">
+                                <kbd className="bg-slate-700 text-white px-2 py-1 rounded font-mono border border-slate-600">+</kbd>
+                                <kbd className="bg-slate-700 text-white px-2 py-1 rounded font-mono border border-slate-600">-</kbd>
+                            </div>
+                        </li>
+                        <li className="flex justify-between items-center text-slate-300">
+                            <span>Mirror Mode</span>
+                            <kbd className="bg-slate-700 text-white px-3 py-1 rounded font-mono border border-slate-600">M</kbd>
+                        </li>
                     </ul>
                 </div>
-                <div className="md:col-span-2">
-                    <h3 className="font-bold text-white border-b border-slate-600 pb-2 mb-2">Special Modes</h3>
-                    <ul className="space-y-2">
-                        <li><kbd className="bg-slate-700 px-2 py-1 rounded">H</kbd> : Hide UI (HUD) - <em>Gamer/Minimalist Mode</em></li>
-                        <li><kbd className="bg-slate-700 px-2 py-1 rounded">F</kbd> : Focus Mode (Dims sides)</li>
-                        <li><kbd className="bg-slate-700 px-2 py-1 rounded">V</kbd> : Vertical Flip</li>
-                    </ul>
+            </div>
+
+            <div className="mt-8 bg-black/30 p-4 rounded-lg border border-yellow-500/20">
+                <h3 className="text-lg font-bold text-yellow-500 mb-2">🎮 Gamer / Streamer Mode (Exclusive)</h3>
+                <div className="flex justify-between items-center text-slate-300">
+                    <p className="text-sm">Hides the entire UI (buttons, menus), leaving only floating text. Perfect for recording gameplay or software tutorials.</p>
+                    <kbd className="bg-yellow-600/20 text-yellow-400 px-4 py-2 rounded font-mono border border-yellow-500/50 text-xl font-bold ml-4">H</kbd>
                 </div>
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Compatible with Presenters and Pedals (Elgato Stream Deck)</h2>
-        <p className="mb-4">
-            Since we use standard keyboard shortcuts, PromptNinja is natively compatible with any device that emulates a keyboard.
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Integration with External Hardware</h2>
+        <p className="mb-6 text-slate-300">
+            The beauty of using standard keyboard shortcuts is that any device emulating a keyboard works natively with PromptNinja.
         </p>
-        <ul className="list-disc pl-6 mb-6 text-slate-300 space-y-2">
-            <li><strong>Elgato Stream Deck:</strong> Configure buttons for "Space", "R", or "M".</li>
-            <li><strong>USB Pedals:</strong> Use your feet to play/pause while your hands gesture freely.</li>
-            <li><strong>Presentation Clickers:</strong> Most slide clickers use arrow keys, working perfectly to control teleprompter speed.</li>
-        </ul>
 
-        <div className="bg-gradient-to-r from-slate-800 to-slate-900 p-6 rounded-lg my-8 border border-yellow-600">
-            <h2 className="text-2xl font-bold text-yellow-500 mb-2 flex items-center">
-                <span className="bg-yellow-500 text-black text-xs px-2 py-1 rounded mr-3">PRO</span>
-                Custom Keyboard Configuration
-            </h2>
-            <p className="text-slate-300 mb-4">
-                Need different shortcuts? With <strong>PromptNinja PRO</strong>, you have the total freedom to remap all keys.
-            </p>
-            <p className="text-slate-300 text-sm">
-                This is vital if you use non-standard keyboard layouts (Dvorak, AZERTY) or if your external devices send specific commands that cannot be changed. Adapt the software to your hardware, not the other way around.
-            </p>
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <div className="bg-slate-800 p-6 rounded-lg border-t-4 border-blue-500">
+                <h3 className="font-bold text-white mb-2">Elgato Stream Deck</h3>
+                <p className="text-sm text-slate-400 mb-3">Streamers' favorite tool.</p>
+                <p className="text-slate-300 text-sm">
+                    Just drag a "Hotkey" action in Elgato software and assign <strong>SPACE</strong> key to a physical button. Add another for <strong>R</strong> (Reset) and you have a command center on your desk.
+                </p>
+            </div>
+            <div className="bg-slate-800 p-6 rounded-lg border-t-4 border-green-500">
+                <h3 className="font-bold text-white mb-2">USB Pedals</h3>
+                <p className="text-sm text-slate-400 mb-3">For musicians and "busy hands".</p>
+                <p className="text-slate-300 text-sm">
+                    If you do unboxing or play guitar, your hands are full. Use a USB pedal configured as "Space" to start/pause text with your feet.
+                </p>
+            </div>
+            <div className="bg-slate-800 p-6 rounded-lg border-t-4 border-purple-500">
+                <h3 className="font-bold text-white mb-2">Presenters (Clickers)</h3>
+                <p className="text-sm text-slate-400 mb-3">Logitech R400, R800, etc.</p>
+                <p className="text-slate-300 text-sm">
+                    Most slide clickers send "Right/Left Arrow" or "Page Up/Down" commands. PromptNinja intelligently interprets this for scroll control.
+                </p>
+            </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Tip for Gamers and Streamers: The "H" Hotkey</h2>
-        <p className="mb-6">
-            Recording gameplay or reacting to a video and don't want teleprompter buttons appearing in your OBS capture? Simply press <kbd className="bg-slate-700 px-2 py-1 rounded text-white">H</kbd>.
-        </p>
-        <p className="mb-6">
-            This activates "No UI" mode, leaving only the text visible with a transparent background (if configured). It's the cleanest solution for live stream overlays.
-        </p>
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Ninja Workflow: Edit & Record in Seconds</h2>
+        <SEOContentHowTo
+            title=""
+            schemaTitle="How to Optimize Recording with Shortcuts"
+            totalTime="PT5M"
+            tools={["PC/Mac", "Keyboard", "PromptNinja"]}
+            steps={[
+                {
+                    title: "Prepare Text",
+                    text: "Paste your script. Use ENTER to break long sentences into visual blocks."
+                },
+                {
+                    title: "Visual Adjustment (No Mouse)",
+                    text: "Use '+' and '-' to make font giant (comfortable reading). Use 'M' if using glass."
+                },
+                {
+                    title: "The Trick: The Error Loop",
+                    text: "Messed up a line? Don't curse. Hit SPACE (Pause). Breathe. Hit Up Arrow (Go back a bit). Hit SPACE (Play). Keep recording. In editing, you'll see the pause visually in audio waveform and cut easily."
+                }
+            ]}
+        />
 
-        <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
-            <h2 className="text-3xl font-bold text-white mb-4">Speed Up Your Production</h2>
+        <div className="text-center bg-slate-800 p-8 rounded-lg my-10 border border-slate-700">
+            <h2 className="text-3xl font-bold text-white mb-4">PromptNinja PRO: Total Mapping</h2>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
-                Try recording using only the keyboard. You'll notice you have more energy for what matters: your performance.
+                Use Dvorak keyboard? Have a specific remote sending "F5"?
+                In PRO version, you can <strong>force</strong> which key does what. Total freedom.
             </p>
             <a
-                href="https://promptninja.solutionkit.com.br/?lang=en/#app"
-                className="inline-block bg-white text-slate-900 font-bold py-3 px-8 mx-auto rounded-full transition hover:bg-slate-200"
+                href="https://promptninja.solutionkit.com.br"
+                className="inline-block bg-white text-slate-900 font-bold py-3 px-8 rounded-full transition hover:bg-slate-200"
             >
-                Try Shortcuts Now
+                Configure Shortcuts Now
             </a>
         </div>
 
         <SEOContentFAQ
-            title="Shortcuts & Control FAQs"
+            title="Technical Keyboard FAQ"
             items={[
                 {
-                    question: "Can I customize the hotkeys?",
-                    answer: "Yes, in the PromptNinja PRO version you can fully remap all functions (start, stop, speed, mirror) to any key you prefer."
+                    question: "Do shortcuts work if I'm in another window (e.g. OBS)?",
+                    answer: "Not natively (browser security limitation). PromptNinja must be 'in focus' (active window). Tip: Use a second monitor for PromptNinja and click it before starting."
                 },
                 {
-                    question: "Does it work with foot pedals and clickers?",
-                    answer: "Yes! Most of these devices simulate keyboard strokes (like Space or Arrow keys). PromptNinja recognizes these signals natively, without needing extra drivers."
+                    question: "Works with iPad Bluetooth keyboards?",
+                    answer: "Yes! iPadOS recognizes external keyboards perfectly and PromptNinja responds to same shortcuts (Space, Arrows) in mobile Safari/Chrome."
                 },
                 {
-                    question: "What does the 'H' key do?",
-                    answer: "The 'H' key hides the User Interface (HUD). It's perfect for screen recording (gameplay, tutorials) when you want only the text to appear, with no distracting buttons or menus."
+                    question: "Can I use a game controller (Xbox/PS5)?",
+                    answer: "Directly no, but if you use software like 'JoyToKey' (Windows) or 'Mapper' (Mac) to map joystick buttons to keys (A = Space), it works perfectly!"
+                },
+                {
+                    question: "Does 'H' key (Hide) hide text too?",
+                    answer: "No, it hides only the UI (User Interface) - buttons, menus, logo. Text remains there, floating. If background is transparent, looks like magic over your video."
                 }
             ]}
         />
