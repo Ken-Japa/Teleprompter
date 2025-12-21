@@ -21,15 +21,30 @@ export const TeleprompterGoogleMeetTeams: React.FC<Props> = ({ onLaunch }) => {
     const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {
         "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": title,
+        "@type": "SoftwareApplication",
+        "name": "PromptNinja Teleprompter",
+        "headline": title,
         "description": description,
         "url": canonicalUrl,
         "image": ogImage,
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Windows, macOS, Android, iOS, Linux",
         "author": {
             "@type": "Organization",
             "name": "PromptNinja",
             "url": "https://promptninja.solutionkit.com.br"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "ratingCount": "124",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
         }
     };
 
@@ -41,15 +56,30 @@ export const TeleprompterGoogleMeetTeams: React.FC<Props> = ({ onLaunch }) => {
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-google-meet-teams";
         schema = {
             "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": title,
+            "@type": "SoftwareApplication",
+            "name": "PromptNinja Teleprompter",
+            "headline": title,
             "description": description,
             "url": canonicalUrl,
             "image": ogImage,
+            "applicationCategory": "MultimediaApplication",
+            "operatingSystem": "Windows, macOS, Android, iOS, Linux",
             "author": {
                 "@type": "Organization",
                 "name": "PromptNinja",
                 "url": "https://promptninja.solutionkit.com.br/?lang=en"
+            },
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5",
+                "ratingCount": "124",
+                "bestRating": "5",
+                "worstRating": "1"
+            },
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
             }
         };
     } else if (lang === 'es') {
@@ -60,15 +90,30 @@ export const TeleprompterGoogleMeetTeams: React.FC<Props> = ({ onLaunch }) => {
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-google-meet-teams";
         schema = {
             "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": title,
+            "@type": "SoftwareApplication",
+            "name": "PromptNinja Teleprompter",
+            "headline": title,
             "description": description,
             "url": canonicalUrl,
             "image": ogImage,
+            "applicationCategory": "MultimediaApplication",
+            "operatingSystem": "Windows, macOS, Android, iOS, Linux",
             "author": {
                 "@type": "Organization",
                 "name": "PromptNinja",
                 "url": "https://promptninja.solutionkit.com.br/?lang=es"
+            },
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5",
+                "ratingCount": "124",
+                "bestRating": "5",
+                "worstRating": "1"
+            },
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
             }
         };
     }

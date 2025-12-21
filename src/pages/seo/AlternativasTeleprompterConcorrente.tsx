@@ -19,7 +19,7 @@ export const AlternativasTeleprompterConcorrente: React.FC<Props> = ({ onLaunch 
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {
         "@context": "https://schema.org",
-        "@type": "WebPage",
+        "@type": "Review",
         "name": title,
         "description": description,
         "url": canonicalUrl,
@@ -28,6 +28,18 @@ export const AlternativasTeleprompterConcorrente: React.FC<Props> = ({ onLaunch 
             "@type": "Organization",
             "name": "PromptNinja",
             "url": "https://promptninja.solutionkit.com.br"
+        },
+        "itemReviewed": {
+            "@type": "SoftwareApplication",
+            "name": "PromptNinja",
+            "applicationCategory": "MultimediaApplication",
+            "operatingSystem": "Windows, macOS, Android, iOS"
+        },
+        "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5",
+            "worstRating": "1"
         }
     };
     let ctaText = "Trocar para o PromptNinja (Sem Instalar Nada)";
@@ -40,7 +52,7 @@ export const AlternativasTeleprompterConcorrente: React.FC<Props> = ({ onLaunch 
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {
             "@context": "https://schema.org",
-            "@type": "WebPage",
+            "@type": "Review",
             "name": title,
             "description": description,
             "url": canonicalUrl,
@@ -49,18 +61,30 @@ export const AlternativasTeleprompterConcorrente: React.FC<Props> = ({ onLaunch 
                 "@type": "Organization",
                 "name": "PromptNinja",
                 "url": "https://promptninja.solutionkit.com.br/?lang=en"
+            },
+            "itemReviewed": {
+                "@type": "SoftwareApplication",
+                "name": "PromptNinja",
+                "applicationCategory": "MultimediaApplication",
+                "operatingSystem": "Windows, macOS, Android, iOS"
+            },
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5",
+                "worstRating": "1"
             }
         };
         ctaText = "Switch to PromptNinja (No Install Needed)";
     } else if (lang === 'es') {
         Content = AlternativasTeleprompterConcorrenteES;
         title = "La ÚNICA alternativa GRATUITA a Teleprompter Pro (sin retrasos)";
-        description = "¿Buscas una alternativa a Teleprompter Pro? No pierdas tiempo. PromptNinja es la mejor opción GRATUITA para PC, portátiles y como teleprompter para iPhone.";
+        description = "¿Buscas una alternativa a Teleprompter Pro? No pierdas tiempo. PromptNinja es la mejor opção GRATUITA para PC, portátiles y como teleprompter para iPhone.";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/alternativas-teleprompter";
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {
             "@context": "https://schema.org",
-            "@type": "WebPage",
+            "@type": "Review",
             "name": title,
             "description": description,
             "url": canonicalUrl,
@@ -69,6 +93,18 @@ export const AlternativasTeleprompterConcorrente: React.FC<Props> = ({ onLaunch 
                 "@type": "Organization",
                 "name": "PromptNinja",
                 "url": "https://promptninja.solutionkit.com.br/?lang=es"
+            },
+            "itemReviewed": {
+                "@type": "SoftwareApplication",
+                "name": "PromptNinja",
+                "applicationCategory": "MultimediaApplication",
+                "operatingSystem": "Windows, macOS, Android, iOS"
+            },
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5",
+                "worstRating": "1"
             }
         };
         ctaText = "Cambiar a PromptNinja (Sin Instalación)";

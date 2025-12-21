@@ -149,35 +149,5 @@ export const landingSchema = [
             }
         ],
         "totalTime": "PT2M"
-    },
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "O PromptNinja é realmente gratuito?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Sim! A versão gratuita permite uso ilimitado"
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Preciso instalar algum aplicativo?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Não. O PromptNinja roda 100% no navegador. Basta acessar o site."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Funciona offline?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Sim. O PromptNinja é um PWA (Progressive Web App) e funciona mesmo sem internet após o primeiro carregamento."
-                }
-            }
-        ]
     }
 ];

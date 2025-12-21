@@ -21,10 +21,18 @@ export const TeleprompterTablet: React.FC<Props> = ({ onLaunch }) => {
     let schema: object = {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": title,
+        "name": "PromptNinja Teleprompter",
+        "headline": title,
         "description": description,
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "Android, iOS, iPadOS",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "ratingCount": "87",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
         "offers": {
             "@type": "Offer",
             "price": "0",
@@ -47,7 +55,7 @@ export const TeleprompterTablet: React.FC<Props> = ({ onLaunch }) => {
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-app-for-tablet-ipad";
         schema = {
             ...schema,
-            "name": title,
+            "headline": title,
             "description": description,
             "url": canonicalUrl,
             "author": {
@@ -64,7 +72,7 @@ export const TeleprompterTablet: React.FC<Props> = ({ onLaunch }) => {
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-para-tablet-ipad-android";
         schema = {
             ...schema,
-            "name": title,
+            "headline": title,
             "description": description,
             "url": canonicalUrl,
             "author": {

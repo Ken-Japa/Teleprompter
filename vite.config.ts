@@ -86,6 +86,11 @@ const viteConfig = defineConfig({
                             },
                         },
                     },
+                    {
+                        // Exclude tracking pixels from Service Worker cache to avoid redirect errors
+                        urlPattern: /^https:\/\/(?:c\.clarity\.ms|c\.bing\.com)\/c\.gif/i,
+                        handler: "NetworkOnly",
+                    },
                 ],
             },
         }),

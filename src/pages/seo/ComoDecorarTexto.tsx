@@ -19,8 +19,8 @@ export const ComoDecorarTexto: React.FC<Props> = ({ onLaunch }) => {
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {
         "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": title,
+        "@type": "Article",
+        "headline": title,
         "description": description,
         "url": canonicalUrl,
         "image": ogImage,
@@ -40,8 +40,8 @@ export const ComoDecorarTexto: React.FC<Props> = ({ onLaunch }) => {
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {
             "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": title,
+            "@type": "Article",
+            "headline": title,
             "description": description,
             "url": canonicalUrl,
             "image": ogImage,
@@ -60,8 +60,8 @@ export const ComoDecorarTexto: React.FC<Props> = ({ onLaunch }) => {
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {
             "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": title,
+            "@type": "Article",
+            "headline": title,
             "description": description,
             "url": canonicalUrl,
             "image": ogImage,
