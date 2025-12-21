@@ -1,3 +1,4 @@
+import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterOnlineGratisEN = () => (
@@ -198,6 +199,30 @@ export const TeleprompterOnlineGratisEN = () => (
                 }
             ]}
         />
+
+        <div className="bg-slate-800 p-6 rounded-lg mt-8 mb-8">
+            <h3 className="text-xl font-bold text-white mb-3">See Also</h3>
+            <ul className="space-y-2">
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_ZOOM.paths.en} className="text-purple-400 hover:text-purple-300 underline flex items-center">
+                        <span className="mr-2">📹</span>
+                        Teleprompter for Zoom & Teams
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_MELHOR_APP.paths.en} className="text-purple-400 hover:text-purple-300 underline flex items-center">
+                        <span className="mr-2">⭐</span>
+                        Best Teleprompter App (Comparison)
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_DIY.paths.en} className="text-purple-400 hover:text-purple-300 underline flex items-center">
+                        <span className="mr-2">🛠️</span>
+                        DIY Homemade Teleprompter Guide
+                    </a>
+                </li>
+            </ul>
+        </div>
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
             <h2 className="text-3xl font-bold text-white mb-4">Your Search for a Free Teleprompter is Over</h2>

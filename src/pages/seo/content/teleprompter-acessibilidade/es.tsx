@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterAcessibilidadeES = () => (
     <>
@@ -75,6 +76,27 @@ export const TeleprompterAcessibilidadeES = () => (
             >
                 Prueba la Fuente OpenDyslexic Ahora
             </a>
+        </div>
+
+        <div className="border-t border-slate-800 pt-12 mt-12">
+            <h3 className="text-2xl font-bold text-white mb-6">Ver También</h3>
+            <ul className="space-y-4">
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_READING_SPEED.paths.es} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        🚀 ¿Cuál es la Velocidad Ideal de Lectura?
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_GRATIS.paths.es} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        💸 Teleprompter Online Gratis (Sin Login)
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_ORATORIA.paths.es} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        🗣️ Consejos de Oratoria para Video
+                    </a>
+                </li>
+            </ul>
         </div>
     </>
 );

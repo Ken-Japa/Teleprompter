@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterAcessibilidadeEN = () => (
     <>
@@ -75,6 +76,27 @@ export const TeleprompterAcessibilidadeEN = () => (
             >
                 Try OpenDyslexic Font Now
             </a>
+        </div>
+
+        <div className="border-t border-slate-800 pt-12 mt-12">
+            <h3 className="text-2xl font-bold text-white mb-6">See Also</h3>
+            <ul className="space-y-4">
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_READING_SPEED.paths.en} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        🚀 What is the Ideal Reading Speed?
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_GRATIS.paths.en} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        💸 Free Online Teleprompter (No Login)
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_ORATORIA.paths.en} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        🗣️ Public Speaking Tips for Video
+                    </a>
+                </li>
+            </ul>
         </div>
     </>
 );

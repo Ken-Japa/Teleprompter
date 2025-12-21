@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterParaLivesES = () => (
     <>
@@ -88,6 +89,27 @@ export const TeleprompterParaLivesES = () => (
             >
                 Configura tu Directo Pro Ahora (Gratis)
             </a>
+        </div>
+
+        <div className="border-t border-slate-800 pt-12 mt-12">
+            <h3 className="text-2xl font-bold text-white mb-6">Ver También</h3>
+            <ul className="space-y-4">
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_ZOOM.paths.es} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        💻 Mejor Teleprompter para Zoom y Reuniones
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_ORATORIA.paths.es} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        🗣️ Consejos de Oratoria para Video
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_YOUTUBERS.paths.es} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        📹 Teleprompter para YouTubers y Creadores
+                    </a>
+                </li>
+            </ul>
         </div>
     </>
 );

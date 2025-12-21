@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const CelebridadesUsamTeleprompterES = () => (
     <>
@@ -104,6 +105,27 @@ export const CelebridadesUsamTeleprompterES = () => (
             >
                 Habla Como un Líder: Usa PromptNinja
             </a>
+        </div>
+
+        <div className="border-t border-slate-800 pt-12 mt-12">
+            <h3 className="text-2xl font-bold text-white mb-6">Ver También</h3>
+            <ul className="space-y-4">
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_HISTORY.paths.es} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        📜 La Historia Secreta del Teleprompter
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_ORATORIA.paths.es} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        🗣️ 5 Consejos de Oratoria para Video
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_COMMON_MISTAKES.paths.es} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        ❌ 5 Errores de Aficionado al Usar Teleprompter
+                    </a>
+                </li>
+            </ul>
         </div>
     </>
 );

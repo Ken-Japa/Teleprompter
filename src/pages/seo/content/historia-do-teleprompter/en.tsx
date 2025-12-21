@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const HistoriaDoTeleprompterEN = () => (
     <>
@@ -86,6 +87,27 @@ export const HistoriaDoTeleprompterEN = () => (
             >
                 Join History: Use PromptNinja Now
             </a>
+        </div>
+
+        <div className="border-t border-slate-800 pt-12 mt-12">
+            <h3 className="text-2xl font-bold text-white mb-6">See Also</h3>
+            <ul className="space-y-4">
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_VS_TELELESTRADOR.paths.en} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        📺 Teleprompter vs Telestrator: What's the Difference?
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_CELEBRITIES.paths.en} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        ⭐ 7 Celebrities Who Use Teleprompter
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_O_QUE_E.paths.en} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        🤔 What Is a Teleprompter? Basic Guide
+                    </a>
+                </li>
+            </ul>
         </div>
     </>
 );

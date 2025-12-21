@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const ComoEscolherTeleprompterES = () => (
     <>
@@ -87,6 +88,27 @@ export const ComoEscolherTeleprompterES = () => (
             >
                 Ahorra $100: Usa PromptNinja Gratis
             </a>
+        </div>
+
+        <div className="border-t border-slate-800 pt-12 mt-12">
+            <h3 className="text-2xl font-bold text-white mb-6">Ver También</h3>
+            <ul className="space-y-4">
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_VS_TELELESTRADOR.paths.es} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        📺 Teleprompter vs Telelestrador: ¿Cuál es la Diferencia?
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_DIY.paths.es} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        🛠️ Cómo Hacer un Teleprompter Casero
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_O_QUE_E.paths.es} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        🤔 ¿Qué es un Teleprompter? (Definición Completa)
+                    </a>
+                </li>
+            </ul>
         </div>
     </>
 );

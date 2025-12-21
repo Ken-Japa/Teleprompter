@@ -1,3 +1,4 @@
+import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const MelhorAppTeleprompterEN = () => (
@@ -227,6 +228,30 @@ export const MelhorAppTeleprompterEN = () => (
                 }
             ]}
         />
+
+        <div className="bg-slate-800 p-6 rounded-lg mt-8 mb-8">
+            <h3 className="text-xl font-bold text-white mb-3">See Also</h3>
+            <ul className="space-y-2">
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_GRATIS.paths.en} className="text-purple-400 hover:text-purple-300 underline flex items-center">
+                        <span className="mr-2">📺</span>
+                        Free Online Teleprompter
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_ZOOM.paths.en} className="text-purple-400 hover:text-purple-300 underline flex items-center">
+                        <span className="mr-2">📹</span>
+                        Teleprompter for Zoom & Lives
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_WEBRTC.paths.en} className="text-purple-400 hover:text-purple-300 underline flex items-center">
+                        <span className="mr-2">⚡</span>
+                        Why P2P is Better Than Bluetooth?
+                    </a>
+                </li>
+            </ul>
+        </div>
 
         <div className="text-center mt-12">
             <a

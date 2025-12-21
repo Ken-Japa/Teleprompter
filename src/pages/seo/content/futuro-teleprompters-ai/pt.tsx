@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const FuturoTelepromptersAiPT = () => (
     <>
@@ -67,6 +68,27 @@ export const FuturoTelepromptersAiPT = () => (
             >
                 Experimente o Futuro Hoje (Voice Control)
             </a>
+        </div>
+
+        <div className="border-t border-slate-800 pt-12 mt-12">
+            <h3 className="text-2xl font-bold text-white mb-6">Veja Também</h3>
+            <ul className="space-y-4">
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_READING_SPEED.paths.pt} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        🚀 Qual a Velocidade Ideal de Leitura?
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_HARDWARE_VS_WEB.paths.pt} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        💻 Teleprompter Web vs Hardware: Preciso de Espelho?
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_CELEBRITIES.paths.pt} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        ⭐ Celebridades que Usam Teleprompter
+                    </a>
+                </li>
+            </ul>
         </div>
     </>
 );

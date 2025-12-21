@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const CelebridadesUsamTeleprompterEN = () => (
     <>
@@ -104,6 +105,27 @@ export const CelebridadesUsamTeleprompterEN = () => (
             >
                 Speak Like a Leader: Use PromptNinja
             </a>
+        </div>
+
+        <div className="border-t border-slate-800 pt-12 mt-12">
+            <h3 className="text-2xl font-bold text-white mb-6">See Also</h3>
+            <ul className="space-y-4">
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_HISTORY.paths.en} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        📜 The Secret History of the Teleprompter
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_ORATORIA.paths.en} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        🗣️ 5 Public Speaking Tips for Video
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_COMMON_MISTAKES.paths.en} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        ❌ 5 Amateur Mistakes Using Teleprompter
+                    </a>
+                </li>
+            </ul>
         </div>
     </>
 );

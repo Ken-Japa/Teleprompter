@@ -1,3 +1,4 @@
+import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
@@ -221,7 +222,7 @@ export const TeleprompterCaseiroDIYEN = () => (
                     <li>Make sure tablet and phone are on the same Wi-Fi network</li>
                     <li>Reload the PromptNinja page on the tablet</li>
                     <li>Scan the QR code again</li>
-                    <li>If needed, check our <a href="/en/free-online-teleprompter" className="text-purple-400 hover:text-purple-300 underline">P2P remote control guide</a></li>
+                    <li>If needed, check our <a href={ROUTES_CONFIG.SEO_GRATIS.paths.en} className="text-purple-400 hover:text-purple-300 underline">P2P remote control guide</a></li>
                 </ul>
             </div>
         </div>
@@ -283,7 +284,7 @@ export const TeleprompterCaseiroDIYEN = () => (
                     🚀 Try PromptNinja Free
                 </a>
                 <a
-                    href="/en/free-online-teleprompter"
+                    href={ROUTES_CONFIG.SEO_GRATIS.paths.en}
                     className="inline-block border-2 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white font-bold py-3 px-8 rounded-full transition"
                 >
                     📖 See More Features
@@ -300,9 +301,9 @@ export const TeleprompterCaseiroDIYEN = () => (
                 If you're building a homemade teleprompter, these other PromptNinja features might be useful:
             </p>
             <ul className="list-disc pl-6 text-slate-300 space-y-2">
-                <li><a href="/en/teleprompter-musician-mode" className="text-purple-400 hover:text-purple-300 underline">Musician Mode</a> — Perfect if you also record music or need chord charts</li>
-                <li><a href="/en/how-to-use-teleprompter" className="text-purple-400 hover:text-purple-300 underline">How to use teleprompter professionally</a> — Techniques to improve your performance</li>
-                <li><a href="/en/teleprompter-web-vs-hardware" className="text-purple-400 hover:text-purple-300 underline">Web Teleprompter vs Hardware</a> — Compare your DIY setup with professional options</li>
+                <li><a href={ROUTES_CONFIG.SEO_MODO_MUSICO.paths.en} className="text-purple-400 hover:text-purple-300 underline">Musician Mode</a> — Perfect if you also record music or need chord charts</li>
+                <li><a href={ROUTES_CONFIG.SEO_HUB_GUIDE.paths.en} className="text-purple-400 hover:text-purple-300 underline">How to use teleprompter professionally</a> — Techniques to improve your performance</li>
+                <li><a href={ROUTES_CONFIG.SEO_HARDWARE_VS_WEB.paths.en} className="text-purple-400 hover:text-purple-300 underline">Web Teleprompter vs Hardware</a> — Compare your DIY setup with professional options</li>
             </ul>
         </div>
     </>

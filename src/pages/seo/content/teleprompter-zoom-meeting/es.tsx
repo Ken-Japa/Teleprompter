@@ -1,3 +1,4 @@
+import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
@@ -152,19 +153,19 @@ export const TeleprompterZoomMeetingES = () => (
             <h3 className="text-xl font-bold text-white mb-3">Ver También: Domina el Video Online</h3>
             <ul className="space-y-2">
                 <li>
-                    <a href="/es/teleprompter-online-gratis" className="text-purple-400 hover:text-purple-300 underline flex items-center">
+                    <a href={ROUTES_CONFIG.SEO_GRATIS.paths.es} className="text-purple-400 hover:text-purple-300 underline flex items-center">
                         <span className="mr-2">📺</span>
                         Teleprompter Online Gratis (Funciona en el Navegador)
                     </a>
                 </li>
                 <li>
-                    <a href="/es/teleprompter-caseiro-diy" className="text-purple-400 hover:text-purple-300 underline flex items-center">
+                    <a href={ROUTES_CONFIG.SEO_DIY.paths.es} className="text-purple-400 hover:text-purple-300 underline flex items-center">
                         <span className="mr-2">🛠️</span>
                         Cómo Hacer un Teleprompter Casero (DIY)
                     </a>
                 </li>
                 <li>
-                    <a href="/es/webrtc-latency" className="text-purple-400 hover:text-purple-300 underline flex items-center">
+                    <a href={ROUTES_CONFIG.SEO_WEBRTC.paths.es} className="text-purple-400 hover:text-purple-300 underline flex items-center">
                         <span className="mr-2">⚡</span>
                         Por qué PromptNinja no tiene retraso (Zero Latency)
                     </a>

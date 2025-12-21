@@ -11,11 +11,14 @@ export const HubGuideContentEN = () => (
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
                 What is a Teleprompter?
             </h2>
-            <p>
+            <p className="mb-4">
                 The <a href={ROUTES_CONFIG.SEO_O_QUE_E.paths.en}>Teleprompter</a> (or "prompter") is the secret tool behind TV presenters, presidents, and successful YouTubers. It allows you to read a script while looking directly into the camera lens.
             </p>
+            <p className="mb-4">
+                To understand the origin of this technology, check out our <a href={ROUTES_CONFIG.SEO_HISTORY.paths.en}>History of the Teleprompter</a>. It's also important not to confuse it with the <a href={ROUTES_CONFIG.SEO_VS_TELELESTRADOR.paths.en}>Telestrator</a>, used for drawing on screen.
+            </p>
             <p>
-                This creates an immediate connection with your audience because it simulates natural eye contact. No one notices you are reading, and you never forget what you have to say.
+                This creates an immediate connection with your audience because it simulates natural eye contact. No one notices you are reading, and you never forget what you have to say. See <a href={ROUTES_CONFIG.SEO_CELEBRITIES.paths.en}>which celebrities use teleprompters</a> daily.
             </p>
         </section>
 
@@ -28,7 +31,7 @@ export const HubGuideContentEN = () => (
                 Using a teleprompter today is much easier than in the analog TV era. You don't need $1,000 equipment.
             </p>
             <h3 className="text-xl font-bold text-white mt-8 mb-4">The Basic Setup</h3>
-            <ul className="list-disc pl-6 space-y-4 marker:text-purple-500">
+            <ul className="list-disc pl-6 space-y-4 marker:text-purple-500 text-slate-300">
                 <li>
                     <strong>On Computer:</strong> Just access <a href={ROUTES_CONFIG.SEO_PC_WINDOWS.paths.en}>PromptNinja in your browser</a>. Ideal for online classes, Zoom, and Google Meet.
                 </li>
@@ -36,7 +39,7 @@ export const HubGuideContentEN = () => (
                     <strong>On Mobile/Tablet:</strong> Use our <a href={ROUTES_CONFIG.SEO_PWA_INSTALL.paths.en}>Web App (PWA)</a> that works offline. Position the phone close to the camera lens.
                 </li>
                 <li>
-                    <strong>Pro Kit:</strong> Use a "Beam Splitter" (reflective glass) with a <a href={ROUTES_CONFIG.SEO_TABLET.paths.en}>Tablet</a> underneath.
+                    <strong>Pro Kit:</strong> Use a "Beam Splitter" (reflective glass) with a <a href={ROUTES_CONFIG.SEO_TABLET.paths.en}>Tablet</a> underneath. Unsure if you should invest? Read our guide on <a href={ROUTES_CONFIG.SEO_BUYING_GUIDE.paths.en}>How to Choose a Teleprompter</a>.
                 </li>
             </ul>
         </section>
@@ -46,16 +49,16 @@ export const HubGuideContentEN = () => (
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
                 Best Apps & Tools
             </h2>
-            <p>
-                There are dozens of options, but the future is <strong>Web-Based</strong>. Why download a heavy app if you can use it directly in the browser?
+            <p className="mb-4">
+                There are dozens of options, but the future is <strong>Web-Based</strong> with AI. Learn what to expect from the <a href={ROUTES_CONFIG.SEO_FUTURE_AI.paths.en}>Future of AI Teleprompters</a>.
             </p>
             <div className="bg-slate-800 p-6 rounded-xl my-6">
                 <h4 className="font-bold text-lg text-white mb-2">Why PromptNinja?</h4>
-                <ul className="grid md:grid-cols-2 gap-4">
+                <ul className="grid md:grid-cols-2 gap-4 text-slate-300">
                     <li className="flex items-center gap-2">✅ <strong>100% Free</strong> (no giant watermarks)</li>
                     <li className="flex items-center gap-2">✅ <strong>Total Privacy</strong> (your data doesn't leave your PC)</li>
                     <li className="flex items-center gap-2">✅ <strong>Voice Command</strong> (text scrolls as you speak)</li>
-                    <li className="flex items-center gap-2">✅ <strong>Works Offline</strong></li>
+                    <li className="flex items-center gap-2">✅ <strong>Accessibility</strong> (includes OpenDyslexic font. See more at <a href={ROUTES_CONFIG.SEO_ACCESSIBILITY.paths.en}>Teleprompter & Accessibility</a>)</li>
                 </ul>
             </div>
             <p>
@@ -68,11 +71,11 @@ export const HubGuideContentEN = () => (
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
                 DIY vs Professional
             </h2>
-            <p>
+            <p className="mb-4">
                 You can start with zero investment. We have an amazing guide on <a href={ROUTES_CONFIG.SEO_DIY.paths.en}>How to make a DIY Teleprompter</a> using a CD case or picture frame glass.
             </p>
             <p>
-                If you are looking for maximum quality for YouTube, see our tips on <a href={ROUTES_CONFIG.SEO_HARDWARE_VS_WEB.paths.en}>Hardware vs Software</a>.
+                If you are looking for maximum quality for YouTube, see our tips on <a href={ROUTES_CONFIG.SEO_HARDWARE_VS_WEB.paths.en}>Hardware vs Software</a>. Avoid <a href={ROUTES_CONFIG.SEO_COMMON_MISTAKES.paths.en}>Common Mistakes when using Teleprompter</a> that give away you're reading.
             </p>
         </section>
 
@@ -85,16 +88,16 @@ export const HubGuideContentEN = () => (
                 <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-purple-500 transition-colors">
                     <h3 className="font-bold text-white mb-2">📹 Youtubers & Creators</h3>
                     <p className="text-sm text-slate-400 mb-4">
-                        Record long videos in "One Take". Save hours of editing.
+                        Record long videos in "One Take". Discover also how to use <a href={ROUTES_CONFIG.SEO_LIVES.paths.en} className="text-purple-300 hover:underline">Teleprompter in Lives (OBS)</a>.
                     </p>
                     <a href={ROUTES_CONFIG.SEO_YOUTUBERS.paths.en} className="text-purple-400 text-sm font-bold hover:underline">View Guide for Creators →</a>
                 </div>
                 <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-purple-500 transition-colors">
-                    <h3 className="font-bold text-white mb-2">💼 Home Office & Meetings</h3>
+                    <h3 className="font-bold text-white mb-2">🎙️ Podcasters</h3>
                     <p className="text-sm text-slate-400 mb-4">
-                        Impress your boss on Zoom, Teams, or Meet. Speak without stuttering and with authority.
+                        Ideal for reading ads and guest bios.
                     </p>
-                    <a href={ROUTES_CONFIG.SEO_ZOOM.paths.en} className="text-purple-400 text-sm font-bold hover:underline">Guide for Meetings →</a>
+                    <a href={ROUTES_CONFIG.SEO_PODCAST.paths.en} className="text-purple-400 text-sm font-bold hover:underline">Guide for Podcasters →</a>
                 </div>
                 <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-purple-500 transition-colors">
                     <h3 className="font-bold text-white mb-2">🎵 Musicians & Singers</h3>

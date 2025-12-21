@@ -1,5 +1,6 @@
-import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterZoomMeetingEN = () => (
     <>
@@ -139,19 +140,19 @@ export const TeleprompterZoomMeetingEN = () => (
             <h3 className="text-xl font-bold text-white mb-3">See Also: Master Online Video</h3>
             <ul className="space-y-2">
                 <li>
-                    <a href="/en/teleprompter-online-gratis" className="text-purple-400 hover:text-purple-300 underline flex items-center">
+                    <a href={ROUTES_CONFIG.SEO_GRATIS.paths.en} className="text-purple-400 hover:text-purple-300 underline flex items-center">
                         <span className="mr-2">📺</span>
                         Free Online Teleprompter (Works in Browser)
                     </a>
                 </li>
                 <li>
-                    <a href="/en/teleprompter-caseiro-diy" className="text-purple-400 hover:text-purple-300 underline flex items-center">
+                    <a href={ROUTES_CONFIG.SEO_DIY.paths.en} className="text-purple-400 hover:text-purple-300 underline flex items-center">
                         <span className="mr-2">🛠️</span>
                         How to Build a DIY Teleprompter
                     </a>
                 </li>
                 <li>
-                    <a href="/en/webrtc-latency" className="text-purple-400 hover:text-purple-300 underline flex items-center">
+                    <a href={ROUTES_CONFIG.SEO_WEBRTC.paths.en} className="text-purple-400 hover:text-purple-300 underline flex items-center">
                         <span className="mr-2">⚡</span>
                         Why PromptNinja Has Zero Latency (WebRTC Explained)
                     </a>

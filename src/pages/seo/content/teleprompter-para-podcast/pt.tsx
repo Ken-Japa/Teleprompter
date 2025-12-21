@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterParaPodcastPT = () => (
     <>
@@ -77,6 +78,27 @@ export const TeleprompterParaPodcastPT = () => (
             >
                 Profissionalize Seu Podcast com PromptNinja
             </a>
+        </div>
+
+        <div className="border-t border-slate-800 pt-12 mt-12">
+            <h3 className="text-2xl font-bold text-white mb-6">Veja Também</h3>
+            <ul className="space-y-4">
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_YOUTUBERS.paths.pt} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        📹 Teleprompter para YouTubers
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_CELEBRITIES.paths.pt} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        ⭐ 7 Celebridades que Usam Teleprompter
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_READING_SPEED.paths.pt} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        🚀 Qual a Velocidade Ideal de Leitura?
+                    </a>
+                </li>
+            </ul>
         </div>
     </>
 );

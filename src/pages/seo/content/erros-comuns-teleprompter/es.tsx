@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const ErrosComunsTeleprompterES = () => (
     <>
@@ -107,6 +108,27 @@ export const ErrosComunsTeleprompterES = () => (
             >
                 Graba Sin Errores Ahora (Gratis)
             </a>
+        </div>
+
+        <div className="border-t border-slate-800 pt-12 mt-12">
+            <h3 className="text-2xl font-bold text-white mb-6">Ver También</h3>
+            <ul className="space-y-4">
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_READING_SPEED.paths.es} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        🚀 ¿Cuál es la Velocidad Ideal de Lectura (WPM)?
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_ORATORIA.paths.es} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        🗣️ 5 Consejos de Oratoria para Video
+                    </a>
+                </li>
+                <li>
+                    <a href={ROUTES_CONFIG.SEO_DECORAR.paths.es} className="text-purple-400 hover:text-purple-300 hover:underline text-lg">
+                        🧠 Cómo Memorizar Guiones Rápido
+                    </a>
+                </li>
+            </ul>
         </div>
     </>
 );
