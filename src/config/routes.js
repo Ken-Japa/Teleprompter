@@ -323,4 +323,13 @@ export const ROUTES_CONFIG = {
             es: "/es/teleprompter-para-fitness-entrenamiento",
         },
     },
+    SEO_HUB_GUIDE: {
+        priority: "1.0",
+        changefreq: "weekly",
+        paths: {
+            pt: "/guia-completo-teleprompter",
+            en: "/en/ultimate-teleprompter-guide",
+            es: "/es/guia-definitiva-teleprompter",
+        },
+    },
 };
