@@ -2,104 +2,85 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const WebRtcLatencyContentES = () => (
     <>
+        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">¿Por qué PromptNinja es Más Rápido que Bluetooth? (La Ciencia de la Latencia)</h1>
+
         <p className="lead text-xl text-slate-300 mb-8">
-            Presionas el botón de "pausa" en el control remoto. El texto sigue desplazándose por medio segundo más. Pierdes tu lugar, tartamudeas y tienes que volver a grabar.
-            Este "retraso" (latencia) es la pesadilla de cualquier presentador. En este artículo técnico, explicamos cómo la tecnología WebRTC ha resuelto este problema definitivamente.
+            Presionas "Pausa". El texto sigue rodando por medio segundo más. Te pierdes. Tienes que regrabar.
+            Este retraso invisible se llama <strong>latencia</strong>, y es el enemigo número 1 de la fluidez.
         </p>
 
-        <h2>El Problema de la Latencia en Dispositivos Bluetooth</h2>
-        <p>
-            La mayoría de los teleprompters del mercado utilizan controles remotos Bluetooth baratos. Aunque populares, sufren de un problema estructural: la pila de protocolos.
-            Cuando haces clic en un botón, la señal debe:
-        </p>
-        <ol>
-            <li>Ser codificada por el chip del control.</li>
-            <li>Viajar por el aire (frecuencia 2.4GHz, a menudo saturada).</li>
-            <li>Ser decodificada por el sistema operativo de la computadora/teléfono.</li>
-            <li>Ser interpretada por el controlador (driver).</li>
-            <li>Finalmente llegar a la aplicación.</li>
-        </ol>
-        <p>
-            En entornos con mucha interferencia (estudios con micrófonos inalámbricos, enrutadores Wi-Fi), esta latencia puede llegar a <strong>200-500 milisegundos</strong>. Parece poco, pero para el cerebro humano leyendo en tiempo real, es la diferencia entre una lectura fluida y una pausa incómoda.
-        </p>
+        <div className="bg-slate-800 p-8 rounded-xl border border-blue-500/30 mb-12">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">Carrera de Datos: Satélite vs Local</h2>
 
-        <h2>Entra WebRTC (Web Real-Time Communication)</h2>
-        <p>
-            WebRTC es una tecnología de código abierto desarrollada por Google (y adoptada por Apple, Microsoft y Mozilla) que permite la comunicación directa entre navegadores.
-            Es la misma tecnología utilizada en Google Meet y Zoom. Pero PromptNinja la utiliza de manera diferente: <strong>Data Channels</strong>.
-        </p>
+            <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-red-900/10 p-4 rounded border border-red-500/20 opacity-70">
+                    <h3 className="font-bold text-red-400 mb-2">🐢 Apps Tradicionales (Nube)</h3>
+                    <div className="font-mono text-xs text-slate-400 mb-2">
+                        [Móvil] ➡️ [Router] ➡️ [ISP] ➡️ [Servidor EEUU] ➡️ [Procesamiento] ➡️ [Vuelta a Ti] ➡️ [PC]
+                    </div>
+                    <p className="text-slate-300 text-sm">
+                        Es como enviar una carta al vecino vía correo internacional. La señal viaja 10,000km para moverse 2 metros.
+                        <br /><span className="font-bold text-red-400">Latencia: 200ms - 800ms</span> (Perceptible)
+                    </p>
+                </div>
 
-        <h3>P2P: El Camino Más Corto</h3>
-        <p>
-            A diferencia de las aplicaciones web tradicionales que funcionan en el modelo Cliente-Servidor (donde tu comando va a un servidor en Virginia/EE. UU. y regresa a tu computadora), WebRTC crea una conexión <strong>Peer-to-Peer (P2P)</strong>.
-        </p>
-        <p>
-            Esto significa que tu teléfono (control) y tu computadora (pantalla) conversan directamente a través de tu red Wi-Fi local. La señal no sale de tu casa.
-            ¿Resultado? Latencia de <strong>5 a 20 milisegundos</strong>. Es virtualmente instantáneo.
-        </p>
-
-        <h2>La Arquitectura Técnica de PromptNinja</h2>
-        <p>
-            Para los desarrolladores y curiosos, así es como implementamos esta magia:
-        </p>
-        <ul>
-            <li><strong>Signaling (Señalización):</strong> Usamos un servidor ligero solo para el "apretón de manos" inicial (Handshake). Los dispositivos intercambian metadatos (SDP offers/answers) para encontrarse.</li>
-            <li><strong>STUN Servers:</strong> Usamos servidores STUN para descubrir la dirección IP pública/privada de los dispositivos, atravesando la barrera NAT (Network Address Translation).</li>
-            <li><strong>Data Channels (UDP):</strong> A diferencia de TCP (usado en la web normal), usamos el protocolo UDP para los comandos de control. UDP no pierde tiempo verificando si cada paquete llegó perfectamente en orden; prioriza la velocidad. Para un botón de "Play/Pausa", esto es crucial.</li>
-        </ul>
-
-        <div className="bg-slate-900 p-6 rounded-lg border border-slate-700 my-8">
-            <h3 className="text-xl font-bold text-white mb-4">¿Por qué te importa esto?</h3>
-            <p className="mb-0 text-slate-300">
-                No necesitas entender paquetes UDP o servidores STUN. Lo que sientes en la práctica es <strong>control absoluto</strong>.
-                Cuando quieres que el texto se detenga, se detiene. Al instante. Esto te da confianza para hablar más rápido, hacer pausas dramáticas y ser más natural.
-            </p>
+                <div className="bg-green-900/10 p-4 rounded border border-green-500/50">
+                    <h3 className="font-bold text-green-400 mb-2">🚀 PromptNinja (WebRTC P2P)</h3>
+                    <div className="font-mono text-xs text-slate-400 mb-2">
+                        [Móvil] ➡️ [Router Wi-Fi] ➡️ [PC]
+                    </div>
+                    <p className="text-slate-300 text-sm">
+                        Es como gritar por la ventana. La señal nunca sale de tu casa. Viaja a velocidad de luz por tu red Wi-Fi local.
+                        <br /><span className="font-bold text-green-400">Latencia: &lt; 10ms</span> (Instantáneo)
+                    </p>
+                </div>
+            </div>
         </div>
 
-        <h2>Comparativa de Latencia</h2>
-        <div className="overflow-x-auto mb-8">
-            <table className="w-full text-left border-collapse">
-                <thead>
-                    <tr className="border-b border-slate-600">
-                        <th className="py-2 text-primary">Tecnología</th>
-                        <th className="py-2 text-primary">Latencia Promedio</th>
-                        <th className="py-2 text-primary">Estabilidad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr className="border-b border-slate-800">
-                        <td className="py-2 text-white font-bold">PromptNinja (WebRTC P2P)</td>
-                        <td className="py-2 text-green-400 font-bold">&lt; 20ms</td>
-                        <td className="py-2">Extrema (Red Local)</td>
-                    </tr>
-                    <tr className="border-b border-slate-800">
-                        <td className="py-2">Bluetooth Estándar</td>
-                        <td className="py-2">150ms - 300ms</td>
-                        <td className="py-2">Media (Interferencia)</td>
-                    </tr>
-                    <tr className="border-b border-slate-800">
-                        <td className="py-2">Web Sockets (Servidor Cloud)</td>
-                        <td className="py-2">200ms - 1000ms+</td>
-                        <td className="py-2">Baja (Depende de Internet)</td>
-                    </tr>
-                </tbody>
-            </table>
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">¿Por qué importan los milisegundos?</h2>
+        <p className="text-slate-300 mb-6">
+            El cerebro humano percibe cualquier retraso sobre 100ms como "lag".
+        </p>
+        <ul className="list-disc pl-6 mb-8 text-slate-300 space-y-3">
+            <li><strong>Sincronía Labial:</strong> Si lees y texto no acompaña, empiezas a hablar más lento inconscientemente, sonando "robótico".</li>
+            <li><strong>Ajustes Sutiles:</strong> Con latencia cero, puedes acelerar levemente en partes fáciles y frenar en palabras difíciles en tiempo real, como conducir un deportivo.</li>
+            <li><strong>Confianza:</strong> Saber que el botón "Pausa" funciona al instante quita la ansiedad de grabación en vivo.</li>
+        </ul>
+
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Tecnología Bajo el Capó</h2>
+        <p className="text-slate-300 mb-6">
+            Usamos <strong>WebRTC Data Channels</strong> con protocolo UDP.
+        </p>
+
+        <div className="grid sm:grid-cols-2 gap-6 mb-12">
+            <div className="bg-slate-800 p-5 rounded-lg border-l-4 border-purple-500">
+                <h3 className="font-bold text-white mb-2">Sin Servidor en Medio</h3>
+                <p className="text-sm text-slate-400">
+                    Nuestros servidores solo "presentan" los dispositivos (como app de citas). Tras el match, se van del chat y los dejan solos. Menos intermediarios = Menos Lag.
+                </p>
+            </div>
+            <div className="bg-slate-800 p-5 rounded-lg border-l-4 border-yellow-500">
+                <h3 className="font-bold text-white mb-2">Protocolo UDP (Velocidad Pura)</h3>
+                <p className="text-sm text-slate-400">
+                    La mayoría de la web usa TCP (seguro pero lento). Nosotros usamos UDP para controles. No pierde tiempo verificando recibos de entrega. Solo entrega la orden "PLAY" inmediatamente.
+                </p>
+            </div>
         </div>
 
         <SEOContentFAQ
-            title="Preguntas Técnicas sobre Latencia"
+            title="FAQ Técnico de Latencia"
             items={[
                 {
-                    question: "¿Qué causa el retraso en el teleprompter?",
-                    answer: "Generalmente es la comunicación lenta entre control y pantalla. En Bluetooth y WebSockets, la señal da una vuelta larga. En nuestro sistema P2P, va directo."
+                    question: "¿Funciona si internet es lento?",
+                    answer: "¡Sí! La latencia de PromptNinja depende de calidad de tu Router Wi-Fi, no velocidad de tu proveedor internet. Si router es bueno, conexión será instantánea aun con internet telefónico."
                 },
                 {
-                    question: "¿Es seguro? ¿Mis datos pasan por el servidor?",
-                    answer: "Sí, es extremadamente seguro. Como la conexión es P2P, tu guion y comandos viajan solo dentro de tu red local. Nada se almacena en nuestros servidores."
+                    question: "¿Por qué a veces tarda en conectar?",
+                    answer: "Proceso inicial de 'Handshake' (encontrar dispositivos) puede tomar unos segundos dependiendo de firewalls corporativos. Pero una vez conectado, latencia de control cae a cero."
                 },
                 {
-                    question: "¿Funciona si se cae el internet?",
-                    answer: "Mientras el router esté encendido (manteniendo la red local activa), sí. Internet externo no es necesario tras la carga inicial."
+                    question: "¿Es más rápido que control Bluetooth físico?",
+                    answer: "Sorprendentemente, sí o igual. Controles Bluetooth baratos tienen 'input lag' de hardware y procesamiento de driver. Wi-Fi moderno (5Ghz) es absurdamente rápido y estable para transmisión de datos pequeños como comandos texto."
                 }
             ]}
         />

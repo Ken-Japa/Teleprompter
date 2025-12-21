@@ -3,97 +3,117 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoInstalarPwaEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">How to Install PromptNinja (PWA App)</h1>
+        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">How to "Download" PromptNinja (Install PWA App)</h1>
+
         <p className="mb-6 text-xl text-slate-300">
-            PromptNinja is a <strong>Progressive Web App (PWA)</strong>. This means you can install it directly from your browser without visiting the App Store or Play Store. It's lighter, faster, and works offline.
+            Searched the App Store or Play Store and found nothing? Relax, that's a <strong>feature</strong>, not a bug.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-8 mt-12">
+        <p className="mb-8 text-slate-300">
+            PromptNinja is an <strong>Elite Progressive Web App (PWA)</strong>. It has the power of a native app (works offline, full screen, no lag) but without the store bureaucracy. You install it directly from your browser, in seconds, without eating up your phone's storage.
+        </p>
 
-            {/* iOS Guide */}
-            <SEOContentHowTo
-                title="iPhone / iPad (iOS)"
-                schemaTitle="How to Install PromptNinja on iPhone (iOS)"
-                steps={[
-                    {
-                        title: "Step 1",
-                        text: "Open PromptNinja in Safari. (Note: PWAs only install via Safari on iOS)."
-                    },
-                    {
-                        title: "Step 2",
-                        text: "Tap the Share button (square with arrow up icon) in the bottom bar."
-                    },
-                    {
-                        title: "Step 3",
-                        text: "Scroll down and tap \"Add to Home Screen\"."
-                    },
-                    {
-                        title: "Step 4",
-                        text: "Tap Add in the top right corner."
-                    }
-                ]}
-                className="bg-slate-800 p-8 rounded-xl border border-slate-700 h-full"
-            />
-
-            {/* Android Guide */}
-            <SEOContentHowTo
-                title="Android (Chrome)"
-                schemaTitle="How to Install PromptNinja on Android"
-                steps={[
-                    {
-                        title: "Step 1",
-                        text: "Open PromptNinja in Google Chrome."
-                    },
-                    {
-                        title: "Step 2",
-                        text: "Tap the Menu button (three dots) in the top right corner."
-                    },
-                    {
-                        title: "Step 3",
-                        text: "Tap \"Install app\" or \"Add to Home screen\"."
-                    },
-                    {
-                        title: "Step 4",
-                        text: "Confirm by tapping Install."
-                    }
-                ]}
-                className="bg-slate-800 p-8 rounded-xl border border-slate-700 h-full"
-            />
-
-        </div>
-
-        <div className="mt-16 bg-slate-800/50 p-8 rounded-xl text-center">
-            <h2 className="text-2xl font-bold text-white mb-4">Why install the PWA?</h2>
-            <div className="grid sm:grid-cols-3 gap-6 text-left mt-8">
-                <div>
-                    <h3 className="text-lg font-bold text-purple-400 mb-2">⚡ Native Performance</h3>
-                    <p className="text-slate-400 text-sm">Instant loading and smooth navigation, just like a store app.</p>
+        <div className="bg-gradient-to-r from-purple-900/40 to-blue-900/40 p-8 rounded-xl border border-purple-500/30 mb-12">
+            <h2 className="text-2xl font-bold text-white mb-4">Why is this better?</h2>
+            <div className="grid sm:grid-cols-3 gap-6">
+                <div className="bg-slate-900/50 p-4 rounded-lg">
+                    <h3 className="text-lg font-bold text-green-400 mb-2">💾 Extreme Lightness</h3>
+                    <p className="text-slate-400 text-sm">Teleprompter apps weigh ~150MB avg. Installed PromptNinja weighs under <strong>2MB</strong>. More space for your 4K videos.</p>
                 </div>
-                <div>
-                    <h3 className="text-lg font-bold text-blue-400 mb-2">📶 Works Offline</h3>
-                    <p className="text-slate-400 text-sm">No internet? No problem. The app caches necessary resources to work anywhere.</p>
+                <div className="bg-slate-900/50 p-4 rounded-lg">
+                    <h3 className="text-lg font-bold text-blue-400 mb-2">📱 True Full Screen</h3>
+                    <p className="text-slate-400 text-sm">Upon install, Safari/Chrome address bars vanish. You get 15% more screen real estate for your script.</p>
                 </div>
-                <div>
-                    <h3 className="text-lg font-bold text-green-400 mb-2">💾 Space Saving</h3>
-                    <p className="text-slate-400 text-sm">Takes up a fraction of the space of a conventional app. Less memory, more efficiency.</p>
+                <div className="bg-slate-900/50 p-4 rounded-lg">
+                    <h3 className="text-lg font-bold text-purple-400 mb-2">⚡ Offline First</h3>
+                    <p className="text-slate-400 text-sm">Recording in the wild? No problem. Once installed, the app opens instantly even without Wi-Fi signal.</p>
                 </div>
             </div>
         </div>
 
+        <h2 className="text-3xl font-bold text-white mb-8">Step-by-Step Installation Guide</h2>
+
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {/* iOS Guide */}
+            <SEOContentHowTo
+                title="🍎 iPhone / iPad (Safari)"
+                schemaTitle="How to Install PromptNinja on iPhone (iOS)"
+                steps={[
+                    {
+                        title: "1. Use Safari",
+                        text: "PWAs on iPhone work best on Safari. Open 'promptninja.solutionkit.com.br'."
+                    },
+                    {
+                        title: "2. Share Button",
+                        text: "Tap the middle icon on the bottom bar (a square with an arrow pointing up)."
+                    },
+                    {
+                        title: "3. The Secret",
+                        text: "Scroll down until you find 'Add to Home Screen'. Careful: It's NOT 'Add to Bookmark'."
+                    },
+                    {
+                        title: "4. Confirm",
+                        text: "Tap 'Add' on top right. The purple icon will appear on your home screen."
+                    }
+                ]}
+                className="bg-slate-800 p-8 rounded-xl border-l-4 border-slate-500 h-full"
+            />
+
+            {/* Android Guide */}
+            <SEOContentHowTo
+                title="🤖 Android (Chrome/Samsung)"
+                schemaTitle="How to Install PromptNinja on Android"
+                steps={[
+                    {
+                        title: "1. Auto Notification",
+                        text: "Often a bar appears at bottom: 'Add PromptNinja to Home Screen'. If so, just tap it!"
+                    },
+                    {
+                        title: "2. Manual Menu",
+                        text: "If not, tap the three dots (⋮) on Chrome's top right corner."
+                    },
+                    {
+                        title: "3. Install",
+                        text: "Look for 'Install App' or 'Add to Home Screen' in the menu."
+                    },
+                    {
+                        title: "4. Ready",
+                        text: "System will create a lightweight APK and install it like a native app."
+                    }
+                ]}
+                className="bg-slate-800 p-8 rounded-xl border-l-4 border-green-500 h-full"
+            />
+        </div>
+
+        <div className="mb-12">
+            <h3 className="text-2xl font-bold text-white mb-6">💻 On Desktop (PC / Mac)</h3>
+            <div className="bg-slate-800 p-6 rounded-xl border border-blue-500/30">
+                <p className="text-slate-300 mb-4">
+                    Yes, you can install on desktop too! This places PromptNinja icon on your Taskbar or Dock, and runs it in an independent window (distraction-free).
+                </p>
+                <ul className="space-y-4 text-slate-300">
+                    <li className="flex gap-3 items-start">
+                        <span className="bg-blue-900 text-blue-300 rounded px-2 font-bold">Chrome/Edge:</span>
+                        <span>Look at the right side of address bar (URL). You'll see a small icon of a <strong>computer with down arrow</strong> ⬇️. Click it and then 'Install'.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
         <SEOContentFAQ
-            title="Installation FAQs (PWA)"
+            title="PWA FAQ"
             items={[
                 {
-                    question: "Is it safe? Any viruses?",
-                    answer: "Yes, 100% safe. PWAs run inside the browser's sandbox, meaning they don't have access to your personal files or system without your permission."
+                    question: "Is it safe? Viruses?",
+                    answer: "Safer than normal apps. PWAs run isolated in browser's 'sandbox'. They cannot access your contacts, photos, or system files unless you explicitly authorize each action."
                 },
                 {
-                    question: "Does it work without internet?",
-                    answer: "Yes. After installation (or first visit), the app saves essential files to your device to work offline."
+                    question: "How do I update?",
+                    answer: "Best part: it auto-updates. Whenever you open app connected to internet, it downloads latest version in milliseconds. You'll never see 'Updating...' bars again."
                 },
                 {
-                    question: "Does it take much space?",
-                    answer: "No. Unlike native apps that can weigh 100MB+, PromptNinja usually takes less than 2MB, as it reuses browser resources."
+                    question: "Can't find install button on iPhone.",
+                    answer: "Make sure you are using **Safari**. Chrome on iOS sometimes hides this option due to Apple restrictions. In Safari, 'Add to Home Screen' is hidden inside Share menu."
                 }
             ]}
         />

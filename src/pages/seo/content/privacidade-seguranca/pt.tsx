@@ -1,98 +1,122 @@
 
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const PrivacidadeSegurancaPT = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Privacidade e Segurança: Como o PromptNinja Protege Seus Dados</h1>
+        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Privacidade e Segurança: Por Que Não Queremos Seus Dados</h1>
+
+        <div className="bg-red-900/20 border border-red-500/30 p-6 rounded-lg mb-8">
+            <h2 className="text-xl font-bold text-red-400 mb-2">🚫 O Problema da Indústria</h2>
+            <p className="text-slate-300">
+                A maioria dos apps de teleprompter "grátis" exige que você crie uma conta. Por quê? Para rastrear seus hábitos, ler seus roteiros para treinar IA, ou vender seu e-mail. Eles tratam você como o produto.
+            </p>
+        </div>
+
         <p className="mb-6 text-xl text-slate-300">
-            Em um mundo onde seus dados são a moeda, o PromptNinja adota uma postura radical: <strong>nós não queremos seus dados</strong>. Nossa arquitetura foi desenhada desde o zero para garantir que seus roteiros e apresentações permaneçam privados e sob seu controle.
+            No PromptNinja, adotamos uma arquitetura radical de <strong>Dados Zero</strong>.
+        </p>
+
+        <p className="mb-8">
+            Nós não sabemos quem você é. Não temos seus e-mails. Não temos seus roteiros. Tudo o que você escreve fica gravado magneticamente no chip de memória do <strong>seu próprio dispositivo</strong>, e em nenhum outro lugar.
         </p>
 
         <div className="grid md:grid-cols-2 gap-8 my-12">
 
-            <div className="bg-slate-800 p-6 rounded-xl border border-slate-700">
-                <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                    <span className="text-3xl">🚫</span> Sem Login, Sem Rastro
+            <div className="bg-slate-800 p-8 rounded-xl border border-green-500/30 shadow-lg">
+                <h2 className="text-2xl font-bold text-green-400 mb-4 flex items-center gap-3">
+                    <span className="text-3xl">🛡️</span> Arquitetura "Local-First"
                 </h2>
                 <p className="text-slate-300 mb-4">
-                    A maioria dos serviços exige que você crie uma conta para que eles possam rastrear seu uso e armazenar seus dados. O PromptNinja não.
+                    Usamos uma tecnologia chamada <code>LocalStorage</code> e <code>IndexedDB</code>. É como um cofre dentro do seu navegador.
                 </p>
-                <ul className="list-disc pl-5 text-slate-300 space-y-2">
-                    <li>Não exigimos e-mail ou senha.</li>
-                    <li>Não há banco de dados de usuários.</li>
-                    <li>O que você digita no navegador, fica no navegador.</li>
-                </ul>
+                <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                        <span className="text-green-500 text-xl">✅</span>
+                        <p className="text-sm text-slate-300"><strong>Seus Textos:</strong> Salvos apenas no seu HD/Celular.</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                        <span className="text-green-500 text-xl">✅</span>
+                        <p className="text-sm text-slate-300"><strong>Seu Microfone:</strong> O áudio é processado em tempo real na memória RAM e descartado. Nada é gravado.</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                        <span className="text-green-500 text-xl">✅</span>
+                        <p className="text-sm text-slate-300"><strong>Vazamentos:</strong> Impossível vazarmos seus dados, pois não os temos.</p>
+                    </div>
+                </div>
             </div>
 
-            <div className="bg-slate-800 p-6 rounded-xl border border-slate-700">
-                <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                    <span className="text-3xl">🔒</span> Processamento Local
+            <div className="bg-slate-800 p-8 rounded-xl border border-blue-500/30">
+                <h2 className="text-2xl font-bold text-blue-400 mb-4 flex items-center gap-3">
+                    <span className="text-3xl">📡</span> Conexão P2P Blindada
                 </h2>
                 <p className="text-slate-300 mb-4">
-                    Todo o processamento do texto acontece no seu dispositivo (Client-side).
+                    "Mas como o celular controla o PC se não passa pelo servidor?"
                 </p>
-                <ul className="list-disc pl-5 text-slate-300 space-y-2">
-                    <li>Seus scripts <strong>nunca</strong> são enviados para nossos servidores.</li>
-                    <li>Se a sua internet cair, o teleprompter continua funcionando.</li>
-                    <li>Ao fechar a aba, os dados são limpos da memória (a menos que você os salve explicitamente).</li>
-                </ul>
+                <p className="text-sm text-slate-400 mb-4">
+                    Usamos <strong>WebRTC</strong>. Nosso servidor atua apenas como uma "lista telefônica": ele apresenta o IP do seu celular ao seu PC. Depois desse "aperto de mão" inicial (que dura milissegundos), o servidor sai da conversa.
+                </p>
+                <div className="bg-black/30 p-4 rounded border border-slate-700">
+                    <p className="text-xs text-slate-400 font-mono">
+                        [Celular] &lt;========== Túnel Criptografado (DTLS) ==========&gt; [PC]
+                    </p>
+                    <p className="text-xs text-green-500 mt-2 font-mono">Status: Link Direto (Sem Intermediários)</p>
+                </div>
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">A Mágica do WebRTC e P2P</h2>
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Auditoria: Como verificar?</h2>
         <p className="text-slate-300 mb-6">
-            Para permitir que você controle o teleprompter pelo celular, usamos uma tecnologia avançada chamada <strong>WebRTC (Web Real-Time Communication)</strong>. Isso cria um túnel direto entre o seu computador e o seu celular.
+            Não confie em nós. Confie na tecnologia. Faça o teste do "Modo Avião":
         </p>
 
-        <div className="bg-slate-900/50 border border-slate-800 p-8 rounded-xl">
-            <h3 className="text-xl font-bold text-blue-400 mb-4">Como funciona a conexão P2P (Peer-to-Peer):</h3>
-            <ol className="relative border-l border-slate-700 ml-4 space-y-8">
-                <li className="mb-10 ml-6">
-                    <span className="absolute flex items-center justify-center w-8 h-8 bg-blue-900 rounded-full -left-4 ring-4 ring-slate-900 text-blue-300 font-bold">1</span>
-                    <h4 className="font-bold text-white text-lg">Handshake (O "Aperto de Mão")</h4>
-                    <p className="text-slate-400 mt-2">
-                        Usamos um servidor de sinalização apenas para apresentar seu celular ao seu computador. Ele troca códigos criptografados temporários para que os dispositivos se encontrem. <strong>Nenhum dado do seu roteiro passa por aqui.</strong>
-                    </p>
-                </li>
-                <li className="mb-10 ml-6">
-                    <span className="absolute flex items-center justify-center w-8 h-8 bg-green-900 rounded-full -left-4 ring-4 ring-slate-900 text-green-300 font-bold">2</span>
-                    <h4 className="font-bold text-white text-lg">Túnel Direto</h4>
-                    <p className="text-slate-400 mt-2">
-                        Uma vez conectados, os dispositivos criam um túnel direto e criptografado (DTLS). A partir desse momento, a comunicação é 100% direta entre eles, sem passar por nenhum servidor intermediário.
-                    </p>
-                </li>
-                <li className="ml-6">
-                    <span className="absolute flex items-center justify-center w-8 h-8 bg-purple-900 rounded-full -left-4 ring-4 ring-slate-900 text-purple-300 font-bold">3</span>
-                    <h4 className="font-bold text-white text-lg">Latência Zero & Segurança Total</h4>
-                    <p className="text-slate-400 mt-2">
-                        Como os dados viajam apenas na sua rede local (ou diretamente pela internet via P2P), a resposta é instantânea e impossível de ser interceptada massivamente.
-                    </p>
-                </li>
-            </ol>
-        </div>
+        <SEOContentHowTo
+            title=""
+            schemaTitle="Como Verificar a Privacidade do PromptNinja"
+            totalTime="PT1M"
+            tools={["Navegador", "PromptNinja"]}
+            steps={[
+                {
+                    title: "1. Carregue o App",
+                    text: "Abra o PromptNinja e escreva um segredo no editor."
+                },
+                {
+                    title: "2. Corte a Internet",
+                    text: "Tire o cabo de rede ou desligue o Wi-Fi."
+                },
+                {
+                    title: "3. Teste",
+                    text: "Continue usando. O app funciona 100%? Sim. Se estivéssemos enviando seus dados para a nuvem da NSA, o app travaria ou daria erro de conexão."
+                },
+                {
+                    title: "4. Limpeza Total",
+                    text: "Quer apagar tudo? Basta limpar o cache do navegador ou clicar no ícone de 'Lixeira' no app. Os dados são triturados digitalmente do seu dispositivo."
+                }
+            ]}
+        />
 
         <div className="mt-12 p-6 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-            <h3 className="text-lg font-bold text-yellow-500 mb-2">Resumo da Segurança</h3>
+            <h3 className="text-lg font-bold text-yellow-500 mb-2">Compromisso com Jornalistas e Empresas</h3>
             <p className="text-slate-300">
-                Seus roteiros são seus. O PromptNinja é apenas a ferramenta que os exibe. Não vemos, não guardamos e não vendemos seus textos. É segurança por design, não por política.
+                Sabemos que muitos usuários do PromptNinja são repórteres cobrindo matérias sensíveis ou CEOs gravando comunicados internos. Nossa garantia de "No-Login" é sua maior proteção legal e técnica contra espionagem industrial ou vazamento de furos jornalísticos.
             </p>
         </div>
 
 
         <SEOContentFAQ
-            title="Perguntas Frequentes sobre Privacidade"
+            title="Dúvidas de Privacidade"
             items={[
                 {
-                    question: "O PromptNinja tem acesso à minha câmera?",
-                    answer: "Apenas quando você usa o teleprompter, e todo o processamento de vídeo é feito localmente no seu navegador. Nenhuma imagem é enviada para nós."
+                    question: "O PromptNinja usa Cookies?",
+                    answer: "Apenas cookies técnicos essenciais para salvar suas preferências (tamanho da fonte, velocidade) localmente. Não usamos cookies de rastreamento publicitário intrusivo de terceiros."
                 },
                 {
-                    question: "Onde meus textos são salvos?",
-                    answer: "No armazenamento local (LocalStorage) do seu próprio navegador. Se você limpar o cache do navegador, os textos somem. Nós não temos backup porque não temos seus dados."
+                    question: "Se meu computador quebrar, perco meus roteiros?",
+                    answer: "Sim. Como não temos cópia na nuvem, você é o único dono dos dados. Recomendamos que você sempre tenha seu roteiro original salvo no Word/Docs como backup."
                 },
                 {
-                    question: "É seguro para roteiros confidenciais?",
-                    answer: "Sim. Como não há transmissão de dados de texto para a nuvem, é impossível haver vazamento por parte do servidor. É como escrever no Bloco de Notas do seu PC."
+                    question: "O reconhecimento de voz é enviado para o Google?",
+                    answer: "Depende do navegador. No Chrome, o processamento de voz pode passar pelos servidores do Google para maior precisão (política do próprio navegador). Se privacidade absoluta for vital, recomendamos usar apenas o modo de rolagem manual ou automático, sem ativar o microfone."
                 }
             ]}
         />
