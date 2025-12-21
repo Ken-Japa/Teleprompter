@@ -9,6 +9,7 @@ interface RedeemModalProps {
   onUnlockKeyChange: (val: string) => void;
   onUnlock: () => void;
   onClose: () => void;
+  onOpenFeedback?: () => void;
   errorMessage: string | null;
   isValidating: boolean;
 }
@@ -19,6 +20,7 @@ export const RedeemModal: React.FC<RedeemModalProps> = ({
   onUnlockKeyChange,
   onUnlock,
   onClose,
+  onOpenFeedback,
   errorMessage,
   isValidating
 }) => {
@@ -51,20 +53,32 @@ export const RedeemModal: React.FC<RedeemModalProps> = ({
           Assinar / Comprar
         </button>
 
-        <div className="text-center mt-8 pt-8 border-t border-slate-700">
+        <div className="text-center mt-6 pt-6 border-t border-slate-700">
           <p className="text-sm text-slate-400 mb-3 font-semibold">
             {t("host.paywall.freeAlternativeTitle")}
           </p>
-          <button
-            onClick={() => {
-              trackEvent('paywall_cta_click', { cta_type: 'leave_review_free' });
-              window.open('https://search.google.com/local/writereview?placeid=ChIJdcYvDRJ7y5QR-6UakXLxbkg', '_blank');
-              onClose();
-            }}
-            className="w-full py-3 px-6 text-sm text-blue-400 hover:text-blue-200 transition-colors"
-          >
-            {t("host.paywall.leaveReviewCta")}
-          </button>
+          <div className="flex flex-col gap-2">
+            <button
+              onClick={() => {
+                trackEvent('paywall_cta_click', { cta_type: 'leave_review_free' });
+                window.open('https://search.google.com/local/writereview?placeid=ChIJdcYvDRJ7y5QR-6UakXLxbkg', '_blank');
+                onClose();
+              }}
+              className="w-full py-2 px-4 text-sm text-blue-400 hover:text-blue-200 transition-colors"
+            >
+              {t("host.paywall.leaveReviewCta")}
+            </button>
+
+            {onOpenFeedback && (
+              <button
+                onClick={onOpenFeedback}
+                className="w-full py-2 px-4 text-xs text-slate-500 hover:text-slate-300 transition-colors flex items-center justify-center gap-2"
+              >
+                <span>Tem críticas ou sugestões?</span>
+                <span className="underline">Dê seu feedback</span>
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </S.PaywallModal>

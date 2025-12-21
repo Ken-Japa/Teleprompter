@@ -7,9 +7,11 @@ import { Prompter } from "../components/host/Prompter";
 import { useHostController } from "../hooks/useHostController";
 import { CountdownModal } from "../components/ui/CountdownModal";
 import { RedeemModal } from "../components/RedeemModal";
+import { FeedbackModal } from "../components/FeedbackModal";
 
 export const Host: React.FC = () => {
     const { t } = useTranslation();
+    const [showFeedback, setShowFeedback] = React.useState(false);
 
     React.useEffect(() => {
         startPageUsageTracking();
@@ -30,6 +32,10 @@ export const Host: React.FC = () => {
                 onUnlockKeyChange={actions.setUnlockKey}
                 onUnlock={actions.handleUnlock}
                 onClose={actions.handleClosePaywall}
+                onOpenFeedback={() => {
+                    actions.handleClosePaywall();
+                    setShowFeedback(true);
+                }}
                 errorMessage={paywallErrorMessage}
                 isValidating={isValidating}
             />
@@ -102,6 +108,8 @@ export const Host: React.FC = () => {
                     onStopRemoteRecording={actions.stopRemoteRecording}
                 />
             )}
+
+            <FeedbackModal show={showFeedback} onClose={() => setShowFeedback(false)} />
         </>
     );
 };
