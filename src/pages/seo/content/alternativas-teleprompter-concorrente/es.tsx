@@ -6,9 +6,53 @@ export const AlternativasTeleprompterConcorrenteES = () => (
             La Mejor Alternativa Gratuita a Teleprompter Pro y Otras Apps de Pago en 2025
         </h1>
 
-        <p className="text-lg text-slate-300 mb-8">
-            Los creadores de contenido, educadores y profesionales del marketing a menudo se enfrentan a un dilema: invertir en costosos softwares de teleprompter como <strong>Teleprompter Pro</strong>, que prometen el oro y el moro, o conformarse con alternativas gratuitas que apenas funcionan. ¿Y si hubiera una tercera vía? Una herramienta que combina la potencia de las aplicaciones premium con la accesibilidad del software gratuito, sin requerir instalaciones, inicios de sesión ni tu tarjeta de crédito. Presentamos PromptNinja.
+        <p className="text-lg text-slate-300 mb-6">
+            Haces clic en "Descargar" en una app de teleprompter con 4.8 estrellas. La abres. Pop-up gigante: <strong>"UPGRADE PRO: $14.99/mes"</strong>. Lo ignoras, pruebas la versión free. ¿Control remoto? <span className="line-through">Bloqueado</span>. ¿Ajustar velocidad? <span className="line-through">Bloqueado</span>. ¿Modo espejo? <span className="line-through">Solo PRO</span>. Básicamente TODO bloqueado excepto un scroll automático que no puedes pausar.
         </p>
+
+        <p className="mb-6">
+            Luego piensas "ok, quizás $14.99 no sea mucho". Abres el sitio. PLOT TWIST: <strong>$14.99 es solo por la app MÓVIL</strong>. ¿Quieres usar en PC? Otros $19.99. ¿Quitar marca de agua? Otros $4.99. Total: <strong>$39.97/mes = $200+/año</strong> solo para leer texto que se desplaza.
+        </p>
+
+        <p className="mb-8">
+            ¿Y cuando finalmente pagas? La app SE CONGELA a mitad de grabación porque envía cada comando a su servidor en Virginia y el internet titubeó 0.5s. Acabas de pagar $200 por un problema que no existía antes.
+        </p>
+
+        <div className="bg-gradient-to-r from-red-900/30 to-slate-900 p-6 rounded-xl border border-red-500/30 mb-8">
+            <h3 className="text-xl font-bold text-red-400 mb-3">🚨 El Esquema "Freemium" de las Apps Teleprompter</h3>
+            <p className="text-slate-300 text-sm mb-4">
+                La mayoría de las apps de teleprompter usan el modelo "PARECE gratis, PERO...". Instalas, te gusta la interfaz, grabas 3 videos, te enganchas... ENTONCES te encierran detrás de un paywall. Psicología básica: cuanto más usas, más DUELE perder el acceso. Así que pagas.
+            </p>
+            <div className="grid md:grid-cols-3 gap-4 text-sm">
+                <div className="bg-slate-800/50 p-4 rounded-lg">
+                    <p className="font-bold text-red-300 mb-2">App "Popular" #1</p>
+                    <ul className="space-y-1 text-slate-400">
+                        <li>• Gratis: Solo 60s de texto</li>
+                        <li>• Control remoto: $9.99/mes</li>
+                        <li>• Quitar marca: $4.99/mes</li>
+                        <li className="text-red-400 font-bold mt-2">Total: $14.98/mes</li>
+                    </ul>
+                </div>
+                <div className="bg-slate-800/50 p-4 rounded-lg">
+                    <p className="font-bold text-red-300 mb-2">App "Pro" #2</p>
+                    <ul className="space-y-1 text-slate-400">
+                        <li>• Gratis: Marca de agua permanente</li>
+                        <li>• Desktop: $19.99/mes</li>
+                        <li>• Mobile: $14.99/mes</li>
+                        <li className="text-red-400 font-bold mt-2">Total: $34.98/mes</li>
+                    </ul>
+                </div>
+                <div className="bg-slate-800/50 p-4 rounded-lg border-2 border-green-500">
+                    <p className="font-bold text-green-300 mb-2">PromptNinja</p>
+                    <ul className="space-y-1 text-slate-300">
+                        <li>• Control remoto: GRATIS</li>
+                        <li>• Desktop + Mobile: GRATIS</li>
+                        <li>• Cero marca de agua: GRATIS</li>
+                        <li className="text-green-400 font-bold mt-2">Total: $0.00</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Por Qué el Teleprompter de CapCut y BIGVU Dejan Mucho que Desear (En PC y Directos)</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -94,8 +138,73 @@ export const AlternativasTeleprompterConcorrenteES = () => (
             </table>
         </div>
 
+        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Checklist: 7 Cosas Que TÚ Necesitas en un Teleprompter (Gratis o Pago)</h2>
+        <div className="bg-slate-900 p-6 rounded-xl border border-slate-700 mb-8">
+            <p className="text-slate-300 mb-6">
+                Antes de pagar (o elegir gratis), usa este checklist. Si faltan 2+ elementos, TE ARREPENTIRÁS después:
+            </p>
+            <div className="space-y-4">
+                <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
+                    <span className="text-2xl">✅</span>
+                    <div>
+                        <h4 className="font-bold text-white mb-1">1. Control Remoto SIN Lag</h4>
+                        <p className="text-slate-400 text-sm">Presionas pausa, texto PARA ahora. No 300ms después. Prueba: si hay retraso notable = DESCARTA.</p>
+                        <p className="text-green-400 text-sm mt-1">🟢 PromptNinja: P2P local, menos de 50ms latencia.</p>
+                    </div>
+                </div>
+                <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
+                    <span className="text-2xl">✅</span>
+                    <div>
+                        <h4 className="font-bold text-white mb-1">2. Cero Marca de Agua (Incluso Versión Gratis)</h4>
+                        <p className="text-slate-400 text-sm">Logo de terceros en TU video = amateur. Los clientes lo notan. La audiencia lo nota. No lo aceptes.</p>
+                        <p className="text-green-400 text-sm mt-1">🟢 PromptNinja: Cero marca de agua, siempre.</p>
+                    </div>
+                </div>
+                <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
+                    <span className="text-2xl">✅</span>
+                    <div>
+                        <h4 className="font-bold text-white mb-1">3. Funciona Desktop Y Mobile (Sin Pagar Doble)</h4>
+                        <p className="text-slate-400 text-sm">YouTuber trabaja en PC. TikToker en móvil. TÚ haces AMBOS. Apps que cobran separado = estafa.</p>
+                        <p className="text-green-400 text-sm mt-1">🟢 PromptNinja: Web = funciona en todos lados.</p>
+                    </div>
+                </div>
+                <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
+                    <span className="text-2xl">✅</span>
+                    <div>
+                        <h4 className="font-bold text-white mb-1">4. Privacidad del Guion (No Enviado a la Nube)</h4>
+                        <p className="text-slate-400 text-sm">Guiones confidenciales (lanzamientos, estrategias) en servidor de terceros = riesgo. Pregunta: "¿Dónde se guarda mi texto?"</p>
+                        <p className="text-green-400 text-sm mt-1">🟢 PromptNinja: Procesado localmente, nunca sale de tu Wi-Fi.</p>
+                    </div>
+                </div>
+                <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
+                    <span className="text-2xl">✅</span>
+                    <div>
+                        <h4 className="font-bold text-white mb-1">5. Modo Espejo (Para Teleprompter DIY)</h4>
+                        <p className="text-slate-400 text-sm">Si usas espejo 50/50, el texto necesita voltearse. Muchas apps cobran extra. Verifica ANTES.</p>
+                        <p className="text-green-400 text-sm mt-1">🟢 PromptNinja: Modo espejo incluido, gratis.</p>
+                    </div>
+                </div>
+                <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
+                    <span className="text-2xl">✅</span>
+                    <div>
+                        <h4 className="font-bold text-white mb-1">6. Funciona Offline (PWA/App Instalada)</h4>
+                        <p className="text-slate-400 text-sm">¿Internet se cae a mitad de live? Sitio online = colapsó. PWA (Progressive Web App) = sigue funcionando.</p>
+                        <p className="text-green-400 text-sm mt-1">🟢 PromptNinja: PWA instalable, funciona offline.</p>
+                    </div>
+                </div>
+                <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
+                    <span className="text-2xl">✅</span>
+                    <div>
+                        <h4 className="font-bold text-white mb-1">7. Sin Registro Obligatorio (Prueba Instantánea)</h4>
+                        <p className="text-slate-400 text-sm">Si requiere email antes de PROBAR = bandera roja. Buenas herramientas te dejan probar AHORA.</p>
+                        <p className="text-green-400 text-sm mt-1">🟢 PromptNinja: Abre y usa. Cero registro.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <p className="mb-12">
-            Tener la herramienta adecuada es el primer paso. El siguiente es dominar tu presencia en video. Consulta nuestros <a href="/es/consejos-oratoria-video" className="text-purple-400 hover:text-purple-300 underline">5 consejos de oratoria para video</a> y lleva tus presentaciones al siguiente nivel.
+            Tener la herramienta correcta es el primer paso. El siguiente es dominar tu presencia en video. Consulta nuestros <a href="/es/consejos-oratoria-video" className="text-purple-400 hover:text-purple-300 underline">5 consejos de oratoria para video</a> y lleva tus presentaciones al siguiente nivel.
         </p>
 
         <SEOContentFAQ

@@ -7,14 +7,78 @@ export const ComoUsarTeleprompterEN = () => (
         </h1>
 
         <p className="lead text-xl text-slate-300 mb-8">
-            Recording videos can be a nightmare. You have an amazing script, but when it's time to face the camera, the words disappear. You stutter, forget key points, and end up with dozens of takes, wasting hours in editing. If this sounds familiar, a teleprompter isn't a luxury—it's a necessity.
+            First time trying a teleprompter? You open some random site, paste text, hit play and... DISASTER. Text scrolls too fast (you sound like a nervous auctioneer) or too slow (awkward pauses). You try to pause but need to <strong>touch the screen and shake the camera</strong>. After 40 minutes testing, you give up and go back to re-recording 20 times from memory.
         </p>
 
-        <div className="bg-slate-900 p-6 rounded-lg border border-slate-800 mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">The Core Problem: The Cognitive Load of Memorization</h2>
-            <p className="text-slate-300">
-                The human brain isn't optimized to do two complex things at once: remember a script word-for-word and present it charismatically and naturally. That's why TV actors, news anchors, and even presidents use teleprompters. They free the mind from the task of memorizing, allowing all energy to be focused on performance, intonation, and connecting with the audience. Trying to do it all "from memory" is a recipe for a robotic, lifeless video.
+        <p className="mb-6">
+            EXACTLY what happened to me the first time. I thought "teleprompter will change my life". Result? I spent MORE time fighting the tool than if I'd recorded without anything. The problem wasn't ME. It was using tools made for professional studios with $5000 equipment, not for solo creators recording with a phone.
+        </p>
+
+        <p className="mb-8">
+            This guide exists so you <strong>get it right the first time</strong>. I'll show you EXACTLY how to use a teleprompter the right way — not just the technical part ("paste text, hit play") but the TRICKS that separate who looks like reading from who looks like speaking naturally.
+        </p>
+
+        <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
+            <h2 className="text-3xl font-bold text-white mb-6">First Video: Without vs WITH Teleprompter</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-slate-900/70 p-6 rounded-lg border border-red-500/30">
+                    <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
+                        <span>❌</span> WITHOUT Teleprompter (Memorizing)
+                    </h3>
+                    <ul className="space-y-3 text-slate-300 text-sm">
+                        <li>🧠 <strong>Prep:</strong> 45min trying to memorize 2min of text</li>
+                        <li>🎬 <strong>Recording:</strong> 18 attempts (forgets midway, freezes, loses energy)</li>
+                        <li>⏱️ <strong>Total time:</strong> 1h32min to record 2min</li>
+                        <li>😓 <strong>Result:</strong> Video published with small "acceptable" stutters</li>
+                        <li>💬 <strong>Feedback:</strong> "Seems kinda nervous", "Is he reading something?"</li>
+                    </ul>
+                </div>
+                <div className="bg-slate-900/70 p-6 rounded-lg border border-green-500/30">
+                    <h3 className="font-bold text-green-400 mb-4 flex items-center gap-2">
+                        <span>✅</span> WITH Teleprompter (First Time Doing it RIGHT)
+                    </h3>
+                    <ul className="space-y-3 text-slate-300 text-sm">
+                        <li>🧠 <strong>Prep:</strong> 3min pasting text, adjusting speed</li>
+                        <li>🎬 <strong>Recording:</strong> 2 attempts (1st to test speed, 2nd is the keeper)</li>
+                        <li>⏱️ <strong>Total time:</strong> 12min to record 2min</li>
+                        <li>😊 <strong>Result:</strong> PERFECT video, zero stutters, energy maintained</li>
+                        <li>💬 <strong>Feedback:</strong> "Such confidence!", "Looks like a TV presenter"</li>
+                    </ul>
+                </div>
+            </div>
+            <p className="text-slate-400 text-sm mt-6 italic text-center">
+                💡 Difference: <strong className="text-green-400">-87% time</strong> (1h32→12min) + <strong className="text-green-400">professional quality</strong> on 1st try.
             </p>
+        </div>
+
+        <div className="bg-slate-900 p-6 rounded-lg border border-slate-800 mb-12">
+            <h2 className="text-3xl font-bold text-white mb-4">Why Beginners Fail (and How to Avoid It)</h2>
+            <p className="text-slate-300 mb-4">
+                90% of creators who test teleprompter for the first time QUIT. Not because the tool doesn't work, but because they make 3 classic mistakes:
+            </p>
+            <div className="space-y-4">
+                <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
+                    <h4 className="font-bold text-red-400 mb-2">Mistake #1: Font Too Large</h4>
+                    <p className="text-slate-300 text-sm">
+                        They think: "I need to see the text well" and set font size to 72px. Result? Your eyes make a <strong>wide left/right movement</strong> each line. Camera catches it. Audience notices you're reading.
+                        <span className="text-green-400 block mt-2">✅ <strong>Solution:</strong> Font 28-36px + stand FARTHER from screen. Eyes move less, looks natural.</span>
+                    </p>
+                </div>
+                <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
+                    <h4 className="font-bold text-red-400 mb-2">Mistake #2: Text Far from Camera</h4>
+                    <p className="text-slate-300 text-sm">
+                        They put teleprompter in one corner of screen, camera in another. You record looking 20º to the SIDE of camera. Audience feels you're not talking to THEM.
+                        <span className="text-green-400 block mt-2">✅ <strong>Solution:</strong> Stick teleprompter window LITERALLY over camera. Closer the better.</span>
+                    </p>
+                </div>
+                <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
+                    <h4 className="font-bold text-red-400 mb-2">Mistake #3: Wrong Speed</h4>
+                    <p className="text-slate-300 text-sm">
+                        They leave on default (usually too fast). You rush to keep up, run out of breath, lose naturalness. Or too slow: giant awkward pauses.
+                        <span className="text-green-400 block mt-2">✅ <strong>Solution:</strong> ALWAYS do a 30s test BEFORE recording. Adjust until it matches your natural speaking. There's no "universal correct speed".</span>
+                    </p>
+                </div>
+            </div>
         </div>
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">How to Use a Teleprompter: From Basic to Professional</h2>

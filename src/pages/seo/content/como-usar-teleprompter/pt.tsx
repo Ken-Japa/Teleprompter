@@ -8,14 +8,78 @@ export const ComoUsarTeleprompterPT = () => (
         </h1>
 
         <p className="lead text-xl text-slate-300 mb-8">
-            Gravar vídeos pode ser um pesadelo. Você tem um roteiro incrível, mas na hora de falar para a câmera, as palavras somem. Você gagueja, esquece pontos importantes e acaba com dezenas de tomadas, perdendo horas na edição. Se isso soa familiar, um teleprompter não é um luxo, é uma necessidade.
+            Primeira vez tentando usar teleprompter? Você abre um site qualquer, cola o texto, aperta play e... DESASTRE. O texto rola muito rápido (você parece um leiloeiro nervoso) ou devagar demais (pausas constrangedoras). Você tenta pausar mas precisa <strong>tocar na tela e tremer a câmera</strong>. Após 40 minutos testando, desiste e volta a regravar 20 vezes memorizando.
         </p>
 
-        <div className="bg-slate-900 p-6 rounded-lg border border-slate-800 mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">O Problema Central: A Carga Cognitiva da Memorização</h2>
-            <p className="text-slate-300">
-                O cérebro humano não é otimizado para fazer duas coisas complexas ao mesmo tempo: lembrar de um texto palavra por palavra e apresentá-lo de forma carismática e natural. É por isso que atores de TV, apresentadores de jornais e até presidentes usam teleprompters. Eles liberam a mente da tarefa de memorizar, permitindo que toda a energia seja focada na performance, na entonação e na conexão com a audiência. Tentar fazer tudo "de cabeça" é a receita para um vídeo robótico e sem vida.
+        <p className="mb-6">
+            EXATAMENTE o que aconteceu comigo na primeira vez. Pensei "teleprompter vai resolver minha vida". Resultado? Passei MAIS tempo brigando com a ferramenta do que se tivesse gravado sem nada. O problema não era EU. Era usar ferramentas feitas pra estúdios profissionais com equipamentos de $5000, não pra criadores solo gravando c om celular.
+        </p>
+
+        <p className="mb-8">
+            Este guia existe pra você <strong>acertar na primeira vez</strong>. Vou te mostrar EXATAMENTE como usar teleprompter do jeito certo — não só a parte técnica ("cole texto, aperte play") mas os TRUQUES que separam quem parece lendo de quem parece falando naturalmente.
+        </p>
+
+        <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
+            <h2 className="text-3xl font-bold text-white mb-6">Primeiro Vídeo: Sem vs COM Teleprompter</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-slate-900/70 p-6 rounded-lg border border-red-500/30">
+                    <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
+                        <span>❌</span> SEM Teleprompter (Memorizando)
+                    </h3>
+                    <ul className="space-y-3 text-slate-300 text-sm">
+                        <li>🧠 <strong>Preparação:</strong> 45min tentando decorar 2min de texto</li>
+                        <li>🎬 <strong>Gravação:</strong> 18 tentativas (esquece no meio, trava, perde energia)</li>
+                        <li>⏱️ <strong>Tempo total:</strong> 1h32min pra gravar 2min</li>
+                        <li>😓 <strong>Resultado:</strong> Vídeo publicado com pequenas gaguejas "aceitáveis"</li>
+                        <li>💬 <strong>Feedback:</strong> "Parece meio nervoso", "Tá lendo algo?"</li>
+                    </ul>
+                </div>
+                <div className="bg-slate-900/70 p-6 rounded-lg border border-green-500/30">
+                    <h3 className="font-bold text-green-400 mb-4 flex items-center gap-2">
+                        <span>✅</span> COM Teleprompter (Primeira Vez Usando CERTO)
+                    </h3>
+                    <ul className="space-y-3 text-slate-300 text-sm">
+                        <li>🧠 <strong>Preparação:</strong> 3min colando texto, ajustando velocidade</li>
+                        <li>🎬 <strong>Gravação:</strong> 2 tentativas (1ª pra testar velocidade, 2ª é a boa)</li>
+                        <li>⏱️ <strong>Tempo total:</strong> 12min pra gravar 2min</li>
+                        <li>😊 <strong>Resultado:</strong> Vídeo PERFEITO, zero gaguejas, energia mantida</li>
+                        <li>💬 <strong>Feedback:</strong> "Que confiança!", "Parece apresentador de TV"</li>
+                    </ul>
+                </div>
+            </div>
+            <p className="text-slate-400 text-sm mt-6 italic text-center">
+                💡 Diferença: <strong className="text-green-400">-87% tempo</strong> (1h32→12min) + <strong className="text-green-400">qualidade profissional</strong> logo na 1ª vez.
             </p>
+        </div>
+
+        <div className="bg-slate-900 p-6 rounded-lg border border-slate-800 mb-12">
+            <h2 className="text-3xl font-bold text-white mb-4">Por Que Iniciantes Falham (e Como Evitar)</h2>
+            <p className="text-slate-300 mb-4">
+                90% dos criadores que testam teleprompter pela primeira vez DESISTEM. Não porque a ferramenta não funciona, mas porque cometem 3 erros clássicos:
+            </p>
+            <div className="space-y-4">
+                <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
+                    <h4 className="font-bold text-red-400 mb-2">Erro #1: Fonte Muito Grande</h4>
+                    <p className="text-slate-300 text-sm">
+                        Pensam: "Preciso ver bem o texto" e colocam fonte tamanho 72px. Resultado? Seus olhos fazem um <strong>movimento amplo esquerda/direita</strong> a cada linha. A câmera capta isso. Audiência percebe que você tá lendo.
+                        <span className="text-green-400 block mt-2">✅ <strong>Solução:</strong> Fonte 28-36px + ficar mais LONGE da tela. Olhos se movem menos, parece natural.</span>
+                    </p>
+                </div>
+                <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
+                    <h4 className="font-bold text-red-400 mb-2">Erro #2: Texto Longe da Câmera</h4>
+                    <p className="text-slate-300 text-sm">
+                        Colocam teleprompter num canto da tela, câmera em outro. Você grava olhando 20º pra LADO da câmera. Audiência sente que você não tá falando com ELA.
+                        <span className="text-green-400 block mt-2">✅ <strong>Solução:</strong> Cole a janela do teleprompter LITERALMENTE em cima da câmera. Quanto mais próximo, melhor.</span>
+                    </p>
+                </div>
+                <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
+                    <h4 className="font-bold text-red-400 mb-2">Erro #3: Velocidade Errada</h4>
+                    <p className="text-slate-300 text-sm">
+                        Deixam no padrão (geralmente muito rápido). Você corre pra acompanhar, fica sem ar, perde naturalidade. Ou muito lento: pausas constrangedoras gigantes.
+                        <span className="text-green-400 block mt-2">✅ <strong>Solução:</strong> SEMPRE faça um teste de 30s ANTES de gravar. Ajuste até parecer sua fala natural. Não existe "velocidade certa universal".</span>
+                    </p>
+                </div>
+            </div>
         </div>
 
         <h2 className="text-3xl font-bold text-white mt-12 mb-6">Como Usar um Teleprompter: Do Básico ao Profissional</h2>
