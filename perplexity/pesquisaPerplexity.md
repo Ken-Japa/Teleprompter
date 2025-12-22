@@ -127,3 +127,15 @@ Após analisar o estado atual do projeto PromptNinja, identifiquei que já possu
 
 ## 2. Funcionalidades de Nicho Identificadas
 Já temos suporte a **Fitness/Timer** (HUD de repetições), o que abre margem para o mercado de criadores de conteúdo de saúde/bem-estar, algo não explorado pela concorrência padrão.
+
+## 3 Funcionalidades novas já implementadas:
+
+## 1. Suporte Nativo a Pedais Bluetooth (Fácil)
+*   **Descrição:** Muitos músicos e palestrantes utilizam pedais que emulam teclas como `PageUp`, `PageDown`, `Home` e `End`. Atualmente, suportamos `Espaço` e `Setas`.
+*   **Implementação:** Adicionar aliases para estas teclas no `useKeyboardShortcuts.ts` e `HOTKEY_DEFAULTS`.
+*   **Impacto:** Melhora a experiência de músicos em palco e palestrantes que usam passadores de slide/pedais.
+
+## 2. Modo Anti-Glare / Outdoor (Fácil)
+*   **Descrição:** Usuários reclamam de legibilidade em ambientes externos com muita claridade.
+*   **Implementação:** Criar um novo tema (ex: `OUTDOOR`) com contraste extremo (ex: Amarelo Vibrante sobre fundo Preto Puro ou Branco sobre Preto) e fontes com peso extra.
+*   **Impacto:** Resolve a "Dor #85" de estabilidade e leitura em ambientes externos.
