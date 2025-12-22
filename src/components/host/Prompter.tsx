@@ -580,8 +580,8 @@ export const Prompter = memo(
 
         // If Focus Mode is active, we narrow the transparent window significantly
         // Expanded the window as requested: from 42-58% to 35-65% (30% of screen height)
-        const start = isFocusMode ? "25%" : "10%";
-        const end = isFocusMode ? "75%" : "90%";
+        const start = isFocusMode ? "40%" : "10%";
+        const end = isFocusMode ? "70%" : "90%";
 
         // Use a smooth gradient (fade) instead of hard stops
         // From Solid Color (Top) -> Transparent (Start) ... Transparent (End) -> Solid Color (Bottom)
