@@ -639,6 +639,8 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
       EXIT: "Sair",
       RESET: "Reiniciar",
       TOGGLE_HUD: "Mostrar/Ocultar Interface",
+      TOGGLE_CAMERA: "Alternar Câmera",
+      TOGGLE_WIDGET: "Mini-Janela (PiP)",
     },
   },
 };

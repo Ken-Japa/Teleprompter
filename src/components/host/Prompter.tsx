@@ -432,6 +432,8 @@ export const Prompter = memo(
         onExit: onExit,
         onReset: resetPrompter,
         onToggleHud: () => actions.setIsHudless(!isHudless),
+        onToggleCamera: () => actions.setIsCameraMode(!isCameraMode),
+        onToggleWidget: () => actions.setIsWidgetMode(!isWidgetMode),
       });
 
       // Voice control toggle

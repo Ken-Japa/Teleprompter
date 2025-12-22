@@ -629,6 +629,8 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
       EXIT: "Salir",
       RESET: "Reiniciar",
       TOGGLE_HUD: "Mostrar/Ocultar Interfaz",
+      TOGGLE_CAMERA: "Alternar Cámara",
+      TOGGLE_WIDGET: "Mini-Ventana (PiP)",
     },
   },
 };

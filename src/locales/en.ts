@@ -623,6 +623,8 @@ Paste your script here and customize your experience to start shining!`,
       EXIT: "Exit",
       RESET: "Reset",
       TOGGLE_HUD: "Toggle HUD",
+      TOGGLE_CAMERA: "Toggle Camera",
+      TOGGLE_WIDGET: "Toggle PiP",
     },
   },
 };

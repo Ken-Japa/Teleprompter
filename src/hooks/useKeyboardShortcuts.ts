@@ -16,6 +16,8 @@ interface KeyboardShortcutsProps {
   onExit?: () => void;
   onReset?: () => void;
   onToggleHud?: () => void;
+  onToggleCamera?: () => void;
+  onToggleWidget?: () => void;
 }
 
 /**
@@ -34,7 +36,9 @@ export const useKeyboardShortcuts = ({
   onToggleFocus,
   onExit,
   onReset,
-  onToggleHud
+  onToggleHud,
+  onToggleCamera,
+  onToggleWidget
 }: KeyboardShortcutsProps) => {
   // Ler configurações do localStorage
   const [customHotkeys] = useLocalStorage<HotkeyConfig>("neonprompt_hotkeys_v1", HOTKEY_DEFAULTS as unknown as HotkeyConfig);
@@ -77,37 +81,53 @@ export const useKeyboardShortcuts = ({
           break;
         case HotkeyAction.SPEED_UP:
           e.preventDefault();
-          onSpeedChange(Math.min(speed + 1, 20)); // Aumenta velocidade
+          onSpeedChange(Math.min(speed + 1, 10)); // Match MAX_SPEED=10
           break;
         case HotkeyAction.SPEED_DOWN:
           e.preventDefault();
-          onSpeedChange(Math.max(speed - 1, 0)); // Diminui velocidade
+          onSpeedChange(Math.max(speed - 1, 0));
           break;
         case HotkeyAction.FONT_INCREASE:
-          if (e.ctrlKey || e.metaKey) return; // Permite zoom do navegador
+          if (e.ctrlKey || e.metaKey) return;
+          e.preventDefault();
           onFontSizeChange(fontSize + 5);
           break;
         case HotkeyAction.FONT_DECREASE:
           if (e.ctrlKey || e.metaKey) return;
+          e.preventDefault();
           onFontSizeChange(Math.max(10, fontSize - 5));
           break;
         case HotkeyAction.TOGGLE_MIRROR:
+          e.preventDefault();
           onToggleMirror();
           break;
         case HotkeyAction.TOGGLE_FLIP:
+          e.preventDefault();
           onToggleFlip();
           break;
         case HotkeyAction.TOGGLE_FOCUS:
+          e.preventDefault();
           onToggleFocus();
           break;
         case HotkeyAction.EXIT:
+          e.preventDefault();
           if (onExit) onExit();
           break;
         case HotkeyAction.RESET:
+          e.preventDefault();
           if (onReset) onReset();
           break;
         case HotkeyAction.TOGGLE_HUD:
+          e.preventDefault();
           if (onToggleHud) onToggleHud();
+          break;
+        case HotkeyAction.TOGGLE_CAMERA:
+          e.preventDefault();
+          if (onToggleCamera) onToggleCamera();
+          break;
+        case HotkeyAction.TOGGLE_WIDGET:
+          e.preventDefault();
+          if (onToggleWidget) onToggleWidget();
           break;
       }
     };
@@ -127,6 +147,8 @@ export const useKeyboardShortcuts = ({
     onToggleFocus,
     onExit,
     onReset,
-    onToggleHud
+    onToggleHud,
+    onToggleCamera,
+    onToggleWidget
   ]);
 };

@@ -11,14 +11,19 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({ isOpen, onClose })
   const { t } = useTranslation();
 
   const shortcuts = [
-    { keys: ["Space", "Enter"], desc: "Play / Pause" },
-    { keys: ["↑"], desc: t("host.controls.speed") + " (+)" },
-    { keys: ["↓"], desc: t("host.controls.speed") + " (-)" },
-    { keys: ["+"], desc: t("host.controls.size") + " (+)" },
-    { keys: ["-"], desc: t("host.controls.size") + " (-)" },
-    { keys: ["M"], desc: t("host.mirror") },
-    { keys: ["V"], desc: t("host.mirrorV") },
-    { keys: ["F"], desc: t("host.controls.focusLine") },
+    { action: 'TOGGLE_PLAY', keys: ["Space", "Enter", "PgDn", "End"] },
+    { action: 'SPEED_UP', keys: ["↑"] },
+    { action: 'SPEED_DOWN', keys: ["↓"] },
+    { action: 'FONT_INCREASE', keys: ["+"] },
+    { action: 'FONT_DECREASE', keys: ["-"] },
+    { action: 'TOGGLE_MIRROR', keys: ["M"] },
+    { action: 'TOGGLE_FLIP', keys: ["V"] },
+    { action: 'TOGGLE_FOCUS', keys: ["F"] },
+    { action: 'TOGGLE_HUD', keys: ["H"] },
+    { action: 'TOGGLE_CAMERA', keys: ["C"] },
+    { action: 'TOGGLE_WIDGET', keys: ["W"] },
+    { action: 'RESET', keys: ["R", "PgUp", "Home"] },
+    { action: 'EXIT', keys: ["Esc"] },
   ];
 
   return (
@@ -46,7 +51,7 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({ isOpen, onClose })
                 <path d="M1.5 12.75a.75.75 0 01.75-.75h4.862a2.25 2.25 0 012.187 1.908l.33 2.115.397-.397a2.25 2.25 0 011.59-.659h3.804a2.25 2.25 0 011.591.659l.397.397.33-2.115a2.25 2.25 0 012.187-1.908h4.862a.75.75 0 010 1.5h-4.862a.75.75 0 00-.729.636l-.37 2.37a.75.75 0 01-.74.634h-4.52a.75.75 0 01-.74-.634l-.37-2.37a.75.75 0 00-.729-.636H2.25a.75.75 0 01-.75-.75z" />
               </svg>
             </div>
-            <h3 className="text-xl font-bold text-white">Atalhos de Teclado</h3>
+            <h3 className="text-xl font-bold text-white">{t('hotkeys.title')}</h3>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {shortcuts.map((s, i) => (
@@ -58,7 +63,7 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({ isOpen, onClose })
                     </kbd>
                   ))}
                 </div>
-                <span className="text-sm text-slate-400 font-medium">{s.desc}</span>
+                <span className="text-sm text-slate-400 font-medium">{t(`hotkeys.actions.${s.action}`)}</span>
               </div>
             ))}
           </div>

@@ -55,6 +55,8 @@ export const HOTKEY_DEFAULTS: Record<string, string> = {
     EXIT: "Escape",
     RESET: "KeyR",
     TOGGLE_HUD: "KeyH",
+    TOGGLE_CAMERA: "KeyC",
+    TOGGLE_WIDGET: "KeyW",
 };
 
 // Physics & Scrolling Constants
