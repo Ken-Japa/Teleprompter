@@ -54,3 +54,4 @@ O objetivo é manter o conteúdo organizado, facilitando a análise de desempenh
 - **Padrão de URL:** Quase todas as URLs seguem o padrão `/nome-da-pagina` em PT, e `/en/english-slug` e `/es/slug-espanol` nas outras línguas.
 - **Componentes:** Cada arquivo `.tsx` geralmente contém o conteúdo traduzido ou importado de arquivos separados.
 - **Estrutura:** Todas usam `SeoPageLayout` para garantir consistência de meta tags e estrutura visual.
+Existe uma página /guia-completo-teleprompter que é um HUB central com todos as paginas de SEO parasita centralizadas.

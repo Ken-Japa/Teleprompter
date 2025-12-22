@@ -56,8 +56,17 @@ window.addEventListener("error", (event) => {
 // Global handler for unhandled promise rejections
 window.addEventListener("unhandledrejection", (event) => {
     const reason = event.reason?.message || event.reason || "Unknown rejection";
+    const reasonStr = String(reason);
 
-    trackError("unhandled_promise_rejection", String(reason));
+    // Filter out extremely generic browser-level "Rejected" noise 
+    // which often comes from Service Worker registration failures or 
+    // third-party scripts (like Clarity) in restricted environments.
+    if (reasonStr === "Rejected" || reasonStr === "Unknown rejection") {
+        console.warn("Filtered generic unhandled rejection:", reasonStr);
+        return;
+    }
+
+    trackError("unhandled_promise_rejection", reasonStr);
 
     console.error("Unhandled promise rejection:", {
         reason: event.reason,
@@ -96,6 +105,12 @@ initAnalyticsCompatibility();
 
 
 window.addEventListener('load', () => {
-    registerSW({ immediate: true });
+    registerSW({ 
+        immediate: true,
+        onRegisterError(error) {
+            // Log as warning instead of letting it bubble as an unhandled rejection
+            console.warn("Service Worker registration failed (not a critical error):", error);
+        }
+    });
 });
 

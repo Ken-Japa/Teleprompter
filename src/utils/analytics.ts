@@ -167,6 +167,11 @@ export function stopPageUsageTracking(): void {
  * @param message A mensagem de erro ou detalhes.
  */
 export function trackError(errorType: string, message: string): void {
+    // Filter out non-actionable generic browser noise
+    if (message === "Rejected" || message === "Unknown error" || message === "Unknown rejection") {
+        return;
+    }
+
     // Send to Google Analytics
     trackEvent("app_error", { error_type: errorType, message: message });
 

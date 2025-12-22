@@ -20,6 +20,8 @@ export const initSentry = () => {
                 "ResizeObserver loop limit exceeded",
                 "Non-Error promise rejection captured",
                 "Non-Error exception captured",
+                "usedContainerScopedDefaults", // Microsoft Clarity noise
+                "NotAllowedError: Permission was denied", // Gtag/Browser privacy noise
             ],
 
             // Custom error handler before sending to Sentry
