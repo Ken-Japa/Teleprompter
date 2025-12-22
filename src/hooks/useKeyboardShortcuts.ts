@@ -63,6 +63,10 @@ export const useKeyboardShortcuts = ({
       // Hardcode Alias: Enter é sempre Play (pedido do usuário)
       if (e.code === 'Enter') action = HotkeyAction.TOGGLE_PLAY;
 
+      // Bluetooth Pedal Aliases
+      if (e.code === 'PageDown' || e.code === 'End') action = HotkeyAction.TOGGLE_PLAY;
+      if (e.code === 'PageUp' || e.code === 'Home') action = HotkeyAction.RESET;
+
       if (!action) return;
 
       // 2. Executar Ação
