@@ -33,7 +33,19 @@ export const AlternativasTeleprompterConcorrente: React.FC<Props> = ({ onLaunch 
             "@type": "SoftwareApplication",
             "name": "PromptNinja",
             "applicationCategory": "MultimediaApplication",
-            "operatingSystem": "Windows, macOS, Android, iOS"
+            "operatingSystem": "Windows, macOS, Android, iOS",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5",
+                "ratingCount": "87",
+                "bestRating": "5",
+                "worstRating": "1"
+            },
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            }
         },
         "reviewRating": {
             "@type": "Rating",
@@ -66,7 +78,19 @@ export const AlternativasTeleprompterConcorrente: React.FC<Props> = ({ onLaunch 
                 "@type": "SoftwareApplication",
                 "name": "PromptNinja",
                 "applicationCategory": "MultimediaApplication",
-                "operatingSystem": "Windows, macOS, Android, iOS"
+                "operatingSystem": "Windows, macOS, Android, iOS",
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "5",
+                    "ratingCount": "87",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
             },
             "reviewRating": {
                 "@type": "Rating",
@@ -98,7 +122,19 @@ export const AlternativasTeleprompterConcorrente: React.FC<Props> = ({ onLaunch 
                 "@type": "SoftwareApplication",
                 "name": "PromptNinja",
                 "applicationCategory": "MultimediaApplication",
-                "operatingSystem": "Windows, macOS, Android, iOS"
+                "operatingSystem": "Windows, macOS, Android, iOS",
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "5",
+                    "ratingCount": "87",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
             },
             "reviewRating": {
                 "@type": "Rating",

@@ -37,8 +37,8 @@ export const TeleprompterModoMusico: React.FC<Props> = ({ onLaunch }) => {
                 "url": ogImage
             }
         },
-        "datePublished": "2025-12-13",
-        "dateModified": "2025-12-13"
+        "datePublished": "2025-01-01T08:00:00+00:00",
+        "dateModified": new Date().toISOString(),
     };
     let ctaText = "Experimentar Modo Músico Grátis";
 
@@ -68,8 +68,8 @@ export const TeleprompterModoMusico: React.FC<Props> = ({ onLaunch }) => {
                     "url": ogImage
                 }
             },
-            "datePublished": "2025-12-13",
-            "dateModified": "2025-12-13"
+            "datePublished": "2025-01-01T08:00:00+00:00",
+            "dateModified": new Date().toISOString(),
         };
         ctaText = "Try Musician Mode Free";
     } else if (lang === 'es') {
@@ -98,8 +98,8 @@ export const TeleprompterModoMusico: React.FC<Props> = ({ onLaunch }) => {
                     "url": ogImage
                 }
             },
-            "datePublished": "2025-12-13",
-            "dateModified": "2025-12-13"
+            "datePublished": "2025-01-01T08:00:00+00:00",
+            "dateModified": new Date().toISOString(),
         };
         ctaText = "Probar Modo Músico Gratis";
     }

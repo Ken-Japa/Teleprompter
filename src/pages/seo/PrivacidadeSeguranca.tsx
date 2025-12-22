@@ -24,9 +24,11 @@ export const PrivacidadeSeguranca: React.FC<Props> = ({ onLaunch }) => {
         "@type": "TechArticle",
         "headline": title,
         "description": description,
+        "image": ogImage,
         "author": {
             "@type": "Organization",
-            "name": "PromptNinja"
+            "name": "PromptNinja",
+            "url": "https://promptninja.solutionkit.com.br"
         },
         "about": "WebRTC Privacy and Peer-to-Peer Security"
     };

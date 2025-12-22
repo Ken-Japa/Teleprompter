@@ -16,6 +16,7 @@ export const TeleprompterAcessibilidade: React.FC<Props> = ({ onLaunch }) => {
     let title = "Teleprompter para TDAH e Dislexia: Fonte OpenDyslexic Grátis";
     let description = "Descubra como o PromptNinja ajuda pessoas com TDAH e Dislexia a gravar vídeos com foco e fluidez usando fontes especiais e cores adaptadas.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-acessibilidade";
+    let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
 
     let schema: object = {
         "@context": "https://schema.org",
@@ -23,6 +24,7 @@ export const TeleprompterAcessibilidade: React.FC<Props> = ({ onLaunch }) => {
         "headline": title,
         "description": description,
         "url": canonicalUrl,
+        "image": ogImage,
         "author": {
             "@type": "Organization",
             "name": "PromptNinja",
@@ -41,6 +43,7 @@ export const TeleprompterAcessibilidade: React.FC<Props> = ({ onLaunch }) => {
             "headline": title,
             "description": description,
             "url": canonicalUrl,
+            "image": ogImage,
             "author": {
                 "@type": "Organization",
                 "name": "PromptNinja",
@@ -58,6 +61,7 @@ export const TeleprompterAcessibilidade: React.FC<Props> = ({ onLaunch }) => {
             "headline": title,
             "description": description,
             "url": canonicalUrl,
+            "image": ogImage,
             "author": {
                 "@type": "Organization",
                 "name": "PromptNinja",

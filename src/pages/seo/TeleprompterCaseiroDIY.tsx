@@ -68,36 +68,6 @@ export const TeleprompterCaseiroDIY: React.FC<Props> = ({ onLaunch }) => {
                         "@type": "HowToStep",
                         "name": "Configurar o Software",
                         "text": "Acesse o PromptNinja no seu tablet, cole seu texto e ative o Modo Espelho.",
-                        "url": canonicalUrl + "#passo-5"
-                    }
-                ]
-            },
-            {
-                "@type": "FAQPage",
-                "mainEntity": [
-                    {
-                        "@type": "Question",
-                        "name": "Preciso de um vidro especial para teleprompter?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Não. Um vidro de porta-retrato comum funciona bem para projetos caseiros. O vidro profissional 'beam splitter' é melhor, mas muito mais caro."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Como espelhar o texto no teleprompter?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Use um software como o PromptNinja, que possui uma função 'Modo Espelho' gratuita que inverte o texto para reflexão correta."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Posso usar o celular como teleprompter?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Sim, qualquer celular com navegador funciona. Basta acessar o site do PromptNinja e usar."
-                        }
                     }
                 ]
             }
@@ -163,43 +133,6 @@ export const TeleprompterCaseiroDIY: React.FC<Props> = ({ onLaunch }) => {
                             "url": canonicalUrl + "#step-5"
                         }
                     ]
-                },
-                {
-                    "@type": "FAQPage",
-                    "mainEntity": [
-                        {
-                            "@type": "Question",
-                            "name": "Why does the text look backwards on my DIY teleprompter?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "This happens because of the physical reflection on the glass. To fix this, use PromptNinja and toggle 'Mirror Mode', which horizontally flips the text so it's readable in the reflection."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "Do I need special glass for a teleprompter?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "No. Ordinary picture frame glass works well for DIY projects. Professional 'beam splitter' glass is better but much more expensive."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "How do I mirror text for teleprompter?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Use software like PromptNinja, which has a free 'Mirror Mode' feature that flips text for correct reflection."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "Can I use my phone as a teleprompter?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Yes, any phone with a browser works. Just access the PromptNinja website and use it."
-                            }
-                        }
-                    ]
                 }
             ]
         };
@@ -260,43 +193,6 @@ export const TeleprompterCaseiroDIY: React.FC<Props> = ({ onLaunch }) => {
                             "name": "Configurar el Software",
                             "text": "Abre PromptNinja en tu tablet, pega tu guion y activa el Modo Espejo.",
                             "url": canonicalUrl + "#paso-5"
-                        }
-                    ]
-                },
-                {
-                    "@type": "FAQPage",
-                    "mainEntity": [
-                        {
-                            "@type": "Question",
-                            "name": "¿Por qué el texto se ve al revés en mi teleprompter casero?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Esto sucede por la reflexión física en el vidrio. Para solucionarlo, usa PromptNinja y activa el botón de 'Modo Espejo', que invierte el texto horizontalmente para que sea legible en el reflejo."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "¿Necesito un vidrio especial para teleprompter?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "No. Un vidrio de marco de fotos común funciona bien para proyectos caseros. Los vidrios profesionales 'beam splitter' son mejores pero mucho más caros."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "¿Cómo poner el texto espejo en teleprompter?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Usa un software como PromptNinja, que tiene una función gratuita de 'Modo Espejo' que invierte el texto para el reflejo correcto."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "¿Puedo usar mi móvil como teleprompter?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Sí, cualquier móvil con navegador funciona. Solo accede al sitio de PromptNinja."
-                            }
                         }
                     ]
                 }

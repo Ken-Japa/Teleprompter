@@ -25,7 +25,8 @@ export const TeleprompterOQueE: React.FC<Props> = ({ onLaunch }) => {
         "image": ogImage,
         "author": {
             "@type": "Organization",
-            "name": "PromptNinja"
+            "name": "PromptNinja",
+            "url": "https://promptninja.solutionkit.com.br"
         },
         "publisher": {
             "@type": "Organization",
@@ -51,7 +52,8 @@ export const TeleprompterOQueE: React.FC<Props> = ({ onLaunch }) => {
             "image": ogImage,
             "author": {
                 "@type": "Organization",
-                "name": "PromptNinja"
+                "name": "PromptNinja",
+                "url": "https://promptninja.solutionkit.com.br"
             },
             "publisher": {
                 "@type": "Organization",
@@ -76,7 +78,8 @@ export const TeleprompterOQueE: React.FC<Props> = ({ onLaunch }) => {
             "image": ogImage,
             "author": {
                 "@type": "Organization",
-                "name": "PromptNinja"
+                "name": "PromptNinja",
+                "url": "https://promptninja.solutionkit.com.br"
             },
             "publisher": {
                 "@type": "Organization",
