@@ -73,8 +73,8 @@ export const PrompterHUD = memo(
         // Initialize minimized state based on screen width
         useEffect(() => {
             const checkMobile = () => {
-                // If it's a small screen (mobile), start minimized
-                if (window.innerWidth < 640) {
+                // If it's a small screen (mobile/tablet), start minimized
+                if (window.innerWidth < 1024) {
                     setIsMinimized(true);
                 } else {
                     setIsMinimized(false);
@@ -204,8 +204,8 @@ export const PrompterHUD = memo(
                 </div>
 
 
-                {/* Show More / Advanced Toggle */}
-                <div className="hidden sm:flex items-center">
+                {/* Show More / Advanced Toggle - Only on Desktop (XL+) */}
+                <div className="hidden xl:flex items-center">
                     <button
                         onClick={handleToggleAdvanced}
                         className="text-xs text-slate-400 hover:text-brand-400 underline decoration-dotted transition-colors mx-2 whitespace-nowrap"
@@ -259,11 +259,11 @@ export const PrompterHUD = memo(
                     </div>
                 )}
 
-                {/* Minimize Button - Visible on Mobile mainly, but can be useful everywhere */}
+                {/* Minimize Button - Visible on Mobile and Tablet (below XL) */}
                 <S.IconButton
                     onClick={() => setIsMinimized(true)}
                     title="Minimize Controls"
-                    className="ml-2 w-9 h-9 flex sm:hidden items-center justify-center text-slate-400 hover:text-white"
+                    className="ml-2 w-9 h-9 flex xl:hidden items-center justify-center text-slate-400 hover:text-white"
                 >
                     <MinimizeIcon className="w-5 h-5" />
                 </S.IconButton >
