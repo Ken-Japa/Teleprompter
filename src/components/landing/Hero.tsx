@@ -63,7 +63,10 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
 
             <div className="flex justify-center mb-16 relative z-10 animate-fade-in" style={{ animationDelay: '0.4s' }}>
                 <button
-                    onClick={onLaunch}
+                    onClick={() => {
+                        localStorage.setItem("PROMPTNINJA_START_TRIAL", "true");
+                        onLaunch();
+                    }}
                     className="group flex items-center gap-2 text-brand-300 hover:text-brand-200 transition-colors text-md font-medium"
                 >
                     <span className="w-8 h-px bg-brand-500/30 group-hover:w-12 transition-all"></span>

@@ -65,7 +65,10 @@ export const Pricing: React.FC<PricingProps> = ({ onLaunch }) => {
                         />
                         <div className="mt-4 text-center">
                             <button
-                                onClick={onLaunch}
+                                onClick={() => {
+                                    localStorage.setItem("PROMPTNINJA_START_TRIAL", "true");
+                                    onLaunch();
+                                }}
                                 className="text-sm font-bold text-brand-400 hover:text-brand-300 transition-colors flex items-center justify-center gap-2 mx-auto py-2 px-4 rounded-lg hover:bg-white/5"
                             >
                                 ⚡ {t("host.paywall.trialButton")}

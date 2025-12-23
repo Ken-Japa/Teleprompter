@@ -7,7 +7,7 @@ Este documento detalha todas as funcionalidades do PromptNinja, desde os recurso
 ## 🚀 1. Core & Arquitetura (Infraestrutura)
 *   **Conexão Peer-to-Peer (P2P):** Utiliza tecnologia WebRTC para conexão direta entre PC (Host) e Celular (Remote) sem passar por servidores de streaming, garantindo latência próxima de zero (<10ms).
 *   **PWA (Progressive Web App):** Pode ser instalado como um aplicativo nativo no Chrome, Edge, Safari e Android/iOS, funcionando em tela cheia.
-*   **100% Offline:** Após carregada, a aplicação funciona sem internet (ideal para gravação em modo avião ou locais sem sinal).
+*   **100% Offline:** Após carregada, a aplicação funciona sem internet (ideal para gravação em modo avião ou locais sem sinal). O texto do teleprompter persiste mesmo atualizando a página.
 *   **Privacidade Total:** Os roteiros ficam guardados apenas na memória temporária do seu navegador (RAM). Nada é enviado para bancos de dados.
 
 ---
@@ -19,6 +19,7 @@ Este documento detalha todas as funcionalidades do PromptNinja, desde os recurso
 *   **Tipografia Selecionável:**
     *   **Sans-serif Profissional:** (Inter/Outfit) para máxima clareza.
     *   **OpenDyslexic:** Fonte especializada para facilitar a leitura por pessoas com dislexia.
+    *   Outras: Roboto Mono, Poppins, Lexend.
 *   **Modo Todo em Maiúsculas (Case):** Transforma o texto instantaneamente para CAIXA ALTA com um clique.
 
 ### Temas e Efeitos
@@ -91,9 +92,9 @@ Você pode inserir comandos entre colchetes diretamente no script para controle 
 ---
 
 ## 📹 6. Recursos de Vídeo & Gravação
-*   **Picture-in-Picture (PiP):** Abre o teleprompter em uma janela flutuante que fica por cima de outros apps (Zoom, Teams, Meet).
+*   **Picture-in-Picture (PiP):** Abre o teleprompter em uma janela flutuante que fica por cima de outros apps (Zoom, Teams, Meet). Transparencia não funcional ainda (problemas para implementar a transparencia)
 *   **Camera Overlay:** Exibe a webcam do seu computador como fundo do teleprompter (selfie mode).
-*   **Gravação de Áudio:** Permite gravar sua fala enquanto lê o roteiro para revisão e download em `.webm`.
+*   **Gravação de Áudio:** Permite gravar sua fala enquanto lê o roteiro para revisão e download em `.webm`. Permite gravar o vídeo também (mp4). Permite usar a camera como o background do teleprompter.
 *   **Calculadora de Pacing (WPM):** Calcula automaticamente o tempo de leitura com base no número de palavras e velocidade selecionada.
 *   **Sugestões por Plataforma:** Indica se o seu tempo de roteiro está adequado para TikTok/Reels (60s) ou YouTube (5min).
 
@@ -106,3 +107,11 @@ Você pode inserir comandos entre colchetes diretamente no script para controle 
 *   **Customização de Atalhos:** Altere as teclas de comando para o que for mais confortável.
 *   **Multi-Remote:** Conecte vários celulares no mesmo teleprompter (útil para equipes de produção).
 *   **Logo Personalizado:** Exibe seu próprio logo no teleprompter.
+
+## Novas funcionalidades
+*   Agora o usuário pode enviar seu feedback, também dar estrelas para o produto e compartilhar.
+*   Temos uma função que desativa o pro por 24 horas (locastorage encrypted)
+*   Modal de Tutorial
+*   Ao clicar em recursos pro ou usar o teleprompter por 20 minutos aparece o Redeem Modal (pede para assinar, ou compartilhar, dar um feedback ou ativar o pro por 24 horas gratis, se fechar tem um countdown de 3 segundos e fecha).
+*   Cerca de 40 páginas de SEO parasita (long-tail) para atrair trafégo orgânico.
+*   Diversos eventos para rastrear o uso pelo analytics (destacam-se: micro_conversion - uso de 3 minutos do usuario, paywall_cta_click - interesse em assina ao clicar em comprar, pro_key_redeemed - assinatura efetuada, successful_connection - conexão p2p feita, pro_trial_started - inicio de trial pro por 24 horas, app_error - com tipo de erro e mensagem, setting_changed - quando o usuario muda uma configuração, )

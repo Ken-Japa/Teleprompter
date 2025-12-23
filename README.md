@@ -240,6 +240,7 @@ Estes eventos foram implementados especificamente para rastrear funcionalidades 
 | `paywall_view` | Modal de paywall exibido | `trigger` (string: manual/timer) |
 | `paywall_cta_click` | Botão do paywall clicado | `cta_type` (string) |
 | `pro_key_redeemed` | Chave Pro resgatada com sucesso | - |
+| `pro_trial_started` | Início de trial pro por 24 horas | - |
 
 #### Gravação
 

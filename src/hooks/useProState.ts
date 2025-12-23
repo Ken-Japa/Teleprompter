@@ -80,6 +80,15 @@ export const useProState = (elapsedTime: number) => {
         };
     }, [isPro, setShowPaywall]);
 
+    // Check for trial activation from landing page
+    useEffect(() => {
+        const shouldStartTrial = localStorage.getItem("PROMPTNINJA_START_TRIAL") === "true";
+        if (shouldStartTrial && !isPro) {
+            startTrial();
+            localStorage.removeItem("PROMPTNINJA_START_TRIAL");
+        }
+    }, [isPro]);
+
     // Paywall Timer Logic
     // Trigger Paywall when elapsed time reaches 20 minutes (1200 seconds)
     useEffect(() => {
