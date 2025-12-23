@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import * as S from "../ui/Styled";
 import { MicIcon } from "../ui/Icons";
+import { VoiceLanguageSelector } from "./VoiceLanguageSelector";
 
 interface BilingualTextEditorProps {
     primaryText: string;
@@ -13,7 +14,6 @@ interface BilingualTextEditorProps {
     secondaryLanguage?: string;
 }
 
-const SUPPORTED_LANGUAGES = ['pt', 'en', 'es', 'it', 'fr', 'de', 'ja', 'zh', 'other'];
 
 export const BilingualTextEditor: React.FC<BilingualTextEditorProps> = ({
     primaryText,
@@ -35,17 +35,6 @@ export const BilingualTextEditor: React.FC<BilingualTextEditorProps> = ({
         });
     };
 
-    const LanguageSelect = ({ value, onChangeLang }: { value: string, onChangeLang: (l: string) => void }) => (
-        <select
-            value={value}
-            onChange={(e) => onChangeLang(e.target.value)}
-            className="bg-slate-800 text-slate-300 text-xs rounded border border-slate-700 px-2 py-1 outline-none focus:border-brand-500/50 transition-colors"
-        >
-            {SUPPORTED_LANGUAGES.map(code => (
-                <option key={code} value={code}>{t(`bilingual.languages.${code}`)}</option>
-            ))}
-        </select>
-    );
 
     return (
         <div className="flex flex-col md:flex-row gap-2 h-full overflow-hidden">
@@ -56,9 +45,9 @@ export const BilingualTextEditor: React.FC<BilingualTextEditorProps> = ({
                         <label className="text-sm text-slate-400 font-medium">
                             {t("bilingual.primaryLanguage")}
                         </label>
-                        <LanguageSelect
+                        <VoiceLanguageSelector
                             value={primaryLanguage}
-                            onChangeLang={(l) => handleTextChange(primaryText, secondaryText, l, secondaryLanguage)}
+                            onChange={(l) => handleTextChange(primaryText, secondaryText, l, secondaryLanguage)}
                         />
                     </div>
 
@@ -93,9 +82,9 @@ export const BilingualTextEditor: React.FC<BilingualTextEditorProps> = ({
                         <label className="text-sm text-slate-400 font-medium">
                             {t("bilingual.secondaryLanguage")}
                         </label>
-                        <LanguageSelect
+                        <VoiceLanguageSelector
                             value={secondaryLanguage}
-                            onChangeLang={(l) => handleTextChange(primaryText, secondaryText, primaryLanguage, l)}
+                            onChange={(l) => handleTextChange(primaryText, secondaryText, primaryLanguage, l)}
                         />
                     </div>
 

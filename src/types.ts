@@ -143,6 +143,7 @@ export interface PrompterSettings {
     isBilingualMode: boolean; // Bilingual mode
     bilingualConfig?: BilingualConfig; // Bilingual configuration
     fontFamily: string;
+    voiceLanguage?: string; // Idioma manual para o controle de voz quando não estiver em modo bilíngue
 }
 
 export interface RemoteScrollHandler {

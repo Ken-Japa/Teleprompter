@@ -231,8 +231,8 @@ export const Prompter = memo(
             ? (bilingualConfig.primaryLanguage || 'pt')
             : (bilingualConfig.secondaryLanguage || 'en');
         }
-        return lang;
-      }, [isBilingualMode, bilingualConfig, lang]);
+        return settings.voiceLanguage || lang;
+      }, [isBilingualMode, bilingualConfig, lang, settings.voiceLanguage]);
 
       const { startListening, stopListening, resetVoice, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError } = useVoiceControl(
         voiceControlText,

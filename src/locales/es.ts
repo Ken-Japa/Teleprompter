@@ -328,6 +328,7 @@ export const es = {
       display: "Visualización",
       chroma: "Chroma Key",
       record: "Grabar",
+      voiceLanguage: "Idioma de Voz",
       stopRecord: "Detener Grabación",
       downloadRecord: "Descargar Grabación",
       recordNew: "Grabar Nuevo",
@@ -435,7 +436,8 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
       de: "Alemán",
       ja: "Japonés",
       zh: "Chino",
-      other: "Otro / Auto"
+      other: "Otro",
+      auto: "Automático (Idioma del Sitio)"
     },
   },
   pacing: {

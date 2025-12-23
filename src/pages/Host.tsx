@@ -85,6 +85,8 @@ export const Host: React.FC = () => {
                     } as any)}
                     isPro={isPro}
                     onUnlockPro={() => actions.setShowPaywall(true)}
+                    voiceLanguage={prompterSettings.voiceLanguage}
+                    onVoiceLanguageChange={actions.prompterActions.setVoiceLanguage}
                 />
             ) : (
                 <Prompter

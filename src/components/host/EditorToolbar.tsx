@@ -1,4 +1,5 @@
 import { memo, useState } from "react";
+import { VoiceLanguageSelector } from "./VoiceLanguageSelector";
 import * as S from "../ui/Styled";
 import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LaptopIcon, LanguagesIcon, CameraIcon, WidgetIcon } from "../ui/Icons";
 import { useTranslation } from "../../hooks/useTranslation";
@@ -23,9 +24,11 @@ interface EditorToolbarProps {
     onToggleWidgetMode: () => void;
     isPro?: boolean;
     onUnlockPro?: () => void;
+    voiceLanguage?: string;
+    onVoiceLanguageChange?: (lang: string) => void;
 }
 
-export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode, onToggleMusicianMode, isBilingualMode, onToggleBilingualMode, onStartHudless, isCameraMode, onToggleCameraMode, onToggleWidgetMode, isWidgetMode, isPro = false, onUnlockPro = () => { } }: EditorToolbarProps) => {
+export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode, onToggleMusicianMode, isBilingualMode, onToggleBilingualMode, onStartHudless, isCameraMode, onToggleCameraMode, onToggleWidgetMode, isWidgetMode, isPro = false, onUnlockPro = () => { }, voiceLanguage, onVoiceLanguageChange }: EditorToolbarProps) => {
     const { t } = useTranslation();
     const [showTutorialModal, setShowTutorialModal] = useState(false);
     const [showPacingModal, setShowPacingModal] = useState(false);
@@ -119,7 +122,7 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                 </div>
 
                 {/* 2. Actions (Middle on Mobile, Last on Desktop) */}
-                <div className="order-2 md:order-3 w-full md:w-auto flex flex-wrap justify-center gap-2 py-3 md:py-0 border-b border-white/5 md:border-0">
+                <div className="order-2 md:order-3 w-full md:w-auto flex flex-wrap md:flex-nowrap items-center justify-center gap-2 py-3 md:py-0 border-b border-white/5 md:border-0">
                     <S.IconButton
                         onClick={() => setShowPacingModal(true)}
                         title={t("pacing.button")}
@@ -167,6 +170,17 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
 
                     <div className="w-px h-6 bg-white/10 mx-1 hidden sm:block"></div>
                     <ShareButton variant="icon" className="w-9 h-9 rounded-full bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500/20 hover:text-indigo-300 border border-indigo-500/20" />
+
+                    {!isBilingualMode && onVoiceLanguageChange && (
+                        <div className="w-full md:w-auto flex items-center justify-center mt-2 md:mt-0">
+                            <div className="w-px h-6 bg-white/10 mx-1 hidden md:block"></div>
+                            <VoiceLanguageSelector
+                                value={voiceLanguage}
+                                onChange={onVoiceLanguageChange}
+                                className="scale-90 md:scale-100 origin-center"
+                            />
+                        </div>
+                    )}
                 </div>
 
 

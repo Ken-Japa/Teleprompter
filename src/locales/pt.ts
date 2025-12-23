@@ -326,6 +326,7 @@ export const pt = {
       display: "Exibição",
       chroma: "Chroma Key",
       record: "Gravar",
+      voiceLanguage: "Idioma de Voz",
       stopRecord: "Parar Gravação",
       downloadRecord: "Baixar Gravação",
       recordNew: "Gravar Novo",
@@ -435,7 +436,8 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
       de: "Alemão",
       ja: "Japonês",
       zh: "Chinês",
-      other: "Outro / Auto"
+      other: "Outro",
+      auto: "Automático (Idioma do Site)"
     },
   },
 

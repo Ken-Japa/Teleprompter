@@ -25,6 +25,7 @@ export interface PrompterActions {
     setIsBilingualMode: (val: boolean) => void;
     setBilingualConfig: (config: Partial<BilingualConfig>) => void;
     setFontFamily: (val: string) => void;
+    setVoiceLanguage: (val: string) => void;
 }
 
 export const usePrompterSettings = (isPro: boolean) => {
@@ -92,6 +93,10 @@ export const usePrompterSettings = (isPro: boolean) => {
             voiceTrackLanguage: "primary"
         }
     );
+    const [voiceLanguage, setVoiceLanguage] = useLocalStorage<string>(
+        "neonprompt_voice_language",
+        "" // "" significa auto/globalLang
+    );
 
     const cycleTheme = useCallback(() => {
         const themes = PROMPTER_DEFAULTS.THEME_ORDER;
@@ -150,6 +155,7 @@ export const usePrompterSettings = (isPro: boolean) => {
         isWidgetMode,
         isBilingualMode,
         bilingualConfig,
+        voiceLanguage,
     };
 
     const actions: PrompterActions = {
@@ -188,6 +194,7 @@ export const usePrompterSettings = (isPro: boolean) => {
             setBilingualConfig(prev => ({ ...prev, ...config }));
             trackSettingChange("bilingual_config", JSON.stringify(config));
         },
+        setVoiceLanguage: wrapSetter(setVoiceLanguage, "voice_language"),
     };
 
     return { settings, actions };

@@ -37,6 +37,8 @@ interface EditorProps {
 
     isPro: boolean;
     onUnlockPro: () => void;
+    voiceLanguage?: string;
+    onVoiceLanguageChange?: (lang: string) => void;
 }
 
 export const Editor: React.FC<EditorProps> = ({
@@ -45,7 +47,7 @@ export const Editor: React.FC<EditorProps> = ({
     isCameraMode, onToggleCameraMode, isWidgetMode, onToggleWidgetMode,
     bilingualTexts, onBilingualTextsChange,
     bilingualVoiceTrackLanguage, onBilingualVoiceTrackChange,
-    isPro, onUnlockPro
+    isPro, onUnlockPro, voiceLanguage, onVoiceLanguageChange
 }) => {
     const { t } = useTranslation();
 
@@ -112,6 +114,8 @@ export const Editor: React.FC<EditorProps> = ({
                         onToggleWidgetMode={onToggleWidgetMode}
                         isPro={isPro}
                         onUnlockPro={onUnlockPro}
+                        voiceLanguage={voiceLanguage}
+                        onVoiceLanguageChange={onVoiceLanguageChange}
                     />
 
                     {isBilingualMode ? (

@@ -320,6 +320,7 @@ export const en = {
       display: "Display",
       chroma: "Chroma Key",
       record: "Record",
+      voiceLanguage: "Voice Language",
       stopRecord: "Stop Recording",
       downloadRecord: "Download Recording",
       recordNew: "Record New",
@@ -426,7 +427,8 @@ Paste your script here and customize your experience to start shining!`,
       de: "German",
       ja: "Japanese",
       zh: "Chinese",
-      other: "Other / Auto"
+      other: "Other",
+      auto: "Automatic (Site Language)"
     },
   },
   pacing: {
