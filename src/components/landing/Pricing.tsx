@@ -37,7 +37,7 @@ export const Pricing: React.FC<PricingProps> = ({ onLaunch }) => {
                     </div>
 
                     {/* PRO Plan */}
-                    <div className="hover-lift hover-glow transition-smooth">
+                    <div className="hover-lift hover-glow transition-smooth rounded-2xl">
                         <PricingCard
                             title={t("landing.pricing.pro.title")}
                             description={t("landing.pricing.pro.desc")}
@@ -63,6 +63,14 @@ export const Pricing: React.FC<PricingProps> = ({ onLaunch }) => {
                                 window.open('https://pay.kiwify.com.br/dl571EZ', '_blank');
                             }}
                         />
+                        <div className="mt-4 text-center">
+                            <button
+                                onClick={onLaunch}
+                                className="text-sm font-bold text-brand-400 hover:text-brand-300 transition-colors flex items-center justify-center gap-2 mx-auto py-2 px-4 rounded-lg hover:bg-white/5"
+                            >
+                                ⚡ {t("host.paywall.trialButton")}
+                            </button>
+                        </div>
                     </div>
                 </div>
 

@@ -34,6 +34,7 @@ export const PROMPTER_DEFAULTS = {
         VOICE_MODE: "promptninja_voice_mode",
         RECORDING_MODE: "promptninja_recording_mode",
         PRO_STATUS: "promptninja_pro",
+        PRO_TRIAL: "promptninja_trial_data",
     },
     // Theme Definitions
     STANDARD_THEMES: [Theme.DEFAULT, Theme.PAPER, Theme.CONTRAST, Theme.MATRIX, Theme.CYBER, Theme.CREAM],

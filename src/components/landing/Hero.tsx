@@ -61,6 +61,17 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
                 </button>
             </div>
 
+            <div className="flex justify-center mb-16 relative z-10 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                <button
+                    onClick={onLaunch}
+                    className="group flex items-center gap-2 text-brand-300 hover:text-brand-200 transition-colors text-md font-medium"
+                >
+                    <span className="w-8 h-px bg-brand-500/30 group-hover:w-12 transition-all"></span>
+                    ⚡ {t("host.paywall.trialButton")}
+                    <span className="w-8 h-px bg-brand-500/30 group-hover:w-12 transition-all"></span>
+                </button>
+            </div>
+
             {/* Demo Visual - App Mockup */}
             <div className="relative max-w-5xl mx-auto mb-24 animate-fade-in-up perspective-1000 safe-container px-4" style={{ animationDelay: '0.3s' }}>
                 <div className="relative glass bg-slate-900/40 rounded-2xl shadow-2xl overflow-hidden transform rotate-x-2 transition-transform duration-500 hover:rotate-x-0 hover:scale-[1.01] group border border-white/10 card-depth">
@@ -241,6 +252,6 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
                 </p>
             </div>
 
-        </S.HeroSection>
+        </S.HeroSection >
     );
 };

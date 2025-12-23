@@ -89,6 +89,15 @@ export function trackConversion(conversionType: string): void {
     trackEvent("conversion", { type: conversionType });
 }
 
+/**
+ * Rastreia a ativação do trial de 24 horas.
+ */
+export function trackTrialActivation(): void {
+    trackEvent("pro_trial_started");
+    // Also track as a conversion
+    trackConversion("Trial");
+}
+
 let usageInterval: ReturnType<typeof setInterval> | null = null;
 let usageStartTime: number | null = null;
 

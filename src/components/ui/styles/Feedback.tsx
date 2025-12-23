@@ -77,8 +77,27 @@ export const PaywallModal = ({
   const { t } = useTranslation();
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-md bg-slate-950/80 animate-fadeIn">
-      <div className="relative w-full max-w-md bg-slate-900/90 rounded-3xl p-8 border border-brand-500/30 shadow-2xl shadow-brand-500/10 overflow-hidden">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-md bg-slate-950/80 animate-fadeIn"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-md bg-slate-900/90 rounded-3xl p-8 border border-brand-500/30 shadow-2xl shadow-brand-500/10 overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close Button "X" */}
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 p-2 text-slate-500 hover:text-white transition-colors z-20"
+            aria-label={t("host.paywall.close")}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        )}
+
         {/* Glow Effects */}
         <div className="absolute -top-20 -right-20 w-60 h-60 bg-brand-500/20 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
@@ -118,14 +137,6 @@ export const PaywallModal = ({
                 className="w-full py-4 px-6 bg-gradient-to-r from-brand-600 to-purple-600 hover:from-brand-500 hover:to-purple-500 text-white font-bold rounded-xl shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
               >
                 {t("host.paywall.cta")}
-              </button>
-            )}
-            {onClose && (
-              <button
-                onClick={onClose}
-                className="text-slate-500 hover:text-white text-sm font-medium transition-colors"
-              >
-                {onUpgrade ? t("host.paywall.maybeLater") : t("host.paywall.close")}
               </button>
             )}
           </div>

@@ -355,8 +355,10 @@ export const en = {
     paywall: {
       title: "PRO Feature Locked",
       unlock: "Unlock PRO",
-      desc: "This feature is exclusive to Ninja PROs. Unlock to use colors, voice, and unlimited time.",
+      desc: "This feature is exclusive to Ninja PROs. Unlock to use voice control, keyboard shortcuts, and unlimited time.",
       cta: "Unlock Lifetime",
+      trialButton: "Try PRO Mode for 24 hours",
+      trialActive: "PRO Mode (Trial) Active",
       close: "Close",
       inputPlaceholder: "Enter PRO key...",
       button: "Activate PRO",
@@ -366,7 +368,12 @@ export const en = {
       invalidKey: "Invalid unlock key. Please try again.",
       countdownMessage: "Returning to the page in...",
       freeAlternativeTitle: "Use FREE and Help Us!",
-      leaveReviewCta: "⭐ Continue Using Free and Leave 5 Stars on Google",
+      leaveReviewCta: "⭐ Keep Using for Free and Leave 5 Stars on Google",
+      feedbackQuestion: "Have critics or suggestions?",
+      faltam: "Remaining",
+      feedbackAction: "Give your feedback",
+      trialExpiredTitle: "Ninja for a day!",
+      trialExpiredDesc: "We hope your Ninja day was productive! Your settings have been saved, but Pro features are now locked. Get lifetime access to keep evolving.",
     },
 
     voice: {

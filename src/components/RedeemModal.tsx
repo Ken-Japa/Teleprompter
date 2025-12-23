@@ -12,6 +12,9 @@ interface RedeemModalProps {
   onOpenFeedback?: () => void;
   errorMessage: string | null;
   isValidating: boolean;
+  isTrialActive?: boolean;
+  trialEndTime?: number | null;
+  onStartTrial?: () => void;
 }
 
 export const RedeemModal: React.FC<RedeemModalProps> = ({
@@ -22,15 +25,23 @@ export const RedeemModal: React.FC<RedeemModalProps> = ({
   onClose,
   onOpenFeedback,
   errorMessage,
-  isValidating
+  isValidating,
+  isTrialActive,
+  trialEndTime,
+  onStartTrial
 }) => {
   const { t } = useTranslation();
+
+  const hasTrialRecentlyExpired = !isTrialActive && trialEndTime && trialEndTime < Date.now();
+
+  const title = hasTrialRecentlyExpired ? t("host.paywall.trialExpiredTitle") : t("host.paywall.title");
+  const desc = hasTrialRecentlyExpired ? t("host.paywall.trialExpiredDesc") : t("host.paywall.desc");
 
   if (!show) return null;
 
   return (
-    <S.PaywallModal title={t("host.paywall.title")} desc={t("host.paywall.desc")} onClose={onClose}>
-      <div className="flex flex-col space-y-3">
+    <S.PaywallModal title={title} desc={desc} onClose={onClose}>
+      <div className="flex flex-col space-y-5">
         {errorMessage && (
           <p className="text-red-500 text-center text-sm">{errorMessage}</p>
         )}
@@ -54,7 +65,34 @@ export const RedeemModal: React.FC<RedeemModalProps> = ({
         </button>
 
         <div className="text-center mt-6 pt-6 border-t border-slate-700">
-          <p className="text-sm text-slate-400 mb-3 font-semibold">
+          {!isTrialActive && onStartTrial && (
+            <button
+              onClick={() => {
+                trackEvent('paywall_cta_click', { cta_type: 'start_trial' });
+                onStartTrial();
+              }}
+              className="w-full py-3 px-6 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl transition-all duration-300 mt-2 border border-brand-400 group relative overflow-hidden"
+            >
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                ⚡ {t("host.paywall.trialButton")}
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+            </button>
+          )}
+
+          {isTrialActive && trialEndTime && (
+            <div className="bg-brand-500/10 border border-brand-500/20 rounded-xl p-3 text-center">
+              <p className="text-brand-400 font-bold text-sm flex items-center justify-center gap-2">
+                <span className="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></span>
+                {t("host.paywall.trialActive")}
+              </p>
+              <p className="text-xs text-slate-400 mt-1">
+                {t("host.paywall.faltam")} {Math.max(0, Math.floor((trialEndTime - Date.now()) / (1000 * 60 * 60)))}h {Math.max(0, Math.floor(((trialEndTime - Date.now()) / (1000 * 60)) % 60))}min
+              </p>
+            </div>
+          )}
+
+          <p className="text-sm text-slate-400 mt-6 mb-3 font-semibold">
             {t("host.paywall.freeAlternativeTitle")}
           </p>
           <div className="flex flex-col gap-2">
@@ -72,10 +110,10 @@ export const RedeemModal: React.FC<RedeemModalProps> = ({
             {onOpenFeedback && (
               <button
                 onClick={onOpenFeedback}
-                className="w-full py-2 px-4 text-xs text-slate-500 hover:text-slate-300 transition-colors flex items-center justify-center gap-2"
+                className="w-full pt-2 px-4 text-2xs text-slate-500 hover:text-slate-300 transition-colors flex items-center justify-center gap-2"
               >
-                <span>Tem críticas ou sugestões?</span>
-                <span className="underline">Dê seu feedback</span>
+                <span>{t("host.paywall.feedbackQuestion")}</span>
+                <span className="underline">{t("host.paywall.feedbackAction")}</span>
               </button>
             )}
           </div>

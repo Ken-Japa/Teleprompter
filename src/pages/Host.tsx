@@ -22,7 +22,7 @@ export const Host: React.FC = () => {
 
     // Separation of Concerns: Host is now a dumb component
     const { state, actions, refs } = useHostController();
-    const { text, isEditMode, peerId, status, isPro, showPaywall, unlockKey, prompterState, errorMessage, paywallErrorMessage, showCountdownModal, prompterSettings, isValidating, bilingualTexts } = state;
+    const { text, isEditMode, peerId, status, isPro, showPaywall, unlockKey, prompterState, errorMessage, paywallErrorMessage, showCountdownModal, prompterSettings, isValidating, bilingualTexts, isTrialActive, trialEndTime } = state;
 
     return (
         <>
@@ -38,6 +38,9 @@ export const Host: React.FC = () => {
                 }}
                 errorMessage={paywallErrorMessage}
                 isValidating={isValidating}
+                isTrialActive={isTrialActive}
+                trialEndTime={trialEndTime}
+                onStartTrial={actions.startTrial}
             />
 
             {showCountdownModal && (

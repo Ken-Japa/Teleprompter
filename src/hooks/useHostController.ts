@@ -54,7 +54,7 @@ export const useHostController = () => {
   // For now, we just keep it running. If we want to reset, we need a reset signal.
 
   // 5. Pro & Paywall Logic
-  const { isPro, showPaywall, setShowPaywall, unlockPro } = useProState(elapsedTime);
+  const { isPro, isTrialActive, trialEndTime, startTrial, showPaywall, setShowPaywall, unlockPro } = useProState(elapsedTime);
 
   // Check for redeem param in hash to open Paywall automatically
   useEffect(() => {
@@ -405,6 +405,8 @@ export const useHostController = () => {
       isValidating,
       isRecording,
       bilingualTexts,
+      isTrialActive,
+      trialEndTime,
     },
     actions: {
       setText,
@@ -427,6 +429,7 @@ export const useHostController = () => {
       startRemoteRecording,
       stopRemoteRecording,
       handleBilingualTextsChange,
+      startTrial,
     },
     refs: {
       prompterRef,
