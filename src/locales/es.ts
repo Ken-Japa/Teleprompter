@@ -45,6 +45,7 @@ export const es = {
       zeroSetup: "Cero Configuración. Sin Instalación.",
       offlineBadge: "Funciona Offline",
       privacyBadge: "Privacidad Total",
+      smallphrase: "Teleprompter gratuito para vídeos profesionales: sin congelamientos ni necesidad de instalar aplicaciones.",
       p2pSection: {
         headline: "Tu red local es el túnel. Cero retraso es la regla.",
         subheadline: "Olvida el 'delay' de 3 segundos de las apps comunes. Con tecnología WebRTC P2P, lo que tocas en el celular sucede en la pantalla en el mismo milisegundo.",
@@ -563,6 +564,11 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
         desc: "Detiene el desplazamiento automaticamente.",
         example: "[STOP]",
       },
+      next: {
+        title: "Próximo ou Anterior",
+        desc: "Avança ou volta para a próxima parte. Use atalhos de teclado ( →, ← ).",
+        example: "[PART X] [SLIDE X]",
+      },
       count: {
         title: "Conteo",
         desc: "Conteo de repeticiones. Ideal para ejercicios (hecho para integración con control de voz).",
@@ -638,6 +644,8 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
       TOGGLE_HUD: "Mostrar/Ocultar Interfaz",
       TOGGLE_CAMERA: "Alternar Cámara",
       TOGGLE_WIDGET: "Mini-Ventana (PiP)",
+      NEXT_PART: "Avanzar Parte",
+      PREVIOUS_PART: "Volver Parte",
     },
   },
 };

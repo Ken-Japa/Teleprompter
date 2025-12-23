@@ -68,14 +68,14 @@ export enum MessageType {
     PAUSE = "PAUSE",
     SPEED_UPDATE = "SPEED_UPDATE",
     SCROLL_DELTA = "SCROLL_DELTA",
-    SCROLL_STOP = "SCROLL_STOP", // New exact stop command
+    SCROLL_STOP = "SCROLL_STOP",
     SCROLL_SYNC = "SCROLL_SYNC",
     RESTART = "RESTART",
     SYNC_STATE = "SYNC_STATE",
     MIRROR_TOGGLE = "MIRROR_TOGGLE",
-    FONT_SIZE_UPDATE = "FONT_SIZE_UPDATE", // New
-    MARGIN_UPDATE = "MARGIN_UPDATE", // New
-    HEARTBEAT = "HEARTBEAT", // Keep-alive signal
+    FONT_SIZE_UPDATE = "FONT_SIZE_UPDATE",
+    MARGIN_UPDATE = "MARGIN_UPDATE",
+    HEARTBEAT = "HEARTBEAT",
     TEXT_UPDATE = "TEXT_UPDATE",
     SCROLL_TO = "SCROLL_TO",
     SETTINGS_UPDATE = "SETTINGS_UPDATE",
@@ -173,6 +173,7 @@ export type TextCommand =
     | { type: 'LOOP_START' }
     | { type: 'LOOP_END'; value: number }
     | { type: 'COUNT'; value: number }
+    | { type: 'PART'; name?: string }
     | { type: 'REST'; duration: number };
 
 export interface Sentence {
@@ -216,6 +217,8 @@ export enum HotkeyAction {
     TOGGLE_CAMERA = "TOGGLE_CAMERA",
     TOGGLE_WIDGET = "TOGGLE_WIDGET",
     TOGGLE_HUD = "TOGGLE_HUD",
+    PREVIOUS_PART = "PREVIOUS_PART",
+    NEXT_PART = "NEXT_PART",
 }
 
 export type HotkeyConfig = Record<HotkeyAction, string>;

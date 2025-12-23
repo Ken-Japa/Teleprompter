@@ -18,6 +18,8 @@ interface KeyboardShortcutsProps {
   onToggleHud?: () => void;
   onToggleCamera?: () => void;
   onToggleWidget?: () => void;
+  onPreviousPart?: () => void;
+  onNextPart?: () => void;
 }
 
 /**
@@ -38,7 +40,9 @@ export const useKeyboardShortcuts = ({
   onReset,
   onToggleHud,
   onToggleCamera,
-  onToggleWidget
+  onToggleWidget,
+  onPreviousPart,
+  onNextPart
 }: KeyboardShortcutsProps) => {
   // Ler configurações do localStorage
   const [customHotkeys] = useLocalStorage<HotkeyConfig>("neonprompt_hotkeys_v1", HOTKEY_DEFAULTS as unknown as HotkeyConfig);
@@ -68,8 +72,10 @@ export const useKeyboardShortcuts = ({
       if (e.code === 'Enter') action = HotkeyAction.TOGGLE_PLAY;
 
       // Bluetooth Pedal Aliases
-      if (e.code === 'PageDown' || e.code === 'End') action = HotkeyAction.TOGGLE_PLAY;
-      if (e.code === 'PageUp' || e.code === 'Home') action = HotkeyAction.RESET;
+      if (e.code === 'PageDown') action = HotkeyAction.TOGGLE_PLAY;
+      if (e.code === 'PageUp') action = HotkeyAction.RESET;
+      if (e.code === 'End') action = HotkeyAction.NEXT_PART;
+      if (e.code === 'Home') action = HotkeyAction.PREVIOUS_PART;
 
       if (!action) return;
 
@@ -129,6 +135,14 @@ export const useKeyboardShortcuts = ({
           e.preventDefault();
           if (onToggleWidget) onToggleWidget();
           break;
+        case HotkeyAction.PREVIOUS_PART:
+          e.preventDefault();
+          if (onPreviousPart) onPreviousPart();
+          break;
+        case HotkeyAction.NEXT_PART:
+          e.preventDefault();
+          if (onNextPart) onNextPart();
+          break;
       }
     };
 
@@ -149,6 +163,8 @@ export const useKeyboardShortcuts = ({
     onReset,
     onToggleHud,
     onToggleCamera,
-    onToggleWidget
+    onToggleWidget,
+    onPreviousPart,
+    onNextPart
   ]);
 };

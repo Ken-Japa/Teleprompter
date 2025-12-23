@@ -41,6 +41,7 @@ export const en = {
       zeroSetup: "Zero Setup. No Install.",
       offlineBadge: "Works Offline",
       privacyBadge: "Total Privacy",
+      smallphrase: "Free teleprompter for professional videos — no freezing, no app installation required.",
       p2pSection: {
         headline: "Your local network is the tunnel. Zero lag is the rule.",
         subheadline: "Forget the 3-second delay of common apps. With WebRTC P2P technology, what you tap on your phone happens on screen in the same millisecond.",
@@ -558,6 +559,11 @@ Paste your script here and customize your experience to start shining!`,
         desc: "Stops scrolling automatically.",
         example: "[STOP]",
       },
+      next: {
+        title: "Next or Previous",
+        desc: "Advances or goes back to the next part. Use keyboard shortcuts ( →, ←).",
+        example: "[PART X] [SLIDE X]",
+      },
       count: {
         title: "Count",
         desc: "Count of repetitions. Ideal for exercises (made for integration with voice control).",
@@ -632,6 +638,8 @@ Paste your script here and customize your experience to start shining!`,
       TOGGLE_HUD: "Toggle HUD",
       TOGGLE_CAMERA: "Toggle Camera",
       TOGGLE_WIDGET: "Toggle PiP",
+      NEXT_PART: "Next Part",
+      PREVIOUS_PART: "Previous Part",
     },
   },
 };

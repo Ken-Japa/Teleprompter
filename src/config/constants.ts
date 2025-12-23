@@ -17,7 +17,7 @@ export const APP_CONSTANTS = {
 export const PROMPTER_DEFAULTS = {
     FONT_SIZE: 64,
     MARGIN: 10,
-    FONT_FAMILY: "sans-serif", // 'sans-serif' (Inter/Outfit) or 'OpenDyslexic'
+    FONT_FAMILY: "sans-serif",
     IS_MIRRORED: false,
     IS_UPPERCASE: false,
     IS_FLIP_VERTICAL: false,
@@ -58,6 +58,8 @@ export const HOTKEY_DEFAULTS: Record<string, string> = {
     TOGGLE_HUD: "KeyH",
     TOGGLE_CAMERA: "KeyC",
     TOGGLE_WIDGET: "KeyW",
+    PREVIOUS_PART: "ArrowLeft",
+    NEXT_PART: "ArrowRight",
 };
 
 // Physics & Scrolling Constants

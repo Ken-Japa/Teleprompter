@@ -418,7 +418,6 @@ export const Prompter = memo(
         }
       }, [onStateChange, externalState.speed, resetVoice, resetPhysics, currentActiveElementRef, onReset]);
 
-      // Keyboard Shortcuts (Moved here to access resetPrompter)
       useKeyboardShortcuts({
         isPlaying: externalState.isPlaying,
         onTogglePlay: () => onStateChange(!externalState.isPlaying, externalState.speed),
@@ -434,7 +433,57 @@ export const Prompter = memo(
         onToggleHud: () => actions.setIsHudless(!isHudless),
         onToggleCamera: () => actions.setIsCameraMode(!isCameraMode),
         onToggleWidget: () => actions.setIsWidgetMode(!isWidgetMode),
+        onPreviousPart: () => handleJumpToPart('prev'),
+        onNextPart: () => handleJumpToPart('next'),
       });
+
+      // Part Jumping Logic
+      const partIndices = useMemo(() => {
+        return sentences
+          .map((s, idx) => (s.command?.type === 'PART' ? idx : -1))
+          .filter((idx) => idx !== -1);
+      }, [sentences]);
+
+      const handleJumpToPart = useCallback((direction: 'next' | 'prev') => {
+        if (partIndices.length === 0 || !scrollContainerRef.current) return;
+
+        const container = scrollContainerRef.current;
+        const scrollTop = container.scrollTop;
+        const readingZoneOffset = container.clientHeight * 0.1;
+        const currentPos = scrollTop + readingZoneOffset;
+
+        // Find positions of all parts
+        const partPositions = partIndices.map(idx => {
+          const el = document.getElementById(`sentence-${idx}`);
+          return { index: idx, top: el ? el.offsetTop : 0 };
+        }).filter(p => p.top > 0 || p.index === 0);
+
+        if (direction === 'next') {
+          const nextPart = partPositions.find(p => p.top > currentPos + 10);
+          if (nextPart) {
+            handleScrollToPart(nextPart.index);
+          }
+        } else {
+          // Find parts before current position
+          const prevParts = partPositions.filter(p => p.top < currentPos - 10);
+          if (prevParts.length > 0) {
+            handleScrollToPart(prevParts[prevParts.length - 1].index);
+          } else {
+            handleScrollTo(0);
+          }
+        }
+      }, [partIndices, handleScrollTo]);
+
+      const handleScrollToPart = useCallback((sentenceIndex: number) => {
+        const targetEl = document.getElementById(`sentence-${sentenceIndex}`);
+        if (targetEl && scrollContainerRef.current) {
+          const offsetCtx = scrollContainerRef.current.clientHeight * 0.1;
+          const targetPos = Math.max(0, targetEl.offsetTop - offsetCtx);
+          const maxScroll = scrollContainerRef.current.scrollHeight - scrollContainerRef.current.clientHeight;
+          const progress = maxScroll > 0 ? targetPos / maxScroll : 0;
+          handleScrollTo(progress);
+        }
+      }, [handleScrollTo]);
 
       // Voice control toggle
       const toggleVoice = useCallback(() => {
@@ -505,8 +554,10 @@ export const Prompter = memo(
               startRecording();
             }
           },
+          onPreviousPart: () => handleJumpToPart('prev'),
+          onNextPart: () => handleJumpToPart('next'),
         }),
-        [handleRemoteInput, handleScrollTo, resetPrompter, toggleVoice, wakeUpLoop, onRemoteVoiceUpdate, isRecording, stopRecording, startRecording]
+        [handleRemoteInput, handleScrollTo, resetPrompter, toggleVoice, wakeUpLoop, onRemoteVoiceUpdate, isRecording, stopRecording, startRecording, handleJumpToPart]
       );
 
       // Notify parent of recording status change

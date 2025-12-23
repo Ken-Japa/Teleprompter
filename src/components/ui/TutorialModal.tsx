@@ -11,7 +11,8 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({ isOpen, onClose })
   const { t } = useTranslation();
 
   const shortcuts = [
-    { action: 'TOGGLE_PLAY', keys: ["Space", "Enter", "PgDn", "End"] },
+    { action: 'TOGGLE_PLAY', keys: ["Space", "Enter", "PgDn"] },
+    { action: 'RESET', keys: ["R", "PgUp"] },
     { action: 'SPEED_UP', keys: ["↑"] },
     { action: 'SPEED_DOWN', keys: ["↓"] },
     { action: 'FONT_INCREASE', keys: ["+"] },
@@ -22,7 +23,8 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({ isOpen, onClose })
     { action: 'TOGGLE_HUD', keys: ["H"] },
     { action: 'TOGGLE_CAMERA', keys: ["C"] },
     { action: 'TOGGLE_WIDGET', keys: ["W"] },
-    { action: 'RESET', keys: ["R", "PgUp", "Home"] },
+    { action: 'NEXT_PART', keys: ["→", "End"] },
+    { action: 'PREVIOUS_PART', keys: ["←", "Home"] },
     { action: 'EXIT', keys: ["Esc"] },
   ];
 
@@ -182,6 +184,14 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({ isOpen, onClose })
               </code>
               <h4 className="font-bold text-slate-200 mb-1">{t('tutorial.commands.pause.title')}</h4>
               <p className="text-sm text-slate-400">{t('tutorial.commands.pause.desc')}</p>
+            </div>
+            {/* next */}
+            <div className="bg-slate-900/50 rounded-xl p-4 border border-white/5 hover:border-cyan-500/30 transition-colors">
+              <code className="block bg-slate-950 rounded px-2 py-1 text-cyan-400 font-mono text-sm mb-2 w-fit">
+                {t('tutorial.commands.next.example')}
+              </code>
+              <h4 className="font-bold text-slate-200 mb-1">{t('tutorial.commands.next.title')}</h4>
+              <p className="text-sm text-slate-400">{t('tutorial.commands.next.desc')}</p>
             </div>
             {/* stop */}
             <div className="bg-slate-900/50 rounded-xl p-4 border border-white/5 hover:border-cyan-500/30 transition-colors">

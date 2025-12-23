@@ -61,7 +61,13 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
                 </button>
             </div>
 
-            <div className="flex justify-center mb-16 relative z-10 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <div className="flex justify-center mb-8 relative">
+                <span className="w-8 h-px transition-all"></span>
+                {t("landing.hero.smallphrase")}
+                <span className="w-8 h-px transition-all"></span>
+            </div>
+
+            <div className="flex justify-center mb-20 relative z-10 animate-fade-in" style={{ animationDelay: '0.4s' }}>
                 <button
                     onClick={() => {
                         localStorage.setItem("PROMPTNINJA_START_TRIAL", "true");
