@@ -424,7 +424,7 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
     columnInfo: "Ambas columnas se mostrarán una al lado de la otra con una división 50/50.",
     alignmentTip: "Consejo: Usa [ALIGN]palabra[/ALIGN] en ambos textos para sincronizar palabras específicas durante el desplazamiento.",
     trackLanguage: "Rastrear este idioma (Control por Voz)",
-    tracking: "Rastreando",
+    tracking: "El control por voz está habilitado en esta pestaña.",
     landscapeTip: "💡 Para la mejor experiencia en móvil, gira a modo paisaje (horizontal)",
   },
   pacing: {

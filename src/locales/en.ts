@@ -414,6 +414,8 @@ Paste your script here and customize your experience to start shining!`,
     description: "Display two texts side by side for language learning or multilingual presentations.",
     columnInfo: "The two columns will be displayed side by side with a 50/50 ratio.",
     alignmentTip: "Tip: Use [ALIGN]word[/ALIGN] in both texts to sync specific words during scroll.",
+    trackLanguage: "Track this language (Voice Control)",
+    tracking: "Voice Control active on this tab",
     landscapeTip: "💡 For best mobile experience, rotate to landscape mode (horizontal)",
   },
   pacing: {

@@ -424,7 +424,7 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
     columnInfo: "As duas colunas serão exibidas lado a lado com proporção 50/50.",
     alignmentTip: "Dica: Use [ALIGN]palavra[/ALIGN] em ambos os textos para sincronizar palavras específicas durante o scroll.",
     trackLanguage: "Rastrear este idioma (Controle por Voz)",
-    tracking: "Rastreando",
+    tracking: "Controle de voz ativo nessa aba",
     landscapeTip: "💡 Para melhor experiência em celular, gire para o modo paisagem (horizontal)",
   },
 
