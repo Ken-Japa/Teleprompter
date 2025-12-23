@@ -417,6 +417,17 @@ Paste your script here and customize your experience to start shining!`,
     trackLanguage: "Track this language (Voice Control)",
     tracking: "Voice Control active on this tab",
     landscapeTip: "💡 For best mobile experience, rotate to landscape mode (horizontal)",
+    languages: {
+      pt: "Portuguese",
+      en: "English",
+      es: "Spanish",
+      it: "Italian",
+      fr: "French",
+      de: "German",
+      ja: "Japanese",
+      zh: "Chinese",
+      other: "Other / Auto"
+    },
   },
   pacing: {
     title: "Reading Time Calculator",

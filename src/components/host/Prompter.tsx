@@ -225,10 +225,20 @@ export const Prompter = memo(
 
 
 
+      const effectiveVoiceLang = useMemo(() => {
+        if (isBilingualMode && bilingualConfig) {
+          return bilingualConfig.voiceTrackLanguage === 'primary'
+            ? (bilingualConfig.primaryLanguage || 'pt')
+            : (bilingualConfig.secondaryLanguage || 'en');
+        }
+        return lang;
+      }, [isBilingualMode, bilingualConfig, lang]);
+
       const { startListening, stopListening, resetVoice, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError } = useVoiceControl(
         voiceControlText,
         isPro,
-        handleSpeechResult
+        handleSpeechResult,
+        effectiveVoiceLang
       );
 
       // Bilingual Sentences Processing

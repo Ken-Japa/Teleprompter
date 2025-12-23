@@ -51,6 +51,7 @@ Este documento detalha todas as funcionalidades do PromptNinja, desde os recurso
 ### Atalhos de Teclado (Padrão)
 *   `Espaço / Enter`: Iniciar / Pausar
 *   `Seta Cima / Baixo`: Ajustar velocidade
+*   `Seta Esquerda / Direita`: Pular para a Xª parte do texto. Precisa do comando no texto ([PART X] ou [SLIDE X])
 *   `+/- (Equal/Minus)`: Aumentar / Diminuir tamanho da fonte
 *   `M`: Alternar Espelhamento
 *   `V`: Alternar Inversão Vertical
@@ -84,7 +85,8 @@ Você pode inserir comandos entre colchetes diretamente no script para controle 
 *   `[SPEED 5]`: Altera a velocidade para o nível 5 naquele ponto do texto.
 *   `[PAUSE 10]`: Pausa a rolagem por 10 segundos e retoma sozinho.
 *   `[STOP]`: Para a rolagem completamente.
-*   `[LOOP START] / [LOOP 3]`: Cria um loop que repete o trecho do texto 3 vezes (ideal para treinos).
+*   `[LOOP START] / [LOOP 3]`: Cria um loop que repete o trecho do texto 3 vezes (ideal para treinos e ensaios).
+*   `[SLIDE X] / [PART X]`: Pula para a Xª parte do texto (ideal para apresentações e slides). Ativado com atalhos de teclado, arrow left ou right.
 *   **Fitness Mode (Modo Exercícios):**
     *   `[REST 30]`: Exibe um HUD de descanso de 30 segundos.
     *   `[COUNT 15]`: Exibe um contador de repetições que integra com o controle de voz para contar repetições de exercícios.

@@ -426,6 +426,17 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
     trackLanguage: "Rastrear este idioma (Controle por Voz)",
     tracking: "Controle de voz ativo nessa aba",
     landscapeTip: "💡 Para melhor experiência em celular, gire para o modo paisagem (horizontal)",
+    languages: {
+      pt: "Português",
+      en: "Inglês",
+      es: "Espanhol",
+      it: "Italiano",
+      fr: "Francês",
+      de: "Alemão",
+      ja: "Japonês",
+      zh: "Chinês",
+      other: "Outro / Auto"
+    },
   },
 
 

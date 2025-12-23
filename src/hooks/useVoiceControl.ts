@@ -7,8 +7,9 @@ import { useTranslation } from "./useTranslation";
 
 // callback for raw transcript, useful for custom commands like [COUNT]
 // callback for raw transcript, useful for custom commands like [COUNT]
-export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (transcript: string) => void) => {
-    const { lang } = useTranslation();
+export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (transcript: string) => void, forcedLang?: string) => {
+    const { lang: globalLang } = useTranslation();
+    const lang = forcedLang || globalLang;
     const [isListening, setIsListening] = useState<boolean>(false);
     const [activeSentenceIndex, setActiveSentenceIndex] = useState<number>(-1);
     const [voiceProgress, setVoiceProgress] = useState<number>(0);
@@ -49,6 +50,22 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
         };
     }, []);
 
+    // Helper to map language code to BCP 47
+    const getRecognitionLanguage = (l: string) => {
+        switch (l) {
+            case "pt": return "pt-BR";
+            case "es": return "es-ES";
+            case "en": return "en-US";
+            case "it": return "it-IT";
+            case "fr": return "fr-FR";
+            case "de": return "de-DE";
+            case "ja": return "ja-JP";
+            case "zh": return "zh-CN";
+            case "other": return ""; // Empty means browser default/auto
+            default: return l.includes("-") ? l : "en-US";
+        }
+    };
+
     // Memoized start function to be safe for recursion in onend
     const startRecognitionInstance = useCallback(() => {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -68,7 +85,7 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
         const recognition = new SpeechRecognition();
         recognition.continuous = true;
         recognition.interimResults = true;
-        recognition.lang = lang === "pt" ? "pt-BR" : lang === "es" ? "es-ES" : "en-US";
+        recognition.lang = getRecognitionLanguage(lang);
 
         recognition.onstart = () => {
             setIsListening(true);

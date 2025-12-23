@@ -414,7 +414,7 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
   bilingual: {
     mode: "Modo Bilingüe",
     primaryLanguage: "Idioma Principal (Idioma 1)",
-    secondaryLanguage: "Idioma Secundario (Idioma 2)",
+    secondaryLanguage: "Idioma Secundário (Idioma 2)",
     primaryPlaceholder: "Pega el texto en el idioma principal aquí...",
     secondaryPlaceholder: "Pega el texto en el idioma secundario aquí...",
     voiceTrackLabel: "Control de Voz Rastrea:",
@@ -426,6 +426,17 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
     trackLanguage: "Rastrear este idioma (Control por Voz)",
     tracking: "El control por voz está habilitado en esta pestaña.",
     landscapeTip: "💡 Para la mejor experiencia en móvil, gira a modo paisaje (horizontal)",
+    languages: {
+      pt: "Portugués",
+      en: "Inglés",
+      es: "Español",
+      it: "Italiano",
+      fr: "Francés",
+      de: "Alemán",
+      ja: "Japonés",
+      zh: "Chino",
+      other: "Otro / Auto"
+    },
   },
   pacing: {
     title: "Calculadora de Tiempo de Lectura",

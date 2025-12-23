@@ -27,8 +27,10 @@ interface EditorProps {
     bilingualTexts?: {
         primary: string;
         secondary: string;
+        primaryLanguage?: string;
+        secondaryLanguage?: string;
     };
-    onBilingualTextsChange?: (texts: { primary: string; secondary: string }) => void;
+    onBilingualTextsChange?: (texts: { primary: string; secondary: string; primaryLanguage?: string; secondaryLanguage?: string }) => void;
     // New Props for Voice Tracking
     bilingualVoiceTrackLanguage?: 'primary' | 'secondary';
     onBilingualVoiceTrackChange?: (lang: 'primary' | 'secondary') => void;
@@ -119,6 +121,8 @@ export const Editor: React.FC<EditorProps> = ({
                             onChange={onBilingualTextsChange || (() => { })}
                             voiceTrackLanguage={bilingualVoiceTrackLanguage}
                             onVoiceTrackLanguageChange={onBilingualVoiceTrackChange}
+                            primaryLanguage={bilingualTexts?.primaryLanguage}
+                            secondaryLanguage={bilingualTexts?.secondaryLanguage}
                         />
                     ) : (
                         <S.EditorTextArea

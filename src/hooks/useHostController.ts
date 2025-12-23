@@ -19,6 +19,8 @@ export const useHostController = () => {
   const [bilingualTexts, setBilingualTexts] = useState<{
     primary: string;
     secondary: string;
+    primaryLanguage?: string;
+    secondaryLanguage?: string;
   }>({ primary: "", secondary: "" });
 
   // 2. Routing Logic (Hash-based)
@@ -72,7 +74,9 @@ export const useHostController = () => {
     if (prompterSettings.isBilingualMode && prompterSettings.bilingualConfig) {
       setBilingualTexts({
         primary: prompterSettings.bilingualConfig.primaryText,
-        secondary: prompterSettings.bilingualConfig.secondaryText
+        secondary: prompterSettings.bilingualConfig.secondaryText,
+        primaryLanguage: prompterSettings.bilingualConfig.primaryLanguage,
+        secondaryLanguage: prompterSettings.bilingualConfig.secondaryLanguage
       });
     }
   }, [prompterSettings.isBilingualMode, prompterSettings.bilingualConfig]);
@@ -380,13 +384,16 @@ export const useHostController = () => {
   const prompterState = useMemo(() => ({ isPlaying, speed }), [isPlaying, speed]);
 
   // Handler for bilingual text changes
-  const handleBilingualTextsChange = useCallback((texts: { primary: string; secondary: string }) => {
+  const handleBilingualTextsChange = useCallback((texts: { primary: string; secondary: string; primaryLanguage?: string; secondaryLanguage?: string }) => {
     setBilingualTexts(texts);
     prompterActions.setBilingualConfig({
+      ...prompterSettings.bilingualConfig,
       primaryText: texts.primary,
-      secondaryText: texts.secondary
+      secondaryText: texts.secondary,
+      primaryLanguage: texts.primaryLanguage,
+      secondaryLanguage: texts.secondaryLanguage
     });
-  }, [prompterActions]);
+  }, [prompterActions, prompterSettings.bilingualConfig]);
 
   return {
     state: {
