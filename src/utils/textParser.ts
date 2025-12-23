@@ -127,7 +127,7 @@ export const parseTextToSentences = (
         // Strip out content in brackets [Intro] or parentheses (Chorus) using regex
         // We do this BEFORE cleaning everything else to explicitly ignore these sections
         let voiceText = s.cleanContent;
-        voiceText = voiceText.replace(/\[.*?\]/g, "").replace(/\(.*?\)/g, "");
+        voiceText = voiceText.replace(/\[.*?\]/g, "").replace(/\(.*?\)/g, "").replace(/<.*?>/g, "");
 
         // Create a clean version: Lowercase, remove punctuation, normalize spaces
         // Using Unicode properties to keep letters/numbers but remove symbols
