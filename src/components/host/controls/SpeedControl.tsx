@@ -54,7 +54,7 @@ export const SpeedControl = memo(({ isPlaying, speed, onStateChange, onReset }: 
                         max={UI_LIMITS.SPEED.MAX}
                         step={UI_LIMITS.SPEED.STEP}
                         onChange={(s) => handleStateChange(isPlaying, s)}
-                        width="w-20 sm:w-24"
+                        width="w-16 sm:w-18"
                         ariaLabel={t("host.controls.speed")}
                         title={t("host.controls.speed")}
                     />

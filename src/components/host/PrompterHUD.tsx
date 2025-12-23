@@ -139,7 +139,7 @@ export const PrompterHUD = memo(
                             max={UI_LIMITS.SPEED.MAX}
                             step={UI_LIMITS.SPEED.STEP}
                             onChange={(s) => onStateChange(isPlaying, s)}
-                            width="w-24"
+                            width="w-16"
                             ariaLabel={t("host.controls.speed")}
                             title={t("host.controls.speed")}
                         />
