@@ -7,7 +7,8 @@ export const calculateVoiceTarget = (
   voiceProgress: number,
   metrics: PhysicsMetrics,
   currentActiveElementRef: MutableRefObject<HTMLElement | null>,
-  lastVoiceIndexRef: MutableRefObject<number>
+  lastVoiceIndexRef: MutableRefObject<number>,
+  isFlipVertical: boolean = false
 ): number | null => {
   // Update active element cache if index changed
   if (activeSentenceIndex !== lastVoiceIndexRef.current) {
@@ -34,7 +35,13 @@ export const calculateVoiceTarget = (
 
     // OPTIMIZATION: Adjusted target to be % from top instead of 50% (Center)
     // This provides more "Lookahead" so the user can see the next sentence comfortably
-    return activeEl.offsetTop + readingLineOffset - metrics.clientHeight * VOICE_CONFIG.LOOKAHEAD_POSITION;
+    // If Flipped Vertical: Invert logic because DOM Top is Visual Bottom
+    // We want Visual Top aka DOM Bottom -> 1 - Lookahead
+    const targetRatio = isFlipVertical
+      ? (1 - VOICE_CONFIG.LOOKAHEAD_POSITION)
+      : VOICE_CONFIG.LOOKAHEAD_POSITION;
+
+    return activeEl.offsetTop + readingLineOffset - metrics.clientHeight * targetRatio;
   }
 
   return null;

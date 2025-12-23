@@ -200,7 +200,8 @@ export const useScrollPhysics = ({
           _voiceProgress,
           metrics,
           currentActiveElementRef,
-          lastVoiceIndexRef
+          lastVoiceIndexRef,
+          isFlipVerticalRef.current
         );
 
         targetVoiceScrollRef.current = target;
