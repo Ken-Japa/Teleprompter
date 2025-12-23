@@ -130,15 +130,15 @@ export const TeleprompterApresentacoesEN = () => (
                 steps={[
                     {
                         title: "Step 1: Structure Script by Slide",
-                        text: "Copy text from each slide to script. Use visual markers [SLIDE 1], [SLIDE 2] in BOLD to know when to advance."
+                        text: "Copy the text from each slide into the script. Place [SLIDE 1], [SLIDE 2] at the beginning of each slide to know when to move on."
                     },
                     {
-                        title: "Step 2: Add Timing Estimates",
-                        text: "After each marker [SLIDE X], note estimated time: [2min]. Helps maintain pace. Ex: [SLIDE 5 - 3min] = you have 3min for this slide."
+                        title: "Step 2: Navigate through the slides",
+                        text: "You can navigate through the slides of your script using the arrow shortcuts: '→' to advance and '←' to go back."
                     },
                     {
                         title: "Step 3: Use STOP Commands for Pauses",
-                        text: "Insert [STOP] after each slide marker. Teleprompter auto-pauses = you explain slide visual before continuing script."
+                        text: "Insert [STOP] after each slide marker. Teleprompter auto-pauses = you explain slide visual before continuing script. Or use the [PAUSE X] command, which allows you to pause for X seconds."
                     },
                     {
                         title: "Step 4: Rehearsal with Timer",

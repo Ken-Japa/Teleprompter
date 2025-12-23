@@ -151,17 +151,17 @@ export const TeleprompterTikTokShortsPT = () => (
                     <div>
                         <p className="text-green-400 text-sm mb-2"><strong>✅ Vantagem:</strong></p>
                         <ul className="text-slate-400 text-sm space-y-1 pl-4">
-                            <li>• Zero investimento</li>
-                            <li>• Começa hoje mesmo</li>
-                            <li>• Aprende o básico</li>
+                            <li>Zero investimento</li>
+                            <li>Começa hoje mesmo</li>
+                            <li>Aprende o básico</li>
                         </ul>
                     </div>
                     <div>
                         <p className="text-yellow-400 text-sm mb-2"><strong>⚠️ Limitação:</strong></p>
                         <ul className="text-slate-400 text-sm space-y-1 pl-4">
-                            <li>• Celular na mão cansa o braço</li>
-                            <li>• Difícil manter estabilidade</li>
-                            <li>• Pausar texto = tocar tela = treme</li>
+                            <li>Celular na mão cansa o braço</li>
+                            <li>Difícil manter estabilidade</li>
+                            <li>Pausar texto = tocar tela = treme</li>
                         </ul>
                     </div>
                 </div>
@@ -179,18 +179,18 @@ export const TeleprompterTikTokShortsPT = () => (
                     <div>
                         <p className="text-green-400 text-sm mb-2"><strong>✅ Vantagem:</strong></p>
                         <ul className="text-slate-400 text-sm space-y-1 pl-4">
-                            <li>• Câmera 100% estável</li>
-                            <li>• Controla texto sem tocar no celular</li>
-                            <li>• Grave em lote (5-10 vídeos seguidos)</li>
-                            <li>• Enquadramento consistente</li>
+                            <li>Câmera 100% estável</li>
+                            <li>Controla texto sem tocar no celular</li>
+                            <li>Grave em lote (5-10 vídeos seguidos)</li>
+                            <li>Enquadramento consistente</li>
                         </ul>
                     </div>
                     <div>
                         <p className="text-yellow-400 text-sm mb-2"><strong>💡 Ideal para:</strong></p>
                         <ul className="text-slate-400 text-sm space-y-1 pl-4">
-                            <li>• Quem quer postar diariamente</li>
-                            <li>• Gravação batch (economia de tempo)</li>
-                            <li>• Manter padrão visual da conta</li>
+                            <li>Quem quer postar diariamente</li>
+                            <li>Gravação batch (economia de tempo)</li>
+                            <li>Manter padrão visual da conta</li>
                         </ul>
                     </div>
                 </div>
@@ -211,18 +211,18 @@ export const TeleprompterTikTokShortsPT = () => (
                     <div>
                         <p className="text-green-400 text-sm mb-2"><strong>✅ Vantagem:</strong></p>
                         <ul className="text-slate-400 text-sm space-y-1 pl-4">
-                            <li>• Mãos 100% livres pra gesticular</li>
-                            <li>• Texto sincroniza com SUA voz</li>
-                            <li>• Flow natural (parece improviso)</li>
-                            <li>• Produção profissional em casa</li>
+                            <li>Mãos 100% livres pra gesticular</li>
+                            <li>Texto sincroniza com SUA voz</li>
+                            <li>Flow natural (parece improviso)</li>
+                            <li>Produção profissional em casa</li>
                         </ul>
                     </div>
                     <div>
                         <p className="text-purple-400 text-sm mb-2"><strong>🎯 Ideal para:</strong></p>
                         <ul className="text-slate-400 text-sm space-y-1 pl-4">
-                            <li>• Criadores full-time (1M+ seguidores)</li>
-                            <li>• Quem faz vídeos educativos longos</li>
-                            <li>• Precisa de máxima naturalidade</li>
+                            <li>Criadores full-time (1M+ seguidores)</li>
+                            <li>Quem faz vídeos educativos longos</li>
+                            <li>Precisa de máxima naturalidade</li>
                         </ul>
                     </div>
                 </div>

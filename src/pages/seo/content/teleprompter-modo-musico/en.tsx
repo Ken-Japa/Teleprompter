@@ -41,6 +41,13 @@ export const TeleprompterModoMusicoEN = () => (
                     <h3 className="text-xl font-bold text-white">1. The Pedal Page Turner</h3>
                     <p className="text-slate-300">
                         PromptNinja accepts keyboard shortcuts. If you buy a Bluetooth pedal (like PageFlip or iRig), configure it to simulate "Space" key.
+                        <br /> We've configured some default factory shortcuts:
+                        <ul className=" text-slate-400">
+                            <li>Page Down: Play/Pause</li>
+                            <li>Page Up: Stop/Reset</li>
+                            <li>End: Next session (use in the text [PART 1] [PART 2] etc)</li>
+                            <li>Home: Previous session </li>
+                        </ul>
                         <br /><strong>Result:</strong> You stomp, lyrics scroll. Your hands stay on guitar/keys.
                     </p>
                 </div>

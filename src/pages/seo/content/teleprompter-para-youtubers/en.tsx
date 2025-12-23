@@ -20,19 +20,19 @@ export const TeleprompterParaYoutubersEN = () => (
                 <div>
                     <h3 className="text-lg font-bold text-red-300 mb-2">📉 Without Teleprompter</h3>
                     <ul className="space-y-2 text-slate-400 text-sm">
-                        <li>• Looking away (reading notes) = Broken connection.</li>
-                        <li>• Too many "Uhhms", "Ahhs" = Retention drop.</li>
-                        <li>• Choppy editing = Visual fatigue.</li>
-                        <li>• Result: Viewer leaves in 30 seconds.</li>
+                        <li>Looking away (reading notes) = Broken connection.</li>
+                        <li>Too many "Uhhms", "Ahhs" = Retention drop.</li>
+                        <li>Choppy editing = Visual fatigue.</li>
+                        <li>Result: Viewer leaves in 30 seconds.</li>
                     </ul>
                 </div>
                 <div>
                     <h3 className="text-lg font-bold text-green-400 mb-2">📈 With PromptNinja</h3>
                     <ul className="space-y-2 text-slate-300 text-sm">
-                        <li>• Eye contact 100% of the time = Authority.</li>
-                        <li>• Continuous, confident speech = Hypnotic "Flow".</li>
-                        <li>• Minimal editing = Video ready in minutes.</li>
-                        <li>• Result: Watch Time skyrockets.</li>
+                        <li>Eye contact 100% of the time = Authority.</li>
+                        <li>Continuous, confident speech = Hypnotic "Flow".</li>
+                        <li>Minimal editing = Video ready in minutes.</li>
+                        <li>Result: Watch Time skyrockets.</li>
                     </ul>
                 </div>
             </div>

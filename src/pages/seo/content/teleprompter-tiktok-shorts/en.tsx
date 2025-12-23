@@ -151,17 +151,17 @@ export const TeleprompterTikTokShortsEN = () => (
                     <div>
                         <p className="text-green-400 text-sm mb-2"><strong>✅ Advantage:</strong></p>
                         <ul className="text-slate-400 text-sm space-y-1 pl-4">
-                            <li>• Zero investment</li>
-                            <li>• Start today</li>
-                            <li>• Learn basics</li>
+                            <li>Zero investment</li>
+                            <li>Start today</li>
+                            <li>Learn basics</li>
                         </ul>
                     </div>
                     <div>
                         <p className="text-yellow-400 text-sm mb-2"><strong>⚠️ Limitation:</strong></p>
                         <ul className="text-slate-400 text-sm space-y-1 pl-4">
-                            <li>• Holding phone tires arm</li>
-                            <li>• Hard to maintain stability</li>
-                            <li>• Pause text = touch screen = shakes</li>
+                            <li>Holding phone tires arm</li>
+                            <li>Hard to maintain stability</li>
+                            <li>Pause text = touch screen = shakes</li>
                         </ul>
                     </div>
                 </div>
@@ -179,18 +179,18 @@ export const TeleprompterTikTokShortsEN = () => (
                     <div>
                         <p className="text-green-400 text-sm mb-2"><strong>✅ Advantage:</strong></p>
                         <ul className="text-slate-400 text-sm space-y-1 pl-4">
-                            <li>• 100% stable camera</li>
-                            <li>• Control text without touching phone</li>
-                            <li>• Batch record (5-10 videos in row)</li>
-                            <li>• Consistent framing</li>
+                            <li>100% stable camera</li>
+                            <li>Control text without touching phone</li>
+                            <li>Batch record (5-10 videos in row)</li>
+                            <li>Consistent framing</li>
                         </ul>
                     </div>
                     <div>
                         <p className="text-yellow-400 text-sm mb-2"><strong>💡 Ideal for:</strong></p>
                         <ul className="text-slate-400 text-sm space-y-1 pl-4">
-                            <li>• Daily posters</li>
-                            <li>• Batch recording (time savings)</li>
-                            <li>• Maintaining account visual standard</li>
+                            <li>Daily posters</li>
+                            <li>Batch recording (time savings)</li>
+                            <li>Maintaining account visual standard</li>
                         </ul>
                     </div>
                 </div>
@@ -211,18 +211,18 @@ export const TeleprompterTikTokShortsEN = () => (
                     <div>
                         <p className="text-green-400 text-sm mb-2"><strong>✅ Advantage:</strong></p>
                         <ul className="text-slate-400 text-sm space-y-1 pl-4">
-                            <li>• 100% hands free to gesture</li>
-                            <li>• Text syncs with YOUR voice</li>
-                            <li>• Natural flow (looks improvised)</li>
-                            <li>• Professional production at home</li>
+                            <li>100% hands free to gesture</li>
+                            <li>Text syncs with YOUR voice</li>
+                            <li>Natural flow (looks improvised)</li>
+                            <li>Professional production at home</li>
                         </ul>
                     </div>
                     <div>
                         <p className="text-purple-400 text-sm mb-2"><strong>🎯 Ideal for:</strong></p>
                         <ul className="text-slate-400 text-sm space-y-1 pl-4">
-                            <li>• Full-time creators (1M+ followers)</li>
-                            <li>• Educational long-form videos</li>
-                            <li>• Need maximum naturalness</li>
+                            <li>Full-time creators (1M+ followers)</li>
+                            <li>Educational long-form videos</li>
+                            <li>Need maximum naturalness</li>
                         </ul>
                     </div>
                 </div>

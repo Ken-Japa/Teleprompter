@@ -41,6 +41,13 @@ export const TeleprompterModoMusicoPT = () => (
                     <h3 className="text-xl font-bold text-white">1. O Pedal Vira-Páginas</h3>
                     <p className="text-slate-300">
                         O PromptNinja aceita atalhos de teclado. Se você comprar um pedal Bluetooth (como PageFlip ou iRig BlueTurn), configure ele para simular a tecla "Espaço".
+                        <br /> Configuramos alguns atalhos de fábrica para pedais:
+                        <ul className=" text-slate-400">
+                            <li>Page Down: Play/Pause</li>
+                            <li>Page Up: Stop/Reset</li>
+                            <li>End: Próxima sessão (use no texto [PART 1] [PART 2] etc)</li>
+                            <li>Home: Sessão anterior </li>
+                        </ul>
                         <br /><strong>Resultado:</strong> Você pisa, a letra rola. Suas mãos continuam na guitarra/teclado.
                     </p>
                 </div>

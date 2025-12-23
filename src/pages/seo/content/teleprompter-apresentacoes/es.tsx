@@ -130,15 +130,15 @@ export const TeleprompterApresentacoesES = () => (
                 steps={[
                     {
                         title: "Paso 1: Estructura Guion por Slide",
-                        text: "Copia texto de cada slide al guion. Usa marcadores visuales [SLIDE 1], [SLIDE 2] en NEGRITA para saber cuándo avanzar."
+                        text: "Copia el texto de cada slide en el guion. Coloca [SLIDE 1] y [SLIDE 2] al principio de cada slide para saber cuándo continuar."
                     },
                     {
-                        title: "Paso 2: Añade Estimaciones de Tiempo",
-                        text: "Después de cada marcador [SLIDE X], anota tiempo estimado: [2min]. Ayuda mantener ritmo. Ej: [SLIDE 5 - 3min] = tienes 3min para este slide."
+                        title: "Paso 2: Navegar por Slides",
+                        text: "Puedes navegar a través de las diapositivas de tu guión usando los atajos de flecha: '→' para avanzar y '←' para retroceder."
                     },
                     {
                         title: "Paso 3: Usa Comandos STOP Para Pausas",
-                        text: "Inserta [STOP] después de cada marcador de slide. Teleprompter pausa automático = tú explicas visual del slide antes continuar guion."
+                        text: "Inserta [STOP] después de cada marcador de slide. Teleprompter pausa automático = tú explicas visual del slide antes continuar guion. O utilice el comando [PAUSE X], que le permite pausar durante X segundos."
                     },
                     {
                         title: "Paso 4: Ensayo con Timer",

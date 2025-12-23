@@ -27,27 +27,27 @@ export const AlternativasTeleprompterConcorrentePT = () => (
                 <div className="bg-slate-800/50 p-4 rounded-lg">
                     <p className="font-bold text-red-300 mb-2">App "Popular" #1</p>
                     <ul className="space-y-1 text-slate-400">
-                        <li>• Free: Só 60s de texto</li>
-                        <li>• Controle remoto: $9.99/mês</li>
-                        <li>• Remover marca: $4.99/mês</li>
+                        <li>Free: Só 60s de texto</li>
+                        <li>Controle remoto: $9.99/mês</li>
+                        <li>Remover marca: $4.99/mês</li>
                         <li className="text-red-400 font-bold mt-2">Total: $14.98/mês</li>
                     </ul>
                 </div>
                 <div className="bg-slate-800/50 p-4 rounded-lg">
                     <p className="font-bold text-red-300 mb-2">App "Pro" #2</p>
                     <ul className="space-y-1 text-slate-400">
-                        <li>• Free: Marca d'água permanente</li>
-                        <li>• Desktop: $19.99/mês</li>
-                        <li>• Mobile: $14.99/mês</li>
+                        <li>Free: Marca d'água permanente</li>
+                        <li>Desktop: $19.99/mês</li>
+                        <li>Mobile: $14.99/mês</li>
                         <li className="text-red-400 font-bold mt-2">Total: $34.98/mês</li>
                     </ul>
                 </div>
                 <div className="bg-slate-800/50 p-4 rounded-lg border-2 border-green-500">
                     <p className="font-bold text-green-300 mb-2">PromptNinja</p>
                     <ul className="space-y-1 text-slate-300">
-                        <li>• Controle remoto: GRÁTIS</li>
-                        <li>• Desktop + Mobile: GRÁTIS</li>
-                        <li>• Zero marca d'água: GRÁTIS</li>
+                        <li>Controle remoto: GRÁTIS</li>
+                        <li>Desktop + Mobile: GRÁTIS</li>
+                        <li>Marca d'água sutil: GRÁTIS</li>
                         <li className="text-green-400 font-bold mt-2">Total: R$0,00</li>
                     </ul>
                 </div>

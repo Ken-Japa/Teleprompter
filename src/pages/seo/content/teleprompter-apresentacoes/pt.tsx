@@ -130,15 +130,15 @@ export const TeleprompterApresentacoesPT = () => (
                 steps={[
                     {
                         title: "Passo 1: Estruture Roteiro por Slide",
-                        text: "Copie texto de cada slide pro roteiro. Use marcadores visuais [SLIDE 1], [SLIDE 2] em NEGRITO pra saber quando avançar."
+                        text: "Copie o texto de cada slide pro roteiro. Coloque no início de cada slide [SLIDE 1], [SLIDE 2] pra saber quando avançar."
                     },
                     {
-                        title: "Passo 2: Adicione Timing Estimates",
-                        text: "Depois de cada marcador [SLIDE X], anote tempo estimado: [2min]. Ajuda manter ritmo. Ex: [SLIDE 5 - 3min] = você tem 3min pra esse slide."
+                        title: "Passo 2: Navegue pelos slides",
+                        text: "Você pode navegar pelos slides do seu roteiro usando os atalhos de setas: '→' para avançar e '←' para voltar."
                     },
                     {
                         title: "Passo 3: Use Comandos STOP Para Pausas",
-                        text: "Insira [STOP] depois de cada marcador de slide. Teleprompter pausa automático = você explica visual do slide antes continuar roteiro."
+                        text: "Insira [STOP] depois de cada marcador de slide. Teleprompter pausa automático = você explica visual do slide antes de continuar. Ou use o comando [PAUSE X], o que permite uma pausa por X segundos."
                     },
                     {
                         title: "Passo 4: Rehearsal com Timer",

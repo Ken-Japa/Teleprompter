@@ -41,6 +41,13 @@ export const TeleprompterModoMusicoES = () => (
                     <h3 className="text-xl font-bold text-white">1. Pedal Pasapáginas</h3>
                     <p className="text-slate-300">
                         PromptNinja acepta atajos teclado. Si compras pedal Bluetooth (como PageFlip o iRig), configúralo para simular tecla "Espacio".
+                        <br /> Hemos configurado algunos accesos directos de fábrica predeterminados:
+                        <ul className=" text-slate-400">
+                            <li>Page Down: Play/Pause</li>
+                            <li>Page Up: Stop/Reset</li>
+                            <li>End: Próxima sesión (utilizar en el texto [PARTE 1] [PARTE 2] etc.)</li>
+                            <li>Home: Sesión anterior </li>
+                        </ul>
                         <br /><strong>Resultado:</strong> Pisas, letra rueda. Tus manos siguen en guitarra/teclado.
                     </p>
                 </div>
