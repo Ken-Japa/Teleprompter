@@ -78,7 +78,7 @@ export const Editor: React.FC<EditorProps> = ({
                     {/* Visual Hint - Positioned BELOW on mobile/desktop to avoid being cut off by top edge */}
                     <div className="absolute top-full mt-4 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none z-50">
                         <p className="text-slate-400 text-xs sm:text-sm font-medium animate-bounce bg-slate-900/90 backdrop-blur px-3 py-1.5 rounded-full border border-brand-500/30 shadow-xl shadow-black/50 flex items-center gap-2">
-                            <span className="sm:hidden">{t("menu.startHintShort") || "Aperte PLAY"}</span><span className="hidden sm:inline">{t("menu.startHint") || "Aperte PLAY para começar"}</span> <span className="text-lg">👆</span>
+                            <span className="lg:hidden">{t("menu.startHintShort") || "Aperte PLAY"}</span><span className="hidden lg:inline">{t("menu.startHint") || "Aperte PLAY para começar"}</span> <span className="text-lg">👆</span>
                         </p>
                     </div>
 
@@ -97,7 +97,7 @@ export const Editor: React.FC<EditorProps> = ({
                 </div>
             </S.Header>
 
-            <div className="flex-1 flex flex-col md:flex-row md:overflow-hidden relative">
+            <div className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden relative">
                 <div className="flex-1 relative flex flex-col h-full bg-slate-950">
                     <EditorToolbar
                         onInsertTag={handleInsertTag}
