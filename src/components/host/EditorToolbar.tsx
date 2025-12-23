@@ -7,7 +7,6 @@ import { TutorialModal } from "../ui/TutorialModal";
 import { PacingModal } from "../ui/PacingModal";
 import { HotkeyConfigModal } from "../ui/HotkeyConfigModal";
 import { KeyboardIcon } from "../ui/Icons";
-import { ShareButton } from "../ui/ShareButton";
 import { ScriptManager } from "./ScriptManager";
 import { Script } from "../../hooks/useScriptStorage";
 
@@ -50,7 +49,7 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
         <div className="md:sticky md:top-0 md:z-30 w-full bg-slate-950/80 backdrop-blur-xl border-b border-white/5 md:shadow-lg transition-all duration-300">
 
             {/* Flex Container */}
-            <div className="flex flex-col md:flex-row items-center md:gap-4 w-full md:px-6 md:py-3 max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row items-center md:gap-4 w-full md:px-6 md:py-3 max-w-4xl mx-auto mb-2">
 
                 {/* 3. Color Section - Highlight (Bottom Sticky on Mobile, First on Desktop) */}
                 <div className="order-3 md:order-1 md:mr-auto w-full md:w-auto sticky top-0 z-20 md:static bg-slate-950/90 md:bg-transparent backdrop-blur-md md:backdrop-blur-none border-b border-white/10 md:border-0 py-3 md:py-0 transition-all shadow-lg md:shadow-none">
@@ -72,7 +71,7 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                 </div>
 
                 {/* 1. Mode Buttons (Top on Mobile, Middle on Desktop) */}
-                <div className="w-full md:w-auto flex justify-center gap-2 py-3 md:py-0 border-b border-white/5 md:border-0 order-1 md:order-2">
+                <div className="w-full md:w-auto flex justify-center gap-2 py-3 mr-4 ml-4 md:py-0 border-b border-white/5 md:border-0 order-1 md:order-2">
                     {/* Musician Mode */}
                     <S.IconButton
                         onClick={onToggleMusicianMode}
@@ -132,7 +131,7 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                 </div>
 
                 {/* 2. Actions (Middle on Mobile, Last on Desktop) */}
-                <div className="order-2 md:order-3 w-full md:w-auto flex flex-wrap md:flex-nowrap items-center justify-center gap-2 py-3 md:py-0 border-b border-white/5 md:border-0">
+                <div className="order-2 md:order-3 w-full md:w-auto flex flex-wrap md:flex-nowrap items-center justify-center gap-3 py-3 md:py-0 border-b border-white/5 md:border-0">
                     <S.IconButton
                         onClick={() => setShowPacingModal(true)}
                         title={t("pacing.button")}
@@ -177,9 +176,6 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                     >
                         <InfoIcon className="w-5 h-5" />
                     </S.IconButton>
-
-                    <div className="w-px h-6 bg-white/10 mx-1 hidden sm:block"></div>
-                    <ShareButton variant="icon" className="w-9 h-9 rounded-full bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500/20 hover:text-indigo-300 border border-indigo-500/20" />
 
                     {/* Script Manager on Mobile (Visible only on small screens) */}
                     <div className="md:hidden mr-2 w-full flex justify-center py-2 border-t border-white/5 mt-2 relative z-50">
