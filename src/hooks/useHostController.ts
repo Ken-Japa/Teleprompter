@@ -287,7 +287,8 @@ export const useHostController = () => {
 
     setIsValidating(true);
     try {
-      const result = await unlockPro(unlockKey);
+      const normalizedKey = unlockKey.trim().toUpperCase();
+      const result = await unlockPro(normalizedKey);
       if (!result.success) {
         setPaywallErrorMessage(result.message || t("host.paywall.invalidKey"));
       } else {
