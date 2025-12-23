@@ -13,7 +13,17 @@ import { trackStartPacing, trackGoogleAdsPurchase } from "../utils/analytics";
 export const useHostController = () => {
   const { t } = useTranslation();
   // 1. Data Persistence
-  const [text, setText] = useScriptStorage();
+  const {
+    text,
+    setText,
+    scripts,
+    activeScriptId,
+    activeScript,
+    createScript,
+    switchScript,
+    deleteScript,
+    updateScript
+  } = useScriptStorage();
 
   // Bilingual Mode State
   const [bilingualTexts, setBilingualTexts] = useState<{
@@ -234,6 +244,7 @@ export const useHostController = () => {
         isPro,
         isVoiceMode,
         isRecording,
+        activeScriptTitle: activeScript?.title, // Broadcast active script title
       });
     }
   }, [
@@ -247,6 +258,7 @@ export const useHostController = () => {
     isPro,
     isVoiceMode,
     isRecording,
+    activeScript
   ]);
 
   // 6.1 Time Broadcast (Lightweight)
@@ -339,6 +351,7 @@ export const useHostController = () => {
         isPro,
         isVoiceMode,
         isRecording,
+        activeScriptTitle: activeScript?.title,
       });
     }
   }, [
@@ -352,6 +365,7 @@ export const useHostController = () => {
     isPro,
     isVoiceMode,
     isRecording,
+    activeScript
   ]);
 
   const navigation = {
@@ -414,6 +428,10 @@ export const useHostController = () => {
       bilingualTexts,
       isTrialActive,
       trialEndTime,
+      // New Script Management State
+      scripts,
+      activeScriptId,
+      activeScript,
     },
     actions: {
       setText,
@@ -437,6 +455,11 @@ export const useHostController = () => {
       stopRemoteRecording,
       handleBilingualTextsChange,
       startTrial,
+      // New Script Management Actions
+      createScript,
+      switchScript,
+      deleteScript,
+      updateScript,
     },
     refs: {
       prompterRef,

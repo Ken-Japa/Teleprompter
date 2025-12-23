@@ -87,6 +87,12 @@ export const Host: React.FC = () => {
                     onUnlockPro={() => actions.setShowPaywall(true)}
                     voiceLanguage={prompterSettings.voiceLanguage}
                     onVoiceLanguageChange={actions.prompterActions.setVoiceLanguage}
+                    scripts={state.scripts}
+                    activeScriptId={state.activeScriptId || ""}
+                    onCreateScript={actions.createScript}
+                    onSwitchScript={actions.switchScript}
+                    onDeleteScript={actions.deleteScript}
+                    onUpdateScript={actions.updateScript}
                 />
             ) : (
                 <Prompter

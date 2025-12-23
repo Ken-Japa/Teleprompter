@@ -8,6 +8,8 @@ import { PacingModal } from "../ui/PacingModal";
 import { HotkeyConfigModal } from "../ui/HotkeyConfigModal";
 import { KeyboardIcon } from "../ui/Icons";
 import { ShareButton } from "../ui/ShareButton";
+import { ScriptManager } from "./ScriptManager";
+import { Script } from "../../hooks/useScriptStorage";
 
 interface EditorToolbarProps {
     onInsertTag: (tag: string) => void;
@@ -26,9 +28,17 @@ interface EditorToolbarProps {
     onUnlockPro?: () => void;
     voiceLanguage?: string;
     onVoiceLanguageChange?: (lang: string) => void;
+
+    // Script Manager Props
+    scripts: Script[];
+    activeScriptId: string;
+    onCreateScript: () => void;
+    onSwitchScript: (id: string) => void;
+    onDeleteScript: (id: string) => void;
+    onUpdateScript: (id: string, updates: Partial<Script>) => void;
 }
 
-export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode, onToggleMusicianMode, isBilingualMode, onToggleBilingualMode, onStartHudless, isCameraMode, onToggleCameraMode, onToggleWidgetMode, isWidgetMode, isPro = false, onUnlockPro = () => { }, voiceLanguage, onVoiceLanguageChange }: EditorToolbarProps) => {
+export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode, onToggleMusicianMode, isBilingualMode, onToggleBilingualMode, onStartHudless, isCameraMode, onToggleCameraMode, onToggleWidgetMode, isWidgetMode, isPro = false, onUnlockPro = () => { }, voiceLanguage, onVoiceLanguageChange, scripts, activeScriptId, onCreateScript, onSwitchScript, onDeleteScript, onUpdateScript }: EditorToolbarProps) => {
     const { t } = useTranslation();
     const [showTutorialModal, setShowTutorialModal] = useState(false);
     const [showPacingModal, setShowPacingModal] = useState(false);
@@ -171,8 +181,20 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                     <div className="w-px h-6 bg-white/10 mx-1 hidden sm:block"></div>
                     <ShareButton variant="icon" className="w-9 h-9 rounded-full bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500/20 hover:text-indigo-300 border border-indigo-500/20" />
 
+                    {/* Script Manager on Mobile (Visible only on small screens) */}
+                    <div className="md:hidden mr-2 w-full flex justify-center py-2 border-t border-white/5 mt-2 relative z-50">
+                        <ScriptManager
+                            scripts={scripts}
+                            activeScriptId={activeScriptId}
+                            onSwitch={onSwitchScript}
+                            onCreate={onCreateScript}
+                            onDelete={onDeleteScript}
+                            onUpdateTitle={(id, title) => onUpdateScript(id, { title })}
+                        />
+                    </div>
+
                     {!isBilingualMode && onVoiceLanguageChange && (
-                        <div className="w-full md:w-auto flex items-center justify-center mt-2 md:mt-0">
+                        <div className="w-full md:w-auto flex mr-12 items-center justify-center mt-2 md:mt-0">
                             <div className="w-px h-6 bg-white/10 mx-1 hidden md:block"></div>
                             <VoiceLanguageSelector
                                 value={voiceLanguage}

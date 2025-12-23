@@ -591,6 +591,14 @@ Paste your script here and customize your experience to start shining!`,
       },
     },
   },
+  script: {
+    manager: "Scripts",
+    yourScripts: "Your Scripts",
+    untitled: "Untitled Script",
+    new: "New Script",
+    rename: "Rename Script",
+    deleteConfirm: "Are you sure you want to delete this script?",
+  },
   footer: {
     copyright: "PromptNinja. All rights reserved.",
     links: {

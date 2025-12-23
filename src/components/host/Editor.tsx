@@ -8,6 +8,8 @@ import { EditorToolbar } from "./EditorToolbar";
 import { BilingualTextEditor } from "./BilingualTextEditor";
 import { useEditorLogic } from "../../hooks/useEditorLogic";
 import { LanguageSelector } from "../ui/LanguageSelector";
+import { ScriptManager } from "./ScriptManager";
+import { Script } from "../../hooks/useScriptStorage";
 
 interface EditorProps {
     text: string;
@@ -39,6 +41,14 @@ interface EditorProps {
     onUnlockPro: () => void;
     voiceLanguage?: string;
     onVoiceLanguageChange?: (lang: string) => void;
+
+    // Script Management Props
+    scripts: Script[];
+    activeScriptId: string;
+    onCreateScript: () => void;
+    onSwitchScript: (id: string) => void;
+    onDeleteScript: (id: string) => void;
+    onUpdateScript: (id: string, updates: Partial<Script>) => void;
 }
 
 export const Editor: React.FC<EditorProps> = ({
@@ -47,7 +57,8 @@ export const Editor: React.FC<EditorProps> = ({
     isCameraMode, onToggleCameraMode, isWidgetMode, onToggleWidgetMode,
     bilingualTexts, onBilingualTextsChange,
     bilingualVoiceTrackLanguage, onBilingualVoiceTrackChange,
-    isPro, onUnlockPro, voiceLanguage, onVoiceLanguageChange
+    isPro, onUnlockPro, voiceLanguage, onVoiceLanguageChange,
+    scripts, activeScriptId, onCreateScript, onSwitchScript, onDeleteScript, onUpdateScript
 }) => {
     const { t } = useTranslation();
 
@@ -73,6 +84,18 @@ export const Editor: React.FC<EditorProps> = ({
                         <HomeIcon className="w-6 h-6 mr-1" /> <span className="hidden sm:inline">{t("menu.backToHome")}</span>
                     </button>
                 </div>
+
+                <div className="hidden md:flex flex-1 justify-center px-4">
+                    <ScriptManager
+                        scripts={scripts}
+                        activeScriptId={activeScriptId}
+                        onSwitch={onSwitchScript}
+                        onCreate={onCreateScript}
+                        onDelete={onDeleteScript}
+                        onUpdateTitle={(id, title) => onUpdateScript(id, { title })}
+                    />
+                </div>
+
                 <div className="flex items-center space-x-3 relative">
                     {/* Visual Hint */}
                     {/* Visual Hint - Positioned BELOW on mobile/desktop to avoid being cut off by top edge */}
@@ -81,6 +104,7 @@ export const Editor: React.FC<EditorProps> = ({
                             <span className="lg:hidden">{t("menu.startHintShort") || "Aperte PLAY"}</span><span className="hidden lg:inline">{t("menu.startHint") || "Aperte PLAY para começar"}</span> <span className="text-lg">👆</span>
                         </p>
                     </div>
+
 
                     <LanguageSelector />
                     <S.PrimaryButton
@@ -116,6 +140,13 @@ export const Editor: React.FC<EditorProps> = ({
                         onUnlockPro={onUnlockPro}
                         voiceLanguage={voiceLanguage}
                         onVoiceLanguageChange={onVoiceLanguageChange}
+                        // Script Manager Props
+                        scripts={scripts}
+                        activeScriptId={activeScriptId}
+                        onCreateScript={onCreateScript}
+                        onSwitchScript={onSwitchScript}
+                        onDeleteScript={onDeleteScript}
+                        onUpdateScript={onUpdateScript}
                     />
 
                     {isBilingualMode ? (

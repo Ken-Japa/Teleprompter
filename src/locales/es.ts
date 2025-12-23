@@ -594,6 +594,14 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
       },
     },
   },
+  script: {
+    manager: "Scripts",
+    yourScripts: "Tus guiones",
+    untitled: "Guion sin titulo",
+    new: "Nuevo guion",
+    rename: "Renombrar guion",
+    deleteConfirm: "¿Estás seguro de eliminar este guion?",
+  },
   footer: {
     copyright: "PromptNinja. Todos los derechos reservados.",
     links: {
