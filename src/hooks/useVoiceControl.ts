@@ -300,7 +300,8 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             if (!container) return 0;
 
             const scrollTop = container.scrollTop || 0;
-            const viewportCenter = scrollTop + (container.clientHeight / 2);
+            // Use LOOKAHEAD position (1% from top) instead of center
+            const targetPosition = scrollTop + (container.clientHeight * 0.01);
 
             // Find sentence closest to center of viewport
             for (let i = sentences.length - 1; i >= 0; i--) {
@@ -309,9 +310,9 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                     const elTop = el.offsetTop;
                     const elBottom = elTop + el.clientHeight;
 
-                    // If sentence contains viewport center
-                    if (elTop <= viewportCenter && elBottom >= viewportCenter) {
-                        console.log(`[Voice] Found visible sentence: ${i} at center`);
+                    // If sentence contains LOOKAHEAD position
+                    if (elTop <= targetPosition && elBottom >= targetPosition) {
+                        console.log(`[Voice] Found visible sentence: ${i} at LOOKAHEAD position`);
                         return i;
                     }
                 }

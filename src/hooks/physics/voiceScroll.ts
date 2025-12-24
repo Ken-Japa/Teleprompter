@@ -41,7 +41,7 @@ export const calculateVoiceTarget = (
       ? (1 - VOICE_CONFIG.LOOKAHEAD_POSITION)
       : VOICE_CONFIG.LOOKAHEAD_POSITION;
 
-    return activeEl.offsetTop - metrics.clientHeight * targetRatio;
+    return activeEl.offsetTop + readingLineOffset - metrics.clientHeight * targetRatio;
   }
 
   return null;
