@@ -87,6 +87,8 @@ export enum MessageType {
     START_REMOTE_RECORDING = "START_REMOTE_RECORDING",
     STOP_REMOTE_RECORDING = "STOP_REMOTE_RECORDING",
     TEXT_COMMAND_TRIGGERED = "TEXT_COMMAND_TRIGGERED",
+    PREVIOUS_PART = "PREVIOUS_PART",
+    NEXT_PART = "NEXT_PART",
 }
 
 export interface PeerMessage {
@@ -158,6 +160,8 @@ export interface PrompterHandle {
     onRemoteVoiceUpdate: (index: number, progress: number) => void;
     wakeUp: () => void; // Forces the physics loop to wake up
     toggleRecording: () => void;
+    onPreviousPart: () => void;
+    onNextPart: () => void;
 }
 
 export interface TextFragment {
@@ -202,6 +206,8 @@ export interface RemoteActions {
     handleToggleRecordingMode: () => void;
     handleToggleCameraMode: () => void;
     downloadRecording: () => void;
+    handlePreviousPart: () => void;
+    handleNextPart: () => void;
 }
 
 export enum HotkeyAction {

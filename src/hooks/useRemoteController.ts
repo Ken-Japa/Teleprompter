@@ -270,6 +270,16 @@ export const useRemoteController = (hostId: string) => {
         sendMessage(MessageType.SETTINGS_UPDATE, { recordingMode: newMode });
     }, [sendMessage, settings?.recordingMode]);
 
+    const handlePreviousPart = useCallback(() => {
+        sendMessage(MessageType.PREVIOUS_PART);
+        vibrate(50);
+    }, [sendMessage, vibrate]);
+
+    const handleNextPart = useCallback(() => {
+        sendMessage(MessageType.NEXT_PART);
+        vibrate(50);
+    }, [sendMessage, vibrate]);
+
     return {
         state: {
             status,
@@ -302,6 +312,9 @@ export const useRemoteController = (hostId: string) => {
             handleToggleRecording,
             handleToggleRecordingMode,
             downloadRecording,
+            handlePreviousPart,
+            handleNextPart,
+            handleToggleCameraMode: () => { /* Not implemented for remote yet but interface matches */ }
         },
     };
 };

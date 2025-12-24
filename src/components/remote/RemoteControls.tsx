@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
-import { MinusIcon, PauseIcon, PlayIcon, PlusIcon, StopIcon, MicIcon, LaptopIcon, SmartphoneIcon } from "../ui/Icons";
+import { MinusIcon, PauseIcon, PlayIcon, PlusIcon, StopIcon, MicIcon, LaptopIcon, SmartphoneIcon, ChevronUpIcon, ChevronDownIcon } from "../ui/Icons";
 import { Trackpad } from "./Trackpad";
 import * as S from "../ui/Styled";
 import { NavigationItem, PrompterSettings, RemoteActions } from "../../types";
@@ -33,6 +33,13 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
     actions
 }) => {
     const { t } = useTranslation();
+
+    // Check for Parts/Slides
+    const hasParts = React.useMemo(() => {
+        if (!text) return false;
+        const upper = text.toUpperCase();
+        return upper.includes("[PART") || upper.includes("[SLIDE");
+    }, [text]);
 
     // Helper to get text preview (reused logic)
     const getTextPreview = () => {
@@ -76,13 +83,32 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
 
     return (
         <>
-            {/* Timer Display */}
-            <div className="flex justify-center pt-6 pb-4">
-                <div className="bg-slate-900/50 px-6 py-2 rounded-xl border border-white/5 shadow-lg">
+            {/* Timer Display & Navigation */}
+            <div className="relative flex justify-center items-center pt-6 pb-4 px-4">
+                <div className="bg-slate-900/50 px-6 py-2 rounded-xl border border-white/5 shadow-lg z-10">
                     <span className="font-mono text-4xl font-black text-brand-400 tracking-widest drop-shadow-[0_0_15px_rgba(129,140,248,0.5)]">
                         {formattedTime}
                     </span>
                 </div>
+
+                {hasParts && (
+                    <div className="absolute right-4 md:right-10 flex flex-col gap-2 z-20">
+                        <S.IconButton
+                            onClick={actions.handlePreviousPart}
+                            className="w-10 h-10 rounded-full bg-slate-800 border border-white/10 text-slate-400 hover:text-white hover:bg-slate-700 shadow-lg"
+                            aria-label="Previous Part"
+                        >
+                            <ChevronUpIcon className="w-6 h-6" />
+                        </S.IconButton>
+                        <S.IconButton
+                            onClick={actions.handleNextPart}
+                            className="w-10 h-10 rounded-full bg-slate-800 border border-white/10 text-slate-400 hover:text-white hover:bg-slate-700 shadow-lg"
+                            aria-label="Next Part"
+                        >
+                            <ChevronDownIcon className="w-6 h-6" />
+                        </S.IconButton>
+                    </div>
+                )}
             </div>
 
             {/* Text Preview Window */}

@@ -205,6 +205,16 @@ export const useHostController = () => {
             prompterRef.current.toggleRecording();
           }
           break;
+        case MessageType.PREVIOUS_PART:
+          if (prompterRef.current) {
+            prompterRef.current.onPreviousPart();
+          }
+          break;
+        case MessageType.NEXT_PART:
+          if (prompterRef.current) {
+            prompterRef.current.onNextPart();
+          }
+          break;
         default:
           logger.warn("Received unknown message type", { context: { type: msg.type, message: msg } });
           break;
