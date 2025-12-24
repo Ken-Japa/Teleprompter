@@ -20,13 +20,15 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
     const lastStartTimeRef = useRef<number>(0);
     const lastProcessedTimeRef = useRef<number>(0); // For throttling
 
-    // STABILITY SYSTEM: Require matches to be stable before accepting
+    // SENTENCE-LOCK ARCHITECTURE:
+    // We distinguish between "which sentence" (requires confirmation) and "where within sentence" (free)
+    const lockedSentenceIdRef = useRef<number>(-1); // Current locked sentence
     const pendingMatchRef = useRef<{ index: number; count: number; sentenceId: number } | null>(null);
-    const MATCH_CONFIRMATION_FRAMES = 2; // Must be stable for 3 frames
+    const MATCH_CONFIRMATION_FRAMES = 2; // Must be stable for 2 frames
 
     // PROGRESS SMOOTHING: Prevent jitter
     const smoothedProgressRef = useRef<number>(0);
-    const PROGRESS_SMOOTH_FACTOR = 0.35; // 30% new, 70% old
+    const PROGRESS_SMOOTH_FACTOR = 0.35; // 35% new, 65% old
 
     // Keep latest callback in ref to avoid restarting recognition on every state change
     const onSpeechResultRef = useRef(onSpeechResult);
@@ -43,7 +45,9 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
     useEffect(() => {
         lastMatchIndexRef.current = 0;
+        lockedSentenceIdRef.current = 0; // Start with first sentence locked
     }, [fullCleanText]);
+
 
     useEffect(() => {
         return () => {
@@ -198,74 +202,69 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             if (match) {
                 // SEQUENTIAL VALIDATION: Prevent implausible large jumps
                 const newSentenceId = charToSentenceMap[match.index] || 0;
-                const currentSentenceId = charToSentenceMap[lastMatchIndexRef.current] || 0;
+                const currentSentenceId = lockedSentenceIdRef.current;
                 const jumpDistance = Math.abs(newSentenceId - currentSentenceId);
 
-                // HYSTERESIS: Ignore very small movements (within same sentence)
-                // This prevents oscillation between nearby positions
-                if (newSentenceId === currentSentenceId && Math.abs(match.index - lastMatchIndexRef.current) < 10) {
-                    // Same sentence, very close position - ignore to prevent jitter
-                    return;
-                }
-
-                // STRICTER VALIDATION: Require better match quality for any jump > 5 sentences
-                if (jumpDistance > 5 && match.ratio > 0.05) {
-                    console.warn(`[Voice] Medium jump rejected (${jumpDistance} sentences), ratio ${match.ratio.toFixed(3)} not good enough`);
-                    return;
-                }
-
-                // If jumping more than 10 sentences, require PERFECT confidence
-                if (jumpDistance > 10 && match.ratio > 0.03) {
-                    console.warn(`[Voice] Large jump rejected (${jumpDistance} sentences), ratio ${match.ratio.toFixed(3)} not perfect enough`);
-                    return;
-                }
-
-                // MATCH CONFIRMATION SYSTEM: Require stability before accepting
-                // If this is a new sentence, check if it's stable across multiple frames
+                // STRICTER VALIDATION for cross-sentence jumps
                 if (newSentenceId !== currentSentenceId) {
+                    // Medium jumps: require 95%+ accuracy
+                    if (jumpDistance > 5 && match.ratio > 0.05) {
+                        console.warn(`[Voice] Medium jump rejected (${jumpDistance} sentences), ratio ${match.ratio.toFixed(3)} not good enough`);
+                        return;
+                    }
+
+                    // Large jumps: require 97%+ accuracy
+                    if (jumpDistance > 10 && match.ratio > 0.03) {
+                        console.warn(`[Voice] Large jump rejected (${jumpDistance} sentences), ratio ${match.ratio.toFixed(3)} not perfect enough`);
+                        return;
+                    }
+
+                    // MATCH CONFIRMATION: New sentence must be stable
                     if (!pendingMatchRef.current || pendingMatchRef.current.sentenceId !== newSentenceId) {
-                        // New potential match - start counting
+                        // New potential sentence - start counting
                         pendingMatchRef.current = { index: match.index, count: 1, sentenceId: newSentenceId };
-                        console.log(`[Voice] New match pending: sentence ${newSentenceId}, needs ${MATCH_CONFIRMATION_FRAMES - 1} more frames`);
-                        return; // Don't accept yet
+                        console.log(`[Voice] New sentence pending: ${currentSentenceId} → ${newSentenceId}, needs ${MATCH_CONFIRMATION_FRAMES - 1} more`);
+                        // DON'T RETURN - allow progress update below
                     } else {
-                        // Same match - increment counter
+                        // Same pending sentence - increment counter
                         pendingMatchRef.current.count++;
                         if (pendingMatchRef.current.count < MATCH_CONFIRMATION_FRAMES) {
-                            console.log(`[Voice] Match confirming: ${pendingMatchRef.current.count}/${MATCH_CONFIRMATION_FRAMES}`);
-                            return; // Still not stable enough
+                            console.log(`[Voice] Sentence confirming: ${pendingMatchRef.current.count}/${MATCH_CONFIRMATION_FRAMES}`);
+                            // DON'T RETURN - allow progress update below
+                        } else {
+                            // CONFIRMED! Lock to new sentence
+                            console.log(`[Voice] Sentence LOCKED: ${newSentenceId}`);
+                            lockedSentenceIdRef.current = newSentenceId;
+                            pendingMatchRef.current = null;
                         }
-                        // Confirmed! Clear pending and proceed
-                        console.log(`[Voice] Match CONFIRMED after ${MATCH_CONFIRMATION_FRAMES} frames`);
-                        pendingMatchRef.current = null;
                     }
                 } else {
-                    // Same sentence - clear any pending different match
+                    // Same sentence - clear any pending
                     pendingMatchRef.current = null;
                 }
 
+                // ALWAYS update match index for progress calculation
                 lastMatchIndexRef.current = match.index;
 
                 // Calculate the end index of the match to determine current reading position
-                // We use the length of what was recognized to project where we are in the text
                 const matchEndIndex = match.index + cleanTranscript.length;
-
-                // Clamp to valid range
                 const lookupIndex = Math.min(matchEndIndex, charToSentenceMap.length - 1);
 
                 if (lookupIndex >= 0 && lookupIndex < charToSentenceMap.length) {
                     const sentenceId = charToSentenceMap[lookupIndex];
 
-                    // Calculate progress within the sentence for smooth scrolling
-                    // Assumes sentences array is ordered by ID (which it is from parser)
-                    const sentence = sentences[sentenceId];
+                    // Use LOCKED sentence if available, otherwise use detected sentence
+                    const effectiveSentenceId = lockedSentenceIdRef.current >= 0 ? lockedSentenceIdRef.current : sentenceId;
+
+                    // Calculate progress within the effective sentence
+                    const sentence = sentences[effectiveSentenceId];
                     if (sentence && typeof sentence.startIndex === "number") {
                         const relativeIndex = lookupIndex - sentence.startIndex;
                         const len = sentence.cleanContent.length;
                         if (len > 0) {
                             const rawProgress = Math.min(1, Math.max(0, relativeIndex / len));
 
-                            // PROGRESS SMOOTHING: Use exponential moving average to prevent jitter
+                            // PROGRESS SMOOTHING: Use exponential moving average
                             const smoothedProgress = smoothedProgressRef.current * (1 - PROGRESS_SMOOTH_FACTOR) +
                                 rawProgress * PROGRESS_SMOOTH_FACTOR;
                             smoothedProgressRef.current = smoothedProgress;
@@ -275,10 +274,9 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                         }
                     }
 
-                    // Only update if we moved forward or it's a definitive jump
-                    // This prevents jitter if the match fluctuates slightly between sentences
-                    if (sentenceId !== activeSentenceIndex) {
-                        setActiveSentenceIndex(sentenceId);
+                    // Only update active sentence if it's confirmed (locked)
+                    if (lockedSentenceIdRef.current !== activeSentenceIndex && lockedSentenceIdRef.current >= 0) {
+                        setActiveSentenceIndex(lockedSentenceIdRef.current);
                     }
                 }
             }
@@ -319,6 +317,7 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
     const resetVoice = useCallback(() => {
         stopListening();
         lastMatchIndexRef.current = 0;
+        lockedSentenceIdRef.current = -1; // Reset locked sentence
         pendingMatchRef.current = null; // Clear pending match
         smoothedProgressRef.current = 0; // Reset smoothed progress
         setVoiceProgress(0);
