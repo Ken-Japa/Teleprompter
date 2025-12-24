@@ -742,7 +742,8 @@ export const Prompter = memo(
             <S.PrompterScrollArea
               ref={scrollContainerRef}
               onScroll={handleNativeScroll}
-              className="hardware-accelerated prompter-scroll-area"
+              className={`hardware-accelerated prompter-scroll-area ${isVoiceMode ? 'voice-control-smooth' : ''}`}
+
               style={{
                 paddingLeft: `${margin}%`,
                 paddingRight: `${margin}%`,

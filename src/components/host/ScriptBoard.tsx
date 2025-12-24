@@ -180,58 +180,61 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
           />
         ))}
 
-        {/* Bilingual: Two Columns Side by Side */}
-        <div
-          className={`w-full max-w-7xl mx-auto transition-transform duration-300 ${isUpperCase ? "uppercase" : ""} hardware-accelerated`}
-          style={{
-            transform: transforms,
-            paddingLeft: "var(--prompter-margin)",
-            paddingRight: "var(--prompter-margin)",
-          }}
-        >
-          {/* Landscape Tip for Mobile Portrait Users */}
-          <div className="block sm:hidden portrait:block landscape:hidden text-center py-4 px-6 mb-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-            <p className="text-sm text-blue-300">
-              📱 {t("bilingual.landscapeTip") || "Para melhor experiência, gire seu celular para o modo paisagem (horizontal)"}
-            </p>
-          </div>
-
-          {/* Two Columns Side by Side */}
-          <div className="flex flex-row gap-4 md:gap-6">
-            {/* Primary Language Column */}
-            <div className="flex-1">
-              <div
-                className="font-sans font-bold whitespace-pre-wrap text-center leading-tight outline-none transition-colors duration-500 text-optimize"
-                style={{ fontSize: "var(--prompter-font-size)" }}
-              >
-                {bilingualSentences.primary.map((s: Sentence) => (
-                  <SentenceItem
-                    key={`primary-${s.id}`}
-                    id={s.id}
-                    fragments={s.fragments}
-                    command={s.command}
-                  />
-                ))}
-              </div>
+        {/* Voice Control Content Wrapper for GPU-accelerated scrolling */}
+        <div className="voice-control-content">
+          {/* Bilingual: Two Columns Side by Side */}
+          <div
+            className={`w-full max-w-7xl mx-auto transition-transform duration-300 ${isUpperCase ? "uppercase" : ""} hardware-accelerated`}
+            style={{
+              transform: transforms,
+              paddingLeft: "var(--prompter-margin)",
+              paddingRight: "var(--prompter-margin)",
+            }}
+          >
+            {/* Landscape Tip for Mobile Portrait Users */}
+            <div className="block sm:hidden portrait:block landscape:hidden text-center py-4 px-6 mb-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+              <p className="text-sm text-blue-300">
+                📱 {t("bilingual.landscapeTip") || "Para melhor experiência, gire seu celular para o modo paisagem (horizontal)"}
+              </p>
             </div>
 
-            {/* Visual Separator */}
-            <div className="w-px bg-gradient-to-b from-transparent via-slate-700/50 to-transparent" />
+            {/* Two Columns Side by Side */}
+            <div className="flex flex-row gap-4 md:gap-6">
+              {/* Primary Language Column */}
+              <div className="flex-1">
+                <div
+                  className="font-sans font-bold whitespace-pre-wrap text-center leading-tight outline-none transition-colors duration-500 text-optimize"
+                  style={{ fontSize: "var(--prompter-font-size)" }}
+                >
+                  {bilingualSentences.primary.map((s: Sentence) => (
+                    <SentenceItem
+                      key={`primary-${s.id}`}
+                      id={s.id}
+                      fragments={s.fragments}
+                      command={s.command}
+                    />
+                  ))}
+                </div>
+              </div>
 
-            {/* Secondary Language Column */}
-            <div className="flex-1">
-              <div
-                className="font-sans font-bold whitespace-pre-wrap text-center leading-tight outline-none transition-colors duration-500 text-optimize"
-                style={{ fontSize: "var(--prompter-font-size)" }}
-              >
-                {bilingualSentences.secondary.map((s: Sentence) => (
-                  <SentenceItem
-                    key={`secondary-${s.id}`}
-                    id={s.id}
-                    fragments={s.fragments}
-                    command={s.command}
-                  />
-                ))}
+              {/* Visual Separator */}
+              <div className="w-px bg-gradient-to-b from-transparent via-slate-700/50 to-transparent" />
+
+              {/* Secondary Language Column */}
+              <div className="flex-1">
+                <div
+                  className="font-sans font-bold whitespace-pre-wrap text-center leading-tight outline-none transition-colors duration-500 text-optimize"
+                  style={{ fontSize: "var(--prompter-font-size)" }}
+                >
+                  {bilingualSentences.secondary.map((s: Sentence) => (
+                    <SentenceItem
+                      key={`secondary-${s.id}`}
+                      id={s.id}
+                      fragments={s.fragments}
+                      command={s.command}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -261,26 +264,29 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
         />
       ))}
 
-      {/* Texto centralizado com margens dinâmicas */}
-      <div
-        className={`w-full max-w-7xl mx-auto transition-transform duration-300 ${isUpperCase ? "uppercase" : ""} hardware-accelerated`}
-        style={{
-          transform: transforms,
-          paddingLeft: "var(--prompter-margin)",
-          paddingRight: "var(--prompter-margin)",
-        }}
-      >
+      {/* Voice Control Content Wrapper for GPU-accelerated scrolling */}
+      <div className="voice-control-content">
+        {/* Texto centralizado com margens dinâmicas */}
         <div
-          className={`${isMusicianMode ? "font-mono whitespace-pre text-left" : "whitespace-pre-wrap text-center"} leading-tight outline-none transition-colors duration-500 text-optimize`}
+          className={`w-full max-w-7xl mx-auto transition-transform duration-300 ${isUpperCase ? "uppercase" : ""} hardware-accelerated`}
           style={{
-            fontSize: "var(--prompter-font-size)",
-            fontFamily: "var(--prompter-font-family)",
-            fontWeight: "bold"
+            transform: transforms,
+            paddingLeft: "var(--prompter-margin)",
+            paddingRight: "var(--prompter-margin)",
           }}
         >
-          {processedSentences.map((s: Sentence) => (
-            <SentenceItem key={s.id} id={s.id} fragments={s.fragments} isChord={s.isChord} isMusicianMode={isMusicianMode} command={s.command} originalSentenceId={s.originalSentenceId} />
-          ))}
+          <div
+            className={`${isMusicianMode ? "font-mono whitespace-pre text-left" : "whitespace-pre-wrap text-center"} leading-tight outline-none transition-colors duration-500 text-optimize`}
+            style={{
+              fontSize: "var(--prompter-font-size)",
+              fontFamily: "var(--prompter-font-family)",
+              fontWeight: "bold"
+            }}
+          >
+            {processedSentences.map((s: Sentence) => (
+              <SentenceItem key={s.id} id={s.id} fragments={s.fragments} isChord={s.isChord} isMusicianMode={isMusicianMode} command={s.command} originalSentenceId={s.originalSentenceId} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

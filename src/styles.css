@@ -101,6 +101,21 @@ html {
     contain: layout paint;
 }
 
+/* Voice Control Smooth Scrolling - GPU Accelerated */
+.voice-control-smooth {
+    will-change: transform;
+    /* overflow: hidden is important to prevent double scrollbars */
+    overflow: hidden;
+}
+
+.voice-control-content {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    /* Use GPU-accelerated transforms for buttery smooth scrolling */
+}
+
+
 /* Glassmorphism Utilities */
 .glass {
     background: rgba(15, 23, 42, 0.6);

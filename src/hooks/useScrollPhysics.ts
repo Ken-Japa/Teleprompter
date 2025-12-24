@@ -90,6 +90,8 @@ export const useScrollPhysics = ({
   const targetVoiceScrollRef = useRef<number | null>(null);
   const lastVoiceIndexRef = useRef<number>(-1);
   const currentActiveElementRef = useRef<HTMLElement | null>(null);
+  const transformOffsetRef = useRef<number>(0); // Track transform position for voice mode
+
 
   // Update Velocity Cache when speed changes
   useEffect(() => {
@@ -97,6 +99,23 @@ export const useScrollPhysics = ({
     velocityCacheRef.current =
       Math.pow(speed, PHYSICS_CONSTANTS.SPEED_POWER) * PHYSICS_CONSTANTS.VELOCITY_MULTIPLIER;
   }, [speed]);
+
+  /**
+   * Apply scroll using GPU-accelerated CSS transform (for voice mode).
+   * This provides buttery-smooth scrolling without triggering layout reflow.
+   */
+  const applyScrollTransform = useCallback((position: number) => {
+    if (!scrollContainerRef.current) return;
+
+    const content = scrollContainerRef.current.querySelector('.voice-control-content');
+    if (content instanceof HTMLElement) {
+      // Use translate3d for GPU acceleration
+      // Negative Y because we're moving content up as we scroll down
+      content.style.transform = `translate3d(0, -${position}px, 0)`;
+      transformOffsetRef.current = position;
+    }
+  }, []);
+
 
   /**
    * Loop principal de física (Game Loop pattern).
@@ -258,7 +277,14 @@ export const useScrollPhysics = ({
           momentumRef.current = 0;
         }
 
-        scrollContainerRef.current.scrollTop = internalScrollPos.current;
+
+        // Apply scroll: Use GPU-accelerated transform for voice mode, scrollTop otherwise
+        if (_isVoiceMode) {
+          applyScrollTransform(internalScrollPos.current);
+        } else {
+          scrollContainerRef.current.scrollTop = internalScrollPos.current;
+        }
+
 
         // Reporta progresso (0 a 1)
         const progress = maxScroll > 0 ? internalScrollPos.current / maxScroll : 0;
@@ -319,6 +345,22 @@ export const useScrollPhysics = ({
       wakeUpLoop();
     }
   }, [isPlaying, isVoiceMode, activeSentenceIndex, voiceProgress, wakeUpLoop]);
+
+  // Sync scrollTop when exiting voice mode
+  useEffect(() => {
+    if (!isVoiceMode && transformOffsetRef.current > 0 && scrollContainerRef.current) {
+      // Sync scrollTop with transform position when exiting voice mode
+      scrollContainerRef.current.scrollTop = transformOffsetRef.current;
+      transformOffsetRef.current = 0;
+
+      // Clear transform from content
+      const content = scrollContainerRef.current.querySelector('.voice-control-content');
+      if (content instanceof HTMLElement) {
+        content.style.transform = '';
+      }
+    }
+  }, [isVoiceMode]);
+
 
   // Cleanup
   useEffect(() => {
@@ -385,10 +427,18 @@ export const useScrollPhysics = ({
     isHardStopRequestedRef.current = true;
     processedCommandsRef.current.clear();
     lastScrollCheckRef.current = 0;
+    transformOffsetRef.current = 0; // Reset transform offset
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollTop = 0;
+
+      // Clear transform if it exists
+      const content = scrollContainerRef.current.querySelector('.voice-control-content');
+      if (content instanceof HTMLElement) {
+        content.style.transform = '';
+      }
     }
   }, [scrollContainerRef]);
+
 
   const clearProcessedCommands = useCallback((startId: number, endId: number) => {
     for (let i = startId; i <= endId; i++) {
