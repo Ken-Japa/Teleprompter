@@ -23,6 +23,7 @@ import { ScriptBoard } from "./ScriptBoard";
 import { PrompterHUD } from "./PrompterHUD";
 import { QuickEditModal } from "./QuickEditModal";
 import { trackEvent, trackFinishReading, trackEngagedUser } from "../../utils/analytics";
+import { Script } from "../../hooks/useScriptStorage";
 
 import { useNavigationMap } from "../../hooks/useNavigationMap";
 import { useMediaRecorder } from "../../hooks/useMediaRecorder";
@@ -55,11 +56,18 @@ interface PrompterProps {
   onReset?: () => void;
   onStartRemoteRecording?: () => void;
   onStopRemoteRecording?: () => void;
+  // Script Management Props
+  scripts: Script[];
+  activeScriptId: string;
+  onSwitchScript: (id: string) => void;
+  onCreateScript: () => void;
+  onDeleteScript: (id: string) => void;
+  onUpdateScript: (id: string, updates: Partial<Script>) => void;
 }
 
 export const Prompter = memo(
   forwardRef<PrompterHandle, PrompterProps>(
-    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onReset, onStartRemoteRecording, onStopRemoteRecording }, ref) => {
+    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onReset, onStartRemoteRecording, onStopRemoteRecording, scripts, activeScriptId, onSwitchScript, onCreateScript, onDeleteScript, onUpdateScript }, ref) => {
 
       // Extracted Settings Logic
       const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode, isMusicianMode, isBilingualMode, bilingualConfig, isHudless, isCameraMode, isWidgetMode } = settings;
@@ -818,6 +826,12 @@ export const Prompter = memo(
               onTextChange(newText);
               setShowEditModal(false);
             }}
+            scripts={scripts}
+            activeScriptId={activeScriptId}
+            onSwitchScript={onSwitchScript}
+            onCreateScript={onCreateScript}
+            onDeleteScript={onDeleteScript}
+            onUpdateScript={onUpdateScript}
           />
         </S.ScreenContainer>
       );

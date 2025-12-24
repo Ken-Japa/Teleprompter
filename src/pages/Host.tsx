@@ -117,6 +117,12 @@ export const Host: React.FC = () => {
                     onReset={actions.handleReset}
                     onStartRemoteRecording={actions.startRemoteRecording}
                     onStopRemoteRecording={actions.stopRemoteRecording}
+                    scripts={state.scripts}
+                    activeScriptId={state.activeScriptId || ""}
+                    onCreateScript={actions.createScript}
+                    onSwitchScript={actions.switchScript}
+                    onDeleteScript={actions.deleteScript}
+                    onUpdateScript={actions.updateScript}
                 />
             )}
 

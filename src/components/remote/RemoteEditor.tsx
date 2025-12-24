@@ -3,14 +3,33 @@ import { ColorMenu } from "../ui/ColorMenu";
 import { insertTagInText } from "../../utils/editorHelpers";
 import { RemoteActions } from "../../types";
 import { useTranslation } from "../../hooks/useTranslation";
+import { ScriptManager } from "../host/ScriptManager";
+import { Script } from "../../hooks/useScriptStorage";
 
 interface RemoteEditorProps {
     text: string;
     actions: RemoteActions;
     isBilingualMode?: boolean;
+    // Script Management Props
+    scripts: Script[];
+    activeScriptId: string;
+    onSwitchScript: (id: string) => void;
+    onCreateScript: () => void;
+    onDeleteScript: (id: string) => void;
+    onUpdateScript: (id: string, updates: Partial<Script>) => void;
 }
 
-export const RemoteEditor: React.FC<RemoteEditorProps> = ({ text, actions, isBilingualMode }) => {
+export const RemoteEditor: React.FC<RemoteEditorProps> = ({
+    text,
+    actions,
+    isBilingualMode,
+    scripts,
+    activeScriptId,
+    onSwitchScript,
+    onCreateScript,
+    onDeleteScript,
+    onUpdateScript,
+}) => {
     const { t } = useTranslation();
     const remoteTextAreaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -49,6 +68,16 @@ export const RemoteEditor: React.FC<RemoteEditorProps> = ({ text, actions, isBil
 
     return (
         <div className="flex-1 flex flex-col p-4 bg-slate-950 overflow-hidden">
+            <div className="flex items-center justify-center pb-3 border-b border-slate-800 mb-4">
+                <ScriptManager
+                    scripts={scripts}
+                    activeScriptId={activeScriptId}
+                    onSwitch={onSwitchScript}
+                    onCreate={onCreateScript}
+                    onDelete={onDeleteScript}
+                    onUpdateTitle={(id, title) => onUpdateScript(id, { title })}
+                />
+            </div>
             <div className="mb-4">
                 <ColorMenu onInsertTag={handleRemoteInsertTag} />
             </div>

@@ -7,6 +7,7 @@ import { ConnectionState } from "../components/remote/ConnectionState";
 import { useRemoteController } from "../hooks/useRemoteController";
 import { useRemoteTextHandling } from "../hooks/useRemoteTextHandling";
 import { ControlIcon, EditIcon, SettingsIcon, NavIcon, PlayIcon, PauseIcon } from "../components/ui/Icons";
+import { useScriptStorage } from "../hooks/useScriptStorage";
 
 import { RemoteControls } from "../components/remote/RemoteControls";
 import { RemoteSettings } from "../components/remote/RemoteSettings";
@@ -21,6 +22,9 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
     const { t, lang, setLang } = useTranslation();
     const { state, actions } = useRemoteController(hostId);
     const { status, isPlaying, speed, progress, errorMessage, settings, text, elapsedTime, navigationMap, isVoiceMode, isPro, isRecording, hasRecordedData } = state;
+
+    // Local script management (can be synced with host via WebRTC in the future)
+    const { scripts, activeScriptId, createScript, switchScript, deleteScript, updateScript } = useScriptStorage();
 
     const [activeTab, setActiveTab] = useState<'control' | 'edit' | 'settings' | 'nav'>('control');
 
@@ -173,6 +177,12 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                         text={text}
                         actions={actions}
                         isBilingualMode={settings?.isBilingualMode}
+                        scripts={scripts}
+                        activeScriptId={activeScriptId}
+                        onSwitchScript={switchScript}
+                        onCreateScript={createScript}
+                        onDeleteScript={deleteScript}
+                        onUpdateScript={updateScript}
                     />
                 )}
 

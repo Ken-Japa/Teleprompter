@@ -4,12 +4,21 @@ import * as S from "../ui/Styled";
 import { useTranslation } from "../../hooks/useTranslation";
 import { ColorMenu } from "../ui/ColorMenu";
 import { insertTagInText } from "../../utils/editorHelpers";
+import { ScriptManager } from "./ScriptManager";
+import { Script } from "../../hooks/useScriptStorage";
 
 interface QuickEditModalProps {
     isOpen: boolean;
     onClose: () => void;
     text: string;
     onSave: (newText: string) => void;
+    // Script Management Props
+    scripts: Script[];
+    activeScriptId: string;
+    onSwitchScript: (id: string) => void;
+    onCreateScript: () => void;
+    onDeleteScript: (id: string) => void;
+    onUpdateScript: (id: string, updates: Partial<Script>) => void;
 }
 
 export const QuickEditModal: React.FC<QuickEditModalProps> = ({
@@ -17,6 +26,12 @@ export const QuickEditModal: React.FC<QuickEditModalProps> = ({
     onClose,
     text,
     onSave,
+    scripts,
+    activeScriptId,
+    onSwitchScript,
+    onCreateScript,
+    onDeleteScript,
+    onUpdateScript,
 }) => {
     const { t } = useTranslation();
     const [localText, setLocalText] = useState(text);
@@ -53,6 +68,16 @@ export const QuickEditModal: React.FC<QuickEditModalProps> = ({
     return (
         <Modal isOpen={isOpen} onClose={onClose} title={t("host.editText") || "Edit Text"}>
             <div className="flex flex-col gap-4">
+                <div className="flex items-center justify-center pb-2 border-b border-slate-700">
+                    <ScriptManager
+                        scripts={scripts}
+                        activeScriptId={activeScriptId}
+                        onSwitch={onSwitchScript}
+                        onCreate={onCreateScript}
+                        onDelete={onDeleteScript}
+                        onUpdateTitle={(id, title) => onUpdateScript(id, { title })}
+                    />
+                </div>
                 <ColorMenu onInsertTag={handleInsertTag} />
                 <textarea
                     ref={textAreaRef}
