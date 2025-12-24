@@ -6,7 +6,6 @@ import { findBestMatch } from "../utils/stringSimilarity";
 import { useTranslation } from "./useTranslation";
 
 // callback for raw transcript, useful for custom commands like [COUNT]
-// callback for raw transcript, useful for custom commands like [COUNT]
 export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (transcript: string) => void, forcedLang?: string) => {
     const { lang: globalLang } = useTranslation();
     const lang = forcedLang || globalLang;
@@ -23,11 +22,11 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
     // STABILITY SYSTEM: Require matches to be stable before accepting
     const pendingMatchRef = useRef<{ index: number; count: number; sentenceId: number } | null>(null);
-    const MATCH_CONFIRMATION_FRAMES = 3; // Must be stable for 3 frames
+    const MATCH_CONFIRMATION_FRAMES = 2; // Must be stable for 3 frames
 
     // PROGRESS SMOOTHING: Prevent jitter
     const smoothedProgressRef = useRef<number>(0);
-    const PROGRESS_SMOOTH_FACTOR = 0.3; // 30% new, 70% old
+    const PROGRESS_SMOOTH_FACTOR = 0.35; // 30% new, 70% old
 
     // Keep latest callback in ref to avoid restarting recognition on every state change
     const onSpeechResultRef = useRef(onSpeechResult);
@@ -70,7 +69,7 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             case "de": return "de-DE";
             case "ja": return "ja-JP";
             case "zh": return "zh-CN";
-            case "other": return ""; // Empty means browser default/auto
+            case "other": return "";
             default: return l.includes("-") ? l : "en-US";
         }
     };
@@ -139,7 +138,7 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             // THROTTLING: Only process interim results every 100ms to reduce computational load
             const now = Date.now();
             const isFinal = event.results[event.resultIndex]?.isFinal;
-            const THROTTLE_MS = 100; // Max 10 updates/second instead of 20
+            const THROTTLE_MS = 75; // Max 10 updates/second instead of 20
 
             if (!isFinal && (now - lastProcessedTimeRef.current) < THROTTLE_MS) {
                 return; // Skip this interim result
@@ -181,7 +180,7 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                     // CRITICAL: Only allow fallback if:
                     // 1. Nearly PERFECT backward match (98%+) within 2 sentences (user restarted)
                     // 2. NEVER allow forward jumps via fallback (too risky)
-                    const isNearPerfectMatch = fallbackMatch.ratio < 0.02; // 98%+ accuracy
+                    const isNearPerfectMatch = fallbackMatch.ratio < 0.04; // 98%+ accuracy
                     const isVerySmallJump = sentenceDistance <= 2;
 
                     if (isBackwardJump && isNearPerfectMatch && isVerySmallJump) {
