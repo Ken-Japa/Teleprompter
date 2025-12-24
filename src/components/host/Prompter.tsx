@@ -804,6 +804,8 @@ export const Prompter = memo(
               resume: handleResumeRecording,
               download: downloadRecording
             }}
+            onPreviousPart={() => handleJumpToPart('prev')}
+            onNextPart={() => handleJumpToPart('next')}
           />
 
           <QuickEditModal

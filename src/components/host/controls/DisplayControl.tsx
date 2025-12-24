@@ -1,7 +1,7 @@
 import { memo, useCallback } from "react";
 import { useTranslation } from "../../../hooks/useTranslation";
 import * as S from "../../ui/Styled";
-import { FlipIcon, MarginIcon, CapsIcon, PiPIcon } from "../../ui/Icons";
+import { FlipIcon, MarginIcon, CapsIcon, PiPIcon, ChevronUpIcon, ChevronDownIcon } from "../../ui/Icons";
 import type { PrompterSettings, PrompterActions } from "../../../hooks/usePrompterSettings";
 import { trackSettingChange } from "../../../utils/analytics";
 
@@ -11,9 +11,11 @@ interface DisplayControlProps {
   onOpenMarginSlider: () => void;
   togglePiP?: () => void;
   isPiPActive?: boolean;
+  onPreviousPart?: () => void;
+  onNextPart?: () => void;
 }
 
-export const DisplayControl = memo(({ settings, actions, onOpenMarginSlider, togglePiP, isPiPActive }: DisplayControlProps) => {
+export const DisplayControl = memo(({ settings, actions, onOpenMarginSlider, togglePiP, isPiPActive, onPreviousPart, onNextPart }: DisplayControlProps) => {
   const { t } = useTranslation();
   const { isMirrored, isUpperCase, isFlipVertical } = settings;
   const { setIsMirrored, setIsUpperCase, setIsFlipVertical } = actions;
@@ -38,6 +40,30 @@ export const DisplayControl = memo(({ settings, actions, onOpenMarginSlider, tog
 
   return (
     <div className="flex items-center gap-2">
+      {/* Navigation Buttons */}
+      {(onPreviousPart || onNextPart) && (
+        <div className="flex items-center bg-slate-950/50 rounded-full p-1 border border-slate-800/50 mr-1">
+          <S.IconButton
+            onClick={onPreviousPart}
+            disabled={!onPreviousPart}
+            title={t("host.controls.prevPart") || "Previous Part"}
+            aria-label="Previous Part"
+            className="w-8 h-8 rounded-full text-slate-400 hover:text-white hover:bg-white/5 border-transparent"
+          >
+            <ChevronUpIcon className="w-5 h-5" />
+          </S.IconButton>
+          <S.IconButton
+            onClick={onNextPart}
+            disabled={!onNextPart}
+            title={t("host.controls.nextPart") || "Next Part"}
+            aria-label="Next Part"
+            className="w-8 h-8 rounded-full text-slate-400 hover:text-white hover:bg-white/5 border-transparent"
+          >
+            <ChevronDownIcon className="w-5 h-5" />
+          </S.IconButton>
+        </div>
+      )}
+
       <div className="flex items-center bg-slate-950/50 rounded-full p-1 border border-slate-800/50">
         <S.IconButton
           onClick={handleMirrorToggle}

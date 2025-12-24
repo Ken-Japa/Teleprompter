@@ -24,11 +24,11 @@ export const FontControl = memo(({ fontSize, setFontSize, onOpenFontSizeSlider }
     return (
         <S.HudGroup label={t("host.controls.size")}>
             {/* Controles para telas maiores */}
-            <div className="hidden sm:flex items-center gap-2">
+            <div className="hidden sm:flex items-center gap-1">
                 <S.IconButton
                     onClick={() => handleSetFontSize((f) => Math.max(UI_LIMITS.FONT_SIZE.MIN, f - UI_LIMITS.FONT_SIZE.STEP_BUTTON))}
                     aria-label="Decrease Font Size"
-                    className="w-9 h-9 rounded-full hover:bg-white/10 border-transparent"
+                    className="w-8 h-8 rounded-full hover:bg-white/10 border-transparent"
                 >
                     <TextSizeIcon className="w-3 h-3 sm:w-4 sm:h-4 opacity-70" />
                 </S.IconButton>
@@ -48,7 +48,7 @@ export const FontControl = memo(({ fontSize, setFontSize, onOpenFontSizeSlider }
                 <S.IconButton
                     onClick={() => handleSetFontSize((f) => Math.min(UI_LIMITS.FONT_SIZE.MAX, f + UI_LIMITS.FONT_SIZE.STEP_BUTTON))}
                     aria-label="Increase Font Size"
-                    className="w-9 h-9 rounded-full hover:bg-white/10 border-transparent"
+                    className="w-8 h-8 rounded-full hover:bg-white/10 border-transparent"
                 >
                     <TextSizeIcon className="w-4 h-4 sm:w-6 sm:h-6" />
                 </S.IconButton>

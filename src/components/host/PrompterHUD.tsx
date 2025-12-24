@@ -51,10 +51,12 @@ interface PrompterHUDProps {
         resume: () => void;
         download: () => void;
     };
+    onPreviousPart?: () => void;
+    onNextPart?: () => void;
 }
 
 export const PrompterHUD = memo(
-    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isVoiceMode, isPro, resetTimerSignal, onStateChange, onResetPrompter, toggleVoice, onExit, voiceApiSupported, voiceApiError, onSync, onEdit, togglePiP, isPiPActive, recordingState, recordingActions }: PrompterHUDProps) => {
+    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isVoiceMode, isPro, resetTimerSignal, onStateChange, onResetPrompter, toggleVoice, onExit, voiceApiSupported, voiceApiError, onSync, onEdit, togglePiP, isPiPActive, recordingState, recordingActions, onPreviousPart, onNextPart }: PrompterHUDProps) => {
         const { t } = useTranslation();
         const { recordingMode = 'host' } = settings;
         const { setRecordingMode } = actions;
@@ -226,6 +228,8 @@ export const PrompterHUD = memo(
                                 onOpenMarginSlider={() => setShowMarginModal(true)}
                                 togglePiP={togglePiP}
                                 isPiPActive={isPiPActive}
+                                onPreviousPart={onPreviousPart}
+                                onNextPart={onNextPart}
                             />
 
                             <S.IconButton
