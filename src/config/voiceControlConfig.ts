@@ -53,4 +53,39 @@ export const VOICE_CONFIG = {
    * Goal: Allow text to reach the visual top marker comfortably.
    */
   VOICE_PADDING_TOP: 7, // 7vh padding as requested
+
+  // --- RECOGNITION TUNING ---
+
+  /**
+   * THROTTLE_MS
+   * Minimum time (ms) between processing interim results.
+   * Reduces computational load by limiting updates per second.
+   * Default: 75ms (~13fps)
+   */
+  THROTTLE_MS: 75,
+
+  /**
+   * MATCH_CONFIRMATION_FRAMES
+   * Number of consecutive frames a new sentence match must be stable
+   * before locking onto it. Prevents jittery jumps.
+   */
+  MATCH_CONFIRMATION_FRAMES: 2,
+
+  /**
+   * PROGRESS_SMOOTH_FACTOR (0.0 - 1.0)
+   * Smoothing factor for the progress within a sentence.
+   * Higher = more responsive (jittery), Lower = smoother (laggy).
+   * 0.35 means 35% new value, 65% old value.
+   */
+  PROGRESS_SMOOTH_FACTOR: 0.35,
+
+  /**
+   * SEARCH_WINDOW_SMALL/MEDIUM/LARGE
+   * Characters to look ahead/behind for fuzzy matching based on script size.
+   */
+  SEARCH_WINDOW: {
+    SMALL: 600,   // scripts < 2000 chars
+    MEDIUM: 800,  // scripts < 5000 chars
+    LARGE: 1200,  // scripts > 5000 chars
+  }
 };

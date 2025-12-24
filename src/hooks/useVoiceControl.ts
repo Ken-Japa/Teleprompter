@@ -25,11 +25,9 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
     // We distinguish between "which sentence" (requires confirmation) and "where within sentence" (free)
     const lockedSentenceIdRef = useRef<number>(-1); // Current locked sentence
     const pendingMatchRef = useRef<{ index: number; count: number; sentenceId: number } | null>(null);
-    const MATCH_CONFIRMATION_FRAMES = 2; // Must be stable for 2 frames
 
     // PROGRESS SMOOTHING: Prevent jitter
     const smoothedProgressRef = useRef<number>(0);
-    const PROGRESS_SMOOTH_FACTOR = 0.35; // 35% new, 65% old
 
     // Keep latest callback in ref to avoid restarting recognition on every state change
     const onSpeechResultRef = useRef(onSpeechResult);
@@ -60,6 +58,7 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                     recognitionRef.current.stop();
                     recognitionRef.current.onend = null;
                     recognitionRef.current.onresult = null;
+                    recognitionRef.current.onerror = null; // Clean up error handler
                 } catch (e) { /* Ignore errors during cleanup */ }
             }
         };
@@ -104,7 +103,24 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
         recognition.onstart = () => {
             setIsListening(true);
+            setVoiceApiError(null); // Clear errors on success
             lastStartTimeRef.current = Date.now();
+        };
+
+        recognition.onerror = (event: any) => {
+            // Handle specific errors
+            if (event.error === 'not-allowed') {
+                setVoiceApiError("voice.permissionDenied");
+                intentionallyStoppedRef.current = true; // Stop trying
+                setIsListening(false);
+            } else if (event.error === 'network') {
+                // Network errors might be temporary, let retry logic handle it
+                console.warn("[Voice] Network error");
+            } else if (event.error === 'no-speech') {
+                // Ignore, just silence
+            } else {
+                console.warn("[Voice] Error:", event.error);
+            }
         };
 
         recognition.onend = () => {
@@ -163,9 +179,8 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             // THROTTLING: Only process interim results every 100ms to reduce computational load
             const now = Date.now();
             const isFinal = event.results[event.resultIndex]?.isFinal;
-            const THROTTLE_MS = 75; // Max 10 updates/second instead of 20
 
-            if (!isFinal && (now - lastProcessedTimeRef.current) < THROTTLE_MS) {
+            if (!isFinal && (now - lastProcessedTimeRef.current) < VOICE_CONFIG.THROTTLE_MS) {
                 return; // Skip this interim result
             }
             lastProcessedTimeRef.current = now;
@@ -178,8 +193,8 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
             // ADAPTIVE SEARCH WINDOW: Larger scripts need larger windows
             const scriptLength = fullCleanText.length;
-            const searchWindow = scriptLength > 5000 ? 1200 :
-                scriptLength > 2000 ? 800 : 600;
+            const searchWindow = scriptLength > 5000 ? VOICE_CONFIG.SEARCH_WINDOW.LARGE :
+                scriptLength > 2000 ? VOICE_CONFIG.SEARCH_WINDOW.MEDIUM : VOICE_CONFIG.SEARCH_WINDOW.SMALL;
 
             // Fuzzy Search Strategy
             // 1. Try to find fuzzy match starting from last known position
@@ -244,13 +259,13 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                     if (!pendingMatchRef.current || pendingMatchRef.current.sentenceId !== newSentenceId) {
                         // New potential sentence - start counting
                         pendingMatchRef.current = { index: match.index, count: 1, sentenceId: newSentenceId };
-                        console.log(`[Voice] New sentence pending: ${currentSentenceId} → ${newSentenceId}, needs ${MATCH_CONFIRMATION_FRAMES - 1} more`);
+                        console.log(`[Voice] New sentence pending: ${currentSentenceId} → ${newSentenceId}, needs ${VOICE_CONFIG.MATCH_CONFIRMATION_FRAMES - 1} more`);
                         // DON'T RETURN - allow progress update below
                     } else {
                         // Same pending sentence - increment counter
                         pendingMatchRef.current.count++;
-                        if (pendingMatchRef.current.count < MATCH_CONFIRMATION_FRAMES) {
-                            console.log(`[Voice] Sentence confirming: ${pendingMatchRef.current.count}/${MATCH_CONFIRMATION_FRAMES}`);
+                        if (pendingMatchRef.current.count < VOICE_CONFIG.MATCH_CONFIRMATION_FRAMES) {
+                            console.log(`[Voice] Sentence confirming: ${pendingMatchRef.current.count}/${VOICE_CONFIG.MATCH_CONFIRMATION_FRAMES}`);
                             // DON'T RETURN - allow progress update below
                         } else {
                             // CONFIRMED! Lock to new sentence
@@ -286,8 +301,8 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                             const rawProgress = Math.min(1, Math.max(0, relativeIndex / len));
 
                             // PROGRESS SMOOTHING: Use exponential moving average
-                            const smoothedProgress = smoothedProgressRef.current * (1 - PROGRESS_SMOOTH_FACTOR) +
-                                rawProgress * PROGRESS_SMOOTH_FACTOR;
+                            const smoothedProgress = smoothedProgressRef.current * (1 - VOICE_CONFIG.PROGRESS_SMOOTH_FACTOR) +
+                                rawProgress * VOICE_CONFIG.PROGRESS_SMOOTH_FACTOR;
                             smoothedProgressRef.current = smoothedProgress;
                             setVoiceProgress(smoothedProgress);
                         } else {
