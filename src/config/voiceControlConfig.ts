@@ -38,9 +38,9 @@ export const VOICE_CONFIG = {
   /**
    * PROGRESS_THRESHOLD (0.0 - 1.0)
    * The percentage of sentence completion required to trigger a scroll update.
-   * Helps reduce jitter from small fluctuations in voice recognition progress.
+   * Lowered to 0.01 to ensure smooth scrolling even within sentences.
    */
-  PROGRESS_THRESHOLD: 0.1,
+  PROGRESS_THRESHOLD: 0.01,
 
   /**
    * VOICE_PADDING_TOP (vh)
@@ -52,5 +52,5 @@ export const VOICE_CONFIG = {
    * 
    * Goal: Allow text to reach the visual top marker comfortably.
    */
-  VOICE_PADDING_TOP: 7, // 15vh padding
+  VOICE_PADDING_TOP: 7, // 7vh padding as requested
 };

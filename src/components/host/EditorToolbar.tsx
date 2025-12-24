@@ -49,7 +49,7 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
         <div className="md:sticky md:top-0 md:z-30 w-full bg-slate-950/80 backdrop-blur-xl border-b border-white/5 md:shadow-lg transition-all duration-300">
 
             {/* Flex Container */}
-            <div className="flex flex-col md:flex-row items-center md:gap-4 w-full md:px-6 md:py-3 max-w-4xl mx-auto mb-2">
+            <div className="flex flex-col md:flex-row items-center md:gap-4 w-full md:px-6 md:py-3 max-w-4xl mx-4 mb-2">
 
                 {/* 3. Color Section - Highlight (Bottom Sticky on Mobile, First on Desktop) */}
                 <div className="order-3 md:order-1 md:mr-auto w-full md:w-auto sticky top-0 z-20 md:static bg-slate-950/90 md:bg-transparent backdrop-blur-md md:backdrop-blur-none border-b border-white/10 md:border-0 py-3 md:py-0 transition-all shadow-lg md:shadow-none">

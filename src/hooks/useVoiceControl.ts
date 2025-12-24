@@ -4,6 +4,7 @@ import { parseTextToSentences } from "../utils/textParser";
 import { logger } from "../utils/logger";
 import { findBestMatch } from "../utils/stringSimilarity";
 import { useTranslation } from "./useTranslation";
+import { VOICE_CONFIG } from "../config/voiceControlConfig";
 
 // callback for raw transcript, useful for custom commands like [COUNT]
 export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (transcript: string) => void, forcedLang?: string) => {
@@ -320,8 +321,10 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             if (!container) return 0;
 
             const scrollTop = container.scrollTop || 0;
-            // Use LOOKAHEAD position (1% from top) instead of center
-            const targetPosition = scrollTop + (container.clientHeight * 0.01);
+            // FIXED: Use the actual LOOKAHEAD position to find what user is looking at.
+            // Adjusting by small offset to favor the sentence *entering* the zone
+            const lookaheadRatio = VOICE_CONFIG.LOOKAHEAD_POSITION;
+            const targetPosition = scrollTop + (container.clientHeight * lookaheadRatio);
 
             // Find sentence closest to center of viewport
             for (let i = sentences.length - 1; i >= 0; i--) {
@@ -332,7 +335,7 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
                     // If sentence contains LOOKAHEAD position
                     if (elTop <= targetPosition && elBottom >= targetPosition) {
-                        console.log(`[Voice] Found visible sentence: ${i} at LOOKAHEAD position`);
+                        console.log(`[Voice] Found visible sentence: ${i} at LOOKAHEAD position (${lookaheadRatio})`);
                         return i;
                     }
                 }
