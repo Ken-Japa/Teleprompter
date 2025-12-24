@@ -11,6 +11,7 @@ export const pt = {
     cancel: "Cancelar",
     more: "Mais opções...",
     less: "Menos",
+    delete: "Excluir",
   },
   menu: {
     home: "Início",
@@ -331,6 +332,9 @@ export const pt = {
       downloadRecord: "Baixar Gravação",
       recordNew: "Gravar Novo",
       fontConfig: "Configurar Fonte",
+      appearance: "Aparência",
+      prevPart: "Voltar",
+      nextPart: "Avançar",
     },
     hudLabels: {
       theme: "Tema",

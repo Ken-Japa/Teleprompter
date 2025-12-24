@@ -11,6 +11,7 @@ export const en = {
     cancel: "Cancel",
     more: "More options...",
     less: "Less",
+    delete: "Delete"
   },
   menu: {
     home: "Home",
@@ -21,6 +22,7 @@ export const en = {
     validateLicense: "Validate License",
     start: "Start",
     startHint: "Press PLAY to start",
+    startHintShort: "Press PLAY",
   },
   landing: {
     meta: {
@@ -325,6 +327,9 @@ export const en = {
       downloadRecord: "Download Recording",
       recordNew: "Record New",
       fontConfig: "Font Configuration",
+      appearance: "Appearance",
+      prevPart: "Previous Part",
+      nextPart: "Next Part",
     },
     hudLabels: {
       theme: "Theme",

@@ -13,6 +13,7 @@ export const es = {
     validateLicense: "Validar Licencia",
     start: "Empezar",
     startHint: "Pulsa PLAY para empezar",
+    startHintShort: "Pulsa PLAY",
   },
   common: {
     sync: "Sincronizar",
@@ -25,6 +26,7 @@ export const es = {
     cancel: "Cancelar",
     more: "Más opciones...",
     less: "Menos",
+    delete: "Delete"
   },
   landing: {
     meta: {
@@ -333,6 +335,9 @@ export const es = {
       downloadRecord: "Descargar Grabación",
       recordNew: "Grabar Nuevo",
       fontConfig: "Configurar Fonte",
+      appearance: "Apariencia",
+      prevPart: "Volver",
+      nextPart: "Avanzar",
     },
     hudLabels: {
       theme: "Tema",

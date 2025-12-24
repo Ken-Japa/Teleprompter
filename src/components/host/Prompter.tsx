@@ -448,7 +448,11 @@ export const Prompter = memo(
         onToggleFocus: () => actions.setIsFocusMode(!isFocusMode),
         onExit: onExit,
         onReset: resetPrompter,
-        onToggleHud: () => actions.setIsHudless(!isHudless),
+        onToggleHud: () => {
+          const nextHudless = !isHudless;
+          actions.setIsHudless(nextHudless);
+          if (!nextHudless) setShowHud(true);
+        },
         onToggleCamera: () => actions.setIsCameraMode(!isCameraMode),
         onToggleWidget: () => actions.setIsWidgetMode(!isWidgetMode),
         onPreviousPart: () => handleJumpToPart('prev'),
@@ -783,7 +787,7 @@ export const Prompter = memo(
           </S.MainContent>
 
           <PrompterHUD
-            showHud={showHud}
+            showHud={showHud && !isHudless}
             peerId={peerId}
             status={status}
             isPlaying={externalState.isPlaying}
