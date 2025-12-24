@@ -772,13 +772,13 @@ export const Prompter = memo(
               contentStyle={{
                 // Voice Mode: Use configured Top Padding to allow text to start at Top instead of Center
                 // Note: FlipVertical logic kept as-is to avoid regression in that specific hardware mode
-                paddingTop: isVoiceMode && !isFlipVertical
+                paddingTop: isVoiceMode
                   ? `${VOICE_CONFIG.VOICE_PADDING_TOP}vh`
-                  : (isFlipVertical ? '100vh' : '50vh'),
+                  : '50vh',
                 // Voice Mode: Increase bottom padding to allow last lines to scroll comfortably to top
-                paddingBottom: isVoiceMode && !isFlipVertical
+                paddingBottom: isVoiceMode
                   ? '80vh'
-                  : (isFlipVertical ? '100vh' : '50vh')
+                  : '50vh'
               }}
             >
               <ScriptBoard

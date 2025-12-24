@@ -284,7 +284,7 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
                 // Calculate the end index of the match to determine current reading position
                 const matchEndIndex = match.index + cleanTranscript.length;
-                const lookupIndex = Math.min(matchEndIndex, charToSentenceMap.length - 1);
+                const lookupIndex = Math.min(matchEndIndex, charToSentenceMap.length - 2);
 
                 if (lookupIndex >= 0 && lookupIndex < charToSentenceMap.length) {
                     const sentenceId = charToSentenceMap[lookupIndex];
