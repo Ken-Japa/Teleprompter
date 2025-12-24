@@ -18,7 +18,7 @@ export const VOICE_CONFIG = {
    * Provides good lookahead while keeping current line near top.
    * Higher values help with line breaks and seeing upcoming text.
    */
-  LOOKAHEAD_POSITION: 0.15,
+  LOOKAHEAD_POSITION: 0.03,
 
   /**
    * SCROLL_LERP_FACTOR (0.0 - 1.0)
@@ -40,7 +40,7 @@ export const VOICE_CONFIG = {
    * The percentage of sentence completion required to trigger a scroll update.
    * Lowered to 0.01 to ensure smooth scrolling even within sentences.
    */
-  PROGRESS_THRESHOLD: 0.01,
+  PROGRESS_THRESHOLD: 0.03,
 
   /**
    * VOICE_PADDING_TOP (vh)

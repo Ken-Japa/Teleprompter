@@ -318,34 +318,55 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
         try {
             // Get scroll container
             const container = document.querySelector('.voice-control-smooth') as HTMLElement;
-            if (!container) return 0;
+            if (!container) {
+                // Return current active index if container not found, better than resetting to 0
+                return activeSentenceIndex >= 0 ? activeSentenceIndex : 0;
+            }
 
             const scrollTop = container.scrollTop || 0;
             // FIXED: Use the actual LOOKAHEAD position to find what user is looking at.
-            // Adjusting by small offset to favor the sentence *entering* the zone
             const lookaheadRatio = VOICE_CONFIG.LOOKAHEAD_POSITION;
             const targetPosition = scrollTop + (container.clientHeight * lookaheadRatio);
 
-            // Find sentence closest to center of viewport
-            for (let i = sentences.length - 1; i >= 0; i--) {
+            let closestSentenceId = 0;
+            let minDistance = Number.MAX_VALUE;
+
+            // Strategy: Find sentence strictly overlapping OR closest to the target position
+            // This handles "dead zones" (margins/padding) where targetPosition is between sentences
+            for (let i = 0; i < sentences.length; i++) {
                 const el = document.getElementById(`sentence-${i}`);
                 if (el) {
                     const elTop = el.offsetTop;
                     const elBottom = elTop + el.clientHeight;
 
-                    // If sentence contains LOOKAHEAD position
+                    // 1. Exact overlap check (Most common case)
                     if (elTop <= targetPosition && elBottom >= targetPosition) {
-                        console.log(`[Voice] Found visible sentence: ${i} at LOOKAHEAD position (${lookaheadRatio})`);
+                        // console.log(`[Voice] Found visible sentence (overlap): ${i}`);
                         return i;
+                    }
+
+                    // 2. Distance check (Fallback for margins/gaps)
+                    // Calculate distance to the sentence's vertical range
+                    let dist = 0;
+                    if (targetPosition < elTop) dist = elTop - targetPosition;
+                    else if (targetPosition > elBottom) dist = targetPosition - elBottom;
+
+                    if (dist < minDistance) {
+                        minDistance = dist;
+                        closestSentenceId = i;
                     }
                 }
             }
+
+            console.log(`[Voice] Found visible sentence (closest): ${closestSentenceId} (dist: ${minDistance})`);
+            return closestSentenceId;
+
         } catch (e) {
             console.warn('[Voice] Error finding visible sentence:', e);
         }
 
-        return 0; // Fallback to first sentence
-    }, [sentences]);
+        return activeSentenceIndex >= 0 ? activeSentenceIndex : 0; // Fallback to current
+    }, [sentences, activeSentenceIndex]);
 
     const startListening = useCallback(() => {
         if (!isPro) return;
