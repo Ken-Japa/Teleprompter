@@ -778,9 +778,14 @@ export const Prompter = memo(
             settings={settings}
             isCameraMode={isCameraMode}
             actions={actions}
+            isVoiceMode={isVoiceMode}
+            isPro={isPro}
+            voiceApiSupported={voiceApiSupported}
+            voiceApiError={voiceApiError}
             resetTimerSignal={resetTimerSignal}
             onStateChange={onStateChange}
             onResetPrompter={resetPrompter}
+            toggleVoice={toggleVoice}
             onExit={onExit}
             onSync={onSync}
             onEdit={() => setShowEditModal(true)}
@@ -789,7 +794,6 @@ export const Prompter = memo(
             onPreviousPart={() => handleJumpToPart('prev')}
             onNextPart={() => handleJumpToPart('next')}
             hasParts={partIndices.length > 0}
-
             recordingState={{
               isRecording,
               isPaused,
@@ -833,16 +837,30 @@ export const Prompter = memo(
 
               <div className="relative w-full max-w-2xl h-32">
                 <PrompterHUD
-                  showHud={true}
+                  showHud={showHud}
                   peerId={peerId}
                   status={status}
                   isPlaying={externalState.isPlaying}
                   speed={externalState.speed}
                   settings={settings}
+                  isCameraMode={isCameraMode}
+                  actions={actions}
+                  isVoiceMode={isVoiceMode}
+                  isPro={isPro}
+                  voiceApiSupported={voiceApiSupported}
+                  voiceApiError={voiceApiError}
+                  resetTimerSignal={resetTimerSignal}
+                  onStateChange={onStateChange}
+                  onResetPrompter={resetPrompter}
+                  toggleVoice={toggleVoice}
+                  onExit={onExit}
+                  onSync={onSync}
+                  onEdit={() => setShowEditModal(true)}
+                  togglePiP={togglePiP}
+                  isPiPActive={isPiPActive}
                   onPreviousPart={() => handleJumpToPart('prev')}
                   onNextPart={() => handleJumpToPart('next')}
                   hasParts={partIndices.length > 0}
-
                   recordingState={{
                     isRecording,
                     isPaused,

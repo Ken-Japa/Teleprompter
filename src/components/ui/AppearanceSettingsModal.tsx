@@ -32,7 +32,7 @@ export const AppearanceSettingsModal = memo(({ isOpen, onClose, settings, action
         isFocusMode
     } = settings;
     const {
-        cycleTheme,
+        setTheme,
         setFontFamily,
         setFontSize,
         setMargin,
@@ -40,6 +40,12 @@ export const AppearanceSettingsModal = memo(({ isOpen, onClose, settings, action
         setIsFocusMode,
         toggleChroma
     } = actions;
+
+    const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const newTheme = e.target.value as Theme;
+        trackSettingChange("theme", newTheme);
+        setTheme(newTheme);
+    };
 
     const fonts = [
         { id: 'sans-serif', name: 'Padrão (Inter)', style: 'font-sans' },
@@ -82,16 +88,29 @@ export const AppearanceSettingsModal = memo(({ isOpen, onClose, settings, action
                             <PaletteIcon className="w-4 h-4" />
                             {t("host.controls.theme")}
                         </label>
-                        <button
-                            onClick={cycleTheme}
-                            className="w-full flex items-center justify-between p-4 rounded-xl bg-slate-800 border border-slate-700 text-slate-200 hover:bg-slate-700 transition-all shadow-md group"
-                        >
-                            <span className="capitalize">{t(`host.themes.${theme}`)}</span>
-                            <div className="flex items-center gap-2">
-                                <div className={`w-3 h-3 rounded-full ${theme === Theme.DEFAULT ? 'bg-slate-900 border border-white/20' : theme === Theme.PAPER ? 'bg-white' : theme === Theme.CYBER ? 'bg-brand-500' : 'bg-green-500'}`} />
-                                <span className="text-xs text-slate-500 group-hover:text-brand-400">Alterar</span>
+                        <div className="relative group">
+                            <select
+                                value={theme}
+                                onChange={handleThemeChange}
+                                className="w-full appearance-none bg-slate-800 border border-slate-700 text-slate-200 py-3.5 px-4 pr-10 rounded-xl hover:bg-slate-700 hover:border-slate-600 focus:outline-none focus:ring-2 focus:ring-brand-500/50 transition-all cursor-pointer shadow-md"
+                            >
+                                {PROMPTER_DEFAULTS.THEME_ORDER.map((tId) => (
+                                    <option key={tId} value={tId} className="bg-slate-900 text-slate-200">
+                                        {t(`host.themes.${tId}`)}
+                                    </option>
+                                ))}
+                                {PROMPTER_DEFAULTS.CHROMA_THEMES.includes(theme) && (
+                                    <option value={theme} className="bg-slate-900 text-slate-200">
+                                        {t(`host.themes.${theme}`)}
+                                    </option>
+                                )}
+                            </select>
+                            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500 group-hover:text-slate-300 transition-colors">
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                </svg>
                             </div>
-                        </button>
+                        </div>
                     </div>
                 )}
 

@@ -7,7 +7,7 @@ import { PrompterTimer, SpeedControl, DisplayControl } from "./controls";
 import { AppearanceSettingsModal } from "../ui/AppearanceSettingsModal";
 import { UI_LIMITS } from "../../config/constants";
 import { RecordingControls } from "./controls/RecordingControls";
-import { QrCodeIcon, InfoIcon, LogOutIcon, EditIcon, PlayIcon, PauseIcon, MaximizeIcon, MinimizeIcon, StopIcon, PaletteIcon } from "../ui/Icons";
+import { QrCodeIcon, InfoIcon, LogOutIcon, EditIcon, PlayIcon, PauseIcon, MaximizeIcon, MinimizeIcon, StopIcon, PaletteIcon, PiPIcon, MicIcon, LockIcon, LaptopIcon, SmartphoneIcon } from "../ui/Icons";
 import { TutorialModal } from "../ui/TutorialModal";
 import { QRCodeModal } from "./QRCodeModal";
 import { SyncButton } from "../ui/SyncButton";
@@ -29,6 +29,12 @@ interface PrompterHUDProps {
     onSync: () => void;
     onEdit: () => void;
     isCameraMode?: boolean;
+    isVoiceMode: boolean;
+    isPro: boolean;
+    voiceApiSupported: boolean;
+    voiceApiError: string | null;
+    togglePiP?: () => void;
+    isPiPActive?: boolean;
     // Recording Props
     recordingState?: {
         isRecording: boolean;
@@ -49,7 +55,7 @@ interface PrompterHUDProps {
 }
 
 export const PrompterHUD = memo(
-    ({ showHud, peerId, status, isPlaying, speed, settings, actions, resetTimerSignal, onStateChange, onResetPrompter, onExit, onSync, onEdit, recordingState, recordingActions, onPreviousPart, onNextPart, hasParts }: PrompterHUDProps) => {
+    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isVoiceMode, isPro, voiceApiSupported, voiceApiError, resetTimerSignal, onStateChange, onResetPrompter, toggleVoice, onExit, onSync, onEdit, togglePiP, isPiPActive, recordingState, recordingActions, onPreviousPart, onNextPart, hasParts }: PrompterHUDProps) => {
         const { t } = useTranslation();
         const { recordingMode = 'host' } = settings;
         const { setRecordingMode } = actions;
@@ -198,6 +204,18 @@ export const PrompterHUD = memo(
                             onNextPart={onNextPart}
                         />
 
+                        {togglePiP && (
+                            <S.IconButton
+                                onClick={togglePiP}
+                                active={isPiPActive}
+                                title="Picture-in-Picture"
+                                aria-label="Picture-in-Picture"
+                                className={`w-9 h-9 rounded-full ${isPiPActive ? "bg-brand-500/20 text-brand-400 border-brand-500/30" : "hover:bg-white/10 border-transparent text-slate-400"}`}
+                            >
+                                <PiPIcon className="w-5 h-5" />
+                            </S.IconButton>
+                        )}
+
                         <S.IconButton
                             onClick={() => setShowTutorialModal(true)}
                             title="Tutorial"
@@ -210,14 +228,39 @@ export const PrompterHUD = memo(
                 </div>
 
 
-                {/* Minimize Button - Visible on Mobile and Tablet (below XL) */}
-                <S.IconButton
-                    onClick={() => setIsMinimized(true)}
-                    title="Minimize Controls"
-                    className="ml-2 w-9 h-9 flex xl:hidden items-center justify-center text-slate-400 hover:text-white"
-                >
-                    <MinimizeIcon className="w-5 h-5" />
-                </S.IconButton >
+                <div className="flex items-center">
+                    <div className="flex items-center p-0.5 gap-2 ml-2">
+                        <S.IconButton
+                            onClick={toggleVoice}
+                            active={isVoiceMode}
+                            title={voiceApiSupported ? t("host.controls.voice") : t(voiceApiError || "")}
+                            aria-label={t("host.controls.voice")}
+                            className={`w-9 h-9 rounded-full ${isVoiceMode ? "bg-red-500/20 text-red-400 shadow-[0_0_10px_rgba(248,113,113,0.3)] border-red-500/30 animate-pulse" : "hover:bg-white/10 border-transparent text-slate-400"} ${!isPro || !voiceApiSupported ? "opacity-50 cursor-not-allowed" : ""}`}
+                            disabled={!voiceApiSupported}
+                        >
+                            {isPro ? <MicIcon className="w-5 h-5" /> : <LockIcon className="w-4 h-4" />}
+                        </S.IconButton>
+
+                        {isVoiceMode && isPro && (
+                            <S.IconButton
+                                onClick={() => actions.setVoiceControlMode(settings.voiceControlMode === "host" ? "remote" : "host")}
+                                title={settings.voiceControlMode === "host" ? "Microphone: Local (Laptop)" : "Microphone: Remote (Smartphone)"}
+                                className="w-8 h-8 rounded-full bg-slate-800/50 hover:bg-slate-700 text-brand-400 border-transparent"
+                            >
+                                {settings.voiceControlMode === "host" ? <LaptopIcon className="w-4 h-4" /> : <SmartphoneIcon className="w-4 h-4" />}
+                            </S.IconButton>
+                        )}
+                    </div>
+
+                    {/* Minimize Button - Visible on Mobile and Tablet (below XL) */}
+                    <S.IconButton
+                        onClick={() => setIsMinimized(true)}
+                        title="Minimize Controls"
+                        className="ml-2 w-9 h-9 flex xl:hidden items-center justify-center text-slate-400 hover:text-white"
+                    >
+                        <MinimizeIcon className="w-5 h-5" />
+                    </S.IconButton >
+                </div>
 
                 {recordingState && recordingActions && (
                     <div className="scale-90 origin-bottom">
