@@ -312,16 +312,17 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             } catch (e) { /* ignore */ }
         }
         setIsListening(false);
+        // DON'T reset locked sentence here - allows resume from same position
     }, []);
 
     const resetVoice = useCallback(() => {
         stopListening();
         lastMatchIndexRef.current = 0;
-        lockedSentenceIdRef.current = -1; // Reset locked sentence
+        lockedSentenceIdRef.current = 0; // Reset to first sentence (not -1)
         pendingMatchRef.current = null; // Clear pending match
         smoothedProgressRef.current = 0; // Reset smoothed progress
         setVoiceProgress(0);
-        setActiveSentenceIndex(-1);
+        setActiveSentenceIndex(0); // Start at first sentence
     }, [stopListening]);
 
 

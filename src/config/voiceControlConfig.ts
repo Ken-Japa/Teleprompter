@@ -14,11 +14,11 @@ export const VOICE_CONFIG = {
    * - 0.5: Center of the screen
    * - 1.0: Bottom of the screen
    * 
-   * Current Value: 0.02 (2% from the top) - MUSICIAN MODE OPTIMIZED
-   * Keeps the active line very close to the top, maximizing visible space below
-   * for reading upcoming chords and lyrics while playing.
+   * Current Value: 0.08 (8% from the top)
+   * Provides good lookahead while keeping current line near top.
+   * Higher values help with line breaks and seeing upcoming text.
    */
-  LOOKAHEAD_POSITION: 0.018,
+  LOOKAHEAD_POSITION: 0.08,
 
   /**
    * SCROLL_LERP_FACTOR (0.0 - 1.0)
