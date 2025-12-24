@@ -482,15 +482,19 @@ export const Prompter = memo(
             handleScrollToPart(nextPart.index);
           }
         } else {
-          // Find parts before current position
-          const prevParts = partPositions.filter(p => p.top < currentPos - 10);
+          // INCREASED THRESHOLD:
+          // If playing, we use a larger buffer (readingZoneOffset) to avoid the "stuck" feeling
+          // where high-speed scroll immediately moves past the part start.
+          const threshold = externalState.isPlaying ? Math.max(300, readingZoneOffset) : 10;
+          const prevParts = partPositions.filter(p => p.top < currentPos - threshold);
+
           if (prevParts.length > 0) {
             handleScrollToPart(prevParts[prevParts.length - 1].index);
           } else {
             handleScrollTo(0);
           }
         }
-      }, [partIndices, handleScrollTo]);
+      }, [partIndices, handleScrollTo, externalState.isPlaying]);
 
       const handleScrollToPart = useCallback((sentenceIndex: number) => {
         const targetEl = document.getElementById(`sentence-${sentenceIndex}`);
