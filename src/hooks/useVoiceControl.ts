@@ -290,6 +290,39 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
         }
     }, [lang, activeSentenceIndex]); // Dependencies for startRecognitionInstance
 
+    // Helper: Find which sentence is currently visible on screen
+    const findVisibleSentenceId = useCallback((): number => {
+        if (typeof window === 'undefined' || sentences.length === 0) return 0;
+
+        try {
+            // Get scroll container
+            const container = document.querySelector('.voice-control-smooth') as HTMLElement;
+            if (!container) return 0;
+
+            const scrollTop = container.scrollTop || 0;
+            const viewportCenter = scrollTop + (container.clientHeight / 2);
+
+            // Find sentence closest to center of viewport
+            for (let i = sentences.length - 1; i >= 0; i--) {
+                const el = document.getElementById(`sentence-${i}`);
+                if (el) {
+                    const elTop = el.offsetTop;
+                    const elBottom = elTop + el.clientHeight;
+
+                    // If sentence contains viewport center
+                    if (elTop <= viewportCenter && elBottom >= viewportCenter) {
+                        console.log(`[Voice] Found visible sentence: ${i} at center`);
+                        return i;
+                    }
+                }
+            }
+        } catch (e) {
+            console.warn('[Voice] Error finding visible sentence:', e);
+        }
+
+        return 0; // Fallback to first sentence
+    }, [sentences]);
+
     const startListening = useCallback(() => {
         if (!isPro) return;
         if (!voiceApiSupported) {
@@ -300,9 +333,15 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             return;
         }
 
+        // Initialize to visible sentence, not sentence 0
+        const visibleSentence = findVisibleSentenceId();
+        lockedSentenceIdRef.current = visibleSentence;
+        setActiveSentenceIndex(visibleSentence);
+        console.log(`[Voice] Starting from visible sentence: ${visibleSentence}`);
+
         intentionallyStoppedRef.current = false;
         startRecognitionInstance();
-    }, [isPro, isListening, voiceApiSupported, startRecognitionInstance]);
+    }, [isPro, isListening, voiceApiSupported, startRecognitionInstance, findVisibleSentenceId]);
 
     const stopListening = useCallback(() => {
         intentionallyStoppedRef.current = true;
