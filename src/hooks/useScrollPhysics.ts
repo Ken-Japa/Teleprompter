@@ -110,8 +110,12 @@ export const useScrollPhysics = ({
     const content = scrollContainerRef.current.querySelector('.voice-control-content');
     if (content instanceof HTMLElement) {
       // Use translate3d for GPU acceleration
-      // Negative Y because we're moving content up as we scroll down
-      content.style.transform = `translate3d(0, -${position}px, 0)`;
+      // CRITICAL FIX: In Vertical Mirror (isFlipVertical), if the container is scaleY(-1),
+      // translating the child by -pos would move it visual DOWN if pos increases.
+      // We want it to move UP. 
+      // After testing/analysis: translateY(pos) in a scaleY(-1) container moves it visually UP.
+      const multiplier = isFlipVerticalRef.current ? 1 : -1;
+      content.style.transform = `translate3d(0, ${position * multiplier}px, 0)`;
       transformOffsetRef.current = position;
     }
   }, []);
@@ -342,6 +346,21 @@ export const useScrollPhysics = ({
       animationFrameRef.current = requestAnimationFrame(loop);
     }
   }, [loop]);
+
+  // Sync Scroll Position when entering Voice Mode
+  useEffect(() => {
+    if (isVoiceMode && scrollContainerRef.current) {
+      // Reset internal position to current scroll top to prevent jumps
+      internalScrollPos.current = scrollContainerRef.current.scrollTop;
+
+      // Force refresh metrics to ensure calculations are accurate
+      const realScrollHeight = scrollContainerRef.current.scrollHeight;
+      const realClientHeight = scrollContainerRef.current.clientHeight;
+      metricsRef.current = { scrollHeight: realScrollHeight, clientHeight: realClientHeight };
+
+      wakeUpLoop();
+    }
+  }, [isVoiceMode, wakeUpLoop, scrollContainerRef, metricsRef]);
 
   // Start/Stop loop based on state
   useEffect(() => {

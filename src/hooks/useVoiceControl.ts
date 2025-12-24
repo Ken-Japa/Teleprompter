@@ -359,6 +359,7 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             // So we target (1 - Lookahead) from DOM Top.
 
             const effectiveRatio = isFlipVertical ? (1 - lookaheadRatio) : lookaheadRatio;
+            // targetPosition: The DOM coordinate that is currently under the reading marker
             const targetPosition = scrollTop + (container.clientHeight * effectiveRatio);
 
             let closestSentenceId = 0;
