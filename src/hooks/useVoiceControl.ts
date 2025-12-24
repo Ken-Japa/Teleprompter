@@ -184,7 +184,7 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                     // CRITICAL: Only allow fallback if:
                     // 1. Nearly PERFECT backward match (98%+) within 2 sentences (user restarted)
                     // 2. NEVER allow forward jumps via fallback (too risky)
-                    const isNearPerfectMatch = fallbackMatch.ratio < 0.04; // 98%+ accuracy
+                    const isNearPerfectMatch = fallbackMatch.ratio < 0.02; // 98%+ accuracy
                     const isVerySmallJump = sentenceDistance <= 2;
 
                     if (isBackwardJump && isNearPerfectMatch && isVerySmallJump) {

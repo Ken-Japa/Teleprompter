@@ -18,7 +18,7 @@ export const VOICE_CONFIG = {
    * Provides good lookahead while keeping current line near top.
    * Higher values help with line breaks and seeing upcoming text.
    */
-  LOOKAHEAD_POSITION: 0.08,
+  LOOKAHEAD_POSITION: 0.01,
 
   /**
    * SCROLL_LERP_FACTOR (0.0 - 1.0)
