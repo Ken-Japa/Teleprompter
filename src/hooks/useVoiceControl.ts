@@ -19,6 +19,7 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
     const recognitionRef = useRef<ISpeechRecognition | null>(null);
     const lastMatchIndexRef = useRef<number>(0);
     const lastStartTimeRef = useRef<number>(0);
+    const lastProcessedTimeRef = useRef<number>(0); // For throttling
 
     // Keep latest callback in ref to avoid restarting recognition on every state change
     const onSpeechResultRef = useRef(onSpeechResult);
@@ -127,18 +128,31 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                 onSpeechResultRef.current(cleanTranscript);
             }
 
+            // THROTTLING: Only process interim results every 100ms to reduce computational load
+            const now = Date.now();
+            const isFinal = event.results[event.resultIndex]?.isFinal;
+            const THROTTLE_MS = 100; // Max 10 updates/second instead of 20
+
+            if (!isFinal && (now - lastProcessedTimeRef.current) < THROTTLE_MS) {
+                return; // Skip this interim result
+            }
+            lastProcessedTimeRef.current = now;
+
             // MUSICIAN MODE OPTIMIZATION: Increased min length to 6 to reduce false positives
             // from instrument noise (guitar, piano, etc) when singing
             if (cleanTranscript.length < 6) {
                 return;
             }
 
+            // ADAPTIVE SEARCH WINDOW: Larger scripts need larger windows
+            const scriptLength = fullCleanText.length;
+            const searchWindow = scriptLength > 5000 ? 1200 :
+                scriptLength > 2000 ? 800 : 600;
 
             // Fuzzy Search Strategy
             // 1. Try to find fuzzy match starting from last known position
             // We allow up to 40% error (0.4) to handle bad recognition like "PromptNinja" -> "próprio ninja"
-            // OPTIMIZATION: Reduced search window from 1000 to 600 for performance
-            let match = findBestMatch(fullCleanText, cleanTranscript, lastMatchIndexRef.current, 600, 0.4);
+            let match = findBestMatch(fullCleanText, cleanTranscript, lastMatchIndexRef.current, searchWindow, 0.4);
 
 
             // Fallback logic for repeated phrases
@@ -148,25 +162,40 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
                 if (fallbackMatch) {
                     // IMPROVED LOGIC FOR REPEATED PHRASES:
-                    // Only accept backward jumps if the match is VERY good (almost perfect)
-                    // This prevents jumping back to previous repetitions of the same phrase
+                    // Use SENTENCE-based distance instead of character-based
+                    const currentSentenceId = charToSentenceMap[lastMatchIndexRef.current] || 0;
+                    const fallbackSentenceId = charToSentenceMap[fallbackMatch.index] || 0;
+                    const sentenceDistance = Math.abs(currentSentenceId - fallbackSentenceId);
+
                     const isBackwardJump = fallbackMatch.index < lastMatchIndexRef.current;
-                    const isVeryGoodMatch = fallbackMatch.ratio < 0.15; // Stricter than before (was 0.2)
-                    const isSmallJump = Math.abs(lastMatchIndexRef.current - fallbackMatch.index) < 200;
+                    const isVeryGoodMatch = fallbackMatch.ratio < 0.10; // Stricter: 90%+ accuracy required
+                    const isSmallJump = sentenceDistance < 3; // Within 3 sentences
+                    const isNearPerfectMatch = fallbackMatch.ratio < 0.05; // 95%+ accuracy
 
                     // Accept if:
                     // 1. Going forward (always good)
-                    // 2. Small backward jump (nearby repetition)
-                    // 3. Very high quality match (user definitely restarted or jumped intentionally)
-                    if (!isBackwardJump || isSmallJump || isVeryGoodMatch) {
+                    // 2. Small backward jump AND very good match (nearby repetition)
+                    // 3. Nearly perfect match (user definitely restarted intentionally)
+                    if (!isBackwardJump || (isSmallJump && isVeryGoodMatch) || isNearPerfectMatch) {
                         match = fallbackMatch;
                     } else {
-                        console.warn(`[Voice] Rejected backward jump. Ratio: ${fallbackMatch.ratio}, Distance: ${lastMatchIndexRef.current - fallbackMatch.index}`);
+                        console.warn(`[Voice] Rejected backward jump. Sentence dist: ${sentenceDistance}, Ratio: ${fallbackMatch.ratio}`);
                     }
                 }
             }
 
             if (match) {
+                // SEQUENTIAL VALIDATION: Prevent implausible large jumps
+                const newSentenceId = charToSentenceMap[match.index] || 0;
+                const currentSentenceId = charToSentenceMap[lastMatchIndexRef.current] || 0;
+                const jumpDistance = Math.abs(newSentenceId - currentSentenceId);
+
+                // If jumping more than 10 sentences, require very high confidence
+                if (jumpDistance > 10 && match.ratio > 0.08) {
+                    console.warn(`[Voice] Large jump rejected (${jumpDistance} sentences), ratio ${match.ratio.toFixed(3)} not confident enough`);
+                    return; // Ignore this match, wait for better one
+                }
+
                 lastMatchIndexRef.current = match.index;
 
                 // Calculate the end index of the match to determine current reading position
