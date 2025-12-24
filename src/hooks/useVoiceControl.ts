@@ -7,7 +7,7 @@ import { useTranslation } from "./useTranslation";
 import { VOICE_CONFIG } from "../config/voiceControlConfig";
 
 // callback for raw transcript, useful for custom commands like [COUNT]
-export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (transcript: string) => void, forcedLang?: string) => {
+export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (transcript: string) => void, forcedLang?: string, isFlipVertical: boolean = false) => {
     const { lang: globalLang } = useTranslation();
     const lang = forcedLang || globalLang;
     const [isListening, setIsListening] = useState<boolean>(false);
@@ -327,7 +327,24 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             const scrollTop = container.scrollTop || 0;
             // FIXED: Use the actual LOOKAHEAD position to find what user is looking at.
             const lookaheadRatio = VOICE_CONFIG.LOOKAHEAD_POSITION;
-            const targetPosition = scrollTop + (container.clientHeight * lookaheadRatio);
+
+            // Calculate Target Position based on Lookahead
+            // If FlipVertical (scaleY-1), the "Top" of the content is visually at the bottom.
+            // So we need to look near the bottom of the scroll viewport to find the "start" lines.
+            // Actually, in scaleY(-1), scrollTop=0 is at the DOM top (which is Visual Bottom).
+            // As we scroll "down" (increase scrollTop), the content moves UP visually? 
+            // - No, standard behavior: scrollTop moves viewport down.
+            // - With scaleY(-1) on container: 
+            //     - Content is flipped upside down. 
+            //     - Scroll 0 shows the "Top" of the content (which is now at Visual Bottom).
+            //     - Wait, usually Flip Vertical implementation flips the CONTAINER.
+            // Let's assume standard behavior:
+            // Normal: 0% is Top. Lookahead 15% means 15% down from Top.
+            // Flipped: 0% is Top (Visual Bottom). We want to look at Visual Top (DOM Bottom).
+            // So we target (1 - Lookahead) from DOM Top.
+
+            const effectiveRatio = isFlipVertical ? (1 - lookaheadRatio) : lookaheadRatio;
+            const targetPosition = scrollTop + (container.clientHeight * effectiveRatio);
 
             let closestSentenceId = 0;
             let minDistance = Number.MAX_VALUE;
@@ -374,7 +391,7 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
         }
 
         return { index: activeSentenceIndex >= 0 ? activeSentenceIndex : 0, progress: 0 }; // Fallback to current
-    }, [sentences, activeSentenceIndex]);
+    }, [sentences, activeSentenceIndex, isFlipVertical]);
 
     const startListening = useCallback(() => {
         if (!isPro) return;

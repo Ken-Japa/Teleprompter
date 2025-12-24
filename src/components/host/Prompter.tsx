@@ -247,7 +247,8 @@ export const Prompter = memo(
         voiceControlText,
         isPro,
         handleSpeechResult,
-        effectiveVoiceLang
+        effectiveVoiceLang,
+        isFlipVertical
       );
 
       // Bilingual Sentences Processing
