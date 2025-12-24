@@ -31,11 +31,28 @@ export const ConnectionState: React.FC<ConnectionStateProps> = ({ status, hostId
                         html5QrcodeRef.current = html5QrCode;
 
                         // Configuração otimizada para mobile
+                        const qrboxFunction = (viewfinderWidth: number, viewfinderHeight: number) => {
+                            const minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
+                            const qrboxSize = Math.floor(minEdgeSize * 0.7);
+                            return {
+                                width: qrboxSize,
+                                height: qrboxSize
+                            };
+                        };
+
                         const config = {
-                            fps: 10,
-                            qrbox: { width: 260, height: 260 },
+                            fps: 20,
+                            qrbox: qrboxFunction,
                             aspectRatio: 1.0,
-                            disableFlip: false
+                            disableFlip: false,
+                            videoConstraints: {
+                                facingMode: "environment",
+                                width: { min: 640, ideal: 1280, max: 1920 },
+                                height: { min: 480, ideal: 720, max: 1080 },
+                            },
+                            experimentalFeatures: {
+                                useBarCodeDetectorIfSupported: true
+                            }
                         };
 
                         // Prefer back camera
