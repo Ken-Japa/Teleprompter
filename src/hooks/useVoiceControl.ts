@@ -312,15 +312,16 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
     }, [lang, activeSentenceIndex]); // Dependencies for startRecognitionInstance
 
     // Helper: Find which sentence is currently visible on screen
-    const findVisibleSentenceId = useCallback((): number => {
-        if (typeof window === 'undefined' || sentences.length === 0) return 0;
+    // Returns index and the estimated progress within that sentence (0-1) based on scroll position
+    const findVisibleSentenceId = useCallback((): { index: number; progress: number } => {
+        if (typeof window === 'undefined' || sentences.length === 0) return { index: 0, progress: 0 };
 
         try {
             // Get scroll container
             const container = document.querySelector('.voice-control-smooth') as HTMLElement;
             if (!container) {
                 // Return current active index if container not found, better than resetting to 0
-                return activeSentenceIndex >= 0 ? activeSentenceIndex : 0;
+                return { index: activeSentenceIndex >= 0 ? activeSentenceIndex : 0, progress: 0 };
             }
 
             const scrollTop = container.scrollTop || 0;
@@ -330,6 +331,7 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
             let closestSentenceId = 0;
             let minDistance = Number.MAX_VALUE;
+            let bestProgress = 0;
 
             // Strategy: Find sentence strictly overlapping OR closest to the target position
             // This handles "dead zones" (margins/padding) where targetPosition is between sentences
@@ -337,16 +339,21 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                 const el = document.getElementById(`sentence-${i}`);
                 if (el) {
                     const elTop = el.offsetTop;
-                    const elBottom = elTop + el.clientHeight;
+                    const elHeight = el.clientHeight;
+                    const elBottom = elTop + elHeight;
+
+                    // Progress calculation:
+                    // If targetPosition is at elTop, progress is 0.
+                    // If targetPosition is at elBottom, progress is 1.
+                    const rawProgress = elHeight > 0 ? (targetPosition - elTop) / elHeight : 0;
+                    const progress = Math.min(1, Math.max(0, rawProgress));
 
                     // 1. Exact overlap check (Most common case)
                     if (elTop <= targetPosition && elBottom >= targetPosition) {
-                        // console.log(`[Voice] Found visible sentence (overlap): ${i}`);
-                        return i;
+                        return { index: i, progress };
                     }
 
                     // 2. Distance check (Fallback for margins/gaps)
-                    // Calculate distance to the sentence's vertical range
                     let dist = 0;
                     if (targetPosition < elTop) dist = elTop - targetPosition;
                     else if (targetPosition > elBottom) dist = targetPosition - elBottom;
@@ -354,18 +361,19 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                     if (dist < minDistance) {
                         minDistance = dist;
                         closestSentenceId = i;
+                        bestProgress = progress; // Will be 0 or 1 usually if outside
                     }
                 }
             }
 
             console.log(`[Voice] Found visible sentence (closest): ${closestSentenceId} (dist: ${minDistance})`);
-            return closestSentenceId;
+            return { index: closestSentenceId, progress: bestProgress };
 
         } catch (e) {
             console.warn('[Voice] Error finding visible sentence:', e);
         }
 
-        return activeSentenceIndex >= 0 ? activeSentenceIndex : 0; // Fallback to current
+        return { index: activeSentenceIndex >= 0 ? activeSentenceIndex : 0, progress: 0 }; // Fallback to current
     }, [sentences, activeSentenceIndex]);
 
     const startListening = useCallback(() => {
@@ -379,7 +387,7 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
         }
 
         // Initialize to visible sentence, not sentence 0
-        const visibleSentence = findVisibleSentenceId();
+        const { index: visibleSentence, progress: initialProgress } = findVisibleSentenceId();
         lockedSentenceIdRef.current = visibleSentence;
         setActiveSentenceIndex(visibleSentence);
 
@@ -391,11 +399,11 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             lastMatchIndexRef.current = 0;
         }
 
-        // Reset smoothed progress
-        smoothedProgressRef.current = 0;
-        setVoiceProgress(0);
+        // Reset smoothed progress to current visual position to prevent jumps
+        smoothedProgressRef.current = initialProgress;
+        setVoiceProgress(initialProgress);
 
-        console.log(`[Voice] Starting from visible sentence: ${visibleSentence} (Char: ${lastMatchIndexRef.current})`);
+        console.log(`[Voice] Starting from visible sentence: ${visibleSentence} (Char: ${lastMatchIndexRef.current}, Progress: ${initialProgress.toFixed(2)})`);
 
         intentionallyStoppedRef.current = false;
         startRecognitionInstance();
