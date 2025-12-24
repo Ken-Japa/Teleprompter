@@ -12,6 +12,7 @@ import { createPortal } from "react-dom";
 import { ConnectionStatus, PrompterHandle, PrompterSettings, NavigationItem, Theme } from "../../types";
 import * as S from "../ui/Styled";
 import { useVoiceControl } from "../../hooks/useVoiceControl";
+import { VOICE_CONFIG } from "../../config/voiceControlConfig";
 import { parseTextToSentences } from "../../utils/textParser";
 import { useKeyboardShortcuts } from "../../hooks/useKeyboardShortcuts";
 import { useWakeLock } from "../../hooks/useWakeLock";
@@ -768,8 +769,15 @@ export const Prompter = memo(
                 transform: isFlipVertical ? "scaleY(-1)" : undefined,
               }}
               contentStyle={{
-                paddingTop: isFlipVertical ? '100vh' : '50vh',
-                paddingBottom: isFlipVertical ? '100vh' : '50vh'
+                // Voice Mode: Use configured Top Padding to allow text to start at Top instead of Center
+                // Note: FlipVertical logic kept as-is to avoid regression in that specific hardware mode
+                paddingTop: isVoiceMode && !isFlipVertical
+                  ? `${VOICE_CONFIG.VOICE_PADDING_TOP}vh`
+                  : (isFlipVertical ? '100vh' : '50vh'),
+                // Voice Mode: Increase bottom padding to allow last lines to scroll comfortably to top
+                paddingBottom: isVoiceMode && !isFlipVertical
+                  ? '80vh'
+                  : (isFlipVertical ? '100vh' : '50vh')
               }}
             >
               <ScriptBoard

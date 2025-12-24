@@ -10,7 +10,7 @@ import { Theme } from "../types";
 // Application-wide Constants
 export const APP_CONSTANTS = {
     REDEEM_MODAL_ELAPSED_TIME: 1200,
-    DEVICE_AUTHENTICATION_LIMIT: 3,
+    DEVICE_AUTHENTICATION_LIMIT: 5,
 };
 
 // Prompter Default Settings

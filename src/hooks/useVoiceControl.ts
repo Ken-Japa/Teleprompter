@@ -38,6 +38,8 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
     // Resilience: Track if user INTENDED to stop. If false and 'end' event fires, we restart.
     const intentionallyStoppedRef = useRef<boolean>(false);
+    // Optimization: Flag to indicate we are recycling the session (clearing memory)
+    const recycleSessionRef = useRef<boolean>(false);
 
     const { sentences, fullCleanText, charToSentenceMap } = useMemo(() => {
         return parseTextToSentences(text);
@@ -106,6 +108,17 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
         recognition.onend = () => {
             // CRITICAL OPTIMIZATION: Browser stopped it, but did user want that?
+
+            // Check for explicit recycle (History Reset)
+            if (recycleSessionRef.current) {
+                console.log("[Voice] Recycle: Restarting immediately...");
+                recycleSessionRef.current = false;
+                try {
+                    recognition.start();
+                } catch (e) { /* ignore */ }
+                return;
+            }
+
             // Infinite Loop Protection: If it stopped less than 100ms after start, assume error (permission denied).
             const duration = Date.now() - lastStartTimeRef.current;
 
@@ -123,6 +136,13 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             let interimTranscript = "";
             for (let i = event.resultIndex; i < event.results.length; ++i) {
                 interimTranscript += event.results[i][0].transcript;
+            }
+
+            // MEMORY OPTIMIZATION: Recycle session if history gets too long (50 sentences)
+            // Check handled AFTER processing to ensure we don't drop data
+            if (event.results.length > 50 && !recycleSessionRef.current) {
+                recycleSessionRef.current = true;
+                recognition.stop();
             }
 
             let cleanTranscript = interimTranscript.toLowerCase();
@@ -338,7 +358,20 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
         const visibleSentence = findVisibleSentenceId();
         lockedSentenceIdRef.current = visibleSentence;
         setActiveSentenceIndex(visibleSentence);
-        console.log(`[Voice] Starting from visible sentence: ${visibleSentence}`);
+
+        // CRITICAL FIX: Sync match index to the visible sentence's start
+        // This ensures matching resumes from the correct position instead of 0
+        if (sentences[visibleSentence]) {
+            lastMatchIndexRef.current = sentences[visibleSentence].startIndex ?? 0;
+        } else {
+            lastMatchIndexRef.current = 0;
+        }
+
+        // Reset smoothed progress
+        smoothedProgressRef.current = 0;
+        setVoiceProgress(0);
+
+        console.log(`[Voice] Starting from visible sentence: ${visibleSentence} (Char: ${lastMatchIndexRef.current})`);
 
         intentionallyStoppedRef.current = false;
         startRecognitionInstance();
