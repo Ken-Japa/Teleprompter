@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { useTranslation } from "../../../hooks/useTranslation";
 import * as S from "../../ui/Styled";
-import { PaletteIcon, MagicIcon, MicIcon, LockIcon, LaptopIcon, SmartphoneIcon, ApertureIcon } from "../../ui/Icons";
+import { MicIcon, LockIcon, LaptopIcon, SmartphoneIcon } from "../../ui/Icons";
 import type { PrompterSettings, PrompterActions } from "../../../hooks/usePrompterSettings";
 
 interface ThemeControlProps {
@@ -17,8 +17,8 @@ interface ThemeControlProps {
 export const ThemeControl = memo(
     ({ settings, actions, isVoiceMode, toggleVoice, isPro, voiceApiSupported, voiceApiError }: ThemeControlProps) => {
         const { t } = useTranslation();
-        const { theme, isFocusMode, voiceControlMode = 'host' } = settings;
-        const { cycleTheme, toggleChroma, setIsFocusMode, setVoiceControlMode } = actions;
+        const { voiceControlMode = 'host' } = settings;
+        const { setVoiceControlMode } = actions;
 
         const handleVoiceModeToggle = () => {
             setVoiceControlMode(voiceControlMode === "remote" ? "host" : "remote");
@@ -26,40 +26,6 @@ export const ThemeControl = memo(
 
         return (
             <div className="flex items-center gap-2">
-                {!settings.isMusicianMode && (
-                    <>
-                        <S.IconButton
-                            onClick={cycleTheme}
-                            title={`${t("host.controls.theme")}: ${t(`host.themes.${theme}`)}`}
-                            aria-label={t("host.controls.theme")}
-                            className="w-9 h-9 rounded-full hover:bg-brand-500/20 hover:text-brand-400 border-transparent"
-                        >
-                            <PaletteIcon className="w-5 h-5" />
-                        </S.IconButton>
-
-                        <S.IconButton
-                            onClick={toggleChroma}
-                            title={`${t("host.controls.chroma")}`}
-                            aria-label={t("host.controls.chroma")}
-                            className="w-9 h-9 rounded-full hover:bg-brand-500/20 hover:text-brand-400 border-transparent"
-                        >
-                            <ApertureIcon className="w-5 h-5" />
-                        </S.IconButton>
-                    </>
-                )}
-
-                <S.IconButton
-                    onClick={() => setIsFocusMode(!isFocusMode)}
-                    active={isFocusMode}
-                    title={t("host.controls.focusLine")}
-                    aria-label={t("host.controls.focusLine")}
-                    className={`w-9 h-9 rounded-full ${isFocusMode ? "bg-brand-500/20 text-brand-400 shadow-[0_0_10px_theme(colors.brand.500/0.3)] border-brand-500/30" : "hover:bg-white/10 border-transparent text-slate-400"}`}
-                >
-                    <MagicIcon className="w-5 h-5" />
-                </S.IconButton>
-
-                <div className="w-px h-6 bg-white/10 mx-1"></div>
-
                 <div className="flex items-center gap-1">
                     <S.IconButton
                         onClick={toggleVoice}

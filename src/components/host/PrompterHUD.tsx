@@ -1,19 +1,17 @@
-import { memo, useState, useCallback, useEffect } from "react";
+import { memo, useState, useEffect } from "react";
 import * as S from "../ui/Styled";
 import { ConnectionStatus, PrompterSettings } from "../../types";
 import { PrompterActions } from "../../hooks/usePrompterSettings";
 import { useTranslation } from "../../hooks/useTranslation";
-import { PrompterTimer, SpeedControl, FontControl, DisplayControl, ThemeControl } from "./controls";
-import { FontSettingsModal } from "../ui/FontSettingsModal";
+import { PrompterTimer, SpeedControl, DisplayControl } from "./controls";
+import { AppearanceSettingsModal } from "../ui/AppearanceSettingsModal";
 import { UI_LIMITS } from "../../config/constants";
 import { RecordingControls } from "./controls/RecordingControls";
-import { QrCodeIcon, InfoIcon, LogOutIcon, EditIcon, PlayIcon, PauseIcon, MaximizeIcon, MinimizeIcon, StopIcon, FontFamilyIcon, PlusIcon, MinusIcon } from "../ui/Icons";
+import { QrCodeIcon, InfoIcon, LogOutIcon, EditIcon, PlayIcon, PauseIcon, MaximizeIcon, MinimizeIcon, StopIcon, PaletteIcon } from "../ui/Icons";
 import { TutorialModal } from "../ui/TutorialModal";
-import { FontSizeModal } from "../ui/FontSizeModal";
-import { MarginModal } from "../ui/MarginModal";
 import { QRCodeModal } from "./QRCodeModal";
 import { SyncButton } from "../ui/SyncButton";
-import { trackSettingChange } from "../../utils/analytics";
+
 
 interface PrompterHUDProps {
     showHud: boolean;
@@ -23,10 +21,6 @@ interface PrompterHUDProps {
     speed: number;
     settings: PrompterSettings;
     actions: PrompterActions;
-    isVoiceMode: boolean;
-    isPro: boolean;
-    voiceApiSupported: boolean;
-    voiceApiError: string | null;
     resetTimerSignal: boolean;
     onStateChange: (isPlaying: boolean, speed: number) => void;
     onResetPrompter: () => void;
@@ -34,8 +28,6 @@ interface PrompterHUDProps {
     onExit: () => void;
     onSync: () => void;
     onEdit: () => void;
-    togglePiP?: () => void;
-    isPiPActive?: boolean;
     isCameraMode?: boolean;
     // Recording Props
     recordingState?: {
@@ -53,10 +45,11 @@ interface PrompterHUDProps {
     };
     onPreviousPart?: () => void;
     onNextPart?: () => void;
+    hasParts?: boolean;
 }
 
 export const PrompterHUD = memo(
-    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isVoiceMode, isPro, resetTimerSignal, onStateChange, onResetPrompter, toggleVoice, onExit, voiceApiSupported, voiceApiError, onSync, onEdit, togglePiP, isPiPActive, recordingState, recordingActions, onPreviousPart, onNextPart }: PrompterHUDProps) => {
+    ({ showHud, peerId, status, isPlaying, speed, settings, actions, resetTimerSignal, onStateChange, onResetPrompter, onExit, onSync, onEdit, recordingState, recordingActions, onPreviousPart, onNextPart, hasParts }: PrompterHUDProps) => {
         const { t } = useTranslation();
         const { recordingMode = 'host' } = settings;
         const { setRecordingMode } = actions;
@@ -65,10 +58,8 @@ export const PrompterHUD = memo(
             setRecordingMode(recordingMode === "remote" ? "host" : "remote");
         };
 
+        const [showAppearanceModal, setShowAppearanceModal] = useState(false);
         const [showTutorialModal, setShowTutorialModal] = useState(false);
-        const [showFontSizeModal, setShowFontSizeModal] = useState(false);
-        const [showFontSettingsModal, setShowFontSettingsModal] = useState(false);
-        const [showMarginModal, setShowMarginModal] = useState(false);
         const [showQRModal, setShowQRModal] = useState(false);
         const [isMinimized, setIsMinimized] = useState(false);
 
@@ -92,27 +83,11 @@ export const PrompterHUD = memo(
             onStateChange(!isPlaying, speed);
         };
 
-        const handleSetMargin = useCallback((newMargin: number | ((v: number) => number)) => {
-            const finalMargin = typeof newMargin === 'function' ? newMargin(settings.margin) : newMargin;
-            trackSettingChange("margin", finalMargin);
-            actions.setMargin(newMargin);
-        }, [actions, settings.margin]);
 
         // Advanced Controls Visibility Logic (Smart Persistence)
-        const [isAdvancedOpen, setIsAdvancedOpen] = useState(() => {
-            if (typeof window !== 'undefined') {
-                return localStorage.getItem('neonprompt_advanced_seen') === 'true';
-            }
-            return false;
-        });
 
-        const handleToggleAdvanced = () => {
-            const newState = !isAdvancedOpen;
-            setIsAdvancedOpen(newState);
-            if (newState) {
-                localStorage.setItem('neonprompt_advanced_seen', 'true');
-            }
-        };
+
+
 
         if (isMinimized) {
             return (
@@ -151,7 +126,6 @@ export const PrompterHUD = memo(
                     <S.IconButton
                         onClick={() => {
                             setIsMinimized(false);
-                            setIsAdvancedOpen(true);
                             if (typeof window !== 'undefined') {
                                 localStorage.setItem('neonprompt_advanced_seen', 'true');
                             }
@@ -192,7 +166,14 @@ export const PrompterHUD = memo(
 
                 <div className="flex items-center justify-center w-full">
                     <SpeedControl isPlaying={isPlaying} speed={speed} onStateChange={onStateChange} onReset={onResetPrompter} />
-                    <FontControl fontSize={settings.fontSize} setFontSize={actions.setFontSize} onOpenFontSizeSlider={() => setShowFontSizeModal(true)} />
+                    <S.IconButton
+                        onClick={() => setShowAppearanceModal(true)}
+                        title={t("host.controls.appearance") || "Configurar Aparência"}
+                        aria-label="Appearance Settings"
+                        className="w-10 h-10 flex ml-2 !p-0 !items-center !justify-center leading-none bg-slate-800/80 border border-white/5 shadow-md text-brand-400"
+                    >
+                        <PaletteIcon className="w-5 h-5 block" />
+                    </S.IconButton>
                     <S.IconButton
                         onClick={onEdit}
                         title={t("host.editText") || "Edit Text"}
@@ -206,62 +187,28 @@ export const PrompterHUD = memo(
                 </div>
 
 
-                {/* Show More / Advanced Toggle - Only on Desktop (XL+) */}
-                <div className="hidden xl:flex items-center">
-                    <button
-                        onClick={handleToggleAdvanced}
-                        className="text-xs text-slate-400 hover:text-brand-400 underline decoration-dotted transition-colors mx-2 whitespace-nowrap"
-                    >
-                        {isAdvancedOpen ? <MinusIcon className="w-5 h-5" /> : <PlusIcon className="w-5 h-5" />}
-                    </button>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-2 w-full sm:w-auto p-1.5 sm:p-2 rounded-xl bg-slate-900/50 sm:bg-slate-900/80 border border-white/5 mt-0.5 sm:mt-0 animate-in fade-in slide-in-from-top-2 duration-200">
+                    {/* Unified Control Group */}
+                    <div className="flex flex-wrap sm:flex-nowrap justify-center items-center gap-2 sm:gap-1 max-w-[280px] sm:max-w-none">
+                        <DisplayControl
+                            settings={settings}
+                            actions={actions}
+                            hasParts={hasParts}
+                            onPreviousPart={onPreviousPart}
+                            onNextPart={onNextPart}
+                        />
+
+                        <S.IconButton
+                            onClick={() => setShowTutorialModal(true)}
+                            title="Tutorial"
+                            aria-label="Open Tutorial"
+                            className="w-9 h-9 rounded-full hover:bg-white/10 border-transparent text-slate-400"
+                        >
+                            <InfoIcon className="w-5 h-5 block" />
+                        </S.IconButton>
+                    </div>
                 </div>
 
-
-                {/* Advanced Controls (Conditionally Rendered) */}
-                {isAdvancedOpen && (
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-2 w-full sm:w-auto p-1.5 sm:p-2 rounded-xl bg-slate-900/50 sm:bg-slate-900/80 border border-white/5 mt-0.5 sm:mt-0 animate-in fade-in slide-in-from-top-2 duration-200">
-                        {/* Unified Control Group */}
-                        <div className="flex flex-wrap sm:flex-nowrap justify-center items-center gap-2 sm:gap-1 max-w-[280px] sm:max-w-none">
-                            <DisplayControl
-                                settings={settings}
-                                actions={actions}
-                                onOpenMarginSlider={() => setShowMarginModal(true)}
-                                togglePiP={togglePiP}
-                                isPiPActive={isPiPActive}
-                                onPreviousPart={onPreviousPart}
-                                onNextPart={onNextPart}
-                            />
-
-                            <S.IconButton
-                                onClick={() => setShowFontSettingsModal(true)}
-                                title={t("host.controls.fontConfig") || "Configurar Fonte"}
-                                aria-label="Font Settings"
-                                className="w-9 h-9 rounded-full hover:bg-white/10 border-transparent text-slate-400"
-                            >
-                                <FontFamilyIcon className="w-6 h-6" />
-                            </S.IconButton>
-
-                            <ThemeControl
-                                settings={settings}
-                                actions={actions}
-                                isVoiceMode={isVoiceMode}
-                                toggleVoice={toggleVoice}
-                                isPro={isPro}
-                                voiceApiSupported={voiceApiSupported}
-                                voiceApiError={voiceApiError}
-                            />
-
-                            <S.IconButton
-                                onClick={() => setShowTutorialModal(true)}
-                                title="Tutorial"
-                                aria-label="Open Tutorial"
-                                className="w-9 h-9 rounded-full hover:bg-white/10 border-transparent text-slate-400"
-                            >
-                                <InfoIcon className="w-5 h-5 block" />
-                            </S.IconButton>
-                        </div>
-                    </div>
-                )}
 
                 {/* Minimize Button - Visible on Mobile and Tablet (below XL) */}
                 <S.IconButton
@@ -302,23 +249,11 @@ export const PrompterHUD = memo(
                 </S.PrimaryButton>
 
                 <TutorialModal isOpen={showTutorialModal} onClose={() => setShowTutorialModal(false)} />
-                <FontSizeModal
-                    isOpen={showFontSizeModal}
-                    onClose={() => setShowFontSizeModal(false)}
-                    fontSize={settings.fontSize}
-                    setFontSize={actions.setFontSize}
-                />
-                <MarginModal
-                    isOpen={showMarginModal}
-                    onClose={() => setShowMarginModal(false)}
-                    margin={settings.margin}
-                    setMargin={handleSetMargin}
-                />
-                <FontSettingsModal
-                    isOpen={showFontSettingsModal}
-                    onClose={() => setShowFontSettingsModal(false)}
-                    fontFamily={settings.fontFamily}
-                    setFontFamily={actions.setFontFamily}
+                <AppearanceSettingsModal
+                    isOpen={showAppearanceModal}
+                    onClose={() => setShowAppearanceModal(false)}
+                    settings={settings}
+                    actions={actions}
                 />
                 <QRCodeModal
                     isOpen={showQRModal}

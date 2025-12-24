@@ -778,19 +778,18 @@ export const Prompter = memo(
             settings={settings}
             isCameraMode={isCameraMode}
             actions={actions}
-            isVoiceMode={isVoiceMode}
-            isPro={isPro}
-            voiceApiSupported={voiceApiSupported}
-            voiceApiError={voiceApiError}
             resetTimerSignal={resetTimerSignal}
             onStateChange={onStateChange}
             onResetPrompter={resetPrompter}
-            toggleVoice={toggleVoice}
             onExit={onExit}
             onSync={onSync}
             onEdit={() => setShowEditModal(true)}
             togglePiP={togglePiP}
             isPiPActive={isPiPActive}
+            onPreviousPart={() => handleJumpToPart('prev')}
+            onNextPart={() => handleJumpToPart('next')}
+            hasParts={partIndices.length > 0}
+
             recordingState={{
               isRecording,
               isPaused,
@@ -804,8 +803,6 @@ export const Prompter = memo(
               resume: handleResumeRecording,
               download: downloadRecording
             }}
-            onPreviousPart={() => handleJumpToPart('prev')}
-            onNextPart={() => handleJumpToPart('next')}
           />
 
           <QuickEditModal
@@ -842,20 +839,10 @@ export const Prompter = memo(
                   isPlaying={externalState.isPlaying}
                   speed={externalState.speed}
                   settings={settings}
-                  actions={actions}
-                  isVoiceMode={isVoiceMode}
-                  isPro={isPro}
-                  voiceApiSupported={voiceApiSupported}
-                  voiceApiError={voiceApiError}
-                  resetTimerSignal={resetTimerSignal}
-                  onStateChange={onStateChange}
-                  onResetPrompter={resetPrompter}
-                  toggleVoice={toggleVoice}
-                  onExit={onExit}
-                  onSync={onSync}
-                  onEdit={() => setShowEditModal(true)}
-                  togglePiP={togglePiP}
-                  isPiPActive={isPiPActive}
+                  onPreviousPart={() => handleJumpToPart('prev')}
+                  onNextPart={() => handleJumpToPart('next')}
+                  hasParts={partIndices.length > 0}
+
                   recordingState={{
                     isRecording,
                     isPaused,

@@ -1,24 +1,22 @@
 import { memo, useCallback } from "react";
 import { useTranslation } from "../../../hooks/useTranslation";
 import * as S from "../../ui/Styled";
-import { FlipIcon, MarginIcon, CapsIcon, PiPIcon, ChevronUpIcon, ChevronDownIcon } from "../../ui/Icons";
+import { FlipIcon, ChevronUpIcon, ChevronDownIcon } from "../../ui/Icons";
 import type { PrompterSettings, PrompterActions } from "../../../hooks/usePrompterSettings";
 import { trackSettingChange } from "../../../utils/analytics";
 
 interface DisplayControlProps {
   settings: PrompterSettings;
   actions: PrompterActions;
-  onOpenMarginSlider: () => void;
-  togglePiP?: () => void;
-  isPiPActive?: boolean;
+  hasParts?: boolean;
   onPreviousPart?: () => void;
   onNextPart?: () => void;
 }
 
-export const DisplayControl = memo(({ settings, actions, onOpenMarginSlider, togglePiP, isPiPActive, onPreviousPart, onNextPart }: DisplayControlProps) => {
+export const DisplayControl = memo(({ settings, actions, hasParts, onPreviousPart, onNextPart }: DisplayControlProps) => {
   const { t } = useTranslation();
-  const { isMirrored, isUpperCase, isFlipVertical } = settings;
-  const { setIsMirrored, setIsUpperCase, setIsFlipVertical } = actions;
+  const { isMirrored, isFlipVertical } = settings;
+  const { setIsMirrored, setIsFlipVertical } = actions;
 
   const handleMirrorToggle = useCallback(() => {
     const newValue = !isMirrored;
@@ -31,20 +29,13 @@ export const DisplayControl = memo(({ settings, actions, onOpenMarginSlider, tog
     trackSettingChange("vertical_flip", newValue);
     setIsFlipVertical(newValue);
   }, [isFlipVertical, setIsFlipVertical]);
-
-  const handleUpperCaseToggle = useCallback(() => {
-    const newValue = !isUpperCase;
-    trackSettingChange("upper_case", newValue);
-    setIsUpperCase(newValue);
-  }, [isUpperCase, setIsUpperCase]);
-
   return (
     <div className="flex items-center gap-2">
       {/* Navigation Buttons */}
-      {(onPreviousPart || onNextPart) && (
+      {hasParts && (onPreviousPart || onNextPart) && (
         <div className="flex items-center bg-slate-950/50 rounded-full p-1 border border-slate-800/50 mr-1">
           <S.IconButton
-            onClick={onPreviousPart}
+            onClick={() => onPreviousPart?.()}
             disabled={!onPreviousPart}
             title={t("host.controls.prevPart") || "Previous Part"}
             aria-label="Previous Part"
@@ -53,7 +44,7 @@ export const DisplayControl = memo(({ settings, actions, onOpenMarginSlider, tog
             <ChevronUpIcon className="w-5 h-5" />
           </S.IconButton>
           <S.IconButton
-            onClick={onNextPart}
+            onClick={() => onNextPart?.()}
             disabled={!onNextPart}
             title={t("host.controls.nextPart") || "Next Part"}
             aria-label="Next Part"
@@ -85,36 +76,6 @@ export const DisplayControl = memo(({ settings, actions, onOpenMarginSlider, tog
         </S.IconButton>
       </div>
 
-      <S.IconButton
-        onClick={onOpenMarginSlider}
-        active={false}
-        title={t("host.controls.margin")}
-        aria-label={t("host.controls.margin")}
-        className="w-9 h-9 rounded-full hover:bg-white/10 border-transparent text-slate-400"
-      >
-        <MarginIcon className="w-5 h-5" />
-      </S.IconButton>
-      <S.IconButton
-        onClick={handleUpperCaseToggle}
-        active={isUpperCase}
-        title={t("host.controls.caps")}
-        aria-label={t("host.controls.caps")}
-        className={`w-9 h-9 rounded-full ${isUpperCase ? "bg-brand-500/20 text-brand-400 border-brand-500/30" : "hover:bg-white/10 border-transparent text-slate-400"}`}
-      >
-        <CapsIcon className="w-5 h-5" />
-      </S.IconButton>
-
-      {togglePiP && (
-        <S.IconButton
-          onClick={togglePiP}
-          active={isPiPActive}
-          title="Picture-in-Picture"
-          aria-label="Picture-in-Picture"
-          className={`w-9 h-9 rounded-full ${isPiPActive ? "bg-brand-500/20 text-brand-400 border-brand-500/30" : "hover:bg-white/10 border-transparent text-slate-400"}`}
-        >
-          <PiPIcon className="w-5 h-5" />
-        </S.IconButton>
-      )}
     </div>
   );
 });
