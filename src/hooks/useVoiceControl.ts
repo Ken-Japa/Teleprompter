@@ -21,6 +21,14 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
     const lastStartTimeRef = useRef<number>(0);
     const lastProcessedTimeRef = useRef<number>(0); // For throttling
 
+    // STABILITY SYSTEM: Require matches to be stable before accepting
+    const pendingMatchRef = useRef<{ index: number; count: number; sentenceId: number } | null>(null);
+    const MATCH_CONFIRMATION_FRAMES = 3; // Must be stable for 3 frames
+
+    // PROGRESS SMOOTHING: Prevent jitter
+    const smoothedProgressRef = useRef<number>(0);
+    const PROGRESS_SMOOTH_FACTOR = 0.3; // 30% new, 70% old
+
     // Keep latest callback in ref to avoid restarting recognition on every state change
     const onSpeechResultRef = useRef(onSpeechResult);
     useEffect(() => {
@@ -156,30 +164,34 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
 
             // Fallback logic for repeated phrases
+            // CRITICAL: Fallback is now EXTREMELY restrictive to prevent incorrect jumps
             if (!match && lastMatchIndexRef.current > 0) {
-                // Fallback: search from beginning if we lost track
+                // Fallback: search from beginning BUT with VERY strict criteria
                 const fallbackMatch = findBestMatch(fullCleanText, cleanTranscript, 0, 2000, 0.4);
 
                 if (fallbackMatch) {
-                    // IMPROVED LOGIC FOR REPEATED PHRASES:
-                    // Use SENTENCE-based distance instead of character-based
+                    // ULTRA-STRICT LOGIC:
                     const currentSentenceId = charToSentenceMap[lastMatchIndexRef.current] || 0;
                     const fallbackSentenceId = charToSentenceMap[fallbackMatch.index] || 0;
                     const sentenceDistance = Math.abs(currentSentenceId - fallbackSentenceId);
 
                     const isBackwardJump = fallbackMatch.index < lastMatchIndexRef.current;
-                    const isVeryGoodMatch = fallbackMatch.ratio < 0.10; // Stricter: 90%+ accuracy required
-                    const isSmallJump = sentenceDistance < 3; // Within 3 sentences
-                    const isNearPerfectMatch = fallbackMatch.ratio < 0.05; // 95%+ accuracy
+                    const isForwardJump = fallbackMatch.index > lastMatchIndexRef.current;
 
-                    // Accept if:
-                    // 1. Going forward (always good)
-                    // 2. Small backward jump AND very good match (nearby repetition)
-                    // 3. Nearly perfect match (user definitely restarted intentionally)
-                    if (!isBackwardJump || (isSmallJump && isVeryGoodMatch) || isNearPerfectMatch) {
+                    // CRITICAL: Only allow fallback if:
+                    // 1. Nearly PERFECT backward match (98%+) within 2 sentences (user restarted)
+                    // 2. NEVER allow forward jumps via fallback (too risky)
+                    const isNearPerfectMatch = fallbackMatch.ratio < 0.02; // 98%+ accuracy
+                    const isVerySmallJump = sentenceDistance <= 2;
+
+                    if (isBackwardJump && isNearPerfectMatch && isVerySmallJump) {
                         match = fallbackMatch;
+                        console.log(`[Voice] Fallback accepted: Perfect match (${(1 - fallbackMatch.ratio) * 100}%) within ${sentenceDistance} sentences`);
+                    } else if (isForwardJump) {
+                        // NEVER allow forward jumps from fallback - too dangerous
+                        console.warn(`[Voice] Fallback BLOCKED: Forward jump rejected (too risky)`);
                     } else {
-                        console.warn(`[Voice] Rejected backward jump. Sentence dist: ${sentenceDistance}, Ratio: ${fallbackMatch.ratio}`);
+                        console.warn(`[Voice] Fallback rejected: Sentence dist ${sentenceDistance}, Ratio ${fallbackMatch.ratio.toFixed(3)}`);
                     }
                 }
             }
@@ -190,10 +202,47 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                 const currentSentenceId = charToSentenceMap[lastMatchIndexRef.current] || 0;
                 const jumpDistance = Math.abs(newSentenceId - currentSentenceId);
 
-                // If jumping more than 10 sentences, require very high confidence
-                if (jumpDistance > 10 && match.ratio > 0.08) {
-                    console.warn(`[Voice] Large jump rejected (${jumpDistance} sentences), ratio ${match.ratio.toFixed(3)} not confident enough`);
-                    return; // Ignore this match, wait for better one
+                // HYSTERESIS: Ignore very small movements (within same sentence)
+                // This prevents oscillation between nearby positions
+                if (newSentenceId === currentSentenceId && Math.abs(match.index - lastMatchIndexRef.current) < 10) {
+                    // Same sentence, very close position - ignore to prevent jitter
+                    return;
+                }
+
+                // STRICTER VALIDATION: Require better match quality for any jump > 5 sentences
+                if (jumpDistance > 5 && match.ratio > 0.05) {
+                    console.warn(`[Voice] Medium jump rejected (${jumpDistance} sentences), ratio ${match.ratio.toFixed(3)} not good enough`);
+                    return;
+                }
+
+                // If jumping more than 10 sentences, require PERFECT confidence
+                if (jumpDistance > 10 && match.ratio > 0.03) {
+                    console.warn(`[Voice] Large jump rejected (${jumpDistance} sentences), ratio ${match.ratio.toFixed(3)} not perfect enough`);
+                    return;
+                }
+
+                // MATCH CONFIRMATION SYSTEM: Require stability before accepting
+                // If this is a new sentence, check if it's stable across multiple frames
+                if (newSentenceId !== currentSentenceId) {
+                    if (!pendingMatchRef.current || pendingMatchRef.current.sentenceId !== newSentenceId) {
+                        // New potential match - start counting
+                        pendingMatchRef.current = { index: match.index, count: 1, sentenceId: newSentenceId };
+                        console.log(`[Voice] New match pending: sentence ${newSentenceId}, needs ${MATCH_CONFIRMATION_FRAMES - 1} more frames`);
+                        return; // Don't accept yet
+                    } else {
+                        // Same match - increment counter
+                        pendingMatchRef.current.count++;
+                        if (pendingMatchRef.current.count < MATCH_CONFIRMATION_FRAMES) {
+                            console.log(`[Voice] Match confirming: ${pendingMatchRef.current.count}/${MATCH_CONFIRMATION_FRAMES}`);
+                            return; // Still not stable enough
+                        }
+                        // Confirmed! Clear pending and proceed
+                        console.log(`[Voice] Match CONFIRMED after ${MATCH_CONFIRMATION_FRAMES} frames`);
+                        pendingMatchRef.current = null;
+                    }
+                } else {
+                    // Same sentence - clear any pending different match
+                    pendingMatchRef.current = null;
                 }
 
                 lastMatchIndexRef.current = match.index;
@@ -215,8 +264,13 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                         const relativeIndex = lookupIndex - sentence.startIndex;
                         const len = sentence.cleanContent.length;
                         if (len > 0) {
-                            const p = Math.min(1, Math.max(0, relativeIndex / len));
-                            setVoiceProgress(p);
+                            const rawProgress = Math.min(1, Math.max(0, relativeIndex / len));
+
+                            // PROGRESS SMOOTHING: Use exponential moving average to prevent jitter
+                            const smoothedProgress = smoothedProgressRef.current * (1 - PROGRESS_SMOOTH_FACTOR) +
+                                rawProgress * PROGRESS_SMOOTH_FACTOR;
+                            smoothedProgressRef.current = smoothedProgress;
+                            setVoiceProgress(smoothedProgress);
                         } else {
                             setVoiceProgress(0);
                         }
@@ -266,9 +320,12 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
     const resetVoice = useCallback(() => {
         stopListening();
         lastMatchIndexRef.current = 0;
+        pendingMatchRef.current = null; // Clear pending match
+        smoothedProgressRef.current = 0; // Reset smoothed progress
         setVoiceProgress(0);
         setActiveSentenceIndex(-1);
     }, [stopListening]);
+
 
     return {
         isListening,
