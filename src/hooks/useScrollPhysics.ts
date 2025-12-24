@@ -295,8 +295,12 @@ export const useScrollPhysics = ({
         if (onCommandTriggered && scrollContainerRef.current) {
 
           const checkZoneStart = internalScrollPos.current;
+          const _isFlipVertical = isFlipVerticalRef.current;
           // Trigger commands when they reach % of the screen (Reading Line)
-          const readingZoneOffset = metrics.clientHeight * 0.05;
+          // Normal: 5% from DOM Top
+          // Flipped: 5% from Visual Top (which is 95% from DOM Top)
+          const readingZoneRatio = _isFlipVertical ? 0.95 : 0.05;
+          const readingZoneOffset = metrics.clientHeight * readingZoneRatio;
           const triggerPoint = checkZoneStart + readingZoneOffset;
 
           const commandElements = scrollContainerRef.current.querySelectorAll('[data-command]');

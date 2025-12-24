@@ -259,7 +259,7 @@ export const Prompter = memo(
       }, [isBilingualMode, bilingualConfig]);
 
       // Abstraction: Handle DOM measurements
-      const metricsRef = useElementMetrics(scrollContainerRef, [sentences, fontSize, margin, isUpperCase]);
+      const metricsRef = useElementMetrics(scrollContainerRef, [sentences, fontSize, margin, isUpperCase, isFlipVertical]);
 
       // Command Detection and Execution
       const handleCommandTriggered = useCallback((command: TextCommand, sentenceId: number) => {
@@ -662,9 +662,11 @@ export const Prompter = memo(
         const start = isFocusMode ? "40%" : "10%";
         const end = isFocusMode ? "70%" : "90%";
 
+        const direction = isFlipVertical ? 'to top' : 'to bottom';
+
         // Use a smooth gradient (fade) instead of hard stops
         // From Solid Color (Top) -> Transparent (Start) ... Transparent (End) -> Solid Color (Bottom)
-        return `linear-gradient(to bottom, 
+        return `linear-gradient(${direction}, 
           ${color} 0%, 
           rgba(0,0,0,0) ${start}, 
           rgba(0,0,0,0) ${end}, 
@@ -766,8 +768,8 @@ export const Prompter = memo(
                 transform: isFlipVertical ? "scaleY(-1)" : undefined,
               }}
               contentStyle={{
-                paddingTop: '50vh',
-                paddingBottom: '50vh'
+                paddingTop: isFlipVertical ? '100vh' : '50vh',
+                paddingBottom: isFlipVertical ? '100vh' : '50vh'
               }}
             >
               <ScriptBoard
