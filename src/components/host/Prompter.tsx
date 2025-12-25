@@ -104,6 +104,20 @@ export const Prompter = memo(
       // Refs
       const containerRef = useRef<HTMLDivElement>(null);
       const scrollContainerRef = useRef<HTMLDivElement>(null);
+      // Track exact container height for pixel-perfect padding calculation
+      const [containerHeight, setContainerHeight] = useState<number>(0);
+
+      // Height Tracking for Mobile Viewport Fix
+      React.useLayoutEffect(() => {
+        if (!scrollContainerRef.current) return;
+        const observer = new ResizeObserver(entries => {
+          for (const entry of entries) {
+            setContainerHeight(entry.contentRect.height);
+          }
+        });
+        observer.observe(scrollContainerRef.current);
+        return () => observer.disconnect();
+      }, []);
 
       const hudTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
       const mouseMoveRafRef = useRef<number | null>(null);
@@ -645,7 +659,7 @@ export const Prompter = memo(
       // to keep the visual position constant.
 
       const getTargetPaddingRatio = useCallback(() => {
-        if (!isVoiceMode) return 0.5; // Default 50vh
+        if (!isVoiceMode) return 0.5; // Default 50%
         return isFlipVertical ? (1 - VOICE_CONFIG.LOOKAHEAD_POSITION) : VOICE_CONFIG.LOOKAHEAD_POSITION;
       }, [isVoiceMode, isFlipVertical]);
 
@@ -659,6 +673,8 @@ export const Prompter = memo(
 
         if (currentRatio !== prevRatio) {
           const container = scrollContainerRef.current;
+          // CRITICAL: Use the same height source as the padding calculation (containerHeight state or clientHeight here)
+          // We use clientHeight from DOM which should match our state eventually, but instant access is better for layout effect.
           const h = container.clientHeight;
 
           const oldPx = prevRatio * h;
@@ -667,10 +683,10 @@ export const Prompter = memo(
 
           // Apply compensation immediately before paint
           container.scrollTop += delta;
-          console.log(`[Prompter] Layout Shift Compensation: ${delta.toFixed(0)}px (Ratio: ${prevRatio} -> ${currentRatio})`);
+          console.log(`[Prompter] Layout Shift Compensation: ${delta.toFixed(0)}px (Ratio: ${prevRatio.toFixed(2)} -> ${currentRatio.toFixed(2)})`);
 
           // Sync Physics Engine internal state to prevent it from overwriting our fix
-          // We can access the handleNativeScroll to force a sync if needed, but 
+          // We can access the handleNativeScroll to force a sync if needed, but
           // changing scrollTop triggers a scroll event which handles it naturally.
           // However, to be safe against race conditions in the loop:
           // We can't easily access internalScrollPos here without exposing it.
@@ -678,7 +694,7 @@ export const Prompter = memo(
         }
 
         prevPaddingRatioRef.current = currentRatio;
-      }, [getTargetPaddingRatio]);
+      }, [getTargetPaddingRatio, isVoiceMode, isFlipVertical]); // added deps for safety
 
       // Dynamic Focus Line Gradient
       const focusGradient = useMemo(() => {
@@ -811,11 +827,15 @@ export const Prompter = memo(
                 transform: isFlipVertical ? "scaleY(-1)" : undefined,
               }}
               contentStyle={{
-                // Voice Mode: Use configured Top Padding to allow text to start at Top instead of Center
-                // Note: FlipVertical logic kept as-is to avoid regression in that specific hardware mode
+                // Voice Mode: Use configured Top Padding (calculated in PX) to allow text to start at Top instead of Center
+                // We use containerHeight state to avoid 'vh' unit issues on mobile.
+                // Fallback to 50vh if height not yet measured.
                 paddingTop: isVoiceMode
-                  ? (isFlipVertical ? `${(1 - VOICE_CONFIG.LOOKAHEAD_POSITION) * 100}vh` : `${VOICE_CONFIG.LOOKAHEAD_POSITION * 100}vh`)
-                  : '50vh',
+                  ? (containerHeight > 0
+                    ? `${(isFlipVertical ? (1 - VOICE_CONFIG.LOOKAHEAD_POSITION) : VOICE_CONFIG.LOOKAHEAD_POSITION) * containerHeight}px`
+                    : (isFlipVertical ? `${(1 - VOICE_CONFIG.LOOKAHEAD_POSITION) * 100}vh` : `${VOICE_CONFIG.LOOKAHEAD_POSITION * 100}vh`)
+                  )
+                  : '50vh', // Keep 50vh or 50% for manual mode? 50vh is standard.
                 // Voice Mode: Increase padding to allow last lines to scroll comfortably to the reading marker
                 paddingBottom: isVoiceMode
                   ? '80vh'
