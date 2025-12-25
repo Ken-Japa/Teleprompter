@@ -114,7 +114,7 @@ export const useScrollPhysics = ({
       // translating the child by -pos would move it visual DOWN if pos increases.
       // We want it to move UP. 
       // After testing/analysis: translateY(pos) in a scaleY(-1) container moves it visually UP.
-      const multiplier = isFlipVerticalRef.current ? 1 : -1;
+      const multiplier = -1;
       content.style.transform = `translate3d(0, ${position * multiplier}px, 0)`;
       transformOffsetRef.current = position;
     }
