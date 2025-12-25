@@ -8,10 +8,12 @@ import { useHostController } from "../hooks/useHostController";
 import { CountdownModal } from "../components/ui/CountdownModal";
 import { RedeemModal } from "../components/RedeemModal";
 import { FeedbackModal } from "../components/FeedbackModal";
+import { VoiceAnalyticsModal } from "../components/host/VoiceAnalyticsModal";
 
 export const Host: React.FC = () => {
     const { t } = useTranslation();
     const [showFeedback, setShowFeedback] = React.useState(false);
+    const [sessionSummary, setSessionSummary] = React.useState<any | null>(null);
 
     React.useEffect(() => {
         startPageUsageTracking();
@@ -23,6 +25,10 @@ export const Host: React.FC = () => {
     // Separation of Concerns: Host is now a dumb component
     const { state, actions, refs } = useHostController();
     const { text, isEditMode, peerId, status, isPro, showPaywall, unlockKey, prompterState, errorMessage, paywallErrorMessage, showCountdownModal, prompterSettings, isValidating, bilingualTexts, isTrialActive, trialEndTime } = state;
+
+    const handleScriptFinished = React.useCallback((summary: any) => {
+        setSessionSummary(summary);
+    }, []);
 
     return (
         <>
@@ -114,6 +120,7 @@ export const Host: React.FC = () => {
                     onTextChange={actions.setText}
                     onVoiceModeChange={actions.setIsVoiceMode}
                     onRecordingStatusChange={actions.setIsRecording}
+                    onScriptFinished={handleScriptFinished}
                     onReset={actions.handleReset}
                     onStartRemoteRecording={actions.startRemoteRecording}
                     onStopRemoteRecording={actions.stopRemoteRecording}
@@ -127,6 +134,12 @@ export const Host: React.FC = () => {
             )}
 
             <FeedbackModal show={showFeedback} onClose={() => setShowFeedback(false)} />
+
+            <VoiceAnalyticsModal
+                isOpen={!!sessionSummary}
+                onClose={() => setSessionSummary(null)}
+                summary={sessionSummary}
+            />
         </>
     );
 };

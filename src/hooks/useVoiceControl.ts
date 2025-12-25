@@ -23,6 +23,8 @@ export const useVoiceControl = (
     const [voiceProgress, setVoiceProgress] = useState<number>(0);
     const [voiceApiSupported, setVoiceApiSupported] = useState<boolean>(true);
     const [voiceApiError, setVoiceApiError] = useState<string | null>(null);
+    const [isScriptFinished, setIsScriptFinished] = useState<boolean>(false);
+    const [sessionSummary, setSessionSummary] = useState<any | null>(null);
 
     const recognitionRef = useRef<ISpeechRecognition | null>(null);
     const lastMatchIndexRef = useRef<number>(0);
@@ -224,9 +226,16 @@ export const useVoiceControl = (
 
                 // Reset speech timer
                 lastSpeechTimeRef.current = now;
+            } else if (nextSentenceId === sentences.length && !isScriptFinished) {
+                // LAST SENTENCE COMPLETED!
+                console.log('[Voice] Script finished!');
+                setIsScriptFinished(true);
+
+                // Immediately stop listening as script is done
+                stopListening();
             }
         }
-    }, [voiceProgress, sentences]);
+    }, [voiceProgress, sentences, isScriptFinished]);
 
     /**
      * Start sentence completion checker
@@ -973,14 +982,15 @@ export const useVoiceControl = (
         stopSentenceCompletionChecker();
 
         // Generate and log session summary
-        generateSessionSummary();
+        const summary = generateSessionSummary();
+        if (summary) setSessionSummary(summary);
 
         // Reset active sentence to trigger initialization flow on next start
         // This ensures the "wait for first recognition" behavior works on reactivation
         setActiveSentenceIndex(-1);
 
         // DON'T reset locked sentence here - allows resume from same position
-    }, [stopSentenceCompletionChecker, generateSessionSummary]);
+    }, [stopSentenceCompletionChecker, generateSessionSummary, setSessionSummary]);
 
     const resetVoice = useCallback(() => {
         stopListening();
@@ -990,7 +1000,9 @@ export const useVoiceControl = (
         smoothedProgressRef.current = 0; // Reset smoothed progress
         setVoiceProgress(0);
         setActiveSentenceIndex(0); // Start at first sentence
-    }, [stopListening]);
+        setIsScriptFinished(false);
+        setSessionSummary(null);
+    }, [stopListening, setIsScriptFinished, setSessionSummary]);
 
 
     return {
@@ -1010,7 +1022,10 @@ export const useVoiceControl = (
         currentMode: autoModeConfigRef.current.currentMode,
         isCalibrating: noiseDetectionRef.current.isCalibrating,
         adaptedLerpFactor: speechVelocityRef.current.adaptedLerpFactor,
+
+        // Script finish & analytics
+        isScriptFinished,
+        sessionSummary,
+        setIsScriptFinished,
     };
 };
-
-

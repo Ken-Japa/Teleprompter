@@ -54,6 +54,7 @@ interface PrompterProps {
   onTextChange: (text: string) => void;
   onVoiceModeChange?: (isVoiceMode: boolean) => void;
   onRecordingStatusChange?: (isRecording: boolean) => void;
+  onScriptFinished?: (summary: any) => void;
   onReset?: () => void;
   onStartRemoteRecording?: () => void;
   onStopRemoteRecording?: () => void;
@@ -68,7 +69,7 @@ interface PrompterProps {
 
 export const Prompter = memo(
   forwardRef<PrompterHandle, PrompterProps>(
-    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onReset, onStartRemoteRecording, onStopRemoteRecording, scripts, activeScriptId, onSwitchScript, onCreateScript, onDeleteScript, onUpdateScript }, ref) => {
+    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onScriptFinished, onReset, onStartRemoteRecording, onStopRemoteRecording, scripts, activeScriptId, onSwitchScript, onCreateScript, onDeleteScript, onUpdateScript }, ref) => {
 
       // Extracted Settings Logic
       const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode, isMusicianMode, isBilingualMode, bilingualConfig, isHudless, isCameraMode, isWidgetMode } = settings;
@@ -256,13 +257,22 @@ export const Prompter = memo(
         return settings.voiceLanguage || lang;
       }, [isBilingualMode, bilingualConfig, lang, settings.voiceLanguage]);
 
-      const { startListening, stopListening, resetVoice, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError } = useVoiceControl(
+      const { startListening, stopListening, resetVoice, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError, isScriptFinished, sessionSummary } = useVoiceControl(
         voiceControlText,
         isPro,
         handleSpeechResult,
         effectiveVoiceLang,
-        isFlipVertical
+        isFlipVertical,
+        isMusicianMode,
+        isBilingualMode
       );
+
+      // Notify parent when script is finished
+      useEffect(() => {
+        if (isScriptFinished && onScriptFinished && sessionSummary) {
+          onScriptFinished(sessionSummary);
+        }
+      }, [isScriptFinished, onScriptFinished, sessionSummary]);
 
       // Bilingual Sentences Processing
       const bilingualSentences = useMemo(() => {

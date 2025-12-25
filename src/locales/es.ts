@@ -688,4 +688,14 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
       PREVIOUS_PART: "Volver Parte",
     },
   },
+  voice_analytics: {
+    title: "Presentación Finalizada",
+    congratulations: "¡Increíble! Terminaste el guion.",
+    subtitle: "Aquí tienes el resumen de tu rendimiento en esta sesión:",
+    duration: "Duración",
+    wpm: "WPM (Velocidad)",
+    accuracy: "Precisión",
+    sentences: "Frases",
+    close: "Cerrar Resumen",
+  },
 };
