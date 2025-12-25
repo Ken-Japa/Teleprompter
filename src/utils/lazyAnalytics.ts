@@ -31,8 +31,6 @@ export const initAnalyticsCompatibility = (): void => {
         // Avoid double loading if already present
         if (window.document.querySelector('script[src*="contentsquare"]')) return;
 
-        console.log("📊 Loading extra analytics scripts (Clarity, Contentsquare)...");
-
         // Load Contentsquare
         const csScript = document.createElement("script");
         csScript.src = "https://t.contentsquare.net/uxa/9f676d4da3fcc.js";

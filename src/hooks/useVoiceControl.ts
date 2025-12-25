@@ -128,7 +128,6 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
             // Check for explicit recycle (History Reset)
             if (recycleSessionRef.current) {
-                console.log("[Voice] Recycle: Restarting immediately...");
                 recycleSessionRef.current = false;
                 try {
                     recognition.start();
@@ -225,7 +224,6 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
                     if (isBackwardJump && isNearPerfectMatch && isVerySmallJump) {
                         match = fallbackMatch;
-                        console.log(`[Voice] Fallback accepted: Perfect match (${(1 - fallbackMatch.ratio) * 100}%) within ${sentenceDistance} sentences`);
                     } else if (isForwardJump) {
                         // NEVER allow forward jumps from fallback - too dangerous
                         console.warn(`[Voice] Fallback BLOCKED: Forward jump rejected (too risky)`);
@@ -259,7 +257,6 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                     if (!pendingMatchRef.current || pendingMatchRef.current.sentenceId !== newSentenceId) {
                         // New potential sentence - start counting
                         pendingMatchRef.current = { index: match.index, count: 1, sentenceId: newSentenceId };
-                        console.log(`[Voice] New sentence pending: ${currentSentenceId} → ${newSentenceId}, needs ${VOICE_CONFIG.MATCH_CONFIRMATION_FRAMES - 1} more`);
                         // DON'T RETURN - allow progress update below
                     } else {
                         // Same pending sentence - increment counter
@@ -269,7 +266,6 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                             // DON'T RETURN - allow progress update below
                         } else {
                             // CONFIRMED! Lock to new sentence
-                            console.log(`[Voice] Sentence LOCKED: ${newSentenceId}`);
                             lockedSentenceIdRef.current = newSentenceId;
                             pendingMatchRef.current = null;
                         }
@@ -389,8 +385,6 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                     }
                 }
             }
-
-            console.log(`[Voice] Found visible sentence (closest): ${closestSentenceId} (dist: ${minDistance})`);
             return { index: closestSentenceId, progress: bestProgress };
 
         } catch (e) {
@@ -433,8 +427,6 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
         smoothedProgressRef.current = initialProgress;
         setVoiceProgress(initialProgress);
-
-        console.log(`[Voice] Starting from visible sentence: ${visibleSentence} (Char: ${lastMatchIndexRef.current}, Progress: ${initialProgress.toFixed(2)})`);
 
         intentionallyStoppedRef.current = false;
         startRecognitionInstance();

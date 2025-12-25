@@ -20,7 +20,6 @@ import * as Sentry from "@sentry/react";
 export function setAnalyticsActive(isActive: boolean): void {
     if (typeof window.gtag === "function") {
         const consentState = isActive ? 'granted' : 'denied';
-        console.log(`📊 Analytics consent ${isActive ? 'resumed' : 'paused'} (analytics_storage: ${consentState})`);
 
         window.gtag('consent', 'update', {
             'analytics_storage': consentState

@@ -141,7 +141,6 @@ export const Prompter = memo(
           if (!engagedUserTrackedRef.current && hasStartedScrollingRef.current && timeElapsed >= 180000) {
             trackEngagedUser();
             engagedUserTrackedRef.current = true;
-            console.log("[Prompter] Engaged user event fired");
           }
         }, 60000); // Check every minute
 
@@ -684,7 +683,6 @@ export const Prompter = memo(
 
           // Apply compensation immediately before paint
           container.scrollTop += delta;
-          console.log(`[Prompter] Layout Shift Compensation: ${delta.toFixed(0)}px (Ratio: ${prevRatio.toFixed(2)} -> ${currentRatio.toFixed(2)})`);
 
           // Sync Physics Engine internal state to prevent it from overwriting our fix
           // We can access the handleNativeScroll to force a sync if needed, but

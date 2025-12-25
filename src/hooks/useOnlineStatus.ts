@@ -16,7 +16,6 @@ export const useOnlineStatus = (): boolean => {
         // Handler for when browser goes online
         const handleOnline = () => {
             setIsOnline(true);
-            console.log("Network: Online");
         };
 
         // Handler for when browser goes offline

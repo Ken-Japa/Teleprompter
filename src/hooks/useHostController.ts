@@ -292,7 +292,6 @@ export const useHostController = () => {
   // 7. Actions
   const handlePrompterStateChange = useCallback(
     (playing: boolean, newSpeed: number) => {
-      console.log(`Prompter State Change: Playing=${playing}, Speed=${newSpeed}`);
       if (playing && !isPlaying) {
         trackStartPacing(newSpeed, isVoiceMode ? "voice" : "auto");
       }
