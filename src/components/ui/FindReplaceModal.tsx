@@ -103,7 +103,7 @@ export const FindReplaceModal: React.FC<FindReplaceModalProps> = ({ isOpen, onCl
     };
 
     const handleRemoveLineBreaks = () => {
-        const newText = text.replace(/[\r\n]+/g, ' ');
+        const newText = text.replace(/(\r\n|\n|\r)+/g, '\n').trim();
         onTextChange(newText);
     };
 
