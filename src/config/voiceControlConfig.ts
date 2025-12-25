@@ -18,7 +18,7 @@ export const VOICE_CONFIG = {
    * Provides good lookahead while keeping current line near top.
    * Higher values help with line breaks and seeing upcoming text.
    */
-  LOOKAHEAD_POSITION: 0.1,
+  LOOKAHEAD_POSITION: 0.12,
 
   /**
    * SCROLL_LERP_FACTOR (0.0 - 1.0)
@@ -33,7 +33,7 @@ export const VOICE_CONFIG = {
    * Current Value: 0.45 - MUSICIAN MODE OPTIMIZED
    * Faster response to keep up with singing pace and reduce perceived lag.
    */
-  SCROLL_LERP_FACTOR: 0.4,
+  SCROLL_LERP_FACTOR: 0.3,
 
   /**
    * PROGRESS_THRESHOLD (0.0 - 1.0)
@@ -52,7 +52,7 @@ export const VOICE_CONFIG = {
    * 
    * Goal: Allow text to reach the visual top marker comfortably.
    */
-  VOICE_PADDING_TOP: 10, // 7vh padding as requested
+  VOICE_PADDING_TOP: 7, // 7vh padding as requested
 
   // --- RECOGNITION TUNING ---
 
