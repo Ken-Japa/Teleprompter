@@ -328,33 +328,46 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
     // Helper: Find which sentence is currently visible on screen
     // Returns index and the estimated progress within that sentence (0-1) based on scroll position
-    const findVisibleSentenceId = useCallback((forcedRatio?: number): { index: number; progress: number } => {
+    const findVisibleSentenceId = useCallback((): { index: number; progress: number } => {
         if (typeof window === 'undefined' || sentences.length === 0) return { index: 0, progress: 0 };
 
         try {
             // Get scroll container
             const container = document.querySelector('.voice-control-smooth') as HTMLElement;
             if (!container) {
+                // Return current active index if container not found, better than resetting to 0
                 return { index: activeSentenceIndex >= 0 ? activeSentenceIndex : 0, progress: 0 };
             }
 
             const scrollTop = container.scrollTop || 0;
-            // FIXED: Use the provided ratio or the LOOKAHEAD position. 
-            // During startListening, we use 0.5 (Center) to match user's eye level.
-            const lookaheadRatio = forcedRatio !== undefined ? forcedRatio : VOICE_CONFIG.LOOKAHEAD_POSITION;
+            // FIXED: Use the actual LOOKAHEAD position to find what user is looking at.
+            const lookaheadRatio = VOICE_CONFIG.LOOKAHEAD_POSITION;
 
             // Calculate Target Position based on Lookahead
-            // Normal: scrollTop + (Height * Ratio)
-            // Flipped: In flipped mode, DOM Top is Visual Bottom. 
-            // Target Visual Top (Ratio 0.12) -> Target DOM (1 - 0.12 = 0.88)
-            // BUT, if we want to look at the CENTER (0.5), it remains 0.5.
+            // If FlipVertical (scaleY-1), the "Top" of the content is visually at the bottom.
+            // So we need to look near the bottom of the scroll viewport to find the "start" lines.
+            // Actually, in scaleY(-1), scrollTop=0 is at the DOM top (which is Visual Bottom).
+            // As we scroll "down" (increase scrollTop), the content moves UP visually? 
+            // - No, standard behavior: scrollTop moves viewport down.
+            // - With scaleY(-1) on container: 
+            //     - Content is flipped upside down. 
+            //     - Scroll 0 shows the "Top" of the content (which is now at Visual Bottom).
+            //     - Wait, usually Flip Vertical implementation flips the CONTAINER.
+            // Let's assume standard behavior:
+            // Normal: 0% is Top. Lookahead 15% means 15% down from Top.
+            // Flipped: 0% is Top (Visual Bottom). We want to look at Visual Top (DOM Bottom).
+            // So we target (1 - Lookahead) from DOM Top.
+
             const effectiveRatio = isFlipVertical ? (1 - lookaheadRatio) : lookaheadRatio;
+            // targetPosition: The DOM coordinate that is currently under the reading marker
             const targetPosition = scrollTop + (container.clientHeight * effectiveRatio);
 
             let closestSentenceId = 0;
             let minDistance = Number.MAX_VALUE;
             let bestProgress = 0;
 
+            // Strategy: Find sentence strictly overlapping OR closest to the target position
+            // This handles "dead zones" (margins/padding) where targetPosition is between sentences
             for (let i = 0; i < sentences.length; i++) {
                 const el = document.getElementById(`sentence-${i}`);
                 if (el) {
@@ -362,14 +375,18 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                     const elHeight = el.clientHeight;
                     const elBottom = elTop + elHeight;
 
-                    // Progress: (Target - Top) / Height
+                    // Progress calculation:
+                    // If targetPosition is at elTop, progress is 0.
+                    // If targetPosition is at elBottom, progress is 1.
                     const rawProgress = elHeight > 0 ? (targetPosition - elTop) / elHeight : 0;
                     const progress = Math.min(1, Math.max(0, rawProgress));
 
+                    // 1. Exact overlap check (Most common case)
                     if (elTop <= targetPosition && elBottom >= targetPosition) {
                         return { index: i, progress };
                     }
 
+                    // 2. Distance check (Fallback for margins/gaps)
                     let dist = 0;
                     if (targetPosition < elTop) dist = elTop - targetPosition;
                     else if (targetPosition > elBottom) dist = targetPosition - elBottom;
@@ -377,18 +394,19 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                     if (dist < minDistance) {
                         minDistance = dist;
                         closestSentenceId = i;
-                        bestProgress = progress;
+                        bestProgress = progress; // Will be 0 or 1 usually if outside
                     }
                 }
             }
 
+            console.log(`[Voice] Found visible sentence (closest): ${closestSentenceId} (dist: ${minDistance})`);
             return { index: closestSentenceId, progress: bestProgress };
 
         } catch (e) {
             console.warn('[Voice] Error finding visible sentence:', e);
         }
 
-        return { index: activeSentenceIndex >= 0 ? activeSentenceIndex : 0, progress: 0 };
+        return { index: activeSentenceIndex >= 0 ? activeSentenceIndex : 0, progress: 0 }; // Fallback to current
     }, [sentences, activeSentenceIndex, isFlipVertical]);
 
     const startListening = useCallback(() => {
@@ -401,8 +419,8 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             return;
         }
 
-        // Initialize to visible sentence from CENTER (Reading point)
-        const { index: visibleSentence, progress: initialProgress } = findVisibleSentenceId(0.5);
+        // Initialize to visible sentence, not sentence 0
+        const { index: visibleSentence, progress: initialProgress } = findVisibleSentenceId();
         lockedSentenceIdRef.current = visibleSentence;
         setActiveSentenceIndex(visibleSentence);
 

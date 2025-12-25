@@ -521,51 +521,17 @@ export const Prompter = memo(
           return;
         }
 
-        const container = scrollContainerRef.current;
-        if (!container) return;
-
-        // --- SCROLL SYNC LOGIC ---
-        // When entering/exiting voice mode, the Top Padding changes.
-        // Padding Top: 50vh (Auto) -> 12vh (Voice) -> 50vh (Auto)
-        // We need to adjust scrollTop to keep the visual content at the same vertical position
-        const currentScrollTop = container.scrollTop;
-        const viewportHeight = container.clientHeight;
-
-        const normalPadding = viewportHeight * 0.5;
-        const voicePadding = viewportHeight * VOICE_CONFIG.LOOKAHEAD_POSITION;
-
         if (isVoiceMode) {
-          // EXITING Voice Mode: Voice -> Auto
-          // Padding increases: voicePadding -> normalPadding
-          // Content shifts DOWN visually. We need to decrease scrollTop to compensate.
-          const paddingDiff = normalPadding - voicePadding;
           setIsVoiceMode(false);
           stopListening();
-
-          // Apply sync in next frame to allow React to update padding first
-          requestAnimationFrame(() => {
-            if (scrollContainerRef.current) {
-              scrollContainerRef.current.scrollTop = Math.max(0, currentScrollTop + paddingDiff);
-            }
-          });
-
+          // Remove active class from current element when stopping
           if (currentActiveElementRef.current) {
             currentActiveElementRef.current.classList.remove("sentence-active");
           }
         } else {
-          // ENTERING Voice Mode: Auto -> Voice
-          // Padding decreases: normalPadding -> voicePadding
-          // Content shifts UP visually. We need to increase scrollTop to compensate.
-          const paddingDiff = normalPadding - voicePadding;
           setIsVoiceMode(true);
+          // Pause auto-scroll when enabling voice mode
           onStateChange(false, externalState.speed);
-
-          requestAnimationFrame(() => {
-            if (scrollContainerRef.current) {
-              scrollContainerRef.current.scrollTop = currentScrollTop - paddingDiff;
-            }
-          });
-
           if (voiceControlMode !== "remote") {
             startListening();
           }
@@ -805,13 +771,13 @@ export const Prompter = memo(
               }}
               contentStyle={{
                 // Voice Mode: Use configured Top Padding to allow text to start at Top instead of Center
-                // Note: In FlipVertical, Visual Top is DOM Bottom. So we swap PaddingTop/Bottom.
+                // Note: FlipVertical logic kept as-is to avoid regression in that specific hardware mode
                 paddingTop: isVoiceMode
-                  ? (isFlipVertical ? '80vh' : `${VOICE_CONFIG.LOOKAHEAD_POSITION * 100}vh`)
+                  ? (isFlipVertical ? `${(1 - VOICE_CONFIG.LOOKAHEAD_POSITION) * 100}vh` : `${VOICE_CONFIG.LOOKAHEAD_POSITION * 100}vh`)
                   : '50vh',
                 // Voice Mode: Increase padding to allow last lines to scroll comfortably to the reading marker
                 paddingBottom: isVoiceMode
-                  ? (isFlipVertical ? `${VOICE_CONFIG.LOOKAHEAD_POSITION * 100}vh` : '80vh')
+                  ? '80vh'
                   : '50vh'
               }}
             >
