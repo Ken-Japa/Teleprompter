@@ -52,7 +52,7 @@ interface EditorProps {
 }
 
 export const Editor: React.FC<EditorProps> = ({
-    text, setText, peerId, status, onStart, onStartHudless,
+    text, setText, peerId, status, onStart,
     isMusicianMode, onToggleMusicianMode, isBilingualMode, onToggleBilingualMode,
     isCameraMode, onToggleCameraMode, isWidgetMode, onToggleWidgetMode,
     bilingualTexts, onBilingualTextsChange,
@@ -63,7 +63,7 @@ export const Editor: React.FC<EditorProps> = ({
     const { t } = useTranslation();
 
     // Separation of Concerns: Logic is now in the hook
-    const { localText, textAreaRef, handleChange, handleInsertTag, handleClear } = useEditorLogic({
+    const { localText, textAreaRef, handleChange, handleInsertTag, handleClear, handleSelectRange, handleUndo, handleUpdateText, canUndo } = useEditorLogic({
         text,
         setText,
     });
@@ -127,11 +127,14 @@ export const Editor: React.FC<EditorProps> = ({
                         onInsertTag={handleInsertTag}
                         onClear={handleClear}
                         text={localText}
+                        onTextChange={handleUpdateText}
+                        onSelectRange={handleSelectRange}
+                        onUndo={handleUndo}
+                        canUndo={canUndo}
                         isMusicianMode={isMusicianMode}
                         onToggleMusicianMode={onToggleMusicianMode}
                         isBilingualMode={isBilingualMode}
                         onToggleBilingualMode={onToggleBilingualMode}
-                        onStartHudless={onStartHudless}
                         isCameraMode={isCameraMode}
                         onToggleCameraMode={onToggleCameraMode}
                         isWidgetMode={isWidgetMode}
@@ -174,3 +177,4 @@ export const Editor: React.FC<EditorProps> = ({
         </S.EditorContainer>
     );
 };
+

@@ -616,6 +616,20 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
       whatIs: "Que Es Teleprompter",
     },
   },
+  editor: {
+    findReplace: "Buscar y reemplazar",
+    find: "Buscar",
+    findPlaceholder: "Escriba el texto a buscar...",
+    replacePlaceholder: "Escriba el texto a reemplazar...",
+    replaceWith: "Reemplazar por",
+    replace: "Reemplazar",
+    findNext: "Buscar siguiente",
+    replaceAll: "Reemplazar todo",
+    undo: "Deshacer",
+    matches: "resultados",
+    cleanText: "Limpiar texto",
+    removeLineBreaks: "Eliminar saltos de línea",
+  },
   thankYou: {
     title: "¡Gracias por tu compra!",
     subtitle:

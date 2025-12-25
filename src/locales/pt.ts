@@ -444,8 +444,6 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
       auto: "Automático (Idioma do Site)"
     },
   },
-
-
   pacing: {
     title: "Calculadora de Tempo de Leitura",
     wordCount: "Palavras",
@@ -623,6 +621,20 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
       alternatives: "Alternativas",
       whatIs: "O Que É Teleprompter",
     },
+  },
+  editor: {
+    findReplace: "Localizar e Substituir",
+    find: "Procurar",
+    findPlaceholder: "Digite o texto para buscar...",
+    replacePlaceholder: "Digite o texto para substituir...",
+    replaceWith: "Substituir por",
+    replace: "Substituir",
+    findNext: "Procurar Próximo",
+    replaceAll: "Substituir Tudo",
+    undo: "Desfazer",
+    matches: "resultados",
+    cleanText: "Limpar Texto",
+    removeLineBreaks: "Remover Quebras de Linha",
   },
   thankYou: {
     title: "Obrigado pela compra!",

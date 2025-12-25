@@ -1,10 +1,11 @@
 import { memo, useState } from "react";
 import { VoiceLanguageSelector } from "./VoiceLanguageSelector";
 import * as S from "../ui/Styled";
-import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LanguagesIcon, CameraIcon, WidgetIcon } from "../ui/Icons";
+import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LanguagesIcon, CameraIcon, WidgetIcon, SearchIcon } from "../ui/Icons";
 import { useTranslation } from "../../hooks/useTranslation";
 import { TutorialModal } from "../ui/TutorialModal";
 import { PacingModal } from "../ui/PacingModal";
+import { FindReplaceModal } from "../ui/FindReplaceModal";
 import { HotkeyConfigModal } from "../ui/HotkeyConfigModal";
 import { KeyboardIcon } from "../ui/Icons";
 import { ScriptManager } from "./ScriptManager";
@@ -14,11 +15,14 @@ interface EditorToolbarProps {
     onInsertTag: (tag: string) => void;
     onClear: () => void;
     text: string;
+    onTextChange?: (newText: string) => void;
+    onSelectRange?: (start: number, end: number) => void;
+    onUndo?: () => void;
+    canUndo?: boolean;
     isMusicianMode: boolean;
     onToggleMusicianMode: () => void;
     isBilingualMode: boolean;
     onToggleBilingualMode: () => void;
-    onStartHudless: () => void;
     isCameraMode: boolean;
     onToggleCameraMode: () => void;
     isWidgetMode: boolean;
@@ -37,11 +41,12 @@ interface EditorToolbarProps {
     onUpdateScript: (id: string, updates: Partial<Script>) => void;
 }
 
-export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode, onToggleMusicianMode, isBilingualMode, onToggleBilingualMode, onStartHudless, isCameraMode, onToggleCameraMode, onToggleWidgetMode, isWidgetMode, isPro = false, onUnlockPro = () => { }, voiceLanguage, onVoiceLanguageChange, scripts, activeScriptId, onCreateScript, onSwitchScript, onDeleteScript, onUpdateScript }: EditorToolbarProps) => {
+export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, onSelectRange, onUndo, canUndo, isMusicianMode, onToggleMusicianMode, isBilingualMode, onToggleBilingualMode, isCameraMode, onToggleCameraMode, onToggleWidgetMode, isWidgetMode, isPro = false, onUnlockPro = () => { }, voiceLanguage, onVoiceLanguageChange, scripts, activeScriptId, onCreateScript, onSwitchScript, onDeleteScript, onUpdateScript }: EditorToolbarProps) => {
     const { t } = useTranslation();
     const [showTutorialModal, setShowTutorialModal] = useState(false);
     const [showPacingModal, setShowPacingModal] = useState(false);
     const [showHotkeyModal, setShowHotkeyModal] = useState(false);
+    const [showFindReplaceModal, setShowFindReplaceModal] = useState(false);
 
     return (
         // Wrapper replaces S.FormattingToolbar to allow custom sticky logic
@@ -151,6 +156,15 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                     </S.IconButton>
 
                     <S.IconButton
+                        onClick={() => setShowFindReplaceModal(true)}
+                        className="w-9 h-9 rounded-full bg-slate-800 text-slate-400 hover:text-brand-400 border border-slate-700"
+                        aria-label="Find and Replace"
+                        title={t("editor.findReplace") || "Localizar e Substituir"}
+                    >
+                        <SearchIcon className="w-5 h-5" />
+                    </S.IconButton>
+
+                    <S.IconButton
                         onClick={onClear}
                         className="hover:text-red-400 w-9 h-9"
                         aria-label="Clear All Text"
@@ -199,6 +213,17 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
             <TutorialModal isOpen={showTutorialModal} onClose={() => setShowTutorialModal(false)} />
             <PacingModal isOpen={showPacingModal} onClose={() => setShowPacingModal(false)} text={text} />
             <HotkeyConfigModal isOpen={showHotkeyModal} onClose={() => setShowHotkeyModal(false)} isPro={isPro} onUnlockPro={onUnlockPro} />
+            {onTextChange && (
+                <FindReplaceModal
+                    isOpen={showFindReplaceModal}
+                    onClose={() => setShowFindReplaceModal(false)}
+                    text={text}
+                    onTextChange={onTextChange}
+                    onSelectRange={onSelectRange}
+                    onUndo={onUndo}
+                    canUndo={canUndo}
+                />
+            )}
         </div>
     );
 });
