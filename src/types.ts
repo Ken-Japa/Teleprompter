@@ -162,6 +162,7 @@ export interface PrompterHandle {
     toggleRecording: () => void;
     onPreviousPart: () => void;
     onNextPart: () => void;
+    clearVoiceSummary: () => void;
 }
 
 export interface TextFragment {

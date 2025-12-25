@@ -137,7 +137,10 @@ export const Host: React.FC = () => {
 
             <VoiceAnalyticsModal
                 isOpen={!!sessionSummary}
-                onClose={() => setSessionSummary(null)}
+                onClose={() => {
+                    setSessionSummary(null);
+                    refs.prompterRef.current?.clearVoiceSummary();
+                }}
                 summary={sessionSummary}
             />
         </>

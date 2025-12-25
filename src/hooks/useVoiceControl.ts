@@ -417,6 +417,10 @@ export const useVoiceControl = (
         if (!VOICE_CONFIG.SESSION_ANALYTICS.enabled) return null;
 
         const analytics = sessionAnalyticsRef.current;
+
+        // CRITICAL FIX: Only generate if session was actually started
+        if (analytics.sessionStartTime === 0) return null;
+
         analytics.sessionEndTime = Date.now();
 
         const duration = (analytics.sessionEndTime - analytics.sessionStartTime) / 1000; // seconds
@@ -444,11 +448,14 @@ export const useVoiceControl = (
             });
         }
 
+        // Reset start time to prevent multiple summaries for same session
+        analytics.sessionStartTime = 0;
+
         return summary;
     }, []);
 
     // Helper to map language code to BCP 47
-    const getRecognitionLanguage = (l: string) => {
+    const getRecognitionLanguage = useCallback((l: string) => {
         switch (l) {
             case "pt": return "pt-BR";
             case "es": return "es-ES";
@@ -461,7 +468,7 @@ export const useVoiceControl = (
             case "other": return "";
             default: return l.includes("-") ? l : "en-US";
         }
-    };
+    }, []);
 
     // Memoized start function to be safe for recursion in onend
     const startRecognitionInstance = useCallback(() => {
@@ -590,6 +597,7 @@ export const useVoiceControl = (
             // Count words in transcript
             const wordCount = cleanTranscript.split(/\s+/).filter(w => w.length > 0).length;
             if (wordCount > 0) {
+                updatePerformanceMetrics(0); // Dummy for wordCount tracking if needed separately, but we use wordCount below
                 updateSpeechVelocity(wordCount);
                 trackSessionMetrics(false, wordCount);
             }
@@ -651,6 +659,12 @@ export const useVoiceControl = (
 
                 // SEQUENTIAL VALIDATION: Prevent implausible large jumps
                 const newSentenceId = charToSentenceMap[match.index] || 0;
+
+                // Use a ref to check the CURRENT active index without being a dependency
+                // Since this is inside onresult which is created with dependency array including activeSentenceIndex,
+                // it's actually correct if we want to refer to the value when the function was created.
+                // BUT wait, we want to stabilize startRecognitionInstance! 
+                // Let's use lockedSentenceIdRef instead of props.activeSentenceIndex.
                 const currentSentenceId = lockedSentenceIdRef.current;
                 const jumpDistance = Math.abs(newSentenceId - currentSentenceId);
                 const isSameSentence = newSentenceId === currentSentenceId;
@@ -777,20 +791,17 @@ export const useVoiceControl = (
 
                             // Now we can set the active sentence to trigger scroll
                             setActiveSentenceIndex(lockedSentenceIdRef.current);
-                        } else {
-                            // Still initializing - don't update active sentence yet
-                            if (!hasGracePeriodPassed) {
-                                console.log('[Voice] Initializing: Grace period not passed yet');
-                            } else if (!isConfidentMatch) {
-                                console.log('[Voice] Initializing: Low confidence match, waiting for better');
-                            }
-                            // Continue processing for progress updates, but don't scroll
                         }
                     }
 
                     // Only update active sentence if it's confirmed (locked) AND not initializing
-                    if (!isInitializingRef.current && lockedSentenceIdRef.current !== activeSentenceIndex && lockedSentenceIdRef.current >= 0) {
-                        setActiveSentenceIndex(lockedSentenceIdRef.current);
+                    // We use a functional update or just check the ref value to be safe
+                    if (!isInitializingRef.current && lockedSentenceIdRef.current >= 0) {
+                        // Important: Only update if it actually changed to avoid unnecessary re-renders
+                        setActiveSentenceIndex(prev => {
+                            if (prev !== lockedSentenceIdRef.current) return lockedSentenceIdRef.current;
+                            return prev;
+                        });
                     }
                 }
             }
@@ -807,7 +818,7 @@ export const useVoiceControl = (
         } catch (e) {
             logger.error("Voice start error", { error: e as Error });
         }
-    }, [lang, activeSentenceIndex, updatePerformanceMetrics]); // Dependencies for startRecognitionInstance
+    }, [lang, getRecognitionLanguage, updatePerformanceMetrics, performNoiseCalibration, updateSpeechVelocity, trackSessionMetrics, fullCleanText, charToSentenceMap, sentences, updateConfidenceLearning]);
 
     // Helper: Find which sentence is currently visible on screen
     // Returns index and the estimated progress within that sentence (0-1) based on scroll position
@@ -982,6 +993,9 @@ export const useVoiceControl = (
     }, [isPro, isListening, voiceApiSupported, startRecognitionInstance, findVisibleSentenceId, sentences, startSentenceCompletionChecker, applyAutoMode]);
 
     const stopListening = useCallback(() => {
+        // IDEMPOTENCY CHECK
+        if (intentionallyStoppedRef.current && !isListening) return;
+
         intentionallyStoppedRef.current = true;
         if (recognitionRef.current) {
             try {
@@ -995,14 +1009,16 @@ export const useVoiceControl = (
 
         // Generate and log session summary
         const summary = generateSessionSummary();
-        if (summary) setSessionSummary(summary);
+        if (summary) {
+            setSessionSummary(summary);
+        }
 
         // Reset active sentence to trigger initialization flow on next start
         // This ensures the "wait for first recognition" behavior works on reactivation
         setActiveSentenceIndex(-1);
 
         // DON'T reset locked sentence here - allows resume from same position
-    }, [stopSentenceCompletionChecker, generateSessionSummary, setSessionSummary]);
+    }, [stopSentenceCompletionChecker, generateSessionSummary, isListening]);
 
     const resetVoice = useCallback(() => {
         stopListening();
@@ -1022,6 +1038,7 @@ export const useVoiceControl = (
         startListening: (ratio?: number, pos?: number) => startListening(ratio, pos),
         stopListening,
         resetVoice,
+        clearSessionSummary: () => setSessionSummary(null),
         activeSentenceIndex,
         setActiveSentenceIndex,
         voiceProgress,

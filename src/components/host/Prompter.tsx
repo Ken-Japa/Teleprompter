@@ -264,7 +264,7 @@ export const Prompter = memo(
         return settings.voiceLanguage || lang;
       }, [isBilingualMode, bilingualConfig, lang, settings.voiceLanguage]);
 
-      const { startListening, stopListening, resetVoice, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError, sessionSummary } = useVoiceControl(
+      const { startListening, stopListening, resetVoice, clearSessionSummary, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError, sessionSummary } = useVoiceControl(
         voiceControlText,
         isPro,
         handleSpeechResult,
@@ -278,6 +278,7 @@ export const Prompter = memo(
       useEffect(() => {
         if (sessionSummary && onScriptFinished) {
           onScriptFinished(sessionSummary);
+          // DON'T clear it here automatically, wait for user to close modal
         }
       }, [sessionSummary, onScriptFinished]);
 
@@ -459,6 +460,7 @@ export const Prompter = memo(
         setResetTimerSignal((p) => !p);
         if (onResetTimer) onResetTimer();
         resetVoice();
+        clearSessionSummary(); // Clear analytics summary as well
         if (onReset) onReset();
         setRemoteVoiceState({ index: -1, progress: 0 });
         resetPhysics();
@@ -469,7 +471,7 @@ export const Prompter = memo(
         if (currentActiveElementRef.current) {
           currentActiveElementRef.current.classList.remove("sentence-active");
         }
-      }, [onStateChange, externalState.speed, resetVoice, resetPhysics, currentActiveElementRef, onReset]);
+      }, [onStateChange, externalState.speed, resetVoice, clearSessionSummary, resetPhysics, currentActiveElementRef, onReset]);
 
       useKeyboardShortcuts({
         isPlaying: externalState.isPlaying,
@@ -622,8 +624,9 @@ export const Prompter = memo(
           },
           onPreviousPart: () => handleJumpToPart('prev'),
           onNextPart: () => handleJumpToPart('next'),
+          clearVoiceSummary: clearSessionSummary,
         }),
-        [handleRemoteInput, handleScrollTo, resetPrompter, toggleVoice, wakeUpLoop, onRemoteVoiceUpdate, isRecording, stopRecording, startRecording, handleJumpToPart]
+        [handleRemoteInput, handleScrollTo, resetPrompter, toggleVoice, wakeUpLoop, onRemoteVoiceUpdate, isRecording, stopRecording, startRecording, handleJumpToPart, clearSessionSummary]
       );
 
       // Notify parent of recording status change
