@@ -412,7 +412,7 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
         // CRITICAL: We use 0.5 (CENTER) as the search target because normally users are reading
         // at the center of the screen when they activate Voice.
         // The Voice Control will then gently scroll this centered sentence to the active Lookahead position (Top).
-        const { index: visibleSentence, progress: initialProgress } = findVisibleSentenceId(0.5);
+        const { index: visibleSentence } = findVisibleSentenceId(0.5);
         lockedSentenceIdRef.current = visibleSentence;
         setActiveSentenceIndex(visibleSentence);
 
@@ -424,7 +424,11 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             lastMatchIndexRef.current = 0;
         }
 
-        // Reset smoothed progress to current visual position to prevent jumps
+        // VISIBILITY FIX: Always reset progress to 0 (Start of Sentence) when activating.
+        // If we kept the 'visual progress' (e.g. 50%), aligning it to the Top would push the
+        // start of the sentence off-screen. We want the user to see the START of the prompt.
+        const initialProgress = 0; // Force start of sentence
+
         smoothedProgressRef.current = initialProgress;
         setVoiceProgress(initialProgress);
 
