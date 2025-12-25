@@ -423,6 +423,11 @@ export const useVoiceControl = (
         const averageWPM = duration > 0 ? (analytics.totalWordsRecognized / duration) * 60 : 0;
         const accuracy = analytics.totalMatches > 0 ? analytics.goodMatches / analytics.totalMatches : 1;
 
+        // ACCIDENTAL TOGGLE PREVENTION: Only return summary if user actually spoke or progressed
+        if (analytics.totalWordsRecognized < 3 && analytics.totalMatches === 0) {
+            return null;
+        }
+
         const summary = {
             duration: Math.round(duration),
             averageWPM: Math.round(averageWPM),
@@ -891,6 +896,10 @@ export const useVoiceControl = (
         isInitializingRef.current = VOICE_CONFIG.INITIALIZATION.waitForFirstRecognition;
         hasFirstRecognitionRef.current = false;
         initStartTimeRef.current = Date.now();
+
+        // RESET SESSION STATE
+        setIsScriptFinished(false);
+        setSessionSummary(null);
 
         // Initialize to visible sentence.
         // CRITICAL: We use 0.5 (CENTER) as the search target because normally users are reading

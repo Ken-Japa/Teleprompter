@@ -258,7 +258,7 @@ export const Prompter = memo(
         return settings.voiceLanguage || lang;
       }, [isBilingualMode, bilingualConfig, lang, settings.voiceLanguage]);
 
-      const { startListening, stopListening, resetVoice, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError, isScriptFinished, sessionSummary } = useVoiceControl(
+      const { startListening, stopListening, resetVoice, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError, sessionSummary } = useVoiceControl(
         voiceControlText,
         isPro,
         handleSpeechResult,
@@ -268,12 +268,12 @@ export const Prompter = memo(
         isBilingualMode
       );
 
-      // Notify parent when script is finished
+      // Notify parent when script is finished (either naturally or manual stop)
       useEffect(() => {
-        if (isScriptFinished && onScriptFinished && sessionSummary) {
+        if (sessionSummary && onScriptFinished) {
           onScriptFinished(sessionSummary);
         }
-      }, [isScriptFinished, onScriptFinished, sessionSummary]);
+      }, [sessionSummary, onScriptFinished]);
 
       // Bilingual Sentences Processing
       const bilingualSentences = useMemo(() => {
