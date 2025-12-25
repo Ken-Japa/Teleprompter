@@ -660,8 +660,9 @@ export const Prompter = memo(
 
       const getTargetPaddingRatio = useCallback(() => {
         if (!isVoiceMode) return 0.5; // Default 50%
-        return isFlipVertical ? (1 - VOICE_CONFIG.LOOKAHEAD_POSITION) : VOICE_CONFIG.LOOKAHEAD_POSITION;
-      }, [isVoiceMode, isFlipVertical]);
+        // UNIFIED COORDINATES: Always return Lookahead. Flip is handled by CSS scaleY(-1).
+        return VOICE_CONFIG.LOOKAHEAD_POSITION;
+      }, [isVoiceMode]);
 
       const prevPaddingRatioRef = useRef(getTargetPaddingRatio());
 
@@ -829,11 +830,11 @@ export const Prompter = memo(
               contentStyle={{
                 // Voice Mode: Use configured Top Padding (calculated in PX) to allow text to start at Top instead of Center
                 // We use containerHeight state to avoid 'vh' unit issues on mobile.
-                // Fallback to 50vh if height not yet measured.
+                // UNIFIED COORDINATES: Always use LOOKAHEAD_POSITION. Flip is handled by CSS scaleY(-1).
                 paddingTop: isVoiceMode
                   ? (containerHeight > 0
-                    ? `${(isFlipVertical ? (1 - VOICE_CONFIG.LOOKAHEAD_POSITION) : VOICE_CONFIG.LOOKAHEAD_POSITION) * containerHeight}px`
-                    : (isFlipVertical ? `${(1 - VOICE_CONFIG.LOOKAHEAD_POSITION) * 100}vh` : `${VOICE_CONFIG.LOOKAHEAD_POSITION * 100}vh`)
+                    ? `${VOICE_CONFIG.LOOKAHEAD_POSITION * containerHeight}px`
+                    : `${VOICE_CONFIG.LOOKAHEAD_POSITION * 100}vh`
                   )
                   : '50vh', // Keep 50vh or 50% for manual mode? 50vh is standard.
                 // Voice Mode: Increase padding to allow last lines to scroll comfortably to the reading marker
