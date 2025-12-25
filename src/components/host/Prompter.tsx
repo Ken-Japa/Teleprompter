@@ -557,7 +557,8 @@ export const Prompter = memo(
           // Pause auto-scroll when enabling voice mode
           onStateChange(false, externalState.speed);
           if (voiceControlMode !== "remote") {
-            startListening();
+            // First activation: Use 0.5 (Center) because manual reading focus is at center
+            startListening(0.5);
           }
         }
       }, [
@@ -576,7 +577,8 @@ export const Prompter = memo(
       useEffect(() => {
         if (isVoiceMode) {
           if (voiceControlMode !== "remote") {
-            startListening();
+            // Reactivation: Use LOOKAHEAD_POSITION because text is already offset for voice mode
+            startListening(VOICE_CONFIG.LOOKAHEAD_POSITION);
           } else {
             console.warn("[Prompter] Voice Mode is Remote - Not starting local listener");
           }

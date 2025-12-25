@@ -881,7 +881,7 @@ export const useVoiceControl = (
         return { index: activeSentenceIndex >= 0 ? activeSentenceIndex : 0, progress: 0 }; // Fallback to current
     }, [sentences, activeSentenceIndex, isFlipVertical]);
 
-    const startListening = useCallback(() => {
+    const startListening = useCallback((initialRatio: number = 0.5) => {
         if (!isPro) return;
         if (!voiceApiSupported) {
             console.warn("[VoiceHook] Voice API not supported");
@@ -902,9 +902,10 @@ export const useVoiceControl = (
         setSessionSummary(null);
 
         // Initialize to visible sentence.
-        // CRITICAL: We use 0.5 (CENTER) as the search target because normally users are reading
-        // at the center of the screen when they activate Voice.
-        const { index: visibleSentence } = findVisibleSentenceId(0.5);
+        // CRITICAL: Use the provided initialRatio as the search target.
+        // - 0.5: Used when starting from manual mode (user reading at center)
+        // - LOOKAHEAD: Used when reactivating (user reading at top line)
+        const { index: visibleSentence } = findVisibleSentenceId(initialRatio);
         lockedSentenceIdRef.current = visibleSentence;
 
         // DON'T set active sentence index immediately if waiting for first recognition
@@ -1016,7 +1017,7 @@ export const useVoiceControl = (
 
     return {
         isListening,
-        startListening,
+        startListening: (ratio?: number) => startListening(ratio),
         stopListening,
         resetVoice,
         activeSentenceIndex,
