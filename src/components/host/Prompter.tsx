@@ -37,6 +37,12 @@ import { FitnessHUD } from "../overlay/FitnessHUD";
 import { parseSpokenNumber } from "../../utils/numberParser";
 import { useTranslation } from "../../hooks/useTranslation";
 
+interface PhysicsMethods {
+  scrollTo: (progress: number) => void;
+  clearCommands: (startId: number, endId: number) => void;
+  internalScrollPos: React.MutableRefObject<number>;
+}
+
 interface PrompterProps {
   text: string;
   isPro: boolean;
@@ -402,7 +408,7 @@ export const Prompter = memo(
       const effectiveVoiceProgress = voiceControlMode === "remote" ? remoteVoiceState.progress : voiceProgress;
 
       // --- PHYSICS ENGINE INTEGRATION ---
-      const { handleNativeScroll, handleRemoteInput, handleScrollTo, resetPhysics, wakeUpLoop, currentActiveElementRef, clearProcessedCommands } = useScrollPhysics({
+      const { handleNativeScroll, handleRemoteInput, handleScrollTo, resetPhysics, wakeUpLoop, currentActiveElementRef, clearProcessedCommands, internalScrollPos } = useScrollPhysics({
         isPlaying: externalState.isPlaying,
         isVoiceMode,
         speed: externalState.speed,
@@ -418,13 +424,16 @@ export const Prompter = memo(
 
       // Ref to store physics methods for access inside handleCommandTriggered
       // This is necessary because handleCommandTriggered is defined before useScrollPhysics
-      const physicsMethodsRef = useRef<{ scrollTo: (p: number) => void; clearCommands: (s: number, e: number) => void } | null>(null);
+      const physicsMethodsRef = useRef<PhysicsMethods | null>(null);
       useEffect(() => {
-        physicsMethodsRef.current = {
-          scrollTo: handleScrollTo,
-          clearCommands: clearProcessedCommands
-        };
-      }, [handleScrollTo, clearProcessedCommands]);
+        if (internalScrollPos) {
+          physicsMethodsRef.current = {
+            scrollTo: handleScrollTo,
+            clearCommands: clearProcessedCommands,
+            internalScrollPos: internalScrollPos
+          };
+        }
+      }, [handleScrollTo, clearProcessedCommands, internalScrollPos]);
 
       // Force wake up when critical props change or component mounts
       useEffect(() => {
@@ -558,7 +567,8 @@ export const Prompter = memo(
           onStateChange(false, externalState.speed);
           if (voiceControlMode !== "remote") {
             // First activation: Use 0.5 (Center) because manual reading focus is at center
-            startListening(0.5);
+            // CRITICAL: Pass native scrollTop before it gets reset to 0 by useScrollPhysics sync effect
+            startListening(0.5, scrollContainerRef.current?.scrollTop);
           }
         }
       }, [
@@ -578,7 +588,9 @@ export const Prompter = memo(
         if (isVoiceMode) {
           if (voiceControlMode !== "remote") {
             // Reactivation: Use LOOKAHEAD_POSITION because text is already offset for voice mode
-            startListening(VOICE_CONFIG.LOOKAHEAD_POSITION);
+            // CRITICAL: Use absolute internal scroll position when voice is already active (scrollTop is 0)
+            const currentPos = physicsMethodsRef.current?.internalScrollPos?.current;
+            startListening(VOICE_CONFIG.LOOKAHEAD_POSITION, currentPos);
           } else {
             console.warn("[Prompter] Voice Mode is Remote - Not starting local listener");
           }

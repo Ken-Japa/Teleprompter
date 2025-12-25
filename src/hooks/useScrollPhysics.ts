@@ -109,12 +109,11 @@ export const useScrollPhysics = ({
 
     const content = scrollContainerRef.current.querySelector('.voice-control-content');
     if (content instanceof HTMLElement) {
-      // Use translate3d for GPU acceleration
-      // CRITICAL FIX: In Vertical Mirror (isFlipVertical), if the container is scaleY(-1),
-      // translating the child by -pos would move it visual DOWN if pos increases.
-      // We want it to move UP. 
-      // After testing/analysis: translateY(pos) in a scaleY(-1) container moves it visually UP.
-      const multiplier = -1;
+      // Logic for multiplier:
+      // In normal mode, we shift content UP (negative translateY) to show lower DOM parts.
+      // In flipped mode (scaleY(-1)), the DOM coordinate system is flipped relative to visual.
+      // So translating by +pos moves it to the target in flipped space.
+      const multiplier = isFlipVerticalRef.current ? 1 : -1;
       content.style.transform = `translate3d(0, ${position * multiplier}px, 0)`;
       transformOffsetRef.current = position;
     }
@@ -350,17 +349,30 @@ export const useScrollPhysics = ({
   // Sync Scroll Position when entering Voice Mode
   useEffect(() => {
     if (isVoiceMode && scrollContainerRef.current) {
-      // Reset internal position to current scroll top to prevent jumps
-      internalScrollPos.current = scrollContainerRef.current.scrollTop;
+      const container = scrollContainerRef.current;
+
+      // CRITICAL FIX: To prevent "Double Jump" (scrollTop + transform),
+      // we must reset scrollTop to 0 and take full responsibility for the offset via transform.
+      const currentScrollTop = container.scrollTop;
+
+      // Set internal position to the current absolute scroll state
+      internalScrollPos.current = currentScrollTop;
+      transformOffsetRef.current = currentScrollTop; // Sync offset for exit logic
+
+      // Apply transform IMMEDIATELY to prevent 1-frame visual jump
+      applyScrollTransform(currentScrollTop);
+
+      // Reset native scroll top
+      container.scrollTop = 0;
 
       // Force refresh metrics to ensure calculations are accurate
-      const realScrollHeight = scrollContainerRef.current.scrollHeight;
-      const realClientHeight = scrollContainerRef.current.clientHeight;
+      const realScrollHeight = container.scrollHeight;
+      const realClientHeight = container.clientHeight;
       metricsRef.current = { scrollHeight: realScrollHeight, clientHeight: realClientHeight };
 
       wakeUpLoop();
     }
-  }, [isVoiceMode, wakeUpLoop, scrollContainerRef, metricsRef]);
+  }, [isVoiceMode, wakeUpLoop, scrollContainerRef, metricsRef, applyScrollTransform]);
 
   // Start/Stop loop based on state
   useEffect(() => {
@@ -436,8 +448,13 @@ export const useScrollPhysics = ({
       // Progress is 0-1
       const newPos = Math.min(Math.max(progress, 0), 1) * maxScroll;
       internalScrollPos.current = newPos;
-      scrollContainerRef.current.scrollTop = newPos;
-      wakeUpLoop(); // Ensure physics knows about the change (though it might settle immediately)
+
+      // CRITICAL: Only set native scrollTop if NOT in voice mode
+      if (!isVoiceModeRef.current) {
+        scrollContainerRef.current.scrollTop = newPos;
+      }
+
+      wakeUpLoop(); // Loop will apply transform if in voice mode
     },
     [metricsRef, scrollContainerRef, wakeUpLoop]
   );
@@ -477,5 +494,6 @@ export const useScrollPhysics = ({
     wakeUpLoop,
     currentActiveElementRef,
     clearProcessedCommands,
+    internalScrollPos, // Expose ref for external synchronization
   };
 };

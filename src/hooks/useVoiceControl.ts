@@ -811,7 +811,7 @@ export const useVoiceControl = (
 
     // Helper: Find which sentence is currently visible on screen
     // Returns index and the estimated progress within that sentence (0-1) based on scroll position
-    const findVisibleSentenceId = useCallback((targetVisualRatio: number = VOICE_CONFIG.LOOKAHEAD_POSITION): { index: number; progress: number } => {
+    const findVisibleSentenceId = useCallback((targetVisualRatio: number = VOICE_CONFIG.LOOKAHEAD_POSITION, currentPos?: number): { index: number; progress: number } => {
         if (typeof window === 'undefined' || sentences.length === 0) return { index: 0, progress: 0 };
 
         try {
@@ -824,7 +824,9 @@ export const useVoiceControl = (
                 return { index: activeSentenceIndex >= 0 ? activeSentenceIndex : 0, progress: 0 };
             }
 
-            const scrollTop = container.scrollTop || 0;
+            // CRITICAL: Use passed currentPos if available (for sync when entering voice mode)
+            // Otherwise fallback to native scrollTop.
+            const scrollTop = currentPos !== undefined ? currentPos : (container.scrollTop || 0);
 
             // Calculate DOM Target Ratio based on Visual Target Ratio
             // UNIFIED COORDINATES:
@@ -881,7 +883,7 @@ export const useVoiceControl = (
         return { index: activeSentenceIndex >= 0 ? activeSentenceIndex : 0, progress: 0 }; // Fallback to current
     }, [sentences, activeSentenceIndex, isFlipVertical]);
 
-    const startListening = useCallback((initialRatio: number = 0.5) => {
+    const startListening = useCallback((initialRatio: number = 0.5, currentPos?: number) => {
         if (!isPro) return;
         if (!voiceApiSupported) {
             console.warn("[VoiceHook] Voice API not supported");
@@ -902,10 +904,10 @@ export const useVoiceControl = (
         setSessionSummary(null);
 
         // Initialize to visible sentence.
-        // CRITICAL: Use the provided initialRatio as the search target.
+        // CRITICAL: Use the provided initialRatio and currentPos (if available) as the search target.
         // - 0.5: Used when starting from manual mode (user reading at center)
         // - LOOKAHEAD: Used when reactivating (user reading at top line)
-        const { index: visibleSentence } = findVisibleSentenceId(initialRatio);
+        const { index: visibleSentence } = findVisibleSentenceId(initialRatio, currentPos);
         lockedSentenceIdRef.current = visibleSentence;
 
         // DON'T set active sentence index immediately if waiting for first recognition
@@ -1017,7 +1019,7 @@ export const useVoiceControl = (
 
     return {
         isListening,
-        startListening: (ratio?: number) => startListening(ratio),
+        startListening: (ratio?: number, pos?: number) => startListening(ratio, pos),
         stopListening,
         resetVoice,
         activeSentenceIndex,
