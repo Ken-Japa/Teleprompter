@@ -7,7 +7,15 @@ import { useTranslation } from "./useTranslation";
 import { VOICE_CONFIG } from "../config/voiceControlConfig";
 
 // callback for raw transcript, useful for custom commands like [COUNT]
-export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (transcript: string) => void, forcedLang?: string, isFlipVertical: boolean = false) => {
+export const useVoiceControl = (
+    text: string,
+    isPro: boolean,
+    onSpeechResult?: (transcript: string) => void,
+    forcedLang?: string,
+    isFlipVertical: boolean = false,
+    isMusicianMode: boolean = false,
+    isBilingual: boolean = false
+) => {
     const { lang: globalLang } = useTranslation();
     const lang = forcedLang || globalLang;
     const [isListening, setIsListening] = useState<boolean>(false);
@@ -59,6 +67,53 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
     // --- NEW: FUZZY SYNC STATE ---
     const consecutivePartialMatchesRef = useRef<number>(0);
+
+    // --- NEW: SPEECH VELOCITY TRACKING ---
+    const speechVelocityRef = useRef({
+        wordTimestamps: [] as Array<{ time: number; wordCount: number }>,
+        currentWPM: VOICE_CONFIG.SPEECH_VELOCITY.baselineWPM,
+        adaptedLerpFactor: VOICE_CONFIG.SCROLL_LERP_FACTOR,
+    });
+
+    // --- NEW: CONFIDENCE LEARNING ---
+    const confidenceLearningRef = useRef({
+        matchHistory: [] as number[], // Array of match ratios
+        sessionStartTime: 0,
+        goodMatchCount: 0,
+        totalMatchCount: 0,
+        currentAccuracy: 1.0,
+        isInWarmup: true,
+        adaptedThresholds: {
+            fuzzyTolerance: VOICE_CONFIG.FUZZY_SYNC.intraSentenceTolerance,
+            minConfidence: 0.70,
+        }
+    });
+
+    // --- NEW: NOISE DETECTION ---
+    const noiseDetectionRef = useRef({
+        isCalibrating: false,
+        calibrationStartTime: 0,
+        shortRecognitionCount: 0,
+        isNoisyEnvironment: false,
+        adjustedMinLength: 6, // Base minLength
+    });
+
+    // --- NEW: SESSION ANALYTICS ---
+    const sessionAnalyticsRef = useRef({
+        sessionStartTime: 0,
+        sessionEndTime: 0,
+        totalWordsRecognized: 0,
+        sentencesCompleted: 0,
+        sentenceStartTimes: new Map<number, number>(), // sentence ID -> start time
+        goodMatches: 0,
+        totalMatches: 0,
+    });
+
+    // --- NEW: AUTO MODES ---
+    const autoModeConfigRef = useRef({
+        currentMode: 'normal' as 'normal' | 'musician' | 'bilingual',
+        appliedPreset: VOICE_CONFIG.AUTO_MODES.presets.normal,
+    });
 
     const { sentences, fullCleanText, charToSentenceMap } = useMemo(() => {
         return parseTextToSentences(text);
@@ -201,6 +256,183 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
         }
     }, []);
 
+    // --- ADVANCED FEATURES HELPERS ---
+
+    /**
+     * Detect and apply automatic mode preset
+     */
+    const applyAutoMode = useCallback(() => {
+        if (!VOICE_CONFIG.AUTO_MODES.enabled) return;
+
+        // Detect mode
+        let mode: 'normal' | 'musician' | 'bilingual' = 'normal';
+        if (isBilingual) mode = 'bilingual';
+        else if (isMusicianMode) mode = 'musician';
+
+        autoModeConfigRef.current.currentMode = mode;
+        autoModeConfigRef.current.appliedPreset = VOICE_CONFIG.AUTO_MODES.presets[mode];
+
+        console.log(`[Voice] Auto-mode: ${mode} preset applied`);
+    }, [isMusicianMode, isBilingual]);
+
+    /**
+     * Calculate speech velocity and adapt lerp factor
+     */
+    const updateSpeechVelocity = useCallback((wordCount: number) => {
+        if (!VOICE_CONFIG.SPEECH_VELOCITY.enabled) return;
+
+        const now = Date.now();
+        const velocity = speechVelocityRef.current;
+
+        // Add timestamp
+        velocity.wordTimestamps.push({ time: now, wordCount });
+
+        // Keep only last window
+        const cutoffTime = now - VOICE_CONFIG.SPEECH_VELOCITY.measurementWindow;
+        velocity.wordTimestamps = velocity.wordTimestamps.filter(t => t.time >= cutoffTime);
+
+        // Calculate WPM
+        if (velocity.wordTimestamps.length >= 2) {
+            const first = velocity.wordTimestamps[0];
+            const last = velocity.wordTimestamps[velocity.wordTimestamps.length - 1];
+            const duration = (last.time - first.time) / 1000 / 60; // minutes
+            const totalWords = last.wordCount - first.wordCount;
+
+            if (duration > 0) {
+                velocity.currentWPM = totalWords / duration;
+
+                // Adapt lerp factor
+                if (VOICE_CONFIG.SPEECH_VELOCITY.adaptLerpFactor) {
+                    const { minWordsPerMinute, maxWordsPerMinute, lerpMin, lerpMax } = VOICE_CONFIG.SPEECH_VELOCITY;
+                    const ratio = (velocity.currentWPM - minWordsPerMinute) / (maxWordsPerMinute - minWordsPerMinute);
+                    const clampedRatio = Math.max(0, Math.min(1, ratio));
+                    velocity.adaptedLerpFactor = lerpMin + (lerpMax - lerpMin) * clampedRatio;
+                }
+            }
+        }
+    }, []);
+
+    /**
+     * Update confidence learning based on match quality
+     */
+    const updateConfidenceLearning = useCallback((matchRatio: number) => {
+        if (!VOICE_CONFIG.CONFIDENCE_LEARNING.enabled) return;
+
+        const learning = confidenceLearningRef.current;
+
+        // Add to history
+        learning.matchHistory.push(matchRatio);
+        if (learning.matchHistory.length > VOICE_CONFIG.CONFIDENCE_LEARNING.historySize) {
+            learning.matchHistory.shift();
+        }
+
+        learning.totalMatchCount++;
+
+        // Good match = low ratio (high similarity)
+        const isGoodMatch = matchRatio <= 0.3; // 70%+ similarity
+        if (isGoodMatch) learning.goodMatchCount++;
+
+        // Calculate accuracy
+        learning.currentAccuracy = learning.goodMatchCount / learning.totalMatchCount;
+
+        // Check warmup period
+        const timeSinceStart = Date.now() - learning.sessionStartTime;
+        learning.isInWarmup = timeSinceStart < VOICE_CONFIG.CONFIDENCE_LEARNING.warmupPeriod;
+
+        // Adapt thresholds based on performance
+        if (!learning.isInWarmup && learning.matchHistory.length >= 20) {
+            const { goodMatchThreshold, poorMatchThreshold, adaptiveAdjustment } = VOICE_CONFIG.CONFIDENCE_LEARNING;
+
+            if (learning.currentAccuracy >= goodMatchThreshold) {
+                // Good history - relax requirements
+                learning.adaptedThresholds.fuzzyTolerance =
+                    VOICE_CONFIG.FUZZY_SYNC.intraSentenceTolerance + adaptiveAdjustment;
+                learning.adaptedThresholds.minConfidence = 0.70 - adaptiveAdjustment;
+            } else if (learning.currentAccuracy <= poorMatchThreshold) {
+                // Poor history - stricter requirements
+                learning.adaptedThresholds.fuzzyTolerance =
+                    VOICE_CONFIG.FUZZY_SYNC.intraSentenceTolerance - adaptiveAdjustment;
+                learning.adaptedThresholds.minConfidence = 0.70 + adaptiveAdjustment;
+            }
+        }
+    }, []);
+
+    /**
+     * Perform noise calibration
+     */
+    const performNoiseCalibration = useCallback((transcriptLength: number) => {
+        if (!VOICE_CONFIG.NOISE_DETECTION.enabled) return;
+
+        const noise = noiseDetectionRef.current;
+
+        // Check if in calibration period
+        const timeSinceStart = Date.now() - noise.calibrationStartTime;
+        noise.isCalibrating = timeSinceStart < VOICE_CONFIG.NOISE_DETECTION.calibrationTime;
+
+        if (noise.isCalibrating && transcriptLength < 4) {
+            noise.shortRecognitionCount++;
+
+            // Detect noisy environment
+            const duration = timeSinceStart / 1000; // seconds
+            const recognitionsPerSecond = noise.shortRecognitionCount / Math.max(duration, 1);
+
+            if (recognitionsPerSecond > VOICE_CONFIG.NOISE_DETECTION.maxRecognitionsPerSecond) {
+                noise.isNoisyEnvironment = true;
+                noise.adjustedMinLength = 6 + VOICE_CONFIG.NOISE_DETECTION.noisyEnvironmentBonus;
+                console.log(`[Voice] Noisy environment detected, adjusting minLength to ${noise.adjustedMinLength}`);
+            }
+        }
+    }, []);
+
+    /**
+     * Track session analytics
+     */
+    const trackSessionMetrics = useCallback((sentenceCompleted: boolean = false, wordCount: number = 0) => {
+        if (!VOICE_CONFIG.SESSION_ANALYTICS.enabled) return;
+
+        const analytics = sessionAnalyticsRef.current;
+
+        if (wordCount > 0) {
+            analytics.totalWordsRecognized += wordCount;
+        }
+
+        if (sentenceCompleted) {
+            analytics.sentencesCompleted++;
+        }
+    }, []);
+
+    /**
+     * Generate session summary
+     */
+    const generateSessionSummary = useCallback(() => {
+        if (!VOICE_CONFIG.SESSION_ANALYTICS.enabled) return null;
+
+        const analytics = sessionAnalyticsRef.current;
+        analytics.sessionEndTime = Date.now();
+
+        const duration = (analytics.sessionEndTime - analytics.sessionStartTime) / 1000; // seconds
+        const averageWPM = duration > 0 ? (analytics.totalWordsRecognized / duration) * 60 : 0;
+        const accuracy = analytics.totalMatches > 0 ? analytics.goodMatches / analytics.totalMatches : 1;
+
+        const summary = {
+            duration: Math.round(duration),
+            averageWPM: Math.round(averageWPM),
+            accuracy: Math.round(accuracy * 100),
+            sentencesCompleted: analytics.sentencesCompleted,
+        };
+
+        if (VOICE_CONFIG.SESSION_ANALYTICS.logSummaryOnEnd) {
+            console.log('[Voice Session Summary]', {
+                duration: `${Math.floor(summary.duration / 60)}m ${summary.duration % 60}s`,
+                avgWPM: summary.averageWPM,
+                accuracy: `${summary.accuracy}%`,
+                sentences: summary.sentencesCompleted,
+            });
+        }
+
+        return summary;
+    }, []);
+
     // Helper to map language code to BCP 47
     const getRecognitionLanguage = (l: string) => {
         switch (l) {
@@ -328,10 +560,24 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             const processStart = performance.now();
             lastProcessedTimeRef.current = now;
 
-            // MUSICIAN MODE OPTIMIZATION: Increased min length to 6 to reduce false positives
-            // from instrument noise (guitar, piano, etc) when singing
-            if (cleanTranscript.length < 6) {
+            // --- NOISE CALIBRATION ---
+            performNoiseCalibration(cleanTranscript.length);
+
+            // Use adjusted minLength from noise detection
+            const effectiveMinLength = VOICE_CONFIG.NOISE_DETECTION.enabled
+                ? noiseDetectionRef.current.adjustedMinLength
+                : 6;
+
+            if (cleanTranscript.length < effectiveMinLength) {
                 return;
+            }
+
+            // --- SPEECH VELOCITY TRACKING ---
+            // Count words in transcript
+            const wordCount = cleanTranscript.split(/\s+/).filter(w => w.length > 0).length;
+            if (wordCount > 0) {
+                updateSpeechVelocity(wordCount);
+                trackSessionMetrics(false, wordCount);
             }
 
             // ADAPTIVE SEARCH WINDOW: Larger scripts need larger windows
@@ -378,6 +624,17 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             }
 
             if (match) {
+                // --- CONFIDENCE LEARNING ---
+                updateConfidenceLearning(match.ratio);
+
+                // Track match for analytics
+                if (VOICE_CONFIG.SESSION_ANALYTICS.enabled) {
+                    sessionAnalyticsRef.current.totalMatches++;
+                    if (match.ratio <= 0.3) { // Good match
+                        sessionAnalyticsRef.current.goodMatches++;
+                    }
+                }
+
                 // SEQUENTIAL VALIDATION: Prevent implausible large jumps
                 const newSentenceId = charToSentenceMap[match.index] || 0;
                 const currentSentenceId = lockedSentenceIdRef.current;
@@ -387,9 +644,14 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                 // --- FUZZY SYNC: Allow partial matches within same sentence ---
                 const isPartialMatch = match.ratio > 0.4; // Lower confidence match
 
+                // Use adapted tolerance from confidence learning
+                const effectiveFuzzyTolerance = VOICE_CONFIG.CONFIDENCE_LEARNING.enabled
+                    ? confidenceLearningRef.current.adaptedThresholds.fuzzyTolerance
+                    : VOICE_CONFIG.FUZZY_SYNC.intraSentenceTolerance;
+
                 if (VOICE_CONFIG.FUZZY_SYNC.enabled && isSameSentence && isPartialMatch) {
                     // Within same sentence, be more tolerant
-                    const acceptableRatio = VOICE_CONFIG.FUZZY_SYNC.intraSentenceTolerance;
+                    const acceptableRatio = effectiveFuzzyTolerance;
 
                     if (match.ratio <= acceptableRatio) {
                         // Accept partial match - update progress with boost
@@ -443,6 +705,9 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                             // CONFIRMED! Lock to new sentence
                             lockedSentenceIdRef.current = newSentenceId;
                             pendingMatchRef.current = null;
+
+                            // Track sentence completion for analytics
+                            trackSessionMetrics(true, 0);
                         }
                     }
                 } else {
@@ -645,12 +910,55 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
         // Reset speech timer
         lastSpeechTimeRef.current = Date.now();
 
+        // --- ADVANCED FEATURES INITIALIZATION ---
+
+        // Apply automatic mode preset
+        applyAutoMode();
+
+        // Start noise calibration
+        if (VOICE_CONFIG.NOISE_DETECTION.enabled) {
+            noiseDetectionRef.current.isCalibrating = true;
+            noiseDetectionRef.current.calibrationStartTime = Date.now();
+            noiseDetectionRef.current.shortRecognitionCount = 0;
+            noiseDetectionRef.current.isNoisyEnvironment = false;
+            noiseDetectionRef.current.adjustedMinLength = 6;
+        }
+
+        // Initialize session analytics
+        if (VOICE_CONFIG.SESSION_ANALYTICS.enabled) {
+            const now = Date.now();
+            sessionAnalyticsRef.current.sessionStartTime = now;
+            sessionAnalyticsRef.current.sessionEndTime = 0;
+            sessionAnalyticsRef.current.totalWordsRecognized = 0;
+            sessionAnalyticsRef.current.sentencesCompleted = 0;
+            sessionAnalyticsRef.current.sentenceStartTimes.clear();
+            sessionAnalyticsRef.current.goodMatches = 0;
+            sessionAnalyticsRef.current.totalMatches = 0;
+        }
+
+        // Initialize confidence learning
+        if (VOICE_CONFIG.CONFIDENCE_LEARNING.enabled) {
+            confidenceLearningRef.current.sessionStartTime = Date.now();
+            confidenceLearningRef.current.matchHistory = [];
+            confidenceLearningRef.current.goodMatchCount = 0;
+            confidenceLearningRef.current.totalMatchCount = 0;
+            confidenceLearningRef.current.currentAccuracy = 1.0;
+            confidenceLearningRef.current.isInWarmup = true;
+        }
+
+        // Initialize speech velocity tracking
+        if (VOICE_CONFIG.SPEECH_VELOCITY.enabled) {
+            speechVelocityRef.current.wordTimestamps = [];
+            speechVelocityRef.current.currentWPM = VOICE_CONFIG.SPEECH_VELOCITY.baselineWPM;
+            speechVelocityRef.current.adaptedLerpFactor = VOICE_CONFIG.SCROLL_LERP_FACTOR;
+        }
+
         intentionallyStoppedRef.current = false;
         startRecognitionInstance();
 
         // Start sentence completion checker
         startSentenceCompletionChecker();
-    }, [isPro, isListening, voiceApiSupported, startRecognitionInstance, findVisibleSentenceId, sentences, startSentenceCompletionChecker]);
+    }, [isPro, isListening, voiceApiSupported, startRecognitionInstance, findVisibleSentenceId, sentences, startSentenceCompletionChecker, applyAutoMode]);
 
     const stopListening = useCallback(() => {
         intentionallyStoppedRef.current = true;
@@ -664,12 +972,15 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
         // Stop sentence completion checker
         stopSentenceCompletionChecker();
 
+        // Generate and log session summary
+        generateSessionSummary();
+
         // Reset active sentence to trigger initialization flow on next start
         // This ensures the "wait for first recognition" behavior works on reactivation
         setActiveSentenceIndex(-1);
 
         // DON'T reset locked sentence here - allows resume from same position
-    }, [stopSentenceCompletionChecker]);
+    }, [stopSentenceCompletionChecker, generateSessionSummary]);
 
     const resetVoice = useCallback(() => {
         stopListening();
@@ -693,6 +1004,12 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
         sentences,
         voiceApiSupported,
         voiceApiError,
+
+        // Advanced features exports
+        speechVelocity: speechVelocityRef.current.currentWPM,
+        currentMode: autoModeConfigRef.current.currentMode,
+        isCalibrating: noiseDetectionRef.current.isCalibrating,
+        adaptedLerpFactor: speechVelocityRef.current.adaptedLerpFactor,
     };
 };
 
