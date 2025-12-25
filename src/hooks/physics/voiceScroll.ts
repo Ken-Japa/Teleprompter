@@ -35,8 +35,8 @@ export const calculateVoiceTarget = (
 
     // OPTIMIZATION: Adjusted target to be % from top instead of 50% (Center)
     // This provides more "Lookahead" so the user can see the next sentence comfortably
-    // If Flipped Vertical: Invert logic because DOM Top is Visual Bottom
-    // We want Visual Top aka DOM Bottom -> 1 - Lookahead
+    // If Flipped Vertical: Visual Top is DOM Bottom.
+    // DOM coordinate for Visual Top (e.g. 0.12) is 1 - 0.12 = 0.88.
     const targetRatio = isFlipVertical
       ? (1 - VOICE_CONFIG.LOOKAHEAD_POSITION)
       : VOICE_CONFIG.LOOKAHEAD_POSITION;

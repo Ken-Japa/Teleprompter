@@ -110,10 +110,8 @@ export const useScrollPhysics = ({
     const content = scrollContainerRef.current.querySelector('.voice-control-content');
     if (content instanceof HTMLElement) {
       // Use translate3d for GPU acceleration
-      // CRITICAL FIX: In Vertical Mirror (isFlipVertical), if the container is scaleY(-1),
-      // translating the child by -pos would move it visual DOWN if pos increases.
-      // We want it to move UP. 
-      // After testing/analysis: translateY(pos) in a scaleY(-1) container moves it visually UP.
+      // In Standard: translateY(-pos) moves content UP.
+      // In FlipVertical (scaleY-1): translateY(-pos) also moves content UP relative to the observer.
       const multiplier = -1;
       content.style.transform = `translate3d(0, ${position * multiplier}px, 0)`;
       transformOffsetRef.current = position;
@@ -350,15 +348,20 @@ export const useScrollPhysics = ({
   // Sync Scroll Position when entering Voice Mode
   useEffect(() => {
     if (isVoiceMode && scrollContainerRef.current) {
-      // Reset internal position to current scroll top to prevent jumps
-      internalScrollPos.current = scrollContainerRef.current.scrollTop;
+      // Sync in requestAnimationFrame to ensure we catch the sync done in Prompter.tsx
+      const sync = () => {
+        if (!scrollContainerRef.current) return;
+        internalScrollPos.current = scrollContainerRef.current.scrollTop;
 
-      // Force refresh metrics to ensure calculations are accurate
-      const realScrollHeight = scrollContainerRef.current.scrollHeight;
-      const realClientHeight = scrollContainerRef.current.clientHeight;
-      metricsRef.current = { scrollHeight: realScrollHeight, clientHeight: realClientHeight };
+        // Force refresh metrics
+        const realScrollHeight = scrollContainerRef.current.scrollHeight;
+        const realClientHeight = scrollContainerRef.current.clientHeight;
+        metricsRef.current = { scrollHeight: realScrollHeight, clientHeight: realClientHeight };
 
-      wakeUpLoop();
+        wakeUpLoop();
+      };
+
+      requestAnimationFrame(sync);
     }
   }, [isVoiceMode, wakeUpLoop, scrollContainerRef, metricsRef]);
 
