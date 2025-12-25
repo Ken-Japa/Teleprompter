@@ -344,9 +344,11 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             const scrollTop = container.scrollTop || 0;
 
             // Calculate DOM Target Ratio based on Visual Target Ratio
+            // UNIFIED COORDINATES:
             // Standard: DOM = Visual
-            // Flipped: DOM = 1 - Visual
-            const effectiveRatio = isFlipVertical ? (1 - targetVisualRatio) : targetVisualRatio;
+            // Flipped: DOM = Visual (because scaleY(-1) flips the view, so we still want the "Start" of content at the "Start" of DOM)
+            // effectiveRatio is simply the targetVisualRatio passed in.
+            const effectiveRatio = targetVisualRatio;
 
             // targetPosition: The DOM coordinate that is currently under the "Reading Line"
             const targetPosition = scrollTop + (container.clientHeight * effectiveRatio);

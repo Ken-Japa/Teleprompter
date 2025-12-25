@@ -51,13 +51,11 @@ export const calculateVoiceTarget = (
 
     // TargetScroll = (ElementTop + Offset) - (ViewportHeight * (1 - LookaheadRatio))
 
-    let targetRatio = VOICE_CONFIG.LOOKAHEAD_POSITION;
-
-    if (isFlipVertical) {
-      // In Vertically Flipped mode, the "Visual Top" matches the DOM "Bottom" (high coordinate)
-      // So we target a position that is (1 - Lookahead) down the viewport.
-      targetRatio = 1 - VOICE_CONFIG.LOOKAHEAD_POSITION;
-    }
+    // UNIFIED COORDINATES:
+    // We used to invert this for Flip Vertical (1 - Lookahead), but since we use scaleY(-1) CSS transform,
+    // the DOM "Top" (Start) naturally maps to the Visual "Start".
+    // So we should target the same relative position in the DOM for both modes.
+    const targetRatio = VOICE_CONFIG.LOOKAHEAD_POSITION;
 
     // Scroll Position = ElementPosition - ViewportOffset
     return activeEl.offsetTop + readingLineOffset - metrics.clientHeight * targetRatio;
