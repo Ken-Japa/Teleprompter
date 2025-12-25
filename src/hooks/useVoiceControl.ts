@@ -328,7 +328,7 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
     // Helper: Find which sentence is currently visible on screen
     // Returns index and the estimated progress within that sentence (0-1) based on scroll position
-    const findVisibleSentenceId = useCallback((): { index: number; progress: number } => {
+    const findVisibleSentenceId = useCallback((targetVisualRatio: number = VOICE_CONFIG.LOOKAHEAD_POSITION): { index: number; progress: number } => {
         if (typeof window === 'undefined' || sentences.length === 0) return { index: 0, progress: 0 };
 
         try {
@@ -340,26 +340,13 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             }
 
             const scrollTop = container.scrollTop || 0;
-            // FIXED: Use the actual LOOKAHEAD position to find what user is looking at.
-            const lookaheadRatio = VOICE_CONFIG.LOOKAHEAD_POSITION;
 
-            // Calculate Target Position based on Lookahead
-            // If FlipVertical (scaleY-1), the "Top" of the content is visually at the bottom.
-            // So we need to look near the bottom of the scroll viewport to find the "start" lines.
-            // Actually, in scaleY(-1), scrollTop=0 is at the DOM top (which is Visual Bottom).
-            // As we scroll "down" (increase scrollTop), the content moves UP visually? 
-            // - No, standard behavior: scrollTop moves viewport down.
-            // - With scaleY(-1) on container: 
-            //     - Content is flipped upside down. 
-            //     - Scroll 0 shows the "Top" of the content (which is now at Visual Bottom).
-            //     - Wait, usually Flip Vertical implementation flips the CONTAINER.
-            // Let's assume standard behavior:
-            // Normal: 0% is Top. Lookahead 15% means 15% down from Top.
-            // Flipped: 0% is Top (Visual Bottom). We want to look at Visual Top (DOM Bottom).
-            // So we target (1 - Lookahead) from DOM Top.
+            // Calculate DOM Target Ratio based on Visual Target Ratio
+            // Standard: DOM = Visual
+            // Flipped: DOM = 1 - Visual
+            const effectiveRatio = isFlipVertical ? (1 - targetVisualRatio) : targetVisualRatio;
 
-            const effectiveRatio = isFlipVertical ? (1 - lookaheadRatio) : lookaheadRatio;
-            // targetPosition: The DOM coordinate that is currently under the reading marker
+            // targetPosition: The DOM coordinate that is currently under the "Reading Line"
             const targetPosition = scrollTop + (container.clientHeight * effectiveRatio);
 
             let closestSentenceId = 0;
@@ -419,8 +406,11 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             return;
         }
 
-        // Initialize to visible sentence, not sentence 0
-        const { index: visibleSentence, progress: initialProgress } = findVisibleSentenceId();
+        // Initialize to visible sentence.
+        // CRITICAL: We use 0.5 (CENTER) as the search target because normally users are reading
+        // at the center of the screen when they activate Voice.
+        // The Voice Control will then gently scroll this centered sentence to the active Lookahead position (Top).
+        const { index: visibleSentence, progress: initialProgress } = findVisibleSentenceId(0.5);
         lockedSentenceIdRef.current = visibleSentence;
         setActiveSentenceIndex(visibleSentence);
 
