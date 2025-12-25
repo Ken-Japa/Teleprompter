@@ -87,5 +87,75 @@ export const VOICE_CONFIG = {
     SMALL: 600,   // scripts < 2000 chars
     MEDIUM: 800,  // scripts < 5000 chars
     LARGE: 1200,  // scripts > 5000 chars
-  }
+  },
+
+  // --- ADAPTIVE PERFORMANCE ---
+
+  /**
+   * ADAPTIVE_THROTTLE
+   * Dynamic throttle adjustment based on device performance.
+   * Automatically adjusts processing rate to match device capability.
+   */
+  ADAPTIVE_THROTTLE: {
+    enabled: true,              // Enable adaptive throttle
+    minThrottle: 40,            // Fastest rate for powerful devices (ms)
+    maxThrottle: 150,           // Slowest rate for weak devices (ms)
+    targetProcessTime: 50,      // Target processing time (ms)
+    adaptationRate: 0.1,        // How quickly to adapt (0.0-1.0)
+  },
+
+  // --- SENTENCE COMPLETION DETECTION ---
+
+  /**
+   * SENTENCE_COMPLETION
+   * Auto-advance to next sentence when current sentence is complete.
+   * Detects pauses/silence to infer sentence completion.
+   */
+  SENTENCE_COMPLETION: {
+    enabled: true,              // Enable auto-advance on completion
+    minProgress: 0.85,          // Minimum progress to consider complete (85%)
+    pauseTimeout: 1000,         // Silence duration to trigger advance (ms)
+    autoAdvance: true,          // Automatically advance to next sentence
+    checkInterval: 200,         // How often to check for completion (ms)
+  },
+
+  // --- FUZZY SYNC (Error Tolerance) ---
+
+  /**
+   * FUZZY_SYNC
+   * Tolerance for small recognition errors within a sentence.
+   * Prevents scroll from stopping due to minor misrecognitions.
+   */
+  FUZZY_SYNC: {
+    enabled: true,                    // Enable fuzzy sync
+    minPartialMatch: 0.60,            // Minimum match ratio for partial acceptance (60%)
+    intraSentenceTolerance: 0.5,      // Higher tolerance within same sentence
+    catchUpEnabled: true,             // Enable auto catch-up on continued speech
+    progressBoost: 0.15,              // Progress boost on partial match (15%)
+  },
+
+  // --- INITIALIZATION BEHAVIOR ---
+
+  /**
+   * INITIALIZATION
+   * Controls behavior when voice control is first activated.
+   * Prevents premature scrolling before speech is detected.
+   */
+  INITIALIZATION: {
+    waitForFirstRecognition: true,    // Don't scroll until first valid match
+    initialGracePeriod: 500,          // Grace period before enabling auto-scroll (ms)
+    minConfidenceForInit: 0.7,        // Minimum confidence for first match (70%)
+  },
+
+  // --- PERFORMANCE METRICS ---
+
+  /**
+   * METRICS
+   * Track performance metrics for optimization and debugging.
+   */
+  METRICS: {
+    enabled: true,              // Enable performance tracking
+    sampleSize: 100,            // Number of samples to track
+    logInterval: 10000,         // Log metrics every N ms (0 = disabled)
+  },
 };

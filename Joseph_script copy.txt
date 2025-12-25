@@ -1,0 +1,28 @@
+<b>CENA 2A INTRODUÇÃO</b>
+<v1> Acredite ou não, este vídeo ainda está sendo patrocinado pela HoverAIR. Mesmo depois de eu ter destruído o drone deles. Deixe-me explicar.
+
+<v2> Este vídeo deveria ser patrocinado pela HoverAir, mas infelizmente, eles desistiram depois que eu derrubei o drone deles. Eu entendo. Mas decidi fazer este vídeo mesmo assim, porque, embora a câmera traseira de detecção de colisão não funcione tão bem quanto deveria, ainda é um ótimo dispositivo no geral, e eu passei um bom tempo conhecendo-o, e acho que você também deveria conhecê-lo!
+
+<b>CENA 3A MODOS TESTADOS</b>
+Esta é a câmera voadora autônoma HoverAIR X1 ProMax. É uma câmera voadora 8K que se dobra e cabe no seu bolso, e nem precisa de controle remoto. Você pode literalmente ligá-la, alternar entre os modos no próprio drone e pressionar este botão para lançá-lo. Você pode até mesmo lançá-lo com comandos de voz! "Oi, hover!" Esse tom significa que ele está pronto para receber um comando. Quando você o lança, ele decola e completa a cena que você pediu, como um giro de 360 ​​graus, e pousa na sua mão. Ou, se estiver em um modo como "seguir", ele simplesmente se fixa em você e te segue para onde quer que você vá. E funciona muito bem. Ele tem até um modo "seguir" para ambientes internos que faz um trabalho incrível, sem bater nas paredes e navegando pelo meu estúdio. Eu até o fiz me seguir escada abaixo no meu prédio! Em velocidade de caminhada, ele se saiu perfeitamente bem.
+
+Depois, tentei correr mais rápido que ele descendo as escadas, e ele acabou ficando preso no corrimão, mas, no geral, se saiu muito bem.
+
+Eu disse que ele pode voar sem nenhum controle, mas isso é apenas uma opção. Você pode usar seu telefone para controlá-lo, como já viu em todos os outros drones, ou pode usar um dispositivo chamado Beacon, que foi minha maneira favorita de pilotá-lo — pelo pouco tempo que o usei. Em vez de ter que conectar seu telefone ao Wi-Fi do XAir, mesmo que seja apenas para ver a imagem, depois de pareados, basta ligar os dois dispositivos e eles se conectam para que você possa ver a câmera do drone no Beacon. Você também pode alterar os modos de voo, ajustar alguns parâmetros de voo (mas não todos) e usar dois recursos muito legais: o microfone sincroniza com o vídeo, permitindo que você grave seus diálogos, e o Beacon se chama assim porque, embora o drone dependa principalmente do rastreamento visual do objeto, se ele perder você de vista, pode usar o Beacon para reencontrá-lo. Muito bacana.
+Infelizmente, eu o destruí no primeiro dia ensolarado em que precisei levá-lo para fora, mas antes de cometer o "dronicídio", testei a maioria dos seus modos de automação. Eu ando muito de bicicleta, então o Modo Ciclismo era um que eu estava realmente ansioso para experimentar. Este transmissor preso ao meu guidão com este pequeno suporte me permitia ficar de olho na câmera enquanto pedalava para garantir que o drone estivesse realmente atrás de mim. Claro que também dá para ouvi-lo, mas ainda assim é muito útil saber que ele está me seguindo e não o cara que acabou de passar correndo.
+
+No aplicativo para celular, você pode alterar várias configurações, como escolher a distância que ele deve seguir e a altitude em que deve voar: alta ou baixa.
+
+Não que passar por baixo desta ponte fosse um grande desafio, mas ele não teve problemas em me seguir até aqui...
+
+E fez um ótimo trabalho evitando as árvores sob as quais eu estava pedalando.
+
+Ele pode até subir automaticamente se você começar a ir mais rápido e descer quando você diminui a velocidade, para obter as melhores imagens. Achei o modo bicicleta muito eficiente e, embora eu não tenha tido a oportunidade de testá-lo, vi vídeos de outros criadores levando suas bicicletas de montanha por entre as árvores, e o drone se saiu muito bem, acompanhando o ritmo e sem bater em nada.
+
+Vamos falar um pouco sobre o design do drone e alguns outros recursos. Uma das coisas que eu realmente gosto é que as hélices são protegidas. Essa proteção significa que você não vai cortar o dedo acidentalmente na hélice — algo que eu posso ou não ter feito no passado — e é totalmente seguro e fácil decolar e pousar na palma da sua mão. Além disso, ele dobra ao meio, e essa proteção das hélices significa que você pode literalmente colocá-lo no bolso do casaco. E esse material é resistente — tão resistente que a HoverAir inclui um pedaço dele na caixa especificamente para você tentar destruir! É material muito resistente.
+
+A câmera usa um cartão microSD e, como é 8K, você precisa de um bom — a Angelbird acabou de lançar os novos cartões microSD AV PRO V30 de até 1 TB, projetados especificamente para captura em 8K. Muito legal. Outra coisa muito legal é que o X1 tem 64 GB de armazenamento interno! Isso é ótimo.
+
+Agora, embora grave em 8K, é importante notar que não há suporte para Log em 8K. A mesma limitação ocorre nas minhas câmeras Insta360 8K; você sempre precisa abrir mão do Log para gravar em 8K, o que é realmente uma pena. Talvez seja uma limitação de processamento, mas não é algo inédito.
+
+O drone é superleve — bem abaixo do limite de 250g; na verdade, oficialmente pesa apenas 192g… Estou mostrando xx

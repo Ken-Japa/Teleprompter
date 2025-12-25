@@ -40,6 +40,26 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
     // Optimization: Flag to indicate we are recycling the session (clearing memory)
     const recycleSessionRef = useRef<boolean>(false);
 
+    // --- NEW: INITIALIZATION CONTROL ---
+    const isInitializingRef = useRef<boolean>(false);
+    const hasFirstRecognitionRef = useRef<boolean>(false);
+    const initStartTimeRef = useRef<number>(0);
+
+    // --- NEW: SENTENCE COMPLETION DETECTION ---
+    const lastSpeechTimeRef = useRef<number>(0);
+    const sentenceCompletionTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+    // --- NEW: PERFORMANCE METRICS ---
+    const performanceMetricsRef = useRef({
+        processingTimes: [] as number[],
+        averageProcessTime: 0,
+        currentThrottle: VOICE_CONFIG.THROTTLE_MS,
+        lastLogTime: 0,
+    });
+
+    // --- NEW: FUZZY SYNC STATE ---
+    const consecutivePartialMatchesRef = useRef<number>(0);
+
     const { sentences, fullCleanText, charToSentenceMap } = useMemo(() => {
         return parseTextToSentences(text);
     }, [text]);
@@ -53,6 +73,13 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
     useEffect(() => {
         return () => {
             intentionallyStoppedRef.current = true;
+
+            // Clear sentence completion timer
+            if (sentenceCompletionTimerRef.current) {
+                clearInterval(sentenceCompletionTimerRef.current);
+                sentenceCompletionTimerRef.current = null;
+            }
+
             if (recognitionRef.current) {
                 try {
                     recognitionRef.current.stop();
@@ -62,6 +89,116 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                 } catch (e) { /* Ignore errors during cleanup */ }
             }
         };
+    }, []);
+
+    // --- HELPER FUNCTIONS ---
+
+    /**
+     * Update performance metrics and calculate adaptive throttle
+     */
+    const updatePerformanceMetrics = useCallback((processingTime: number) => {
+        if (!VOICE_CONFIG.METRICS.enabled) return;
+
+        const metrics = performanceMetricsRef.current;
+
+        // Track processing time
+        metrics.processingTimes.push(processingTime);
+        if (metrics.processingTimes.length > VOICE_CONFIG.METRICS.sampleSize) {
+            metrics.processingTimes.shift();
+        }
+
+        // Calculate average
+        metrics.averageProcessTime =
+            metrics.processingTimes.reduce((a, b) => a + b, 0) / metrics.processingTimes.length;
+
+        // Adaptive throttle calculation
+        if (VOICE_CONFIG.ADAPTIVE_THROTTLE.enabled && metrics.processingTimes.length >= 10) {
+            const { minThrottle, maxThrottle, targetProcessTime, adaptationRate } = VOICE_CONFIG.ADAPTIVE_THROTTLE;
+            const ratio = metrics.averageProcessTime / targetProcessTime;
+            const targetThrottle = VOICE_CONFIG.THROTTLE_MS * ratio;
+            const clampedThrottle = Math.max(minThrottle, Math.min(maxThrottle, targetThrottle));
+
+            // Smooth adaptation
+            metrics.currentThrottle =
+                metrics.currentThrottle * (1 - adaptationRate) +
+                clampedThrottle * adaptationRate;
+        }
+
+        // Log metrics periodically
+        const now = Date.now();
+        if (VOICE_CONFIG.METRICS.logInterval > 0 &&
+            now - metrics.lastLogTime >= VOICE_CONFIG.METRICS.logInterval) {
+            console.log('[Voice Metrics]', {
+                avgProcessTime: metrics.averageProcessTime.toFixed(2) + 'ms',
+                currentThrottle: metrics.currentThrottle.toFixed(0) + 'ms',
+                samples: metrics.processingTimes.length
+            });
+            metrics.lastLogTime = now;
+        }
+    }, []);
+
+    /**
+     * Check for sentence completion and auto-advance
+     */
+    const checkSentenceCompletion = useCallback(() => {
+        if (!VOICE_CONFIG.SENTENCE_COMPLETION.enabled || !VOICE_CONFIG.SENTENCE_COMPLETION.autoAdvance) {
+            return;
+        }
+
+        const now = Date.now();
+        const timeSinceLastSpeech = now - lastSpeechTimeRef.current;
+
+        // Check if we should auto-advance
+        if (
+            voiceProgress >= VOICE_CONFIG.SENTENCE_COMPLETION.minProgress &&
+            timeSinceLastSpeech >= VOICE_CONFIG.SENTENCE_COMPLETION.pauseTimeout &&
+            lockedSentenceIdRef.current >= 0
+        ) {
+            const nextSentenceId = lockedSentenceIdRef.current + 1;
+            if (nextSentenceId < sentences.length) {
+                console.log('[Voice] Auto-advancing to next sentence after pause');
+                lockedSentenceIdRef.current = nextSentenceId;
+                setActiveSentenceIndex(nextSentenceId);
+                setVoiceProgress(0);
+                smoothedProgressRef.current = 0;
+
+                // Update match index to new sentence start
+                if (sentences[nextSentenceId]) {
+                    lastMatchIndexRef.current = sentences[nextSentenceId].startIndex ?? 0;
+                }
+
+                // Reset speech timer
+                lastSpeechTimeRef.current = now;
+            }
+        }
+    }, [voiceProgress, sentences]);
+
+    /**
+     * Start sentence completion checker
+     */
+    const startSentenceCompletionChecker = useCallback(() => {
+        if (!VOICE_CONFIG.SENTENCE_COMPLETION.enabled) return;
+
+        // Clear existing timer
+        if (sentenceCompletionTimerRef.current) {
+            clearInterval(sentenceCompletionTimerRef.current);
+        }
+
+        // Start new timer
+        sentenceCompletionTimerRef.current = setInterval(
+            checkSentenceCompletion,
+            VOICE_CONFIG.SENTENCE_COMPLETION.checkInterval
+        );
+    }, [checkSentenceCompletion]);
+
+    /**
+     * Stop sentence completion checker
+     */
+    const stopSentenceCompletionChecker = useCallback(() => {
+        if (sentenceCompletionTimerRef.current) {
+            clearInterval(sentenceCompletionTimerRef.current);
+            sentenceCompletionTimerRef.current = null;
+        }
     }, []);
 
     // Helper to map language code to BCP 47
@@ -175,13 +312,20 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                 onSpeechResultRef.current(cleanTranscript);
             }
 
-            // THROTTLING: Only process interim results every 100ms to reduce computational load
+            // Update speech timestamp for sentence completion detection
+            lastSpeechTimeRef.current = Date.now();
+
+            // ADAPTIVE THROTTLING: Use dynamic throttle based on device performance
             const now = Date.now();
             const isFinal = event.results[event.resultIndex]?.isFinal;
+            const currentThrottle = performanceMetricsRef.current.currentThrottle;
 
-            if (!isFinal && (now - lastProcessedTimeRef.current) < VOICE_CONFIG.THROTTLE_MS) {
+            if (!isFinal && (now - lastProcessedTimeRef.current) < currentThrottle) {
                 return; // Skip this interim result
             }
+
+            // Start performance measurement
+            const processStart = performance.now();
             lastProcessedTimeRef.current = now;
 
             // MUSICIAN MODE OPTIMIZATION: Increased min length to 6 to reduce false positives
@@ -238,9 +382,40 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                 const newSentenceId = charToSentenceMap[match.index] || 0;
                 const currentSentenceId = lockedSentenceIdRef.current;
                 const jumpDistance = Math.abs(newSentenceId - currentSentenceId);
+                const isSameSentence = newSentenceId === currentSentenceId;
+
+                // --- FUZZY SYNC: Allow partial matches within same sentence ---
+                const isPartialMatch = match.ratio > 0.4; // Lower confidence match
+
+                if (VOICE_CONFIG.FUZZY_SYNC.enabled && isSameSentence && isPartialMatch) {
+                    // Within same sentence, be more tolerant
+                    const acceptableRatio = VOICE_CONFIG.FUZZY_SYNC.intraSentenceTolerance;
+
+                    if (match.ratio <= acceptableRatio) {
+                        // Accept partial match - update progress with boost
+                        consecutivePartialMatchesRef.current++;
+                        console.log(`[Voice] Fuzzy sync: Partial match accepted (${(match.ratio * 100).toFixed(0)}% error, ${consecutivePartialMatchesRef.current} consecutive)`);
+
+                        // Continue to progress update below
+                        // Don't return - allow smooth progress
+                    } else {
+                        // Too poor match even for fuzzy sync
+                        if (consecutivePartialMatchesRef.current < 3) {
+                            // Small grace period - maybe user is just mumbling
+                            consecutivePartialMatchesRef.current++;
+                            return; // Skip this one
+                        }
+                        // Been too many bad matches - might be off track
+                        console.warn(`[Voice] Fuzzy sync limit: Too many poor matches, ratio ${match.ratio.toFixed(3)}`);
+                        return;
+                    }
+                } else {
+                    // Good match or different sentence - reset partial counter
+                    consecutivePartialMatchesRef.current = 0;
+                }
 
                 // STRICTER VALIDATION for cross-sentence jumps
-                if (newSentenceId !== currentSentenceId) {
+                if (!isSameSentence) {
                     // Medium jumps: require 95%+ accuracy
                     if (jumpDistance > 5 && match.ratio > 0.05) {
                         console.warn(`[Voice] Medium jump rejected (${jumpDistance} sentences), ratio ${match.ratio.toFixed(3)} not good enough`);
@@ -306,12 +481,45 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
                         }
                     }
 
-                    // Only update active sentence if it's confirmed (locked)
-                    if (lockedSentenceIdRef.current !== activeSentenceIndex && lockedSentenceIdRef.current >= 0) {
+                    // --- INITIALIZATION CONTROL: First Recognition Detection ---
+                    if (isInitializingRef.current && !hasFirstRecognitionRef.current) {
+                        const timeSinceInit = Date.now() - initStartTimeRef.current;
+                        const hasGracePeriodPassed = timeSinceInit >= VOICE_CONFIG.INITIALIZATION.initialGracePeriod;
+                        const isConfidentMatch = match.ratio <= (1 - VOICE_CONFIG.INITIALIZATION.minConfidenceForInit);
+
+                        if (hasGracePeriodPassed && isConfidentMatch) {
+                            // First valid recognition! Now activate scrolling
+                            hasFirstRecognitionRef.current = true;
+                            isInitializingRef.current = false;
+                            console.log('[Voice] First recognition detected - activating scroll', {
+                                confidence: ((1 - match.ratio) * 100).toFixed(0) + '%',
+                                delay: timeSinceInit + 'ms'
+                            });
+
+                            // Now we can set the active sentence to trigger scroll
+                            setActiveSentenceIndex(lockedSentenceIdRef.current);
+                        } else {
+                            // Still initializing - don't update active sentence yet
+                            if (!hasGracePeriodPassed) {
+                                console.log('[Voice] Initializing: Grace period not passed yet');
+                            } else if (!isConfidentMatch) {
+                                console.log('[Voice] Initializing: Low confidence match, waiting for better');
+                            }
+                            // Continue processing for progress updates, but don't scroll
+                        }
+                    }
+
+                    // Only update active sentence if it's confirmed (locked) AND not initializing
+                    if (!isInitializingRef.current && lockedSentenceIdRef.current !== activeSentenceIndex && lockedSentenceIdRef.current >= 0) {
                         setActiveSentenceIndex(lockedSentenceIdRef.current);
                     }
                 }
             }
+
+            // Measure processing time for adaptive throttle
+            const processEnd = performance.now();
+            const processingTime = processEnd - processStart;
+            updatePerformanceMetrics(processingTime);
         };
 
         recognitionRef.current = recognition;
@@ -320,7 +528,7 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
         } catch (e) {
             logger.error("Voice start error", { error: e as Error });
         }
-    }, [lang, activeSentenceIndex]); // Dependencies for startRecognitionInstance
+    }, [lang, activeSentenceIndex, updatePerformanceMetrics]); // Dependencies for startRecognitionInstance
 
     // Helper: Find which sentence is currently visible on screen
     // Returns index and the estimated progress within that sentence (0-1) based on scroll position
@@ -404,13 +612,23 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             return;
         }
 
+        // --- INITIALIZATION CONTROL ---
+        // Set initialization flags to prevent premature scrolling
+        isInitializingRef.current = VOICE_CONFIG.INITIALIZATION.waitForFirstRecognition;
+        hasFirstRecognitionRef.current = false;
+        initStartTimeRef.current = Date.now();
+
         // Initialize to visible sentence.
         // CRITICAL: We use 0.5 (CENTER) as the search target because normally users are reading
         // at the center of the screen when they activate Voice.
-        // The Voice Control will then gently scroll this centered sentence to the active Lookahead position (Top).
         const { index: visibleSentence } = findVisibleSentenceId(0.5);
         lockedSentenceIdRef.current = visibleSentence;
-        setActiveSentenceIndex(visibleSentence);
+
+        // DON'T set active sentence index immediately if waiting for first recognition
+        // This prevents the scroll animation before speech is detected
+        if (!VOICE_CONFIG.INITIALIZATION.waitForFirstRecognition) {
+            setActiveSentenceIndex(visibleSentence);
+        }
 
         // CRITICAL FIX: Sync match index to the visible sentence's start
         // This ensures matching resumes from the correct position instead of 0
@@ -421,16 +639,18 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
         }
 
         // VISIBILITY FIX: Always reset progress to 0 (Start of Sentence) when activating.
-        // If we kept the 'visual progress' (e.g. 50%), aligning it to the Top would push the
-        // start of the sentence off-screen. We want the user to see the START of the prompt.
-        const initialProgress = 0; // Force start of sentence
+        smoothedProgressRef.current = 0;
+        setVoiceProgress(0);
 
-        smoothedProgressRef.current = initialProgress;
-        setVoiceProgress(initialProgress);
+        // Reset speech timer
+        lastSpeechTimeRef.current = Date.now();
 
         intentionallyStoppedRef.current = false;
         startRecognitionInstance();
-    }, [isPro, isListening, voiceApiSupported, startRecognitionInstance, findVisibleSentenceId]);
+
+        // Start sentence completion checker
+        startSentenceCompletionChecker();
+    }, [isPro, isListening, voiceApiSupported, startRecognitionInstance, findVisibleSentenceId, sentences, startSentenceCompletionChecker]);
 
     const stopListening = useCallback(() => {
         intentionallyStoppedRef.current = true;
@@ -440,8 +660,12 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
             } catch (e) { /* ignore */ }
         }
         setIsListening(false);
+
+        // Stop sentence completion checker
+        stopSentenceCompletionChecker();
+
         // DON'T reset locked sentence here - allows resume from same position
-    }, []);
+    }, [stopSentenceCompletionChecker]);
 
     const resetVoice = useCallback(() => {
         stopListening();
