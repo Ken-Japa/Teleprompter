@@ -10,6 +10,7 @@ interface RecordingControlsProps {
     recordingTime: string;
     hasRecordedData: boolean;
     recordingMode: RecordingMode;
+    isConnected: boolean;
     onToggleMode: () => void;
     onStart: () => void;
     onStop: () => void;
@@ -24,6 +25,7 @@ export const RecordingControls = memo(({
     recordingTime,
     hasRecordedData,
     recordingMode,
+    isConnected,
     onToggleMode,
     onStart,
     onStop,
@@ -43,18 +45,6 @@ export const RecordingControls = memo(({
                     className="w-10 h-10 rounded-full hover:bg-red-500/20 hover:text-red-400 border-transparent text-slate-400"
                 >
                     <RecordIcon className="w-6 h-6" />
-                </S.IconButton>
-                <S.IconButton
-                    onClick={onToggleMode}
-                    title={recordingMode === "remote" ? "Record on Remote" : "Record on Host"}
-                    aria-label="Toggle Recording Mode"
-                    className="w-10 h-10 rounded-full hover:bg-white/10 border-transparent text-slate-400"
-                >
-                    {recordingMode === "remote" ? (
-                        <SmartphoneIcon className="w-6 h-6" />
-                    ) : (
-                        <LaptopIcon className="w-6 h-6" />
-                    )}
                 </S.IconButton>
             </div>
         );
@@ -82,18 +72,6 @@ export const RecordingControls = memo(({
                     className="w-8 h-8 rounded-full hover:bg-white/10 text-slate-400 border-transparent"
                 >
                     <RecordIcon className="w-4 h-4" />
-                </S.IconButton>
-                <S.IconButton
-                    onClick={onToggleMode}
-                    title={recordingMode === "remote" ? "Record on Remote" : "Record on Host"}
-                    aria-label="Toggle Recording Mode"
-                    className="w-8 h-8 rounded-full hover:bg-white/10 text-slate-400 border-transparent"
-                >
-                    {recordingMode === "remote" ? (
-                        <SmartphoneIcon className="w-4 h-4" />
-                    ) : (
-                        <LaptopIcon className="w-4 h-4" />
-                    )}
                 </S.IconButton>
             </div>
         );
@@ -135,6 +113,21 @@ export const RecordingControls = memo(({
             >
                 <StopIcon className="w-4 h-4 fill-current" />
             </S.IconButton>
+
+            {isConnected && (
+                <S.IconButton
+                    onClick={onToggleMode}
+                    title={recordingMode === "remote" ? "Record on Remote" : "Record on Host"}
+                    aria-label="Toggle Recording Mode"
+                    className="w-8 h-8 rounded-full hover:bg-white/10 text-white border-transparent"
+                >
+                    {recordingMode === "remote" ? (
+                        <SmartphoneIcon className="w-4 h-4" />
+                    ) : (
+                        <LaptopIcon className="w-4 h-4" />
+                    )}
+                </S.IconButton>
+            )}
         </div>
     );
 });

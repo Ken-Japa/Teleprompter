@@ -241,7 +241,7 @@ export const PrompterHUD = memo(
                             {isPro ? <MicIcon className="w-5 h-5" /> : <LockIcon className="w-4 h-4" />}
                         </S.IconButton>
 
-                        {isVoiceMode && isPro && (
+                        {isVoiceMode && isPro && status === "CONNECTED" && (
                             <S.IconButton
                                 onClick={() => actions.setVoiceControlMode(settings.voiceControlMode === "host" ? "remote" : "host")}
                                 title={settings.voiceControlMode === "host" ? "Microphone: Local (Laptop)" : "Microphone: Remote (Smartphone)"}
@@ -271,6 +271,7 @@ export const PrompterHUD = memo(
                                 recordingTime={recordingState.recordingTime}
                                 hasRecordedData={recordingState.hasRecordedData}
                                 recordingMode={recordingMode}
+                                isConnected={status === "CONNECTED"}
                                 onToggleMode={handleToggleRecordingMode}
                                 onStart={recordingActions.start}
                                 onStop={recordingActions.stop}
