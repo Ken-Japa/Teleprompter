@@ -660,6 +660,7 @@ Paste your script here and customize your experience to start shining!`,
   hudless: {
     button: "Start HUD-less",
     tooltip: "Starts teleprompter without visible controls. Control via mobile or hotkeys.",
+    showControls: "Show Controls",
   },
   hotkeys: {
     title: "Keyboard Shortcuts",

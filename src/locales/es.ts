@@ -664,6 +664,7 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
   hudless: {
     button: "Iniciar Sin Interfaz",
     tooltip: "Inicia el teleprompter sin interfaz visible. Controla vía celular o teclas.",
+    showControls: "Mostrar Controles",
   },
   hotkeys: {
     title: "Atajos de Teclado",

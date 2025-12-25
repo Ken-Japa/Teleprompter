@@ -671,6 +671,7 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
   hudless: {
     button: "Esconder Controles",
     tooltip: "Inicia o teleprompter sem interface visível. Controle via celular ou teclas.",
+    showControls: "Mostrar Controles",
   },
   hotkeys: {
     title: "Atalhos de Teclado",

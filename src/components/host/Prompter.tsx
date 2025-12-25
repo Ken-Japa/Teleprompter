@@ -23,6 +23,7 @@ import { useElementMetrics } from "../../hooks/useElementMetrics";
 import { ScriptBoard } from "./ScriptBoard";
 import { PrompterHUD } from "./PrompterHUD";
 import { QuickEditModal } from "./QuickEditModal";
+import { MaximizeIcon } from "../ui/Icons";
 import { trackEvent, trackFinishReading, trackEngagedUser } from "../../utils/analytics";
 import { Script } from "../../hooks/useScriptStorage";
 
@@ -84,7 +85,7 @@ export const Prompter = memo(
       const [fitnessValue, setFitnessValue] = useState<number>(0);
       const [fitnessTarget, setFitnessTarget] = useState<number | undefined>(undefined);
       const fitnessIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-      const { lang } = useTranslation();
+      const { lang, t } = useTranslation();
 
       // Loop Logic Refs
       const loopStartStackRef = useRef<number[]>([]);
@@ -866,6 +867,18 @@ export const Prompter = memo(
               />
             </S.PrompterScrollArea>
           </S.MainContent>
+
+          {isHudless && !isPiPActive && (
+            <div className="absolute bottom-6 right-6 z-[100] animate-in fade-in duration-500">
+              <S.IconButton
+                onClick={() => actions.setIsHudless(false)}
+                title={t("hudless.showControls") || "Show Controls"}
+                className="w-8 h-8 rounded-full bg-slate-900/40 hover:bg-slate-800/80 border-white/5 text-slate-500 hover:text-brand-400 backdrop-blur-sm transition-all shadow-lg"
+              >
+                <MaximizeIcon className="w-4 h-4" />
+              </S.IconButton>
+            </div>
+          )}
 
           <PrompterHUD
             showHud={showHud && !isHudless}
