@@ -1,15 +1,15 @@
 import { useEffect, useRef } from "react";
 
 export interface ElementMetrics {
- scrollHeight: number;
- clientHeight: number;
+    scrollHeight: number;
+    clientHeight: number;
 }
 
 export const useElementMetrics = (ref: React.RefObject<HTMLElement | null>, dependencies: any[]) => {
- const metricsRef = useRef<ElementMetrics>({
-  scrollHeight: 0,
-  clientHeight: 0,
- });
+    const metricsRef = useRef<ElementMetrics>({
+        scrollHeight: 0,
+        clientHeight: 0,
+    });
     useEffect(() => {
         let observer: ResizeObserver | null = null;
         let timeoutId: NodeJS.Timeout | null = null;
@@ -23,11 +23,17 @@ export const useElementMetrics = (ref: React.RefObject<HTMLElement | null>, depe
 
             const updateMetrics = () => {
                 if (ref.current) {
-                    // Mutate Ref directly for performance (used by physics engine)
-                    metricsRef.current = {
-                        scrollHeight: ref.current.scrollHeight,
-                        clientHeight: ref.current.clientHeight,
-                    };
+                    const newScrollHeight = ref.current.scrollHeight;
+                    const newClientHeight = ref.current.clientHeight;
+
+                    // CRITICAL: Only update if the values are valid (> 0)
+                    // This prevents the physics engine from clamping to 0 during layout shifts
+                    if (newScrollHeight > 0) {
+                        metricsRef.current = {
+                            scrollHeight: newScrollHeight,
+                            clientHeight: newClientHeight,
+                        };
+                    }
                 }
             };
 
@@ -54,5 +60,5 @@ export const useElementMetrics = (ref: React.RefObject<HTMLElement | null>, depe
         };
     }, [ref, ...dependencies]);
 
- return metricsRef;
+    return metricsRef;
 };

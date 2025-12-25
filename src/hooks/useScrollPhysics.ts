@@ -175,8 +175,8 @@ export const useScrollPhysics = ({
       // it might be stale metrics. Force a re-read.
       if (_isPlaying && (calculatedMaxScroll === 0 || internalScrollPos.current === 0)) {
         const newMetrics = readMetrics();
-        // Update metrics only if they have actually changed to prevent unnecessary re-renders.
-        if (newMetrics.scrollHeight !== metrics.scrollHeight || newMetrics.clientHeight !== metrics.clientHeight) {
+        // Update metrics only if they have actually changed and are valid (> 0)
+        if (newMetrics.scrollHeight > 0 && (newMetrics.scrollHeight !== metrics.scrollHeight || newMetrics.clientHeight !== metrics.clientHeight)) {
           metrics = newMetrics;
           metricsRef.current = metrics; // Persist the fresh metrics
         }
@@ -347,8 +347,10 @@ export const useScrollPhysics = ({
   }, [loop]);
 
   // Sync Scroll Position when entering Voice Mode
+  const lastVoiceModeRef = useRef(isVoiceMode);
   useEffect(() => {
-    if (isVoiceMode && scrollContainerRef.current) {
+    // ONLY sync when transitioning from false to true
+    if (isVoiceMode && !lastVoiceModeRef.current && scrollContainerRef.current) {
       const container = scrollContainerRef.current;
 
       // CRITICAL FIX: To prevent "Double Jump" (scrollTop + transform),
@@ -372,6 +374,7 @@ export const useScrollPhysics = ({
 
       wakeUpLoop();
     }
+    lastVoiceModeRef.current = isVoiceMode;
   }, [isVoiceMode, wakeUpLoop, scrollContainerRef, metricsRef, applyScrollTransform]);
 
   // Start/Stop loop based on state
