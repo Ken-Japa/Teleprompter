@@ -1,7 +1,7 @@
 import { memo, useState } from "react";
 import { VoiceLanguageSelector } from "./VoiceLanguageSelector";
 import * as S from "../ui/Styled";
-import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LaptopIcon, LanguagesIcon, CameraIcon, WidgetIcon } from "../ui/Icons";
+import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LanguagesIcon, CameraIcon, WidgetIcon } from "../ui/Icons";
 import { useTranslation } from "../../hooks/useTranslation";
 import { TutorialModal } from "../ui/TutorialModal";
 import { PacingModal } from "../ui/PacingModal";
@@ -103,7 +103,7 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                     {/* Camera Mode */}
                     <S.IconButton
                         onClick={onToggleCameraMode}
-                        title="Camera Mode (Mobile)"
+                        title="Camera Background"
                         aria-label="Toggle Camera Mode"
                         className={`w-10 h-10 rounded-2xl transition-all duration-300 border backdrop-blur-md group ${isCameraMode
                             ? "bg-gradient-to-br from-rose-500/20 to-pink-600/20 text-rose-400 border-rose-500/60 shadow-[0_0_20px_-3px_rgba(244,63,94,0.4)] ring-1 ring-rose-500/30 scale-105"
@@ -136,27 +136,9 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                         onClick={() => setShowPacingModal(true)}
                         title={t("pacing.button")}
                         aria-label="Open Pacing Tool"
-                        className="w-9 h-9 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 text-purple-300 hover:from-purple-500/30 hover:to-pink-500/30 hover:text-purple-200 border border-purple-500/30 hover:border-purple-400/50 transition-all hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
+                        className="w-9 h-9 rounded-full bg-slate-800 text-purple-300 text-slate-400 hover:text-white border border-slate-700 transition-all "
                     >
                         <TimerIcon className="w-5 h-5" />
-                    </S.IconButton>
-
-                    <S.IconButton
-                        onClick={onStartHudless}
-                        className="hover:text-blue-400 w-9 h-9"
-                        aria-label={t("hudless.button")}
-                        title={t("hudless.tooltip")}
-                    >
-                        <LaptopIcon className="w-5 h-5" />
-                    </S.IconButton>
-
-                    <S.IconButton
-                        onClick={onClear}
-                        className="hover:text-red-400 w-9 h-9"
-                        aria-label="Clear All Text"
-                        title="Clear All Text"
-                    >
-                        <TrashIcon className="w-5 h-5" />
                     </S.IconButton>
 
                     <S.IconButton
@@ -166,6 +148,15 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, isMusicianMode,
                         className="w-9 h-9 rounded-full bg-slate-800 text-slate-400 hover:text-white border border-slate-700"
                     >
                         <KeyboardIcon className="w-5 h-5" />
+                    </S.IconButton>
+
+                    <S.IconButton
+                        onClick={onClear}
+                        className="hover:text-red-400 w-9 h-9"
+                        aria-label="Clear All Text"
+                        title="Clear All Text"
+                    >
+                        <TrashIcon className="w-5 h-5" />
                     </S.IconButton>
 
                     <S.IconButton

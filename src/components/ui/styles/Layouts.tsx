@@ -149,7 +149,7 @@ export const FocusIndicator = () => (
 
 export const HudContainer = ({ children, visible }: { children: React.ReactNode; visible: boolean }) => (
     <div
-        className={`fixed bottom-6 w-[95%] sm:w-auto left-1/2 -translate-x-1/2 px-4 py-3 rounded-2xl sm:bottom-12 sm:px-8 sm:py-4  z-50 transition-all duration-500 cubic-bezier(0.16, 1, 0.3, 1) flex flex-wrap justify-center items-center gap-x-4 gap-y-3 xl:flex-nowrap xl:gap-0 shadow-2xl backdrop-blur-2xl bg-slate-900/80 border border-white/10 ${visible ? "opacity-100 translate-y-0 scale-100 blur-0" : "opacity-0 translate-y-12 scale-90 blur-lg pointer-events-none"}`}
+        className={`fixed bottom-1 w-[95%] sm:w-auto left-1/2 -translate-x-1/2 px-4 py-3 rounded-2xl sm:px-8 sm:py-4  z-50 transition-all duration-500 cubic-bezier(0.16, 1, 0.3, 1) flex flex-wrap justify-center items-center gap-x-4 gap-y-3 xl:flex-nowrap xl:gap-0 shadow-2xl backdrop-blur-2xl bg-slate-900/80 border border-white/10 ${visible ? "opacity-100 translate-y-0 scale-100 blur-0" : "opacity-0 translate-y-12 scale-90 blur-lg pointer-events-none"}`}
     >
         {/* Top sheen for glass effect */}
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-full opacity-50"></div>

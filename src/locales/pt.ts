@@ -657,7 +657,7 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
     },
   },
   hudless: {
-    button: "Iniciar Sem Interface",
+    button: "Esconder Controles",
     tooltip: "Inicia o teleprompter sem interface visível. Controle via celular ou teclas.",
   },
   hotkeys: {

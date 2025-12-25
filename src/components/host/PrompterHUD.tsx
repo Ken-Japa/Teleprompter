@@ -205,25 +205,27 @@ export const PrompterHUD = memo(
                         />
 
                         {togglePiP && (
-                            <S.IconButton
-                                onClick={togglePiP}
-                                active={isPiPActive}
-                                title="Picture-in-Picture"
-                                aria-label="Picture-in-Picture"
-                                className={`w-9 h-9 rounded-full ${isPiPActive ? "bg-brand-500/20 text-brand-400 border-brand-500/30" : "hover:bg-white/10 border-transparent text-slate-400"}`}
-                            >
-                                <PiPIcon className="w-5 h-5" />
-                            </S.IconButton>
-                        )}
+                            <div className="flex items-center gap-1">
+                                <S.IconButton
+                                    onClick={() => actions.setIsHudless(true)}
+                                    title={t("hudless.button") || "Hide Controls (H)"}
+                                    aria-label="Hide Controls"
+                                    className="w-9 h-9 rounded-full hover:bg-white/10 border-transparent text-slate-400"
+                                >
+                                    <LaptopIcon className="w-5 h-5" />
+                                </S.IconButton>
 
-                        <S.IconButton
-                            onClick={() => setShowTutorialModal(true)}
-                            title="Tutorial"
-                            aria-label="Open Tutorial"
-                            className="w-9 h-9 rounded-full hover:bg-white/10 border-transparent text-slate-400"
-                        >
-                            <InfoIcon className="w-5 h-5 block" />
-                        </S.IconButton>
+                                <S.IconButton
+                                    onClick={togglePiP}
+                                    active={isPiPActive}
+                                    title="Picture-in-Picture"
+                                    aria-label="Picture-in-Picture"
+                                    className={`w-9 h-9 rounded-full ${isPiPActive ? "bg-brand-500/20 text-brand-400 border-brand-500/30" : "hover:bg-white/10 border-transparent text-slate-400"}`}
+                                >
+                                    <PiPIcon className="w-5 h-5" />
+                                </S.IconButton>
+                            </div>
+                        )}
                     </div>
                 </div>
 
