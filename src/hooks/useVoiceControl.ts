@@ -333,7 +333,9 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
 
         try {
             // Get scroll container
-            const container = document.querySelector('.voice-control-smooth') as HTMLElement;
+            // CRITICAL FIX: Use the persistent class '.prompter-scroll-area' because '.voice-control-smooth'
+            // is only added AFTER isVoiceMode becomes true. During the toggle (startListening), the class isn't there yet.
+            const container = document.querySelector('.prompter-scroll-area') as HTMLElement;
             if (!container) {
                 // Return current active index if container not found, better than resetting to 0
                 return { index: activeSentenceIndex >= 0 ? activeSentenceIndex : 0, progress: 0 };
