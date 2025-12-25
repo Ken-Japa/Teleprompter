@@ -664,6 +664,10 @@ export const useVoiceControl = (text: string, isPro: boolean, onSpeechResult?: (
         // Stop sentence completion checker
         stopSentenceCompletionChecker();
 
+        // Reset active sentence to trigger initialization flow on next start
+        // This ensures the "wait for first recognition" behavior works on reactivation
+        setActiveSentenceIndex(-1);
+
         // DON'T reset locked sentence here - allows resume from same position
     }, [stopSentenceCompletionChecker]);
 

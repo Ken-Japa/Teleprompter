@@ -62,7 +62,7 @@ export const VOICE_CONFIG = {
    * Reduces computational load by limiting updates per second.
    * Default: 75ms (~13fps)
    */
-  THROTTLE_MS: 80,
+  THROTTLE_MS: 50,
 
   /**
    * MATCH_CONFIRMATION_FRAMES
