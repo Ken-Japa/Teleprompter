@@ -639,6 +639,47 @@ export const Prompter = memo(
         onNavigationMapUpdate
       });
 
+      // --- LAYOUT SHIFT COMPENSATION ---
+      // Fixes the "Jump" when toggling Voice Mode (Padding 50vh <-> 12vh)
+      // When padding changes, content physically moves. We strictly compensate scrollTop
+      // to keep the visual position constant.
+
+      const getTargetPaddingRatio = useCallback(() => {
+        if (!isVoiceMode) return 0.5; // Default 50vh
+        return isFlipVertical ? (1 - VOICE_CONFIG.LOOKAHEAD_POSITION) : VOICE_CONFIG.LOOKAHEAD_POSITION;
+      }, [isVoiceMode, isFlipVertical]);
+
+      const prevPaddingRatioRef = useRef(getTargetPaddingRatio());
+
+      React.useLayoutEffect(() => {
+        if (!scrollContainerRef.current) return;
+
+        const currentRatio = getTargetPaddingRatio();
+        const prevRatio = prevPaddingRatioRef.current;
+
+        if (currentRatio !== prevRatio) {
+          const container = scrollContainerRef.current;
+          const h = container.clientHeight;
+
+          const oldPx = prevRatio * h;
+          const newPx = currentRatio * h;
+          const delta = newPx - oldPx;
+
+          // Apply compensation immediately before paint
+          container.scrollTop += delta;
+          console.log(`[Prompter] Layout Shift Compensation: ${delta.toFixed(0)}px (Ratio: ${prevRatio} -> ${currentRatio})`);
+
+          // Sync Physics Engine internal state to prevent it from overwriting our fix
+          // We can access the handleNativeScroll to force a sync if needed, but 
+          // changing scrollTop triggers a scroll event which handles it naturally.
+          // However, to be safe against race conditions in the loop:
+          // We can't easily access internalScrollPos here without exposing it.
+          // Trusting the scroll event (native behavior) is best.
+        }
+
+        prevPaddingRatioRef.current = currentRatio;
+      }, [getTargetPaddingRatio]);
+
       // Dynamic Focus Line Gradient
       const focusGradient = useMemo(() => {
         // Chroma keys should not have focus gradient to ensure pure color
