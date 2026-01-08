@@ -7,6 +7,7 @@ interface SeoProps {
     ogImage?: string;
     ogType?: "website" | "article";
     schema?: object; // JSON-LD structured data
+    alternates?: { hreflang: string; href: string }[];
 }
 
 export const useSeo = ({
@@ -16,6 +17,7 @@ export const useSeo = ({
     ogImage = "https://promptninja.solutionkit.com.br/og-image.webp",
     ogType = "website",
     schema,
+    alternates,
 }: SeoProps) => {
     useEffect(() => {
         // Update Title
@@ -59,6 +61,30 @@ export const useSeo = ({
         }
         linkCanonical.setAttribute("href", canonicalUrl || window.location.href);
 
+        // Update Alternates (Hreflang)
+        if (alternates && alternates.length > 0) {
+            // Remove existing alternates that are not in the current list
+            const existingAlternates = document.querySelectorAll('link[rel="alternate"][hreflang]');
+            existingAlternates.forEach(el => {
+                const hreflang = el.getAttribute('hreflang');
+                if (!alternates.find(a => a.hreflang === hreflang)) {
+                    el.remove();
+                }
+            });
+
+            // Update or create alternates
+            alternates.forEach(({ hreflang, href }) => {
+                let linkAlternate = document.querySelector(`link[rel="alternate"][hreflang="${hreflang}"]`);
+                if (!linkAlternate) {
+                    linkAlternate = document.createElement("link");
+                    linkAlternate.setAttribute("rel", "alternate");
+                    linkAlternate.setAttribute("hreflang", hreflang);
+                    document.head.appendChild(linkAlternate);
+                }
+                linkAlternate.setAttribute("href", href);
+            });
+        }
+
         // Update JSON-LD Schema
         let scriptSchema = document.querySelector("#schema-json-ld");
         if (schema) {
@@ -76,5 +102,5 @@ export const useSeo = ({
         return () => {
             // Cleanup logic if needed (rarely needed for SPA navigation unless full reset desired)
         };
-    }, [title, description, canonicalUrl, ogImage, ogType, schema]);
+    }, [title, description, canonicalUrl, ogImage, ogType, schema, alternates]);
 };

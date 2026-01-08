@@ -30,7 +30,28 @@ export const SeoPageLayout: React.FC<SeoPageLayoutProps> = ({
 }) => {
     const { t, lang } = useTranslation();
     const [showFeedback, setShowFeedback] = React.useState(false);
-    useSeo({ title, description, canonicalUrl, ogImage, ogType, schema });
+
+    const alternates = React.useMemo(() => {
+        if (!canonicalUrl) return undefined;
+
+        // Find matching route in ROUTES_CONFIG
+        const routeEntry = Object.values(ROUTES_CONFIG).find((route: any) => {
+            if (!route.paths) return false;
+            return Object.values(route.paths).some((path: any) => canonicalUrl.endsWith(path));
+        });
+
+        if (!routeEntry || !routeEntry.paths) return undefined;
+
+        const baseUrl = "https://promptninja.solutionkit.com.br";
+        return [
+            { hreflang: "pt", href: `${baseUrl}${routeEntry.paths.pt}` },
+            { hreflang: "en", href: `${baseUrl}${routeEntry.paths.en}` },
+            { hreflang: "es", href: `${baseUrl}${routeEntry.paths.es}` },
+            { hreflang: "x-default", href: `${baseUrl}${routeEntry.paths.pt}` },
+        ];
+    }, [canonicalUrl]);
+
+    useSeo({ title, description, canonicalUrl, ogImage, ogType, schema, alternates });
 
     return (
         <S.LandingContainer>
