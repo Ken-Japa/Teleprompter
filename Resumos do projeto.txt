@@ -1,0 +1,399 @@
+Alguns relatórios do projeto:
+"📌 DOSSIÊ CONSOLIDADO — PROMPTNINJA (Jan/2026)
+1️⃣ Visão Geral
+
+Projeto: PromptNinja
+Tipo: Teleprompter online profissional (web app / PWA)
+Público-alvo principal: Criadores de conteúdo (YouTube, TikTok, Reels, aulas, vendas)
+Tempo no ar: ~1 mês
+Objetivo: Gerar receita real com produto digital SaaS / web app.
+
+2️⃣ Produto — Estado Atual
+Core do produto
+
+Teleprompter web com:
+
+Rolagem inteligente
+
+Pacing / timer de leitura
+
+Controle remoto via celular (P2P / WebRTC)
+
+Funciona direto no navegador (sem app, sem hardware)
+
+Multilíngue: PT / EN / ES
+
+PWA (funciona offline após cache)
+
+Funcionalidades avançadas
+
+Controle por voz
+
+Multi-remotes
+
+Gravação
+
+Picture-in-picture
+
+Modo músico
+
+Modo fitness:
+
+[COUNT X] → contagem por voz
+
+[REST X] → countdown visual
+
+Comandos no texto:
+
+[SPEED X]
+
+[LOOP START] / [LOOP X]
+
+[PAUSE], etc.
+
+Conclusão técnica
+
+Produto forte, maduro e acima da média para estágio inicial.
+O gargalo não é mais tecnologia, é aquisição e posicionamento.
+
+3️⃣ Monetização — Modelo Atual
+Estrutura
+
+Plano Pro vitalício: R$67
+(modelo temporário — intenção futura: migrar para assinatura mensal/anual após validação)
+
+Acesso gratuito
+
+Uso livre com:
+
+Paywall aparece:
+
+ao clicar em features Pro
+
+ou após 20 minutos de uso contínuo
+
+Trial Pro gratuito: 24 horas
+
+Infra
+
+Paywall ativo
+
+Integração com pagamento (Kiwify)
+
+Chave Pro / validação / limite de dispositivos
+
+4️⃣ SEO & Conteúdo
+Estrutura criada
+
+Páginas principais de scripts:
+
+/scripts-teleprompter
+
+/en/teleprompter-scripts
+
+/es/guiones-teleprompter
+
+Páginas satélite:
+
+/scripts-para-youtube
+
+/scripts-para-tiktok-reels
+
+/scripts-para-vendas
+
+/scripts-para-aulas
+
+~35–40 scripts publicados
+
+CTAs:
+
+“Abrir no teleprompter”
+
+“Copiar texto”
+
+CTA final: abrir teleprompter em branco
+
+Estado real do SEO
+
+Houve sim uma travada no GSC
+
+Queda de indexação
+
+URLs “detectadas, mas não indexadas”
+
+Próximo passo técnico prioritário:
+
+Resolver:
+
+sitemap inchado
+
+conflitos de idioma
+
+canonical/hreflang
+
+pedido manual de reindexação
+
+5️⃣ Analytics & Métricas
+Setup
+
+GA4 + eventos customizados:
+
+Uso
+
+teleprompter_play
+
+start_pacing
+
+finish_reading
+
+successful_connection
+
+remote_connected
+
+Monetização
+
+paywall_view
+
+paywall_cta_click
+
+pro_trial_started
+
+pro_key_redeemed
+
+Engajamento
+
+page_duration
+
+usage_heartbeat
+
+page_heartbeat
+
+Leitura estratégica
+
+~200 usuários reais até agora
+
+Volume ainda baixo, mas:
+
+Quem entra, usa
+
+Tempo médio > 1 min = tráfego humano real
+
+Gargalo não é engajamento → é tráfego qualificado suficiente.
+
+6️⃣ Marketing já executado
+
+Outreach:
+
+Criadores brasileiros
+
+Criadores EUA
+
+Contato com:
+
+Blogs de teleprompter
+
+Sites para backlink
+
+Posts:
+
+Comunidades Facebook
+
+Reddit (construção de karma)
+
+Ads:
+
+Teste Google Ads pequeno (R$30)
+
+CTR bom, CPC baixo
+
+Micro-conversões reais
+
+Status atual:
+
+Poucas respostas ainda (normal para 24–72h)
+
+7️⃣ Diagnóstico Realista
+O que está funcionando
+
+Produto resolve dores reais:
+
+Latência
+
+Controle remoto
+
+Sem hardware
+
+Sem assinatura obrigatória
+
+Infra sólida
+
+UX não parece MVP amador
+
+Sinais iniciais de SEO e engajamento são positivos.
+
+O que NÃO está acontecendo (ainda)
+
+Não há tração orgânica suficiente
+
+Não há prova de escala
+
+Não há efeito social (reviews grandes)
+
+Verdade central
+
+O projeto não está falhando.
+Ele está exatamente no período mais desconfortável:
+
+produto pronto × mercado ainda silencioso.
+
+Esse período não se resolve com mais código — se resolve com exposição sistemática.
+
+8️⃣ Fase Atual do Projeto
+
+Estágio:
+➡️ Tração inicial / validação comercial
+
+Situação:
+
+Produto pronto para venda
+
+Ajustes agora são finos, guiados por feedback real
+
+Foco principal deve ser:
+
+Marketing
+
+Distribuição
+
+Conversão
+
+9️⃣ Público Prioritário
+
+🎯 Criadores de conteúdo é a escolha correta:
+
+Têm dor clara
+
+Têm poder de divulgação
+
+Têm recorrência de uso
+
+Valorizam:
+
+tempo
+
+simplicidade
+
+confiabilidade
+
+Segmentos mais quentes:
+
+Educadores online
+
+Coaches
+
+Pastores/palestrantes
+
+YouTubers médios (1k–100k)
+
+Criadores fitness
+
+Criadores que usam OBS / Zoom / Meet
+
+🔟 Seu Objetivo Financeiro
+
+Meta declarada:
+
+“Ganhar o máximo possível.”
+
+Tradução estratégica:
+
+Primeiro: validar que pessoas pagam consistentemente
+
+Depois: decidir entre:
+
+escalar ads
+
+migrar para assinatura
+
+buscar distribuição maior (parcerias, bundles, marketplaces)
+
+🧩 RESUMO ULTRA-CURTO (para colar em nova conversa)
+
+Tenho um produto chamado PromptNinja, um teleprompter online profissional com controle remoto P2P, controle por voz e modos avançados (fitness, músico, etc.). Está há ~1 mês no ar, com cerca de 200 usuários reais, monetização ativa com Pro vitalício de R$67 (paywall após 20 min ou features Pro + trial de 24h).
+
+O produto é tecnicamente forte e validado em uso; o gargalo agora é marketing e aquisição, não tecnologia. Já implementei SEO com páginas de scripts e páginas satélite, mas o GSC travou a indexação, que será o próximo ajuste técnico.
+
+Meu foco agora é: transformar uso em receita, definir experimentos de marketing claros, validar canais (outreach, ads, parcerias) e decidir se insisto, ajusto posicionamento ou preparo escala. Público-alvo principal: criadores de conteúdo."
+
+"🥷 MASTER SUMMARY: PROMPTNINJA (Janeiro 2026)
+Copie e cole este conteúdo para iniciar qualquer nova conversa com contexto total.
+
+1. Identidade e Stack Técnica
+Produto: PWA de Teleprompter Profissional focado em criadores solo.
+
+Diferencial: Controle remoto via QR Code (P2P/WebRTC/PeerJS) — zero lag, sem bluetooth, sem instalação.
+
+Stack: React, Vite, TypeScript, Tailwind, Firebase (Firestore/Auth), Vercel.
+
+Funcionalidades PRO: Controle por voz (PT/EN/ES), gravação de vídeo/áudio, modo PIP (Picture-in-Picture), overlays de câmera, e modos nichados (Músico/Cifras e Fitness com detecção de reps).
+
+2. Tração e Engajamento (O "Diamante Bruto")
+Métricas de Uso (Últimos 30 dias): ~180 usuários ativos.
+
+Retenção "Elite": Tempo médio de engajamento de 200s a 210s.
+
+Validação de Valor: Mais de 15.000 eventos de heartbeat (page e usage). Isso prova que quem entra não apenas "olha", mas utiliza a ferramenta para gravar conteúdos longos.
+
+Funil: O gargalo não é o produto (quem chega no /app usa), mas sim o volume de novos usuários (topo do funil).
+
+3. O Gargalo Crítico: SEO e Indexação
+Status GSC: O site sofreu um "congelamento" em 23/12. Caiu de 28 para 3 páginas indexadas.
+
+O Problema: O Google detectou 143 URLs (Sitemap inchado), mas as mantém como "Detectadas, mas não indexadas".
+
+Causa provável: Confusão de arquitetura de idiomas (parâmetros ?lang=pt vs subpastas /pt/) e falta de autoridade (domínio novo) durante a sazonalidade de Natal.
+
+4. Estratégia de Marketing e Vendas
+Monetização: Freemium (20 min de trial/sessão) + Plano Pro Vitalício. Pagamentos via Kiwify (Webhook).
+
+Tráfego Atual: Orgânico (baixo), Direto (fiel) e testes pequenos de Ads (CTR alto de 4.35%, mas baixo volume).
+
+Ações de Outreach: 25+ criadores contatados. Foco atual no "Efeito Marcão" (influenciador de autoridade) para gerar tráfego direto e sinalizar relevância ao Google."
+
+"RESUMO EXECUTIVO DO PROJETO PROMPTNINJA
+1. ESTADO DO PRODUTO (ATUALIZADO)
+
+O que é: Um teleprompter online sofisticado (PWA + P2P), muito além do "básico". Inclui modos de nicho (músico, fitness), controle por voz multilíngue, PiP e gravação.
+
+Modelo de Negócio: Freemium complexo. O usuário pode:
+
+Usar indefinidamente com funções gratuitas (controle remoto P2P, rolagem).
+
+Encontrar um Paywall "ativo" ao clicar em funções Pro (ex: modo voz).
+
+Ser interrompido após 20min de uso contínuo com outro Paywall.
+
+Acessar um Trial de 24h das funções Pro.
+
+Comprar o Plano Pro "Vitalício" (preço a R$67).
+
+Status Técnico: Funcional, estável e com infraestrutura completa (Vercel, Firebase, Kiwify).
+
+2. DIAGNÓSTICO PRINCIPAL (O VERDADEIRO PROBLEMA)
+O projeto sofre de "Síndrome do Produto Invisível e Confuso":
+
+Invisível no Google: Problema técnico de indexação (GSC) impede a descoberta.
+
+Mensagem Confusa: Quem acessa não entende imediatamente a proposta de valor (P2P, zero lag) nem as regras do freemium (é gratuito? trial? paywall?).
+
+Foco Diluído: Os modos de nicho (fitness, músico) podem estar ofuscando a funcionalidade core e principal diferencial (P2P sem lag), além de fragmentar a mensagem de marketing.
+
+3. DADOS CONSOLIDADOS & INTERPRETAÇÃO
+
+Trafego/Usuários: Cerca de 200 usuários no primeiro mês é um sinal positivo, demonstrando que o produto gera interesse inicial.
+
+Engajamento: Os 15.000+ eventos de heartbeat (rastreados a cada 60s de uso) são o dado mais importante. Eles provam que, quem experimenta, usa de verdade e por muito tempo. A dor é real e a solução, quando descoberta, funciona.
+
+SEO: É um bloqueador técnico. Com apenas 3 das 143 URLs indexadas, o crescimento orgânico está travado na fonte.
+
+Vendas: Volume baixo é esperado dado o baixo tráfego e a complexidade da proposta."

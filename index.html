@@ -73,8 +73,8 @@ Experimente agora!" />
     function gtag() { dataLayer.push(arguments); }
 
     // Only configure and track if on production domain
-    const isProd = window.location.hostname === 'promptninja.solutionkit.com.br' || 
-                   window.location.hostname === 'www.promptninja.solutionkit.com.br';
+    const isProd = window.location.hostname === 'promptninja.solutionkit.com.br' ||
+      window.location.hostname === 'www.promptninja.solutionkit.com.br';
 
     if (isProd) {
       gtag('consent', 'default', {
@@ -96,6 +96,12 @@ Experimente agora!" />
 
   <div id="root">
     <noscript>Your browser does not support JavaScript!</noscript>
+    <h1 style="display:none">PromptNinja - Teleprompter Profissional Online Grátis</h1>
+    <p style="display:none">
+      O melhor teleprompter online com controle remoto via celular (P2P),
+      zero lag, controle por voz e suporte PWA para uso offline.
+      Ideal para YouTubers, TikTokers e criadores de conteúdo.
+    </p>
   </div>
   <script type="module" src="/src/index.tsx"></script>
 </body>

@@ -11,6 +11,7 @@ import { Pricing } from "../components/landing/Pricing";
 import { FAQ } from "../components/landing/FAQ";
 import { FinalCTA } from "../components/landing/FinalCTA";
 import { useTranslation } from "../hooks/useTranslation";
+import { useSeo } from "../hooks/useSeo";
 import { ROUTES_CONFIG } from "../config/routes";
 import { FeedbackModal } from "../components/FeedbackModal";
 
@@ -21,6 +22,14 @@ interface LandingProps {
 export const Landing: React.FC<LandingProps> = ({ onLaunch }) => {
     const { t, lang } = useTranslation();
     const [showFeedback, setShowFeedback] = React.useState(false);
+
+    useSeo({
+        title: t("landing.meta.title"),
+        description: t("landing.meta.description"),
+        // Aqui garantimos que o Google saiba qual versão está lendo
+        canonicalUrl: `https://promptninja.solutionkit.com.br/${lang !== 'pt' ? `?lang=${lang}` : ''}`,
+        ogType: 'website'
+    });
 
     React.useEffect(() => {
         if (window.location.hash === "#pricing") {
