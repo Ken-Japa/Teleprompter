@@ -180,7 +180,8 @@ export const es = {
       musician: {
         title: "Modo Músico",
         desc: "Muestra letras y acordes perfectamente alineados. Ideal para músicos que necesitan seguir acordes y letras durante presentaciones.",
-        cta: "Más Información sobre el Modo Músico 🎸",
+        cta: "Más Información sobre el modo Música",
+        cta2: "Acceder al Modo Músico",
       },
       focus: {
         title: "Enfoque Dinámico",
@@ -699,4 +700,45 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
     sentences: "Frases",
     close: "Cerrar Resumen",
   },
+  music: {
+    hero: {
+      badge: "Modo Escenario",
+      headline: "Tus Letras y Acordes.",
+      subHeadline: "En el Tiempo Justo.",
+      description: "El teleprompter hecho para músicos. Desplaza letras y acordes automáticamente, crea setlists y nunca más olvides una canción en el escenario. Funciona offline.",
+      cta: "🎸 Abrir Setlist Ahora",
+    },
+    features: {
+      headline: "Todo para tu Show",
+      subheadline: "Herramientas esenciales para ensayos y presentaciones en vivo.",
+      setlist: {
+        title: "Setlists Ilimitados",
+        desc: "Crea y organiza repertorios para diferentes shows. Cambia de canción con un clic.",
+      },
+      offline: {
+        title: "100% Offline",
+        desc: "¿Sin internet en el escenario? No hay problema. PromptNinja Music guarda todo en tu dispositivo.",
+      },
+      themes: {
+        title: "Modo Nocturno (Stage Mode)",
+        desc: "Fondo oscuro y letras contrastantes. Perfecto para ambientes con poca luz sin deslumbrarte.",
+      },
+      lyrics: {
+        title: "Formato de Acordes",
+        desc: "Respeta espacios y saltos de línea. Tus acordes se quedan exactamente donde deben estar sobre la letra.",
+      },
+      voice: {
+        desc: "Deja que PromptNinja pase la página por ti. El reconocimiento de voz sigue tu canto.",
+      },
+      pro: {
+        desc: "Desbloquea control por voz, setlists infinitos y uso multidispositivo para toda la banda.",
+      },
+    },
+    landing: {
+      meta: {
+        title: "PromptNinja Music: Teleprompter de Acordes y Letras | Setlists para Músicos",
+        description: "El mejor teleprompter para músicos. Crea setlists, desplaza acordes y letras automáticamente. Modo offline y temas oscuros para escenario.",
+      }
+    }
+  }
 };

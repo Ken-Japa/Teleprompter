@@ -173,7 +173,8 @@ export const en = {
       musician: {
         title: "Musician Mode",
         desc: "Scroll the screen with lyrics and chords perfectly aligned. Ideal for musicians who need to follow chords and lyrics during performances.",
-        cta: "Learn More about Musician Mode 🎸",
+        cta: "Learn More about Musician Mode",
+        cta2: "Access Musician Mode",
       },
       focus: {
         title: "Dynamic Focus",
@@ -695,4 +696,45 @@ Paste your script here and customize your experience to start shining!`,
     sentences: "Sentences",
     close: "Close Summary",
   },
+  music: {
+    hero: {
+      badge: "Stage Mode",
+      headline: "Your Lyrics & Chords.",
+      subHeadline: "Perfectly Timed.",
+      description: "The teleprompter built for musicians. Scroll lyrics and chords automatically, create setlists, and never forget a song on stage again. Works offline.",
+      cta: "🎸 Open Setlist Now",
+    },
+    features: {
+      headline: "Everything for your Show",
+      subheadline: "Essential tools for rehearsals and live performances.",
+      setlist: {
+        title: "Unlimited Setlists",
+        desc: "Create and organize repertoires for different gigs. Switch songs with a single click.",
+      },
+      offline: {
+        title: "100% Offline",
+        desc: "No internet on stage? No problem. PromptNinja Music saves everything to your device.",
+      },
+      themes: {
+        title: "Night Mode (Stage Mode)",
+        desc: "Dark background and contrasting lyrics. Perfect for low-light environments without blinding you.",
+      },
+      lyrics: {
+        title: "Chord Formatting",
+        desc: "Respects spaces and line breaks. Your chords stay exactly where they should be over the text.",
+      },
+      voice: {
+        desc: "Let PromptNinja turn the page for you. Voice recognition follows your singing.",
+      },
+      pro: {
+        desc: "Unlock voice control, unlimited setlists, and multi-device use for the whole band.",
+      },
+    },
+    landing: {
+      meta: {
+        title: "PromptNinja Music: Teleprompter for Chords & Lyrics | Musician Setlists",
+        description: "The best teleprompter for musicians. Create setlists, auto-scroll chords and lyrics. Offline mode and dark themes for stage.",
+      }
+    }
+  }
 };

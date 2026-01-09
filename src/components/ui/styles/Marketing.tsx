@@ -29,6 +29,18 @@ export const HeroSection = ({ children }: { children: React.ReactNode }) => (
         </div>
     </section>
 );
+export const FeaturesSection = ({ children, id, className = "" }: { children: React.ReactNode; id?: string; className?: string }) => (
+    <section id={id} className={`py-24 bg-slate-950 relative overflow-hidden ${className}`}>
+        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px_32px]"></div>
+        {children}
+    </section>
+);
+
+export const SectionHeader = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
+    <div className={`text-center max-w-3xl mx-auto mb-16 ${className}`}>
+        {children}
+    </div>
+);
 
 export const FeatureCard = ({
     title,
@@ -37,7 +49,7 @@ export const FeatureCard = ({
     children,
     className = "",
 }: {
-    title: string;
+    title: React.ReactNode;
     desc: string;
     icon: React.ReactNode;
     children?: React.ReactNode;
