@@ -6,6 +6,7 @@ import { Editor } from "../components/host/Editor";
 import { MusicEditor } from "../components/host/MusicEditor";
 import { Prompter } from "../components/host/Prompter";
 import { useHostController } from "../hooks/useHostController";
+import { useSetlistStorage } from "../hooks/useSetlistStorage";
 import { CountdownModal } from "../components/ui/CountdownModal";
 import { RedeemModal } from "../components/RedeemModal";
 import { FeedbackModal } from "../components/FeedbackModal";
@@ -30,6 +31,10 @@ export const Host: React.FC<HostProps> = ({ featureFlags }) => {
 
     // Separation of Concerns: Host is now a dumb component
     const { state, actions, refs } = useHostController(featureFlags);
+
+    // Setlist Storage (Used for Music Mode)
+    const setlistStorage = useSetlistStorage();
+
     const { text, isEditMode, peerId, status, isPro, showPaywall, unlockKey, prompterState, errorMessage, paywallErrorMessage, showCountdownModal, prompterSettings, isValidating, bilingualTexts, isTrialActive, trialEndTime } = state;
 
     const handleScriptFinished = React.useCallback((summary: any) => {
@@ -85,6 +90,8 @@ export const Host: React.FC<HostProps> = ({ featureFlags }) => {
                         onSwitchScript={actions.switchScript}
                         onDeleteScript={actions.deleteScript}
                         onUpdateScript={actions.updateScript}
+
+                        setlistStorage={setlistStorage}
                     />
                 ) : (
                     <Editor
@@ -159,6 +166,8 @@ export const Host: React.FC<HostProps> = ({ featureFlags }) => {
                     onSwitchScript={actions.switchScript}
                     onDeleteScript={actions.deleteScript}
                     onUpdateScript={actions.updateScript}
+
+                    activeSetlist={setlistStorage.activeSetlist}
                 />
             )}
 

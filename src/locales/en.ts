@@ -299,6 +299,12 @@ export const en = {
     generatingId: "Generating Link...",
     idLabel: "Session ID:",
     editorPlaceholder: "Paste or type your speech script here to master your delivery...",
+    musicEditorPlaceholder: `🎵 Paste your chords or lyrics here...
+    
+[Am]      [F]
+Lyrics and chords
+[C]       [G]
+Aligned perfectly`,
     localhostWarning: "Warning: Localhost detected. Use the button below to test.",
     openRemoteTab: "Open Remote (New Tab)",
     copyLink: "Copy Link",

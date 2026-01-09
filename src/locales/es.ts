@@ -307,6 +307,12 @@ export const es = {
     generatingId: "Generando Link...",
     idLabel: "ID de Sesión:",
     editorPlaceholder: "Pega o escribe tu guion aquí...",
+    musicEditorPlaceholder: `🎵 Pega tus acordes o letras aquí...
+    
+[Am]      [F]
+Letra y acordes
+[C]       [G]
+Perfectamente alineados`,
     localhostWarning: "Atención: Localhost detectado.",
     openRemoteTab: "Abrir Control Remoto (Nueva Pestaña)",
     copyLink: "Copiar Link",

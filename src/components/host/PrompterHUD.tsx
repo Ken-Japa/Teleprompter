@@ -7,7 +7,7 @@ import { PrompterTimer, SpeedControl, DisplayControl } from "./controls";
 import { AppearanceSettingsModal } from "../ui/AppearanceSettingsModal";
 import { UI_LIMITS } from "../../config/constants";
 import { RecordingControls } from "./controls/RecordingControls";
-import { QrCodeIcon, InfoIcon, LogOutIcon, EditIcon, PlayIcon, PauseIcon, MaximizeIcon, MinimizeIcon, StopIcon, PaletteIcon, PiPIcon, MicIcon, LockIcon, LaptopIcon, SmartphoneIcon } from "../ui/Icons";
+import { QrCodeIcon, LogOutIcon, EditIcon, PlayIcon, PauseIcon, MaximizeIcon, MinimizeIcon, StopIcon, PaletteIcon, PiPIcon, MicIcon, LockIcon, LaptopIcon, SmartphoneIcon } from "../ui/Icons";
 import { TutorialModal } from "../ui/TutorialModal";
 import { QRCodeModal } from "./QRCodeModal";
 import { SyncButton } from "../ui/SyncButton";
@@ -203,6 +203,26 @@ export const PrompterHUD = memo(
                             onPreviousPart={onPreviousPart}
                             onNextPart={onNextPart}
                         />
+
+                        {/* Music Mode Setlist Navigation */}
+                        {settings.isMusicianMode && (
+                            <div className="flex items-center gap-1 border-l border-white/10 pl-2 ml-1">
+                                <S.IconButton
+                                    onClick={() => onPreviousPart?.()} // Re-using part navigation props for song navigation if passed down as such
+                                    title="Previous Song"
+                                    className="w-9 h-9 rounded-full hover:bg-white/10 border-transparent text-slate-400"
+                                >
+                                    <span className="text-xs font-bold">&lt; </span>
+                                </S.IconButton>
+                                <S.IconButton
+                                    onClick={() => onNextPart?.()} // Re-using part navigation props for song navigation if passed down as such
+                                    title="Next Song"
+                                    className="w-9 h-9 rounded-full hover:bg-white/10 border-transparent text-slate-400"
+                                >
+                                    <span className="text-xs font-bold">&gt;</span>
+                                </S.IconButton>
+                            </div>
+                        )}
 
                         {togglePiP && (
                             <div className="flex items-center gap-1">

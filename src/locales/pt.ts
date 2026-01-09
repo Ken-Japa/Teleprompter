@@ -304,6 +304,12 @@ export const pt = {
     generatingId: "Gerando Link...",
     idLabel: "ID da Sessão:",
     editorPlaceholder: "Cole ou digite seu roteiro aqui para uma apresentação impecável...",
+    musicEditorPlaceholder: `🎵 Cole sua cifra ou letra aqui...
+    
+[Am]      [F]
+Letras e acordes
+[C]       [G]
+Alinhados perfeitamente`,
     localhostWarning: "Atenção: Você está em localhost. Para usar o controle remoto, abra em outra aba.",
     openRemoteTab: "Abrir Controle Remoto (Nova Aba)",
     copyLink: "Copiar Link",

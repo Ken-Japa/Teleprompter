@@ -26,6 +26,7 @@ import { QuickEditModal } from "./QuickEditModal";
 import { MaximizeIcon } from "../ui/Icons";
 import { trackEvent, trackFinishReading, trackEngagedUser } from "../../utils/analytics";
 import { Script } from "../../hooks/useScriptStorage";
+import { Setlist } from "../../hooks/useSetlistStorage";
 
 import { useNavigationMap } from "../../hooks/useNavigationMap";
 import { useMediaRecorder } from "../../hooks/useMediaRecorder";
@@ -72,11 +73,14 @@ interface PrompterProps {
   onCreateScript: () => void;
   onDeleteScript: (id: string) => void;
   onUpdateScript: (id: string, updates: Partial<Script>) => void;
+
+  // Setlist
+  activeSetlist?: Setlist;
 }
 
 export const Prompter = memo(
   forwardRef<PrompterHandle, PrompterProps>(
-    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onScriptFinished, onReset, onStartRemoteRecording, onStopRemoteRecording, scripts, activeScriptId, onSwitchScript, onCreateScript, onDeleteScript, onUpdateScript }, ref) => {
+    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onScriptFinished, onReset, onStartRemoteRecording, onStopRemoteRecording, scripts, activeScriptId, onSwitchScript, onCreateScript, onDeleteScript, onUpdateScript, activeSetlist }, ref) => {
 
       // Extracted Settings Logic
       const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode, isMusicianMode, isBilingualMode, bilingualConfig, isHudless, isCameraMode, isWidgetMode } = settings;
@@ -473,35 +477,23 @@ export const Prompter = memo(
         }
       }, [onStateChange, externalState.speed, resetVoice, clearSessionSummary, resetPhysics, currentActiveElementRef, onReset]);
 
-      useKeyboardShortcuts({
-        isPlaying: externalState.isPlaying,
-        onTogglePlay: () => onStateChange(!externalState.isPlaying, externalState.speed),
-        speed: externalState.speed,
-        onSpeedChange: (val) => onStateChange(externalState.isPlaying, val),
-        fontSize: fontSize,
-        onFontSizeChange: actions.setFontSize,
-        onToggleMirror: () => actions.setIsMirrored(!isMirrored),
-        onToggleFlip: () => actions.setIsFlipVertical(!isFlipVertical),
-        onToggleFocus: () => actions.setIsFocusMode(!isFocusMode),
-        onExit: onExit,
-        onReset: resetPrompter,
-        onToggleHud: () => {
-          const nextHudless = !isHudless;
-          actions.setIsHudless(nextHudless);
-          if (!nextHudless) setShowHud(true);
-        },
-        onToggleCamera: () => actions.setIsCameraMode(!isCameraMode),
-        onToggleWidget: () => actions.setIsWidgetMode(!isWidgetMode),
-        onPreviousPart: () => handleJumpToPart('prev'),
-        onNextPart: () => handleJumpToPart('next'),
-      });
-
-      // Part Jumping Logic
+      // Moved Part Jumping Logic Up to fix Hoisting
       const partIndices = useMemo(() => {
         return sentences
           .map((s, idx) => (s.command?.type === 'PART' ? idx : -1))
           .filter((idx) => idx !== -1);
       }, [sentences]);
+
+      const handleScrollToPart = useCallback((sentenceIndex: number) => {
+        const targetEl = document.getElementById(`sentence-${sentenceIndex}`);
+        if (targetEl && scrollContainerRef.current) {
+          const offsetCtx = scrollContainerRef.current.clientHeight * 0.1;
+          const targetPos = Math.max(0, targetEl.offsetTop - offsetCtx);
+          const maxScroll = scrollContainerRef.current.scrollHeight - scrollContainerRef.current.clientHeight;
+          const progress = maxScroll > 0 ? targetPos / maxScroll : 0;
+          handleScrollTo(progress);
+        }
+      }, [handleScrollTo]);
 
       const handleJumpToPart = useCallback((direction: 'next' | 'prev') => {
         if (partIndices.length === 0 || !scrollContainerRef.current) return;
@@ -524,8 +516,6 @@ export const Prompter = memo(
           }
         } else {
           // INCREASED THRESHOLD:
-          // If playing, we use a larger buffer (readingZoneOffset) to avoid the "stuck" feeling
-          // where high-speed scroll immediately moves past the part start.
           const threshold = externalState.isPlaying ? Math.max(300, readingZoneOffset) : 10;
           const prevParts = partPositions.filter(p => p.top < currentPos - threshold);
 
@@ -535,18 +525,63 @@ export const Prompter = memo(
             handleScrollTo(0);
           }
         }
-      }, [partIndices, handleScrollTo, externalState.isPlaying]);
+      }, [partIndices, handleScrollTo, externalState.isPlaying, handleScrollToPart]);
 
-      const handleScrollToPart = useCallback((sentenceIndex: number) => {
-        const targetEl = document.getElementById(`sentence-${sentenceIndex}`);
-        if (targetEl && scrollContainerRef.current) {
-          const offsetCtx = scrollContainerRef.current.clientHeight * 0.1;
-          const targetPos = Math.max(0, targetEl.offsetTop - offsetCtx);
-          const maxScroll = scrollContainerRef.current.scrollHeight - scrollContainerRef.current.clientHeight;
-          const progress = maxScroll > 0 ? targetPos / maxScroll : 0;
-          handleScrollTo(progress);
+      const handleNavigate = useCallback((direction: 'next' | 'prev') => {
+        if (isMusicianMode) {
+          if (activeSetlist && activeSetlist.songIds.length > 0) {
+            // SETLIST NAVIGATION MODE
+            const currentSongIndex = activeSetlist.songIds.indexOf(activeScriptId);
+
+            if (direction === 'prev') {
+              if (currentSongIndex > 0) {
+                onSwitchScript(activeSetlist.songIds[currentSongIndex - 1]);
+              }
+            } else {
+              if (currentSongIndex !== -1 && currentSongIndex < activeSetlist.songIds.length - 1) {
+                onSwitchScript(activeSetlist.songIds[currentSongIndex + 1]);
+              } else if (currentSongIndex === -1 && activeSetlist.songIds.length > 0) {
+                // If current script is not in setlist, go to first one?
+                onSwitchScript(activeSetlist.songIds[0]);
+              }
+            }
+          } else {
+            // ALL SCRIPTS (LEGACY/FALLBACK) MODE
+            const idx = scripts.findIndex(s => s.id === activeScriptId);
+            if (direction === 'prev') {
+              if (idx > 0) onSwitchScript(scripts[idx - 1].id);
+            } else {
+              if (idx !== -1 && idx < scripts.length - 1) onSwitchScript(scripts[idx + 1].id);
+            }
+          }
+        } else {
+          handleJumpToPart(direction);
         }
-      }, [handleScrollTo]);
+      }, [isMusicianMode, scripts, activeScriptId, onSwitchScript, handleJumpToPart, activeSetlist]);
+
+      useKeyboardShortcuts({
+        isPlaying: externalState.isPlaying,
+        onTogglePlay: () => onStateChange(!externalState.isPlaying, externalState.speed),
+        speed: externalState.speed,
+        onSpeedChange: (val) => onStateChange(externalState.isPlaying, val),
+        fontSize: fontSize,
+        onFontSizeChange: actions.setFontSize,
+        onToggleMirror: () => actions.setIsMirrored(!isMirrored),
+        onToggleFlip: () => actions.setIsFlipVertical(!isFlipVertical),
+        onToggleFocus: () => actions.setIsFocusMode(!isFocusMode),
+        onExit: onExit,
+        onReset: resetPrompter,
+        onToggleHud: () => {
+          const nextHudless = !isHudless;
+          actions.setIsHudless(nextHudless);
+          if (!nextHudless) setShowHud(true);
+        },
+        onToggleCamera: () => actions.setIsCameraMode(!isCameraMode),
+        onToggleWidget: () => actions.setIsWidgetMode(!isWidgetMode),
+        onPreviousPart: () => handleNavigate('prev'),
+        onNextPart: () => handleNavigate('next'),
+      });
+
 
       // Voice control toggle
       const toggleVoice = useCallback(() => {
@@ -622,11 +657,11 @@ export const Prompter = memo(
               startRecording();
             }
           },
-          onPreviousPart: () => handleJumpToPart('prev'),
-          onNextPart: () => handleJumpToPart('next'),
+          onPreviousPart: () => handleNavigate('prev'),
+          onNextPart: () => handleNavigate('next'),
           clearVoiceSummary: clearSessionSummary,
         }),
-        [handleRemoteInput, handleScrollTo, resetPrompter, toggleVoice, wakeUpLoop, onRemoteVoiceUpdate, isRecording, stopRecording, startRecording, handleJumpToPart, clearSessionSummary]
+        [handleRemoteInput, handleScrollTo, resetPrompter, toggleVoice, wakeUpLoop, onRemoteVoiceUpdate, isRecording, stopRecording, startRecording, handleNavigate, clearSessionSummary]
       );
 
       // Notify parent of recording status change
@@ -919,8 +954,8 @@ export const Prompter = memo(
             onEdit={() => setShowEditModal(true)}
             togglePiP={togglePiP}
             isPiPActive={isPiPActive}
-            onPreviousPart={() => handleJumpToPart('prev')}
-            onNextPart={() => handleJumpToPart('next')}
+            onPreviousPart={() => handleNavigate('prev')}
+            onNextPart={() => handleNavigate('next')}
             hasParts={partIndices.length > 0}
             recordingState={{
               isRecording,
