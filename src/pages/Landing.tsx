@@ -50,9 +50,9 @@ export const Landing: React.FC<LandingProps> = ({ onLaunch }) => {
             <ProblemSolution />
             <HowItWorks onLaunch={onLaunch} />
             <Features />
-            <PwaSection />
-            <ComparisonTable />
             <Pricing onLaunch={onLaunch} />
+            <ComparisonTable />
+            <PwaSection />
             <FAQ />
 
             {/* Hub Guide Link Section */}
