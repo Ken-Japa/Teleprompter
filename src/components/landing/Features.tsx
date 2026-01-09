@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import * as S from "../ui/Styled";
-import { MagicIcon, MicIcon, PaletteIcon, ShieldIcon, ZapIcon, CrownIcon, TimerIcon, PiPIcon, RecordIcon, KeyboardIcon, MusicIcon, LanguagesIcon } from "../ui/Icons";
+import { MagicIcon, MicIcon, PaletteIcon, ShieldIcon, ZapIcon, CrownIcon, TimerIcon, PiPIcon, RecordIcon, KeyboardIcon, LanguagesIcon } from "../ui/Icons";
 import { trackGoogleAdsInterest } from "../../utils/analytics";
 
 export const Features: React.FC = () => {
@@ -34,29 +34,6 @@ export const Features: React.FC = () => {
                             className="inline-flex items-center justify-center px-6 py-3 text-base font-bold text-white transition-all transform bg-emerald-600 rounded-xl hover:bg-emerald-500 hover:scale-105 shadow-lg shadow-emerald-500/25 group-hover:shadow-emerald-500/40"
                         >
                             {t("landing.features.voice.cta") || "Unlock PRO Feature 🎤"}
-                        </a>
-                    </S.FeatureCard>
-                </div>
-
-                {/* Musician Mode Feature - New Section */}
-                <div className="mb-12 stagger-item">
-                    <S.FeatureCard
-                        className="md:col-span-3 border-yellow-500/30 max-w-4xl mx-auto text-center"
-                        icon={<MusicIcon className="w-10 h-10 text-yellow-400 icon-hover-rotate mx-auto" />}
-                        title={t("landing.features.musician.title")}
-                        desc={t("landing.features.musician.desc")}
-                    >
-                        <a
-                            href={
-                                lang === 'en'
-                                    ? '/en/teleprompter-musician-mode'
-                                    : lang === 'es'
-                                        ? '/es/teleprompter-modo-musico'
-                                        : '/teleprompter-modo-musico'
-                            }
-                            className="inline-flex items-center justify-center px-6 py-3 text-base font-bold text-white transition-all transform bg-yellow-600 rounded-xl hover:bg-yellow-500 hover:scale-105 shadow-lg shadow-yellow-500/25 group-hover:shadow-yellow-500/40"
-                        >
-                            {t("landing.features.musician.cta") || "Saiba Mais sobre o Modo Músico 🎸"}
                         </a>
                     </S.FeatureCard>
                 </div>

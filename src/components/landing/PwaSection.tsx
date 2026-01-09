@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "../../hooks/useTranslation";
+import * as S from "../ui/Styled";
+import { MusicIcon } from "../ui/Icons";
 
 export const PwaSection: React.FC = () => {
-    const { t } = useTranslation();
+    const { t, lang } = useTranslation();
     const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
 
     useEffect(() => {
@@ -97,6 +99,42 @@ export const PwaSection: React.FC = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* Musician Mode Feature - New Section */}
+                <div className="my-12 stagger-item">
+                    <S.FeatureCard
+                        className="md:col-span-3 border-yellow-500/30 max-w-4xl mx-auto text-center"
+                        icon={<MusicIcon className="w-10 h-10 text-yellow-400 icon-hover-rotate mx-auto" />}
+                        title={t("landing.features.musician.title")}
+                        desc={t("landing.features.musician.desc")}
+                    >
+                        <a
+                            href={
+                                lang === 'en'
+                                    ? '/en/?app=music'
+                                    : lang === 'es'
+                                        ? '/es/?app=music'
+                                        : '/?app=music'
+                            }
+                            className="inline-flex items-center justify-center px-6 py-3 text-base font-bold text-white transition-all transform bg-yellow-600 rounded-xl hover:bg-yellow-500 hover:scale-105 shadow-lg shadow-yellow-500/25 group-hover:shadow-yellow-500/40"
+                        >
+                            {t("landing.features.musician.cta2") || "Entre no Modo Música 🎵"}
+                        </a>
+                        <a
+                            href={
+                                lang === 'en'
+                                    ? '/en/teleprompter-musician-mode'
+                                    : lang === 'es'
+                                        ? '/es/teleprompter-modo-musico'
+                                        : '/teleprompter-modo-musico'
+                            }
+                            className="inline-flex items-center justify-center ml-4 px-6 py-3 text-base font-bold text-white transition-all transform bg-yellow-600 rounded-xl hover:bg-yellow-500 hover:scale-105 shadow-lg shadow-yellow-500/25 group-hover:shadow-yellow-500/40"
+                        >
+                            {t("landing.features.musician.cta") || "Saiba Mais sobre o Modo Músico 🎸"}
+                        </a>
+                    </S.FeatureCard>
+                </div>
+
                 {/* Demo Visual - App Mockup */}
                 <div className="relative max-w-5xl mx-auto mt-24 mb-24 animate-fade-in-up perspective-1000 safe-container px-4" style={{ animationDelay: '0.3s' }}>
                     <div className="relative glass bg-slate-900/40 rounded-2xl shadow-2xl overflow-hidden transform rotate-x-2 transition-transform duration-500 hover:rotate-x-0 hover:scale-[1.01] group border border-white/10 card-depth">

@@ -10,6 +10,7 @@ import { HotkeyConfigModal } from "../ui/HotkeyConfigModal";
 import { KeyboardIcon } from "../ui/Icons";
 import { ScriptManager } from "./ScriptManager";
 import { Script } from "../../hooks/useScriptStorage";
+import { PrompterFeatureFlags } from "../../hooks/usePrompterSettings";
 
 interface EditorToolbarProps {
     onInsertTag: (tag: string) => void;
@@ -21,6 +22,7 @@ interface EditorToolbarProps {
     canUndo?: boolean;
     isMusicianMode: boolean;
     onToggleMusicianMode: () => void;
+    featureFlags?: PrompterFeatureFlags; // New Prop
     isBilingualMode: boolean;
     onToggleBilingualMode: () => void;
     isCameraMode: boolean;
@@ -41,7 +43,7 @@ interface EditorToolbarProps {
     onUpdateScript: (id: string, updates: Partial<Script>) => void;
 }
 
-export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, onSelectRange, onUndo, canUndo, isMusicianMode, onToggleMusicianMode, isBilingualMode, onToggleBilingualMode, isCameraMode, onToggleCameraMode, onToggleWidgetMode, isWidgetMode, isPro = false, onUnlockPro = () => { }, voiceLanguage, onVoiceLanguageChange, scripts, activeScriptId, onCreateScript, onSwitchScript, onDeleteScript, onUpdateScript }: EditorToolbarProps) => {
+export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, onSelectRange, onUndo, canUndo, isMusicianMode, onToggleMusicianMode, featureFlags, isBilingualMode, onToggleBilingualMode, isCameraMode, onToggleCameraMode, onToggleWidgetMode, isWidgetMode, isPro = false, onUnlockPro = () => { }, voiceLanguage, onVoiceLanguageChange, scripts, activeScriptId, onCreateScript, onSwitchScript, onDeleteScript, onUpdateScript }: EditorToolbarProps) => {
     const { t } = useTranslation();
     const [showTutorialModal, setShowTutorialModal] = useState(false);
     const [showPacingModal, setShowPacingModal] = useState(false);
@@ -78,18 +80,20 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, o
                 {/* 1. Mode Buttons (Top on Mobile, Middle on Desktop) */}
                 <div className="w-full md:w-auto flex justify-center gap-2 py-3 mr-4 ml-4 md:py-0 border-b border-white/5 md:border-0 order-1 md:order-2">
                     {/* Musician Mode */}
-                    <S.IconButton
-                        onClick={onToggleMusicianMode}
-                        title={t("host.editor.musicianMode")}
-                        aria-label="Toggle Musician Mode"
-                        className={`w-10 h-10 rounded-2xl transition-all duration-300 border backdrop-blur-md group ${isMusicianMode
-                            ? "bg-gradient-to-br from-amber-500/20 to-yellow-600/20 text-yellow-400 border-yellow-500/60 shadow-[0_0_20px_-3px_rgba(234,179,8,0.4)] ring-1 ring-yellow-500/30 scale-105"
-                            : "bg-white/5 text-slate-500 border-white/5 hover:text-yellow-200 hover:bg-yellow-500/10 hover:border-yellow-500/30 grayscale hover:grayscale-0"
-                            }`}
-                        active={isMusicianMode}
-                    >
-                        <MusicIcon className={`w-6 h-6 transition-transform duration-300 ${isMusicianMode ? "scale-110 drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]" : "group-hover:scale-110"}`} />
-                    </S.IconButton>
+                    {!featureFlags?.isMusicianModeDisabled && (
+                        <S.IconButton
+                            onClick={featureFlags?.isMusicianModeForced ? () => { } : onToggleMusicianMode}
+                            title={featureFlags?.isMusicianModeForced ? t("host.editor.musicianModeLocked") || "Musician Mode Active" : t("host.editor.musicianMode")}
+                            aria-label="Toggle Musician Mode"
+                            className={`w-10 h-10 rounded-2xl transition-all duration-300 border backdrop-blur-md group ${isMusicianMode
+                                ? "bg-gradient-to-br from-amber-500/20 to-yellow-600/20 text-yellow-400 border-yellow-500/60 shadow-[0_0_20px_-3px_rgba(234,179,8,0.4)] ring-1 ring-yellow-500/30 scale-105"
+                                : "bg-white/5 text-slate-500 border-white/5 hover:text-yellow-200 hover:bg-yellow-500/10 hover:border-yellow-500/30 grayscale hover:grayscale-0"
+                                } ${featureFlags?.isMusicianModeForced ? "cursor-default opacity-80 hover:scale-105 hover:grayscale-0" : ""}`}
+                            active={isMusicianMode}
+                        >
+                            <MusicIcon className={`w-6 h-6 transition-transform duration-300 ${isMusicianMode ? "scale-110 drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]" : "group-hover:scale-110"}`} />
+                        </S.IconButton>
+                    )}
 
                     {/* Bilingual Mode */}
                     <S.IconButton

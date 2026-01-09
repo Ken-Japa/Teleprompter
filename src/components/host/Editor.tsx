@@ -10,6 +10,7 @@ import { useEditorLogic } from "../../hooks/useEditorLogic";
 import { LanguageSelector } from "../ui/LanguageSelector";
 import { ScriptManager } from "./ScriptManager";
 import { Script } from "../../hooks/useScriptStorage";
+import { PrompterFeatureFlags } from "../../hooks/usePrompterSettings";
 
 interface EditorProps {
     text: string;
@@ -20,6 +21,7 @@ interface EditorProps {
     onStartHudless: () => void;
     isMusicianMode: boolean;
     onToggleMusicianMode: () => void;
+    featureFlags?: PrompterFeatureFlags;
     isBilingualMode: boolean;
     onToggleBilingualMode: () => void;
     isCameraMode: boolean;
@@ -53,7 +55,7 @@ interface EditorProps {
 
 export const Editor: React.FC<EditorProps> = ({
     text, setText, peerId, status, onStart,
-    isMusicianMode, onToggleMusicianMode, isBilingualMode, onToggleBilingualMode,
+    isMusicianMode, onToggleMusicianMode, featureFlags, isBilingualMode, onToggleBilingualMode,
     isCameraMode, onToggleCameraMode, isWidgetMode, onToggleWidgetMode,
     bilingualTexts, onBilingualTextsChange,
     bilingualVoiceTrackLanguage, onBilingualVoiceTrackChange,
@@ -133,6 +135,7 @@ export const Editor: React.FC<EditorProps> = ({
                         canUndo={canUndo}
                         isMusicianMode={isMusicianMode}
                         onToggleMusicianMode={onToggleMusicianMode}
+                        featureFlags={featureFlags}
                         isBilingualMode={isBilingualMode}
                         onToggleBilingualMode={onToggleBilingualMode}
                         isCameraMode={isCameraMode}

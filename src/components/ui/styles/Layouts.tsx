@@ -38,8 +38,8 @@ export const MainContent = ({
 
 // --- EDITOR & SIDEBAR ---
 
-export const EditorContainer = ({ children }: { children: React.ReactNode }) => (
-    <div className="flex flex-col h-screen bg-slate-950 relative">
+export const EditorContainer = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
+    <div className={`flex flex-col h-screen bg-slate-950 relative ${className}`}>
         {/* Editor Background Grid - Refined */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_40%,transparent_100%)] pointer-events-none z-0"></div>
         {children}
@@ -48,22 +48,16 @@ export const EditorContainer = ({ children }: { children: React.ReactNode }) => 
 
 export const EditorTextArea = React.forwardRef<
     HTMLTextAreaElement,
-    {
-        value: string;
-        onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-        placeholder: string;
-    }
->(({ value, onChange, placeholder }, ref) => (
+    React.TextareaHTMLAttributes<HTMLTextAreaElement>
+>(({ className = "", ...props }, ref) => (
     <textarea
         ref={ref}
         id="editor-script-input"
         name="scriptText"
-        className="flex-1 min-h-[500px] bg-transparent p-8 lg:p-16 text-lg lg:text-2xl font-sans text-slate-200 resize-none focus:outline-none focus:ring-0 scrollbar-thin scrollbar-thumb-slate-800 placeholder:text-slate-700 leading-[1.8] max-w-7xl mx-auto w-full relative z-10 selection:bg-brand-500/30 tracking-wide transition-all duration-300"
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
+        className={`flex-1 min-h-[500px] bg-transparent p-8 lg:p-16 text-lg lg:text-2xl font-sans text-slate-200 resize-none focus:outline-none focus:ring-0 scrollbar-thin scrollbar-thumb-slate-800 placeholder:text-slate-700 leading-[1.8] max-w-7xl mx-auto w-full relative z-10 selection:bg-brand-500/30 tracking-wide transition-all duration-300 ${className}`}
         aria-label="Editor Script Input"
         spellCheck={false}
+        {...props}
     />
 ));
 

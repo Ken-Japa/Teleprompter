@@ -6,11 +6,11 @@ import { useProState } from "./useProState";
 import { useScriptStorage } from "./useScriptStorage";
 import { useLocalStorage } from "./useLocalStorage";
 import { useTranslation } from "./useTranslation";
-import { usePrompterSettings } from "./usePrompterSettings";
+import { usePrompterSettings, PrompterFeatureFlags } from "./usePrompterSettings";
 import { tryEnableNoSleep } from "./useWakeLock";
 import { trackStartPacing, trackGoogleAdsPurchase } from "../utils/analytics";
 
-export const useHostController = () => {
+export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
   const { t } = useTranslation();
   // 1. Data Persistence
   const {
@@ -77,7 +77,7 @@ export const useHostController = () => {
   }, [setShowPaywall]);
 
   // Prompter Settings (Lifted State)
-  const { settings: prompterSettings, actions: prompterActions } = usePrompterSettings(isPro);
+  const { settings: prompterSettings, actions: prompterActions } = usePrompterSettings(isPro, featureFlags);
 
   // Sync bilingual texts with config
   useEffect(() => {

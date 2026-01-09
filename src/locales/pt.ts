@@ -176,7 +176,8 @@ export const pt = {
       musician: {
         title: "Modo Músico",
         desc: "Rolagem de tela com letras e cifras perfeitamente alinhadas. Ideal para músicos que precisam acompanhar acordes e letras durante apresentações.",
-        cta: "Saiba Mais sobre o Modo Músico 🎸",
+        cta: "Saiba Mais",
+        cta2: "Acesse o Modo Música",
       },
       focus: {
         title: "Foco Dinâmico",
@@ -705,4 +706,45 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
     sentences: "Frases",
     close: "Fechar Resumo",
   },
+  music: {
+    hero: {
+      badge: "Modo Palco",
+      headline: "Suas Letras e Cifras.",
+      subHeadline: "No Tempo Certo.",
+      description: "O teleprompter feito para músicos. Role letras e acordes automaticamente, crie setlists e nunca mais esqueça uma música no palco. Funciona offline.",
+      cta: "🎸 Abrir Setlist Agora",
+    },
+    features: {
+      headline: "Tudo para o seu Show",
+      subheadline: "Ferramentas essenciais para ensaios e apresentações ao vivo.",
+      setlist: {
+        title: "Setlists Ilimitados",
+        desc: "Crie e organize repertórios para diferentes shows. Troque de música com um clique.",
+      },
+      offline: {
+        title: "100% Offline",
+        desc: "Sem internet no palco? Sem problemas. O PromptNinja Music salva tudo no seu dispositivo.",
+      },
+      themes: {
+        title: "Modo Noturno (Stage Mode)",
+        desc: "Fundo escuro e letras contrastantes. Perfeito para ambientes com pouca luz sem ofuscar sua visão.",
+      },
+      lyrics: {
+        title: "Formatação de Cifras",
+        desc: "O texto respeita espaços e quebras de linha. Seus acordes ficam exatamente onde devem ficar sobre a letra.",
+      },
+      voice: {
+        desc: "Deixe o PromptNinja virar a página pra você. O reconhecimento de voz acompanha o canto.",
+      },
+      pro: {
+        desc: "Desbloqueie controle por voz, setlists infinitos e uso em múltiplos dispositivos para a banda toda.",
+      },
+    },
+    landing: {
+      meta: {
+        title: "PromptNinja Music: Teleprompter de Cifras e Letras | Setlists para Músicos",
+        description: "O melhor teleprompter para músicos. Crie setlists, role cifras e letras automaticamente. Modo offline e temas escuros para palco.",
+      }
+    }
+  }
 };

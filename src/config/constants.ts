@@ -11,6 +11,7 @@ import { Theme } from "../types";
 export const APP_CONSTANTS = {
     REDEEM_MODAL_ELAPSED_TIME: 1200,
     DEVICE_AUTHENTICATION_LIMIT: 6,
+    MUSIC_DOMAIN: "music.solutionkit.com.br",
 };
 
 // Prompter Default Settings

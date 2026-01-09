@@ -28,7 +28,13 @@ export interface PrompterActions {
     setVoiceLanguage: (val: string) => void;
 }
 
-export const usePrompterSettings = (isPro: boolean) => {
+export interface PrompterFeatureFlags {
+    isMusicianModeForced?: boolean; // Force ON and lock (Music App)
+    defaultMusicianMode?: boolean;  // Default value for storage
+    isMusicianModeDisabled?: boolean; // Hide and force OFF (Main App)
+}
+
+export const usePrompterSettings = (isPro: boolean, featureFlags: PrompterFeatureFlags = {}) => {
     // UI State - Persistent
     const [fontSize, setFontSize] = useLocalStorage<number>(
         PROMPTER_DEFAULTS.STORAGE_KEYS.FONT_SIZE,
@@ -64,10 +70,21 @@ export const usePrompterSettings = (isPro: boolean) => {
         PROMPTER_DEFAULTS.STORAGE_KEYS.RECORDING_MODE,
         "host"
     );
-    const [isMusicianMode, setIsMusicianMode] = useLocalStorage<boolean>(
+    // Determine initial value logic could be improved, but for now we rely on storage
+    // If featureFlags.defaultMusicianMode is true, we might want to respect it if storage is empty, 
+    // but useLocalStorage handles default if key missing.
+    // However, if we are in a new domain, storage is empty.
+    const [isMusicianModeStored, setIsMusicianMode] = useLocalStorage<boolean>(
         "neonprompt_musician_mode",
-        false
+        featureFlags.defaultMusicianMode ?? false
     );
+
+    // If forced, we ignore the stored value for the getter
+    // If disabled, we also ignore stored value (force false)
+    const isMusicianMode = featureFlags.isMusicianModeForced
+        ? true
+        : (featureFlags.isMusicianModeDisabled ? false : isMusicianModeStored);
+
     const [isHudless, setIsHudless] = useLocalStorage<boolean>(
         "neonprompt_hudless_mode",
         false
@@ -172,6 +189,8 @@ export const usePrompterSettings = (isPro: boolean) => {
         cycleTheme,
         toggleChroma,
         setIsMusicianMode: (val: boolean) => {
+            if (featureFlags.isMusicianModeForced || featureFlags.isMusicianModeDisabled) return; // Locked
+
             // Modo músico e modo bilíngue são mutuamente exclusivos
             if (val && isBilingualMode) {
                 setIsBilingualMode(false);
