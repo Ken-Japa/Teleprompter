@@ -173,7 +173,7 @@ export const en = {
       musician: {
         title: "Musician Mode",
         desc: "Scroll the screen with lyrics and chords perfectly aligned. Ideal for musicians who need to follow chords and lyrics during performances.",
-        cta: "Learn More",
+        cta: "Learn More about Musician Mode",
         cta2: "Access Musician Mode",
       },
       focus: {

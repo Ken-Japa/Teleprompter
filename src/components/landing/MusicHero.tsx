@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import * as S from "../ui/Styled";
 
@@ -8,7 +8,6 @@ interface MusicHeroProps {
 
 export const MusicHero: React.FC<MusicHeroProps> = ({ onLaunch }) => {
     const { t } = useTranslation();
-    const [isPlaying, setIsPlaying] = useState(false);
 
     return (
         <S.HeroSection>
@@ -46,38 +45,6 @@ export const MusicHero: React.FC<MusicHeroProps> = ({ onLaunch }) => {
                     </S.PrimaryButton>
                 </div>
             </div>
-
-            {/* App Video Demo - Reusing generic for now or placeholder */}
-            <div className="relative max-w-4xl mx-auto mt-12 animate-fade-in-up safe-container px-4" style={{ animationDelay: '0.6s' }}>
-                <div className="relative glass bg-slate-900/40 rounded-2xl shadow-2xl overflow-hidden border border-white/10 group card-depth hover-lift">
-                    {!isPlaying ? (
-                        <div
-                            className="w-full h-auto aspect-video rounded-2xl relative z-0 cursor-pointer"
-                            onClick={() => setIsPlaying(true)}
-                        >
-                            <div className="absolute inset-0 bg-amber-500/5 group-hover:bg-amber-500/10 transition-colors pointer-events-none z-10"></div>
-                            {/* Placeholder Video Thumbnail - Replace with music specific if available */}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <span className="text-slate-500 text-sm">Demo Video Placeholder</span>
-                            </div>
-                            <div className="absolute inset-0 flex items-center justify-center z-20">
-                                <div className="w-20 h-20 bg-amber-600 rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                                    <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-black text-white p-20">
-                            Video Placehoder
-                        </div>
-                    )}
-                </div>
-                {/* Ambient Glow */}
-                <div className="absolute -inset-4 bg-amber-500/20 blur-3xl -z-10 rounded-[3rem] opacity-30"></div>
-            </div>
-
         </S.HeroSection >
     );
 };

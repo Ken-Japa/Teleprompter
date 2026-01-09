@@ -176,7 +176,7 @@ export const pt = {
       musician: {
         title: "Modo Músico",
         desc: "Rolagem de tela com letras e cifras perfeitamente alinhadas. Ideal para músicos que precisam acompanhar acordes e letras durante apresentações.",
-        cta: "Saiba Mais",
+        cta: "Saiba Mais sobre o Modo Música",
         cta2: "Acesse o Modo Música",
       },
       focus: {

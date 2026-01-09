@@ -111,24 +111,12 @@ export const PwaSection: React.FC = () => {
                         <a
                             href={
                                 lang === 'en'
-                                    ? '/en/?app=music'
-                                    : lang === 'es'
-                                        ? '/es/?app=music'
-                                        : '/?app=music'
-                            }
-                            className="inline-flex items-center justify-center px-6 py-3 text-base font-bold text-white transition-all transform bg-yellow-600 rounded-xl hover:bg-yellow-500 hover:scale-105 shadow-lg shadow-yellow-500/25 group-hover:shadow-yellow-500/40"
-                        >
-                            {t("landing.features.musician.cta2") || "Entre no Modo Música 🎵"}
-                        </a>
-                        <a
-                            href={
-                                lang === 'en'
                                     ? '/en/teleprompter-musician-mode'
                                     : lang === 'es'
                                         ? '/es/teleprompter-modo-musico'
                                         : '/teleprompter-modo-musico'
                             }
-                            className="inline-flex items-center justify-center ml-4 px-6 py-3 text-base font-bold text-white transition-all transform bg-yellow-600 rounded-xl hover:bg-yellow-500 hover:scale-105 shadow-lg shadow-yellow-500/25 group-hover:shadow-yellow-500/40"
+                            className="inline-flex items-center justify-center px-6 py-3 text-base font-bold text-white transition-all transform bg-yellow-600 rounded-xl hover:bg-yellow-500 hover:scale-105 shadow-lg shadow-yellow-500/25 group-hover:shadow-yellow-500/40"
                         >
                             {t("landing.features.musician.cta") || "Saiba Mais sobre o Modo Músico 🎸"}
                         </a>

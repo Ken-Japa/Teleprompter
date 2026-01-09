@@ -180,7 +180,7 @@ export const es = {
       musician: {
         title: "Modo Músico",
         desc: "Muestra letras y acordes perfectamente alineados. Ideal para músicos que necesitan seguir acordes y letras durante presentaciones.",
-        cta: "Más Información",
+        cta: "Más Información sobre el modo Música",
         cta2: "Acceder al Modo Músico",
       },
       focus: {
