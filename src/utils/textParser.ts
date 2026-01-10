@@ -179,6 +179,7 @@ const COMMAND_SPEED_REGEX = /\[(speed|velocidade)\s+(\d+)\]/gi;
 const COMMAND_LOOP_START_REGEX = /\[(loop start|início loop)\]/gi;
 const COMMAND_LOOP_END_REGEX = /\[(loop)\s+(\d+)\]/gi;
 const COMMAND_PART_REGEX = /\[(part|slide|parte)\s*(.*?)\]/gi;
+const COMMAND_BPM_REGEX = /\[(bpm)\s+(.+?)\]/gi;
 
 // [COUNT X], [CONTAR X] for voice reps
 const COMMAND_COUNT_REGEX = /\[(count|contar|conta)\s+(\d+)\]/gi;
@@ -203,6 +204,7 @@ const detectTextCommand = (text: string): TextCommand | undefined => {
     COMMAND_COUNT_REGEX.lastIndex = 0;
     COMMAND_REST_REGEX.lastIndex = 0;
     COMMAND_PART_REGEX.lastIndex = 0;
+    COMMAND_BPM_REGEX.lastIndex = 0;
 
     // Check for PAUSE command
     const pauseMatch = COMMAND_PAUSE_REGEX.exec(text);
@@ -253,6 +255,19 @@ const detectTextCommand = (text: string): TextCommand | undefined => {
     const partMatch = COMMAND_PART_REGEX.exec(text);
     if (partMatch) {
         return { type: 'PART', name: partMatch[2]?.trim() || undefined };
+    }
+
+    // Check for BPM command
+    const bpmMatch = COMMAND_BPM_REGEX.exec(text);
+    if (bpmMatch && bpmMatch[2]) {
+        const bpmVal = bpmMatch[2].trim().toUpperCase();
+        if (bpmVal === 'AUTO') {
+            return { type: 'BPM', value: 'AUTO' };
+        }
+        const bpm = parseInt(bpmVal, 10);
+        if (!isNaN(bpm) && bpm >= 60 && bpm <= 200) {
+            return { type: 'BPM', value: bpm };
+        }
     }
 
     return undefined;

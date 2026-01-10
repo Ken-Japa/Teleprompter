@@ -92,6 +92,8 @@ export const Host: React.FC<HostProps> = ({ featureFlags }) => {
                         onUpdateScript={actions.updateScript}
 
                         setlistStorage={setlistStorage}
+                        settings={prompterSettings}
+                        prompterActions={actions.prompterActions}
                     />
                 ) : (
                     <Editor

@@ -793,7 +793,9 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
         ctaPrimary: "Teste Grátis no Ensaio",
         ctaSecondary: "Ver Planos PRO",
         footer: "Simples. Rápido. Feito pra quem toca.",
-      }
+      },
+      bpmSync: "BPM Sync",
+      bpmTeaser: "Auto-sync com microfone (detecta batidas reais) exclusivo PRO → R$ 67 vitalício",
     }
   },
   midi: {

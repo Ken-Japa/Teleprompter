@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { trackSettingChange } from "../utils/analytics";
 import { useLocalStorage } from "./useLocalStorage";
 import { Theme, PrompterSettings, VoiceControlMode, RecordingMode, BilingualConfig } from "../types";
-import { PROMPTER_DEFAULTS } from "../config/constants";
+import { PROMPTER_DEFAULTS, UI_LIMITS } from "../config/constants";
 
 export type { PrompterSettings }; // Re-export type
 
@@ -26,6 +26,7 @@ export interface PrompterActions {
     setBilingualConfig: (config: Partial<BilingualConfig>) => void;
     setFontFamily: (val: string) => void;
     setVoiceLanguage: (val: string) => void;
+    setBpm: (val: number) => void;
 }
 
 export interface PrompterFeatureFlags {
@@ -114,6 +115,10 @@ export const usePrompterSettings = (isPro: boolean, featureFlags: PrompterFeatur
         "neonprompt_voice_language",
         "" // "" significa auto/globalLang
     );
+    const [bpm, setBpm] = useLocalStorage<number>(
+        "neonprompt_bpm",
+        UI_LIMITS.BPM.DEFAULT
+    );
 
     const cycleTheme = useCallback(() => {
         const themes = PROMPTER_DEFAULTS.THEME_ORDER;
@@ -173,6 +178,7 @@ export const usePrompterSettings = (isPro: boolean, featureFlags: PrompterFeatur
         isBilingualMode,
         bilingualConfig,
         voiceLanguage,
+        bpm,
     };
 
     const actions: PrompterActions = {
@@ -214,6 +220,7 @@ export const usePrompterSettings = (isPro: boolean, featureFlags: PrompterFeatur
             trackSettingChange("bilingual_config", JSON.stringify(config));
         },
         setVoiceLanguage: wrapSetter(setVoiceLanguage, "voice_language"),
+        setBpm: wrapSetter(setBpm, "bpm"),
     };
 
     return { settings, actions };

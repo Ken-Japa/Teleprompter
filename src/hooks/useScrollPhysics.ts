@@ -9,6 +9,7 @@ interface PhysicsParams {
   isPlaying: boolean;
   isVoiceMode: boolean;
   speed: number;
+  bpm: number;
   activeSentenceIndex: number;
   voiceProgress?: number;
   isFlipVertical?: boolean;
@@ -20,6 +21,7 @@ interface PhysicsParams {
   onScrollUpdate: (progress: number) => void;
   onAutoStop: () => void;
   onCommandTriggered?: (command: TextCommand, sentenceId: number) => void;
+  isMusicianMode?: boolean;
 }
 
 /**
@@ -40,6 +42,8 @@ export const useScrollPhysics = ({
   onScrollUpdate,
   onAutoStop,
   onCommandTriggered,
+  isMusicianMode,
+  bpm,
 }: PhysicsParams) => {
   // Physics State
   const momentumRef = useRef<number>(0);
@@ -60,6 +64,7 @@ export const useScrollPhysics = ({
   const activeSentenceIndexRef = useRef(activeSentenceIndex);
   const voiceProgressRef = useRef(voiceProgress);
   const isFlipVerticalRef = useRef(isFlipVertical);
+  const bpmRef = useRef(bpm);
 
   // Update Refs
   useEffect(() => {
@@ -80,6 +85,9 @@ export const useScrollPhysics = ({
   useEffect(() => {
     isFlipVerticalRef.current = isFlipVertical;
   }, [isFlipVertical]);
+  useEffect(() => {
+    bpmRef.current = bpm;
+  }, [bpm]);
 
   // Interaction Flags
   const isUserTouchingRef = useRef<boolean>(false);
@@ -95,10 +103,14 @@ export const useScrollPhysics = ({
 
   // Update Velocity Cache when speed changes
   useEffect(() => {
+    // BPM Sync integration: effective speed depends on BPM
+    // Base formula: speed_efetivo = speed_base * (bpm_atual / 120)
+    const effectiveBpmSpeed = isMusicianMode ? speed * (bpm / 120) : speed;
+
     // Fórmula empírica para velocidade confortável
     velocityCacheRef.current =
-      Math.pow(speed, PHYSICS_CONSTANTS.SPEED_POWER) * PHYSICS_CONSTANTS.VELOCITY_MULTIPLIER;
-  }, [speed]);
+      Math.pow(effectiveBpmSpeed, PHYSICS_CONSTANTS.SPEED_POWER) * PHYSICS_CONSTANTS.VELOCITY_MULTIPLIER;
+  }, [speed, bpm, isMusicianMode]);
 
   /**
    * Apply scroll using GPU-accelerated CSS transform (for voice mode).

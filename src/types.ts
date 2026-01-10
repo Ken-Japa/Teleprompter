@@ -146,6 +146,7 @@ export interface PrompterSettings {
     bilingualConfig?: BilingualConfig; // Bilingual configuration
     fontFamily: string;
     voiceLanguage?: string; // Idioma manual para o controle de voz quando não estiver em modo bilíngue
+    bpm: number; // Musician mode BPM
 }
 
 export interface RemoteScrollHandler {
@@ -180,7 +181,8 @@ export type TextCommand =
     | { type: 'LOOP_END'; value: number }
     | { type: 'COUNT'; value: number }
     | { type: 'PART'; name?: string }
-    | { type: 'REST'; duration: number };
+    | { type: 'REST'; duration: number }
+    | { type: 'BPM'; value: number | 'AUTO' };
 
 export interface Sentence {
     id: number;

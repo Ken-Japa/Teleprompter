@@ -787,7 +787,9 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
         ctaPrimary: "Prueba Gratis en el Ensayo",
         ctaSecondary: "Ver Planes PRO",
         footer: "Simple. Rápido. Hecho para quien toca.",
-      }
+      },
+      bpmSync: "Sincronización BPM",
+      bpmTeaser: "Auto-sync con micro (detecta pulsos reales) exclusivo PRO → $19 vitalicio",
     }
   },
   midi: {

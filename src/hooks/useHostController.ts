@@ -404,6 +404,13 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
     broadcast(MessageType.STOP_REMOTE_RECORDING);
   }, [broadcast]);
 
+  const handleSwitchScript = useCallback((id: string) => {
+    switchScript(id);
+    if (prompterSettings.isMusicianMode) {
+      prompterActions.setBpm(120);
+    }
+  }, [switchScript, prompterSettings.isMusicianMode, prompterActions]);
+
   const prompterState = useMemo(() => ({ isPlaying, speed }), [isPlaying, speed]);
 
   // Handler for bilingual text changes
@@ -466,7 +473,7 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
       startTrial,
       // New Script Management Actions
       createScript,
-      switchScript,
+      switchScript: handleSwitchScript,
       deleteScript,
       updateScript,
     },

@@ -86,7 +86,7 @@ export const Prompter = memo(
     ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onScriptFinished, onReset, onStartRemoteRecording, onStopRemoteRecording, scripts, activeScriptId, onSwitchScript, onCreateScript, onDeleteScript, onUpdateScript, activeSetlist }, ref) => {
 
       // Extracted Settings Logic
-      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode, isMusicianMode, isBilingualMode, bilingualConfig, isHudless, isCameraMode, isWidgetMode } = settings;
+      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode, isMusicianMode, isBilingualMode, bilingualConfig, isHudless, isCameraMode, isWidgetMode, bpm } = settings;
 
       // Ephemeral State
       const [cameraStream, setCameraStream] = useState<MediaStream | null>(null);
@@ -389,8 +389,16 @@ export const Prompter = memo(
               stack.pop();
             }
           }
+        } else if (command.type === 'BPM' && command.value !== undefined) {
+          if (command.value === 'AUTO') {
+            // Teaser logic - already handled by parser returning AUTO
+            // We can show a toast or just trigger paywall if they click something
+            // For now, let's just ignore or show a small hint if needed.
+          } else {
+            actions.setBpm(command.value);
+          }
         }
-      }, [onStateChange, externalState.speed, externalState.isPlaying, isVoiceMode, isPro, lang]);
+      }, [onStateChange, externalState.speed, externalState.isPlaying, isVoiceMode, isPro, lang, actions]);
 
       // Cleanup pause timeout on unmount
       useEffect(() => {
@@ -428,6 +436,8 @@ export const Prompter = memo(
         onScrollUpdate,
         onAutoStop: handleAutoStop,
         onCommandTriggered: handleCommandTriggered,
+        isMusicianMode,
+        bpm,
       });
 
       // Ref to store physics methods for access inside handleCommandTriggered

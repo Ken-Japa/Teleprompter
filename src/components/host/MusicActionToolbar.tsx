@@ -1,4 +1,5 @@
 import { memo, useState, useCallback } from "react";
+import { useTranslation } from "../../hooks/useTranslation";
 import * as S from "../../components/ui/Styled";
 import { TrashIcon, SearchIcon, KeyboardIcon } from "../../components/ui/Icons";
 import { TutorialModal } from "../../components/ui/TutorialModal";
@@ -8,7 +9,10 @@ import { SetlistManager } from "./SetlistManager";
 import { Setlist } from "../../hooks/useSetlistStorage";
 import { Script } from "../../hooks/useScriptStorage";
 import { useMidi } from "../../hooks/useMidi";
-import { MidiAction } from "../../types";
+import { MidiAction, PrompterSettings } from "../../types";
+import { MetronomeIcon } from "../../components/ui/Icons";
+import { UI_LIMITS } from "../../config/constants";
+import { PrompterActions } from "../../hooks/usePrompterSettings";
 
 interface MusicActionToolbarProps {
     onInsertTag: (tag: string) => void;
@@ -42,14 +46,18 @@ interface MusicActionToolbarProps {
     onDeleteScript?: (id: string) => void;
 
     onStart?: () => void;
+    settings?: PrompterSettings;
+    prompterActions?: PrompterActions;
 }
 
 export const MusicActionToolbar = memo(({
     onClear, text, onTextChange, onSelectRange, onUndo, canUndo, isPro, onUnlockPro,
     setlists, activeSetlistId, onSwitchSetlist, onCreateSetlist, onDeleteSetlist, onUpdateSetlistTitle,
     activeSetlist, allScripts, onAddSong, onRemoveSong, onReorderSong,
-    onSwitchScript, activeScriptId, onCreateScript, onUpdateScript, onDeleteScript, onStart
+    onSwitchScript, activeScriptId, onCreateScript, onUpdateScript, onDeleteScript, onStart,
+    settings, prompterActions
 }: MusicActionToolbarProps) => {
+    const { t } = useTranslation();
     const [showTutorialModal, setShowTutorialModal] = useState(false);
     const [showHotkeyModal, setShowHotkeyModal] = useState(false);
     const [showFindReplaceModal, setShowFindReplaceModal] = useState(false);
@@ -148,6 +156,52 @@ export const MusicActionToolbar = memo(({
                     <S.IconButton onClick={onClear} title="Clear" className="w-8 h-8 rounded-full bg-white/5 hover:bg-red-500/20 text-slate-400 hover:text-red-400 border border-white/5">
                         <TrashIcon className="w-4 h-4" />
                     </S.IconButton>
+                </div>
+            </div>
+
+            {/* MUSICIAN SUB-TOOLBAR (BPM & SYNC) */}
+            <div className="w-full bg-[#080808] border-b border-white/5 py-1.5 px-4 flex flex-wrap items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2 bg-amber-500/5 px-3 py-1.5 rounded-lg border border-amber-500/10">
+                        <MetronomeIcon className="w-4 h-4 text-amber-500" />
+                        <span className="text-xs font-bold text-amber-500/80 w-16 uppercase tracking-wider">{t("music.bpmSync")}</span>
+
+                        <div className="flex items-center gap-3 ml-2">
+                            <input
+                                type="range"
+                                min={UI_LIMITS.BPM.MIN}
+                                max={UI_LIMITS.BPM.MAX}
+                                step={UI_LIMITS.BPM.STEP}
+                                value={settings?.bpm || 120}
+                                onChange={(e) => prompterActions?.setBpm(parseInt(e.target.value))}
+                                className="w-24 h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500"
+                            />
+                            <span className="text-sm font-mono font-bold text-amber-500 w-12 tabular-nums">
+                                {settings?.bpm || 120}
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* PRO TEASER */}
+                    <div className="hidden lg:flex items-center gap-3 py-1 px-3 bg-indigo-500/5 rounded-full border border-indigo-500/10">
+                        <div className="flex items-center gap-1.5">
+                            <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+                            <span className="text-[10px] font-medium text-slate-400">
+                                {t("music.bpmTeaser")}
+                            </span>
+                        </div>
+                        <button
+                            onClick={onUnlockPro}
+                            className="text-[10px] font-bold text-indigo-400 hover:text-indigo-300 underline underline-offset-2 uppercase tracking-tight"
+                        >
+                            {t("host.paywall.unlock")}
+                        </button>
+                    </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                    {/* Placeholder for future Part/Song metadata or duration estimates */}
+                    <span className="text-[10px] text-slate-600 font-medium uppercase tracking-widest hidden sm:inline">Music Mode v1.1</span>
                 </div>
             </div>
 

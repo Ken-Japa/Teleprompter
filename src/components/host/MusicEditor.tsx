@@ -33,13 +33,15 @@ interface MusicEditorProps {
 
     // Setlist Storage passed from Host
     setlistStorage: ReturnType<typeof useSetlistStorage>;
+    settings: any;
+    prompterActions: any;
 }
 
 export const MusicEditor: React.FC<MusicEditorProps> = ({
     text, setText, peerId, status, onStart,
     isPro, onUnlockPro,
     scripts, activeScriptId, onCreateScript, onSwitchScript, onDeleteScript, onUpdateScript,
-    setlistStorage
+    setlistStorage, settings, prompterActions
 }) => {
     const {
         setlists, activeSetlistId, activeSetlist, setActiveSetlistId,
@@ -98,6 +100,8 @@ export const MusicEditor: React.FC<MusicEditorProps> = ({
                         onUpdateScript={onUpdateScript}
                         onDeleteScript={onDeleteScript}
                         onStart={onStart}
+                        settings={settings}
+                        prompterActions={prompterActions}
                     />
 
 

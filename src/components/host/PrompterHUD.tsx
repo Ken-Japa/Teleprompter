@@ -7,7 +7,7 @@ import { PrompterTimer, SpeedControl, DisplayControl } from "./controls";
 import { AppearanceSettingsModal } from "../ui/AppearanceSettingsModal";
 import { UI_LIMITS } from "../../config/constants";
 import { RecordingControls } from "./controls/RecordingControls";
-import { QrCodeIcon, LogOutIcon, EditIcon, PlayIcon, PauseIcon, MaximizeIcon, MinimizeIcon, StopIcon, PaletteIcon, PiPIcon, MicIcon, LockIcon, LaptopIcon, SmartphoneIcon } from "../ui/Icons";
+import { QrCodeIcon, LogOutIcon, EditIcon, PlayIcon, PauseIcon, MaximizeIcon, MinimizeIcon, StopIcon, PaletteIcon, PiPIcon, MicIcon, LockIcon, LaptopIcon, SmartphoneIcon, MetronomeIcon } from "../ui/Icons";
 import { TutorialModal } from "../ui/TutorialModal";
 import { QRCodeModal } from "./QRCodeModal";
 import { SyncButton } from "../ui/SyncButton";
@@ -244,6 +244,24 @@ export const PrompterHUD = memo(
                                 >
                                     <PiPIcon className="w-5 h-5" />
                                 </S.IconButton>
+                            </div>
+                        )}
+
+                        {/* BPM Slider for Musician Mode */}
+                        {settings.isMusicianMode && (
+                            <div className="flex items-center gap-2 bg-slate-800/50 px-2.5 py-1 rounded-full border border-white/5 ml-1 mr-1">
+                                <MetronomeIcon className="w-3.5 h-3.5 text-amber-500" />
+                                <S.RangeSlider
+                                    value={settings.bpm || 120}
+                                    min={UI_LIMITS.BPM.MIN}
+                                    max={UI_LIMITS.BPM.MAX}
+                                    step={UI_LIMITS.BPM.STEP}
+                                    onChange={(b) => actions.setBpm(b)}
+                                    width="w-16 sm:w-20"
+                                    ariaLabel="BPM"
+                                    title="BPM Sync"
+                                />
+                                <span className="text-[10px] font-mono text-amber-500 font-bold w-6 tabular-nums">{settings.bpm || 120}</span>
                             </div>
                         )}
                     </div>

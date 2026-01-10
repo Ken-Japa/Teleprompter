@@ -783,7 +783,9 @@ Paste your script here and customize your experience to start shining!`,
         ctaPrimary: "Free Trial at Rehearsal",
         ctaSecondary: "See PRO Plans",
         footer: "Simple. Fast. Built for those who play.",
-      }
+      },
+      bpmSync: "BPM Sync",
+      bpmTeaser: "Auto-sync with mic (detects real beats) PRO exclusive → $19 lifetime",
     }
   },
   midi: {

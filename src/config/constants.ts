@@ -109,6 +109,12 @@ export const UI_LIMITS = {
     HUD: {
         TIMEOUT_MS: 3000,
     },
+    BPM: {
+        MIN: 60,
+        MAX: 200,
+        DEFAULT: 120,
+        STEP: 1,
+    },
 };
 
 // Network & Peer Configuration
