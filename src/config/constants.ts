@@ -63,6 +63,15 @@ export const HOTKEY_DEFAULTS: Record<string, string> = {
     NEXT_PART: "ArrowRight",
 };
 
+export const MIDI_DEFAULTS: Record<string, { type: "note" | "cc", value: number } | null> = {
+    TOGGLE_PLAY: { type: "note", value: 64 },
+    NEXT_SONG: null,
+    PREV_SONG: null,
+    START_SCROLL: null,
+    STOP_SCROLL: null,
+};
+
+
 // Physics & Scrolling Constants
 export const PHYSICS_CONSTANTS = {
     // Base velocity multiplier

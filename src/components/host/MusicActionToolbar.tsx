@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useState, useCallback } from "react";
 import * as S from "../../components/ui/Styled";
 import { TrashIcon, SearchIcon, KeyboardIcon } from "../../components/ui/Icons";
 import { TutorialModal } from "../../components/ui/TutorialModal";
@@ -7,6 +7,8 @@ import { HotkeyConfigModal } from "../../components/ui/HotkeyConfigModal";
 import { SetlistManager } from "./SetlistManager";
 import { Setlist } from "../../hooks/useSetlistStorage";
 import { Script } from "../../hooks/useScriptStorage";
+import { useMidi } from "../../hooks/useMidi";
+import { MidiAction } from "../../types";
 
 interface MusicActionToolbarProps {
     onInsertTag: (tag: string) => void;
@@ -38,17 +40,46 @@ interface MusicActionToolbarProps {
     onCreateScript?: () => void;
     onUpdateScript?: (id: string, updates: Partial<Script>) => void;
     onDeleteScript?: (id: string) => void;
+
+    onStart?: () => void;
 }
 
 export const MusicActionToolbar = memo(({
     onClear, text, onTextChange, onSelectRange, onUndo, canUndo, isPro, onUnlockPro,
     setlists, activeSetlistId, onSwitchSetlist, onCreateSetlist, onDeleteSetlist, onUpdateSetlistTitle,
     activeSetlist, allScripts, onAddSong, onRemoveSong, onReorderSong,
-    onSwitchScript, activeScriptId, onCreateScript, onUpdateScript, onDeleteScript
+    onSwitchScript, activeScriptId, onCreateScript, onUpdateScript, onDeleteScript, onStart
 }: MusicActionToolbarProps) => {
     const [showTutorialModal, setShowTutorialModal] = useState(false);
     const [showHotkeyModal, setShowHotkeyModal] = useState(false);
     const [showFindReplaceModal, setShowFindReplaceModal] = useState(false);
+
+    const handleMidiAction = useCallback((action: MidiAction) => {
+        if (!activeSetlist || !activeScriptId || !onSwitchScript) return;
+
+        const currentIndex = activeSetlist.songIds.indexOf(activeScriptId);
+
+        switch (action) {
+            case MidiAction.NEXT_SONG:
+                if (currentIndex < activeSetlist.songIds.length - 1) {
+                    onSwitchScript(activeSetlist.songIds[currentIndex + 1]);
+                }
+                break;
+            case MidiAction.PREV_SONG:
+                if (currentIndex > 0) {
+                    onSwitchScript(activeSetlist.songIds[currentIndex - 1]);
+                }
+                break;
+            case MidiAction.TOGGLE_PLAY:
+            case MidiAction.START_SCROLL:
+                if (onStart) onStart();
+                break;
+            default:
+                break;
+        }
+    }, [activeSetlist, activeScriptId, onSwitchScript, onStart]);
+
+    const { isMidiEnabled, setIsMidiEnabled } = useMidi(handleMidiAction);
 
     return (
         <>
@@ -95,7 +126,18 @@ export const MusicActionToolbar = memo(({
 
                 {/* EDITING TOOLS (RIGHT) */}
                 <div className="flex items-center gap-2">
-                    <S.IconButton onClick={() => setShowHotkeyModal(true)} title="Hotkeys" className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white border border-white/5">
+                    {/* MIDI Toggle Tool */}
+                    <div className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/5 mr-2">
+                        <div className={`w-2 h-2 rounded-full ${isMidiEnabled ? 'bg-amber-500 animate-pulse' : 'bg-slate-600'}`} />
+                        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest hidden sm:inline">MIDI MODE</span>
+                        <S.Toggle
+                            active={isMidiEnabled}
+                            onClick={() => setIsMidiEnabled(!isMidiEnabled)}
+                            size="sm"
+                        />
+                    </div>
+
+                    <S.IconButton onClick={() => setShowHotkeyModal(true)} title="Hotkeys & MIDI" className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white border border-white/5">
                         <KeyboardIcon className="w-4 h-4" />
                     </S.IconButton>
 
@@ -108,6 +150,7 @@ export const MusicActionToolbar = memo(({
                     </S.IconButton>
                 </div>
             </div>
+
 
             <TutorialModal isOpen={showTutorialModal} onClose={() => setShowTutorialModal(false)} />
             <HotkeyConfigModal isOpen={showHotkeyModal} onClose={() => setShowHotkeyModal(false)} isPro={isPro} onUnlockPro={onUnlockPro} />

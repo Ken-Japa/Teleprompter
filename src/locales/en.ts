@@ -785,5 +785,21 @@ Paste your script here and customize your experience to start shining!`,
         footer: "Simple. Fast. Built for those who play.",
       }
     }
+  },
+  midi: {
+    title: "Configure MIDI",
+    enabled: "Enable MIDI Mode",
+    disabled: "Disable MIDI Mode",
+    pressPedal: "Press pedal or key...",
+    mapping: "MIDI Mapping",
+    actions: {
+      TOGGLE_PLAY: "Play / Pause",
+      NEXT_SONG: "Next Song",
+      PREV_SONG: "Previous Song",
+      START_SCROLL: "Start Scrolling",
+      STOP_SCROLL: "Stop Scrolling",
+    },
+    proDescription: "Connecting MIDI pedals is exclusive for PRO members.",
   }
 };
+

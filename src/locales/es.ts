@@ -789,5 +789,21 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
         footer: "Simple. Rápido. Hecho para quien toca.",
       }
     }
+  },
+  midi: {
+    title: "Configurar MIDI",
+    enabled: "Activar Modo MIDI",
+    disabled: "Desactivar Modo MIDI",
+    pressPedal: "Presione el pedal o tecla...",
+    mapping: "Mapeo MIDI",
+    actions: {
+      TOGGLE_PLAY: "Reproducir / Pausar",
+      NEXT_SONG: "Próxima Canción",
+      PREV_SONG: "Canción Anterior",
+      START_SCROLL: "Iniciar Desplazamiento",
+      STOP_SCROLL: "Detener Desplazamiento",
+    },
+    proDescription: "La conexión con pedales MIDI es exclusiva para miembros PRO.",
   }
 };
+

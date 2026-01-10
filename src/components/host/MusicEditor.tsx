@@ -97,7 +97,9 @@ export const MusicEditor: React.FC<MusicEditorProps> = ({
                         onCreateScript={onCreateScript}
                         onUpdateScript={onUpdateScript}
                         onDeleteScript={onDeleteScript}
+                        onStart={onStart}
                     />
+
 
                     <S.EditorTextArea
                         ref={textAreaRef}

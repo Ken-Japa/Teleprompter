@@ -230,3 +230,19 @@ export enum HotkeyAction {
 }
 
 export type HotkeyConfig = Record<HotkeyAction, string>;
+
+export enum MidiAction {
+    TOGGLE_PLAY = "TOGGLE_PLAY",
+    NEXT_SONG = "NEXT_SONG",
+    PREV_SONG = "PREV_SONG",
+    START_SCROLL = "START_SCROLL",
+    STOP_SCROLL = "STOP_SCROLL",
+}
+
+export type MidiMapping = {
+    type: "note" | "cc";
+    value: number;
+};
+
+export type MidiConfig = Record<MidiAction, MidiMapping | null>;
+

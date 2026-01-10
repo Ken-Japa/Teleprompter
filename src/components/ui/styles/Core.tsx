@@ -214,3 +214,32 @@ export const ColorButton = ({
         ></button>
     );
 };
+
+export const Toggle = ({
+    active,
+    onClick,
+    size = "default",
+}: {
+    active: boolean;
+    onClick: () => void;
+    size?: "default" | "sm";
+}) => {
+    const width = size === "sm" ? "w-8" : "w-10";
+    const height = size === "sm" ? "h-4" : "h-5";
+    const circleSize = size === "sm" ? "h-3 w-3" : "h-4 w-4";
+    const translateX = size === "sm" ? "translate-x-4" : "translate-x-5";
+
+    return (
+        <button
+            onClick={onClick}
+            className={`relative flex items-center ${width} ${height} rounded-full transition-colors duration-300 focus:outline-none ${active ? "bg-brand-500" : "bg-slate-700"
+                }`}
+        >
+            <span
+                className={`inline-block ${circleSize} bg-white rounded-full transition-transform duration-300 transform ${active ? translateX : "translate-x-1"
+                    }`}
+            />
+        </button>
+    );
+};
+

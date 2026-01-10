@@ -795,5 +795,21 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
         footer: "Simples. Rápido. Feito pra quem toca.",
       }
     }
+  },
+  midi: {
+    title: "Configurar MIDI",
+    enabled: "Ativar Modo MIDI",
+    disabled: "Desativar Modo MIDI",
+    pressPedal: "Pressione o pedal ou tecla...",
+    mapping: "Mapeamento MIDI",
+    actions: {
+      TOGGLE_PLAY: "Play / Pause",
+      NEXT_SONG: "Próxima Música",
+      PREV_SONG: "Música Anterior",
+      START_SCROLL: "Iniciar Rolagem",
+      STOP_SCROLL: "Parar Rolagem",
+    },
+    proDescription: "A conexão com pedais MIDI é exclusiva para membros PRO.",
   }
 };
+

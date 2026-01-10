@@ -37,8 +37,11 @@ import { MobileCameraOverlay } from "./MobileCameraOverlay";
 import { FitnessHUD } from "../overlay/FitnessHUD";
 import { parseSpokenNumber } from "../../utils/numberParser";
 import { useTranslation } from "../../hooks/useTranslation";
+import { useMidi } from "../../hooks/useMidi";
+import { MidiAction } from "../../types";
 
 interface PhysicsMethods {
+
   scrollTo: (progress: number) => void;
   clearCommands: (startId: number, endId: number) => void;
   internalScrollPos: React.MutableRefObject<number>;
@@ -581,6 +584,32 @@ export const Prompter = memo(
         onPreviousPart: () => handleNavigate('prev'),
         onNextPart: () => handleNavigate('next'),
       });
+
+      // --- MIDI CONTROL ---
+      const handleMidiAction = useCallback((action: MidiAction) => {
+        switch (action) {
+          case MidiAction.TOGGLE_PLAY:
+            onStateChange(!externalState.isPlaying, externalState.speed);
+            break;
+          case MidiAction.NEXT_SONG:
+            handleNavigate('next');
+            break;
+          case MidiAction.PREV_SONG:
+            handleNavigate('prev');
+            break;
+          case MidiAction.START_SCROLL:
+            onStateChange(true, externalState.speed);
+            break;
+          case MidiAction.STOP_SCROLL:
+            onStateChange(false, externalState.speed);
+            break;
+          default:
+            break;
+        }
+      }, [externalState.isPlaying, externalState.speed, onStateChange, handleNavigate]);
+
+      useMidi(handleMidiAction);
+
 
 
       // Voice control toggle
