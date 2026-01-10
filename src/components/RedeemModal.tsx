@@ -11,6 +11,7 @@ interface RedeemModalProps {
   onClose: () => void;
   onOpenFeedback?: () => void;
   errorMessage: string | null;
+  reason?: string | null;
   isValidating: boolean;
   isTrialActive?: boolean;
   trialEndTime?: number | null;
@@ -25,6 +26,7 @@ export const RedeemModal: React.FC<RedeemModalProps> = ({
   onClose,
   onOpenFeedback,
   errorMessage,
+  reason,
   isValidating,
   isTrialActive,
   trialEndTime,
@@ -43,7 +45,22 @@ export const RedeemModal: React.FC<RedeemModalProps> = ({
     <S.PaywallModal title={title} desc={desc} onClose={onClose}>
       <div className="flex flex-col space-y-5">
         {errorMessage && (
-          <p className="text-red-500 text-center text-sm">{errorMessage}</p>
+          <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4 text-center">
+            <p className="text-red-400 text-sm">{errorMessage}</p>
+            {reason === "device_limit" && (
+              <button
+                onClick={() => window.open('https://wa.me/5521994303047?text=Olá, atingi o limite de dispositivos e preciso resetar minha chave PRO.', '_blank')}
+                className="mt-3 text-xs bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full font-bold transition-colors inline-flex items-center gap-2"
+              >
+                <span>💬</span> {t("host.paywall.contactSupport")}
+              </button>
+            )}
+            {reason === "invalid_key" && (
+              <p className="text-xs text-red-500/60 mt-2 italic">
+                {t("host.paywall.notFound")}
+              </p>
+            )}
+          </div>
         )}
         <input
           type="text"

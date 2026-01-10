@@ -247,6 +247,7 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
 
   const [unlockKey, setUnlockKey] = useState<string>("");
   const [paywallErrorMessage, setPaywallErrorMessage] = useState<string | null>(null);
+  const [paywallReason, setPaywallReason] = useState<string | null>(null);
   const [showCountdownModal, setShowCountdownModal] = useState<boolean>(false);
   const [isValidating, setIsValidating] = useState<boolean>(false);
   const [isVoiceMode, setIsVoiceMode] = useState<boolean>(false);
@@ -320,6 +321,7 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
 
   const handleUnlock = async () => {
     setPaywallErrorMessage(null); // Clear previous errors
+    setPaywallReason(null);
 
     if (!unlockKey) {
       setPaywallErrorMessage(t("host.paywall.emptyKey"));
@@ -332,9 +334,11 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
       const result = await unlockPro(normalizedKey);
       if (!result.success) {
         setPaywallErrorMessage(result.message || t("host.paywall.invalidKey"));
+        setPaywallReason(result.reason || null);
       } else {
         trackGoogleAdsPurchase();
         setUnlockKey("");
+        setPaywallReason(null);
       }
     } finally {
       setIsValidating(false);
@@ -454,6 +458,7 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
       prompterState,
       errorMessage,
       paywallErrorMessage,
+      paywallReason,
       showCountdownModal,
       prompterSettings,
       isValidating,

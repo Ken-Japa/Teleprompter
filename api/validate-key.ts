@@ -101,10 +101,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
   }
 
-  const { key } = req.body;
+  const { key, deviceId: providedDeviceId } = req.body;
 
   if (!key) {
-    return res.status(400).json({ success: false, message: "Chave é obrigatória." });
+    return res.status(400).json({ success: false, message: "Chave é obrigatória.", reason: "missing_key" });
   }
 
   try {
@@ -112,54 +112,75 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const snapshot = await keysCollection.where("key", "==", key).limit(1).get();
 
     if (snapshot.empty) {
-      return res.status(200).json({ success: false, message: "Chave inválida." });
+      console.warn(`[VALIDATION_FAIL] Key not found: ${key}`);
+      return res.status(200).json({
+        success: false,
+        message: "Chave não encontrada. Verifique se digitou corretamente ou cheque seu e-mail da Kiwify (spam inclusive).",
+        reason: "invalid_key"
+      });
     }
 
     const doc = snapshot.docs[0];
     const data = doc.data();
 
+    // Determine device ID: Prefer provided deviceId (fingerprint), fallback to IP
     const currentIP = (req.headers["x-forwarded-for"] as string) || req.socket.remoteAddress || "unknown";
-    // O campo devices pode não existir na primeira venda (se foi feita antes da atualização)
-    const currentDevices: string[] = data.devices || [];
+    const deviceId = providedDeviceId || currentIP;
 
-    // Cenário 1: Re-login no mesmo dispositivo. Sucesso imediato.
-    if (currentDevices.includes(currentIP)) {
-      return res.status(200).json({ success: true, message: "Acesso reativado com sucesso." });
-    }
-
-    // Cenário 2: Chave já usada e limite atingido.
-    if (data.status === "active" && currentDevices.length >= DEVICE_LIMIT) {
-      return res.status(200).json({
-        success: false,
-        message: `Limite de ${DEVICE_LIMIT} dispositivos atingido para esta chave.`,
+    // Existing devices: Handle both old string array and new object array formats
+    let devices: { id: string, lastSeen: number }[] = [];
+    if (Array.isArray(data.devices)) {
+      devices = data.devices.map((d: any) => {
+        if (typeof d === 'string') return { id: d, lastSeen: data.activatedAt ? data.activatedAt.toMillis?.() || Date.now() : Date.now() };
+        return d;
       });
     }
 
-    // Cenário 3: Primeiro uso ('unused') ou novo dispositivo dentro do limite.
-    if (data.status === "unused" || currentDevices.length < DEVICE_LIMIT) {
-      const updateData: { [key: string]: any } = {
-        // Adiciona o IP atual à lista de dispositivos (usando FieldValue.arrayUnion)
-        devices: FieldValue.arrayUnion(currentIP),
-      };
+    const sixMonthsAgo = Date.now() - (6 * 30 * 24 * 60 * 60 * 1000);
 
-      // Se for a primeira ativação, atualiza o status para 'active' e registra o timestamp.
-      if (data.status === "unused") {
-        updateData.status = "active";
-        updateData.activatedAt = FieldValue.serverTimestamp();
-        updateData.activatedByIp = currentIP; // IP da primeira ativação
-        await sendWelcomeEmail(data.email);
-      }
+    // Filter out inactive devices (older than 6 months)
+    const activeDevices = devices.filter(d => d.lastSeen > sixMonthsAgo);
+    const existingDeviceIndex = activeDevices.findIndex(d => d.id === deviceId);
 
-      // ATENÇÃO: Faz uma única atualização no Firestore com todos os dados.
-      await doc.ref.update(updateData);
-
-      return res.status(200).json({ success: true });
+    // Scenario 1: Re-login on the same device.
+    if (existingDeviceIndex !== -1) {
+      // Update lastSeen for this device
+      activeDevices[existingDeviceIndex].lastSeen = Date.now();
+      await doc.ref.update({ devices: activeDevices });
+      return res.status(200).json({ success: true, message: "Acesso reativado com sucesso." });
     }
 
-    // Cenário 4: Qualquer outro status (revogado)
-    return res.status(200).json({ success: false, message: "Chave inválida ou revogada." });
+    // Scenario 2: Limit reached with active devices.
+    if (data.status === "active" && activeDevices.length >= DEVICE_LIMIT) {
+      console.warn(`[VALIDATION_FAIL] Limit reached for key: ${key}. IPs/Devices: ${activeDevices.length}`);
+      return res.status(200).json({
+        success: false,
+        message: `Limite de ${DEVICE_LIMIT} dispositivos atingido. Se você trocou de aparelho ou formatou o PC, contate o suporte para resetar seus acessos.`,
+        reason: "device_limit"
+      });
+    }
+
+    // Scenario 3: First use or new device within limit.
+    const newDevice = { id: deviceId, lastSeen: Date.now() };
+    const updatedDevices = [...activeDevices, newDevice];
+
+    const updateData: { [key: string]: any } = {
+      devices: updatedDevices,
+    };
+
+    if (data.status === "unused") {
+      updateData.status = "active";
+      updateData.activatedAt = FieldValue.serverTimestamp();
+      updateData.activatedByIp = currentIP;
+      await sendWelcomeEmail(data.email);
+    }
+
+    await doc.ref.update(updateData);
+    console.log(`[VALIDATION_SUCCESS] Key ${key} activated on device ${deviceId}`);
+
+    return res.status(200).json({ success: true });
   } catch (error) {
-    console.error("Error validating key:", error);
-    return res.status(500).json({ success: false, message: "Erro interno no servidor." });
+    console.error("[VALIDATION_ERROR] Error validating key:", error);
+    return res.status(500).json({ success: false, message: "Erro interno no servidor. Tente novamente em instantes.", reason: "server_error" });
   }
 }

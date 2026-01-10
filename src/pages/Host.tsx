@@ -35,7 +35,7 @@ export const Host: React.FC<HostProps> = ({ featureFlags }) => {
     // Setlist Storage (Used for Music Mode)
     const setlistStorage = useSetlistStorage();
 
-    const { text, isEditMode, peerId, status, isPro, showPaywall, unlockKey, prompterState, errorMessage, paywallErrorMessage, showCountdownModal, prompterSettings, isValidating, bilingualTexts, isTrialActive, trialEndTime, detectedBpm, autoBpmError } = state;
+    const { text, isEditMode, peerId, status, isPro, showPaywall, unlockKey, prompterState, errorMessage, paywallErrorMessage, paywallReason, showCountdownModal, prompterSettings, isValidating, bilingualTexts, isTrialActive, trialEndTime, detectedBpm, autoBpmError } = state;
 
     const handleScriptFinished = React.useCallback((summary: any) => {
         setSessionSummary(summary);
@@ -54,6 +54,7 @@ export const Host: React.FC<HostProps> = ({ featureFlags }) => {
                     setShowFeedback(true);
                 }}
                 errorMessage={paywallErrorMessage}
+                reason={paywallReason}
                 isValidating={isValidating}
                 isTrialActive={isTrialActive}
                 trialEndTime={trialEndTime}

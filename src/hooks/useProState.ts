@@ -70,14 +70,66 @@ export const useProState = (elapsedTime: number) => {
         return parseInt(result);
     }
 
-    const startTrial = () => {
+    // Check for trial activation from landing page or server
+    useEffect(() => {
+        const checkTrialSync = async () => {
+            if (isPro) return;
+
+            const deviceId = getDeviceId();
+
+            // 1. Check if we should start trial from landing page
+            const shouldStartTrial = localStorage.getItem("PROMPTNINJA_START_TRIAL") === "true";
+            if (shouldStartTrial) {
+                startTrial();
+                localStorage.removeItem("PROMPTNINJA_START_TRIAL");
+                return;
+            }
+
+            // 2. If no local trial, check server (for re-installs/cleared cache)
+            if (!trialEndTime) {
+                try {
+                    const response = await fetch("/api/sync-trial", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ deviceId, action: "get" }),
+                    });
+                    const data = await response.json();
+                    if (data.success && data.trialData) {
+                        try {
+                            const endTime = decryptTrialData(data.trialData);
+                            if (endTime > Date.now()) {
+                                localStorage.setItem(PROMPTER_DEFAULTS.STORAGE_KEYS.PRO_TRIAL, data.trialData);
+                                setSharedCookie(SHARED_COOKIE_KEYS.PRO_TRIAL, data.trialData, 1);
+                                setTrialEndTime(endTime);
+                                setIsPro(true);
+                            }
+                        } catch (e) { /* ignore */ }
+                    }
+                } catch (e) { /* silent fail */ }
+            }
+        };
+
+        checkTrialSync();
+    }, [isPro, trialEndTime]);
+
+    const startTrial = async () => {
         const endTime = Date.now() + 24 * 60 * 60 * 1000; // 24 hours
         const encrypted = encryptTrialData(endTime);
+        const deviceId = getDeviceId();
+
+        // Save locally
         localStorage.setItem(PROMPTER_DEFAULTS.STORAGE_KEYS.PRO_TRIAL, encrypted);
-        setSharedCookie(SHARED_COOKIE_KEYS.PRO_TRIAL, encrypted, 1); // Trial cookie lasts 1 day
+        setSharedCookie(SHARED_COOKIE_KEYS.PRO_TRIAL, encrypted, 1);
         setTrialEndTime(endTime);
         setIsPro(true);
         trackTrialActivation();
+
+        // Sync with server (background)
+        fetch("/api/sync-trial", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ deviceId, action: "start", trialData: encrypted }),
+        }).catch(err => console.error("Error syncing trial:", err));
     };
 
     const isTrialActive = trialEndTime ? trialEndTime > Date.now() : false;
@@ -96,15 +148,6 @@ export const useProState = (elapsedTime: number) => {
             trackEvent("paywall_view", { trigger: "manual" });
         };
     }, [isPro, setShowPaywall]);
-
-    // Check for trial activation from landing page
-    useEffect(() => {
-        const shouldStartTrial = localStorage.getItem("PROMPTNINJA_START_TRIAL") === "true";
-        if (shouldStartTrial && !isPro) {
-            startTrial();
-            localStorage.removeItem("PROMPTNINJA_START_TRIAL");
-        }
-    }, [isPro]);
 
     // Paywall Timer Logic
     // Trigger Paywall when elapsed time reaches 20 minutes (1200 seconds)
@@ -132,16 +175,39 @@ export const useProState = (elapsedTime: number) => {
         return () => clearInterval(interval);
     }, [isTrialActive, trialEndTime]);
 
-    const unlockPro = async (key: string): Promise<{ success: boolean; message?: string }> => {
+    const fetchWithRetry = async (url: string, options: RequestInit, retries = 3): Promise<Response> => {
         try {
-            const normalizedKey = key.trim().toUpperCase();
-            // Use relative path if on the same project, but absolute as fallback for cross-domain stability
-            // Since we know they are the same project deployment, relative is safer to avoid CORS
+            const response = await fetch(url, options);
+            if (!response.ok && retries > 0) throw new Error("Network response was not ok");
+            return response;
+        } catch (e) {
+            if (retries > 0) {
+                await new Promise(resolve => setTimeout(resolve, 1000)); // wait 1s before retry
+                return fetchWithRetry(url, options, retries - 1);
+            }
+            throw e;
+        }
+    };
+
+    const getDeviceId = () => {
+        let id = localStorage.getItem("PROMPTNINJA_DEVICE_ID");
+        if (!id) {
+            id = crypto.randomUUID?.() || Math.random().toString(36).substring(2) + Date.now().toString(36);
+            localStorage.setItem("PROMPTNINJA_DEVICE_ID", id);
+        }
+        return id;
+    };
+
+    const unlockPro = async (key: string): Promise<{ success: boolean; message?: string; reason?: string }> => {
+        const normalizedKey = key.trim().toUpperCase();
+        const deviceId = getDeviceId();
+
+        try {
             const apiEndpoint = "/api/validate-key";
-            const response = await fetch(apiEndpoint, {
+            const response = await fetchWithRetry(apiEndpoint, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ key: normalizedKey }),
+                body: JSON.stringify({ key: normalizedKey, deviceId }),
             });
 
             const data = await response.json();
@@ -151,14 +217,31 @@ export const useProState = (elapsedTime: number) => {
                 setShowPaywall(false);
                 localStorage.setItem(PROMPTER_DEFAULTS.STORAGE_KEYS.PRO_STATUS, "true");
                 setSharedCookie(SHARED_COOKIE_KEYS.PRO_STATUS, "true");
-                trackEvent("pro_key_redeemed");
+                trackEvent("pro_key_redeemed", { key: normalizedKey, deviceId });
                 return { success: true };
             } else {
-                return { success: false, message: data.message || "Chave inválida ou já utilizada." };
+                // Log failure to Sentry for debugging
+                import("@sentry/react").then(Sentry => {
+                    Sentry.captureMessage(`Key validation failed: ${data.reason}`, {
+                        level: "warning",
+                        extra: { key: normalizedKey, deviceId, reason: data.reason, message: data.message }
+                    });
+                });
+
+                return {
+                    success: false,
+                    message: data.message || "Chave inválida ou já utilizada.",
+                    reason: data.reason
+                };
             }
         } catch (error) {
             console.error("Erro na validação:", error);
-            return { success: false, message: "Erro de conexão. Tente novamente." };
+            import("@sentry/react").then(Sentry => {
+                Sentry.captureException(error, {
+                    extra: { key: normalizedKey, deviceId, context: "unlockPro_fetch_error" }
+                });
+            });
+            return { success: false, message: "Erro de conexão. Verifique sua internet e tente novamente.", reason: "network_error" };
         }
     };
 
