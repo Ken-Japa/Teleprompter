@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { logger } from "../utils/logger";
-import { useTranslation } from "../hooks/useTranslation";
+
 
 export interface Setlist {
     id: string;
@@ -20,8 +20,6 @@ const generateId = () => {
 };
 
 export const useSetlistStorage = () => {
-    const { t } = useTranslation();
-
     // Initialize state from storage
     const [setlists, setSetlists] = useState<Setlist[]>(() => {
         try {

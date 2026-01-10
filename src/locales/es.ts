@@ -709,41 +709,84 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
   music: {
     hero: {
       badge: "Modo Escenario",
-      headline: "Tus Letras y Acordes.",
-      subHeadline: "En el Tiempo Justo.",
-      description: "El teleprompter hecho para músicos. Desplaza letras y acordes automáticamente, crea setlists y nunca más olvides una canción en el escenario. Funciona offline.",
-      cta: "🎸 Abrir Setlist Ahora",
+      headline: "Teleprompter para Músicos:",
+      subHeadline: "Setlists Infinitas, Cero Lag y Control por Pedal",
+      description: "Crea setlists con desplazamiento automático, sync BPM y control P2P móvil. Perfecto para bandas independientes, sin congelarse en el escenario.",
+      cta: "Crea Tu Setlist Gratis Ahora",
+      ctaSecondary: "Ver en Acción",
     },
     features: {
       headline: "Todo para tu Show",
       subheadline: "Herramientas esenciales para ensayos y presentaciones en vivo.",
       setlist: {
-        title: "Setlists Ilimitados",
-        desc: "Crea y organiza repertorios para diferentes shows. Cambia de canción con un clic.",
+        title: "Setlists Personalizadas",
+        desc: "Añade y reordena canciones libremente. Edita acordes con fuente monoespaciada para una alineación perfecta.",
       },
       offline: {
-        title: "100% Offline",
-        desc: "¿Sin internet en el escenario? No hay problema. PromptNinja Music guarda todo en tu dispositivo.",
+        title: "Offline PWA",
+        desc: "Instala en tablet o PC. Funciona sin internet garantizando estabilidad total en el escenario.",
       },
       themes: {
         title: "Modo Nocturno (Stage Mode)",
         desc: "Fondo oscuro y letras contrastantes. Perfecto para ambientes con poca luz sin deslumbrarte.",
       },
       lyrics: {
-        title: "Formato de Acordes",
-        desc: "Respeta espacios y saltos de línea. Tus acordes se quedan exactamente donde deben estar sobre la letra.",
+        title: "Cero Lag P2P",
+        desc: "Control remoto vía celular con respuesta instantánea. Estabilidad esencial para shows largos.",
+      },
+      pedal: {
+        title: "Pedales y Hotkeys",
+        desc: "Atajos nativos para Page Up/Down. Compatible con pedales bluetooth para control con los pies.",
+      },
+      bpm: {
+        title: "BPM Sync (Próximamente)",
+        desc: "Desplazamiento automático al ritmo de la banda. El sistema detectará el tempo vía micrófono.",
       },
       voice: {
         desc: "Deja que PromptNinja pase la página por ti. El reconocimiento de voz sigue tu canto.",
       },
       pro: {
-        desc: "Desbloquea control por voz, setlists infinitos y uso multidispositivo para toda la banda.",
+        desc: "Desbloquea MIDI personalizable (pronto), setlists infinitos y uso multidispositivo.",
       },
     },
     landing: {
       meta: {
-        title: "PromptNinja Music: Teleprompter de Acordes y Letras | Setlists para Músicos",
-        description: "El mejor teleprompter para músicos. Crea setlists, desplaza acordes y letras automáticamente. Modo offline y temas oscuros para escenario.",
+        title: "Teleprompter para Músicos Gratis: Setlists, BPM Sync y Cero Lag | PromptNinja Music",
+        description: "El teleprompter online gratuito para bandas: Crea setlists infinitas, desplazamiento automático con BPM sync y control por pedal MIDI. P2P sin lag – perfecto para shows en vivo en PC o móvil.",
+        keywords: "teleprompter para músicos, teleprompter de acordes, app de setlist, letras y acordes, desplazamiento automático, teleprompter escenario, promptninja music",
+      },
+      pwa: {
+        title: "Instala en Tu Tablet de Escenario",
+        subtitle: "Offline, Rápido y Sin Notificaciones.",
+        cta: "Instalar App de Escenario",
+      },
+      faq: {
+        title: "Preguntas de Músicos",
+        items: [
+          {
+            q: "¿Cómo sincronizar con un pedal?",
+            a: "PromptNinja reconoce nativamente teclas como PageUp, PageDown, Home y End que son el estándar de la mayoría de los pedales bluetooth (incluso genéricos). Solo empareja y toca.",
+          },
+          {
+            q: "¿Funciona para setlists de más de 30 canciones?",
+            a: "¡Sí! Puedes crear setlists ilimitadas. La carga es instantánea ya que todo corre localmente en tu navegador.",
+          },
+          {
+            q: "¿Cuál es la diferencia con apps como Cube Turner?",
+            a: "PromptNinja es multiplataforma (corre en cualquier lugar) y cuenta con control remoto P2P único, permitiendo que otro miembro de la banda controle la letra desde su celular si es necesario.",
+          },
+          {
+            q: "¿Necesito internet en el show?",
+            a: "No. Recomendamos cargar la página una vez con internet. Después de eso, funciona 100% offline (PWA).",
+          }
+        ]
+      },
+      cta: {
+        title: "¿Listo para Tu Próximo Show?",
+        subtitle: "Más de 500 músicos ya usan PromptNinja en el escenario.",
+        ctaPrimary: "Prueba Gratis en el Ensayo",
+        ctaSecondary: "Ver Planes PRO",
+        footer: "Simple. Rápido. Hecho para quien toca.",
       }
     }
   }

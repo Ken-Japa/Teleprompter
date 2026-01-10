@@ -715,41 +715,84 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
   music: {
     hero: {
       badge: "Modo Palco",
-      headline: "Suas Letras e Cifras.",
-      subHeadline: "No Tempo Certo.",
-      description: "O teleprompter feito para músicos. Role letras e acordes automaticamente, crie setlists e nunca mais esqueça uma música no palco. Funciona offline.",
-      cta: "🎸 Abrir Setlist Agora",
+      headline: "Teleprompter para Músicos:",
+      subHeadline: "Setlists Infinitas, Zero Lag e Controle por Pedal",
+      description: "Crie setlists com rolagem automática, sync BPM e P2P via celular. Perfeito para bandas independentes, sem travar no palco.",
+      cta: "Crie Sua Setlist Grátis Agora",
+      ctaSecondary: "Veja em Ação",
     },
     features: {
       headline: "Tudo para o seu Show",
       subheadline: "Ferramentas essenciais para ensaios e apresentações ao vivo.",
       setlist: {
-        title: "Setlists Ilimitados",
-        desc: "Crie e organize repertórios para diferentes shows. Troque de música com um clique.",
+        title: "Setlists Personalizadas",
+        desc: "Adicione e reordene músicas livremente. Edite cifras com fonte monoespaçada para alinhamento perfeito.",
       },
       offline: {
-        title: "100% Offline",
-        desc: "Sem internet no palco? Sem problemas. O PromptNinja Music salva tudo no seu dispositivo.",
+        title: "Offline PWA",
+        desc: "Instale no tablet ou PC. Funciona sem internet garantindo estabilidade total no palco.",
       },
       themes: {
         title: "Modo Noturno (Stage Mode)",
         desc: "Fundo escuro e letras contrastantes. Perfeito para ambientes com pouca luz sem ofuscar sua visão.",
       },
       lyrics: {
-        title: "Formatação de Cifras",
-        desc: "O texto respeita espaços e quebras de linha. Seus acordes ficam exatamente onde devem ficar sobre a letra.",
+        title: "Zero Lag P2P",
+        desc: "Controle remoto via celular com resposta instantânea. Estabilidade essencial para shows longos.",
+      },
+      pedal: {
+        title: "Pedais e Hotkeys",
+        desc: "Atalhos nativos para Page Up/Down. Compatível com pedais bluetooth para controle com os pés.",
+      },
+      bpm: {
+        title: "BPM Sync (Em Breve)",
+        desc: "Rolagem automática no ritmo da banda. O sistema detectará o andamento via microfone.",
       },
       voice: {
         desc: "Deixe o PromptNinja virar a página pra você. O reconhecimento de voz acompanha o canto.",
       },
       pro: {
-        desc: "Desbloqueie controle por voz, setlists infinitos e uso em múltiplos dispositivos para a banda toda.",
+        desc: "Desbloqueie MIDI customizável (em breve), setlists infinitos e uso em múltiplos dispositivos.",
       },
     },
     landing: {
       meta: {
         title: "PromptNinja Music: Teleprompter de Cifras e Letras | Setlists para Músicos",
         description: "O melhor teleprompter para músicos. Crie setlists, role cifras e letras automaticamente. Modo offline e temas escuros para palco.",
+        keywords: "teleprompter para músicos, teleprompter de cifras, app de setlist, letras e cifras, scrolagem automática, teleprompter palco, promptninja music",
+      },
+      pwa: {
+        title: "Instale no Seu Tablet de Palco",
+        subtitle: "Offline, Rápido e Sem Atrair Notificações.",
+        cta: "Instalar App de Palco",
+      },
+      faq: {
+        title: "Dúvidas de Músicos",
+        items: [
+          {
+            q: "Como syncar com pedal?",
+            a: "O PromptNinja reconhece nativamente teclas como PageUp, PageDown, Home e End que são o padrão da maioria dos pedais bluetooth (inclusive genéricos). Basta parear e usar.",
+          },
+          {
+            q: "Funciona para setlists de 30 músicas?",
+            a: "Sim! Você pode criar setlists ilimitadas. O carregamento é instantâneo pois tudo roda localmente no seu navegador.",
+          },
+          {
+            q: "Qual a diferença para apps como Cube Turner?",
+            a: "O PromptNinja é focado em ser cross-platform (roda em qualquer lugar) e possui o controle remoto P2P único, permitindo que outro integrante da banda controle a letra pelo celular se necessário.",
+          },
+          {
+            q: "Preciso de internet no show?",
+            a: "Não. Recomendamos carregar a página uma vez com internet. Depois disso, ele funciona 100% offline (PWA).",
+          }
+        ]
+      },
+      cta: {
+        title: "Pronto para Seu Próximo Show?",
+        subtitle: "Mais de 500 músicos já usam o PromptNinja no palco.",
+        ctaPrimary: "Teste Grátis no Ensaio",
+        ctaSecondary: "Ver Planos PRO",
+        footer: "Simples. Rápido. Feito pra quem toca.",
       }
     }
   }

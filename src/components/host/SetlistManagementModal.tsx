@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Setlist } from "../../hooks/useSetlistStorage";
 import { Script } from "../../hooks/useScriptStorage";
-import * as S from "../ui/Styled";
-import { TrashIcon, PlusIcon, EditIcon, ArrowUpIcon, ArrowDownIcon, SearchIcon, CheckIcon, MusicIcon } from "../ui/Icons";
+
+import { TrashIcon, PlusIcon, EditIcon, ArrowUpIcon, ArrowDownIcon, SearchIcon, MusicIcon } from "../ui/Icons";
 
 interface SetlistManagementModalProps {
     isOpen: boolean;
@@ -186,7 +186,6 @@ export const SetlistManagementModal: React.FC<SetlistManagementModalProps> = ({
                                 <h3 className="text-[10px] font-bold text-slate-600 uppercase mb-2 px-2">Library ({availableSongs.length})</h3>
                                 <div className="space-y-1">
                                     {availableSongs.map(script => {
-                                        const isInSetlist = activeSetlist?.songIds.includes(script.id);
                                         return (
                                             <div key={script.id} className="group flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/5 text-sm text-slate-300 border border-transparent hover:border-white/5 transition-all">
 

@@ -3,7 +3,17 @@ import { useTranslation } from "../../hooks/useTranslation";
 import * as S from "../ui/Styled";
 import { MusicIcon } from "../ui/Icons";
 
-export const PwaSection: React.FC = () => {
+interface PwaSectionProps {
+    titleKey?: string;
+    subtitleKey?: string;
+    ctaKey?: string;
+}
+
+export const PwaSection: React.FC<PwaSectionProps> = ({
+    titleKey = "landing.hero.pwaSection.headline",
+    subtitleKey = "landing.hero.pwaSection.subheadline",
+    ctaKey = "landing.hero.pwaSection.cta"
+}) => {
     const { t, lang } = useTranslation();
     const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
 
@@ -62,10 +72,10 @@ export const PwaSection: React.FC = () => {
                                 PWA TECHNOLOGY
                             </div>
                             <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
-                                {t("landing.hero.pwaSection.headline")}
+                                {t(titleKey)}
                             </h2>
                             <p className="text-lg text-slate-300 mb-8 leading-relaxed">
-                                {t("landing.hero.pwaSection.subheadline")}
+                                {t(subtitleKey)}
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4">
@@ -73,7 +83,7 @@ export const PwaSection: React.FC = () => {
                                     onClick={handleInstallClick}
                                     className="bg-white text-slate-900 hover:bg-slate-200 font-bold py-4 px-8 rounded-xl shadow-lg transition-transform hover:scale-105 flex items-center justify-center gap-3"
                                 >
-                                    {t("landing.hero.pwaSection.cta")}
+                                    {t(ctaKey)}
                                 </button>
                             </div>
                         </div>

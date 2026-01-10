@@ -32,8 +32,7 @@ interface SetlistManagerProps {
 export const SetlistManager: React.FC<SetlistManagerProps> = (props) => {
     const {
         setlists, activeSetlistId, onSwitchSetlist, activeSetlist,
-        onSwitchScript, activeScriptId, allScripts, onCreateScript,
-        onDeleteScript
+        onSwitchScript, activeScriptId, onCreateScript
     } = props;
 
     const [isOpen, setIsOpen] = useState(false);
@@ -50,10 +49,6 @@ export const SetlistManager: React.FC<SetlistManagerProps> = (props) => {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
-    // Helper to get song display index
-    const currentSongIndex = activeSetlist?.songIds.findIndex(id => id === activeScriptId);
-    const displayIndex = currentSongIndex !== undefined && currentSongIndex !== -1 ? currentSongIndex + 1 : null;
-    const currentSong = allScripts.find(s => s.id === activeScriptId);
 
     return (
         <>

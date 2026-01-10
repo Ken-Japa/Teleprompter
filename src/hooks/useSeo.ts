@@ -8,6 +8,7 @@ interface SeoProps {
     ogType?: "website" | "article";
     schema?: object; // JSON-LD structured data
     alternates?: { hreflang: string; href: string }[];
+    keywords?: string;
 }
 
 export const useSeo = ({
@@ -18,36 +19,43 @@ export const useSeo = ({
     ogType = "website",
     schema,
     alternates,
+    keywords,
 }: SeoProps) => {
     useEffect(() => {
         // Update Title
         document.title = `${title} | PromptNinja`;
 
         // Helper to update or create meta tag
-        const updateMeta = (name: string, content: string, attribute: "name" | "property" = "name") => {
-            let element = document.querySelector(`meta[${attribute}="${name}"]`);
+        const updateMeta = (name: string, content: string) => {
+            // Try enabling finding by name OR property to cover legacy/index.html cases
+            let element = document.querySelector(`meta[name="${name}"], meta[property="${name}"]`);
             if (!element) {
                 element = document.createElement("meta");
-                element.setAttribute(attribute, name);
+                element.setAttribute("name", name);
                 document.head.appendChild(element);
             }
+            // Ensure consistency (if found by property, might want to normalize, but keeping simple for now)
             element.setAttribute("content", content);
         };
 
         // Update Meta Description
         updateMeta("description", description);
+        if (keywords) updateMeta("keywords", keywords);
 
         // Update Open Graph
-        updateMeta("og:title", title, "property");
-        updateMeta("og:description", description, "property");
-        updateMeta("og:type", ogType, "property");
-        updateMeta("og:url", canonicalUrl || window.location.href, "property");
-        updateMeta("og:image", ogImage, "property");
-        updateMeta("og:site_name", "PromptNinja", "property");
+        updateMeta("og:title", title);
+        updateMeta("og:description", description);
+        updateMeta("og:type", ogType);
+        updateMeta("og:url", canonicalUrl || window.location.href);
+        updateMeta("og:image", ogImage);
+        updateMeta("og:site_name", "PromptNinja");
 
         // Update Twitter specific
         updateMeta("twitter:image", ogImage);
         updateMeta("twitter:card", "summary_large_image");
+        updateMeta("twitter:title", title);
+        updateMeta("twitter:description", description);
+        updateMeta("twitter:url", canonicalUrl || window.location.href);
 
         // Update Thumbnail (Google/Other search engines)
         updateMeta("thumbnail", ogImage);
@@ -102,5 +110,5 @@ export const useSeo = ({
         return () => {
             // Cleanup logic if needed (rarely needed for SPA navigation unless full reset desired)
         };
-    }, [title, description, canonicalUrl, ogImage, ogType, schema, alternates]);
+    }, [title, description, canonicalUrl, ogImage, ogType, schema, alternates, keywords]);
 };

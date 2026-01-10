@@ -18,11 +18,33 @@ export const MusicLanding: React.FC<MusicLandingProps> = ({ onLaunch }) => {
     const { t, lang } = useTranslation();
     const [showFeedback, setShowFeedback] = React.useState(false);
 
+    const faqItems = t("music.landing.faq.items") as unknown as any[];
+
     useSeo({
         title: t("music.landing.meta.title") || t("landing.meta.title"),
         description: t("music.landing.meta.description") || t("landing.meta.description"),
+        keywords: t("music.landing.meta.keywords"),
         canonicalUrl: `https://music.solutionkit.com.br/${lang !== 'pt' ? `?lang=${lang}` : ''}`,
-        ogType: 'website'
+        alternates: [
+            { hreflang: "pt", href: "https://music.solutionkit.com.br/?lang=pt" },
+            { hreflang: "en", href: "https://music.solutionkit.com.br/?lang=en" },
+            { hreflang: "es", href: "https://music.solutionkit.com.br/?lang=es" },
+            { hreflang: "x-default", href: "https://music.solutionkit.com.br/?lang=pt" }
+        ],
+        ogType: 'website',
+        schema: {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "PromptNinja Music",
+            "applicationCategory": "MusicApplication",
+            "operatingSystem": "Web",
+            "offers": {
+                "@type": "Offer",
+                "price": "67",
+                "priceCurrency": "BRL"
+            },
+            "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5", "reviewCount": "19" }
+        }
     });
 
     return (
@@ -30,10 +52,24 @@ export const MusicLanding: React.FC<MusicLandingProps> = ({ onLaunch }) => {
             <Header />
             <MusicHero onLaunch={onLaunch} />
             <MusicFeatures />
-            <PwaSection />
-            <FAQ />
+            <PwaSection
+                titleKey="music.landing.pwa.title"
+                subtitleKey="music.landing.pwa.subtitle"
+                ctaKey="music.landing.pwa.cta"
+            />
+            <FAQ
+                titleKey="music.landing.faq.title"
+                items={faqItems && faqItems.length > 0 ? faqItems : undefined}
+            />
 
-            <FinalCTA onLaunch={onLaunch} />
+            <FinalCTA
+                onLaunch={onLaunch}
+                titleKey="music.landing.cta.title"
+                subtitleKey="music.landing.cta.subtitle"
+                ctaPrimaryKey="music.landing.cta.ctaPrimary"
+                ctaSecondaryKey="music.landing.cta.ctaSecondary"
+                footerKey="music.landing.cta.footer"
+            />
 
             <footer className="py-12 border-t border-slate-900 bg-[#020617] text-slate-500 text-sm">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">

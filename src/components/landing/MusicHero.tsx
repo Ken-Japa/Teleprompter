@@ -44,6 +44,18 @@ export const MusicHero: React.FC<MusicHeroProps> = ({ onLaunch }) => {
                         {t("music.hero.cta") || "🎸 Abrir Setlist Agora"}
                     </S.PrimaryButton>
                 </div>
+
+                {t("music.hero.ctaSecondary") && (
+                    <button
+                        onClick={() => {
+                            const features = document.getElementById('features');
+                            features?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="px-8 py-4 rounded-xl border border-white/10 hover:border-white/30 hover:bg-white/5 text-slate-300 hover:text-white transition-all font-medium backdrop-blur-sm"
+                    >
+                        {t("music.hero.ctaSecondary")}
+                    </button>
+                )}
             </div>
         </S.HeroSection >
     );
