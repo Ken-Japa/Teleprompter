@@ -10,16 +10,29 @@ const redis =
 
 const ratelimit = redis
   ? new Ratelimit({
-      redis: redis,
-      limiter: Ratelimit.slidingWindow(5, "1 h"), // 5 requests per hour
-      analytics: true,
-    })
+    redis: redis,
+    limiter: Ratelimit.slidingWindow(5, "1 h"), // 5 requests per hour
+    analytics: true,
+  })
   : null;
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // CORS Headers
+  // Allow CORS for local development or specific domains
+  const origin = req.headers.origin;
+  const allowedOrigins = [
+    "https://promptninja.solutionkit.com.br",
+    "https://music.solutionkit.com.br",
+    "http://localhost:3000",
+    "http://localhost:5173"
+  ];
+
+  if (origin && allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  } else {
+    res.setHeader("Access-Control-Allow-Origin", "https://promptninja.solutionkit.com.br");
+  }
+
   res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS,POST");
   res.setHeader(
     "Access-Control-Allow-Headers",
@@ -52,7 +65,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     const feedbackCollection = db.collection("feedbacks");
-    
+
     // Get IP for security/spam tracking
     const ip = (req.headers["x-forwarded-for"] as string) || req.socket.remoteAddress || "unknown";
 

@@ -74,6 +74,14 @@ export const MusicLanding: React.FC<MusicLandingProps> = ({ onLaunch }) => {
             <footer className="py-12 border-t border-slate-900 bg-[#020617] text-slate-500 text-sm">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
                     <div className="flex flex-col items-center gap-4 mb-8">
+                        <div className="flex flex-wrap justify-center gap-6 mb-4">
+                            <a
+                                href="https://promptninja.solutionkit.com.br"
+                                className="text-slate-400 hover:text-white transition-colors text-sm font-semibold border-b border-slate-800 hover:border-white pb-1"
+                            >
+                                {t("music.footer.backToGeneral") || "← Voltar para Teleprompter Geral"}
+                            </a>
+                        </div>
                         <a href="mailto:teleprompterninja@gmail.com" className="text-slate-400 hover:text-brand-400 transition-colors font-medium">
                             teleprompterninja@gmail.com
                         </a>

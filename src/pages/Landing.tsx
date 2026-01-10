@@ -55,25 +55,43 @@ export const Landing: React.FC<LandingProps> = ({ onLaunch }) => {
             <PwaSection />
             <FAQ />
 
-            {/* Hub Guide Link Section */}
-            <div className="bg-[#020617] border-slate-900 mb-16 text-center">
-                <p className="text-slate-400 mb-4 text-sm">
-                    {lang === "pt" ? "Explore mais conteúdos" :
-                        lang === "es" ? "Explora más contenido" :
-                            "Explore more content"}
-                </p>
-                <a
-                    href={
-                        lang === "pt" ? ROUTES_CONFIG.SEO_HUB_GUIDE.paths.pt :
-                            lang === "es" ? ROUTES_CONFIG.SEO_HUB_GUIDE.paths.es :
-                                ROUTES_CONFIG.SEO_HUB_GUIDE.paths.en
-                    }
-                    className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 hover:brightness-110 transition-all border-b border-purple-500/30 hover:border-purple-500 pb-1"
-                >
-                    {lang === "pt" ? "📖 Guia Completo de Teleprompter" :
-                        lang === "es" ? "📖 Guía Definitiva de Teleprompter" :
-                            "📖 Ultimate Teleprompter Guide"}
-                </a>
+            {/* Hub Guide & Music Mode Links */}
+            <div className="bg-[#020617] border-slate-900 mb-16 text-center flex flex-col items-center gap-8">
+                <div className="flex flex-col items-center">
+                    <p className="text-slate-400 mb-4 text-sm uppercase tracking-widest font-bold">
+                        {lang === "pt" ? "Para Músicos" :
+                            lang === "es" ? "Para Músicos" :
+                                "For Musicians"}
+                    </p>
+                    <a
+                        href="https://music.solutionkit.com.br"
+                        className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-500 hover:brightness-110 transition-all border-b-2 border-amber-500/30 hover:border-amber-500 pb-1"
+                    >
+                        {lang === "pt" ? "🎸 Teleprompter Modo Músico" :
+                            lang === "es" ? "🎸 Teleprompter Modo Músico" :
+                                "🎸 Musician Mode Teleprompter"}
+                    </a>
+                </div>
+
+                <div className="flex flex-col items-center opacity-70 hover:opacity-100 transition-opacity">
+                    <p className="text-slate-400 mb-4 text-sm font-medium">
+                        {lang === "pt" ? "Recursos Adicionais" :
+                            lang === "es" ? "Recursos Adicionales" :
+                                "Additional Resources"}
+                    </p>
+                    <a
+                        href={
+                            lang === "pt" ? ROUTES_CONFIG.SEO_HUB_GUIDE.paths.pt :
+                                lang === "es" ? ROUTES_CONFIG.SEO_HUB_GUIDE.paths.es :
+                                    ROUTES_CONFIG.SEO_HUB_GUIDE.paths.en
+                        }
+                        className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 hover:brightness-110 transition-all border-b border-purple-500/30 hover:border-purple-500 pb-1"
+                    >
+                        {lang === "pt" ? "📖 Guia Completo de Teleprompter" :
+                            lang === "es" ? "📖 Guía Definitiva de Teleprompter" :
+                                "📖 Ultimate Teleprompter Guide"}
+                    </a>
+                </div>
             </div>
 
             <FinalCTA onLaunch={onLaunch} />

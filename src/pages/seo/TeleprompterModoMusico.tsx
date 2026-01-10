@@ -9,7 +9,7 @@ interface Props {
     onLaunch: () => void;
 }
 
-export const TeleprompterModoMusico: React.FC<Props> = ({ onLaunch }) => {
+export const TeleprompterModoMusico: React.FC<Props> = () => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterModoMusicoPT;
@@ -104,6 +104,10 @@ export const TeleprompterModoMusico: React.FC<Props> = ({ onLaunch }) => {
         ctaText = "Probar Modo Músico Gratis";
     }
 
+    const handleMusicLaunch = () => {
+        window.location.href = "https://music.solutionkit.com.br";
+    };
+
     return (
         <SeoPageLayout
             title={title}
@@ -112,13 +116,13 @@ export const TeleprompterModoMusico: React.FC<Props> = ({ onLaunch }) => {
             ogImage={ogImage}
             ogType="article"
             schema={schema}
-            onLaunch={onLaunch}
+            onLaunch={handleMusicLaunch}
         >
             <Content />
 
             <div className="my-8 p-6 bg-slate-900 rounded-lg border border-slate-800 text-center">
                 <button
-                    onClick={onLaunch}
+                    onClick={handleMusicLaunch}
                     className="bg-gradient-to-r from-yellow-600 to-amber-600 hover:from-yellow-500 hover:to-amber-500 text-white font-bold py-4 px-8 rounded-lg text-lg shadow-2xl hover:scale-105 transition transform duration-200"
                 >
                     {ctaText}

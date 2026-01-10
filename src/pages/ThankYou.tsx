@@ -3,6 +3,7 @@ import * as S from "../components/ui/Styled";
 import { PROMPTER_DEFAULTS } from "../config/constants";
 import { CheckCircleIcon, CrownIcon, RocketIcon } from "../components/ui/Icons";
 import { useTranslation } from "../hooks/useTranslation";
+import { setSharedCookie, SHARED_COOKIE_KEYS } from "../utils/cookie";
 
 export const ThankYou: React.FC<{ onLaunch: () => void }> = ({ onLaunch }) => {
     const { t } = useTranslation();
@@ -17,7 +18,8 @@ export const ThankYou: React.FC<{ onLaunch: () => void }> = ({ onLaunch }) => {
         setErrorMessage("");
 
         try {
-            const response = await fetch("https://promptninja.solutionkit.com.br/api/validate-key", {
+            const apiEndpoint = "/api/validate-key";
+            const response = await fetch(apiEndpoint, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ key: unlockKey }),
@@ -28,6 +30,7 @@ export const ThankYou: React.FC<{ onLaunch: () => void }> = ({ onLaunch }) => {
             if (data.success) {
                 setStatus("success");
                 localStorage.setItem(PROMPTER_DEFAULTS.STORAGE_KEYS.PRO_STATUS, "true");
+                setSharedCookie(SHARED_COOKIE_KEYS.PRO_STATUS, "true");
                 // Optional: trigger a reload if needed by other components, but onLaunch should handle navigation
             } else {
                 setStatus("error");

@@ -23,7 +23,8 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({ show, onClose }) =
         setStatus("idle");
 
         try {
-            const response = await fetch("https://promptninja.solutionkit.com.br/api/feedback", {
+            const apiEndpoint = "/api/feedback";
+            const response = await fetch(apiEndpoint, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
