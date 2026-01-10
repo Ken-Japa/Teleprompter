@@ -35,13 +35,16 @@ interface MusicEditorProps {
     setlistStorage: ReturnType<typeof useSetlistStorage>;
     settings: any;
     prompterActions: any;
+    detectedBpm?: number | null;
+    autoBpmError?: string | null;
 }
 
 export const MusicEditor: React.FC<MusicEditorProps> = ({
     text, setText, peerId, status, onStart,
     isPro, onUnlockPro,
     scripts, activeScriptId, onCreateScript, onSwitchScript, onDeleteScript, onUpdateScript,
-    setlistStorage, settings, prompterActions
+    setlistStorage, settings, prompterActions,
+    detectedBpm, autoBpmError
 }) => {
     const {
         setlists, activeSetlistId, activeSetlist, setActiveSetlistId,
@@ -102,6 +105,8 @@ export const MusicEditor: React.FC<MusicEditorProps> = ({
                         onStart={onStart}
                         settings={settings}
                         prompterActions={prompterActions}
+                        detectedBpm={detectedBpm}
+                        autoBpmError={autoBpmError}
                     />
 
 

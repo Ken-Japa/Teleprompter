@@ -35,7 +35,7 @@ export const Host: React.FC<HostProps> = ({ featureFlags }) => {
     // Setlist Storage (Used for Music Mode)
     const setlistStorage = useSetlistStorage();
 
-    const { text, isEditMode, peerId, status, isPro, showPaywall, unlockKey, prompterState, errorMessage, paywallErrorMessage, showCountdownModal, prompterSettings, isValidating, bilingualTexts, isTrialActive, trialEndTime } = state;
+    const { text, isEditMode, peerId, status, isPro, showPaywall, unlockKey, prompterState, errorMessage, paywallErrorMessage, showCountdownModal, prompterSettings, isValidating, bilingualTexts, isTrialActive, trialEndTime, detectedBpm, autoBpmError } = state;
 
     const handleScriptFinished = React.useCallback((summary: any) => {
         setSessionSummary(summary);
@@ -94,6 +94,8 @@ export const Host: React.FC<HostProps> = ({ featureFlags }) => {
                         setlistStorage={setlistStorage}
                         settings={prompterSettings}
                         prompterActions={actions.prompterActions}
+                        detectedBpm={detectedBpm}
+                        autoBpmError={autoBpmError}
                     />
                 ) : (
                     <Editor
@@ -168,6 +170,8 @@ export const Host: React.FC<HostProps> = ({ featureFlags }) => {
                     onSwitchScript={actions.switchScript}
                     onDeleteScript={actions.deleteScript}
                     onUpdateScript={actions.updateScript}
+                    detectedBpm={detectedBpm}
+                    autoBpmError={autoBpmError}
 
                     activeSetlist={setlistStorage.activeSetlist}
                 />

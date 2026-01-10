@@ -1,7 +1,7 @@
 import { memo, useState, useCallback } from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import * as S from "../../components/ui/Styled";
-import { TrashIcon, SearchIcon, KeyboardIcon } from "../../components/ui/Icons";
+import { TrashIcon, SearchIcon, KeyboardIcon, MicIcon } from "../../components/ui/Icons";
 import { TutorialModal } from "../../components/ui/TutorialModal";
 import { FindReplaceModal } from "../../components/ui/FindReplaceModal";
 import { HotkeyConfigModal } from "../../components/ui/HotkeyConfigModal";
@@ -48,6 +48,8 @@ interface MusicActionToolbarProps {
     onStart?: () => void;
     settings?: PrompterSettings;
     prompterActions?: PrompterActions;
+    detectedBpm?: number | null;
+    autoBpmError?: string | null;
 }
 
 export const MusicActionToolbar = memo(({
@@ -55,7 +57,7 @@ export const MusicActionToolbar = memo(({
     setlists, activeSetlistId, onSwitchSetlist, onCreateSetlist, onDeleteSetlist, onUpdateSetlistTitle,
     activeSetlist, allScripts, onAddSong, onRemoveSong, onReorderSong,
     onSwitchScript, activeScriptId, onCreateScript, onUpdateScript, onDeleteScript, onStart,
-    settings, prompterActions
+    settings, prompterActions, detectedBpm, autoBpmError
 }: MusicActionToolbarProps) => {
     const { t } = useTranslation();
     const [showTutorialModal, setShowTutorialModal] = useState(false);
@@ -182,21 +184,54 @@ export const MusicActionToolbar = memo(({
                         </div>
                     </div>
 
-                    {/* PRO TEASER */}
-                    <div className="hidden lg:flex items-center gap-3 py-1 px-3 bg-indigo-500/5 rounded-full border border-indigo-500/10">
-                        <div className="flex items-center gap-1.5">
-                            <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
-                            <span className="text-[10px] font-medium text-slate-400">
-                                {t("music.bpmTeaser")}
-                            </span>
-                        </div>
-                        <button
-                            onClick={onUnlockPro}
-                            className="text-[10px] font-bold text-indigo-400 hover:text-indigo-300 underline underline-offset-2 uppercase tracking-tight"
+                    {/* AUTO BPM TOGGLE */}
+                    <div className="flex items-center gap-2 border-l border-white/10 pl-4">
+                        <S.IconButton
+                            onClick={() => isPro ? prompterActions?.setIsAutoBpmEnabled(!settings?.autoBpmEnabled) : onUnlockPro()}
+                            active={settings?.autoBpmEnabled}
+                            className={`w-9 h-9 rounded-full ${settings?.autoBpmEnabled ? "bg-amber-500/20 text-amber-500 border-amber-500/30 animate-pulse" : "text-slate-500 hover:text-slate-300"}`}
+                            title={isPro ? (autoBpmError || "Auto BPM (Microfone)") : t("music.bpmTeaser")}
                         >
-                            {t("host.paywall.unlock")}
-                        </button>
+                            <MicIcon className="w-4 h-4" />
+                        </S.IconButton>
+
+                        {settings?.autoBpmEnabled && isPro && (
+                            <div className="flex flex-col">
+                                <span className="text-[10px] font-bold text-amber-500 animate-pulse flex items-center gap-1 leading-none">
+                                    {detectedBpm ? `${detectedBpm} BPM` : (autoBpmError ? "Erro Mic" : "Escutando...")}
+                                </span>
+                                {detectedBpm && (
+                                    <div className="flex gap-0.5 mt-0.5">
+                                        {[0.1, 0.2, 0.3].map(delay => (
+                                            <span
+                                                key={delay}
+                                                className="w-1 h-2 bg-amber-500/40 rounded-full animate-bounce"
+                                                style={{ animationDelay: `${delay}s` }}
+                                            />
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        )}
                     </div>
+
+                    {/* PRO TEASER (Only show if not pro OR if auto bpm is not enabled and we want to nudge) */}
+                    {!isPro && (
+                        <div className="hidden lg:flex items-center gap-3 py-1 px-3 bg-indigo-500/5 rounded-full border border-indigo-500/10">
+                            <div className="flex items-center gap-1.5">
+                                <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+                                <span className="text-[10px] font-medium text-slate-400">
+                                    {t("music.bpmTeaser")}
+                                </span>
+                            </div>
+                            <button
+                                onClick={onUnlockPro}
+                                className="text-[10px] font-bold text-indigo-400 hover:text-indigo-300 underline underline-offset-2 uppercase tracking-tight"
+                            >
+                                {t("host.paywall.unlock")}
+                            </button>
+                        </div>
+                    )}
                 </div>
 
                 <div className="flex items-center gap-4">

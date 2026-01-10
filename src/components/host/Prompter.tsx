@@ -79,14 +79,18 @@ interface PrompterProps {
 
   // Setlist
   activeSetlist?: Setlist;
+  detectedBpm?: number | null;
+  autoBpmError?: string | null;
 }
 
 export const Prompter = memo(
   forwardRef<PrompterHandle, PrompterProps>(
-    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onScriptFinished, onReset, onStartRemoteRecording, onStopRemoteRecording, scripts, activeScriptId, onSwitchScript, onCreateScript, onDeleteScript, onUpdateScript, activeSetlist }, ref) => {
+    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onScriptFinished, onReset, onStartRemoteRecording, onStopRemoteRecording, scripts, activeScriptId, onSwitchScript, onCreateScript, onDeleteScript, onUpdateScript, activeSetlist, detectedBpm, autoBpmError }, ref) => {
 
       // Extracted Settings Logic
-      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode, isMusicianMode, isBilingualMode, bilingualConfig, isHudless, isCameraMode, isWidgetMode, bpm } = settings;
+      const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode, isMusicianMode, isBilingualMode, bilingualConfig, isHudless, isCameraMode, isWidgetMode, bpm, autoBpmEnabled } = settings;
+
+      const effectiveBpm = (autoBpmEnabled && detectedBpm) ? detectedBpm : bpm;
 
       // Ephemeral State
       const [cameraStream, setCameraStream] = useState<MediaStream | null>(null);
@@ -437,7 +441,7 @@ export const Prompter = memo(
         onAutoStop: handleAutoStop,
         onCommandTriggered: handleCommandTriggered,
         isMusicianMode,
-        bpm,
+        bpm: effectiveBpm,
       });
 
       // Ref to store physics methods for access inside handleCommandTriggered
@@ -996,6 +1000,9 @@ export const Prompter = memo(
             onPreviousPart={() => handleNavigate('prev')}
             onNextPart={() => handleNavigate('next')}
             hasParts={partIndices.length > 0}
+            detectedBpm={detectedBpm}
+            autoBpmError={autoBpmError}
+            setShowPaywall={setShowPaywall}
             recordingState={{
               isRecording,
               isPaused,

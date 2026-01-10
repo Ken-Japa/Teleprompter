@@ -147,6 +147,7 @@ export interface PrompterSettings {
     fontFamily: string;
     voiceLanguage?: string; // Idioma manual para o controle de voz quando não estiver em modo bilíngue
     bpm: number; // Musician mode BPM
+    autoBpmEnabled: boolean; // Whether auto-BPM from mic is enabled
 }
 
 export interface RemoteScrollHandler {

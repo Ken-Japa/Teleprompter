@@ -27,6 +27,7 @@ export interface PrompterActions {
     setFontFamily: (val: string) => void;
     setVoiceLanguage: (val: string) => void;
     setBpm: (val: number) => void;
+    setIsAutoBpmEnabled: (val: boolean) => void;
 }
 
 export interface PrompterFeatureFlags {
@@ -119,6 +120,10 @@ export const usePrompterSettings = (isPro: boolean, featureFlags: PrompterFeatur
         "neonprompt_bpm",
         UI_LIMITS.BPM.DEFAULT
     );
+    const [autoBpmEnabled, setAutoBpmEnabled] = useLocalStorage<boolean>(
+        "neonprompt_auto_bpm",
+        false
+    );
 
     const cycleTheme = useCallback(() => {
         const themes = PROMPTER_DEFAULTS.THEME_ORDER;
@@ -179,6 +184,7 @@ export const usePrompterSettings = (isPro: boolean, featureFlags: PrompterFeatur
         bilingualConfig,
         voiceLanguage,
         bpm,
+        autoBpmEnabled,
     };
 
     const actions: PrompterActions = {
@@ -221,6 +227,7 @@ export const usePrompterSettings = (isPro: boolean, featureFlags: PrompterFeatur
         },
         setVoiceLanguage: wrapSetter(setVoiceLanguage, "voice_language"),
         setBpm: wrapSetter(setBpm, "bpm"),
+        setIsAutoBpmEnabled: wrapToggle(setAutoBpmEnabled, "auto_bpm"),
     };
 
     return { settings, actions };

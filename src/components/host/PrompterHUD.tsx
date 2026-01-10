@@ -52,10 +52,13 @@ interface PrompterHUDProps {
     onPreviousPart?: () => void;
     onNextPart?: () => void;
     hasParts?: boolean;
+    detectedBpm?: number | null;
+    autoBpmError?: string | null;
+    setShowPaywall?: (show: boolean) => void;
 }
 
 export const PrompterHUD = memo(
-    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isVoiceMode, isPro, voiceApiSupported, voiceApiError, resetTimerSignal, onStateChange, onResetPrompter, toggleVoice, onExit, onSync, onEdit, togglePiP, isPiPActive, recordingState, recordingActions, onPreviousPart, onNextPart, hasParts }: PrompterHUDProps) => {
+    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isVoiceMode, isPro, voiceApiSupported, voiceApiError, resetTimerSignal, onStateChange, onResetPrompter, toggleVoice, onExit, onSync, onEdit, togglePiP, isPiPActive, recordingState, recordingActions, onPreviousPart, onNextPart, hasParts, detectedBpm, autoBpmError, setShowPaywall }: PrompterHUDProps) => {
         const { t } = useTranslation();
         const { recordingMode = 'host' } = settings;
         const { setRecordingMode } = actions;
@@ -262,6 +265,23 @@ export const PrompterHUD = memo(
                                     title="BPM Sync"
                                 />
                                 <span className="text-[10px] font-mono text-amber-500 font-bold w-6 tabular-nums">{settings.bpm || 120}</span>
+
+                                <div className="flex items-center gap-1 border-l border-white/10 pl-2">
+                                    <S.IconButton
+                                        onClick={() => isPro ? actions.setIsAutoBpmEnabled(!settings.autoBpmEnabled) : setShowPaywall?.(true)}
+                                        active={settings.autoBpmEnabled}
+                                        className={`w-7 h-7 rounded-full ${settings.autoBpmEnabled ? "bg-amber-500/20 text-amber-500 animate-pulse border-amber-500/30" : "text-slate-500 hover:text-slate-300 border-transparent"}`}
+                                        title={isPro ? (autoBpmError || "Auto BPM") : t("music.bpmTeaser")}
+                                    >
+                                        <MicIcon className="w-3.5 h-3.5" />
+                                    </S.IconButton>
+
+                                    {settings.autoBpmEnabled && isPro && (
+                                        <span className="text-[9px] font-bold text-amber-500 animate-pulse min-w-[30px]">
+                                            {detectedBpm ? `${detectedBpm}` : (autoBpmError ? "Error" : "...")}
+                                        </span>
+                                    )}
+                                </div>
                             </div>
                         )}
                     </div>

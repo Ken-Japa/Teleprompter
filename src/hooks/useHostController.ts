@@ -9,6 +9,7 @@ import { useTranslation } from "./useTranslation";
 import { usePrompterSettings, PrompterFeatureFlags } from "./usePrompterSettings";
 import { tryEnableNoSleep } from "./useWakeLock";
 import { trackStartPacing, trackGoogleAdsPurchase } from "../utils/analytics";
+import { useAutoBpm } from "./useAutoBpm";
 
 export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
   const { t } = useTranslation();
@@ -78,6 +79,21 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
 
   // Prompter Settings (Lifted State)
   const { settings: prompterSettings, actions: prompterActions } = usePrompterSettings(isPro, featureFlags);
+
+  // Auto BPM Detection State
+  const [detectedBpm, setDetectedBpm] = useState<number | null>(null);
+  const { error: autoBpmError } = useAutoBpm({
+    isEnabled: prompterSettings.autoBpmEnabled,
+    isPro,
+    onBpmDetected: setDetectedBpm
+  });
+
+  // Reset detected BPM when disabled
+  useEffect(() => {
+    if (!prompterSettings.autoBpmEnabled) {
+      setDetectedBpm(null);
+    }
+  }, [prompterSettings.autoBpmEnabled]);
 
   // Sync bilingual texts with config
   useEffect(() => {
@@ -408,6 +424,7 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
     switchScript(id);
     if (prompterSettings.isMusicianMode) {
       prompterActions.setBpm(120);
+      prompterActions.setIsAutoBpmEnabled(false);
     }
   }, [switchScript, prompterSettings.isMusicianMode, prompterActions]);
 
@@ -448,6 +465,8 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
       scripts,
       activeScriptId,
       activeScript,
+      detectedBpm,
+      autoBpmError,
     },
     actions: {
       setText,
