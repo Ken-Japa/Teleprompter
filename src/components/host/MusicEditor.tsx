@@ -26,7 +26,7 @@ interface MusicEditorProps {
     // Script Management Props
     scripts: Script[];
     activeScriptId: string;
-    onCreateScript: () => void;
+    onCreateScript: () => string;
     onSwitchScript: (id: string) => void;
     onDeleteScript: (id: string) => void;
     onUpdateScript: (id: string, updates: Partial<Script>) => void;

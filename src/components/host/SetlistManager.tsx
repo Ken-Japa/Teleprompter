@@ -21,10 +21,10 @@ interface SetlistManagerProps {
     activeScriptId: string;
 
     // Song CRUD
-    onCreateScript: () => void;
+    onCreateScript: () => string;
     onUpdateScript: (id: string, updates: Partial<Script>) => void;
     onDeleteScript: (id: string) => void;
-    onCreateSetlist: () => void;
+    onCreateSetlist: () => string;
     onDeleteSetlist: (id: string) => void;
     onUpdateSetlistTitle: (id: string, title: string) => void;
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Setlist } from "../../hooks/useSetlistStorage";
 import { Script } from "../../hooks/useScriptStorage";
 
-import { TrashIcon, PlusIcon, EditIcon, ArrowUpIcon, ArrowDownIcon, SearchIcon, MusicIcon } from "../ui/Icons";
+import { TrashIcon, PlusIcon, EditIcon, ArrowUpIcon, ArrowDownIcon, SearchIcon, MusicIcon, DownloadIcon, UploadIcon } from "../ui/Icons";
 
 interface SetlistManagementModalProps {
     isOpen: boolean;
@@ -11,7 +11,7 @@ interface SetlistManagementModalProps {
     setlists: Setlist[];
     activeSetlistId: string;
     onSwitchSetlist: (id: string) => void;
-    onCreateSetlist: () => void;
+    onCreateSetlist: () => string;
     onDeleteSetlist: (id: string) => void;
     onUpdateSetlistTitle: (id: string, title: string) => void;
 
@@ -21,7 +21,7 @@ interface SetlistManagementModalProps {
     onRemoveSong: (setlistId: string, index: number) => void;
     onReorderSong: (setlistId: string, fromIndex: number, toIndex: number) => void;
 
-    onCreateScript: () => void;
+    onCreateScript: () => string;
     onUpdateScript: (id: string, updates: Partial<Script>) => void;
     onDeleteScript: (id: string) => void;
 }
@@ -62,6 +62,89 @@ export const SetlistManagementModal: React.FC<SetlistManagementModalProps> = ({
             onUpdateScript(id, { title: editSongTitle });
         }
         setEditingSongId(null);
+    };
+
+    const handleExportJSON = () => {
+        if (!activeSetlist) return;
+
+        const songsData = activeSetlist.songIds.map(songId => {
+            const script = allScripts.find(s => s.id === songId);
+            return {
+                id: script?.id,
+                title: script?.title || "Untitled",
+                content: script?.content || "",
+                backingTrack: script?.backingTrack
+            };
+        });
+
+        const exportData = {
+            title: activeSetlist.title,
+            songs: songsData,
+            version: "1.0"
+        };
+
+        const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${activeSetlist.title.replace(/\s+/g, "_")}_setlist.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        alert("Setlist exportada com sucesso!");
+    };
+
+    const handleImportJSON = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = async (event) => {
+            try {
+                const content = event.target?.result as string;
+                const data = JSON.parse(content);
+
+                if (!data.songs || !Array.isArray(data.songs)) {
+                    throw new Error("Formato de arquivo inválido.");
+                }
+
+                // 1. Create a new setlist
+                const newSetlistId = onCreateSetlist();
+                if (data.title) {
+                    onUpdateSetlistTitle(newSetlistId, data.title);
+                }
+
+                // 2. Import songs
+                let importedCount = 0;
+                for (const songData of data.songs) {
+                    // Create new script
+                    const newScriptId = onCreateScript();
+                    onUpdateScript(newScriptId, {
+                        title: songData.title || "Imported Song",
+                        content: songData.content || songData.text || "", // support both
+                        backingTrack: songData.backingTrack
+                    });
+
+                    // Add to the newly created setlist
+                    onAddSong(newSetlistId, newScriptId);
+                    importedCount++;
+                }
+
+                alert(`Importação concluída – ${importedCount} músicas adicionadas em "${data.title || 'Nova Setlist'}"`);
+
+                // Switch to the new setlist
+                onSwitchSetlist(newSetlistId);
+
+                // Clear input
+                if (e.target) e.target.value = "";
+            } catch (err) {
+                console.error("Erro ao importar setlist:", err);
+                alert("Erro ao importar setlist. Verifique o arquivo.");
+            }
+        };
+        reader.readAsText(file);
     };
 
     // Derived State
@@ -154,9 +237,31 @@ export const SetlistManagementModal: React.FC<SetlistManagementModalProps> = ({
                             </h1>
                             <p className="text-slate-500 text-xs mt-1">Manage songs and their order.</p>
                         </div>
-                        <button onClick={onClose} className="px-4 py-2 bg-white/5 hover:bg-white/10 text-slate-300 rounded-lg text-sm font-medium transition">
-                            Close
-                        </button>
+                        <div className="flex items-center gap-2">
+                            <button
+                                onClick={handleExportJSON}
+                                className="px-3 py-2 bg-white/5 hover:bg-white/10 text-slate-300 rounded-lg text-sm font-medium transition flex items-center gap-2"
+                                title="Exportar Setlist (JSON)"
+                            >
+                                <DownloadIcon className="w-4 h-4 text-emerald-500" />
+                                <span className="hidden sm:inline">Exportar</span>
+                            </button>
+
+                            <label className="px-3 py-2 bg-white/5 hover:bg-white/10 text-slate-300 rounded-lg text-sm font-medium transition flex items-center gap-2 cursor-pointer" title="Importar Setlist (JSON)">
+                                <UploadIcon className="w-4 h-4 text-blue-500" />
+                                <span className="hidden sm:inline">Importar</span>
+                                <input
+                                    type="file"
+                                    accept=".json,application/json"
+                                    className="hidden"
+                                    onChange={handleImportJSON}
+                                />
+                            </label>
+
+                            <button onClick={onClose} className="px-4 py-2 bg-white/5 hover:bg-white/10 text-slate-300 rounded-lg text-sm font-medium transition">
+                                Close
+                            </button>
+                        </div>
                     </div>
 
                     <div className="flex-1 flex flex-col md:flex-row overflow-hidden">

@@ -31,7 +31,7 @@ interface MusicActionToolbarProps {
     setlists?: Setlist[];
     activeSetlistId?: string;
     onSwitchSetlist?: (id: string) => void;
-    onCreateSetlist?: () => void;
+    onCreateSetlist?: () => string;
     onDeleteSetlist?: (id: string) => void;
     onUpdateSetlistTitle?: (id: string, title: string) => void;
 
@@ -43,7 +43,7 @@ interface MusicActionToolbarProps {
 
     onSwitchScript?: (id: string) => void;
     activeScriptId?: string;
-    onCreateScript?: () => void;
+    onCreateScript?: () => string;
     onUpdateScript?: (id: string, updates: Partial<Script>) => void;
     onDeleteScript?: (id: string) => void;
 
