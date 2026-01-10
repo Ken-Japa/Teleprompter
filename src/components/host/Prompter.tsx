@@ -39,6 +39,8 @@ import { parseSpokenNumber } from "../../utils/numberParser";
 import { useTranslation } from "../../hooks/useTranslation";
 import { useMidi } from "../../hooks/useMidi";
 import { MidiAction } from "../../types";
+import { useBackingTrack } from "../../hooks/useBackingTrack";
+
 
 interface PhysicsMethods {
 
@@ -285,6 +287,9 @@ export const Prompter = memo(
         isBilingualMode
       );
 
+      const backingTrack = useBackingTrack(activeScriptId, sentences, isPro);
+
+
       // Notify parent when script is finished (either naturally or manual stop)
       useEffect(() => {
         if (sessionSummary && onScriptFinished) {
@@ -442,7 +447,9 @@ export const Prompter = memo(
         onCommandTriggered: handleCommandTriggered,
         isMusicianMode,
         bpm: effectiveBpm,
+        backingTrackProgress: backingTrack.getProgress(),
       });
+
 
       // Ref to store physics methods for access inside handleCommandTriggered
       // This is necessary because handleCommandTriggered is defined before useScrollPhysics
@@ -1003,7 +1010,9 @@ export const Prompter = memo(
             detectedBpm={detectedBpm}
             autoBpmError={autoBpmError}
             setShowPaywall={setShowPaywall}
+            backingTrack={backingTrack}
             recordingState={{
+
               isRecording,
               isPaused,
               recordingTime: formatTime(recordingTime),
@@ -1076,7 +1085,9 @@ export const Prompter = memo(
                   onPreviousPart={() => handleJumpToPart('prev')}
                   onNextPart={() => handleJumpToPart('next')}
                   hasParts={partIndices.length > 0}
+                  backingTrack={backingTrack}
                   recordingState={{
+
                     isRecording,
                     isPaused,
                     recordingTime: formatTime(recordingTime),

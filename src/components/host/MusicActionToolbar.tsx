@@ -1,8 +1,8 @@
 import { memo, useState, useCallback } from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import * as S from "../../components/ui/Styled";
-import { TrashIcon, SearchIcon, KeyboardIcon, MicIcon } from "../../components/ui/Icons";
 import { TutorialModal } from "../../components/ui/TutorialModal";
+
 import { FindReplaceModal } from "../../components/ui/FindReplaceModal";
 import { HotkeyConfigModal } from "../../components/ui/HotkeyConfigModal";
 import { SetlistManager } from "./SetlistManager";
@@ -10,9 +10,11 @@ import { Setlist } from "../../hooks/useSetlistStorage";
 import { Script } from "../../hooks/useScriptStorage";
 import { useMidi } from "../../hooks/useMidi";
 import { MidiAction, PrompterSettings } from "../../types";
-import { MetronomeIcon } from "../../components/ui/Icons";
+import { MetronomeIcon, MusicIcon, UploadIcon, PauseIcon, PlayIcon, TrashIcon, SearchIcon, KeyboardIcon, MicIcon } from "../../components/ui/Icons";
+import { saveBackingTrack, deleteBackingTrack, getBackingTrack } from "../../utils/audioStorage";
 import { UI_LIMITS } from "../../config/constants";
 import { PrompterActions } from "../../hooks/usePrompterSettings";
+
 
 interface MusicActionToolbarProps {
     onInsertTag: (tag: string) => void;
@@ -91,6 +93,84 @@ export const MusicActionToolbar = memo(({
 
     const { isMidiEnabled, setIsMidiEnabled } = useMidi(handleMidiAction);
 
+    const [previewAudio, setPreviewAudio] = useState<HTMLAudioElement | null>(null);
+
+    const handlePreview = async () => {
+        if (!activeScriptId) return;
+
+        if (previewAudio) {
+            previewAudio.pause();
+            setPreviewAudio(null);
+            return;
+        }
+
+        try {
+            const data = await getBackingTrack(activeScriptId);
+            if (data) {
+                const blob = new Blob([data.data], { type: data.type });
+                const url = URL.createObjectURL(blob);
+                const audio = new Audio(url);
+                audio.play();
+                setPreviewAudio(audio);
+
+                // Stop after 10s
+                setTimeout(() => {
+                    audio.pause();
+                    setPreviewAudio(null);
+                }, 10000);
+            }
+        } catch (err) {
+            console.error("Preview failed", err);
+        }
+    };
+
+
+    const handleBackingTrackUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (!isPro) {
+            onUnlockPro();
+            return;
+        }
+        const file = e.target.files?.[0];
+        if (!file || !activeScriptId || !onUpdateScript) return;
+
+        // Limit size to 50MB
+        if (file.size > 50 * 1024 * 1024) {
+            alert(t("music.backingTrack.largeFile") || "Arquivo muito grande. Limite de 50MB.");
+            return;
+        }
+
+        try {
+            await saveBackingTrack(activeScriptId, file);
+            onUpdateScript(activeScriptId, {
+                backingTrack: {
+                    name: file.name,
+                    size: file.size,
+                    type: file.type
+                }
+            });
+        } catch (err) {
+            console.error("Upload failed", err);
+            alert(t("music.backingTrack.error") || "Falha no upload do áudio.");
+        }
+    };
+
+
+    const handleRemoveBackingTrack = async () => {
+        if (!activeScriptId || !onUpdateScript) return;
+        try {
+            await deleteBackingTrack(activeScriptId);
+            onUpdateScript(activeScriptId, {
+                backingTrack: undefined
+            });
+        } catch (err) {
+            console.error("Remove failed", err);
+        }
+    };
+
+    const activeScript = allScripts?.find(s => s.id === activeScriptId);
+
+
+
     return (
         <>
             <div className="w-full bg-[#0a0a0a] border-b border-white/5 py-2 px-4 flex justify-between items-center gap-3 sticky top-0 z-20">
@@ -128,11 +208,13 @@ export const MusicActionToolbar = memo(({
                                 className="w-full bg-transparent text-slate-300 font-semibold focus:text-white border-b border-transparent focus:border-amber-500/50 outline-none px-2 py-1 transition text-center md:text-left hover:bg-white/5 rounded-t"
                             />
                             <div className="absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-50 pointer-events-none">
-                                <span className="text-[10px] text-slate-500">RENAME</span>
+                                <span className="text-[10px] text-slate-500 uppercase tracking-tighter">{t("script.rename") || "Renomear"}</span>
                             </div>
+
                         </div>
                     )}
                 </div>
+
 
                 {/* EDITING TOOLS (RIGHT) */}
                 <div className="flex items-center gap-2">
@@ -215,23 +297,52 @@ export const MusicActionToolbar = memo(({
                         )}
                     </div>
 
-                    {/* PRO TEASER (Only show if not pro OR if auto bpm is not enabled and we want to nudge) */}
-                    {!isPro && (
-                        <div className="hidden lg:flex items-center gap-3 py-1 px-3 bg-indigo-500/5 rounded-full border border-indigo-500/10">
-                            <div className="flex items-center gap-1.5">
-                                <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
-                                <span className="text-[10px] font-medium text-slate-400">
-                                    {t("music.bpmTeaser")}
-                                </span>
+                    {/* BACKING TRACK UPLOAD */}
+                    <div className="flex items-center gap-2 border-l border-white/10 pl-4">
+                        {!activeScript?.backingTrack ? (
+                            <label className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border cursor-pointer transition-all ${isPro ? "bg-indigo-500/10 border-indigo-500/20 text-indigo-400 hover:bg-indigo-500/20" : "bg-slate-800/50 border-white/5 text-slate-500"}`}>
+                                <UploadIcon className="w-4 h-4" />
+                                <span className="text-xs font-bold uppercase tracking-wider">{t("music.backingTrack.upload") || "Backing Track"}</span>
+
+                                <input
+                                    type="file"
+                                    className="hidden"
+                                    accept="audio/*"
+                                    disabled={!isPro}
+                                    onChange={handleBackingTrackUpload}
+                                    onClick={(e) => !isPro && (e.preventDefault(), onUnlockPro())}
+                                />
+                            </label>
+                        ) : (
+                            <div className="flex items-center gap-2 bg-indigo-500/20 px-3 py-1.5 rounded-lg border border-indigo-500/30">
+                                <MusicIcon className="w-4 h-4 text-indigo-400" />
+                                <div className="flex flex-col">
+                                    <span className="text-[10px] font-bold text-indigo-400 leading-none truncate max-w-[100px]">
+                                        {activeScript.backingTrack.name}
+                                    </span>
+                                    <button
+                                        onClick={handleRemoveBackingTrack}
+                                        className="text-[9px] text-red-500/60 hover:text-red-400 text-left uppercase tracking-tighter font-bold"
+                                    >
+                                        {t("music.backingTrack.remove") || "Remover"}
+                                    </button>
+
+                                </div>
+                                <S.IconButton
+                                    onClick={handlePreview}
+                                    className={`w-8 h-8 rounded-full ${previewAudio ? "bg-amber-500 text-black animate-pulse" : "bg-white/10 text-indigo-400"}`}
+                                    title={t("music.backingTrack.preview") || "Preview"}
+                                >
+
+                                    {previewAudio ? <PauseIcon className="w-3.5 h-3.5 fill-current" /> : <PlayIcon className="w-3.5 h-3.5 fill-current ml-0.5" />}
+                                </S.IconButton>
                             </div>
-                            <button
-                                onClick={onUnlockPro}
-                                className="text-[10px] font-bold text-indigo-400 hover:text-indigo-300 underline underline-offset-2 uppercase tracking-tight"
-                            >
-                                {t("host.paywall.unlock")}
-                            </button>
-                        </div>
-                    )}
+                        )}
+                    </div>
+
+
+                    {/* PRO TEASER */}
+
                 </div>
 
                 <div className="flex items-center gap-4">

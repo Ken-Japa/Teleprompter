@@ -22,7 +22,13 @@ interface PhysicsParams {
   onAutoStop: () => void;
   onCommandTriggered?: (command: TextCommand, sentenceId: number) => void;
   isMusicianMode?: boolean;
+  backingTrackProgress?: {
+    startSentenceId: number;
+    endSentenceId: number;
+    ratio: number;
+  } | null;
 }
+
 
 /**
  * Hook responsável pela física de rolagem do prompter.
@@ -44,7 +50,9 @@ export const useScrollPhysics = ({
   onCommandTriggered,
   isMusicianMode,
   bpm,
+  backingTrackProgress,
 }: PhysicsParams) => {
+
   // Physics State
   const momentumRef = useRef<number>(0);
   const velocityCacheRef = useRef<number>(0);
@@ -65,6 +73,8 @@ export const useScrollPhysics = ({
   const voiceProgressRef = useRef(voiceProgress);
   const isFlipVerticalRef = useRef(isFlipVertical);
   const bpmRef = useRef(bpm);
+  const backingTrackProgressRef = useRef(backingTrackProgress);
+
 
   // Update Refs
   useEffect(() => {
@@ -88,6 +98,10 @@ export const useScrollPhysics = ({
   useEffect(() => {
     bpmRef.current = bpm;
   }, [bpm]);
+  useEffect(() => {
+    backingTrackProgressRef.current = backingTrackProgress;
+  }, [backingTrackProgress]);
+
 
   // Interaction Flags
   const isUserTouchingRef = useRef<boolean>(false);
@@ -142,6 +156,8 @@ export const useScrollPhysics = ({
       const _isVoiceMode = isVoiceModeRef.current;
       const _activeSentenceIndex = activeSentenceIndexRef.current;
       const _voiceProgress = voiceProgressRef.current;
+      const _backingTrackProgress = backingTrackProgressRef.current;
+
 
       if (!scrollContainerRef.current) {
         // Se estiver tocando e o container não estiver pronto, tenta novamente em breve
@@ -167,6 +183,8 @@ export const useScrollPhysics = ({
       const timeScale = deltaTime / PHYSICS_CONSTANTS.TARGET_FRAME_TIME;
 
       let deltaScroll = 0;
+      let forceJump = false;
+
 
       // --- DOM READ PHASE ---
       // Read all necessary DOM properties at the beginning of the loop to avoid layout thrashing.
@@ -249,7 +267,32 @@ export const useScrollPhysics = ({
         }
       }
 
+      // 5. Backing Track Sync
+      if (_isPlaying && _backingTrackProgress) {
+        // Find target position based on interpolated ratio between markers
+        const startEl = _backingTrackProgress.startSentenceId === -1
+          ? { offsetTop: 0 }
+          : document.getElementById(`sentence-${_backingTrackProgress.startSentenceId}`);
+        const endEl = document.getElementById(`sentence-${_backingTrackProgress.endSentenceId}`);
+
+        if (endEl) {
+          const startTop = (startEl as any).offsetTop || 0;
+          const endTop = (endEl as any).offsetTop;
+
+          const readingZoneRatio = isFlipVerticalRef.current ? 0.95 : 0.05;
+          const readingZoneOffset = metrics.clientHeight * readingZoneRatio;
+
+          const targetPos = startTop + (endTop - startTop) * _backingTrackProgress.ratio - readingZoneOffset;
+
+          // Instead of delta, we might want to jump or lerp strongly
+          const jumpDiff = targetPos - internalScrollPos.current;
+          deltaScroll = jumpDiff; // Hard sync
+          forceJump = true;
+        }
+      }
+
       // --- APPLY & SLEEP CHECK ---
+
 
       const isMoving = Math.abs(deltaScroll) > PHYSICS_CONSTANTS.MOMENTUM_THRESHOLD;
       const hasMomentum = Math.abs(momentumRef.current) > PHYSICS_CONSTANTS.MOMENTUM_THRESHOLD;
@@ -278,9 +321,10 @@ export const useScrollPhysics = ({
       }
 
       // Aplica o movimento
-      if (isMoving && scrollContainerRef.current) {
+      if ((isMoving || forceJump) && scrollContainerRef.current) {
         internalScrollPos.current += deltaScroll;
         if (isNaN(internalScrollPos.current)) internalScrollPos.current = 0;
+
 
         // Clamp bounds
         const maxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);

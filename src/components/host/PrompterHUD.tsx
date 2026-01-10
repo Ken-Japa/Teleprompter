@@ -11,6 +11,8 @@ import { QrCodeIcon, LogOutIcon, EditIcon, PlayIcon, PauseIcon, MaximizeIcon, Mi
 import { TutorialModal } from "../ui/TutorialModal";
 import { QRCodeModal } from "./QRCodeModal";
 import { SyncButton } from "../ui/SyncButton";
+import { useBackingTrack } from "../../hooks/useBackingTrack";
+
 
 
 interface PrompterHUDProps {
@@ -55,10 +57,13 @@ interface PrompterHUDProps {
     detectedBpm?: number | null;
     autoBpmError?: string | null;
     setShowPaywall?: (show: boolean) => void;
+    backingTrack?: ReturnType<typeof useBackingTrack>;
 }
 
+
 export const PrompterHUD = memo(
-    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isVoiceMode, isPro, voiceApiSupported, voiceApiError, resetTimerSignal, onStateChange, onResetPrompter, toggleVoice, onExit, onSync, onEdit, togglePiP, isPiPActive, recordingState, recordingActions, onPreviousPart, onNextPart, hasParts, detectedBpm, autoBpmError, setShowPaywall }: PrompterHUDProps) => {
+    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isVoiceMode, isPro, voiceApiSupported, voiceApiError, resetTimerSignal, onStateChange, onResetPrompter, toggleVoice, onExit, onSync, onEdit, togglePiP, isPiPActive, recordingState, recordingActions, onPreviousPart, onNextPart, hasParts, detectedBpm, autoBpmError, setShowPaywall, backingTrack }: PrompterHUDProps) => {
+
         const { t } = useTranslation();
         const { recordingMode = 'host' } = settings;
         const { setRecordingMode } = actions;
@@ -321,6 +326,40 @@ export const PrompterHUD = memo(
                         <MinimizeIcon className="w-5 h-5" />
                     </S.IconButton >
                 </div>
+
+                {/* Backing Track Controls */}
+                {settings.isMusicianMode && backingTrack?.audioData && (
+                    <div className="flex items-center gap-2 bg-slate-900/80 border border-amber-500/20 px-3 py-1.5 rounded-xl ml-2 scale-90 sm:scale-100">
+                        <S.IconButton
+                            onClick={() => backingTrack.togglePlay()}
+                            className={`w-9 h-9 rounded-full ${backingTrack.isPlaying ? 'bg-amber-500 text-black shadow-[0_0_15px_rgba(245,158,11,0.4)]' : 'bg-slate-800 text-amber-500'}`}
+                            title="Play Backing Track"
+                        >
+                            {backingTrack.isPlaying ? <PauseIcon className="w-4 h-4 fill-current" /> : <PlayIcon className="w-4 h-4 fill-current ml-0.5" />}
+                        </S.IconButton>
+
+                        <div className="flex flex-col min-w-[80px]">
+                            <div className="flex justify-between items-center mb-1">
+                                <span className="text-[9px] font-bold text-amber-500/80 uppercase tracking-tighter truncate max-w-[60px]">
+                                    {backingTrack.audioData.name}
+                                </span>
+                                <span className="text-[9px] font-mono text-slate-400">
+                                    {Math.floor(backingTrack.currentTime / 60)}:{(backingTrack.currentTime % 60).toFixed(0).padStart(2, '0')}
+                                </span>
+                            </div>
+                            <S.RangeSlider
+                                value={backingTrack.currentTime}
+                                min={0}
+                                max={backingTrack.duration || 100}
+                                step={0.1}
+                                onChange={(val) => backingTrack.seek(val)}
+                                width="w-24 sm:w-32"
+                                ariaLabel="Backing Track Seek"
+                            />
+                        </div>
+                    </div>
+                )}
+
 
                 {recordingState && recordingActions && (
                     <div className="scale-90 origin-bottom">

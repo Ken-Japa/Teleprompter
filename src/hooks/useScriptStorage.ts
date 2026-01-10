@@ -7,7 +7,13 @@ export interface Script {
     title: string;
     content: string;
     lastModified: number;
+    backingTrack?: {
+        name: string;
+        size: number;
+        type: string;
+    };
 }
+
 
 const SCRIPTS_KEY = "neonprompt_scripts";
 const ACTIVE_SCRIPT_KEY = "neonprompt_active_script_id";

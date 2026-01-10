@@ -183,7 +183,9 @@ export type TextCommand =
     | { type: 'COUNT'; value: number }
     | { type: 'PART'; name?: string }
     | { type: 'REST'; duration: number }
-    | { type: 'BPM'; value: number | 'AUTO' };
+    | { type: 'BPM'; value: number | 'AUTO' }
+    | { type: 'SECTION'; name: string; timestamp: number };
+
 
 export interface Sentence {
     id: number;

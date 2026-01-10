@@ -796,7 +796,16 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
       },
       bpmSync: "BPM Sync",
       bpmTeaser: "Auto-sync com microfone (detecta batidas reais) exclusivo PRO → R$ 67 vitalício",
+      backingTrack: {
+        upload: "Adicionar Backing Track",
+        remove: "Remover",
+        largeFile: "Arquivo muito grande. Limite de 50MB.",
+        error: "Falha no upload do áudio.",
+        preview: "Preview (10s)",
+        syncActive: "Sincronização com Áudio Ativa",
+      },
     }
+
   },
   midi: {
     title: "Configurar MIDI",

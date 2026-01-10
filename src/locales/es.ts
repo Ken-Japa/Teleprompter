@@ -790,7 +790,16 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
       },
       bpmSync: "Sincronización BPM",
       bpmTeaser: "Auto-sync con micro (detecta pulsos reales) exclusivo PRO → $19 vitalicio",
+      backingTrack: {
+        upload: "Añadir Backing Track",
+        remove: "Eliminar",
+        largeFile: "Archivo demasiado grande. Límite de 50MB.",
+        error: "Error al subir el audio.",
+        preview: "Vista previa (10s)",
+        syncActive: "Sincronización de Audio Activa",
+      },
     }
+
   },
   midi: {
     title: "Configurar MIDI",

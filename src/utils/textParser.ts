@@ -180,6 +180,8 @@ const COMMAND_LOOP_START_REGEX = /\[(loop start|início loop)\]/gi;
 const COMMAND_LOOP_END_REGEX = /\[(loop)\s+(\d+)\]/gi;
 const COMMAND_PART_REGEX = /\[(part|slide|parte)\s*(.*?)\]/gi;
 const COMMAND_BPM_REGEX = /\[(bpm)\s+(.+?)\]/gi;
+const COMMAND_SECTION_REGEX = /\[(section|seção|seccao)\s+(.*?)\s+(\d{1,2}:\d{2}|\d+)\]/gi;
+
 
 // [COUNT X], [CONTAR X] for voice reps
 const COMMAND_COUNT_REGEX = /\[(count|contar|conta)\s+(\d+)\]/gi;
@@ -205,6 +207,8 @@ const detectTextCommand = (text: string): TextCommand | undefined => {
     COMMAND_REST_REGEX.lastIndex = 0;
     COMMAND_PART_REGEX.lastIndex = 0;
     COMMAND_BPM_REGEX.lastIndex = 0;
+    COMMAND_SECTION_REGEX.lastIndex = 0;
+
 
     // Check for PAUSE command
     const pauseMatch = COMMAND_PAUSE_REGEX.exec(text);
@@ -270,8 +274,28 @@ const detectTextCommand = (text: string): TextCommand | undefined => {
         }
     }
 
+    // Check for SECTION command
+    const sectionMatch = COMMAND_SECTION_REGEX.exec(text);
+    if (sectionMatch && sectionMatch[2] && sectionMatch[3]) {
+        const name = sectionMatch[2].trim();
+        const timeStr = sectionMatch[3].trim();
+        let timestamp = 0;
+
+        if (timeStr.includes(':')) {
+            const [min, sec] = timeStr.split(':').map(s => parseInt(s, 10));
+            timestamp = (min * 60) + sec;
+        } else {
+            timestamp = parseInt(timeStr, 10);
+        }
+
+        if (!isNaN(timestamp)) {
+            return { type: 'SECTION', name, timestamp };
+        }
+    }
+
     return undefined;
 };
+
 
 // --- CHORD DETECTION LOGIC ---
 // Heuristic: A line is a chord line if it consists mostly of chord symbols.

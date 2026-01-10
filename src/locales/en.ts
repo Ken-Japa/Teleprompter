@@ -786,7 +786,16 @@ Paste your script here and customize your experience to start shining!`,
       },
       bpmSync: "BPM Sync",
       bpmTeaser: "Auto-sync with mic (detects real beats) PRO exclusive → $19 lifetime",
+      backingTrack: {
+        upload: "Add Backing Track",
+        remove: "Remove",
+        largeFile: "File too large. 50MB limit.",
+        error: "Audio upload failed.",
+        preview: "Preview (10s)",
+        syncActive: "Audio Sync Active",
+      },
     }
+
   },
   midi: {
     title: "Configure MIDI",
