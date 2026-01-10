@@ -3,6 +3,7 @@ import * as S from "../components/ui/Styled";
 import { Header } from "../components/landing/Header";
 import { MusicHero } from "../components/landing/MusicHero";
 import { MusicFeatures } from "../components/landing/MusicFeatures";
+import { MusicPricing } from "../components/landing/MusicPricing";
 import { PwaSection } from "../components/landing/PwaSection";
 import { FAQ } from "../components/landing/FAQ";
 import { FinalCTA } from "../components/landing/FinalCTA";
@@ -32,6 +33,7 @@ export const MusicLanding: React.FC<MusicLandingProps> = ({ onLaunch }) => {
             { hreflang: "x-default", href: "https://music.solutionkit.com.br/?lang=pt" }
         ],
         ogType: 'website',
+        ogImage: 'https://promptninja.solutionkit.com.br/og-music.jpg', // Should be a mockup of HUD on stage
         schema: {
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
@@ -40,7 +42,7 @@ export const MusicLanding: React.FC<MusicLandingProps> = ({ onLaunch }) => {
             "operatingSystem": "Web",
             "offers": {
                 "@type": "Offer",
-                "price": "67",
+                "price": "97",
                 "priceCurrency": "BRL"
             },
             "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5", "reviewCount": "19" }
@@ -52,6 +54,7 @@ export const MusicLanding: React.FC<MusicLandingProps> = ({ onLaunch }) => {
             <Header />
             <MusicHero onLaunch={onLaunch} />
             <MusicFeatures />
+            <MusicPricing onLaunch={onLaunch} />
             <PwaSection
                 titleKey="music.landing.pwa.title"
                 subtitleKey="music.landing.pwa.subtitle"

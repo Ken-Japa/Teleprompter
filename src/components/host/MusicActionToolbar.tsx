@@ -10,7 +10,7 @@ import { Setlist } from "../../hooks/useSetlistStorage";
 import { Script } from "../../hooks/useScriptStorage";
 import { useMidi } from "../../hooks/useMidi";
 import { MidiAction, PrompterSettings } from "../../types";
-import { MetronomeIcon, MusicIcon, UploadIcon, PauseIcon, PlayIcon, TrashIcon, SearchIcon, KeyboardIcon, MicIcon } from "../../components/ui/Icons";
+import { MetronomeIcon, MusicIcon, UploadIcon, PauseIcon, PlayIcon, TrashIcon, SearchIcon, KeyboardIcon, MicIcon, InfoIcon } from "../../components/ui/Icons";
 import { saveBackingTrack, deleteBackingTrack, getBackingTrack } from "../../utils/audioStorage";
 import { UI_LIMITS } from "../../config/constants";
 import { PrompterActions } from "../../hooks/usePrompterSettings";
@@ -136,6 +136,13 @@ export const MusicActionToolbar = memo(({
             setIsPreviewSyncMode(false);
         }
     }, [currentTime, isPreviewSyncMode, isAudioPlaying, markers, sentences, textAreaRef, text, pause]);
+
+    // Error Handling Effect
+    useEffect(() => {
+        if (audioError) {
+            trackEvent("audio_error", { error: audioError });
+        }
+    }, [audioError]);
 
     const handlePreviewSyncToggle = () => {
         if (!isPro) {
@@ -334,7 +341,7 @@ export const MusicActionToolbar = memo(({
                             onClick={() => isPro ? prompterActions?.setIsAutoBpmEnabled(!settings?.autoBpmEnabled) : onUnlockPro()}
                             active={settings?.autoBpmEnabled}
                             className={`w-9 h-9 rounded-full ${settings?.autoBpmEnabled ? "bg-amber-500/20 text-amber-500 border-amber-500/30 animate-pulse" : "text-slate-500 hover:text-slate-300"}`}
-                            title={isPro ? (autoBpmError || "Auto BPM (Microfone)") : t("music.bpmTeaser")}
+                            title={isPro ? (autoBpmError || "Auto BPM: Escuta a banda ao vivo e ajusta o scroll") : t("music.bpmTeaser")}
                         >
                             <MicIcon className="w-4 h-4" />
                         </S.IconButton>
@@ -417,23 +424,50 @@ export const MusicActionToolbar = memo(({
 
                     {/* PREVIEW SYNC BUTTON */}
                     <div className="flex items-center gap-2 border-l border-white/10 pl-4">
-                        <button
-                            onClick={handlePreviewSyncToggle}
-                            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border transition-all ${isPreviewSyncMode ? "bg-amber-500 text-black border-amber-600" : "bg-white/5 border-white/10 text-slate-300 hover:bg-white/10"}`}
-                            title="Preview Sync (15s)"
-                        >
-                            <PlayIcon className={`w-3.5 h-3.5 ${isPreviewSyncMode ? "fill-black" : "fill-current"}`} />
-                            <span className="text-xs font-bold uppercase tracking-wider">Preview Sync</span>
-                        </button>
+                        <div className="relative group">
+                            <button
+                                onClick={handlePreviewSyncToggle}
+                                className={`flex flex-col items-center justify-center min-w-[110px] px-3 py-1.5 rounded-lg border transition-all ${isPreviewSyncMode ? "bg-amber-500 text-black border-amber-600" : "bg-white/5 border-white/10 text-slate-300 hover:bg-white/10"}`}
+                                title="Preview Sync: Toca 15s do áudio e rola o texto para testar o tempo"
+                            >
+                                <div className="flex items-center gap-2">
+                                    <PlayIcon className={`w-3.5 h-3.5 ${isPreviewSyncMode ? "fill-black" : "fill-current"}`} />
+                                    <span className="text-xs font-bold uppercase tracking-wider">Preview Sync</span>
+                                </div>
+                                {isPreviewSyncMode && (
+                                    <div className="w-full mt-1.5 px-1">
+                                        <S.ProgressBar progress={currentTime / 15} />
+                                        <span className="text-[8px] font-black uppercase tracking-tighter mt-1 block text-center">
+                                            {Math.ceil(15 - currentTime)}s restantes
+                                        </span>
+                                    </div>
+                                )}
+                            </button>
+                        </div>
                     </div>
 
                 </div>
 
                 <div className="flex items-center gap-4">
-                    {/* Placeholder for future Part/Song metadata or duration estimates */}
+                    {/* HELP TIP */}
+                    <S.IconButton
+                        onClick={() => setShowTutorialModal(true)}
+                        className="w-8 h-8 rounded-full text-slate-600 hover:text-slate-400"
+                        title="Dúvidas sobre o Modo Músico?"
+                    >
+                        <InfoIcon className="w-4 h-4" />
+                    </S.IconButton>
                     <span className="text-[10px] text-slate-600 font-medium uppercase tracking-widest hidden sm:inline">Music Mode v1.1</span>
                 </div>
             </div>
+
+            {/* Error Notifications */}
+            {audioError && activeScript?.backingTrack && (
+                <S.ErrorToast message={`Áudio: ${audioError}`} />
+            )}
+            {autoBpmError && settings?.autoBpmEnabled && (
+                <S.ErrorToast message={`Microfone: ${autoBpmError}`} />
+            )}
 
 
             <TutorialModal isOpen={showTutorialModal} onClose={() => setShowTutorialModal(false)} />

@@ -55,7 +55,7 @@ export const MusicFeatures: React.FC = () => {
                         />
                     </div>
 
-                    {/* Pedals & Hotkeys - NEW */}
+                    {/* Pedals & Hotkeys */}
                     <div className="stagger-item">
                         <S.FeatureCard
                             icon={<div className="w-8 h-8 text-rose-400"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" /></svg></div>}
@@ -64,17 +64,31 @@ export const MusicFeatures: React.FC = () => {
                         />
                     </div>
 
-                    {/* BPM Sync - NEW */}
+                    {/* BPM Sync */}
                     <div className="stagger-item">
                         <S.FeatureCard
                             icon={<div className="w-8 h-8 text-cyan-400"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div>}
                             title={
                                 <span className="flex items-center gap-2">
                                     {t("music.features.bpm.title") || "BPM Sync"}
-                                    <span className="bg-cyan-500/20 text-cyan-300 text-[10px] px-2 py-0.5 rounded-full border border-cyan-500/30 uppercase tracking-wider font-bold">Em breve</span>
+                                    <span className="bg-emerald-500/20 text-emerald-300 text-[10px] px-2 py-0.5 rounded-full border border-emerald-500/30 uppercase tracking-wider font-bold">Disponível</span>
                                 </span>
                             }
                             desc={t("music.features.bpm.desc") || "Rolagem automática no ritmo da banda."}
+                        />
+                    </div>
+
+                    {/* Backing Tracks Sync */}
+                    <div className="stagger-item">
+                        <S.FeatureCard
+                            icon={<MusicIcon className="w-8 h-8 text-indigo-400" />}
+                            title={
+                                <span className="flex items-center gap-2">
+                                    {t("music.features.backingSync.title") || "Backing Tracks Sync"}
+                                    <span className="bg-indigo-500/20 text-indigo-300 text-[10px] px-2 py-0.5 rounded-full border border-indigo-500/30 uppercase tracking-wider font-bold">Novo</span>
+                                </span>
+                            }
+                            desc={t("music.features.backingSync.desc") || "Markers & Preview de 15s. Sincronize o texto com seu áudio guia."}
                         />
                     </div>
 
@@ -99,7 +113,7 @@ export const MusicFeatures: React.FC = () => {
                             className="bg-gradient-to-br from-slate-900 to-amber-900/20 border-amber-500/30"
                             icon={<CrownIcon className="w-8 h-8 text-yellow-400" />}
                             title={t("landing.pricing.pro.title")}
-                            desc={t("music.features.pro.desc") || "Desbloqueie controle por voz e setlists infinitos."}
+                            desc={t("music.features.pro.desc") || "Desbloqueie Auto BPM, Backing Sync e MIDI Custom."}
                         />
                     </div>
                 </div>

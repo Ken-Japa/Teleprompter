@@ -745,8 +745,12 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
         desc: "Atajos nativos para Page Up/Down. Compatible con pedales bluetooth para control con los pies.",
       },
       bpm: {
-        title: "BPM Sync (Próximamente)",
-        desc: "Desplazamiento automático al ritmo de la banda. El sistema detectará el tempo vía micrófono.",
+        title: "BPM Sync",
+        desc: "Desplazamiento automático al ritmo de la banda. Escucha el sonido en vivo o sincroniza con el metrónomo.",
+      },
+      backingSync: {
+        title: "Sync con Backing Tracks",
+        desc: "Marcadores y Vista previa de 15s. Sincroniza el texto con tu audio guía o pista de acompañamiento.",
       },
       voice: {
         desc: "Deja que PromptNinja pase la página por ti. El reconocimiento de voz sigue tu canto.",
@@ -757,9 +761,9 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
     },
     landing: {
       meta: {
-        title: "Teleprompter para Músicos Gratis: Setlists, BPM Sync y Cero Lag | PromptNinja Music",
-        description: "El teleprompter online gratuito para bandas: Crea setlists infinitas, desplazamiento automático con BPM sync y control por pedal MIDI. P2P sin lag – perfecto para shows en vivo en PC o móvil.",
-        keywords: "teleprompter para músicos, teleprompter de acordes, app de setlist, letras y acordes, desplazamiento automático, teleprompter escenario, promptninja music",
+        title: "Teleprompter Gratis para Músicos: Setlists Infinitas, BPM Auto & Sync Backing | PromptNinja Music",
+        description: "El mejor teleprompter para músicos. Crea setlists, desplaza acordes y letras automáticamente con Sync de Backing Tracks y Auto BPM vía Micrófono.",
+        keywords: "teleprompter para músicos, teleprompter de acordes, app de setlist, letras y acordes, desplazamiento automático, teleprompter escenario, promptninja music, backing track sync",
       },
       pwa: {
         title: "Instala en Tu Tablet de Escenario",
@@ -792,7 +796,24 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
         subtitle: "Más de 500 músicos ya usan PromptNinja en el escenario.",
         ctaPrimary: "Prueba Gratis en el Ensayo",
         ctaSecondary: "Ver Planes PRO",
-        footer: "Simple. Rápido. Hecho para quien toca.",
+      },
+      pricing: {
+        title: "PRO Vitalicio por $19",
+        subtitle: "Pago único, tuyo para siempre. Enfocado en el rendimiento escénico.",
+        badge: "OFERTA MÚSICO",
+        features: [
+          "Setlists Ilimitadas",
+          "Backing Track Sync (Sin límites)",
+          "Auto BPM vía Micrófono",
+          "Control MIDI Personalizado",
+          "Offline PWA (App de Escenario)",
+          "Soporte para Pedales Bluetooth",
+          "Sin Logos / Marcas de agua",
+          "Acceso Vitalicio (Sin cuotas mensuales)"
+        ],
+        price: "$19",
+        priceNote: "Precio promocional único para músicos.",
+        timer: "⏰ Asegura tu lugar en el escenario con descuento"
       },
       bpmSync: "Sincronización BPM",
       bpmTeaser: "Auto-sync con micro (detecta pulsos reales) exclusivo PRO → $19 vitalicio",
@@ -804,8 +825,7 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
         preview: "Vista previa (10s)",
         syncActive: "Sincronización de Audio Activa",
       },
-    }
-
+    },
   },
   midi: {
     title: "Configurar MIDI",

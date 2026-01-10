@@ -741,8 +741,12 @@ Paste your script here and customize your experience to start shining!`,
         desc: "Native shortcuts for Page Up/Down. Compatible with bluetooth pedals for foot control.",
       },
       bpm: {
-        title: "BPM Sync (Coming Soon)",
-        desc: "Auto-scroll to the band's rhythm. The system will detect tempo via microphone.",
+        title: "BPM Sync",
+        desc: "Auto-scroll to the band's rhythm. Listen to live sound or sync with the metronome.",
+      },
+      backingSync: {
+        title: "Backing Tracks Sync",
+        desc: "Markers & 15s Preview. Synchronize text with your guide audio or backing track.",
       },
       voice: {
         desc: "Let PromptNinja turn the page for you. Voice recognition follows your singing.",
@@ -753,9 +757,9 @@ Paste your script here and customize your experience to start shining!`,
     },
     landing: {
       meta: {
-        title: "Free Teleprompter for Musicians: Setlists, BPM Sync & Zero Lag | PromptNinja Music",
-        description: "The free online teleprompter for bands: Create infinite setlists, auto-scroll with BPM sync, and MIDI pedal control. Zero lag P2P – perfect for live shows on PC or mobile.",
-        keywords: "teleprompter for musicians, lyrics scroller, chord teleprompter, setlist app, auto scroll lyrics, stage prompter, promptninja music",
+        title: "Free Teleprompter for Musicians: Unlimited Setlists, Auto BPM & Backing Sync | PromptNinja Music",
+        description: "The best teleprompter for musicians. Create setlists, scroll chords and lyrics automatically with Backing Track Sync and Auto BPM via Microphone.",
+        keywords: "teleprompter for musicians, lyrics scroller, chord teleprompter, setlist app, auto scroll lyrics, stage prompter, promptninja music, backing track sync",
       },
       pwa: {
         title: "Install on Your Stage Tablet",
@@ -788,7 +792,24 @@ Paste your script here and customize your experience to start shining!`,
         subtitle: "Over 500 musicians already use PromptNinja on stage.",
         ctaPrimary: "Free Trial at Rehearsal",
         ctaSecondary: "See PRO Plans",
-        footer: "Simple. Fast. Built for those who play.",
+      },
+      pricing: {
+        title: "PRO Lifetime for $19",
+        subtitle: "One-time payment, yours forever. Focused on stage performance.",
+        badge: "MUSICIAN OFFER",
+        features: [
+          "Unlimited Setlists",
+          "Backing Track Sync (Unlimited)",
+          "Auto BPM via Microphone",
+          "Custom MIDI Control",
+          "Offline PWA (Stage App)",
+          "Bluetooth Pedal Support",
+          "No Logos / Watermarks",
+          "Lifetime Access (No Monthly Fees)"
+        ],
+        price: "$19",
+        priceNote: "One-time promotional price for musicians.",
+        timer: "⏰ Secure your spot on stage with a discount"
       },
       bpmSync: "BPM Sync",
       bpmTeaser: "Auto-sync with mic (detects real beats) PRO exclusive → $19 lifetime",
@@ -800,8 +821,7 @@ Paste your script here and customize your experience to start shining!`,
         preview: "Preview (10s)",
         syncActive: "Audio Sync Active",
       },
-    }
-
+    },
   },
   midi: {
     title: "Configure MIDI",

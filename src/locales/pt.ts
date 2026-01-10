@@ -718,7 +718,7 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
   music: {
     bpmSync: "BPM",
     backingTrackUpload: "Adicionar Backing Track",
-    bpmTeaser: "Auto BPM",
+    bpmTeaser: "Auto-sync com microfone (detecta batidas reais) exclusivo PRO → R$ 67 vitalício",
     hero: {
       badge: "Modo Palco",
       headline: "Teleprompter para Músicos:",
@@ -751,8 +751,12 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
         desc: "Atalhos nativos para Page Up/Down. Compatível com pedais bluetooth para controle com os pés.",
       },
       bpm: {
-        title: "BPM Sync (Em Breve)",
-        desc: "Rolagem automática no ritmo da banda. O sistema detectará o andamento via microfone.",
+        title: "BPM Sync",
+        desc: "Rolagem automática no ritmo da banda. Escuta o som ao vivo ou sincroniza com o metrônomo.",
+      },
+      backingSync: {
+        title: "Sync com Backing Tracks",
+        desc: "Markers e Preview de 15s. Sincronize o texto com seu áudio guia ou backing track.",
       },
       voice: {
         desc: "Deixe o PromptNinja virar a página pra você. O reconhecimento de voz acompanha o canto.",
@@ -763,9 +767,9 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
     },
     landing: {
       meta: {
-        title: "PromptNinja Music: Teleprompter de Cifras e Letras | Setlists para Músicos",
-        description: "O melhor teleprompter para músicos. Crie setlists, role cifras e letras automaticamente. Modo offline e temas escuros para palco.",
-        keywords: "teleprompter para músicos, teleprompter de cifras, app de setlist, letras e cifras, scrolagem automática, teleprompter palco, promptninja music",
+        title: "Teleprompter Grátis para Músicos: Setlists Infinitas, BPM Auto & Sync Backing | PromptNinja Music",
+        description: "O melhor teleprompter para músicos. Crie setlists, role cifras e letras automaticamente com Sync de Backing Tracks e Auto BPM via Microfone.",
+        keywords: "teleprompter para músicos, teleprompter de cifras, app de setlist, letras e cifras, scrolagem automática, teleprompter palco, promptninja music, backing track sync",
       },
       pwa: {
         title: "Instale no Seu Tablet de Palco",
@@ -798,18 +802,34 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
         subtitle: "Mais de 500 músicos já usam o PromptNinja no palco.",
         ctaPrimary: "Teste Grátis no Ensaio",
         ctaSecondary: "Ver Planos PRO",
-        footer: "Simples. Rápido. Feito pra quem toca.",
       },
-      bpmTeaser: "Auto-sync com microfone (detecta batidas reais) exclusivo PRO → R$ 67 vitalício",
-      backingTrack: {
-        remove: "Remover",
-        largeFile: "Arquivo muito grande. Limite de 50MB.",
-        error: "Falha no upload do áudio.",
-        preview: "Preview (10s)",
-        syncActive: "Sincronização com Áudio Ativa",
+      pricing: {
+        title: "PRO Vitalício por R$ 67",
+        subtitle: "Pagamento único, seu para sempre. Focado em performance de palco.",
+        badge: "OFERTA MÚSICO",
+        features: [
+          "Setlists Ilimitadas",
+          "Backing Track Sync (Sem Limites)",
+          "Auto BPM via Microfone",
+          "Controle MIDI Customizado",
+          "Offline PWA (App de Palco)",
+          "Suporte a Pedais Bluetooth",
+          "Zero Logos / Marca d'água",
+          "Acesso Vitalício (Sem Mensalidade)"
+        ],
+        price: "R$ 67",
+        priceNote: "Preço único promocional para músicos.",
+        timer: "⏰ Garanta seu lugar no palco com desconto"
       },
-    }
-
+      footer: "Simples. Rápido. Feito pra quem toca.",
+    },
+    backingTrack: {
+      remove: "Remover",
+      largeFile: "Arquivo muito grande. Limite de 50MB.",
+      error: "Falha no upload do áudio.",
+      preview: "Preview (10s)",
+      syncActive: "Sincronização com Áudio Ativa",
+    },
   },
   midi: {
     title: "Configurar MIDI",
