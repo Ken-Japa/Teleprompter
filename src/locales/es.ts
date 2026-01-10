@@ -707,6 +707,9 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
     close: "Cerrar Resumen",
   },
   music: {
+    bpmSync: "BPM",
+    backingTrackUpload: "Agregar Backing Track",
+    bpmTeaser: "Auto BPM",
     hero: {
       badge: "Modo Escenario",
       headline: "Teleprompter para Músicos:",

@@ -364,7 +364,7 @@ export const MusicActionToolbar = memo(({
                         {!activeScript?.backingTrack ? (
                             <label className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border cursor-pointer transition-all ${isPro ? "bg-indigo-500/10 border-indigo-500/20 text-indigo-400 hover:bg-indigo-500/20" : "bg-slate-800/50 border-white/5 text-slate-500"}`}>
                                 <UploadIcon className="w-4 h-4" />
-                                <span className="text-xs font-bold uppercase tracking-wider">{t("music.backingTrack.upload") || "Backing Track"}</span>
+                                <span className="text-xs font-bold uppercase tracking-wider">{t("music.backingTrackUpload") || "Backing Track"}</span>
 
                                 <input
                                     type="file"

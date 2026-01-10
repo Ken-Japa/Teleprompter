@@ -703,6 +703,9 @@ Paste your script here and customize your experience to start shining!`,
     close: "Close Summary",
   },
   music: {
+    bpmSync: "BPM",
+    backingTrackUpload: "Add Backing Track",
+    bpmTeaser: "Auto BPM",
     hero: {
       badge: "Stage Mode",
       headline: "Teleprompter for Musicians:",
