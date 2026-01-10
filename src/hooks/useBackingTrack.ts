@@ -13,6 +13,7 @@ export const useBackingTrack = (scriptId: string, sentences: Sentence[], isPro: 
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
     const [audioData, setAudioData] = useState<AudioData | null>(null);
+    const [error, setError] = useState<string | null>(null);
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
     // Load audio data from IndexedDB
@@ -20,6 +21,7 @@ export const useBackingTrack = (scriptId: string, sentences: Sentence[], isPro: 
         const loadAudio = async () => {
             if (!scriptId) return;
             try {
+                setError(null);
                 const data = await getBackingTrack(scriptId);
                 if (data) {
                     setAudioData(data);
@@ -35,6 +37,7 @@ export const useBackingTrack = (scriptId: string, sentences: Sentence[], isPro: 
                         audio.onloadedmetadata = () => setDuration(audio.duration);
                         audio.ontimeupdate = () => setCurrentTime(audio.currentTime);
                         audio.onended = () => setIsPlaying(false);
+                        audio.onerror = () => setError("Erro ao carregar o áudio.");
                         audioRef.current = audio;
                     }
                 } else {
@@ -46,6 +49,7 @@ export const useBackingTrack = (scriptId: string, sentences: Sentence[], isPro: 
                 }
             } catch (err) {
                 console.error("Failed to load backing track", err);
+                setError("Falha no banco de dados de áudio.");
             }
         };
         loadAudio();
@@ -156,6 +160,7 @@ export const useBackingTrack = (scriptId: string, sentences: Sentence[], isPro: 
         duration,
         audioData,
         markers,
+        error,
         play,
         pause,
         togglePlay,

@@ -107,6 +107,7 @@ export const MusicEditor: React.FC<MusicEditorProps> = ({
                         prompterActions={prompterActions}
                         detectedBpm={detectedBpm}
                         autoBpmError={autoBpmError}
+                        textAreaRef={textAreaRef}
                     />
 
 

@@ -1,4 +1,4 @@
-import { memo, useState, useCallback } from "react";
+import { memo, useState, useCallback, useMemo, useEffect } from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import * as S from "../../components/ui/Styled";
 import { TutorialModal } from "../../components/ui/TutorialModal";
@@ -14,6 +14,9 @@ import { MetronomeIcon, MusicIcon, UploadIcon, PauseIcon, PlayIcon, TrashIcon, S
 import { saveBackingTrack, deleteBackingTrack, getBackingTrack } from "../../utils/audioStorage";
 import { UI_LIMITS } from "../../config/constants";
 import { PrompterActions } from "../../hooks/usePrompterSettings";
+import { useBackingTrack } from "../../hooks/useBackingTrack";
+import { parseTextToSentences } from "../../utils/textParser";
+import { trackEvent } from "../../utils/analytics";
 
 
 interface MusicActionToolbarProps {
@@ -52,6 +55,7 @@ interface MusicActionToolbarProps {
     prompterActions?: PrompterActions;
     detectedBpm?: number | null;
     autoBpmError?: string | null;
+    textAreaRef?: React.RefObject<HTMLTextAreaElement>;
 }
 
 export const MusicActionToolbar = memo(({
@@ -59,7 +63,7 @@ export const MusicActionToolbar = memo(({
     setlists, activeSetlistId, onSwitchSetlist, onCreateSetlist, onDeleteSetlist, onUpdateSetlistTitle,
     activeSetlist, allScripts, onAddSong, onRemoveSong, onReorderSong,
     onSwitchScript, activeScriptId, onCreateScript, onUpdateScript, onDeleteScript, onStart,
-    settings, prompterActions, detectedBpm, autoBpmError
+    settings, prompterActions, detectedBpm, autoBpmError, textAreaRef
 }: MusicActionToolbarProps) => {
     const { t } = useTranslation();
     const [showTutorialModal, setShowTutorialModal] = useState(false);
@@ -92,6 +96,63 @@ export const MusicActionToolbar = memo(({
     }, [activeSetlist, activeScriptId, onSwitchScript, onStart]);
 
     const { isMidiEnabled, setIsMidiEnabled } = useMidi(handleMidiAction);
+    const [isPreviewSyncMode, setIsPreviewSyncMode] = useState(false);
+
+    // Parse sentences for preview sync
+    const { sentences } = useMemo(() => parseTextToSentences(text), [text]);
+
+    // Backing Track Hook for Preview
+    const {
+        isPlaying: isAudioPlaying,
+        currentTime,
+        markers,
+        error: audioError,
+        play,
+        pause
+    } = useBackingTrack(activeScriptId!, sentences, isPro);
+
+    // Preview Sync scrolling logic
+    useEffect(() => {
+        if (!isPreviewSyncMode || !isAudioPlaying || !textAreaRef?.current) return;
+
+        // Find current marker/sentence
+        const currentMarker = [...markers].reverse().find(m => currentTime >= m.timestamp);
+        if (currentMarker) {
+            const sentence = sentences.find((s: any) => s.id === currentMarker.sentenceId);
+            if (sentence && sentence.startIndex !== undefined) {
+                const textarea = textAreaRef.current;
+                const textBefore = text.substring(0, sentence.startIndex);
+                const lineCount = (textBefore.match(/\n/g) || []).length;
+
+                // Estimate line height (approximated)
+                const lineHeight = 28; // text-lg leading-relaxed usually around 28px
+                textarea.scrollTop = lineCount * lineHeight - 50; // Offset for better view
+            }
+        }
+
+        // Auto-stop after 15s if in preview sync
+        if (currentTime > 15 && isPreviewSyncMode) {
+            pause();
+            setIsPreviewSyncMode(false);
+        }
+    }, [currentTime, isPreviewSyncMode, isAudioPlaying, markers, sentences, textAreaRef, text, pause]);
+
+    const handlePreviewSyncToggle = () => {
+        if (!isPro) {
+            trackEvent("paywall_view", { trigger: "preview_sync_pro" });
+            onUnlockPro();
+            return;
+        }
+
+        const newState = !isPreviewSyncMode;
+        setIsPreviewSyncMode(newState);
+        if (newState) {
+            play();
+            trackEvent("preview_sync_activated", { script_id: activeScriptId! });
+        } else {
+            pause();
+        }
+    };
 
     const [previewAudio, setPreviewAudio] = useState<HTMLAudioElement | null>(null);
 
@@ -148,6 +209,7 @@ export const MusicActionToolbar = memo(({
                     type: file.type
                 }
             });
+            trackEvent("backing_uploaded", { file_name: file.name, file_size: file.size });
         } catch (err) {
             console.error("Upload failed", err);
             alert(t("music.backingTrack.error") || "Falha no upload do áudio.");
@@ -340,8 +402,30 @@ export const MusicActionToolbar = memo(({
                         )}
                     </div>
 
+                    {/* AUDIO ERROR FALLBACK */}
+                    {audioError && activeScript?.backingTrack && (
+                        <div className="flex items-center gap-2 bg-red-500/10 px-3 py-1.5 rounded-lg border border-red-500/20 mr-2" title={audioError}>
+                            <span className="text-[10px] font-bold text-red-500 uppercase tracking-tighter">Erro de Áudio</span>
+                            <button
+                                onClick={() => window.location.reload()}
+                                className="text-[9px] text-white hover:underline uppercase font-bold"
+                            >
+                                Recarregar
+                            </button>
+                        </div>
+                    )}
 
-                    {/* PRO TEASER */}
+                    {/* PREVIEW SYNC BUTTON */}
+                    <div className="flex items-center gap-2 border-l border-white/10 pl-4">
+                        <button
+                            onClick={handlePreviewSyncToggle}
+                            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border transition-all ${isPreviewSyncMode ? "bg-amber-500 text-black border-amber-600" : "bg-white/5 border-white/10 text-slate-300 hover:bg-white/10"}`}
+                            title="Preview Sync (15s)"
+                        >
+                            <PlayIcon className={`w-3.5 h-3.5 ${isPreviewSyncMode ? "fill-black" : "fill-current"}`} />
+                            <span className="text-xs font-bold uppercase tracking-wider">Preview Sync</span>
+                        </button>
+                    </div>
 
                 </div>
 
