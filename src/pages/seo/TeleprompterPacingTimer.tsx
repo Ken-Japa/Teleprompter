@@ -4,6 +4,7 @@ import { SeoPageLayout } from "./SeoPageLayout";
 import { TeleprompterPacingTimerPT } from "./content/teleprompter-pacing-timer/pt";
 import { TeleprompterPacingTimerEN } from "./content/teleprompter-pacing-timer/en";
 import { TeleprompterPacingTimerES } from "./content/teleprompter-pacing-timer/es";
+import { PacingCalculator } from "../../components/seo/PacingCalculator";
 
 interface Props {
     onLaunch: () => void;
@@ -81,6 +82,11 @@ export const TeleprompterPacingTimer: React.FC<Props> = ({ onLaunch }) => {
             schema={schema}
             onLaunch={onLaunch}
         >
+            {/* Calculator Tool Feature */}
+            <PacingCalculator onCtaClick={onLaunch} />
+
+            <div className="h-px bg-slate-800 my-8"></div>
+
             <Content />
 
             <div className="my-8 p-6 bg-slate-900 rounded-lg border border-slate-800 text-center">
