@@ -19,18 +19,21 @@ const generateId = () => {
     return Date.now().toString(36) + Math.random().toString(36).substring(2);
 };
 
-export const useSetlistStorage = () => {
+export const useSetlistStorage = (isMusicianMode?: boolean) => {
+    const setlistsKey = isMusicianMode ? "neonprompt_setlists_music" : SETLISTS_KEY;
+    const activeSetlistKey = isMusicianMode ? "neonprompt_active_setlist_id_music" : ACTIVE_SETLIST_KEY;
+
     // Initialize state from storage
     const [setlists, setSetlists] = useState<Setlist[]>(() => {
         try {
-            const stored = localStorage.getItem(SETLISTS_KEY);
+            const stored = localStorage.getItem(setlistsKey);
             if (stored) {
                 return JSON.parse(stored);
             }
             // Default initial setlist
             return [{
                 id: generateId(),
-                title: "My First Setlist",
+                title: isMusicianMode ? "My First Setlist" : "New Setlist",
                 songIds: [],
                 lastModified: Date.now()
             }];
@@ -42,7 +45,7 @@ export const useSetlistStorage = () => {
 
     const [activeSetlistId, setActiveSetlistId] = useState<string>(() => {
         try {
-            const storedId = localStorage.getItem(ACTIVE_SETLIST_KEY);
+            const storedId = localStorage.getItem(activeSetlistKey);
             if (storedId) return storedId;
             return ""; // Will be fixed by effect if empty and setlists exist
         } catch {
@@ -60,17 +63,17 @@ export const useSetlistStorage = () => {
     // Persistence
     useEffect(() => {
         try {
-            localStorage.setItem(SETLISTS_KEY, JSON.stringify(setlists));
+            localStorage.setItem(setlistsKey, JSON.stringify(setlists));
         } catch (e) {
             logger.error("Failed to save setlists", { error: e as Error });
         }
-    }, [setlists]);
+    }, [setlists, setlistsKey]);
 
     useEffect(() => {
         if (activeSetlistId) {
-            localStorage.setItem(ACTIVE_SETLIST_KEY, activeSetlistId);
+            localStorage.setItem(activeSetlistKey, activeSetlistId);
         }
-    }, [activeSetlistId]);
+    }, [activeSetlistId, activeSetlistKey]);
 
     const activeSetlist = setlists.find(s => s.id === activeSetlistId) || setlists[0];
 

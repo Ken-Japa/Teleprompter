@@ -796,6 +796,7 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
         subtitle: "Más de 500 músicos ya usan PromptNinja en el escenario.",
         ctaPrimary: "Prueba Gratis en el Ensayo",
         ctaSecondary: "Ver Planes PRO",
+        footer: "Simple. Rápido. Hecho para músicos.",
       },
       pricing: {
         title: "PRO Vitalicio por $19",
@@ -825,6 +826,9 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
         preview: "Vista previa (10s)",
         syncActive: "Sincronización de Audio Activa",
       },
+    },
+    footer: {
+      backToGeneral: "Volver al Teleprompter General",
     },
   },
   midi: {

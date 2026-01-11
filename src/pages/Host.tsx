@@ -33,7 +33,7 @@ export const Host: React.FC<HostProps> = ({ featureFlags }) => {
     const { state, actions, refs } = useHostController(featureFlags);
 
     // Setlist Storage (Used for Music Mode)
-    const setlistStorage = useSetlistStorage();
+    const setlistStorage = useSetlistStorage(!!featureFlags?.isMusicianModeForced);
 
     const { text, isEditMode, peerId, status, isPro, showPaywall, unlockKey, prompterState, errorMessage, paywallErrorMessage, paywallReason, showCountdownModal, prompterSettings, isValidating, bilingualTexts, isTrialActive, trialEndTime, detectedBpm, autoBpmError } = state;
 

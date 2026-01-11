@@ -37,39 +37,43 @@ export interface PrompterFeatureFlags {
 }
 
 export const usePrompterSettings = (isPro: boolean, featureFlags: PrompterFeatureFlags = {}) => {
+    const getStorageKey = (key: string) => {
+        return featureFlags.isMusicianModeForced ? `${key}_music` : key;
+    };
+
     // UI State - Persistent
     const [fontSize, setFontSize] = useLocalStorage<number>(
-        PROMPTER_DEFAULTS.STORAGE_KEYS.FONT_SIZE,
+        getStorageKey(PROMPTER_DEFAULTS.STORAGE_KEYS.FONT_SIZE),
         PROMPTER_DEFAULTS.FONT_SIZE
     );
     const [fontFamily, setFontFamily] = useLocalStorage<string>(
-        PROMPTER_DEFAULTS.STORAGE_KEYS.FONT_FAMILY,
+        getStorageKey(PROMPTER_DEFAULTS.STORAGE_KEYS.FONT_FAMILY),
         PROMPTER_DEFAULTS.FONT_FAMILY
     );
     const [margin, setMargin] = useLocalStorage<number>(
-        PROMPTER_DEFAULTS.STORAGE_KEYS.MARGIN,
+        getStorageKey(PROMPTER_DEFAULTS.STORAGE_KEYS.MARGIN),
         PROMPTER_DEFAULTS.MARGIN
     );
     const [isMirrored, setIsMirrored] = useLocalStorage<boolean>(
-        PROMPTER_DEFAULTS.STORAGE_KEYS.MIRROR,
+        getStorageKey(PROMPTER_DEFAULTS.STORAGE_KEYS.MIRROR),
         PROMPTER_DEFAULTS.IS_MIRRORED
     );
-    const [theme, setTheme] = useLocalStorage<Theme>(PROMPTER_DEFAULTS.STORAGE_KEYS.THEME, Theme.DEFAULT);
+    const [theme, setTheme] = useLocalStorage<Theme>(getStorageKey(PROMPTER_DEFAULTS.STORAGE_KEYS.THEME), Theme.DEFAULT);
     const [isUpperCase, setIsUpperCase] = useLocalStorage<boolean>(
-        PROMPTER_DEFAULTS.STORAGE_KEYS.CAPS,
+        getStorageKey(PROMPTER_DEFAULTS.STORAGE_KEYS.CAPS),
         PROMPTER_DEFAULTS.IS_UPPERCASE
     );
-    const [isFocusMode, setIsFocusMode] = useLocalStorage<boolean>(PROMPTER_DEFAULTS.STORAGE_KEYS.FOCUS, isPro);
+    const [isFocusMode, setIsFocusMode] = useLocalStorage<boolean>(getStorageKey(PROMPTER_DEFAULTS.STORAGE_KEYS.FOCUS), isPro);
     const [isFlipVertical, setIsFlipVertical] = useLocalStorage<boolean>(
-        PROMPTER_DEFAULTS.STORAGE_KEYS.FLIP_VERTICAL,
+        getStorageKey(PROMPTER_DEFAULTS.STORAGE_KEYS.FLIP_VERTICAL),
         PROMPTER_DEFAULTS.IS_FLIP_VERTICAL
     );
     const [voiceControlMode, setVoiceControlMode] = useLocalStorage<VoiceControlMode>(
-        PROMPTER_DEFAULTS.STORAGE_KEYS.VOICE_MODE,
+        getStorageKey(PROMPTER_DEFAULTS.STORAGE_KEYS.VOICE_MODE),
         "host"
     );
     const [recordingMode, setRecordingMode] = useLocalStorage<RecordingMode>(
-        PROMPTER_DEFAULTS.STORAGE_KEYS.RECORDING_MODE,
+        getStorageKey(PROMPTER_DEFAULTS.STORAGE_KEYS.RECORDING_MODE),
         "host"
     );
     // Determine initial value logic could be improved, but for now we rely on storage
@@ -77,7 +81,7 @@ export const usePrompterSettings = (isPro: boolean, featureFlags: PrompterFeatur
     // but useLocalStorage handles default if key missing.
     // However, if we are in a new domain, storage is empty.
     const [isMusicianModeStored, setIsMusicianMode] = useLocalStorage<boolean>(
-        "neonprompt_musician_mode",
+        getStorageKey("neonprompt_musician_mode"),
         featureFlags.defaultMusicianMode ?? false
     );
 
@@ -88,23 +92,23 @@ export const usePrompterSettings = (isPro: boolean, featureFlags: PrompterFeatur
         : (featureFlags.isMusicianModeDisabled ? false : isMusicianModeStored);
 
     const [isHudless, setIsHudless] = useLocalStorage<boolean>(
-        "neonprompt_hudless_mode",
+        getStorageKey("neonprompt_hudless_mode"),
         false
     );
     const [isCameraMode, setIsCameraMode] = useLocalStorage<boolean>(
-        "neonprompt_camera_mode",
+        getStorageKey("neonprompt_camera_mode"),
         false
     );
     const [isWidgetMode, setIsWidgetMode] = useLocalStorage<boolean>(
-        "neonprompt_widget_mode",
+        getStorageKey("neonprompt_widget_mode"),
         false
     );
     const [isBilingualMode, setIsBilingualMode] = useLocalStorage<boolean>(
-        "neonprompt_bilingual_mode",
+        getStorageKey("neonprompt_bilingual_mode"),
         false
     );
     const [bilingualConfig, setBilingualConfig] = useLocalStorage<BilingualConfig>(
-        "neonprompt_bilingual_config",
+        getStorageKey("neonprompt_bilingual_config"),
         {
             isActive: false,
             primaryText: "",
@@ -113,15 +117,15 @@ export const usePrompterSettings = (isPro: boolean, featureFlags: PrompterFeatur
         }
     );
     const [voiceLanguage, setVoiceLanguage] = useLocalStorage<string>(
-        "neonprompt_voice_language",
+        getStorageKey("neonprompt_voice_language"),
         "" // "" significa auto/globalLang
     );
     const [bpm, setBpm] = useLocalStorage<number>(
-        "neonprompt_bpm",
+        getStorageKey("neonprompt_bpm"),
         UI_LIMITS.BPM.DEFAULT
     );
     const [autoBpmEnabled, setAutoBpmEnabled] = useLocalStorage<boolean>(
-        "neonprompt_auto_bpm",
+        getStorageKey("neonprompt_auto_bpm"),
         false
     );
 

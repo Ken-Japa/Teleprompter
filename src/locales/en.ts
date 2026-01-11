@@ -792,6 +792,7 @@ Paste your script here and customize your experience to start shining!`,
         subtitle: "Over 500 musicians already use PromptNinja on stage.",
         ctaPrimary: "Free Trial at Rehearsal",
         ctaSecondary: "See PRO Plans",
+        footer: "Simple. Fast. Made for musicians.",
       },
       pricing: {
         title: "PRO Lifetime for $19",
@@ -821,6 +822,9 @@ Paste your script here and customize your experience to start shining!`,
         preview: "Preview (10s)",
         syncActive: "Audio Sync Active",
       },
+    },
+    footer: {
+      backToGeneral: "Back to General Teleprompter",
     },
   },
   midi: {

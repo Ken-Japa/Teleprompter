@@ -19,6 +19,9 @@ const SCRIPTS_KEY = "neonprompt_scripts";
 const ACTIVE_SCRIPT_KEY = "neonprompt_active_script_id";
 const LEGACY_TEXT_KEY = "neonprompt_text";
 
+const MUSIC_SCRIPTS_KEY = "neonprompt_musics";
+const MUSIC_ACTIVE_SCRIPT_KEY = "neonprompt_active_music_id";
+
 const generateId = () => {
     if (typeof crypto !== 'undefined' && crypto.randomUUID) {
         return crypto.randomUUID();
@@ -26,19 +29,22 @@ const generateId = () => {
     return Date.now().toString(36) + Math.random().toString(36).substring(2);
 };
 
-export const useScriptStorage = () => {
+export const useScriptStorage = (isMusicianMode?: boolean) => {
     const { t } = useTranslation();
+
+    const scriptsKey = isMusicianMode ? MUSIC_SCRIPTS_KEY : SCRIPTS_KEY;
+    const activeScriptKey = isMusicianMode ? MUSIC_ACTIVE_SCRIPT_KEY : ACTIVE_SCRIPT_KEY;
 
     // Initialize state from storage
     const [scripts, setScripts] = useState<Script[]>(() => {
         try {
-            const storedScripts = localStorage.getItem(SCRIPTS_KEY);
+            const storedScripts = localStorage.getItem(scriptsKey);
             if (storedScripts) {
                 return JSON.parse(storedScripts);
             }
 
-            // Migration from legacy single text
-            const legacyText = localStorage.getItem(LEGACY_TEXT_KEY);
+            // Migration from legacy single text (Only for general mode)
+            const legacyText = !isMusicianMode ? localStorage.getItem(LEGACY_TEXT_KEY) : null;
             const defaultText = t("host.defaultText");
             const initialContent = legacyText || defaultText;
 
@@ -61,13 +67,13 @@ export const useScriptStorage = () => {
 
     const [activeScriptId, setActiveScriptId] = useState<string>(() => {
         try {
-            const storedId = localStorage.getItem(ACTIVE_SCRIPT_KEY);
+            const storedId = localStorage.getItem(activeScriptKey);
             // Verify if stored ID exists in loaded scripts
             // We need to access the scripts we just initialized. 
             // Since we can't search 'scripts' state yet (it's initializing), we repeat the logic or just take the first one after mount.
             // But here we can use a trick: read from localStorage again or just trust the first one.
             // Safer:
-            const storedScripts = localStorage.getItem(SCRIPTS_KEY);
+            const storedScripts = localStorage.getItem(scriptsKey);
             if (storedScripts) {
                 const parsed: Script[] = JSON.parse(storedScripts);
                 if (storedId && parsed.some(s => s.id === storedId)) {
@@ -98,17 +104,17 @@ export const useScriptStorage = () => {
     // Persistence
     useEffect(() => {
         try {
-            localStorage.setItem(SCRIPTS_KEY, JSON.stringify(scripts));
+            localStorage.setItem(scriptsKey, JSON.stringify(scripts));
         } catch (e) {
             logger.error("Failed to save scripts", { error: e as Error });
         }
-    }, [scripts]);
+    }, [scripts, scriptsKey]);
 
     useEffect(() => {
         if (activeScriptId) {
-            localStorage.setItem(ACTIVE_SCRIPT_KEY, activeScriptId);
+            localStorage.setItem(activeScriptKey, activeScriptId);
         }
-    }, [activeScriptId]);
+    }, [activeScriptId, activeScriptKey]);
 
     const activeScript = scripts.find(s => s.id === activeScriptId) || scripts[0];
 

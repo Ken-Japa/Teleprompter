@@ -24,7 +24,7 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
     switchScript,
     deleteScript,
     updateScript
-  } = useScriptStorage();
+  } = useScriptStorage(!!featureFlags?.isMusicianModeForced);
 
   // Bilingual Mode State
   const [bilingualTexts, setBilingualTexts] = useState<{
@@ -48,7 +48,10 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
 
   // 3. Prompter State
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [speed, setSpeed] = useLocalStorage<number>("neonprompt_speed", 2);
+  const [speed, setSpeed] = useLocalStorage<number>(
+    featureFlags?.isMusicianModeForced ? "neonprompt_speed_music" : "neonprompt_speed",
+    2
+  );
   const [elapsedTime, setElapsedTime] = useState<number>(0);
   const [navigationMap, setNavigationMap] = useState<NavigationItem[]>([]);
 

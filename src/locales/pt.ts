@@ -802,6 +802,7 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
         subtitle: "Mais de 500 músicos já usam o PromptNinja no palco.",
         ctaPrimary: "Teste Grátis no Ensaio",
         ctaSecondary: "Ver Planos PRO",
+        footer: "Simples. Rápido. Feito pra quem toca.",
       },
       pricing: {
         title: "PRO Vitalício por R$ 67",
@@ -821,7 +822,9 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
         priceNote: "Preço único promocional para músicos.",
         timer: "⏰ Garanta seu lugar no palco com desconto"
       },
-      footer: "Simples. Rápido. Feito pra quem toca.",
+    },
+    footer: {
+      backToGeneral: "Voltar para Teleprompter Geral",
     },
     backingTrack: {
       remove: "Remover",
@@ -845,6 +848,7 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
       STOP_SCROLL: "Parar Rolagem",
     },
     proDescription: "A conexão com pedais MIDI é exclusiva para membros PRO.",
-  }
+  },
+
 };
 
