@@ -426,6 +426,22 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
 <g>Y este en verde para señalar calma o una transición suave.</g>
 
 ¡Pega tu guion aquí y personaliza tu experiencia para empezar a brillar!`,
+    ndi: {
+      toggleLabel: "Salida NDI (OBS/Vmix)",
+      toggleDesc: "Transmisión vía Captura de Pantalla",
+      tutorial: {
+        title: "Guía de Configuración NDI",
+        step1: "Abre <b>vdo.ninja</b> en una nueva pestaña.",
+        step2: "Selecciona 'Remote Screenshare'.",
+        step3: "En OBS, agrega 'Browser Source' con el enlace de VDO.",
+        step4: "Alternativa: Usa 'Captura de Ventana' de OBS directamente.",
+        cleanMode: "Modo Limpio (Sin HUD)",
+        vingesterConfig: "Para NDI nativo, usa la app Vingester.app",
+        openVdo: "Abrir VDO.Ninja",
+        close: "Cerrar",
+        cleanModeBtn: "Reiniciar en Modo Limpio (?hud=0)"
+      }
+    }
   },
   bilingual: {
     mode: "Modo Bilingüe",

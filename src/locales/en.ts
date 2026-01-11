@@ -417,6 +417,22 @@ Use color tags to highlight important moments in your script.
 <g>And this in green to signal calm or a smooth transition.</g>
 
 Paste your script here and customize your experience to start shining!`,
+    ndi: {
+      toggleLabel: "NDI Output (OBS/Vmix)",
+      toggleDesc: "Broadcast via Screen Capture",
+      tutorial: {
+        title: "NDI Setup Guide",
+        step1: "Open <b>vdo.ninja</b> in a new tab.",
+        step2: "Select 'Remote Screenshare'.",
+        step3: "In OBS, add 'Browser Source' with the VDO link.",
+        step4: "Alternately: Use OBS 'Window Capture' directly.",
+        cleanMode: "Clean Mode (No HUD)",
+        vingesterConfig: "For native NDI, use Vingester.app",
+        openVdo: "Open VDO.Ninja",
+        close: "Close",
+        cleanModeBtn: "Restart in Clean Mode (?hud=0)"
+      }
+    }
   },
   bilingual: {
     mode: "Bilingual Mode",

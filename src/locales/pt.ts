@@ -423,6 +423,22 @@ Use as tags de cor para destacar momentos importantes no seu roteiro.
 <g>E este em verde para sinalizar calma ou uma transição suave.</g>
 
 Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
+    ndi: {
+      toggleLabel: "Saída NDI (OBS/Vmix)",
+      toggleDesc: "Transmissão via Captura de Tela",
+      tutorial: {
+        title: "Guia de Configuração NDI",
+        step1: "Abra o <b>vdo.ninja</b> em uma nova aba.",
+        step2: "Selecione 'Remote Screenshare'.",
+        step3: "No OBS, adicione 'Browser Source' com o link do VDO.",
+        step4: "Alternativa: Use 'Captura de Janela' do OBS direto.",
+        cleanMode: "Modo Limpo (Sem HUD)",
+        vingesterConfig: "Para NDI nativo, use o app Vingester.app",
+        openVdo: "Abrir VDO.Ninja",
+        close: "Fechar",
+        cleanModeBtn: "Reiniciar em Modo Limpo (?hud=0)"
+      }
+    }
   },
 
   bilingual: {

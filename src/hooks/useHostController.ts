@@ -460,6 +460,14 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
     }
   }, [isNDIEnabled]);
 
+  // Handle Clean Mode URL Param
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('hud') === '0') {
+      prompterActions.setIsHudless(true);
+    }
+  }, [prompterActions]);
+
   return {
     state: {
       text,
