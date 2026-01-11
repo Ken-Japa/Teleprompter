@@ -8,7 +8,7 @@ import { useLocalStorage } from "./useLocalStorage";
 import { useTranslation } from "./useTranslation";
 import { usePrompterSettings, PrompterFeatureFlags } from "./usePrompterSettings";
 import { tryEnableNoSleep } from "./useWakeLock";
-import { trackStartPacing, trackGoogleAdsPurchase } from "../utils/analytics";
+import { trackStartPacing, trackGoogleAdsPurchase, trackEvent } from "../utils/analytics";
 import { useAutoBpm } from "./useAutoBpm";
 
 export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
@@ -449,6 +449,17 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
     });
   }, [prompterActions, prompterSettings.bilingualConfig]);
 
+  // NDI Support
+  const [isNDIEnabled, setIsNDIEnabled] = useState<boolean>(false);
+
+  const toggleNDI = useCallback(() => {
+    const newState = !isNDIEnabled;
+    setIsNDIEnabled(newState);
+    if (newState) {
+      trackEvent('ndi_activated');
+    }
+  }, [isNDIEnabled]);
+
   return {
     state: {
       text,
@@ -475,6 +486,7 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
       activeScript,
       detectedBpm,
       autoBpmError,
+      isNDIEnabled,
     },
     actions: {
       setText,
@@ -503,6 +515,7 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
       switchScript: handleSwitchScript,
       deleteScript,
       updateScript,
+      toggleNDI,
     },
     refs: {
       prompterRef,

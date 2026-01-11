@@ -58,11 +58,13 @@ interface PrompterHUDProps {
     autoBpmError?: string | null;
     setShowPaywall?: (show: boolean) => void;
     backingTrack?: ReturnType<typeof useBackingTrack>;
+    isNDIEnabled?: boolean;
+    onToggleNDI?: () => void;
 }
 
 
 export const PrompterHUD = memo(
-    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isVoiceMode, isPro, voiceApiSupported, voiceApiError, resetTimerSignal, onStateChange, onResetPrompter, toggleVoice, onExit, onSync, onEdit, togglePiP, isPiPActive, recordingState, recordingActions, onPreviousPart, onNextPart, hasParts, detectedBpm, autoBpmError, setShowPaywall, backingTrack }: PrompterHUDProps) => {
+    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isVoiceMode, isPro, voiceApiSupported, voiceApiError, resetTimerSignal, onStateChange, onResetPrompter, toggleVoice, onExit, onSync, onEdit, togglePiP, isPiPActive, recordingState, recordingActions, onPreviousPart, onNextPart, hasParts, detectedBpm, autoBpmError, setShowPaywall, backingTrack, isNDIEnabled, onToggleNDI }: PrompterHUDProps) => {
 
         const { t } = useTranslation();
         const { recordingMode = 'host' } = settings;
@@ -397,6 +399,10 @@ export const PrompterHUD = memo(
                     onClose={() => setShowAppearanceModal(false)}
                     settings={settings}
                     actions={actions}
+                    isPro={isPro}
+                    onShowPaywall={() => setShowPaywall?.(true)}
+                    isNDIEnabled={!!isNDIEnabled}
+                    onToggleNDI={onToggleNDI || (() => { })}
                 />
                 <QRCodeModal
                     isOpen={showQRModal}

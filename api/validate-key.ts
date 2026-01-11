@@ -67,7 +67,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     "https://promptninja.solutionkit.com.br",
     "https://music.solutionkit.com.br",
     "http://localhost:3000",
-    "http://localhost:5173"
+    "http://localhost:5173",
+    "teleprompter-git-NDI-kenjapas-projects.vercel.app"
   ];
 
   if (origin && allowedOrigins.includes(origin)) {

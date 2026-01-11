@@ -173,6 +173,8 @@ export const Host: React.FC<HostProps> = ({ featureFlags }) => {
                     onUpdateScript={actions.updateScript}
                     detectedBpm={detectedBpm}
                     autoBpmError={autoBpmError}
+                    isNDIEnabled={state.isNDIEnabled}
+                    onToggleNDI={actions.toggleNDI}
 
                     activeSetlist={setlistStorage.activeSetlist}
                 />

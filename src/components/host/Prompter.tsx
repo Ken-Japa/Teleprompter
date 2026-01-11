@@ -83,11 +83,13 @@ interface PrompterProps {
   activeSetlist?: Setlist;
   detectedBpm?: number | null;
   autoBpmError?: string | null;
+  isNDIEnabled?: boolean;
+  onToggleNDI?: () => void;
 }
 
 export const Prompter = memo(
   forwardRef<PrompterHandle, PrompterProps>(
-    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onScriptFinished, onReset, onStartRemoteRecording, onStopRemoteRecording, scripts, activeScriptId, onSwitchScript, onCreateScript, onDeleteScript, onUpdateScript, activeSetlist, detectedBpm, autoBpmError }, ref) => {
+    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onScriptFinished, onReset, onStartRemoteRecording, onStopRemoteRecording, scripts, activeScriptId, onSwitchScript, onCreateScript, onDeleteScript, onUpdateScript, activeSetlist, detectedBpm, autoBpmError, isNDIEnabled, onToggleNDI }, ref) => {
 
       // Extracted Settings Logic
       const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode, isMusicianMode, isBilingualMode, bilingualConfig, isHudless, isCameraMode, isWidgetMode, bpm, autoBpmEnabled } = settings;
@@ -1031,6 +1033,8 @@ export const Prompter = memo(
             detectedBpm={detectedBpm}
             autoBpmError={autoBpmError}
             setShowPaywall={setShowPaywall}
+            isNDIEnabled={isNDIEnabled}
+            onToggleNDI={onToggleNDI}
             backingTrack={backingTrack}
             recordingState={{
 
@@ -1107,6 +1111,9 @@ export const Prompter = memo(
                   onNextPart={() => handleJumpToPart('next')}
                   hasParts={partIndices.length > 0}
                   backingTrack={backingTrack}
+                  setShowPaywall={setShowPaywall}
+                  isNDIEnabled={isNDIEnabled}
+                  onToggleNDI={onToggleNDI}
                   recordingState={{
 
                     isRecording,

@@ -13,15 +13,20 @@ import {
     MagicIcon,
     ApertureIcon
 } from "./Icons";
+import { NDIOutputToggle } from "../host/NDIOutputToggle";
 
 interface AppearanceSettingsModalProps {
     isOpen: boolean;
     onClose: () => void;
     settings: PrompterSettings;
     actions: PrompterActions;
+    isPro: boolean;
+    onShowPaywall: () => void;
+    isNDIEnabled: boolean;
+    onToggleNDI: () => void;
 }
 
-export const AppearanceSettingsModal = memo(({ isOpen, onClose, settings, actions }: AppearanceSettingsModalProps) => {
+export const AppearanceSettingsModal = memo(({ isOpen, onClose, settings, actions, isPro, onShowPaywall, isNDIEnabled, onToggleNDI }: AppearanceSettingsModalProps) => {
     const { t } = useTranslation();
     const {
         theme,
@@ -212,6 +217,16 @@ export const AppearanceSettingsModal = memo(({ isOpen, onClose, settings, action
                             <span className="text-xs font-medium">{t("host.controls.chroma")}</span>
                         </button>
                     )}
+                </div>
+
+                {/* NDI Toggle Section */}
+                <div className="pt-2">
+                    <NDIOutputToggle
+                        isPro={isPro}
+                        isEnabled={isNDIEnabled}
+                        onToggle={onToggleNDI}
+                        onShowPaywall={onShowPaywall}
+                    />
                 </div>
 
             </div>
