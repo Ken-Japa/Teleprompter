@@ -13,21 +13,32 @@ const generateSitemap = () => {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 `;
 
-  // Base route (Home) - keeping it simple for now, maybe add languages later if needed
-  xml += `  <url>
-    <loc>${DOMAIN}/</loc>
+  // Home routes for each domain
+  const DOMAINS = [
+    { url: "https://promptninja.solutionkit.com.br", langs: ['pt', 'en', 'es'] },
+    { url: "https://music.solutionkit.com.br", langs: ['pt', 'en', 'es'] }
+  ];
+
+  DOMAINS.forEach(domainConfig => {
+    xml += `  <url>
+    <loc>${domainConfig.url}/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>\n`;
+`;
+    domainConfig.langs.forEach(lang => {
+      xml += `    <xhtml:link rel="alternate" hreflang="${lang}" href="${domainConfig.url}/?lang=${lang}" />\n`;
+    });
+    xml += `  </url>\n`;
+  });
 
-  // Generate SEO routes
+  // Generate SEO routes (always on main domain)
   Object.values(ROUTES_CONFIG).forEach((routeConfig) => {
     const { priority, changefreq, paths } = routeConfig;
     const languages = Object.keys(paths);
 
     languages.forEach((lang) => {
       const currentPath = paths[lang];
-      
+
       xml += `  <url>
     <loc>${DOMAIN}${currentPath}</loc>
     <changefreq>${changefreq}</changefreq>

@@ -4,6 +4,17 @@
     <loc>https://promptninja.solutionkit.com.br/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/?lang=es" />
+  </url>
+  <url>
+    <loc>https://music.solutionkit.com.br/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://music.solutionkit.com.br/?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://music.solutionkit.com.br/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://music.solutionkit.com.br/?lang=es" />
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-online-gratis</loc>
