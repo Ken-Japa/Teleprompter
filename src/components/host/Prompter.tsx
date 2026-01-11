@@ -624,10 +624,31 @@ export const Prompter = memo(
           case MidiAction.STOP_SCROLL:
             onStateChange(false, externalState.speed);
             break;
+          case MidiAction.SPEED_UP:
+            onStateChange(externalState.isPlaying, Math.min(UI_LIMITS.SPEED.MAX, externalState.speed + UI_LIMITS.SPEED.STEP));
+            break;
+          case MidiAction.SPEED_DOWN:
+            onStateChange(externalState.isPlaying, Math.max(UI_LIMITS.SPEED.MIN, externalState.speed - UI_LIMITS.SPEED.STEP));
+            break;
+          case MidiAction.FONT_INCREASE:
+            actions.setFontSize(Math.min(UI_LIMITS.FONT_SIZE.MAX, settings.fontSize + UI_LIMITS.FONT_SIZE.STEP_BUTTON));
+            break;
+          case MidiAction.FONT_DECREASE:
+            actions.setFontSize(Math.max(UI_LIMITS.FONT_SIZE.MIN, settings.fontSize - UI_LIMITS.FONT_SIZE.STEP_BUTTON));
+            break;
+          case MidiAction.RESET:
+            resetPrompter();
+            break;
+          case MidiAction.TOGGLE_MIRROR:
+            actions.setIsMirrored(!settings.isMirrored);
+            break;
+          case MidiAction.EXIT:
+            onExit();
+            break;
           default:
             break;
         }
-      }, [externalState.isPlaying, externalState.speed, onStateChange, handleNavigate]);
+      }, [externalState.isPlaying, externalState.speed, onStateChange, handleNavigate, settings.fontSize, settings.isMirrored, actions, resetPrompter, onExit]);
 
       useMidi(handleMidiAction);
 

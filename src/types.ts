@@ -242,6 +242,13 @@ export enum MidiAction {
     PREV_SONG = "PREV_SONG",
     START_SCROLL = "START_SCROLL",
     STOP_SCROLL = "STOP_SCROLL",
+    SPEED_UP = "SPEED_UP",
+    SPEED_DOWN = "SPEED_DOWN",
+    FONT_INCREASE = "FONT_INCREASE",
+    FONT_DECREASE = "FONT_DECREASE",
+    RESET = "RESET",
+    TOGGLE_MIRROR = "TOGGLE_MIRROR",
+    EXIT = "EXIT",
 }
 
 export type MidiMapping = {

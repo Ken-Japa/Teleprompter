@@ -93,12 +93,14 @@ export const HotkeyConfigModal: React.FC<HotkeyConfigModalProps> = ({ isOpen, on
                                 ? (t("hotkeys.proDescription") || "Customizar atalhos é um recurso PRO.")
                                 : (t("midi.proDescription") || "A conexão com pedais MIDI é exclusiva para membros PRO.")}
                         </p>
-                        <S.PrimaryButton onClick={() => {
-                            onUnlockPro();
-                            onClose();
-                        }}>
-                            {t("paywall.unlock")}
-                        </S.PrimaryButton>
+                        <div className="flex justify-center">
+                            <S.PrimaryButton onClick={() => {
+                                onUnlockPro();
+                                onClose();
+                            }}>
+                                {t("paywall.unlock")}
+                            </S.PrimaryButton>
+                        </div>
                     </div>
                 )}
 

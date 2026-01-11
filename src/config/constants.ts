@@ -69,6 +69,13 @@ export const MIDI_DEFAULTS: Record<string, { type: "note" | "cc", value: number 
     PREV_SONG: null,
     START_SCROLL: null,
     STOP_SCROLL: null,
+    SPEED_UP: null,
+    SPEED_DOWN: null,
+    FONT_INCREASE: null,
+    FONT_DECREASE: null,
+    RESET: null,
+    TOGGLE_MIRROR: null,
+    EXIT: null,
 };
 
 
