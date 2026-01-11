@@ -238,7 +238,7 @@ export const pt = {
           "Controle por voz",
           "Logo personalizado",
           "Suporte prioritário",
-          'Badge "Early Supporter"',
+          "Suporte MIDI para controladores físicos",
           "Acesso antecipado a features",
           "Customizar Atalhos de Teclado",
         ],

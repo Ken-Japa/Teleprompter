@@ -234,7 +234,7 @@ export const en = {
           "Voice control",
           "Custom logo",
           "Priority support",
-          'Badge "Early Supporter"',
+          "MIDI support for physical controllers",
           "Early access to features",
           "Customize Keyboard Shortcuts",
         ],

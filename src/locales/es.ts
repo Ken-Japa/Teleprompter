@@ -242,7 +242,7 @@ export const es = {
           "Control por voz",
           "Logo personalizado",
           "Soporte prioritario",
-          'Badge "Early Supporter"',
+          "Soporte MIDI para controladores físicos",
           "Acceso anticipado a funciones",
           "Personalizar Atajos de Teclado",
         ],
