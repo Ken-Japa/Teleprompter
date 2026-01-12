@@ -3,9 +3,9 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterCapCutES = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Teleprompter para CapCut: Deja de Perder 3 Horas Editando Errores de Grabación
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Grabaste ese video perfecto. Buena iluminación, encuadre cuidado, energía al máximo. Lo importas a CapCut y... te das cuenta de que la mitad de las tomas tienen errores de texto. Trabas en las palabras, tartamudeas, olvidas la frase. Resultado? En vez de pasar 1 hora editando transiciones y efectos, pasas 3 horas CORTANDO errores.
@@ -20,7 +20,7 @@ export const TeleprompterCapCutES = () => (
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-orange-900/30 p-8 rounded-xl border border-red-500/30 my-12">
-            <h2 className="text-3xl font-bold text-white mb-6">El Ciclo Vicioso del Creador de Contenido</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">El Ciclo Vicioso del Creador de Contenido</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/50 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
@@ -45,7 +45,7 @@ export const TeleprompterCapCutES = () => (
                         <li>✂️ <strong>Edición en CapCut:</strong> 1h creando efectos, subtítulos, transiciones</li>
                         <li>😊 <strong>Creatividad:</strong> Alta. Enfocas en lo que importa</li>
                         <li>📊 <strong>Resultado:</strong> Video profesional con tu marca</li>
-                        <li>⏰ <strong>Tiempo total:</strong> 1h20min por video</li>
+                        <li>⏰ <strong>Tiempo total:</strong> 1h30min por video</li>
                     </ul>
                 </div>
             </div>
@@ -54,7 +54,7 @@ export const TeleprompterCapCutES = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Por Qué el Teleprompter Integrado de CapCut No Es Suficiente</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Por Qué el Teleprompter Integrado de CapCut No Es Suficiente</h3>
         <p className="mb-6">
             CapCut tiene un teleprompter nativo en la función de grabación. Parece práctico, pero tiene limitaciones críticas que impiden grabaciones profesionales:
         </p>
@@ -113,7 +113,7 @@ export const TeleprompterCapCutES = () => (
         </p>
 
         <div className="bg-slate-800 p-6 rounded-lg my-12 border-l-4 border-cyan-500">
-            <h2 className="text-2xl font-bold text-white mb-4">Flujo Profesional: PromptNinja → CapCut</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">Flujo Profesional: PromptNinja → CapCut</h3>
             <p className="text-slate-300 mb-4">
                 La combinación perfecta no es elegir uno u otro. Es usar cada herramienta para lo que hace mejor:
             </p>
@@ -156,7 +156,7 @@ export const TeleprompterCapCutES = () => (
             ]}
         />
 
-        <h2 className="text-3xl font-bold text-white mt-16 mb-6">Caso Real: TikToker Pasó de 8h a 3h/Semana Grabando</h2>
+        <h3 className="text-3xl font-bold text-white mt-16 mb-6">Caso Real: TikToker Pasó de 8h a 3h/Semana Grabando</h3>
         <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 p-8 rounded-xl border border-purple-500/30 mb-12">
             <p className="text-slate-300 mb-4">
                 <strong className="text-purple-400">Perfil:</strong> Creadora de contenido educativo en TikTok (@estudiar_con_maria), 87k seguidores, publica 5 videos/semana sobre técnicas de estudio.
@@ -230,7 +230,7 @@ export const TeleprompterCapCutES = () => (
         />
 
         <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 p-8 rounded-xl border border-purple-500/30 text-center my-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Tu Viaje como Creador Comienza Aquí</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">Tu Viaje como Creador Comienza Aquí</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Deja de pelear con regrabaciones. Deja de pasar 3 horas editando errores. Comienza a crear contenido como siempre soñaste: con enfoque, calidad y creatividad de sobra.
             </p>

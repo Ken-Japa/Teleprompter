@@ -3,9 +3,9 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterObsStudioPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Teleprompter para OBS Studio: Guia Completo para Streamers e Criadores de Lives
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Você tá fazendo live, tenta ler o roteiro no segundo monitor, perde o olho da câmera por 3 segundos e BOOM — 50 pessoas saíram da live. Ou pior: você fica alternando janelas (Alt+Tab), quebra o flow, chat percebe que você tá lendo algo, atmosfera morre.
@@ -20,7 +20,7 @@ export const TeleprompterObsStudioPT = () => (
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-purple-900/30 p-8 rounded-xl border border-purple-500/30 my-12">
-            <h2 className="text-3xl font-bold text-white mb-6">O Problema do Streamer Que Lê Roteiro</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">O Problema do Streamer Que Lê Roteiro</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/50 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
@@ -54,7 +54,7 @@ export const TeleprompterObsStudioPT = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Por Que PromptNinja é Feito Pra OBS</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Por Que PromptNinja é Feito Pra OBS</h3>
         <p className="mb-6">
             Existem várias soluções de teleprompter, mas a maioria não foi pensada pra streaming. Veja as diferenças:
         </p>
@@ -109,7 +109,7 @@ export const TeleprompterObsStudioPT = () => (
         </div>
 
         <div className="bg-slate-800 p-6 rounded-lg my-12 border-l-4 border-purple-600">
-            <h2 className="text-2xl font-bold text-white mb-4">🎯 Vantagens Específicas Pra Streaming</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">🎯 Vantagens Específicas Pra Streaming</h3>
             <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-slate-900 p-4 rounded-lg">
                     <h4 className="font-bold text-purple-400 mb-2">⚡ Zero Impacto de Performance</h4>
@@ -163,7 +163,7 @@ export const TeleprompterObsStudioPT = () => (
             ]}
         />
 
-        <h2 className="text-3xl font-bold text-white mt-16 mb-6">3 Setups Profissionais de Uso</h2>
+        <h3 className="text-3xl font-bold text-white mt-16 mb-6">3 Setups Profissionais de Uso</h3>
         <p className="text-slate-300 mb-8">
             Dependendo do seu estilo de live, você pode usar o teleprompter de 3 formas:
         </p>
@@ -221,7 +221,7 @@ export const TeleprompterObsStudioPT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Troubleshooting: Problemas Comuns & Soluções</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Troubleshooting: Problemas Comuns & Soluções</h3>
 
         <div className="space-y-4 mb-12">
             <div className="bg-slate-800 p-5 rounded-lg border-l-4 border-yellow-500">
@@ -275,7 +275,7 @@ export const TeleprompterObsStudioPT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-16 mb-6">Caso Real: Streamer Dobrou Média de Viewers com Intros Profissionais</h2>
+        <h3 className="text-3xl font-bold text-white mt-16 mb-6">Caso Real: Streamer Dobrou Média de Viewers com Intros Profissionais</h3>
         <div className="bg-gradient-to-r from-purple-900/20 to-indigo-900/20 p-8 rounded-xl border border-purple-500/30 mb-12">
             <p className="text-slate-300 mb-4">
                 <strong className="text-purple-400">Streamer:</strong> @gamer_explicativo (nome alterado), 1.2k seguidores Twitch, live de Valorant + tutoriais.
@@ -312,7 +312,7 @@ export const TeleprompterObsStudioPT = () => (
         </div>
 
         <div className="bg-gradient-to-r from-indigo-900/30 to-purple-900/30 p-8 rounded-xl border border-indigo-500/30 my-12">
-            <h2 className="text-2xl font-bold text-white mb-4">💡 Dicas de Ouro Pra Usar Teleprompter em Live</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">💡 Dicas de Ouro Pra Usar Teleprompter em Live</h3>
             <div className="grid md:grid-cols-2 gap-6">
                 <div>
                     <h4 className="font-bold text-indigo-400 mb-2">📝 Roteiros Curtos e Diretos</h4>
@@ -409,7 +409,7 @@ export const TeleprompterObsStudioPT = () => (
         </div>
 
         <div className="bg-gradient-to-r from-purple-900/20 to-indigo-900/20 p-8 rounded-xl border border-purple-500/30 text-center my-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Streamer Profissional Começa Aqui</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">Streamer Profissional Começa Aqui</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Chega de improvisar intro. Chega de esquecer sponsors. Chega de olhar pro segundo monitor e perder viewers. Configure uma vez, use pra sempre.
             </p>

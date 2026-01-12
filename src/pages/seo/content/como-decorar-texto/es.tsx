@@ -3,9 +3,9 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoDecorarTextoES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
             Cómo Memorizar Textos Largo Rápido (El Secreto es NO Memorizar)
-        </h1>
+        </h2>
 
         <p className="text-lg text-slate-300 mb-8">
             Tienes presentación mañana. Guion de 5 páginas. Tu corazón se acelera al pensar en olvidar una frase y congelarte ante la cámara.
@@ -13,7 +13,7 @@ export const ComoDecorarTextoES = () => (
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-yellow-500 mb-12 shadow-2xl">
-            <h2 className="text-2xl font-bold text-white mb-4">El Mito de la Memoria Perfecta</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">El Mito de la Memoria Perfecta</h3>
             <p className="text-slate-300 mb-4">
                 Creemos que presentadores, políticos y grandes YouTubers tienen memoria fotográfica. Mentira. Tienen <strong>Teleprompters</strong>.
             </p>
@@ -22,7 +22,7 @@ export const ComoDecorarTextoES = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">La Técnica de "Mirada Invisible"</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">La Técnica de "Mirada Invisible"</h3>
         <p className="mb-6 text-slate-300">
             "¡Pero si leo, se notará!"
             No si usas la técnica correcta. El secreto no es qué lees, sino <strong>cómo configuras la pantalla.</strong>
@@ -45,7 +45,7 @@ export const ComoDecorarTextoES = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Paso a Paso: De Lectura a Actuación</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Paso a Paso: De Lectura a Actuación</h3>
 
         <SEOContentHowTo
             title=""

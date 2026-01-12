@@ -3,9 +3,9 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterObsStudioEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Teleprompter for OBS Studio: Complete Guide for Streamers and Live Creators
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             You're going live, trying to read the script on second monitor, lose eye contact with camera for 3 seconds and BOOM — 50 people left the stream. Or worse: you keep Alt+Tabbing, break the flow, chat notices you're reading something, atmosphere dies.
@@ -20,7 +20,7 @@ export const TeleprompterObsStudioEN = () => (
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-purple-900/30 p-8 rounded-xl border border-purple-500/30 my-12">
-            <h2 className="text-3xl font-bold text-white mb-6">The Script-Reading Streamer's Problem</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">The Script-Reading Streamer's Problem</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/50 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
@@ -54,7 +54,7 @@ export const TeleprompterObsStudioEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Why PromptNinja is Built for OBS</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Why PromptNinja is Built for OBS</h3>
         <p className="mb-6">
             Several teleprompter solutions exist, but most weren't designed for streaming. See the differences:
         </p>
@@ -109,7 +109,7 @@ export const TeleprompterObsStudioEN = () => (
         </div>
 
         <div className="bg-slate-800 p-6 rounded-lg my-12 border-l-4 border-purple-600">
-            <h2 className="text-2xl font-bold text-white mb-4">🎯 Streaming-Specific Advantages</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">🎯 Streaming-Specific Advantages</h3>
             <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-slate-900 p-4 rounded-lg">
                     <h4 className="font-bold text-purple-400 mb-2">⚡ Zero Performance Impact</h4>
@@ -163,7 +163,7 @@ export const TeleprompterObsStudioEN = () => (
             ]}
         />
 
-        <h2 className="text-3xl font-bold text-white mt-16 mb-6">Troubleshooting: Common Problems & Solutions</h2>
+        <h3 className="text-3xl font-bold text-white mt-16 mb-6">Troubleshooting: Common Problems & Solutions</h3>
 
         <div className="space-y-4 mb-12">
             <div className="bg-slate-800 p-5 rounded-lg border-l-4 border-yellow-500">
@@ -217,7 +217,7 @@ export const TeleprompterObsStudioEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-16 mb-6">Real Case: Streamer Doubled Average Viewers with Professional Intros</h2>
+        <h3 className="text-3xl font-bold text-white mt-16 mb-6">Real Case: Streamer Doubled Average Viewers with Professional Intros</h3>
         <div className="bg-gradient-to-r from-purple-900/20 to-indigo-900/20 p-8 rounded-xl border border-purple-500/30 mb-12">
             <p className="text-slate-300 mb-4">
                 <strong className="text-purple-400">Streamer:</strong> @educational_gamer (name changed), 1.2k followers Twitch, Valorant + tutorial streams.
@@ -303,7 +303,7 @@ export const TeleprompterObsStudioEN = () => (
         />
 
         <div className="bg-gradient-to-r from-purple-900/20 to-indigo-900/20 p-8 rounded-xl border border-purple-500/30 text-center my-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Professional Streamer Starts Here</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">Professional Streamer Starts Here</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Stop improvising intros. Stop forgetting sponsors. Stop looking at second monitor and losing viewers. Set up once, use forever.
             </p>

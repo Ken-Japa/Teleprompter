@@ -2,9 +2,9 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const AlternativasTeleprompterConcorrentePT = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
             A Melhor Alternativa Gratuita ao Teleprompter Pro e Outros Apps Pagos em 2025
-        </h1>
+        </h2>
 
         <p className="text-lg text-slate-300 mb-6">
             Você clica em "Baixar" num app teleprompter com 4.8 estrelas. Abre. Pop-up gigante: <strong>"UPGRADE PRO: $14.99/mês"</strong>. Você ignora, testa a versão free. Controle remoto? <span className="line-through">Bloqueado</span>. Ajustar velocidade? <span className="line-through">Bloqueado</span>. Modo espelho? <span className="line-through">PRO apenas</span>. Basicamente TUDO bloqueado exceto um scroll automático que você não consegue pausar.
@@ -54,7 +54,7 @@ export const AlternativasTeleprompterConcorrentePT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Por Que o Teleprompter do CapCut e o BIGVU Deixam a Desejar (No PC e em Lives)</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Por Que o Teleprompter do CapCut e o BIGVU Deixam a Desejar (No PC e em Lives)</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
                 <h3 className="text-xl font-bold text-red-400 mb-3">O Problema com o CapCut</h3>
@@ -93,7 +93,7 @@ export const AlternativasTeleprompterConcorrentePT = () => (
         <p className="text-lg text-slate-300 mb-8">
             Muitos apps, como o CapCut e outros <strong className="text-white">aplicativos teleprompter</strong>, são pesados, exigem download e travam seu celular. O PromptNinja, por ser uma solução web P2P, oferece a performance que você busca, seja no seu PC, Notebook ou como um <strong className="text-white">teleprompter gratuito para iPhone</strong>.
         </p>
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">PromptNinja: A Solução Definitiva</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">PromptNinja: A Solução Definitiva</h3>
         <p className="mb-8">
             O PromptNinja foi desenhado para resolver exatamente esses problemas, oferecendo uma experiência superior sem nenhum custo.
         </p>
@@ -137,7 +137,7 @@ export const AlternativasTeleprompterConcorrentePT = () => (
             </table>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Checklist: 7 Coisas Que VOCÊ Precisa em Um Teleprompter (Gratuíto ou Pago)</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Checklist: 7 Coisas Que VOCÊ Precisa em Um Teleprompter (Gratuíto ou Pago)</h3>
         <div className="bg-slate-900 p-6 rounded-xl border border-slate-700 mb-8">
             <p className="text-slate-300 mb-6">
                 Antes de pagar (ou escolher grátis), use este checklist. Se faltar 2+ itens, VOCÊ VAI SE ARREPENDER depois:

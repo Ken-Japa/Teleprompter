@@ -3,7 +3,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterParaYoutubersEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter for YouTubers: Double Your Retention & Cut Editing in Half</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter for YouTubers: Double Your Retention & Cut Editing in Half</h2>
 
         <p className="mb-6 text-xl text-slate-300">
             You know the pain: you hit record, speak two lines, freeze. "Cut, again".
@@ -15,7 +15,7 @@ export const TeleprompterParaYoutubersEN = () => (
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-red-500 mb-12 shadow-2xl">
-            <h2 className="text-2xl font-bold text-white mb-4">The Algorithm Hates Insecurity</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">The Algorithm Hates Insecurity</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div>
                     <h3 className="text-lg font-bold text-red-300 mb-2">📉 Without Teleprompter</h3>
@@ -38,7 +38,7 @@ export const TeleprompterParaYoutubersEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">3 Ways to Use (From Beginner to Pro)</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">3 Ways to Use (From Beginner to Pro)</h3>
 
         <div className="grid md:grid-cols-3 gap-6 mb-12">
             <div className="bg-slate-900/50 p-6 rounded-lg border border-slate-700 hover:border-blue-500 transition">
@@ -70,7 +70,7 @@ export const TeleprompterParaYoutubersEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Ninja Workflow: Script to Published in 1h</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Ninja Workflow: Script to Published in 1h</h3>
         <SEOContentHowTo
             title=""
             schemaTitle="How to Record YouTube Videos with Teleprompter"
@@ -97,7 +97,7 @@ export const TeleprompterParaYoutubersEN = () => (
         />
 
         <div className="mt-16 bg-gradient-to-r from-red-600/20 to-red-900/20 p-8 rounded-xl border border-red-500/30">
-            <h2 className="text-2xl font-bold text-white mb-4">Stop wasting time editing "Uhmms..."</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">Stop wasting time editing "Uhmms..."</h3>
             <p className="text-slate-300 mb-6">
                 Top creators (MrBeast, Ali Abdaal, Peter McKinnon) use scripts or teleprompters. Their consistency comes from workflow. PromptNinja gives you this superpower for free.
             </p>

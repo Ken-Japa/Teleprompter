@@ -3,7 +3,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterWebVsHardwareES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter Online vs Físico: La Guía Definitiva para Creadores</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter Online vs Físico: La Guía Definitiva para Creadores</h2>
 
         <p className="mb-6 text-lg text-slate-300">
             Estás listo para profesionalizar tus videos. El dilema clásico surge: "¿Debo gastar $200 en un armatoste de vidrio y plástico para mi cámara, o existe una solución inteligente de software?"
@@ -18,7 +18,7 @@ export const TeleprompterWebVsHardwareES = () => (
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border border-slate-700 mb-12 shadow-2xl">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Batalla: Vidrio vs Pixel</h2>
+            <h3 className="text-3xl font-bold text-white mb-8 text-center">Batalla: Vidrio vs Pixel</h3>
 
             <div className="grid md:grid-cols-2 gap-8">
                 {/* Lado Izquierdo: Hardware */}
@@ -55,7 +55,7 @@ export const TeleprompterWebVsHardwareES = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">La Verdad Sobre "Mirar Hacia Otro Lado"</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">La Verdad Sobre "Mirar Hacia Otro Lado"</h3>
         <p className="mb-6 text-slate-300">
             El argumento principal de vendedores de hardware es: <em>"Sin vidrio, el público nota que no los miras."</em> Eso era verdad en 2010. Hoy, no tanto.
         </p>
@@ -69,7 +69,7 @@ export const TeleprompterWebVsHardwareES = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">¿Cuándo REALMENTE Necesitas Hardware?</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">¿Cuándo REALMENTE Necesitas Hardware?</h3>
         <p className="mb-6 text-slate-300">
             No somos anti-hardware. PromptNinja fue hecho para funcionar <strong>con</strong> hardware también. Debes comprar teleprompter de vidrio si:
         </p>
@@ -80,7 +80,7 @@ export const TeleprompterWebVsHardwareES = () => (
         </ul>
 
         <div className="bg-slate-900 p-8 rounded-xl border border-yellow-600/50 my-10">
-            <h2 className="text-2xl font-bold text-yellow-500 mb-4">La Solución Híbrida (Lo Mejor de Dos Mundos)</h2>
+            <h3 className="text-2xl font-bold text-yellow-500 mb-4">La Solución Híbrida (Lo Mejor de Dos Mundos)</h3>
             <p className="text-slate-300 mb-6">
                 ¿Ya compraste hardware? Genial. Pero no uses el software malo que vino con él (generalmente apps chinos Bluetooth inestables).
             </p>
@@ -107,7 +107,7 @@ export const TeleprompterWebVsHardwareES = () => (
         </div>
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
-            <h2 className="text-3xl font-bold text-white mb-4">Prueba Software Antes de Gastar</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">Prueba Software Antes de Gastar</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Antes de invertir en vidrio, trípode pesado y soportes, intenta grabar un video con PromptNinja bien configurado. 95% de usuarios desisten de comprar hardware tras probar.
             </p>

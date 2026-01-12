@@ -2,9 +2,9 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoUsarTeleprompterES = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Cómo Usar un Teleprompter Gratis: La Guía Definitiva para Vídeos Profesionales
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             ¿Primera vez intentando un teleprompter? Abres algún sitio cualquiera, pegas el texto, le das a play y... DESASTRE. El texto avanza muy rápido (pareces un subastador nervioso) o muy lento (pausas incómodas). Intentas pausar pero necesitas <strong>tocar la pantalla y temblar la cámara</strong>. Después de 40 minutos probando, te rindes y vuelves a regrabar 20 veces memorizando.
@@ -19,7 +19,7 @@ export const ComoUsarTeleprompterES = () => (
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">Primer Video: Sin vs CON Teleprompter</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">Primer Video: Sin vs CON Teleprompter</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/70 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
@@ -52,7 +52,7 @@ export const ComoUsarTeleprompterES = () => (
         </div>
 
         <div className="bg-slate-900 p-6 rounded-lg border border-slate-800 mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Por Qué los Principiantes Fallan (y Cómo Evitarlo)</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">Por Qué los Principiantes Fallan (y Cómo Evitarlo)</h3>
             <p className="text-slate-300 mb-4">
                 90% de los creadores que prueban teleprompter por primera vez SE RINDEN. No porque la herramienta no funcione, sino porque cometen 3 errores clásicos:
             </p>
@@ -81,7 +81,7 @@ export const ComoUsarTeleprompterES = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Cómo Usar un Teleprompter: De lo Básico a lo Profesional</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Cómo Usar un Teleprompter: De lo Básico a lo Profesional</h3>
         <p className="text-slate-300 mb-8">
             Existen dos maneras principales de usar un teleprompter, especialmente con herramientas web como PromptNinja, que no requieren la compra de equipos costosos.
         </p>
@@ -130,7 +130,7 @@ export const ComoUsarTeleprompterES = () => (
             <p className="text-sm text-green-400 mt-2 px-4"><strong>Ventaja:</strong> Control total sobre el flujo de la grabación, permitiendo pausas dramáticas, aceleración y una presentación mucho más dinámica y natural.</p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Errores Comunes al Usar un Teleprompter (y Cómo Evitarlos)</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Errores Comunes al Usar un Teleprompter (y Cómo Evitarlos)</h3>
         <div className="space-y-4">
             <div className="bg-slate-800 p-4 rounded-lg">
                 <h3 className="font-bold text-lg text-white">1. Ojos "Bailarines" en la Pantalla</h3>

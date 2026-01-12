@@ -3,7 +3,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterIphoneIpadES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para iPhone e iPad: Cero Instalación, 100% Profesional</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para iPhone e iPad: Cero Instalación, 100% Profesional</h2>
 
         <p className="mb-6 text-lg text-slate-300">
             iPhone 15 Pro Max. $1200. Cámara 4K60fps ProRes. Estabilización cinematográfica. Luego grabas el video... miras al papel cada 5 segundos. Pierdes contacto visual. Audiencia siente desconexión. Cámara PRO + guion AMATEUR = desperdicio.
@@ -18,7 +18,7 @@ export const TeleprompterIphoneIpadES = () => (
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">Setup iOS: App Store vs Web App</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">Setup iOS: App Store vs Web App</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/70 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
@@ -50,7 +50,7 @@ export const TeleprompterIphoneIpadES = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">3 Configuraciones iOS Profesionales</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">3 Configuraciones iOS Profesionales</h3>
         <div className="space-y-6 mb-12">
             <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-cyan-500">
                 <h3 className="text-xl font-bold text-cyan-400 mb-3">Setup #1: iPhone Solo (Vlog/TikTok)</h3>
@@ -100,7 +100,7 @@ export const TeleprompterIphoneIpadES = () => (
         </div>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
-            <h2 className="text-2xl font-bold text-white mb-4">PWA en iOS: App "Nativa" Sin App Store</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">PWA en iOS: App "Nativa" Sin App Store</h3>
             <p className="text-slate-300 mb-4">
                 iOS tiene PWA (Progressive Web App) desde 2018. PromptNinja se convierte en "app nativa" en 3 taps:
             </p>
@@ -129,7 +129,7 @@ export const TeleprompterIphoneIpadES = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">5 Errores Fatales iOS Que Matan Profesionalismo</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">5 Errores Fatales iOS Que Matan Profesionalismo</h3>
         <div className="space-y-4 mb-12">
             <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
                 <h4 className="font-bold text-red-400 mb-2">Error #1: Usar Chrome iOS para PWA (No Funciona)</h4>
@@ -168,7 +168,7 @@ export const TeleprompterIphoneIpadES = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Funciones Exclusivas iOS</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Funciones Exclusivas iOS</h3>
         <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="bg-slate-900 p-4 rounded-lg border border-slate-700">
                 <h3 className="text-xl font-bold text-white mb-2">🎥 Grabación ProRes</h3>
@@ -188,7 +188,7 @@ export const TeleprompterIphoneIpadES = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Control Remoto P2P (iPhone ↔ iPad)</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Control Remoto P2P (iPhone ↔ iPad)</h3>
         <p className="mb-4">
             Setup más popular: iPad = display teleprompter, iPhone = control inalámbrico.
         </p>
@@ -202,7 +202,7 @@ export const TeleprompterIphoneIpadES = () => (
         <p className="text-yellow-400 text-sm">💡 <strong>Pro tip:</strong> Funciona SIN internet. Solo necesita ambos en misma red WiFi (o hotspot iPhone).</p>
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
-            <h2 className="text-3xl font-bold text-white mb-4">📱 Transforma Tu iPhone/iPad Ahora</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">📱 Transforma Tu iPhone/iPad Ahora</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Cámara PRO merece teleprompter PRO. Cero App Store, cero suscripción, cero límites.
             </p>

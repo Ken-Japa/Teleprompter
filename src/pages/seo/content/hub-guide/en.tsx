@@ -7,10 +7,10 @@ export const HubGuideContentEN = () => (
         </div>
 
         <section id="oque" className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
                 What is a Teleprompter?
-            </h2>
+            </h3>
             <p className="mb-4">
                 The <a href={ROUTES_CONFIG.SEO_O_QUE_E.paths.en}>Teleprompter</a> (or "prompter") is the secret tool behind TV presenters, presidents, and successful YouTubers. It allows you to read a script while looking directly into the camera lens.
             </p>
@@ -23,10 +23,10 @@ export const HubGuideContentEN = () => (
         </section>
 
         <section id="como-usar" className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
                 How to Use (Step-by-Step)
-            </h2>
+            </h3>
             <p>
                 Using a teleprompter today is much easier than in the analog TV era. You don't need $1,000 equipment.
             </p>
@@ -45,10 +45,10 @@ export const HubGuideContentEN = () => (
         </section>
 
         <section id="apps" className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
                 Best Apps & Tools
-            </h2>
+            </h3>
             <p className="mb-4">
                 There are dozens of options, but the future is <strong>Web-Based</strong> with AI. Learn what to expect from the <a href={ROUTES_CONFIG.SEO_FUTURE_AI.paths.en}>Future of AI Teleprompters</a>.
             </p>
@@ -67,10 +67,10 @@ export const HubGuideContentEN = () => (
         </section>
 
         <section id="diy" className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
                 DIY vs Professional
-            </h2>
+            </h3>
             <p className="mb-4">
                 You can start with zero investment. We have an amazing guide on <a href={ROUTES_CONFIG.SEO_DIY.paths.en}>How to make a DIY Teleprompter</a> using a CD case or picture frame glass.
             </p>
@@ -80,10 +80,10 @@ export const HubGuideContentEN = () => (
         </section>
 
         <section id="casos" className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">5</span>
                 Specific Use Cases
-            </h2>
+            </h3>
             <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-purple-500 transition-colors">
                     <h3 className="font-bold text-white mb-2">📹 Youtubers & Creators</h3>
@@ -117,10 +117,10 @@ export const HubGuideContentEN = () => (
         </section>
 
         <section id="recursos" className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">6</span>
                 Scripts & Public Speaking
-            </h2>
+            </h3>
             <p>
                 The tool is useless without good content. That's why we created a library of <a href={ROUTES_CONFIG.SEO_SCRIPTS.paths.en}>Teleprompter Scripts</a> ready to use.
             </p>

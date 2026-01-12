@@ -3,7 +3,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterPCWindowsPT = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para PC Windows: Setup Profissional em 60 Segundos</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para PC Windows: Setup Profissional em 60 Segundos</h2>
 
         <p className="mb-6 text-lg text-slate-300">
             PC gamer R$8000 pra fazer lives. OBS configurado, chroma key, LED. Tudo perfeito. Aí grava o vídeo sério... TRAVA na frase 3. "Ahhh deixa eu ver o roteiro". Olha pro papel. Perde contato visual. Credibilidade = 0.
@@ -18,7 +18,7 @@ export const TeleprompterPCWindowsPT = () => (
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">Setup PC: Sem vs COM Teleprompter</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">Setup PC: Sem vs COM Teleprompter</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/70 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
@@ -51,7 +51,7 @@ export const TeleprompterPCWindowsPT = () => (
         </div>
 
         <div className="my-8 p-6 bg-slate-800 rounded-lg">
-            <h2 className="text-2xl font-bold text-white mb-4">Por Que .exe de 2012 é Furada (Riscos Reais)</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">Por Que .exe de 2012 é Furada (Riscos Reais)</h3>
             <ul className="list-disc pl-6 mb-4 space-y-2">
                 <li><strong>Malware:</strong> 70% chance segundo Norton 2024 (sites "grátis" vivem de adware)</li>
                 <li><strong>Windows 11:</strong> Apps velhos travam com DirectX 12</li>
@@ -63,7 +63,7 @@ export const TeleprompterPCWindowsPT = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">3 Setups PC Profissionais</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">3 Setups PC Profissionais</h3>
         <div className="space-y-6 mb-12">
             <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-cyan-500">
                 <h3 className="text-xl font-bold text-cyan-400 mb-3">Setup #1: Webcam + Single Monitor (YouTuber Básico)</h3>
@@ -114,7 +114,7 @@ export const TeleprompterPCWindowsPT = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Comparativo: Web App vs Software .exe</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Comparativo: Web App vs Software .exe</h3>
         <div className="overflow-x-auto my-8">
             <table className="min-w-full bg-slate-800 rounded-lg">
                 <thead>
@@ -164,7 +164,7 @@ export const TeleprompterPCWindowsPT = () => (
             </table>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">5 Erros Fatais de Setup PC (Que Te Fazem Parecer Amador)</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">5 Erros Fatais de Setup PC (Que Te Fazem Parecer Amador)</h3>
         <div className="space-y-4 mb-12">
             <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
                 <h4 className="font-bold text-red-400 mb-2">Erro #1: Instalar .exe de Fonte Desconhecida</h4>
@@ -203,12 +203,12 @@ export const TeleprompterPCWindowsPT = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Performance: PWA vs App Nativo</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Performance: PWA vs App Nativo</h3>
         <p className="mb-4">
             "Web app = lento" é mito de 2010. PromptNinja é PWA (Progressive Web App) com aceleração hardware via WebGL. Scroll a 60fps constantes mesmo em roteiros de 50+ páginas. Se comporta EXATAMENTE como app nativo mas sem pedir permissão de admin.
         </p>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Como "Instalar" PWA no Windows (Opcional)</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Como "Instalar" PWA no Windows (Opcional)</h3>
         <p className="mb-4">
             Para experiência ainda mais integrada (ícone desktop, janela dedicada sem abas):
         </p>
@@ -248,7 +248,7 @@ export const TeleprompterPCWindowsPT = () => (
             <p className="text-slate-400 mt-4 text-sm">Zero instalação • Controle remoto incluso • Funciona offline</p>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Perguntas Frequentes (FAQ) - Usuários PC Windows</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Perguntas Frequentes (FAQ) - Usuários PC Windows</h3>
         <SEOContentFAQ
             title=""
             items={[

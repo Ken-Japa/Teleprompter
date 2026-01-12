@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const FuturoTelepromptersAiES = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             El Futuro de los Teleprompters con IA: ¿El Fin del "Lector Robot"?
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Antiguamente, necesitabas a una persona girando una manivela para desplazar el papel. Hoy, la Inteligencia Artificial te escucha. Pronto, corregirá tus ojos. El futuro del teleprompter no es solo leer, es <strong>actuar</strong>.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">3 Tecnologías que Están Cambiando Todo</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">3 Tecnologías que Están Cambiando Todo</h3>
 
             <div className="space-y-6">
                 <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-cyan-500">
@@ -38,7 +38,7 @@ export const FuturoTelepromptersAiES = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">¿Perderemos la Habilidad de Hablar?</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">¿Perderemos la Habilidad de Hablar?</h3>
         <p className="text-slate-300 mb-8">
             Al contrario. Con la IA cuidando la parte técnica (recordar qué decir, mantener el ritmo), los humanos podrán enfocarse en lo que la IA no tiene: <strong>emoción y conexión</strong>. El teleprompter dejará de ser una muleta para convertirse en un exoesqueleto de carisma.
         </p>

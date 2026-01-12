@@ -3,7 +3,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterWebVsHardwareEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Online Teleprompter vs Hardware: The Ultimate Guide for Creators</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Online Teleprompter vs Hardware: The Ultimate Guide for Creators</h2>
 
         <p className="mb-6 text-lg text-slate-300">
             You're ready to professionalize your videos. The classic dilemma arises: "Should I spend $200 on a bulky glass-and-plastic rig for my camera, or is there a smart software solution?"
@@ -18,7 +18,7 @@ export const TeleprompterWebVsHardwareEN = () => (
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border border-slate-700 mb-12 shadow-2xl">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Battle: Glass vs Pixel</h2>
+            <h3 className="text-3xl font-bold text-white mb-8 text-center">Battle: Glass vs Pixel</h3>
 
             <div className="grid md:grid-cols-2 gap-8">
                 {/* Left Side: Hardware */}
@@ -55,7 +55,7 @@ export const TeleprompterWebVsHardwareEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">The Truth About "Looking Away"</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">The Truth About "Looking Away"</h3>
         <p className="mb-6 text-slate-300">
             The main argument from hardware sellers is: <em>"Without glass, the audience notices you aren't looking at them."</em> This was true in 2010. Today, not so much.
         </p>
@@ -69,7 +69,7 @@ export const TeleprompterWebVsHardwareEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">When Do You REALLY Need Hardware?</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">When Do You REALLY Need Hardware?</h3>
         <p className="mb-6 text-slate-300">
             We aren't anti-hardware. PromptNinja was built to work <strong>with</strong> hardware too. You should buy a glass teleprompter if:
         </p>
@@ -80,7 +80,7 @@ export const TeleprompterWebVsHardwareEN = () => (
         </ul>
 
         <div className="bg-slate-900 p-8 rounded-xl border border-yellow-600/50 my-10">
-            <h2 className="text-2xl font-bold text-yellow-500 mb-4">The Hybrid Solution (Best of Both Worlds)</h2>
+            <h3 className="text-2xl font-bold text-yellow-500 mb-4">The Hybrid Solution (Best of Both Worlds)</h3>
             <p className="text-slate-300 mb-6">
                 Already bought hardware? Great. But don't use the bad software that came with it (usually unstable bluetooth Chinese apps).
             </p>
@@ -107,7 +107,7 @@ export const TeleprompterWebVsHardwareEN = () => (
         </div>
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
-            <h2 className="text-3xl font-bold text-white mb-4">Test Software Before Spending</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">Test Software Before Spending</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Before investing in glass, heavy tripod, and mounts, try recording one video with PromptNinja well-configured. 95% of users drop the hardware purchase after testing.
             </p>

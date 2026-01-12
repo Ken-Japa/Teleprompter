@@ -4,10 +4,10 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const PrivacidadeSegurancaEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Privacy & Security: Why We Don't Want Your Data</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Privacy & Security: Why We Don't Want Your Data</h2>
 
         <div className="bg-red-900/20 border border-red-500/30 p-6 rounded-lg mb-8">
-            <h2 className="text-xl font-bold text-red-400 mb-2">🚫 The Industry Problem</h2>
+            <h3 className="text-xl font-bold text-red-400 mb-2">🚫 The Industry Problem</h3>
             <p className="text-slate-300">
                 Most "free" teleprompter apps require you to create an account. Why? To track your habits, read your scripts to train AI, or sell your email. They treat you as the product.
             </p>
@@ -24,9 +24,9 @@ export const PrivacidadeSegurancaEN = () => (
         <div className="grid md:grid-cols-2 gap-8 my-12">
 
             <div className="bg-slate-800 p-8 rounded-xl border border-green-500/30 shadow-lg">
-                <h2 className="text-2xl font-bold text-green-400 mb-4 flex items-center gap-3">
+                <h3 className="text-2xl font-bold text-green-400 mb-4 flex items-center gap-3">
                     <span className="text-3xl">🛡️</span> "Local-First" Architecture
-                </h2>
+                </h3>
                 <p className="text-slate-300 mb-4">
                     We use technology called <code>LocalStorage</code> and <code>IndexedDB</code>. It's like a vault inside your browser.
                 </p>
@@ -47,9 +47,9 @@ export const PrivacidadeSegurancaEN = () => (
             </div>
 
             <div className="bg-slate-800 p-8 rounded-xl border border-blue-500/30">
-                <h2 className="text-2xl font-bold text-blue-400 mb-4 flex items-center gap-3">
+                <h3 className="text-2xl font-bold text-blue-400 mb-4 flex items-center gap-3">
                     <span className="text-3xl">📡</span> Shielded P2P Connection
-                </h2>
+                </h3>
                 <p className="text-slate-300 mb-4">
                     "But how does the phone control the PC if it doesn't go through the server?"
                 </p>
@@ -65,7 +65,7 @@ export const PrivacidadeSegurancaEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Audit: How to verify?</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Audit: How to verify?</h3>
         <p className="text-slate-300 mb-6">
             Don't trust us. Trust the technology. Take the "Airplane Mode" test:
         </p>

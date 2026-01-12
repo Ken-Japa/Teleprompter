@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const VelocidadeLeituraTeleprompterPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Qual a Velocidade Ideal para o Teleprompter? Pare de Correr Atrás do Texto
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Você ajusta a velocidade para 3. Está lento demais. Ajusta para 4. Rápido demais. O resultado? Você acelera a fala para acompanhar a máquina e soa como um narrador de corrida de cavalos. Chega de sofrer.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">A Métrica de Ouro: WPM (Palavras Por Minuto)</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">A Métrica de Ouro: WPM (Palavras Por Minuto)</h3>
             <p className="text-slate-300 mb-6">
                 A fala natural de conversação gira em torno de <strong>130 a 150 palavras por minuto (WPM)</strong>.
                 <br />
@@ -26,7 +26,7 @@ export const VelocidadeLeituraTeleprompterPT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Por que o Ajuste Manual Falha?</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Por que o Ajuste Manual Falha?</h3>
         <p className="text-slate-300 mb-8">
             O problema da rolagem automática fixa é que nós, humanos, não somos robôs. Às vezes fazemos uma pausa dramática. Às vezes rimos. Às vezes precisamos respirar. A rolagem fixa não espera por você, criando ansiedade.
         </p>

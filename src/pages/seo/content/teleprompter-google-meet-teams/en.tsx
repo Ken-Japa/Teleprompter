@@ -3,7 +3,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterGoogleMeetTeamsEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter for Google Meet & Teams: The Secret to Executive Presence</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter for Google Meet & Teams: The Secret to Executive Presence</h2>
 
         <p className="mb-6 text-lg text-slate-300">
             Board meeting. 14 people on Microsoft Teams. It's your turn to present quarterly results. You have a Word doc open on the other screen. You look sideways to read the numbers... and for 2 minutes, nobody sees your eyes. You seem distant, unsure, or unprepared.
@@ -18,7 +18,7 @@ export const TeleprompterGoogleMeetTeamsEN = () => (
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">The Attention Battle: Notes vs Teleprompter</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">The Attention Battle: Notes vs Teleprompter</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/70 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
@@ -50,7 +50,7 @@ export const TeleprompterGoogleMeetTeamsEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">3 Setups for Online Meetings</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">3 Setups for Online Meetings</h3>
         <div className="space-y-6 mb-12">
             <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-indigo-500">
                 <h3 className="text-xl font-bold text-indigo-400 mb-3">Setup #1: Single Monitor (Laptop) - "The Invisible Overlay"</h3>
@@ -97,7 +97,7 @@ export const TeleprompterGoogleMeetTeamsEN = () => (
         </div>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-red-500">
-            <h2 className="text-2xl font-bold text-white mb-4">🚨 The Danger of Screen Sharing</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">🚨 The Danger of Screen Sharing</h3>
             <p className="text-slate-300 mb-4">
                 The #1 error that kills careers: sharing the wrong screen and showing your script (or your WhatsApp) to the client.
             </p>
@@ -126,7 +126,7 @@ export const TeleprompterGoogleMeetTeamsEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">5 Mistakes That Reveal You're Reading</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">5 Mistakes That Reveal You're Reading</h3>
         <div className="space-y-4 mb-12">
             <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
                 <h4 className="font-bold text-red-400 mb-2">Error #1: Ping-Pong Eyes (Fast Reading)</h4>
@@ -166,7 +166,7 @@ export const TeleprompterGoogleMeetTeamsEN = () => (
         </div>
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
-            <h2 className="text-3xl font-bold text-white mb-4">💼 Professionalize Your Home Office</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">💼 Professionalize Your Home Office</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Don't let tech get in the way of connection. Use it to amplify your presence.
             </p>

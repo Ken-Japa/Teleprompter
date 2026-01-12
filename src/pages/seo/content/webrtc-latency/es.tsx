@@ -2,7 +2,7 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const WebRtcLatencyContentES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">¿Por qué PromptNinja es Más Rápido que Bluetooth? (La Ciencia de la Latencia)</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">¿Por qué PromptNinja es Más Rápido que Bluetooth? (La Ciencia de la Latencia)</h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Presionas "Pausa". El texto sigue rodando por medio segundo más. Te pierdes. Tienes que regrabar.
@@ -10,7 +10,7 @@ export const WebRtcLatencyContentES = () => (
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border border-blue-500/30 mb-12">
-            <h2 className="text-2xl font-bold text-white mb-6 text-center">Carrera de Datos: Satélite vs Local</h2>
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">Carrera de Datos: Satélite vs Local</h3>
 
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-red-900/10 p-4 rounded border border-red-500/20 opacity-70">
@@ -37,7 +37,7 @@ export const WebRtcLatencyContentES = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">¿Por qué importan los milisegundos?</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">¿Por qué importan los milisegundos?</h3>
         <p className="text-slate-300 mb-6">
             El cerebro humano percibe cualquier retraso sobre 100ms como "lag".
         </p>
@@ -47,7 +47,7 @@ export const WebRtcLatencyContentES = () => (
             <li><strong>Confianza:</strong> Saber que el botón "Pausa" funciona al instante quita la ansiedad de grabación en vivo.</li>
         </ul>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Tecnología Bajo el Capó</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Tecnología Bajo el Capó</h3>
         <p className="text-slate-300 mb-6">
             Usamos <strong>WebRTC Data Channels</strong> con protocolo UDP.
         </p>

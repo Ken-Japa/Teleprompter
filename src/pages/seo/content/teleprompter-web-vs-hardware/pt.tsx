@@ -3,7 +3,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterWebVsHardwarePT = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter Online vs Físico: O Guia Definitivo para Criadores</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter Online vs Físico: O Guia Definitivo para Criadores</h2>
 
         <p className="mb-6 text-lg text-slate-300">
             Você está pronto para profissionalizar seus vídeos. O dilema clássico surge: "Devo gastar R$ 800,00 em um trambolho de vidro e plástico para minha câmera, ou existe uma solução inteligente via software?"
@@ -18,7 +18,7 @@ export const TeleprompterWebVsHardwarePT = () => (
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border border-slate-700 mb-12 shadow-2xl">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Batalha: Vidro vs Pixel</h2>
+            <h3 className="text-3xl font-bold text-white mb-8 text-center">Batalha: Vidro vs Pixel</h3>
 
             <div className="grid md:grid-cols-2 gap-8">
                 {/* Lado Esquerdo: Hardware */}
@@ -55,7 +55,7 @@ export const TeleprompterWebVsHardwarePT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">A Verdade Sobre o "Olhar Desviado"</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">A Verdade Sobre o "Olhar Desviado"</h3>
         <p className="mb-6 text-slate-300">
             O principal argumento dos vendedores de hardware é: <em>"Sem o vidro, o público percebe que você não está olhando para eles".</em> Isso era verdade em 2010. Hoje, não é bem assim.
         </p>
@@ -69,7 +69,7 @@ export const TeleprompterWebVsHardwarePT = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Quando Você REALMENTE Precisa de Hardware?</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Quando Você REALMENTE Precisa de Hardware?</h3>
         <p className="mb-6 text-slate-300">
             Não somos anti-hardware. O PromptNinja foi feito para funcionar <strong>com</strong> hardware também. Você deve comprar um teleprompter de vidro se:
         </p>
@@ -80,7 +80,7 @@ export const TeleprompterWebVsHardwarePT = () => (
         </ul>
 
         <div className="bg-slate-900 p-8 rounded-xl border border-yellow-600/50 my-10">
-            <h2 className="text-2xl font-bold text-yellow-500 mb-4">A Solução Híbrida (O Melhor dos Dois Mundos)</h2>
+            <h3 className="text-2xl font-bold text-yellow-500 mb-4">A Solução Híbrida (O Melhor dos Dois Mundos)</h3>
             <p className="text-slate-300 mb-6">
                 Você já comprou o hardware? Ótimo. Mas não use o software ruim que veio com ele (geralmente apps chineses Bluetooth instáveis).
             </p>
@@ -107,7 +107,7 @@ export const TeleprompterWebVsHardwarePT = () => (
         </div>
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
-            <h2 className="text-3xl font-bold text-white mb-4">Teste o Software Antes de Gastar</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">Teste o Software Antes de Gastar</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Antes de investir em vidro, tripé pesado e suportes, tente gravar um vídeo com o PromptNinja bem configurado. 95% dos usuários desistem da compra do hardware depois do teste.
             </p>

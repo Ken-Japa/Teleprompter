@@ -2,7 +2,7 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const WebRtcLatencyContentEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Why is PromptNinja Faster Than Bluetooth? (The Science of Latency)</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Why is PromptNinja Faster Than Bluetooth? (The Science of Latency)</h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             You press "Pause". Text keeps scrolling for another half second. You get lost. Need to re-record.
@@ -10,7 +10,7 @@ export const WebRtcLatencyContentEN = () => (
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border border-blue-500/30 mb-12">
-            <h2 className="text-2xl font-bold text-white mb-6 text-center">Data Race: Satellite vs Local</h2>
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">Data Race: Satellite vs Local</h3>
 
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-red-900/10 p-4 rounded border border-red-500/20 opacity-70">
@@ -37,7 +37,7 @@ export const WebRtcLatencyContentEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Why do milliseconds matter?</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Why do milliseconds matter?</h3>
         <p className="text-slate-300 mb-6">
             Human brain perceives any delay above 100ms as "lag".
         </p>
@@ -47,7 +47,7 @@ export const WebRtcLatencyContentEN = () => (
             <li><strong>Confidence:</strong> Knowing the "Pause" button works instantly removes anxiety from live recording.</li>
         </ul>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Technology Under the Hood</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Technology Under the Hood</h3>
         <p className="text-slate-300 mb-6">
             We use <strong>WebRTC Data Channels</strong> with UDP protocol.
         </p>

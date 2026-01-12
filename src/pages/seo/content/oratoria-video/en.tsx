@@ -2,9 +2,9 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const OratoriaVideoEN = () => (
     <div className="text-slate-300">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 text-center">
             How to Speak Confidently and Connect with Your Audience
-        </h1>
+        </h2>
 
         <p className="mb-8 text-lg text-center max-w-3xl mx-auto">
             The red camera light turns on, and suddenly, your mind goes blank. Speaking to a cold glass lens isn't natural and can intimidate even the most seasoned communicators. The good news is that on-camera public speaking isn't a gift, but a skill that can be developed. With the right techniques and the right tools, you can turn your anxiety into authenticity. If you don't have a tool yet, <a href="/en/teleprompter-alternatives" className="text-purple-400 hover:text-purple-300 underline">check out the best free alternative to Teleprompter Pro here</a>.
@@ -83,7 +83,7 @@ export const OratoriaVideoEN = () => (
         </div>
 
         <div className="bg-slate-900 p-8 rounded-2xl border border-slate-800 shadow-lg mt-12">
-            <h2 className="text-3xl font-bold text-white mb-6 text-center">The Silent Enemy: Cognitive Load</h2>
+            <h3 className="text-3xl font-bold text-white mb-6 text-center">The Silent Enemy: Cognitive Load</h3>
             <p className="text-center max-w-2xl mx-auto">
                 Trying to remember a script, control the camera, think about lighting, and still appear natural is a recipe for disaster. This is called high cognitive load. It's when your brain is overloaded with multiple complex tasks.
             </p>
@@ -92,7 +92,7 @@ export const OratoriaVideoEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6 text-center">How PromptNinja Revolutionizes Your Public Speaking</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6 text-center">How PromptNinja Revolutionizes Your Public Speaking</h3>
         <ul className="space-y-4 max-w-2xl mx-auto">
             <li className="bg-slate-800 p-4 rounded-lg border border-slate-700">
                 <h3 className="font-bold text-white">Total Control at Your Fingertips</h3>

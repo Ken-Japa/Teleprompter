@@ -2,9 +2,9 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const OratoriaVideoPT = () => (
     <div className="text-slate-300">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 text-center">
             Como Falar com Confiança e Conectar com seu Público
-        </h1>
+        </h2>
 
         <p className="mb-8 text-lg text-center max-w-3xl mx-auto">
             A luz vermelha da câmera acende e, de repente, sua mente fica em branco. Falar para uma lente de vidro não é natural e pode intimidar até os comunicadores mais experientes. A boa notícia é que a oratória para vídeo não é um dom, mas uma habilidade que pode ser desenvolvida. Com as técnicas certas e as ferramentas adequadas, você pode transformar sua ansiedade em autenticidade. Se você ainda não tem uma ferramenta, <a href="/alternativas-teleprompter-concorrente" className="text-purple-400 hover:text-purple-300 underline">confira a melhor alternativa gratuita ao Teleprompter Pro aqui</a>.
@@ -83,7 +83,7 @@ export const OratoriaVideoPT = () => (
         </div>
 
         <div className="bg-slate-900 p-8 rounded-2xl border border-slate-800 shadow-lg mt-12">
-            <h2 className="text-3xl font-bold text-white mb-6 text-center">O Inimigo Silencioso: Carga Cognitiva</h2>
+            <h3 className="text-3xl font-bold text-white mb-6 text-center">O Inimigo Silencioso: Carga Cognitiva</h3>
             <p className="text-center max-w-2xl mx-auto">
                 Tentar lembrar um roteiro, controlar a câmera, pensar na iluminação e ainda por cima parecer natural é uma receita para o desastre. Isso é chamado de alta carga cognitiva. É quando seu cérebro está sobrecarregado com múltiplas tarefas complexas.
             </p>
@@ -92,7 +92,7 @@ export const OratoriaVideoPT = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6 text-center">Como o PromptNinja Revoluciona sua Oratória</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6 text-center">Como o PromptNinja Revoluciona sua Oratória</h3>
         <ul className="space-y-4 max-w-2xl mx-auto">
             <li className="bg-slate-800 p-4 rounded-lg border border-slate-700">
                 <h3 className="font-bold text-white">Controle Total na Ponta dos Dedos</h3>

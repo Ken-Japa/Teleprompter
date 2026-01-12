@@ -4,13 +4,13 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterCaseiroDIYES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Cómo Hacer un Teleprompter Casero (DIY): Guía Completa + Software GRATIS</h1>
+        <h2 className="text-4xl font-bold text-white mb-6">Cómo Hacer un Teleprompter Casero (DIY): Guía Completa + Software GRATIS</h2>
 
         <p className="mb-6">
             Grabar vídeos con aspecto profesional requiere fluidez y confianza, pero memorizar guiones es un desafío. Los equipos de teleprompter profesionales lo resuelven, pero son caros. ¿La buena noticia? Puedes <strong>montar un teleprompter casero barato</strong> con materiales sencillos y obtener resultados impresionantes. El principio físico detrás de esto es el "Fantasma de Pepper", una ilusión óptica utilizada en teatros desde el siglo XIX — ¡y que puedes replicar en casa!
         </p>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Materiales Necesarios para Montar tu Teleprompter DIY</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Materiales Necesarios para Montar tu Teleprompter DIY</h3>
 
         <div className="bg-slate-800 p-6 rounded-lg mb-6">
             <h3 className="text-xl font-bold text-white mb-4">Lista de Compras para tu Teleprompter Casero</h3>
@@ -100,7 +100,7 @@ export const TeleprompterCaseiroDIYES = () => (
             ]}
         />
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Por Qué PromptNinja es Perfecto para Tu Teleprompter Casero</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Por Qué PromptNinja es Perfecto para Tu Teleprompter Casero</h3>
 
         <div className="bg-slate-800 p-6 rounded-lg my-6">
             <p className="text-slate-300 mb-6">
@@ -126,7 +126,7 @@ export const TeleprompterCaseiroDIYES = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Optimizando PromptNinja para Tu Setup DIY</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Optimizando PromptNinja para Tu Setup DIY</h3>
 
         <div className="bg-slate-800 p-6 rounded-lg mb-6">
             <h3 className="text-xl font-bold text-white mb-4">Configuraciones Recomendadas</h3>
@@ -169,7 +169,7 @@ export const TeleprompterCaseiroDIYES = () => (
             </ul>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Problemas Comunes y Soluciones (Troubleshooting)</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Problemas Comunes y Soluciones (Troubleshooting)</h3>
 
         <div className="space-y-4 mb-8">
             <div className="bg-red-900/20 border border-red-500/30 p-4 rounded-lg">
@@ -227,7 +227,7 @@ export const TeleprompterCaseiroDIYES = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">FAQ: Preguntas Frecuentes sobre Teleprompters Caseros</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">FAQ: Preguntas Frecuentes sobre Teleprompters Caseros</h3>
         <SEOContentFAQ
             title=""
             items={[
@@ -271,7 +271,7 @@ export const TeleprompterCaseiroDIYES = () => (
         />
 
         <div className="bg-gradient-to-r from-slate-800 to-slate-900 p-8 rounded-lg my-10 border border-purple-500/30">
-            <h2 className="text-3xl font-bold text-white mb-4 text-center">¿Listo para Convertir tu Proyecto DIY en una Herramienta Profesional?</h2>
+            <h3 className="text-3xl font-bold text-white mb-4 text-center">¿Listo para Convertir tu Proyecto DIY en una Herramienta Profesional?</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto text-center">
                 Ya has ahorrado en el hardware. Ahora, <strong>potencia tu teleprompter casero con un software 100% gratuito</strong> hecho especialmente para setups DIY como el tuyo.
             </p>

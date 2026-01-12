@@ -36,11 +36,11 @@ export const SEOContentHowTo: React.FC<Props> = ({
 
     return (
         <div className={`mt-8 ${className}`}>
-            <h2 className="text-3xl font-bold text-white mb-6">{title}</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">{title}</h3>
 
             {hasRequirements && (
                 <div className="bg-slate-900 border border-slate-700 p-6 rounded-lg mb-8">
-                    <h3 className="text-xl font-bold text-white mb-4">O que você vai precisar:</h3>
+                    <h4 className="text-xl font-bold text-white mb-4">O que você vai precisar:</h4>
                     <div className="grid md:grid-cols-2 gap-6">
                         {tools && tools.length > 0 && (
                             <div>
@@ -85,7 +85,7 @@ export const SEOContentHowTo: React.FC<Props> = ({
                                     <span className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 text-white font-bold shrink-0">
                                         {index + 1}
                                     </span>
-                                    <h3 className="font-bold text-xl text-white">{step.title}</h3>
+                                    <h4 className="font-bold text-xl text-white">{step.title}</h4>
                                 </div>
                                 <div className="text-slate-300 pl-11">
                                     {step.text}

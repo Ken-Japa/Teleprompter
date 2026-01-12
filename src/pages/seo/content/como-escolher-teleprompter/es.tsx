@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const ComoEscolherTeleprompterES = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Cómo Elegir el Teleprompter Ideal en 2026: La Guía Definitiva
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             ¿Buscaste en Amazon y te confundiste con tantas opciones? Vidrio, iPad, para celular, de estudio... los precios van de $30 a $1,000. Antes de abrir la billetera, lee esta guía. La mejor opción puede costar cero.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">Los 3 Tipos Principales de Teleprompter</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">Los 3 Tipos Principales de Teleprompter</h3>
 
             <div className="space-y-6">
                 <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-purple-500">
@@ -35,7 +35,7 @@ export const ComoEscolherTeleprompterES = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Checklist de Compra: ¿Qué Considerar?</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Checklist de Compra: ¿Qué Considerar?</h3>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
             <li className="flex items-center gap-3 bg-slate-800/50 p-4 rounded-lg">
                 <span className="text-green-400 text-xl">✅</span>
@@ -55,7 +55,7 @@ export const ComoEscolherTeleprompterES = () => (
             </li>
         </ul>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Veredicto: ¿Por Dónde Empezar?</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Veredicto: ¿Por Dónde Empezar?</h3>
         <p className="text-slate-300 mb-8">
             Si estás comenzando un canal de YouTube o grabando videos para redes sociales, <strong>no compres hardware ahora</strong>. Comienza con Software.
         </p>

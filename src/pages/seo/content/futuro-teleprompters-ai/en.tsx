@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const FuturoTelepromptersAiEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             The Future of AI Teleprompters: The End of the "Robot Reader"?
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Back in the day, you needed a person turning a crank to scroll the paper. Today, Artificial Intelligence listens to you. Soon, it will correct your eyes. The future of teleprompting is not just reading, it's <strong>acting</strong>.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">3 Technologies That Are Changing Everything</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">3 Technologies That Are Changing Everything</h3>
 
             <div className="space-y-6">
                 <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-cyan-500">
@@ -38,7 +38,7 @@ export const FuturoTelepromptersAiEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Will We Lose the Ability to Speak?</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Will We Lose the Ability to Speak?</h3>
         <p className="text-slate-300 mb-8">
             On the contrary. With AI taking care of the technical part (remembering what to say, keeping the pace), humans will be able to focus on what AI doesn't have: <strong>emotion and connection</strong>. The teleprompter will stop being a crutch to become an exoskeleton of charisma.
         </p>

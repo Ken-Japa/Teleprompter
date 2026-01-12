@@ -3,7 +3,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterSlidesES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Sincroniza Teleprompter con PowerPoint: Presentaciones Perfectas</h1>
+        <h2 className="text-4xl font-bold text-white mb-6">Sincroniza Teleprompter con PowerPoint: Presentaciones Perfectas</h2>
 
         <p className="mb-6">
             La mayor pesadilla de quien presenta con diapositivas es la desincronización: el teleprompter sigue desplazándose mientras tú todavía estás explicando el gráfico de la diapositiva anterior. <strong>PromptNinja</strong> resuelve esto definitivamente con la funcionalidad de <strong>Sincronización por Comandos</strong>.
@@ -14,7 +14,7 @@ export const TeleprompterSlidesES = () => (
         </p>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-orange-500">
-            <h2 className="text-2xl font-bold text-white mb-2">El Secreto: Comando [STOP]</h2>
+            <h3 className="text-2xl font-bold text-white mb-2">El Secreto: Comando [STOP]</h3>
             <p className="text-slate-300 mb-4">
                 La lógica es simple: tu guion debe esperarte. Al insertar la etiqueta <strong>[STOP]</strong>, creas puntos de parada obligatorios.
             </p>
@@ -40,7 +40,7 @@ export const TeleprompterSlidesES = () => (
             />
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Compatible con Pasadores de Diapositivas (Clickers)</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Compatible con Pasadores de Diapositivas (Clickers)</h3>
         <p className="mb-4">
             La mayoría de los pasadores de diapositivas (presentadores Logitech, etc.) funcionan enviando comandos de teclado (Flechas, Espacio o Avance de Página).
         </p>
@@ -48,7 +48,7 @@ export const TeleprompterSlidesES = () => (
             PromptNinja reconoce estas señales. Esto significa que con un **solo dispositivo** en tu mano, puedes controlar tanto tus diapositivas en el ordenador como el texto en tu teleprompter. Productividad máxima, complicaciones cero.
         </p>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Casos de Uso</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Casos de Uso</h3>
         <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="bg-slate-900 p-4 rounded-lg border border-slate-700">
                 <h3 className="text-xl font-bold text-white mb-2">Webinars de Ventas</h3>
@@ -60,13 +60,13 @@ export const TeleprompterSlidesES = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Dicción y Ritmo</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Dicción y Ritmo</h3>
         <p className="mb-6">
             Además de la sincronización, usar paradas programadas ayuda a mantener un ritmo de habla más natural. Aprende más sobre cómo controlar tu ritmo en nuestra página sobre <a href="/es/teleprompter-pacing-timer-online" className="text-blue-400 hover:text-blue-300 underline">Pacing y Timer</a>.
         </p>
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
-            <h2 className="text-3xl font-bold text-white mb-4">Presenta con Confianza</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">Presenta con Confianza</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Nunca más te preocupes por "perder" el texto. Con PromptNinja, tú controlas el show.
             </p>

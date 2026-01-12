@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterParaLivesES = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Cómo Usar Teleprompter en Directos (OBS, YouTube, Twitch): La Guía Secreta
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Hacer una transmisión en vivo es estresante. Monitorear el chat, verificar el audio y además recordar el guion? Imposible. Es por eso que los grandes streamers usan un "pequeño secreto" en pantalla que el público no ve.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">El Problema de los Directos Sin Guion</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">El Problema de los Directos Sin Guion</h3>
             <p className="text-slate-300 mb-6">
                 ¿Alguna vez has visto un directo donde el presentador divaga por 10 minutos, tartamudea y pierde el hilo? La audiencia se va al instante. Tener puntos clave o un guion completo en pantalla asegura que entregues valor constante, aumentando la retención.
             </p>
@@ -23,7 +23,7 @@ export const TeleprompterParaLivesES = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">La Solución: Superposición Invisible con PromptNinja</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">La Solución: Superposición Invisible con PromptNinja</h3>
         <p className="text-slate-300 mb-8">
             PromptNinja te permite colocar una ventana transparente de teleprompter <strong>sobre</strong> tu software de transmisión (OBS Studio, vMix, Streamlabs), pero posicionada físicamente en la pantalla justo debajo de tu cámara web.
         </p>
@@ -48,7 +48,7 @@ export const TeleprompterParaLivesES = () => (
             </li>
         </ol>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Guion Completo vs. Puntos Clave en Directos</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Guion Completo vs. Puntos Clave en Directos</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             <div className="border border-slate-700 p-6 rounded-lg bg-slate-800/50">
                 <h3 className="text-xl font-bold text-blue-400 mb-2">Guion Completo</h3>

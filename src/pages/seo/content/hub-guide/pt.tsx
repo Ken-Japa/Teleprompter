@@ -8,10 +8,10 @@ export const HubGuideContentPT = () => (
         </div>
 
         <section id="oque" className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
                 O Que É Teleprompter?
-            </h2>
+            </h3>
             <p>
                 O <a href={ROUTES_CONFIG.SEO_O_QUE_E.paths.pt}>Teleprompter</a> (ou "prompter") é a ferramenta secreta por trás de apresentadores de TV, presidentes e youtubers de sucesso. Ele permite que você leia um texto enquanto olha diretamente para a lente da câmera.
             </p>
@@ -21,10 +21,10 @@ export const HubGuideContentPT = () => (
         </section>
 
         <section id="como-usar" className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
                 Como Usar (Passo a Passo)
-            </h2>
+            </h3>
             <p>
                 Usar um teleprompter hoje é muito mais fácil do que na época da TV analógica. Você não precisa de equipamentos de R$ 5.000.
             </p>
@@ -43,10 +43,10 @@ export const HubGuideContentPT = () => (
         </section>
 
         <section id="apps" className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
                 Melhores Apps e Ferramentas
-            </h2>
+            </h3>
             <p>
                 Existem dezenas de opções, mas o futuro é <strong>Web-Based</strong>. Por que baixar um app pesado se você pode usar direto no navegador?
             </p>
@@ -65,10 +65,10 @@ export const HubGuideContentPT = () => (
         </section>
 
         <section id="diy" className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
                 DIY vs Profissional
-            </h2>
+            </h3>
             <p>
                 Você pode começar com zero investimento. Temos um guia incrível sobre <a href={ROUTES_CONFIG.SEO_DIY.paths.pt}>Como fazer um Teleprompter Caseiro</a> usando capa de CD ou vidro de porta-retrato.
             </p>
@@ -78,10 +78,10 @@ export const HubGuideContentPT = () => (
         </section>
 
         <section id="casos" className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">5</span>
                 Casos de Uso Específicos
-            </h2>
+            </h3>
             <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-purple-500 transition-colors">
                     <h3 className="font-bold text-white mb-2">📹 Youtubers e Creators</h3>
@@ -115,10 +115,10 @@ export const HubGuideContentPT = () => (
         </section>
 
         <section id="recursos" className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">6</span>
                 Scripts e Oratória
-            </h2>
+            </h3>
             <p>
                 A ferramenta é inútil sem um bom conteúdo. Por isso, criamos uma biblioteca de <a href={ROUTES_CONFIG.SEO_SCRIPTS.paths.pt}>Scripts para Teleprompter</a> prontos para usar.
             </p>

@@ -4,7 +4,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterZoomMeetingES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Teleprompter Virtual GRATIS para Zoom, Teams y Google Meet: El Secreto del Contacto Visual Perfecto</h1>
+        <h2 className="text-4xl font-bold text-white mb-6">Teleprompter Virtual GRATIS para Zoom, Teams y Google Meet: El Secreto del Contacto Visual Perfecto</h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Mantener el contacto visual durante una presentación en línea es el secreto para captar la atención y transmitir confianza. Sin embargo, la realidad es un malabarismo constante: si miras tus notas, pierdes la conexión con la audiencia; si miras a la cámara, corres el riesgo de olvidar puntos cruciales. PromptNinja surge como la solución definitiva a este dilema, permitiéndote leer tu guion con fluidez mientras miras directamente a la lente de la cámara, creando una comunicación poderosa y auténtica.
@@ -20,7 +20,7 @@ export const TeleprompterZoomMeetingES = () => (
         </div>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-blue-500">
-            <h2 className="text-2xl font-bold text-white mb-2">El Secreto de la Fluidez: Por Qué el Control Remoto P2P de PromptNinja No se Traba en Zoom</h2>
+            <h3 className="text-2xl font-bold text-white mb-2">El Secreto de la Fluidez: Por Qué el Control Remoto P2P de PromptNinja No se Traba en Zoom</h3>
             <p className="text-slate-300">
                 Imagina esto: estás en vivo en Zoom, tu internet oscila y el teleprompter se congela. Pánico. Con PromptNinja, esto no sucede.
                 <br /><br />
@@ -28,7 +28,7 @@ export const TeleprompterZoomMeetingES = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">El Problema Psicológico de la "Mirada Desviada" en Videollamadas</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">El Problema Psicológico de la "Mirada Desviada" en Videollamadas</h3>
         <p className="mb-4">
             En un entorno de negocios digital, la confianza es la moneda más valiosa. En reuniones de ventas importantes, entrevistas de trabajo o presentaciones ejecutivas, el contacto visual directo es interpretado por el cerebro humano como una señal de honestidad, preparación y autoridad. Cuando tus ojos deambulan para leer un guion en papel o en una ventana lateral, proyectas involuntariamente una imagen de falta de preparación, nerviosismo o incluso desinterés.
         </p>
@@ -68,7 +68,7 @@ export const TeleprompterZoomMeetingES = () => (
             ]}
         />
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Compatibilidad Universal: Libertad para Presentar</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Compatibilidad Universal: Libertad para Presentar</h3>
         <p className="mb-6">
             La belleza de PromptNinja radica en su simplicidad y universalidad. Al ejecutarse directamente en el navegador, es independiente de cualquier plataforma de videoconferencia. No es necesario instalar plugins, extensiones ni lidiar con integraciones complejas. Funciona como una capa visual "por encima" de tu reunión, visible solo para ti.
         </p>
@@ -83,7 +83,7 @@ export const TeleprompterZoomMeetingES = () => (
         </p>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-purple-500">
-            <h2 className="text-2xl font-bold text-white mb-4">Consejo Pro: Teleprompter Transparente en Zoom con OBS (Chroma Key)</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">Consejo Pro: Teleprompter Transparente en Zoom con OBS (Chroma Key)</h3>
             <p className="text-slate-300 mb-4">
                 ¿Quieres un nivel aún mayor de profesionalismo? Puedes hacer que el texto flote "mágicamente" en tu pantalla usando OBS Studio.
             </p>
@@ -98,7 +98,7 @@ export const TeleprompterZoomMeetingES = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Errores Comunes a Evitar para No Sonar como un Robot</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Errores Comunes a Evitar para No Sonar como un Robot</h3>
         <ul className="list-disc pl-6 mb-8 space-y-3">
             <li><strong>Lectura Monótona:</strong> El teleprompter es una guía, no una sentencia. Usa pausas, varía tu tono de voz y añade énfasis para sonar natural. ¡Respira!</li>
             <li><strong>Falta de Práctica:</strong> Nunca leas un guion por primera vez en vivo. Practica antes para familiarizarte con el flujo del texto y marcar puntos de énfasis.</li>
@@ -106,7 +106,7 @@ export const TeleprompterZoomMeetingES = () => (
             <li><strong>Olvidar el Lenguaje Corporal:</strong> Tus ojos están en la cámara, pero ¿y el resto de tu cuerpo? Gesticula con las manos, sonríe y usa expresiones faciales para complementar tu mensaje.</li>
         </ul>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Consejos Avanzados de Etiqueta y Rendimiento Digital</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Consejos Avanzados de Etiqueta y Rendimiento Digital</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div className="bg-slate-900 p-4 rounded-lg">
                 <h3 className="text-xl font-bold text-purple-400 mb-2">Iluminación Profesional</h3>

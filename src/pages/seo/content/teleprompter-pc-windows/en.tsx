@@ -3,7 +3,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterPCWindowsEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter for PC Windows: Professional Setup in 60 Seconds</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter for PC Windows: Professional Setup in 60 Seconds</h2>
 
         <p className="mb-6 text-lg text-slate-300">
             $2000 gaming PC for professional streams. OBS configured, chroma key, LED lights. Everything perfect. Then you record the serious video... FREEZE on phrase 3. "Uhhh wait, let me check the script". Look at paper. Lose eye contact. Credibility = 0.
@@ -18,7 +18,7 @@ export const TeleprompterPCWindowsEN = () => (
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">PC Setup: Without vs WITH Teleprompter</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">PC Setup: Without vs WITH Teleprompter</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/70 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
@@ -51,7 +51,7 @@ export const TeleprompterPCWindowsEN = () => (
         </div>
 
         <div className="my-8 p-6 bg-slate-800 rounded-lg">
-            <h2 className="text-2xl font-bold text-white mb-4">Why 2012 .exe Files Are a Trap (Real Risks)</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">Why 2012 .exe Files Are a Trap (Real Risks)</h3>
             <ul className="list-disc pl-6 mb-4 space-y-2">
                 <li><strong>Malware:</strong> 70% chance according to Norton 2024 ("free" sites live on adware)</li>
                 <li><strong>Windows 11:</strong> Old apps crash with DirectX 12</li>
@@ -63,7 +63,7 @@ export const TeleprompterPCWindowsEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">3 Professional PC Setups</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">3 Professional PC Setups</h3>
         <div className="space-y-6 mb-12">
             <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-cyan-500">
                 <h3 className="text-xl font-bold text-cyan-400 mb-3">Setup #1: Webcam + Single Monitor (Basic YouTuber)</h3>
@@ -114,7 +114,7 @@ export const TeleprompterPCWindowsEN = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Comparison: Web App vs .exe Software</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Comparison: Web App vs .exe Software</h3>
         <div className="overflow-x-auto my-8">
             <table className="min-w-full bg-slate-800 rounded-lg">
                 <thead>
@@ -164,7 +164,7 @@ export const TeleprompterPCWindowsEN = () => (
             </table>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">5 Fatal PC Setup Errors (That Make You Look Amateur)</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">5 Fatal PC Setup Errors (That Make You Look Amateur)</h3>
         <div className="space-y-4 mb-12">
             <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
                 <h4 className="font-bold text-red-400 mb-2">Error #1: Installing .exe from Unknown Source</h4>
@@ -203,12 +203,12 @@ export const TeleprompterPCWindowsEN = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Performance: PWA vs Native App</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Performance: PWA vs Native App</h3>
         <p className="mb-4">
             "Web app = slow" is a 2010 myth. PromptNinja is a PWA (Progressive Web App) with hardware acceleration via WebGL. Constant 60fps scrolling even on scripts 50+ pages long. Behaves EXACTLY like native app but without asking for admin permission.
         </p>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">How to "Install" PWA on Windows (Optional)</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">How to "Install" PWA on Windows (Optional)</h3>
         <p className="mb-4">
             For even more integrated experience (desktop icon, dedicated window without tabs):
         </p>
@@ -248,7 +248,7 @@ export const TeleprompterPCWindowsEN = () => (
             <p className="text-slate-400 mt-4 text-sm">Zero installation • Remote control included • Works offline</p>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Frequently Asked Questions (FAQ) - PC Windows Users</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Frequently Asked Questions (FAQ) - PC Windows Users</h3>
         <SEOContentFAQ
             title=""
             items={[

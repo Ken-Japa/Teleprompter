@@ -3,9 +3,9 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTikTokShortsEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Teleprompter for TikTok, Reels & Shorts: Triple Your Output Without Looking Robotic
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             You record 30 takes of the same 15-second video and none are good? You start speaking, forget the exact word, look away to remember, lose that initial energy. Result? 40 minutes to record 15 seconds and the video still came out "meh".
@@ -20,7 +20,7 @@ export const TeleprompterTikTokShortsEN = () => (
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-pink-900/30 p-8 rounded-xl border border-pink-500/30 my-12">
-            <h2 className="text-3xl font-bold text-white mb-6">The Short-Form Content Creator's Trap</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">The Short-Form Content Creator's Trap</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/50 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
@@ -54,7 +54,7 @@ export const TeleprompterTikTokShortsEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Why Desktop Teleprompters Don't Work for Shorts</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Why Desktop Teleprompters Don't Work for Shorts</h3>
         <p className="mb-6">
             Many creators try to use solutions made for horizontal YouTube videos on vertical content. Result? Disaster.
         </p>
@@ -84,7 +84,7 @@ export const TeleprompterTikTokShortsEN = () => (
         </div>
 
         <div className="bg-slate-800 p-6 rounded-lg my-12 border-l-4 border-pink-500">
-            <h2 className="text-2xl font-bold text-white mb-4">PromptNinja: Custom-Built for Mobile</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">PromptNinja: Custom-Built for Mobile</h3>
             <p className="text-slate-300 mb-4">
                 Designed specifically for mobile creators. See the differences:
             </p>
@@ -133,7 +133,7 @@ export const TeleprompterTikTokShortsEN = () => (
             ]}
         />
 
-        <h2 className="text-3xl font-bold text-white mt-16 mb-6">Creator Setups: From Zero to Pro</h2>
+        <h3 className="text-3xl font-bold text-white mt-16 mb-6">Creator Setups: From Zero to Pro</h3>
         <p className="text-slate-300 mb-8">
             You don't need expensive gear. See the 3 levels:
         </p>
@@ -229,7 +229,7 @@ export const TeleprompterTikTokShortsEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-16 mb-6">Real Case: From 500 to 50k Followers in 3 Months</h2>
+        <h3 className="text-3xl font-bold text-white mt-16 mb-6">Real Case: From 500 to 50k Followers in 3 Months</h3>
         <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 p-8 rounded-xl border border-purple-500/30 mb-12">
             <p className="text-slate-300 mb-4">
                 <strong className="text-purple-400">Creator:</strong> @digital_marketing_tips (name changed), digital marketing niche, started with 500 followers.
@@ -316,7 +316,7 @@ export const TeleprompterTikTokShortsEN = () => (
         />
 
         <div className="bg-gradient-to-r from-pink-900/20 to-purple-900/20 p-8 rounded-xl border border-pink-500/30 text-center my-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Your Era of Consistent Creator Starts Now</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">Your Era of Consistent Creator Starts Now</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Stop fighting your memory. Stop spending 40 minutes to record 15 seconds. Start producing like the big channels: with system, consistency, and results.
             </p>

@@ -2,9 +2,9 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterModoMusicoES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
             Teleprompter para Músicos: Nunca Más Olvides Letra en Escenario
-        </h1>
+        </h2>
 
         <p className="mb-6 text-xl text-slate-300">
             Pesadilla de todo cantante: estás a medio show, banda toca, público mira... y te quedas en blanco. Olvidas primer verso de siguiente estrofa.
@@ -15,7 +15,7 @@ export const TeleprompterModoMusicoES = () => (
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border border-purple-500/30 mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">Diferente a un Discurso</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">Diferente a un Discurso</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div>
                     <h3 className="text-lg font-bold text-slate-200 mb-2">🎤 Problema de Carpetas</h3>
@@ -32,7 +32,7 @@ export const TeleprompterModoMusicoES = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Configurando "Escenario Ninja"</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Configurando "Escenario Ninja"</h3>
 
         <div className="space-y-6 mb-12">
             <div className="flex gap-4">

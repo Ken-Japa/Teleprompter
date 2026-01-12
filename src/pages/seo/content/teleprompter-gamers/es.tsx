@@ -3,7 +3,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterGamersES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para Gamers y Streamers: Cero Lag, Máximo Rendimiento</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para Gamers y Streamers: Cero Lag, Máximo Rendimiento</h2>
 
         <p className="mb-6 text-lg text-slate-300">
             Stream de 4 horas. Estás en partida ranked. 300 viewers mirando. Necesitas leer mensaje de donación largo. Alt-Tab al guion. Juego CONGELA 2 segundos. Mueres. Chat explota: "OMEGALUL". Viewers caen a 250.
@@ -18,7 +18,7 @@ export const TeleprompterGamersES = () => (
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">Setup Gamer: Amateur vs PRO</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">Setup Gamer: Amateur vs PRO</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/70 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
@@ -50,7 +50,7 @@ export const TeleprompterGamersES = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">3 Configuraciones Gamer Profesionales</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">3 Configuraciones Gamer Profesionales</h3>
         <div className="space-y-6 mb-12">
             <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-cyan-500">
                 <h3 className="text-xl font-bold text-cyan-400 mb-3">Setup #1: Monitor Único Speedrunner</h3>
@@ -102,7 +102,7 @@ export const TeleprompterGamersES = () => (
         </div>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
-            <h2 className="text-2xl font-bold text-white mb-2">Modo "No HUD" (Tecla H = Interfaz Invisible)</h2>
+            <h3 className="text-2xl font-bold text-white mb-2">Modo "No HUD" (Tecla H = Interfaz Invisible)</h3>
             <p className="text-slate-300 mb-4">
                 Presiona <kbd className="bg-slate-700 px-2 py-1 rounded text-white mx-1">H</kbd> y POOF: botones, scrollbars, menús = GONE. Solo queda texto flotante.
             </p>
@@ -136,7 +136,7 @@ export const TeleprompterGamersES = () => (
             </ul>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">5 Errores Fatales de Streamer (Que Matan Profesionalismo)</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">5 Errores Fatales de Streamer (Que Matan Profesionalismo)</h3>
         <div className="space-y-4 mb-12">
             <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
                 <h4 className="font-bold text-red-400 mb-2">Error #1: Alt-Tab Durante Gameplay Intenso</h4>
@@ -175,7 +175,7 @@ export const TeleprompterGamersES = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Chroma Key e Integración OBS</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Chroma Key e Integración OBS</h3>
         <p className="mb-4">
             ¿Necesitas texto DENTRO del stream (visible para viewer)? PromptNinja tiene temas nativos Chroma Green/Blue.
         </p>
@@ -188,7 +188,7 @@ export const TeleprompterGamersES = () => (
         </ol>
         <p className="text-yellow-400 text-sm">💡 <strong>Pro tip:</strong> Si tu juego tiene MUCHO verde (Minecraft, Zelda), usa "Chroma Blue".</p>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Control Sin Alt-Tab (3 Métodos)</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Control Sin Alt-Tab (3 Métodos)</h3>
         <div className="grid md:grid-cols-3 gap-6 mb-8">
             <div className="bg-slate-900 p-4 rounded-lg border border-slate-700">
                 <h3 className="text-xl font-bold text-white mb-2">📱 Móvil P2P</h3>
@@ -205,7 +205,7 @@ export const TeleprompterGamersES = () => (
         </div>
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
-            <h2 className="text-3xl font-bold text-white mb-4">🎮 Sube de Nivel Tu Stream</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">🎮 Sube de Nivel Tu Stream</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Streamer PRO = guion invisible + cero lag + control manos libres. Todo lo que necesitas, nada que no necesites.
             </p>

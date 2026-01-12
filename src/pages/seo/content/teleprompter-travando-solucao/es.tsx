@@ -3,9 +3,9 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTravandoSolucaoES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
             ¿Teleprompter Trabado? Por Qué Pasa y Cómo Arreglarlo
-        </h1>
+        </h2>
 
         <p className="mb-6 text-xl text-slate-300">
             Estás grabando, enfocado, en el "flow". De repente, texto da un salto (se traba). Pierdes concentración. Tu dicción falla. Toma arruinada.
@@ -15,7 +15,7 @@ export const TeleprompterTravandoSolucaoES = () => (
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-red-500 mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">La Culpa es del DOM (Document Object Model)</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">La Culpa es del DOM (Document Object Model)</h3>
             <p className="text-slate-300 mb-4">
                 Mayoría de teleprompters online gratis son hechos por amateurs. Intentan mover texto cambiando "posición de página" (CSS Top/Margin).
             </p>
@@ -24,7 +24,7 @@ export const TeleprompterTravandoSolucaoES = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Solución PromptNinja: Aceleración GPU</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Solución PromptNinja: Aceleración GPU</h3>
         <p className="mb-6 text-slate-300">
             Éramos ingenieros de software antes de crear esta app. PromptNinja usa técnica llamada <code>requestAnimationFrame</code> combinada con <code>Hardware Acceleration</code>.
         </p>
@@ -46,7 +46,7 @@ export const TeleprompterTravandoSolucaoES = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Checklist para Eliminar Trabas Hoy</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Checklist para Eliminar Trabas Hoy</h3>
 
         <SEOContentHowTo
             title=""

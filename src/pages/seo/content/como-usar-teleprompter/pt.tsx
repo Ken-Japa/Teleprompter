@@ -3,9 +3,9 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoUsarTeleprompterPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Como Usar um Teleprompter Grátis: O Guia Definitivo para Vídeos Profissionais
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Primeira vez tentando usar teleprompter? Você abre um site qualquer, cola o texto, aperta play e... DESASTRE. O texto rola muito rápido (você parece um leiloeiro nervoso) ou devagar demais (pausas constrangedoras). Você tenta pausar mas precisa <strong>tocar na tela e tremer a câmera</strong>. Após 40 minutos testando, desiste e volta a regravar 20 vezes memorizando.
@@ -20,7 +20,7 @@ export const ComoUsarTeleprompterPT = () => (
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">Primeiro Vídeo: Sem vs COM Teleprompter</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">Primeiro Vídeo: Sem vs COM Teleprompter</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/70 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
@@ -53,7 +53,7 @@ export const ComoUsarTeleprompterPT = () => (
         </div>
 
         <div className="bg-slate-900 p-6 rounded-lg border border-slate-800 mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Por Que Iniciantes Falham (e Como Evitar)</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">Por Que Iniciantes Falham (e Como Evitar)</h3>
             <p className="text-slate-300 mb-4">
                 90% dos criadores que testam teleprompter pela primeira vez DESISTEM. Não porque a ferramenta não funciona, mas porque cometem 3 erros clássicos:
             </p>
@@ -82,7 +82,7 @@ export const ComoUsarTeleprompterPT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Como Usar um Teleprompter: Do Básico ao Profissional</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Como Usar um Teleprompter: Do Básico ao Profissional</h3>
         <p className="text-slate-300 mb-8">
             Existem duas maneiras principais de usar um teleprompter, especialmente com ferramentas web como o PromptNinja, que não exigem a compra de equipamentos caros.
         </p>

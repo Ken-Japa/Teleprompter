@@ -3,7 +3,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoInstalarPwaEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">How to "Download" PromptNinja (Install PWA App)</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">How to "Download" PromptNinja (Install PWA App)</h2>
 
         <p className="mb-6 text-xl text-slate-300">
             Searched the App Store or Play Store and found nothing? Relax, that's a <strong>feature</strong>, not a bug.
@@ -14,7 +14,7 @@ export const ComoInstalarPwaEN = () => (
         </p>
 
         <div className="bg-gradient-to-r from-purple-900/40 to-blue-900/40 p-8 rounded-xl border border-purple-500/30 mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">Why is this better?</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">Why is this better?</h3>
             <div className="grid sm:grid-cols-3 gap-6">
                 <div className="bg-slate-900/50 p-4 rounded-lg">
                     <h3 className="text-lg font-bold text-green-400 mb-2">💾 Extreme Lightness</h3>
@@ -31,7 +31,7 @@ export const ComoInstalarPwaEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mb-8">Step-by-Step Installation Guide</h2>
+        <h3 className="text-3xl font-bold text-white mb-8">Step-by-Step Installation Guide</h3>
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* iOS Guide */}

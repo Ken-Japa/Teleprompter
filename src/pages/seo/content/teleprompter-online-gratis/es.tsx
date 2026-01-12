@@ -3,7 +3,7 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterOnlineGratisES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Teleprompter Online Gratis: Deja de Perder Horas Regrabando</h1>
+        <h2 className="text-4xl font-bold text-white mb-6">Teleprompter Online Gratis: Deja de Perder Horas Regrabando</h2>
 
         <p className="mb-6 text-lg text-slate-300">
             ¿Alguna vez pasaste <strong>3 horas intentando grabar un video de 8 minutos</strong>? Empiezas a hablar, te trabas en la frase exacta, miras tus notas, pierdes el contacto visual con la cámara. Regrabes. Te trabas de nuevo en la MISMA frase. Otros 15 minutos perdidos. Al final del día: 47 intentos, 2h53min gastados, video publicado con cortes visibles y esa sensación de "pudo haber quedado mejor".
@@ -18,7 +18,7 @@ export const TeleprompterOnlineGratisES = () => (
         </p>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
-            <h2 className="text-2xl font-bold text-white mb-2">¿Por qué PromptNinja No Se Traba? (La Diferencia del P2P)</h2>
+            <h3 className="text-2xl font-bold text-white mb-2">¿Por qué PromptNinja No Se Traba? (La Diferencia del P2P)</h3>
             <p className="text-slate-300 mb-4">
                 ¿Sabes por qué la mayoría de los teleprompters se "congelan" a mitad de frase? Porque dependen de tu internet para enviar cada comando al servidor en la nube y volver. Si tu internet titubea (aunque sea por 1 segundo), el texto se congela.
             </p>
@@ -27,7 +27,7 @@ export const TeleprompterOnlineGratisES = () => (
             </p>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">El Dilema de las Herramientas Gratuitas (Lag y Anuncios)</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">El Dilema de las Herramientas Gratuitas (Lag y Anuncios)</h3>
         <p className="mb-4">
             Muchos teleprompters online gratuitos son, en realidad, cebos. Ocultan problemas serios que solo aparecen a la hora de grabar:
         </p>
@@ -37,7 +37,7 @@ export const TeleprompterOnlineGratisES = () => (
             <li><strong>Limitaciones Artificiales:</strong> "Paga para desbloquear el control remoto" o "Paga para quitar la marca de agua".</li>
         </ul>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Privacidad Garantizada: El Teleprompter que NUNCA Ve Tu Guion (¡Sin Login!)</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Privacidad Garantizada: El Teleprompter que NUNCA Ve Tu Guion (¡Sin Login!)</h3>
         <p className="mb-6 text-slate-300">
             A diferencia de otras apps que te obligan a crear una cuenta y guardan tus guiones en la "nube" (donde pueden filtrarse o ser leídos), PromptNinja opera con <strong>Privacidad Local</strong>.
             <br /><br />
@@ -45,7 +45,7 @@ export const TeleprompterOnlineGratisES = () => (
         </p>
 
         <div className="my-8 p-6 bg-slate-800 rounded-lg">
-            <h2 className="text-2xl font-bold text-white mb-4">El Dilema del Creador de Contenido: Apps vs. Sitios Web</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">El Dilema del Creador de Contenido: Apps vs. Sitios Web</h3>
             <p className="mb-4">
                 Al buscar un teleprompter gratuito, te enfrentas a una elección: descargar una aplicación móvil o usar un sitio web. Las aplicaciones a menudo limitan funciones clave a versiones de pago o te inundan de anuncios. Los sitios web, por otro lado, suelen ser demasiado básicos, sin funciones esenciales como un control remoto.
             </p>
@@ -54,7 +54,7 @@ export const TeleprompterOnlineGratisES = () => (
             </p>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Tabla Comparativa: PromptNinja vs. Alternativas</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Tabla Comparativa: PromptNinja vs. Alternativas</h3>
         <div className="overflow-x-auto">
             <table className="min-w-full bg-slate-800 rounded-lg">
                 <thead>
@@ -100,7 +100,7 @@ export const TeleprompterOnlineGratisES = () => (
             </table>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">¿Cómo Funciona el Control Remoto Gratuito?</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">¿Cómo Funciona el Control Remoto Gratuito?</h3>
         <p className="mb-4">
             PromptNinja utiliza tecnología <strong>WebRTC (Peer-to-Peer)</strong> para una conexión directa y ultrarrápida entre tu computadora y tu celular. Esto significa que no hay retrasos. Tu celular se convierte en un control remoto para pausar, reanudar, y ajustar la velocidad y el tamaño del texto en tiempo real.
         </p>
@@ -111,12 +111,12 @@ export const TeleprompterOnlineGratisES = () => (
             <li>¡Listo! La conexión es instantánea. No se necesita la misma red Wi-Fi.</li>
         </ol>
 
-        <h2 className="text-2xl font-bold text-white mt-12 mb-4">Casos Reales con Números: Antes vs Después</h2>
+        <h3 className="text-2xl font-bold text-white mt-12 mb-4">Casos Reales con Números: Antes vs Después</h3>
         <div className="grid md:grid-cols-3 gap-6 mb-12">
             <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
                 <h3 className="font-bold text-lg text-green-400 mb-3">📹 YouTuber Educativo</h3>
                 <p className="text-slate-300 text-sm mb-4">
-                    "Grabo clases de matemáticas. <strong>ANTES:</strong> 3h15min para grabar 1 video de 20min (23 intentos, olvidaba fórmulas). <strong>DESPUÉS:</strong> 35min por video (2 intentos). Reducción del <strong>84% en el tiempo</strong>. Ahora publico 3x/semana vs 1x antes."
+                    "Grabo clases de matemáticas. <strong>ANTES:</strong> 3h25min para grabar 1 video de 20min (23 intentos, olvidaba fórmulas). <strong>DESPUÉS:</strong> 35min por video (2 intentos). Reducción del <strong>84% en el tiempo</strong>. Ahora publico 3x/semana vs 1x antes."
                 </p>
                 <p className="text-slate-500 text-xs italic">— Setup: Laptop + tablet como pantalla | Ahorro: 8h40min/semana</p>
             </div>
@@ -136,7 +136,7 @@ export const TeleprompterOnlineGratisES = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-12 mb-4">5 Errores Que Matan Teleprompters Gratis (Y Cómo PromptNinja Los Evita)</h2>
+        <h3 className="text-2xl font-bold text-white mt-12 mb-4">5 Errores Que Matan Teleprompters Gratis (Y Cómo PromptNinja Los Evita)</h3>
         <div className="bg-gradient-to-r from-red-900/20 to-slate-900 p-8 rounded-xl border border-red-500/30 mb-12">
             <div className="space-y-5">
                 <div className="bg-slate-900/50 p-5 rounded-lg border-l-4 border-red-500">

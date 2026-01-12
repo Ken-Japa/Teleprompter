@@ -3,9 +3,9 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterCapCutPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Teleprompter para CapCut: Pare de Perder 3 Horas Editando Erros de Gravação
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Você gravou aquele vídeo perfeito. Iluminação boa, enquadramento caprichado, energia lá em cima. Importa pro CapCut e... percebe que metade das takes tem erro de texto. Trava na palavra, gagueja, esquece a frase. Resultado? Em vez de passar 1 hora editando transições e efeitos, você passa 3 horas CORTANDO erros.
@@ -20,7 +20,7 @@ export const TeleprompterCapCutPT = () => (
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-orange-900/30 p-8 rounded-xl border border-red-500/30 my-12">
-            <h2 className="text-3xl font-bold text-white mb-6">O Ciclo Vicioso do Criador de Conteúdo</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">O Ciclo Vicioso do Criador de Conteúdo</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/50 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
@@ -45,7 +45,7 @@ export const TeleprompterCapCutPT = () => (
                         <li>✂️ <strong>Edição no CapCut:</strong> 1h criando efeitos, legendas, transições</li>
                         <li>😊 <strong>Criatividade:</strong> Alta. Foca no que importa</li>
                         <li>📊 <strong>Resultado:</strong> Vídeo profissional, com sua marca</li>
-                        <li>⏰ <strong>Tempo total:</strong> 1h20min por vídeo</li>
+                        <li>⏰ <strong>Tempo total:</strong> 1h30min por vídeo</li>
                     </ul>
                 </div>
             </div>
@@ -54,7 +54,7 @@ export const TeleprompterCapCutPT = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Por Que o Teleprompter Embutido do CapCut Não Resolve</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Por Que o Teleprompter Embutido do CapCut Não Resolve</h3>
         <p className="mb-6">
             O CapCut tem um teleprompter nativo na função de gravação. Parece prático, mas ele tem limitações críticas que impedem gravações profissionais:
         </p>
@@ -113,7 +113,7 @@ export const TeleprompterCapCutPT = () => (
         </p>
 
         <div className="bg-slate-800 p-6 rounded-lg my-12 border-l-4 border-cyan-500">
-            <h2 className="text-2xl font-bold text-white mb-4">Workflow Profissional: PromptNinja → CapCut</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">Workflow Profissional: PromptNinja → CapCut</h3>
             <p className="text-slate-300 mb-4">
                 A combinação perfeita não é escolher um ou outro. É usar cada ferramenta pro que ela faz de melhor:
             </p>
@@ -156,7 +156,7 @@ export const TeleprompterCapCutPT = () => (
             ]}
         />
 
-        <h2 className="text-3xl font-bold text-white mt-16 mb-6">Caso Real: TikToker Passou de 8h para 3h/Semana Gravando</h2>
+        <h3 className="text-3xl font-bold text-white mt-16 mb-6">Caso Real: TikToker Passou de 8h para 3h/Semana Gravando</h3>
         <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 p-8 rounded-xl border border-purple-500/30 mb-12">
             <p className="text-slate-300 mb-4">
                 <strong className="text-purple-400">Perfil:</strong> Criadora de conteúdo educacional no TikTok (@educar_com_amor), 87k seguidores, posta 5 vídeos/semana sobre dicas de estudo.
@@ -188,7 +188,7 @@ export const TeleprompterCapCutPT = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Dicas Avançadas para Usuario CapCut + PromptNinja</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Dicas Avançadas para Usuario CapCut + PromptNinja</h3>
 
         <div className="grid md:grid-cols-2 gap-6 mb-12">
             <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
@@ -232,7 +232,7 @@ export const TeleprompterCapCutPT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Erros Comuns ao Combinar Teleprompter + CapCut</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Erros Comuns ao Combinar Teleprompter + CapCut</h3>
 
         <div className="space-y-4 mb-12">
             <div className="bg-slate-800 p-5 rounded-lg border-l-4 border-red-500">
@@ -277,7 +277,7 @@ export const TeleprompterCapCutPT = () => (
         </div>
 
         <div className="bg-gradient-to-r from-cyan-900/30 to-blue-900/30 p-8 rounded-xl border border-cyan-500/30 my-12">
-            <h2 className="text-2xl font-bold text-white mb-4">🔥 Hack de Produtividade: Gravar em Lote</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">🔥 Hack de Produtividade: Gravar em Lote</h3>
             <p className="text-slate-300 mb-4">
                 Se você precisa produzir múltiplos vídeos, configure o ambiente UMA vez só e grave tudo em sequência:
             </p>
@@ -379,7 +379,7 @@ export const TeleprompterCapCutPT = () => (
         </div>
 
         <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 p-8 rounded-xl border border-purple-500/30 text-center my-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Sua Jornada de Criador Começa Aqui</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">Sua Jornada de Criador Começa Aqui</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Pare de brigar com regravações. Pare de passar 3 horas editando erros. Comece a criar conteúdo do jeito que sempre sonhou: com foco, qualidade e criatividade de sobra.
             </p>

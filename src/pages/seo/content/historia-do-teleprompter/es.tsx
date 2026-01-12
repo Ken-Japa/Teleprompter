@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const HistoriaDoTeleprompterES = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             La Historia Secreta del Teleprompter: De Rollos de Papel a la Inteligencia Artificial
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             ¿Alguna vez te has preguntado cómo los presidentes dan discursos durante horas sin fallar una coma, o cómo los presentadores de noticias miran fijamente a la cámara mientras leen noticias urgentes? La respuesta no es "memoria fotográfica", es tecnología. Viajemos en el tiempo para descubrir cómo una caja de cartón evolucionó hasta convertirse en la aplicación que tienes en tu bolsillo hoy.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">1950: El Nacimiento de una Leyenda</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">1950: El Nacimiento de una Leyenda</h3>
             <p className="text-slate-300 mb-4">
                 Imagina a un actor de Broadway, Fred Barton Jr., desesperado. Tenía que memorizar montañas de texto para la televisión en vivo (sí, no había "corte y graba de nuevo" en ese entonces). El miedo a olvidar las líneas, quedarse "en blanco", era aterrador.
             </p>
@@ -21,7 +21,7 @@ export const HistoriaDoTeleprompterES = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">La Evolución en 4 Actos</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">La Evolución en 4 Actos</h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             <div className="border border-slate-700 p-6 rounded-lg bg-slate-800/50">
@@ -50,14 +50,14 @@ export const HistoriaDoTeleprompterES = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Curiosidades Históricas</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Curiosidades Históricas</h3>
         <ul className="list-disc list-inside space-y-3 text-slate-300 mb-12">
             <li><strong>Dwight D. Eisenhower</strong> fue el primer presidente de EE. UU. en usar un teleprompter en 1952.</li>
             <li>Al principio, los operadores de teleprompter eran considerados "artistas" porque necesitaban sentir el ritmo del orador, como un músico.</li>
             <li>La palabra "Teleprompter" era originalmente una marca registrada, pero se convirtió en un término genérico para el producto (como Kleenex o Xerox).</li>
         </ul>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">El Futuro es Ahora</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">El Futuro es Ahora</h3>
         <p className="text-slate-300 mb-8">
             Hoy, no necesitas un equipo de TV. Con PromptNinja, tienes un estudio en tu bolsillo. La tecnología ha evolucionado para permitir que creadores de YouTube, profesores y vendedores tengan la misma elocuencia que un presentador de noticias, sin el costo.
         </p>

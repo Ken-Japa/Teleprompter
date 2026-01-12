@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const HistoriaDoTeleprompterPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             A História Secreta do Teleprompter: De Rolos de Papel à Inteligência Artificial
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Você já se perguntou como presidentes discursam por horas sem errar uma vírgula ou como âncoras de telejornal olham fixamente para a câmera enquanto leem notícias urgentes? A resposta não é "memória fotográfica", é tecnologia. Vamos viajar no tempo e descobrir como uma caixa de papelão evoluiu para o app que você tem no bolso hoje.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">1950: O Nascimento de uma Lenda</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">1950: O Nascimento de uma Lenda</h3>
             <p className="text-slate-300 mb-4">
                 Imagine um ator da Broadway, Fred Barton Jr., desesperado. Ele tinha que decorar montanhas de texto para a televisão ao vivo (sim, não existia "corta e grava de novo" naquela época). O medo de esquecer as falas, o famoso "branco", era aterrorizante.
             </p>
@@ -21,7 +21,7 @@ export const HistoriaDoTeleprompterPT = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">A Evolução em 4 Atos</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">A Evolução em 4 Atos</h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             <div className="border border-slate-700 p-6 rounded-lg bg-slate-800/50">
@@ -50,14 +50,14 @@ export const HistoriaDoTeleprompterPT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Curiosidades Históricas</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Curiosidades Históricas</h3>
         <ul className="list-disc list-inside space-y-3 text-slate-300 mb-12">
             <li><strong>Dwight D. Eisenhower</strong> foi o primeiro presidente dos EUA a usar um teleprompter em 1952.</li>
             <li>No início, os operadores de teleprompter eram considerados "artistas", pois precisavam sentir o ritmo do orador, como um músico.</li>
             <li>A palavra "Teleprompter" era originalmente uma marca registrada, mas virou sinônimo do produto (como Gillete ou Durex).</li>
         </ul>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">O Futuro é Agora</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">O Futuro é Agora</h3>
         <p className="text-slate-300 mb-8">
             Hoje, você não precisa de uma equipe de TV. Com o PromptNinja, você tem um estúdio no bolso. A tecnologia evoluiu para permitir que criadores do YouTube, professores e vendedores tenham a mesma eloquência de um âncora de telejornal, sem o custo.
         </p>

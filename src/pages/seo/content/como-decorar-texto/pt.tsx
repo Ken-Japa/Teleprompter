@@ -3,9 +3,9 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoDecorarTextoPT = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
             Como Decorar Textos Longos em Minutos (O Segredo é Não Decorar)
-        </h1>
+        </h2>
 
         <p className="text-lg text-slate-300 mb-8">
             Você tem uma apresentação amanhã. O roteiro tem 5 páginas. Seu coração acelera só de pensar em esquecer uma frase e travar na frente da câmera.
@@ -13,7 +13,7 @@ export const ComoDecorarTextoPT = () => (
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-yellow-500 mb-12 shadow-2xl">
-            <h2 className="text-2xl font-bold text-white mb-4">O Mito da Memória Perfeita</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">O Mito da Memória Perfeita</h3>
             <p className="text-slate-300 mb-4">
                 Achamos que âncoras de telejornal, políticos e grandes Youtubers têm memórias fotográficas. Mentira. Eles têm <strong>Teleprompters</strong>.
             </p>
@@ -22,7 +22,7 @@ export const ComoDecorarTextoPT = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">A Técnica do "Olhar Invisível"</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">A Técnica do "Olhar Invisível"</h3>
         <p className="mb-6 text-slate-300">
             "Mas se eu ler, vai dar pra perceber!"
             Não se você usar a técnica correta. O segredo não é o que você lê, mas <strong>como você configura a tela.</strong>
@@ -45,7 +45,7 @@ export const ComoDecorarTextoPT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Passo a Passo: Da Leitura à Performance</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Passo a Passo: Da Leitura à Performance</h3>
 
         <SEOContentHowTo
             title=""

@@ -3,7 +3,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTabletPT = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para Tablet e iPad: O Sweet Spot da Criação de Vídeo</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para Tablet e iPad: O Sweet Spot da Criação de Vídeo</h2>
 
         <p className="mb-6 text-lg text-slate-300">
             Você tenta gravar com o celular, mas a tela é minúscula e força a vista. Tenta usar o notebook, mas é pesado e impossível de colocar no tripé. Você está preso no "limbo do equipamento": ou muito pequeno, ou muito desajeitado.
@@ -18,7 +18,7 @@ export const TeleprompterTabletPT = () => (
         </p>
 
         <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 p-8 rounded-xl border border-slate-700 mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">Tablet vs Celular vs Laptop: A Batalha das Telas</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">Tablet vs Celular vs Laptop: A Batalha das Telas</h3>
             <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-slate-900/70 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 text-center">📱 Celular (Smartphone)</h3>
@@ -47,7 +47,7 @@ export const TeleprompterTabletPT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">3 Setups Profissionais com Tablet</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">3 Setups Profissionais com Tablet</h3>
         <div className="space-y-8 mb-12">
             <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-cyan-500">
                 <div className="flex flex-col md:flex-row gap-6">
@@ -103,7 +103,7 @@ export const TeleprompterTabletPT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Como Instalar (Sem App Store)</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Como Instalar (Sem App Store)</h3>
         <div className="bg-slate-800 p-6 rounded-lg my-6">
             <p className="text-slate-300 mb-6">
                 O PromptNinja é um PWA (Progressive Web App). Isso significa que você não baixa na loja, você "instala" direto do navegador. Isso economiza 200MB de espaço e garante atualizações instantâneas.
@@ -130,7 +130,7 @@ export const TeleprompterTabletPT = () => (
             />
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">5 Erros Fatais ao Usar Tablet como Teleprompter</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">5 Erros Fatais ao Usar Tablet como Teleprompter</h3>
         <div className="space-y-4 mb-12">
             <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
                 <h4 className="font-bold text-red-400 mb-2">Erro #1: Esquecer de Bloquear a Rotação de Tela</h4>
@@ -170,7 +170,7 @@ export const TeleprompterTabletPT = () => (
         </div>
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
-            <h2 className="text-3xl font-bold text-white mb-4">Transforme seu Tablet em Estúdio</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">Transforme seu Tablet em Estúdio</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Não deixe seu iPad pegando poeira. Ele é o equipamento de R$5.000 que você já tem e não está usando para melhorar seus vídeos.
             </p>

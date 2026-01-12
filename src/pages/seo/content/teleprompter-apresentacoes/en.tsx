@@ -3,7 +3,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterApresentacoesEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter for Presentations: Professional PowerPoint Without Memorizing</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter for Presentations: Professional PowerPoint Without Memorizing</h2>
 
         <p className="mb-6 text-lg text-slate-300">
             Quarterly presentation. Board meeting. 40 PowerPoint slides. You memorized 80% of script. Slide 12... blank. "Uhhh...". 5 seconds eternal silence. Check notes. Lose credibility. CEO raises eyebrow.
@@ -18,7 +18,7 @@ export const TeleprompterApresentacoesEN = () => (
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">Presentation: Memorize vs PRO Teleprompter</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">Presentation: Memorize vs PRO Teleprompter</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/70 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
@@ -50,7 +50,7 @@ export const TeleprompterApresentacoesEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">3 Professional Presentation Setups</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">3 Professional Presentation Setups</h3>
         <div className="space-y-6 mb-12">
             <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-cyan-500">
                 <h3 className="text-xl font-bold text-cyan-400 mb-3">Setup #1: In-Person Auditorium (Conference Room)</h3>
@@ -102,7 +102,7 @@ export const TeleprompterApresentacoesEN = () => (
         </div>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-orange-500">
-            <h2 className="text-2xl font-bold text-white mb-4">"Second Brain" Technique (Clean Slides + Rich Script)</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">"Second Brain" Technique (Clean Slides + Rich Script)</h3>
             <p className="text-slate-300 mb-4">
                 <strong>CLASSIC MISTAKE:</strong> Slides PACKED with text because you're afraid to forget. Audience reads slide = IGNORES you speaking.
             </p>
@@ -120,7 +120,7 @@ export const TeleprompterApresentacoesEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">How to Sync Slides with Script</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">How to Sync Slides with Script</h3>
         <div className="bg-slate-800 p-6 rounded-lg my-6">
             <SEOContentHowTo
                 title=""
@@ -148,7 +148,7 @@ export const TeleprompterApresentacoesEN = () => (
             />
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">5 Fatal Presentation Errors with Teleprompter</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">5 Fatal Presentation Errors with Teleprompter</h3>
         <div className="space-y-4 mb-12">
             <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
                 <h4 className="font-bold text-red-400 mb-2">Error #1: Sharing ENTIRE Screen on Zoom (Exposes Teleprompter)</h4>
@@ -187,7 +187,7 @@ export const TeleprompterApresentacoesEN = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">PowerPoint/Keynote Specific Tips</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">PowerPoint/Keynote Specific Tips</h3>
         <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="bg-slate-900 p-4 rounded-lg border border-slate-700">
                 <h3 className="text-xl font-bold text-white mb-2">📊 Presenter View</h3>
@@ -208,7 +208,7 @@ export const TeleprompterApresentacoesEN = () => (
         </div>
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
-            <h2 className="text-3xl font-bold text-white mb-4">🎤 Memorable Presentations Without Memorizing</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">🎤 Memorable Presentations Without Memorizing</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Impactful slides + invisible script = confident presenter who "masters subject".
             </p>

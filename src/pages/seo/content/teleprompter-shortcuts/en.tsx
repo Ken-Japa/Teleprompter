@@ -3,7 +3,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterShortcutsEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter Keyboard Shortcuts: The Video Productivity Secret</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter Keyboard Shortcuts: The Video Productivity Secret</h2>
 
         <p className="mb-6 text-lg text-slate-300">
             Have you ever timed how much recording time you lose just walking to the camera, hitting REC, walking back, messing up, getting up to pause again...?
@@ -18,9 +18,9 @@ export const TeleprompterShortcutsEN = () => (
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border border-blue-500/30 mb-12 shadow-2xl">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 ⌨️ Master Command Table
-            </h2>
+            </h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div>
                     <h3 className="text-xl font-bold text-blue-400 mb-4 border-b border-blue-500/20 pb-2">Flow Control</h3>
@@ -74,7 +74,7 @@ export const TeleprompterShortcutsEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Integration with External Hardware</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Integration with External Hardware</h3>
         <p className="mb-6 text-slate-300">
             The beauty of using standard keyboard shortcuts is that any device emulating a keyboard works natively with PromptNinja.
         </p>
@@ -103,7 +103,7 @@ export const TeleprompterShortcutsEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Ninja Workflow: Edit & Record in Seconds</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Ninja Workflow: Edit & Record in Seconds</h3>
         <SEOContentHowTo
             title=""
             schemaTitle="How to Optimize Recording with Shortcuts"
@@ -126,7 +126,7 @@ export const TeleprompterShortcutsEN = () => (
         />
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10 border border-slate-700">
-            <h2 className="text-3xl font-bold text-white mb-4">PromptNinja PRO: Total Mapping</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">PromptNinja PRO: Total Mapping</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Use Dvorak keyboard? Have a specific remote sending "F5"?
                 In PRO version, you can <strong>force</strong> which key does what. Total freedom.

@@ -3,9 +3,9 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTravandoSolucaoEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
             Teleprompter Lagging? Why It Happens & How to Fix It
-        </h1>
+        </h2>
 
         <p className="mb-6 text-xl text-slate-300">
             You are recording, focused, in the "flow". Suddenly, text jumps (stutters). You lose focus. You stutter. Take ruined.
@@ -15,7 +15,7 @@ export const TeleprompterTravandoSolucaoEN = () => (
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-red-500 mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">Blame the DOM (Document Object Model)</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">Blame the DOM (Document Object Model)</h3>
             <p className="text-slate-300 mb-4">
                 Most free online teleprompters are made by amateurs. They try to move text by changing "page position" (CSS Top/Margin).
             </p>
@@ -24,7 +24,7 @@ export const TeleprompterTravandoSolucaoEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">The PromptNinja Solution: GPU Acceleration</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">The PromptNinja Solution: GPU Acceleration</h3>
         <p className="mb-6 text-slate-300">
             We were software engineers before building this app. PromptNinja uses a technique called <code>requestAnimationFrame</code> combined with <code>Hardware Acceleration</code>.
         </p>
@@ -46,7 +46,7 @@ export const TeleprompterTravandoSolucaoEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Checklist to Eliminate Lag Today</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Checklist to Eliminate Lag Today</h3>
 
         <SEOContentHowTo
             title=""

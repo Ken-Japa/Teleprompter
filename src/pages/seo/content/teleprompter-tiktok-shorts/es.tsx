@@ -3,9 +3,9 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTikTokShortsES = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Teleprompter para TikTok, Reels y Shorts: Triplica Tu Producción Sin Parecer Robot
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             ¿Grabas 30 tomas del mismo video de 15 segundos y ninguna queda bien? Empiezas a hablar, olvidas la palabra exacta, desvías la mirada para recordar, pierdes esa energía inicial. Resultado? 40 minutos para grabar 15 segundos y el video aún quedó "meh".
@@ -20,7 +20,7 @@ export const TeleprompterTikTokShortsES = () => (
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-pink-900/30 p-8 rounded-xl border border-pink-500/30 my-12">
-            <h2 className="text-3xl font-bold text-white mb-6">La Trampa del Creador de Contenido Corto</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">La Trampa del Creador de Contenido Corto</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/50 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
@@ -54,7 +54,7 @@ export const TeleprompterTikTokShortsES = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Por Qué los Teleprompters de Escritorio No Funcionan para Shorts</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Por Qué los Teleprompters de Escritorio No Funcionan para Shorts</h3>
         <p className="mb-6">
             Muchos creadores intentan usar soluciones hechas para YouTube horizontal en contenido vertical. Resultado? Desastre.
         </p>
@@ -84,7 +84,7 @@ export const TeleprompterTikTokShortsES = () => (
         </div>
 
         <div className="bg-slate-800 p-6 rounded-lg my-12 border-l-4 border-pink-500">
-            <h2 className="text-2xl font-bold text-white mb-4">PromptNinja: Diseñado a Medida para Mobile</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">PromptNinja: Diseñado a Medida para Mobile</h3>
             <p className="text-slate-300 mb-4">
                 Diseñado específicamente para creadores mobile. Ve las diferencias:
             </p>
@@ -133,7 +133,7 @@ export const TeleprompterTikTokShortsES = () => (
             ]}
         />
 
-        <h2 className="text-3xl font-bold text-white mt-16 mb-6">Caso Real: De 500 a 50k Seguidores en 3 Meses</h2>
+        <h3 className="text-3xl font-bold text-white mt-16 mb-6">Caso Real: De 500 a 50k Seguidores en 3 Meses</h3>
         <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 p-8 rounded-xl border border-purple-500/30 mb-12">
             <p className="text-slate-300 mb-4">
                 <strong className="text-purple-400">Creadora:</strong> @tips_marketing_digital (nombre cambiado), nicho de marketing digital, empezó con 500 seguidores.
@@ -220,7 +220,7 @@ export const TeleprompterTikTokShortsES = () => (
         />
 
         <div className="bg-gradient-to-r from-pink-900/20 to-purple-900/20 p-8 rounded-xl border border-pink-500/30 text-center my-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Tu Era de Creador Consistente Comienza Ahora</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">Tu Era de Creador Consistente Comienza Ahora</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Deja de pelear con tu memoria. Deja de gastar 40 minutos para grabar 15 segundos. Comienza a producir como los grandes canales: con sistema, consistencia y resultados.
             </p>

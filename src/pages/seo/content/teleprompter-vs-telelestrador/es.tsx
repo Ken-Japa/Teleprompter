@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterVsTelelestradorES = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Teleprompter vs. Telelestrador (Papel/Carteles): ¿Cuál es la Mejor Opción para tu Video?
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             ¿Alguna vez te has sentido perdido en medio de una grabación, tratando de recordar el siguiente tema mientras sostienes un montón de cartulinas o miras notas garabateadas a toda prisa? La indecisión entre usar un método arcaico como "carteles/telelestrador improvisado" y un <strong>Teleprompter Profesional</strong> puede costarte horas de tu día. Resolvamos esto ahora.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">El Sufrimiento de los Métodos Antiguos</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">El Sufrimiento de los Métodos Antiguos</h3>
             <p className="text-slate-300 mb-6">
                 Muchos creadores comienzan improvisando. Usan papeles pegados a la pared, pizarras (telelestradores improvisados) al lado de la cámara o simplemente intentan memorizar todo. ¿El resultado?
             </p>
@@ -32,7 +32,7 @@ export const TeleprompterVsTelelestradorES = () => (
             </ul>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">La Solución Definitiva: PromptNinja</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">La Solución Definitiva: PromptNinja</h3>
         <p className="text-slate-300 mb-8">
             Abandona las cartulinas y la improvisación. <strong>PromptNinja</strong> convierte tu computadora o celular en un teleprompter de élite. El texto se desplaza exactamente frente a la lente (o justo debajo de ella), asegurando que hables con fluidez y mantengas contacto visual el 100% del tiempo. Y lo mejor: es Gratis y Online.
         </p>
@@ -44,7 +44,7 @@ export const TeleprompterVsTelelestradorES = () => (
             <li className="pl-2"><strong className="text-white">Ajusta y Graba:</strong> Configura el tamaño de fuente, la velocidad y dale play. Usa el modo espejo si tienes vidrio reflector, o el modo normal directo en la pantalla.</li>
         </ol>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Comparativa: Teleprompter vs. Telelestrador/Carteles</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Comparativa: Teleprompter vs. Telelestrador/Carteles</h3>
         <div className="overflow-x-auto mb-12">
             <table className="w-full text-left border-collapse">
                 <thead>

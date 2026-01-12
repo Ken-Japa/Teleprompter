@@ -28,11 +28,11 @@ export const SEOContentFAQ: React.FC<Props> = ({
 
     return (
         <div className="mt-8">
-            <h2 className="text-2xl font-bold text-white mb-4">{title}</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">{title}</h3>
             <div className="space-y-4">
                 {items.map((item, index) => (
                     <div key={index} className="bg-slate-800 p-4 rounded-lg">
-                        <h3 className="font-bold text-white">{item.question}</h3>
+                        <h4 className="font-bold text-white">{item.question}</h4>
                         <div className="text-slate-300 mt-2">
                             {item.answer}
                         </div>

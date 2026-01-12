@@ -3,9 +3,9 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterModoBilinguePT = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
             Aprenda Inglês com Teleprompter: A Técnica de "Shadowing"
-        </h1>
+        </h2>
 
         <p className="mb-6 text-xl text-slate-300">
             Você estuda inglês há anos, entende a gramática, mas quando vai falar... trava. A pronúncia não sai.
@@ -13,7 +13,7 @@ export const TeleprompterModoBilinguePT = () => (
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border border-blue-500/30 mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">O Segredo dos Poliglotas: Shadowing</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">O Segredo dos Poliglotas: Shadowing</h3>
             <p className="text-slate-300 mb-4">
                 Shadowing (Sombreamento) é uma técnica usada por espiões e diplomatas. Consiste em ouvir um nativo falando e repetir em voz alta *simultaneamente*, com apenas milissegundos de atraso.
             </p>
@@ -22,7 +22,7 @@ export const TeleprompterModoBilinguePT = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Como Usar o Modo Bilíngue para Estudar</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Como Usar o Modo Bilíngue para Estudar</h3>
 
         <SEOContentHowTo
             title=""

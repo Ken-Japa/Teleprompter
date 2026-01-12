@@ -3,9 +3,9 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterCapCutEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Teleprompter for CapCut: Stop Wasting 3 Hours Editing Recording Mistakes
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             You recorded that perfect video. Good lighting, nice framing, energy on point. Import it to CapCut and... realize half the takes have text mistakes. Stumbling on words, stuttering, forgetting lines. Result? Instead of spending 1 hour editing transitions and effects, you spend 3 hours CUTTING errors.
@@ -20,7 +20,7 @@ export const TeleprompterCapCutEN = () => (
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-orange-900/30 p-8 rounded-xl border border-red-500/30 my-12">
-            <h2 className="text-3xl font-bold text-white mb-6">The Content Creator's Vicious Cycle</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">The Content Creator's Vicious Cycle</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/50 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
@@ -45,7 +45,7 @@ export const TeleprompterCapCutEN = () => (
                         <li>✂️ <strong>Editing in CapCut:</strong> 1h creating effects, captions, transitions</li>
                         <li>😊 <strong>Creativity:</strong> High. Focus on what matters</li>
                         <li>📊 <strong>Result:</strong> Professional video with your brand</li>
-                        <li>⏰ <strong>Total time:</strong> 1h20min per video</li>
+                        <li>⏰ <strong>Total time:</strong> 1h30min per video</li>
                     </ul>
                 </div>
             </div>
@@ -54,7 +54,7 @@ export const TeleprompterCapCutEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Why CapCut's Built-in Teleprompter Doesn't Cut It</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Why CapCut's Built-in Teleprompter Doesn't Cut It</h3>
         <p className="mb-6">
             CapCut has a native teleprompter in the recording function. Sounds practical, but it has critical limitations that prevent professional recordings:
         </p>
@@ -113,7 +113,7 @@ export const TeleprompterCapCutEN = () => (
         </p>
 
         <div className="bg-slate-800 p-6 rounded-lg my-12 border-l-4 border-cyan-500">
-            <h2 className="text-2xl font-bold text-white mb-4">Professional Workflow: PromptNinja → CapCut</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">Professional Workflow: PromptNinja → CapCut</h3>
             <p className="text-slate-300 mb-4">
                 The perfect combo isn't choosing one or the other. It's using each tool for what it does best:
             </p>
@@ -156,7 +156,7 @@ export const TeleprompterCapCutEN = () => (
             ]}
         />
 
-        <h2 className="text-3xl font-bold text-white mt-16 mb-6">Real Case: TikToker Went from 8h to 3h/Week Recording</h2>
+        <h3 className="text-3xl font-bold text-white mt-16 mb-6">Real Case: TikToker Went from 8h to 3h/Week Recording</h3>
         <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 p-8 rounded-xl border border-purple-500/30 mb-12">
             <p className="text-slate-300 mb-4">
                 <strong className="text-purple-400">Profile:</strong> Educational content creator on TikTok (@study_with_emma), 87k followers, posts 5 videos/week about study tips.
@@ -188,7 +188,7 @@ export const TeleprompterCapCutEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Advanced Tips for CapCut + PromptNinja Users</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Advanced Tips for CapCut + PromptNinja Users</h3>
 
         <div className="grid md:grid-cols-2 gap-6 mb-12">
             <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
@@ -232,7 +232,7 @@ export const TeleprompterCapCutEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Common Mistakes When Combining Teleprompter + CapCut</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Common Mistakes When Combining Teleprompter + CapCut</h3>
 
         <div className="space-y-4 mb-12">
             <div className="bg-slate-800 p-5 rounded-lg border-l-4 border-red-500">
@@ -277,7 +277,7 @@ export const TeleprompterCapCutEN = () => (
         </div>
 
         <div className="bg-gradient-to-r from-cyan-900/30 to-blue-900/30 p-8 rounded-xl border border-cyan-500/30 my-12">
-            <h2 className="text-2xl font-bold text-white mb-4">🔥 Productivity Hack: Batch Recording</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">🔥 Productivity Hack: Batch Recording</h3>
             <p className="text-slate-300 mb-4">
                 If you need to produce multiple videos, set up the environment ONCE and record everything in sequence:
             </p>
@@ -369,7 +369,7 @@ export const TeleprompterCapCutEN = () => (
         </div>
 
         <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 p-8 rounded-xl border border-purple-500/30 text-center my-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Your Creator Journey Starts Here</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">Your Creator Journey Starts Here</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Stop fighting with retakes. Stop spending 3 hours editing mistakes. Start creating content the way you've always dreamed: with focus, quality, and creativity to spare.
             </p>

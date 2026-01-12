@@ -3,9 +3,9 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTravandoSolucaoPT = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
             Teleprompter Travando? Por Que Isso Acontece e Como Resolver
-        </h1>
+        </h2>
 
         <p className="mb-6 text-xl text-slate-300">
             Você está gravando, focado, no "flow". De repente, o texto dá um pulo (engasga). Você perde a concentração. Sua dicção falha. Gravação arruinada.
@@ -15,7 +15,7 @@ export const TeleprompterTravandoSolucaoPT = () => (
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-red-500 mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">A Culpa é do DOM (Document Object Model)</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">A Culpa é do DOM (Document Object Model)</h3>
             <p className="text-slate-300 mb-4">
                 A maioria dos teleprompters online gratuitos são feitos por amadores. Eles tentam mover o texto mexendo na "posição da página" (CSS Top/Margin).
             </p>
@@ -24,7 +24,7 @@ export const TeleprompterTravandoSolucaoPT = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">A Solução PromptNinja: Aceleração por GPU</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">A Solução PromptNinja: Aceleração por GPU</h3>
         <p className="mb-6 text-slate-300">
             Nós fomos engenheiros de software antes de criarmos este app. O PromptNinja usa uma técnica diferente chamada <code>requestAnimationFrame</code> combinada com <code>Hardware Acceleration</code>.
         </p>
@@ -46,7 +46,7 @@ export const TeleprompterTravandoSolucaoPT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Checklist para Eliminar Travamentos Hoje</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Checklist para Eliminar Travamentos Hoje</h3>
 
         <SEOContentHowTo
             title=""

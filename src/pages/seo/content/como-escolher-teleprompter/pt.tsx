@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const ComoEscolherTeleprompterPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Como Escolher o Teleprompter Ideal em 2026: O Guia Definitivo
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Você pesquisou no Mercado Livre ou Amazon e ficou confuso com tantas opções? Vidro, iPad, para celular, de estúdio... os preços variam de R$ 50 a R$ 5.000. Antes de abrir a carteira, leia este guia. A melhor escolha pode custar zero.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">Os 3 Tipos Principais de Teleprompter</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">Os 3 Tipos Principais de Teleprompter</h3>
 
             <div className="space-y-6">
                 <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-purple-500">
@@ -35,7 +35,7 @@ export const ComoEscolherTeleprompterPT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Checklist de Compra: O Que Considerar?</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Checklist de Compra: O Que Considerar?</h3>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
             <li className="flex items-center gap-3 bg-slate-800/50 p-4 rounded-lg">
                 <span className="text-green-400 text-xl">✅</span>
@@ -55,7 +55,7 @@ export const ComoEscolherTeleprompterPT = () => (
             </li>
         </ul>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Veredito: Por Onde Começar?</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Veredito: Por Onde Começar?</h3>
         <p className="text-slate-300 mb-8">
             Se você está começando um canal no YouTube ou gravando vídeos para redes sociais, <strong>não compre hardware agora</strong>. Comece com Software.
         </p>

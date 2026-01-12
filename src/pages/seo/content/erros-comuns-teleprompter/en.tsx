@@ -3,9 +3,9 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const ErrosComunsTeleprompterEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             5 Amateur Mistakes When Using a Teleprompter That Ruin Your Videos (And How to Fix Them)
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             You bought the gear, downloaded the app, but the final video turned out... weird. Robotically read, eyes darting from side to side. Relax, the problem isn't you, it's the technique. Let's fix the 5 classic mistakes right now.
@@ -14,7 +14,7 @@ export const ErrosComunsTeleprompterEN = () => (
         <div className="space-y-8 mb-12">
             <div className="bg-slate-900 border border-slate-800 p-8 rounded-xl shadow-lg relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-10 text-9xl font-bold text-red-500">1</div>
-                <h2 className="text-2xl font-bold text-red-400 mb-3 relative z-10">The "Watching Tennis" Eyes</h2>
+                <h3 className="text-2xl font-bold text-red-400 mb-3 relative z-10">The "Watching Tennis" Eyes</h3>
                 <p className="text-slate-300 mb-4 relative z-10">
                     The most obvious mistake: your eyes move from left to right while reading, looking like you're watching a ping-pong match.
                 </p>
@@ -28,7 +28,7 @@ export const ErrosComunsTeleprompterEN = () => (
 
             <div className="bg-slate-900 border border-slate-800 p-8 rounded-xl shadow-lg relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-10 text-9xl font-bold text-red-500">2</div>
-                <h2 className="text-2xl font-bold text-red-400 mb-3 relative z-10">The "Robot Voice"</h2>
+                <h3 className="text-2xl font-bold text-red-400 mb-3 relative z-10">The "Robot Voice"</h3>
                 <p className="text-slate-300 mb-4 relative z-10">
                     Speaking in a monotone, without pauses or emotion, just dumping words out. This happens when you try to keep up with the text speed, instead of the text keeping up with you.
                 </p>
@@ -42,7 +42,7 @@ export const ErrosComunsTeleprompterEN = () => (
 
             <div className="bg-slate-900 border border-slate-800 p-8 rounded-xl shadow-lg relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-10 text-9xl font-bold text-red-500">3</div>
-                <h2 className="text-2xl font-bold text-red-400 mb-3 relative z-10">Forgetting to Blink (The Stare)</h2>
+                <h3 className="text-2xl font-bold text-red-400 mb-3 relative z-10">Forgetting to Blink (The Stare)</h3>
                 <p className="text-slate-300 mb-4 relative z-10">
                     Anxious not to lose your place, you widen your eyes and stop blinking. The result is scary for the viewer.
                 </p>
@@ -56,7 +56,7 @@ export const ErrosComunsTeleprompterEN = () => (
 
             <div className="bg-slate-900 border border-slate-800 p-8 rounded-xl shadow-lg relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-10 text-9xl font-bold text-red-500">4</div>
-                <h2 className="text-2xl font-bold text-red-400 mb-3 relative z-10">Writing "Books" instead of "Conversations"</h2>
+                <h3 className="text-2xl font-bold text-red-400 mb-3 relative z-10">Writing "Books" instead of "Conversations"</h3>
                 <p className="text-slate-300 mb-4 relative z-10">
                     Scripts with long sentences and difficult words sound artificial.
                 </p>
@@ -70,7 +70,7 @@ export const ErrosComunsTeleprompterEN = () => (
 
             <div className="bg-slate-900 border border-slate-800 p-8 rounded-xl shadow-lg relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-10 text-9xl font-bold text-red-500">5</div>
-                <h2 className="text-2xl font-bold text-red-400 mb-3 relative z-10">Font Too Small</h2>
+                <h3 className="text-2xl font-bold text-red-400 mb-3 relative z-10">Font Too Small</h3>
                 <p className="text-slate-300 mb-4 relative z-10">
                     Trying to read tiny letters makes you squint, which conveys insecurity.
                 </p>

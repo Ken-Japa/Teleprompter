@@ -2,16 +2,16 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterPacingTimerPT = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
             Domine o Tempo: Como Não Ser Cortado no Seu Pitch ou Palestra
-        </h1>
+        </h2>
 
         <p className="mb-6 text-xl text-slate-300">
             "Seu tempo acabou." Nada é mais constrangedor do que ser interrompido no meio da conclusão de uma palestra ou Pitch de Vendas porque você falou demais.
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-orange-500 mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">A Armadilha da Adrenalina</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">A Armadilha da Adrenalina</h3>
             <p className="text-slate-300 mb-4">
                 Quando estamos nervosos, nossa percepção de tempo distorce. Achamos que falamos por 2 minutos, mas foram 5. Ou então corremos demais e acabamos em 30 segundos.
             </p>
@@ -20,7 +20,7 @@ export const TeleprompterPacingTimerPT = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Técnicas de Pacing (Ritmo)</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Técnicas de Pacing (Ritmo)</h3>
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="bg-slate-900/50 p-6 rounded border border-slate-700">

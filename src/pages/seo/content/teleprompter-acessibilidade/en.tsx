@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterAcessibilidadeEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Teleprompter for ADHD and Dyslexia: How Technology Helps Speech
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             For those with ADHD (Attention Deficit Hyperactivity Disorder) or Dyslexia, recording videos can be a nightmare. Forgetting what to say, swapping words, losing focus... A teleprompter is not just a reading tool, it's an <strong>assisted focus</strong> tool.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">PromptNinja Features for Neurodiversity</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">PromptNinja Features for Neurodiversity</h3>
 
             <div className="space-y-6">
                 <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-orange-500">
@@ -44,7 +44,7 @@ export const TeleprompterAcessibilidadeEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Tips for Creators with ADHD</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Tips for Creators with ADHD</h3>
         <ul className="list-disc list-inside space-y-4 text-slate-300 mb-12">
             <li><strong>Write Short Scripts:</strong> Break the video into 3-minute blocks. Sustained focus is hard.</li>
             <li><strong>Use Voice Control:</strong> If you ramble (which is normal), the teleprompter waits. If you speed up in excitement, it follows. This reduces the anxiety of "losing the spot."</li>

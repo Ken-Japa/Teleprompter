@@ -3,22 +3,22 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const CelebridadesUsamTeleprompterPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             7 Celebridades e Gigantes que Usam Teleprompter (e Você Nem Sabia)
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Existe um mito de que usar teleprompter é "trapaça" ou sinal de que você não domina o assunto. A verdade? Os maiores comunicadores do mundo usam. A diferença é que eles usam tão bem que parece natural. Se Barack Obama e Adele usam, por que você deveria ter vergonha?
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">A Verdade Sobre a "Naturalidade"</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">A Verdade Sobre a "Naturalidade"</h3>
             <p className="text-slate-300 mb-4">
                 A naturalidade em vídeo não vem de decorar texto, vem de estar relaxado. E nada relaxa mais do que saber exatamente o que você vai dizer. O teleprompter não tira a emoção; ele <strong>libera</strong> sua mente para focar na emoção, em vez de focar na memória.
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">A Lista VIP</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">A Lista VIP</h3>
 
         <div className="space-y-8 mb-12">
             <div className="flex flex-col md:flex-row gap-6 items-start bg-slate-800/50 p-6 rounded-lg border border-slate-700">
@@ -73,7 +73,7 @@ export const CelebridadesUsamTeleprompterPT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Como Usar Como um Profissional (Dicas Rápidas)</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Como Usar Como um Profissional (Dicas Rápidas)</h3>
         <ul className="list-disc list-inside space-y-4 text-slate-300 mb-12">
             <li><strong>Distância é Chave:</strong> Fique a pelo menos 1 metro da câmera para reduzir o movimento dos olhos.</li>
             <li><strong>Escreva Como Fala:</strong> Use linguagem coloquial no roteiro. Nada de "pois", use "porque". Nada de "entretanto", use "mas".</li>

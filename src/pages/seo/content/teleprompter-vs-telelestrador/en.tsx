@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterVsTelelestradorEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Teleprompter vs. Telestrator (Cue Cards/Boards): Which is Best for Your Video?
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Have you ever felt lost in the middle of a recording, trying to remember the next topic while holding a bunch of cue cards or glancing at notes scribbled in a hurry? The indecision between using an archaic method like "cue cards/makeshift boards" and a <strong>Professional Teleprompter</strong> can cost you hours of your day. Let's settle this now.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">The Pain of Old Methods</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">The Pain of Old Methods</h3>
             <p className="text-slate-300 mb-6">
                 Many creators start by improvising. They use papers taped to the wall, whiteboards (improvised telestrators) next to the camera, or simply try to memorize everything. The result?
             </p>
@@ -32,7 +32,7 @@ export const TeleprompterVsTelelestradorEN = () => (
             </ul>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">The Ultimate Solution: PromptNinja</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">The Ultimate Solution: PromptNinja</h3>
         <p className="text-slate-300 mb-8">
             Ditch the cue cards and improvisation. <strong>PromptNinja</strong> turns your computer or phone into an elite teleprompter. The text scrolls right in front of the lens (or just below it), ensuring you speak fluently and maintain eye contact 100% of the time. And best of all: it's Free and Online.
         </p>
@@ -44,7 +44,7 @@ export const TeleprompterVsTelelestradorEN = () => (
             <li className="pl-2"><strong className="text-white">Adjust and Record:</strong> Set font size, speed, and hit play. Use mirror mode if you have reflector glass, or normal mode directly on the screen.</li>
         </ol>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Comparison: Teleprompter vs. Telestrator/Cue Cards</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Comparison: Teleprompter vs. Telestrator/Cue Cards</h3>
         <div className="overflow-x-auto mb-12">
             <table className="w-full text-left border-collapse">
                 <thead>

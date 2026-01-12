@@ -2,9 +2,9 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const AlternativasTeleprompterConcorrenteEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
             The Best Free Alternative to Teleprompter Pro and Other Paid Apps in 2025
-        </h1>
+        </h2>
 
         <p className="text-lg text-slate-300 mb-6">
             You click "Download" on a teleprompter app with 4.8 stars. Open it. Giant pop-up: <strong>"UPGRADE PRO: $14.99/month"</strong>. You ignore it, test the free version. Remote control? <span className="line-through">Locked</span>. Adjust speed? <span className="line-through">Locked</span>. Mirror mode? <span className="line-through">PRO only</span>. Basically EVERYTHING locked except an auto-scroll you can't pause.
@@ -54,7 +54,7 @@ export const AlternativasTeleprompterConcorrenteEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Why CapCut and BIGVU Teleprompters Fall Short (On PC and Live Streams)</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Why CapCut and BIGVU Teleprompters Fall Short (On PC and Live Streams)</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
                 <h3 className="text-xl font-bold text-red-400 mb-3">The Problem with CapCut</h3>
@@ -93,7 +93,7 @@ export const AlternativasTeleprompterConcorrenteEN = () => (
         <p className="text-lg text-slate-300 mb-8">
             Many apps, like CapCut and other <strong className="text-white">teleprompter apps</strong>, are heavy, require download, and lock your phone. The PromptNinja, being a web P2P solution, offers the performance you seek, whether on your PC, Notebook, or as a <strong className="text-white">free teleprompter for iPhone</strong>.
         </p>
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">PromptNinja: The Ultimate Solution</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">PromptNinja: The Ultimate Solution</h3>
         <p className="mb-8">
             PromptNinja was designed to solve these exact problems, offering a superior experience at no cost.
         </p>
@@ -137,7 +137,7 @@ export const AlternativasTeleprompterConcorrenteEN = () => (
             </table>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Checklist: 7 Things YOU Need in a Teleprompter (Free or Paid)</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Checklist: 7 Things YOU Need in a Teleprompter (Free or Paid)</h3>
         <div className="bg-slate-900 p-6 rounded-xl border border-slate-700 mb-8">
             <p className="text-slate-300 mb-6">
                 Before paying (or choosing free), use this checklist. If 2+ items are missing, YOU WILL REGRET IT later:

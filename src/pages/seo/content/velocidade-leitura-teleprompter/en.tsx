@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const VelocidadeLeituraTeleprompterEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             What is the Ideal Teleprompter Speed? Stop Chasing the Text
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             You set the speed to 3. Too slow. Set to 4. Too fast. The result? You speed up your speech to keep up with the machine and sound like a horse race announcer. Stop suffering.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">The Golden Metric: WPM (Words Per Minute)</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">The Golden Metric: WPM (Words Per Minute)</h3>
             <p className="text-slate-300 mb-6">
                 Natural conversational speech is around <strong>130 to 150 words per minute (WPM)</strong>.
                 <br />
@@ -26,7 +26,7 @@ export const VelocidadeLeituraTeleprompterEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Why Manual Adjustment Fails?</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Why Manual Adjustment Fails?</h3>
         <p className="text-slate-300 mb-8">
             The problem with fixed automatic scrolling is that we humans are not robots. Sometimes we take a dramatic pause. Sometimes we laugh. Sometimes we need to breathe. Fixed scrolling doesn't wait for you, creating anxiety.
         </p>

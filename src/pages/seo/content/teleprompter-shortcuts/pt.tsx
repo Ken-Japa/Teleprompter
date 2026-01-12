@@ -3,7 +3,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterShortcutsPT = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Atalhos de Teclado no Teleprompter: O Segredo da Produtividade em Vídeo</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Atalhos de Teclado no Teleprompter: O Segredo da Produtividade em Vídeo</h2>
 
         <p className="mb-6 text-lg text-slate-300">
             Você já cronometrou quanto tempo perde em uma gravação apenas indo até a câmera, apertando REC, voltando para a posição, errando, levantando de novo para pausar...?
@@ -18,9 +18,9 @@ export const TeleprompterShortcutsPT = () => (
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border border-blue-500/30 mb-12 shadow-2xl">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 ⌨️ Tabela Mestre de Comandos
-            </h2>
+            </h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div>
                     <h3 className="text-xl font-bold text-blue-400 mb-4 border-b border-blue-500/20 pb-2">Controle de Fluxo</h3>
@@ -74,7 +74,7 @@ export const TeleprompterShortcutsPT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Integração com Hardware Externo</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Integração com Hardware Externo</h3>
         <p className="mb-6 text-slate-300">
             A beleza de usar atalhos de teclado padrão é que qualquer dispositivo que emule um teclado funciona nativamente com o PromptNinja.
         </p>
@@ -103,7 +103,7 @@ export const TeleprompterShortcutsPT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Workflow Ninja: Edite e Grave em Segundos</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Workflow Ninja: Edite e Grave em Segundos</h3>
         <SEOContentHowTo
             title=""
             schemaTitle="Como Otimizar Gravação com Atalhos"
@@ -126,7 +126,7 @@ export const TeleprompterShortcutsPT = () => (
         />
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10 border border-slate-700">
-            <h2 className="text-3xl font-bold text-white mb-4">PromptNinja PRO: Mapeamento Total</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">PromptNinja PRO: Mapeamento Total</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Usa teclado Dvorak? Tem um controle remoto específico que envia a tecla "F5"?
                 Na versão PRO, você pode <strong>impor</strong> qual tecla faz o que. Liberdade total.

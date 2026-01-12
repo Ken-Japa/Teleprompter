@@ -27,9 +27,9 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({
       <div className="absolute inset-0 bg-brand-500/10 blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-3xl mx-auto text-center relative z-10">
-        <h2 className="text-5xl font-bold mb-6 text-white text-shadow-glow">
+        <h3 className="text-5xl font-bold mb-6 text-white text-shadow-glow">
           {t(titleKey)}
-        </h2>
+        </h3>
         <p className="text-xl text-gray-300 mb-8">
           {t(subtitleKey)}
         </p>

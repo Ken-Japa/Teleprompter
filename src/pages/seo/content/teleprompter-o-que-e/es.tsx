@@ -2,16 +2,16 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterOQueEES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
             ¿Qué es Teleprompter? Historia del "Acordeón" Profesional
-        </h1>
+        </h2>
 
         <p className="mb-6 text-xl text-slate-300">
             Ves al Presidente mirando directo a cámara, hablando elocuentemente por 30 minutos sin mirar ningún papel. ¿Genio? No. Tecnología.
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border border-slate-700 mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">Cómo Funciona la Magia (El Espejo)</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">Cómo Funciona la Magia (El Espejo)</h3>
             <div className="flex flex-col md:flex-row gap-8 items-center">
                 <div className="flex-1">
                     <p className="text-slate-300 mb-4">

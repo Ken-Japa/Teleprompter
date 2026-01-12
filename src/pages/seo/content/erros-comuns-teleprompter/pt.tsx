@@ -3,9 +3,9 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const ErrosComunsTeleprompterPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             5 Erros Amadores ao Usar Teleprompter que Arruínam Seus Vídeos (E Como Corrigir)
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Você comprou o equipamento, baixou o app, mas o vídeo final ficou... estranho. Roboticamente lido, olhos correndo de um lado para o outro. Calma, o problema não é você, é a técnica. Vamos corrigir os 5 erros clássicos agora.
@@ -14,7 +14,7 @@ export const ErrosComunsTeleprompterPT = () => (
         <div className="space-y-8 mb-12">
             <div className="bg-slate-900 border border-slate-800 p-8 rounded-xl shadow-lg relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-10 text-9xl font-bold text-red-500">1</div>
-                <h2 className="text-2xl font-bold text-red-400 mb-3 relative z-10">O Olhar de "Assistir Tênis"</h2>
+                <h3 className="text-2xl font-bold text-red-400 mb-3 relative z-10">O Olhar de "Assistir Tênis"</h3>
                 <p className="text-slate-300 mb-4 relative z-10">
                     O erro mais óbvio: seus olhos se movem da esquerda para a direita enquanto leem, parecendo que você está assistindo a uma partida de ping-pong.
                 </p>
@@ -28,7 +28,7 @@ export const ErrosComunsTeleprompterPT = () => (
 
             <div className="bg-slate-900 border border-slate-800 p-8 rounded-xl shadow-lg relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-10 text-9xl font-bold text-red-500">2</div>
-                <h2 className="text-2xl font-bold text-red-400 mb-3 relative z-10">A "Voz de Robô"</h2>
+                <h3 className="text-2xl font-bold text-red-400 mb-3 relative z-10">A "Voz de Robô"</h3>
                 <p className="text-slate-300 mb-4 relative z-10">
                     Falar monotone, sem pausas e sem emoção, apenas despejando palavras. Isso acontece quando você tenta acompanhar a velocidade do texto, em vez do texto acompanhar você.
                 </p>
@@ -42,7 +42,7 @@ export const ErrosComunsTeleprompterPT = () => (
 
             <div className="bg-slate-900 border border-slate-800 p-8 rounded-xl shadow-lg relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-10 text-9xl font-bold text-red-500">3</div>
-                <h2 className="text-2xl font-bold text-red-400 mb-3 relative z-10">Esquecer de Piscar (O Olhar Vidrado)</h2>
+                <h3 className="text-2xl font-bold text-red-400 mb-3 relative z-10">Esquecer de Piscar (O Olhar Vidrado)</h3>
                 <p className="text-slate-300 mb-4 relative z-10">
                     Na ansiedade de não perder a leitura, você arregala os olhos e para de piscar. O resultado é assustador para quem assiste.
                 </p>
@@ -56,7 +56,7 @@ export const ErrosComunsTeleprompterPT = () => (
 
             <div className="bg-slate-900 border border-slate-800 p-8 rounded-xl shadow-lg relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-10 text-9xl font-bold text-red-500">4</div>
-                <h2 className="text-2xl font-bold text-red-400 mb-3 relative z-10">Escrever "Livros" em vez de "Conversas"</h2>
+                <h3 className="text-2xl font-bold text-red-400 mb-3 relative z-10">Escrever "Livros" em vez de "Conversas"</h3>
                 <p className="text-slate-300 mb-4 relative z-10">
                     Roteiros com frases longas, palavras difíceis (tipo "outrossim", "entretanto") soam artificiais.
                 </p>
@@ -70,7 +70,7 @@ export const ErrosComunsTeleprompterPT = () => (
 
             <div className="bg-slate-900 border border-slate-800 p-8 rounded-xl shadow-lg relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-10 text-9xl font-bold text-red-500">5</div>
-                <h2 className="text-2xl font-bold text-red-400 mb-3 relative z-10">Fonte Pequena Demais</h2>
+                <h3 className="text-2xl font-bold text-red-400 mb-3 relative z-10">Fonte Pequena Demais</h3>
                 <p className="text-slate-300 mb-4 relative z-10">
                     Tentar ler letras miúdas faz você apertar os olhos (squinting), o que passa insegurança.
                 </p>

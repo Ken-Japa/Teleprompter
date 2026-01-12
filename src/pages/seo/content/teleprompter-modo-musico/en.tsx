@@ -2,9 +2,9 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterModoMusicoEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
             Teleprompter for Musicians: Never Forget Lyrics on Stage Again
-        </h1>
+        </h2>
 
         <p className="mb-6 text-xl text-slate-300">
             Every singer's nightmare: you are mid-show, band is playing, crowd is watching... and you blank out. You forget the first verse of next stanza.
@@ -15,7 +15,7 @@ export const TeleprompterModoMusicoEN = () => (
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border border-purple-500/30 mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">Different from a Speech</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">Different from a Speech</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div>
                     <h3 className="text-lg font-bold text-slate-200 mb-2">🎤 The Binder Problem</h3>
@@ -32,7 +32,7 @@ export const TeleprompterModoMusicoEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Setting up "Stage Ninja"</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Setting up "Stage Ninja"</h3>
 
         <div className="space-y-6 mb-12">
             <div className="flex gap-4">

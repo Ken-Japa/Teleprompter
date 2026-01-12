@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterParaLivesPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Como Usar Teleprompter em Lives (OBS, YouTube, Twitch): O Guia Secreto
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Fazer uma transmissão ao vivo é estressante. Monitorar o chat, checar o áudio, e ainda lembrar o roteiro? Impossível. É por isso que os maiores streamers usam um "segredinho" na tela que o público não vê.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">O Problema da Live Sem Roteiro</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">O Problema da Live Sem Roteiro</h3>
             <p className="text-slate-300 mb-6">
                 Você já assistiu a uma live onde o apresentador divaga por 10 minutos, gagueja e perde o fio da meada? A audiência cai na hora. Ter tópicos ou um roteiro completo na tela garante que você entregue valor constante, aumentando a retenção.
             </p>
@@ -23,7 +23,7 @@ export const TeleprompterParaLivesPT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">A Solução: Overlay Invisível com PromptNinja</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">A Solução: Overlay Invisível com PromptNinja</h3>
         <p className="text-slate-300 mb-8">
             O PromptNinja permite que você coloque uma janela transparente de teleprompter <strong>sobre</strong> o seu software de transmissão (OBS Studio, vMix, Streamlabs), mas posicionada fisicamente na tela bem abaixo da sua webcam.
         </p>
@@ -48,7 +48,7 @@ export const TeleprompterParaLivesPT = () => (
             </li>
         </ol>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Roteiro vs. Tópicos em Lives</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Roteiro vs. Tópicos em Lives</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             <div className="border border-slate-700 p-6 rounded-lg bg-slate-800/50">
                 <h3 className="text-xl font-bold text-blue-400 mb-2">Roteiro Completo</h3>

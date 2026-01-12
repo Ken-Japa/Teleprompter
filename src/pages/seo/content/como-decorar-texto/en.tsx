@@ -3,9 +3,9 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoDecorarTextoEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
             How to Memorize Lines Fast (The Secret is NOT to Memorize)
-        </h1>
+        </h2>
 
         <p className="text-lg text-slate-300 mb-8">
             You have a presentation tomorrow. Script is 5 pages long. Your heart races just thinking about forgetting a line and freezing on camera.
@@ -13,7 +13,7 @@ export const ComoDecorarTextoEN = () => (
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-yellow-500 mb-12 shadow-2xl">
-            <h2 className="text-2xl font-bold text-white mb-4">The Myth of Perfect Memory</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">The Myth of Perfect Memory</h3>
             <p className="text-slate-300 mb-4">
                 We think news anchors, politicians, and big YouTubers have photographic memories. Lie. They have <strong>Teleprompters</strong>.
             </p>
@@ -22,7 +22,7 @@ export const ComoDecorarTextoEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">The "Invisible Gaze" Technique</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">The "Invisible Gaze" Technique</h3>
         <p className="mb-6 text-slate-300">
             "But if I read, they will notice!"
             Not if you use the right technique. The secret isn't what you read, but <strong>how you set up the screen.</strong>
@@ -45,7 +45,7 @@ export const ComoDecorarTextoEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Step-by-Step: From Reading to Performance</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Step-by-Step: From Reading to Performance</h3>
 
         <SEOContentHowTo
             title=""

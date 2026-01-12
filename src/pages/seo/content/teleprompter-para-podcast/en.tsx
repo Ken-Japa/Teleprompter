@@ -3,9 +3,9 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterParaPodcastEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Teleprompter for Podcast: The Secret to Perfect Intros and Ads
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             "Hello everyone and welcome to... uh... what episode number is it again?"
@@ -13,7 +13,7 @@ export const TeleprompterParaPodcastEN = () => (
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">Where to Use (and Where NOT to Use)</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">Where to Use (and Where NOT to Use)</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="bg-green-900/20 border border-green-800 p-6 rounded-lg">
                     <h3 className="text-xl font-bold text-green-400 mb-4">✅ USE FOR:</h3>
@@ -34,7 +34,7 @@ export const TeleprompterParaPodcastEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Setup for Videocast (Desk)</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Setup for Videocast (Desk)</h3>
         <p className="text-slate-300 mb-8">
             Unlike a TV studio, in a podcast, you are usually looking at the guest or a microphone, not the camera all the time. However, in introductions, <strong>eye contact with the camera is essential</strong> to connect with those watching on YouTube/Spotify Video.
         </p>
@@ -48,7 +48,7 @@ export const TeleprompterParaPodcastEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Editing Tips</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Editing Tips</h3>
         <p className="text-slate-300 mb-8">
             Many podcasters record the introduction and ads <strong>after</strong> the interview is over. That way, you know exactly what was good in the chat to make a killer "teaser" in the opening. The teleprompter is your best friend at this time, as you will be tired and want to record quickly.
         </p>

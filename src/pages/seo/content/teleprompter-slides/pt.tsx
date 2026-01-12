@@ -3,7 +3,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterSlidesPT = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Sincronize Teleprompter com PowerPoint: Apresentações Perfeitas</h1>
+        <h2 className="text-4xl font-bold text-white mb-6">Sincronize Teleprompter com PowerPoint: Apresentações Perfeitas</h2>
 
         <p className="mb-6">
             O maior pesadelo de quem apresenta com slides é a dissincronia: o teleprompter continua rolando enquanto você ainda está explicando o gráfico do slide anterior. O <strong>PromptNinja</strong> resolve isso definitivamente com a funcionalidade de <strong>Sincronização por Comandos</strong>.
@@ -14,7 +14,7 @@ export const TeleprompterSlidesPT = () => (
         </p>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-orange-500">
-            <h2 className="text-2xl font-bold text-white mb-2">O Segredo: Comando [STOP]</h2>
+            <h3 className="text-2xl font-bold text-white mb-2">O Segredo: Comando [STOP]</h3>
             <p className="text-slate-300 mb-4">
                 A lógica é simples: seu roteiro deve esperar por você. Ao inserir a tag <strong>[STOP]</strong>, você cria pontos de parada obrigatórios.
             </p>
@@ -40,7 +40,7 @@ export const TeleprompterSlidesPT = () => (
             />
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Compatível com Passadores de Slides (Clickers)</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Compatível com Passadores de Slides (Clickers)</h3>
         <p className="mb-4">
             A maioria dos passadores de slides (apresentadores Logitech, etc.) funciona enviando comandos de teclado (Setas, Espaço ou Page Down).
         </p>
@@ -48,7 +48,7 @@ export const TeleprompterSlidesPT = () => (
             O PromptNinja reconhece esses sinais. Isso significa que com <strong>um único dispositivo</strong> na sua mão, você pode controlar tanto seus slides no computador quanto o texto no seu teleprompter. Produtividade máxima, complicações zero.
         </p>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Cenários de Uso</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Cenários de Uso</h3>
         <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="bg-slate-900 p-4 rounded-lg border border-slate-700">
                 <h3 className="text-xl font-bold text-white mb-2">Webinars de Vendas</h3>
@@ -60,13 +60,13 @@ export const TeleprompterSlidesPT = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Dicção e Pacing</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Dicção e Pacing</h3>
         <p className="mb-6">
             Além da sincronia, usar paradas programadas ajuda a manter um ritmo de fala mais natural. Veja mais sobre como controlar seu ritmo em nossa página sobre <a href="/teleprompter-pacing-timer-online" className="text-blue-400 hover:text-blue-300 underline">Pacing e Timer</a>.
         </p>
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
-            <h2 className="text-3xl font-bold text-white mb-4">Apresente com Confiança</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">Apresente com Confiança</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Nunca mais se preocupe em "perder" o texto. Com o PromptNinja, você controla o show.
             </p>

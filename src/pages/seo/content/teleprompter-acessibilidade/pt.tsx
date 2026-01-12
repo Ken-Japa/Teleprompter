@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterAcessibilidadePT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Teleprompter para TDAH e Dislexia: Como a Tecnologia Ajuda na Fala
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Para quem tem TDAH (Transtorno de Déficit de Atenção com Hiperatividade) ou Dislexia, gravar vídeos pode ser um pesadelo. Esquecer o que ia falar, trocar palavras, perder o foco... O teleprompter não é apenas uma ferramenta de leitura, é uma ferramenta de <strong>foco assistido</strong>.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">Recursos do PromptNinja para Neurodiversidade</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">Recursos do PromptNinja para Neurodiversidade</h3>
 
             <div className="space-y-6">
                 <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-orange-500">
@@ -44,7 +44,7 @@ export const TeleprompterAcessibilidadePT = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Dicas para Criadores com TDAH</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Dicas para Criadores com TDAH</h3>
         <ul className="list-disc list-inside space-y-4 text-slate-300 mb-12">
             <li><strong>Escreva Roteiros Curtos:</strong> Divida o vídeo em blocos de 3 minutos. Foco sustentado é difícil.</li>
             <li><strong>Use Voice Control:</strong> Se você divagar (o que é normal), o teleprompter espera. Se você acelerar na empolgação, ele acompanha. Isso reduz a ansiedade de "perder o ponto".</li>

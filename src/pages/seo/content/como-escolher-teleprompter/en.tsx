@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const ComoEscolherTeleprompterEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             How to Choose the Ideal Teleprompter in 2026: The Ultimate Guide
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Did you search on Amazon and get confused with so many options? Glass, iPad, for mobile, studio... prices range from $20 to $1,000. Before you open your wallet, read this guide. The best choice might cost zero.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">The 3 Main Types of Teleprompter</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">The 3 Main Types of Teleprompter</h3>
 
             <div className="space-y-6">
                 <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-purple-500">
@@ -35,7 +35,7 @@ export const ComoEscolherTeleprompterEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Buying Checklist: What to Consider?</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Buying Checklist: What to Consider?</h3>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
             <li className="flex items-center gap-3 bg-slate-800/50 p-4 rounded-lg">
                 <span className="text-green-400 text-xl">✅</span>
@@ -55,7 +55,7 @@ export const ComoEscolherTeleprompterEN = () => (
             </li>
         </ul>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Verdict: Where to Start?</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Verdict: Where to Start?</h3>
         <p className="text-slate-300 mb-8">
             If you are starting a YouTube channel or recording videos for social media, <strong>do not buy hardware now</strong>. Start with Software.
         </p>

@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const VelocidadeLeituraTeleprompterES = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             ¿Cuál es la Velocidad Ideal para el Teleprompter? Deja de Correr Tras el Texto
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Ajustas la velocidad a 3. Demasiado lento. Ajustas a 4. Demasiado rápido. ¿El resultado? Aceleras tu habla para seguir a la máquina y suenas como un narrador de carreras de caballos. Basta de sufrir.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">La Métrica de Oro: WPM (Palabras Por Minuto)</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">La Métrica de Oro: WPM (Palabras Por Minuto)</h3>
             <p className="text-slate-300 mb-6">
                 El habla natural de conversación gira en torno a <strong>130 a 150 palabras por minuto (WPM)</strong>.
                 <br />
@@ -26,7 +26,7 @@ export const VelocidadeLeituraTeleprompterES = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">¿Por qué Falla el Ajuste Manual?</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">¿Por qué Falla el Ajuste Manual?</h3>
         <p className="text-slate-300 mb-8">
             El problema del desplazamiento automático fijo es que los humanos no somos robots. A veces hacemos una pausa dramática. A veces reímos. A veces necesitamos respirar. El desplazamiento fijo no te espera, creando ansiedad.
         </p>

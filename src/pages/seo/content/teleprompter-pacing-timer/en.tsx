@@ -2,16 +2,16 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterPacingTimerEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
             Master Timing: How Not to Get Cut Off in Your Pitch or Talk
-        </h1>
+        </h2>
 
         <p className="mb-6 text-xl text-slate-300">
             "Your time is up." Nothing is more embarrassing than being interrupted mid-conclusion in a Talk or Sales Pitch because you talked too much.
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-orange-500 mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">The Adrenaline Trap</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">The Adrenaline Trap</h3>
             <p className="text-slate-300 mb-4">
                 When nervous, our time perception distorts. We think we spoke for 2 minutes, but it was 5. Or we rush and finish in 30 seconds.
             </p>
@@ -20,7 +20,7 @@ export const TeleprompterPacingTimerEN = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Pacing Techniques</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Pacing Techniques</h3>
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="bg-slate-900/50 p-6 rounded border border-slate-700">

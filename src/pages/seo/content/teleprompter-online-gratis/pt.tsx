@@ -3,7 +3,7 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterOnlineGratisPT = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Teleprompter Online Grátis: Pare de Desperdiçar Horas Regravando</h1>
+        <h2 className="text-4xl font-bold text-white mb-6">Teleprompter Online Grátis: Pare de Desperdiçar Horas Regravando</h2>
 
         <p className="mb-6 text-lg text-slate-300">
             Você já passou <strong>3 horas tentando gravar um vídeo de 8 minutos</strong>? Começa a falar, trava na frase exata, olha pro papel, perde o contato visual com a câimera. Regrava. Trava de novo na MESMA frase. Mais 15 minutos perdidos. No final do dia: 47 tentativas, 2h53min gastos, vídeo publicado com cortes visíveis e aquela sensação de "podia ter ficado melhor".
@@ -19,7 +19,7 @@ export const TeleprompterOnlineGratisPT = () => (
 
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
-            <h2 className="text-2xl font-bold text-white mb-2">Por que o PromptNinja Não Trava? (A Diferença do P2P)</h2>
+            <h3 className="text-2xl font-bold text-white mb-2">Por que o PromptNinja Não Trava? (A Diferença do P2P)</h3>
             <p className="text-slate-300 mb-4">
                 Sabe por que a maioria dos teleprompters "congela" no meio da frase? Porque dependem da sua internet pra enviar cada comando pro servidor na nuvem e voltar. Se sua internet oscila (mesmo que por 1 segundo), o texto trava.
             </p>
@@ -28,7 +28,7 @@ export const TeleprompterOnlineGratisPT = () => (
             </p>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">O Dilema das Ferramentas Gratuitas (Lag e Anúncios)</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">O Dilema das Ferramentas Gratuitas (Lag e Anúncios)</h3>
         <p className="mb-4">
             Muitos teleprompters online gratuitos são, na verdade, iscas. Eles escondem problemas sérios que só aparecem na hora de gravar:
         </p>
@@ -38,7 +38,7 @@ export const TeleprompterOnlineGratisPT = () => (
             <li><strong>Limitações Artificiais:</strong> "Pague para desbloquear o controle remoto" ou "Pague para remover a marca d'água".</li>
         </ul>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Privacidade Garantida: O Teleprompter que NUNCA Vê Seu Roteiro (Sem Login!)</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Privacidade Garantida: O Teleprompter que NUNCA Vê Seu Roteiro (Sem Login!)</h3>
         <p className="mb-6 text-slate-300">
             Diferente de outros apps que obrigam você a criar conta e salvam seus roteiros na "nuvem" (onde podem ser vazados ou lidos), o PromptNinja opera com <strong>Privacidade Local</strong>.
             <br /><br />
@@ -62,7 +62,7 @@ export const TeleprompterOnlineGratisPT = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Comparativo: PromptNinja vs. Outras Soluções Gratuitas</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Comparativo: PromptNinja vs. Outras Soluções Gratuitas</h3>
         <div className="overflow-x-auto">
             <table className="min-w-full bg-slate-800 rounded-lg">
                 <thead>
@@ -102,12 +102,12 @@ export const TeleprompterOnlineGratisPT = () => (
             </table>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-12 mb-4">Casos Reais com Números: Antes vs Depois</h2>
+        <h3 className="text-2xl font-bold text-white mt-12 mb-4">Casos Reais com Números: Antes vs Depois</h3>
         <div className="grid md:grid-cols-3 gap-6 mb-12">
             <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
                 <h3 className="font-bold text-lg text-green-400 mb-3">📹 YouTuber Educacional</h3>
                 <p className="text-slate-300 text-sm mb-4">
-                    "Gravo aulas de matemática. <strong>ANTES:</strong> 3h15min para gravar 1 vídeo de 20min (23 tentativas, esquecia fórmulas). <strong>DEPOIS:</strong> 35min por vídeo (2 tentativas). Redução de <strong>84% no tempo</strong>. Agora publico 3x/semana vs 1x antes."
+                    "Gravo aulas de matemática. <strong>ANTES:</strong> 3h25min para gravar 1 vídeo de 20min (23 tentativas, esquecia fórmulas). <strong>DEPOIS:</strong> 35min por vídeo (2 tentativas). Redução de <strong>84% no tempo</strong>. Agora publico 3x/semana vs 1x antes."
                 </p>
                 <p className="text-slate-500 text-xs italic">— Setup: Laptop + tablet como tela | Economia: 8h40min/semana</p>
             </div>
@@ -127,7 +127,7 @@ export const TeleprompterOnlineGratisPT = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-12 mb-4">5 Erros Que Matam Teleprompters Grátis (E Como o PromptNinja Evita)</h2>
+        <h3 className="text-2xl font-bold text-white mt-12 mb-4">5 Erros Que Matam Teleprompters Grátis (E Como o PromptNinja Evita)</h3>
         <div className="bg-gradient-to-r from-red-900/20 to-slate-900 p-8 rounded-xl border border-red-500/30 mb-12">
             <div className="space-y-5">
                 <div className="bg-slate-900/50 p-5 rounded-lg border-l-4 border-red-500">
@@ -225,7 +225,7 @@ export const TeleprompterOnlineGratisPT = () => (
         </div>
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
-            <h2 className="text-3xl font-bold text-white mb-4">Sua Busca por um Teleprompter Grátis Acabou</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">Sua Busca por um Teleprompter Grátis Acabou</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Pare de lutar com ferramentas limitadas. Experimente a liberdade de um teleprompter online que é gratuito de verdade e poderoso por design.
             </p>

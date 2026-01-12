@@ -3,22 +3,22 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const CelebridadesUsamTeleprompterEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             7 Celebrities and Giants Who Use Teleprompters (And You Didn't Even Know)
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             There is a myth that using a teleprompter is "cheating" or a sign that you don't master the subject. The truth? The world's greatest communicators use it. The difference is they use it so well it looks natural. If Barack Obama and Adele use it, why should you be ashamed?
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">The Truth About "Naturalness"</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">The Truth About "Naturalness"</h3>
             <p className="text-slate-300 mb-4">
                 Naturalness in video doesn't come from memorizing text, it comes from being relaxed. And nothing relaxes you more than knowing exactly what you're going to say. The teleprompter doesn't take away emotion; it <strong>frees</strong> your mind to focus on emotion instead of memory.
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">The VIP List</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">The VIP List</h3>
 
         <div className="space-y-8 mb-12">
             <div className="flex flex-col md:flex-row gap-6 items-start bg-slate-800/50 p-6 rounded-lg border border-slate-700">
@@ -73,7 +73,7 @@ export const CelebridadesUsamTeleprompterEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">How to Use Like a Pro (Quick Tips)</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">How to Use Like a Pro (Quick Tips)</h3>
         <ul className="list-disc list-inside space-y-4 text-slate-300 mb-12">
             <li><strong>Distance is Key:</strong> Stand at least 1 meter (3 feet) from the camera to reduce eye movement.</li>
             <li><strong>Write Like You Speak:</strong> Use colloquial language in the script. Don't use formal words if you don't speak that way.</li>

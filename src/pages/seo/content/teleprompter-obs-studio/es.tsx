@@ -3,9 +3,9 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterObsStudioES = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Teleprompter para OBS Studio: Guía Completa para Streamers y Creadores de Lives
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             Estás en vivo, intentas leer el guion en el segundo monitor, pierdes el contacto visual con la cámara por 3 segundos y BOOM — 50 personas salieron del stream. O peor: sigues haciendo Alt+Tab, rompes el flow, el chat nota que estás leyendo algo, la atmósfera muere.
@@ -20,7 +20,7 @@ export const TeleprompterObsStudioES = () => (
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-purple-900/30 p-8 rounded-xl border border-purple-500/30 my-12">
-            <h2 className="text-3xl font-bold text-white mb-6">El Problema del Streamer Que Lee Guiones</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">El Problema del Streamer Que Lee Guiones</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/50 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
@@ -54,7 +54,7 @@ export const TeleprompterObsStudioES = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Por Qué PromptNinja Está Hecho Para OBS</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Por Qué PromptNinja Está Hecho Para OBS</h3>
         <p className="mb-6">
             Existen varias soluciones de teleprompter, pero la mayoría no fueron pensadas para streaming. Ve las diferencias:
         </p>
@@ -109,7 +109,7 @@ export const TeleprompterObsStudioES = () => (
         </div>
 
         <div className="bg-slate-800 p-6 rounded-lg my-12 border-l-4 border-purple-600">
-            <h2 className="text-2xl font-bold text-white mb-4">🎯 Ventajas Específicas Para Streaming</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">🎯 Ventajas Específicas Para Streaming</h3>
             <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-slate-900 p-4 rounded-lg">
                     <h4 className="font-bold text-purple-400 mb-2">⚡ Cero Impacto en Rendimiento</h4>
@@ -163,7 +163,7 @@ export const TeleprompterObsStudioES = () => (
             ]}
         />
 
-        <h2 className="text-3xl font-bold text-white mt-16 mb-6">Troubleshooting: Problemas Comunes y Soluciones</h2>
+        <h3 className="text-3xl font-bold text-white mt-16 mb-6">Troubleshooting: Problemas Comunes y Soluciones</h3>
 
         <div className="space-y-4 mb-12">
             <div className="bg-slate-800 p-5 rounded-lg border-l-4 border-yellow-500">
@@ -217,7 +217,7 @@ export const TeleprompterObsStudioES = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-16 mb-6">Caso Real: Streamer Duplicó Viewers Promedio con Intros Profesionales</h2>
+        <h3 className="text-3xl font-bold text-white mt-16 mb-6">Caso Real: Streamer Duplicó Viewers Promedio con Intros Profesionales</h3>
         <div className="bg-gradient-to-r from-purple-900/20 to-indigo-900/20 p-8 rounded-xl border border-purple-500/30 mb-12">
             <p className="text-slate-300 mb-4">
                 <strong className="text-purple-400">Streamer:</strong> @gamer_educativo (nombre cambiado), 1.2k seguidores Twitch, live de Valorant + tutoriales.
@@ -303,7 +303,7 @@ export const TeleprompterObsStudioES = () => (
         />
 
         <div className="bg-gradient-to-r from-purple-900/20 to-indigo-900/20 p-8 rounded-xl border border-purple-500/30 text-center my-12">
-            <h2 className="text-3xl font-bold text-white mb-4">El Streamer Profesional Comienza Aquí</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">El Streamer Profesional Comienza Aquí</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Deja de improvisar intros. Deja de olvidar sponsors. Deja de mirar al segundo monitor y perder viewers. Configura una vez, usa para siempre.
             </p>

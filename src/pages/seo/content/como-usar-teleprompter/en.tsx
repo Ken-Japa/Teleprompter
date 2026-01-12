@@ -2,9 +2,9 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoUsarTeleprompterEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             How to Use a Free Teleprompter: The Ultimate Guide for Professional Videos
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8">
             First time trying a teleprompter? You open some random site, paste text, hit play and... DISASTER. Text scrolls too fast (you sound like a nervous auctioneer) or too slow (awkward pauses). You try to pause but need to <strong>touch the screen and shake the camera</strong>. After 40 minutes testing, you give up and go back to re-recording 20 times from memory.
@@ -19,7 +19,7 @@ export const ComoUsarTeleprompterEN = () => (
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">First Video: Without vs WITH Teleprompter</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">First Video: Without vs WITH Teleprompter</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/70 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
@@ -52,7 +52,7 @@ export const ComoUsarTeleprompterEN = () => (
         </div>
 
         <div className="bg-slate-900 p-6 rounded-lg border border-slate-800 mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Why Beginners Fail (and How to Avoid It)</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">Why Beginners Fail (and How to Avoid It)</h3>
             <p className="text-slate-300 mb-4">
                 90% of creators who test teleprompter for the first time QUIT. Not because the tool doesn't work, but because they make 3 classic mistakes:
             </p>
@@ -81,7 +81,7 @@ export const ComoUsarTeleprompterEN = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">How to Use a Teleprompter: From Basic to Professional</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">How to Use a Teleprompter: From Basic to Professional</h3>
         <p className="text-slate-300 mb-8">
             There are two main ways to use a teleprompter, especially with web-based tools like PromptNinja, which don't require purchasing expensive equipment.
         </p>
@@ -130,7 +130,7 @@ export const ComoUsarTeleprompterEN = () => (
             <p className="text-sm text-green-400 mt-2 px-4"><strong>Advantage:</strong> Full control over the recording flow, allowing for dramatic pauses, acceleration, and a much more dynamic and natural presentation.</p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Common Mistakes When Using a Teleprompter (and How to Avoid Them)</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Common Mistakes When Using a Teleprompter (and How to Avoid Them)</h3>
         <div className="space-y-4">
             <div className="bg-slate-800 p-4 rounded-lg">
                 <h3 className="font-bold text-lg text-white">1. "Dancing" Eyes on the Screen</h3>

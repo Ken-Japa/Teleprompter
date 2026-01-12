@@ -3,7 +3,7 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterOnlineGratisEN = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6">Free Online Teleprompter: Stop Wasting Hours Re-Recording</h1>
+        <h2 className="text-4xl font-bold text-white mb-6">Free Online Teleprompter: Stop Wasting Hours Re-Recording</h2>
 
         <p className="mb-6 text-lg text-slate-300">
             Ever spent <strong>3 hours trying to record an 8-minute video</strong>? You start speaking, freeze on the exact phrase, glance at your notes, lose eye contact with the camera. Re-record. Freeze again on the SAME phrase. Another 15 minutes wasted. By end of day: 47 attempts, 2h53min spent, video published with visible cuts and that feeling of "could've been better".
@@ -19,7 +19,7 @@ export const TeleprompterOnlineGratisEN = () => (
 
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
-            <h2 className="text-2xl font-bold text-white mb-2">Why Doesn't PromptNinja Freeze? (The P2P Difference)</h2>
+            <h3 className="text-2xl font-bold text-white mb-2">Why Doesn't PromptNinja Freeze? (The P2P Difference)</h3>
             <p className="text-slate-300 mb-4">
                 Know why most teleprompters "freeze" mid-sentence? Because they depend on your internet to send each command to a cloud server and back. If your internet hiccups (even for 1 second), the text freezes.
             </p>
@@ -28,7 +28,7 @@ export const TeleprompterOnlineGratisEN = () => (
             </p>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">The Dilemma of Free Tools (Lag and Ads)</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">The Dilemma of Free Tools (Lag and Ads)</h3>
         <p className="mb-4">
             Many free online teleprompters are actually bait. They hide serious problems that only appear when you're recording:
         </p>
@@ -38,7 +38,7 @@ export const TeleprompterOnlineGratisEN = () => (
             <li><strong>Artificial Limitations:</strong> "Pay to unlock remote control" or "Pay to remove watermark".</li>
         </ul>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Guaranteed Privacy: The Teleprompter that NEVER Sees Your Script (No Login!)</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Guaranteed Privacy: The Teleprompter that NEVER Sees Your Script (No Login!)</h3>
         <p className="mb-6 text-slate-300">
             Unlike other apps that force you to create an account and save your scripts to the "cloud" (where they can be leaked or read), PromptNinja operates with <strong>Local Privacy</strong>.
             <br /><br />
@@ -62,7 +62,7 @@ export const TeleprompterOnlineGratisEN = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Comparison: PromptNinja vs. Other Free Solutions</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Comparison: PromptNinja vs. Other Free Solutions</h3>
         <div className="overflow-x-auto">
             <table className="min-w-full bg-slate-800 rounded-lg">
                 <thead>
@@ -102,12 +102,12 @@ export const TeleprompterOnlineGratisEN = () => (
             </table>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-12 mb-4">Real Cases with Numbers: Before vs After</h2>
+        <h3 className="text-2xl font-bold text-white mt-12 mb-4">Real Cases with Numbers: Before vs After</h3>
         <div className="grid md:grid-cols-3 gap-6 mb-12">
             <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
                 <h3 className="font-bold text-lg text-green-400 mb-3">📹 Educational YouTuber</h3>
                 <p className="text-slate-300 text-sm mb-4">
-                    "I record math lessons. <strong>BEFORE:</strong> 3h15min to record 1 video of 20min (23 attempts, forgot formulas). <strong>AFTER:</strong> 35min per video (2 attempts). <strong>84% time reduction</strong>. Now publish 3x/week vs 1x before."
+                    "I record math lessons. <strong>BEFORE:</strong> 3h25min to record 1 video of 20min (23 attempts, forgot formulas). <strong>AFTER:</strong> 35min per video (2 attempts). <strong>84% time reduction</strong>. Now publish 3x/week vs 1x before."
                 </p>
                 <p className="text-slate-500 text-xs italic">— Setup: Laptop + tablet as display | Savings: 8h40min/week</p>
             </div>
@@ -127,7 +127,7 @@ export const TeleprompterOnlineGratisEN = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-12 mb-4">5 Mistakes That Kill Free Teleprompters (And How PromptNinja Avoids Them)</h2>
+        <h3 className="text-2xl font-bold text-white mt-12 mb-4">5 Mistakes That Kill Free Teleprompters (And How PromptNinja Avoids Them)</h3>
         <div className="bg-gradient-to-r from-red-900/20 to-slate-900 p-8 rounded-xl border border-red-500/30 mb-12">
             <div className="space-y-5">
                 <div className="bg-slate-900/50 p-5 rounded-lg border-l-4 border-red-500">
@@ -225,7 +225,7 @@ export const TeleprompterOnlineGratisEN = () => (
         </div>
 
         <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
-            <h2 className="text-3xl font-bold text-white mb-4">Your Search for a Free Teleprompter is Over</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">Your Search for a Free Teleprompter is Over</h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Stop struggling with limited tools. Experience the freedom of an online teleprompter that is truly free and powerful by design.
             </p>

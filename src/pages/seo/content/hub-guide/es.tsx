@@ -7,10 +7,10 @@ export const HubGuideContentES = () => (
         </div>
 
         <section id="oque" className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
                 ¿Qué es un Teleprompter?
-            </h2>
+            </h3>
             <p className="mb-4">
                 El <a href={ROUTES_CONFIG.SEO_O_QUE_E.paths.es}>Teleprompter</a> (o "prompter") es la herramienta secreta detrás de presentadores de TV, presidentes y YouTubers exitosos. Te permite leer un guion mientras miras directamente a la lente de la cámara.
             </p>
@@ -23,10 +23,10 @@ export const HubGuideContentES = () => (
         </section>
 
         <section id="como-usar" className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
                 Cómo Usar (Paso a Paso)
-            </h2>
+            </h3>
             <p>
                 Usar un teleprompter hoy es mucho más fácil que en la era de la TV analógica. No necesitas equipos de $1,000.
             </p>
@@ -45,10 +45,10 @@ export const HubGuideContentES = () => (
         </section>
 
         <section id="apps" className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
                 Mejores Apps y Herramientas
-            </h2>
+            </h3>
             <p className="mb-4">
                 Hay docenas de opciones, pero el futuro es <strong>Web-Based</strong> con IA. Conoce qué esperar del <a href={ROUTES_CONFIG.SEO_FUTURE_AI.paths.es}>Futuro de los Teleprompters con IA</a>.
             </p>
@@ -67,10 +67,10 @@ export const HubGuideContentES = () => (
         </section>
 
         <section id="diy" className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
                 DIY vs Profesional
-            </h2>
+            </h3>
             <p className="mb-4">
                 Puedes empezar con cero inversión. Tenemos una guía increíble sobre <a href={ROUTES_CONFIG.SEO_DIY.paths.es}>Cómo hacer un Teleprompter Casero</a> usando una caja de CD o vidrio de marco de fotos.
             </p>
@@ -80,10 +80,10 @@ export const HubGuideContentES = () => (
         </section>
 
         <section id="casos" className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">5</span>
                 Casos de Uso Específicos
-            </h2>
+            </h3>
             <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-purple-500 transition-colors">
                     <h3 className="font-bold text-white mb-2">📹 Youtubers y Creadores</h3>
@@ -117,10 +117,10 @@ export const HubGuideContentES = () => (
         </section>
 
         <section id="recursos" className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="bg-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">6</span>
                 Guiones y Oratoria
-            </h2>
+            </h3>
             <p>
                 La herramienta es inútil sin un buen contenido. Por eso, creamos una biblioteca de <a href={ROUTES_CONFIG.SEO_SCRIPTS.paths.es}>Guiones para Teleprompter</a> listos para usar.
             </p>

@@ -3,7 +3,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterParaYoutubersES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para YouTubers: Cómo Duplicar Retención y Cortar Edición a la Mitad</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para YouTubers: Cómo Duplicar Retención y Cortar Edición a la Mitad</h2>
 
         <p className="mb-6 text-xl text-slate-300">
             Conoces el dolor: enciendes cámara, dices dos frases, te trabas. "Corta, de nuevo".
@@ -15,7 +15,7 @@ export const TeleprompterParaYoutubersES = () => (
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-red-500 mb-12 shadow-2xl">
-            <h2 className="text-2xl font-bold text-white mb-4">El Algoritmo Odia la Inseguridad</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">El Algoritmo Odia la Inseguridad</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div>
                     <h3 className="text-lg font-bold text-red-300 mb-2">📉 Sin Teleprompter</h3>
@@ -38,7 +38,7 @@ export const TeleprompterParaYoutubersES = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">3 Formas de Usar (De Principiante a Pro)</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">3 Formas de Usar (De Principiante a Pro)</h3>
 
         <div className="grid md:grid-cols-3 gap-6 mb-12">
             <div className="bg-slate-900/50 p-6 rounded-lg border border-slate-700 hover:border-blue-500 transition">
@@ -70,7 +70,7 @@ export const TeleprompterParaYoutubersES = () => (
             </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">Workflow Ninja: Guion a Publicado en 1h</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Workflow Ninja: Guion a Publicado en 1h</h3>
         <SEOContentHowTo
             title=""
             schemaTitle="Cómo Grabar Videos YouTube con Teleprompter"
@@ -97,7 +97,7 @@ export const TeleprompterParaYoutubersES = () => (
         />
 
         <div className="mt-16 bg-gradient-to-r from-red-600/20 to-red-900/20 p-8 rounded-xl border border-red-500/30">
-            <h2 className="text-2xl font-bold text-white mb-4">Deja de perder tiempo editando "Ehmmm..."</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">Deja de perder tiempo editando "Ehmmm..."</h3>
             <p className="text-slate-300 mb-6">
                 Grandes canales (MrBeast, Ali Abdaal) usan guiones o teleprompters. Su consistencia viene del flujo de trabajo. PromptNinja te da ese superpoder gratis.
             </p>

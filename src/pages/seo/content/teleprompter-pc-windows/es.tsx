@@ -3,7 +3,7 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterPCWindowsES = () => (
     <>
-        <h1 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para PC Windows: Configuración Profesional en 60 Segundos</h1>
+        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para PC Windows: Configuración Profesional en 60 Segundos</h2>
 
         <p className="mb-6 text-lg text-slate-300">
             PC gamer de $2000 para hacer streams profesionales. OBS configurado, chroma key, luces LED. Todo perfecto. Luego grabas el video serio... TRABES en la frase 3. "Ehhh espera, déjame revisar el guion". Miras el papel. Pierdes contacto visual. Credibilidad = 0.
@@ -18,7 +18,7 @@ export const TeleprompterPCWindowsES = () => (
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">Setup PC: Sin vs CON Teleprompter</h2>
+            <h3 className="text-3xl font-bold text-white mb-6">Setup PC: Sin vs CON Teleprompter</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/70 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
@@ -51,7 +51,7 @@ export const TeleprompterPCWindowsES = () => (
         </div>
 
         <div className="my-8 p-6 bg-slate-800 rounded-lg">
-            <h2 className="text-2xl font-bold text-white mb-4">Por Qué los .exe de 2012 Son Trampa (Riesgos Reales)</h2>
+            <h3 className="text-2xl font-bold text-white mb-4">Por Qué los .exe de 2012 Son Trampa (Riesgos Reales)</h3>
             <ul className="list-disc pl-6 mb-4 space-y-2">
                 <li><strong>Malware:</strong> 70% probabilidad según Norton 2024 (sitios "gratis" viven de adware)</li>
                 <li><strong>Windows 11:</strong> Apps viejas crashean con DirectX 12</li>
@@ -63,7 +63,7 @@ export const TeleprompterPCWindowsES = () => (
             </p>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">3 Configuraciones PC Profesionales</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">3 Configuraciones PC Profesionales</h3>
         <div className="space-y-6 mb-12">
             <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-cyan-500">
                 <h3 className="text-xl font-bold text-cyan-400 mb-3">Setup #1: Webcam + Monitor Único (YouTuber Básico)</h3>
@@ -114,7 +114,7 @@ export const TeleprompterPCWindowsES = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Comparativa: Web App vs Software .exe</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Comparativa: Web App vs Software .exe</h3>
         <div className="overflow-x-auto my-8">
             <table className="min-w-full bg-slate-800 rounded-lg">
                 <thead>
@@ -164,7 +164,7 @@ export const TeleprompterPCWindowsES = () => (
             </table>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mt-12 mb-6">5 Errores Fatales de Configuración PC (Que Te Hacen Ver Amateur)</h2>
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">5 Errores Fatales de Configuración PC (Que Te Hacen Ver Amateur)</h3>
         <div className="space-y-4 mb-12">
             <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
                 <h4 className="font-bold text-red-400 mb-2">Error #1: Instalar .exe de Fuente Desconocida</h4>
@@ -203,12 +203,12 @@ export const TeleprompterPCWindowsES = () => (
             </div>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Performance: PWA vs App Nativa</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Performance: PWA vs App Nativa</h3>
         <p className="mb-4">
             "Web app = lento" es un mito de 2010. PromptNinja es PWA (Progressive Web App) con aceleración hardware vía WebGL. Desplazamiento constante a 60fps incluso en guiones de 50+ páginas. Se comporta EXACTAMENTE como app nativa pero sin pedir permisos admin.
         </p>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Cómo "Instalar" PWA en Windows (Opcional)</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Cómo "Instalar" PWA en Windows (Opcional)</h3>
         <p className="mb-4">
             Para experiencia aún más integrada (ícono escritorio, ventana dedicada sin pestañas):
         </p>
@@ -248,7 +248,7 @@ export const TeleprompterPCWindowsES = () => (
             <p className="text-slate-400 mt-4 text-sm">Cero instalación • Control remoto incluido • Funciona offline</p>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4">Preguntas Frecuentes (FAQ) - Usuarios PC Windows</h2>
+        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Preguntas Frecuentes (FAQ) - Usuarios PC Windows</h3>
         <SEOContentFAQ
             title=""
             items={[
