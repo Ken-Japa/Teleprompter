@@ -14,7 +14,7 @@ export const LogoText = ({ main, sub, className = "" }: { main?: string; sub?: s
                 className="w-8 h-auto max-h-6 object-contain relative z-10 transition-all duration-300 drop-shadow-md"
             />
         </div>
-        <h1 className="text-lg sm:text-2xl font-bold text-white tracking-tight flex items-center font-display">
+        <span className="text-lg sm:text-2xl font-bold text-white tracking-tight flex items-center font-display">
             {main && (
                 <span className="text-slate-100 tracking-tight group-hover:text-white transition-colors drop-shadow-sm">{main}</span>
             )}
@@ -23,7 +23,7 @@ export const LogoText = ({ main, sub, className = "" }: { main?: string; sub?: s
                     {sub}
                 </span>
             )}
-        </h1>
+        </span>
     </div>
 );
 
