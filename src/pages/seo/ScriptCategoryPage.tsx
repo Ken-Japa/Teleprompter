@@ -59,9 +59,28 @@ export const ScriptCategoryPage: React.FC<ScriptCategoryPageProps> = ({ category
             onLaunch={onLaunch}
         >
             <div className="mb-12">
-                <p>
-                    {category.description[currentLang]}
-                </p>
+                {category.seoIntro && category.seoIntro[currentLang] ? (
+                    <div className="prose prose-invert prose-lg max-w-none mb-12">
+                        {category.seoIntro[currentLang].split('\n\n').map((para, i) => (
+                            para.startsWith('#') ?
+                                <h1 key={i} className="text-3xl font-bold text-white mb-6">{para.replace('# ', '').replace('🚀 ', '')}</h1> :
+                                para.startsWith('###') ?
+                                    <h3 key={i} className="text-xl font-bold text-white mb-4 mt-8">{para.replace('### ', '')}</h3> :
+                                    <p key={i} className="text-slate-300 mb-6 leading-relaxed">
+                                        {para.split('**').map((part, j) => j % 2 === 1 ? <strong key={j} className="text-white">{part}</strong> : part)}
+                                    </p>
+                        ))}
+                    </div>
+                ) : (
+                    <p className="lead text-xl text-slate-300 mb-8">
+                        {category.description[currentLang]}
+                    </p>
+                )}
+
+                {category.seoCases && category.seoCases[currentLang] && (
+                    <div dangerouslySetInnerHTML={{ __html: category.seoCases[currentLang] }} />
+                )}
+
                 <div className="mt-4 p-4 bg-purple-900/20 border border-purple-500/30 rounded-lg">
                     <p className="text-sm text-purple-200 m-0 !mt-0">
                         {currentLang === 'pt' ?

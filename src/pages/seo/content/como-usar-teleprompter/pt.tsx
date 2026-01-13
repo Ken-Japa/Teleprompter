@@ -3,21 +3,42 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoUsarTeleprompterPT = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Como Usar um Teleprompter Grátis: O Guia Definitivo para Vídeos Profissionais
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter no Celular: Seu Guia Rápido para Usar o PromptNinja Grátis!
         </h2>
-
-        <p className="lead text-xl text-slate-300 mb-8">
-            Primeira vez tentando usar teleprompter? Você abre um site qualquer, cola o texto, aperta play e... DESASTRE. O texto rola muito rápido (você parece um leiloeiro nervoso) ou devagar demais (pausas constrangedoras). Você tenta pausar mas precisa <strong>tocar na tela e tremer a câmera</strong>. Após 40 minutos testando, desiste e volta a regravar 20 vezes memorizando.
+        <p className="text-lg text-slate-300 mb-6 leading-relaxed">
+            Cansado de esquecer seu texto ou perder a linha durante gravações? O teleprompter no celular é a solução perfeita para manter a fluidez. E a boa notícia é: com o <strong>PromptNinja</strong>, você pode transformar seu smartphone em um teleprompter profissional de forma <strong>rápida, gratuita e descomplicada!</strong>
+        </p>
+        <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+            Este guia completo vai te mostrar o <strong>passo a passo exato</strong> para configurar e usar o teleprompter no seu celular. Vamos direto ao ponto para você começar a falar com confiança hoje mesmo.
+            <br /><br />
+            <strong>Pronto para dominar sua comunicação? Vamos lá!</strong>
         </p>
 
-        <p className="mb-6">
-            EXATAMENTE o que aconteceu comigo na primeira vez. Pensei "teleprompter vai resolver minha vida". Resultado? Passei MAIS tempo brigando com a ferramenta do que se tivesse gravado sem nada. O problema não era EU. Era usar ferramentas feitas pra estúdios profissionais com equipamentos de $5000, não pra criadores solo gravando c om celular.
-        </p>
+        <div className="bg-slate-800 p-6 rounded-lg my-8 shadow-lg border border-slate-700">
+            <h2 className="text-xl font-bold text-white mb-4">Navegue Rápido:</h2>
+            <ul className="list-none space-y-3 mb-6 pl-0">
+                <li><a href="#o-que-e-teleprompter" className="text-blue-400 font-semibold hover:text-blue-300 transition flex items-center gap-2"><span className="text-slate-400 font-normal">1.</span> Por Que o Teleprompter é Essencial?</a></li>
+                <li><a href="#passo-a-passo" className="text-blue-400 font-semibold hover:text-blue-300 transition flex items-center gap-2"><span className="text-slate-400 font-normal">2.</span> <span className="text-green-400">PASSO A PASSO: Como Usar o PromptNinja</span></a></li>
+                <li><a href="#erros-comuns" className="text-blue-400 font-semibold hover:text-blue-300 transition flex items-center gap-2"><span className="text-slate-400 font-normal">3.</span> Erros Comuns (e Como Evitar)</a></li>
+                <li><a href="#dicas-avancadas" className="text-blue-400 font-semibold hover:text-blue-300 transition flex items-center gap-2"><span className="text-slate-400 font-normal">4.</span> Dicas Avançadas</a></li>
+            </ul>
+            <a href="/?lang=pt#app" className="block w-full md:w-auto text-center bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-6 rounded-lg transition shadow-lg">
+                🚀 Ir Direto para o Passo a Passo com PromptNinja!
+            </a>
+        </div>
 
-        <p className="mb-8">
-            Este guia existe pra você <strong>acertar na primeira vez</strong>. Vou te mostrar EXATAMENTE como usar teleprompter do jeito certo — não só a parte técnica ("cole texto, aperte play") mas os TRUQUES que separam quem parece lendo de quem parece falando naturalmente.
-        </p>
+        <section id="o-que-e-teleprompter" className="mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">O Essencial: Por Que o Teleprompter no Celular é um Game-Changer?</h3>
+            <p className="text-slate-300 mb-4">
+                Antes de mergulharmos no "como", é rápido entender "o porquê". Um teleprompter, originalmente usado em TVs e palcos, agora cabe no seu bolso. Ele projeta seu roteiro de forma discreta, permitindo que você mantenha contato visual com a câmera.
+            </p>
+            <ul className="list-disc list-inside text-slate-300 space-y-2 mb-4">
+                <li><strong>Fluidez e Naturalidade:</strong> Fale sem hesitação, como se estivesse conversando.</li>
+                <li><strong>Economia de Tempo:</strong> Menos takes, menos edições, mais produtividade.</li>
+                <li><strong>Confiança Total:</strong> Nunca mais se preocupe em esquecer um ponto importante.</li>
+            </ul>
+        </section>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">Primeiro Vídeo: Sem vs COM Teleprompter</h3>
@@ -52,7 +73,7 @@ export const ComoUsarTeleprompterPT = () => (
             </p>
         </div>
 
-        <div className="bg-slate-900 p-6 rounded-lg border border-slate-800 mb-12">
+        <div id="erros-comuns" className="bg-slate-900 p-6 rounded-lg border border-slate-800 mb-12">
             <h3 className="text-3xl font-bold text-white mb-4">Por Que Iniciantes Falham (e Como Evitar)</h3>
             <p className="text-slate-300 mb-4">
                 90% dos criadores que testam teleprompter pela primeira vez DESISTEM. Não porque a ferramenta não funciona, mas porque cometem 3 erros clássicos:
@@ -82,7 +103,7 @@ export const ComoUsarTeleprompterPT = () => (
             </div>
         </div>
 
-        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Como Usar um Teleprompter: Do Básico ao Profissional</h3>
+        <h3 id="passo-a-passo" className="text-3xl font-bold text-white mt-12 mb-6">Como Usar um Teleprompter: Do Básico ao Profissional</h3>
         <p className="text-slate-300 mb-8">
             Existem duas maneiras principais de usar um teleprompter, especialmente com ferramentas web como o PromptNinja, que não exigem a compra de equipamentos caros.
         </p>
@@ -103,31 +124,33 @@ export const ComoUsarTeleprompterPT = () => (
                 <p className="text-sm text-slate-500 mt-4"><strong>Desvantagem:</strong> É difícil controlar a rolagem sem interromper a gravação ou desviar o olhar. Funciona melhor para vídeos curtos.</p>
             </div>
 
-            <SEOContentHowTo
-                title="Método 2: O Controle Remoto (O Jeito Profissional)"
-                schemaTitle="Como usar Teleprompter com Controle Remoto"
-                tools={["Computador ou Tablet", "Smartphone"]}
-                totalTime="PT2M"
-                className="border-2 border-blue-500 rounded-lg p-4"
-                steps={[
-                    {
-                        title: "Prepare a Tela Principal",
-                        text: "Abra o PromptNinja no dispositivo que servirá de tela (notebook, tablet, outro monitor). Esta será a tela que você lerá."
-                    },
-                    {
-                        title: "Ative o Controle Remoto",
-                        text: "No seu celular, abra o PromptNinja e selecione a opção \"Controle Remoto\" no menu inicial."
-                    },
-                    {
-                        title: "Conecte os Dispositivos",
-                        text: "Escaneie o QR Code que aparece na tela principal com a câmera do seu celular. A conexão é P2P (Peer-to-Peer) via Wi-Fi, instantânea e segura."
-                    },
-                    {
-                        title: "Controle sua Gravação",
-                        text: "Pronto! Seu celular agora é um controle remoto. Dê play, pause, ajuste a velocidade e edite o texto sem sair da sua posição de gravação."
-                    }
-                ]}
-            />
+            <div id="dicas-avancadas">
+                <SEOContentHowTo
+                    title="Método 2: O Controle Remoto (O Jeito Profissional)"
+                    schemaTitle="Como usar Teleprompter com Controle Remoto"
+                    tools={["Computador ou Tablet", "Smartphone"]}
+                    totalTime="PT2M"
+                    className="border-2 border-blue-500 rounded-lg p-4"
+                    steps={[
+                        {
+                            title: "Prepare a Tela Principal",
+                            text: "Abra o PromptNinja no dispositivo que servirá de tela (notebook, tablet, outro monitor). Esta será a tela que você lerá."
+                        },
+                        {
+                            title: "Ative o Controle Remoto",
+                            text: "No seu celular, abra o PromptNinja e selecione a opção \"Controle Remoto\" no menu inicial."
+                        },
+                        {
+                            title: "Conecte os Dispositivos",
+                            text: "Escaneie o QR Code que aparece na tela principal com a câmera do seu celular. A conexão é P2P (Peer-to-Peer) via Wi-Fi, instantânea e segura."
+                        },
+                        {
+                            title: "Controle sua Gravação",
+                            text: "Pronto! Seu celular agora é um controle remoto. Dê play, pause, ajuste a velocidade e edite o texto sem sair da sua posição de gravação."
+                        }
+                    ]}
+                />
+            </div>
             <p className="text-sm text-green-400 mt-2 px-4"><strong>Vantagem:</strong> Controle total sobre o fluxo da gravação, permitindo pausas dramáticas, aceleração e uma apresentação muito mais dinâmica e natural.</p>
         </div>
 

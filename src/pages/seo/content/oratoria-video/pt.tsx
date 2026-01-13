@@ -2,24 +2,40 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const OratoriaVideoPT = () => (
     <div className="text-slate-300">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 text-center">
-            Como Falar com Confiança e Conectar com seu Público
-        </h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Domine Oratória para Vídeos: Fale com Confiança e Olho na Câmera
+        </h1>
 
-        <p className="mb-8 text-lg text-center max-w-3xl mx-auto">
-            A luz vermelha da câmera acende e, de repente, sua mente fica em branco. Falar para uma lente de vidro não é natural e pode intimidar até os comunicadores mais experientes. A boa notícia é que a oratória para vídeo não é um dom, mas uma habilidade que pode ser desenvolvida. Com as técnicas certas e as ferramentas adequadas, você pode transformar sua ansiedade em autenticidade. Se você ainda não tem uma ferramenta, <a href="/alternativas-teleprompter-concorrente" className="text-purple-400 hover:text-purple-300 underline">confira a melhor alternativa gratuita ao Teleprompter Pro aqui</a>.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Você já sentiu aquele frio na barriga antes de gravar um vídeo? Ou se perdeu no roteiro, desviou o olhar da câmera e perdeu a conexão com sua audiência? No dinâmico mundo digital de hoje, a oratória em vídeo é essencial, mas dominar a fluidez e a naturalidade pode ser um desafio enorme.
         </p>
+
+        <p className="text-slate-300 mb-8">
+            <strong>Com PromptNinja, a solução para uma comunicação impactante está ao seu alcance.</strong> Esqueça o nervosismo de memorizar; este guia traz dicas essenciais para dominar a oratória em vídeos, e mostra como nosso teleprompter inteligente é o seu parceiro secreto para falar com confiança, mantendo sempre o olhar na câmera e sua mensagem clara.
+        </p>
+
+        {/* CTA Estratégico de Início */}
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Cansado de Gaguejar ou Esquecer o Roteiro?</h3>
+            <p className="text-slate-300 mb-6">
+                Milhares de criadores já transformaram sua forma de aparecer em vídeo.
+                Experimente o <strong>PromptNinja</strong> e descubra a liberdade de se comunicar com naturalidade e profissionalismo.
+            </p>
+            <a href="/?lang=pt#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Comece Sua Jornada Grátis Agora!
+            </a>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
-                <h3 className="font-bold text-white text-xl mb-3">1. Contato Visual é Conexão</h3>
+                <h3 className="font-bold text-white text-xl mb-3">1. Prepare seu conteúdo com antecedência e use o PromptNinja como seu guia inseparável</h3>
                 <p className="text-sm">
-                    Em uma conversa, olhamos nos olhos. Em vídeo, os olhos do seu público estão na lente da câmera. O erro mais comum é olhar para a própria imagem na tela. Isso quebra a conexão instantaneamente. Seu olhar precisa ser fixo e direto na lente.
+                    A pedra angular de qualquer vídeo impactante é um roteiro bem elaborado. Não se trata apenas de listar tópicos, mas de construir uma narrativa fluida, que capture e mantenha a atenção. Defina com clareza a sua mensagem central e organize seus argumentos.
                 </p>
-                <div className="bg-slate-800 p-3 rounded-md mt-4 border-l-4 border-purple-500">
-                    <p className="text-sm font-semibold text-white">A Solução: Teleprompter</p>
+                <div className="bg-slate-800 p-3 rounded-md mt-4 border-l-4 border-blue-500">
+                    <p className="text-sm font-semibold text-white">O Toque Profissional</p>
                     <p className="text-xs text-slate-400">
-                        Para conseguir isso, você precisa de um teleprompter que possa ser alinhado com a lente, como o <strong>PromptNinja</strong>, que pode ser redimensionado em uma janela flutuante para otimizar o alinhamento ocular.
+                        Uma vez pronto, carregue-o no <strong>PromptNinja</strong>. Ele permite ler seu texto na tela com rolagem ajustável, garantindo que você nunca perca o fio da meada e foque 100% na entonação e na conexão real com a câmera.
                     </p>
                 </div>
             </div>

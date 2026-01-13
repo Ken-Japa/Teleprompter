@@ -13,8 +13,8 @@ export const TeleprompterCaseiroDIY: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterCaseiroDIYPT;
-    let title = "Como Fazer um Teleprompter Caseiro (DIY): Guia Completo + Software GRÁTIS";
-    let description = "Aprenda como fazer um teleprompter caseiro profissional gastando pouco. Guia passo a passo com lista de materiais. Inclui software de teleprompter online grátis com modo espelho.";
+    let title = "Teleprompter Caseiro DIY: Faça o Seu Rápido e Barato (e Grave Como um Pro com PromptNinja)";
+    let description = "Crie seu teleprompter caseiro para celular ou tablet em minutos, gastando pouco. Chega de esquecer o texto! Descubra os materiais e grave vídeos profissionais com a ajuda do PromptNinja. Comece grátis!";
     let ctaText = "Abrir Modo Espelho Agora";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-caseiro-diy";
     const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";

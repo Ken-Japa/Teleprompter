@@ -3,21 +3,92 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterCapCutPT = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter para CapCut: Pare de Perder 3 Horas Editando Erros de Gravação
-        </h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            🎬 CapCut e Teleprompter: A Dupla Dinâmica para Seus Vídeos!
+        </h1>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            Você gravou aquele vídeo perfeito. Iluminação boa, enquadramento caprichado, energia lá em cima. Importa pro CapCut e... percebe que metade das takes tem erro de texto. Trava na palavra, gagueja, esquece a frase. Resultado? Em vez de passar 1 hora editando transições e efeitos, você passa 3 horas CORTANDO erros.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Você já se perguntou como seus criadores favoritos entregam conteúdos tão impecáveis no CapCut? O segredo não está apenas na edição, mas em como o vídeo é gravado.
         </p>
 
-        <p className="mb-6">
-            Eu já passei por isso. Gravava um vídeo de 2 minutos, mas a timeline no CapCut tinha 15 minutos de material bruto cheio de regravações. Quando terminava de cortar tudo, minha criatividade já tinha ido embora. Sobrava energia só pra exportar e publicar — sem capricho nas legendas, sem transições legais.
+        <p className="text-slate-300 mb-8">
+            Conheça o <strong>PromptNinja</strong>, o teleprompter online que é o parceiro ideal para quem edita no CapCut. Com o PromptNinja, você lê seu script com naturalidade, mantém o olhar fixo na câmera e economiza horas que seriam gastas corrigindo erros de gravação. Integre o poder do teleprompter ao seu workflow e veja a mágica acontecer nas suas edições!
         </p>
 
-        <p className="mb-8">
-            O problema não é o CapCut. O problema é chegar no CapCut com material RUIM. A solução? Gravar com um <strong>teleprompter profissional</strong> antes. O PromptNinja nasceu exatamente pra isso: você grava de primeira, sem errar texto, e chega no CapCut com uma timeline limpa pronta pra CRIAR, não pra consertar.
-        </p>
+        <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
+            <h3 className="text-2xl font-bold text-white mb-6">Por que Usar o PromptNinja Antes de Editar no CapCut?</h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">💎</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Material Bruto de Qualidade</strong>
+                        <span className="text-slate-400">Grave vídeos fluidos e sem erros. Isso facilita enormemente a aplicação de efeitos e transições no CapCut.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">🎨</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Foco na Edição Criativa</strong>
+                        <span className="text-slate-400">Em vez de gastar tempo cortando gaguejos, use seu tempo no CapCut para adicionar legendas e efeitos incríveis.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">👁️</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Contato Visual Mantido</strong>
+                        <span className="text-slate-400">O teleprompter permite que você olhe diretamente para a lente enquanto lê, tornando seu vídeo muito mais profissional.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">⚡</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Agilidade na Produção</strong>
+                        <span className="text-slate-400">Grave mais rápido, edite mais rápido e publique com muito mais frequência. O PromptNinja acelera todo o seu processo.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <section id="capcut-vs-promptninja" className="p-8 bg-slate-900/40 rounded-2xl my-12 border border-slate-800 shadow-2xl relative overflow-hidden text-center">
+            <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                <div className="absolute top-[-10%] right-[-10%] w-64 h-64 bg-cyan-500 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-[-10%] left-[-10%] w-64 h-64 bg-indigo-500 rounded-full blur-3xl"></div>
+            </div>
+
+            <h2 className="text-3xl font-extrabold text-white mb-8 relative z-10">CapCut vs. PromptNinja: Onde Cada Um Brilha?</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+                <div className="p-6 bg-slate-800 rounded-xl shadow-md border-l-4 border-cyan-400 hover:translate-y-[-5px] transition-all">
+                    <h3 className="text-2xl font-bold text-cyan-400 mb-6 flex items-center justify-center gap-2">
+                        <span>✂️</span> CapCut (Edição)
+                    </h3>
+                    <ul className="text-slate-400 space-y-4 text-left text-sm">
+                        <li className="flex items-center gap-2"><span className="text-cyan-500">✔</span> Legendas automáticas dinâmicas</li>
+                        <li className="flex items-center gap-2"><span className="text-cyan-500">✔</span> Filtros e efeitos de vídeo virais</li>
+                        <li className="flex items-center gap-2"><span className="text-cyan-500">✔</span> Biblioteca imensa de músicas e sons</li>
+                        <li className="flex items-center gap-2"><span className="text-cyan-500">✔</span> Corte e montagem intuitivos</li>
+                    </ul>
+                </div>
+                <div className="p-6 bg-slate-800 rounded-xl shadow-md border-l-4 border-indigo-400 hover:translate-y-[-5px] transition-all">
+                    <h3 className="text-2xl font-bold text-indigo-400 mb-6 flex items-center justify-center gap-2">
+                        <span>🎤</span> PromptNinja (Gravação)
+                    </h3>
+                    <ul className="text-slate-400 space-y-4 text-left text-sm">
+                        <li className="flex items-center gap-2"><span className="text-indigo-500">✔</span> Teleprompter online 100% gratuito</li>
+                        <li className="flex items-center gap-2"><span className="text-indigo-500">✔</span> Controle de voz inteligente (IA)</li>
+                        <li className="flex items-center gap-2"><span className="text-indigo-500">✔</span> Controle remoto via smartphone</li>
+                        <li className="flex items-center gap-2"><span className="text-indigo-500">✔</span> Redução de erros de gravação em 80%</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div className="mt-10 relative z-10">
+                <p className="text-cyan-200 font-semibold text-lg italic mb-8">"Use o PromptNinja para gravar o material perfeito e o CapCut para dar o toque final de mestre!"</p>
+                <a href="https://promptninja.solutionkit.com.br" className="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-4 px-12 rounded-full shadow-xl shadow-cyan-500/20 transition-all transform hover:scale-105">
+                    Começar a Gravar Agora
+                </a>
+            </div>
+        </section>
 
         <div className="bg-gradient-to-r from-red-900/30 to-orange-900/30 p-8 rounded-xl border border-red-500/30 my-12">
             <h3 className="text-3xl font-bold text-white mb-6">O Ciclo Vicioso do Criador de Conteúdo</h3>

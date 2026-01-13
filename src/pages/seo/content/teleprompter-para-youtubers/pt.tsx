@@ -3,16 +3,28 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterParaYoutubersPT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para YouTubers: Como Dobrar sua Retenção e Cortar a Edição pela Metade</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para Youtubers & Criadores | Grave Sem Erros com PromptNinja
+        </h1>
 
-        <p className="mb-6 text-xl text-slate-300">
-            Você conhece a dor: você liga a câmera, fala duas frases, trava. "Corta, de novo".
-            Você olha para o roteiro no colo, volta para a lente, perde o fio da meada.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Domine suas câmeras, grave vídeos impecáveis e impulsione seu canal. Descubra como youtubers e criadores de conteúdo usam o PromptNinja para transformar suas produções de forma simples, natural e profissional.
         </p>
 
-        <p className="mb-8 text-slate-300">
-            No final do dia, você tem <strong>2 horas de material bruto para um vídeo de 8 minutos</strong>. E o pior: a edição vira um pesadelo de cortes ("Jump Cuts") para esconder os erros, matando a fluidez do vídeo.
+        <p className="text-slate-300 mb-8">
+            Você conhece a dor: você liga a câmera, fala duas frases, trava. "Corta, de novo". Você olha para o roteiro no colo, volta para a lente, perde o fio da meada. No final do dia, você tem horas de material bruto para um vídeo de poucos minutos. E o pior: a edição vira um pesadelo de cortes para esconder os erros, matando a fluidez do vídeo.
         </p>
+
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Pronto para Mudar Seu Workflow?</h3>
+            <p className="text-slate-300 mb-6">
+                Reduza o tempo de gravação em 50% e elimine a frustração de esquecer o texto.
+                O <strong>PromptNinja</strong> é o parceiro secreto dos maiores criadores.
+            </p>
+            <a href="/?lang=pt#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Experimentar Gratuitamente Agora
+            </a>
+        </div>
 
         <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-red-500 mb-12 shadow-2xl">
             <h3 className="text-2xl font-bold text-white mb-4">O Algoritmo Odeia Insegurança</h3>
@@ -67,6 +79,30 @@ export const TeleprompterParaYoutubersPT = () => (
                 <p className="text-slate-300 text-sm">
                     Use um iPad com PromptNinja deitado sob um suporte de vidro (beam splitter). Ative o <strong>Modo Espelho</strong> (Tecla 'M').
                 </p>
+            </div>
+        </div>
+
+        <div className="bg-slate-900/80 p-8 rounded-2xl border border-slate-800 shadow-xl my-12">
+            <h3 className="text-3xl font-bold text-white mb-8 text-center">🎬 Veja o PromptNinja em Ação: Casos de Sucesso</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+                <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                    <div className="text-blue-400 text-2xl mb-4">📚</div>
+                    <h4 className="font-bold text-white mb-2">O Educador Detalhista</h4>
+                    <p className="text-slate-400 mb-3"><strong>Desafio:</strong> Apresentar tutoriais complexos sem cortes excessivos.</p>
+                    <p className="text-slate-300">"Minhas aulas ficaram muito mais profissionais. O PromptNinja garante que cada passo seja explicado com clareza, sem eu me perder em detalhes técnicos."</p>
+                </div>
+                <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                    <div className="text-blue-400 text-2xl mb-4">🤳</div>
+                    <h4 className="font-bold text-white mb-2">O Vlogueiro Espontâneo</h4>
+                    <p className="text-slate-400 mb-3"><strong>Desafio:</strong> Manter a naturalidade em vídeos longos.</p>
+                    <p className="text-slate-300">"Uso bullet points no teleprompter. Isso me dá liberdade para improvisar sem esquecer os pontos cruciais do vídeo. Parece que não estou usando nada!"</p>
+                </div>
+                <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                    <div className="text-blue-400 text-2xl mb-4">🔍</div>
+                    <h4 className="font-bold text-white mb-2">O Resenhista</h4>
+                    <p className="text-slate-400 mb-3"><strong>Desafio:</strong> Precisão técnica e autoridade na fala.</p>
+                    <p className="text-slate-300">"Falar sobre especificações técnicas era um pesadelo. Com o roteiro na tela, passo confiança e autoridade para quem está assistindo."</p>
+                </div>
             </div>
         </div>
 

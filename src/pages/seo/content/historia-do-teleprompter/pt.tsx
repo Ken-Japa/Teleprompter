@@ -3,22 +3,27 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const HistoriaDoTeleprompterPT = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             A História Secreta do Teleprompter: De Rolos de Papel à Inteligência Artificial
-        </h2>
+        </h1>
 
-        <p className="lead text-xl text-slate-300 mb-8">
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Viaje no tempo e descubra como uma invenção desesperada para ajudar atores da Broadway se tornou o PromptNinja, o software que democratiza a oratória profissional para milhões hoje.
+        </p>
+
+        <p className="text-slate-300 mb-8">
             Você já se perguntou como presidentes discursam por horas sem errar uma vírgula ou como âncoras de telejornal olham fixamente para a câmera enquanto leem notícias urgentes? A resposta não é "memória fotográfica", é tecnologia. Vamos viajar no tempo e descobrir como uma caixa de papelão evoluiu para o app que você tem no bolso hoje.
         </p>
 
-        <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
-            <h3 className="text-3xl font-bold text-white mb-6">1950: O Nascimento de uma Lenda</h3>
-            <p className="text-slate-300 mb-4">
-                Imagine um ator da Broadway, Fred Barton Jr., desesperado. Ele tinha que decorar montanhas de texto para a televisão ao vivo (sim, não existia "corta e grava de novo" naquela época). O medo de esquecer as falas, o famoso "branco", era aterrorizante.
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Evolua sua Comunicação</h3>
+            <p className="text-slate-300 mb-6">
+                Não fique preso ao passado. Use a tecnologia que revolucionou a comunicação
+                para gravar seus vídeos com a naturalidade de um profissional.
             </p>
-            <p className="text-slate-300">
-                A solução? Em 1950, Fred, junto com Hubert Schlafly e Irving Berlin Khan, criou o primeiro "Teleprompter". Era uma engenhoca mecânica: um rolo de papel de açougueiro motorizado dentro de uma maleta, com as falas escritas em letras garrafais. Alguém tinha que girar uma manivela manualmente para o texto subir!
-            </p>
+            <a href="/?lang=pt#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Experimentar Tecnologia Ninja Gratis
+            </a>
         </div>
 
         <h3 className="text-3xl font-bold text-white mt-12 mb-6">A Evolução em 4 Atos</h3>

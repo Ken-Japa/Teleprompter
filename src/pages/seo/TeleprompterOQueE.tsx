@@ -13,8 +13,8 @@ export const TeleprompterOQueE: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterOQueEPT;
-    let title = "Teleprompter: O Que É, Como Funciona e Benefícios";
-    let description = "Descubra o que é um teleprompter, como ele funciona e por que o PromptNinja é a melhor opção online grátis para seus vídeos.";
+    let title = "O que é Teleprompter? Guia Completo: História e Como Funciona";
+    let description = "Descubra a origem do teleprompter, como ele revolucionou a TV e por que é essencial para criadores hoje. Do físico ao digital, aprenda tudo sobre essa ferramenta.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-o-que-e";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {

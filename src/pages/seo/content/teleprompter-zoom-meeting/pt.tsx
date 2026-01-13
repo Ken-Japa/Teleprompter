@@ -5,11 +5,27 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterZoomMeetingPT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6">Teleprompter GRÁTIS para Zoom, Teams e Google Meet: O Segredo do Contato Visual Perfeito</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">Teleprompter para Zoom Meeting: Domine Suas Apresentações Online</h1>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            Manter contato visual durante uma apresentação online é o segredo para prender a atenção e transmitir confiança. No entanto, a realidade é um malabarismo constante: se você olha para suas anotações, perde a conexão com o público; se olha para a câmera, corre o risco de esquecer pontos cruciais. O PromptNinja surge como a solução definitiva para este dilema, permitindo que você leia seu roteiro de forma fluida enquanto olha diretamente para a lente da câmera, criando uma comunicação poderosa e autêntica.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Sabe aquela sensação de <strong>nervosismo</strong> antes de uma apresentação importante no Zoom? Onde cada palavra conta, mas a preocupação em esquecer o roteiro ou perder o contato visual com a câmera te persegue? Você não está sozinho.
         </p>
+
+        <p className="text-slate-300 mb-8">
+            O desafio de manter a atenção da audiência, enquanto se lembra de cada ponto do seu discurso, é real. Muitos tentam soluções improvisadas: colam post-its na tela, leem de outros monitores ou consultam anotações discretamente. O resultado? Um olhar que desvia, uma comunicação fragmentada e, pior, a sensação de falta de profissionalismo.
+        </p>
+
+        <div className="bg-blue-600/20 p-8 rounded-2xl border border-blue-500/30 mb-12">
+            <p className="text-xl text-white font-bold mb-4 italic">
+                "Mas e se você pudesse ler seu roteiro completo, palavra por palavra, enquanto olha diretamente para a câmera, mantendo uma conexão autêntica e inabalável com seu público?"
+            </p>
+            <p className="text-slate-300">
+                Com o <strong>PromptNinja</strong>, o teleprompter virtual criado para transformar suas interações no Zoom, essa realidade está ao seu alcance. Esqueça as improvisações e as preocupações. Nosso software inovador se integra perfeitamente às suas reuniões, lives e webinars, permitindo que você entregue sua mensagem com a fluidez, o carisma e a confiança de um profissional experiente.
+            </p>
+            <p className="text-white font-bold mt-6">
+                🚀 Prepare-se para surpreender sua audiência no Zoom. Com PromptNinja, o sucesso da sua comunicação está garantido.
+            </p>
+        </div>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-blue-500">
             <h3 className="text-2xl font-bold text-white mb-2">O Segredo da Fluidez: Por Que o Controle Remoto P2P do PromptNinja Não Trava no Zoom</h3>
@@ -58,6 +74,21 @@ export const TeleprompterZoomMeetingPT = () => (
                 }
             ]}
         />
+
+        <section className="bg-slate-900 p-8 rounded-2xl border border-slate-800 my-12 text-center shadow-2xl">
+            <h2 className="text-3xl font-bold text-white mb-4">Pronto para Dominar Suas Calls no Zoom?</h2>
+            <p className="text-slate-400 mb-8 max-w-2xl mx-auto">
+                Agora que você sabe o quão fácil é usar o PromptNinja para suas reuniões, lives e webinars no Zoom, que tal experimentar na prática?
+            </p>
+            <a
+                href="https://promptninja.solutionkit.com.br"
+                className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-10 rounded-full transition transform hover:scale-105 shadow-lg shadow-blue-500/25"
+                style={{ color: 'white' }}
+            >
+                Crie Sua Conta Grátis e Comece Agora!
+            </a>
+            <p className="text-slate-500 mt-6 text-sm italic">Sem compromisso. Simplifique suas apresentações hoje!</p>
+        </section>
 
         <h3 className="text-3xl font-bold text-white mt-12 mb-6">Compatibilidade Universal: Liberdade para se Apresentar</h3>
         <p className="mb-6">

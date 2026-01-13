@@ -14,8 +14,8 @@ export const TeleprompterObsStudio: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterObsStudioPT;
-    let title = "Teleprompter para OBS Studio e Streaming";
-    let description = "Guia completo para usar teleprompter no OBS Studio. Adicione como Browser Source, controle pelo celular e melhore suas lives.";
+    let title = "Teleprompter para OBS Studio: O Segredo de Streams Profissionais (Grátis)";
+    let description = "Transforme suas streams no OBS com o teleprompter integrado do PromptNinja. Leia roteiros, mantenha o contato visual com o chat e evite gafes ao vivo. Fácil de configurar e totalmente gratuito!";
     let ctaText = "Abrir Teleprompter para OBS";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-obs-studio";
     const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";

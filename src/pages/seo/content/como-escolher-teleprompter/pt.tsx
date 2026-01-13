@@ -3,13 +3,28 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const ComoEscolherTeleprompterPT = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Como Escolher o Teleprompter Ideal em 2026: O Guia Definitivo
-        </h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Como Escolher o Teleprompter Ideal em 2026: Fuja das Armadilhas
+        </h1>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            Você pesquisou no Mercado Livre ou Amazon e ficou confuso com tantas opções? Vidro, iPad, para celular, de estúdio... os preços variam de R$ 50 a R$ 5.000. Antes de abrir a carteira, leia este guia. A melhor escolha pode custar zero.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Está em dúvida entre qual teleprompter comprar ou se vale a pena investir agora? Descubra o que realmente importa na hora da escolha e por que o PromptNinja pode ser sua melhor ferramenta antes de gastar um único centavo.
         </p>
+
+        <p className="text-slate-300 mb-8">
+            Você pesquisou no Mercado Livre ou Amazon e ficou confuso com tantas opções? Vidro, iPad, para celular, de estúdio... os preços variam de R$ 50 a R$ 5.000. Antes de abrir a carteira, leia este guia. A melhor escolha para o seu momento pode custar zero.
+        </p>
+
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Teste Antes de Investir</h3>
+            <p className="text-slate-300 mb-6">
+                Não gaste dinheiro agora. Use a tela que você já tem para testar seu workflow
+                e entender o que você realmente precisa em um teleprompter.
+            </p>
+            <a href="/?lang=pt#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Abrir Teleprompter Grátis
+            </a>
+        </div>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">Os 3 Tipos Principais de Teleprompter</h3>

@@ -13,8 +13,8 @@ export const TeleprompterZoomMeeting: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterZoomMeetingPT;
-    let title = "⭐ Truque: Teleprompter GRÁTIS para Zoom e Google Meet: Leitura Transparente ";
-    let description = "Use o Teleprompter Transparente do PromptNinja para ler roteiros em reuniões no Zoom, Teams e Google Meet sem desviar o olhar. 100% Grátis e Online.";
+    let title = "Teleprompter Virtual para Zoom: Domine Suas Apresentações Online | PromptNinja";
+    let description = "Transforme suas reuniões e lives no Zoom com o teleprompter virtual do PromptNinja. Leia roteiros discretamente, mantenha o contato visual e transmita confiança profissional. Experimente grátis e simplifique suas calls!";
     let ctaText = "Abrir Teleprompter para Zoom";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-zoom-meeting";
     const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";

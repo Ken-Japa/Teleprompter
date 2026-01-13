@@ -14,8 +14,8 @@ export const TeleprompterCapCut: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterCapCutPT;
-    let title = "Teleprompter para CapCut - Grave Vídeos Melhores";
-    let description = "Melhore seus vídeos do CapCut gravando com o Teleprompter PromptNinja. Scripts perfeitos, sem erros de gravação e edição mais rápida.";
+    let title = "CapCut Teleprompter: O Guia para Vídeos Perfeitos (Sem Instalar) | PromptNinja";
+    let description = "Combine o poder do CapCut com o teleprompter do PromptNinja. Grave vídeos sem erros, mantenha o contato visual e facilite sua edição. Otimize sua produção de conteúdo com facilidade!";
     let ctaText = "Abrir Teleprompter para CapCut";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-capcut";
     const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";

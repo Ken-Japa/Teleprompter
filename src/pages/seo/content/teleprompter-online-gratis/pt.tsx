@@ -3,19 +3,21 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterOnlineGratisPT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6">Teleprompter Online Grátis: Pare de Desperdiçar Horas Regravando</h2>
+        <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-700/50 mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                Sua Voz, Sem Esforço!
+            </h2>
+            <p className="text-lg text-slate-300 leading-relaxed mb-8">
+                Cansado de esquecer falas ou gaguejar em vídeos e apresentações? Com o <strong>PromptNinja, seu teleprompter online gratuito</strong>, você tem a solução perfeita para uma comunicação fluida e profissional. <span className="text-white font-semibold">Comece agora mesmo, sem cadastro</span>, e transforme a forma como você se expressa!
+            </p>
 
-        <p className="mb-6 text-lg text-slate-300">
-            Você já passou <strong>3 horas tentando gravar um vídeo de 8 minutos</strong>? Começa a falar, trava na frase exata, olha pro papel, perde o contato visual com a câimera. Regrava. Trava de novo na MESMA frase. Mais 15 minutos perdidos. No final do dia: 47 tentativas, 2h53min gastos, vídeo publicado com cortes visíveis e aquela sensação de "podia ter ficado melhor".
-        </p>
-
-        <p className="mb-6">
-            Eu sei EXATAMENTE como é. A frustração de saber o que você quer falar mas travar no "como" dizer. A vergonha de publicar um vídeo cheio de "ahhh", "então...", "hummm" porque você cansou de regravar. E o pior: ver seu concorrente publicando vídeos fluidos, profissionais, TODO DIA — enquanto você luta pra fazer 1 por semana.
-        </p>
-
-        <p className="mb-8">
-            O PromptNinja nasceu exatamente pra acabar com esse sofrimento. É um <strong>teleprompter online 100% grátis</strong> — zero limite de tempo, zero marca d'água, zero pegadinhas tipo "pague para desbloquear controle remoto". Também conhecido como <strong>teleponto</strong> em Portugal e em estúdios profissionais, é a ferramenta que separa vídeos amadores batalhando 3h de produções profissionais gravadas em 15 minutos.
-        </p>
+            <a href="/?lang=pt#app"
+                className="inline-flex items-center justify-center bg-green-600 hover:bg-green-500 font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-green-500/30 hover:scale-105 transition-all duration-200 text-xl mb-4 group"
+                style={{ color: 'white' }}>
+                <span style={{ color: 'white' }}>👉 Experimente o Teleprompter GRÁTIS Agora!</span>
+            </a>
+            <p className="text-xs text-slate-500">Não é necessário cartão de crédito ou cadastro.</p>
+        </div>
 
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
@@ -62,41 +64,46 @@ export const TeleprompterOnlineGratisPT = () => (
             </div>
         </div>
 
-        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Comparativo: PromptNinja vs. Outras Soluções Gratuitas</h3>
-        <div className="overflow-x-auto">
-            <table className="min-w-full bg-slate-800 rounded-lg">
+        <h3 className="text-2xl font-bold text-white mt-12 mb-6 text-center">PromptNinja: Compare e Escolha o Ideal</h3>
+        <div className="overflow-x-auto mb-12 shadow-2xl rounded-xl border border-slate-700">
+            <table className="w-full text-left border-collapse">
                 <thead>
-                    <tr className="bg-slate-700">
-                        <th className="p-4 text-left">Funcionalidade</th>
-                        <th className="p-4 text-center">PromptNinja</th>
-                        <th className="p-4 text-center">Apps Genéricos</th>
-                        <th className="p-4 text-center">Outros Sites Online</th>
+                    <tr className="bg-slate-800 text-white">
+                        <th className="p-4 border-b border-slate-700 font-bold uppercase text-sm tracking-wider">Funcionalidade</th>
+                        <th className="p-4 border-b border-slate-700 font-bold bg-blue-900/20 text-blue-300 text-center uppercase text-sm tracking-wider">PromptNinja (Grátis)</th>
+                        <th className="p-4 border-b border-slate-700 font-bold text-slate-400 text-center uppercase text-sm tracking-wider">Outros Apps</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="bg-slate-900 text-slate-300">
                     <tr>
-                        <td className="p-4 border-t border-slate-700">Controle Remoto</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-green-400">✔ Gratuito</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-yellow-400">✖ Pago ou Limitado</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-red-400">✖ Inexistente</td>
+                        <td className="p-4 border-t border-slate-800 font-medium">Controle Remoto (Via Wi-Fi)</td>
+                        <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Grátis e Ilimitado</td>
+                        <td className="p-4 border-t border-slate-800 text-red-400 text-center">❌ Pago ou Limitado</td>
                     </tr>
                     <tr>
-                        <td className="p-4 border-t border-slate-700">Sem Instalação</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-green-400">✔ Sim</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-red-400">✖ Não</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-green-400">✔ Sim</td>
+                        <td className="p-4 border-t border-slate-800 font-medium">Espelhamento de Texto</td>
+                        <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Sim</td>
+                        <td className="p-4 border-t border-slate-800 text-yellow-500 text-center">⚠ Raro / Pago</td>
                     </tr>
                     <tr>
-                        <td className="p-4 border-t border-slate-700">Modo Espelho (DIY)</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-green-400">✔ Gratuito</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-yellow-400">✖ Quase sempre pago</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-red-400">✖ Raro</td>
+                        <td className="p-4 border-t border-slate-800 font-medium">Editor de Texto Rico</td>
+                        <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Cores e Formatação</td>
+                        <td className="p-4 border-t border-slate-800 text-slate-500 text-center">Básico</td>
                     </tr>
                     <tr>
-                        <td className="p-4 border-t border-slate-700">Privacidade do Texto</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-green-400">✔ Processado no navegador</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-yellow-400">? Incerta</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-yellow-400">? Incerta</td>
+                        <td className="p-4 border-t border-slate-800 font-medium">Privacidade (Sem Nuvem)</td>
+                        <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Total (Local)</td>
+                        <td className="p-4 border-t border-slate-800 text-yellow-500 text-center">⚠ Incerta</td>
+                    </tr>
+                    <tr>
+                        <td className="p-4 border-t border-slate-800 font-medium">Instalação Necessária</td>
+                        <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Não (Navegador)</td>
+                        <td className="p-4 border-t border-slate-800 text-red-400 text-center">❌ Sim (App)</td>
+                    </tr>
+                    <tr>
+                        <td className="p-4 border-t border-slate-800 font-medium">Sem Anúncios</td>
+                        <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Garantido</td>
+                        <td className="p-4 border-t border-slate-800 text-red-400 text-center">❌ Pop-ups irritantes</td>
                     </tr>
                 </tbody>
             </table>
@@ -233,9 +240,9 @@ export const TeleprompterOnlineGratisPT = () => (
             <a
                 href="/?lang=pt#app"
                 className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mx-auto rounded-full transition hover:brightness-110"
-                style={{ color: 'white' }}
+                style={{ color: 'white', textDecoration: 'none' }}
             >
-                Usar o PromptNinja de Graça Agora
+                <span style={{ color: 'white' }}>Usar o PromptNinja de Graça Agora</span>
             </a>
         </div>
     </>

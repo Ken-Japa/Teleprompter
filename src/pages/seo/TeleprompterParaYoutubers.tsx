@@ -13,8 +13,8 @@ export const TeleprompterParaYoutubers: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterParaYoutubersPT;
-    let title = "Melhor Teleprompter para YouTubers: Grave 2x Mais Rápido | PromptNinja";
-    let description = "Pare de decorar textos. Use o teleprompter para YouTubers do PromptNinja para gravar vídeos sem cortes, com contato visual e aparência profissional. Teste grátis.";
+    let title = "Teleprompter para Youtubers & Criadores | Grave Sem Erros com PromptNinja";
+    let description = "Domine suas câmeras, grave vídeos impecáveis e impulsione seu canal. Descubra como youtubers e criadores de conteúdo usam PromptNinja para transformar suas produções de forma simples.";
     let ctaText = "Começar a Gravar Agora";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-para-youtubers-e-criadores";
     const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";

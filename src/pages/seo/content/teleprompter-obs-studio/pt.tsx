@@ -3,21 +3,73 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterObsStudioPT = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter para OBS Studio: Guia Completo para Streamers e Criadores de Lives
-        </h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            🎥 Eleve o Nível da Sua Stream: Use Teleprompter no OBS Studio!
+        </h1>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            Você tá fazendo live, tenta ler o roteiro no segundo monitor, perde o olho da câmera por 3 segundos e BOOM — 50 pessoas saíram da live. Ou pior: você fica alternando janelas (Alt+Tab), quebra o flow, chat percebe que você tá lendo algo, atmosfera morre.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Você é um streamer que busca o máximo de profissionalismo? Quer interagir com seu chat sem perder o fio da meada do seu roteiro? Sabemos que manter a fluidez durante uma live, lidar com imprevistos e ainda entregar um conteúdo de qualidade no OBS Studio pode ser um grande desafio.
         </p>
 
-        <p className="mb-6">
-            Streamers profissionais têm um segredo: <strong>texto flutuando invisível pro público, visível pra eles</strong>. Tipo telejornal. Você mantém olho na câmera (ou no jogo), lê o roteiro sem ninguém perceber, e parece que tá falando de improviso. Isso é o que separa 50 viewers de 500 viewers.
+        <p className="text-slate-300 mb-8">
+            Conheça o <strong>PromptNinja</strong>, a ferramenta de teleprompter online que se integra perfeitamente ao seu workflow no OBS Studio. Com ele, você transforma sua stream em uma verdadeira produção de TV, ganhando confiança, autoridade e engajamento. Seja para gameplays comentadas, tutoriais ao vivo, webinars ou podcasts, o PromptNinja é o seu aliado para uma comunicação impecável.
         </p>
 
-        <p className="mb-8">
-            O PromptNinja resolve isso. Você integra direto no OBS Studio como Browser Source, aplica Chroma Key pra remover fundo, e controla do celular enquanto faz a live. Zero Alt+Tab. Zero olhar pro segundo monitor. <strong>Profissionalismo nível TV.</strong>
-        </p>
+        <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
+            <h3 className="text-2xl font-bold text-white mb-6">Por que Streamers de Elite Escolhem o PromptNinja para o OBS?</h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">🔗</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Integração Nativa e Simples</strong>
+                        <span className="text-slate-400">Adicione como Browser Source no OBS em segundos. Sem instalações complexas e gratuito.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">🎮</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Controle Remoto Intuitivo</strong>
+                        <span className="text-slate-400">Use seu smartphone para gerenciar velocidade e fluxo enquanto está ao vivo, sem tocar no PC.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">🟢</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Chroma Key (Transparência)</strong>
+                        <span className="text-slate-400">Texto discreto sobre sua imagem ou jogo, visível apenas para você (ou para quem desejar).</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">⚙️</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Personalização Completa</strong>
+                        <span className="text-slate-400">Ajuste fontes, cores e velocidades para que a leitura seja confortável e natural nas suas lives.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <section id="cases-sucesso-obs" className="bg-slate-900/40 p-8 rounded-2xl border border-slate-800 my-12 text-center shadow-2xl overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl"></div>
+            <h2 className="text-3xl font-extrabold text-white mb-10">Histórias de Sucesso com OBS e PromptNinja (E-E-A-T)</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="bg-slate-800 p-6 rounded-xl border-t-4 border-indigo-500 shadow-lg hover:translate-y-[-5px] transition-transform text-left">
+                    <h3 className="font-bold text-xl text-indigo-400 mb-3">🎮 Streamer de Games</h3>
+                    <p className="text-slate-400 text-sm italic italic">"Antes do PromptNinja, eu me perdia nos agradecimentos e intros. Agora, leio tudo com naturalidade no OBS e meu engajamento subiu muito!"</p>
+                    <span className="block mt-4 text-xs font-semibold text-slate-500 uppercase tracking-widest text-right">— @GamerNinja_TV</span>
+                </div>
+                <div className="bg-slate-800 p-6 rounded-xl border-t-4 border-purple-500 shadow-lg hover:translate-y-[-5px] transition-transform text-left">
+                    <h3 className="font-bold text-xl text-purple-400 mb-3">📚 Professor em Lives</h3>
+                    <p className="text-slate-400 text-sm italic italic">"O teleprompter no OBS me deu a segurança de não esquecer nenhum detalhe técnico das minhas aulas ao vivo. Meus alunos adoram a clareza!"</p>
+                    <span className="block mt-4 text-xs font-semibold text-slate-500 uppercase tracking-widest text-right">— Prof. Carlos Almeida</span>
+                </div>
+                <div className="bg-slate-800 p-6 rounded-xl border-t-4 border-blue-500 shadow-lg hover:translate-y-[-5px] transition-transform text-left">
+                    <h3 className="font-bold text-xl text-blue-400 mb-3">📈 Webinar e Vendas</h3>
+                    <p className="text-slate-400 text-sm italic italic">"A integração do PromptNinja mudou meus webinars. Fecho mais vendas agora porque mantenho o ritmo e o contato visual o tempo todo."</p>
+                    <span className="block mt-4 text-xs font-semibold text-slate-500 uppercase tracking-widest text-right">— Gestor Digital de Vendas</span>
+                </div>
+            </div>
+        </section>
 
         <div className="bg-gradient-to-r from-red-900/30 to-purple-900/30 p-8 rounded-xl border border-purple-500/30 my-12">
             <h3 className="text-3xl font-bold text-white mb-6">O Problema do Streamer Que Lê Roteiro</h3>

@@ -3,19 +3,28 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterGoogleMeetTeamsPT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para Google Meet e Teams: O Segredo da Presença Executiva</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para Google Meet & Teams: O Segredo da Presença Executiva
+        </h1>
 
-        <p className="mb-6 text-lg text-slate-300">
-            Reunião com a diretoria. 14 pessoas no Microsoft Teams. É sua vez de apresentar os resultados do trimestre. Você tem um documento Word aberto na outra tela. Você olha para o lado para ler os números... e por 2 minutos, ninguém vê seus olhos. Você parece distante, inseguro ou despreparado.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Domine suas reuniões, transmita confiança e nunca mais esqueça um ponto importante. Descubra como o PromptNinja transforma seu Google Meet e Microsoft Teams em um palco profissional.
         </p>
 
-        <p className="mb-6">
-            O "Zoom Fatigue" é real, e a falta de contato visual é a principal causa de desconexão em vendas B2B e liderança remota. Quando você olha para suas anotações na mesa ou em outro monitor, você quebra a confiança.
+        <p className="text-slate-300 mb-8">
+            Reunião com a diretoria. 14 pessoas no Microsoft Teams. É sua vez de apresentar. Você tem um documento aberto na outra tela, olha para o lado para ler... e por minutos, ninguém vê seus olhos. Você parece distante, inseguro ou despreparado. O "Zoom Fatigue" é real, e a falta de contato visual é a principal causa de desconexão em vendas e liderança remota.
         </p>
 
-        <p className="mb-8">
-            Este guia revela como usar o PromptNinja para criar uma "camada invisível" de carisma nas suas chamadas: fale olhando diretamente para a lente (e para os olhos deles) sem esquecer uma única vírgula.
-        </p>
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Mantenha o Foco no Que Importa</h3>
+            <p className="text-slate-300 mb-6">
+                Fale olhando diretamente para a lente e transmita autoridade sem esforço.
+                O <strong>PromptNinja</strong> é invisível para sua audiência e indispensável para você.
+            </p>
+            <a href="/?lang=pt#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Abrir Teleprompter Discreto
+            </a>
+        </div>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">A Batalha da Atenção: Notas vs Teleprompter</h3>

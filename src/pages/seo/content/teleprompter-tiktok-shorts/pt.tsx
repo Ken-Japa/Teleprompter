@@ -3,21 +3,81 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTikTokShortsPT = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter para TikTok, Reels e Shorts: Como Triplicar Sua Produção Sem Parecer Robô
-        </h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            🚀 Cansado de Gaguejar nos Seus TikToks e Shorts? Encontre a Melhor Solução Agora!
+        </h1>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            Você grava 30 takes do mesmo vídeo de 15 segundos e nenhum fica bom? Começa a falar, esquece a palavra exata, desvia o olhar pra lembrar, perde aquela energia do início. Resultado? 40 minutos pra gravar 15 segundos e o vídeo ainda ficou "meh".
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            No mundo acelerado do TikTok e YouTube Shorts, cada segundo conta. Você tem uma mensagem incrível, mas trava na hora de gravar? Perde o contato visual com a câmera? Repete takes infinitos até a frustração bater?
         </p>
 
-        <p className="mb-6">
-            No TikTok, Reels e Shorts, você tem <strong>1-3 segundos</strong> pra prender a atenção. Se você gaguejar, olhar pro lado, ou perder o timing da frase de impacto, o espectador dá scroll. Game over. Seu vídeo morre com 20% de retenção.
+        <p className="text-slate-300 mb-8">
+            Apresentamos o <strong>PromptNinja</strong>, seu teleprompter online definitivo para criar vídeos curtos que prendem a atenção e transmitem sua mensagem com clareza e profissionalismo. Diga adeus aos roteiros esquecidos, aos "erros de gravação" e ao tempo desperdiçado em refilmagens. Com o PromptNinja, você controla seu texto na tela do seu celular (ou computador!), mantém o olhar firme na câmera e entrega um conteúdo impecável, pronto para viralizar!
         </p>
 
-        <p className="mb-8">
-            O problema não é falta de talento. É tentar fazer DUAS coisas ao mesmo tempo: memorizar texto + performar com energia. Seu cérebro não aguenta. A solução? <strong>Deixa o PromptNinja segurar o texto. Você segura a energia.</strong>
-        </p>
+        <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
+            <h3 className="text-2xl font-bold text-white mb-6">Por que o PromptNinja é Perfeito para Seus TikToks e Shorts?</h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">🎬</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Fluidez Sem Cortes</strong>
+                        <span className="text-slate-400">Esqueça o "ahn..." e "ehh...". Seu script rola no seu ritmo, garantindo fala natural e contínua.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">👁️</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Contato Visual Impecável</strong>
+                        <span className="text-slate-400">Olhe diretamente para a lente do seu smartphone, criando uma conexão autêntica com sua audiência.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">⏱️</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Economia de Tempo Precioso</strong>
+                        <span className="text-slate-400">Grave em menos takes e edite menos. Mais tempo para criar, menos tempo para corrigir falhas.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">🏆</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Profissionalismo Instantâneo</strong>
+                        <span className="text-slate-400">Vídeos mais polidos e bem articulados aumentam o engajamento e a sua percepção de autoridade.</span>
+                    </div>
+                </li>
+            </ul>
+            <p className="text-slate-400 text-center mt-6 text-sm italic">
+                Pronto para transformar seus vídeos curtos e capturar a atenção da sua audiência? Continue lendo e descubra como.
+            </p>
+        </div>
+
+        <section className="my-12 p-8 bg-purple-900/20 rounded-2xl border border-purple-500/30 shadow-2xl">
+            <h2 className="text-3xl font-bold text-center text-white mb-10">Grave Seus TikToks e Shorts em 3 Passos Simples</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="text-center group">
+                    <div className="bg-slate-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-purple-500/50 group-hover:scale-110 transition-transform shadow-lg shadow-purple-500/20">
+                        <span className="text-2xl">📝</span>
+                    </div>
+                    <h3 className="font-bold text-white text-xl mb-2">1. Crie Seu Roteiro</h3>
+                    <p className="text-slate-400 text-sm">Escreva seu script no PromptNinja, focando em mensagens curtas e impactantes, ideais para o ritmo do TikTok.</p>
+                </div>
+                <div className="text-center group">
+                    <div className="bg-slate-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-purple-500/50 group-hover:scale-110 transition-transform shadow-lg shadow-purple-500/20">
+                        <span className="text-2xl">📱</span>
+                    </div>
+                    <h3 className="font-bold text-white text-xl mb-2">2. Posicione a Câmera</h3>
+                    <p className="text-slate-400 text-sm">Use seu smartphone na vertical. O PromptNinja se adapta perfeitamente ao formato 9:16 do TikTok e Shorts.</p>
+                </div>
+                <div className="text-center group">
+                    <div className="bg-slate-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-purple-500/50 group-hover:scale-110 transition-transform shadow-lg shadow-purple-500/20">
+                        <span className="text-2xl">🔴</span>
+                    </div>
+                    <h3 className="font-bold text-white text-xl mb-2">3. Grave com Confiança</h3>
+                    <p className="text-slate-400 text-sm">Leia seu texto enquanto mantém contato visual. Clique em gravar e seu vídeo está pronto para brilhar!</p>
+                </div>
+            </div>
+        </section>
 
         <div className="bg-gradient-to-r from-red-900/30 to-pink-900/30 p-8 rounded-xl border border-pink-500/30 my-12">
             <h3 className="text-3xl font-bold text-white mb-6">A Armadilha do Criador de Vídeos Curtos</h3>
@@ -112,7 +172,7 @@ export const TeleprompterTikTokShortsPT = () => (
             title="Workflow Perfeito: Gravar 10 Shorts em 1 Hora"
             schemaTitle="Como Gravar Vídeos Verticais com Teleprompter"
             totalTime="PT60M"
-            tools={["Smartphone com tripé", "PromptNinja", "Segundo dispositivo (opcional)"]}
+            tools={["Smartphone with tripod", "PromptNinja", "Second device (optional)"]}
             steps={[
                 {
                     title: "Passo 1: Preparar Roteiros em Lote (15min)",
@@ -132,6 +192,21 @@ export const TeleprompterTikTokShortsPT = () => (
                 }
             ]}
         />
+
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-8 rounded-2xl my-16 text-center shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                <div className="absolute top-[-10%] right-[-10%] w-64 h-64 bg-white rounded-full blur-3xl"></div>
+                <div className="absolute bottom-[-10%] left-[-10%] w-64 h-64 bg-blue-400 rounded-full blur-3xl"></div>
+            </div>
+            <h3 className="text-3xl font-extrabold text-white mb-4 leading-tight relative z-10">🚨 Chega de Refilmar! Comece a Criar TikToks Incríveis Hoje Mesmo!</h3>
+            <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto relative z-10">O PromptNinja é a ferramenta secreta dos criadores de conteúdo que sabem o valor do tempo e da qualidade. Experimente agora e sinta a diferença!</p>
+            <a
+                href="/?lang=pt#app"
+                className="inline-block bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-10 rounded-full text-xl uppercase tracking-wide shadow-xl transform hover:scale-105 transition-all duration-300 relative z-10"
+            >
+                Experimentar PromptNinja Grátis
+            </a>
+        </div>
 
         <h3 className="text-3xl font-bold text-white mt-16 mb-6">Setup de Criadores: Do Zero ao Pro</h3>
         <p className="text-slate-300 mb-8">

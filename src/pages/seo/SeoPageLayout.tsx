@@ -85,7 +85,7 @@ export const SeoPageLayout: React.FC<SeoPageLayoutProps> = ({
                     prose-p:text-slate-300 prose-p:leading-relaxed
                     prose-strong:text-white prose-strong:font-semibold
                     prose-ul:my-6 prose-li:marker:text-purple-500
-                    prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline">
+                    prose-a:no-underline hover:prose-a:underline">
                     {children}
                 </article>
             </main>

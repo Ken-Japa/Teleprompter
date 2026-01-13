@@ -13,8 +13,8 @@ export const OratoriaVideo: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = OratoriaVideoPT;
-    let title = "5 Dicas de Oratória em Vídeo que VÃO te Fazer Parar de Regravar";
-    let description = "Pare de travar e perder tempo! 5 técnicas rápidas para falar bem no vídeo. Bônus: Teleprompter GRÁTIS para aplicar a técnica instantaneamente.";
+    let title = lang === "pt" ? "Domine Oratória para Vídeos: Fale com Confiança e Olho na Câmera | PromptNinja" : "5 Dicas de Oratória em Vídeo que VÃO te Fazer Parar de Regravar";
+    let description = lang === "pt" ? "Supere o nervosismo e garanta fluidez em seus vídeos. Com PromptNinja, você lê seu roteiro de forma natural, mantém contato visual e conecta de verdade com sua audiência. Experimente!" : "Pare de travar e perder tempo! 5 técnicas rápidas para falar bem no vídeo. Bônus: Teleprompter GRÁTIS para aplicar a técnica instantaneamente.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/dicas-oratoria-video";
 
 

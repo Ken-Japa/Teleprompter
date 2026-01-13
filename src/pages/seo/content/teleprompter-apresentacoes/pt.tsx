@@ -3,19 +3,28 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterApresentacoesPT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para Apresentações: PowerPoint PRO Sem Decorar</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para PowerPoint & Apresentações: Oratória Profissional Sem Decorar
+        </h1>
 
-        <p className="mb-6 text-lg text-slate-300">
-            Apresentação trimestral. Board diretoria. 40 slides PowerPoint. Você decorou 80% do roteiro. Slide 12... branc branco. "Ehhh...". 5 segundos silêncio eterno. Olha anotações. Perde credibilidade. CEO levanta sobrancelha.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Domine seus slides, conquiste sua audiência e nunca mais tenha um "branco" durante apresentações críticas. O PromptNinja é seu parceiro invisível para PowerPoint, Google Slides e Keynote.
         </p>
 
-        <p className="mb-6">
-            Você pensa "preciso teleprompter profissional". Googla "teleprompter PowerPoint". Encontra: (1) apps que INTEGRAM no PPT mas custam $299 licença perpétua, (2) teleprompters físicos R$2500 (absurdo pra usar 4x/ano), ou (3) "decorar tudo" (mês de prep).
+        <p className="text-slate-300 mb-8">
+            Apresentação trimestral. Board diretoria. 40 slides PowerPoint. Você decorou 80% do roteiro. Slide 12... branc branco. "Ehhh...". 5 segundos silêncio eterno. Olha anotações. Perde credibilidade. CEO levanta sobrancelha. Este guia mostra como fazer apresentações impecáveis em minutos.
         </p>
 
-        <p className="mb-8">
-            Este guia mostra EXATAMENTE como fazer apresentações IMPECÁVEIS em 10 minutos prep: teleprompter sincronizado com slides, invisível pro público, funciona presencial E online (Zoom/Teams).
-        </p>
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Apresente com Confiança TED-Style</h3>
+            <p className="text-slate-300 mb-6">
+                Transforme seus slides em suporte visual e você na estrela da apresentação.
+                O <strong>PromptNinja</strong> sincroniza seu roteiro de forma invisível para o público.
+            </p>
+            <a href="/?lang=pt#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Iniciar Apresentação com PromptNinja
+            </a>
+        </div>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">Apresentação: Decorar vs Teleprompter PRO</h3>

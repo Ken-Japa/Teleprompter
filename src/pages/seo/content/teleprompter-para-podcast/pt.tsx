@@ -3,14 +3,28 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterParaPodcastPT = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Teleprompter para Podcast: O Segredo das Intros e Ads Perfeitos
-        </h2>
+        </h1>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            "Olá a todos e bem-vindos a... uh... qual o número do episódio mesmo?"
-            <br /> Podcasters profissionais não improvisam tudo. Existe uma estrutura invisível que mantém o papo fluindo e os patrocinadores felizes. Descubra onde o teleprompter se encaixa no seu setup de áudio e vídeo.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Mantenha o ritmo, impressione patrocinadores e nunca mais trave em uma introdução. Descubra como o PromptNinja é a ferramenta essencial para elevar o nível do seu podcast ou videocast.
         </p>
+
+        <p className="text-slate-300 mb-8">
+            "Olá a todos e bem-vindos a... uh... qual o número do episódio mesmo?" Podcasters profissionais não improvisam tudo. Existe uma estrutura invisível que mantém o papo fluindo e os patrocinadores satisfeitos. Descubra onde o teleprompter se encaixa perfeitamente no seu setup de áudio e vídeo.
+        </p>
+
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Grave com Confiança e Fluidez</h3>
+            <p className="text-slate-300 mb-6">
+                Elimine o "ééé..." e as pausas desconfortáveis. Com o <strong>PromptNinja</strong>, suas intros e
+                ads de patrocínio ficam impecáveis logo na primeira gravação.
+            </p>
+            <a href="/?lang=pt#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Experimentar PromptNinja Grátis
+            </a>
+        </div>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">Onde Usar (e Onde NÃO Usar)</h3>

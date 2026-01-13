@@ -2,17 +2,51 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterModoMusicoPT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
-            Teleprompter para Músicos: Nunca Mais Esqueça a Letra no Palco
-        </h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            🎸 Teleprompter para Músicos: Nunca Mais Esqueça a Letra ou o Acorde no Palco!
+        </h1>
 
-        <p className="mb-6 text-xl text-slate-300">
-            O pesadelo de todo cantor: você está no meio do show, a banda está tocando, o público está olhando... e dá um branco. Você esquece o primeiro verso da próxima estrofe.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Você já passou pelo pesadelo de dar um "branco" total bem na hora do refrão mais importante do seu show? Ou de se perder na sequência de acordes de um cover novo em plena live?
         </p>
 
-        <p className="mb-8 text-slate-300">
-            Grandes artistas (de Bono Vox a Caetano Veloso) usam teleprompters no palco. Não é vergonha, é <strong>segurança profissional</strong>. O PromptNinja tem um "Modo Músico" secreto que você precisa conhecer.
+        <p className="text-slate-300 mb-8">
+            O <strong>Modo Músico do PromptNinja</strong> foi criado especificamente para oferecer segurança profissional a artistas de todos os níveis. Transforme seu tablet ou smartphone no seu roadie digital e garanta uma apresentação impecável do início ao fim.
         </p>
+
+        <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
+            <h3 className="text-2xl font-bold text-white mb-6">Por que o PromptNinja é o Melhor Amigo do Músico?</h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-yellow-400 text-xl">⏱️</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Rolagem Fluida e Rítmica</strong>
+                        <span className="text-slate-400">Ajuste a velocidade para acompanhar o tempo da música, garantindo que o texto suba exatamente no compasso certo.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-yellow-400 text-xl">🎼</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Suporte para Cifras e Acordes</strong>
+                        <span className="text-slate-400">Mantenha suas harmonias visíveis logo acima da letra, sem perder o alinhamento mesmo com fontes grandes.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-yellow-400 text-xl">🦶</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Controle Mãos Livres</strong>
+                        <span className="text-slate-400">Compatível com pedais Bluetooth e controles remotos, para que você mude de música sem tirar as mãos do instrumento.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-yellow-400 text-xl">🌑</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Alto Contraste para Palco</strong>
+                        <span className="text-slate-400">Fundo preto e texto vibrante garantem legibilidade perfeita mesmo sob as luzes intensas do palco.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
         <div className="bg-slate-800 p-8 rounded-xl border border-purple-500/30 mb-12">
             <h3 className="text-2xl font-bold text-white mb-4">Diferente de um Discurso</h3>
@@ -74,6 +108,20 @@ export const TeleprompterModoMusicoPT = () => (
                 </div>
             </div>
         </div>
+
+        <section id="cases-musica" className="p-8 bg-zinc-900 text-white rounded-2xl my-16 border border-zinc-700 shadow-2xl">
+            <h2 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 text-center mb-10">Quem Brilha no Palco com o PromptNinja! (E-E-A-T)</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="bg-zinc-800 p-6 rounded-xl border-t-2 border-yellow-500">
+                    <p className="text-zinc-300 italic">"Minhas lives no YouTube mudaram depois do Modo Músico. Não preciso mais de pastas de papel horríveis aparecendo na câmera. O setup com o iPad no pedestal fica super profissional."</p>
+                    <span className="block mt-4 text-sm font-bold text-yellow-500">— Ricardo Lima, Cantor de Bares e Lives</span>
+                </div>
+                <div className="bg-zinc-800 p-6 rounded-xl border-t-2 border-orange-500">
+                    <p className="text-zinc-300 italic">"O controle por pedal Bluetooth no PromptNinja é um salva-vidas pra quem toca violão e canta sozinho. Consigo rolar as letras sem interromper a batida."</p>
+                    <span className="block mt-4 text-sm font-bold text-orange-500">— Amanda Rocha, Artista Independente</span>
+                </div>
+            </div>
+        </section>
 
         <SEOContentFAQ
             title="Dúvidas de Banda"

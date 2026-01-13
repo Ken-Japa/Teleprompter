@@ -2,9 +2,35 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const AlternativasTeleprompterConcorrentePT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
-            A Melhor Alternativa Gratuita ao Teleprompter Pro e Outros Apps Pagos em 2025
-        </h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Cansado de Teleprompters Físicos e Apps Limitados? Conheça a Revolução Online com PromptNinja!
+        </h1>
+
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Se você é um <strong>youtuber, palestrante, músico</strong> ou qualquer profissional que precisa se comunicar com fluidez e naturalidade, sabe que um teleprompter pode ser seu melhor amigo. Mas, as opções tradicionais – teleprompters físicos robustos ou apps mobile com recursos bloqueados – trazem mais dor de cabeça do que solução.
+        </p>
+
+        <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 mb-12">
+            <h3 className="text-2xl font-bold text-white mb-6">O que o PromptNinja oferece para a sua performance?</h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <li className="flex items-center gap-3 text-slate-300">
+                    <span className="text-blue-400 font-bold">✓</span>
+                    <span><strong>Acessibilidade Imediata:</strong> Use em qualquer dispositivo, direto do navegador.</span>
+                </li>
+                <li className="flex items-center gap-3 text-slate-300">
+                    <span className="text-blue-400 font-bold">✓</span>
+                    <span><strong>Custo-Benefício Sem Igual:</strong> Elimine o investimento em hardware caro.</span>
+                </li>
+                <li className="flex items-center gap-3 text-slate-300">
+                    <span className="text-blue-400 font-bold">✓</span>
+                    <span><strong>Recursos Profissionais:</strong> Controle de velocidade, espelhamento e fontes.</span>
+                </li>
+                <li className="flex items-center gap-3 text-slate-300">
+                    <span className="text-blue-400 font-bold">✓</span>
+                    <span><strong>Foco na Sua Fluidez:</strong> Naturalidade e profissionalismo em cada palavra.</span>
+                </li>
+            </ul>
+        </div>
 
         <p className="text-lg text-slate-300 mb-6">
             Você clica em "Baixar" num app teleprompter com 4.8 estrelas. Abre. Pop-up gigante: <strong>"UPGRADE PRO: $14.99/mês"</strong>. Você ignora, testa a versão free. Controle remoto? <span className="line-through">Bloqueado</span>. Ajustar velocidade? <span className="line-through">Bloqueado</span>. Modo espelho? <span className="line-through">PRO apenas</span>. Basicamente TUDO bloqueado exceto um scroll automático que você não consegue pausar.
@@ -98,43 +124,52 @@ export const AlternativasTeleprompterConcorrentePT = () => (
             O PromptNinja foi desenhado para resolver exatamente esses problemas, oferecendo uma experiência superior sem nenhum custo.
         </p>
 
-        <div className="overflow-x-auto mb-8">
-            <table className="w-full text-left border-collapse">
-                <thead className="bg-slate-800">
-                    <tr className="border-b border-slate-700">
-                        <th className="py-4 px-4 text-slate-300 font-bold">Recurso</th>
-                        <th className="py-4 px-4 text-green-400 font-bold text-center">PromptNinja</th>
-                        <th className="py-4 px-4 text-red-400 font-bold text-center">Apps Tradicionais (Ex: Teleprompter Pro)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr className="border-b border-slate-800">
-                        <td className="py-3 px-4">Preço Inicial</td>
-                        <td className="py-3 px-4 text-green-400 font-bold text-center">Totalmente Grátis</td>
-                        <td className="py-3 px-4 text-center">Pago ou Freemium com limitações severas</td>
-                    </tr>
-                    <tr className="border-b border-slate-800">
-                        <td className="py-3 px-4">Login Obrigatório</td>
-                        <td className="py-3 px-4 text-green-400 font-bold text-center">Não</td>
-                        <td className="py-3 px-4 text-center">Sim, sempre</td>
-                    </tr>
-                    <tr className="border-b border-slate-800">
-                        <td className="py-3 px-4">Controle Remoto</td>
-                        <td className="py-3 px-4 text-green-400 font-bold text-center">Incluso (Wi-Fi P2P de baixa latência)</td>
-                        <td className="py-3 px-4 text-center">Recurso Premium (pago à parte)</td>
-                    </tr>
-                    <tr className="border-b border-slate-800">
-                        <td className="py-3 px-4">Compatibilidade</td>
-                        <td className="py-3 px-4 text-green-400 font-bold text-center">Qualquer navegador (PC, Mac, iPhone, Android)</td>
-                        <td className="py-3 px-4 text-center">Restrito a um App/SO específico</td>
-                    </tr>
-                    <tr className="border-b border-slate-800">
-                        <td className="py-3 px-4">Privacidade do Roteiro</td>
-                        <td className="py-3 px-4 text-green-400 font-bold text-center">Máxima (dados não saem do seu Wi-Fi)</td>
-                        <td className="py-3 px-4 text-center">Roteiros salvos em servidores de terceiros</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">PromptNinja vs. Alternativas: A Escolha Inteligente é Clara!</h3>
+            <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse min-w-[700px]">
+                    <thead>
+                        <tr className="bg-slate-800">
+                            <th className="p-4 border border-slate-700 text-white font-bold">Característica</th>
+                            <th className="p-4 border border-slate-700 text-center text-slate-300">Teleprompters Físicos</th>
+                            <th className="p-4 border border-slate-700 text-center text-slate-300">Apps Tradicionais</th>
+                            <th className="p-4 border border-slate-700 text-center text-blue-400 font-bold bg-blue-500/10">PromptNinja</th>
+                        </tr>
+                    </thead>
+                    <tbody className="text-slate-300 text-sm">
+                        <tr>
+                            <td className="p-4 border border-slate-700 font-semibold text-white">Custo Inicial</td>
+                            <td className="p-4 border border-slate-700 text-center">Alto (Equipamento)</td>
+                            <td className="p-4 border border-slate-700 text-center">Médio (Assinaturas)</td>
+                            <td className="p-4 border border-slate-700 text-center font-bold text-green-400 bg-blue-500/5">Muito Baixo / Grátis</td>
+                        </tr>
+                        <tr>
+                            <td className="p-4 border border-slate-700 font-semibold text-white">Portabilidade</td>
+                            <td className="p-4 border border-slate-700 text-center text-red-400">Baixa (Peso/Volume)</td>
+                            <td className="p-4 border border-slate-700 text-center">Média (Dispositivo)</td>
+                            <td className="p-4 border border-slate-700 text-center font-bold text-green-400 bg-blue-500/5">Alta (Qualquer Tela)</td>
+                        </tr>
+                        <tr>
+                            <td className="p-4 border border-slate-700 font-semibold text-white">Configuração</td>
+                            <td className="p-4 border border-slate-700 text-center">Complexa (Montagem)</td>
+                            <td className="p-4 border border-slate-700 text-center">Média (Instalação)</td>
+                            <td className="p-4 border border-slate-700 text-center font-bold text-green-400 bg-blue-500/5">Imediata (Browser)</td>
+                        </tr>
+                        <tr>
+                            <td className="p-4 border border-slate-700 font-semibold text-white">Flexibilidade</td>
+                            <td className="p-4 border border-slate-700 text-center text-red-400">Restrita ao Equipamento</td>
+                            <td className="p-4 border border-slate-700 text-center">Restrita ao App</td>
+                            <td className="p-4 border border-slate-700 text-center font-bold text-green-400 bg-blue-500/5">Universal (Web App)</td>
+                        </tr>
+                        <tr>
+                            <td className="p-4 border border-slate-700 font-semibold text-white">Colaboração</td>
+                            <td className="p-4 border border-slate-700 text-center">Não Aplicável</td>
+                            <td className="p-4 border border-slate-700 text-center">Limitada</td>
+                            <td className="p-4 border border-slate-700 text-center font-bold text-green-400 bg-blue-500/5">Sim (Link/Nuvem)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <h3 className="text-3xl font-bold text-white mt-12 mb-6">Checklist: 7 Coisas Que VOCÊ Precisa em Um Teleprompter (Gratuíto ou Pago)</h3>

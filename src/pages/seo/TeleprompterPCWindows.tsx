@@ -13,8 +13,8 @@ export const TeleprompterPCWindows: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterPCWindowsPT;
-    let title = "Teleprompter Grátis para PC e Windows (Sem Download)";
-    let description = "Use seu PC Windows como teleprompter profissional. Sem baixar programas, sem vírus e com controle remoto via celular. Funciona no Chrome e Edge.";
+    let title = "PromptNinja: O Melhor Teleprompter Online para PC Windows (Grátis)";
+    let description = "Transforme seu PC Windows num estúdio profissional com o PromptNinja. Teleprompter online fácil de usar, com recursos avançados e teste grátis. Ideal para youtubers e palestras.";
     let ctaText = "Abrir Teleprompter no PC";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-pc-windows";
     const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";

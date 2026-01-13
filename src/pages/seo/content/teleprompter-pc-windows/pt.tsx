@@ -3,19 +3,72 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterPCWindowsPT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para PC Windows: Setup Profissional em 60 Segundos</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">Teleprompter para PC Windows: O Guia Definitivo com PromptNinja</h1>
 
-        <p className="mb-6 text-lg text-slate-300">
-            PC gamer R$8000 pra fazer lives. OBS configurado, chroma key, LED. Tudo perfeito. Aí grava o vídeo sério... TRAVA na frase 3. "Ahhh deixa eu ver o roteiro". Olha pro papel. Perde contato visual. Credibilidade = 0.
+        <p className="lead text-xl text-slate-300 mb-8">
+            Você usa um PC com Windows e busca a solução perfeita para apresentar vídeos, dar palestras ou fazer lives com confiança e fluidez? Diga adeus aos roteiros esquecidos e ao contato visual perdido! Desenvolvido pensando na otimização para sistemas Windows, o <strong>PromptNinja</strong> transforma seu computador em um teleprompter profissional e intuitivo, sem a necessidade de downloads pesados ou configurações complicadas.
         </p>
 
-        <p className="mb-6">
-            Você pensa "preciso teleprompter". Googla "teleprompter pc windows". Encontra 15 softwares de 2012 pedindo DESABILITAR antivírus. Ou apps modernos $49.99/mês. Sério? R$250/mês pra rolar texto?
-        </p>
+        <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
+            <h3 className="text-2xl font-bold text-white mb-6">Neste guia completo, você descobrirá:</h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <li className="flex items-start gap-3">
+                    <span className="text-blue-400">✅</span>
+                    <span className="text-slate-300">Por que um teleprompter é essencial para criadores no Windows.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                    <span className="text-blue-400">✅</span>
+                    <span className="text-slate-300">Como o PromptNinja se destaca como a ferramenta online mais eficiente.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                    <span className="text-blue-400">✅</span>
+                    <span className="text-slate-300">Passo a passo fácil para começar a usar em minutos.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                    <span className="text-blue-400">✅</span>
+                    <span className="text-slate-300">Dicas avançadas para dominar suas apresentações.</span>
+                </li>
+            </ul>
+        </div>
 
-        <p className="mb-8">
-            Este guia mostra EXATAMENTE como transformar seu PC Windows num teleprompter profissional em 60 segundos, sem instalar .exe duvidoso, sem pagar mensalidade absurda.
-        </p>
+        <section id="promptninja-para-windows" className="bg-slate-900/40 p-8 rounded-2xl border border-slate-800 mb-12 text-center">
+            <h2 className="text-3xl font-bold text-white mb-4">Por Que PromptNinja é a Escolha Inteligente para Seu PC Windows?</h2>
+            <p className="text-slate-400 mb-8 max-w-2xl mx-auto">Entenda o que nos torna a solução de teleprompter favorita de usuários de Windows em todo o mundo, superando alternativas complexas ou limitadas.</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 text-left hover:translate-y-[-5px] transition-transform">
+                    <h3 className="text-xl font-bold text-blue-400 mb-3 flex items-center gap-2">
+                        <span>🌐</span> 100% Online e Sem Instalação
+                    </h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">Chega de softwares pesados que travam seu Windows. PromptNinja funciona diretamente no seu navegador, liberando recursos do seu PC e eliminando dores de cabeça com compatibilidade.</p>
+                </div>
+                <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 text-left hover:translate-y-[-5px] transition-transform">
+                    <h3 className="text-xl font-bold text-blue-400 mb-3 flex items-center gap-2">
+                        <span>⚡</span> Leveza e Desempenho Otimizado
+                    </h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">Projetado para ser eficiente, o PromptNinja roda suavemente em qualquer PC Windows, garantindo que suas apresentações sejam impecáveis, mesmo em máquinas mais antigas.</p>
+                </div>
+                <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 text-left hover:translate-y-[-5px] transition-transform">
+                    <h3 className="text-xl font-bold text-blue-400 mb-3 flex items-center gap-2">
+                        <span>🔄</span> Sincronização em Nuvem Integrada
+                    </h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">Seus roteiros salvos automaticamente e acessíveis de qualquer PC Windows, a qualquer momento. Edite no desktop e use no notebook, sem transferências manuais.</p>
+                </div>
+                <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 text-left hover:translate-y-[-5px] transition-transform">
+                    <h3 className="text-xl font-bold text-blue-400 mb-3 flex items-center gap-2">
+                        <span>👨‍💻</span> Interface Intuitiva para Windows
+                    </h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">Com um design limpo e responsivo, a interface do PromptNinja é fácil de navegar para usuários acostumados com o ambiente Windows, tornando o aprendizado quase instantâneo.</p>
+                </div>
+            </div>
+
+            <a href="https://promptninja.solutionkit.com.br"
+                className="inline-block bg-blue-500 hover:bg-blue-600 font-bold py-4 px-10 rounded-full transition transform hover:scale-105 shadow-lg shadow-blue-500/25"
+                style={{ color: 'white' }}
+            >
+                Experimente o PromptNinja Grátis no Seu PC Windows Agora!
+            </a>
+        </section>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">Setup PC: Sem vs COM Teleprompter</h3>

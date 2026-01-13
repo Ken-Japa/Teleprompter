@@ -13,8 +13,8 @@ export const ComoUsarTeleprompter: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = ComoUsarTeleprompterPT;
-    let title = "Como Usar Teleprompter no Celular: Guia Completo";
-    let description = "Aprenda como usar seu celular como teleprompter ou como controle remoto. Tutorial passo a passo para gravar vídeos profissionais.";
+    let title = "Teleprompter no Celular: Use o PromptNinja Grátis (Guia Completo)";
+    let description = "Aprenda a usar teleprompter no celular em passos simples com o PromptNinja. Ideal para vídeos, lives e palestras. Comece grátis e transforme sua comunicação.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/como-usar-teleprompter-celular";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {

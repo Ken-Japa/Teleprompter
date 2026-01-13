@@ -13,8 +13,8 @@ export const TeleprompterParaPodcast: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterParaPodcastPT;
-    let title = "Teleprompter para Podcast e Videocast: Roteiro e Ads";
-    let description = "Descubra como usar teleprompter em podcasts para ler anúncios e bios de convidados sem perder a naturalidade da conversa.";
+    let title = "Teleprompter para Podcasts & Videocasts | PromptNinja";
+    let description = "Melhore a qualidade do seu podcast. Use o PromptNinja para ler roteiros, anúncios e biografias de convidados com naturalidade, mantendo a conexão com sua audiência.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-para-podcast";
 
     if (lang === 'en') {

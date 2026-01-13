@@ -13,8 +13,8 @@ export const HistoriaDoTeleprompter: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = HistoriaDoTeleprompterPT;
-    let title = "História do Teleprompter: Quem Inventou e Evolução (Infográfico)";
-    let description = "Você sabia que o teleprompter começou com rolos de papel de açougueiro? Conheça a história secreta dessa invenção que mudou a TV e a política mundial.";
+    let title = "História do Teleprompter: De Rolos de Papel à Inteligência Artificial | PromptNinja";
+    let description = "Descubra a fascinante história do teleprompter, desde sua invenção em 1950 até o PromptNinja. Conheça os pioneiros e como a tecnologia revolucionou a comunicação.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/historia-do-teleprompter";
 
     if (lang === 'en') {

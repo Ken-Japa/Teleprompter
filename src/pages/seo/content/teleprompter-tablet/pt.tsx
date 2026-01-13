@@ -3,19 +3,51 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTabletPT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para Tablet e iPad: O Sweet Spot da Criação de Vídeo</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            📱 Teleprompter para Tablet e iPad: O Equilíbrio Perfeito para Seus Vídeos!
+        </h1>
 
-        <p className="mb-6 text-lg text-slate-300">
-            Você tenta gravar com o celular, mas a tela é minúscula e força a vista. Tenta usar o notebook, mas é pesado e impossível de colocar no tripé. Você está preso no "limbo do equipamento": ou muito pequeno, ou muito desajeitado.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Você já sentiu que a tela do celular é pequena demais para ler seu roteiro com conforto, mas um notebook é desajeitado para levar para as gravações? Você não está sozinho.
         </p>
 
-        <p className="mb-6">
-            O resultado? Vídeos com olhos apertados (tentando ler letrinhas), postura rígida e cansaço visual após 15 minutos. Sua performance sofre, e seu vídeo parece amador.
+        <p className="text-slate-300 mb-8">
+            Com o <strong>PromptNinja</strong>, você transforma seu tablet em um teleprompter profissional de alta performance. Imagine ter a liberdade de gravar em qualquer lugar, com um setup leve e uma tela espaçosa que garante que você nunca perca o fio da meada. Seja para vídeos no YouTube, apresentações corporativas ou aulas online, o uso do tablet potencializa sua comunicação e economiza horas de regravação.
         </p>
 
-        <p className="mb-8">
-            O Tablet (seja iPad, Samsung Tab ou Kindle Fire) é a ferramenta de ouro ignorada por 90% dos criadores. Com a tela perfeita de 10-12 polegadas e portabilidade extrema, ele transforma qualquer canto em um estúdio de TV profissional – se você tiver o software certo.
-        </p>
+        <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
+            <h3 className="text-2xl font-bold text-white mb-6">Por que o Tablet é o Dispositivo Ideal para Teleprompter?</h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">👀</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Leitura Confortável</strong>
+                        <span className="text-slate-400">A tela maior permite fontes generosas, reduzindo o cansaço visual e permitindo que você grave por mais tempo.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">✈️</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Portabilidade com Praticidade</strong>
+                        <span className="text-slate-400">Fácil de montar em tripés ou suportes simples, o tablet é perfeito para gravações em locação ou estúdios compactos.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">🎬</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Setup Profissional e Elegante</strong>
+                        <span className="text-slate-400">O uso de um tablet passa uma imagem de muito mais autoridade, especialmente em apresentações ao vivo ou webinars.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">⚙️</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Recursos Avançados PromptNinja</strong>
+                        <span className="text-slate-400">Controle remoto via smartphone, espelhamento e controle de voz por IA, tudo otimizado para a tela do tablet.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
         <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 p-8 rounded-xl border border-slate-700 mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">Tablet vs Celular vs Laptop: A Batalha das Telas</h3>
@@ -103,7 +135,6 @@ export const TeleprompterTabletPT = () => (
             </div>
         </div>
 
-        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Como Instalar (Sem App Store)</h3>
         <div className="bg-slate-800 p-6 rounded-lg my-6">
             <p className="text-slate-300 mb-6">
                 O PromptNinja é um PWA (Progressive Web App). Isso significa que você não baixa na loja, você "instala" direto do navegador. Isso economiza 200MB de espaço e garante atualizações instantâneas.
@@ -129,6 +160,17 @@ export const TeleprompterTabletPT = () => (
                 ]}
             />
         </div>
+
+        <section id="cta-tablet-ninja" className="p-8 bg-indigo-900 rounded-2xl my-12 text-center shadow-2xl overflow-hidden relative border border-indigo-700/50">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/20 rounded-full blur-3xl"></div>
+            <h2 className="text-3xl font-extrabold text-white mb-6">Transforme seu Tablet em um Estúdio Agora!</h2>
+            <p className="text-indigo-200 text-lg mb-8 max-w-2xl mx-auto">Pare de apertar os olhos para ler no celular. Use toda a tela do seu tablet com o PromptNinja e grave vídeos com confiança total.</p>
+            <div className="flex flex-wrap justify-center gap-4">
+                <a href="https://promptninja.solutionkit.com.br" className="bg-indigo-500 hover:bg-indigo-400 text-white font-bold py-4 px-10 rounded-full shadow-lg transition-transform hover:scale-105">Testar Grátis no Tablet</a>
+                <a href="/?lang=pt#pricing" className="bg-transparent border-2 border-indigo-400 hover:bg-indigo-800 text-white font-bold py-4 px-10 rounded-full transition-colors">Ver Planos PRO</a>
+            </div>
+            <p className="mt-6 text-sm text-indigo-300">Compatível com iPad e qualquer Tablet Android.</p>
+        </section>
 
         <h3 className="text-3xl font-bold text-white mt-12 mb-6">5 Erros Fatais ao Usar Tablet como Teleprompter</h3>
         <div className="space-y-4 mb-12">

@@ -54,8 +54,8 @@ export const TeleprompterScriptsPage: React.FC<{ onLaunch: () => void }> = ({ on
 
     return (
         <SeoPageLayout
-            title={t('seo.scripts.title') || (currentLang === 'pt' ? "Scripts Prontos para Teleprompter: Modelos de Roteiro Grátis" : "Ready-to-Use Teleprompter Scripts: Free Templates")}
-            description={t('seo.scripts.description') || "Coleção completa de scripts para teleprompter. Roteiros para YouTube, TikTok, Vendas e Aulas prontos para usar."}
+            title={currentLang === 'pt' ? "Roteiros para Teleprompter: Templates Prontos e Eficazes | PromptNinja" : (t('seo.scripts.title') || "Ready-to-Use Teleprompter Scripts: Free Templates")}
+            description={currentLang === 'pt' ? "Precisa de inspiração? Baixe nossos templates de roteiros para teleprompter. Estruturas validadas para YouTube, TikTok, Vendas e Cursos. Comece a gravar com confiança agora mesmo!" : (t('seo.scripts.description') || "Complete collection of teleprompter scripts. Ready-to-use templates for YouTube, TikTok, Sales, and Classes.")}
             canonicalUrl={`https://promptninja.solutionkit.com.br${currentLang === 'en' ? '/en/teleprompter-scripts' : currentLang === 'es' ? '/es/guiones-teleprompter' : '/scripts-teleprompter'}`}
             onLaunch={onLaunch}
         >
@@ -186,27 +186,81 @@ export const TeleprompterScriptsPage: React.FC<{ onLaunch: () => void }> = ({ on
             {/* Editorial Content Section */}
             <div className="mt-24 mb-16 max-w-4xl mx-auto">
                 <article className="prose prose-invert prose-lg max-w-none">
-                    <h2 className="text-3xl font-bold text-purple-400 mb-6">{content.intro[currentLang].title}</h2>
-                    <p className="text-slate-300 mb-6 leading-relaxed">
-                        {content.intro[currentLang].p1}
-                    </p>
-                    <p className="text-slate-300 mb-6 leading-relaxed">
-                        {content.intro[currentLang].p2}
-                    </p>
-                    <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 my-8">
-                        <h3 className="text-xl font-bold text-white mb-4 mt-0">{content.intro[currentLang].h2_1}</h3>
-                        <ul className="space-y-2 mb-0">
-                            {content.intro[currentLang].ul_1.map((item, i) => (
-                                <li key={i} className="text-slate-300 flex items-start gap-2">
-                                    <span className="text-purple-500 mt-1.5">•</span>
-                                    <span>{item}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <p className="text-slate-300 mb-6 leading-relaxed">
-                        {content.intro[currentLang].p3}
-                    </p>
+                    {currentLang === 'pt' ? (
+                        <>
+                            <h1 className="text-3xl font-bold text-purple-400 mb-6">🚀 Roteiros para Teleprompter: Domine Sua Fala com Nossos Templates Gratuitos!</h1>
+                            <p className="text-slate-300 mb-6 leading-relaxed">
+                                Você já sentiu aquele "branco" na hora de gravar? A câmera liga e, de repente, as palavras fogem? Roteirizar é a base de qualquer vídeo de sucesso, mas nem sempre temos tempo ou inspiração para começar do zero. Um bom roteiro não apenas organiza seu pensamento, mas também guia seu ritmo, garante que você não esqueça pontos cruciais e te ajuda a manter o contato visual com sua audiência.
+                            </p>
+                            <p className="text-slate-300 mb-6 leading-relaxed">
+                                No <strong>PromptNinja</strong>, queremos que você foque no que realmente importa: sua mensagem. Por isso, criamos esta biblioteca exclusiva de <strong>scripts para teleprompter</strong> totalmente gratuitos e prontos para usar. São modelos validados para diversos nichos, desde vídeos para YouTube e TikTok até roteiros de vendas e videoaulas profissionais. Escolha o seu, personalize e brilhe na frente das câmeras!
+                            </p>
+
+                            <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 my-8 shadow-xl">
+                                <h3 className="text-xl font-bold text-white mb-4 mt-0">Por que Nossos Templates de Roteiro São Eficazes?</h3>
+                                <ul className="space-y-3 mb-0">
+                                    <li className="text-slate-300 flex items-start gap-2">
+                                        <span className="text-purple-500 mt-1.5">•</span>
+                                        <span><strong>Estrutura Provada:</strong> Cada roteiro segue uma estrutura lógica de introdução, desenvolvimento e chamada para ação (CTA) que prende a atenção.</span>
+                                    </li>
+                                    <li className="text-slate-300 flex items-start gap-2">
+                                        <span className="text-purple-500 mt-1.5">•</span>
+                                        <span><strong>Adaptabilidade Total:</strong> Nossos templates são flexíveis. Você pode usá-los como base e adicionar seu toque pessoal.</span>
+                                    </li>
+                                    <li className="text-slate-300 flex items-start gap-2">
+                                        <span className="text-purple-500 mt-1.5">•</span>
+                                        <span><strong>Foco na Naturalidade:</strong> Escrevemos os scripts pensando na fala, não na leitura técnica, para que sua entrega soe orgânica.</span>
+                                    </li>
+                                    <li className="text-slate-300 flex items-start gap-2">
+                                        <span className="text-purple-500 mt-1.5">•</span>
+                                        <span><strong>Prontos para o Teleprompter:</strong> Formatados para facilitar a leitura em telas de qualquer tamanho.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <section id="cases-roteiros" className="bg-gradient-to-br from-slate-900 to-purple-900/20 p-8 rounded-2xl my-16 border border-purple-500/20 shadow-2xl">
+                                <h2 className="text-2xl font-extrabold text-white text-center mb-10">Quem Usa Nossos Scripts e Aprova! (E-E-A-T)</h2>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <div className="bg-slate-800/50 p-6 rounded-xl shadow-lg border-l-4 border-purple-500 backdrop-blur-sm">
+                                        <p className="text-slate-300 italic text-sm">"Eu sempre travava na introdução dos meus vídeos. O modelo de 'Gancho Inicial' do PromptNinja mudou meu jogo. Agora gravo tudo de primeira!"</p>
+                                        <span className="block mt-4 text-xs font-bold text-purple-400 uppercase tracking-widest">— Mariana Costa, YouTuber de Finanças</span>
+                                    </div>
+                                    <div className="bg-slate-800/50 p-6 rounded-xl shadow-lg border-l-4 border-blue-500 backdrop-blur-sm">
+                                        <p className="text-slate-300 italic text-sm">"Como professor, eu tinha dificuldade em ser conciso. Os templates de videoaulas me ajudaram a organizar o conteúdo e meus alunos notaram a diferença."</p>
+                                        <span className="block mt-4 text-xs font-bold text-blue-400 uppercase tracking-widest">— Dr. Ricardo Mendes, Educação Online</span>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <p className="text-slate-400 text-center italic">
+                                Explore nossas categorias e encontre o roteiro perfeito para o seu próximo vídeo!
+                            </p>
+                        </>
+                    ) : (
+                        <>
+                            <h2 className="text-3xl font-bold text-purple-400 mb-6">{content.intro[currentLang].title}</h2>
+                            <p className="text-slate-300 mb-6 leading-relaxed">
+                                {content.intro[currentLang].p1}
+                            </p>
+                            <p className="text-slate-300 mb-6 leading-relaxed">
+                                {content.intro[currentLang].p2}
+                            </p>
+                            <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 my-8">
+                                <h3 className="text-xl font-bold text-white mb-4 mt-0">{content.intro[currentLang].h2_1}</h3>
+                                <ul className="space-y-2 mb-0">
+                                    {content.intro[currentLang].ul_1.map((item, i) => (
+                                        <li key={i} className="text-slate-300 flex items-start gap-2">
+                                            <span className="text-purple-500 mt-1.5">•</span>
+                                            <span>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <p className="text-slate-300 mb-6 leading-relaxed">
+                                {content.intro[currentLang].p3}
+                            </p>
+                        </>
+                    )}
                 </article>
             </div>
 

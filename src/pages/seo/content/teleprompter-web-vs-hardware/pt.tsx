@@ -3,17 +3,30 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterWebVsHardwarePT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter Online vs Físico: O Guia Definitivo para Criadores</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter Online vs Hardware: Vale a Pena Comprar um Físico?
+        </h1>
 
-        <p className="mb-6 text-lg text-slate-300">
-            Você está pronto para profissionalizar seus vídeos. O dilema clássico surge: "Devo gastar R$ 800,00 em um trambolho de vidro e plástico para minha câmera, ou existe uma solução inteligente via software?"
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            O dilema clássico do criador: investir em um equipamento robusto de vidro e plástico ou usar uma solução inteligente via software? Descubra o comparativo definitivo entre o PromptNinja e o hardware tradicional.
         </p>
 
-        <p className="mb-6">
-            Há 5 anos, o hardware era obrigatório. Hoje, com câmeras de alta resolução e softwares inteligentes como o PromptNinja, a linha entre "amador" e "profissional" ficou invisível. Mas cuidado: escolher errado pode custar não só dinheiro, mas horas de setup frustrante.
+        <p className="text-slate-300 mb-8">
+            Você está pronto para profissionalizar seus vídeos. O dilema clássico surge: <strong>"Devo gastar centenas de reais em um teleprompter físico para minha câmera, ou existe uma solução mais ágil via software?"</strong> Há poucos anos, o hardware era a única opção. Hoje, com câmeras de alta resolução e softwares inteligentes como o PromptNinja, a linha entre "amador" e "profissional" mudou completamente.
         </p>
 
-        <p className="mb-8">
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Escolha a Agilidade do Software</h3>
+            <p className="text-slate-300 mb-6">
+                Por que esperar pelo frete e perder tempo montando equipamentos?
+                O <strong>PromptNinja</strong> oferece performance profissional instantânea, sem custo de hardware.
+            </p>
+            <a href="/?lang=pt#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Começar Grátis Agora
+            </a>
+        </div>
+
+        <p className="mb-8 text-slate-400 italic">
             Neste guia honesto, vamos dissecar quando você DEVE comprar um hardware e quando o software (Web & App) é não apenas mais barato, mas <strong>superior</strong>.
         </p>
 

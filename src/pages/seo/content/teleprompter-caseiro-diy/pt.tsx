@@ -4,11 +4,28 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterCaseiroDIYPT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6">Como Fazer um Teleprompter Caseiro (DIY): Guia Completo + Software GRÁTIS</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter Caseiro DIY: Faça o Seu Rápido e Barato (e Grave Como um Pro)
+        </h1>
 
-        <p className="mb-6">
-            Gravar vídeos com aparência profissional exige fluidez e confiança, mas memorizar roteiros é um desafio. Equipamentos de teleprompter profissionais resolvem isso, mas custam caro. A boa notícia? Você pode <strong>montar um teleprompter caseiro barato</strong> com materiais simples e obter resultados impressionantes. O princípio físico por trás disso é o "Fantasma de Pepper", uma ilusão de ótica usada em teatros desde o século XIX — e que você pode replicar em casa!
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Quer economizar centenas de reais e ainda ter resultados profissionais? Aprenda a montar seu próprio teleprompter caseiro (DIY) e descubra como o PromptNinja é o software gratuito perfeito para seu novo setup.
         </p>
+
+        <p className="text-slate-300 mb-8">
+            Gravar vídeos com aparência profissional exige fluidez e confiança, mas memorizar roteiros é um desafio constante. Equipamentos profissionais de teleprompter resolvem isso, mas o custo pode ser proibitivo para quem está começando. A boa notícia? Você pode <strong>montar um teleprompter caseiro barato</strong> com materiais simples e obter resultados impressionantes.
+        </p>
+
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Software Grátis com Modo Espelho</h3>
+            <p className="text-slate-300 mb-6">
+                Montou seu teleprompter mas não tem como inverter o texto?
+                O <strong>PromptNinja</strong> tem a função espelho (Mirror) 100% gratuita.
+            </p>
+            <a href="/?lang=pt#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Abrir Teleprompter com Espelhamento
+            </a>
+        </div>
 
         <h3 className="text-2xl font-bold text-white mt-8 mb-4">Materiais Necessários para Montar seu Teleprompter DIY</h3>
 
