@@ -82,9 +82,9 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
     };
 
     return (
-        <>
+        <div className="flex-1 flex flex-col min-h-0 overflow-y-auto">
             {/* Timer Display & Navigation */}
-            <div className="relative flex justify-center items-center pt-6 pb-4 px-4">
+            <div className="relative flex justify-center items-center pt-3 pb-2 px-4 flex-none">
                 <div className="bg-slate-900/50 px-6 py-2 rounded-xl border border-white/5 shadow-lg z-10">
                     <span className="font-mono text-4xl font-black text-brand-400 tracking-widest drop-shadow-[0_0_15px_rgba(129,140,248,0.5)]">
                         {formattedTime}
@@ -112,19 +112,19 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
             </div>
 
             {/* Text Preview Window */}
-            <div className="mx-6 mb-4 h-24 bg-slate-900/80 rounded-xl border border-white/10 overflow-hidden relative flex items-center justify-center shadow-inner" aria-label="Text Preview">
+            <div className="mx-4 mb-2 h-20 bg-slate-900/80 rounded-xl border border-white/10 overflow-hidden relative flex items-center justify-center shadow-inner flex-none" aria-label="Text Preview">
                 <div className="absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-slate-900 to-transparent z-10 pointer-events-none"></div>
                 <div className="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-t from-slate-900 to-transparent z-10 pointer-events-none"></div>
 
                 <div className="absolute inset-0 flex items-center px-4 opacity-70">
-                    <p className="text-xs text-slate-300 font-mono leading-relaxed text-center w-full line-clamp-5">
+                    <p className="text-xs text-slate-300 font-mono leading-relaxed text-center w-full line-clamp-4">
                         {getTextPreview()}
                     </p>
                 </div>
             </div>
 
             {/* Dedicated Trackpad Window */}
-            <div className="mx-6 mb-4 flex-1 min-h-[100px] bg-slate-800/30 rounded-xl border border-white/5 relative overflow-hidden backdrop-blur-sm shadow-inner flex flex-col">
+            <div className="mx-4 mb-2 flex-1 min-h-[80px] bg-slate-800/30 rounded-xl border border-white/5 relative overflow-hidden backdrop-blur-sm shadow-inner flex flex-col">
                 <div className="absolute inset-0 opacity-50 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')]"></div>
                 <Trackpad
                     label={t("remote.touchArea")}
@@ -134,22 +134,22 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
             </div>
 
             <S.ControlsContainer>
-                <div className="flex items-center justify-between px-4 sm:px-6 pb-safe gap-4 sm:gap-6">
+                <div className="flex items-center justify-between px-4 pb-4 gap-3">
                     {/* Speed Control */}
-                    <div className="flex flex-col items-center bg-white/5 p-3 rounded-3xl border border-white/5 backdrop-blur-md">
-                        <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-2">{t("remote.speed")}</span>
-                        <div className="flex flex-col items-center gap-2">
+                    <div className="flex flex-col items-center bg-white/5 p-2 rounded-3xl border border-white/5 backdrop-blur-md">
+                        <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-1">SPEED</span>
+                        <div className="flex flex-col items-center gap-1">
                             <S.IconButton
                                 onClick={() => actions.handleSpeedChange(Math.min(10, speed + 0.5))}
-                                className="w-14 h-14 rounded-2xl bg-white/10 hover:bg-white/20 border-white/10"
+                                className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-white/20 border-white/10"
                                 aria-label="Increase Speed"
                             >
                                 <PlusIcon />
                             </S.IconButton>
-                            <span className="font-mono text-2xl font-black text-brand-400 min-w-[3ch] text-center my-1 drop-shadow-md">{speed.toFixed(1)}</span>
+                            <span className="font-mono text-2xl font-black text-brand-400 min-w-[3ch] text-center my-0.5 drop-shadow-md">{speed.toFixed(1)}</span>
                             <S.IconButton
                                 onClick={() => actions.handleSpeedChange(Math.max(0, speed - 0.5))}
-                                className="w-14 h-14 rounded-2xl bg-white/10 hover:bg-white/20 border-white/10"
+                                className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-white/20 border-white/10"
                                 aria-label="Decrease Speed"
                             >
                                 <MinusIcon />
@@ -158,7 +158,7 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
                     </div>
 
                     {/* Play/Stop Controls */}
-                    <div className="flex-1 flex flex-col gap-4 h-44">
+                    <div className="flex-1 flex flex-col gap-2 h-40">
                         {/* Play Button */}
                         <button
                             onClick={actions.handlePlayToggle}
@@ -173,9 +173,9 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
                         </button>
 
                         {/* Stop & Voice Buttons */}
-                        <div className="flex gap-2 sm:gap-3 h-14 sm:h-16">
+                        <div className="flex gap-2 h-14">
                             {/* Recording Controls Group */}
-                            <div className={`flex items-center ${hasRecordedData ? "w-28 sm:w-32" : "w-20 sm:w-24"} h-full bg-slate-800/50 rounded-2xl border border-slate-700 p-1 gap-1 transition-all`}>
+                            <div className={`flex items-center ${hasRecordedData ? "w-28" : "w-20"} h-full bg-slate-800/50 rounded-2xl border border-slate-700 p-1 gap-1 transition-all`}>
                                 {hasRecordedData ? (
                                     <>
                                         <button
@@ -218,7 +218,7 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
 
                             <button
                                 onClick={actions.handleToggleVoice}
-                                className={`w-14 sm:w-16 h-full rounded-2xl border transition-all flex items-center justify-center ${isVoiceMode ? "bg-red-500/20 border-red-500/50 text-red-400 animate-pulse" : "bg-purple-500/10 border-purple-500/20 hover:bg-purple-500/20 text-purple-400"}`}
+                                className={`w-14 h-full rounded-2xl border transition-all flex items-center justify-center ${isVoiceMode ? "bg-red-500/20 border-red-500/50 text-red-400 animate-pulse" : "bg-purple-500/10 border-purple-500/20 hover:bg-purple-500/20 text-purple-400"}`}
                                 title="Toggle Voice Control"
                                 aria-label={isVoiceMode ? "Disable Voice Control" : "Enable Voice Control"}
                             >
@@ -236,6 +236,6 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
                     </div>
                 </div>
             </S.ControlsContainer>
-        </>
+        </div>
     );
 };
