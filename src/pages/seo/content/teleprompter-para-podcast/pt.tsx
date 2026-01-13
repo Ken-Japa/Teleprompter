@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterParaPodcastPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter para Podcast: O Segredo das Intros e Ads Perfeitos
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Como Usar Teleprompter em Videocasts: O Segredo da Fluidez Profissional
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Mantenha o ritmo, impressione patrocinadores e nunca mais trave em uma introdução. Descubra como o PromptNinja é a ferramenta essencial para elevar o nível do seu podcast ou videocast.
+            "Olá a todos e bem-vindos a... uh... qual o número do episódio mesmo?" Se você já passou por isso, sabe que o charme de um podcast pode ser arruinado por gaguejos e esquecimentos. <strong>Podcasters profissionais não improvisam tudo; eles usam sistemas que garantem a perfeição das intros e anúncios.</strong>
         </p>
 
         <p className="text-slate-300 mb-8">
-            "Olá a todos e bem-vindos a... uh... qual o número do episódio mesmo?" Podcasters profissionais não improvisam tudo. Existe uma estrutura invisível que mantém o papo fluindo e os patrocinadores satisfeitos. Descubra onde o teleprompter se encaixa perfeitamente no seu setup de áudio e vídeo.
+            Neste artigo, vamos revelar como o <strong>PromptNinja</strong> se tornou a ferramenta secreta para manter o fluxo da conversa sem perder a espontaneidade. Aprenda onde posicionar o teleprompter no seu setup de videocast para manter o contato visual com a audiência e o convidado, e descubra como garantir que seus anúncios de patrocínio sejam lidos com a precisão exigida pelas grandes marcas, tudo isso de forma gratuita e intuitiva.
         </p>
 
         <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
@@ -21,7 +21,7 @@ export const TeleprompterParaPodcastPT = () => (
                 Elimine o "ééé..." e as pausas desconfortáveis. Com o <strong>PromptNinja</strong>, suas intros e
                 ads de patrocínio ficam impecáveis logo na primeira gravação.
             </p>
-            <a href="/?lang=pt#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+            <a href="https://promptninja.solutionkit.com.br/#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
                 Experimentar PromptNinja Grátis
             </a>
         </div>
@@ -87,7 +87,7 @@ export const TeleprompterParaPodcastPT = () => (
 
         <div className="text-center mt-12 pb-12">
             <a
-                href="#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-purple-700 to-blue-700 font-bold py-4 px-10 rounded-full transition hover:scale-105 shadow-xl text-white text-lg"
             >
                 Profissionalize Seu Podcast com PromptNinja

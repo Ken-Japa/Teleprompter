@@ -14,8 +14,8 @@ export const TeleprompterTikTokShorts: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterTikTokShortsPT;
-    let title = "Teleprompter para TikTok & Shorts: Grave Sem Erros e Viralize! - PromptNinja";
-    let description = "Chega de gaguejar! Use o PromptNinja para criar vídeos perfeitos no TikTok e Shorts. Mantenha o contato visual, a fluidez e entregue sua mensagem em segundos. Experimente grátis!";
+    let title = "Teleprompter para TikTok e Reels: Grave Vídeos Virais Sem Errar o Texto";
+    let description = "Crie vídeos incríveis para TikTok, Reels e Shorts com o teleprompter flutuante do PromptNinja. Mantenha o ritmo, a energia e a conexão visual. Comece a criar vídeos virais hoje!";
     let ctaText = "Abrir Teleprompter para TikTok";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-tiktok-shorts";
     const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";

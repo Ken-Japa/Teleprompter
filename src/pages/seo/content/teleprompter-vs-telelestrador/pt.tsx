@@ -3,12 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterVsTelelestradorPT = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter vs. Telelestrador (Papel/Cartazes): Qual a Melhor Opção para o Seu Vídeo?
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter vs Telelestrador: Qual a Melhor Escolha para Vídeos?
         </h2>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            Você já se sentiu perdido no meio de uma gravação, tentando lembrar o próximo tópico enquanto segura um monte de cartolinas ou olha para anotações desenhadas às pressas? A indecisão entre usar um método arcaico como "cartazes/telelestrador improvisado" e um <strong>Teleprompter Profissional</strong> pode custar horas do seu dia. Vamos resolver isso agora.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Acabe com a confusão entre os métodos de apoio visual. <strong>Descubra a diferença real</strong> entre o teleprompter profissional e o uso de cartazes ou telelestradores improvisados.
+        </p>
+
+        <p className="text-slate-300 mb-8">
+            Neste comparativo detalhado, exploramos por que a transição do telelestrador manual (frequentemente cartazes ou lousas) para um teleprompter digital como o PromptNinja é o divisor de águas na carreira de qualquer criador de conteúdo. Entenda as limitações técnicas de olhar para o lado para ler seu roteiro e como isso afeta a percepção de autoridade da sua audiência. Demonstramos como o teleprompter permite o contato visual perfeito, reduz drastically o tempo de edição e profissionaliza sua oratória, tudo isso de forma online e gratuita. Descubra qual ferramenta se adapta melhor ao seu estilo de gravação e comece a produzir resultados dignos de cinema.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
@@ -99,7 +103,7 @@ export const TeleprompterVsTelelestradorPT = () => (
 
         <div className="text-center mt-12 pb-12">
             <a
-                href="#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 font-bold py-4 px-10 rounded-full transition hover:scale-105 shadow-xl text-white text-lg"
             >
                 Trocar Papeis por PromptNinja Agora (Grátis)

@@ -13,8 +13,8 @@ export const TeleprompterModoBilingue: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterModoBilinguePT;
-    let title = "Teleprompter Modo Bilíngue: Scripts Lado a Lado (Grátis)";
-    let description = "Descubra o Modo Bilíngue do PromptNinja. Visualize dois scripts simultaneamente, ideal para aprender idiomas e apresentações internacionais. Teleprompter gratuito e sem login.";
+    let title = "Teleprompter Bilíngue: Tradução e Gravação em Dois Idiomas";
+    let description = "Crie conteúdo global com o teleprompter bilíngue do PromptNinja. Tradução instantânea, suporte a múltiplos idiomas e interface intuitiva. Alcance audiências internacionais. Grátis.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-modo-bilingue";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {

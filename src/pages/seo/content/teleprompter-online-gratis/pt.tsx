@@ -5,13 +5,13 @@ export const TeleprompterOnlineGratisPT = () => (
     <>
         <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-700/50 mb-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Sua Voz, Sem Esforço!
+                Teleprompter Online GRÁTIS: Sua Voz, Sem Esforço!
             </h2>
             <p className="text-lg text-slate-300 leading-relaxed mb-8">
                 Cansado de esquecer falas ou gaguejar em vídeos e apresentações? Com o <strong>PromptNinja, seu teleprompter online gratuito</strong>, você tem a solução perfeita para uma comunicação fluida e profissional. <span className="text-white font-semibold">Comece agora mesmo, sem cadastro</span>, e transforme a forma como você se expressa!
             </p>
 
-            <a href="/?lang=pt#app"
+            <a href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-flex items-center justify-center bg-green-600 hover:bg-green-500 font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-green-500/30 hover:scale-105 transition-all duration-200 text-xl mb-4 group"
                 style={{ color: 'white' }}>
                 <span style={{ color: 'white' }}>👉 Experimente o Teleprompter GRÁTIS Agora!</span>
@@ -238,7 +238,7 @@ export const TeleprompterOnlineGratisPT = () => (
             </p>
 
             <a
-                href="/?lang=pt#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mx-auto rounded-full transition hover:brightness-110"
                 style={{ color: 'white', textDecoration: 'none' }}
             >

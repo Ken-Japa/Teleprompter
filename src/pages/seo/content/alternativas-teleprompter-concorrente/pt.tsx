@@ -265,7 +265,7 @@ export const AlternativasTeleprompterConcorrentePT = () => (
 
         <div className="text-center mt-12">
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mx-auto rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

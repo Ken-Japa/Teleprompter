@@ -59,23 +59,23 @@ WORKOUT DONE!`;
 
     const content = {
         title: {
-            pt: "Teleprompter para Fitness e Crossfit: Treine sem Tocar no Celular",
+            pt: "Teleprompter para Treinos e Aulas Fitness: Grave sem Interrupções",
             en: "Teleprompter for Fitness & CrossFit: Hands-Free Workout | PromptNinja",
             es: "Teleprompter para Fitness y CrossFit: Entrena con Manos Libres | PromptNinja"
         },
         description: {
-            pt: "Use o PromptNinja como timer de treino. Crie loops de exercícios, cronômetros de descanso e séries automáticas. O melhor app de teleprompter para seus treinos em casa ou box.",
+            pt: "Crie aulas de fitness e treinos para YouTube e apps sem esquecer os exercícios. Use o roteiro do PromptNinja para manter a energia e o fôlego. Otimizado para mobilidade. Comece grátis.",
             en: "Turn PromptNinja into your ultimate workout partner. Create automated exercise loops, rest timers, and voice-activated sets. Perfect for home workouts and gym boxes.",
             es: "Lleva tu entrenamiento al siguiente nivel con PromptNinja. Temporizadores automáticos, bucles de ejercicios y control por voz para un entrenamiento 100% manos libres."
         },
         hero: {
             title: {
-                pt: "Seu Novo Parceiro de Treino Digital",
+                pt: "Como Gravar Aulas de Fitness: O Guia do Teleprompter Hands-Free",
                 en: "Teleprompter for Fitness & CrossFit: Hands-Free Workout",
                 es: "Teleprompter para Fitness y CrossFit: Entrena con Manos Libres"
             },
             subtitle: {
-                pt: "Chega de contar repetições de cabeça ou sujar o celular. Coloque seu treino na TV ou Tablet e siga o fluxo.",
+                pt: "Grave seus treinos com fluidez total. Coloque seu roteiro na tela e deixe o PromptNinja guiar suas séries e descansos automaticamente.",
                 en: "Stop counting reps or getting your phone dirty. Use PromptNinja to automate your sets, rest timers, and drills for a high-intensity, distraction-free performance.",
                 es: "Deja de contar repeticiones mentalmente y de ensuciar tu pantalla. Automatiza tus series, descansos y ejercicios con PromptNinja para un rendimiento máximo sin distracciones."
             }
@@ -151,9 +151,9 @@ WORKOUT DONE!`;
         >
             {/* Hero Section */}
             <div className="text-center mb-16">
-                <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 mb-6">
+                <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 mb-6">
                     {content.hero.title[currentLang]}
-                </h1>
+                </h2>
                 <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
                     {content.hero.subtitle[currentLang]}
                 </p>

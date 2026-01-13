@@ -2,12 +2,16 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterPacingTimerPT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
-            Domine o Tempo: Como Não Ser Cortado no Seu Pitch ou Palestra
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Pacing e Timer para Teleprompter: Controle seu Ritmo de Fala
         </h2>
 
-        <p className="mb-6 text-xl text-slate-300">
-            "Seu tempo acabou." Nada é mais constrangedor do que ser interrompido no meio da conclusão de uma palestra ou Pitch de Vendas porque você falou demais.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Falar rápido demais por causa do nervosismo ou devagar demais a ponto de entediar sua audiência são erros comuns que podem arruinar seu vídeo. <strong>Domine o ritmo das suas gravações com precisão cirúrgica.</strong>
+        </p>
+
+        <p className="text-slate-300 mb-8">
+            Neste guia, você aprenderá como utilizar o cronômetro e o timer integrados do <strong>PromptNinja</strong> para garantir que seu conteúdo caiba perfeitamente no tempo planejado. Descubra como ajustar as Palavras Por Minuto (WPM), utilizar comandos de pausa estratégica e receber feedback de tempo em tempo real. Seja para um pitch de 60 segundos ou uma aula de uma hora, nossa ferramenta gratuita garante que você mantenha a fluidez e a autoridade, sem nunca mais ser cortado ou perder o fôlego!
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-orange-500 mb-12">

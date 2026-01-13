@@ -3,10 +3,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterPCWindowsPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">Teleprompter para PC Windows: O Guia Definitivo com PromptNinja</h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para PC Windows: Use o PromptNinja sem Instalação
+        </h2>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            Você usa um PC com Windows e busca a solução perfeita para apresentar vídeos, dar palestras ou fazer lives com confiança e fluidez? Diga adeus aos roteiros esquecidos e ao contato visual perdido! Desenvolvido pensando na otimização para sistemas Windows, o <strong>PromptNinja</strong> transforma seu computador em um teleprompter profissional e intuitivo, sem a necessidade de downloads pesados ou configurações complicadas.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Você usa um PC com Windows e busca a solução perfeita para apresentar vídeos, dar palestras ou fazer lives com confiança e fluidez? Diga adeus aos roteiros esquecidos e ao contato visual perdido! No ecossistema Windows, muitas vezes somos forçados a escolher entre softwares antigos, complexos ou caros. O <strong>PromptNinja</strong> quebra essa lógica, oferecendo uma experiência profissional, leve e direta ao ponto.
+        </p>
+
+        <p className="text-slate-300 mb-8">
+            Desenvolvido para máxima otimização nos sistemas Windows 10 e 11, o <strong>PromptNinja</strong> transforma seu computador em um teleprompter de elite sem que você precise baixar um único arquivo .exe. Esqueça instaladores suspeitos ou configurações que pesam no seu processador; aqui, tudo acontece no seu navegador de preferência (Chrome, Edge ou Firefox), garantindo que seu PC foque 100% na qualidade da sua gravação ou transmissão ao vivo.
         </p>
 
         <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
@@ -62,7 +68,7 @@ export const TeleprompterPCWindowsPT = () => (
                 </div>
             </div>
 
-            <a href="https://promptninja.solutionkit.com.br"
+            <a href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-blue-500 hover:bg-blue-600 font-bold py-4 px-10 rounded-full transition transform hover:scale-105 shadow-lg shadow-blue-500/25"
                 style={{ color: 'white' }}
             >
@@ -292,7 +298,7 @@ export const TeleprompterPCWindowsPT = () => (
 
         <div className="my-8 text-center">
             <a
-                href="/?lang=pt#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

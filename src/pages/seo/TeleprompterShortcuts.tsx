@@ -13,8 +13,8 @@ export const TeleprompterShortcuts: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterShortcutsPT;
-    let title = "Teleprompter com Atalhos de Teclado e Modo Gamer (Sem HUD)";
-    let description = "Aumente sua produtividade com atalhos de teclado. Controle o teleprompter sem mouse, compatível com pedais e Stream Deck.";
+    let title = "Atalhos de Teclado para Teleprompter: Guia de Produtividade";
+    let description = "Domine o PromptNinja com atalhos de teclado inteligentes. Controle velocidade, tamanho de fonte e rolagem sem usar o mouse. Compatível com pedais e Stream Deck.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-com-atalhos-de-teclado";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {

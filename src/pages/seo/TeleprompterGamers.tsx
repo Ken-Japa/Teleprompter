@@ -13,8 +13,8 @@ export const TeleprompterGamers: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterGamersPT;
-    let title = "Teleprompter Minimalista para Gamers e Streamers (Sem HUD)";
-    let description = "O teleprompter ideal para OBS e Twitch. Modo 'No HUD' (invisível), fundo transparente para Chroma Key e sem distrações.";
+    let title = "Teleprompter para Gamers e Streamers: Melhore seu Chat e Performance";
+    let description = "Eleve o nível da sua stream na Twitch ou YouTube. Use o PromptNinja para ler roteiros e agradecimentos sem tirar os olhos da ação. Otimizado para baixa latência. Comece grátis.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-gamers-streaming";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {

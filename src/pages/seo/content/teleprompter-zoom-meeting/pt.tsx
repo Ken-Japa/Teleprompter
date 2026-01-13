@@ -5,14 +5,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterZoomMeetingPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">Teleprompter para Zoom Meeting: Domine Suas Apresentações Online</h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Como Usar Teleprompter no Zoom: 3 Modos para Brilhar em Suas Reuniões
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Sabe aquela sensação de <strong>nervosismo</strong> antes de uma apresentação importante no Zoom? Onde cada palavra conta, mas a preocupação em esquecer o roteiro ou perder o contato visual com a câmera te persegue? Você não está sozinho.
+            Sabe aquela sensação de <strong>nervosismo</strong> antes de uma apresentação importante no Zoom? Onde cada palavra conta, mas a preocupação em esquecer o roteiro ou perder o contato visual com a câmera te persegue? Você não está sozinho. <strong>A comunicação digital exige mais do que apenas presença; exige conexão.</strong>
         </p>
 
         <p className="text-slate-300 mb-8">
-            O desafio de manter a atenção da audiência, enquanto se lembra de cada ponto do seu discurso, é real. Muitos tentam soluções improvisadas: colam post-its na tela, leem de outros monitores ou consultam anotações discretamente. O resultado? Um olhar que desvia, uma comunicação fragmentada e, pior, a sensação de falta de profissionalismo.
+            Neste guia prático, vamos te mostrar como o <strong>PromptNinja</strong> se torna a sua ferramenta invisível de autoridade. Esqueça os post-its na tela ou o olhar desviado para outros monitores. Descubra os 3 modos essenciais de configurar seu teleprompter para reuniões e webinars, garantindo que você entregue sua mensagem com fluidez, mantendo sempre o olhar fixo em quem mais importa: sua audiência.
         </p>
 
         <div className="bg-blue-600/20 p-8 rounded-2xl border border-blue-500/30 mb-12">
@@ -81,7 +83,7 @@ export const TeleprompterZoomMeetingPT = () => (
                 Agora que você sabe o quão fácil é usar o PromptNinja para suas reuniões, lives e webinars no Zoom, que tal experimentar na prática?
             </p>
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-10 rounded-full transition transform hover:scale-105 shadow-lg shadow-blue-500/25"
                 style={{ color: 'white' }}
             >
@@ -194,7 +196,7 @@ export const TeleprompterZoomMeetingPT = () => (
 
         <div className="text-center mt-12">
             <a
-                href="/?lang=pt#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-6 rounded-lg transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

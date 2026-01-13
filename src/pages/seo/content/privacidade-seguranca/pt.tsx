@@ -4,14 +4,17 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const PrivacidadeSegurancaPT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Privacidade e Segurança: Por Que Não Queremos Seus Dados</h2>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Privacidade e Segurança: Seus Roteiros Protegidos e 100% Locais
+        </h2>
 
-        <div className="bg-red-900/20 border border-red-500/30 p-6 rounded-lg mb-8">
-            <h3 className="text-xl font-bold text-red-400 mb-2">🚫 O Problema da Indústria</h3>
-            <p className="text-slate-300">
-                A maioria dos apps de teleprompter "grátis" exige que você crie uma conta. Por quê? Para rastrear seus hábitos, ler seus roteiros para treinar IA, ou vender seu e-mail. Eles tratam você como o produto.
-            </p>
-        </div>
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Sua privacidade é nossa prioridade absoluta. No PromptNinja, adotamos uma arquitetura de <strong>Dados Zero</strong>, garantindo que seus roteiros e gravações nunca saiam do seu dispositivo.
+        </p>
+
+        <p className="text-slate-300 mb-8">
+            Neste compromisso com a sua segurança digital, detalhamos por que o PromptNinja é a escolha mais confiável para jornalistas, executivos e criadores de conteúdo que valorizam a discrição. Entenda como nossa tecnologia WebRTC Peer-to-Peer permite o controle remoto sem a necessidade de intermediários ou armazenamento em nuvem. Descubra como processamos cada comando e cada palavra localmente em seu navegador, eliminando qualquer risco de vazamento de informações ou espionagem industrial. Com o PromptNinja, você tem o poder de um teleprompter profissional com a tranquilidade de saber que seus dados pertencem exclusivamente a você.
+        </p>
 
         <p className="mb-6 text-xl text-slate-300">
             No PromptNinja, adotamos uma arquitetura radical de <strong>Dados Zero</strong>.

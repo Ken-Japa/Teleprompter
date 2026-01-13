@@ -13,8 +13,8 @@ export const ErrosComunsTeleprompter: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = ErrosComunsTeleprompterPT;
-    let title = "5 Erros de Teleprompter que Profissionais NÃO Cometem (Lista)";
-    let description = "Você mexe os olhos lendo? E a 'voz de robô'? Veja como corrigir os erros mais comuns e parecer natural usando teleprompter.";
+    let title = "Erros Comuns ao Usar Teleprompter e Como Evitá-los";
+    let description = "Descubra os erros que prejudicam sua naturalidade no teleprompter. Aprenda a evitar a 'voz de robô' e o movimento excessivo dos olhos para gravar vídeos profissionais.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/erros-comuns-teleprompter";
 
     if (lang === 'en') {

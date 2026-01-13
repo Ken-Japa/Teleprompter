@@ -13,8 +13,8 @@ export const PrivacidadeSeguranca: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = PrivacidadeSegurancaPT;
-    let title = "Privacidade e Segurança: Teleprompter WebRTC P2P";
-    let description = "Entenda como o PromptNinja protege seus dados usando tecnologia WebRTC P2P. Sem login, sem armazenamento em nuvem e com processamento 100% local.";
+    let title = "Privacidade e Segurança no Teleprompter: Seus Dados 100% Locais";
+    let description = "Entenda como o PromptNinja protege sua privacidade. Sem login, sem armazenamento em nuvem e com tecnologia WebRTC P2P para controle remoto seguro e privado.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-privacidade-seguranca";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
 

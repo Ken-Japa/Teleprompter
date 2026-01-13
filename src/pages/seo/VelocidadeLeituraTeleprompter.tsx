@@ -13,8 +13,8 @@ export const VelocidadeLeituraTeleprompter: React.FC<Props> = ({ onLaunch }) => 
     const { lang } = useTranslation();
 
     let Content = VelocidadeLeituraTeleprompterPT;
-    let title = "Qual a Velocidade Ideal para Teleprompter? (WPM)";
-    let description = "Pare de correr atrás do texto. Descubra a velocidade ideal de leitura e como usar o Voice Control para o teleprompter te seguir automaticamente.";
+    let title = "Velocidade de Leitura no Teleprompter: Tudo sobre WPM";
+    let description = "Descubra a velocidade de leitura ideal para gravar vídeos naturais. Aprenda o que é WPM, como calcular seu ritmo e use o Voice Control do PromptNinja.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/velocidade-leitura-teleprompter";
 
     if (lang === 'en') {

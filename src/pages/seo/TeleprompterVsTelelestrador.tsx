@@ -13,8 +13,8 @@ export const TeleprompterVsTelelestrador: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterVsTelelestradorPT;
-    let title = "Teleprompter vs. Telelestrador: Qual a Diferença e Qual Usar?";
-    let description = "Descubra a diferença real entre Teleprompter e Telelestrador (ou cartazes de apoio). Saiba qual ferramenta vai te ajudar a gravar vídeos melhores e mais rápidos em 2026. Spoiler: O Teleprompter ganha.";
+    let title = "Teleprompter vs Telelestrador: Qual a Diferença e Qual Usar?";
+    let description = "Descubra a diferença real entre Teleprompter e Telelestrador (ou cue cards). Saiba qual ferramenta escolher para gravar vídeos profissionais com naturalidade. Guia completo.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-vs-telelestrador";
 
     if (lang === 'en') {

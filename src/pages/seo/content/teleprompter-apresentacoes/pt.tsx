@@ -3,16 +3,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterApresentacoesPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter para PowerPoint & Apresentações: Oratória Profissional Sem Decorar
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para PowerPoint e Apresentações: Oratória Profissional
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Domine seus slides, conquiste sua audiência e nunca mais tenha um "branco" durante apresentações críticas. O PromptNinja é seu parceiro invisível para PowerPoint, Google Slides e Keynote.
+            Domine seus slides e conquiste sua audiência com segurança total. <strong>Sincronize seu roteiro de forma invisível</strong> com o PowerPoint, Google Slides ou Keynote usando o PromptNinja.
         </p>
 
         <p className="text-slate-300 mb-8">
-            Apresentação trimestral. Board diretoria. 40 slides PowerPoint. Você decorou 80% do roteiro. Slide 12... branc branco. "Ehhh...". 5 segundos silêncio eterno. Olha anotações. Perde credibilidade. CEO levanta sobrancelha. Este guia mostra como fazer apresentações impecáveis em minutos.
+            Neste guia definitivo para oradores competentes, mostramos como o PromptNinja se torna seu parceiro estratégico para apresentações de alto impacto. Aprenda como ler seu roteiro de forma natural, mantendo o contato visual com o público e evitando o medo de 'dar um branco' em momentos críticos. Descubra técnicas para integrar o teleprompter a qualquer software de slides, garantindo que você apresente com fluidez, autoridade e profissionalismo, seja em um palco presencial ou em reuniões virtuais. Transforme sua oratória e destaque-se com apresentações memoráveis e sem hesitações.
         </p>
 
         <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
@@ -21,7 +21,7 @@ export const TeleprompterApresentacoesPT = () => (
                 Transforme seus slides em suporte visual e você na estrela da apresentação.
                 O <strong>PromptNinja</strong> sincroniza seu roteiro de forma invisível para o público.
             </p>
-            <a href="/?lang=pt#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+            <a href="https://promptninja.solutionkit.com.br/#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
                 Iniciar Apresentação com PromptNinja
             </a>
         </div>
@@ -222,7 +222,7 @@ export const TeleprompterApresentacoesPT = () => (
                 Slides impactantes + roteiro invisível = apresentador confiante que "domina assunto".
             </p>
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-orange-500 to-red-600 font-bold py-3 px-8 rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

@@ -3,16 +3,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterCapCutPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            🎬 CapCut e Teleprompter: A Dupla Dinâmica para Seus Vídeos!
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para CapCut: Grave Conteúdo Profissional em Minutos
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Você já se perguntou como seus criadores favoritos entregam conteúdos tão impecáveis no CapCut? O segredo não está apenas na edição, mas em como o vídeo é gravado.
+            Domine a arte de gravar vídeos impecáveis para o CapCut. <strong>Elimine erros de gravação e mantenha o contato visual perfeito</strong> com o teleprompter inteligente do PromptNinja.
         </p>
 
         <p className="text-slate-300 mb-8">
-            Conheça o <strong>PromptNinja</strong>, o teleprompter online que é o parceiro ideal para quem edita no CapCut. Com o PromptNinja, você lê seu script com naturalidade, mantém o olhar fixo na câmera e economiza horas que seriam gastas corrigindo erros de gravação. Integre o poder do teleprompter ao seu workflow e veja a mágica acontecer nas suas edições!
+            Neste guia essencial para criadores, mostramos por que o PromptNinja é o parceiro indispensável para quem edita no CapCut. Aprenda como gravar um material bruto de alta qualidade logo na primeira take, economizando horas preciosas de edição e permitindo que você foque no que realmente importa: a criatividade e os efeitos virais do CapCut. Descubra como nossa ferramenta online e gratuita transforma seu smartphone ou computador em um estúdio profissional, garantindo fluidez, confiança e autoridade em cada vídeo.
         </p>
 
         <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
@@ -84,7 +84,7 @@ export const TeleprompterCapCutPT = () => (
 
             <div className="mt-10 relative z-10">
                 <p className="text-cyan-200 font-semibold text-lg italic mb-8">"Use o PromptNinja para gravar o material perfeito e o CapCut para dar o toque final de mestre!"</p>
-                <a href="https://promptninja.solutionkit.com.br" className="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-4 px-12 rounded-full shadow-xl shadow-cyan-500/20 transition-all transform hover:scale-105">
+                <a href="https://promptninja.solutionkit.com.br/#app" className="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-4 px-12 rounded-full shadow-xl shadow-cyan-500/20 transition-all transform hover:scale-105">
                     Começar a Gravar Agora
                 </a>
             </div>
@@ -366,7 +366,7 @@ export const TeleprompterCapCutPT = () => (
 
         <div className="text-center mt-12 mb-12">
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 font-bold py-4 px-10 rounded-full transition hover:brightness-110 hover:scale-105 transform shadow-lg"
                 style={{ color: 'white' }}
             >
@@ -455,7 +455,7 @@ export const TeleprompterCapCutPT = () => (
                 Pare de brigar com regravações. Pare de passar 3 horas editando erros. Comece a criar conteúdo do jeito que sempre sonhou: com foco, qualidade e criatividade de sobra.
             </p>
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 font-bold py-4 px-10 rounded-full transition hover:brightness-110 hover:scale-105 transform shadow-lg text-lg"
                 style={{ color: 'white' }}
             >

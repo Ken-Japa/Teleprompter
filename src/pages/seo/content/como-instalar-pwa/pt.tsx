@@ -3,14 +3,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoInstalarPwaPT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Como "Baixar" o PromptNinja (Instalar App PWA)</h2>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Como Instalar o Teleprompter PromptNinja no Seu Celular ou PC
+        </h2>
 
-        <p className="mb-6 text-xl text-slate-300">
-            Você procurou na App Store ou Play Store e não achou? Calma, isso é uma <strong>vantagem</strong>, não um defeito.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Transforme o PromptNinja em um aplicativo nativo e poderoso. <strong>Aprenda a instalar nosso PWA</strong> para obter o máximo desempenho, funcionamento offline e uma experiência de teleprompter profissional em tela cheia.
         </p>
 
-        <p className="mb-8 text-slate-300">
-            O PromptNinja é um <strong>Progressive Web App (PWA) Elite</strong>. Isso significa que ele tem o poder de um aplicativo nativo (funciona offline, tela cheia, sem travamentos), mas sem a burocracia das lojas. Você instala direto do navegador, em segundos, sem ocupar a memória do seu celular.
+        <p className="text-slate-300 mb-8">
+            Muitos usuários procuram por um teleprompter na App Store ou Google Play, mas o PromptNinja oferece uma alternativa superior através da tecnologia PWA (Progressive Web App). Neste guia detalhado, explicamos passo a passo como você pode 'baixar' nossa ferramenta diretamente do seu navegador, seja no iPhone, Android, Mac ou Windows. Descubra as vantagens de ter um aplicativo ultraleve que não consome a memória do seu dispositivo, garante privacidade total e permite gravações impecáveis em qualquer lugar, mesmo sem conexão com a internet. Siga nossas instruções simples e comece a gravar como um profissional em segundos.
         </p>
 
         <div className="bg-gradient-to-r from-purple-900/40 to-blue-900/40 p-8 rounded-xl border border-purple-500/30 mb-12">

@@ -54,8 +54,8 @@ export const TeleprompterScriptsPage: React.FC<{ onLaunch: () => void }> = ({ on
 
     return (
         <SeoPageLayout
-            title={currentLang === 'pt' ? "Roteiros para Teleprompter: Templates Prontos e Eficazes | PromptNinja" : (t('seo.scripts.title') || "Ready-to-Use Teleprompter Scripts: Free Templates")}
-            description={currentLang === 'pt' ? "Precisa de inspiração? Baixe nossos templates de roteiros para teleprompter. Estruturas validadas para YouTube, TikTok, Vendas e Cursos. Comece a gravar com confiança agora mesmo!" : (t('seo.scripts.description') || "Complete collection of teleprompter scripts. Ready-to-use templates for YouTube, TikTok, Sales, and Classes.")}
+            title={currentLang === 'pt' ? "Roteiros para Teleprompter: Templates Prontos e Gratuitos" : (t('seo.scripts.title') || "Ready-to-Use Teleprompter Scripts: Free Templates")}
+            description={currentLang === 'pt' ? "Encontre os melhores roteiros para teleprompter. Templates gratuitos e validados para YouTube, TikTok, Vendas e Videoaulas. Grave com confiança agora mesmo!" : (t('seo.scripts.description') || "Complete collection of teleprompter scripts. Ready-to-use templates for YouTube, TikTok, Sales, and Classes.")}
             canonicalUrl={`https://promptninja.solutionkit.com.br${currentLang === 'en' ? '/en/teleprompter-scripts' : currentLang === 'es' ? '/es/guiones-teleprompter' : '/scripts-teleprompter'}`}
             onLaunch={onLaunch}
         >
@@ -188,7 +188,7 @@ export const TeleprompterScriptsPage: React.FC<{ onLaunch: () => void }> = ({ on
                 <article className="prose prose-invert prose-lg max-w-none">
                     {currentLang === 'pt' ? (
                         <>
-                            <h1 className="text-3xl font-bold text-purple-400 mb-6">🚀 Roteiros para Teleprompter: Domine Sua Fala com Nossos Templates Gratuitos!</h1>
+                            <h2 className="text-3xl font-bold text-purple-400 mb-6">Roteiros para Teleprompter: Templates Gratuitos e Eficazes</h2>
                             <p className="text-slate-300 mb-6 leading-relaxed">
                                 Você já sentiu aquele "branco" na hora de gravar? A câmera liga e, de repente, as palavras fogem? Roteirizar é a base de qualquer vídeo de sucesso, mas nem sempre temos tempo ou inspiração para começar do zero. Um bom roteiro não apenas organiza seu pensamento, mas também guia seu ritmo, garante que você não esqueça pontos cruciais e te ajuda a manter o contato visual com sua audiência.
                             </p>

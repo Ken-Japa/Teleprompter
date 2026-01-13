@@ -13,8 +13,8 @@ export const TeleprompterZoomMeeting: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterZoomMeetingPT;
-    let title = "Teleprompter Virtual para Zoom: Domine Suas Apresentações Online | PromptNinja";
-    let description = "Transforme suas reuniões e lives no Zoom com o teleprompter virtual do PromptNinja. Leia roteiros discretamente, mantenha o contato visual e transmita confiança profissional. Experimente grátis e simplifique suas calls!";
+    let title = "Teleprompter para Zoom: Fale com Naturalidade em Reuniões e Webinars";
+    let description = "Cansado de desviar o olhar no Zoom? Use o PromptNinja para ler seu roteiro enquanto mantém contato visual com os participantes. Ideal para apresentações e aulas online. Teste grátis.";
     let ctaText = "Abrir Teleprompter para Zoom";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-zoom-meeting";
     const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";

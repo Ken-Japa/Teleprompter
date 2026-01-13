@@ -13,8 +13,8 @@ export const CelebridadesUsamTeleprompter: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = CelebridadesUsamTeleprompterPT;
-    let title = "7 Celebridades que Usam Teleprompter (e Você Nem Sabia)";
-    let description = "Descubra quais famosos, cantores e jornalistas usam teleprompter diariamente. Aprenda por que usar roteiro não é 'trapaça', mas sim profissionalismo.";
+    let title = "Celebridades que Usam Teleprompter: Exemplos de Profissionalismo";
+    let description = "Descubra as celebridades, líderes e jornalistas que utilizam teleprompters para discursos impecáveis. Saiba por que usar roteiro é essencial para grandes performances.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/celebridades-usam-teleprompter";
 
     if (lang === 'en') {

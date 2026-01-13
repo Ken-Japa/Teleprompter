@@ -13,8 +13,8 @@ export const ComoEscolherTeleprompter: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = ComoEscolherTeleprompterPT;
-    let title = "Como Escolher o Teleprompter Ideal: Guia de Compra 2026 | PromptNinja";
-    let description = "Não jogue dinheiro fora. Entenda as diferenças entre teleprompters físicos e de software, o que considerar antes de comprar e como o PromptNinja pode economizar centenas de reais no seu setup.";
+    let title = "Como Escolher o Teleprompter Ideal | Guia de Compra Completo";
+    let description = "Saiba como escolher o teleprompter perfeito para suas necessidades. Compare hardware e software, entenda o custo-benefício e economize com o PromptNinja.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/como-escolher-teleprompter";
 
     if (lang === 'en') {

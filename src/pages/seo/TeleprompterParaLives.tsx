@@ -13,8 +13,8 @@ export const TeleprompterParaLives: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterParaLivesPT;
-    let title = "Teleprompter para Lives e Streamers (OBS Studio Overlay)";
-    let description = "Aprenda a fazer lives profissionais no YouTube e Twitch lendo roteiro sem que a audiência perceba. Tutorial de Setup para OBS com PromptNinja.";
+    let title = "Teleprompter para Lives e Streamings: Engaje seu Público com Fluidez";
+    let description = "Mantenha o foco no chat e a fluidez no discurso. O PromptNinja é o teleprompter ideal para transmissões ao vivo no YouTube, Instagram e Twitch. Grátis e sem lag.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-para-lives";
 
     if (lang === 'en') {

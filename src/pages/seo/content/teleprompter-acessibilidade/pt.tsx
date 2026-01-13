@@ -3,12 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterAcessibilidadePT = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter para TDAH e Dislexia: Como a Tecnologia Ajuda na Fala
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter e Acessibilidade: Tecnologia de Foco Assistido
         </h2>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            Para quem tem TDAH (Transtorno de Déficit de Atenção com Hiperatividade) ou Dislexia, gravar vídeos pode ser um pesadelo. Esquecer o que ia falar, trocar palavras, perder o foco... O teleprompter não é apenas uma ferramenta de leitura, é uma ferramenta de <strong>foco assistido</strong>.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Transforme o desafio de falar para a câmera em uma experiência de confiança. <strong>Descubra como recursos inclusivos</strong> ajudam pessoas com TDAH, Dislexia e outras neurodiversidades a brilharem em vídeo.
+        </p>
+
+        <p className="text-slate-300 mb-8">
+            Neste mergulho sobre inclusão digital, exploramos o papel vital do teleprompter como uma ferramenta de acessibilidade. Para criadores neurodiversos, o ato de gravar pode ser repleto de ansiedade e perda de foco. O PromptNinja foi desenhado para combater esses obstáculos, oferecendo recursos únicos como a fonte OpenDyslexic — projetada para aumentar a legibilidade e reduzir a inversão de letras — e marcadores de foco visual que isolam a informação relevante, eliminando o ruído cognitivo. Saiba como o Voice Control permite que o roteiro aguarde seu tempo de processamento, e como esquemas de cores de alto contraste protegem contra o estresse visual. democratizamos a oratória profissional oferecendo todas essas ferramentas de forma gratuita e online, garantindo que ninguém seja deixado para trás na era do conteúdo em vídeo.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
@@ -71,7 +75,7 @@ export const TeleprompterAcessibilidadePT = () => (
 
         <div className="text-center mt-12 pb-12">
             <a
-                href="#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-purple-700 to-blue-700 font-bold py-4 px-10 rounded-full transition hover:scale-105 shadow-xl text-white text-lg"
             >
                 Experimente a Fonte OpenDyslexic Agora

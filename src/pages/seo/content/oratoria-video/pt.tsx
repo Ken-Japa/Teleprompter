@@ -2,16 +2,16 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const OratoriaVideoPT = () => (
     <div className="text-slate-300">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Domine Oratória para Vídeos: Fale com Confiança e Olho na Câmera
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Oratória em Vídeo: 3 Pilares da Oratória Magnética
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Você já sentiu aquele frio na barriga antes de gravar um vídeo? Ou se perdeu no roteiro, desviou o olhar da câmera e perdeu a conexão com sua audiência? No dinâmico mundo digital de hoje, a oratória em vídeo é essencial, mas dominar a fluidez e a naturalidade pode ser um desafio enorme.
         </p>
 
         <p className="text-slate-300 mb-8">
-            <strong>Com PromptNinja, a solução para uma comunicação impactante está ao seu alcance.</strong> Esqueça o nervosismo de memorizar; este guia traz dicas essenciais para dominar a oratória em vídeos, e mostra como nosso teleprompter inteligente é o seu parceiro secreto para falar com confiança, mantendo sempre o olhar na câmera e sua mensagem clara.
+            <strong>Mas aqui está o segredo: oratória não é um dom, é uma habilidade treinada.</strong> Falar bem na frente das câmeras envolve alinhar sua mente, seu corpo e as ferramentas certas. Neste guia, vamos explorar os 3 pilares que transformam uma fala insegura em uma apresentação magnética, e como o <strong>PromptNinja</strong> é o parceiro secreto que te permite focar no que realmente importa: sua conexão com o público.
         </p>
 
         {/* CTA Estratégico de Início */}
@@ -21,7 +21,7 @@ export const OratoriaVideoPT = () => (
                 Milhares de criadores já transformaram sua forma de aparecer em vídeo.
                 Experimente o <strong>PromptNinja</strong> e descubra a liberdade de se comunicar com naturalidade e profissionalismo.
             </p>
-            <a href="/?lang=pt#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+            <a href="https://promptninja.solutionkit.com.br/#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
                 Comece Sua Jornada Grátis Agora!
             </a>
         </div>
@@ -126,7 +126,7 @@ export const OratoriaVideoPT = () => (
 
         <div className="text-center mt-12">
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mx-auto rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

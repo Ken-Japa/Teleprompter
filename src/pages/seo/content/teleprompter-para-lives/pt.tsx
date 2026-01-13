@@ -3,12 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterParaLivesPT = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Como Usar Teleprompter em Lives (OBS, YouTube, Twitch): O Guia Secreto
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para Lives e Streamings: Engaje seu Público com Fluidez
         </h2>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            Fazer uma transmissão ao vivo é estressante. Monitorar o chat, checar o áudio, e ainda lembrar o roteiro? Impossível. É por isso que os maiores streamers usam um "segredinho" na tela que o público não vê.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Fazer uma transmissão ao vivo é como caminhar em uma corda bamba. Você precisa monitorar o chat, gerenciar o áudio, interagir com os viewers e, ao mesmo tempo, não perder o fio da meada. <strong>Quantas vezes você já viu um streamer se perder em divagações e ver a audiência despencar em tempo real?</strong>
+        </p>
+
+        <p className="text-slate-300 mb-8">
+            Neste guia prático, vamos te mostrar como o <strong>PromptNinja</strong> se torna o seu copiloto invisível durante lives na Twitch, YouTube ou Instagram. Aprenda como configurar um roteiro ou tópicos estratégicos que ficam visíveis apenas para você, permitindo que você entregue conteúdo de alto valor e anúncios de patrocínio com perfeição, sem nunca tirar o foco da sua comunidade. Descubra o setup ideal para OBS Studio e como usar o controle remoto via celular para ter fluidez total sem gaguejar!
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
@@ -84,7 +88,7 @@ export const TeleprompterParaLivesPT = () => (
 
         <div className="text-center mt-12 pb-12">
             <a
-                href="#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-purple-600 to-indigo-500 font-bold py-4 px-10 rounded-full transition hover:scale-105 shadow-xl text-white text-lg"
             >
                 Configure Sua Live Profissional Agora (Grátis)

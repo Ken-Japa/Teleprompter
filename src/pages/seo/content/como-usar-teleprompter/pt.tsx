@@ -23,7 +23,7 @@ export const ComoUsarTeleprompterPT = () => (
                 <li><a href="#erros-comuns" className="text-blue-400 font-semibold hover:text-blue-300 transition flex items-center gap-2"><span className="text-slate-400 font-normal">3.</span> Erros Comuns (e Como Evitar)</a></li>
                 <li><a href="#dicas-avancadas" className="text-blue-400 font-semibold hover:text-blue-300 transition flex items-center gap-2"><span className="text-slate-400 font-normal">4.</span> Dicas Avançadas</a></li>
             </ul>
-            <a href="/?lang=pt#app" className="block w-full md:w-auto text-center bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-6 rounded-lg transition shadow-lg">
+            <a href="https://promptninja.solutionkit.com.br/#app" className="block w-full md:w-auto text-center bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-6 rounded-lg transition shadow-lg">
                 🚀 Ir Direto para o Passo a Passo com PromptNinja!
             </a>
         </div>
@@ -178,7 +178,7 @@ export const ComoUsarTeleprompterPT = () => (
 
         <div className="text-center mt-12">
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mx-auto rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

@@ -3,12 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const VelocidadeLeituraTeleprompterPT = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Qual a Velocidade Ideal para o Teleprompter? Pare de Correr Atrás do Texto
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Velocidade de Leitura no Teleprompter: Domine Seu Ritmo
         </h2>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            Você ajusta a velocidade para 3. Está lento demais. Ajusta para 4. Rápido demais. O resultado? Você acelera a fala para acompanhar a máquina e soa como um narrador de corrida de cavalos. Chega de sofrer.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Acabe com a ansiedade de tentar acompanhar o texto que corre na tela. <strong>Descubra como encontrar seu ritmo ideal</strong> e utilize a tecnologia para que o teleprompter siga você.
+        </p>
+
+        <p className="text-slate-300 mb-8">
+            Neste guia essencial para uma comunicação natural, exploramos o conceito de WPM (Palavras por Minuto) e como ele dita a percepção de autoridade em seus vídeos. Se você já se sentiu como um robô tentando não gaguejar enquanto o texto sobe sem parar, este conteúdo é para você. Detalhamos as métricas de ouro da fala profissional, desde a cadência de âncoras de jornal até o dinamismo dos grandes YouTubers. Aprenda como o Voice Control do PromptNinja, movido por inteligência artificial, elimina a necessidade de ajustes manuais constantes, permitindo que você faça pausas dramáticas e respire com naturalidade, garantindo que o roteiro esteja sempre no lugar certo, na hora certa, totalmente grátis e online.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
@@ -66,7 +70,7 @@ export const VelocidadeLeituraTeleprompterPT = () => (
 
         <div className="text-center mt-12 pb-12">
             <a
-                href="#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-purple-700 to-blue-700 font-bold py-4 px-10 rounded-full transition hover:scale-105 shadow-xl text-white text-lg"
             >
                 Ativar Rolagem por Voz (Grátis)

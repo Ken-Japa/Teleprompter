@@ -13,8 +13,8 @@ export const TeleprompterAcessibilidade: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterAcessibilidadePT;
-    let title = "Teleprompter para TDAH e Dislexia: Fonte OpenDyslexic Grátis";
-    let description = "Descubra como o PromptNinja ajuda pessoas com TDAH e Dislexia a gravar vídeos com foco e fluidez usando fontes especiais e cores adaptadas.";
+    let title = "Teleprompter e Acessibilidade: Foco para TDAH e Dislexia";
+    let description = "O teleprompter mais acessível do mercado. Fonte OpenDyslexic, alto contraste e controle de ritmo para ajudar pessoas com TDAH e Dislexia a gravarem com confiança.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-acessibilidade";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
 

@@ -3,16 +3,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTikTokShortsPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            🚀 Cansado de Gaguejar nos Seus TikToks e Shorts? Encontre a Melhor Solução Agora!
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para TikTok e Reels: Grave Vídeos Virais Sem Errar o Texto
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            No mundo acelerado do TikTok e YouTube Shorts, cada segundo conta. Você tem uma mensagem incrível, mas trava na hora de gravar? Perde o contato visual com a câmera? Repete takes infinitos até a frustração bater?
+            No mundo acelerado do TikTok, Reels e YouTube Shorts, a retenção é tudo. Você tem apenas alguns segundos para prender a atenção do público, mas gaguejar ou desviar o olhar pode arruinar o seu vídeo. <strong>A pergunta é: você quer gastar horas decorando falas ou minutos produzindo sucessos?</strong>
         </p>
 
         <p className="text-slate-300 mb-8">
-            Apresentamos o <strong>PromptNinja</strong>, seu teleprompter online definitivo para criar vídeos curtos que prendem a atenção e transmitem sua mensagem com clareza e profissionalismo. Diga adeus aos roteiros esquecidos, aos "erros de gravação" e ao tempo desperdiçado em refilmagens. Com o PromptNinja, você controla seu texto na tela do seu celular (ou computador!), mantém o olhar firme na câmera e entrega um conteúdo impecável, pronto para viralizar!
+            Neste guia, vamos explorar por que os maiores TikTokers do Brasil amam o <strong>PromptNinja</strong>. Descubra como o nosso teleprompter flutuante permite que você mantenha o ritmo, a energia e a conexão visual impecável, transformando roteiros complexos em vídeos virais de forma simples e profissional. Prepare-se para multiplicar sua produção e dominar o algoritmo com fluidez total!
         </p>
 
         <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
@@ -201,7 +201,7 @@ export const TeleprompterTikTokShortsPT = () => (
             <h3 className="text-3xl font-extrabold text-white mb-4 leading-tight relative z-10">🚨 Chega de Refilmar! Comece a Criar TikToks Incríveis Hoje Mesmo!</h3>
             <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto relative z-10">O PromptNinja é a ferramenta secreta dos criadores de conteúdo que sabem o valor do tempo e da qualidade. Experimente agora e sinta a diferença!</p>
             <a
-                href="/?lang=pt#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-10 rounded-full text-xl uppercase tracking-wide shadow-xl transform hover:scale-105 transition-all duration-300 relative z-10"
             >
                 Experimentar PromptNinja Grátis
@@ -468,7 +468,7 @@ export const TeleprompterTikTokShortsPT = () => (
 
         <div className="text-center mt-12 mb-12">
             <a
-                href="/?lang=pt#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-pink-500 to-purple-600 font-bold py-4 px-10 rounded-full transition hover:brightness-110 hover:scale-105 transform shadow-lg text-lg"
                 style={{ color: 'white' }}
             >
@@ -557,7 +557,7 @@ export const TeleprompterTikTokShortsPT = () => (
                 Chega de lutar contra sua memória. Chega de gastar 40 minutos pra gravar 15 segundos. Comece a produzir como os grandes: com sistema, consistência e resultados.
             </p>
             <a
-                href="/?lang=pt#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-pink-500 to-purple-500 font-bold py-4 px-10 rounded-full transition hover:brightness-110 hover:scale-105 transform shadow-lg text-lg"
                 style={{ color: 'white' }}
             >

@@ -3,14 +3,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterShortcutsPT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Atalhos de Teclado no Teleprompter: O Segredo da Produtividade em Vídeo</h2>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Atalhos de Teclado para Teleprompter: Domine Sua Produtividade
+        </h2>
 
-        <p className="mb-6 text-lg text-slate-300">
-            Você já cronometrou quanto tempo perde em uma gravação apenas indo até a câmera, apertando REC, voltando para a posição, errando, levantando de novo para pausar...?
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Velocidade e controle total na ponta dos seus dedos. <strong>Aprenda a controlar o PromptNinja via teclado</strong>, Stream Deck ou pedais para uma gravação profissional e sem interrupções.
         </p>
 
-        <p className="mb-6">
-            Editores de vídeo profissionais no Adobe Premiere ou DaVinci Resolve raramente tocam no mouse. Eles sabem que <strong>atalhos de teclado = velocidade</strong>.
+        <p className="text-slate-300 mb-8">
+            Neste guia essencial para criadores focados em eficiência, detalhamos a filosofia 'Keyboard First' do PromptNinja. Descubra como os atalhos de teclado podem transformar seu fluxo de trabalho, permitindo que você ajuste a velocidade de rolagem, o tamanho da fonte e o controle de play/pause sem nunca precisar tirar as mãos da posição de gravação ou usar o mouse. Explicamos como integrar nossa ferramenta com hardwares externos como Elgato Stream Deck e pedais USB, garantindo que você tenha um centro de comando completo para suas produções, palestras ou apresentações musicais. Ganhe tempo e profissionalismo com comandos simplificados e atalhos inteligentes.
         </p>
 
         <p className="mb-8">
@@ -132,7 +134,7 @@ export const TeleprompterShortcutsPT = () => (
                 Na versão PRO, você pode <strong>impor</strong> qual tecla faz o que. Liberdade total.
             </p>
             <a
-                href="/?lang=pt#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-white text-slate-900 font-bold py-3 px-8 rounded-full transition hover:bg-slate-200"
             >
                 Configurar Atalhos Agora

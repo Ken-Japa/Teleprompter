@@ -13,8 +13,8 @@ export const ComoDecorarTexto: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = ComoDecorarTextoPT;
-    let title = "Como Decorar Texto Rápido: 5 Técnicas Infalíveis";
-    let description = "Pare de sofrer tentando decorar roteiros longos. Conheça técnicas de memorização e a solução definitiva para nunca mais esquecer uma fala.";
+    let title = "Como Decorar Texto Rápido? 🧠 5 Técnicas Infalíveis (e por que não decorar!)";
+    let description = "Aprenda como decorar texto para vídeos e apresentações com técnicas de memorização rápida. Descubra por que youtubers de sucesso preferem o PromptNinja e comece grátis.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/como-decorar-texto-rapido";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {

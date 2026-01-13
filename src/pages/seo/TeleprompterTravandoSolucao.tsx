@@ -13,7 +13,7 @@ export const TeleprompterTravandoSolucao: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterTravandoSolucaoPT;
-    let title = "Teleprompter Travando?: 🛠️ 5 Soluções Testadas (e a #1) para Gravações Perfeitas com PromptNinja";
+    let title = "Teleprompter Travando? 🛠️ 5 Soluções Testadas (e a #1) para Gravações Perfeitas com PromptNinja";
     let description = "Cansado do teleprompter travando? Descubra as causas (hardware, software, conexão) e a solução definitiva do PromptNinja para vídeos fluidos. Diga adeus aos travamentos e grave sem interrupções!";
     let ctaText = "Testar Rolagem Suave (Grátis)";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-travando-solucao";

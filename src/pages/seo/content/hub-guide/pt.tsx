@@ -3,9 +3,17 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const HubGuideContentPT = () => (
     <>
-        <div className="lead text-xl text-slate-300 mb-12 font-medium border-l-4 border-purple-500 pl-6 bg-slate-800/30 py-4 rounded-r-lg">
-            Bem-vindo ao maior repositório de conhecimento sobre Teleprompters da internet. Se você quer gravar vídeos melhores, falar com confiança e dominar a câmera, você está no lugar certo.
-        </div>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Guia Completo de Teleprompter: O Maior Repositório de Conhecimento
+        </h2>
+
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Domine a arte da comunicação e eleve o nível das suas produções. <strong>Explore tudo o que você precisa saber</strong> sobre teleprompters, de técnicas de leitura a equipamentos profissionais.
+        </p>
+
+        <p className="text-slate-300 mb-8">
+            Seja você um iniciante buscando pela primeira vez entender o que é um teleprompter, ou um profissional experiente atrás das melhores ferramentas e roteiros, este guia foi desenhado para você. No PromptNinja, consolidamos anos de experiência em vídeos, oratória e tecnologia para criar o hub definitivo sobre o assunto. Aqui, você aprenderá desde a montagem de um setup de baixo custo até a utilização de funções avançadas como rolagem por voz e sincronização multi-dispositivos. Descubra como economizar horas de edição gravando em tomada única e transmita uma autoridade inabalável olhando diretamente para sua audiência.
+        </p>
 
         <section id="oque" className="mb-16">
             <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">

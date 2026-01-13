@@ -14,8 +14,8 @@ export const TeleprompterGoogleMeetTeams: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterGoogleMeetTeamsPT;
-    let title = "Teleprompter para Google Meet & Microsoft Teams | PromptNinja";
-    let description = "Tenha reuniões e apresentações impecáveis no Google Meet e Microsoft Teams. Use o PromptNinja para ler roteiros discretamente e manter o contato visual. 100% Seguro.";
+    let title = "Teleprompter para Google Meet e Teams: Domine Suas Reuniões";
+    let description = "Tenha apresentações impecáveis no Google Meet e Microsoft Teams com o PromptNinja. Leia roteiros discretamente, mantenha o contato visual e transmita autoridade profissional.";
     let ctaText = "Começar Reunião com Teleprompter";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-google-meet-teams";
     const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";

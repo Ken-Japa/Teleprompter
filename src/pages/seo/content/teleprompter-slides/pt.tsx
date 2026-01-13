@@ -3,14 +3,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterSlidesPT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6">Sincronize Teleprompter com PowerPoint: Apresentações Perfeitas</h2>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para Apresentações de Slides: Combine PowerPoint com PromptNinja
+        </h2>
 
-        <p className="mb-6">
-            O maior pesadelo de quem apresenta com slides é a dissincronia: o teleprompter continua rolando enquanto você ainda está explicando o gráfico do slide anterior. O <strong>PromptNinja</strong> resolve isso definitivamente com a funcionalidade de <strong>Sincronização por Comandos</strong>.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            O maior pesadelo de quem apresenta com slides é a dissincronia: o teleprompter continua rolando enquanto você ainda está explicando o gráfico do slide anterior. <strong>Cansado de ler slides e perder o contato visual com sua audiência?</strong>
         </p>
 
-        <p className="mb-6">
-            Transforme suas apresentações institucionais, aulas online e webinars em performances profissionais onde áudio e visual caminham juntos, sem esforço.
+        <p className="text-slate-300 mb-8">
+            Neste guia, vamos te mostrar como integrar o <strong>PromptNinja</strong> com o PowerPoint e o Google Slides para ter apresentações impecáveis. Descubra como usar o comando exclusivo [STOP] para pausar o roteiro automaticamente em cada transição de slide, permitindo que você mantenha a autoridade, a conexão visual e o ritmo perfeito. Transforme seus webinars, aulas e palestras corporativas em performances profissionais onde áudio e visual caminham juntos, sem esforço e de forma gratuita!
         </p>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-orange-500">
@@ -71,7 +73,7 @@ export const TeleprompterSlidesPT = () => (
                 Nunca mais se preocupe em "perder" o texto. Com o PromptNinja, você controla o show.
             </p>
             <a
-                href="/?lang=pt#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-white text-slate-900 font-bold py-3 px-8 mx-auto rounded-full transition hover:bg-slate-200 "
             >
                 Criar Apresentação Agora

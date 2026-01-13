@@ -3,13 +3,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterModoBilinguePT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
-            Aprenda Inglês com Teleprompter: A Técnica de "Shadowing"
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter Bilíngue: Alcance uma Audiência Global
         </h2>
 
-        <p className="mb-6 text-xl text-slate-300">
-            Você estuda inglês há anos, entende a gramática, mas quando vai falar... trava. A pronúncia não sai.
-            Isso acontece porque sua boca não tem "memória muscular".
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Em um mundo cada vez mais conectado, produzir conteúdo em apenas um idioma é limitar seu potencial. <strong>O modo bilíngue do PromptNinja foi desenhado para criadores que desejam expandir suas fronteiras e falar com o mundo.</strong>
+        </p>
+
+        <p className="text-slate-300 mb-8">
+            Neste guia, você descobrirá como nossa ferramenta exclusiva facilita a tradução simultânea e a gravação de vídeos em múltiplos idiomas. Seja você um professor de idiomas utilizando a técnica de "Shadowing", um executivo preparando uma apresentação internacional ou um YouTuber criando versões dubladas do seu conteúdo, o PromptNinja oferece a estabilidade e a clareza necessárias. Explore nossos recursos de scripts lado a lado, suporte a caracteres especiais e tradução instantânea para garantir que sua mensagem seja compreendida em qualquer lugar do planeta, tudo de forma gratuita e intuitiva.
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border border-blue-500/30 mb-12">

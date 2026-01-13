@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const HistoriaDoTeleprompterPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            A História Secreta do Teleprompter: De Rolos de Papel à Inteligência Artificial
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            A História do Teleprompter: De Rolos de Papel à Era Digital
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Viaje no tempo e descubra como uma invenção desesperada para ajudar atores da Broadway se tornou o PromptNinja, o software que democratiza a oratória profissional para milhões hoje.
+            Viaje no tempo e descubra como uma invenção desesperada para ajudar atores se tornou o PromptNinja. <strong>Conheça a fascinante jornada tecnológica</strong> que revolucionou a fala profissional.
         </p>
 
         <p className="text-slate-300 mb-8">
-            Você já se perguntou como presidentes discursam por horas sem errar uma vírgula ou como âncoras de telejornal olham fixamente para a câmera enquanto leem notícias urgentes? A resposta não é "memória fotográfica", é tecnologia. Vamos viajar no tempo e descobrir como uma caixa de papelão evoluiu para o app que você tem no bolso hoje.
+            Neste mergulho histórico, exploramos a evolução do teleprompter, uma ferramenta que se tornou indispensável para a comunicação moderna. Desde os primeiros rolos de papel motorizados na Broadway dos anos 50 até o advento do vidro 'beam splitter' e a revolução dos aplicativos online, a história do teleprompter é marcada pela busca constante por naturalidade e conexão. Descubra como presidentes, jornalistas e agora milhões de criadores de conteúdo utilizam essa tecnologia para transmitir confiança e autoridade. Entenda como o PromptNinja democratiza essa herança tecnológica, oferecendo recursos de ponta como controle por voz e sincronia em nuvem, tudo de forma gratuita para que você também faça parte da história da oratória digital.
         </p>
 
         <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
@@ -21,7 +21,7 @@ export const HistoriaDoTeleprompterPT = () => (
                 Não fique preso ao passado. Use a tecnologia que revolucionou a comunicação
                 para gravar seus vídeos com a naturalidade de um profissional.
             </p>
-            <a href="/?lang=pt#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+            <a href="https://promptninja.solutionkit.com.br/#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
                 Experimentar Tecnologia Ninja Gratis
             </a>
         </div>
@@ -87,7 +87,7 @@ export const HistoriaDoTeleprompterPT = () => (
 
         <div className="text-center mt-12 pb-12">
             <a
-                href="#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-purple-600 to-blue-500 font-bold py-4 px-10 rounded-full transition hover:scale-105 shadow-xl text-white text-lg"
             >
                 Faça Parte da História: Use o PromptNinja Agora

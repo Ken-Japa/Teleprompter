@@ -3,12 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const FuturoTelepromptersAiPT = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            O Futuro dos Teleprompters com IA: O Fim do "Leitor Robô"?
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            O Futuro dos Teleprompters: IA e a Nova Era da Comunicação
         </h2>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            Antigamente, você precisava de uma pessoa girando uma manivela para rolar o papel. Hoje, a Inteligência Artificial escuta você. Em breve, ela corrigirá seus olhos. O futuro do teleprompter não é apenas ler, é <strong>atuar</strong>.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Entenda como a Inteligência Artificial está redefinindo a forma como falamos para a câmera. <strong>Descubra as tecnologias emergentes</strong> que eliminam as barreiras entre o roteiro e a performance natural.
+        </p>
+
+        <p className="text-slate-300 mb-8">
+            Neste olhar para o horizonte tecnológico, exploramos a revolução silenciosa que está transformando o teleprompter de um simples display de texto em um assistente de performance inteligente. Da rolagem movida por reconhecimento de voz em tempo real — recurso já presente no PromptNinja — à correção digital do contato visual e geração automatizada de roteiros, a IA está democratizando ferramentas que antes eram exclusivas de grandes emissoras de TV. Analisamos como essas inovações permitem que o orador se liberte da carga cognitiva de memorização para focar no que realmente ressoa com a audiência: a autenticidade e a conexão emocional. O futuro do teleprompter não é apenas sobre ler melhor, mas sobre ampliar o carisma humano através da tecnologia acessível, gratuita e online.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
@@ -63,7 +67,7 @@ export const FuturoTelepromptersAiPT = () => (
 
         <div className="text-center mt-12 pb-12">
             <a
-                href="#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-purple-700 to-blue-700 font-bold py-4 px-10 rounded-full transition hover:scale-105 shadow-xl text-white text-lg"
             >
                 Experimente o Futuro Hoje (Voice Control)

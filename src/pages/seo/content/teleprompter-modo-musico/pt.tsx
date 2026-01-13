@@ -2,16 +2,16 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterModoMusicoPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            🎸 Teleprompter para Músicos: Nunca Mais Esqueça a Letra ou o Acorde no Palco!
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para Músicos: Letras e Cifras na Ponta dos Dedos
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Você já passou pelo pesadelo de dar um "branco" total bem na hora do refrão mais importante do seu show? Ou de se perder na sequência de acordes de um cover novo em plena live?
+            Leve sua performance para o próximo nível sem o medo de esquecer a letra ou se perder nos acordes. <strong>O Modo Músico do PromptNinja</strong> é a solução definitiva para artistas e lives.
         </p>
 
         <p className="text-slate-300 mb-8">
-            O <strong>Modo Músico do PromptNinja</strong> foi criado especificamente para oferecer segurança profissional a artistas de todos os níveis. Transforme seu tablet ou smartphone no seu roadie digital e garanta uma apresentação impecável do início ao fim.
+            Neste guia especializado para artistas, exploramos como o PromptNinja transforma seu smartphone ou tablet no roadie digital definitivo. Descubra como configurar um teleprompter que acompanha seu ritmo, permitindo que você mantenha o foco na entrega emocional e na conexão com seu público, seja em um palco presencial ou em transmissões ao vivo. Com suporte para cifras, acordes e controle via pedal bluetooth, nossa ferramenta online e gratuita garante que cada refrão e cada ponte sejam executados com perfeição, eliminando a ansiedade do 'branco' e profissionalizando seu setup musical em segundos.
         </p>
 
         <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">

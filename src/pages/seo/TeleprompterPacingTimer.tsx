@@ -14,8 +14,8 @@ export const TeleprompterPacingTimer: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterPacingTimerPT;
-    let title = "Teleprompter com Pacing e Timer: Duração Exata para Vídeos";
-    let description = " Controle o ritmo da sua fala e a duração do vídeo. Use comandos de texto [STOP] e [PAUSE] no melhor teleprompter com timer online.";
+    let title = "Pacing e Timer para Teleprompter: Controle seu Ritmo de Fala";
+    let description = "Domine o ritmo das suas gravações com o cronômetro e timer do PromptNinja. Evite falar rápido demais ou devagar. Ajuste de WPM e feedback em tempo real. Grátis e online.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-pacing-timer-online";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp"; // Standard image for now
     let schema: object = {

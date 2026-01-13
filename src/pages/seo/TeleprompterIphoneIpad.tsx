@@ -14,8 +14,8 @@ export const TeleprompterIphoneIpad: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterIphoneIpadPT;
-    let title = "Melhor App Teleprompter para iPhone e iPad (Grátis)";
-    let description = "Transforme seu iPhone ou iPad em um teleprompter profissional. Funciona no Safari, sem instalar apps pesados, com controle remoto P2P.";
+    let title = "Teleprompter para iPad: Transforme seu Tablet em um Estúdio Profissional";
+    let description = "Use o PromptNinja no seu iPad e tenha um teleprompter de alta performance. Sincronização em tempo real, controle remoto via iPhone e layout otimizado. Comece grátis.";
     let ctaText = "Abrir no iPhone/iPad";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-iphone-ipad";
     const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";

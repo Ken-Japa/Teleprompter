@@ -3,16 +3,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTabletPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            📱 Teleprompter para Tablet e iPad: O Equilíbrio Perfeito para Seus Vídeos!
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para Tablet Android e iPad: Otimizado para Telas Maiores
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Você já sentiu que a tela do celular é pequena demais para ler seu roteiro com conforto, mas um notebook é desajeitado para levar para as gravações? Você não está sozinho.
+            O tablet é o "meio-termo" perfeito: tela grande o suficiente para uma leitura confortável a metros de distância, mas leve e portátil o bastante para qualquer locação. <strong>Por que se limitar à tela pequena do celular ou ao peso de um notebook?</strong>
         </p>
 
         <p className="text-slate-300 mb-8">
-            Com o <strong>PromptNinja</strong>, você transforma seu tablet em um teleprompter profissional de alta performance. Imagine ter a liberdade de gravar em qualquer lugar, com um setup leve e uma tela espaçosa que garante que você nunca perca o fio da meada. Seja para vídeos no YouTube, apresentações corporativas ou aulas online, o uso do tablet potencializa sua comunicação e economiza horas de regravação.
+            Neste guia, exploramos por que os tablets são considerados os melhores dispositivos para teleprompters profissionais. Com o <strong>PromptNinja</strong>, você desbloqueia o potencial máximo do seu iPad ou tablet Android, transformando-o em um estúdio de alta performance. Aprenda a configurar o layout responsivo para evitar movimentos oculares excessivos, use seu smartphone como controle remoto wireless e descubra como o modo espelhamento nativo integra seu tablet perfeitamente a equipamentos de estúdio, tudo de forma gratuita e direto no navegador.
         </p>
 
         <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
@@ -166,8 +166,8 @@ export const TeleprompterTabletPT = () => (
             <h2 className="text-3xl font-extrabold text-white mb-6">Transforme seu Tablet em um Estúdio Agora!</h2>
             <p className="text-indigo-200 text-lg mb-8 max-w-2xl mx-auto">Pare de apertar os olhos para ler no celular. Use toda a tela do seu tablet com o PromptNinja e grave vídeos com confiança total.</p>
             <div className="flex flex-wrap justify-center gap-4">
-                <a href="https://promptninja.solutionkit.com.br" className="bg-indigo-500 hover:bg-indigo-400 text-white font-bold py-4 px-10 rounded-full shadow-lg transition-transform hover:scale-105">Testar Grátis no Tablet</a>
-                <a href="/?lang=pt#pricing" className="bg-transparent border-2 border-indigo-400 hover:bg-indigo-800 text-white font-bold py-4 px-10 rounded-full transition-colors">Ver Planos PRO</a>
+                <a href="https://promptninja.solutionkit.com.br/#app" className="bg-indigo-500 hover:bg-indigo-400 text-white font-bold py-4 px-10 rounded-full shadow-lg transition-transform hover:scale-105">Testar Grátis no Tablet</a>
+                <a href="https://promptninja.solutionkit.com.br/#pricing" className="bg-transparent border-2 border-indigo-400 hover:bg-indigo-800 text-white font-bold py-4 px-10 rounded-full transition-colors">Ver Planos PRO</a>
             </div>
             <p className="mt-6 text-sm text-indigo-300">Compatível com iPad e qualquer Tablet Android.</p>
         </section>
@@ -217,7 +217,7 @@ export const TeleprompterTabletPT = () => (
                 Não deixe seu iPad pegando poeira. Ele é o equipamento de R$5.000 que você já tem e não está usando para melhorar seus vídeos.
             </p>
             <a
-                href="/?lang=pt#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 font-bold py-3 px-8 rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

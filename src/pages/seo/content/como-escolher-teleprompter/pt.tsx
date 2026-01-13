@@ -3,16 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const ComoEscolherTeleprompterPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Como Escolher o Teleprompter Ideal em 2026: Fuja das Armadilhas
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Como Escolher o Teleprompter Ideal: Guia de Compra Completo
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Está em dúvida entre qual teleprompter comprar ou se vale a pena investir agora? Descubra o que realmente importa na hora da escolha e por que o PromptNinja pode ser sua melhor ferramenta antes de gastar um único centavo.
+            Tome a decisão certa para o seu setup de vídeo. <strong>Descubra o que considerar antes de comprar</strong> um teleprompter e saiba quando a solução de software é superior ao hardware.
         </p>
 
         <p className="text-slate-300 mb-8">
-            Você pesquisou no Mercado Livre ou Amazon e ficou confuso com tantas opções? Vidro, iPad, para celular, de estúdio... os preços variam de R$ 50 a R$ 5.000. Antes de abrir a carteira, leia este guia. A melhor escolha para o seu momento pode custar zero.
+            Neste guia exaustivo, navegamos pelo complexo mercado de teleprompters para ajudar você a economizar tempo e dinheiro. Seja para um estúdio profissional, um canal no YouTube ou reuniões remotas, entender as diferenças fundamentais entre equipamentos físicos de alto custo e soluções de software modernas é crucial. Analisamos detalhadamente os prós e contras de cada tipo de equipamento, desde os tradicionais sistemas beam splitter até o poder dos aplicativos online como o PromptNinja. Aprenda a avaliar a qualidade do vidro, a portabilidade, a facilidade de controle e como integrar ferramentas gratuitas para obter resultados de elite sem investir fortunas iniciais. Escolha com inteligência e foque no que realmente importa: a clareza e autoridade da sua mensagem.
         </p>
 
         <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
@@ -21,7 +21,7 @@ export const ComoEscolherTeleprompterPT = () => (
                 Não gaste dinheiro agora. Use a tela que você já tem para testar seu workflow
                 e entender o que você realmente precisa em um teleprompter.
             </p>
-            <a href="/?lang=pt#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+            <a href="https://promptninja.solutionkit.com.br/#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
                 Abrir Teleprompter Grátis
             </a>
         </div>
@@ -98,7 +98,7 @@ export const ComoEscolherTeleprompterPT = () => (
 
         <div className="text-center mt-12 pb-12">
             <a
-                href="#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-purple-700 to-blue-700 font-bold py-4 px-10 rounded-full transition hover:scale-105 shadow-xl text-white text-lg"
             >
                 Economize R$ 500: Use o PromptNinja Grátis

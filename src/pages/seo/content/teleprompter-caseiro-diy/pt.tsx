@@ -22,7 +22,7 @@ export const TeleprompterCaseiroDIYPT = () => (
                 Montou seu teleprompter mas não tem como inverter o texto?
                 O <strong>PromptNinja</strong> tem a função espelho (Mirror) 100% gratuita.
             </p>
-            <a href="/?lang=pt#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+            <a href="https://promptninja.solutionkit.com.br/#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
                 Abrir Teleprompter com Espelhamento
             </a>
         </div>
@@ -274,7 +274,7 @@ export const TeleprompterCaseiroDIYPT = () => (
             </p>
             <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
                 <a
-                    href="https://promptninja.solutionkit.com.br"
+                    href="https://promptninja.solutionkit.com.br/#app"
                     className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 rounded-full transition hover:brightness-110 hover:scale-105"
                     style={{ color: 'white' }}
                 >

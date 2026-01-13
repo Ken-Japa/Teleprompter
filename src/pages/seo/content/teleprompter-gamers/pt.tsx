@@ -3,18 +3,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterGamersPT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para Gamers e Streamers: Zero Lag, Performance Máxima</h2>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para Gamers e Streamers: Melhore seu Chat e Performance
+        </h2>
 
-        <p className="mb-6 text-lg text-slate-300">
-            Live de 4h. Você tá no mid do ranked. 300 viewers assistindo. Precisa ler donation message longa. Clica Alt-Tab pro roteiro. Jogo TRAVA 2 segundos. Morre. Chat explode: "OMEGALUL". Viewers caem pra 250.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            No meio de uma partida intensa ou de um react ao vivo, cada distração pode custar caro. Você já teve que dar Alt-Tab para ler um roteiro ou agradecer uma donate e acabou perdendo a ação? <strong>A vida de um streamer exige foco total, e o improviso nem sempre é o melhor caminho.</strong>
         </p>
 
-        <p className="mb-6">
-            Você pensa "preciso teleprompter". Googla "teleprompter for streamers". Encontra apps que: (1) comem 500MB RAM (seu jogo já usa 6GB), (2) não funcionam em segundo plano (trava quando minimiza), ou (3) custam $19.99/mês pra funcionalidade básica.
-        </p>
-
-        <p className="mb-8">
-            Este guia mostra EXATAMENTE como configurar teleprompter GAMER em 90 segundos: zero lag, ~50MB RAM, controle sem Alt-Tab, modo chroma key pra OBS.
+        <p className="text-slate-300 mb-8">
+            Neste guia, mostramos por que streamers de sucesso na Twitch e no YouTube estão adotando o <strong>PromptNinja</strong> como sua ferramenta secreta. Descubra como configurar um teleprompter minimalista que não consome seus preciosos FPS, permite a leitura de agradecimentos sem tirar os olhos do game e se integra perfeitamente ao OBS Studio via Chroma Key. Eleve o nível da sua produção, mantenha seu chat engajado e nunca mais perca o ritmo da sua stream!
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
@@ -210,7 +208,7 @@ export const TeleprompterGamersPT = () => (
                 Streamer PRO = roteiro invisível + zero lag + hands-free control. Tudo que você precisa, nada que você não precisa.
             </p>
             <a
-                href="/?lang=pt#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 font-bold py-3 px-8 rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

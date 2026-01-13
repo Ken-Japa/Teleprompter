@@ -3,13 +3,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoDecorarTextoPT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
-            Como Decorar Textos Longos em Minutos (O Segredo é Não Decorar)
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Como Decorar Texto Rápido? 🧠 5 Técnicas Infalíveis (e por que não decorar!)
         </h2>
 
-        <p className="text-lg text-slate-300 mb-8">
-            Você tem uma apresentação amanhã. O roteiro tem 5 páginas. Seu coração acelera só de pensar em esquecer uma frase e travar na frente da câmera.
-            A verdade brutal? <strong>Tentar decorar é amadorismo.</strong>
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Você tem uma apresentação amanhã. O roteiro tem 5 páginas. Seu coração acelera só de pensar em esquecer uma frase e travar na frente da câmera. A busca por "como decorar texto rápido" é comum, mas a verdade brutal? <strong>Tentar decorar palavra por palavra é o caminho mais curto para uma performance robótica e nervosa.</strong>
+        </p>
+
+        <p className="text-slate-300 mb-8">
+            Neste guia, vamos te mostrar as 5 técnicas de memorização mais eficazes usadas por atores e oradores. Mas também vamos revelar <strong>A Armadilha da Memorização</strong>: por que os maiores Youtubers e palestrantes do mundo pararam de decorar e como o <strong>PromptNinja</strong> se tornou a ferramenta essencial para eles brilharem com naturalidade, sem o estresse de esquecer uma única vírgula.
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-yellow-500 mb-12 shadow-2xl">
@@ -94,9 +97,9 @@ export const ComoDecorarTextoPT = () => (
             ]}
         />
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-12 mb-12">
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-white text-slate-900 font-bold py-3 px-8 mx-auto rounded-full transition hover:bg-slate-200"
             >
                 Abrir Teleprompter Agora (Sem Login)

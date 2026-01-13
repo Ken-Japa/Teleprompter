@@ -3,16 +3,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterGoogleMeetTeamsPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter para Google Meet & Teams: O Segredo da Presença Executiva
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para Google Meet e Teams: Domine Suas Reuniões Profissionais
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Domine suas reuniões, transmita confiança e nunca mais esqueça um ponto importante. Descubra como o PromptNinja transforma seu Google Meet e Microsoft Teams em um palco profissional.
+            Transmitir confiança e autoridade em reuniões virtuais é o novo diferencial executivo. <strong>Leia seus roteiros e notas discretamente</strong> enquanto mantém o contato visual perfeito.
         </p>
 
         <p className="text-slate-300 mb-8">
-            Reunião com a diretoria. 14 pessoas no Microsoft Teams. É sua vez de apresentar. Você tem um documento aberto na outra tela, olha para o lado para ler... e por minutos, ninguém vê seus olhos. Você parece distante, inseguro ou despreparado. O "Zoom Fatigue" é real, e a falta de contato visual é a principal causa de desconexão em vendas e liderança remota.
+            Neste guia essencial para profissionais modernos, mostramos como transformar seu Google Meet ou Microsoft Teams em um verdadeiro palco corporativo com o PromptNinja. Aprenda a técnica do overlay invisível para manter o olhar fixo na lente, garantindo que você nunca perca o fio da meada ou esqueça um ponto crucial da sua apresentação. Descubra como nossa ferramenta online e discreta permite que você apresente com a segurança de um líder experiente, transmitindo presença executiva e domínio total do assunto, sem que sua audiência saiba que você está usando um teleprompter.
         </p>
 
         <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
@@ -21,7 +21,7 @@ export const TeleprompterGoogleMeetTeamsPT = () => (
                 Fale olhando diretamente para a lente e transmita autoridade sem esforço.
                 O <strong>PromptNinja</strong> é invisível para sua audiência e indispensável para você.
             </p>
-            <a href="/?lang=pt#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+            <a href="https://promptninja.solutionkit.com.br/#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
                 Abrir Teleprompter Discreto
             </a>
         </div>
@@ -180,7 +180,7 @@ export const TeleprompterGoogleMeetTeamsPT = () => (
                 Não deixe que a tecnologia atrapalhe sua comunicação. Use-a para amplificar sua presença.
             </p>
             <a
-                href="/?lang=pt#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-indigo-500 to-blue-600 font-bold py-3 px-8 rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

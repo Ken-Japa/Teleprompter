@@ -3,18 +3,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterIphoneIpadPT = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para iPhone e iPad: Zero Instalação, 100% Profissional</h2>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para iPad: Transforme seu Tablet em um Estúdio Profissional
+        </h2>
 
-        <p className="mb-6 text-lg text-slate-300">
-            iPhone 15 Pro Max. R$9500. Câmera 4K60fps ProRes. Estabilização cinematográfica. Aí grava o vídeo... olha pro papel a cada 5 segundos. Perde contato visual. Público sente disconnect. Câmera PRO + roteiro AMADOR = desperdício.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            O iPad é, sem dúvida, a melhor ferramenta física para um teleprompter. Sua tela retina de alta definição e tamanho generoso são ideais para leitura clara, mesmo a alguns metros de distância. Mas por que pagar assinaturas caras na App Store se você pode ter o melhor desempenho de graça?
         </p>
 
-        <p className="mb-6">
-            Você pensa "preciso app teleprompter". Abre App Store. Encontra apps que: (1) cobram R$49.99/semana (R$2600/ano!), (2) limitam 60 segundos no free tier, ou (3) têm marca d'água gigante. Sério? Pagar mais que Netflix pra rolar texto?
-        </p>
-
-        <p className="mb-8">
-            Este guia mostra EXATAMENTE como transformar iPhone/iPad em teleprompter PRO em 45 segundos: zero instalação App Store, zero mensalidade, funciona offline, sincroniza via AirPlay/P2P.
+        <p className="text-slate-300 mb-8">
+            Neste guia, você aprenderá como configurar o <strong>PromptNinja</strong> no seu iPad para obter uma experiência de estúdio de TV. Descubra como economizar milhares de reais abandonando apps "freemium" limitados e adotando nossa tecnologia Web App. Mostraremos como sincronizar seu iPhone como controle remoto P2P, configurar o modo espelho para equipamentos profissionais e garantir que você nunca mais erre uma fala em seus vídeos ou apresentações.
         </p>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
@@ -207,7 +205,7 @@ export const TeleprompterIphoneIpadPT = () => (
                 Câmera PRO merece teleprompter PRO. Zero App Store, zero mensalidade, zero limite.
             </p>
             <a
-                href="/?lang=pt#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

@@ -14,8 +14,8 @@ export const TeleprompterWebVsHardware: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterWebVsHardwarePT;
-    let title = "Teleprompter Online vs Hardware: O Guia Definitivo 2024 | PromptNinja";
-    let description = "Vale a pena comprar um teleprompter físico? Compare custo-benefício, nítidez e facilidade entre o PromptNinja (Gratis) e equipamentos como Ulanzi e SmallRig.";
+    let title = "Teleprompter Online vs Hardware: Guia Completo e Comparativo";
+    let description = "Descubra se vale a pena comprar um teleprompter físico ou usar uma solução online. Compare custo-benefício e performance entre o PromptNinja e equipamentos de hardware.";
     let ctaText = "Começar Grátis com PromptNinja";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-web-vs-hardware";
     const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";

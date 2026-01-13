@@ -21,7 +21,7 @@ export const TeleprompterParaYoutubersPT = () => (
                 Reduza o tempo de gravação em 50% e elimine a frustração de esquecer o texto.
                 O <strong>PromptNinja</strong> é o parceiro secreto dos maiores criadores.
             </p>
-            <a href="/?lang=pt#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+            <a href="https://promptninja.solutionkit.com.br/#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
                 Experimentar Gratuitamente Agora
             </a>
         </div>
@@ -138,7 +138,7 @@ export const TeleprompterParaYoutubersPT = () => (
                 Os maiores canais (MrBeast, Ali Abdaal, Peter McKinnon) usam algum tipo de roteiro ou teleprompter. A consistência deles vem do fluxo de trabalho. O PromptNinja te dá esse superpoder de graça.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                <a href="/app" className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full font-bold transition text-center">
+                <a href="https://promptninja.solutionkit.com.br/#app" className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full font-bold transition text-center">
                     Começar a Gravar Agora
                 </a>
             </div>

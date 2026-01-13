@@ -3,12 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const CelebridadesUsamTeleprompterPT = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            7 Celebridades e Gigantes que Usam Teleprompter (e Você Nem Sabia)
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Celebridades que Usam Teleprompter: Exemplos de Profissionalismo e Sucesso
         </h2>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            Existe um mito de que usar teleprompter é "trapaça" ou sinal de que você não domina o assunto. A verdade? Os maiores comunicadores do mundo usam. A diferença é que eles usam tão bem que parece natural. Se Barack Obama e Adele usam, por que você deveria ter vergonha?
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Desmistifique o uso do apoio visual acompanhando os maiores nomes da comunicação. <strong>Descubra quais celebridades confiam no teleprompter</strong> para entregar performances inesquecíveis.
+        </p>
+
+        <p className="text-slate-300 mb-8">
+            Neste artigo revelador, exploramos como ícones mundiais, de presidentes americanos a estrelas do pop e âncoras de jornal, utilizam o teleprompter para manter o controle absoluto de suas mensagens. Longe de ser uma 'trapaça', o uso de roteiros fluídos é uma marca de profissionalismo que permite ao comunicador focar na expressão facial, na entonação e na conexão genuína com o público, eliminando a ansiedade da memorização. Analisamos casos reais e mostramos como você pode aplicar as mesmas técnicas de elite usando o PromptNinja, elevando sua autoridade e confiança diante da câmera, seja em um estúdio ou gravando em casa de forma gratuita e online.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
@@ -100,7 +104,7 @@ export const CelebridadesUsamTeleprompterPT = () => (
 
         <div className="text-center mt-12 pb-12">
             <a
-                href="#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 font-bold py-4 px-10 rounded-full transition hover:scale-105 shadow-xl text-white text-lg"
             >
                 Fale Como um Líder: Use PromptNinja

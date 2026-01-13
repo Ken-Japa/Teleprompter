@@ -3,12 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const ErrosComunsTeleprompterPT = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            5 Erros Amadores ao Usar Teleprompter que Arruínam Seus Vídeos (E Como Corrigir)
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Erros Comuns ao Usar Teleprompter e Como Evitá-los
         </h2>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            Você comprou o equipamento, baixou o app, mas o vídeo final ficou... estranho. Roboticamente lido, olhos correndo de um lado para o outro. Calma, o problema não é você, é a técnica. Vamos corrigir os 5 erros clássicos agora.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Transforme sua performance corrigindo os deslizes que prejudicam sua naturalidade. <strong>Aprenda a dominar o teleprompter</strong> e pareça um profissional experiente desde a primeira gravação.
+        </p>
+
+        <p className="text-slate-300 mb-8">
+            Neste guia prático, identificamos e solucionamos os maiores obstáculos enfrentados por quem começa a usar o teleprompter. De erros visuais como o 'olhar de assistir tênis' à temida 'voz de robô', exploramos cada detalhe que separa uma leitura artificial de uma comunicação magnética e fluída. Descubra técnicas validadas para ajustar a distância da câmera, configurar as margens do texto e utilizar recursos de inteligência artificial para que o roteiro acompanhe seu ritmo natural. Com o PromptNinja, você terá acesso às ferramentas e ao conhecimento necessários para evitar armadilhas comuns e garantir que sua mensagem seja entregue com máxima autoridade, tudo de forma gratuita e online.
         </p>
 
         <div className="space-y-8 mb-12">
@@ -103,7 +107,7 @@ export const ErrosComunsTeleprompterPT = () => (
 
         <div className="text-center mt-12 pb-12">
             <a
-                href="#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-purple-600 to-blue-700 font-bold py-4 px-10 rounded-full transition hover:scale-105 shadow-xl text-white text-lg"
             >
                 Grave Sem Erros Agora (Grátis)

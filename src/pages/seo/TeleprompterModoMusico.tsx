@@ -13,8 +13,8 @@ export const TeleprompterModoMusico: React.FC<Props> = () => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterModoMusicoPT;
-    let title = "Teleprompter para Músicos: Cante Sem Esquecer a Letra | PromptNinja";
-    let description = "O modo músico do PromptNinja permite rolar letras de músicas e acordes de forma fluida. Ideal para lives, vídeos de covers e ensaios. Grátis, online e fácil de usar!";
+    let title = "Teleprompter para Músicos: Letras e Cifras por Voz e Sincronia";
+    let description = "O modo músico do PromptNinja permite rolar letras de músicas e acordes de forma fluida. Ideal para lives, vídeos de covers e ensaios. Grátis, online e com sincronia inteligente.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-modo-musico";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {

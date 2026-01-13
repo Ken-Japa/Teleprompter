@@ -13,8 +13,8 @@ export const TeleprompterSlides: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterSlidesPT;
-    let title = "Como Sincronizar Teleprompter com PowerPoint (Comando STOP)";
-    let description = "Apresentações perfeitas com slides. Use o comando [STOP] para pausar o teleprompter automaticamente enquanto você muda o slide.";
+    let title = "Teleprompter para Apresentações de Slides: Combine PowerPoint com PromptNinja";
+    let description = "Cansado de ler slides? Use o PromptNinja para ter o seu roteiro na tela enquanto apresenta no Google Slides ou PowerPoint. Mantenha o contato visual e a autoridade. Grátis.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-sincronizar-powerpoint-slides";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {

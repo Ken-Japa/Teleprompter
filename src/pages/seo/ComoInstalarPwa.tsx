@@ -13,8 +13,8 @@ export const ComoInstalarPwa: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = ComoInstalarPwaPT;
-    let title = "Como Instalar o PromptNinja (PWA) : Para iPhone e Android";
-    let description = "Aprenda a instalar o PromptNinja como um aplicativo nativo no seu iPhone (iOS) ou Android. Mais performance, funcionamento offline e tela cheia.";
+    let title = "Como Instalar o Teleprompter PromptNinja no iPhone e Android";
+    let description = "Aprenda a instalar o PromptNinja como um aplicativo nativo no seu iPhone ou Android. Melhor performance, funcionamento offline e sem ocupar memória. Guia passo a passo.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/como-instalar-app-teleprompter-pwa";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {

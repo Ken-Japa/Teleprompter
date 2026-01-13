@@ -13,8 +13,8 @@ export const FuturoTelepromptersAi: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = FuturoTelepromptersAiPT;
-    let title = "O Futuro dos Teleprompters com IA: O Que Vem Por Aí?";
-    let description = "Reconhecimento de voz, correção de olhar e geração de roteiros. Descubra como a Inteligência Artificial está transformando os teleprompters.";
+    let title = "O Futuro dos Teleprompters e a Inteligência Artificial";
+    let description = "Descubra como a IA está revolucionando o teleprompter. De correção de olhar a rolagem inteligente por voz, veja o que o futuro reserva para a oratória digital.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/futuro-teleprompters-ai";
 
     if (lang === 'en') {

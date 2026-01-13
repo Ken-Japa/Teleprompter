@@ -76,8 +76,8 @@ export const HubGuidePage: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = HubGuideContentPT;
-    let title = "Guia Completo de Teleprompter (2025): De Iniciante a Profissional";
-    let description = "O guia definitivo sobre teleprompters: o que são, como usar, melhores apps, dicas de oratória e scripts. Tudo o que você precisa saber em um só lugar.";
+    let title = "Guia Completo de Teleprompter | De Iniciante a Profissional";
+    let description = "O guia definitivo sobre teleprompters: o que são, como usar, melhores apps, dicas de oratória e scripts gratuitos. Tudo o que você precisa saber em um só lugar.";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/guia-completo-teleprompter";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
 

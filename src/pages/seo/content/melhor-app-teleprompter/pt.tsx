@@ -254,7 +254,7 @@ export const MelhorAppTeleprompterPT = () => (
                             <td colSpan={4} className="p-8 text-center text-blue-100">
                                 <h3 className="text-xl font-bold text-white mb-4">Pronto para Aumentar sua Confiança e Impacto?</h3>
                                 <a
-                                    href="https://promptninja.solutionkit.com.br"
+                                    href="https://promptninja.solutionkit.com.br/#app"
                                     className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-10 rounded-full transition transform hover:scale-105 shadow-lg shadow-blue-500/25"
                                     style={{ color: 'white' }}
                                 >
@@ -322,7 +322,7 @@ export const MelhorAppTeleprompterPT = () => (
 
         <div className="text-center mt-12">
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mx-auto rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >

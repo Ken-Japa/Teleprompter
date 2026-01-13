@@ -3,16 +3,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterObsStudioPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            🎥 Eleve o Nível da Sua Stream: Use Teleprompter no OBS Studio!
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para OBS Studio: Overlay Transparente para Lives Profissionais
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Você é um streamer que busca o máximo de profissionalismo? Quer interagir com seu chat sem perder o fio da meada do seu roteiro? Sabemos que manter a fluidez durante uma live, lidar com imprevistos e ainda entregar um conteúdo de qualidade no OBS Studio pode ser um grande desafio.
+            Streamers de elite não improvisam: eles se preparam. <strong>Transforme o OBS Studio em uma verdadeira central de produção de TV</strong> com o overlay transparente do PromptNinja.
         </p>
 
         <p className="text-slate-300 mb-8">
-            Conheça o <strong>PromptNinja</strong>, a ferramenta de teleprompter online que se integra perfeitamente ao seu workflow no OBS Studio. Com ele, você transforma sua stream em uma verdadeira produção de TV, ganhando confiança, autoridade e engajamento. Seja para gameplays comentadas, tutoriais ao vivo, webinars ou podcasts, o PromptNinja é o seu aliado para uma comunicação impecável.
+            Neste guia, mostramos como integrar perfeitamente o PromptNinja ao OBS Studio em menos de 10 minutos. Aprenda a criar um overlay invisível para o chat, mas cristalino para você, garantindo que você nunca perca o contato visual com a lente ou esqueça um patrocinador importante. Descubra como usar seu celular como controle remoto sem fio para não tirar a mão do mouse ou teclado durante o jogo, tudo de forma gratuita, online e sem impacto no desempenho do seu PC.
         </p>
 
         <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
@@ -387,7 +387,7 @@ export const TeleprompterObsStudioPT = () => (
 
         <div className="text-center mt-12 mb-12">
             <a
-                href="/?lang=pt#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 font-bold py-4 px-10 rounded-full transition hover:brightness-110 hover:scale-105 transform shadow-lg text-lg"
                 style={{ color: 'white' }}
             >
@@ -466,7 +466,7 @@ export const TeleprompterObsStudioPT = () => (
                 Chega de improvisar intro. Chega de esquecer sponsors. Chega de olhar pro segundo monitor e perder viewers. Configure uma vez, use pra sempre.
             </p>
             <a
-                href="/?lang=pt#app"
+                href="https://promptninja.solutionkit.com.br/#app"
                 className="inline-block bg-gradient-to-r from-purple-500 to-indigo-500 font-bold py-4 px-10 rounded-full transition hover:brightness-110 hover:scale-105 transform shadow-lg text-lg"
                 style={{ color: 'white' }}
             >
