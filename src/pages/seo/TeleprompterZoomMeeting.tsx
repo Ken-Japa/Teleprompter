@@ -53,8 +53,8 @@ export const TeleprompterZoomMeeting: React.FC<Props> = ({ onLaunch }) => {
         };
     } else if (lang === 'es') {
         Content = TeleprompterZoomMeetingES;
-        title = "Teleprompter para Zoom GRATIS: Lee tu Guion sin que se Note 💡";
-        description = "Mejora tus reuniones en Zoom. Lee tu guion directamente en la pantalla sin desviar la mirada. 100% Gratis, sin descargas y con control remoto desde el móvil.";
+        title = "Teleprompter Virtual para Zoom y Videollamadas: El Secreto del Contacto Visual | PromptNinja";
+        description = "Mantén el contacto visual perfecto durante tus reuniones en línea. Usa PromptNinja para leer tu guion con fluidez mientras miras directamente a la cámara, transmitiendo total confianza y autoridad a tu audiencia.";
         ctaText = "Abrir Teleprompter para Zoom";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-zoom-meeting";
         schema = {

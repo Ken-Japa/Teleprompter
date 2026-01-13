@@ -3,15 +3,29 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterSlidesES = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6">Sincroniza Teleprompter con PowerPoint: Presentaciones Perfectas</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Cómo Sincronizar Teleprompter con PowerPoint y Slides
+        </h1>
 
-        <p className="mb-6">
-            La mayor pesadilla de quien presenta con diapositivas es la desincronización: el teleprompter sigue desplazándose mientras tú todavía estás explicando el gráfico de la diapositiva anterior. <strong>PromptNinja</strong> resuelve esto definitivamente con la funcionalidad de <strong>Sincronización por Comandos</strong>.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Nunca más pierda el ritmo en tus presentaciones. Con **PromptNinja** y el comando exclusivo **[STOP]**, puedes sincronizar perfectamente tu guion con tus diapositivas para una exposición magistral.
         </p>
 
-        <p className="mb-6">
-            Transforma tus presentaciones institucionales, clases online y webinars en performances profesionales donde audio y visual caminan juntos, sin esfuerzo.
+        <p className="text-slate-300 mb-8 font-medium">
+            El mayor temor de un orador es que el texto siga avanzando mientras todavía explica un gráfico importante. Nuestra tecnología permite que el guion te espere, garantizando que cada palabra coincida exactamente con lo que el público ve en pantalla.
         </p>
+
+        <div className="bg-orange-600/10 border border-orange-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Domina el Escenario Virtual</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                Ideal para Webinars, clases y presentaciones corporativas.
+                Toma el control total de tu narrativa hoy mismo.
+            </p>
+            <a href="/?lang=es#app" className="inline-block bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-orange-500/25" style={{ color: 'white' }}>
+                Sincronizar con Slides
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">Compatible con Clickers · Comando [STOP] · 100% Gratis</p>
+        </div>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-orange-500">
             <h3 className="text-2xl font-bold text-white mb-2">El Secreto: Comando [STOP]</h3>

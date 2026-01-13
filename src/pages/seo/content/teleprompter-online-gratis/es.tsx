@@ -3,19 +3,29 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterOnlineGratisES = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6">Teleprompter Online Gratis: Deja de Perder Horas Regrabando</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter Online Gratis: Graba Vídeos Profesionales sin Errores
+        </h1>
 
-        <p className="mb-6 text-lg text-slate-300">
-            ¿Alguna vez pasaste <strong>3 horas intentando grabar un video de 8 minutos</strong>? Empiezas a hablar, te trabas en la frase exacta, miras tus notas, pierdes el contacto visual con la cámara. Regrabes. Te trabas de nuevo en la MISMA frase. Otros 15 minutos perdidos. Al final del día: 47 intentos, 2h53min gastados, video publicado con cortes visibles y esa sensación de "pudo haber quedado mejor".
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Deja de perder horas regrabando vídeos. Usa **PromptNinja**, el teleprompter online gratuito que funciona directamente en tu navegador. Sin instalaciones, sin registros y con control remoto P2P de latencia cero.
         </p>
 
-        <p className="mb-6">
-            Sé EXACTAMENTE cómo se siente. La frustración de saber lo que quieres decir pero trabarte en el "cómo" decirlo. La vergüenza de publicar un video lleno de "ehh", "entonces...", "umm" porque te cansaste de regrebar. Y lo peor: ver a tu competidor publicando videos fluidos, profesionales, TODOS LOS DÍAS — mientras tú luchas por hacer 1 por semana.
+        <p className="text-slate-300 mb-8 font-medium">
+            ¿Alguna vez pasaste 3 horas intentando grabar un vídeo de 8 minutos? Empiezas a hablar, te trabas, pierdes el contacto visual con la cámara y tienes que empezar de nuevo. La frustración de saber lo que quieres decir pero trabarte en el "cómo" decirlo termina hoy.
         </p>
 
-        <p className="mb-8">
-            PromptNinja nació exactamente para acabar con este sufrimiento. Es un <strong>teleprompter online 100% gratis</strong> — cero límite de tiempo, cero marca de agua, cero trucos tipo "paga para desbloquear control remoto". Es la herramienta que separa videos amateur batallando 3h de producciones profesionales grabadas en 15 minutos.
-        </p>
+        <div className="bg-purple-600/10 border border-purple-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Empieza a Grabar Como un Profesional</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                Únete a miles de creadores que ahorran horas de edición y regrabación
+                usando nuestra tecnología de sincronización instantánea.
+            </p>
+            <a href="/?lang=es#app" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-purple-500/25">
+                Abrir Teleprompter Gratis
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">100% Gratis · Sin Registro · Modo Espejo Incluido</p>
+        </div>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
             <h3 className="text-2xl font-bold text-white mb-2">¿Por qué PromptNinja No Se Traba? (La Diferencia del P2P)</h3>

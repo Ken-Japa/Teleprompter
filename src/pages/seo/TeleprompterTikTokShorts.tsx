@@ -84,8 +84,8 @@ export const TeleprompterTikTokShorts: React.FC<Props> = ({ onLaunch }) => {
         };
     } else if (lang === 'es') {
         Content = TeleprompterTikTokShortsES;
-        title = "Teleprompter para TikTok, Reels y Shorts";
-        description = "Graba videos verticales perfectos para TikTok e Instagram Reels. Teleprompter gratuito que funciona en el móvil con control remoto P2P.";
+        title = "Teleprompter para TikTok y Reels: ¡Graba Vídeos Virales sin Errores!";
+        description = "Domina el algoritmo con contenido fluido y profesional. Usa PromptNinja para grabar tus Shorts y Reels manteniendo el contacto visual, eliminando las muletillas y reduciendo el tiempo de grabación a la mitad.";
         ctaText = "Abrir Teleprompter para TikTok";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-tiktok-shorts";
         schema = {

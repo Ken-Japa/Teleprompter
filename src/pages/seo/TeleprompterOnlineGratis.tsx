@@ -54,8 +54,8 @@ export const TeleprompterOnlineGratis: React.FC<Props> = ({ onLaunch }) => {
         ctaText = "Open Free Teleprompter";
     } else if (lang === 'es') {
         Content = TeleprompterOnlineGratisES;
-        title = "Teleprompter Online Gratis - Funciona en el Navegador";
-        description = "¿Buscas un teleprompter online gratis? PromptNinja funciona directo en tu navegador, sin descargar nada. Controla desde el móvil vía Wi-Fi.";
+        title = "Teleprompter Online Gratis: Graba Vídeos Profesionales sin Errores";
+        description = "Deja de perder horas regrabando vídeos. Usa PromptNinja, el teleprompter online gratuito que funciona directamente en tu navegador. Sin instalaciones, sin registros y con control remoto P2P de latencia cero.";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-online-gratis";
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {

@@ -3,16 +3,29 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterParaYoutubersES = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para YouTubers: Cómo Duplicar Retención y Cortar Edición a la Mitad</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para YouTubers: Cómo Duplicar Retención y Grabar como un PRO
+        </h1>
 
-        <p className="mb-6 text-xl text-slate-300">
-            Conoces el dolor: enciendes cámara, dices dos frases, te trabas. "Corta, de nuevo".
-            Miras el guion, vuelves al lente, pierdes el hilo.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Domina la cámara, mantén el contacto visual y elimina los errores. Usa **PromptNinja** para grabar vídeos fluidos, reducir el tiempo de edición a la mitad y aumentar la autoridad de tu canal.
         </p>
 
-        <p className="mb-8 text-slate-300">
-            Al final del día, tienes <strong>2 horas de material crudo para un video de 8 minutos</strong>. Y lo peor: la edición es una pesadilla de cortes ("Jump Cuts") para esconder errores, matando la fluidez.
+        <p className="text-slate-300 mb-8 font-medium">
+            Conoces el dolor: enciendes la cámara, dices dos frases y te trabas. "Corta, de nuevo". Al final del día, tienes 2 horas de material crudo para un vídeo de 8 minutos. La edición se convierte en una pesadilla de cortes para esconder errores.
         </p>
+
+        <div className="bg-red-600/10 border border-red-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Gana el Juego del Algoritmo</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                Los grandes canales no memorizan, usan tecnología. Empieza a
+                grabar hoy mismo con el flujo de trabajo de los expertos.
+            </p>
+            <a href="/?lang=es#app" className="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-red-500/25" style={{ color: 'white' }}>
+                Empezar a Grabar Ahora
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">Sincronización P2P · Modo Espejo · 100% Gratis</p>
+        </div>
 
         <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-red-500 mb-12 shadow-2xl">
             <h3 className="text-2xl font-bold text-white mb-4">El Algoritmo Odia la Inseguridad</h3>

@@ -3,14 +3,29 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoDecorarTextoES = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
-            Cómo Memorizar Textos Largo Rápido (El Secreto es NO Memorizar)
-        </h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Cómo Memorizar Textos Rápido: El Secreto de los Profesionales
+        </h1>
 
-        <p className="text-lg text-slate-300 mb-8">
-            Tienes presentación mañana. Guion de 5 páginas. Tu corazón se acelera al pensar en olvidar una frase y congelarte ante la cámara.
-            ¿La brutal verdad? <strong>Tratar de memorizar es amateur.</strong>
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            ¿Pasas horas intentando memorizar guiones para terminar bloqueado frente a la cámara? La clave de los grandes comunicadores no es una memoria sobrehumana, sino el uso inteligente de herramientas como **PromptNinja**.
         </p>
+
+        <p className="text-slate-300 mb-8 font-medium">
+            Memorizar palabra por palabra genera una actuación rígida y antinatural. Libera tu mente para enfocarte en tu lenguaje corporal y tu tono de voz, dejando que nosotros nos encarguemos de sostener tu discurso con fluidez.
+        </p>
+
+        <div className="bg-purple-600/10 border border-purple-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Graba con Total Confianza</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                Elimina el estrés de olvidar tus líneas. Con PromptNinja,
+                siempre sabrás qué decir a continuación, 100% gratis.
+            </p>
+            <a href="/?lang=es#app" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-purple-500/25" style={{ color: 'white' }}>
+                Empezar a Grabar sin Memorizar
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">Cero Estrés · Fluidez Natural · Sin Registro</p>
+        </div>
 
         <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-yellow-500 mb-12 shadow-2xl">
             <h3 className="text-2xl font-bold text-white mb-4">El Mito de la Memoria Perfecta</h3>

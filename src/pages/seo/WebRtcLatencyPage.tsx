@@ -53,8 +53,8 @@ export const WebRtcLatencyPage: React.FC<Props> = ({ onLaunch }) => {
         };
     } else if (lang === 'es') {
         Content = WebRtcLatencyContentES;
-        title = "Cómo WebRTC Elimina la Latencia en Teleprompters";
-        description = "Entiende la tecnología detrás de PromptNinja. Descubre cómo usamos WebRTC y P2P para garantizar un desplazamiento suave e instantáneo, superando al Bluetooth.";
+        title = "Teleprompter con Latencia Cero: La Tecnología WebRTC | PromptNinja";
+        description = "Descubre cómo PromptNinja elimina el lag mediante WebRTC y P2P. Sincronización instantánea entre tu móvil y PC para grabaciones fluidas y sin errores.";
         ctaText = "Probar Tecnología WebRTC Ahora";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/tecnologia-webrtc-baja-latencia";
         schema = {

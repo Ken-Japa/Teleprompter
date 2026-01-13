@@ -53,8 +53,8 @@ export const TeleprompterGamers: React.FC<Props> = ({ onLaunch }) => {
         };
     } else if (lang === 'es') {
         Content = TeleprompterGamersES;
-        title = "Teleprompter Minimalista para Gamers y Streamers (Sin HUD)";
-        description = "El teleprompter ideal para OBS y Twitch. Modo 'No HUD' (invisible), fondo transparente para Chroma Key y sin distracciones.";
+        title = "Teleprompter para Gamers y Streamers: Cero Lag, Máximo Impacto";
+        description = "Domina tus directos sin perder el hilo de la conversación. Con PromptNinja, obtienes un teleprompter ultra ligero diseñado específicamente para integrarse con OBS Studio y Twitch sin afectar tus FPS.";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-gamers-streaming";
         ctaText = "Abrir Modo Gamer";
         schema = {

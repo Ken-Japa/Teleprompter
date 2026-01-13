@@ -53,8 +53,8 @@ export const TeleprompterSlides: React.FC<Props> = ({ onLaunch }) => {
         };
     } else if (lang === 'es') {
         Content = TeleprompterSlidesES;
-        title = "Cómo Sincronizar Teleprompter con PowerPoint (Comando STOP)";
-        description = "Presentaciones perfectas con diapositivas. Usa el comando [STOP] para pausar el teleprompter automáticamente mientras cambias la diapositiva.";
+        title = "Sincroniza Teleprompter con PowerPoint y Slides | PromptNinja";
+        description = "Nunca más pierdas el ritmo en tus presentaciones. Con PromptNinja y el comando exclusivo [STOP], puedes sincronizar perfectamente tu guion con tus diapositivas para una exposición magistral.";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-sincronizar-powerpoint-slides";
         ctaText = "Sincronizar con Slides";
         schema = {

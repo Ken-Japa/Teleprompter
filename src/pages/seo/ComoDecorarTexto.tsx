@@ -54,8 +54,8 @@ export const ComoDecorarTexto: React.FC<Props> = ({ onLaunch }) => {
         ctaText = "Stop Memorizing and Start Recording";
     } else if (lang === 'es') {
         Content = ComoDecorarTextoES;
-        title = "Cómo Memorizar Guiones Rápido: 5 Técnicas Infalibles";
-        description = "Deja de sufrir intentando memorizar guiones largos. Conoce técnicas de memorización y la solución definitiva para no olvidar nunca una línea.";
+        title = "Cómo Memorizar Textos Rápido: El Secreto de los Profesionales";
+        description = "¿Pasas horas intentando memorizar guiones para terminar bloqueado frente a la cámara? La clave de los grandes comunicadores no es una memoria sobrehumana, sino el uso inteligente de herramientas como PromptNinja.";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/como-memorizar-guiones-rapido";
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {

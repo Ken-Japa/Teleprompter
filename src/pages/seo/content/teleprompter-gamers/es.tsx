@@ -3,19 +3,29 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterGamersES = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para Gamers y Streamers: Cero Lag, Máximo Rendimiento</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para Gamers y Streamers: Cero Lag, Máximo Impacto
+        </h1>
 
-        <p className="mb-6 text-lg text-slate-300">
-            Stream de 4 horas. Estás en partida ranked. 300 viewers mirando. Necesitas leer mensaje de donación largo. Alt-Tab al guion. Juego CONGELA 2 segundos. Mueres. Chat explota: "OMEGALUL". Viewers caen a 250.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Domina tus directos sin perder el hilo de la conversación. Con **PromptNinja**, obtienes un teleprompter ultra ligero diseñado específicamente para integrarse con OBS Studio y Twitch sin afectar tus FPS.
         </p>
 
-        <p className="mb-6">
-            Piensas "necesito teleprompter". Googleas "teleprompter for streamers". Encuentras apps que: (1) consumen 500MB RAM (tu juego ya usa 6GB), (2) no funcionan en segundo plano (crasha al minimizar), o (3) cuestan $19.99/mes por funcionalidad básica.
+        <p className="text-slate-300 mb-8 font-medium">
+            Ya sea que estés leyendo donaciones, narrando un speedrun o siguiendo un guion para un video de "React", nuestra herramienta te permite mantener la concentración en el juego mientras tu narrativa fluye de forma natural y profesional.
         </p>
 
-        <p className="mb-8">
-            Esta guía muestra EXACTAMENTE cómo configurar teleprompter GAMER en 90 segundos: cero lag, ~50MB RAM, control sin Alt-Tab, modo chroma key para OBS.
-        </p>
+        <div className="bg-green-600/10 border border-green-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Sube de Nivel tus Transmisiones</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                Modo invisible "No HUD", fondo para Chroma Key y control remoto.
+                Todo lo que un streamer profesional necesita, 100% gratis.
+            </p>
+            <a href="/?lang=es#app" className="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-green-500/25" style={{ color: 'white' }}>
+                Abrir Modo Gamer Gratis
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">Consumo: ~50MB RAM · Cero Lag · Integración OBS</p>
+        </div>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">Setup Gamer: Amateur vs PRO</h3>

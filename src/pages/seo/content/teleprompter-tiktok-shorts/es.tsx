@@ -3,21 +3,25 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTikTokShortsES = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter para TikTok, Reels y Shorts: Triplica Tu Producción Sin Parecer Robot
-        </h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight text-center">
+            Teleprompter para TikTok y Reels: ¡Graba Vídeos Virales sin Errores!
+        </h1>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            ¿Grabas 30 tomas del mismo video de 15 segundos y ninguna queda bien? Empiezas a hablar, olvidas la palabra exacta, desvías la mirada para recordar, pierdes esa energía inicial. Resultado? 40 minutos para grabar 15 segundos y el video aún quedó "meh".
+        <p className="lead text-xl text-slate-300 mb-8 text-center max-w-3xl mx-auto font-medium">
+            Domina el algoritmo con contenido fluido y profesional. Usa **PromptNinja** para grabar tus Shorts y Reels manteniendo el contacto visual, eliminando las muletillas y reduciendo el tiempo de grabación a la mitad.
         </p>
 
-        <p className="mb-6">
-            En TikTok, Reels y Shorts tienes <strong>1-3 segundos</strong> para captar la atención. Si tartamudeas, miras hacia otro lado o pierdes el timing de tu frase gancho, los espectadores hacen scroll. Game over. Tu video muere con 20% de retención.
-        </p>
-
-        <p className="mb-8">
-            El problema no es falta de talento. Es intentar hacer DOS cosas simultáneamente: memorizar texto + actuar con energía. Tu cerebro no puede. La solución? <strong>Deja que PromptNinja sostenga el texto. Tú sostienes la energía.</strong>
-        </p>
+        <div className="bg-pink-600/10 border border-pink-500/20 rounded-2xl p-6 md:p-8 text-center mb-12 max-w-3xl mx-auto">
+            <h3 className="text-2xl font-bold text-white mb-4">Haz que cada Segundo Cuente</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                En los vídeos cortos, la retención es todo. No dejes que los errores
+                arruinen tu alcance. Empieza a usar el teleprompter vertical hoy.
+            </p>
+            <a href="/?lang=es#app" className="inline-block bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-pink-500/25" style={{ color: 'white' }}>
+                Abrir Teleprompter para TikTok
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">Interfaz 9:16 · Control Remoto · 100% Gratis</p>
+        </div>
 
         <div className="bg-gradient-to-r from-red-900/30 to-pink-900/30 p-8 rounded-xl border border-pink-500/30 my-12">
             <h3 className="text-3xl font-bold text-white mb-6">La Trampa del Creador de Contenido Corto</h3>

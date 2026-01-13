@@ -83,8 +83,8 @@ export const TeleprompterPCWindows: React.FC<Props> = ({ onLaunch }) => {
         };
     } else if (lang === 'es') {
         Content = TeleprompterPCWindowsES;
-        title = "Teleprompter Gratis para PC y Windows (Sin Descarga)";
-        description = "Usa tu PC Windows como teleprompter profesional. Sin descargar programas, sin virus y con control remoto vía móvil. Funciona en Chrome y Edge.";
+        title = "Teleprompter para PC Windows: Configuración Profesional en Segundos";
+        description = "Transforma tu ordenador en una herramienta de producción de élite. Con PromptNinja, obtienes un teleprompter potente para Windows sin necesidad de instalar archivos .exe sospechosos o pagar suscripciones caras.";
         ctaText = "Abrir Teleprompter en PC";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-pc-windows";
         schema = {

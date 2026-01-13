@@ -3,15 +3,29 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoInstalarPwaES = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Cómo "Descargar" PromptNinja (Instalar App PWA)</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Cómo Instalar PromptNinja (App PWA) en iPhone y Android
+        </h1>
 
-        <p className="mb-6 text-xl text-slate-300">
-            ¿Buscaste en App Store o Play Store y no encontraste nada? Calma, eso es una <strong>ventaja</strong>, no un error.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Lleva el poder de un teleprompter profesional a tu móvil. Instala **PromptNinja** como una aplicación nativa para obtener el máximo rendimiento, funcionamiento 100% offline y grabación en pantalla completa.
         </p>
 
-        <p className="mb-8 text-slate-300">
-            PromptNinja es una <strong>Progressive Web App (PWA) de Élite</strong>. Tiene el poder de una app nativa (funciona offline, pantalla completa, sin lag) pero sin la burocracia de las tiendas. Instalas directo del navegador, en segundos, sin ocupar memoria de tu móvil.
+        <p className="text-slate-300 mb-8 font-medium">
+            ¿Buscaste en App Store o Play Store y no nos encontraste? Eso es una ventaja. PromptNinja es una **PWA (Progressive Web App)** de élite: se instala en segundos directamente desde tu navegador, sin ocupar espacio innecesario y sin procesos lentos de actualización.
         </p>
+
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Tu Teleprompter Siempre Listo</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                Accede a tus guiones instantáneamente desde tu pantalla de inicio.
+                Rápido, ligero y diseñado para creadores exigentes.
+            </p>
+            <a href="/?lang=es#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25" style={{ color: 'white' }}>
+                Abrir Aplicación Ahora
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">Peso: &lt; 2MB · Sin Cookies Rastreadoras · 100% Privado</p>
+        </div>
 
         <div className="bg-gradient-to-r from-purple-900/40 to-blue-900/40 p-8 rounded-xl border border-purple-500/30 mb-12">
             <h3 className="text-2xl font-bold text-white mb-4">¿Por qué esto es mejor?</h3>

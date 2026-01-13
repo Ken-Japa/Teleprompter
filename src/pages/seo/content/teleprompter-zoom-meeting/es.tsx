@@ -4,11 +4,29 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterZoomMeetingES = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6">Teleprompter Virtual GRATIS para Zoom, Teams y Google Meet: El Secreto del Contacto Visual Perfecto</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter Virtual para Zoom y Videollamadas: El Secreto del Contacto Visual
+        </h1>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            Mantener el contacto visual durante una presentación en línea es el secreto para captar la atención y transmitir confianza. Sin embargo, la realidad es un malabarismo constante: si miras tus notas, pierdes la conexión con la audiencia; si miras a la cámara, corres el riesgo de olvidar puntos cruciales. PromptNinja surge como la solución definitiva a este dilema, permitiéndote leer tu guion con fluidez mientras miras directamente a la lente de la cámara, creando una comunicación poderosa y auténtica.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Mantén el contacto visual perfecto durante tus reuniones en línea. Usa **PromptNinja** para leer tu guion con fluidez mientras miras directamente a la cámara, transmitiendo total confianza y autoridad a tu audiencia.
         </p>
+
+        <p className="text-slate-300 mb-8 font-medium">
+            En un entorno digital, la confianza es la clave. Si miras tus notas, pierdes la conexión; si miras fijamente a la cámara, corres el riesgo de olvidar puntos importantes. Nuestra solución de teleprompter virtual elimina este dilema sin instalaciones complicadas.
+        </p>
+
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Brilla en tu Próxima Reunión</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                Transforma tus presentaciones en Zoom, Teams y Meet.
+                Sé el presentador más seguro del equipo hoy mismo.
+            </p>
+            <a href="/?lang=es#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25" style={{ color: 'white' }}>
+                Abrir Teleprompter para Zoom
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">Latencia Cero · P2P Seguro · Funciona en Navegador</p>
+        </div>
 
         <div className="bg-slate-800/50 p-6 rounded-lg mb-8 border border-slate-700">
             <h3 className="text-lg font-bold text-white mb-3">🚀 Cómo usar en 3 pasos:</h3>

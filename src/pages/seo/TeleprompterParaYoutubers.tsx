@@ -53,8 +53,8 @@ export const TeleprompterParaYoutubers: React.FC<Props> = ({ onLaunch }) => {
         };
     } else if (lang === 'es') {
         Content = TeleprompterParaYoutubersES;
-        title = "Mejor Teleprompter para YouTubers: Graba 2x Más Rápido | PromptNinja";
-        description = "Deja de memorizar guiones. Usa el teleprompter para YouTubers de PromptNinja para grabar videos sin cortes, con contacto visual y look profesional. Pruébalo gratis.";
+        title = "Teleprompter para YouTubers: ¡Graba Vídeos Virales sin Errores! | PromptNinja";
+        description = "Domina la cámara y graba vídeos impecables para YouTube. Descubre cómo los mejores creadores usan PromptNinja para mantener el contacto visual y duplicar su productividad.";
         ctaText = "Empezar a Grabar Ahora";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-para-youtubers-creadores";
         schema = {

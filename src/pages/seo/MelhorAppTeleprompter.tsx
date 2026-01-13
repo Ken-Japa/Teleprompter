@@ -72,8 +72,8 @@ export const MelhorAppTeleprompter: React.FC<Props> = ({ onLaunch }) => {
         ctaText = "Try the Winner (Free)";
     } else if (lang === 'es') {
         Content = MelhorAppTeleprompterES;
-        title = "Mejor App de Teleprompter Gratis: Sin Instalación | PromptNinja (2026)";
-        description = "No descargues nada. Usa el mejor Teleprompter Gratis y Online. Funciona en PC, Móvil y Tablet. Control remoto vía Wi-Fi y modo espejo. Pruébalo ahora.";
+        title = "La Mejor App de Teleprompter Gratis: Comparativa (2026) | PromptNinja";
+        description = "Descubre por qué PromptNinja es la elección superior para YouTubers y profesionales. Compara las mejores apps de teleprompter, funciones y resultados reales.";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/mejor-app-teleprompter";
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {

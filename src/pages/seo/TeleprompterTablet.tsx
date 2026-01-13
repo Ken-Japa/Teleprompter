@@ -66,8 +66,8 @@ export const TeleprompterTablet: React.FC<Props> = ({ onLaunch }) => {
         };
     } else if (lang === 'es') {
         Content = TeleprompterTabletES;
-        title = "Teleprompter para Tablet y iPad (App Online Gratis)";
-        description = "Transforma tu Tablet o iPad en un Teleprompter profesional. App online gratis, ligera y sin descargas. Compatible con iPad, Samsung Tab y Android.";
+        title = "Teleprompter para Tablet y iPad: El Potencial Máximo de tu Pantalla";
+        description = "No limites tu talento a pantallas pequeñas. Usa tu iPad o Tablet como un teleprompter profesional para obtener una lectura cómoda, natural y 100% fluida en cada grabación.";
         ctaText = "Usar Teleprompter en Tablet";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-para-tablet-ipad-android";
         schema = {

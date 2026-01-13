@@ -45,8 +45,8 @@ export const ComoInstalarPwa: React.FC<Props> = ({ onLaunch }) => {
         ctaText = "Open Teleprompter Now";
     } else if (lang === 'es') {
         Content = ComoInstalarPwaES;
-        title = "Cómo Instalar la App PromptNinja (PWA) - iPhone y Android";
-        description = "Aprende a instalar PromptNinja como una app nativa en tu iPhone (iOS) o Android. Mejor rendimiento, modo offline y pantalla completa.";
+        title = "Cómo Instalar PromptNinja (PWA) en iPhone y Android | Guía Fácil";
+        description = "Aprende a instalar PromptNinja como una app nativa en tu móvil. Disfruta de mejor rendimiento, modo offline y pantalla completa sin ocupar memoria.";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/como-instalar-app-teleprompter-pwa";
         ctaText = "Abrir Teleprompter Ahora";
     }

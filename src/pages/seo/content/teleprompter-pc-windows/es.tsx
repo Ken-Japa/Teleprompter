@@ -3,19 +3,29 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterPCWindowsES = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter para PC Windows: Configuración Profesional en 60 Segundos</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter para PC Windows: Configuración Profesional en Segundos
+        </h1>
 
-        <p className="mb-6 text-lg text-slate-300">
-            PC gamer de $2000 para hacer streams profesionales. OBS configurado, chroma key, luces LED. Todo perfecto. Luego grabas el video serio... TRABES en la frase 3. "Ehhh espera, déjame revisar el guion". Miras el papel. Pierdes contacto visual. Credibilidad = 0.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Transforma tu ordenador en una herramienta de producción de élite. Con **PromptNinja**, obtienes un teleprompter potente para Windows sin necesidad de instalar archivos .exe sospechosos o pagar suscripciones caras.
         </p>
 
-        <p className="mb-6">
-            Piensas "necesito teleprompter". Googleas "teleprompter pc windows". Encuentras 15 programas de 2012 pidiendo DESACTIVAR el antivirus. O apps modernas que cuestan $49.99/mes. ¿En serio? ¿$600/año para desplazar texto?
+        <p className="text-slate-300 mb-8 font-medium">
+            ¿Tienes un setup de grabación fantástico pero te trabas al hablar? Olvida los papeles pegados al monitor y las notas improvisadas. Nuestra web app se integra perfectamente con tu flujo de trabajo, permitiéndote mantener el contacto visual 100% del tiempo.
         </p>
 
-        <p className="mb-8">
-            Esta guía muestra EXACTAMENTE cómo transformar tu PC Windows en un teleprompter profesional en 60 segundos, sin instalar .exe sospechosos, sin pagar suscripciones absurdas.
-        </p>
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Potencia tu Estudio Digital</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                Ideal para OBS Studio, Zoom y grabaciones 4K.
+                Ligero, seguro y compatible con Windows 10 y 11.
+            </p>
+            <a href="/?lang=es#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25" style={{ color: 'white' }}>
+                Abrir Teleprompter en PC
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">Sin Instalación · Cero Lag · Control Remoto Incluido</p>
+        </div>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">Setup PC: Sin vs CON Teleprompter</h3>

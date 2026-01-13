@@ -2,13 +2,29 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const AlternativasTeleprompterConcorrenteES = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
-            La Mejor Alternativa Gratuita a Teleprompter Pro y Otras Apps de Pago en 2025
-        </h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            La Mejor Alternativa Gratuita a Teleprompter Pro y Apps de Pago
+        </h1>
 
-        <p className="text-lg text-slate-300 mb-6">
-            Haces clic en "Descargar" en una app de teleprompter con 4.8 estrellas. La abres. Pop-up gigante: <strong>"UPGRADE PRO: $14.99/mes"</strong>. Lo ignoras, pruebas la versión free. ¿Control remoto? <span className="line-through">Bloqueado</span>. ¿Ajustar velocidad? <span className="line-through">Bloqueado</span>. ¿Modo espejo? <span className="line-through">Solo PRO</span>. Básicamente TODO bloqueado excepto un scroll automático que no puedes pausar.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            ¿Cansado de pagar suscripciones caras por funciones básicas? **PromptNinja** es la alternativa inteligente que ofrece control remoto, modo espejo y privacidad total sin el costo de las aplicaciones tradicionales.
         </p>
+
+        <p className="text-slate-300 mb-8 font-medium">
+            Haces clic en "Descargar" en una app de teleprompter, la abres y lo primero que ves es un muro de pago de $14.99/mes. Al final, terminas pagando cientos de dólares al año por algo que debería ser simple. PromptNinja rompe ese esquema.
+        </p>
+
+        <div className="bg-purple-600/10 border border-purple-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Cambia al Teleprompter del Futuro</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                Únete a los creadores que han abandonado las suscripciones
+                abusivas por una herramienta web potente y 100% gratuita.
+            </p>
+            <a href="/?lang=es#app" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-purple-500/25" style={{ color: 'white' }}>
+                Cambiar a PromptNinja Gratis
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">Sin Tarjeta de Crédito · Sin Registro · Sin Lag</p>
+        </div>
 
         <p className="mb-6">
             Luego piensas "ok, quizás $14.99 no sea mucho". Abres el sitio. PLOT TWIST: <strong>$14.99 es solo por la app MÓVIL</strong>. ¿Quieres usar en PC? Otros $19.99. ¿Quitar marca de agua? Otros $4.99. Total: <strong>$39.97/mes = $200+/año</strong> solo para leer texto que se desplaza.
