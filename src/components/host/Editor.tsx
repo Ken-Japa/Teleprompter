@@ -8,6 +8,7 @@ import { EditorToolbar } from "./EditorToolbar";
 import { BilingualTextEditor } from "./BilingualTextEditor";
 import { useEditorLogic } from "../../hooks/useEditorLogic";
 import { LanguageSelector } from "../ui/LanguageSelector";
+import { GoogleAuthButton } from "../ui/GoogleAuthButton";
 import { ScriptManager } from "./ScriptManager";
 import { Script } from "../../hooks/useScriptStorage";
 import { PrompterFeatureFlags } from "../../hooks/usePrompterSettings";
@@ -108,6 +109,8 @@ export const Editor: React.FC<EditorProps> = ({
                     </div>
 
 
+
+                    <GoogleAuthButton compact />
                     <LanguageSelector />
                     <S.PrimaryButton
                         onClick={onStart}

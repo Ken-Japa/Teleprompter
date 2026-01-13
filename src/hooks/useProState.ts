@@ -2,9 +2,15 @@ import { useState, useEffect } from "react";
 import { PROMPTER_DEFAULTS, APP_CONSTANTS } from "../config/constants";
 import { trackEvent, trackTrialActivation } from "../utils/analytics";
 import { setSharedCookie, getSharedCookie, SHARED_COOKIE_KEYS } from "../utils/cookie";
+import { useAuth } from "../contexts/AuthContext";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../config/firebase-client";
 
 export const useProState = (elapsedTime: number) => {
-    const [isPro, setIsPro] = useState<boolean>(() => {
+    // Auth Context Integration
+    const { isPro: isAccountPro, user } = useAuth();
+
+    const [isLocalPro, setIsLocalPro] = useState<boolean>(() => {
         const hasLicense = localStorage.getItem(PROMPTER_DEFAULTS.STORAGE_KEYS.PRO_STATUS) === "true";
         if (hasLicense) return true;
 
@@ -32,6 +38,9 @@ export const useProState = (elapsedTime: number) => {
         }
         return false;
     });
+
+    // The effective Pro state is true if EITHER Account is Pro OR Local is Pro
+    const isPro = isAccountPro || isLocalPro;
 
     const [trialEndTime, setTrialEndTime] = useState<number | null>(() => {
         let trialData = localStorage.getItem(PROMPTER_DEFAULTS.STORAGE_KEYS.PRO_TRIAL);
@@ -101,7 +110,7 @@ export const useProState = (elapsedTime: number) => {
                                 localStorage.setItem(PROMPTER_DEFAULTS.STORAGE_KEYS.PRO_TRIAL, data.trialData);
                                 setSharedCookie(SHARED_COOKIE_KEYS.PRO_TRIAL, data.trialData, 1);
                                 setTrialEndTime(endTime);
-                                setIsPro(true);
+                                setIsLocalPro(true);
                             }
                         } catch (e) { /* ignore */ }
                     }
@@ -121,7 +130,7 @@ export const useProState = (elapsedTime: number) => {
         localStorage.setItem(PROMPTER_DEFAULTS.STORAGE_KEYS.PRO_TRIAL, encrypted);
         setSharedCookie(SHARED_COOKIE_KEYS.PRO_TRIAL, encrypted, 1);
         setTrialEndTime(endTime);
-        setIsPro(true);
+        setIsLocalPro(true);
         trackTrialActivation();
 
         // Sync with server (background)
@@ -137,8 +146,8 @@ export const useProState = (elapsedTime: number) => {
     // Dev Helper exposed to window
     useEffect(() => {
         window.togglePro = () => {
-            const newState = !isPro;
-            setIsPro(newState);
+            const newState = !isLocalPro;
+            setIsLocalPro(newState);
             localStorage.setItem(PROMPTER_DEFAULTS.STORAGE_KEYS.PRO_STATUS, String(newState));
             setSharedCookie(SHARED_COOKIE_KEYS.PRO_STATUS, String(newState));
             window.location.reload();
@@ -147,7 +156,7 @@ export const useProState = (elapsedTime: number) => {
             setShowPaywall(true);
             trackEvent("paywall_view", { trigger: "manual" });
         };
-    }, [isPro, setShowPaywall]);
+    }, [isLocalPro, setShowPaywall]);
 
     // Paywall Timer Logic
     // Trigger Paywall when elapsed time reaches 20 minutes (1200 seconds)
@@ -166,7 +175,7 @@ export const useProState = (elapsedTime: number) => {
 
         const checkExpiration = () => {
             if (trialEndTime && Date.now() > trialEndTime) {
-                setIsPro(false);
+                setIsLocalPro(false);
                 setShowPaywall(true);
             }
         };
@@ -213,11 +222,22 @@ export const useProState = (elapsedTime: number) => {
             const data = await response.json();
 
             if (data.success) {
-                setIsPro(true);
+                setIsLocalPro(true);
                 setShowPaywall(false);
                 localStorage.setItem(PROMPTER_DEFAULTS.STORAGE_KEYS.PRO_STATUS, "true");
                 setSharedCookie(SHARED_COOKIE_KEYS.PRO_STATUS, "true");
                 trackEvent("pro_key_redeemed", { key: normalizedKey, deviceId });
+
+                // If user is logged in, sync this activation to their account!
+                if (user) {
+                    try {
+                        const userRef = doc(db, "users", user.uid);
+                        await updateDoc(userRef, { isPro: true, proKey: normalizedKey });
+                    } catch (e) {
+                        console.error("Failed to sync Pro status to account", e);
+                    }
+                }
+
                 return { success: true };
             } else {
                 // Log failure to Sentry for debugging

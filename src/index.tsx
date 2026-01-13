@@ -27,6 +27,7 @@ import "@fontsource/lexend/400.css";
 import "@fontsource/lexend/700.css";
 
 import { ErrorBoundary } from "./components/ui/ErrorBoundary";
+import { AuthProvider } from "./contexts/AuthContext";
 import { trackError } from "./utils/analytics";
 import { initSentry } from "./utils/sentry";
 
@@ -84,7 +85,9 @@ root.render(
     <React.StrictMode>
         <ErrorBoundary>
             <TranslationProvider>
-                <App />
+                <AuthProvider>
+                    <App />
+                </AuthProvider>
             </TranslationProvider>
         </ErrorBoundary>
     </React.StrictMode>
@@ -105,7 +108,7 @@ initAnalyticsCompatibility();
 
 
 window.addEventListener('load', () => {
-    registerSW({ 
+    registerSW({
         immediate: true,
         onRegisterError(error) {
             // Log as warning instead of letting it bubble as an unhandled rejection

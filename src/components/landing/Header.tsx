@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import * as S from "../ui/Styled";
 import { LanguageSelector } from "../ui/LanguageSelector";
+import { GoogleAuthButton } from "../ui/GoogleAuthButton";
 
 interface HeaderProps {
     // onLaunch used to be here but is unused
@@ -93,6 +94,7 @@ export const Header: React.FC<HeaderProps> = () => {
                 </nav>
 
                 <div className="flex items-center space-x-4 relative">
+                    <GoogleAuthButton />
                     <LanguageSelector />
                     <div className="relative group hidden sm:block">
                         <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 sm:opacity-100">

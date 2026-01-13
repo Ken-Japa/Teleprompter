@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from '../../hooks/useTranslation';
 import { Script } from '../../hooks/useScriptStorage';
-import { PlusIcon, TrashIcon, EditIcon, CheckIcon, ChevronDownIcon } from '../ui/Icons';
+import { PlusIcon, TrashIcon, EditIcon, CheckIcon, ChevronDownIcon, GoogleIcon, LogoutIcon } from '../ui/Icons';
+import { useAuth } from '../../contexts/AuthContext';
 
 interface ScriptManagerProps {
     scripts: Script[];
@@ -21,6 +22,7 @@ export const ScriptManager: React.FC<ScriptManagerProps> = ({
     onUpdateTitle
 }) => {
     const { t } = useTranslation();
+    const { user, loginWithGoogle, logout, loading } = useAuth();
     const [isOpen, setIsOpen] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [editTitle, setEditTitle] = useState("");
@@ -177,6 +179,34 @@ export const ScriptManager: React.FC<ScriptManagerProps> = ({
                                     )}
                                 </div>
                             ))}
+                        </div>
+
+                        {/* Cloud Sync Footer */}
+                        <div className="p-2 border-t border-slate-800 bg-slate-900/50">
+                            {!user ? (
+                                <button
+                                    onClick={(e) => { e.stopPropagation(); loginWithGoogle(); }}
+                                    disabled={loading}
+                                    className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg transition border border-slate-700 hover:border-slate-600"
+                                >
+                                    <GoogleIcon className="w-4 h-4" />
+                                    {loading ? "Loading..." : "Login to Sync Scripts"}
+                                </button>
+                            ) : (
+                                <div className="flex items-center justify-between px-2 py-1">
+                                    <div className="flex flex-col overflow-hidden mr-2">
+                                        <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Cloud Sync Active</span>
+                                        <span className="text-xs text-slate-300 truncate" title={user.email || ""}>{user.email}</span>
+                                    </div>
+                                    <button
+                                        onClick={(e) => { e.stopPropagation(); logout(); }}
+                                        className="p-1.5 text-slate-500 hover:text-slate-300 hover:bg-slate-800 rounded-md transition"
+                                        title="Logout"
+                                    >
+                                        <LogoutIcon className="w-4 h-4" />
+                                    </button>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </>
