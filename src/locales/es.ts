@@ -409,6 +409,8 @@ Perfectamente alineados`,
       highlight: "Resaltado",
       musicianMode: "Modo Músico",
       bilingualMode: "Modo Bilingue",
+      bold: "Negrita",
+      italic: "Itálico",
     },
     defaultText: `Bienvenido a PromptNinja.
 

@@ -400,6 +400,8 @@ Aligned perfectly`,
       highlight: "Highlight",
       musicianMode: "Musician Mode",
       bilingualMode: "Bilingual Mode",
+      bold: "Bold",
+      italic: "Italic",
     },
     defaultText: `Welcome to PromptNinja.
 

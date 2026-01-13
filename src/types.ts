@@ -171,6 +171,8 @@ export interface TextFragment {
     text: string;
     type: "normal" | "red" | "yellow" | "green" | "blue";
     isHighlight?: boolean;
+    bold?: boolean;
+    italic?: boolean;
 }
 
 

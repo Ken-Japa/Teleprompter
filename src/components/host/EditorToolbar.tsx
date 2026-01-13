@@ -1,7 +1,7 @@
 import { memo, useState } from "react";
 import { VoiceLanguageSelector } from "./VoiceLanguageSelector";
 import * as S from "../ui/Styled";
-import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LanguagesIcon, CameraIcon, WidgetIcon, SearchIcon } from "../ui/Icons";
+import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LanguagesIcon, CameraIcon, WidgetIcon, SearchIcon, BoldIcon, ItalicIcon } from "../ui/Icons";
 import { useTranslation } from "../../hooks/useTranslation";
 import { TutorialModal } from "../ui/TutorialModal";
 import { PacingModal } from "../ui/PacingModal";
@@ -73,6 +73,30 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, o
                             <S.ColorButton color="yellow" label="Yellow Highlight" onClick={() => onInsertTag("y")} />
                             <S.ColorButton color="green" label="Green Highlight" onClick={() => onInsertTag("g")} />
                             <S.ColorButton color="blue" label="Blue Highlight" onClick={() => onInsertTag("b")} />
+                        </div>
+
+                        {/* Text Formatting Buttons */}
+                        <div
+                            className="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full border border-white/5 ml-2"
+                            role="group"
+                            aria-label="Text Formatting"
+                        >
+                            <S.IconButton
+                                onClick={() => onInsertTag("bold")}
+                                title={t("host.editor.bold") || "Negrito"}
+                                aria-label="Bold"
+                                className="w-8 h-8 rounded-lg bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 border border-white/5 transition-all"
+                            >
+                                <BoldIcon className="w-4 h-4" />
+                            </S.IconButton>
+                            <S.IconButton
+                                onClick={() => onInsertTag("i")}
+                                title={t("host.editor.italic") || "Itálico"}
+                                aria-label="Italic"
+                                className="w-8 h-8 rounded-lg bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 border border-white/5 transition-all"
+                            >
+                                <ItalicIcon className="w-4 h-4" />
+                            </S.IconButton>
                         </div>
                     </div>
                 </div>
