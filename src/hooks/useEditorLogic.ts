@@ -52,18 +52,24 @@ export const useEditorLogic = ({ text, setText }: UseEditorLogicProps) => {
         const textarea = textAreaRef.current;
         if (!textarea) return;
 
+        // Save scroll position before making changes
+        const savedScrollTop = textarea.scrollTop;
+
         setHistory(prev => [...prev, localText].slice(-50));
         const result = insertTagInText(textarea.value, tag, textarea.selectionStart, textarea.selectionEnd);
 
         setLocalText(result.newText);
 
-        // Restore Cursor / Selection Logic
+        // Restore Cursor / Selection Logic AND Scroll Position
         setTimeout(() => {
             if (textAreaRef.current) {
                 textAreaRef.current.focus();
                 const start = Math.max(0, result.newSelectionStart);
                 const end = Math.max(0, result.newSelectionEnd);
                 textAreaRef.current.setSelectionRange(start, end);
+
+                // Restore scroll position to keep the view where the user was editing
+                textAreaRef.current.scrollTop = savedScrollTop;
             }
         }, 0);
     }, [localText]);
