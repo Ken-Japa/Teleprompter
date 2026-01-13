@@ -35,8 +35,8 @@ export const TeleprompterApresentacoes: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = TeleprompterApresentacoesEN;
-        title = "Teleprompter for PowerPoint and Live Presentations";
-        description = "Improve your public speaking in slide presentations. Use PromptNinja as your invisible script for PowerPoint, Google Slides, and Keynote.";
+        title = "Teleprompter for PowerPoint & Presentations | PromptNinja";
+        description = "Master your slide presentations with PromptNinja’s invisible teleprompter. Works with PowerPoint, Google Slides, and Keynote. Speak with confidence and naturalness.";
         ctaText = "Start Presentation";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-for-presentations";
         schema = {

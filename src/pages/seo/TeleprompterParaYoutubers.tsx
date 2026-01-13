@@ -34,8 +34,8 @@ export const TeleprompterParaYoutubers: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = TeleprompterParaYoutubersEN;
-        title = "Best Teleprompter for YouTubers: Record 2x Faster | PromptNinja";
-        description = "Stop memorizing scripts. Use PromptNinja's teleprompter for YouTubers to record videos without cuts, with eye contact, and professional look. Try for free.";
+        title = "Teleprompter for YouTubers & Creators | Record Without Errors with PromptNinja";
+        description = "Master your cameras, record impeccable videos, and boost your channel. Discover how YouTubers and content creators use PromptNinja to transform their productions easily.";
         ctaText = "Start Recording Now";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-for-youtubers-creators";
         schema = {

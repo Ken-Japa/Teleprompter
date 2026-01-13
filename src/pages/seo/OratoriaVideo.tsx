@@ -37,8 +37,8 @@ export const OratoriaVideo: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = OratoriaVideoEN;
-        title = "Video Speaking Tips: How to Speak with Confidence";
-        description = "Improve your presence in front of cameras. Learn speaking techniques and discover how teleprompters can help eliminate filler words from your videos.";
+        title = "Master Public Speaking for Videos: Speak with Confidence | PromptNinja";
+        description = "Stop freezing or sounding insecure. 5 fast techniques to speak well on video. Plus: discover how our FREE teleprompter applies these techniques instantly.";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/public-speaking-tips-video";
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {

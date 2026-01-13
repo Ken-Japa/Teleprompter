@@ -2,13 +2,29 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const OratoriaVideoEN = () => (
     <div className="text-slate-300">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 text-center">
-            How to Speak Confidently and Connect with Your Audience
-        </h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 text-center leading-tight">
+            Master Public Speaking for Videos: Speak with Confidence and Authority
+        </h1>
+
+        <p className="lead text-xl text-slate-300 mb-12 text-center max-w-3xl mx-auto font-medium">
+            Stop freezing or sounding insecure. Master 5 fast techniques to speak well on video and discover how **PromptNinja**, the ultimate free teleprompter, applies these techniques instantly to help you connect with your audience.
+        </p>
 
         <p className="mb-8 text-lg text-center max-w-3xl mx-auto">
-            The red camera light turns on, and suddenly, your mind goes blank. Speaking to a cold glass lens isn't natural and can intimidate even the most seasoned communicators. The good news is that on-camera public speaking isn't a gift, but a skill that can be developed. With the right techniques and the right tools, you can turn your anxiety into authenticity. If you don't have a tool yet, <a href="/en/teleprompter-alternatives" className="text-purple-400 hover:text-purple-300 underline">check out the best free alternative to Teleprompter Pro here</a>.
+            The red camera light turns on, and suddenly, your mind goes blank. Speaking to a cold glass lens isn't natural and can intimidate even the most seasoned communicators. The good news is that on-camera public speaking isn't a gift, but a skill that can be developed.
         </p>
+
+        <div className="bg-purple-600/10 border border-purple-500/20 rounded-2xl p-6 md:p-8 text-center mb-16">
+            <h3 className="text-2xl font-bold text-white mb-4">Command Your Performance</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                Deliver your message with the confidence of a professional speaker.
+                Eliminate filler words and maintain hypnotic eye contact with PromptNinja.
+            </p>
+            <a href="/?lang=en#app" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-purple-500/25">
+                Practice with Free Teleprompter
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">Start recording professional videos today. No credits needed.</p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">

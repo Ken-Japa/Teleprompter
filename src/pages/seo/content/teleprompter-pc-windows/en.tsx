@@ -3,19 +3,33 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterPCWindowsEN = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter for PC Windows: Professional Setup in 60 Seconds</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            PromptNinja: The Best Online Teleprompter for Windows PC (Free)
+        </h1>
 
-        <p className="mb-6 text-lg text-slate-300">
-            $2000 gaming PC for professional streams. OBS configured, chroma key, LED lights. Everything perfect. Then you record the serious video... FREEZE on phrase 3. "Uhhh wait, let me check the script". Look at paper. Lose eye contact. Credibility = 0.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Transform your Windows PC into a professional studio with **PromptNinja**, the most advanced online teleprompter. Record flawless videos, maintain authority, and never miss a line – all for free and without installing any heavy software.
         </p>
 
-        <p className="mb-6">
-            You think "I need a teleprompter". Google "teleprompter for PC windows". Find 15 software from 2012 asking to DISABLE antivirus to install. Or modern apps costing $49.99/month. Seriously? $600/year to scroll text?
+        <p className="text-slate-300 mb-8 font-medium">
+            Tired of forgetting scripts or looking insecure in your recordings? $2000 gaming PC for professional streams. OBS configured, chroma key, LED lights. Everything perfect. Then you record the serious video... FREEZE on phrase 3. "Uhhh wait, let me check the script". Look at paper. Lose eye contact. Credibility = 0.
         </p>
 
-        <p className="mb-8">
+        <p className="text-slate-300 mb-8 text-sm md:text-base">
             This guide shows EXACTLY how to transform your Windows PC into a professional teleprompter in 60 seconds, without installing sketchy .exe files, without paying absurd subscriptions.
         </p>
+
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Professionalism at Your Fingertips</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                Don't settle for less than perfect. Use the tools professional presenters use
+                to deliver clear, engaging, and high-impact messages from your PC.
+            </p>
+            <a href="/?lang=en#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Start PromptNinja on PC Now
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">No credit card required. Instant browser setup.</p>
+        </div>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">PC Setup: Without vs WITH Teleprompter</h3>

@@ -3,19 +3,33 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterApresentacoesEN = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter for Presentations: Professional PowerPoint Without Memorizing</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter for PowerPoint & Presentations: Speak Like a Pro Without Memorizing
+        </h1>
 
-        <p className="mb-6 text-lg text-slate-300">
-            Quarterly presentation. Board meeting. 40 PowerPoint slides. You memorized 80% of script. Slide 12... blank. "Uhhh...". 5 seconds eternal silence. Check notes. Lose credibility. CEO raises eyebrow.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Master your slide presentations with **PromptNinja’s invisible teleprompter**. Whether in person or over Zoom, deliver your message with total confidence, perfect eye contact, and zero hesitation – all without spending weeks memorizing scripts.
         </p>
 
-        <p className="mb-6">
-            You think "I need professional teleprompter". Google "teleprompter PowerPoint". Find: (1) apps that INTEGRATE with PPT but cost $299 perpetual license, (2) physical teleprompters $500 (absurd for 4x/year use), or (3) "memorize everything" (month of prep).
+        <p className="text-slate-300 mb-8 font-medium">
+            Quarterly presentation? Board meeting? 40 PowerPoint slides? You memorized 80% of your script. Slide 12... blank. 5 seconds of eternal silence. Check notes. Lose credibility. CEO raises an eyebrow.
         </p>
 
-        <p className="mb-8">
+        <p className="text-slate-300 mb-8">
             This guide shows EXACTLY how to do IMPECCABLE presentations in 10 minutes prep: teleprompter synced with slides, invisible to audience, works in-person AND online (Zoom/Teams).
         </p>
+
+        <div className="bg-orange-600/10 border border-orange-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Command the Stage and the Screen</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                Transform your presentations with the power of an invisible script.
+                Compatible with PowerPoint, Google Slides, and Keynote.
+            </p>
+            <a href="/?lang=en#app" className="inline-block bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-orange-500/25">
+                Start Using PromptNinja for Presentations
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">100% Free · No Downloads · Works with All Platforms</p>
+        </div>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">Presentation: Memorize vs PRO Teleprompter</h3>

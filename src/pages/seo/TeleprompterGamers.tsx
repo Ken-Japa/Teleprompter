@@ -34,8 +34,8 @@ export const TeleprompterGamers: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = TeleprompterGamersEN;
-        title = "Minimalist Teleprompter for Gamers & Streamers (No HUD)";
-        description = "The ideal teleprompter for OBS and Twitch. 'No HUD' mode (invisible), transparent background for Chroma Key, and zero distractions.";
+        title = "Minimalist Teleprompter for Gamers & Streamers | PromptNinja";
+        description = "The ultimate teleprompter for OBS and Twitch. Features 'No HUD' mode, transparent background for Chroma Key, and zero distractions for professional gaming content.";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-gamers-streaming";
         ctaText = "Open Gamer Mode";
         schema = {

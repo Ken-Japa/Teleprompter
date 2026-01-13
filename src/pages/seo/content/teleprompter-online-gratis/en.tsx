@@ -3,11 +3,28 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterOnlineGratisEN = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6">Free Online Teleprompter: Stop Wasting Hours Re-Recording</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Free Online Teleprompter: Speak with Confidence, No Stress!
+        </h1>
 
-        <p className="mb-6 text-lg text-slate-300">
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Tired of forgetting lines or stuttering in videos and presentations? With **PromptNinja, your free online teleprompter**, you have the perfect solution for fluid and professional communication. **Start right now, no registration required**, and transform the way you express yourself!
+        </p>
+
+        <p className="text-slate-300 mb-8">
             Ever spent <strong>3 hours trying to record an 8-minute video</strong>? You start speaking, freeze on the exact phrase, glance at your notes, lose eye contact with the camera. Re-record. Freeze again on the SAME phrase. Another 15 minutes wasted. By end of day: 47 attempts, 2h53min spent, video published with visible cuts and that feeling of "could've been better".
         </p>
+
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Start Recording Like a Pro</h3>
+            <p className="text-slate-300 mb-6">
+                Forget the stress of memorizing: our online teleprompter is 100% free and ready for you to use *now*, without registration. Simple, fast, and perfect to ensure every word flows with confidence.
+            </p>
+            <a href="/?lang=en#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Try Free Teleprompter Now
+            </a>
+            <p className="mt-4 text-sm text-slate-400">No credit card or sign-up required.</p>
+        </div>
 
         <p className="mb-6">
             I know EXACTLY how it feels. The frustration of knowing what you want to say but freezing on "how" to say it. The embarrassment of publishing a video full of "uhh", "so...", "umm" because you got tired of re-recording. And the worst: watching your competitor publish smooth, professional videos EVERY DAY — while you struggle to make 1 per week.
@@ -62,41 +79,45 @@ export const TeleprompterOnlineGratisEN = () => (
             </div>
         </div>
 
-        <h3 className="text-2xl font-bold text-white mt-8 mb-4">Comparison: PromptNinja vs. Other Free Solutions</h3>
-        <div className="overflow-x-auto">
-            <table className="min-w-full bg-slate-800 rounded-lg">
+        <div className="overflow-x-auto my-8">
+            <table className="min-w-full bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
                 <thead>
-                    <tr className="bg-slate-700">
-                        <th className="p-4 text-left">Feature</th>
-                        <th className="p-4 text-center">PromptNinja</th>
-                        <th className="p-4 text-center">Generic Apps</th>
-                        <th className="p-4 text-center">Other Online Sites</th>
+                    <tr className="bg-slate-800 text-slate-200">
+                        <th className="p-4 text-left font-bold">Feature</th>
+                        <th className="p-4 text-center font-bold">PromptNinja</th>
+                        <th className="p-4 text-center font-bold">Generic Free Apps</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="text-slate-300">
                     <tr>
-                        <td className="p-4 border-t border-slate-700">Remote Control</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-green-400">✔ Free</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-yellow-400">✖ Paid or Limited</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-red-400">✖ Non-existent</td>
+                        <td className="p-4 border-t border-slate-800 font-medium">Lag-Free Remote Control</td>
+                        <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Free & Unlimited</td>
+                        <td className="p-4 border-t border-slate-800 text-red-400 text-center">❌ Paid or Limited</td>
                     </tr>
                     <tr>
-                        <td className="p-4 border-t border-slate-700">No Installation</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-green-400">✔ Yes</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-red-400">✖ No</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-green-400">✔ Yes</td>
+                        <td className="p-4 border-t border-slate-800 font-medium">Text Mirroring (DIY Mode)</td>
+                        <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Included</td>
+                        <td className="p-4 border-t border-slate-800 text-yellow-500 text-center">⚠ Rare / Paid</td>
                     </tr>
                     <tr>
-                        <td className="p-4 border-t border-slate-700">Mirror Mode (DIY)</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-green-400">✔ Free</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-yellow-400">✖ Almost always paid</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-red-400">✖ Rare</td>
+                        <td className="p-4 border-t border-slate-800 font-medium">Rich Text Editor</td>
+                        <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Colors & Formatting</td>
+                        <td className="p-4 border-t border-slate-800 text-slate-500 text-center">Basic Only</td>
                     </tr>
                     <tr>
-                        <td className="p-4 border-t border-slate-700">Text Privacy</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-green-400">✔ Processed in-browser</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-yellow-400">? Uncertain</td>
-                        <td className="p-4 border-t border-slate-700 text-center text-yellow-400">? Uncertain</td>
+                        <td className="p-4 border-t border-slate-800 font-medium">Privacy (Local Processing)</td>
+                        <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ 100% (No Cloud)</td>
+                        <td className="p-4 border-t border-slate-800 text-yellow-500 text-center">⚠ Uncertain</td>
+                    </tr>
+                    <tr>
+                        <td className="p-4 border-t border-slate-800 font-medium">No Installation Needed</td>
+                        <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Yes (In Browser)</td>
+                        <td className="p-4 border-t border-slate-800 text-red-400 text-center">❌ No (App Download)</td>
+                    </tr>
+                    <tr>
+                        <td className="p-4 border-t border-slate-800 font-medium">No Ads / Pop-ups</td>
+                        <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Guaranteed</td>
+                        <td className="p-4 border-t border-slate-800 text-red-400 text-center">❌ Frequent Ads</td>
                     </tr>
                 </tbody>
             </table>

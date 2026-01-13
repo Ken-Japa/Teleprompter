@@ -2,13 +2,28 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoUsarTeleprompterEN = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            How to Use a Free Teleprompter: The Ultimate Guide for Professional Videos
-        </h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            How to Use a Teleprompter on Mobile: Use PromptNinja for Free (Complete Guide)
+        </h1>
 
-        <p className="lead text-xl text-slate-300 mb-8">
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Learn how to use a teleprompter on your phone in simple steps with PromptNinja. Ideal for videos, lives, and presentations. Start for free and transform your communication today.
+        </p>
+
+        <p className="text-slate-300 mb-8">
             First time trying a teleprompter? You open some random site, paste text, hit play and... DISASTER. Text scrolls too fast (you sound like a nervous auctioneer) or too slow (awkward pauses). You try to pause but need to <strong>touch the screen and shake the camera</strong>. After 40 minutes testing, you give up and go back to re-recording 20 times from memory.
         </p>
+
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Master Your Communication</h3>
+            <p className="text-slate-300 mb-6">
+                Don't waste time memorizing scripts. Use the tech you already have to deliver your message
+                with the authority and confidence of a professional presenter.
+            </p>
+            <a href="/?lang=en#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Start PromptNinja Guide Now
+            </a>
+        </div>
 
         <p className="mb-6">
             EXACTLY what happened to me the first time. I thought "teleprompter will change my life". Result? I spent MORE time fighting the tool than if I'd recorded without anything. The problem wasn't ME. It was using tools made for professional studios with $5000 equipment, not for solo creators recording with a phone.

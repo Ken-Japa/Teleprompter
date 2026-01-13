@@ -34,8 +34,8 @@ export const WebRtcLatencyPage: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = WebRtcLatencyContentEN;
-        title = "How WebRTC Eliminates Latency in Teleprompters";
-        description = "Understand the technology behind PromptNinja. Discover how we use WebRTC and P2P to ensure smooth, instant scrolling, beating Bluetooth.";
+        title = "PromptNinja: Professional Teleprompter with ZERO Latency via WebRTC";
+        description = "No more delays! Discover how PromptNinja uses WebRTC technology for instant synchronization, ensuring smooth and impeccable performance in your presentations.";
         ctaText = "Test WebRTC Technology Now";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/webrtc-low-latency-technology";
         schema = {

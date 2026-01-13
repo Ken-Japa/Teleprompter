@@ -3,21 +3,33 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTikTokShortsEN = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter for TikTok, Reels & Shorts: Triple Your Output Without Looking Robotic
-        </h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter for TikTok & Shorts: Record Flawless and Go Viral!
+        </h1>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            You record 30 takes of the same 15-second video and none are good? You start speaking, forget the exact word, look away to remember, lose that initial energy. Result? 40 minutes to record 15 seconds and the video still came out "meh".
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Stop stuttering and start creating viral content with **PromptNinja’s specialized TikTok teleprompter**. Record perfect vertical videos, maintain hypnotic eye contact, and deliver your message with total confidence in seconds – all for free.
         </p>
 
-        <p className="mb-6">
-            On TikTok, Reels, and Shorts, you have <strong>1-3 seconds</strong> to hook attention. If you stumble, look sideways, or miss the timing of your hook phrase, viewers scroll. Game over. Your video dies with 20% retention.
+        <p className="text-slate-300 mb-8 font-medium">
+            Recording 30 takes for a 15-second video? You forget a word, look away, and lose your energy. On platforms like TikTok, Reels, and Shorts, you have **1-3 seconds** to hook the viewer. One stumble and they scroll.
         </p>
 
-        <p className="mb-8">
-            The problem isn't lack of talent. It's trying to do TWO things simultaneously: memorize text + perform with energy. Your brain can't handle it. The solution? <strong>Let PromptNinja hold the text. You hold the energy.</strong>
+        <p className="text-slate-300 mb-8">
+            The secret of top creators isn't memorization – it's having the right tools. **Let PromptNinja hold the text so you can hold the energy.**
         </p>
+
+        <div className="bg-pink-600/10 border border-pink-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Master Vertical Content</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                Deliver high-impact hooks and flawless scripts for TikTok, Reels, and Shorts.
+                Optimized for vertical recording with real-time remote control.
+            </p>
+            <a href="/?lang=en#app" className="inline-block bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-pink-500/25">
+                Launch TikTok Teleprompter
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">Increase your production speed by 5x today.</p>
+        </div>
 
         <div className="bg-gradient-to-r from-red-900/30 to-pink-900/30 p-8 rounded-xl border border-pink-500/30 my-12">
             <h3 className="text-3xl font-bold text-white mb-6">The Short-Form Content Creator's Trap</h3>

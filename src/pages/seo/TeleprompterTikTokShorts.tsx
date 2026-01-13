@@ -50,8 +50,8 @@ export const TeleprompterTikTokShorts: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = TeleprompterTikTokShortsEN;
-        title = "Teleprompter for TikTok, Reels and Shorts";
-        description = "Record perfect vertical videos for TikTok and Instagram Reels. Free teleprompter that works on mobile with P2P remote control.";
+        title = "Teleprompter for TikTok & Shorts: Record Flawless and Go Viral! | PromptNinja";
+        description = "Stop stuttering! Use PromptNinja to create perfect videos for TikTok and Shorts. Maintain eye contact, fluidity, and deliver your message in seconds. Try for free!";
         ctaText = "Open Teleprompter for TikTok";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-tiktok-shorts";
         schema = {

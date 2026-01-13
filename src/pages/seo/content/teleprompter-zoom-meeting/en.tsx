@@ -4,11 +4,29 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterZoomMeetingEN = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6">FREE Teleprompter for Zoom, Teams & Google Meet: The Secret to Perfect Eye Contact</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Virtual Teleprompter for Zoom: Master Your Online Presentations with PromptNinja
+        </h1>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            Maintaining eye contact during an online presentation is the secret to capturing attention and conveying confidence. However, the reality is a constant juggling act: if you look at your notes, you lose connection with the audience; if you look at the camera, you risk forgetting crucial points. PromptNinja emerges as the definitive solution to this dilemma, allowing you to read your script fluently while looking directly at the camera lens, creating powerful and authentic communication.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Tired of looking away from the camera to check your notes during important calls? With **PromptNinja's virtual teleprompter for Zoom**, you maintain perfect eye contact, speak with authority, and never forget a single point of your script.
         </p>
+
+        <p className="text-slate-300 mb-8">
+            Maintaining eye contact during an online presentation is the secret to capturing attention and conveying confidence. However, the reality is a constant juggling act: if you look at your notes, you lose connection with the audience; if you look at the camera, you risk forgetting crucial points. PromptNinja emerges as the definitive solution to this dilemma.
+        </p>
+
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Command Your Virtual Room</h3>
+            <p className="text-slate-300 mb-6">
+                Deliver your message with the confidence of a TV professional. Our virtual teleprompter
+                works seamlessly over Zoom, Teams, and Meet, without extra software.
+            </p>
+            <a href="/?lang=en#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Try Free Virtual Teleprompter
+            </a>
+            <p className="mt-4 text-sm text-slate-400">100% Online · No Installation · Instant Setup</p>
+        </div>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-blue-500">
             <h3 className="text-2xl font-bold text-white mb-2">The Secret to Fluidity: Why PromptNinja's P2P Remote Control Doesn't Lag on Zoom</h3>

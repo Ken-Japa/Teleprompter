@@ -35,8 +35,8 @@ export const TeleprompterIphoneIpad: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = TeleprompterIphoneIpadEN;
-        title = "Best Free Teleprompter App for iPhone and iPad";
-        description = "Turn your iPhone or iPad into a professional teleprompter. Works in Safari, no heavy app installs, with P2P remote control.";
+        title = "Best Free Teleprompter App for iPhone and iPad | PromptNinja";
+        description = "Turn your iPhone or iPad into a professional teleprompter with PromptNinja. Works in Safari, no installs, featuring remote control and offline mode.";
         ctaText = "Open on iPhone/iPad";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-for-iphone-ipad";
         schema = {

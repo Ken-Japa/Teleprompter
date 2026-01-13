@@ -2,12 +2,29 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const WebRtcLatencyContentEN = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Why is PromptNinja Faster Than Bluetooth? (The Science of Latency)</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            PromptNinja: Professional Teleprompter with ZERO Latency via WebRTC
+        </h1>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            You press "Pause". Text keeps scrolling for another half second. You get lost. Need to re-record.
-            This invisible delay is called <strong>latency</strong>, and it is the #1 enemy of flow.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            No more delays or out-of-sync scripts. Discover how PromptNinja uses cutting-edge **WebRTC technology** to ensure instant synchronization between your devices, providing the most fluid experience for presentations, lives, and recordings.
         </p>
+
+        <p className="text-slate-300 mb-8">
+            You press "Pause". Text keeps scrolling for another half second. You get lost. Need to re-record. This invisible delay is called <strong>latency</strong>, and it is the #1 enemy of flow.
+        </p>
+
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Experience Instant Control</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                Try the technology that is revolutionizing video production. No more fighting
+                with your teleprompter – let it follow your lead.
+            </p>
+            <a href="/?lang=en#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Test ZERO Latency Now
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">Free for all creators. No installation needed.</p>
+        </div>
 
         <div className="bg-slate-800 p-8 rounded-xl border border-blue-500/30 mb-12">
             <h3 className="text-2xl font-bold text-white mb-6 text-center">Data Race: Satellite vs Local</h3>

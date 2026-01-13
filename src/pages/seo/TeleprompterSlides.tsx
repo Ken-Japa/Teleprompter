@@ -34,8 +34,8 @@ export const TeleprompterSlides: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = TeleprompterSlidesEN;
-        title = "How to Sync Teleprompter with PowerPoint (STOP Command)";
-        description = "Perfect slide presentations. Use the [STOP] command to automatically pause the teleprompter while you switch slides.";
+        title = "Sync Teleprompter with PowerPoint: Master Your Slides | PromptNinja";
+        description = "Learn how to synchronize PromptNinja with PowerPoint using the [STOP] command. Perfectly timed presentations without ever losing your place or rhythm.";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-sync-powerpoint-slides";
         ctaText = "Sync with Slides";
         schema = {

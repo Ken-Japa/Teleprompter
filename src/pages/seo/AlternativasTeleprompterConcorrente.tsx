@@ -58,8 +58,8 @@ export const AlternativasTeleprompterConcorrente: React.FC<Props> = ({ onLaunch 
 
     if (lang === 'en') {
         Content = AlternativasTeleprompterConcorrenteEN;
-        title = "The ONLY FREE Alternative to Teleprompter Pro (Zero Lag)";
-        description = "Looking for an alternative to Teleprompter Pro? Don't waste any time. PromptNinja is the best FREE option for PC, Notebook, and as a teleprompter for iPhone.";
+        title = "PromptNinja: The Smart Alternative to Traditional Teleprompters & Expensive Apps";
+        description = "Tired of bulky teleprompters and limited software? Discover PromptNinja, the online platform offering professional control, flexibility, and cost-benefit. Compare and elevate your performance!";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-alternatives";
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {

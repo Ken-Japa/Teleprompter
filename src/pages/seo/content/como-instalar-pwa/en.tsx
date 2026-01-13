@@ -3,15 +3,33 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoInstalarPwaEN = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">How to "Download" PromptNinja (Install PWA App)</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            How to Install the PromptNinja (PWA) - iPhone and Android
+        </h1>
 
-        <p className="mb-6 text-xl text-slate-300">
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Learn how to install PromptNinja as a native app on your iPhone or Android. Enjoy better performance, offline mode, and a professional full-screen experience.
+        </p>
+
+        <p className="text-slate-300 mb-8 font-medium">
             Searched the App Store or Play Store and found nothing? Relax, that's a <strong>feature</strong>, not a bug.
         </p>
 
-        <p className="mb-8 text-slate-300">
+        <p className="text-slate-300 mb-8">
             PromptNinja is an <strong>Elite Progressive Web App (PWA)</strong>. It has the power of a native app (works offline, full screen, no lag) but without the store bureaucracy. You install it directly from your browser, in seconds, without eating up your phone's storage.
         </p>
+
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Install PromptNinja in 5 Seconds</h3>
+            <p className="text-slate-300 mb-6">
+                Get native app performance directly on your phone or computer. Zero storage usage,
+                instant updates, and 100% functionality even offline.
+            </p>
+            <a href="/?lang=en#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Check Installation Steps
+            </a>
+            <p className="mt-4 text-sm text-slate-400">Available for iPhone, iPad, Android, Mac, and Windows.</p>
+        </div>
 
         <div className="bg-gradient-to-r from-purple-900/40 to-blue-900/40 p-8 rounded-xl border border-purple-500/30 mb-12">
             <h3 className="text-2xl font-bold text-white mb-4">Why is this better?</h3>

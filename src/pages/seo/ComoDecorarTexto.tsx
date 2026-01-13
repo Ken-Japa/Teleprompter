@@ -34,8 +34,8 @@ export const ComoDecorarTexto: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = ComoDecorarTextoEN;
-        title = "How to Memorize Lines Fast: 5 Fail-proof Techniques";
-        description = "Stop struggling to memorize long scripts. Discover memory techniques and the definitive solution to never forget a line again.";
+        title = "How to Memorize Text Fast: 5 Fail-proof Techniques | PromptNinja";
+        description = "Stop struggling to memorize long scripts. Discover effective memory techniques and the definitive solution to never forget a line again. Save hours of re-recording.";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/how-to-memorize-scripts-fast";
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {

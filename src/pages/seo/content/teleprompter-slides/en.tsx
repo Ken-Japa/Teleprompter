@@ -3,15 +3,29 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterSlidesEN = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6">Sync Teleprompter with PowerPoint: Perfect Presentations</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Sync Teleprompter with PowerPoint: Master Your Slides with PromptNinja
+        </h1>
 
-        <p className="mb-6">
-            The biggest nightmare for anyone presenting with slides is desynchronization: the teleprompter keeps scrolling while you are still explaining the graph on the previous slide. <strong>PromptNinja</strong> solves this definitively with the **Command Synchronization** feature.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Take total control of your slide presentations. Learn how to synchronize **PromptNinja** with PowerPoint using the **[STOP] command**, ensuring a perfectly timed performance where your script and visuals are always in harmony.
         </p>
 
-        <p className="mb-6">
-            Transform your institutional presentations, online classes, and webinars into professional performances where audio and visuals walk together, effortlessly.
+        <p className="text-slate-300 mb-8 font-medium">
+            The biggest nightmare for any presenter is desynchronization: the teleprompter keeps scrolling while you're still explaining a graph on a previous slide. PromptNinja solves this definitively, allowing you to focus on your message, not the machine.
         </p>
+
+        <div className="bg-orange-600/10 border border-orange-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Command Your Rhythm</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                Deliver flawless webinars, online classes, and professional talks.
+                Experience the perfect sync between your voice and your slides.
+            </p>
+            <a href="/?lang=en#app" className="inline-block bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-orange-500/25">
+                Sync Your Slides Now
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">Free forever · No registration · Works with all slide types</p>
+        </div>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-orange-500">
             <h3 className="text-2xl font-bold text-white mb-2">The Secret: [STOP] Command</h3>

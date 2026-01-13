@@ -60,23 +60,23 @@ WORKOUT DONE!`;
     const content = {
         title: {
             pt: "Teleprompter para Fitness e Crossfit: Treine sem Tocar no Celular",
-            en: "Teleprompter for Fitness & CrossFit: Workout Hands-Free",
+            en: "Teleprompter for Fitness & CrossFit: Hands-Free Workout | PromptNinja",
             es: "Teleprompter para Fitness y CrossFit: Entrena sin Tocar el Móvil"
         },
         description: {
             pt: "Use o PromptNinja como timer de treino. Crie loops de exercícios, cronômetros de descanso e séries automáticas. O melhor app de teleprompter para seus treinos em casa ou box.",
-            en: "Use PromptNinja as a workout timer. Create exercise loops, rest timers, and automatic sets. The best teleprompter app for home workouts or gym.",
+            en: "Turn PromptNinja into your ultimate workout partner. Create automated exercise loops, rest timers, and voice-activated sets. Perfect for home workouts and gym boxes.",
             es: "Usa PromptNinja como temporizador de entrenamiento. Crea bucles de ejercicios, cronómetros de descanso y series automáticas. La mejor app de teleprompter para entrenar en casa o gimnasio."
         },
         hero: {
             title: {
                 pt: "Seu Novo Parceiro de Treino Digital",
-                en: "Your New Digital Workout Partner",
+                en: "Teleprompter for Fitness & CrossFit: Hands-Free Workout",
                 es: "Tu Nuevo Compañero de Entrenamiento Digital"
             },
             subtitle: {
                 pt: "Chega de contar repetições de cabeça ou sujar o celular. Coloque seu treino na TV ou Tablet e siga o fluxo.",
-                en: "Stop counting reps in your head or getting your phone dirty. Put your workout on TV or Tablet and follow the flow.",
+                en: "Stop counting reps or getting your phone dirty. Use PromptNinja to automate your sets, rest timers, and drills for a high-intensity, distraction-free performance.",
                 es: "Deja de contar repeticiones mentalmente o ensuciar el móvil. Pon tu entrenamiento en la TV o Tablet y sigue el flujo."
             }
         },
@@ -170,6 +170,19 @@ WORKOUT DONE!`;
                         {content.cta[currentLang]}
                     </button>
                 </div>
+
+                {currentLang === 'en' && (
+                    <div className="mt-12 bg-green-600/10 border border-green-500/20 rounded-2xl p-6 md:p-8 text-center max-w-3xl mx-auto">
+                        <h3 className="text-2xl font-bold text-white mb-4">Train Without Distractions</h3>
+                        <p className="text-slate-300 mb-6 font-medium">
+                            Put your workout on the big screen and let PromptNinja handle the timing.
+                            100% free, no registration, and gym-ready.
+                        </p>
+                        <button onClick={onLaunch} className="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-green-500/25">
+                            Start Your Workout Session
+                        </button>
+                    </div>
+                )}
             </div>
 
             {/* Features Grid */}
@@ -252,7 +265,6 @@ WORKOUT DONE!`;
                     {currentLang === 'pt' ? "Começar Agora" : currentLang === 'es' ? "Empezar Ahora" : "Start Now"}
                 </button>
             </div>
-
         </SeoPageLayout>
     );
 };

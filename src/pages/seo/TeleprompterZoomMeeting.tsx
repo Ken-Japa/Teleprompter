@@ -34,8 +34,8 @@ export const TeleprompterZoomMeeting: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = TeleprompterZoomMeetingEN;
-        title = "Teleprompter for Zoom & Google Meet: Transparent Reading (Free)";
-        description = "Use PromptNinja's Transparent Teleprompter to read scripts in Zoom, Teams & Meet calls without breaking eye contact. 100% Free & Online.";
+        title = "Virtual Teleprompter for Zoom: Master Your Online Presentations | PromptNinja";
+        description = "Transform your Zoom meetings and lives with PromptNinja’s virtual teleprompter. Read scripts discretely, maintain eye contact, and convey professional confidence. Try for free and simplify your calls!";
         ctaText = "Open Teleprompter for Zoom";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-zoom-meeting";
         schema = {

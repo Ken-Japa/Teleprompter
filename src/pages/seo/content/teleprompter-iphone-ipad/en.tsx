@@ -3,19 +3,33 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterIphoneIpadEN = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter for iPhone & iPad: Zero Installation, 100% Professional</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Best Free Teleprompter App for iPhone and iPad: Professional Results with PromptNinja
+        </h1>
 
-        <p className="mb-6 text-lg text-slate-300">
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Turn your iPhone or iPad into a high-end professional teleprompter with **PromptNinja**. Record flawless 4K videos, maintain perfect eye contact, and eliminate the frustration of memorizing scripts – all without heavy app installs or expensive subscriptions.
+        </p>
+
+        <p className="text-slate-300 mb-8 font-medium">
             iPhone 15 Pro Max. $1200. 4K60fps ProRes camera. Cinematic stabilization. Then you record the video... look at paper every 5 seconds. Lose eye contact. Audience feels disconnect. PRO camera + AMATEUR script = waste.
         </p>
 
-        <p className="mb-6">
-            You think "I need teleprompter app". Open App Store. Find apps that: (1) charge $9.99/week ($520/year!), (2) limit 60 seconds on free tier, or (3) have giant watermark. Seriously? Pay more than Netflix to scroll text?
-        </p>
-
-        <p className="mb-8">
+        <p className="text-slate-300 mb-8">
             This guide shows EXACTLY how to transform iPhone/iPad into PRO teleprompter in 45 seconds: zero App Store installation, zero subscription, works offline, syncs via AirPlay/P2P.
         </p>
+
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Unleash Your Device's Potential</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                Professionalism doesn't have to be expensive. Use the power of our PWA
+                teleprompter directly in Safari and record like a pro today.
+            </p>
+            <a href="/?lang=en#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Launch PromptNinja on iOS Now
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">No account needed. Works 100% offline.</p>
+        </div>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">iOS Setup: App Store vs Web App</h3>

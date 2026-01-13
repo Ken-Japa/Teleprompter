@@ -3,14 +3,29 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoDecorarTextoEN = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
-            How to Memorize Lines Fast (The Secret is NOT to Memorize)
-        </h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            How to Memorize Text Fast: 5 Fail-proof Techniques for Perfect Videos
+        </h1>
 
-        <p className="text-lg text-slate-300 mb-8">
-            You have a presentation tomorrow. Script is 5 pages long. Your heart races just thinking about forgetting a line and freezing on camera.
-            The brutal truth? <strong>Trying to memorize is amateur.</strong>
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Stop struggling to memorize long scripts. Learn effective memory techniques and discover the definitive solution to never forget a line again. Save hours of re-recording and record with the confidence of a professional.
         </p>
+
+        <p className="text-slate-300 mb-8 font-medium">
+            You have a presentation tomorrow. Script is 5 pages long. Your heart races just thinking about forgetting a line and freezing on camera. The brutal truth? <strong>Trying to memorize everything is often a waste of time.</strong>
+        </p>
+
+        <div className="bg-yellow-600/10 border border-yellow-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Focus on Your Performance, Not the Words</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                Deliver your message fluently and naturally. Use our free tool to read
+                your script without ever breaking eye contact with your audience.
+            </p>
+            <a href="/?lang=en#app" className="inline-block bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-yellow-500/25">
+                Stop Memorizing and Start PromptNinja
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">Free forever. No registration required.</p>
+        </div>
 
         <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-yellow-500 mb-12 shadow-2xl">
             <h3 className="text-2xl font-bold text-white mb-4">The Myth of Perfect Memory</h3>

@@ -34,8 +34,8 @@ export const ComoUsarTeleprompter: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = ComoUsarTeleprompterEN;
-        title = "How to Use Teleprompter on Mobile: Complete Guide";
-        description = "Learn how to use your phone as a teleprompter or remote control. Step-by-step tutorial to record professional videos.";
+        title = "Teleprompter on Mobile: Use PromptNinja for Free (Complete Guide)";
+        description = "Learn how to use a teleprompter on your phone in simple steps with PromptNinja. Ideal for videos, lives, and presentations. Start for free and transform your communication.";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/how-to-use-teleprompter-mobile";
         ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
         schema = {
