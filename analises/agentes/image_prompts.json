@@ -1,0 +1,183 @@
+[
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "\"Uma pessoa (com idade entre 25-40 anos, carismática e vestindo roupas casuais inteligentes) usando ",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: \"Uma pessoa (com idade entre 25-40 anos, carismática e vestindo roupas casuais inteligentes) usando um smartphone com o app PromptNinja em primeiro plano. Ela está gravando um vídeo ou fazendo uma live, com um sorriso confiante e contato visual direto com a câmera do celular. A tela do smartphone mostra claramente o texto do teleprompter rolando. Ao fundo, um ambiente de home studio minimalista com boa iluminação (ring light sutil) ou um escritório moderno bem organizado. A imagem deve transmitir facilidade de uso, profissionalismo e o sucesso/confiança que o usuário adquire ao usar o PromptNinja.\". Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "generated",
+    "file_path": "C:\\Users\\Ken\\Desktop\\Projeto\\AGENTS\\Teleprompter\\output\\images\\infographic_1768255792_0.png"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "\"Uma captura de tela limpa e de alta qualidade da interface do usuário do PromptNinja em um navegado",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: \"Uma captura de tela limpa e de alta qualidade da interface do usuário do PromptNinja em um navegador web, mostrando um script de teleprompter em execução, com um design moderno e intuitivo, destacando a fluidez da rolagem e opções de personalização. Ideal para um banner de 'Melhor App'.\". Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "generated",
+    "file_path": "C:\\Users\\Ken\\Desktop\\Projeto\\AGENTS\\Teleprompter\\output\\images\\infographic_1768255792_1.png"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "\"Colagem visual mostrando 3 cenários de uso do PromptNinja: 1) Um YouTuber gravando um vídeo com o t",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: \"Colagem visual mostrando 3 cenários de uso do PromptNinja: 1) Um YouTuber gravando um vídeo com o teleprompter em um tablet ao lado da câmera. 2) Um palestrante usando o app em um smartphone discreto no púlpito durante uma apresentação. 3) Um músico com o app exibindo letras e acordes em um monitor ou tablet próximo ao microfone. Todos os usuários devem parecer confiantes e engajados.\" (Ideal para a seção de \"Casos de Uso Reais\"). Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "generated",
+    "file_path": "C:\\Users\\Ken\\Desktop\\Projeto\\AGENTS\\Teleprompter\\output\\images\\infographic_1768255792_2.png"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "\"Ícones simples e universais (check ✅, cruz ❌, triângulo de atenção ⚠️) para serem usados em tabelas",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: \"Ícones simples e universais (check ✅, cruz ❌, triângulo de atenção ⚠️) para serem usados em tabelas de comparação, com design minimalista e cores vibrantes que representem 'sim', 'não' e 'parcial/atenção', respectivamente.\". Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "generated",
+    "file_path": "C:\\Users\\Ken\\Desktop\\Projeto\\AGENTS\\Teleprompter\\output\\images\\infographic_1768255792_3.png"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "Uma imagem dinâmica mostrando um YouTuber ou um palestrante de negócios utilizando o PromptNinja em ",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: Uma imagem dinâmica mostrando um YouTuber ou um palestrante de negócios utilizando o PromptNinja em um laptop ou tablet enquanto se comunica com confiança para uma câmera ou público. A tela do PromptNinja deve estar visível, com o texto rolando suavemente, e o usuário deve parecer relaxado e profissional. A cena deve contrastar a facilidade do PromptNinja com a ausência de equipamentos de teleprompter físicos, ressaltando a portabilidade e a naturalidade.. Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "generated",
+    "file_path": "C:\\Users\\Ken\\Desktop\\Projeto\\AGENTS\\Teleprompter\\output\\images\\infographic_1768255792_4.png"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "Uma infografia moderna e limpa que compara visualmente três colunas: \"Teleprompter Físico\" (com ícon",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: Uma infografia moderna e limpa que compara visualmente três colunas: \"Teleprompter Físico\" (com ícones de alto custo, complexidade e peso), \"Apps/Software Tradicional\" (com ícones de custo médio, limitações e necessidade de instalação) e \"PromptNinja\" (com ícones de baixo custo, simplicidade, flexibilidade de nuvem e ícone de \"play\" ou \"conexão global\"). Use cores vibrantes para PromptNinja e tons mais neutros para as alternativas, reforçando a superioridade.. Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "pending"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "\"Uma youtuber jovem e carismática, sorrindo e olhando diretamente para a câmera (smartphone ou webca",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: \"Uma youtuber jovem e carismática, sorrindo e olhando diretamente para a câmera (smartphone ou webcam) de seu setup de gravação, enquanto um tablet ou celular exibe a interface limpa do PromptNinja posicionado discretamente logo abaixo ou ao lado da lente da câmera. O ambiente é um estúdio caseiro bem iluminado, transmitindo profissionalismo e facilidade. A imagem deve capturar a sensação de confiança e fluidez na gravação.\". Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "pending"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "\"Uma série de três ícones ou ilustrações minimalistas, cada um representando um passo do processo 'C",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: \"Uma série de três ícones ou ilustrações minimalistas, cada um representando um passo do processo 'Crie Seu Roteiro' (um lápis e papel/tela), 'Ajuste e Posicione' (uma engrenagem e um tablet/celular), e 'Grave Com Confiança!' (uma câmera de vídeo e um microfone). Os ícones devem ser modernos, com cores vibrantes que combinem com a identidade visual do PromptNinja.\". Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "pending"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "\"Um close-up de um tablet ou smartphone exibindo a interface do aplicativo PromptNinja em ação, com ",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: \"Um close-up de um tablet ou smartphone exibindo a interface do aplicativo PromptNinja em ação, com um script rolando suavemente e um dedo indicando o controle de velocidade. A interface deve ser clara e intuitiva, com foco na legibilidade do texto. O fundo deve ser levemente desfocado para manter o foco no dispositivo e no aplicativo.\". Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "pending"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "Uma imagem mostrando uma pessoa jovem e sorridente (pode ser um youtuber, músico ou palestrante) uti",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: Uma imagem mostrando uma pessoa jovem e sorridente (pode ser um youtuber, músico ou palestrante) utilizando seu teleprompter caseiro (feito de caixa de papelão/material reciclável) com um smartphone rodando o PromptNinja em destaque na tela. O setup deve parecer funcional e o usuário com uma expressão de confiança e fluidez na fala, demonstrando o \"antes e depois\" de quem usava anotações e agora usa o teleprompter + PromptNinja. A qualidade da imagem deve ser profissional, mas o setup DIY visivelmente caseiro.. Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "pending"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "Uma infografia simples destacando a sinergia entre o \"Hardware DIY (Baixo Custo)\" e o \"Software Prom",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: Uma infografia simples destacando a sinergia entre o \"Hardware DIY (Baixo Custo)\" e o \"Software PromptNinja (Performance Profissional)\", mostrando como um complementa o outro para criar uma experiência de gravação completa e acessível.. Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "pending"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "Uma youtuber sorridente e confiante, gravando um vídeo com um tablet ou smartphone acoplado a um sup",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: Uma youtuber sorridente e confiante, gravando um vídeo com um tablet ou smartphone acoplado a um suporte, exibindo a interface do PromptNinja em modo teleprompter com um roteiro fluindo. A luz é suave e profissional.. Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "pending"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "Um músico em um palco ou estúdio, tocando um instrumento (ex: violão, teclado) e discretamente usand",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: Um músico em um palco ou estúdio, tocando um instrumento (ex: violão, teclado) e discretamente usando o PromptNinja em um dispositivo próximo (ex: tablet no suporte de partitura) para consultar as letras ou acordes, com uma expressão de total imersão e performance.. Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "pending"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "Um palestrante carismático em um púlpito moderno, olhando diretamente para a audiência com um microf",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: Um palestrante carismático em um púlpito moderno, olhando diretamente para a audiência com um microfone, enquanto um monitor discreto à frente exibe o PromptNinja, dando a sensação de que ele está falando de memória, com total domínio do conteúdo.. Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "pending"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "Uma imagem hero com três dispositivos (laptop, tablet, smartphone) exibindo a interface do PromptNin",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: Uma imagem hero com três dispositivos (laptop, tablet, smartphone) exibindo a interface do PromptNinja com o mesmo texto rolando em sincronia perfeita. Foco na fluidez do texto e na ausência de atrasos, com uma leve indicação de rede P2P conectando-os. Ambiente moderno, iluminado, cores da marca PromptNinja.. Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "pending"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "Um GIF animado ou vídeo curto (15-20 segundos) que demonstra um teleprompter em uso real (ex: uma pe",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: Um GIF animado ou vídeo curto (15-20 segundos) que demonstra um teleprompter em uso real (ex: uma pessoa falando em frente a uma câmera), com uma tela dividida mostrando como o PromptNinja em um tablet sincroniza instantaneamente com a tela de um celular ou desktop, sem qualquer atraso visível na rolagem do texto.. Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "pending"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "Um infográfico minimalista que ilustra a arquitetura do WebRTC: dois dispositivos (usuário A e usuár",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: Um infográfico minimalista que ilustra a arquitetura do WebRTC: dois dispositivos (usuário A e usuário B) conectados diretamente (peer-to-peer) com a nuvem do PromptNinja ao fundo, com setas indicando comunicação rápida e segura. Destacar \"Latência Zero\" e \"Sincronização Instantânea\".. Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "pending"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "`Cena de um criador de conteúdo jovem (masculino ou feminino) sorrindo e apresentando para uma câmer",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: `Cena de um criador de conteúdo jovem (masculino ou feminino) sorrindo e apresentando para uma câmera, com um PC Windows à sua frente exibindo a interface limpa e intuitiva do PromptNinja. O PC está em um setup de home studio minimalista, com boa iluminação. A imagem deve focar na facilidade de uso e profissionalismo. Estilo realista e inspirador.`. Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "pending"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "`Close-up de uma mão usando um mouse em um PC Windows, navegando na interface do PromptNinja. A tela",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: `Close-up de uma mão usando um mouse em um PC Windows, navegando na interface do PromptNinja. A tela do monitor deve mostrar claramente o texto do teleprompter rolando suavemente, com as opções de controle visíveis, mas sem distrair. Foco na usabilidade e responsividade em ambiente Windows.`. Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "pending"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "\"Uma mulher jovem e carismática, sorrindo e com um brilho nos olhos, segurando um smartphone na vert",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: \"Uma mulher jovem e carismática, sorrindo e com um brilho nos olhos, segurando um smartphone na vertical em frente ao rosto, com o aplicativo PromptNinja rodando na tela. Ela está gravando um vídeo, mantendo contato visual direto com a câmera do celular. O fundo é um ambiente caseiro moderno e bem iluminado (ex: sala de estar com plantas, luz natural). A imagem deve transmitir facilidade, confiança e profissionalismo ao criar conteúdo para TikTok/Shorts. Estilo de imagem vibrante, autêntico e de alta qualidade fotográfica.\". Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "pending"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "\"Um close-up de uma tela de smartphone na vertical, mostrando a interface do PromptNinja em uso. Um ",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: \"Um close-up de uma tela de smartphone na vertical, mostrando a interface do PromptNinja em uso. Um script de vídeo curto está rolando suavemente, com o texto grande e legível, adaptado para gravação. Uma câmera frontal do telefone é visível na parte superior, e há uma ligeira indicação do rosto do usuário (apenas a área dos olhos, focando no contato visual com a lente). O design da interface do PromptNinja é limpo e intuitivo, destacando a funcionalidade essencial para criadores de Shorts.\". Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "pending"
+  },
+  {
+    "type": "Infographic",
+    "objective": "Visual Explanation",
+    "location": "Content Body",
+    "alt_text": "\"Uma colagem ou montagem dinâmica de três pequenas capturas de tela/vídeos de TikTokers felizes e co",
+    "full_prompt": "Create a modern, clean, professional infographic or illustration. Details: \"Uma colagem ou montagem dinâmica de três pequenas capturas de tela/vídeos de TikTokers felizes e confiantes, cada um fazendo um gesto de aprovação (polegar para cima, ok, wink) enquanto utilizam o PromptNinja (com um pequeno ícone do app sutilmente integrado). Legendas curtas e impactantes flutuam perto de cada um: 'Sem Erros!', 'Mais Engajamento!', 'Muito Fácil!'. A estética deve ser moderna, colorida e ressoar com a cultura jovem e criativa do TikTok.\". Style: Corporate tech, minimalist, clean lines, brand colors (Dark Grey, Neon Green). Text should be in Portuguese if visible.",
+    "status": "pending"
+  }
+]
