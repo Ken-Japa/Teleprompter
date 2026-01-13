@@ -3,23 +3,19 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterIphoneIpadEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Best Free Teleprompter App for iPhone and iPad: Professional Results with PromptNinja
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter for iPad and iPhone: Transform Your Device into a Professional Studio
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Turn your iPhone or iPad into a high-end professional teleprompter with **PromptNinja**. Record flawless 4K videos, maintain perfect eye contact, and eliminate the frustration of memorizing scripts – all without heavy app installs or expensive subscriptions.
+            The iPad is, without a doubt, the best physical tool for a teleprompter. Its high-definition retina display and generous size are ideal for clear reading, even from several feet away. But why pay for expensive App Store subscriptions when you can get the best performance for free?
         </p>
 
-        <p className="text-slate-300 mb-8 font-medium">
-            iPhone 15 Pro Max. $1200. 4K60fps ProRes camera. Cinematic stabilization. Then you record the video... look at paper every 5 seconds. Lose eye contact. Audience feels disconnect. PRO camera + AMATEUR script = waste.
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this guide, you will learn how to set up <strong>PromptNinja</strong> on your iPad for a TV studio experience. Discover how to save hundreds of dollars by ditching limited "freemium" apps and adopting our Web App technology. We'll show you how to sync your iPhone as a P2P remote control, configure mirror mode for professional equipment, and ensure you never miss a line in your videos or presentations.
         </p>
 
-        <p className="text-slate-300 mb-8">
-            This guide shows EXACTLY how to transform iPhone/iPad into PRO teleprompter in 45 seconds: zero App Store installation, zero subscription, works offline, syncs via AirPlay/P2P.
-        </p>
-
-        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12 shadow-xl">
             <h3 className="text-2xl font-bold text-white mb-4">Unleash Your Device's Potential</h3>
             <p className="text-slate-300 mb-6 font-medium">
                 Professionalism doesn't have to be expensive. Use the power of our PWA
@@ -30,6 +26,7 @@ export const TeleprompterIphoneIpadEN = () => (
             </a>
             <p className="mt-4 text-sm text-slate-400 font-medium">No account needed. Works 100% offline.</p>
         </div>
+
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">iOS Setup: App Store vs Web App</h3>

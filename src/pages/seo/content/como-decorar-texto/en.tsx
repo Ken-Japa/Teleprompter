@@ -3,19 +3,19 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoDecorarTextoEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            How to Memorize Text Fast: 5 Fail-proof Techniques for Perfect Videos
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            How to Memorize Text Fast? 🧠 5 Fail-proof Techniques (and why you shouldn't!)
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Stop struggling to memorize long scripts. Learn effective memory techniques and discover the definitive solution to never forget a line again. Save hours of re-recording and record with the confidence of a professional.
+            You have a presentation tomorrow. The script is 5 pages long. Your heart races just thinking about forgetting a line and freezing on camera. Searching for "how to memorize text fast" is common, but the brutal truth? <strong>Trying to memorize word-for-word is the shortest path to a robotic and nervous performance.</strong>
         </p>
 
-        <p className="text-slate-300 mb-8 font-medium">
-            You have a presentation tomorrow. Script is 5 pages long. Your heart races just thinking about forgetting a line and freezing on camera. The brutal truth? <strong>Trying to memorize everything is often a waste of time.</strong>
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this guide, we'll show you the 5 most effective memory techniques used by actors and speakers. But we'll also reveal <strong>The Memorization Trap</strong>: why the world's top YouTubers and speakers have stopped memorizing and how <strong>PromptNinja</strong> has become the essential tool for them to shine naturally, without the stress of forgetting a single comma.
         </p>
 
-        <div className="bg-yellow-600/10 border border-yellow-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+        <div className="bg-yellow-600/10 border border-yellow-500/20 rounded-2xl p-6 md:p-8 text-center mb-12 shadow-xl">
             <h3 className="text-2xl font-bold text-white mb-4">Focus on Your Performance, Not the Words</h3>
             <p className="text-slate-300 mb-6 font-medium">
                 Deliver your message fluently and naturally. Use our free tool to read

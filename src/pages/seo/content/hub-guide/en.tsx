@@ -2,9 +2,17 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const HubGuideContentEN = () => (
     <>
-        <div className="lead text-xl text-slate-300 mb-12 font-medium border-l-4 border-purple-500 pl-6 bg-slate-800/30 py-4 rounded-r-lg">
-            Welcome to the internet's largest repository of Teleprompter knowledge. If you want to record better videos, speak with confidence, and master the camera, you are in the right place.
-        </div>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Complete Teleprompter Guide: The Internet's Largest Knowledge Repository
+        </h2>
+
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Master the art of communication and elevate your productions. <strong>Explore everything you need to know</strong> about teleprompters, from reading techniques to professional equipment.
+        </p>
+
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            Whether you're a beginner trying to understand what a teleprompter is for the first time, or an experienced professional looking for the best tools and scripts, this guide was designed for you. At PromptNinja, we've consolidated years of experience in video, public speaking, and technology to create the ultimate hub on the subject. Here, you'll learn everything from setting up a low-cost kit to using advanced features like voice-activated scrolling and multi-device synchronization. Discover how to save hours of editing by recording in a single take and convey unwavering authority by looking directly at your audience.
+        </p>
 
         <section id="oque" className="mb-16">
             <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">

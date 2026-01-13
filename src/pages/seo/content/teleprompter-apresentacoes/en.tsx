@@ -3,33 +3,30 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterApresentacoesEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter for PowerPoint & Presentations: Speak Like a Pro Without Memorizing
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter for PowerPoint and Presentations: Professional Oratory
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Master your slide presentations with **PromptNinja’s invisible teleprompter**. Whether in person or over Zoom, deliver your message with total confidence, perfect eye contact, and zero hesitation – all without spending weeks memorizing scripts.
+            Master your slides and win over your audience with total confidence. <strong>Invisibly synchronize your script</strong> with PowerPoint, Google Slides, or Keynote using PromptNinja.
         </p>
 
-        <p className="text-slate-300 mb-8 font-medium">
-            Quarterly presentation? Board meeting? 40 PowerPoint slides? You memorized 80% of your script. Slide 12... blank. 5 seconds of eternal silence. Check notes. Lose credibility. CEO raises an eyebrow.
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this definitive guide for competent speakers, we show how PromptNinja becomes your strategic partner for high-impact presentations. Learn how to read your script naturally, maintaining eye contact with the audience and avoiding the fear of 'going blank' at critical moments. Discover techniques to integrate the teleprompter with any slide software, ensuring you present with fluidity, authority, and professionalism, whether on a physical stage or in virtual meetings. Transform your public speaking and stand out with memorable presentations without hesitations.
         </p>
 
-        <p className="text-slate-300 mb-8">
-            This guide shows EXACTLY how to do IMPECCABLE presentations in 10 minutes prep: teleprompter synced with slides, invisible to audience, works in-person AND online (Zoom/Teams).
-        </p>
-
-        <div className="bg-orange-600/10 border border-orange-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
-            <h3 className="text-2xl font-bold text-white mb-4">Command the Stage and the Screen</h3>
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12 shadow-xl">
+            <h3 className="text-2xl font-bold text-white mb-4">Present with TED-Style Confidence</h3>
             <p className="text-slate-300 mb-6 font-medium">
-                Transform your presentations with the power of an invisible script.
-                Compatible with PowerPoint, Google Slides, and Keynote.
+                Transform your slides into visual support and yourself into the star of the presentation.
+                The <strong>PromptNinja</strong> invisibly synchronizes your script for the audience.
             </p>
-            <a href="/?lang=en#app" className="inline-block bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-orange-500/25">
-                Start Using PromptNinja for Presentations
+            <a href="/?lang=en#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Start Presentation with PromptNinja
             </a>
-            <p className="mt-4 text-sm text-slate-400 font-medium">100% Free · No Downloads · Works with All Platforms</p>
+            <p className="mt-4 text-sm text-slate-400 font-medium">TED-style confidence instantly.</p>
         </div>
+
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">Presentation: Memorize vs PRO Teleprompter</h3>

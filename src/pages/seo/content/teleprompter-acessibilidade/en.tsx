@@ -3,12 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterAcessibilidadeEN = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter for ADHD and Dyslexia: How Technology Helps Speech
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter and Accessibility: Assisted Focus Technology
         </h2>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            For those with ADHD (Attention Deficit Hyperactivity Disorder) or Dyslexia, recording videos can be a nightmare. Forgetting what to say, swapping words, losing focus... A teleprompter is not just a reading tool, it's an <strong>assisted focus</strong> tool.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Transform the challenge of speaking to the camera into an experience of confidence. <strong>Discover how inclusive features</strong> help people with ADHD, Dyslexia, and other neurodiversities shine on video.
+        </p>
+
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this deep dive into digital inclusion, we explore the vital role of the teleprompter as an accessibility tool. For neurodiverse creators, the act of recording can be filled with anxiety and loss of focus. PromptNinja was designed to combat these obstacles, offering unique features like the OpenDyslexic font — designed to increase readability and reduce letter flipping — and visual focus markers that isolate relevant information, eliminating cognitive noise. Learn how Voice Control allows the script to wait for your processing time, and how high-contrast color schemes protect against visual stress. We democratize professional public speaking by offering all these tools for free and online, ensuring that no one is left behind in the era of video content.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">

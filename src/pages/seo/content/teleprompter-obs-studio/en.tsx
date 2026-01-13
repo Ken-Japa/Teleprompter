@@ -3,21 +3,51 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterObsStudioEN = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter for OBS Studio: Complete Guide for Streamers and Live Creators
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter for OBS Studio: Transparent Overlay for Professional Lives
         </h2>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            You're going live, trying to read the script on second monitor, lose eye contact with camera for 3 seconds and BOOM — 50 people left the stream. Or worse: you keep Alt+Tabbing, break the flow, chat notices you're reading something, atmosphere dies.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Elite streamers don't improvise; they prepare. <strong>Transform OBS Studio into a true TV production center</strong> with PromptNinja's transparent overlay.
         </p>
 
-        <p className="mb-6">
-            Professional streamers have a secret: <strong>text floating invisible to audience, visible to them</strong>. Like TV news. You keep eye on camera (or game), read the script without anyone noticing, and look like you're speaking off the cuff. This is what separates 50 viewers from 500 viewers.
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this guide, we show you how to seamlessly integrate PromptNinja with OBS Studio in less than 10 minutes. Learn how to create an overlay invisible to the chat but crystal clear to you, ensuring you never lose eye contact with the lens or forget an important sponsor. Discover how to use your smartphone as a wireless remote control to keep your hands on the mouse or keyboard during the game, all for free, online, and without impacting your PC's performance.
         </p>
 
-        <p className="mb-8">
-            PromptNinja solves this. You integrate directly into OBS Studio as Browser Source, apply Chroma Key to remove background, and control from phone while live. Zero Alt+Tab. Zero looking at second monitor. <strong>TV-level professionalism.</strong>
-        </p>
+        <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
+            <h3 className="text-2xl font-bold text-white mb-6">Why Elite Streamers Choose PromptNinja for OBS?</h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">🔗</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Native and Simple Integration</strong>
+                        <span className="text-slate-400">Add as a Browser Source in OBS in seconds. No complex installations and free of charge.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">🎮</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Intuitive Remote Control</strong>
+                        <span className="text-slate-400">Use your smartphone to manage speed and flow while live, without touching the PC.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">🟢</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Chroma Key (Transparency)</strong>
+                        <span className="text-slate-400">Discreet text over your image or game, visible only to you (or whoever you choose).</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">⚙️</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Full Customization</strong>
+                        <span className="text-slate-400">Adjust fonts, colors, and speeds so reading is comfortable and natural in your lives.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
         <div className="bg-gradient-to-r from-red-900/30 to-purple-900/30 p-8 rounded-xl border border-purple-500/30 my-12">
             <h3 className="text-3xl font-bold text-white mb-6">The Script-Reading Streamer's Problem</h3>

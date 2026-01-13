@@ -3,20 +3,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterGamersEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Minimalist Teleprompter for Gamers & Streamers: Zero Lag, Maximum Flow
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Elevate your stream with the ultimate **OBS-ready teleprompter**. Features 'No HUD' mode, transparent background for Chroma Key, and zero-distraction scrolling – designed for professional gamers and streamers who demand performance and authority.
+            In the middle of an intense match or a live react, every distraction can be costly. Have you ever had to Alt-Tab to read a script or thank a donation and ended up losing the action? <strong>Streamer life demands total focus, and improvisation isn't always the best path.</strong>
         </p>
 
-        <p className="text-slate-300 mb-8 font-medium">
-            4-hour stream. 300 viewers. Need to read a long donation or announcement? Alt-Tabbing to a script is a death sentence for your engagement (and your character). One freeze, one "OMEGALUL" in the chat, and your viewers start to drop.
-        </p>
-
-        <p className="text-slate-300 mb-8">
-            This guide shows EXACTLY how to setup a PRO gamer teleprompter in 90 seconds: zero lag, ultra-low RAM usage, control without Alt-Tab, and seamless Chroma Key integration for OBS.
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this guide, we show why successful streamers on Twitch and YouTube are adopting <strong>PromptNinja</strong> as their secret tool. Discover how to set up a minimalist teleprompter that doesn't consume your precious FPS, allows reading thank-yous without taking your eyes off the game, and integrates perfectly with OBS Studio via Chroma Key. Raise the level of your production, keep your chat engaged, and never lose the rhythm of your stream again!
         </p>
 
         <div className="bg-green-600/10 border border-green-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">

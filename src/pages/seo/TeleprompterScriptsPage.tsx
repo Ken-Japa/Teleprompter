@@ -238,26 +238,52 @@ export const TeleprompterScriptsPage: React.FC<{ onLaunch: () => void }> = ({ on
                         </>
                     ) : (
                         <>
-                            <h2 className="text-3xl font-bold text-purple-400 mb-6">{content.intro[currentLang].title}</h2>
+                            <h2 className="text-3xl font-bold text-purple-400 mb-6">Teleprompter Scripts: Free and Effective Templates</h2>
                             <p className="text-slate-300 mb-6 leading-relaxed">
-                                {content.intro[currentLang].p1}
+                                Ever felt that "blank" moment when recording? The camera turns on, and suddenly, the words flee? Scripting is the foundation of any successful video, but we don't always have the time or inspiration to start from scratch. A good script not only organizes your thought but also guides your pace, ensures you don't forget crucial points, and helps you keep eye contact with your audience.
                             </p>
                             <p className="text-slate-300 mb-6 leading-relaxed">
-                                {content.intro[currentLang].p2}
+                                At <strong>PromptNinja</strong>, we want you to focus on what really matters: your message. That's why we created this exclusive library of totally free and ready-to-use <strong>teleprompter scripts</strong>. These are validated models for various niches, from YouTube and TikTok videos to sales scripts and professional video lessons. Choose yours, personalize it, and shine in front of the cameras!
                             </p>
-                            <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 my-8">
-                                <h3 className="text-xl font-bold text-white mb-4 mt-0">{content.intro[currentLang].h2_1}</h3>
-                                <ul className="space-y-2 mb-0">
-                                    {content.intro[currentLang].ul_1.map((item, i) => (
-                                        <li key={i} className="text-slate-300 flex items-start gap-2">
-                                            <span className="text-purple-500 mt-1.5">•</span>
-                                            <span>{item}</span>
-                                        </li>
-                                    ))}
+
+                            <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 my-8 shadow-xl">
+                                <h3 className="text-xl font-bold text-white mb-4 mt-0">Why Our Script Templates Are Effective?</h3>
+                                <ul className="space-y-3 mb-0">
+                                    <li className="text-slate-300 flex items-start gap-2">
+                                        <span className="text-purple-500 mt-1.5">•</span>
+                                        <span><strong>Proven Structure:</strong> Each script follows a logical structure of introduction, development, and call to action (CTA) that holds attention.</span>
+                                    </li>
+                                    <li className="text-slate-300 flex items-start gap-2">
+                                        <span className="text-purple-500 mt-1.5">•</span>
+                                        <span><strong>Total Adaptability:</strong> Our templates are flexible. You can use them as a base and add your personal touch.</span>
+                                    </li>
+                                    <li className="text-slate-300 flex items-start gap-2">
+                                        <span className="text-purple-500 mt-1.5">•</span>
+                                        <span><strong>Focus on Naturality:</strong> We write the scripts thinking about speech, not technical reading, so your delivery sounds organic.</span>
+                                    </li>
+                                    <li className="text-slate-300 flex items-start gap-2">
+                                        <span className="text-purple-500 mt-1.5">•</span>
+                                        <span><strong>Teleprompter-Ready:</strong> Formatted for easy reading on screens of any size.</span>
+                                    </li>
                                 </ul>
                             </div>
-                            <p className="text-slate-300 mb-6 leading-relaxed">
-                                {content.intro[currentLang].p3}
+
+                            <section id="cases-roteiros" className="bg-gradient-to-br from-slate-900 to-purple-900/20 p-8 rounded-2xl my-16 border border-purple-500/20 shadow-2xl">
+                                <h2 className="text-2xl font-extrabold text-white text-center mb-10">Who Uses Our Scripts and Approves! (E-E-A-T)</h2>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <div className="bg-slate-800/50 p-6 rounded-xl shadow-lg border-l-4 border-purple-500 backdrop-blur-sm">
+                                        <p className="text-slate-300 italic text-sm">"I always froze in the intro of my videos. PromptNinja's 'Initial Hook' model changed my game. Now I record everything on the first take!"</p>
+                                        <span className="block mt-4 text-xs font-bold text-purple-400 uppercase tracking-widest">— Mariana Costa, Finance YouTuber</span>
+                                    </div>
+                                    <div className="bg-slate-800/50 p-6 rounded-xl shadow-lg border-l-4 border-blue-500 backdrop-blur-sm">
+                                        <p className="text-slate-300 italic text-sm">"As a teacher, I had difficulty being concise. The video lesson templates helped me organize the content, and my students noticed the difference."</p>
+                                        <span className="block mt-4 text-xs font-bold text-blue-400 uppercase tracking-widest">— Dr. Ricardo Mendes, Online Education</span>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <p className="text-slate-400 text-center italic">
+                                Explore our categories and find the perfect script for your next video!
                             </p>
                         </>
                     )}

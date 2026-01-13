@@ -4,28 +4,28 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterZoomMeetingEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Virtual Teleprompter for Zoom: Master Your Online Presentations with PromptNinja
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            How to Use Teleprompter on Zoom: 3 Modes to Shine in Your Meetings
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Tired of looking away from the camera to check your notes during important calls? With **PromptNinja's virtual teleprompter for Zoom**, you maintain perfect eye contact, speak with authority, and never forget a single point of your script.
+            Do you know that feeling of <strong>nervousness</strong> before an important presentation on Zoom? Where every word counts, but the worry about forgetting the script or losing eye contact with the camera haunts you? You are not alone. <strong>Digital communication requires more than just presence; it requires connection.</strong>
         </p>
 
-        <p className="text-slate-300 mb-8">
-            Maintaining eye contact during an online presentation is the secret to capturing attention and conveying confidence. However, the reality is a constant juggling act: if you look at your notes, you lose connection with the audience; if you look at the camera, you risk forgetting crucial points. PromptNinja emerges as the definitive solution to this dilemma.
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this practical guide, we'll show you how <strong>PromptNinja</strong> becomes your invisible tool of authority. Forget sticky notes on the screen or wandering eyes to other monitors. Discover the 3 essential modes of setting up your teleprompter for meetings and webinars, ensuring you deliver your message with fluidity, always keeping your gaze fixed on who matters most: your audience.
         </p>
 
-        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
-            <h3 className="text-2xl font-bold text-white mb-4">Command Your Virtual Room</h3>
+        <div className="bg-blue-600/20 p-8 rounded-2xl border border-blue-500/30 mb-12 shadow-xl">
+            <p className="text-xl text-white font-bold mb-4 italic">
+                "What if you could read your full script, word for word, while looking directly at the camera, maintaining an authentic and unshakable connection with your audience?"
+            </p>
             <p className="text-slate-300 mb-6">
-                Deliver your message with the confidence of a TV professional. Our virtual teleprompter
-                works seamlessly over Zoom, Teams, and Meet, without extra software.
+                With <strong>PromptNinja</strong>, the virtual teleprompter created to transform your interactions on Zoom, this reality is within your reach. Forget improvisations and worries. Our innovative software integrates perfectly with your meetings, lives, and webinars, allowing you to deliver your message with the fluidity, charisma, and confidence of an experienced professional.
             </p>
             <a href="/?lang=en#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
-                Try Free Virtual Teleprompter
+                Start Glowing on Zoom Now!
             </a>
-            <p className="mt-4 text-sm text-slate-400">100% Online · No Installation · Instant Setup</p>
         </div>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-blue-500">

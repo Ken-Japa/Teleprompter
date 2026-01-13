@@ -3,33 +3,17 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoInstalarPwaEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            How to Install the PromptNinja (PWA) - iPhone and Android
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            How to Install the PromptNinja Teleprompter on Your Phone or PC
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Learn how to install PromptNinja as a native app on your iPhone or Android. Enjoy better performance, offline mode, and a professional full-screen experience.
+            Transform PromptNinja into a powerful native app. <strong>Learn how to install our PWA</strong> to get maximum performance, offline functionality, and a professional full-screen teleprompter experience.
         </p>
 
-        <p className="text-slate-300 mb-8 font-medium">
-            Searched the App Store or Play Store and found nothing? Relax, that's a <strong>feature</strong>, not a bug.
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            Many users search for a teleprompter on the App Store or Google Play, but PromptNinja offers a superior alternative through PWA (Progressive Web App) technology. In this detailed guide, we explain step by step how you can 'download' our tool directly from your browser, whether on iPhone, Android, Mac, or Windows. Discover the advantages of having an ultra-lightweight app that doesn't consume your device's memory, ensures total privacy, and allows for flawless recordings anywhere, even without an internet connection. Follow our simple instructions and start recording like a professional in seconds.
         </p>
-
-        <p className="text-slate-300 mb-8">
-            PromptNinja is an <strong>Elite Progressive Web App (PWA)</strong>. It has the power of a native app (works offline, full screen, no lag) but without the store bureaucracy. You install it directly from your browser, in seconds, without eating up your phone's storage.
-        </p>
-
-        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
-            <h3 className="text-2xl font-bold text-white mb-4">Install PromptNinja in 5 Seconds</h3>
-            <p className="text-slate-300 mb-6">
-                Get native app performance directly on your phone or computer. Zero storage usage,
-                instant updates, and 100% functionality even offline.
-            </p>
-            <a href="/?lang=en#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
-                Check Installation Steps
-            </a>
-            <p className="mt-4 text-sm text-slate-400">Available for iPhone, iPad, Android, Mac, and Windows.</p>
-        </div>
 
         <div className="bg-gradient-to-r from-purple-900/40 to-blue-900/40 p-8 rounded-xl border border-purple-500/30 mb-12">
             <h3 className="text-2xl font-bold text-white mb-4">Why is this better?</h3>

@@ -2,12 +2,16 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterPacingTimerEN = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
-            Master Timing: How Not to Get Cut Off in Your Pitch or Talk
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Pacing and Timer for Teleprompter: Control Your Speech Rhythm
         </h2>
 
-        <p className="mb-6 text-xl text-slate-300">
-            "Your time is up." Nothing is more embarrassing than being interrupted mid-conclusion in a Talk or Sales Pitch because you talked too much.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Speaking too fast due to nervousness or too slow to the point of boring your audience are common mistakes that can ruin your video. <strong>Master the rhythm of your recordings with surgical precision.</strong>
+        </p>
+
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this guide, you will learn how to use the integrated stopwatch and timer of <strong>PromptNinja</strong> to ensure your content fits perfectly within the planned time. Discover how to adjust Words Per Minute (WPM), use strategic pause commands, and receive real-time timing feedback. Whether for a 60-second pitch or a one-hour class, our free tool ensures you maintain fluidity and authority, without ever being cut off or losing your breath!
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-orange-500 mb-12">

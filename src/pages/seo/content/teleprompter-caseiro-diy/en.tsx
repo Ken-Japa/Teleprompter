@@ -4,11 +4,28 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterCaseiroDIYEN = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6">How to Build a DIY Homemade Teleprompter: Complete Guide + FREE Software</h2>
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            DIY Homemade Teleprompter: Build Yours Fast & Cheap (and Record Like a Pro)
+        </h2>
 
-        <p className="mb-6">
-            Recording professional-looking videos requires fluency and confidence, but memorizing scripts is challenging. Professional teleprompter equipment solves this, but it's expensive. The good news? You can <strong>build a cheap DIY homemade teleprompter</strong> with simple materials and achieve impressive results. The physical principle behind it is "Pepper's Ghost," an optical illusion used in theaters since the 19th century — and you can replicate it at home!
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Want to save hundreds of dollars and still get professional results? Learn how to build your own DIY homemade teleprompter and discover why <strong>PromptNinja</strong> is the perfect free software for your new setup.
         </p>
+
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            Recording professional-looking videos requires fluency and confidence, but memorizing scripts is a constant challenge. Professional teleprompter equipment solves this, but the cost can be prohibitive for those just starting out. The good news? You can <strong>build a cheap DIY homemade teleprompter</strong> with simple materials and achieve impressive results.
+        </p>
+
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12 shadow-xl">
+            <h3 className="text-2xl font-bold text-white mb-4">Free Software with Mirror Mode</h3>
+            <p className="text-slate-300 mb-6">
+                Built your teleprompter but don't have a way to flip the text?
+                <strong>PromptNinja</strong> has the Mirror function 100% free.
+            </p>
+            <a href="/?lang=en#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Open Teleprompter with Mirroring
+            </a>
+        </div>
 
         <h3 className="text-2xl font-bold text-white mt-8 mb-4">Materials Needed to Build Your DIY Teleprompter</h3>
 

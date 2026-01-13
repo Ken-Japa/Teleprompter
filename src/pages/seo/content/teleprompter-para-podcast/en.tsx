@@ -3,14 +3,28 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterParaPodcastEN = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter for Podcast: The Secret to Perfect Intros and Ads
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            How to Use a Teleprompter in Podcasts: The Secret to Professional Flow
         </h2>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            "Hello everyone and welcome to... uh... what episode number is it again?"
-            <br /> Professional podcasters don't improvise everything. There is an invisible structure that keeps the chat flowing and sponsors happy. Discover where the teleprompter fits into your audio and video setup.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            "Hello everyone and welcome to... uh... what episode number is it again?" If you've been there, you know that the charm of a podcast can be ruined by stutters and forgetfulness. <strong>Professional podcasters don't improvise everything; they use systems that ensure perfect intros and ads.</strong>
         </p>
+
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this article, we'll reveal how <strong>PromptNinja</strong> has become the secret tool for maintaining conversation flow without losing spontaneity. Learn where to position the teleprompter in your videocast setup to maintain eye contact with both the audience and the guest, and discover how to ensure your sponsorship ads are read with the precision required by major brands, all for free and intuitively.
+        </p>
+
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Record with Confidence and Fluidity</h3>
+            <p className="text-slate-300 mb-6">
+                Eliminate "uhhh..." and uncomfortable pauses. With <strong>PromptNinja</strong>, your intros and
+                sponsorship ads are flawless on the first take.
+            </p>
+            <a href="/?lang=en#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Try PromptNinja for Free
+            </a>
+        </div>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">Where to Use (and Where NOT to Use)</h3>

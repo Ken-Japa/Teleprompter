@@ -3,12 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const ErrosComunsTeleprompterEN = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            5 Amateur Mistakes When Using a Teleprompter That Ruin Your Videos (And How to Fix Them)
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Common Teleprompter Mistakes and How to Avoid Them
         </h2>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            You bought the gear, downloaded the app, but the final video turned out... weird. Robotically read, eyes darting from side to side. Relax, the problem isn't you, it's the technique. Let's fix the 5 classic mistakes right now.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Transform your performance by correcting the slips that harm your naturalness. <strong>Learn to master the teleprompter</strong> and look like an experienced professional from your very first recording.
+        </p>
+
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this practical guide, we identify and solve the biggest obstacles faced by those starting to use a teleprompter. From visual errors like the 'watching tennis gaze' to the dreaded 'robot voice,' we explore every detail that separates an artificial reading from magnetic and fluid communication. Discover validated techniques to adjust camera distance, set text margins, and use artificial intelligence features so that the script follows your natural rhythm. With PromptNinja, you will have access to the tools and knowledge necessary to avoid common pitfalls and ensure your message is delivered with maximum authority, all for free and online.
         </p>
 
         <div className="space-y-8 mb-12">

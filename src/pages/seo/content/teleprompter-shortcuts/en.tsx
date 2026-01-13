@@ -3,14 +3,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterShortcutsEN = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter Keyboard Shortcuts: The Video Productivity Secret</h2>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter Keyboard Shortcuts: Master Your Productivity
+        </h2>
 
-        <p className="mb-6 text-lg text-slate-300">
-            Have you ever timed how much recording time you lose just walking to the camera, hitting REC, walking back, messing up, getting up to pause again...?
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Speed and total control at your fingertips. <strong>Learn to control PromptNinja via keyboard</strong>, Stream Deck, or pedals for a professional and seamless recording experience.
         </p>
 
-        <p className="mb-6">
-            Pro video editors in Adobe Premiere or DaVinci Resolve rarely touch the mouse. They know that <strong>keyboard shortcuts = speed</strong>.
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this essential guide for creators focused on efficiency, we detail PromptNinja's 'Keyboard First' philosophy. Discover how keyboard shortcuts can transform your workflow, allowing you to adjust scroll speed, font size, and play/pause control without ever having to take your hands off the recording position or use the mouse. We explain how to integrate our tool with external hardware like Elgato Stream Deck and USB pedals, ensuring you have a complete command center for your productions, talks, or musical performances. Save time and gain professionalism with simplified commands and smart shortcuts.
         </p>
 
         <p className="mb-8">

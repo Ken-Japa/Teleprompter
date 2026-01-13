@@ -2,28 +2,27 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const OratoriaVideoEN = () => (
     <div className="text-slate-300">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 text-center leading-tight">
-            Master Public Speaking for Videos: Speak with Confidence and Authority
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight text-center">
+            Public Speaking for Videos: 3 Pillars of Magnetic Presentation
+        </h2>
 
-        <p className="lead text-xl text-slate-300 mb-12 text-center max-w-3xl mx-auto font-medium">
-            Stop freezing or sounding insecure. Master 5 fast techniques to speak well on video and discover how **PromptNinja**, the ultimate free teleprompter, applies these techniques instantly to help you connect with your audience.
+        <p className="lead text-xl text-slate-300 mb-8 text-center max-w-3xl mx-auto font-medium">
+            Have you ever felt that "butterflies in your stomach" before recording a video? Or lost your place in the script, diverted your gaze from the camera, and lost connection with your audience? In today's dynamic digital world, video speaking is essential, but mastering fluency and naturalness can be a huge challenge.
         </p>
 
-        <p className="mb-8 text-lg text-center max-w-3xl mx-auto">
-            The red camera light turns on, and suddenly, your mind goes blank. Speaking to a cold glass lens isn't natural and can intimidate even the most seasoned communicators. The good news is that on-camera public speaking isn't a gift, but a skill that can be developed.
+        <p className="text-slate-300 mb-12 text-center max-w-3xl mx-auto leading-relaxed">
+            <strong>But here's the secret: public speaking isn't a gift, it's a trained skill.</strong> Speaking well on camera involves aligning your mind, your body, and the right tools. In this guide, we'll explore the 3 pillars that transform insecure speech into a magnetic presentation, and how <strong>PromptNinja</strong> is the secret partner that lets you focus on what truly matters: your connection with the audience.
         </p>
 
-        <div className="bg-purple-600/10 border border-purple-500/20 rounded-2xl p-6 md:p-8 text-center mb-16">
-            <h3 className="text-2xl font-bold text-white mb-4">Command Your Performance</h3>
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12 shadow-xl">
+            <h3 className="text-2xl font-bold text-white mb-4">Tired of Stuttering or Forgetting Your Script?</h3>
             <p className="text-slate-300 mb-6 font-medium">
-                Deliver your message with the confidence of a professional speaker.
-                Eliminate filler words and maintain hypnotic eye contact with PromptNinja.
+                Thousands of creators have already transformed how they appear on video.
+                Try <strong>PromptNinja</strong> and discover the freedom to communicate naturally and professionally.
             </p>
-            <a href="/?lang=en#app" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-purple-500/25">
-                Practice with Free Teleprompter
+            <a href="/?lang=en#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Start Your Free Journey Now!
             </a>
-            <p className="mt-4 text-sm text-slate-400 font-medium">Start recording professional videos today. No credits needed.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">

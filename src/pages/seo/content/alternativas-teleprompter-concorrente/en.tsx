@@ -2,38 +2,34 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const AlternativasTeleprompterConcorrenteEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Tired of Bulky Teleprompters and Expensive Apps? Meet PromptNinja!
-        </h1>
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            If you're a **YouTuber, speaker, musician**, or any professional who needs to communicate with fluidity and naturalness, you know a teleprompter can be your best friend. But let's face it: traditional options – bulky physical teleprompters, complex desktop software, or mobile apps with limited features – can bring more headache than solution.
+            If you're a <strong>YouTuber, speaker, musician</strong>, or any professional who needs to communicate with fluidity and naturalness, you know a teleprompter can be your best friend. But traditional options — bulky physical hardware or apps with features locked behind paywalls — often bring more headache than solution.
         </p>
 
-        <p className="text-slate-300 mb-8">
-            **Say goodbye to complication and high cost!** PromptNinja emerges as the ultimate alternative, combining the power of a professional teleprompter with the simplicity and flexibility that only a 100% online platform can offer.
-        </p>
-
-        <div className="bg-slate-800/50 p-6 md:p-8 rounded-2xl border border-slate-700 mb-12">
+        <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 mb-12 shadow-xl">
             <h3 className="text-2xl font-bold text-white mb-6">What PromptNinja offers for your performance?</h3>
-            <div className="grid md:grid-cols-2 gap-6 text-slate-300">
-                <div className="flex gap-3">
-                    <span className="text-blue-400 text-xl font-bold">✓</span>
-                    <p><strong>Immediate Accessibility:</strong> Use on any device, right from your browser, no installations.</p>
-                </div>
-                <div className="flex gap-3">
-                    <span className="text-blue-400 text-xl font-bold">✓</span>
-                    <p><strong>Unmatched Cost-Benefit:</strong> Eliminate investment in expensive hardware and heavy annual licenses.</p>
-                </div>
-                <div className="flex gap-3">
-                    <span className="text-blue-400 text-xl font-bold">✓</span>
-                    <p><strong>Full Professional Features:</strong> Speed control, mirroring, font resizing, dark mode, and more.</p>
-                </div>
-                <div className="flex gap-3">
-                    <span className="text-blue-400 text-xl font-bold">✓</span>
-                    <p><strong>Your Privacy First:</strong> Scripts are processed locally in your browser. No cloud storage needed.</p>
-                </div>
-            </div>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <li className="flex items-center gap-3 text-slate-300">
+                    <span className="text-blue-400 font-bold">✓</span>
+                    <span><strong>Immediate Accessibility:</strong> Use on any device, right from your browser.</span>
+                </li>
+                <li className="flex items-center gap-3 text-slate-300">
+                    <span className="text-blue-400 font-bold">✓</span>
+                    <span><strong>Unmatched Cost-Benefit:</strong> Eliminate investment in expensive hardware.</span>
+                </li>
+                <li className="flex items-center gap-3 text-slate-300">
+                    <span className="text-blue-400 font-bold">✓</span>
+                    <span><strong>Professional Features:</strong> Speed control, mirroring, and font customization.</span>
+                </li>
+                <li className="flex items-center gap-3 text-slate-300">
+                    <span className="text-blue-400 font-bold">✓</span>
+                    <span><strong>Focus on Your Fluency:</strong> Naturalness and professionalism in every word.</span>
+                </li>
+            </ul>
         </div>
 
         <div className="bg-gradient-to-r from-red-900/30 to-slate-900 p-6 rounded-xl border border-red-500/30 mb-8">
@@ -116,44 +112,52 @@ export const AlternativasTeleprompterConcorrenteEN = () => (
             PromptNinja was designed to solve these exact problems, offering a superior experience at no cost.
         </p>
 
-        <div className="overflow-x-auto my-12 bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
-            <h2 className="text-2xl font-bold text-white p-6 bg-slate-800 uppercase tracking-wider text-center">PromptNinja vs. Alternatives: The Choice is Clear!</h2>
-            <table className="min-w-full text-left">
-                <thead>
-                    <tr className="bg-slate-800/50 text-slate-400 text-xs">
-                        <th className="py-4 px-6 font-bold uppercase">Feature</th>
-                        <th className="py-4 px-6 font-bold uppercase text-center">Physical Hardware</th>
-                        <th className="py-4 px-6 font-bold uppercase text-center">Standard Apps</th>
-                        <th className="py-4 px-6 font-bold uppercase text-center bg-blue-600/20 text-blue-300">PromptNinja</th>
-                    </tr>
-                </thead>
-                <tbody className="text-slate-300 divide-y divide-slate-800">
-                    <tr>
-                        <td className="py-4 px-6">**Initial Cost**</td>
-                        <td className="py-4 px-6 text-center">High ($500+)</td>
-                        <td className="py-4 px-6 text-center">Medium ($50-100/yr)</td>
-                        <td className="py-4 px-6 text-center font-bold text-green-400 bg-blue-600/5">Free / Ultra Low</td>
-                    </tr>
-                    <tr>
-                        <td className="py-4 px-6">**Setup Time**</td>
-                        <td className="py-4 px-6 text-center">Complex (30min+)</td>
-                        <td className="py-4 px-6 text-center">Medium (Login/Install)</td>
-                        <td className="py-4 px-6 text-center font-bold text-green-400 bg-blue-600/5">Instant (Open Browser)</td>
-                    </tr>
-                    <tr>
-                        <td className="py-4 px-6">**Portability**</td>
-                        <td className="py-4 px-6 text-center">Low (Cables/Cases)</td>
-                        <td className="py-4 px-6 text-center">Device Restricted</td>
-                        <td className="py-4 px-6 text-center font-bold text-green-400 bg-blue-600/5">Universal (Any Browser)</td>
-                    </tr>
-                    <tr>
-                        <td className="py-4 px-6">**Remote Control**</td>
-                        <td className="py-4 px-6 text-center">Dedicated Remote</td>
-                        <td className="py-4 px-6 text-center">Subscription Only</td>
-                        <td className="py-4 px-6 text-center font-bold text-green-400 bg-blue-600/5">Included Free (P2P)</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">PromptNinja vs. Alternatives: The Smarter Choice is Clear!</h3>
+            <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse min-w-[700px]">
+                    <thead>
+                        <tr className="bg-slate-800">
+                            <th className="p-4 border border-slate-700 text-white font-bold">Feature</th>
+                            <th className="p-4 border border-slate-700 text-center text-slate-300">Physical Hardware</th>
+                            <th className="p-4 border border-slate-700 text-center text-slate-300">Standard Apps</th>
+                            <th className="p-4 border border-slate-700 text-center text-blue-400 font-bold bg-blue-500/10">PromptNinja</th>
+                        </tr>
+                    </thead>
+                    <tbody className="text-slate-300 text-sm">
+                        <tr>
+                            <td className="p-4 border border-slate-700 font-semibold text-white">Initial Cost</td>
+                            <td className="p-4 border border-slate-700 text-center">High (Equipment)</td>
+                            <td className="p-4 border border-slate-700 text-center">Medium (Subscriptions)</td>
+                            <td className="p-4 border border-slate-700 text-center font-bold text-green-400 bg-blue-500/5">Ultra Low / Free</td>
+                        </tr>
+                        <tr>
+                            <td className="p-4 border border-slate-700 font-semibold text-white">Portability</td>
+                            <td className="p-4 border border-slate-700 text-center text-red-400">Low (Weight/Volume)</td>
+                            <td className="p-4 border border-slate-700 text-center">Medium (Device)</td>
+                            <td className="p-4 border border-slate-700 text-center font-bold text-green-400 bg-blue-500/5">High (Any Screen)</td>
+                        </tr>
+                        <tr>
+                            <td className="p-4 border border-slate-700 font-semibold text-white">Setup</td>
+                            <td className="p-4 border border-slate-700 text-center">Complex (Assembly)</td>
+                            <td className="p-4 border border-slate-700 text-center">Medium (Installation)</td>
+                            <td className="p-4 border border-slate-700 text-center font-bold text-green-400 bg-blue-500/5">Immediate (Browser)</td>
+                        </tr>
+                        <tr>
+                            <td className="p-4 border border-slate-700 font-semibold text-white">Flexibility</td>
+                            <td className="p-4 border border-slate-700 text-center text-red-400">Restricted to Hardware</td>
+                            <td className="p-4 border border-slate-700 text-center">Restricted to App</td>
+                            <td className="p-4 border border-slate-700 text-center font-bold text-green-400 bg-blue-500/5">Universal (Web App)</td>
+                        </tr>
+                        <tr>
+                            <td className="p-4 border border-slate-700 font-semibold text-white">Collaboration</td>
+                            <td className="p-4 border border-slate-700 text-center">N/A</td>
+                            <td className="p-4 border border-slate-700 text-center">Limited</td>
+                            <td className="p-4 border border-slate-700 text-center font-bold text-green-400 bg-blue-500/5">Yes (Link-based)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div className="bg-blue-600 rounded-2xl p-8 text-center mb-12 shadow-lg shadow-blue-500/20">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Ready to Switch to a Smart Solution?</h3>

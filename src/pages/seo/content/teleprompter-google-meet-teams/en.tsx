@@ -3,19 +3,29 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterGoogleMeetTeamsEN = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Teleprompter for Google Meet & Teams: The Secret to Executive Presence</h2>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter for Google Meet and Teams: Master Your Professional Meetings
+        </h2>
 
-        <p className="mb-6 text-lg text-slate-300">
-            Board meeting. 14 people on Microsoft Teams. It's your turn to present quarterly results. You have a Word doc open on the other screen. You look sideways to read the numbers... and for 2 minutes, nobody sees your eyes. You seem distant, unsure, or unprepared.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Projecting confidence and authority in virtual meetings is the new executive edge. <strong>Discreetly read your scripts and notes</strong> while maintaining perfect eye contact.
         </p>
 
-        <p className="mb-6">
-            "Zoom Fatigue" is real, and lack of eye contact is the #1 cause of disconnection in B2B sales and remote leadership. When you look down at notes on your desk or at another monitor, you break trust.
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this essential guide for modern professionals, we show how to transform your Google Meet or Microsoft Teams into a true corporate stage with PromptNinja. Learn the invisible overlay technique to keep your eyes fixed on the lens, ensuring you never lose your train of thought or forget a crucial point in your presentation. Discover how our discreet online tool allows you to present with the confidence of an experienced leader, conveying executive presence and total subject mastery, without your audience knowing you're using a teleprompter.
         </p>
 
-        <p className="mb-8">
-            This guide reveals how to use PromptNinja to create an "invisible layer" of charisma in your calls: speak directly into the lens (and their eyes) without forgetting a single comma.
-        </p>
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12 shadow-xl">
+            <h3 className="text-2xl font-bold text-white mb-4">Keep Focus on What Matters</h3>
+            <p className="text-slate-300 mb-6 font-medium">
+                Speak directly into the lens and convey authority effortlessly.
+                <strong>PromptNinja</strong> is invisible to your audience and indispensable to you.
+            </p>
+            <a href="/?lang=en#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Open Discreet Teleprompter
+            </a>
+            <p className="mt-4 text-sm text-slate-400 font-medium">Maintain executive presence instantly.</p>
+        </div>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">The Attention Battle: Notes vs Teleprompter</h3>

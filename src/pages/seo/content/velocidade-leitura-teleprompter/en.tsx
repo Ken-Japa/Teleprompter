@@ -3,12 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const VelocidadeLeituraTeleprompterEN = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            What is the Ideal Teleprompter Speed? Stop Chasing the Text
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter Reading Speed: Master Your Pace
         </h2>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            You set the speed to 3. Too slow. Set to 4. Too fast. The result? You speed up your speech to keep up with the machine and sound like a horse race announcer. Stop suffering.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            End the anxiety of trying to keep up with the text scrolling on the screen. <strong>Discover how to find your ideal rhythm</strong> and use technology so the teleprompter follows you.
+        </p>
+
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this essential guide to natural communication, we explore the concept of WPM (Words Per Minute) and how it dictates the perception of authority in your videos. If you've ever felt like a robot trying not to stutter while the text rises relentlessly, this content is for you. We detail the golden metrics of professional speech, from the cadence of news anchors to the dynamism of top YouTubers. Learn how PromptNinja's Voice Control, powered by artificial intelligence, eliminates the need for constant manual adjustments, allowing you to make dramatic pauses and breathe naturally, ensuring the script is always in the right place at the right time, completely free and online.
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">

@@ -3,13 +3,28 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const HistoriaDoTeleprompterEN = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            The Secret History of the Teleprompter: From Paper Scrolls to AI
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            The History of the Teleprompter: From Paper Scrolls to the Digital Era
         </h2>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            Have you ever wondered how presidents give speeches for hours without missing a comma, or how news anchors look straight into the camera while reading breaking news? The answer isn't "photographic memory," it's technology. Let's travel back in time and discover how a cardboard box evolved into the app currently in your pocket.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Travel back in time and discover how a desperate invention to help actors became PromptNinja. <strong>Know the fascinating technological journey</strong> that revolutionized professional speech.
         </p>
+
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this historical dive, we explore the evolution of the teleprompter, a tool that has become indispensable for modern communication. From the first motorized paper scrolls on 1950s Broadway to the advent of 'beam splitter' glass and the revolution of online apps, the history of the teleprompter is marked by a constant search for naturalness and connection. Discover how presidents, journalists, and now millions of content creators use this technology to convey confidence and authority. Understand how PromptNinja democratizes this technological legacy, offering cutting-edge features like voice control and cloud sync, all for free so you too can be part of the history of digital oratory.
+        </p>
+
+        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Evolve Your Communication</h3>
+            <p className="text-slate-300 mb-6">
+                Don't get stuck in the past. Use the technology that revolutionized communication
+                to record your videos with the naturalness of a professional.
+            </p>
+            <a href="/?lang=en#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
+                Try Ninja Tech for Free
+            </a>
+        </div>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">1950: The Birth of a Legend</h3>

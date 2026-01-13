@@ -3,47 +3,95 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterTikTokShortsEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter for TikTok & Shorts: Record Flawless and Go Viral!
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter for TikTok and Reels: Record Viral Videos Without Missing a Word
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Stop stuttering and start creating viral content with **PromptNinja’s specialized TikTok teleprompter**. Record perfect vertical videos, maintain hypnotic eye contact, and deliver your message with total confidence in seconds – all for free.
-        </p>
-
-        <p className="text-slate-300 mb-8 font-medium">
-            Recording 30 takes for a 15-second video? You forget a word, look away, and lose your energy. On platforms like TikTok, Reels, and Shorts, you have **1-3 seconds** to hook the viewer. One stumble and they scroll.
+            In the fast-paced world of TikTok, Reels, and YouTube Shorts, retention is everything. You only have a few seconds to capture the audience's attention, but stuttering or looking away can ruin your video. <strong>The question is: do you want to spend hours memorizing lines or minutes producing hits?</strong>
         </p>
 
         <p className="text-slate-300 mb-8">
-            The secret of top creators isn't memorization – it's having the right tools. **Let PromptNinja hold the text so you can hold the energy.**
+            In this guide, we'll explore why top creators love <strong>PromptNinja</strong>. Discover how our floating teleprompter allows you to maintain the rhythm, energy, and impeccable visual connection, transforming complex scripts into viral videos simply and professionally. Get ready to multiply your production and dominate the algorithm with total fluidity!
         </p>
 
-        <div className="bg-pink-600/10 border border-pink-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
-            <h3 className="text-2xl font-bold text-white mb-4">Master Vertical Content</h3>
-            <p className="text-slate-300 mb-6 font-medium">
-                Deliver high-impact hooks and flawless scripts for TikTok, Reels, and Shorts.
-                Optimized for vertical recording with real-time remote control.
+        <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
+            <h3 className="text-2xl font-bold text-white mb-6">Why PromptNinja is Perfect for Your TikToks and Shorts?</h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">🎬</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Seamless Fluency</strong>
+                        <span className="text-slate-400">Forget the "uhm..." and "err...". Your script scrolls at your pace, ensuring natural and continuous speech.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">👁️</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Impeccable Eye Contact</strong>
+                        <span className="text-slate-400">Look directly into your smartphone lens, creating an authentic connection with your audience.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">⏱️</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Precious Time Savings</strong>
+                        <span className="text-slate-400">Record in fewer takes and edit less. More time to create, less time to fix mistakes.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">🏆</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Instant Professionalism</strong>
+                        <span className="text-slate-400">More polished and well-articulated videos increase engagement and your perceived authority.</span>
+                    </div>
+                </li>
+            </ul>
+            <p className="text-slate-400 text-center mt-6 text-sm italic">
+                Ready to transform your short videos and capture your audience's attention? Keep reading to find out how.
             </p>
-            <a href="/?lang=en#app" className="inline-block bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-pink-500/25">
-                Launch TikTok Teleprompter
-            </a>
-            <p className="mt-4 text-sm text-slate-400 font-medium">Increase your production speed by 5x today.</p>
         </div>
 
+        <section className="my-12 p-8 bg-purple-900/20 rounded-2xl border border-purple-500/30 shadow-2xl">
+            <h2 className="text-3xl font-bold text-center text-white mb-10">Record Your TikToks and Shorts in 3 Simple Steps</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="text-center group">
+                    <div className="bg-slate-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-purple-500/50 group-hover:scale-110 transition-transform shadow-lg shadow-purple-500/20">
+                        <span className="text-2xl">📝</span>
+                    </div>
+                    <h3 className="font-bold text-white text-xl mb-2">1. Create Your Script</h3>
+                    <p className="text-slate-400 text-sm">Write your script in PromptNinja, focusing on short, high-impact messages ideal for the TikTok rhythm.</p>
+                </div>
+                <div className="text-center group">
+                    <div className="bg-slate-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-purple-500/50 group-hover:scale-110 transition-transform shadow-lg shadow-purple-500/20">
+                        <span className="text-2xl">📱</span>
+                    </div>
+                    <h3 className="font-bold text-white text-xl mb-2">2. Position the Camera</h3>
+                    <p className="text-slate-400 text-sm">Use your smartphone vertically. PromptNinja perfectly adapts to the 9:16 format of TikTok and Shorts.</p>
+                </div>
+                <div className="text-center group">
+                    <div className="bg-slate-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-purple-500/50 group-hover:scale-110 transition-transform shadow-lg shadow-purple-500/20">
+                        <span className="text-2xl">🔴</span>
+                    </div>
+                    <h3 className="font-bold text-white text-xl mb-2">3. Record with Confidence</h3>
+                    <p className="text-slate-400 text-sm">Read your text while maintaining eye contact. Click record and your video is ready to shine!</p>
+                </div>
+            </div>
+        </section>
+
         <div className="bg-gradient-to-r from-red-900/30 to-pink-900/30 p-8 rounded-xl border border-pink-500/30 my-12">
-            <h3 className="text-3xl font-bold text-white mb-6">The Short-Form Content Creator's Trap</h3>
+            <h3 className="text-3xl font-bold text-white mb-6 text-center">The Short-Video Creator's Trap</h3>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/50 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
                         <span>❌</span> WITHOUT Teleprompter (Memorizing)
                     </h3>
                     <ul className="space-y-3 text-slate-300 text-sm">
-                        <li>📝 <strong>Prep:</strong> 20min trying to memorize 15 lines</li>
+                        <li>📝 <strong>Preparation:</strong> 20min trying to memorize 15 lines</li>
                         <li>🎬 <strong>Recording:</strong> 40min to record 15s (20-30 takes)</li>
                         <li>😰 <strong>Retention:</strong> 15-30% (people see you stumble and leave)</li>
                         <li>💬 <strong>Comments:</strong> "Seems nervous", "Read the script better"</li>
-                        <li>📊 <strong>Output:</strong> 2-3 videos per day (maximum)</li>
+                        <li>📊 <strong>Results:</strong> 2-3 videos per day (maximum)</li>
                         <li>🔥 <strong>Burnout:</strong> High. Gives up in 2 weeks</li>
                     </ul>
                 </div>
@@ -52,23 +100,23 @@ export const TeleprompterTikTokShortsEN = () => (
                         <span>✅</span> WITH PromptNinja (Reading Naturally)
                     </h3>
                     <ul className="space-y-3 text-slate-300 text-sm">
-                        <li>📝 <strong>Prep:</strong> 2min pasting text into teleprompter</li>
+                        <li>📝 <strong>Preparation:</strong> 2min pasting text into teleprompter</li>
                         <li>🎬 <strong>Recording:</strong> 10min to record 15s (2-3 takes)</li>
                         <li>😊 <strong>Retention:</strong> 50-70% (smooth, confident delivery)</li>
-                        <li>💬 <strong>Comments:</strong> "Wow, such confidence!", "Top content"</li>
-                        <li>📊 <strong>Output:</strong> 10-15 videos per day easily</li>
+                        <li>💬 <strong>Comments:</strong> "Wow, what confidence!", "Top content"</li>
+                        <li>📊 <strong>Results:</strong> 10-15 videos per day easily</li>
                         <li>🚀 <strong>Burnout:</strong> Low. Sustainable long-term</li>
                     </ul>
                 </div>
             </div>
             <p className="text-slate-400 text-sm mt-6 italic text-center">
-                💡 Productivity: <strong className="text-green-400">5x more videos</strong> in same time. Quality: <strong className="text-green-400">eye contact maintained</strong>.
+                💡 Productivity: <strong className="text-green-400">5x more videos</strong> in the same time. Quality: <strong className="text-green-400">visual connection maintained</strong>.
             </p>
         </div>
 
         <h3 className="text-3xl font-bold text-white mt-12 mb-6">Why Desktop Teleprompters Don't Work for Shorts</h3>
-        <p className="mb-6">
-            Many creators try to use solutions made for horizontal YouTube videos on vertical content. Result? Disaster.
+        <p className="mb-6 leading-relaxed">
+            Many creators try to use solutions made for horizontal YouTube videos on vertical content. The result? A disaster.
         </p>
 
         <div className="bg-slate-800 p-6 rounded-lg my-8">
@@ -77,77 +125,92 @@ export const TeleprompterTikTokShortsEN = () => (
                 <li className="flex items-start gap-3">
                     <span className="text-red-400 font-bold">1.</span>
                     <div>
-                        <strong>Front camera on top, text at bottom:</strong> You end up looking down, appearing sad or insecure. In vertical video, the front camera is UP, not in front.
+                        <strong>Camera on top, text at bottom:</strong> You end up looking down, appearing disconnected or insecure. In vertical video, the front camera is at the TOP, not in front.
                     </div>
                 </li>
                 <li className="flex items-start gap-3">
                     <span className="text-red-400 font-bold">2.</span>
                     <div>
-                        <strong>Horizontal text on vertical screen:</strong> Only 3-4 words fit per line. Your eyes ping-pong left/right, it's obvious you're reading.
+                        <strong>Horizontal text on a vertical screen:</strong> Only 3-4 words fit per line. Your eyes ping-pong left and right, making it obvious you're reading.
                     </div>
                 </li>
                 <li className="flex items-start gap-3">
                     <span className="text-red-400 font-bold">3.</span>
                     <div>
-                        <strong>Difficult control:</strong> With phone vertical recording, you can't touch to pause without shaking. Needs remote control.
+                        <strong>Difficult control:</strong> With the phone in vertical recording mode, you can't touch it to pause without it shaking. It needs remote control.
                     </div>
                 </li>
             </ul>
         </div>
 
         <div className="bg-slate-800 p-6 rounded-lg my-12 border-l-4 border-pink-500">
-            <h3 className="text-2xl font-bold text-white mb-4">PromptNinja: Custom-Built for Mobile</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">PromptNinja: Tailor-Made for Mobile</h3>
             <p className="text-slate-300 mb-4">
-                Designed specifically for mobile creators. See the differences:
+                We specifically designed this for mobile creators. See the differences:
             </p>
             <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-slate-900 p-4 rounded-lg">
                     <h4 className="font-bold text-pink-400 mb-2">📱 Native Vertical Interface</h4>
-                    <p className="text-sm text-slate-400">When you open on mobile, interface automatically adapts to portrait mode. Text flows top to bottom, following your natural reading.</p>
+                    <p className="text-sm text-slate-400">When opens on mobile, the interface automatically adapts to portrait mode. Text flows from top to bottom, following your natural reading.</p>
                 </div>
                 <div className="bg-slate-900 p-4 rounded-lg">
-                    <h4 className="font-bold text-pink-400 mb-2">🎮 P2P Control Without Lag</h4>
-                    <p className="text-sm text-slate-400">Use another phone or laptop as remote. Direct connection via local Wi-Fi, zero internet dependency. Latency 50ms.</p>
+                    <h4 className="font-bold text-pink-400 mb-2">🎮 Lag-Free P2P Control</h4>
+                    <p className="text-sm text-slate-400">Use another phone or laptop as a remote. Direct connection via local Wi-Fi, zero internet dependency. 50ms latency.</p>
                 </div>
                 <div className="bg-slate-900 p-4 rounded-lg">
                     <h4 className="font-bold text-pink-400 mb-2">🎙️ Voice Control (Pro)</h4>
-                    <p className="text-sm text-slate-400">Text advances as you speak. Hands free to gesture. Looks like you're speaking from heart, not reading.</p>
+                    <p className="text-sm text-slate-400">Text advances as you speak. Hands-free for gesturing. It feels like you're speaking from the heart, not reading.</p>
                 </div>
                 <div className="bg-slate-900 p-4 rounded-lg">
-                    <h4 className="font-bold text-pink-400 mb-2">⚡ Installable as App</h4>
-                    <p className="text-sm text-slate-400">PWA = home screen shortcut. Works offline. Doesn't take up GB of memory. It's an app without being an app.</p>
+                    <h4 className="font-bold text-pink-400 mb-2">⚡ Installable as an App</h4>
+                    <p className="text-sm text-slate-400">PWA = home screen shortcut. Works offline. No GBs of memory used. It's an app without being an app.</p>
                 </div>
             </div>
         </div>
 
         <SEOContentHowTo
             title="Perfect Workflow: Record 10 Shorts in 1 Hour"
-            schemaTitle="How to Record Vertical Videos with Teleprompter"
+            schemaTitle="How to Record Vertical Videos with a Teleprompter"
             totalTime="PT60M"
             tools={["Smartphone with tripod", "PromptNinja", "Second device (optional)"]}
             steps={[
                 {
-                    title: "Step 1: Batch Prepare Scripts (15min)",
-                    text: "Write 10 scripts of 30-60s each. Paste all into PromptNinja (one at a time or use separate browser tabs). Mark keywords in bold to remember where to emphasize."
+                    title: "Step 1: Prepare Scripts in Batches (15min)",
+                    text: "Write 10 scripts of 30-60s each. Paste them all into PromptNinja. Bold keywords to remember where to emphasize."
                 },
                 {
                     title: "Step 2: Physical Setup (5min)",
-                    text: "Tripod with phone vertical. Adjust height so front camera is at eye level. Ring light (if you have one) at 45 degrees from face. Open PromptNinja and position text AT TOP of screen, glued to front camera."
+                    text: "Tripod with phone vertical. Adjust height so the camera is at eye level. Open PromptNinja and position text at the TOP of the screen, glued to the camera."
                 },
                 {
                     title: "Step 3: Sequential Recording (30min)",
-                    text: "Record video 1, pause 10 seconds, switch text, record video 2. Don't edit now. Just record. Since you don't mess up text, each video takes 2-3 minutes max (2 takes)."
+                    text: "Record video 1, pause 10 seconds, swap text, record video 2. Don't edit yet. Just record."
                 },
                 {
-                    title: "Step 4: Batch Edit in CapCut (10min)",
-                    text: "Import all 10 videos to CapCut. Apply same template: Auto Caption + trending music + entry transition. Since raw material is clean, just copy/paste effects."
+                    title: "Step 4: Batch Editing in CapCut (10min)",
+                    text: "Import all 10 videos into CapCut. Apply the same template: Auto Caption + trending music + transitions. Since the raw footage is clean, it's just copy/pasting effects."
                 }
             ]}
         />
 
-        <h3 className="text-3xl font-bold text-white mt-16 mb-6">Creator Setups: From Zero to Pro</h3>
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-8 rounded-2xl my-16 text-center shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                <div className="absolute top-[-10%] right-[-10%] w-64 h-64 bg-white rounded-full blur-3xl"></div>
+                <div className="absolute bottom-[-10%] left-[-10%] w-64 h-64 bg-blue-400 rounded-full blur-3xl"></div>
+            </div>
+            <h3 className="text-3xl font-extrabold text-white mb-4 leading-tight relative z-10">🚨 No More Retakes! Start Creating Incredible TikToks Today!</h3>
+            <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto relative z-10">PromptNinja is the secret tool for content creators who value time and quality. Try it now and feel the difference!</p>
+            <a
+                href="/?lang=en#app"
+                className="inline-block bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-10 rounded-full text-xl uppercase tracking-wide shadow-xl transform hover:scale-105 transition-all duration-300 relative z-10"
+            >
+                Try PromptNinja for Free
+            </a>
+        </div>
+
+        <h3 className="text-3xl font-bold text-white mt-16 mb-6">Creator Setup: From Zero to Pro</h3>
         <p className="text-slate-300 mb-8">
-            You don't need expensive gear. See the 3 levels:
+            You don't need expensive equipment. See the 3 levels:
         </p>
 
         <div className="space-y-6 mb-12">
@@ -157,7 +220,7 @@ export const TeleprompterTikTokShortsEN = () => (
                     <h3 className="text-2xl font-bold text-white">Level 1: Beginner (1 Phone)</h3>
                 </div>
                 <p className="text-slate-300 mb-4">
-                    <strong>Setup:</strong> Just your phone. Hold it or prop it on something stable. Open PromptNinja, text on top, record using physical volume buttons so it doesn't shake.
+                    <strong>Setup:</strong> Just the phone. Use volume buttons to record to avoid screen shake.
                 </p>
                 <div className="grid md:grid-cols-2 gap-4">
                     <div>
@@ -165,15 +228,14 @@ export const TeleprompterTikTokShortsEN = () => (
                         <ul className="text-slate-400 text-sm space-y-1 pl-4">
                             <li>Zero investment</li>
                             <li>Start today</li>
-                            <li>Learn basics</li>
+                            <li>Learn the basics</li>
                         </ul>
                     </div>
                     <div>
                         <p className="text-yellow-400 text-sm mb-2"><strong>⚠️ Limitation:</strong></p>
                         <ul className="text-slate-400 text-sm space-y-1 pl-4">
-                            <li>Holding phone tires arm</li>
-                            <li>Hard to maintain stability</li>
-                            <li>Pause text = touch screen = shakes</li>
+                            <li>Unstable hand-held footage</li>
+                            <li>Harder to maintain focus</li>
                         </ul>
                     </div>
                 </div>
@@ -185,30 +247,25 @@ export const TeleprompterTikTokShortsEN = () => (
                     <h3 className="text-2xl font-bold text-white">Level 2: Intermediate (Tripod + Remote)</h3>
                 </div>
                 <p className="text-slate-300 mb-4">
-                    <strong>Setup:</strong> Phone tripod (~$20) + second device (old phone or laptop) as P2P remote.
+                    <strong>Setup:</strong> Phone tripod + second device as a P2P remote control.
                 </p>
                 <div className="grid md:grid-cols-2 gap-4">
                     <div>
                         <p className="text-green-400 text-sm mb-2"><strong>✅ Advantage:</strong></p>
                         <ul className="text-slate-400 text-sm space-y-1 pl-4">
                             <li>100% stable camera</li>
-                            <li>Control text without touching phone</li>
-                            <li>Batch record (5-10 videos in row)</li>
-                            <li>Consistent framing</li>
+                            <li>Control text without touching the phone</li>
+                            <li>Record in batches</li>
                         </ul>
                     </div>
                     <div>
                         <p className="text-yellow-400 text-sm mb-2"><strong>💡 Ideal for:</strong></p>
                         <ul className="text-slate-400 text-sm space-y-1 pl-4">
                             <li>Daily posters</li>
-                            <li>Batch recording (time savings)</li>
-                            <li>Maintaining account visual standard</li>
+                            <li>Batch recording</li>
                         </ul>
                     </div>
                 </div>
-                <p className="text-cyan-400 text-sm mt-4">
-                    💰 <strong>Total investment:</strong> ~$20 (tripod only). Return: 5x more videos produced.
-                </p>
             </div>
 
             <div className="bg-slate-900 p-6 rounded-xl border-l-4 border-green-600">
@@ -241,40 +298,44 @@ export const TeleprompterTikTokShortsEN = () => (
             </div>
         </div>
 
+        <h3 className="text-3xl font-bold text-white mt-12 mb-6">Expert Tips for Viral Vertical Videos</h3>
+        <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
+                <h3 className="font-bold text-pink-400 mb-3 text-xl">🎯 Hook in the First 1.5s</h3>
+                <p className="text-slate-300 text-sm mb-3">
+                    Place your high-impact phrase at the top of the script. Highlight it in red to remember to bring extra energy.
+                </p>
+            </div>
+            <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
+                <h3 className="font-bold text-pink-400 mb-3 text-xl">⏱️ Strategic Pauses</h3>
+                <p className="text-slate-300 text-sm mb-3">
+                    Viral videos have RHYTHM. Use double Enters or [...] to remind yourself to pause and create expectation.
+                </p>
+            </div>
+        </div>
+
         <h3 className="text-3xl font-bold text-white mt-16 mb-6">Real Case: From 500 to 50k Followers in 3 Months</h3>
         <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 p-8 rounded-xl border border-purple-500/30 mb-12">
             <p className="text-slate-300 mb-4">
-                <strong className="text-purple-400">Creator:</strong> @digital_marketing_tips (name changed), digital marketing niche, started with 500 followers.
-            </p>
-            <p className="text-slate-300 mb-6">
-                <strong className="text-purple-400">Problem:</strong> Posted 2-3 videos/week. Each video took 1h to record because she'd forget lines, lose train of thought, re-record infinitely. Low consistency = algorithm didn't push.
-            </p>
 
-            <h3 className="font-bold text-white mb-3">What Changed:</h3>
-            <ol className="list-decimal pl-6 space-y-2 text-slate-300 mb-6">
-                <li>Sundays: wrote 14 scripts (2 per day of week, 30min total)</li>
-                <li>Mondays: recorded ALL 14 videos in 3h using PromptNinja</li>
-                <li>Scheduled to post 2x/day (9am and 7pm) entire week</li>
-                <li>Tues-Fri: answered comments, engaged, created more scripts</li>
-            </ol>
+                <div className="bg-slate-900/50 p-6 rounded-lg">
+                    <h3 className="font-bold text-green-400 mb-3">Results in 90 Days:</h3>
+                    <ul className="space-y-2 text-slate-300 text-sm">
+                        <li>📈 Followers: <strong>500 → 52,000</strong> (+10,300% growth)</li>
+                        <li>🎬 Videos posted: <strong>84 videos</strong> (vs 12 before)</li>
+                        <li>⏱️ Production time: <strong>3h/week</strong> vs 6h before (double output, half time)</li>
+                        <li>📊 Average retention: <strong>68%</strong> (vs 35% prior)</li>
+                        <li>🔥 Virals: <strong>7 videos passed 1M views</strong></li>
+                    </ul>
+                </div>
 
-            <div className="bg-slate-900/50 p-6 rounded-lg">
-                <h3 className="font-bold text-green-400 mb-3">Results in 90 Days:</h3>
-                <ul className="space-y-2 text-slate-300 text-sm">
-                    <li>📈 Followers: <strong>500 → 52,000</strong> (+10,300% growth)</li>
-                    <li>🎬 Videos posted: <strong>84 videos</strong> (vs 12 before)</li>
-                    <li>⏱️ Production time: <strong>3h/week</strong> vs 6h before (double output, half time)</li>
-                    <li>📊 Average retention: <strong>68%</strong> (vs 35% prior)</li>
-                    <li>🔥 Virals: <strong>7 videos passed 1M views</strong></li>
-                </ul>
-            </div>
+                <p className="text-slate-400 text-sm mt-6 italic">
+                    💡 Secret: Algorithmic consistency (2x/day) + quality (no stuttering) = exponential growth.
+                </p>
 
-            <p className="text-slate-400 text-sm mt-6 italic">
-                💡 Secret: Algorithmic consistency (2x/day) + quality (no stuttering) = exponential growth.
-            </p>
-
-            <p className="text-slate-500 text-xs mt-4">
-                *Case shared with authorization. Individual results vary based on niche, content quality, and dedication.
+                <p className="text-slate-500 text-xs mt-4">
+                    *Case shared with authorization. Individual results vary based on niche, content quality, and dedication.
+                </p>
             </p>
         </div>
 

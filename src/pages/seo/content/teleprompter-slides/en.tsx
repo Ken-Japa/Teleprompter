@@ -3,16 +3,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterSlidesEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Sync Teleprompter with PowerPoint: Master Your Slides with PromptNinja
-        </h1>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter for Slide Presentations: Combine PowerPoint with PromptNinja
+        </h2>
 
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Take total control of your slide presentations. Learn how to synchronize **PromptNinja** with PowerPoint using the **[STOP] command**, ensuring a perfectly timed performance where your script and visuals are always in harmony.
+            The biggest nightmare for anyone presenting with slides is desynchronization: the teleprompter keeps scrolling while you're still explaining the chart on the previous slide. <strong>Tired of reading slides and losing eye contact with your audience?</strong>
         </p>
 
-        <p className="text-slate-300 mb-8 font-medium">
-            The biggest nightmare for any presenter is desynchronization: the teleprompter keeps scrolling while you're still explaining a graph on a previous slide. PromptNinja solves this definitively, allowing you to focus on your message, not the machine.
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this guide, we'll show you how to integrate <strong>PromptNinja</strong> with PowerPoint and Google Slides for flawless presentations. Discover how to use the exclusive [STOP] command to pause the script automatically at each slide transition, allowing you to maintain authority, visual connection, and the perfect rhythm. Transform your webinars, classes, and corporate talks into professional performances where audio and visual walk together, effortlessly and for free!
         </p>
 
         <div className="bg-orange-600/10 border border-orange-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">

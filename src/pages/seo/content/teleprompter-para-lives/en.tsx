@@ -3,12 +3,16 @@ import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterParaLivesEN = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            How to Use a Teleprompter in Live Streams (OBS, YouTube, Twitch): The Secret Guide
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter for Lives and Streaming: Engage Your Audience with Fluidity
         </h2>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            Live streaming is stressful. Monitoring chat, checking audio, and remembering scripts? Impossible. That's why top streamers use a "little secret" on screen that the audience doesn't see.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Doing a live broadcast is like walking on a tightrope. You need to monitor chat, manage audio, interact with viewers, and, at the same time, not lose your train of thought. <strong>How many times have you seen a streamer get lost in ramblings and see the audience plummet in real time?</strong>
+        </p>
+
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this practical guide, we will show you how <strong>PromptNinja</strong> becomes your invisible copilot during lives on Twitch, YouTube, or Instagram. Learn how to set up a script or strategic topics that are visible only to you, allowing you to deliver high-value content and sponsorship announcements perfectly, without ever taking your focus off your community. Discover the ideal setup for OBS Studio and how to use the remote control via mobile to have total fluidity without stammering!
         </p>
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">

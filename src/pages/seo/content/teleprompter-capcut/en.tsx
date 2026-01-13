@@ -3,21 +3,51 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterCapCutEN = () => (
     <>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter for CapCut: Stop Wasting 3 Hours Editing Recording Mistakes
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter for CapCut: Record Professional Content in Minutes
         </h2>
 
-        <p className="lead text-xl text-slate-300 mb-8">
-            You recorded that perfect video. Good lighting, nice framing, energy on point. Import it to CapCut and... realize half the takes have text mistakes. Stumbling on words, stuttering, forgetting lines. Result? Instead of spending 1 hour editing transitions and effects, you spend 3 hours CUTTING errors.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Master the art of recording flawless videos for CapCut. <strong>Eliminate recording errors and maintain perfect eye contact</strong> with PromptNinja's intelligent teleprompter.
         </p>
 
-        <p className="mb-6">
-            I've been there. I'd record a 2-minute video, but the CapCut timeline had 15 minutes of raw footage filled with retakes. By the time I finished cutting everything, my creativity was gone. Only had energy left to export and publish — no polish on captions, no cool transitions.
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this essential guide for creators, we show why <strong>PromptNinja</strong> is the indispensable partner for those who edit in CapCut. Learn how to record high-quality raw material on the first take, saving precious hours of editing and allowing you to focus on what really matters: creativity and CapCut's viral effects. Discover how our free online tool transforms your smartphone or computer into a professional studio, ensuring fluidity, confidence, and authority in every video.
         </p>
 
-        <p className="mb-8">
-            The problem isn't CapCut. The problem is arriving at CapCut with BAD material. The solution? Record with a <strong>professional teleprompter</strong> first. PromptNinja was born exactly for this: you record on the first take without text mistakes, arriving at CapCut with a clean timeline ready to CREATE, not fix.
-        </p>
+        <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
+            <h3 className="text-2xl font-bold text-white mb-6">Why Use PromptNinja Before Editing in CapCut?</h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">💎</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Quality Raw Material</strong>
+                        <span className="text-slate-400">Record smooth, error-free videos. This greatly facilitates the application of effects and transitions in CapCut.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">🎨</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Focus on Creative Editing</strong>
+                        <span className="text-slate-400">Instead of spending time cutting out stumbles, use your time in CapCut to add amazing captions and effects.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">👁️</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Maintained Eye Contact</strong>
+                        <span className="text-slate-400">The teleprompter allows you to look directly at the lens while reading, making your video much more professional.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-blue-400 text-xl">⚡</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Production Agility</strong>
+                        <span className="text-slate-400">Record faster, edit faster, and publish much more frequently. PromptNinja accelerates your entire process.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
         <div className="bg-gradient-to-r from-red-900/30 to-orange-900/30 p-8 rounded-xl border border-red-500/30 my-12">
             <h3 className="text-3xl font-bold text-white mb-6">The Content Creator's Vicious Cycle</h3>

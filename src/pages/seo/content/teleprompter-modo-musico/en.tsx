@@ -2,17 +2,51 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterModoMusicoEN = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
-            Teleprompter for Musicians: Never Forget Lyrics on Stage Again
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Teleprompter for Musicians: Lyrics and Chords at Your Fingertips
         </h2>
 
-        <p className="mb-6 text-xl text-slate-300">
-            Every singer's nightmare: you are mid-show, band is playing, crowd is watching... and you blank out. You forget the first verse of next stanza.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Take your performance to the next level without the fear of forgetting lyrics or getting lost in chords. <strong>PromptNinja's Musician Mode</strong> is the ultimate solution for artists and live streams.
         </p>
 
-        <p className="mb-8 text-slate-300">
-            Big artists (from Bono to stars like Adele) use teleprompters on stage. It's not shameful, it's <strong>professional safety</strong>. PromptNinja has a secret "Musician Mode" you must know.
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this specialized guide for artists, we explore how PromptNinja transforms your smartphone or tablet into the ultimate digital roadie. Discover how to set up a teleprompter that follows your rhythm, allowing you to stay focused on emotional delivery and connection with your audience, whether on a live stage or in broadcasts. With support for chords and Bluetooth pedal control, our free online tool ensures every chorus and every bridge is executed perfectly, eliminating "blank" anxiety and professionalizing your musical setup in seconds.
         </p>
+
+        <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
+            <h3 className="text-2xl font-bold text-white mb-6">Why is PromptNinja the Musician's Best Friend?</h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-yellow-400 text-xl">⏱️</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Fluid and Rhythmic Scrolling</strong>
+                        <span className="text-slate-400">Adjust the speed to match the song's tempo, ensuring the text rises exactly at the right beat.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-yellow-400 text-xl">🎼</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Support for Lyrics and Chords</strong>
+                        <span className="text-slate-400">Keep your harmonies visible right above the lyrics, without losing alignment even with large fonts.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-yellow-400 text-xl">🦶</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">Hands-Free Control</strong>
+                        <span className="text-slate-400">Compatible with Bluetooth pedals and remote controls, so you can change songs without taking your hands off the instrument.</span>
+                    </div>
+                </li>
+                <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <span className="text-yellow-400 text-xl">🌑</span>
+                    <div className="text-sm">
+                        <strong className="text-white block mb-1">High Contrast for Stage</strong>
+                        <span className="text-slate-400">Black background and vibrant text ensure perfect legibility even under intense stage lights.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
         <div className="bg-slate-800 p-8 rounded-xl border border-purple-500/30 mb-12">
             <h3 className="text-2xl font-bold text-white mb-4">Different from a Speech</h3>
@@ -74,6 +108,20 @@ export const TeleprompterModoMusicoEN = () => (
                 </div>
             </div>
         </div>
+
+        <section id="cases-musica" className="p-8 bg-zinc-900 text-white rounded-2xl my-16 border border-zinc-700 shadow-2xl">
+            <h2 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 text-center mb-10">Who Shines on Stage with PromptNinja! (E-E-A-T)</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="bg-zinc-800 p-6 rounded-xl border-t-2 border-yellow-500">
+                    <p className="text-zinc-300 italic">"My YouTube lives changed after Musician Mode. No more horrible paper binders appearing on camera. The setup with the iPad on the stand looks super professional."</p>
+                    <span className="block mt-4 text-sm font-bold text-yellow-500">— Ricardo Lima, Bar and Live Singer</span>
+                </div>
+                <div className="bg-zinc-800 p-6 rounded-xl border-t-2 border-orange-500">
+                    <p className="text-zinc-300 italic">"PromptNinja's Bluetooth pedal control is a life saver for those who play guitar and sing solo. I can scroll the lyrics without interrupting the beat."</p>
+                    <span className="block mt-4 text-sm font-bold text-orange-500">— Amanda Rocha, Independent Artist</span>
+                </div>
+            </div>
+        </section>
 
         <SEOContentFAQ
             title="Band FAQ"

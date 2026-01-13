@@ -4,21 +4,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const PrivacidadeSegurancaES = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Privacidad y Seguridad: Por Qué No Queremos Tus Datos</h2>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Privacidad y Seguridad: Tus Guiones Protegidos y 100% Locales
+        </h2>
 
-        <div className="bg-red-900/20 border border-red-500/30 p-6 rounded-lg mb-8">
-            <h3 className="text-xl font-bold text-red-400 mb-2">🚫 El Problema de la Industria</h3>
-            <p className="text-slate-300">
-                La mayoría de apps de teleprompter "gratis" exigen que crees una cuenta. ¿Por qué? Para rastrear tus hábitos, leer tus guiones para entrenar IA, o vender tu email. Te tratan como el producto.
-            </p>
-        </div>
-
-        <p className="mb-6 text-xl text-slate-300">
-            En PromptNinja, adoptamos una arquitectura radical de <strong>Cero Datos</strong>.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Tu privacidad es nuestra absoluta prioridad. En PromptNinja, adoptamos una arquitectura <strong>Zero Data</strong>, asegurando que tus guiones y grabaciones nunca salgan de tu dispositivo.
         </p>
 
-        <p className="mb-8">
-            No sabemos quién eres. No tenemos tus emails. No tenemos tus guiones. Todo lo que escribes queda grabado magnéticamente en el chip de memoria de <strong>tu propio dispositivo</strong>, y en ningún otro lugar.
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            En este compromiso con tu seguridad digital, detallamos por qué PromptNinja es la opción más confiable para periodistas, ejecutivos y creadores de contenido que valoran la discreción. Entiende cómo nuestra tecnología Peer-to-Peer WebRTC permite el control remoto sin necesidad de intermediarios o almacenamiento en la nube. Descubre cómo procesamos cada comando y cada palabra localmente en tu navegador, eliminando cualquier riesgo de fuga de información o espionaje industrial. Con PromptNinja, tienes el poder de un teleprompter profesional con la tranquilidad de saber que tus datos te pertenecen exclusivamente a ti.
         </p>
 
         <div className="grid md:grid-cols-2 gap-8 my-12">
@@ -28,20 +23,20 @@ export const PrivacidadeSegurancaES = () => (
                     <span className="text-3xl">🛡️</span> Arquitectura "Local-First"
                 </h3>
                 <p className="text-slate-300 mb-4">
-                    Usamos tecnología llamada <code>LocalStorage</code> e <code>IndexedDB</code>. Es como una caja fuerte dentro de tu navegador.
+                    Usamos tecnologías llamadas <code>LocalStorage</code> e <code>IndexedDB</code>. Es como una caja fuerte dentro de tu navegador.
                 </p>
                 <div className="space-y-4">
                     <div className="flex items-start gap-3">
                         <span className="text-green-500 text-xl">✅</span>
-                        <p className="text-sm text-slate-300"><strong>Tus Textos:</strong> Guardados solo en tu HD/Móvil.</p>
+                        <p className="text-sm text-slate-300"><strong>Tus Guiones:</strong> Guardados solo en tu Disco/Móvil.</p>
                     </div>
                     <div className="flex items-start gap-3">
                         <span className="text-green-500 text-xl">✅</span>
-                        <p className="text-sm text-slate-300"><strong>Tu Micrófono:</strong> Audio se procesa en tiempo real RAM y se descarta. Nada se graba.</p>
+                        <p className="text-sm text-slate-300"><strong>Tu Micrófono:</strong> Audio se procesa en RAM a tiempo real y se descarta. Nada se graba.</p>
                     </div>
                     <div className="flex items-start gap-3">
                         <span className="text-green-500 text-xl">✅</span>
-                        <p className="text-sm text-slate-300"><strong>Fugas:</strong> Imposible fugar tus datos, pues no los tenemos.</p>
+                        <p className="text-sm text-slate-300"><strong>Fugas:</strong> Imposible filtrar tus datos, porque no los tenemos.</p>
                     </div>
                 </div>
             </div>
@@ -51,16 +46,16 @@ export const PrivacidadeSegurancaES = () => (
                     <span className="text-3xl">📡</span> Conexión P2P Blindada
                 </h3>
                 <p className="text-slate-300 mb-4">
-                    "¿Pero cómo controla el móvil al PC si no pasa por el servidor?"
+                    "¿Pero cómo controla el celular a la PC si no pasa por el servidor?"
                 </p>
                 <p className="text-sm text-slate-400 mb-4">
-                    Usamos <strong>WebRTC</strong>. Nuestro servidor actúa solo como "guía telefónica": presenta la IP de tu móvil a tu PC. Tras ese "apretón de manos" inicial (que dura milisegundos), el servidor sale de la conversación.
+                    Usamos <strong>WebRTC</strong>. Nuestro servidor actúa solo como una "guía telefónica": presenta la IP de tu celular a tu PC. Tras este "apretón de manos" inicial (que dura milisegundos), el servidor abandona la conversación.
                 </p>
                 <div className="bg-black/30 p-4 rounded border border-slate-700">
                     <p className="text-xs text-slate-400 font-mono">
-                        [Móvil] &lt;========== Túnel Cifrado (DTLS) ==========&gt; [PC]
+                        [Celular] &lt;========== Túnel Encriptado (DTLS) ==========&gt; [PC]
                     </p>
-                    <p className="text-xs text-green-500 mt-2 font-mono">Estado: Enlace Directo (Sin Intermediarios)</p>
+                    <p className="text-xs text-green-500 mt-2 font-mono">Estado: Enlace Directo (Sin Intermediario)</p>
                 </div>
             </div>
         </div>
@@ -72,25 +67,25 @@ export const PrivacidadeSegurancaES = () => (
 
         <SEOContentHowTo
             title=""
-            schemaTitle="Cómo Verificar Privacidad de PromptNinja"
+            schemaTitle="Cómo Verificar la Privacidad de PromptNinja"
             totalTime="PT1M"
             tools={["Navegador", "PromptNinja"]}
             steps={[
                 {
-                    title: "1. Carga App",
+                    title: "1. Carga la App",
                     text: "Abre PromptNinja y escribe un secreto en el editor."
                 },
                 {
                     title: "2. Corta Internet",
-                    text: "Quita cable de red o apaga Wi-Fi."
+                    text: "Desconecta el cable de red o apaga el Wi-Fi."
                 },
                 {
                     title: "3. Prueba",
-                    text: "Sigue usando. ¿La app funciona 100%? Sí. Si estuviéramos enviando tus datos a la nube de la NSA, la app se congelaría o daría error de conexión."
+                    text: "Sigue usándolo. ¿La app funciona 100%? Sí. Si estuviéramos enviando tus datos a la nube de la NSA, la app se congelaría o daría error de conexión."
                 },
                 {
                     title: "4. Borrado Total",
-                    text: "¿Quieres borrar todo? Solo limpia caché del navegador o clic icono 'Papelera' en app. Datos son triturados digitalmente de tu dispositivo."
+                    text: "¿Quieres borrar todo? Solo limpia la caché del navegador o haz clic en el icono de 'Basura' en la app. Los datos se trituran digitalmente de tu dispositivo."
                 }
             ]}
         />
@@ -98,7 +93,7 @@ export const PrivacidadeSegurancaES = () => (
         <div className="mt-12 p-6 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
             <h3 className="text-lg font-bold text-yellow-500 mb-2">Compromiso con Periodistas y Empresas</h3>
             <p className="text-slate-300">
-                Sabemos que muchos usuarios PromptNinja son reporteros cubriendo notas sensibles o CEOs grabando comunicados internos. Nuestra garantía "No-Login" es tu mayor protección legal y técnica contra espionaje industrial o filtración de primicias.
+                Sabemos que muchos usuarios de PromptNinja son reporteros cubriendo historias sensibles o CEOs grabando comunicados internos. Nuestra garantía "Sin-Login" es tu mayor protección legal y técnica contra el espionaje industrial o fugas de primicias.
             </p>
         </div>
 
@@ -108,15 +103,15 @@ export const PrivacidadeSegurancaES = () => (
             items={[
                 {
                     question: "¿PromptNinja usa Cookies?",
-                    answer: "Solo cookies técnicas esenciales para guardar tus preferencias (tamaño fuente, velocidad) localmente. No usamos cookies de rastreo publicitario intrusivo de terceros."
+                    answer: "Solo cookies técnicas esenciales para guardar tus preferencias (tamaño de letra, velocidad) localmente. No usamos cookies de rastreo intrusivas de terceros."
                 },
                 {
-                    question: "¿Si mi computadora se rompe, pierdo mis guiones?",
-                    answer: "Sí. Como no tenemos copia en la nube, eres único dueño de los datos. Recomendamos que siempre tengas tu guion original guardado en Word/Docs como respaldo."
+                    question: "¿Si se rompe mi computadora, pierdo mis guiones?",
+                    answer: "Sí. Como no tenemos copia en la nube, tú eres el único dueño de los datos. Recomendamos siempre tener tu guion original guardado en Word/Docs como respaldo."
                 },
                 {
                     question: "¿El reconocimiento de voz se envía a Google?",
-                    answer: "Depende del navegador. En Chrome, el procesamiento de voz puede pasar por servidores de Google para mayor precisión (política del propio navegador). Si privacidad absoluta es vital, recomendamos usar solo modo scroll manual o automático, sin activar micrófono."
+                    answer: "Depende del navegador. En Chrome, el procesamiento de voz puede pasar por servidores de Google para mayor precisión (política del propio navegador). Si la privacidad absoluta es vital, recomendamos usar solo modo manual o scroll automático, sin activar el micrófono."
                 }
             ]}
         />

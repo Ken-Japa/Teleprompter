@@ -3,27 +3,20 @@ import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 
 export const TeleprompterOnlineGratisEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Free Online Teleprompter: Speak with Confidence, No Stress!
-        </h1>
-
-        <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Tired of forgetting lines or stuttering in videos and presentations? With **PromptNinja, your free online teleprompter**, you have the perfect solution for fluid and professional communication. **Start right now, no registration required**, and transform the way you express yourself!
-        </p>
-
-        <p className="text-slate-300 mb-8">
-            Ever spent <strong>3 hours trying to record an 8-minute video</strong>? You start speaking, freeze on the exact phrase, glance at your notes, lose eye contact with the camera. Re-record. Freeze again on the SAME phrase. Another 15 minutes wasted. By end of day: 47 attempts, 2h53min spent, video published with visible cuts and that feeling of "could've been better".
-        </p>
-
-        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
-            <h3 className="text-2xl font-bold text-white mb-4">Start Recording Like a Pro</h3>
-            <p className="text-slate-300 mb-6">
-                Forget the stress of memorizing: our online teleprompter is 100% free and ready for you to use *now*, without registration. Simple, fast, and perfect to ensure every word flows with confidence.
+        <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-700/50 mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                Free Online Teleprompter: Speak with Confidence, No Stress!
+            </h2>
+            <p className="text-lg text-slate-300 leading-relaxed mb-8">
+                Tired of forgetting lines or stuttering in videos and presentations? With **PromptNinja, your free online teleprompter**, you have the perfect solution for fluid and professional communication. <span className="text-white font-semibold">Start right now, no registration required</span>, and transform the way you express yourself!
             </p>
-            <a href="/?lang=en#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
-                Try Free Teleprompter Now
+
+            <a href="/?lang=en#app"
+                className="inline-flex items-center justify-center bg-green-600 hover:bg-green-500 font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-green-500/30 hover:scale-105 transition-all duration-200 text-xl mb-4 group"
+                style={{ color: 'white', textDecoration: 'none' }}>
+                <span style={{ color: 'white' }}>👉 Try Free Teleprompter Now!</span>
             </a>
-            <p className="mt-4 text-sm text-slate-400">No credit card or sign-up required.</p>
+            <p className="text-xs text-slate-500">No credit card or sign-up required.</p>
         </div>
 
         <p className="mb-6">
@@ -79,45 +72,46 @@ export const TeleprompterOnlineGratisEN = () => (
             </div>
         </div>
 
-        <div className="overflow-x-auto my-8">
-            <table className="min-w-full bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+        <h3 className="text-2xl font-bold text-white mt-12 mb-6 text-center">PromptNinja: Compare and Choose the Ideal</h3>
+        <div className="overflow-x-auto mb-12 shadow-2xl rounded-xl border border-slate-700">
+            <table className="w-full text-left border-collapse">
                 <thead>
-                    <tr className="bg-slate-800 text-slate-200">
-                        <th className="p-4 text-left font-bold">Feature</th>
-                        <th className="p-4 text-center font-bold">PromptNinja</th>
-                        <th className="p-4 text-center font-bold">Generic Free Apps</th>
+                    <tr className="bg-slate-800 text-white">
+                        <th className="p-4 border-b border-slate-700 font-bold uppercase text-sm tracking-wider">Feature</th>
+                        <th className="p-4 border-b border-slate-700 font-bold bg-blue-900/20 text-blue-300 text-center uppercase text-sm tracking-wider">PromptNinja (Free)</th>
+                        <th className="p-4 border-b border-slate-700 font-bold text-slate-400 text-center uppercase text-sm tracking-wider">Other Apps</th>
                     </tr>
                 </thead>
-                <tbody className="text-slate-300">
+                <tbody className="bg-slate-900 text-slate-300">
                     <tr>
-                        <td className="p-4 border-t border-slate-800 font-medium">Lag-Free Remote Control</td>
+                        <td className="p-4 border-t border-slate-800 font-medium">Remote Control (Via Wi-Fi)</td>
                         <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Free & Unlimited</td>
                         <td className="p-4 border-t border-slate-800 text-red-400 text-center">❌ Paid or Limited</td>
                     </tr>
                     <tr>
-                        <td className="p-4 border-t border-slate-800 font-medium">Text Mirroring (DIY Mode)</td>
-                        <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Included</td>
+                        <td className="p-4 border-t border-slate-800 font-medium">Text Mirroring</td>
+                        <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Yes</td>
                         <td className="p-4 border-t border-slate-800 text-yellow-500 text-center">⚠ Rare / Paid</td>
                     </tr>
                     <tr>
                         <td className="p-4 border-t border-slate-800 font-medium">Rich Text Editor</td>
                         <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Colors & Formatting</td>
-                        <td className="p-4 border-t border-slate-800 text-slate-500 text-center">Basic Only</td>
+                        <td className="p-4 border-t border-slate-800 text-slate-500 text-center">Basic</td>
                     </tr>
                     <tr>
-                        <td className="p-4 border-t border-slate-800 font-medium">Privacy (Local Processing)</td>
-                        <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ 100% (No Cloud)</td>
+                        <td className="p-4 border-t border-slate-800 font-medium">Privacy (No Cloud)</td>
+                        <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Total (Local)</td>
                         <td className="p-4 border-t border-slate-800 text-yellow-500 text-center">⚠ Uncertain</td>
                     </tr>
                     <tr>
-                        <td className="p-4 border-t border-slate-800 font-medium">No Installation Needed</td>
-                        <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Yes (In Browser)</td>
-                        <td className="p-4 border-t border-slate-800 text-red-400 text-center">❌ No (App Download)</td>
+                        <td className="p-4 border-t border-slate-800 font-medium">Installation Needed</td>
+                        <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ No (Browser)</td>
+                        <td className="p-4 border-t border-slate-800 text-red-400 text-center">❌ Yes (App)</td>
                     </tr>
                     <tr>
-                        <td className="p-4 border-t border-slate-800 font-medium">No Ads / Pop-ups</td>
+                        <td className="p-4 border-t border-slate-800 font-medium">No Ads</td>
                         <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Guaranteed</td>
-                        <td className="p-4 border-t border-slate-800 text-red-400 text-center">❌ Frequent Ads</td>
+                        <td className="p-4 border-t border-slate-800 text-red-400 text-center">❌ Annoying Pop-ups</td>
                     </tr>
                 </tbody>
             </table>
@@ -135,7 +129,7 @@ export const TeleprompterOnlineGratisEN = () => (
             <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
                 <h3 className="font-bold text-lg text-blue-400 mb-3">💼 Home Office Executive</h3>
                 <p className="text-slate-300 text-sm mb-4">
-                    "Zoom presentations for board. <strong>BEFORE:</strong> Used notes, looked away 40+ times (seemed insecure). <strong>AFTER:</strong> Transparent PromptNinja over Zoom. 100% eye contact. Promotion came 2  months later."
+                    "Zoom presentations for board. <strong>BEFORE:</strong> Used notes, looked away 40+ times (seemed insecure). <strong>AFTER:</strong> Transparent PromptNinja over Zoom. 100% eye contact. Promotion came 2 months later."
                 </p>
                 <p className="text-slate-500 text-xs italic">— Setup: PC + phone remote | ROI: Promotion = +$800/month</p>
             </div>
@@ -250,12 +244,13 @@ export const TeleprompterOnlineGratisEN = () => (
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                 Stop struggling with limited tools. Experience the freedom of an online teleprompter that is truly free and powerful by design.
             </p>
+
             <a
-                href="https://promptninja.solutionkit.com.br"
+                href="/?lang=en#app"
                 className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mx-auto rounded-full transition hover:brightness-110"
-                style={{ color: 'white' }}
+                style={{ color: 'white', textDecoration: 'none' }}
             >
-                Use PromptNinja for Free Now
+                <span style={{ color: 'white' }}>Use PromptNinja for Free Now</span>
             </a>
         </div>
     </>

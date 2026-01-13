@@ -3,13 +3,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const TeleprompterModoBilingueEN = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
-            Learn English with Teleprompter: The "Shadowing" Technique
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Bilingual Teleprompter: Reach a Global Audience
         </h2>
 
-        <p className="mb-6 text-xl text-slate-300">
-            You've studied English for years, understand grammar, but when you speak... you freeze. Pronunciation won't come out.
-            This happens because your mouth lacks "muscle memory".
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            In an increasingly connected world, producing content in only one language limits your potential. <strong>PromptNinja's bilingual mode was designed for creators who want to expand their boundaries and speak to the world.</strong>
+        </p>
+
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this guide, you'll discover how our exclusive tool facilitates simultaneous translation and recording videos in multiple languages. Whether you're a language teacher using the "Shadowing" technique, an executive preparing an international presentation, or a YouTuber creating dubbed versions of your content, PromptNinja offers the stability and clarity needed. Explore our side-by-side script features, special character support, and instant translation to ensure your message is understood anywhere on the planet, all for free and intuitively.
         </p>
 
         <div className="bg-slate-800 p-8 rounded-xl border border-blue-500/30 mb-12">
@@ -48,6 +51,19 @@ export const TeleprompterModoBilingueEN = () => (
                 }
             ]}
         />
+
+        <div className="text-center bg-slate-800 p-8 rounded-lg my-10">
+            <h3 className="text-3xl font-bold text-white mb-4">Go Global with Your Message</h3>
+            <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
+                Break language barriers and speak to millions. Start your bilingual production today.
+            </p>
+            <a
+                href="/?lang=en#app"
+                className="inline-block bg-white text-slate-900 font-bold py-3 px-8 mx-auto rounded-full transition hover:bg-slate-200"
+            >
+                Start Free Global Script
+            </a>
+        </div>
 
         <SEOContentFAQ
             title="Student FAQ"

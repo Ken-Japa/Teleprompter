@@ -3,6 +3,9 @@ import React from 'react';
 import { SeoPageLayout } from './SeoPageLayout';
 import { useTranslation } from '../../hooks/useTranslation';
 import { useFAQSchema } from '../../hooks/useFAQSchema';
+import { TeleprompterFitnessContentPT } from './content/teleprompter-fitness/pt';
+import { TeleprompterFitnessContentEN } from './content/teleprompter-fitness/en';
+import { TeleprompterFitnessContentES } from './content/teleprompter-fitness/es';
 
 export const TeleprompterFitness: React.FC<{ onLaunch: () => void }> = ({ onLaunch }) => {
     const { lang } = useTranslation();
@@ -67,49 +70,6 @@ WORKOUT DONE!`;
             pt: "Crie aulas de fitness e treinos para YouTube e apps sem esquecer os exercícios. Use o roteiro do PromptNinja para manter a energia e o fôlego. Otimizado para mobilidade. Comece grátis.",
             en: "Turn PromptNinja into your ultimate workout partner. Create automated exercise loops, rest timers, and voice-activated sets. Perfect for home workouts and gym boxes.",
             es: "Lleva tu entrenamiento al siguiente nivel con PromptNinja. Temporizadores automáticos, bucles de ejercicios y control por voz para un entrenamiento 100% manos libres."
-        },
-        hero: {
-            title: {
-                pt: "Como Gravar Aulas de Fitness: O Guia do Teleprompter Hands-Free",
-                en: "Teleprompter for Fitness & CrossFit: Hands-Free Workout",
-                es: "Teleprompter para Fitness y CrossFit: Entrena con Manos Libres"
-            },
-            subtitle: {
-                pt: "Grave seus treinos com fluidez total. Coloque seu roteiro na tela e deixe o PromptNinja guiar suas séries e descansos automaticamente.",
-                en: "Stop counting reps or getting your phone dirty. Use PromptNinja to automate your sets, rest timers, and drills for a high-intensity, distraction-free performance.",
-                es: "Deja de contar repeticiones mentalmente y de ensuciar tu pantalla. Automatiza tus series, descansos y ejercicios con PromptNinja para un rendimiento máximo sin distracciones."
-            }
-        },
-        features: {
-            loop: {
-                title: { pt: "Repetições por Voz", en: "Voice Counting", es: "Conteo por Voz" },
-                desc: {
-                    pt: "Use [COUNT 10] e conte em voz alta 'um, dois...'. O PromptNinja escuta e só avança quando você terminar.",
-                    en: "Use [COUNT 10] and count aloud 'one, two...'. PromptNinja listens and only advances when you finish.",
-                    es: "Usa [COUNT 10] y cuenta 'uno, dos...'. PromptNinja escucha y solo avanza cuando terminas."
-                }
-            },
-            pause: {
-                title: { pt: "Timers de Descanso", en: "Rest Timers", es: "Timers de Descanso" },
-                desc: {
-                    pt: "Use [REST 10] para exibir um cronômetro gigante na tela. Perfeito para ver de longe.",
-                    en: "Use [REST 10] to show a giant timer on screen. Perfect for viewing from afar.",
-                    es: "Usa [REST 10] para mostrar un cronómetro gigante. Perfecto para ver de lejos."
-                }
-            },
-            screen: {
-                title: { pt: "Tela Grande", en: "Big Screen", es: "Pantalla Grande" },
-                desc: {
-                    pt: "Ideal para TV e Tablets. Veja seu próximo exercício de longe, sem interromper o flow.",
-                    en: "Ideal for TV and Tablets. See your next exercise from afar without interrupting your flow.",
-                    es: "Ideal para TV y Tablets. Ve tu próximo ejercicio de lejos, sin interrumpir el flow."
-                }
-            }
-        },
-        cta: {
-            pt: "Carregar Treino Exemplo",
-            en: "Load Example Workout",
-            es: "Cargar Entrenamiento Ejemplo"
         }
     };
 
@@ -142,6 +102,10 @@ WORKOUT DONE!`;
 
     useFAQSchema(faqItems.map(item => ({ q: item.q[currentLang], a: item.a[currentLang] })));
 
+    let Content = TeleprompterFitnessContentPT;
+    if (currentLang === 'en') Content = TeleprompterFitnessContentEN;
+    if (currentLang === 'es') Content = TeleprompterFitnessContentES;
+
     return (
         <SeoPageLayout
             title={content.title[currentLang]}
@@ -149,91 +113,12 @@ WORKOUT DONE!`;
             canonicalUrl={`https://promptninja.solutionkit.com.br${currentLang === 'en' ? '/en/teleprompter-for-fitness-workout' : currentLang === 'es' ? '/es/teleprompter-para-fitness-entrenamiento' : '/teleprompter-para-fitness-treino'}`}
             onLaunch={onLaunch}
         >
-            {/* Hero Section */}
-            <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 mb-6">
-                    {content.hero.title[currentLang]}
-                </h2>
-                <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                    {content.hero.subtitle[currentLang]}
-                </p>
-
-                <div className="mt-8 flex justify-center">
-                    <button
-                        onClick={() => handleUseScript(workoutScript)}
-                        className="px-8 py-4 bg-green-500 hover:bg-green-600 text-slate-900 font-bold rounded-full text-lg shadow-lg hover:shadow-green-500/20 transition-all transform hover:scale-105 flex items-center gap-2"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        {content.cta[currentLang]}
-                    </button>
-                </div>
-
-                {currentLang === 'en' && (
-                    <div className="mt-12 bg-green-600/10 border border-green-500/20 rounded-2xl p-6 md:p-8 text-center max-w-3xl mx-auto">
-                        <h3 className="text-2xl font-bold text-white mb-4">Train Without Distractions</h3>
-                        <p className="text-slate-300 mb-6 font-medium">
-                            Put your workout on the big screen and let PromptNinja handle the timing.
-                            100% free, no registration, and gym-ready.
-                        </p>
-                        <button onClick={onLaunch} className="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-green-500/25">
-                            Start Your Workout Session
-                        </button>
-                    </div>
-                )}
-                {currentLang === 'es' && (
-                    <div className="mt-12 bg-green-600/10 border border-green-500/20 rounded-2xl p-6 md:p-8 text-center max-w-3xl mx-auto">
-                        <h3 className="text-2xl font-bold text-white mb-4">Entrena sin Distracciones</h3>
-                        <p className="text-slate-300 mb-6 font-medium">
-                            Pon tu rutina en la pantalla grande y deja que PromptNinja controle los tiempos.
-                            100% gratis, sin registros y listo para el gimnasio.
-                        </p>
-                        <button onClick={onLaunch} className="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-green-500/25">
-                            Empezar Sesión de Entrenamiento
-                        </button>
-                    </div>
-                )}
-            </div>
-
-            {/* Features Grid */}
-            <div className="grid md:grid-cols-3 gap-8 mb-20">
-                <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-green-500/30 transition-all">
-                    <div className="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center text-green-400 mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                        </svg>
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-3">{content.features.loop.title[currentLang]}</h3>
-                    <p className="text-slate-400">{content.features.loop.desc[currentLang]}</p>
-                </div>
-
-                <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-green-500/30 transition-all">
-                    <div className="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center text-green-400 mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-3">{content.features.pause.title[currentLang]}</h3>
-                    <p className="text-slate-400">{content.features.pause.desc[currentLang]}</p>
-                </div>
-
-                <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-green-500/30 transition-all">
-                    <div className="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center text-green-400 mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-3">{content.features.screen.title[currentLang]}</h3>
-                    <p className="text-slate-400">{content.features.screen.desc[currentLang]}</p>
-                </div>
-            </div>
+            <Content />
 
             {/* Live Demo Script Preview */}
             <div className="bg-slate-900/80 p-6 rounded-2xl border border-slate-800 mb-20">
                 <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-mono text-slate-500">SCRIPT PREVIEW</span>
+                    <span className="text-sm font-mono text-slate-500 uppercase">{currentLang === 'pt' ? 'Prévia do Roteiro' : 'Script Preview'}</span>
                     <button onClick={() => handleUseScript(workoutScript)} className="text-green-400 hover:text-green-300 text-sm font-bold">
                         {currentLang === 'pt' ? 'ABRIR NO EDITOR ->' : 'OPEN IN EDITOR ->'}
                     </button>

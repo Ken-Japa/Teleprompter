@@ -2,36 +2,44 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const ComoUsarTeleprompterEN = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
             How to Use a Teleprompter on Mobile: Use PromptNinja for Free (Complete Guide)
-        </h1>
+        </h2>
 
-        <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Learn how to use a teleprompter on your phone in simple steps with PromptNinja. Ideal for videos, lives, and presentations. Start for free and transform your communication today.
+        <p className="text-lg text-slate-300 mb-6 leading-relaxed">
+            Tired of forgetting lines or stuttering in videos and presentations? Using a teleprompter on your phone is the perfect solution for fluid and professional communication. <span className="text-white font-semibold">Start right now, no registration required</span>, and transform the way you express yourself!
         </p>
 
-        <p className="text-slate-300 mb-8">
-            First time trying a teleprompter? You open some random site, paste text, hit play and... DISASTER. Text scrolls too fast (you sound like a nervous auctioneer) or too slow (awkward pauses). You try to pause but need to <strong>touch the screen and shake the camera</strong>. After 40 minutes testing, you give up and go back to re-recording 20 times from memory.
+        <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+            This complete guide will show you the <strong>exact step-by-step</strong> to set up and use a teleprompter on your phone. Let's get straight to the point so you can start speaking with confidence today.
+            <br /><br />
+            <strong>Ready to master your communication? Let's go!</strong>
         </p>
 
-        <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
-            <h3 className="text-2xl font-bold text-white mb-4">Master Your Communication</h3>
-            <p className="text-slate-300 mb-6">
-                Don't waste time memorizing scripts. Use the tech you already have to deliver your message
-                with the authority and confidence of a professional presenter.
-            </p>
-            <a href="/?lang=en#app" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25">
-                Start PromptNinja Guide Now
+        <div className="bg-slate-800 p-6 rounded-lg my-8 shadow-lg border border-slate-700">
+            <h2 className="text-xl font-bold text-white mb-4">Quick Navigation:</h2>
+            <ul className="list-none space-y-3 mb-6 pl-0">
+                <li><a href="#why-teleprompter" className="text-blue-400 font-semibold hover:text-blue-300 transition flex items-center gap-2"><span className="text-slate-400 font-normal">1.</span> Why a Teleprompter is Essential?</a></li>
+                <li><a href="#step-by-step" className="text-blue-400 font-semibold hover:text-blue-300 transition flex items-center gap-2"><span className="text-slate-400 font-normal">2.</span> <span className="text-green-400">STEP-BY-STEP: How to Use PromptNinja</span></a></li>
+                <li><a href="#common-mistakes" className="text-blue-400 font-semibold hover:text-blue-300 transition flex items-center gap-2"><span className="text-slate-400 font-normal">3.</span> Common Mistakes (and How to Avoid Them)</a></li>
+                <li><a href="#advanced-tips" className="text-blue-400 font-semibold hover:text-blue-300 transition flex items-center gap-2"><span className="text-slate-400 font-normal">4.</span> Advanced Tips</a></li>
+            </ul>
+            <a href="/?lang=en#app" className="block w-full md:w-auto text-center bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-6 rounded-lg transition shadow-lg">
+                🚀 Go straight to Step-by-Step with PromptNinja!
             </a>
         </div>
 
-        <p className="mb-6">
-            EXACTLY what happened to me the first time. I thought "teleprompter will change my life". Result? I spent MORE time fighting the tool than if I'd recorded without anything. The problem wasn't ME. It was using tools made for professional studios with $5000 equipment, not for solo creators recording with a phone.
-        </p>
-
-        <p className="mb-8">
-            This guide exists so you <strong>get it right the first time</strong>. I'll show you EXACTLY how to use a teleprompter the right way — not just the technical part ("paste text, hit play") but the TRICKS that separate who looks like reading from who looks like speaking naturally.
-        </p>
+        <section id="why-teleprompter" className="mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">The Essentials: Why a Mobile Teleprompter is a Game-Changer?</h3>
+            <p className="text-slate-300 mb-4">
+                Before we dive into the "how", it's quick to understand "the why". A teleprompter, originally used in TVs and stages, now fits in your pocket. It projects your script subtly, allowing you to maintain eye contact with the camera.
+            </p>
+            <ul className="list-disc list-inside text-slate-300 space-y-2 mb-4">
+                <li><strong>Fluency and Naturalness:</strong> Speak without hesitation, as if you were having a conversation.</li>
+                <li><strong>Time Saving:</strong> Fewer takes, fewer edits, more productivity.</li>
+                <li><strong>Total Confidence:</strong> Never worry about forgetting an important point again.</li>
+            </ul>
+        </section>
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">First Video: Without vs WITH Teleprompter</h3>
@@ -66,7 +74,7 @@ export const ComoUsarTeleprompterEN = () => (
             </p>
         </div>
 
-        <div className="bg-slate-900 p-6 rounded-lg border border-slate-800 mb-12">
+        <div id="common-mistakes" className="bg-slate-900 p-6 rounded-lg border border-slate-800 mb-12">
             <h3 className="text-3xl font-bold text-white mb-4">Why Beginners Fail (and How to Avoid It)</h3>
             <p className="text-slate-300 mb-4">
                 90% of creators who test teleprompter for the first time QUIT. Not because the tool doesn't work, but because they make 3 classic mistakes:
@@ -96,7 +104,7 @@ export const ComoUsarTeleprompterEN = () => (
             </div>
         </div>
 
-        <h3 className="text-3xl font-bold text-white mt-12 mb-6">How to Use a Teleprompter: From Basic to Professional</h3>
+        <h3 id="step-by-step" className="text-3xl font-bold text-white mt-12 mb-6">How to Use a Teleprompter: From Basic to Professional</h3>
         <p className="text-slate-300 mb-8">
             There are two main ways to use a teleprompter, especially with web-based tools like PromptNinja, which don't require purchasing expensive equipment.
         </p>
@@ -117,31 +125,33 @@ export const ComoUsarTeleprompterEN = () => (
                 <p className="text-sm text-slate-500 mt-4"><strong>Disadvantage:</strong> It's hard to control the scroll without interrupting the recording or looking away. Works best for short videos.</p>
             </div>
 
-            <SEOContentHowTo
-                title="Method 2: The Remote Control (The Professional Way)"
-                schemaTitle="How to Use Teleprompter with Remote Control"
-                tools={["Computer or Tablet", "Smartphone"]}
-                totalTime="PT2M"
-                className="border-2 border-blue-500 rounded-lg p-4"
-                steps={[
-                    {
-                        title: "Prepare the Main Screen",
-                        text: "Open PromptNinja on the device that will serve as the screen (notebook, tablet, or another monitor). This will be the screen you read from."
-                    },
-                    {
-                        title: "Activate Remote Control",
-                        text: "On your phone, open PromptNinja and select the \"Remote Control\" option from the main menu."
-                    },
-                    {
-                        title: "Connect Devices",
-                        text: "Scan the QR Code that appears on the main screen with your phone's camera. The connection is P2P (Peer-to-Peer) via Wi-Fi, instant and secure."
-                    },
-                    {
-                        title: "Control Your Recording",
-                        text: "Done! Your phone is now a remote control. Play, pause, adjust speed, and edit text without leaving your recording position."
-                    }
-                ]}
-            />
+            <div id="advanced-tips">
+                <SEOContentHowTo
+                    title="Method 2: The Remote Control (The Professional Way)"
+                    schemaTitle="How to Use Teleprompter with Remote Control"
+                    tools={["Computer or Tablet", "Smartphone"]}
+                    totalTime="PT2M"
+                    className="border-2 border-blue-500 rounded-lg p-4"
+                    steps={[
+                        {
+                            title: "Prepare the Main Screen",
+                            text: "Open PromptNinja on the device that will serve as the screen (notebook, tablet, or another monitor). This will be the screen you read from."
+                        },
+                        {
+                            title: "Activate Remote Control",
+                            text: "On your phone, open PromptNinja and select the \"Remote Control\" option from the main menu."
+                        },
+                        {
+                            title: "Connect Devices",
+                            text: "Scan the QR Code that appears on the main screen with your phone's camera. The connection is P2P (Peer-to-Peer) via Wi-Fi, instant and secure."
+                        },
+                        {
+                            title: "Control Your Recording",
+                            text: "Done! Your phone is now a remote control. Play, pause, adjust speed, and edit text without leaving your recording position."
+                        }
+                    ]}
+                />
+            </div>
             <p className="text-sm text-green-400 mt-2 px-4"><strong>Advantage:</strong> Full control over the recording flow, allowing for dramatic pauses, acceleration, and a much more dynamic and natural presentation.</p>
         </div>
 

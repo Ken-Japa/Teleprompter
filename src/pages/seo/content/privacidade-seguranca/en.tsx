@@ -4,21 +4,16 @@ import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 
 export const PrivacidadeSegurancaEN = () => (
     <>
-        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Privacy & Security: Why We Don't Want Your Data</h2>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Privacy and Security: Your Scripts Protected and 100% Local
+        </h2>
 
-        <div className="bg-red-900/20 border border-red-500/30 p-6 rounded-lg mb-8">
-            <h3 className="text-xl font-bold text-red-400 mb-2">🚫 The Industry Problem</h3>
-            <p className="text-slate-300">
-                Most "free" teleprompter apps require you to create an account. Why? To track your habits, read your scripts to train AI, or sell your email. They treat you as the product.
-            </p>
-        </div>
-
-        <p className="mb-6 text-xl text-slate-300">
-            At PromptNinja, we adopt a radical <strong>Zero Data</strong> architecture.
+        <p className="lead text-xl text-slate-300 mb-8 font-medium">
+            Your privacy is our absolute priority. At PromptNinja, we adopt a <strong>Zero Data</strong> architecture, ensuring that your scripts and recordings never leave your device.
         </p>
 
-        <p className="mb-8">
-            We don't know who you are. We don't have your emails. We don't have your scripts. Everything you write is magnetically recorded on the memory chip of <strong>your own device</strong>, and nowhere else.
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            In this commitment to your digital security, we detail why PromptNinja is the most trusted choice for journalists, executives, and content creators who value discretion. Understand how our Peer-to-Peer WebRTC technology allows remote control without the need for intermediaries or cloud storage. Discover how we process every command and every word locally in your browser, eliminating any risk of information leakage or industrial espionage. With PromptNinja, you have the power of a professional teleprompter with the peace of mind knowing that your data belongs exclusively to you.
         </p>
 
         <div className="grid md:grid-cols-2 gap-8 my-12">
