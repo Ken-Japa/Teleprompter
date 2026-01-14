@@ -414,6 +414,7 @@ Perfectamente alineados`,
       bilingualMode: "Modo Bilingue",
       bold: "Negrita",
       italic: "Itálico",
+      underline: "Subrayado",
     },
     defaultText: `Bienvenido a PromptNinja.
 

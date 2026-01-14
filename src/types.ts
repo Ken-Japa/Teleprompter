@@ -173,6 +173,7 @@ export interface TextFragment {
     isHighlight?: boolean;
     bold?: boolean;
     italic?: boolean;
+    underline?: boolean;
 }
 
 

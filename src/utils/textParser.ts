@@ -25,6 +25,7 @@ export const parseTextToSentences = (
         type: "normal" | "red" | "yellow" | "green" | "blue";
         bold?: boolean;
         italic?: boolean;
+        underline?: boolean;
     }[] = [];
 
     // First pass: Extract color tags
@@ -90,7 +91,7 @@ export const parseTextToSentences = (
         }
 
         // Process italic tags in each fragment
-        const finalFragments: typeof tokens = [];
+        const italicFragments: typeof tokens = [];
         (fragments.length > 0 ? fragments : [token]).forEach(frag => {
             const ITALIC_REGEX = /<i>([\s\S]*?)<\/i>/g;
             let italicLastIndex = 0;
@@ -100,13 +101,13 @@ export const parseTextToSentences = (
             while ((italicMatch = ITALIC_REGEX.exec(frag.text)) !== null) {
                 hasItalic = true;
                 if (italicMatch.index > italicLastIndex) {
-                    finalFragments.push({
+                    italicFragments.push({
                         text: frag.text.substring(italicLastIndex, italicMatch.index),
                         type: frag.type,
                         bold: frag.bold,
                     });
                 }
-                finalFragments.push({
+                italicFragments.push({
                     text: italicMatch[1],
                     type: frag.type,
                     bold: frag.bold,
@@ -117,10 +118,52 @@ export const parseTextToSentences = (
 
             if (hasItalic) {
                 if (italicLastIndex < frag.text.length) {
-                    finalFragments.push({
+                    italicFragments.push({
                         text: frag.text.substring(italicLastIndex),
                         type: frag.type,
                         bold: frag.bold,
+                    });
+                }
+            } else {
+                italicFragments.push(frag);
+            }
+        });
+
+        // Process underline tags in each fragment
+        const finalFragments: typeof tokens = [];
+        italicFragments.forEach(frag => {
+            const UNDERLINE_REGEX = /<u>([\s\S]*?)<\/u>/g;
+            let underlineLastIndex = 0;
+            let underlineMatch;
+            let hasUnderline = false;
+
+            while ((underlineMatch = UNDERLINE_REGEX.exec(frag.text)) !== null) {
+                hasUnderline = true;
+                if (underlineMatch.index > underlineLastIndex) {
+                    finalFragments.push({
+                        text: frag.text.substring(underlineLastIndex, underlineMatch.index),
+                        type: frag.type,
+                        bold: frag.bold,
+                        italic: frag.italic,
+                    });
+                }
+                finalFragments.push({
+                    text: underlineMatch[1],
+                    type: frag.type,
+                    bold: frag.bold,
+                    italic: frag.italic,
+                    underline: true,
+                });
+                underlineLastIndex = UNDERLINE_REGEX.lastIndex;
+            }
+
+            if (hasUnderline) {
+                if (underlineLastIndex < frag.text.length) {
+                    finalFragments.push({
+                        text: frag.text.substring(underlineLastIndex),
+                        type: frag.type,
+                        bold: frag.bold,
+                        italic: frag.italic,
                     });
                 }
             } else {
@@ -169,10 +212,10 @@ export const parseTextToSentences = (
 
             if (isDelimiter) {
                 // Append delimiter to the last fragment or create new one
-                if (currentFragments.length > 0 && currentFragments[currentFragments.length - 1].type === token.type && currentFragments[currentFragments.length - 1].bold === token.bold && currentFragments[currentFragments.length - 1].italic === token.italic) {
+                if (currentFragments.length > 0 && currentFragments[currentFragments.length - 1].type === token.type && currentFragments[currentFragments.length - 1].bold === token.bold && currentFragments[currentFragments.length - 1].italic === token.italic && currentFragments[currentFragments.length - 1].underline === token.underline) {
                     currentFragments[currentFragments.length - 1].text += part;
                 } else {
-                    currentFragments.push({ text: part, type: token.type, bold: token.bold, italic: token.italic });
+                    currentFragments.push({ text: part, type: token.type, bold: token.bold, italic: token.italic, underline: token.underline });
                 }
                 currentCleanContent += part;
 
@@ -180,7 +223,7 @@ export const parseTextToSentences = (
                 finalizeSentence();
             } else {
                 // Regular text
-                currentFragments.push({ text: part, type: token.type, bold: token.bold, italic: token.italic });
+                currentFragments.push({ text: part, type: token.type, bold: token.bold, italic: token.italic, underline: token.underline });
                 currentCleanContent += part;
             }
         }

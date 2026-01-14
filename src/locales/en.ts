@@ -405,6 +405,7 @@ Aligned perfectly`,
       bilingualMode: "Bilingual Mode",
       bold: "Bold",
       italic: "Italic",
+      underline: "Underline",
     },
     defaultText: `Welcome to PromptNinja.
 

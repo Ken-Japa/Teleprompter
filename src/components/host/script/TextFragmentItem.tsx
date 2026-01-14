@@ -22,7 +22,7 @@ export const TextFragmentItem = memo(({ fragment }: { fragment: TextFragment }) 
   };
 
   // Build style classes for bold and italic
-  const styleClasses = `${fragment.bold ? 'inline-block' : ''} ${fragment.italic ? 'italic' : ''}`.trim();
+  const styleClasses = `${fragment.bold ? 'inline-block' : ''} ${fragment.italic ? 'italic' : ''} ${fragment.underline ? 'underline' : ''}`.trim();
 
   // Inline styles for bold - using scale for visual emphasis with proper spacing
   const inlineStyle = fragment.bold ? {

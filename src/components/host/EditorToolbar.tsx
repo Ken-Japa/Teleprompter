@@ -1,7 +1,7 @@
 import { memo, useState } from "react";
 import { VoiceLanguageSelector } from "./VoiceLanguageSelector";
 import * as S from "../ui/Styled";
-import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LanguagesIcon, CameraIcon, WidgetIcon, SearchIcon, BoldIcon, ItalicIcon } from "../ui/Icons";
+import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LanguagesIcon, CameraIcon, WidgetIcon, SearchIcon, BoldIcon, ItalicIcon, UnderlineIcon } from "../ui/Icons";
 import { useTranslation } from "../../hooks/useTranslation";
 import { TutorialModal } from "../ui/TutorialModal";
 import { PacingModal } from "../ui/PacingModal";
@@ -96,6 +96,14 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, o
                                 className="w-8 h-8 rounded-lg bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 border border-white/5 transition-all"
                             >
                                 <ItalicIcon className="w-4 h-4" />
+                            </S.IconButton>
+                            <S.IconButton
+                                onClick={() => onInsertTag("u")}
+                                title={t("host.editor.underline") || "Sublinhado"}
+                                aria-label="Underline"
+                                className="w-8 h-8 rounded-lg bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 border border-white/5 transition-all"
+                            >
+                                <UnderlineIcon className="w-4 h-4" />
                             </S.IconButton>
 
                             <S.IconButton

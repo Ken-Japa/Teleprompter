@@ -233,7 +233,7 @@ export const PrompterHUD = memo(
                         )}
 
                         {togglePiP && (
-                            <div className="flex items-center gap-1">
+                            <div className="flex items-center gap-2">
                                 <S.IconButton
                                     onClick={() => actions.setIsHudless(true)}
                                     title={t("hudless.button") || "Hide Controls (H)"}
