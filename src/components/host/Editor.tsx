@@ -81,12 +81,12 @@ export const Editor: React.FC<EditorProps> = ({
             <S.Header>
                 <div className="flex items-center sm:space-x-6">
                     <S.LogoText main={t("title.main")} sub={t("title.sub")} className="hidden sm:flex" />
-                    <S.LogoText main={t("title.main")} className="!block sm:!hidden scale-90 origin-left -ml-2 !space-x-1" />
+                    <S.LogoText main={t("title.main")} className="!block sm:!hidden scale-80 origin-left -ml-2 !space-x-1" />
                     <button
                         onClick={() => {
                             window.location.hash = "";
                         }}
-                        className="flex items-center text-xs font-bold text-slate-500 hover:text-white ml-2 transition"
+                        className="flex items-center text-xs font-bold text-slate-500 hover:text-white ml-6 transition"
                         aria-label="Back to Home"
                     >
                         <HomeIcon className="w-6 h-6 mr-1" /> <span className="hidden sm:inline">{t("menu.backToHome")}</span>
@@ -118,7 +118,7 @@ export const Editor: React.FC<EditorProps> = ({
 
 
                     <GoogleAuthButton compact />
-                    <LanguageSelector />
+                    < LanguageSelector className="hidden md:block" />
                     <S.PrimaryButton
                         onClick={onStart}
                         aria-label="Start Presentation Mode"

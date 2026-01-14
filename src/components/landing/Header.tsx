@@ -70,7 +70,7 @@ export const Header: React.FC<HeaderProps> = () => {
                     onKeyDown={(e) => e.key === "Enter" && window.scrollTo(0, 0)}
                     aria-label="Go to top"
                 >
-                    <S.LogoText main={t("title.main")} sub={t("title.sub")} />
+                    <S.LogoText main={t("title.main")} sub={t("title.sub")} className="md:scale-100 scale-75" />
                 </div>
 
                 {/* Desktop Navigation */}
@@ -100,7 +100,9 @@ export const Header: React.FC<HeaderProps> = () => {
 
                 <div className="flex items-center space-x-4 relative">
                     <GoogleAuthButton />
-                    <LanguageSelector />
+
+                    {/* Desktop Language Selector and Start Button */}
+                    <LanguageSelector className="hidden md:block" />
                     <div className="relative group hidden sm:block">
                         {showStartHint && (
                             <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 sm:opacity-100">
@@ -129,6 +131,23 @@ export const Header: React.FC<HeaderProps> = () => {
                     >
                         {t("menu.validate")}
                     </S.PrimaryButton>
+
+                    {/* Mobile Start Button - Icon Only */}
+                    <button
+                        onClick={() => {
+                            window.location.hash = "app";
+                        }}
+                        className="sm:hidden p-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-lg shadow-lg shadow-brand-500/20 hover:scale-105 transition-all duration-200 touch-target"
+                        aria-label={t("menu.start")}
+                    >
+                        <svg
+                            className="w-5 h-5"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </button>
 
                     {/* Mobile Menu Button - Hamburger */}
                     <button

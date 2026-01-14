@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import { Language } from "../../locales/index";
 
-export const LanguageSelector: React.FC = () => {
+export const LanguageSelector: React.FC<{ className?: string }> = ({ className = "" }) => {
   const { lang, setLang } = useTranslation();
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -30,7 +30,7 @@ export const LanguageSelector: React.FC = () => {
   }, [dropdownRef]);
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className={`relative ${className}`} ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
         className="text-sm font-bold px-3 py-1.5 rounded-full transition-all bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white border border-transparent hover:border-white/10 flex items-center gap-2"
