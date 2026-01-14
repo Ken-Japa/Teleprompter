@@ -3,6 +3,8 @@ import { useTranslation } from "../../hooks/useTranslation";
 import * as S from "../ui/Styled";
 import { LanguageSelector } from "../ui/LanguageSelector";
 import { GoogleAuthButton } from "../ui/GoogleAuthButton";
+import { useFirstVisit } from "../../hooks/useFirstVisit";
+import { useAuth } from "../../contexts/AuthContext";
 
 interface HeaderProps {
     // onLaunch used to be here but is unused
@@ -11,6 +13,9 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = () => {
     const { t } = useTranslation();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { user } = useAuth();
+    const isFirstVisit = useFirstVisit("has_seen_landing_start_hint");
+    const showStartHint = isFirstVisit && !user;
 
     const scrollToSection = (id: string) => {
         // Close mobile menu when navigating
@@ -97,11 +102,13 @@ export const Header: React.FC<HeaderProps> = () => {
                     <GoogleAuthButton />
                     <LanguageSelector />
                     <div className="relative group hidden sm:block">
-                        <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 sm:opacity-100">
-                            <p className="text-slate-400 text-xs font-medium animate-bounce bg-slate-900/90 backdrop-blur px-2 py-1 rounded-full border border-brand-500/30 shadow-lg flex items-center gap-1">
-                                <span className="text-sm">👆</span> {t("landing.hero.startHint") || "Comece aqui"}
-                            </p>
-                        </div>
+                        {showStartHint && (
+                            <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 sm:opacity-100">
+                                <p className="text-slate-400 text-xs font-medium animate-bounce bg-slate-900/90 backdrop-blur px-2 py-1 rounded-full border border-brand-500/30 shadow-lg flex items-center gap-1">
+                                    <span className="text-sm">👆</span> {t("landing.hero.startHint") || "Comece aqui"}
+                                </p>
+                            </div>
+                        )}
                         <S.PrimaryButton
                             onClick={() => {
                                 window.location.hash = "app";

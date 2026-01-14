@@ -84,7 +84,7 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
     return (
         <div className="flex-1 flex flex-col min-h-0 overflow-y-auto">
             {/* Timer Display & Navigation */}
-            <div className="relative flex justify-center items-center pt-3 pb-2 px-4 flex-none">
+            <div className="relative flex justify-center items-center pt-3 pb-2 px-4 flex-none gap-3">
                 <div className="bg-slate-900/50 px-6 py-2 rounded-xl border border-white/5 shadow-lg z-10">
                     <span className="font-mono text-4xl font-black text-brand-400 tracking-widest drop-shadow-[0_0_15px_rgba(129,140,248,0.5)]">
                         {formattedTime}
@@ -92,20 +92,20 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
                 </div>
 
                 {hasParts && (
-                    <div className="absolute right-4 md:right-10 flex flex-col gap-2 z-20">
+                    <div className="flex bg-slate-900/30 rounded-full p-1 border border-white/5 items-center gap-1">
                         <S.IconButton
                             onClick={actions.handlePreviousPart}
-                            className="w-10 h-10 rounded-full bg-slate-800 border border-white/10 text-slate-400 hover:text-white hover:bg-slate-700 shadow-lg"
+                            className="w-9 h-9 rounded-full text-slate-400 hover:text-white hover:bg-white/5 border-transparent"
                             aria-label="Previous Part"
                         >
-                            <ChevronUpIcon className="w-6 h-6" />
+                            <ChevronUpIcon className="w-5 h-5" />
                         </S.IconButton>
                         <S.IconButton
                             onClick={actions.handleNextPart}
-                            className="w-10 h-10 rounded-full bg-slate-800 border border-white/10 text-slate-400 hover:text-white hover:bg-slate-700 shadow-lg"
+                            className="w-9 h-9 rounded-full text-slate-400 hover:text-white hover:bg-white/5 border-transparent"
                             aria-label="Next Part"
                         >
-                            <ChevronDownIcon className="w-6 h-6" />
+                            <ChevronDownIcon className="w-5 h-5" />
                         </S.IconButton>
                     </div>
                 )}

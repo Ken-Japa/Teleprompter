@@ -14,7 +14,7 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
     const { user } = useAuth(); // Get user
     const [isPlaying, setIsPlaying] = useState(false);
     const isFirstVisit = useFirstVisit("has_seen_landing_start_hint");
-    const showStartHint = isFirstVisit && !user; // Only show if first visit AND user is not logged in
+    const showStartHint = isFirstVisit && !user;
     const headline = t("landing.hero.headline") as string;
     // Split by dot but preserve robustness if no dot exists
     const parts = headline.split(".").map(s => s.trim()).filter(Boolean);
