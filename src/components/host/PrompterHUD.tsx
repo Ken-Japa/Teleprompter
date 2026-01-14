@@ -252,6 +252,56 @@ export const PrompterHUD = memo(
                                 >
                                     <PiPIcon className="w-5 h-5" />
                                 </S.IconButton>
+
+                                {/* Voice Control Button - Moved from row 4 to row 3 on small screens */}
+                                <S.IconButton
+                                    onClick={toggleVoice}
+                                    active={isVoiceMode}
+                                    title={voiceApiSupported ? t("host.controls.voice") : t(voiceApiError || "")}
+                                    aria-label={t("host.controls.voice")}
+                                    className={`w-9 h-9 rounded-full xl:hidden ${isVoiceMode ? "bg-red-500/20 text-red-400 shadow-[0_0_10px_rgba(248,113,113,0.3)] border-red-500/30 animate-pulse" : "hover:bg-white/10 border-transparent text-slate-400"} ${!isPro || !voiceApiSupported ? "opacity-50 cursor-not-allowed" : ""}`}
+                                    disabled={!voiceApiSupported}
+                                >
+                                    {isPro ? <MicIcon className="w-5 h-5" /> : <LockIcon className="w-4 h-4" />}
+                                </S.IconButton>
+
+                                {/* Recording Controls - Moved from row 4 to row 3 on small screens */}
+                                {recordingState && recordingActions && (
+                                    <div className="xl:hidden scale-75 origin-center">
+                                        <RecordingControls
+                                            isRecording={recordingState.isRecording}
+                                            isPaused={recordingState.isPaused}
+                                            recordingTime={recordingState.recordingTime}
+                                            hasRecordedData={recordingState.hasRecordedData}
+                                            recordingMode={recordingMode}
+                                            isConnected={status === "CONNECTED"}
+                                            onToggleMode={handleToggleRecordingMode}
+                                            onStart={recordingActions.start}
+                                            onStop={recordingActions.stop}
+                                            onPause={recordingActions.pause}
+                                            onResume={recordingActions.resume}
+                                            onDownload={recordingActions.download}
+                                        />
+                                    </div>
+                                )}
+
+                                {/* Minimize Button - Moved from row 4 to row 3 */}
+                                <S.IconButton
+                                    onClick={() => setIsMinimized(true)}
+                                    title="Minimize Controls"
+                                    className="w-9 h-9 xl:hidden items-center justify-center text-slate-400 hover:text-white"
+                                >
+                                    <MinimizeIcon className="w-5 h-5" />
+                                </S.IconButton>
+
+                                {/* Exit Button - Moved from row 4 to row 3 on small screens */}
+                                <S.IconButton
+                                    onClick={onExit}
+                                    className="xl:hidden w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-200 border border-white/5 shadow-lg"
+                                    title={t("host.exit")}
+                                >
+                                    <LogOutIcon className="w-4 h-4" />
+                                </S.IconButton>
                             </div>
                         )}
 
@@ -293,7 +343,7 @@ export const PrompterHUD = memo(
                 </div>
 
 
-                <div className="flex items-center">
+                <div className="hidden xl:flex items-center">
                     <div className="flex items-center p-0.5 gap-2 ml-2">
                         <S.IconButton
                             onClick={toggleVoice}
@@ -321,10 +371,10 @@ export const PrompterHUD = memo(
                     <S.IconButton
                         onClick={() => setIsMinimized(true)}
                         title="Minimize Controls"
-                        className="ml-2 w-9 h-9 flex xl:hidden items-center justify-center text-slate-400 hover:text-white"
+                        className="ml-2 w-9 h-9 flex items-center justify-center text-slate-400 hover:text-white"
                     >
                         <MinimizeIcon className="w-5 h-5" />
-                    </S.IconButton >
+                    </S.IconButton>
                 </div>
 
                 {/* Backing Track Controls */}
@@ -362,7 +412,7 @@ export const PrompterHUD = memo(
 
 
                 {recordingState && recordingActions && (
-                    <div className="scale-90 origin-bottom">
+                    <div className="hidden xl:block scale-90 origin-bottom">
                         <S.HudGroup label="REC">
                             <RecordingControls
                                 isRecording={recordingState.isRecording}
@@ -385,7 +435,7 @@ export const PrompterHUD = memo(
                 <S.PrimaryButton
                     onClick={onExit}
                     size="sm"
-                    className="ml-2 bg-slate-800 hover:bg-slate-700 text-slate-200 shadow-none"
+                    className="hidden xl:flex ml-2 bg-slate-800 hover:bg-slate-700 text-slate-200 shadow-none"
                 >
                     <span className="hidden sm:inline">{t("host.exit")}</span>
                     <LogOutIcon className="inline sm:hidden w-4 h-4" />
