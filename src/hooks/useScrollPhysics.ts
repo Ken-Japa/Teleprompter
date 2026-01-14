@@ -467,7 +467,34 @@ export const useScrollPhysics = ({
   // --- PUBLIC HANDLERS ---
 
   const handleNativeScroll = useCallback(() => {
-    if (!scrollContainerRef.current || isPlayingRef.current || isVoiceModeRef.current) return;
+    if (!scrollContainerRef.current || isPlayingRef.current) return;
+
+    // VOICE MODE: Virtual Scroll Logic (Trap native scroll and apply to transform)
+    if (isVoiceModeRef.current) {
+      const delta = scrollContainerRef.current.scrollTop;
+      if (delta === 0) return; // Ignore our own resets
+
+      // Update internal position
+      internalScrollPos.current += delta;
+
+      // Clamp
+      const metrics = metricsRef.current;
+      const maxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
+      internalScrollPos.current = Math.min(Math.max(0, internalScrollPos.current), maxScroll);
+
+      // Visual Update
+      applyScrollTransform(internalScrollPos.current);
+
+      // Reset Trap (keep scrollTop at 0 so we can catch next delta)
+      scrollContainerRef.current.scrollTop = 0;
+
+      // Sync Progress
+      const progress = maxScroll > 0 ? internalScrollPos.current / maxScroll : 0;
+      onScrollUpdate(Math.min(1, Math.max(0, progress)));
+      return;
+    }
+
+    // NORMAL MODE: Sync Native Scroll
     // Sync internal state with native scroll (e.g. user dragged scrollbar)
     internalScrollPos.current = scrollContainerRef.current.scrollTop;
 
@@ -476,7 +503,7 @@ export const useScrollPhysics = ({
     const maxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
     const progress = maxScroll > 0 ? internalScrollPos.current / maxScroll : 0;
     onScrollUpdate(Math.min(1, Math.max(0, progress)));
-  }, [scrollContainerRef, metricsRef, onScrollUpdate]);
+  }, [scrollContainerRef, metricsRef, onScrollUpdate, applyScrollTransform]);
 
   const handleRemoteInput = useCallback(
     (deltaY: number, stop: boolean = false, hardStop: boolean = false) => {
