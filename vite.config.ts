@@ -95,6 +95,12 @@ const viteConfig = defineConfig({
             },
         }),
     ],
+    server: {
+        headers: {
+            "Cross-Origin-Opener-Policy": "same-origin-allow-popups",
+            "Cross-Origin-Embedder-Policy": "unsafe-none",
+        },
+    },
     build: {
         sourcemap: true,
         cssCodeSplit: true, // Enable CSS code splitting
