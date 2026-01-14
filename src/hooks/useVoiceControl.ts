@@ -280,8 +280,6 @@ export const useVoiceControl = (
 
         autoModeConfigRef.current.currentMode = mode;
         autoModeConfigRef.current.appliedPreset = VOICE_CONFIG.AUTO_MODES.presets[mode];
-
-        console.log(`[Voice] Auto-mode: ${mode} preset applied`);
     }, [isMusicianMode, isBilingual]);
 
     /**

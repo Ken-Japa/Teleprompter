@@ -435,7 +435,7 @@ export const Prompter = memo(
       const effectiveVoiceProgress = voiceControlMode === "remote" ? remoteVoiceState.progress : voiceProgress;
 
       // --- PHYSICS ENGINE INTEGRATION ---
-      const { handleNativeScroll, handleRemoteInput, handleScrollTo, resetPhysics, wakeUpLoop, currentActiveElementRef, clearProcessedCommands, internalScrollPos } = useScrollPhysics({
+      const physicsResult = useScrollPhysics({
         isPlaying: externalState.isPlaying,
         isVoiceMode,
         speed: externalState.speed,
@@ -451,6 +451,9 @@ export const Prompter = memo(
         bpm: effectiveBpm,
         backingTrackProgress: backingTrack.getProgress(),
       });
+
+      const { handleInteractionStart, handleInteractionEnd } = physicsResult;
+      const { handleNativeScroll, handleRemoteInput, handleScrollTo, resetPhysics, wakeUpLoop, currentActiveElementRef, clearProcessedCommands, internalScrollPos } = physicsResult;
 
 
       // Ref to store physics methods for access inside handleCommandTriggered
@@ -954,6 +957,14 @@ export const Prompter = memo(
             <S.PrompterScrollArea
               ref={scrollContainerRef}
               onScroll={handleNativeScroll}
+              onTouchStart={handleInteractionStart}
+              onTouchEnd={handleInteractionEnd}
+              onMouseDown={handleInteractionStart}
+              onMouseUp={handleInteractionEnd}
+              onWheel={handleInteractionStart}
+              // Also handle cancellation cases
+              onTouchCancel={handleInteractionEnd}
+              onMouseLeave={handleInteractionEnd}
               className={`hardware-accelerated prompter-scroll-area ${isVoiceMode ? 'voice-control-smooth' : ''}`}
 
               style={{

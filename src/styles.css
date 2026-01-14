@@ -105,7 +105,6 @@ html {
 .voice-control-smooth {
     will-change: transform;
     /* overflow: hidden is important to prevent double scrollbars */
-    overflow: hidden;
 }
 
 .voice-control-content {

@@ -112,8 +112,6 @@ export const useScrollPhysics = ({
   const targetVoiceScrollRef = useRef<number | null>(null);
   const lastVoiceIndexRef = useRef<number>(-1);
   const currentActiveElementRef = useRef<HTMLElement | null>(null);
-  const transformOffsetRef = useRef<number>(0); // Track transform position for voice mode
-
 
   // Update Velocity Cache when speed changes
   useEffect(() => {
@@ -126,24 +124,6 @@ export const useScrollPhysics = ({
       Math.pow(effectiveBpmSpeed, PHYSICS_CONSTANTS.SPEED_POWER) * PHYSICS_CONSTANTS.VELOCITY_MULTIPLIER;
   }, [speed, bpm, isMusicianMode]);
 
-  /**
-   * Apply scroll using GPU-accelerated CSS transform (for voice mode).
-   * This provides buttery-smooth scrolling without triggering layout reflow.
-   */
-  const applyScrollTransform = useCallback((position: number) => {
-    if (!scrollContainerRef.current) return;
-
-    const content = scrollContainerRef.current.querySelector('.voice-control-content');
-    if (content instanceof HTMLElement) {
-      // Logic for multiplier:
-      // In normal mode, we shift content UP (negative translateY) to show lower DOM parts.
-      // In flipped mode (scaleY(-1)), the DOM coordinate system is flipped relative to visual.
-      // So translating by +pos moves it to the target in flipped space.
-      const multiplier = isFlipVerticalRef.current ? 1 : -1;
-      content.style.transform = `translate3d(0, ${position * multiplier}px, 0)`;
-      transformOffsetRef.current = position;
-    }
-  }, []);
 
 
   /**
@@ -337,12 +317,8 @@ export const useScrollPhysics = ({
         }
 
 
-        // Apply scroll: Use GPU-accelerated transform for voice mode, scrollTop otherwise
-        if (_isVoiceMode) {
-          applyScrollTransform(internalScrollPos.current);
-        } else {
-          scrollContainerRef.current.scrollTop = internalScrollPos.current;
-        }
+        // Apply scroll: Always use native scrollTop for consistency
+        scrollContainerRef.current.scrollTop = internalScrollPos.current;
 
 
         // Reporta progresso (0 a 1)
@@ -402,58 +378,12 @@ export const useScrollPhysics = ({
     }
   }, [loop]);
 
-  // Sync Scroll Position when entering Voice Mode
-  const lastVoiceModeRef = useRef(isVoiceMode);
-  useEffect(() => {
-    // ONLY sync when transitioning from false to true
-    if (isVoiceMode && !lastVoiceModeRef.current && scrollContainerRef.current) {
-      const container = scrollContainerRef.current;
-
-      // CRITICAL FIX: To prevent "Double Jump" (scrollTop + transform),
-      // we must reset scrollTop to 0 and take full responsibility for the offset via transform.
-      const currentScrollTop = container.scrollTop;
-
-      // Set internal position to the current absolute scroll state
-      internalScrollPos.current = currentScrollTop;
-      transformOffsetRef.current = currentScrollTop; // Sync offset for exit logic
-
-      // Apply transform IMMEDIATELY to prevent 1-frame visual jump
-      applyScrollTransform(currentScrollTop);
-
-      // Reset native scroll top
-      container.scrollTop = 0;
-
-      // Force refresh metrics to ensure calculations are accurate
-      const realScrollHeight = container.scrollHeight;
-      const realClientHeight = container.clientHeight;
-      metricsRef.current = { scrollHeight: realScrollHeight, clientHeight: realClientHeight };
-
-      wakeUpLoop();
-    }
-    lastVoiceModeRef.current = isVoiceMode;
-  }, [isVoiceMode, wakeUpLoop, scrollContainerRef, metricsRef, applyScrollTransform]);
-
   // Start/Stop loop based on state
   useEffect(() => {
     if (isPlaying || (isVoiceMode && activeSentenceIndex !== -1)) {
       wakeUpLoop();
     }
   }, [isPlaying, isVoiceMode, activeSentenceIndex, voiceProgress, wakeUpLoop]);
-
-  // Sync scrollTop when exiting voice mode
-  useEffect(() => {
-    if (!isVoiceMode && transformOffsetRef.current > 0 && scrollContainerRef.current) {
-      // Sync scrollTop with transform position when exiting voice mode
-      scrollContainerRef.current.scrollTop = transformOffsetRef.current;
-      transformOffsetRef.current = 0;
-
-      // Clear transform from content
-      const content = scrollContainerRef.current.querySelector('.voice-control-content');
-      if (content instanceof HTMLElement) {
-        content.style.transform = '';
-      }
-    }
-  }, [isVoiceMode]);
 
 
   // Cleanup
@@ -469,32 +399,6 @@ export const useScrollPhysics = ({
   const handleNativeScroll = useCallback(() => {
     if (!scrollContainerRef.current || isPlayingRef.current) return;
 
-    // VOICE MODE: Virtual Scroll Logic (Trap native scroll and apply to transform)
-    if (isVoiceModeRef.current) {
-      const delta = scrollContainerRef.current.scrollTop;
-      if (delta === 0) return; // Ignore our own resets
-
-      // Update internal position
-      internalScrollPos.current += delta;
-
-      // Clamp
-      const metrics = metricsRef.current;
-      const maxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
-      internalScrollPos.current = Math.min(Math.max(0, internalScrollPos.current), maxScroll);
-
-      // Visual Update
-      applyScrollTransform(internalScrollPos.current);
-
-      // Reset Trap (keep scrollTop at 0 so we can catch next delta)
-      scrollContainerRef.current.scrollTop = 0;
-
-      // Sync Progress
-      const progress = maxScroll > 0 ? internalScrollPos.current / maxScroll : 0;
-      onScrollUpdate(Math.min(1, Math.max(0, progress)));
-      return;
-    }
-
-    // NORMAL MODE: Sync Native Scroll
     // Sync internal state with native scroll (e.g. user dragged scrollbar)
     internalScrollPos.current = scrollContainerRef.current.scrollTop;
 
@@ -503,7 +407,7 @@ export const useScrollPhysics = ({
     const maxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
     const progress = maxScroll > 0 ? internalScrollPos.current / maxScroll : 0;
     onScrollUpdate(Math.min(1, Math.max(0, progress)));
-  }, [scrollContainerRef, metricsRef, onScrollUpdate, applyScrollTransform]);
+  }, [scrollContainerRef, metricsRef, onScrollUpdate]);
 
   const handleRemoteInput = useCallback(
     (deltaY: number, stop: boolean = false, hardStop: boolean = false) => {
@@ -535,12 +439,9 @@ export const useScrollPhysics = ({
       const newPos = Math.min(Math.max(progress, 0), 1) * maxScroll;
       internalScrollPos.current = newPos;
 
-      // CRITICAL: Only set native scrollTop if NOT in voice mode
-      if (!isVoiceModeRef.current) {
-        scrollContainerRef.current.scrollTop = newPos;
-      }
+      scrollContainerRef.current.scrollTop = newPos;
 
-      wakeUpLoop(); // Loop will apply transform if in voice mode
+      wakeUpLoop();
     },
     [metricsRef, scrollContainerRef, wakeUpLoop]
   );
@@ -553,15 +454,8 @@ export const useScrollPhysics = ({
     isHardStopRequestedRef.current = true;
     processedCommandsRef.current.clear();
     lastScrollCheckRef.current = 0;
-    transformOffsetRef.current = 0; // Reset transform offset
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollTop = 0;
-
-      // Clear transform if it exists
-      const content = scrollContainerRef.current.querySelector('.voice-control-content');
-      if (content instanceof HTMLElement) {
-        content.style.transform = '';
-      }
     }
   }, [scrollContainerRef]);
 
@@ -570,6 +464,23 @@ export const useScrollPhysics = ({
     for (let i = startId; i <= endId; i++) {
       processedCommandsRef.current.delete(i);
     }
+  }, []);
+
+  const handleInteractionStart = useCallback(() => {
+    isUserTouchingRef.current = true;
+    isManualScrollingRef.current = true;
+    momentumRef.current = 0; // Stop momentum on touch
+    wakeUpLoop();
+  }, [wakeUpLoop]);
+
+  const handleInteractionEnd = useCallback(() => {
+    isUserTouchingRef.current = false;
+    // Debounce manual scrolling release to allow inertia?
+    // For now simple switch off
+    // Small timeout to prevent immediate snap-back
+    setTimeout(() => {
+      isManualScrollingRef.current = false;
+    }, 200);
   }, []);
 
   return {
@@ -581,5 +492,7 @@ export const useScrollPhysics = ({
     currentActiveElementRef,
     clearProcessedCommands,
     internalScrollPos, // Expose ref for external synchronization
+    handleInteractionStart,
+    handleInteractionEnd
   };
 };
