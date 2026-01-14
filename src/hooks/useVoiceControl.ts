@@ -984,6 +984,7 @@ export const useVoiceControl = (
         }
 
         intentionallyStoppedRef.current = false;
+        console.log(`[Voice] Mode activated. Expected language: ${getRecognitionLanguage(lang)} (${lang})`);
         startRecognitionInstance();
 
         // Start sentence completion checker

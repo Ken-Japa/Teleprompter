@@ -36,7 +36,7 @@ export interface PrompterFeatureFlags {
     isMusicianModeDisabled?: boolean; // Hide and force OFF (Main App)
 }
 
-export const usePrompterSettings = (isPro: boolean, featureFlags: PrompterFeatureFlags = {}) => {
+export const usePrompterSettings = (featureFlags: PrompterFeatureFlags = {}) => {
     const getStorageKey = (key: string) => {
         return featureFlags.isMusicianModeForced ? `${key}_music` : key;
     };
@@ -63,7 +63,7 @@ export const usePrompterSettings = (isPro: boolean, featureFlags: PrompterFeatur
         getStorageKey(PROMPTER_DEFAULTS.STORAGE_KEYS.CAPS),
         PROMPTER_DEFAULTS.IS_UPPERCASE
     );
-    const [isFocusMode, setIsFocusMode] = useLocalStorage<boolean>(getStorageKey(PROMPTER_DEFAULTS.STORAGE_KEYS.FOCUS), isPro);
+    const [isFocusMode, setIsFocusMode] = useLocalStorage<boolean>(getStorageKey(PROMPTER_DEFAULTS.STORAGE_KEYS.FOCUS), PROMPTER_DEFAULTS.IS_FOCUS_MODE);
     const [isFlipVertical, setIsFlipVertical] = useLocalStorage<boolean>(
         getStorageKey(PROMPTER_DEFAULTS.STORAGE_KEYS.FLIP_VERTICAL),
         PROMPTER_DEFAULTS.IS_FLIP_VERTICAL

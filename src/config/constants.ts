@@ -22,6 +22,7 @@ export const PROMPTER_DEFAULTS = {
     IS_MIRRORED: false,
     IS_UPPERCASE: false,
     IS_FLIP_VERTICAL: false,
+    IS_FOCUS_MODE: false,
     // LocalStorage Keys
     STORAGE_KEYS: {
         FONT_SIZE: "promptninja_font",

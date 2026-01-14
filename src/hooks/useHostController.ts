@@ -81,7 +81,7 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
   }, [setShowPaywall]);
 
   // Prompter Settings (Lifted State)
-  const { settings: prompterSettings, actions: prompterActions } = usePrompterSettings(isPro, featureFlags);
+  const { settings: prompterSettings, actions: prompterActions } = usePrompterSettings(featureFlags);
 
   // Auto BPM Detection State
   const [detectedBpm, setDetectedBpm] = useState<number | null>(null);
