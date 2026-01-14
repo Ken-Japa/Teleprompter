@@ -11,7 +11,8 @@ import {
     MarginIcon,
     CapsIcon,
     MagicIcon,
-    ApertureIcon
+    ApertureIcon,
+    FlipIcon
 } from "./Icons";
 import { NDIOutputToggle } from "../host/NDIOutputToggle";
 
@@ -34,7 +35,9 @@ export const AppearanceSettingsModal = memo(({ isOpen, onClose, settings, action
         fontSize,
         margin,
         isUpperCase,
-        isFocusMode
+        isFocusMode,
+        isMirrored,
+        isFlipVertical
     } = settings;
     const {
         setTheme,
@@ -43,7 +46,9 @@ export const AppearanceSettingsModal = memo(({ isOpen, onClose, settings, action
         setMargin,
         setIsUpperCase,
         setIsFocusMode,
-        toggleChroma
+        toggleChroma,
+        setIsMirrored,
+        setIsFlipVertical
     } = actions;
 
     const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -51,6 +56,18 @@ export const AppearanceSettingsModal = memo(({ isOpen, onClose, settings, action
         trackSettingChange("theme", newTheme);
         setTheme(newTheme);
     };
+
+    const handleMirrorToggle = useCallback(() => {
+        const newValue = !isMirrored;
+        trackSettingChange("mirror_mode", newValue);
+        setIsMirrored(newValue);
+    }, [isMirrored, setIsMirrored]);
+
+    const handleVerticalFlipToggle = useCallback(() => {
+        const newValue = !isFlipVertical;
+        trackSettingChange("vertical_flip", newValue);
+        setIsFlipVertical(newValue);
+    }, [isFlipVertical, setIsFlipVertical]);
 
     const fonts = [
         { id: 'sans-serif', name: 'Padrão (Inter)', style: 'font-sans' },
@@ -204,6 +221,26 @@ export const AppearanceSettingsModal = memo(({ isOpen, onClose, settings, action
                     >
                         <MagicIcon className="w-6 h-6" />
                         <span className="text-xs font-medium">{t("host.controls.focusLine")}</span>
+                    </button>
+
+                    <button
+                        onClick={handleMirrorToggle}
+                        className={`flex flex-col items-center justify-center p-4 rounded-2xl border transition-all gap-2 ${isMirrored
+                            ? "bg-brand-600/20 border-brand-500 text-brand-400"
+                            : "bg-slate-800/50 border-slate-700/50 text-slate-400 hover:bg-slate-800"}`}
+                    >
+                        <FlipIcon className="w-6 h-6" />
+                        <span className="text-xs font-medium">{t("host.mirror")}</span>
+                    </button>
+
+                    <button
+                        onClick={handleVerticalFlipToggle}
+                        className={`flex flex-col items-center justify-center p-4 rounded-2xl border transition-all gap-2 ${isFlipVertical
+                            ? "bg-brand-600/20 border-brand-500 text-brand-400"
+                            : "bg-slate-800/50 border-slate-700/50 text-slate-400 hover:bg-slate-800"}`}
+                    >
+                        <FlipIcon className="w-6 h-6 rotate-90" />
+                        <span className="text-xs font-medium">{t("host.mirrorV")}</span>
                     </button>
 
                     {!settings.isMusicianMode && (

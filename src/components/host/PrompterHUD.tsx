@@ -207,8 +207,6 @@ export const PrompterHUD = memo(
                     {/* Unified Control Group */}
                     <div className="flex flex-wrap sm:flex-nowrap justify-center items-center gap-2 sm:gap-1 max-w-[280px] sm:max-w-none">
                         <DisplayControl
-                            settings={settings}
-                            actions={actions}
                             hasParts={hasParts}
                             onPreviousPart={onPreviousPart}
                             onNextPart={onNextPart}
