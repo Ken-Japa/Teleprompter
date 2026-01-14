@@ -2,9 +2,10 @@ import { useRef, useState, useMemo, useEffect, useCallback } from "react";
 import { SpeechRecognitionEvent, ISpeechRecognition } from "../types";
 import { parseTextToSentences } from "../utils/textParser";
 import { logger } from "../utils/logger";
-import { findBestMatch } from "../utils/stringSimilarity";
+import { findBestMatch, clearMatchCache } from "../utils/stringSimilarity";
 import { useTranslation } from "./useTranslation";
-import { VOICE_CONFIG } from "../config/voiceControlConfig";
+import { getAdaptiveConfig, updateVoiceProfile } from "../config/voiceControlConfig";
+import { normalizePronunciation, pronunciationLearner } from "../utils/pronunciationMatcher";
 
 // callback for raw transcript, useful for custom commands like [COUNT]
 export const useVoiceControl = (
@@ -18,6 +19,10 @@ export const useVoiceControl = (
 ) => {
     const { lang: globalLang } = useTranslation();
     const lang = forcedLang || globalLang;
+
+    // Initialize adaptive config once on mount
+    const VOICE_CONFIG = useMemo(() => getAdaptiveConfig(), []);
+
     const [isListening, setIsListening] = useState<boolean>(false);
     const [activeSentenceIndex, setActiveSentenceIndex] = useState<number>(-1);
     const [voiceProgress, setVoiceProgress] = useState<number>(0);
@@ -124,6 +129,7 @@ export const useVoiceControl = (
     useEffect(() => {
         lastMatchIndexRef.current = 0;
         lockedSentenceIdRef.current = 0; // Start with first sentence locked
+        clearMatchCache(); // Clear cache when text changes
     }, [fullCleanText]);
 
 
@@ -449,6 +455,14 @@ export const useVoiceControl = (
         // Reset start time to prevent multiple summaries for same session
         analytics.sessionStartTime = 0;
 
+        // Update adaptive profile
+        if (summary.accuracy > 0) {
+            updateVoiceProfile({
+                averageWPM: summary.averageWPM,
+                accuracy: summary.accuracy / 100,
+            });
+        }
+
         return summary;
     }, []);
 
@@ -550,6 +564,11 @@ export const useVoiceControl = (
             }
 
             let cleanTranscript = interimTranscript.toLowerCase();
+
+            // --- PRONUNCIATION NORMALIZATION ---
+            cleanTranscript = normalizePronunciation(cleanTranscript, lang);
+            cleanTranscript = pronunciationLearner.apply(cleanTranscript);
+
             // Apply the same cleaning logic as the parser to ensure matching works
             // FLEXIBLE NUMBER MATCHING: Remove digit sequences to allow natural number speech
             cleanTranscript = cleanTranscript

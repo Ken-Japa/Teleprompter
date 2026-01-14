@@ -73,9 +73,7 @@ export const levenshteinDistance = (a: string, b: string): number => {
     // LRU eviction
     if (levenshteinCache.size > MAX_CACHE_SIZE) {
         const firstKey = levenshteinCache.keys().next().value;
-        if (firstKey !== undefined) {
-            levenshteinCache.delete(firstKey);
-        }
+        levenshteinCache.delete(firstKey);
     }
 
     return result;

@@ -327,3 +327,19 @@ Fallback: 0.02 // 98%+ required
 
 **Last Updated**: 2024-12-24  
 **Version**: 3.0 (Sentence-Lock Architecture)
+
+🧠 Lógica Central e Algoritmos
+src/hooks/useVoiceControl.ts: O "coração" do sistema. Este arquivo gerencia a API de SpeechRecognition, processa o áudio em tempo real e decide quando rolar o texto. É um arquivo grande e complexo que contém a maior parte da lógica inteligente.
+src/config/voiceControlConfig.ts: Contém todos os parâmetros de ajuste (thresholds, sensibilidade, janelas de busca e modos "músico" ou "bilíngue"). É essencial para quem quer melhorar a precisão sem necessariamente mexer no código da lógica.
+src/utils/textParser.ts: Prepara o texto do roteiro para que o controle de voz consiga "entendê-lo" (remove pontuações, mapeia caracteres para índices de frase, etc).
+src/utils/stringSimilarity.ts: Contém o algoritmo de Levenshtein Distance e a lógica de busca difusa (fuzzy search) usada para comparar o que o usuário disse com o que está escrito no roteiro.
+🖥️ Integração e Interface (Componentes)
+src/components/host/Prompter.tsx: O componente principal do teleprompter que integra o hook de voz com a renderização visual e o sistema de rolagem física.
+src/components/host/PrompterHUD.tsx: Contém os controles visuais (botões de ligar/desligar voz) e os indicadores de que o microfone está ouvindo.
+src/components/host/VoiceLanguageSelector.tsx: Componente de interface para a seleção do idioma de reconhecimento.
+src/components/host/VoiceAnalyticsModal.tsx: Mostra os dados de performance da sessão de voz (precisão, WPM - palavras por minuto).
+📱 Controle Remoto
+src/hooks/useRemoteController.ts: Gerencia como o comando de voz funciona quando o usuário fala pelo celular para controlar o computador (Remote Voice Control).
+🏗️ Estrutura de Dados
+src/types.ts: Define as interfaces 
+Sentence, SpeechRecognitionEvent e outras estruturas que o sistema de voz utiliza.
