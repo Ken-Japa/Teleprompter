@@ -23,20 +23,31 @@ export const ConnectionState: React.FC<ConnectionStateProps> = ({ status, hostId
         try {
             await loadHtml5QrcodeLibrary();
 
+            // Short delay to ensure DOM element is ready
             setTimeout(async () => {
                 if (window.Html5Qrcode) {
                     try {
                         const html5QrCode = new window.Html5Qrcode("reader");
                         html5QrcodeRef.current = html5QrCode;
 
-                        const config = {
-                            fps: 60,
+                        const qrboxFunction = (viewfinderWidth: number, viewfinderHeight: number) => {
+                            const minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
+                            const qrboxSize = Math.floor(minEdgeSize * 0.95);
+                            return {
+                                width: qrboxSize,
+                                height: qrboxSize
+                            };
+                        };
 
+                        const config = {
+                            fps: 40,
+                            qrbox: qrboxFunction,
                             disableFlip: false,
                             videoConstraints: {
+                                facingMode: "environment",
                                 width: { min: 640, ideal: 1280, max: 1920 },
                                 height: { min: 480, ideal: 720, max: 1080 },
-                                focusMode: "continuous" // Attempt to force continuous focus
+                                focusMode: "continuous"
                             },
                             experimentalFeatures: {
                                 useBarCodeDetectorIfSupported: true
@@ -114,7 +125,7 @@ export const ConnectionState: React.FC<ConnectionStateProps> = ({ status, hostId
                 <h3 className="text-white font-bold mb-4">Scan Host QR Code</h3>
 
                 <div className="relative w-full max-w-sm bg-black rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
-                    <div id="reader" className="w-full h-[400px] bg-black"></div>
+                    <div id="reader" className="w-full h-full bg-black"></div>
                     <style>{`
                     #reader video {
                         object-fit: cover;
