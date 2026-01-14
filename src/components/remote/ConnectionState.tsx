@@ -23,30 +23,17 @@ export const ConnectionState: React.FC<ConnectionStateProps> = ({ status, hostId
         try {
             await loadHtml5QrcodeLibrary();
 
-            // Short delay to ensure DOM element is ready
             setTimeout(async () => {
                 if (window.Html5Qrcode) {
                     try {
                         const html5QrCode = new window.Html5Qrcode("reader");
                         html5QrcodeRef.current = html5QrCode;
 
-                        // Configuração otimizada para mobile
-                        const qrboxFunction = (viewfinderWidth: number, viewfinderHeight: number) => {
-                            const minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
-                            const qrboxSize = Math.floor(minEdgeSize * 0.90); // Increased to 90% for easier scanning
-                            return {
-                                width: qrboxSize,
-                                height: qrboxSize
-                            };
-                        };
-
                         const config = {
-                            fps: 30, // Increased FPS for smoother scanning
-                            qrbox: qrboxFunction,
-                            // aspectRatio removed to prevent letterboxing/white bars
+                            fps: 60,
+
                             disableFlip: false,
                             videoConstraints: {
-                                facingMode: "environment",
                                 width: { min: 640, ideal: 1280, max: 1920 },
                                 height: { min: 480, ideal: 720, max: 1080 },
                                 focusMode: "continuous" // Attempt to force continuous focus

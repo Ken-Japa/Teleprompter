@@ -77,7 +77,7 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, o
 
                         {/* Text Formatting Buttons */}
                         <div
-                            className="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full border border-white/5 ml-2"
+                            className="flex items-center gap-2 px-3 py-1.5 ml-2"
                             role="group"
                             aria-label="Text Formatting"
                         >
@@ -96,6 +96,24 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, o
                                 className="w-8 h-8 rounded-lg bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 border border-white/5 transition-all"
                             >
                                 <ItalicIcon className="w-4 h-4" />
+                            </S.IconButton>
+
+                            <S.IconButton
+                                onClick={() => setShowFindReplaceModal(true)}
+                                className="w-9 h-9 rounded-full bg-slate-800 text-slate-400 hover:text-brand-400 border border-slate-700"
+                                aria-label="Find and Replace"
+                                title={t("editor.findReplace") || "Localizar e Substituir"}
+                            >
+                                <SearchIcon className="w-5 h-5" />
+                            </S.IconButton>
+
+                            <S.IconButton
+                                onClick={onClear}
+                                className="hover:text-red-400 w-9 h-9"
+                                aria-label="Clear All Text"
+                                title="Clear All Text"
+                            >
+                                <TrashIcon className="w-5 h-5" />
                             </S.IconButton>
                         </div>
                     </div>
@@ -181,24 +199,6 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, o
                         className="w-9 h-9 rounded-full bg-slate-800 text-slate-400 hover:text-white border border-slate-700"
                     >
                         <KeyboardIcon className="w-5 h-5" />
-                    </S.IconButton>
-
-                    <S.IconButton
-                        onClick={() => setShowFindReplaceModal(true)}
-                        className="w-9 h-9 rounded-full bg-slate-800 text-slate-400 hover:text-brand-400 border border-slate-700"
-                        aria-label="Find and Replace"
-                        title={t("editor.findReplace") || "Localizar e Substituir"}
-                    >
-                        <SearchIcon className="w-5 h-5" />
-                    </S.IconButton>
-
-                    <S.IconButton
-                        onClick={onClear}
-                        className="hover:text-red-400 w-9 h-9"
-                        aria-label="Clear All Text"
-                        title="Clear All Text"
-                    >
-                        <TrashIcon className="w-5 h-5" />
                     </S.IconButton>
 
                     <S.IconButton
