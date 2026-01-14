@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import * as S from "../ui/Styled";
 
+import { useFirstVisit } from "../../hooks/useFirstVisit";
+import { useAuth } from "../../contexts/AuthContext";
+
 interface HeroProps {
     onLaunch: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
     const { t } = useTranslation();
+    const { user } = useAuth(); // Get user
     const [isPlaying, setIsPlaying] = useState(false);
+    const isFirstVisit = useFirstVisit("has_seen_landing_start_hint");
+    const showStartHint = isFirstVisit && !user; // Only show if first visit AND user is not logged in
     const headline = t("landing.hero.headline") as string;
     // Split by dot but preserve robustness if no dot exists
     const parts = headline.split(".").map(s => s.trim()).filter(Boolean);
@@ -39,11 +45,13 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 relative z-10 mb-16">
                 <div className="relative group">
                     {/* Hint only visible on mobile now, as desktop has it in the header */}
-                    <div className="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none z-20 sm:hidden">
-                        <p className="text-slate-400 text-sm font-medium animate-bounce bg-slate-900/80 backdrop-blur px-3 py-1 rounded-full border border-brand-500/30 shadow-lg">
-                            👇 {t("landing.hero.startHint") || "Comece aqui"}
-                        </p>
-                    </div>
+                    {showStartHint && (
+                        <div className="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none z-20 sm:hidden">
+                            <p className="text-slate-400 text-sm font-medium animate-bounce bg-slate-900/80 backdrop-blur px-3 py-1 rounded-full border border-brand-500/30 shadow-lg">
+                                👇 {t("landing.hero.startHint") || "Comece aqui"}
+                            </p>
+                        </div>
+                    )}
                     <S.PrimaryButton
                         onClick={onLaunch}
                         className="text-xl font-bold py-5 px-12 w-full sm:w-auto !rounded-2xl !bg-brand-600 hover:!bg-brand-500 !text-white shadow-brand-500/50 hover:shadow-brand-500/80 hover-glow btn-press transition-smooth border-2 border-brand-400/50 relative z-10"

@@ -36,9 +36,7 @@ export const GoogleAuthButton = ({ compact = false }: { compact?: boolean }) => 
                                 {user.email?.charAt(0).toUpperCase()}
                             </div>
                         )}
-                        <span className="text-xs text-slate-300 max-w-[100px] truncate hidden sm:block">
-                            {user.displayName || user.email}
-                        </span>
+
                     </button>
                 )}
 

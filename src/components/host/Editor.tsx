@@ -2,6 +2,8 @@ import React from "react";
 import { ConnectionStatus } from "../../types";
 import * as S from "../ui/Styled";
 import { useTranslation } from "../../hooks/useTranslation";
+import { useFirstVisit } from "../../hooks/useFirstVisit";
+import { useAuth } from "../../contexts/AuthContext";
 import { HomeIcon, PlayIcon } from "../ui/Icons";
 import { ConnectSidebar } from "./ConnectSidebar";
 import { EditorToolbar } from "./EditorToolbar";
@@ -64,6 +66,9 @@ export const Editor: React.FC<EditorProps> = ({
     scripts, activeScriptId, onCreateScript, onSwitchScript, onDeleteScript, onUpdateScript
 }) => {
     const { t } = useTranslation();
+    const { user } = useAuth(); // Get user
+    const isFirstVisit = useFirstVisit("has_seen_editor_start_hint");
+    const showStartHint = isFirstVisit && !user; // Only show if first visit AND user is not logged in
 
     // Separation of Concerns: Logic is now in the hook
     const { localText, textAreaRef, handleChange, handleInsertTag, handleClear, handleSelectRange, handleUndo, handleUpdateText, canUndo } = useEditorLogic({
@@ -102,11 +107,13 @@ export const Editor: React.FC<EditorProps> = ({
                 <div className="flex items-center space-x-3 relative">
                     {/* Visual Hint */}
                     {/* Visual Hint - Positioned BELOW on mobile/desktop to avoid being cut off by top edge */}
-                    <div className="absolute top-full mt-4 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none z-50">
-                        <p className="text-slate-400 text-xs sm:text-sm font-medium animate-bounce bg-slate-900/90 backdrop-blur px-3 py-1.5 rounded-full border border-brand-500/30 shadow-xl shadow-black/50 flex items-center gap-2">
-                            <span className="lg:hidden">{t("menu.startHintShort") || "Aperte PLAY"}</span><span className="hidden lg:inline">{t("menu.startHint") || "Aperte PLAY para começar"}</span> <span className="text-lg">👆</span>
-                        </p>
-                    </div>
+                    {showStartHint && (
+                        <div className="absolute top-full mt-4 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none z-50">
+                            <p className="text-slate-400 text-xs sm:text-sm font-medium animate-bounce bg-slate-900/90 backdrop-blur px-3 py-1.5 rounded-full border border-brand-500/30 shadow-xl shadow-black/50 flex items-center gap-2">
+                                <span className="lg:hidden">{t("menu.startHintShort") || "Aperte PLAY"}</span><span className="hidden lg:inline">{t("menu.startHint") || "Aperte PLAY para começar"}</span> <span className="text-lg">👆</span>
+                            </p>
+                        </div>
+                    )}
 
 
 
