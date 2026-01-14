@@ -33,7 +33,7 @@ export const ConnectionState: React.FC<ConnectionStateProps> = ({ status, hostId
                         // Configuração otimizada para mobile
                         const qrboxFunction = (viewfinderWidth: number, viewfinderHeight: number) => {
                             const minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
-                            const qrboxSize = Math.floor(minEdgeSize * 0.7);
+                            const qrboxSize = Math.floor(minEdgeSize * 0.90); // Increased to 90% for easier scanning
                             return {
                                 width: qrboxSize,
                                 height: qrboxSize
@@ -41,14 +41,15 @@ export const ConnectionState: React.FC<ConnectionStateProps> = ({ status, hostId
                         };
 
                         const config = {
-                            fps: 20,
+                            fps: 30, // Increased FPS for smoother scanning
                             qrbox: qrboxFunction,
-                            aspectRatio: 1.0,
+                            // aspectRatio removed to prevent letterboxing/white bars
                             disableFlip: false,
                             videoConstraints: {
                                 facingMode: "environment",
                                 width: { min: 640, ideal: 1280, max: 1920 },
                                 height: { min: 480, ideal: 720, max: 1080 },
+                                focusMode: "continuous" // Attempt to force continuous focus
                             },
                             experimentalFeatures: {
                                 useBarCodeDetectorIfSupported: true

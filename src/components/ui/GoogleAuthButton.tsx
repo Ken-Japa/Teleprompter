@@ -28,11 +28,11 @@ export const GoogleAuthButton = ({ compact = false }: { compact?: boolean }) => 
                         )}
                     </button>
                 ) : (
-                    <button className="flex items-center gap-2 px-3 py-1.5 bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50 hover:border-slate-600 rounded-full transition-all group">
+                    <button className="w-8 h-8 rounded-full overflow-hidden border border-brand-500/50 shadow-brand-500/20 shadow-md transition-transform hover:scale-105">
                         {user.photoURL ? (
-                            <img src={user.photoURL} alt="User" className="w-5 h-5 rounded-full" />
+                            <img src={user.photoURL} alt="User" className="w-full h-full object-cover" />
                         ) : (
-                            <div className="w-5 h-5 rounded-full bg-slate-700 flex items-center justify-center text-[8px] text-white">
+                            <div className="w-full h-full bg-slate-700 flex items-center justify-center text-[10px] text-white font-bold">
                                 {user.email?.charAt(0).toUpperCase()}
                             </div>
                         )}
