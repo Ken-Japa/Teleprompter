@@ -56,6 +56,7 @@ export const TranslationProvider = ({ children, initialLang }: { children: React
     useEffect(() => {
         if (typeof window !== "undefined") {
             localStorage.setItem("app_language", lang);
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US';
         }
     }, [lang]);
 

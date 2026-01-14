@@ -902,13 +902,14 @@ export const Prompter = memo(
       const prompterContent = (
         <S.ScreenContainer
           ref={containerRef}
-          className={`relative h-screen ${getThemeClass()}`} // getThemeClass depends on global current theme or passed one?
+          className={`relative h-screen ${getThemeClass()} notranslate`} // getThemeClass depends on global current theme or passed one?
           // We need to ensure getThemeClass respects this override. 
           // But usePrompterTheme returns getThemeClass based on the hook input `theme`.
           // We passed `theme` to the hook earlier!
 
           data-theme={effectiveTheme}
           style={containerStyle}
+          translate="no"
         >
           {/* Camera Overlay Layer - Bottom Most */}
           <MobileCameraOverlay isActive={!!isCameraMode} onStreamReady={setCameraStream} />

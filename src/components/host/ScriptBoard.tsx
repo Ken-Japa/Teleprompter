@@ -161,7 +161,7 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
   // Bilingual Mode Rendering
   if (isBilingualMode && bilingualSentences) {
     return (
-      <div style={{ position: "relative", width: "100%" }}>
+      <div style={{ position: "relative", width: "100%" }} translate="no" className="notranslate">
         {/* Watermarks */}
         {!isPro && watermarkIndexes.map((idx, i) => (
           <S.Watermark
@@ -245,7 +245,7 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
 
   // Standard Rendering (Existing Code)
   return (
-    <div style={{ position: "relative", width: "100%" }}>
+    <div style={{ position: "relative", width: "100%" }} translate="no" className="notranslate">
       {/* Watermarks atravessando toda a tela, mas texto centralizado */}
       {!isPro && watermarkIndexes.map((idx, i) => (
         <S.Watermark

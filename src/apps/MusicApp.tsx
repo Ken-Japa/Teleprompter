@@ -41,6 +41,17 @@ export const MusicApp: React.FC = () => {
         trackEvent("music_app_launched");
     }, []);
 
+    // Handle Translation Disable/Enable based on View (Same as MainApp)
+    useEffect(() => {
+        if (view === "HOST") {
+            document.documentElement.setAttribute('translate', 'no');
+            document.documentElement.classList.add('notranslate');
+        } else {
+            document.documentElement.removeAttribute('translate');
+            document.documentElement.classList.remove('notranslate');
+        }
+    }, [view]);
+
     useEffect(() => {
         const handleRouting = () => {
             const hash = window.location.hash;

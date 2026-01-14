@@ -41,6 +41,20 @@ export const Host: React.FC<HostProps> = ({ featureFlags }) => {
         setSessionSummary(summary);
     }, []);
 
+    React.useEffect(() => {
+        const root = document.documentElement;
+        if (isEditMode) {
+            root.removeAttribute('translate');
+            root.classList.remove('notranslate');
+        } else {
+            root.setAttribute('translate', 'no');
+            root.classList.add('notranslate');
+        }
+
+        return () => {
+        };
+    }, [isEditMode]);
+
     return (
         <>
             <RedeemModal

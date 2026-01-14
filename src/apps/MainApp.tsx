@@ -38,6 +38,20 @@ export const MainApp: React.FC = () => {
         setAnalyticsActive(isActive);
     }, [isActive]);
 
+    // Handle Translation Disable/Enable based on View
+    useEffect(() => {
+        if (view === "HOST") {
+            // Default to Blocked for App/Teleprompter to prevent browser interference
+            // Host component can override this for Editor mode if needed (but usually Editor also shouldn't be translated automatically)
+            document.documentElement.setAttribute('translate', 'no');
+            document.documentElement.classList.add('notranslate');
+        } else {
+            // Allow translation on Landing and SEO pages
+            document.documentElement.removeAttribute('translate');
+            document.documentElement.classList.remove('notranslate');
+        }
+    }, [view]);
+
 
     useEffect(() => {
         // Update title
