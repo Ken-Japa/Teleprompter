@@ -208,7 +208,7 @@ export const useProState = (elapsedTime: number) => {
     };
 
     const unlockPro = async (key: string): Promise<{ success: boolean; message?: string; reason?: string }> => {
-        const normalizedKey = key.trim().toUpperCase();
+        const normalizedKey = key.trim();
         const deviceId = getDeviceId();
 
         try {

@@ -107,10 +107,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     const keysCollection = db.collection("keys");
-    const snapshot = await keysCollection.where("key", "==", key).limit(1).get();
+    let snapshot = await keysCollection.where("key", "==", key).limit(1).get();
+
+    // Fallback 1: Try Lowercase (if original wasn't lowercase)
+    if (snapshot.empty && key !== key.toLowerCase()) {
+      console.log(`[VALIDATION_RETRY] Key not found exactly. Trying lowercase: ${key.toLowerCase()}`);
+      snapshot = await keysCollection.where("key", "==", key.toLowerCase()).limit(1).get();
+    }
+
+    // Fallback 2: Try Uppercase (if original wasn't uppercase)
+    if (snapshot.empty && key !== key.toUpperCase()) {
+      console.log(`[VALIDATION_RETRY] Key not found exactly/lower. Trying uppercase: ${key.toUpperCase()}`);
+      snapshot = await keysCollection.where("key", "==", key.toUpperCase()).limit(1).get();
+    }
 
     if (snapshot.empty) {
-      console.warn(`[VALIDATION_FAIL] Key not found: ${key}`);
+      console.warn(`[VALIDATION_FAIL] Key not found (after retries): ${key}`);
       return res.status(200).json({
         success: false,
         message: "Chave não encontrada. Verifique se digitou corretamente ou cheque seu e-mail da Kiwify (spam inclusive).",
