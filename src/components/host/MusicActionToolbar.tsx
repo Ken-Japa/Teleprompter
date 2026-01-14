@@ -46,7 +46,7 @@ interface MusicActionToolbarProps {
 
     onSwitchScript?: (id: string) => void;
     activeScriptId?: string;
-    onCreateScript?: () => string;
+    onCreateScript?: () => Promise<string>;
     onUpdateScript?: (id: string, updates: Partial<Script>) => void;
     onDeleteScript?: (id: string) => void;
 

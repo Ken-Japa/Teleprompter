@@ -21,7 +21,7 @@ interface SetlistManagementModalProps {
     onRemoveSong: (setlistId: string, index: number) => void;
     onReorderSong: (setlistId: string, fromIndex: number, toIndex: number) => void;
 
-    onCreateScript: () => string;
+    onCreateScript: () => Promise<string>;
     onUpdateScript: (id: string, updates: Partial<Script>) => void;
     onDeleteScript: (id: string) => void;
 }
@@ -120,7 +120,7 @@ export const SetlistManagementModal: React.FC<SetlistManagementModalProps> = ({
                 let importedCount = 0;
                 for (const songData of data.songs) {
                     // Create new script
-                    const newScriptId = onCreateScript();
+                    const newScriptId = await onCreateScript();
                     onUpdateScript(newScriptId, {
                         title: songData.title || "Imported Song",
                         content: songData.content || songData.text || "", // support both
