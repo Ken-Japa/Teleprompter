@@ -34,6 +34,7 @@ class VoiceDiagnostics {
     private lastMatchTime: number = 0;
     private consecutiveMisses: number = 0;
     private isEnabled: boolean = true;
+    private verbose: boolean = true; // Default to true for now to help user
 
     // Thresholds para detecção de problemas
     private readonly STUCK_THRESHOLD_MS = 5000; // 5s sem progresso = stuck
@@ -46,7 +47,9 @@ class VoiceDiagnostics {
         this.consecutiveMisses = 0;
         this.lastMatchTime = Date.now();
 
-        console.log('[Voice Diagnostics] Session started');
+        if (this.verbose) {
+            console.log('%c[Voice Diagnostics] Session started (Verbose Mode)', 'color: #2196F3; font-weight: bold');
+        }
     }
 
     /**
@@ -92,8 +95,8 @@ class VoiceDiagnostics {
         }
 
         // Registra match de baixa confiança
-        if (data.matchRatio > 0.4) { // > 40% difference = < 60% confidence
-             this.events.push({
+        if (data.matchRatio > (1 - this.CONFIDENCE_WARNING)) { // > 40% difference = < 60% confidence
+            this.events.push({
                 timestamp: now,
                 type: 'match',
                 severity: 'warning',
@@ -106,8 +109,8 @@ class VoiceDiagnostics {
             });
         } else {
             // Optional: Don't log every single good match to save memory, or log as debug
-             // But for now, let's log them to calculate stats correctly
-             this.events.push({
+            // But for now, let's log them to calculate stats correctly
+            this.events.push({
                 timestamp: now,
                 type: 'match',
                 severity: 'info',
@@ -133,6 +136,11 @@ class VoiceDiagnostics {
 
         this.consecutiveMisses = 0;
         this.lastMatchTime = now;
+
+        if (this.verbose) {
+            const style = 'color: #4CAF50';
+            console.log(`%c[Voice Match] Sentence ${data.sentenceId} | Conf: ${(1 - data.matchRatio).toFixed(2)} | "${data.transcript}"`, style);
+        }
     }
 
     /**

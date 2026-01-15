@@ -342,6 +342,8 @@ src/utils/stringSimilarity.ts: Contém o algoritmo de Levenshtein Distance e a l
 
 src/utils/pronunciationMatcher.ts: Contém a lógica de pronúncia e aprendizado de pronúncia.
 
+src/utils/voiceDiagnostics.ts: Contém a lógica de diagnóstico de voz.
+
 🖥️ Integração e Interface (Componentes)
 
 src/components/host/Prompter.tsx: O componente principal do teleprompter que integra o hook de voz com a renderização visual e o sistema de rolagem física.

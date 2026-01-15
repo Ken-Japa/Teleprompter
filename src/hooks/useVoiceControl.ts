@@ -44,7 +44,6 @@ export const useVoiceControl = (
 
     // FAILURE RECOVERY: Track consecutive failures to trigger fallback
     const consecutiveFailuresRef = useRef<number>(0);
-    const lastGoodMatchTimeRef = useRef<number>(0);
 
     // PROGRESS SMOOTHING: Prevent jitter
     const smoothedProgressRef = useRef<number>(0);
@@ -156,8 +155,12 @@ export const useVoiceControl = (
                     recognitionRef.current.onerror = null; // Clean up error handler
                 } catch (e) { /* Ignore errors during cleanup */ }
             }
+
+            // Log diagnostics on unmount
+            const report = voiceDiagnostics.generateReport(sentences);
+            voiceDiagnostics.logReport(report);
         };
-    }, []);
+    }, [sentences]);
 
     // --- HELPER FUNCTIONS ---
 
@@ -433,7 +436,15 @@ export const useVoiceControl = (
         analytics.sessionEndTime = Date.now();
 
         const duration = (analytics.sessionEndTime - analytics.sessionStartTime) / 1000; // seconds
-        const averageWPM = duration > 0 ? (analytics.totalWordsRecognized / duration) * 60 : 0;
+        const minutes = duration / 60;
+
+        // Correct WPM Calculation: Use the final word count, not accumulated
+        // But since we can't easily track unique words without complex diffing in the accumulator loop,
+        // let's trust the speechVelocityRef which has better tracking or just rely on the count we have
+        // Actually, the accumulating 'totalWordsRecognized' in onresult is broken (sums up interim).
+        // Let's use words / minutes. 
+        // We will fix the accumulation in onresult first.
+        const averageWPM = minutes > 0 ? (analytics.totalWordsRecognized / minutes) : 0;
         const accuracy = analytics.totalMatches > 0 ? analytics.goodMatches / analytics.totalMatches : 1;
 
         // ACCIDENTAL TOGGLE PREVENTION: Only return summary if user actually spoke or progressed
@@ -625,7 +636,16 @@ export const useVoiceControl = (
             if (wordCount > 0) {
                 updatePerformanceMetrics(0); // Dummy for wordCount tracking if needed separately, but we use wordCount below
                 updateSpeechVelocity(wordCount);
-                trackSessionMetrics(false, wordCount);
+
+                // FIX WPM: Only track session metrics if FINAL, or approximate by growth?
+                // Tracking every interim result causes massive WPM inflation.
+                // Better approach: track only on isFinal.
+                if (isFinal) {
+                    trackSessionMetrics(false, wordCount); // This is still imperfect if sentences are short, but better.
+                    // A better way for total words is to just use the length of the growing transcript if we had it.
+                    // But SpeechRecognition resets resultIndex. 
+                    // For now, only counting on Final is much safer.
+                }
             }
 
             // ADAPTIVE SEARCH WINDOW: Larger scripts need larger windows
