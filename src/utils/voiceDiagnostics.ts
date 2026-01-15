@@ -34,7 +34,7 @@ class VoiceDiagnostics {
     private lastMatchTime: number = 0;
     private consecutiveMisses: number = 0;
     private isEnabled: boolean = true;
-    private verbose: boolean = true; // Default to true for now to help user
+    private verbose: boolean = false; // Default to false to reduce noise
 
     // Thresholds para detecção de problemas
     private readonly STUCK_THRESHOLD_MS = 5000; // 5s sem progresso = stuck
@@ -378,6 +378,14 @@ class VoiceDiagnostics {
     setEnabled(enabled: boolean) {
         this.isEnabled = enabled;
     }
+
+    setVerbose(verbose: boolean) {
+        this.verbose = verbose;
+    }
+
+    getVerbose() {
+        return this.verbose;
+    }
 }
 
 // Singleton para uso global
@@ -405,4 +413,10 @@ if (typeof window !== 'undefined') {
         URL.revokeObjectURL(url);
         console.log('✅ Relatório baixado com sucesso!');
     };
+
+    (window as any).toggleVoiceDebug = () => {
+        const newState = !voiceDiagnostics.getVerbose();
+        voiceDiagnostics.setVerbose(newState);
+        console.log(`[Voice Diagnostics] Verbose Mode: ${newState ? 'ON' : 'OFF'}`);
+    }
 }
