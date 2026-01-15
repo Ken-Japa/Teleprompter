@@ -675,6 +675,46 @@ export const useVoiceControl = (
             // We allow up to 40% error (0.4) to handle bad recognition like "PromptNinja" -> "próprio ninja"
             let match = findBestMatch(fullCleanText, cleanTranscript, lastMatchIndexRef.current, searchWindow, 0.4);
 
+            // --- LOOK-AHEAD RECOVERY STRATEGY (NEW) ---
+            // If match on current sentence is poor or non-existent, check the NEXT sentence specifically.
+            // This actively fights "Sentence Lock" where we get stuck on sentence N while user is reading N+1.
+            if ((!match || match.ratio > 0.3) && VOICE_CONFIG.RECOVERY.enabled) {
+                const currentSentId = lockedSentenceIdRef.current;
+                const nextSentId = currentSentId + 1;
+
+                if (sentences[nextSentId]) {
+                    const nextStartIndex = sentences[nextSentId].startIndex ?? 0;
+                    // Check specifically in the next sentence area
+                    const nextMatch = findBestMatch(fullCleanText, cleanTranscript, nextStartIndex, VOICE_CONFIG.SEARCH_WINDOW.SMALL, 0.45);
+
+                    if (nextMatch && nextMatch.ratio <= VOICE_CONFIG.RECOVERY.minConfidence) {
+                        // Strong match on next sentence!
+                        // But is it BETTER than the current match?
+                        if (!match || nextMatch.ratio < match.ratio - 0.05) { // Significant improvement
+                            console.log(`[Voice] LOOK-AHEAD: Found better match in next sentence (${nextSentId})`);
+                            match = nextMatch;
+                        }
+                    }
+                }
+
+                // Also check 2 sentences ahead if configured (for very short sentences)
+                if ((!match || match.ratio > 0.4) && VOICE_CONFIG.RECOVERY.aheadWindow > 1) {
+                    const jumpSentId = currentSentId + 2;
+                    if (sentences[jumpSentId]) {
+                        const jumpStartIndex = sentences[jumpSentId].startIndex ?? 0;
+                        const jumpMatch = findBestMatch(fullCleanText, cleanTranscript, jumpStartIndex, VOICE_CONFIG.SEARCH_WINDOW.SMALL, 0.45);
+
+                        // Stricter requirement for jumping 2 sentences
+                        if (jumpMatch && jumpMatch.ratio <= (VOICE_CONFIG.RECOVERY.minConfidence - 0.1)) {
+                            if (!match || jumpMatch.ratio < match.ratio - 0.1) {
+                                console.log(`[Voice] LOOK-AHEAD: Found better match in sentence +2 (${jumpSentId})`);
+                                match = jumpMatch;
+                            }
+                        }
+                    }
+                }
+            }
+
             // --- CONSECUTIVE FAILURE HANDLING ---
             if (!match) {
                 consecutiveFailuresRef.current++;
@@ -796,6 +836,17 @@ export const useVoiceControl = (
                         if (consecutivePartialMatchesRef.current < 3) {
                             // Small grace period - maybe user is just mumbling
                             consecutivePartialMatchesRef.current++;
+
+                            // PARTIAL RECOVERY (NEW):
+                            // If we have "some" match but it's not good enough for a full confirm,
+                            // AND we are getting stuck, force a small progress update to show "life"
+                            if (VOICE_CONFIG.RECOVERY.partialRecovery && consecutivePartialMatchesRef.current > 2) {
+                                const progressBump = 0.05; // 5% nudge
+                                const rawProgress = Math.min(1, voiceProgress + progressBump);
+                                setVoiceProgress(rawProgress);
+                                // Don't update High-Precision sync refs, just visual progress
+                            }
+
                             return; // Skip this one
                         }
                         // Been too many bad matches - might be off track

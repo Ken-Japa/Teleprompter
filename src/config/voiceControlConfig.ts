@@ -141,9 +141,9 @@ export const VOICE_CONFIG = {
   PROGRESS_SMOOTH_FACTOR: 0.35,
 
   SEARCH_WINDOW: {
-    SMALL: 600,
-    MEDIUM: 800,
-    LARGE: 1200,
+    SMALL: 800,
+    MEDIUM: 1200,
+    LARGE: 2500,
   },
 
   // --- ADAPTIVE THROTTLE ---
@@ -158,8 +158,8 @@ export const VOICE_CONFIG = {
   // --- SENTENCE COMPLETION ---
   SENTENCE_COMPLETION: {
     enabled: true,
-    minProgress: 0.85,
-    pauseTimeout: 1000,
+    minProgress: 0.70,
+    pauseTimeout: 800,
     autoAdvance: true,
     checkInterval: 200,
   },
@@ -167,10 +167,18 @@ export const VOICE_CONFIG = {
   // --- FUZZY SYNC ---
   FUZZY_SYNC: {
     enabled: true,
-    minPartialMatch: 0.60,
+    minPartialMatch: 0.50,
     intraSentenceTolerance: 0.5,
     catchUpEnabled: true,
-    progressBoost: 0.15,
+    progressBoost: 0.25,
+  },
+
+  // --- RECOVERY & LOOKAHEAD ---
+  RECOVERY: {
+    enabled: true,
+    aheadWindow: 2, // How many sentences to look ahead
+    minConfidence: 0.60,
+    partialRecovery: true,
   },
 
   // --- INITIALIZATION ---

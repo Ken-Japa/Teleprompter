@@ -23,6 +23,12 @@ const PRONUNCIATION_RULES: PronunciationRule[] = [
     { pattern: /voz alta/g, replacement: 'voz alta', language: 'pt' }, // Ensure phrases stay together
     { pattern: /a gente/g, replacement: 'a gente', language: 'pt' },
 
+    // PT-BR Phonetic Corrections
+    { pattern: /shinta|xinta|xenta|chinta/g, replacement: 'shinta', language: 'pt' },
+    { pattern: /lhama|lama|la ma|lha ma/g, replacement: 'lhama', language: 'pt' },
+    { pattern: /olhou|o lhow|ollou/g, replacement: 'olhou', language: 'pt' },
+    { pattern: /xerém|xelen|cherem/g, replacement: 'xerém', language: 'pt' }, // Example regionalism
+
     // English
     { pattern: /prompt ninja/g, replacement: 'promptninja', language: 'en' },
     { pattern: /tele prompter/g, replacement: 'teleprompter', language: 'en' },

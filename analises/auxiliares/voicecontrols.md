@@ -355,5 +355,4 @@ src/components/host/VoiceLanguageSelector.tsx: Componente de interface para a se
 src/components/host/VoiceAnalyticsModal.tsx: Mostra os dados de performance da sessão de voz (precisão, WPM - palavras por minuto).
 
 🏗️ Estrutura de Dados
-src/types.ts: Define as interfaces 
-Sentence, SpeechRecognitionEvent e outras estruturas que o sistema de voz utiliza.
+src/types.ts: Define as interfaces Sentence, SpeechRecognitionEvent e outras estruturas que o sistema de voz utiliza.
