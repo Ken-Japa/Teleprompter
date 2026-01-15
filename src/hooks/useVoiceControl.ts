@@ -6,6 +6,7 @@ import { findBestMatch, clearMatchCache } from "../utils/stringSimilarity";
 import { useTranslation } from "./useTranslation";
 import { getAdaptiveConfig, updateVoiceProfile } from "../config/voiceControlConfig";
 import { normalizePronunciation, pronunciationLearner } from "../utils/pronunciationMatcher";
+import { voiceDiagnostics } from "../utils/voiceDiagnostics";
 
 // callback for raw transcript, useful for custom commands like [COUNT]
 export const useVoiceControl = (
@@ -40,6 +41,10 @@ export const useVoiceControl = (
     // We distinguish between "which sentence" (requires confirmation) and "where within sentence" (free)
     const lockedSentenceIdRef = useRef<number>(-1); // Current locked sentence
     const pendingMatchRef = useRef<{ index: number; count: number; sentenceId: number } | null>(null);
+
+    // FAILURE RECOVERY: Track consecutive failures to trigger fallback
+    const consecutiveFailuresRef = useRef<number>(0);
+    const lastGoodMatchTimeRef = useRef<number>(0);
 
     // PROGRESS SMOOTHING: Prevent jitter
     const smoothedProgressRef = useRef<number>(0);
@@ -507,6 +512,8 @@ export const useVoiceControl = (
             setIsListening(true);
             setVoiceApiError(null); // Clear errors on success
             lastStartTimeRef.current = Date.now();
+            voiceDiagnostics.startSession(); // Start diagnostics session
+            voiceDiagnostics.setEnabled(true);
         };
 
         recognition.onerror = (event: any) => {
@@ -523,6 +530,8 @@ export const useVoiceControl = (
             } else {
                 console.warn("[Voice] Error:", event.error);
             }
+            // Log critical errors to diagnostics
+            voiceDiagnostics.recordError(new Error(`Speech API Error: ${event.error}`), { error: event.error });
         };
 
         recognition.onend = () => {
@@ -627,7 +636,36 @@ export const useVoiceControl = (
             // Fuzzy Search Strategy
             // 1. Try to find fuzzy match starting from last known position
             // We allow up to 40% error (0.4) to handle bad recognition like "PromptNinja" -> "próprio ninja"
+            // Fuzzy Search Strategy
+            // 1. Try to find fuzzy match starting from last known position
+            // We allow up to 40% error (0.4) to handle bad recognition like "PromptNinja" -> "próprio ninja"
             let match = findBestMatch(fullCleanText, cleanTranscript, lastMatchIndexRef.current, searchWindow, 0.4);
+
+            // --- CONSECUTIVE FAILURE HANDLING ---
+            if (!match) {
+                consecutiveFailuresRef.current++;
+
+                // Log miss to diagnostics
+                voiceDiagnostics.recordMiss({
+                    transcript: cleanTranscript,
+                    expectedSentence: lockedSentenceIdRef.current,
+                    reason: `No match found (failures: ${consecutiveFailuresRef.current})`
+                });
+
+                // RECOVERY STRATEGY: If failing too much, try to rescue
+                if (consecutiveFailuresRef.current >= 4) {
+                    console.warn(`[Voice] High failure rate (${consecutiveFailuresRef.current}), attempting wide search...`);
+                    // Try a much wider search with slightly relaxed threshold
+                    // but still require decent quality to avoid random jumps
+                    match = findBestMatch(fullCleanText, cleanTranscript, lastMatchIndexRef.current, VOICE_CONFIG.SEARCH_WINDOW.LARGE, 0.45);
+
+                    if (match) {
+                        console.log(`[Voice] RECOVERY SUCCESS at index ${match.index}`);
+                    }
+                }
+            } else {
+                consecutiveFailuresRef.current = 0;
+            }
 
 
             // Fallback logic for repeated phrases
@@ -658,11 +696,25 @@ export const useVoiceControl = (
                         console.warn(`[Voice] Fallback BLOCKED: Forward jump rejected (too risky)`);
                     } else {
                         console.warn(`[Voice] Fallback rejected: Sentence dist ${sentenceDistance}, Ratio ${fallbackMatch.ratio.toFixed(3)}`);
+                        voiceDiagnostics.recordMiss({
+                            transcript: cleanTranscript,
+                            reason: "Fallback rejected: forward jump or poor match"
+                        });
                     }
                 }
             }
 
             if (match) {
+                consecutiveFailuresRef.current = 0;
+
+                // Log match to diagnostics
+                voiceDiagnostics.recordMatch({
+                    sentenceId: charToSentenceMap[match.index] || 0,
+                    transcript: cleanTranscript,
+                    matchRatio: match.ratio,
+                    processingTime: performance.now() - processStart,
+                    wasJump: false // Will calculate below
+                });
                 // --- CONFIDENCE LEARNING ---
                 updateConfidenceLearning(match.ratio);
 

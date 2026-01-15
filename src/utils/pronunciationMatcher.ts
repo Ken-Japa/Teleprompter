@@ -19,6 +19,9 @@ const PRONUNCIATION_RULES: PronunciationRule[] = [
     { pattern: /web arte cê/g, replacement: 'webrtc', language: 'pt' },
     { pattern: /teleponto/g, replacement: 'teleprompter', language: 'pt' },
     { pattern: /estreaming/g, replacement: 'streaming', language: 'pt' },
+    { pattern: /caf[eé]/g, replacement: 'café', language: 'pt' }, // Fix accent issues
+    { pattern: /voz alta/g, replacement: 'voz alta', language: 'pt' }, // Ensure phrases stay together
+    { pattern: /a gente/g, replacement: 'a gente', language: 'pt' },
 
     // English
     { pattern: /prompt ninja/g, replacement: 'promptninja', language: 'en' },
@@ -43,7 +46,7 @@ const PRONUNCIATION_RULES: PronunciationRule[] = [
 const PHONETIC_MAP: Record<string, string[]> = {
     'c': ['k', 's', 'ss'],
     'k': ['c', 'q'],
-    's': ['z', 'c', 'ss'],
+    's': ['z', 'c', 'ss', 'ç'],
     'z': ['s'],
     'f': ['ph', 'v'],
     'v': ['f', 'w'],
@@ -52,6 +55,7 @@ const PHONETIC_MAP: Record<string, string[]> = {
     'ão': ['am', 'an'],
     'ch': ['sh', 'x'],
     'j': ['g', 'dj'],
+    'x': ['ch', 'sh'],
 };
 
 /**
@@ -173,6 +177,19 @@ class PronunciationLearner {
             this.save();
         }
     }
+
+    /**
+    * Learn from a mismatch using frequency-based approach
+    * This is called when a fallback or correction happens
+    */
+    learnFromMismatch(spoken: string, intended: string) {
+        // This can be expanded to be smarter, but for now just add rule
+        // The sophisticated frequency logic would require storing counters, 
+        // which might be overkill for localStorage. 
+        // Start simple: just add the rule.
+        this.addRule(spoken, intended);
+    }
+
 
     /**
      * Apply custom rules to text
