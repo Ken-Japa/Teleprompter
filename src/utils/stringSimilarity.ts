@@ -121,7 +121,18 @@ export const findBestMatch = (
     const actualStartIndex = Math.max(0, Math.min(startIndex, text.length - 1));
     const searchEndIndex = Math.min(text.length, actualStartIndex + searchWindow);
     const patLen = pattern.length;
-    const maxDist = Math.floor(patLen * threshold);
+
+    // FOREIGN WORD BONUS: Detect upper case or non-standard characters
+    // This helps matches like "PromptNinja" vs "prompt ninja" or "teleprompter"
+    const isForeignWord = (word: string) => /^[A-Z]/.test(word) || !/^[a-zçãõáéíóúàèìòùâêîôûñ]+$/.test(word.toLowerCase());
+    const patternWords = pattern.split(/\s+/);
+    const foreignCount = patternWords.filter(isForeignWord).length;
+    // Add 15% bonus if significant foreign content
+    const foreignBonus = (foreignCount / patternWords.length > 0.2) ? 0.15 : 0;
+
+    // Increase max distance allowance based on bonus
+    const effectiveThreshold = threshold + foreignBonus;
+    const maxDist = Math.floor(patLen * effectiveThreshold);
 
     // PHASE 1: Hash-based pre-filtering (O(n))
     const patternHash = RollingHash.hash(pattern, patLen);
@@ -188,7 +199,8 @@ export const findBestMatch = (
 
         if (dist > maxDist) continue;
 
-        const ratio = dist / patLen;
+        // Apply bonus to ratio (lower is better)
+        const ratio = Math.max(0, (dist / patLen) - foreignBonus);
         if (ratio < bestMatch.ratio) {
             bestMatch = { index: idx, distance: dist, ratio };
             if (dist === 0) break; // Perfect match
@@ -196,7 +208,7 @@ export const findBestMatch = (
     }
 
     // PHASE 4: Fallback to sliding window if no candidates found
-    if (bestMatch.ratio > threshold && filteredCandidates.length === 0) {
+    if (bestMatch.ratio > effectiveThreshold && filteredCandidates.length === 0) {
         const step = Math.max(1, Math.floor(patLen / 4)); // Adaptive step
 
         for (let i = actualStartIndex; i < searchEndIndex - patLen; i += step) {
@@ -205,7 +217,8 @@ export const findBestMatch = (
 
             if (dist > maxDist) continue;
 
-            const ratio = dist / patLen;
+            // Apply bonus to ratio
+            const ratio = Math.max(0, (dist / patLen) - foreignBonus);
             if (ratio < bestMatch.ratio) {
                 bestMatch = { index: i, distance: dist, ratio };
                 if (dist === 0) break;
@@ -213,7 +226,7 @@ export const findBestMatch = (
         }
     }
 
-    return bestMatch.ratio <= threshold ? bestMatch : null;
+    return bestMatch.ratio <= effectiveThreshold ? bestMatch : null;
 };
 
 /**

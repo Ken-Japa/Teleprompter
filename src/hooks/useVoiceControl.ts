@@ -585,6 +585,20 @@ export const useVoiceControl = (
 
             let cleanTranscript = interimTranscript.toLowerCase();
 
+            // --- TAIL PROCESSING ---
+            // Focus on the tail of the transcript to avoid history interference
+            if (lockedSentenceIdRef.current >= 0 && sentences[lockedSentenceIdRef.current]) {
+                const currentSentence = sentences[lockedSentenceIdRef.current];
+                const words = cleanTranscript.trim().split(/\s+/);
+                // Keep roughly 1.5x the length of the current sentence + 5 words buffer
+                // This ensures we have enough context but drop very old history
+                const keepLength = Math.ceil(currentSentence.cleanContent.split(/\s+/).length * 1.5) + 5;
+
+                if (words.length > keepLength) {
+                    cleanTranscript = words.slice(-keepLength).join(' ');
+                }
+            }
+
             // --- PRONUNCIATION NORMALIZATION ---
             cleanTranscript = normalizePronunciation(cleanTranscript, lang);
             cleanTranscript = pronunciationLearner.apply(cleanTranscript);
