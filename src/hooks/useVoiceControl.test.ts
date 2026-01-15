@@ -93,6 +93,9 @@ describe("useVoiceControl Hook", () => {
     });
 
     it("Should match spoken text to script", () => {
+        vi.useFakeTimers();
+        vi.setSystemTime(new Date('2024-01-01T00:00:00.000Z'));
+
         const text = "Hello world. This is a test.";
         const { result } = renderHook(() => useVoiceControl(text, true), {
             wrapper: TranslationProvider,
@@ -100,6 +103,12 @@ describe("useVoiceControl Hook", () => {
 
         act(() => {
             result.current.startListening();
+        });
+
+        // Advance past initialization grace period (500ms)
+        act(() => {
+            vi.setSystemTime(new Date('2024-01-01T00:00:00.600Z'));
+            vi.advanceTimersByTime(600);
         });
 
         expect(lastInstance).not.toBeNull();
@@ -116,6 +125,7 @@ describe("useVoiceControl Hook", () => {
 
         // Should match the first sentence (index 0)
         expect(result.current.activeSentenceIndex).toBe(0);
+        vi.useRealTimers();
     });
 
     it("Should handle restart on unexpected end", () => {

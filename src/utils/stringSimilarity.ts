@@ -114,7 +114,8 @@ export const findBestMatch = (
     pattern: string,
     startIndex: number = 0,
     searchWindow: number = 1000,
-    threshold: number = 0.35
+    threshold: number = 0.35,
+    lastMatchIndex: number = -1 // New: Contextual matching anchor
 ): { index: number; distance: number; ratio: number } | null => {
     if (!pattern || pattern.length < 3) return null;
 
@@ -193,6 +194,18 @@ export const findBestMatch = (
         ratio: 1.0,
     };
 
+    // Helper to calculate contextual penalty
+    const calculateContextPenalty = (index: number) => {
+        if (lastMatchIndex === -1) return 0;
+        // Penalize matches that are far from expected position (lastMatchIndex)
+        // We assume forward progress. 
+        // 1000 chars distance = 5% penalty?
+        const distance = Math.abs(index - lastMatchIndex);
+        if (distance < 50) return -0.05; // Bonus for being very close (next word)
+        if (distance < 200) return 0; // Neutral zone
+        return Math.min(0.2, (distance - 200) / 2000); // Max 20% penalty for very far jumps
+    };
+
     for (const idx of filteredCandidates) {
         const candidate = text.substring(idx, idx + patLen);
         const dist = levenshteinDistance(pattern, candidate);
@@ -200,10 +213,12 @@ export const findBestMatch = (
         if (dist > maxDist) continue;
 
         // Apply bonus to ratio (lower is better)
-        const ratio = Math.max(0, (dist / patLen) - foreignBonus);
+        const contextPenalty = calculateContextPenalty(idx);
+        const ratio = Math.max(0, (dist / patLen) - foreignBonus + contextPenalty);
+
         if (ratio < bestMatch.ratio) {
             bestMatch = { index: idx, distance: dist, ratio };
-            if (dist === 0) break; // Perfect match
+            if (dist === 0 && contextPenalty <= 0) break; // Perfect match close to context
         }
     }
 
@@ -217,11 +232,13 @@ export const findBestMatch = (
 
             if (dist > maxDist) continue;
 
-            // Apply bonus to ratio
-            const ratio = Math.max(0, (dist / patLen) - foreignBonus);
+            // Apply bonus/penalty to ratio
+            const contextPenalty = calculateContextPenalty(i);
+            const ratio = Math.max(0, (dist / patLen) - foreignBonus + contextPenalty);
+
             if (ratio < bestMatch.ratio) {
                 bestMatch = { index: i, distance: dist, ratio };
-                if (dist === 0) break;
+                if (dist === 0 && contextPenalty <= 0) break;
             }
         }
     }
@@ -238,7 +255,8 @@ export const findSegmentedMatch = (
     transcript: string,
     startIndex: number = 0,
     searchWindow: number = 2000,
-    segmentSize: number = 4
+    segmentSize: number = 4,
+    lastMatchIndex: number = -1 // New: Contextual matching anchor
 ): { index: number; confidence: number } | null => {
     const words = transcript.split(/\s+/);
     if (words.length < segmentSize) return null;
@@ -253,7 +271,7 @@ export const findSegmentedMatch = (
 
         // Search for this segment
         // Allow slightly higher error for segments since they are shorter
-        const match = findBestMatch(text, segment, startIndex, searchWindow, 0.35);
+        const match = findBestMatch(text, segment, startIndex, searchWindow, 0.35, lastMatchIndex);
 
         if (match && match.ratio <= 0.35) {
             matches.push(match);

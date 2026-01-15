@@ -356,3 +356,5 @@ src/components/host/VoiceAnalyticsModal.tsx: Mostra os dados de performance da s
 
 🏗️ Estrutura de Dados
 src/types.ts: Define as interfaces Sentence, SpeechRecognitionEvent e outras estruturas que o sistema de voz utiliza.
+
+downloadVoiceReport()

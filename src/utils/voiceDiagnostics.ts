@@ -41,6 +41,9 @@ class VoiceDiagnostics {
     private readonly MISS_THRESHOLD = 3; // 3 misses consecutivos = problema
     private readonly CONFIDENCE_WARNING = 0.6; // abaixo de 60% = warning
 
+    // Callback for automatic recovery
+    public onStuckRecovery: ((data: { sentenceId: number; action: 'skip' | 'rematch' }) => void) | null = null;
+
     startSession() {
         this.sessionStartTime = Date.now();
         this.events = [];

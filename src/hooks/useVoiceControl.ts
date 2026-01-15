@@ -159,6 +159,36 @@ export const useVoiceControl = (
             // Log diagnostics on unmount
             const report = voiceDiagnostics.generateReport(sentences);
             voiceDiagnostics.logReport(report);
+
+            // Clean up callback
+            voiceDiagnostics.onStuckRecovery = null;
+        };
+    }, [sentences]);
+
+    // --- STUCK RECOVERY SUBSCRIPTION ---
+    useEffect(() => {
+        voiceDiagnostics.onStuckRecovery = (data) => {
+            console.log('[VoiceHook] Received stuck recovery request:', data);
+
+            if (data.action === 'skip') {
+                // If stuck, advance to next sentence automatically
+                const nextId = lockedSentenceIdRef.current + 1;
+                if (sentences[nextId]) {
+                    console.log(`[VoiceHook] Executing SKIP recovery to sentence ${nextId}`);
+                    lockedSentenceIdRef.current = nextId;
+                    setActiveSentenceIndex(nextId);
+                    setVoiceProgress(0);
+                    smoothedProgressRef.current = 0;
+
+                    if (sentences[nextId]) {
+                        lastMatchIndexRef.current = sentences[nextId].startIndex ?? 0;
+                    }
+                }
+            }
+        };
+
+        return () => {
+            voiceDiagnostics.onStuckRecovery = null;
         };
     }, [sentences]);
 
@@ -676,7 +706,8 @@ export const useVoiceControl = (
 
             // Fuzzy Search Strategy
             // 1. Try to find fuzzy match starting from last known position
-            let match = findBestMatch(fullCleanText, cleanTranscript, lastMatchIndexRef.current, searchWindow, intraSentenceTolerance);
+            const contextIndex = lastMatchIndexRef.current;
+            let match = findBestMatch(fullCleanText, cleanTranscript, contextIndex, searchWindow, intraSentenceTolerance, contextIndex);
 
             // --- SEGMENTED MATCHING (N-GRAM / FALLBACK) ---
             // If primary match failed or is weak, try breaking transcript into chunks
@@ -687,7 +718,8 @@ export const useVoiceControl = (
                     cleanTranscript,
                     lastMatchIndexRef.current,
                     searchWindow,
-                    overrides.segmentMatching.windowSize
+                    overrides.segmentMatching.windowSize,
+                    lastMatchIndexRef.current // Pass context
                 );
 
                 if (segMatch) {
@@ -713,6 +745,7 @@ export const useVoiceControl = (
                 if (sentences[nextSentId]) {
                     const nextStartIndex = sentences[nextSentId].startIndex ?? 0;
                     // Check specifically in the next sentence area
+                    // We don't use strict context penalty here because we WANT to find a match ahead
                     const nextMatch = findBestMatch(fullCleanText, cleanTranscript, nextStartIndex, VOICE_CONFIG.SEARCH_WINDOW.SMALL, 0.45);
 
                     if (nextMatch && nextMatch.ratio <= VOICE_CONFIG.RECOVERY.minConfidence) {
@@ -759,7 +792,8 @@ export const useVoiceControl = (
                     console.warn(`[Voice] High failure rate (${consecutiveFailuresRef.current}), attempting wide search...`);
                     // Try a much wider search with slightly relaxed threshold
                     // but still require decent quality to avoid random jumps
-                    match = findBestMatch(fullCleanText, cleanTranscript, lastMatchIndexRef.current, VOICE_CONFIG.SEARCH_WINDOW.LARGE, 0.45);
+                    // In recovery, we relax the context penalty slightly by passing -1 or just trusting the wide window
+                    match = findBestMatch(fullCleanText, cleanTranscript, lastMatchIndexRef.current, VOICE_CONFIG.SEARCH_WINDOW.LARGE, 0.45, lastMatchIndexRef.current);
 
                     if (match) {
                         console.log(`[Voice] RECOVERY SUCCESS at index ${match.index}`);
@@ -774,7 +808,8 @@ export const useVoiceControl = (
             // CRITICAL: Fallback is now EXTREMELY restrictive to prevent incorrect jumps
             if (!match && lastMatchIndexRef.current > 0) {
                 // Fallback: search from beginning BUT with VERY strict criteria
-                const fallbackMatch = findBestMatch(fullCleanText, cleanTranscript, 0, 2000, 0.4);
+                // Context is -1 here because we are explicitly looking for a restart
+                const fallbackMatch = findBestMatch(fullCleanText, cleanTranscript, 0, 2000, 0.4, -1);
 
                 if (fallbackMatch) {
                     // ULTRA-STRICT LOGIC:
