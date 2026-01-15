@@ -28,15 +28,6 @@ const PRONUNCIATION_RULES: PronunciationRule[] = [
     { pattern: /lhama|lama|la ma|lha ma/g, replacement: 'lhama', language: 'pt' },
     { pattern: /olhou|o lhow|ollou/g, replacement: 'olhou', language: 'pt' },
     { pattern: /xerém|xelen|cherem/g, replacement: 'xerém', language: 'pt' }, // Example regionalism
-    { pattern: /lh/g, replacement: 'i', language: 'pt' }, // "lhama" -> "iama"
-    { pattern: /rr/g, replacement: 'h', language: 'pt' }, // "carro" -> "caho"
-    { pattern: /s$/, replacement: 'sh', language: 'pt' }, // Final "s" como "sh" (ex: "casas" -> "cashash")
-    { pattern: /ç/g, replacement: 's', language: 'pt' }, // "cação" -> "sao"
-    { pattern: /ão/g, replacement: 'aum', language: 'pt' }, // Nasal como "aum"
-    { pattern: /nh/g, replacement: 'ni', language: 'pt' }, // "minha" -> "minia"
-    { pattern: /dj/g, replacement: 'di', language: 'pt' }, // "adjetivo" -> "adietivo"
-    { pattern: /né|neh/g, replacement: 'ne', language: 'pt' },
-    { pattern: /tá|ta/g, replacement: 'ta', language: 'pt' },
 
     // English
     { pattern: /prompt ninja/g, replacement: 'promptninja', language: 'en' },

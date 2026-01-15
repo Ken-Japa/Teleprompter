@@ -78,21 +78,6 @@ class AdaptiveVoiceConfig {
     } else if (avgAccuracy < 0.70) {
       // Low accuracy: be more conservative
       this.profile.preferredLerpFactor = Math.max(0.20, this.profile.preferredLerpFactor - 0.02);
-
-      // Dynamic Threshold Adjustment:
-      // If accuracy is poor (< 0.8), relax the confidence requirement for Portuguese
-      // This helps users with accents or noisy environments
-      if (avgAccuracy < 0.8) {
-        const currentPtConfig = VOICE_CONFIG.LANGUAGE_OVERRIDES['pt'];
-        if (currentPtConfig) {
-          currentPtConfig.minConfidence = Math.max(0.55, currentPtConfig.minConfidence - 0.05);
-
-          // Also relax intra-sentence tolerance slightly
-          currentPtConfig.intraSentenceTolerance = Math.min(0.7, currentPtConfig.intraSentenceTolerance + 0.05);
-
-          console.log('[Voice] Low accuracy detected. Relaxing PT thresholds:', currentPtConfig);
-        }
-      }
     }
 
     this.profile.sessionCount++;
