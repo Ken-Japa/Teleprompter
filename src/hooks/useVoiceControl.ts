@@ -2,7 +2,7 @@ import { useRef, useState, useMemo, useEffect, useCallback } from "react";
 import { SpeechRecognitionEvent, ISpeechRecognition } from "../types";
 import { parseTextToSentences } from "../utils/textParser";
 import { logger } from "../utils/logger";
-import { findBestMatch, clearMatchCache } from "../utils/stringSimilarity";
+import { findBestMatch, clearMatchCache, findSegmentedMatch } from "../utils/stringSimilarity";
 import { useTranslation } from "./useTranslation";
 import { getAdaptiveConfig, updateVoiceProfile } from "../config/voiceControlConfig";
 import { normalizePronunciation, pronunciationLearner } from "../utils/pronunciationMatcher";
@@ -667,13 +667,41 @@ export const useVoiceControl = (
             const searchWindow = scriptLength > 5000 ? VOICE_CONFIG.SEARCH_WINDOW.LARGE :
                 scriptLength > 2000 ? VOICE_CONFIG.SEARCH_WINDOW.MEDIUM : VOICE_CONFIG.SEARCH_WINDOW.SMALL;
 
+            // --- LANGUAGE OVERRIDES & THRESHOLDS ---
+            const recognitionLangCode = recognition.lang.split('-')[0]; // pt, en, es
+            const overrides = VOICE_CONFIG.LANGUAGE_OVERRIDES?.[recognitionLangCode];
+
+            // Apply overrides if available
+            const intraSentenceTolerance = overrides?.intraSentenceTolerance ?? VOICE_CONFIG.FUZZY_SYNC.intraSentenceTolerance;
+
             // Fuzzy Search Strategy
             // 1. Try to find fuzzy match starting from last known position
-            // We allow up to 40% error (0.4) to handle bad recognition like "PromptNinja" -> "próprio ninja"
-            // Fuzzy Search Strategy
-            // 1. Try to find fuzzy match starting from last known position
-            // We allow up to 40% error (0.4) to handle bad recognition like "PromptNinja" -> "próprio ninja"
-            let match = findBestMatch(fullCleanText, cleanTranscript, lastMatchIndexRef.current, searchWindow, 0.4);
+            let match = findBestMatch(fullCleanText, cleanTranscript, lastMatchIndexRef.current, searchWindow, intraSentenceTolerance);
+
+            // --- SEGMENTED MATCHING (N-GRAM / FALLBACK) ---
+            // If primary match failed or is weak, try breaking transcript into chunks
+            // This helps when one word is wrong (e.g. "quem" instead of "Ken")
+            if ((!match || match.ratio > 0.25) && overrides?.segmentMatching?.enabled) {
+                const segMatch = findSegmentedMatch(
+                    fullCleanText,
+                    cleanTranscript,
+                    lastMatchIndexRef.current,
+                    searchWindow,
+                    overrides.segmentMatching.windowSize
+                );
+
+                if (segMatch) {
+                    console.log(`[Voice] Segmented match found at ${segMatch.index} (Conf: ${segMatch.confidence.toFixed(2)})`);
+                    // Use it if it's better or if we had no match
+                    if (!match || (1 - segMatch.confidence) < match.ratio) {
+                        match = {
+                            index: segMatch.index,
+                            ratio: 1 - segMatch.confidence,
+                            distance: 0 // Synthetic distance
+                        };
+                    }
+                }
+            }
 
             // --- LOOK-AHEAD RECOVERY STRATEGY (NEW) ---
             // If match on current sentence is poor or non-existent, check the NEXT sentence specifically.

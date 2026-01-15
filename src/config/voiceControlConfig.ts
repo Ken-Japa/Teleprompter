@@ -305,6 +305,29 @@ export const VOICE_CONFIG = {
     // Boost matching confidence if word appears in previous context
     contextBoostFactor: 0.15,
   },
+
+  // --- NEW: LANGUAGE OVERRIDES ---
+  LANGUAGE_OVERRIDES: {
+    'pt': {
+      // Allow more phonetic variation for Portuguese
+      intraSentenceTolerance: 0.60, // Relaxed from 0.5
+      minConfidence: 0.65, // Relaxed from 0.7
+      segmentMatching: {
+        enabled: true,
+        windowSize: 4, // 4-word window
+        threshold: 0.25,
+      }
+    },
+    'en': {
+      intraSentenceTolerance: 0.5,
+      minConfidence: 0.75, // Stricter for English (usually cleaner)
+      segmentMatching: {
+        enabled: true, // Also good for English
+        windowSize: 4,
+        threshold: 0.20,
+      }
+    }
+  } as Record<string, any>,
 };
 
 // Export adaptive instance

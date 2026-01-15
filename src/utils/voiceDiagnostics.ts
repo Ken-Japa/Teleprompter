@@ -386,4 +386,23 @@ export const voiceDiagnostics = new VoiceDiagnostics();
 // Expor no window para debugging manual
 if (typeof window !== 'undefined') {
     (window as any).voiceDiagnostics = voiceDiagnostics;
+
+    // Helper para baixar relatório facilmente
+    (window as any).downloadVoiceReport = () => {
+        const report = voiceDiagnostics.generateReport([]);
+        // Note: passing empty sentences array means problem areas might lack context text, 
+        // but raw events will still be there. Ideally logic would grab sentences from active hook,
+        // but for global debug this is a good start.
+
+        const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `voice-report-${new Date().toISOString().slice(0, 19).replace(/[:]/g, '-')}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        console.log('✅ Relatório baixado com sucesso!');
+    };
 }

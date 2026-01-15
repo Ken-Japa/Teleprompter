@@ -230,6 +230,75 @@ export const findBestMatch = (
 };
 
 /**
+ * Segmented matching (N-gram approach)
+ * Breaks transcript into chunks and looks for a consensus match
+ */
+export const findSegmentedMatch = (
+    text: string,
+    transcript: string,
+    startIndex: number = 0,
+    searchWindow: number = 2000,
+    segmentSize: number = 4
+): { index: number; confidence: number } | null => {
+    const words = transcript.split(/\s+/);
+    if (words.length < segmentSize) return null;
+
+    const matches: { index: number; ratio: number }[] = [];
+    let totalConfidence = 0;
+
+    // We only check segments if we have enough words
+    // Create overlapping segments: "hello my name is" -> "hello my name", "my name is"
+    for (let i = 0; i <= words.length - segmentSize; i++) {
+        const segment = words.slice(i, i + segmentSize).join(' ');
+
+        // Search for this segment
+        // Allow slightly higher error for segments since they are shorter
+        const match = findBestMatch(text, segment, startIndex, searchWindow, 0.35);
+
+        if (match && match.ratio <= 0.35) {
+            matches.push(match);
+            totalConfidence += (1 - match.ratio);
+        }
+    }
+
+    // Analyze matches to find consensus
+    if (matches.length === 0) return null;
+
+    // Consistency check: matches should be roughly sequential
+    // We look for a cluster of matches that are close to each other
+    // For simplicity, let's take the median position of the best cluster
+    // or just the position of the best match if it's supported by neighbors.
+
+    // Simple approach: Average the position of valid matches? 
+    // No, "Hello" is at 10, "World" is at 16. Average is 13. Correct.
+    // usage: if we found 3 matches, return the start index of the match corresponding to the START of the transcript.
+    // So if "my name is" matched at 50, and it was the 2nd segment (offset 1 word), 
+    // the transcript probably started around 50 - length_of_first_word.
+
+    // Let's just return the best single match that is "supported" by others
+    // Supported means: there is another match within reasonable distance
+
+    const sortedMatches = matches.sort((a, b) => a.ratio - b.ratio);
+    const bestOne = sortedMatches[0];
+
+    if (matches.length === 1) {
+        // Only one segment matched. Is it good enough?
+        return bestOne.ratio < 0.2 ? { index: bestOne.index, confidence: 1 - bestOne.ratio } : null;
+    }
+
+    // Check support
+    const hasSupport = matches.some(m =>
+        m !== bestOne && Math.abs(m.index - bestOne.index) < 100
+    );
+
+    if (hasSupport) {
+        return { index: bestOne.index, confidence: 1 - bestOne.ratio };
+    }
+
+    return null;
+};
+
+/**
  * Clear cache when needed (e.g., on text change)
  */
 export const clearMatchCache = () => {
