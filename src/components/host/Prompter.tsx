@@ -85,11 +85,12 @@ interface PrompterProps {
   autoBpmError?: string | null;
   isNDIEnabled?: boolean;
   onToggleNDI?: () => void;
+  initialCursorIndex?: number | null;
 }
 
 export const Prompter = memo(
   forwardRef<PrompterHandle, PrompterProps>(
-    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onScriptFinished, onReset, onStartRemoteRecording, onStopRemoteRecording, scripts, activeScriptId, onSwitchScript, onCreateScript, onDeleteScript, onUpdateScript, activeSetlist, detectedBpm, autoBpmError, isNDIEnabled, onToggleNDI }, ref) => {
+    ({ text, isPro, status, peerId, onExit, setShowPaywall, externalState, onStateChange, onScrollUpdate, onNavigationMapUpdate, onResetTimer, settings, actions, onSync, onTextChange, onVoiceModeChange, onRecordingStatusChange, onScriptFinished, onReset, onStartRemoteRecording, onStopRemoteRecording, scripts, activeScriptId, onSwitchScript, onCreateScript, onDeleteScript, onUpdateScript, activeSetlist, detectedBpm, autoBpmError, isNDIEnabled, onToggleNDI, initialCursorIndex }, ref) => {
 
       // Extracted Settings Logic
       const { fontSize, margin, isMirrored, theme, isUpperCase, isFocusMode, isFlipVertical, voiceControlMode, recordingMode, isMusicianMode, isBilingualMode, bilingualConfig, isHudless, isCameraMode, isWidgetMode, bpm, autoBpmEnabled } = settings;
@@ -141,6 +142,10 @@ export const Prompter = memo(
         observer.observe(scrollContainerRef.current);
         return () => observer.disconnect();
       }, []);
+
+      // Initial Scroll Logic based on Cursor Position
+
+
 
       const hudTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
       const mouseMoveRafRef = useRef<number | null>(null);
@@ -290,6 +295,7 @@ export const Prompter = memo(
       );
 
       const backingTrack = useBackingTrack(activeScriptId, sentences, isPro);
+
 
 
       // Notify parent when script is finished (either naturally or manual stop)
@@ -452,8 +458,55 @@ export const Prompter = memo(
         backingTrackProgress: backingTrack.getProgress(),
       });
 
-      const { handleInteractionStart, handleInteractionEnd } = physicsResult;
-      const { handleNativeScroll, handleRemoteInput, handleScrollTo, resetPhysics, wakeUpLoop, currentActiveElementRef, clearProcessedCommands, internalScrollPos } = physicsResult;
+      const { handleNativeScroll, handleRemoteInput, handleScrollTo, resetPhysics, wakeUpLoop, currentActiveElementRef, clearProcessedCommands, internalScrollPos, handleInteractionStart, handleInteractionEnd, handleWheel } = physicsResult;
+
+      // Initial Scroll Logic - MOVED HERE to access handleScrollTo
+      useEffect(() => {
+        if (initialCursorIndex !== undefined && initialCursorIndex !== null && sentences.length > 0) {
+          let targetSentenceId = -1;
+          for (let i = 0; i < sentences.length; i++) {
+            const s = sentences[i];
+            // Find the last sentence that triggers before this index
+            if (s.startIndex !== undefined && s.startIndex <= initialCursorIndex) {
+              targetSentenceId = i;
+            } else {
+              break;
+            }
+          }
+
+          if (targetSentenceId !== -1) {
+            // Robust check for scroll readiness
+            let attempts = 0;
+            const checkAndScroll = () => {
+              const targetEl = document.getElementById(`sentence-${targetSentenceId}`);
+              if (targetEl && scrollContainerRef.current) {
+                const container = scrollContainerRef.current;
+                const ready = container.scrollHeight > container.clientHeight && container.clientHeight > 0;
+
+                if (ready) {
+                  const readingZoneOffset = container.clientHeight * (isFlipVertical ? 0.95 : 0.05);
+                  const targetPos = Math.max(0, targetEl.offsetTop - readingZoneOffset);
+
+                  const maxScroll = container.scrollHeight - container.clientHeight;
+                  const progress = maxScroll > 0 ? targetPos / maxScroll : 0;
+
+                  // Sync Physics
+                  handleScrollTo(progress);
+                } else if (attempts < 10) {
+                  attempts++;
+                  setTimeout(checkAndScroll, 100);
+                }
+              } else if (attempts < 10) {
+                attempts++;
+                setTimeout(checkAndScroll, 100);
+              }
+            };
+
+            // Start checking
+            setTimeout(checkAndScroll, 100);
+          }
+        }
+      }, [initialCursorIndex, sentences, isFlipVertical, handleScrollTo]);
 
 
       // Ref to store physics methods for access inside handleCommandTriggered
@@ -962,7 +1015,7 @@ export const Prompter = memo(
               onTouchEnd={handleInteractionEnd}
               onMouseDown={handleInteractionStart}
               onMouseUp={handleInteractionEnd}
-              onWheel={handleInteractionStart}
+              onWheel={handleWheel}
               // Also handle cancellation cases
               onTouchCancel={handleInteractionEnd}
               onMouseLeave={handleInteractionEnd}

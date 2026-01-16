@@ -16,7 +16,18 @@ export const parseTextToSentences = (
 
     // 0. Pre-process: Convert bracketed/parenthesized text to red tags for Musician Mode
     // This allows [...] and (...) to be formatted in red and ignored by voice control
-    const BRACKET_REGEX = /(\[.*?\]|\(.*?\))/g;
+    // 0. Pre-process: Convert bracketed/parenthesized text to red tags for Musician Mode
+    // This allows [...] and (...) to be formatted in red and ignored by voice control
+    // UPDATE: User requested to REMOVE red color for parentheses, but keep them ignored by voice logic.
+    // The voice logic regex (line 251) already handles stripping [...] and (...), so we just stop wrapping them in <r> here.
+    // We will keep wrapping [] in <r> if that's still desired, or maybe just remove this step entirely for ()?
+    // User said: "Qualquer coisa entre parêntesis fica em vermelho , pode retirar isso ?"
+    // So we remove the wrapping for parentheses.
+    // Current regex: /(\[.*?\]|\(.*?\))/g
+    // New regex: only brackets? Or maybe nothing?
+    // If we want to keep brackets red (often used for chords/commands), we keep them.
+    // Let's assume ONLY parentheses were requested to be non-red.
+    const BRACKET_REGEX = /(\[.*?\])/g;
     text = text.replace(BRACKET_REGEX, (match) => `<r>${match}</r>`);
 
     // 1. Tokenize: Convert raw text into a flat list of styled tokens
@@ -299,7 +310,7 @@ const COMMAND_PAUSE_REGEX = /\[(pause|pausa)\s+(\d+)\]/gi;
 const COMMAND_SPEED_REGEX = /\[(speed|velocidade)\s+(\d+)\]/gi;
 const COMMAND_LOOP_START_REGEX = /\[(loop start|início loop)\]/gi;
 const COMMAND_LOOP_END_REGEX = /\[(loop)\s+(\d+)\]/gi;
-const COMMAND_PART_REGEX = /\[(part|slide|parte)\s*(.*?)\]/gi;
+const COMMAND_PART_REGEX = /\[(part|slide|parte|scene|cena)\s*(.*?)\]/gi;
 const COMMAND_BPM_REGEX = /\[(bpm)\s+(.+?)\]/gi;
 const COMMAND_SECTION_REGEX = /\[(section|seção|seccao)\s+(.*?)\s+(\d{1,2}:\d{2}|\d+)\]/gi;
 

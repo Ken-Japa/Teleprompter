@@ -397,7 +397,10 @@ export const useScrollPhysics = ({
   // --- PUBLIC HANDLERS ---
 
   const handleNativeScroll = useCallback(() => {
-    if (!scrollContainerRef.current || isPlayingRef.current) return;
+    if (!scrollContainerRef.current) return;
+
+    // Allow native scroll sync if we are NOT playing OR if we are manually scrolling (wheel/touch)
+    if (isPlayingRef.current && !isManualScrollingRef.current) return;
 
     // Sync internal state with native scroll (e.g. user dragged scrollbar)
     internalScrollPos.current = scrollContainerRef.current.scrollTop;
@@ -478,10 +481,30 @@ export const useScrollPhysics = ({
     // Debounce manual scrolling release to allow inertia?
     // For now simple switch off
     // Small timeout to prevent immediate snap-back
-    setTimeout(() => {
-      isManualScrollingRef.current = false;
-    }, 200);
+    isManualScrollingRef.current = false;
   }, []);
+
+  const handleWheel = useCallback(() => {
+    // Detect mouse wheel usage
+    isManualScrollingRef.current = true;
+    isUserTouchingRef.current = true; // Treat like touch to stop momentum
+    momentumRef.current = 0;
+
+    // Sync internal state immediately
+    if (scrollContainerRef.current) {
+      internalScrollPos.current = scrollContainerRef.current.scrollTop;
+    }
+
+    // Wake up loop
+    wakeUpLoop();
+
+    // Debounce release
+    if (retryTimeoutRef.current) clearTimeout(retryTimeoutRef.current);
+    retryTimeoutRef.current = setTimeout(() => {
+      isManualScrollingRef.current = false;
+      isUserTouchingRef.current = false;
+    }, 60); // Short debounce for wheel
+  }, [wakeUpLoop]);
 
   return {
     handleNativeScroll,
@@ -493,6 +516,7 @@ export const useScrollPhysics = ({
     clearProcessedCommands,
     internalScrollPos, // Expose ref for external synchronization
     handleInteractionStart,
-    handleInteractionEnd
+    handleInteractionEnd,
+    handleWheel
   };
 };

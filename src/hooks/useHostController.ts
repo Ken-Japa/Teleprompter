@@ -400,9 +400,17 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
     activeScript
   ]);
 
+  // Position Sync
+  const [startCursorIndex, setStartCursorIndex] = useState<number | null>(null);
+
   const navigation = {
-    startPresentation: () => {
+    startPresentation: (cursorIndex?: number) => {
       tryEnableNoSleep();
+      if (typeof cursorIndex === 'number') {
+        setStartCursorIndex(cursorIndex);
+      } else {
+        setStartCursorIndex(null);
+      }
       window.location.hash = "app/play";
       // Force state update immediately to ensure responsiveness even if hash event is delayed
       setIsEditMode(false);
@@ -412,6 +420,7 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
       // Force state update immediately
       setIsEditMode(true);
       prompterActions.setIsHudless(false);
+      setStartCursorIndex(null);
     },
   };
 
@@ -495,6 +504,7 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
       detectedBpm,
       autoBpmError,
       isNDIEnabled,
+      startCursorIndex,
     },
     actions: {
       setText,

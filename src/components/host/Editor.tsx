@@ -20,7 +20,7 @@ interface EditorProps {
     setText: (text: string) => void;
     peerId: string;
     status: ConnectionStatus;
-    onStart: () => void;
+    onStart: (index?: number) => void;
     onStartHudless: () => void;
     isMusicianMode: boolean;
     onToggleMusicianMode: () => void;
@@ -120,7 +120,11 @@ export const Editor: React.FC<EditorProps> = ({
                     <GoogleAuthButton compact />
                     < LanguageSelector className="hidden md:block" />
                     <S.PrimaryButton
-                        onClick={onStart}
+                        onClick={() => {
+                            // Capture selection start from textarea if available
+                            const cursorIndex = textAreaRef.current?.selectionStart;
+                            onStart(cursorIndex);
+                        }}
                         aria-label="Start Presentation Mode"
                         // Removed invalid size="lg" prop, relying on className below
                         className="!py-2 !px-3 !text-sm sm:!py-3 sm:!px-6 sm:!text-lg shadow-brand-500/50 shadow-lg hover:shadow-brand-500/70 hover:scale-105 transition-all duration-300" // Added custom styles for prominence
