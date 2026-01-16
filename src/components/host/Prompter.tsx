@@ -284,7 +284,7 @@ export const Prompter = memo(
         return settings.voiceLanguage || lang;
       }, [isBilingualMode, bilingualConfig, lang, settings.voiceLanguage]);
 
-      const { startListening, stopListening, resetVoice, clearSessionSummary, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError, sessionSummary } = useVoiceControl(
+      const voiceControl = useVoiceControl(
         voiceControlText,
         isPro,
         handleSpeechResult,
@@ -293,6 +293,8 @@ export const Prompter = memo(
         isMusicianMode,
         isBilingualMode
       );
+
+      const { startListening, stopListening, resetVoice, clearSessionSummary, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError, sessionSummary, syncWithScroll } = voiceControl;
 
       const backingTrack = useBackingTrack(activeScriptId, sentences, isPro);
 
@@ -453,6 +455,11 @@ export const Prompter = memo(
         onScrollUpdate,
         onAutoStop: handleAutoStop,
         onCommandTriggered: handleCommandTriggered,
+        onManualScrollEnd: () => {
+          if (isVoiceMode) {
+            if (syncWithScroll) syncWithScroll();
+          }
+        },
         isMusicianMode,
         bpm: effectiveBpm,
         backingTrackProgress: backingTrack.getProgress(),

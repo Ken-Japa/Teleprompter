@@ -1216,6 +1216,22 @@ export const useVoiceControl = (
     }, [stopListening, setIsScriptFinished, setSessionSummary]);
 
 
+    const syncWithScroll = useCallback((ratio?: number, pos?: number) => {
+        const { index, progress } = findVisibleSentenceId(ratio ?? VOICE_CONFIG.LOOKAHEAD_POSITION, pos);
+
+        lockedSentenceIdRef.current = index;
+        setActiveSentenceIndex(index);
+        setVoiceProgress(progress);
+        smoothedProgressRef.current = progress;
+
+        if (sentences[index]) {
+            lastMatchIndexRef.current = sentences[index].startIndex ?? 0;
+        }
+
+        console.log(`[Voice] Sync'd with scroll: Sentence ${index} (Progress: ${(progress * 100).toFixed(0)}%)`);
+    }, [findVisibleSentenceId, sentences]);
+
+
     return {
         isListening,
         startListening: (ratio?: number, pos?: number) => startListening(ratio, pos),
@@ -1239,5 +1255,6 @@ export const useVoiceControl = (
         isScriptFinished,
         sessionSummary,
         setIsScriptFinished,
+        syncWithScroll,
     };
 };

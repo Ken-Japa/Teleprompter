@@ -21,6 +21,7 @@ interface PhysicsParams {
   onScrollUpdate: (progress: number) => void;
   onAutoStop: () => void;
   onCommandTriggered?: (command: TextCommand, sentenceId: number) => void;
+  onManualScrollEnd?: () => void;
   isMusicianMode?: boolean;
   backingTrackProgress?: {
     startSentenceId: number;
@@ -48,6 +49,7 @@ export const useScrollPhysics = ({
   onScrollUpdate,
   onAutoStop,
   onCommandTriggered,
+  onManualScrollEnd,
   isMusicianMode,
   bpm,
   backingTrackProgress,
@@ -64,6 +66,7 @@ export const useScrollPhysics = ({
 
   // Command State
   const processedCommandsRef = useRef<Set<number>>(new Set());
+  const lastInteractionTimeRef = useRef<number>(0);
   const lastScrollCheckRef = useRef<number>(0);
 
   // Refs for Mutable State (to avoid loop recreation)
@@ -220,12 +223,15 @@ export const useScrollPhysics = ({
       momentumRef.current = momentumResult.newMomentum;
 
       // 4. Voice Control Scroll
+      const isInteractionCoolingDown = timestamp - lastInteractionTimeRef.current < PHYSICS_CONSTANTS.MANUAL_SCROLL_VOICE_TIMEOUT;
+
       if (
         _isVoiceMode &&
         _activeSentenceIndex !== -1 &&
         !_isPlaying &&
         !isUserTouchingRef.current &&
-        !isManualScrollingRef.current
+        !isManualScrollingRef.current &&
+        !isInteractionCoolingDown
       ) {
         const target = calculateVoiceTarget(
           _activeSentenceIndex,
@@ -292,7 +298,7 @@ export const useScrollPhysics = ({
           Math.abs((targetVoiceScrollRef.current || 0) - internalScrollPos.current) <
           PHYSICS_CONSTANTS.SCROLL_TOLERANCE;
 
-        if (voiceStable) {
+        if (voiceStable || isInteractionCoolingDown) {
           isSleepingRef.current = true;
           animationFrameRef.current = null;
           lastFrameTimeRef.current = 0;
@@ -410,6 +416,9 @@ export const useScrollPhysics = ({
     const maxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
     const progress = maxScroll > 0 ? internalScrollPos.current / maxScroll : 0;
     onScrollUpdate(Math.min(1, Math.max(0, progress)));
+
+    // Update interaction time for native scroll too (scroll bar drag)
+    lastInteractionTimeRef.current = performance.now();
   }, [scrollContainerRef, metricsRef, onScrollUpdate]);
 
   const handleRemoteInput = useCallback(
@@ -470,9 +479,9 @@ export const useScrollPhysics = ({
   }, []);
 
   const handleInteractionStart = useCallback(() => {
-    isUserTouchingRef.current = true;
     isManualScrollingRef.current = true;
     momentumRef.current = 0; // Stop momentum on touch
+    lastInteractionTimeRef.current = performance.now();
     wakeUpLoop();
   }, [wakeUpLoop]);
 
@@ -482,7 +491,9 @@ export const useScrollPhysics = ({
     // For now simple switch off
     // Small timeout to prevent immediate snap-back
     isManualScrollingRef.current = false;
-  }, []);
+    lastInteractionTimeRef.current = performance.now();
+    if (onManualScrollEnd) onManualScrollEnd();
+  }, [onManualScrollEnd]);
 
   const handleWheel = useCallback(() => {
     // Detect mouse wheel usage
@@ -503,8 +514,10 @@ export const useScrollPhysics = ({
     retryTimeoutRef.current = setTimeout(() => {
       isManualScrollingRef.current = false;
       isUserTouchingRef.current = false;
-    }, 60); // Short debounce for wheel
-  }, [wakeUpLoop]);
+      lastInteractionTimeRef.current = performance.now();
+      if (onManualScrollEnd) onManualScrollEnd();
+    }, 250); // Increased debounce for wheel to allow smoother manual interaction
+  }, [wakeUpLoop, onManualScrollEnd]);
 
   return {
     handleNativeScroll,

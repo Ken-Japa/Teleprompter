@@ -100,6 +100,8 @@ export const PHYSICS_CONSTANTS = {
     FRICTION_TOUCH: 0.8,
     // Threshold to start auto-scrolling
     AUTO_SCROLL_THRESHOLD: 0.5,
+    // Cooldown after manual interaction before voice scroll resumes (ms)
+    MANUAL_SCROLL_VOICE_TIMEOUT: 1500,
 };
 
 // UI Limits & Controls
