@@ -123,7 +123,6 @@ export const Editor: React.FC<EditorProps> = ({
                         onClick={() => {
                             // Capture selection start from textarea if available
                             const cursorIndex = textAreaRef.current?.selectionStart;
-                            console.log('[Editor] captured cursorIndex:', cursorIndex);
                             onStart(cursorIndex);
                         }}
                         aria-label="Start Presentation Mode"

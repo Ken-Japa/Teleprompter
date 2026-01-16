@@ -317,15 +317,11 @@ export const parseTextToSentences = (
 
     const map = new Int32Array(tempMap);
 
-    const result = {
+    return {
         sentences: processedSentences,
         fullCleanText: builtString,
         charToSentenceMap: map,
     };
-
-    console.log('[textParser] Parsed sentences:', processedSentences.map(s => ({ id: s.id, start: s.startIndex, text: s.cleanContent.substring(0, 20) + '...' })));
-
-    return result;
 };
 
 // --- TEXT COMMAND DETECTION LOGIC ---

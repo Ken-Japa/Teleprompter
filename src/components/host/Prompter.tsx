@@ -470,6 +470,23 @@ export const Prompter = memo(
             return;
           }
 
+          // HEURISTICS: Avoid jumping in cases where it might be accidental (like pasting or just starting)
+          // Use voiceControlText length (the actual text being read/parsed) for accuracy
+          const textLen = voiceControlText.length;
+
+          // 1. If at the very beginning (0-40 chars)
+          if (initialCursorIndex <= 40) {
+            hasInitialScrolledRef.current = initialCursorIndex;
+            return;
+          }
+
+          // 2. If at the very end or near the end (last 60 chars)
+          // This covers the "cursor at end after paste" scenario more reliably than a percentage.
+          if (initialCursorIndex >= textLen - 60) {
+            hasInitialScrolledRef.current = initialCursorIndex;
+            return;
+          }
+
           let targetSentenceId = -1;
           for (let i = 0; i < sentences.length; i++) {
             const s = sentences[i];
@@ -495,8 +512,6 @@ export const Prompter = memo(
               }
             }
           }
-
-          console.log('[Prompter] mapped targetSentenceId:', targetSentenceId);
 
           if (targetSentenceId !== -1) {
             let attempts = 0;
@@ -531,7 +546,7 @@ export const Prompter = memo(
             setTimeout(checkAndScroll, 50);
           }
         }
-      }, [initialCursorIndex, sentences, isFlipVertical, handleScrollTo, externalState.isPlaying]);
+      }, [initialCursorIndex, sentences, isFlipVertical, handleScrollTo, externalState.isPlaying, voiceControlText]);
 
 
       // Ref to store physics methods for access inside handleCommandTriggered
