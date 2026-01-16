@@ -249,7 +249,18 @@ export const parseTextToSentences = (
             const part = parts[i];
             if (part === "") continue;
 
-            const isDelimiter = /[.!?\n]+/.test(part);
+            let isDelimiter = /[.!?\n]+/.test(part);
+
+            // Special Case: Do not treat a dot as a delimiter if it's between digits (e.g., 1.33)
+            // This prevents technical terms and decimal values from breaking the sentence.
+            if (isDelimiter && part === "." && i > 0 && i < parts.length - 1) {
+                const prev = parts[i - 1];
+                const next = parts[i + 1];
+                if (/\d$/.test(prev) && /^\d/.test(next)) {
+                    isDelimiter = false;
+                }
+            }
+
             // The actual character index in the original text for this part
             const partAbsoluteStart = (token.absoluteStart + (token.innerOffset || 0)) + localOffset;
 
