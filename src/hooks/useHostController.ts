@@ -405,6 +405,7 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
 
   const navigation = {
     startPresentation: (cursorIndex?: number) => {
+      console.log('[HostController] startPresentation with index:', cursorIndex);
       tryEnableNoSleep();
       if (typeof cursorIndex === 'number') {
         setStartCursorIndex(cursorIndex);

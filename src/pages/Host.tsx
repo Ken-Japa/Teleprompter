@@ -94,7 +94,6 @@ export const Host: React.FC<HostProps> = ({ featureFlags }) => {
                         status={status}
                         onStart={() => {
                             actions.prompterActions.setIsHudless(false);
-                            actions.navigation.startPresentation();
                         }}
                         featureFlags={featureFlags}
                         isPro={isPro}
@@ -118,9 +117,9 @@ export const Host: React.FC<HostProps> = ({ featureFlags }) => {
                         setText={actions.setText}
                         peerId={peerId}
                         status={status}
-                        onStart={() => {
+                        onStart={(index) => {
                             actions.prompterActions.setIsHudless(false);
-                            actions.navigation.startPresentation();
+                            actions.navigation.startPresentation(index);
                         }}
                         onStartHudless={() => {
                             actions.prompterActions.setIsHudless(true);

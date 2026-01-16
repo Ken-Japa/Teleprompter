@@ -14,33 +14,24 @@ export const parseTextToSentences = (
             charToSentenceMap: new Int32Array(0),
         };
 
-    // 0. Pre-process: Convert bracketed/parenthesized text to red tags for Musician Mode
-    // This allows [...] and (...) to be formatted in red and ignored by voice control
-    // 0. Pre-process: Convert bracketed/parenthesized text to red tags for Musician Mode
-    // This allows [...] and (...) to be formatted in red and ignored by voice control
-    // UPDATE: User requested to REMOVE red color for parentheses, but keep them ignored by voice logic.
-    // The voice logic regex (line 251) already handles stripping [...] and (...), so we just stop wrapping them in <r> here.
-    // We will keep wrapping [] in <r> if that's still desired, or maybe just remove this step entirely for ()?
-    // User said: "Qualquer coisa entre parêntesis fica em vermelho , pode retirar isso ?"
-    // So we remove the wrapping for parentheses.
-    // Current regex: /(\[.*?\]|\(.*?\))/g
-    // New regex: only brackets? Or maybe nothing?
-    // If we want to keep brackets red (often used for chords/commands), we keep them.
-    // Let's assume ONLY parentheses were requested to be non-red.
-    const BRACKET_REGEX = /(\[.*?\])/g;
-    text = text.replace(BRACKET_REGEX, (match) => `<r>${match}</r>`);
-
     // 1. Tokenize: Convert raw text into a flat list of styled tokens
+    // We track absoluteStart to ensure we can map back to the original text position
     const tokens: {
         text: string;
         type: "normal" | "red" | "yellow" | "green" | "blue";
         bold?: boolean;
         italic?: boolean;
         underline?: boolean;
+        absoluteStart: number;
+        innerOffset?: number;
     }[] = [];
 
-    // First pass: Extract color tags
-    const TAG_REGEX = /<([rygb])>([\s\S]*?)<\/\1>/g; // \s\S matches newlines too
+    // Unified Regex: Matches color tags <r>...</r> OR brackets [...]
+    // Group 1: Tag char (r,y,g,b)
+    // Group 2: Tag content
+    // Group 3: Bracket match (entire string)
+    const TOKEN_REGEX = /<([rygb])>([\s\S]*?)<\/\1>|(\[.*?\])/g;
+
     let lastIndex = 0;
     let match;
 
@@ -51,46 +42,74 @@ export const parseTextToSentences = (
         b: "blue",
     };
 
-    while ((match = TAG_REGEX.exec(text)) !== null) {
-        // Push normal text before the tag
+    while ((match = TOKEN_REGEX.exec(text)) !== null) {
+        // Push normal text before the match
         if (match.index > lastIndex) {
             tokens.push({
                 text: text.substring(lastIndex, match.index),
                 type: "normal",
+                absoluteStart: lastIndex
             });
         }
-        // Push the tagged text
-        const code = match[1];
-        tokens.push({ text: match[2], type: colorMap[code] || "normal" });
-        lastIndex = TAG_REGEX.lastIndex;
+
+        // Check if it's a Tag Match or Bracket Match
+        if (match[3]) {
+            // Bracket Match -> RED default (as per musician mode request)
+            tokens.push({
+                text: match[3],
+                type: "red",
+                absoluteStart: match.index
+            });
+        } else {
+            // Tag Match
+            const code = match[1];
+            tokens.push({
+                text: match[2],
+                type: colorMap[code] || "normal",
+                absoluteStart: match.index,
+                innerOffset: 3 // length of <r>, <y>, <g>, <b>
+            });
+        }
+        lastIndex = TOKEN_REGEX.lastIndex;
     }
     // Push remaining text
     if (lastIndex < text.length) {
-        tokens.push({ text: text.substring(lastIndex), type: "normal" });
+        tokens.push({
+            text: text.substring(lastIndex),
+            type: "normal",
+            absoluteStart: lastIndex
+        });
     }
 
-    // Second pass: Process bold and italic tags within each token
+    // Second pass: Process bold, italic, underline tags within each token
+    // We must preserve or adjust absoluteStart.
+    // Since tags like <b> are in the text, we should count them relative to the token's absoluteStart.
     const processedTokens: typeof tokens = [];
+
     tokens.forEach(token => {
         let currentText = token.text;
         const fragments: typeof tokens = [];
 
-        // Process bold tags
+        // Pass 2a: Process BOLD <bold>...</bold>
         const BOLD_REGEX = /<bold>([\s\S]*?)<\/bold>/g;
         let boldLastIndex = 0;
         let boldMatch;
+        let baseStart = token.absoluteStart + (token.innerOffset || 0);
 
         while ((boldMatch = BOLD_REGEX.exec(currentText)) !== null) {
             if (boldMatch.index > boldLastIndex) {
                 fragments.push({
                     text: currentText.substring(boldLastIndex, boldMatch.index),
                     type: token.type,
+                    absoluteStart: baseStart + boldLastIndex
                 });
             }
             fragments.push({
                 text: boldMatch[1],
                 type: token.type,
                 bold: true,
+                absoluteStart: baseStart + boldMatch.index,
+                innerOffset: 6 // length of <bold>
             });
             boldLastIndex = BOLD_REGEX.lastIndex;
         }
@@ -98,16 +117,18 @@ export const parseTextToSentences = (
             fragments.push({
                 text: currentText.substring(boldLastIndex),
                 type: token.type,
+                absoluteStart: baseStart + boldLastIndex
             });
         }
 
-        // Process italic tags in each fragment
+        // Pass 2b: Process ITALIC <i>...</i>
         const italicFragments: typeof tokens = [];
-        (fragments.length > 0 ? fragments : [token]).forEach(frag => {
+        fragments.forEach(frag => {
             const ITALIC_REGEX = /<i>([\s\S]*?)<\/i>/g;
             let italicLastIndex = 0;
             let italicMatch;
             let hasItalic = false;
+            let fragBaseStart = frag.absoluteStart + (frag.innerOffset || 0);
 
             while ((italicMatch = ITALIC_REGEX.exec(frag.text)) !== null) {
                 hasItalic = true;
@@ -116,6 +137,7 @@ export const parseTextToSentences = (
                         text: frag.text.substring(italicLastIndex, italicMatch.index),
                         type: frag.type,
                         bold: frag.bold,
+                        absoluteStart: fragBaseStart + italicLastIndex
                     });
                 }
                 italicFragments.push({
@@ -123,16 +145,18 @@ export const parseTextToSentences = (
                     type: frag.type,
                     bold: frag.bold,
                     italic: true,
+                    absoluteStart: fragBaseStart + italicMatch.index,
+                    innerOffset: 3 // length of <i>
                 });
                 italicLastIndex = ITALIC_REGEX.lastIndex;
             }
-
             if (hasItalic) {
                 if (italicLastIndex < frag.text.length) {
                     italicFragments.push({
                         text: frag.text.substring(italicLastIndex),
                         type: frag.type,
                         bold: frag.bold,
+                        absoluteStart: fragBaseStart + italicLastIndex
                     });
                 }
             } else {
@@ -140,13 +164,14 @@ export const parseTextToSentences = (
             }
         });
 
-        // Process underline tags in each fragment
+        // Pass 2c: Process UNDERLINE <u>...</u>
         const finalFragments: typeof tokens = [];
         italicFragments.forEach(frag => {
             const UNDERLINE_REGEX = /<u>([\s\S]*?)<\/u>/g;
             let underlineLastIndex = 0;
             let underlineMatch;
             let hasUnderline = false;
+            let fragBaseStart = frag.absoluteStart + (frag.innerOffset || 0);
 
             while ((underlineMatch = UNDERLINE_REGEX.exec(frag.text)) !== null) {
                 hasUnderline = true;
@@ -156,6 +181,7 @@ export const parseTextToSentences = (
                         type: frag.type,
                         bold: frag.bold,
                         italic: frag.italic,
+                        absoluteStart: fragBaseStart + underlineLastIndex
                     });
                 }
                 finalFragments.push({
@@ -164,10 +190,11 @@ export const parseTextToSentences = (
                     bold: frag.bold,
                     italic: frag.italic,
                     underline: true,
+                    absoluteStart: fragBaseStart + underlineMatch.index,
+                    innerOffset: 3 // length of <u>
                 });
                 underlineLastIndex = UNDERLINE_REGEX.lastIndex;
             }
-
             if (hasUnderline) {
                 if (underlineLastIndex < frag.text.length) {
                     finalFragments.push({
@@ -175,6 +202,7 @@ export const parseTextToSentences = (
                         type: frag.type,
                         bold: frag.bold,
                         italic: frag.italic,
+                        absoluteStart: fragBaseStart + underlineLastIndex
                     });
                 }
             } else {
@@ -189,115 +217,115 @@ export const parseTextToSentences = (
     const processedSentences: Sentence[] = [];
     let currentFragments: TextFragment[] = [];
     let currentCleanContent = "";
-    let globalCharIndex = 0;
+    let currentSentenceStartIndex = -1;
     let sentenceIdCounter = 0;
 
     const finalizeSentence = (force = false) => {
         const trimmedContent = currentCleanContent.trim();
         if (trimmedContent.length > 0 || force) {
             const command = detectTextCommand(trimmedContent);
+            const startIndex = currentSentenceStartIndex !== -1 ? currentSentenceStartIndex : 0;
+
             processedSentences.push({
                 id: sentenceIdCounter++,
                 cleanContent: trimmedContent,
                 fragments: currentFragments,
-                startIndex: globalCharIndex,
+                startIndex: startIndex,
                 isChord: isChordLine(trimmedContent),
                 command,
             });
-            globalCharIndex += trimmedContent.length + 1; // +1 for space
+
+            currentSentenceStartIndex = -1;
         }
         currentFragments = [];
         currentCleanContent = "";
     };
 
     processedTokens.forEach((token) => {
-        // Split by sentence terminators, keeping the delimiters
-        // Regex logic: Split on [.!?] or newline, but include them in the result
         const parts = token.text.split(/([.!?\n]+)/);
+        let localOffset = 0;
 
         for (let i = 0; i < parts.length; i++) {
             const part = parts[i];
-            if (!part) continue;
+            if (part === "") continue;
 
             const isDelimiter = /[.!?\n]+/.test(part);
+            // The actual character index in the original text for this part
+            const partAbsoluteStart = (token.absoluteStart + (token.innerOffset || 0)) + localOffset;
+
+            if (currentSentenceStartIndex === -1 && !isDelimiter && part.trim().length > 0) {
+                currentSentenceStartIndex = partAbsoluteStart;
+            }
+            if (currentFragments.length === 0 && currentSentenceStartIndex === -1) {
+                currentSentenceStartIndex = partAbsoluteStart;
+            }
 
             if (isDelimiter) {
-                // Append delimiter to the last fragment or create new one
-                if (currentFragments.length > 0 && currentFragments[currentFragments.length - 1].type === token.type && currentFragments[currentFragments.length - 1].bold === token.bold && currentFragments[currentFragments.length - 1].italic === token.italic && currentFragments[currentFragments.length - 1].underline === token.underline) {
+                if (currentFragments.length > 0 &&
+                    currentFragments[currentFragments.length - 1].type === token.type &&
+                    currentFragments[currentFragments.length - 1].bold === token.bold &&
+                    currentFragments[currentFragments.length - 1].italic === token.italic &&
+                    currentFragments[currentFragments.length - 1].underline === token.underline) {
                     currentFragments[currentFragments.length - 1].text += part;
                 } else {
                     currentFragments.push({ text: part, type: token.type, bold: token.bold, italic: token.italic, underline: token.underline });
                 }
                 currentCleanContent += part;
-
-                // A delimiter marks the end of a sentence
+                localOffset += part.length;
                 finalizeSentence();
             } else {
-                // Regular text
                 currentFragments.push({ text: part, type: token.type, bold: token.bold, italic: token.italic, underline: token.underline });
                 currentCleanContent += part;
+                localOffset += part.length;
             }
         }
     });
 
-    // Final flush if any text remains
+    // Final flush
     if (currentCleanContent.trim().length > 0) {
         finalizeSentence();
     }
 
-    // 3. Build Mapping for Voice Matching
-    // We need a "voice-friendly" version of the text:
-    // - Lowercase
-    // - No punctuation
-    // - No newlines
-    // - Single spaces between words
-
+    // 3. Build Mapping for Voice Matching (unchanged mostly, but we rely on processedSentences)
     let builtString = "";
     const tempMap: number[] = [];
 
     processedSentences.forEach((s) => {
-        // Strip out content in brackets [Intro] or parentheses (Chorus) using regex
-        // We do this BEFORE cleaning everything else to explicitly ignore these sections
         let voiceText = s.cleanContent;
         voiceText = voiceText.replace(/\[.*?\]/g, "").replace(/\(.*?\)/g, "").replace(/<.*?>/g, "");
 
-        // Create a clean version: Lowercase, remove punctuation, normalize spaces
-        // Using Unicode properties to keep letters/numbers but remove symbols
-        // FLEXIBLE NUMBER MATCHING: Remove digit sequences to allow natural number speech
-        // e.g., script "199 reais" matches speech "cento e noventa e nove reais"
         const clean = voiceText
             .toLowerCase()
             .replace(/[^\p{L}\p{N}\s]/gu, "")
-            .replace(/\b\d+\b/g, " ") // Remove isolated numbers (flexible matching)
+            .replace(/\b\d+\b/g, " ")
             .replace(/\s+/g, " ")
             .trim();
 
-        if (clean.length === 0) return; // Skip sentences that are just punctuation/newlines
-
-        // VOICE CONTROL OPTIMIZATION: Skip chord lines
+        if (clean.length === 0) return;
         if (s.isChord) return;
 
-        // If not the first item, add a space separator
         if (builtString.length > 0) {
             builtString += " ";
             tempMap.push(s.id);
         }
 
-        // Append chars and fill map
         for (let i = 0; i < clean.length; i++) {
             tempMap.push(s.id);
         }
         builtString += clean;
     });
 
-    // Convert to Int32Array for performance
     const map = new Int32Array(tempMap);
 
-    return {
+    const result = {
         sentences: processedSentences,
         fullCleanText: builtString,
         charToSentenceMap: map,
     };
+
+    console.log('[textParser] Parsed sentences:', processedSentences.map(s => ({ id: s.id, start: s.startIndex, text: s.cleanContent.substring(0, 20) + '...' })));
+
+    return result;
 };
 
 // --- TEXT COMMAND DETECTION LOGIC ---

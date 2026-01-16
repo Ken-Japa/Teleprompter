@@ -461,52 +461,77 @@ export const Prompter = memo(
       const { handleNativeScroll, handleRemoteInput, handleScrollTo, resetPhysics, wakeUpLoop, currentActiveElementRef, clearProcessedCommands, internalScrollPos, handleInteractionStart, handleInteractionEnd, handleWheel } = physicsResult;
 
       // Initial Scroll Logic - MOVED HERE to access handleScrollTo
+      const hasInitialScrolledRef = useRef<number | null>(null);
+
       useEffect(() => {
         if (initialCursorIndex !== undefined && initialCursorIndex !== null && sentences.length > 0) {
+          // Prevent re-scrolling if we already processed this index
+          if (hasInitialScrolledRef.current === initialCursorIndex) {
+            return;
+          }
+
           let targetSentenceId = -1;
           for (let i = 0; i < sentences.length; i++) {
             const s = sentences[i];
-            // Find the last sentence that triggers before this index
-            if (s.startIndex !== undefined && s.startIndex <= initialCursorIndex) {
+            const nextS = sentences[i + 1];
+
+            // Find the sentence that encompasses the cursor index
+            const isLast = !nextS;
+            const start = s.startIndex ?? 0;
+            const end = isLast ? Infinity : (nextS.startIndex ?? Infinity);
+
+            if (initialCursorIndex >= start && initialCursorIndex < end) {
               targetSentenceId = i;
-            } else {
               break;
             }
           }
 
+          // Fallback: If not found, use the last sentence that started before the cursor
+          if (targetSentenceId === -1) {
+            for (let i = sentences.length - 1; i >= 0; i--) {
+              if ((sentences[i].startIndex ?? 0) <= initialCursorIndex) {
+                targetSentenceId = i;
+                break;
+              }
+            }
+          }
+
+          console.log('[Prompter] mapped targetSentenceId:', targetSentenceId);
+
           if (targetSentenceId !== -1) {
-            // Robust check for scroll readiness
             let attempts = 0;
             const checkAndScroll = () => {
+              if (externalState.isPlaying) return; // Don't interrupt if user started playing
+
               const targetEl = document.getElementById(`sentence-${targetSentenceId}`);
               if (targetEl && scrollContainerRef.current) {
                 const container = scrollContainerRef.current;
                 const ready = container.scrollHeight > container.clientHeight && container.clientHeight > 0;
 
                 if (ready) {
-                  const readingZoneOffset = container.clientHeight * (isFlipVertical ? 0.95 : 0.05);
+                  // Position the sentence slightly below the top (or above the bottom if flipped)
+                  const readingZoneOffset = container.clientHeight * (isFlipVertical ? 0.90 : 0.10);
                   const targetPos = Math.max(0, targetEl.offsetTop - readingZoneOffset);
 
                   const maxScroll = container.scrollHeight - container.clientHeight;
                   const progress = maxScroll > 0 ? targetPos / maxScroll : 0;
 
-                  // Sync Physics
                   handleScrollTo(progress);
-                } else if (attempts < 10) {
+                  hasInitialScrolledRef.current = initialCursorIndex;
+                } else if (attempts < 15) {
                   attempts++;
                   setTimeout(checkAndScroll, 100);
                 }
-              } else if (attempts < 10) {
+              } else if (attempts < 15) {
                 attempts++;
                 setTimeout(checkAndScroll, 100);
               }
             };
 
-            // Start checking
-            setTimeout(checkAndScroll, 100);
+            setTimeout(checkAndScroll, 50);
           }
         }
-      }, [initialCursorIndex, sentences, isFlipVertical, handleScrollTo]);
+      }, [initialCursorIndex, sentences, isFlipVertical, handleScrollTo, externalState.isPlaying]);
 
 
       // Ref to store physics methods for access inside handleCommandTriggered

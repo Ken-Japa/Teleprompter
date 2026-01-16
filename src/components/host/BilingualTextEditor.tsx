@@ -12,6 +12,7 @@ interface BilingualTextEditorProps {
     onVoiceTrackLanguageChange?: (lang: 'primary' | 'secondary') => void;
     primaryLanguage?: string;
     secondaryLanguage?: string;
+    primaryTextAreaRef?: React.RefObject<HTMLTextAreaElement>;
 }
 
 
@@ -22,7 +23,8 @@ export const BilingualTextEditor: React.FC<BilingualTextEditorProps> = ({
     voiceTrackLanguage = 'primary',
     onVoiceTrackLanguageChange,
     primaryLanguage = 'pt',
-    secondaryLanguage = 'en'
+    secondaryLanguage = 'en',
+    primaryTextAreaRef
 }) => {
     const { t } = useTranslation();
 
@@ -66,6 +68,7 @@ export const BilingualTextEditor: React.FC<BilingualTextEditorProps> = ({
                     )}
                 </div>
                 <S.EditorTextArea
+                    ref={primaryTextAreaRef}
                     value={primaryText}
                     onChange={(e) => handleTextChange(e.target.value, secondaryText)}
                     placeholder={t("bilingual.primaryPlaceholder")}
