@@ -223,7 +223,8 @@ export const useScrollPhysics = ({
       momentumRef.current = momentumResult.newMomentum;
 
       // 4. Voice Control Scroll
-      const isInteractionCoolingDown = timestamp - lastInteractionTimeRef.current < PHYSICS_CONSTANTS.MANUAL_SCROLL_VOICE_TIMEOUT;
+      const now = performance.now();
+      const isInteractionCoolingDown = now - lastInteractionTimeRef.current < PHYSICS_CONSTANTS.MANUAL_SCROLL_VOICE_TIMEOUT;
 
       if (
         _isVoiceMode &&
@@ -416,9 +417,6 @@ export const useScrollPhysics = ({
     const maxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
     const progress = maxScroll > 0 ? internalScrollPos.current / maxScroll : 0;
     onScrollUpdate(Math.min(1, Math.max(0, progress)));
-
-    // Update interaction time for native scroll too (scroll bar drag)
-    lastInteractionTimeRef.current = performance.now();
   }, [scrollContainerRef, metricsRef, onScrollUpdate]);
 
   const handleRemoteInput = useCallback(
