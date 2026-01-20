@@ -62,6 +62,15 @@ export const TeleprompterParaYoutubersES = () => (
             </div>
         </div>
 
+        <SEOImage
+            slug="teleprompter-para-youtubers-e-criadores"
+            src="teleprompter-interface-mobile-speed-control.webp"
+            alt="Interfaz de control de velocidad del teleprompter en el móvil"
+            caption="Controla la velocidad y el tamaño del texto en tiempo real directamente desde tu dispositivo móvil."
+            width={1200}
+            height={675}
+        />
+
         <h3 className="text-3xl font-bold text-white mt-12 mb-6">3 Formas de Usar (De Principiante a Pro)</h3>
 
         <div className="grid md:grid-cols-3 gap-6 mb-12">

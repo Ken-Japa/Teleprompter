@@ -204,6 +204,15 @@ export const TeleprompterTikTokShortsPT = () => (
             ]}
         />
 
+        <SEOImage
+            slug="teleprompter-tiktok-shorts"
+            src="teleprompter-tiktok-close-up-interface.webp"
+            alt="Close-up da interface do teleprompter PromptNinja em um smartphone"
+            caption="A interface limpa e focada do PromptNinja permite uma leitura fluida mesmo em telas pequenas de celular."
+            width={720}
+            height={1280}
+        />
+
         <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-8 rounded-2xl my-16 text-center shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
                 <div className="absolute top-[-10%] right-[-10%] w-64 h-64 bg-white rounded-full blur-3xl"></div>

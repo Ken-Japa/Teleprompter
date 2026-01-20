@@ -38,6 +38,15 @@ export const TeleprompterOnlineGratisEN = () => (
             PromptNinja was born to end this suffering. It's a <strong>100% free online teleprompter</strong> — zero time limits, zero watermarks, zero tricks like "pay to unlock remote control". Also known as <strong>autocue</strong> in professional broadcasting, it's the tool that separates amateur videos struggling for 3h from professional productions recorded in 15 minutes.
         </p>
 
+        <SEOImage
+            slug="teleprompter-online-gratis"
+            src="free-online-teleprompter-devices.webp"
+            alt="Various devices using PromptNinja free online teleprompter"
+            caption="PromptNinja adapts perfectly to any screen size, ensuring maximum readability across all your devices."
+            width={1200}
+            height={675}
+        />
+
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
             <h3 className="text-2xl font-bold text-white mb-2">Why Doesn't PromptNinja Freeze? (The P2P Difference)</h3>

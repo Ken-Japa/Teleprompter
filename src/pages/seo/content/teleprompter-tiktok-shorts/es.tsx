@@ -130,6 +130,15 @@ export const TeleprompterTikTokShortsES = () => (
             Muchos creadores intentan usar soluciones hechas para videos horizontales de YouTube en contenido vertical. ¿El resultado? Un desastre.
         </p>
 
+        <SEOImage
+            slug="teleprompter-tiktok-shorts"
+            src="teleprompter-tiktok-close-up-interface.webp"
+            alt="Primer plano de la interfaz del teleprompter PromptNinja en un smartphone"
+            caption="La interfaz limpia y enfocada de PromptNinja permite una lectura fluida incluso en las pantallas pequeñas de los teléfonos inteligentes."
+            width={720}
+            height={1280}
+        />
+
         <div className="bg-slate-800 p-6 rounded-lg my-8">
             <h3 className="text-xl font-bold text-white mb-4">Problemas al Usar Teleprompter Horizontal para Video Vertical:</h3>
             <ul className="space-y-3 text-slate-300">

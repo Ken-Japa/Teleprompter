@@ -135,6 +135,15 @@ export const OratoriaVideoPT = () => (
             </li>
         </ul>
 
+        <SEOImage
+            slug="dicas-oratoria-video"
+            src="public-speaking-executive-video-conference.webp"
+            alt="Executivo usando teleprompter em uma videoconferência"
+            caption="O uso de teleprompter em videoconferências corporativas garante autoridade, clareza e contato visual constante."
+            width={1200}
+            height={675}
+        />
+
         <div className="text-center mt-12">
             <a
                 href="https://promptninja.solutionkit.com.br/#app"

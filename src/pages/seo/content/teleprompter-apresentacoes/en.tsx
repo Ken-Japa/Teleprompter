@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterApresentacoesEN = () => (
     <>
@@ -14,6 +15,15 @@ export const TeleprompterApresentacoesEN = () => (
         <p className="text-slate-300 mb-8 leading-relaxed">
             In this definitive guide for competent speakers, we show how PromptNinja becomes your strategic partner for high-impact presentations. Learn how to read your script naturally, maintaining eye contact with the audience and avoiding the fear of 'going blank' at critical moments. Discover techniques to integrate the teleprompter with any slide software, ensuring you present with fluidity, authority, and professionalism, whether on a physical stage or in virtual meetings. Transform your public speaking and stand out with memorable presentations without hesitations.
         </p>
+
+        <SEOImage
+            slug="scripts-para-aulas"
+            src="scripts-for-teacher-lessons.webp"
+            alt="Teacher using teleprompter for online classes"
+            caption="PromptNinja helps educators maintain pacing and eye contact during recorded or live classes."
+            width={1200}
+            height={675}
+        />
 
         <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12 shadow-xl">
             <h3 className="text-2xl font-bold text-white mb-4">Present with TED-Style Confidence</h3>
@@ -60,6 +70,15 @@ export const TeleprompterApresentacoesEN = () => (
                 💡 Teleprompter = confident presenter WITHOUT months of memorization.
             </p>
         </div>
+
+        <SEOImage
+            slug="scripts-para-aulas"
+            src="scripts-for-presentation-classes.webp"
+            alt="Slide presentation with integrated teleprompter"
+            caption="Synchronize your slides with your script and never lose your train of thought in your presentations."
+            width={1200}
+            height={675}
+        />
 
         <h3 className="text-3xl font-bold text-white mt-12 mb-6">3 Professional Presentation Setups</h3>
         <div className="space-y-6 mb-12">

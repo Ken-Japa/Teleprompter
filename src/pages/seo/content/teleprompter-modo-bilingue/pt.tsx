@@ -36,6 +36,15 @@ export const TeleprompterModoBilinguePT = () => (
             </p>
         </div>
 
+        <SEOImage
+            slug="teleprompter-modo-bilingue"
+            src="free-online-teleprompter-monitors.webp"
+            alt="Múltiplos monitores exibindo a interface do PromptNinja"
+            caption="Trabalhe com scripts em diferentes idiomas simultaneamente em múltiplos monitores."
+            width={1200}
+            height={675}
+        />
+
         <h3 className="text-3xl font-bold text-white mt-12 mb-6">Como Usar o Modo Bilíngue para Estudar</h3>
 
         <SEOContentHowTo

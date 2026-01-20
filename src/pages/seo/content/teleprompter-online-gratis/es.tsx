@@ -32,10 +32,19 @@ export const TeleprompterOnlineGratisES = () => (
             slug="teleprompter-online-gratis"
             src="teleprompter-showcase-multi-device.webp"
             alt="PromptNinja funcionando en múltiples dispositivos sincronizados"
-            caption="Accede a tu teleprompter desde cualquier lugar y sincroniza tus dispositivos al instante."
+            caption="Accede a tu teleprompter desde cualquier lugar y sincronize sus dispositivos al instante."
             width={1200}
             height={675}
             priority={true}
+        />
+
+        <SEOImage
+            slug="teleprompter-online-gratis"
+            src="free-online-teleprompter-devices.webp"
+            alt="Diferentes dispositivos usando el teleprompter online gratuito PromptNinja"
+            caption="PromptNinja se adapta perfectamente a cualquier tamaño de pantalla, garantizando la máxima legibilidad."
+            width={1200}
+            height={675}
         />
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">

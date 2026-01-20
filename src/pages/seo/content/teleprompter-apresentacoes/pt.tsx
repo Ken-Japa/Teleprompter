@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterApresentacoesPT = () => (
     <>
@@ -14,6 +15,15 @@ export const TeleprompterApresentacoesPT = () => (
         <p className="text-slate-300 mb-8">
             Neste guia definitivo para oradores competentes, mostramos como o PromptNinja se torna seu parceiro estratégico para apresentações de alto impacto. Aprenda como ler seu roteiro de forma natural, mantendo o contato visual com o público e evitando o medo de 'dar um branco' em momentos críticos. Descubra técnicas para integrar o teleprompter a qualquer software de slides, garantindo que você apresente com fluidez, autoridade e profissionalismo, seja em um palco presencial ou em reuniões virtuais. Transforme sua oratória e destaque-se com apresentações memoráveis e sem hesitações.
         </p>
+
+        <SEOImage
+            slug="scripts-para-aulas"
+            src="scripts-for-teacher-lessons.webp"
+            alt="Professor usando teleprompter para dar aula online"
+            caption="O PromptNinja ajuda educadores a manterem o ritmo e o contato visual durante aulas gravadas ou ao vivo."
+            width={1200}
+            height={675}
+        />
 
         <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
             <h3 className="text-2xl font-bold text-white mb-4">Apresente com Confiança TED-Style</h3>
@@ -58,6 +68,15 @@ export const TeleprompterApresentacoesPT = () => (
                 💡 Teleprompter = apresentador confiante SEM meses de decoreba.
             </p>
         </div>
+
+        <SEOImage
+            slug="scripts-para-aulas"
+            src="scripts-for-presentation-classes.webp"
+            alt="Apresentação de slides com teleprompter integrado"
+            caption="Sincronize seus slides com seu roteiro e nunca mais perca o fio da meada em suas apresentações."
+            width={1200}
+            height={675}
+        />
 
         <h3 className="text-3xl font-bold text-white mt-12 mb-6">3 Setups Apresentação Profissional</h3>
         <div className="space-y-6 mb-12">

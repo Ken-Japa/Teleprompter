@@ -3,11 +3,91 @@ import React, { useState } from 'react';
 import { SeoPageLayout } from './SeoPageLayout';
 import { useTranslation } from '../../hooks/useTranslation';
 import { SCRIPTS_DATA, Script } from '../../data/teleprompterScripts';
+import { SEOImage } from '../../components/seo/SEOImage';
 
 interface ScriptCategoryPageProps {
     categoryId: string;
     onLaunch: () => void;
 }
+
+const CATEGORY_IMAGES: Record<string, { slug: string; src: string; alt: Record<string, string>; caption: Record<string, string> }[]> = {
+    classes: [
+        {
+            slug: "scripts-para-aulas",
+            src: "scripts-for-teacher-lessons.webp",
+            alt: {
+                pt: "Professor usando teleprompter para dar aula online",
+                en: "Teacher using teleprompter for online classes",
+                es: "Profesor usando teleprompter para clases online"
+            },
+            caption: {
+                pt: "O PromptNinja ajuda educadores a manterem o ritmo e o contato visual durante aulas gravadas ou ao vivo.",
+                en: "PromptNinja helps educators maintain pacing and eye contact during recorded or live classes.",
+                es: "PromptNinja ayuda a los educadores a mantener el ritmo y el contacto visual durante las clases grabadas o en vivo."
+            }
+        },
+        {
+            slug: "scripts-para-aulas",
+            src: "scripts-for-presentation-classes.webp",
+            alt: {
+                pt: "Apresentação de slides com teleprompter integrado",
+                en: "Slide presentation with integrated teleprompter",
+                es: "Presentación de diapositivas con teleprompter integrado"
+            },
+            caption: {
+                pt: "Sincronize seus slides com seu roteiro e nunca mais perca o fio da meada em suas apresentações.",
+                en: "Synchronize your slides with your script and never lose your train of thought in your presentations.",
+                es: "Sincroniza tus diapositivas con tu guion y nunca más pierdas el hilo en tus presentaciones."
+            }
+        }
+    ],
+    sales: [
+        {
+            slug: "scripts-para-vendas",
+            src: "scripts-for-sales-persuasion.webp",
+            alt: {
+                pt: "Roteiro de vendas persuasivo no teleprompter",
+                en: "Persuasive sales script on teleprompter",
+                es: "Guion de ventas persuasivo en el teleprompter"
+            },
+            caption: {
+                pt: "Aumente suas conversões com roteiros de vendas estruturados e entrega profissional.",
+                en: "Increase your conversions with structured sales scripts and professional delivery.",
+                es: "Aumente sus conversiones con guiones de ventas estructurados y entrega profesional."
+            }
+        },
+        {
+            slug: "scripts-para-vendas",
+            src: "scripts-for-sales-copywriting.webp",
+            alt: {
+                pt: "Copywriter revisando roteiro de vendas",
+                en: "Copywriter reviewing sales script",
+                es: "Copywriter revisando guion de ventas"
+            },
+            caption: {
+                pt: "A arte da persuasão aliada à tecnologia do teleprompter para resultados máximos.",
+                en: "The art of persuasion combined with teleprompter technology for maximum results.",
+                es: "El arte de la persuasión aliado a la tecnología del teleprompter para resultados máximos."
+            }
+        }
+    ],
+    institutional: [
+        {
+            slug: "scripts-institucionais",
+            src: "corporate-institutional-scripts.webp",
+            alt: {
+                pt: "Vídeo institucional com roteiro profissional",
+                en: "Institutional video with professional script",
+                es: "Video institucional con guion profesional"
+            },
+            caption: {
+                pt: "Transmita a visão da sua empresa com clareza e autoridade usando roteiros institucionais.",
+                en: "Communicate your company's vision with clarity and authority using institutional scripts.",
+                es: "Transmita la visión de su empresa con claridad y autoridad usando guiones institucionales."
+            }
+        }
+    ]
+};
 
 export const ScriptCategoryPage: React.FC<ScriptCategoryPageProps> = ({ categoryId, onLaunch }) => {
     const { lang } = useTranslation();
@@ -61,15 +141,48 @@ export const ScriptCategoryPage: React.FC<ScriptCategoryPageProps> = ({ category
             <div className="mb-12">
                 {category.seoIntro && category.seoIntro[currentLang] ? (
                     <div className="prose prose-invert prose-lg max-w-none mb-12">
-                        {category.seoIntro[currentLang].split('\n\n').map((para, i) => (
-                            para.startsWith('#') ?
-                                <h2 key={i} className="text-3xl font-bold text-white mb-6 uppercase tracking-tight">{para.replace('## ', '').replace('# ', '').replace('🚀 ', '')}</h2> :
-                                para.startsWith('###') ?
-                                    <h3 key={i} className="text-xl font-bold text-white mb-4 mt-8">{para.replace('### ', '')}</h3> :
-                                    <p key={i} className="text-slate-300 mb-6 leading-relaxed">
-                                        {para.split('**').map((part, j) => j % 2 === 1 ? <strong key={j} className="text-white">{part}</strong> : part)}
-                                    </p>
-                        ))}
+                        {category.seoIntro[currentLang].split('\n\n').map((para, i) => {
+                            const images = CATEGORY_IMAGES[categoryId] || [];
+                            const showFirstImage = i === 1 && images.length > 0;
+                            const showSecondImage = i === 3 && images.length > 1;
+
+                            return (
+                                <React.Fragment key={i}>
+                                    {para.startsWith('#') ?
+                                        <h2 className="text-3xl font-bold text-white mb-6 uppercase tracking-tight">{para.replace('## ', '').replace('# ', '').replace('🚀 ', '')}</h2> :
+                                        para.startsWith('###') ?
+                                            <h3 className="text-xl font-bold text-white mb-4 mt-8">{para.replace('### ', '')}</h3> :
+                                            <p className="text-slate-300 mb-6 leading-relaxed">
+                                                {para.split('**').map((part, j) => j % 2 === 1 ? <strong key={j} className="text-white">{part}</strong> : part)}
+                                            </p>
+                                    }
+                                    {showFirstImage && (
+                                        <div className="my-8">
+                                            <SEOImage
+                                                slug={images[0].slug}
+                                                src={images[0].src}
+                                                alt={images[0].alt[currentLang]}
+                                                caption={images[0].caption[currentLang]}
+                                                width={1200}
+                                                height={675}
+                                            />
+                                        </div>
+                                    )}
+                                    {showSecondImage && (
+                                        <div className="my-8">
+                                            <SEOImage
+                                                slug={images[1].slug}
+                                                src={images[1].src}
+                                                alt={images[1].alt[currentLang]}
+                                                caption={images[1].caption[currentLang]}
+                                                width={1200}
+                                                height={675}
+                                            />
+                                        </div>
+                                    )}
+                                </React.Fragment>
+                            );
+                        })}
                     </div>
                 ) : (
                     <p className="lead text-xl text-slate-300 mb-8">

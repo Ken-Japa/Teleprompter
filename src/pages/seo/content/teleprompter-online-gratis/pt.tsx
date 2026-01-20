@@ -58,6 +58,15 @@ export const TeleprompterOnlineGratisPT = () => (
             Como não exigimos login, <strong>nunca enviamos seu roteiro para nossos servidores</strong>. Todo o processamento acontece dentro do seu navegador. Seus dados, suas regras.
         </p>
 
+        <SEOImage
+            slug="teleprompter-online-gratis"
+            src="free-online-teleprompter-devices.webp"
+            alt="Diferentes dispositivos usando o teleprompter online PromptNinja"
+            caption="O PromptNinja se adapta perfeitamente a qualquer tamanho de tela, garantindo legibilidade máxima."
+            width={1200}
+            height={675}
+        />
+
         <div className="bg-slate-800 p-6 rounded-lg my-6">
             <h3 className="text-xl font-bold text-white mb-4">PromptNinja: Redefinindo o Conceito de Grátis</h3>
             <p className="text-slate-300 mb-4">

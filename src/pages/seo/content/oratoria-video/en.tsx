@@ -134,6 +134,15 @@ export const OratoriaVideoEN = () => (
             </li>
         </ul>
 
+        <SEOImage
+            slug="dicas-oratoria-video"
+            src="public-speaking-executive-video-conference.webp"
+            alt="Executive using a teleprompter in a video conference"
+            caption="Using a teleprompter in corporate video conferences ensures authority, clarity, and constant eye contact."
+            width={1200}
+            height={675}
+        />
+
         <div className="text-center mt-12">
             <a
                 href="https://promptninja.solutionkit.com.br"

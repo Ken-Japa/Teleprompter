@@ -115,9 +115,18 @@ export const OratoriaVideoES = () => (
             </li>
             <li className="bg-slate-800 p-4 rounded-lg border border-slate-700">
                 <h3 className="font-bold text-white">Hablas y el Texto te Sigue (Función Pro)</h3>
-                <p className="text-sm text-slate-400">Con nuestro reconocimiento de voz, el guion avanza mientras hablas. Es la experiencia de teleprompter más fluida e profesional que existe.</p>
+                <p className="text-sm text-slate-400">Con nuestro reconhecimento de voz, el guion avanza mientras hablas. Es la experiencia de teleprompter más fluida e profesional que existe.</p>
             </li>
         </ul>
+
+        <SEOImage
+            slug="dicas-oratoria-video"
+            src="public-speaking-executive-video-conference.webp"
+            alt="Ejecutivo usando un teleprompter en una videoconferencia"
+            caption="El uso de un teleprompter en videoconferencias corporativas garantiza autoridad, claridad y contacto visual constante."
+            width={1200}
+            height={675}
+        />
 
         <div className="text-center mt-12">
             <a

@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterApresentacoesES = () => (
     <>
@@ -14,6 +15,15 @@ export const TeleprompterApresentacoesES = () => (
         <p className="text-slate-300 mb-8 leading-relaxed">
             En esta guía definitiva para oradores competentes, mostramos cómo PromptNinja se convierte en tu socio estratégico para presentaciones de alto impacto. Aprende a leer tu guion con naturalidad, manteniendo contacto visual con la audiencia y evitando el miedo a quedarse en blanco en momentos críticos. Descubre técnicas para integrar el teleprompter con cualquier software de diapositivas, asegurando que presentes con fluidez, autoridad y profesionalismo, ya sea en un escenario físico o en reuniones virtuales. Transforma tu oratoria y destácate con presentaciones memorables y sin titubeos.
         </p>
+
+        <SEOImage
+            slug="scripts-para-aulas"
+            src="scripts-for-teacher-lessons.webp"
+            alt="Profesor usando teleprompter para clases online"
+            caption="PromptNinja ayuda a los educadores a mantener el ritmo y el contacto visual durante las clases grabadas o en vivo."
+            width={1200}
+            height={675}
+        />
 
         <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12 shadow-xl">
             <h3 className="text-2xl font-bold text-white mb-4">Presenta con Confianza Estilo TED</h3>
@@ -60,6 +70,15 @@ export const TeleprompterApresentacoesES = () => (
                 💡 Teleprompter = presentador confiado SIN meses de memorización.
             </p>
         </div>
+
+        <SEOImage
+            slug="scripts-para-aulas"
+            src="scripts-for-presentation-classes.webp"
+            alt="Presentación de diapositivas con teleprompter integrado"
+            caption="Sincroniza tus diapositivas con tu guion y nunca más pierdas el hilo en tus presentaciones."
+            width={1200}
+            height={675}
+        />
 
         <h3 className="text-3xl font-bold text-white mt-12 mb-6">3 Setups de Presentación Profesional</h3>
         <div className="space-y-6 mb-12">
