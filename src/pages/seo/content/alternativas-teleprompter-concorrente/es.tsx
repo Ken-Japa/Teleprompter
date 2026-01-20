@@ -15,6 +15,16 @@ export const AlternativasTeleprompterConcorrenteES = () => (
             Haces clic en "Descargar" en una app de teleprompter, la abres y lo primero que ves es un muro de pago de $14.99/mes. Al final, terminas pagando cientos de dólares al año por algo que debería ser simple. PromptNinja rompe ese esquema.
         </p>
 
+        <SEOImage
+            slug="alternativas-teleprompter-concorrente"
+            src="alternative-teleprompter-professional.webp"
+            alt="Teleprompter profesional siendo utilizado en un estudio."
+            caption="PromptNinja es la alternativa definitiva para quienes buscan funciones profesionales sin el costo de hardware costoso."
+            width={1200}
+            height={675}
+        />
+
+
         <div className="bg-purple-600/10 border border-purple-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
             <h3 className="text-2xl font-bold text-white mb-4">Cambia al Teleprompter del Futuro</h3>
             <p className="text-slate-300 mb-6 font-medium">
