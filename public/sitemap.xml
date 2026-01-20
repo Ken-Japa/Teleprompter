@@ -4,17 +4,17 @@
     <loc>https://promptninja.solutionkit.com.br/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/?lang=pt" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/?lang=es" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/" />
   </url>
   <url>
     <loc>https://music.solutionkit.com.br/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://music.solutionkit.com.br/?lang=pt" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://music.solutionkit.com.br/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://music.solutionkit.com.br/?lang=es" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://music.solutionkit.com.br/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://music.solutionkit.com.br/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://music.solutionkit.com.br/es/" />
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-online-gratis</loc>
@@ -1266,24 +1266,24 @@
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/historia-do-teleprompter</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/historia-do-teleprompter" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/history-of-teleprompter" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/historia-del-teleprompter" />
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/history-of-teleprompter</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/historia-do-teleprompter" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/history-of-teleprompter" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/historia-del-teleprompter" />
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/historia-del-teleprompter</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/historia-do-teleprompter" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/history-of-teleprompter" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/historia-del-teleprompter" />
@@ -1338,7 +1338,7 @@
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/como-escolher-teleprompter</loc>
-    <changefreq>yearly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/como-escolher-teleprompter" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/how-to-choose-teleprompter" />
@@ -1346,7 +1346,7 @@
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/how-to-choose-teleprompter</loc>
-    <changefreq>yearly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/como-escolher-teleprompter" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/how-to-choose-teleprompter" />
@@ -1354,7 +1354,7 @@
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/como-elegir-teleprompter</loc>
-    <changefreq>yearly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/como-escolher-teleprompter" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/how-to-choose-teleprompter" />
@@ -1410,8 +1410,8 @@
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/velocidade-leitura-teleprompter</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/velocidade-leitura-teleprompter" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-reading-speed" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/velocidad-lectura-teleprompter" />
@@ -1422,8 +1422,8 @@
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-reading-speed</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/velocidade-leitura-teleprompter" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-reading-speed" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/velocidad-lectura-teleprompter" />
@@ -1434,8 +1434,8 @@
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/velocidad-lectura-teleprompter</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/velocidade-leitura-teleprompter" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-reading-speed" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/velocidad-lectura-teleprompter" />
@@ -1446,7 +1446,7 @@
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-acessibilidade</loc>
-    <changefreq>yearly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-acessibilidade" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-accessibility" />
@@ -1454,7 +1454,7 @@
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-accessibility</loc>
-    <changefreq>yearly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-acessibilidade" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-accessibility" />
@@ -1462,7 +1462,7 @@
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/teleprompter-accesibilidad</loc>
-    <changefreq>yearly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-acessibilidade" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-accessibility" />
@@ -1470,24 +1470,24 @@
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/futuro-teleprompters-ai</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/futuro-teleprompters-ai" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/future-teleprompters-ai" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/futuro-teleprompters-ai" />
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/future-teleprompters-ai</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/futuro-teleprompters-ai" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/future-teleprompters-ai" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/futuro-teleprompters-ai" />
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/futuro-teleprompters-ai</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/futuro-teleprompters-ai" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/future-teleprompters-ai" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/futuro-teleprompters-ai" />

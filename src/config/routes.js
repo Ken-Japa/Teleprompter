@@ -648,8 +648,8 @@ export const ROUTES_CONFIG = {
         },
     },
     SEO_HISTORY: {
-        priority: "0.7",
-        changefreq: "monthly",
+        priority: "0.8",
+        changefreq: "weekly",
         paths: {
             pt: "/historia-do-teleprompter",
             en: "/en/history-of-teleprompter",
@@ -676,7 +676,7 @@ export const ROUTES_CONFIG = {
     },
     SEO_BUYING_GUIDE: {
         priority: "0.8",
-        changefreq: "yearly",
+        changefreq: "weekly",
         paths: {
             pt: "/como-escolher-teleprompter",
             en: "/en/how-to-choose-teleprompter",
@@ -702,8 +702,8 @@ export const ROUTES_CONFIG = {
         },
     },
     SEO_READING_SPEED: {
-        priority: "0.7",
-        changefreq: "yearly",
+        priority: "0.8",
+        changefreq: "weekly",
         paths: {
             pt: "/velocidade-leitura-teleprompter",
             en: "/en/teleprompter-reading-speed",
@@ -723,7 +723,7 @@ export const ROUTES_CONFIG = {
     },
     SEO_ACCESSIBILITY: {
         priority: "0.8",
-        changefreq: "yearly",
+        changefreq: "weekly",
         paths: {
             pt: "/teleprompter-acessibilidade",
             en: "/en/teleprompter-accessibility",
@@ -731,8 +731,8 @@ export const ROUTES_CONFIG = {
         },
     },
     SEO_FUTURE_AI: {
-        priority: "0.7",
-        changefreq: "yearly",
+        priority: "0.8",
+        changefreq: "weekly",
         paths: {
             pt: "/futuro-teleprompters-ai",
             en: "/en/future-teleprompters-ai",

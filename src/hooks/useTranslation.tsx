@@ -10,7 +10,14 @@ interface TranslationContextType {
 const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
 
 export const getInitialLanguage = (): Language => {
-    // 1. Tenta obter do parâmetro 'lang' da URL
+    // 1. Tenta obter do prefixo do caminho (/en/, /es/)
+    if (typeof window !== "undefined") {
+        const path = window.location.pathname;
+        if (path === "/en" || path.startsWith("/en/")) return "en";
+        if (path === "/es" || path.startsWith("/es/")) return "es";
+    }
+
+    // 2. Tenta obter do parâmetro 'lang' da URL
     if (typeof window !== "undefined") {
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get("lang")?.trim().replace(/\/$/, ""); // Remove trailing slash and whitespace
@@ -19,7 +26,7 @@ export const getInitialLanguage = (): Language => {
         }
     }
 
-    // 2. Tenta obter do localStorage
+    // 3. Tenta obter do localStorage
     if (typeof window !== "undefined") {
         const storedLang = localStorage.getItem("app_language");
         if (storedLang === "pt" || storedLang === "en" || storedLang === "es") {

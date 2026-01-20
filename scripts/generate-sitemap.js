@@ -26,7 +26,8 @@ const generateSitemap = () => {
     <priority>1.0</priority>
 `;
     domainConfig.langs.forEach(lang => {
-      xml += `    <xhtml:link rel="alternate" hreflang="${lang}" href="${domainConfig.url}/?lang=${lang}" />\n`;
+      const langPath = lang === 'pt' ? '' : `${lang}/`;
+      xml += `    <xhtml:link rel="alternate" hreflang="${lang}" href="${domainConfig.url}/${langPath}" />\n`;
     });
     xml += `  </url>\n`;
   });
