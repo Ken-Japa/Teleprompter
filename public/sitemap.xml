@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://promptninja.solutionkit.com.br/</loc>
     <changefreq>weekly</changefreq>
@@ -23,6 +23,14 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-online-gratis" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/free-online-teleprompter" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-online-gratis" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-online-gratis/teleprompter-showcase-multi-device.webp</image:loc>
+      <image:title>Teleprompter online grátis em múltiplos dispositivos</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-online-gratis/free-online-teleprompter-monitors.webp</image:loc>
+      <image:title>Interface do teleprompter para monitores profissionais</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/free-online-teleprompter</loc>
@@ -31,6 +39,14 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-online-gratis" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/free-online-teleprompter" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-online-gratis" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-online-gratis/teleprompter-showcase-multi-device.webp</image:loc>
+      <image:title>Free online teleprompter on multiple devices</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-online-gratis/free-online-teleprompter-monitors.webp</image:loc>
+      <image:title>Teleprompter interface for professional monitors</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/teleprompter-online-gratis</loc>
@@ -39,6 +55,14 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-online-gratis" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/free-online-teleprompter" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-online-gratis" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-online-gratis/teleprompter-showcase-multi-device.webp</image:loc>
+      <image:title>Teleprompter online gratis en múltiples dispositivos</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-online-gratis/free-online-teleprompter-monitors.webp</image:loc>
+      <image:title>Interfaz de teleprompter para monitores profesionales</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/como-usar-teleprompter-celular</loc>
@@ -47,6 +71,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/como-usar-teleprompter-celular" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/how-to-use-teleprompter-mobile" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/como-usar-teleprompter-movil" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/como-usar-teleprompter-celular/how-to-use-teleprompter-cell-phone-recording.webp</image:loc>
+      <image:title>Como usar teleprompter no celular para gravações</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/how-to-use-teleprompter-mobile</loc>
@@ -55,6 +83,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/como-usar-teleprompter-celular" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/how-to-use-teleprompter-mobile" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/como-usar-teleprompter-movil" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/como-usar-teleprompter-celular/how-to-use-teleprompter-cell-phone-recording.webp</image:loc>
+      <image:title>How to use teleprompter on mobile for recordings</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/como-usar-teleprompter-movil</loc>
@@ -63,6 +95,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/como-usar-teleprompter-celular" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/how-to-use-teleprompter-mobile" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/como-usar-teleprompter-movil" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/como-usar-teleprompter-celular/how-to-use-teleprompter-cell-phone-recording.webp</image:loc>
+      <image:title>Cómo usar teleprompter en el celular para grabaciones</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/melhor-teleprompter-app</loc>
@@ -71,6 +107,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/melhor-teleprompter-app" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/best-teleprompter-app" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/mejor-app-teleprompter" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/melhor-teleprompter-app/best-app-teleprompter-interface-ui.webp</image:loc>
+      <image:title>Interface premium do melhor app de teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/best-teleprompter-app</loc>
@@ -79,6 +119,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/melhor-teleprompter-app" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/best-teleprompter-app" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/mejor-app-teleprompter" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/melhor-teleprompter-app/best-app-teleprompter-interface-ui.webp</image:loc>
+      <image:title>Premium interface of the best teleprompter app</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/mejor-app-teleprompter</loc>
@@ -87,6 +131,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/melhor-teleprompter-app" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/best-teleprompter-app" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/mejor-app-teleprompter" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/melhor-teleprompter-app/best-app-teleprompter-interface-ui.webp</image:loc>
+      <image:title>Interfaz premium de la mejor app de teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/alternativas-teleprompter-concorrente</loc>
@@ -95,6 +143,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/alternativas-teleprompter-concorrente" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-alternatives" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/alternativas-teleprompter" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/alternativas-teleprompter-concorrente/alternative-teleprompter-professional.webp</image:loc>
+      <image:title>Alternativa profissional ao teleprompter convencional</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-alternatives</loc>
@@ -103,6 +155,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/alternativas-teleprompter-concorrente" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-alternatives" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/alternativas-teleprompter" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/alternativas-teleprompter-concorrente/alternative-teleprompter-professional.webp</image:loc>
+      <image:title>Professional alternative to conventional teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/alternativas-teleprompter</loc>
@@ -111,6 +167,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/alternativas-teleprompter-concorrente" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-alternatives" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/alternativas-teleprompter" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/alternativas-teleprompter-concorrente/alternative-teleprompter-professional.webp</image:loc>
+      <image:title>Alternativa profesional al teleprompter convencional</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-para-youtubers-e-criadores</loc>
@@ -119,6 +179,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-para-youtubers-e-criadores" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-for-youtubers-creators" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-youtubers-creadores" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-para-youtubers-e-criadores/teleprompter-for-youtubers-setup.webp</image:loc>
+      <image:title>Setup de teleprompter profissional para Youtubers</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-for-youtubers-creators</loc>
@@ -127,6 +191,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-para-youtubers-e-criadores" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-for-youtubers-creators" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-youtubers-creadores" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-para-youtubers-e-criadores/teleprompter-for-youtubers-setup.webp</image:loc>
+      <image:title>Professional teleprompter setup for Youtubers</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/teleprompter-para-youtubers-creadores</loc>
@@ -135,6 +203,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-para-youtubers-e-criadores" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-for-youtubers-creators" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-youtubers-creadores" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-para-youtubers-e-criadores/teleprompter-for-youtubers-setup.webp</image:loc>
+      <image:title>Configuración de teleprompter profesional para Youtubers</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-travando-solucao</loc>
@@ -143,6 +215,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-travando-solucao" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-freezing-solution" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/solucion-teleprompter-congelado" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-travando-solucao/teleprompter-solution-infographic.webp</image:loc>
+      <image:title>Infográfico de solução para teleprompter travando</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-freezing-solution</loc>
@@ -151,6 +227,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-travando-solucao" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-freezing-solution" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/solucion-teleprompter-congelado" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-travando-solucao/teleprompter-solution-infographic.webp</image:loc>
+      <image:title>Solution infographic for teleprompter freezing</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/solucion-teleprompter-congelado</loc>
@@ -159,6 +239,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-travando-solucao" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-freezing-solution" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/solucion-teleprompter-congelado" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-travando-solucao/teleprompter-solution-infographic.webp</image:loc>
+      <image:title>Infografía de solución para teleprompter congelado</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-caseiro-diy</loc>
@@ -167,6 +251,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-caseiro-diy" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/diy-homemade-teleprompter" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-casero-diy" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-caseiro-diy/homemade-teleprompter-diy-setup.webp</image:loc>
+      <image:title>Setup de teleprompter caseiro (DIY)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/diy-homemade-teleprompter</loc>
@@ -175,6 +263,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-caseiro-diy" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/diy-homemade-teleprompter" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-casero-diy" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-caseiro-diy/homemade-teleprompter-diy-setup.webp</image:loc>
+      <image:title>DIY homemade teleprompter setup</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/teleprompter-casero-diy</loc>
@@ -183,6 +275,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-caseiro-diy" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/diy-homemade-teleprompter" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-casero-diy" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-caseiro-diy/homemade-teleprompter-diy-setup.webp</image:loc>
+      <image:title>Configuración de teleprompter casero (DIY)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/dicas-oratoria-video</loc>
@@ -191,6 +287,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/dicas-oratoria-video" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/public-speaking-tips-video" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/consejos-oratoria-video" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/dicas-oratoria-video/public-speaking-video-confident-youtuber.webp</image:loc>
+      <image:title>Dicas de oratória para vídeos com confiança</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/public-speaking-tips-video</loc>
@@ -199,6 +299,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/dicas-oratoria-video" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/public-speaking-tips-video" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/consejos-oratoria-video" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/dicas-oratoria-video/public-speaking-video-confident-youtuber.webp</image:loc>
+      <image:title>Public speaking tips for confident videos</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/consejos-oratoria-video</loc>
@@ -207,6 +311,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/dicas-oratoria-video" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/public-speaking-tips-video" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/consejos-oratoria-video" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/dicas-oratoria-video/public-speaking-video-confident-youtuber.webp</image:loc>
+      <image:title>Consejos de oratoria para videos con confianza</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/como-decorar-texto-rapido</loc>
@@ -215,6 +323,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/como-decorar-texto-rapido" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/how-to-memorize-scripts-fast" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/como-memorizar-guiones-rapido" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/como-decorar-texto-rapido/how-to-memorize-text-quick-tablet.webp</image:loc>
+      <image:title>Como decorar textos rápido usando tablet</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/how-to-memorize-scripts-fast</loc>
@@ -223,6 +335,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/como-decorar-texto-rapido" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/how-to-memorize-scripts-fast" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/como-memorizar-guiones-rapido" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/como-decorar-texto-rapido/how-to-memorize-text-quick-tablet.webp</image:loc>
+      <image:title>How to memorize scripts fast using a tablet</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/como-memorizar-guiones-rapido</loc>
@@ -231,6 +347,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/como-decorar-texto-rapido" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/how-to-memorize-scripts-fast" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/como-memorizar-guiones-rapido" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/como-decorar-texto-rapido/how-to-memorize-text-quick-tablet.webp</image:loc>
+      <image:title>Cómo memorizar guiones rápido usando una tablet</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/tecnologia-webrtc-baixa-latencia</loc>
@@ -239,6 +359,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/tecnologia-webrtc-baixa-latencia" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/webrtc-low-latency-technology" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/tecnologia-webrtc-baja-latencia" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/tecnologia-webrtc-baixa-latencia/webrtc-technology-synchronization-devices.webp</image:loc>
+      <image:title>Tecnologia WebRTC para sincronização de baixa latência</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/webrtc-low-latency-technology</loc>
@@ -247,6 +371,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/tecnologia-webrtc-baixa-latencia" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/webrtc-low-latency-technology" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/tecnologia-webrtc-baja-latencia" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/tecnologia-webrtc-baixa-latencia/webrtc-technology-synchronization-devices.webp</image:loc>
+      <image:title>WebRTC technology for low latency synchronization</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/tecnologia-webrtc-baja-latencia</loc>
@@ -255,6 +383,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/tecnologia-webrtc-baixa-latencia" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/webrtc-low-latency-technology" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/tecnologia-webrtc-baja-latencia" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/tecnologia-webrtc-baixa-latencia/webrtc-technology-synchronization-devices.webp</image:loc>
+      <image:title>Tecnología WebRTC para sincronización de baja latencia</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-pc-windows</loc>
@@ -263,6 +395,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-pc-windows" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-pc-windows" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-pc-windows" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-pc-windows/teleprompter-pc-windows-setup.webp</image:loc>
+      <image:title>Teleprompter profissional para PC e Windows</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-pc-windows</loc>
@@ -271,6 +407,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-pc-windows" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-pc-windows" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-pc-windows" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-pc-windows/teleprompter-pc-windows-setup.webp</image:loc>
+      <image:title>Professional teleprompter for PC and Windows</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/teleprompter-pc-windows</loc>
@@ -279,6 +419,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-pc-windows" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-pc-windows" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-pc-windows" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-pc-windows/teleprompter-pc-windows-setup.webp</image:loc>
+      <image:title>Teleprompter profesional para PC y Windows</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-zoom-meeting</loc>
@@ -287,6 +431,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-zoom-meeting" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-zoom-meeting" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-zoom-meeting" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-zoom-meeting/teleprompter-zoom-meeting-transparent.webp</image:loc>
+      <image:title>Teleprompter transparente para reuniões no Zoom</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-zoom-meeting</loc>
@@ -295,6 +443,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-zoom-meeting" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-zoom-meeting" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-zoom-meeting" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-zoom-meeting/teleprompter-zoom-meeting-transparent.webp</image:loc>
+      <image:title>Transparent teleprompter for Zoom meetings</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/teleprompter-zoom-meeting</loc>
@@ -303,6 +455,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-zoom-meeting" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-zoom-meeting" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-zoom-meeting" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-zoom-meeting/teleprompter-zoom-meeting-transparent.webp</image:loc>
+      <image:title>Teleprompter transparente para reuniones en Zoom</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-tiktok-shorts</loc>
@@ -311,6 +467,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-tiktok-shorts" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-tiktok-shorts" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-tiktok-shorts" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-tiktok-shorts/teleprompter-tiktok-reels-vertical.webp</image:loc>
+      <image:title>Teleprompter vertical para TikTok e Reels</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-tiktok-shorts</loc>
@@ -319,6 +479,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-tiktok-shorts" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-tiktok-shorts" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-tiktok-shorts" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-tiktok-shorts/teleprompter-tiktok-reels-vertical.webp</image:loc>
+      <image:title>Vertical teleprompter for TikTok and Reels</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/teleprompter-tiktok-shorts</loc>
@@ -327,6 +491,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-tiktok-shorts" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-tiktok-shorts" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-tiktok-shorts" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-tiktok-shorts/teleprompter-tiktok-reels-vertical.webp</image:loc>
+      <image:title>Teleprompter vertical para TikTok y Reels</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-obs-studio</loc>
@@ -455,6 +623,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-apresentacoes" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-for-presentations" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-presentaciones" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-apresentacoes/teleprompter-presentations-corporate-speaker.webp</image:loc>
+      <image:title>Teleprompter para apresentações e palestras corporativas</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-for-presentations</loc>
@@ -463,6 +635,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-apresentacoes" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-for-presentations" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-presentaciones" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-apresentacoes/teleprompter-presentations-corporate-speaker.webp</image:loc>
+      <image:title>Teleprompter for presentations and corporate speaking</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/teleprompter-para-presentaciones</loc>
@@ -471,6 +647,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-apresentacoes" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-for-presentations" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-presentaciones" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-apresentacoes/teleprompter-presentations-corporate-speaker.webp</image:loc>
+      <image:title>Teleprompter para presentaciones y charlas corporativas</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/como-instalar-app-teleprompter-pwa</loc>
@@ -527,6 +707,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/scripts-teleprompter" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-scripts" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/guiones-teleprompter" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/scripts-teleprompter/teleprompter-scripts-writing-guide.webp</image:loc>
+      <image:title>Guia de escrita de scripts para teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-scripts</loc>
@@ -535,6 +719,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/scripts-teleprompter" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-scripts" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/guiones-teleprompter" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/scripts-teleprompter/teleprompter-scripts-writing-guide.webp</image:loc>
+      <image:title>Script writing guide for teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/guiones-teleprompter</loc>
@@ -543,6 +731,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/scripts-teleprompter" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-scripts" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/guiones-teleprompter" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/scripts-teleprompter/teleprompter-scripts-writing-guide.webp</image:loc>
+      <image:title>Guía de escritura de guiones para teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/scripts-para-youtube</loc>
@@ -599,6 +791,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/scripts-para-vendas" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/scripts-for-sales" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/guiones-para-ventas" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/scripts-para-vendas/scripts-for-sales-pitch.webp</image:loc>
+      <image:title>Scripts de vendas persuasivos para teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/scripts-for-sales</loc>
@@ -607,6 +803,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/scripts-para-vendas" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/scripts-for-sales" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/guiones-para-ventas" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/scripts-para-vendas/scripts-for-sales-pitch.webp</image:loc>
+      <image:title>Persuasive sales scripts for teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/guiones-para-ventas</loc>
@@ -615,6 +815,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/scripts-para-vendas" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/scripts-for-sales" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/guiones-para-ventas" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/scripts-para-vendas/scripts-for-sales-pitch.webp</image:loc>
+      <image:title>Guiones de ventas persuasivos para teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/scripts-para-aulas</loc>
@@ -623,6 +827,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/scripts-para-aulas" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/scripts-for-classes" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/guiones-para-clases" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/scripts-para-aulas/scripts-for-teacher-lessons.webp</image:loc>
+      <image:title>Scripts para aulas e educação online</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/scripts-for-classes</loc>
@@ -631,6 +839,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/scripts-para-aulas" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/scripts-for-classes" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/guiones-para-clases" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/scripts-para-aulas/scripts-for-teacher-lessons.webp</image:loc>
+      <image:title>Scripts for online lessons and education</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/guiones-para-clases</loc>
@@ -639,6 +851,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/scripts-para-aulas" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/scripts-for-classes" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/guiones-para-clases" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/scripts-para-aulas/scripts-for-teacher-lessons.webp</image:loc>
+      <image:title>Guiones para clases y educación online</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/scripts-institucionais</loc>
@@ -647,6 +863,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/scripts-institucionais" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/institutional-scripts" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/guiones-institucionales" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/scripts-institucionais/corporate-institutional-scripts.webp</image:loc>
+      <image:title>Scripts institucionais para vídeos corporativos</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/institutional-scripts</loc>
@@ -655,6 +875,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/scripts-institucionais" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/institutional-scripts" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/guiones-institucionales" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/scripts-institucionais/corporate-institutional-scripts.webp</image:loc>
+      <image:title>Institutional scripts for corporate videos</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/guiones-institucionales</loc>
@@ -663,6 +887,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/scripts-institucionais" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/institutional-scripts" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/guiones-institucionales" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/scripts-institucionais/corporate-institutional-scripts.webp</image:loc>
+      <image:title>Guiones institucionales para videos corporativos</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-o-que-e</loc>
@@ -671,6 +899,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-o-que-e" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-what-is-it" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-que-es" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-o-que-e/what-is-a-teleprompter-explanation.webp</image:loc>
+      <image:title>O que é um teleprompter e como funciona</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-what-is-it</loc>
@@ -679,6 +911,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-o-que-e" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-what-is-it" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-que-es" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-o-que-e/what-is-a-teleprompter-explanation.webp</image:loc>
+      <image:title>What is a teleprompter and how it works</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/teleprompter-que-es</loc>
@@ -687,6 +923,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-o-que-e" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-what-is-it" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-que-es" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-o-que-e/what-is-a-teleprompter-explanation.webp</image:loc>
+      <image:title>¿Qué es un teleprompter y cómo funciona?</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-modo-musico</loc>
@@ -695,6 +935,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-modo-musico" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-musician-mode" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-modo-musico" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-modo-musico/teleprompter-music-mode-lyrics-chords.webp</image:loc>
+      <image:title>Teleprompter em modo músico com cifras e letras</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-musician-mode</loc>
@@ -703,6 +947,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-modo-musico" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-musician-mode" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-modo-musico" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-modo-musico/teleprompter-music-mode-lyrics-chords.webp</image:loc>
+      <image:title>Teleprompter in musician mode with chords and lyrics</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/teleprompter-modo-musico</loc>
@@ -711,6 +959,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-modo-musico" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-musician-mode" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-modo-musico" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-modo-musico/teleprompter-music-mode-lyrics-chords.webp</image:loc>
+      <image:title>Teleprompter en modo músico con acordes y letras</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-pacing-timer-online</loc>
@@ -743,6 +995,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-com-atalhos-de-teclado" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-keyboard-shortcuts" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-atajos-teclado" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-com-atalhos-de-teclado/teleprompter-shortcuts-keyboard-speed.webp</image:loc>
+      <image:title>Atalhos de teclado para controle de teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-keyboard-shortcuts</loc>
@@ -751,6 +1007,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-com-atalhos-de-teclado" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-keyboard-shortcuts" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-atajos-teclado" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-com-atalhos-de-teclado/teleprompter-shortcuts-keyboard-speed.webp</image:loc>
+      <image:title>Keyboard shortcuts for teleprompter control</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/teleprompter-atajos-teclado</loc>
@@ -759,6 +1019,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-com-atalhos-de-teclado" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-keyboard-shortcuts" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-atajos-teclado" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-com-atalhos-de-teclado/teleprompter-shortcuts-keyboard-speed.webp</image:loc>
+      <image:title>Atajos de teclado para el control del teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-gamers-streaming</loc>
@@ -767,6 +1031,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-gamers-streaming" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-gamers-streaming" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-gamers-streaming" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-gamers-streaming/teleprompter-gamers-streaming-interface.webp</image:loc>
+      <image:title>Interface de teleprompter para gamers e streamers</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-gamers-streaming</loc>
@@ -775,6 +1043,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-gamers-streaming" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-gamers-streaming" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-gamers-streaming" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-gamers-streaming/teleprompter-gamers-streaming-interface.webp</image:loc>
+      <image:title>Teleprompter interface for gamers and streamers</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/teleprompter-gamers-streaming</loc>
@@ -783,6 +1055,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-gamers-streaming" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-gamers-streaming" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-gamers-streaming" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-gamers-streaming/teleprompter-gamers-streaming-interface.webp</image:loc>
+      <image:title>Interfaz de teleprompter para gamers y streamers</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-sincronizar-powerpoint-slides</loc>
@@ -791,6 +1067,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-sincronizar-powerpoint-slides" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-sync-powerpoint-slides" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-sincronizar-powerpoint-slides" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-sincronizar-powerpoint-slides/teleprompter-synchronization-powerpoint-slides.webp</image:loc>
+      <image:title>Sincronização de teleprompter com PowerPoint e slides</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-sync-powerpoint-slides</loc>
@@ -799,6 +1079,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-sincronizar-powerpoint-slides" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-sync-powerpoint-slides" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-sincronizar-powerpoint-slides" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-sincronizar-powerpoint-slides/teleprompter-synchronization-powerpoint-slides.webp</image:loc>
+      <image:title>Teleprompter synchronization with PowerPoint and slides</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/teleprompter-sincronizar-powerpoint-slides</loc>
@@ -807,6 +1091,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-sincronizar-powerpoint-slides" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-sync-powerpoint-slides" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-sincronizar-powerpoint-slides" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-sincronizar-powerpoint-slides/teleprompter-synchronization-powerpoint-slides.webp</image:loc>
+      <image:title>Sincronización del teleprompter con PowerPoint y diapositivas</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-para-tablet-ipad-android</loc>
@@ -815,6 +1103,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-para-tablet-ipad-android" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-app-for-tablet-ipad" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-tablet-ipad-android" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-para-tablet-ipad-android/teleprompter-tablet-ipad-android-use.webp</image:loc>
+      <image:title>Uso de app de teleprompter em tablets e iPads</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-app-for-tablet-ipad</loc>
@@ -823,6 +1115,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-para-tablet-ipad-android" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-app-for-tablet-ipad" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-tablet-ipad-android" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-para-tablet-ipad-android/teleprompter-tablet-ipad-android-use.webp</image:loc>
+      <image:title>Using teleprompter app on tablets and iPads</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/teleprompter-para-tablet-ipad-android</loc>
@@ -831,6 +1127,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-para-tablet-ipad-android" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-app-for-tablet-ipad" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-tablet-ipad-android" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-para-tablet-ipad-android/teleprompter-tablet-ipad-android-use.webp</image:loc>
+      <image:title>Uso de la app de teleprompter en tablets e iPads</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-modo-bilingue</loc>
@@ -839,6 +1139,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-modo-bilingue" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-bilingual-mode" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-modo-bilingue" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-modo-bilingue/Teleprompter.webp</image:loc>
+      <image:title>Suporte bilingue avançado no teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-bilingual-mode</loc>
@@ -847,6 +1151,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-modo-bilingue" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-bilingual-mode" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-modo-bilingue" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-modo-bilingue/Teleprompter.webp</image:loc>
+      <image:title>Advanced bilingual support in the teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/teleprompter-modo-bilingue</loc>
@@ -855,6 +1163,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-modo-bilingue" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-bilingual-mode" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-modo-bilingue" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-modo-bilingue/Teleprompter.webp</image:loc>
+      <image:title>Soporte bilingüe avanzado en el teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-para-fitness-treino</loc>
@@ -863,6 +1175,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-para-fitness-treino" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-for-fitness-workout" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-fitness-entrenamiento" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-para-fitness-treino/teleprompter-fitness-treino-coach.webp</image:loc>
+      <image:title>Teleprompter para instrutores de fitness e treinos</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-for-fitness-workout</loc>
@@ -871,6 +1187,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-para-fitness-treino" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-for-fitness-workout" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-fitness-entrenamiento" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-para-fitness-treino/teleprompter-fitness-treino-coach.webp</image:loc>
+      <image:title>Teleprompter for fitness instructors and workouts</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/teleprompter-para-fitness-entrenamiento</loc>
@@ -879,6 +1199,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/teleprompter-para-fitness-treino" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-for-fitness-workout" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/teleprompter-para-fitness-entrenamiento" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/teleprompter-para-fitness-treino/teleprompter-fitness-treino-coach.webp</image:loc>
+      <image:title>Teleprompter para instructores de fitness y entrenamientos</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/guia-completo-teleprompter</loc>
@@ -887,6 +1211,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/guia-completo-teleprompter" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/ultimate-teleprompter-guide" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/guia-definitiva-teleprompter" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/guia-completo-teleprompter/complete-guide-teleprompter-everything-about.webp</image:loc>
+      <image:title>Guia completo e definitivo sobre teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/ultimate-teleprompter-guide</loc>
@@ -895,6 +1223,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/guia-completo-teleprompter" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/ultimate-teleprompter-guide" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/guia-definitiva-teleprompter" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/guia-completo-teleprompter/complete-guide-teleprompter-everything-about.webp</image:loc>
+      <image:title>The ultimate complete guide to teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/guia-definitiva-teleprompter</loc>
@@ -903,6 +1235,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/guia-completo-teleprompter" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/ultimate-teleprompter-guide" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/guia-definitiva-teleprompter" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/guia-completo-teleprompter/complete-guide-teleprompter-everything-about.webp</image:loc>
+      <image:title>La guía completa y definitiva sobre teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-vs-telelestrador</loc>
@@ -1079,6 +1415,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/velocidade-leitura-teleprompter" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-reading-speed" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/velocidad-lectura-teleprompter" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/velocidade-leitura-teleprompter/reading-speed-teleprompter-adjustment.webp</image:loc>
+      <image:title>Controle e ajuste de velocidade de leitura no teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/en/teleprompter-reading-speed</loc>
@@ -1087,6 +1427,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/velocidade-leitura-teleprompter" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-reading-speed" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/velocidad-lectura-teleprompter" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/velocidade-leitura-teleprompter/reading-speed-teleprompter-adjustment.webp</image:loc>
+      <image:title>Reading speed control and adjustment in the teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/es/velocidad-lectura-teleprompter</loc>
@@ -1095,6 +1439,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://promptninja.solutionkit.com.br/velocidade-leitura-teleprompter" />
     <xhtml:link rel="alternate" hreflang="en" href="https://promptninja.solutionkit.com.br/en/teleprompter-reading-speed" />
     <xhtml:link rel="alternate" hreflang="es" href="https://promptninja.solutionkit.com.br/es/velocidad-lectura-teleprompter" />
+    <image:image>
+      <image:loc>https://promptninja.solutionkit.com.br/seo/velocidade-leitura-teleprompter/reading-speed-teleprompter-adjustment.webp</image:loc>
+      <image:title>Control y ajuste de velocidad de lectura en el teleprompter</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://promptninja.solutionkit.com.br/teleprompter-acessibilidade</loc>

@@ -10,7 +10,7 @@ const DOMAIN = "https://promptninja.solutionkit.com.br";
 
 const generateSitemap = () => {
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 `;
 
   // Home routes for each domain
@@ -49,6 +49,17 @@ const generateSitemap = () => {
       languages.forEach((altLang) => {
         xml += `    <xhtml:link rel="alternate" hreflang="${altLang}" href="${DOMAIN}${paths[altLang]}" />\n`;
       });
+
+      // Add images
+      if (routeConfig.images && routeConfig.images.length > 0) {
+        routeConfig.images.forEach((image) => {
+          const imageTitle = image.titles[lang] || image.titles["pt"];
+          xml += `    <image:image>
+      <image:loc>${DOMAIN}/seo/${image.slug}/${image.src}</image:loc>
+      <image:title>${imageTitle}</image:title>
+    </image:image>\n`;
+        });
+      }
 
       xml += `  </url>\n`;
     });
