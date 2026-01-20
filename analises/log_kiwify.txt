@@ -1,0 +1,35 @@
+2026-01-19 23:59:50.236 [info] Kiwify signature successfully verified.
+2026-01-19 23:59:50.236 [info] Kiwify Webhook received: {
+  "order_id": "test-1768867188456",
+  "order_status": "paid",
+  "Customer": {
+    "full_name": "Test User",
+    "email": "kenjapa@gmail.com"
+  },
+  "Product": {
+    "product_name": "PromptNinja PRO Test"
+  }
+}
+2026-01-19 23:59:50.238 [error] (node:4) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-01-19 23:59:51.707 [info] Key saved: test-1768867188456 for kenjapa@gmail.com
+2026-01-19 23:59:51.936 [error] Error sending email via MailerSend: {
+  headers: {
+    'alt-svc': 'h3=":443"; ma=86400',
+    'cache-control': 'no-cache, private',
+    'cf-cache-status': 'DYNAMIC',
+    'cf-ray': '9c0a49cc88b1c98f-IAD',
+    connection: 'close',
+    'content-encoding': 'gzip',
+    'content-type': 'application/json',
+    date: 'Mon, 19 Jan 2026 23:59:51 GMT',
+    server: 'cloudflare',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains',
+    'transfer-encoding': 'chunked',
+    'x-apiquota-remaining': '97',
+    'x-apiquota-reset': '2026-01-20T00:00:00Z',
+    'x-ratelimit-limit': '10',
+    'x-ratelimit-remaining': '9'
+  },
+  body: { message: 'This action is unauthorized.' },
+  statusCode: 403
+}

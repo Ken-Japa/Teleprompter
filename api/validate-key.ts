@@ -53,10 +53,15 @@ const sendWelcomeEmail = async (toEmail: string) => {
     .setText(`Seu acesso Pro foi ativado! Acesse seu site para começar.`);
 
   try {
-    await mailerSend.email.send(emailParams);
-    console.log(`Welcome email sent successfully to: ${toEmail} via MailerSend.`);
-  } catch (error) {
-    console.error("Error sending welcome email via MailerSend:", error);
+    const response = await mailerSend.email.send(emailParams);
+    console.log(`Welcome email sent successfully to: ${toEmail} via MailerSend. Response:`, response);
+  } catch (error: any) {
+    console.error("Error sending welcome email via MailerSend:", {
+      message: error.message,
+      body: error.body,
+      statusCode: error.statusCode,
+      stack: error.stack
+    });
   }
 };
 

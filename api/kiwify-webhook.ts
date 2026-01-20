@@ -54,10 +54,15 @@ const sendAccessEmail = async (toEmail: string, accessKey: string) => {
     .setText(`Seu código de acesso é: ${accessKey}. Acesse seu site para resgatar.`);
 
   try {
-    await mailerSend.email.send(emailParams);
-    console.log(`Access email sent successfully to: ${toEmail} via MailerSend.`);
-  } catch (error) {
-    console.error("Error sending email via MailerSend:", error);
+    const response = await mailerSend.email.send(emailParams);
+    console.log(`Access email sent successfully to: ${toEmail} via MailerSend. Response:`, response);
+  } catch (error: any) {
+    console.error("Error sending email via MailerSend:", {
+      message: error.message,
+      body: error.body,
+      statusCode: error.statusCode,
+      stack: error.stack
+    });
   }
 };
 
