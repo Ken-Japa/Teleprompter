@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const ComoDecorarTextoES = () => (
     <>
@@ -14,6 +15,16 @@ export const ComoDecorarTextoES = () => (
         <p className="text-slate-300 mb-8 font-medium">
             Memorizar palabra por palabra genera una actuación rígida y antinatural. Libera tu mente para enfocarte en tu lenguaje corporal y tu tono de voz, dejando que nosotros nos encarguemos de sostener tu discurso con fluidez.
         </p>
+
+        <SEOImage
+            slug="como-decorar-texto-rapido"
+            src="how-to-memorize-text-quick-tablet.webp"
+            alt="Persona practicando oratoria con una tablet"
+            caption="Memorizar no siempre es la mejor estrategia; el teleprompter ofrece seguridad y naturalidad."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-purple-600/10 border border-purple-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
             <h3 className="text-2xl font-bold text-white mb-4">Graba con Total Confianza</h3>

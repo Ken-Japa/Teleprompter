@@ -1,5 +1,6 @@
 import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterOnlineGratisPT = () => (
     <>
@@ -18,6 +19,16 @@ export const TeleprompterOnlineGratisPT = () => (
             </a>
             <p className="text-xs text-slate-500">Não é necessário cartão de crédito ou cadastro.</p>
         </div>
+
+        <SEOImage
+            slug="teleprompter-online-gratis"
+            src="teleprompter-showcase-multi-device.webp"
+            alt="PromptNinja funcionando em múltiplos dispositivos sincronizados"
+            caption="Acesse seu teleprompter de qualquer lugar e sincronize seus dispositivos instantaneamente."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
@@ -108,6 +119,15 @@ export const TeleprompterOnlineGratisPT = () => (
                 </tbody>
             </table>
         </div>
+
+        <SEOImage
+            slug="teleprompter-online-gratis"
+            src="free-online-teleprompter-monitors.webp"
+            alt="Configuração profissional com monitores e teleprompter online"
+            caption="O PromptNinja se adapta a setups profissionais ou amadores com a mesma eficiência."
+            width={1200}
+            height={675}
+        />
 
         <h3 className="text-2xl font-bold text-white mt-12 mb-4">Casos Reais com Números: Antes vs Depois</h3>
         <div className="grid md:grid-cols-3 gap-6 mb-12">

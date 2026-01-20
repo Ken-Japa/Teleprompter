@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const ComoEscolherTeleprompterES = () => (
@@ -14,6 +15,16 @@ export const ComoEscolherTeleprompterES = () => (
         <p className="text-slate-300 mb-8 leading-relaxed">
             En esta guía exhaustiva, navegamos por el complejo mercado de teleprompters para ayudarte a ahorrar tiempo y dinero. Ya sea para un estudio profesional, un canal de YouTube o reuniones remotas, entender las diferencias fundamentales entre equipos físicos costosos y soluciones de software modernas es crucial. Analizamos en detalle los pros y contras de cada tipo de equipo, desde sistemas tradicionales de espejo hasta el poder de apps online como PromptNinja. Aprende a evaluar la calidad del vidrio, portabilidad, facilidad de control y cómo integrar herramientas gratuitas para obtener resultados de élite sin invertir fortunas iniciales. Elige sabiamente y concéntrate en lo que realmente importa: la claridad y autoridad de tu mensaje.
         </p>
+
+        <SEOImage
+            slug="como-escolher-teleprompter"
+            src="how-to-choose-teleprompter-buying-guide.webp"
+            alt="Diferentes tipos de teleprompters y equipos"
+            caption="Elegir el equipo adecuado depende de tu objetivo, distancia y presupuesto."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
             <h3 className="text-2xl font-bold text-white mb-4">Prueba Antes de Invertir</h3>

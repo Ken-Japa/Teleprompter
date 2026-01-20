@@ -2,6 +2,7 @@
 import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterZoomMeetingPT = () => (
     <>
@@ -28,6 +29,16 @@ export const TeleprompterZoomMeetingPT = () => (
                 🚀 Prepare-se para surpreender sua audiência no Zoom. Com PromptNinja, o sucesso da sua comunicação está garantido.
             </p>
         </div>
+
+        <SEOImage
+            slug="teleprompter-zoom-meeting"
+            src="teleprompter-zoom-meeting-transparent.webp"
+            alt="Modo teleprompter transparente para reuniões no Zoom"
+            caption="O modo transparente permite que você veja os participantes enquanto lê seu roteiro."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-blue-500">
             <h3 className="text-2xl font-bold text-white mb-2">O Segredo da Fluidez: Por Que o Controle Remoto P2P do PromptNinja Não Trava no Zoom</h3>

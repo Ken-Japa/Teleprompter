@@ -1,5 +1,6 @@
 import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterOnlineGratisEN = () => (
     <>
@@ -18,6 +19,16 @@ export const TeleprompterOnlineGratisEN = () => (
             </a>
             <p className="text-xs text-slate-500">No credit card or sign-up required.</p>
         </div>
+
+        <SEOImage
+            slug="teleprompter-online-gratis"
+            src="teleprompter-showcase-multi-device.webp"
+            alt="PromptNinja running on multiple synchronized devices"
+            caption="Access your teleprompter from anywhere and sync your devices instantly."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <p className="mb-6">
             I know EXACTLY how it feels. The frustration of knowing what you want to say but freezing on "how" to say it. The embarrassment of publishing a video full of "uhh", "so...", "umm" because you got tired of re-recording. And the worst: watching your competitor publish smooth, professional videos EVERY DAY — while you struggle to make 1 per week.
@@ -116,6 +127,15 @@ export const TeleprompterOnlineGratisEN = () => (
                 </tbody>
             </table>
         </div>
+
+        <SEOImage
+            slug="teleprompter-online-gratis"
+            src="free-online-teleprompter-monitors.webp"
+            alt="Professional setup with monitors and online teleprompter"
+            caption="PromptNinja adapts to professional or amateur setups with the same efficiency."
+            width={1200}
+            height={675}
+        />
 
         <h3 className="text-2xl font-bold text-white mt-12 mb-4">Real Cases with Numbers: Before vs After</h3>
         <div className="grid md:grid-cols-3 gap-6 mb-12">

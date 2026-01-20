@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const ComoDecorarTextoEN = () => (
     <>
@@ -14,6 +15,16 @@ export const ComoDecorarTextoEN = () => (
         <p className="text-slate-300 mb-8 leading-relaxed">
             In this guide, we'll show you the 5 most effective memory techniques used by actors and speakers. But we'll also reveal <strong>The Memorization Trap</strong>: why the world's top YouTubers and speakers have stopped memorizing and how <strong>PromptNinja</strong> has become the essential tool for them to shine naturally, without the stress of forgetting a single comma.
         </p>
+
+        <SEOImage
+            slug="como-decorar-texto-rapido"
+            src="how-to-memorize-text-quick-tablet.webp"
+            alt="Person practicing speaking with a tablet"
+            caption="Memorization isn't always the best strategy; a teleprompter offers security and naturalness."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-yellow-600/10 border border-yellow-500/20 rounded-2xl p-6 md:p-8 text-center mb-12 shadow-xl">
             <h3 className="text-2xl font-bold text-white mb-4">Focus on Your Performance, Not the Words</h3>

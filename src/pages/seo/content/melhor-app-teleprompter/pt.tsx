@@ -1,5 +1,6 @@
 import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const MelhorAppTeleprompterPT = () => (
     <>
@@ -14,6 +15,16 @@ export const MelhorAppTeleprompterPT = () => (
         <p className="text-slate-300 mb-8">
             Mas com tantas opções, como escolher o <strong>melhor aplicativo de teleprompter</strong> que realmente atenda às suas necessidades, seja para gravações profissionais, lives ou performances artísticas? Neste guia completo, vamos direto ao ponto. Entenda o que diferencia um teleprompter comum de um <strong>EXCEPCIONAL</strong>, descubra por que o <strong>PromptNinja</strong> está revolucionando a forma como as pessoas se comunicam e compare-o lado a lado com as alternativas populares.
         </p>
+
+        <SEOImage
+            slug="melhor-teleprompter-app"
+            src="best-app-teleprompter-interface-ui.webp"
+            alt="Interface do PromptNinja mostrando o controle do teleprompter"
+            caption="A interface intuitiva do PromptNinja permite total controle sobre seus roteiros."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
             <h3 className="text-3xl font-bold text-white mb-8 border-b border-slate-700 pb-4">
@@ -269,6 +280,15 @@ export const MelhorAppTeleprompterPT = () => (
                 (Dados baseados em funcionalidades públicas dos aplicativos em 2026. Informações podem variar.)
             </p>
         </div>
+
+        <SEOImage
+            slug="melhor-teleprompter-app"
+            src="best-app-teleprompter-comparison.webp"
+            alt="Comparação entre PromptNinja e outros aplicativos de teleprompter"
+            caption="PromptNinja oferece recursos superiores em comparação com apps tradicionais."
+            width={1200}
+            height={675}
+        />
 
         <SEOContentFAQ
             title="Perguntas Frequentes (FAQ)"

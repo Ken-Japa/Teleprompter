@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterTabletES = () => (
     <>
@@ -11,9 +12,19 @@ export const TeleprompterTabletES = () => (
             No limites tu talento a pantallas pequeñas. Usa tu **iPad o Tablet** como un teleprompter profesional para obtener una lectura cómoda, natural y 100% fluida en cada grabación.
         </p>
 
-        <p className="text-slate-300 mb-8 font-medium">
-            Grabar con el móvil puede ser estresante por el tamaño del texto, y usar una laptop en un trípode es casi imposible. La tablet es el equilibrio perfecto: portabilidad extrema con una visualización clara que te permite brillar ante la cámara.
+        <p className="text-slate-300 mb-8 leading-relaxed">
+            En esta guía, exploramos por qué las tablets se consideran los mejores dispositivos para los teleprompters profesionales. Con <strong>PromptNinja</strong>, desbloqueas el máximo potencial de tu iPad o tablet Android, transformándolo en un estudio de alto rendimiento. Aprende a configurar el diseño responsivo para evitar el movimiento excesivo de los ojos, usa tu smartphone como control remoto inalámbrico y descubre cómo el modo de duplicación nativo integra tu tablet perfectamente con el equipo de estudio, todo de forma gratuita y directamente en el navegador.
         </p>
+
+        <SEOImage
+            slug="teleprompter-tablet"
+            src="teleprompter-tablet-ipad-android-use.webp"
+            alt="Teleprompter en Tablet e iPad"
+            caption="El tablet es la pantalla ideal para una lectura cómoda y portabilidad."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
             <h3 className="text-2xl font-bold text-white mb-4">Transforma tu Dispositivo Hoy</h3>

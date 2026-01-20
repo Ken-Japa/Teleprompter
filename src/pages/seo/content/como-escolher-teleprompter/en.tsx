@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const ComoEscolherTeleprompterEN = () => (
@@ -14,6 +15,16 @@ export const ComoEscolherTeleprompterEN = () => (
         <p className="text-slate-300 mb-8 leading-relaxed">
             In this exhaustive guide, we navigate the complex teleprompter market to help you save time and money. Whether for a professional studio, a YouTube channel, or remote meetings, understanding the fundamental differences between high-cost physical equipment and modern software solutions is crucial. We analyze in detail the pros and cons of each type of equipment, from traditional beam splitter systems to the power of online apps like PromptNinja. Learn to evaluate glass quality, portability, ease of control, and how to integrate free tools to get elite results without investing initial fortunes. Choose wisely and focus on what really matters: the clarity and authority of your message.
         </p>
+
+        <SEOImage
+            slug="como-escolher-teleprompter"
+            src="how-to-choose-teleprompter-buying-guide.webp"
+            alt="Different types of teleprompters and equipment"
+            caption="Choosing the right equipment depends on your goal, distance, and budget."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
             <h3 className="text-2xl font-bold text-white mb-4">Test Before You Invest</h3>

@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterModoMusicoPT = () => (
     <>
@@ -13,6 +14,16 @@ export const TeleprompterModoMusicoPT = () => (
         <p className="text-slate-300 mb-8">
             Neste guia especializado para artistas, exploramos como o PromptNinja transforma seu smartphone ou tablet no roadie digital definitivo. Descubra como configurar um teleprompter que acompanha seu ritmo, permitindo que você mantenha o foco na entrega emocional e na conexão com seu público, seja em um palco presencial ou em transmissões ao vivo. Com suporte para cifras, acordes e controle via pedal bluetooth, nossa ferramenta online e gratuita garante que cada refrão e cada ponte sejam executados com perfeição, eliminando a ansiedade do 'branco' e profissionalizando seu setup musical em segundos.
         </p>
+
+        <SEOImage
+            slug="teleprompter-modo-musico"
+            src="teleprompter-music-mode-lyrics-chords.webp"
+            alt="Teleprompter exibindo letras e cifras para músicos"
+            caption="O Modo Músico permite que você veja letras e acordes sincronizados com sua performance."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
             <h3 className="text-2xl font-bold text-white mb-6">Por que o PromptNinja é o Melhor Amigo do Músico?</h3>

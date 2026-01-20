@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const OratoriaVideoES = () => (
     <div className="text-slate-300">
@@ -9,6 +10,16 @@ export const OratoriaVideoES = () => (
         <p className="mb-8 text-lg text-center max-w-3xl mx-auto">
             La luz roja de la cámara se enciende y, de repente, tu mente se queda en blanco. Hablarle a una lente de cristal no es natural y puede intimidar incluso a los comunicadores más experimentados. La buena noticia es que la oratoria para vídeo no es un don, sino una habilidad que se puede desarrollar. Con las técnicas y herramientas adecuadas, puedes transformar tu ansiedad en autenticidad. Si aún no tienes una herramienta, <a href="/es/alternativas-teleprompter" className="text-purple-400 hover:text-purple-300 underline">mira la mejor alternativa gratuita a Teleprompter Pro aquí</a>.
         </p>
+
+        <SEOImage
+            slug="dicas-oratoria-video"
+            src="public-speaking-video-confident-youtuber.webp"
+            alt="YouTuber confiado grabando con teleprompter"
+            caption="La oratoria magnética nace de la seguridad; herramientas como el teleprompter liberan tu carisma natural."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">

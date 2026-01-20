@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterModoBilingueES = () => (
     <>
@@ -14,6 +15,16 @@ export const TeleprompterModoBilingueES = () => (
         <p className="text-slate-300 mb-8 leading-relaxed">
             En esta guía, descubrirás cómo nuestra herramienta exclusiva facilita la traducción simultánea y la grabación de videos en múltiples idiomas. Ya seas un profesor de idiomas usando la técnica de "Shadowing", un ejecutivo preparando una presentación internacional o un YouTuber creando versiones dobladas de tu contenido, PromptNinja ofrece la estabilidad y claridad necesarias. Explora nuestras funciones de guion lado a lado, soporte para caracteres especiales y traducción instantánea para asegurar que tu mensaje sea entendido en cualquier lugar del planeta, todo de forma gratuita e intuitiva.
         </p>
+
+        <SEOImage
+            slug="teleprompter-modo-bilingue"
+            src="Teleprompter.webp"
+            alt="Teleprompter configurado para contenido bilingüe"
+            caption="PromptNinja facilita la creación de contenido en múltiples idiomas con guiones lado a lado."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-slate-800 p-8 rounded-xl border border-blue-500/30 mb-12">
             <h3 className="text-2xl font-bold text-white mb-4">El Secreto del Políglota: Shadowing</h3>

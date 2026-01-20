@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterPCWindowsEN = () => (
     <>
@@ -10,6 +11,16 @@ export const TeleprompterPCWindowsEN = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Do you use a Windows PC and look for the perfect solution to present videos, give talks, or do live streams with confidence and fluidity? Say goodbye to forgotten scripts and lost eye contact! In the Windows ecosystem, we are often forced to choose between old, complex, or expensive software. <strong>PromptNinja</strong> breaks this logic, offering a professional, lightweight, and direct-to-the-point experience.
         </p>
+
+        <SEOImage
+            slug="teleprompter-pc-windows"
+            src="teleprompter-pc-windows-computer-app.webp"
+            alt="Teleprompter being used on a Windows PC"
+            caption="A professional teleprompter experience directly on your Windows PC."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <p className="text-slate-300 mb-8 leading-relaxed">
             Developed for maximum optimization on Windows 10 and 11, <strong>PromptNinja</strong> transforms your computer into an elite teleprompter without you having to download a single .exe file. Forget suspicious installers or settings that weigh down your processor; here, everything happens in your preferred browser (Chrome, Edge, or Firefox), ensuring your PC focuses 100% on the quality of your recording or live broadcast.

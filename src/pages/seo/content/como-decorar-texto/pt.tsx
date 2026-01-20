@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const ComoDecorarTextoPT = () => (
     <>
@@ -14,6 +15,16 @@ export const ComoDecorarTextoPT = () => (
         <p className="text-slate-300 mb-8">
             Neste guia, vamos te mostrar as 5 técnicas de memorização mais eficazes usadas por atores e oradores. Mas também vamos revelar <strong>A Armadilha da Memorização</strong>: por que os maiores Youtubers e palestrantes do mundo pararam de decorar e como o <strong>PromptNinja</strong> se tornou a ferramenta essencial para eles brilharem com naturalidade, sem o estresse de esquecer uma única vírgula.
         </p>
+
+        <SEOImage
+            slug="como-decorar-texto-rapido"
+            src="how-to-memorize-text-quick-tablet.webp"
+            alt="Pessoa praticando oratória com tablet"
+            caption="Memorizar nem sempre é a melhor estratégia; o teleprompter oferece segurança e naturalidade."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-slate-800 p-8 rounded-xl border-l-4 border-yellow-500 mb-12 shadow-2xl">
             <h3 className="text-2xl font-bold text-white mb-4">O Mito da Memória Perfeita</h3>

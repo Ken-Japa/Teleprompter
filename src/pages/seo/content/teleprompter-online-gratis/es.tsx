@@ -1,5 +1,6 @@
 import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterOnlineGratisES = () => (
     <>
@@ -26,6 +27,16 @@ export const TeleprompterOnlineGratisES = () => (
             </a>
             <p className="mt-4 text-sm text-slate-400 font-medium">100% Gratis · Sin Registro · Modo Espejo Incluido</p>
         </div>
+
+        <SEOImage
+            slug="teleprompter-online-gratis"
+            src="teleprompter-showcase-multi-device.webp"
+            alt="PromptNinja funcionando en múltiples dispositivos sincronizados"
+            caption="Accede a tu teleprompter desde cualquier lugar y sincroniza tus dispositivos al instante."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-green-500">
             <h3 className="text-2xl font-bold text-white mb-2">¿Por qué PromptNinja No Se Traba? (La Diferencia del P2P)</h3>
@@ -109,6 +120,15 @@ export const TeleprompterOnlineGratisES = () => (
                 </tbody>
             </table>
         </div>
+
+        <SEOImage
+            slug="teleprompter-online-gratis"
+            src="free-online-teleprompter-monitors.webp"
+            alt="Configuración profesional con monitores y teleprompter online"
+            caption="PromptNinja se adapta a configuraciones profesionales o amateur con la misma eficiencia."
+            width={1200}
+            height={675}
+        />
 
         <h3 className="text-2xl font-bold text-white mt-8 mb-4">¿Cómo Funciona el Control Remoto Gratuito?</h3>
         <p className="mb-4">

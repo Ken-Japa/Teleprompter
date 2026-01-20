@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterOQueEEN = () => (
     <>
@@ -13,6 +14,16 @@ export const TeleprompterOQueEEN = () => (
         <p className="text-slate-300 mb-8 leading-relaxed">
             In this exhaustive guide, we unveil all the secrets of the teleprompter, from its origin in the early days of television to its digital modernization with PromptNinja. Learn why news anchors, great leaders, and successful YouTubers never record without a script flowing before their eyes. We explore the physical operation of the beam splitter glass, natural reading techniques, and how you can transform any device into a professional teleprompter for free. Master the art of maintaining perfect eye contact with your audience and broadcast your message with unwavering authority and fluidity.
         </p>
+
+        <SEOImage
+            slug="teleprompter-o-que-e"
+            src="what-is-a-teleprompter-explanation.webp"
+            alt="Example of a teleprompter in professional use"
+            caption="A teleprompter allows you to read your script while maintaining direct eye contact with the camera."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
             <h3 className="text-2xl font-bold text-white mb-6">Why is the Teleprompter Revolutionary?</h3>
@@ -73,6 +84,14 @@ export const TeleprompterOQueEEN = () => (
             </div>
         </div>
 
+        <SEOImage
+            slug="teleprompter-o-que-e"
+            src="what-is-a-teleprompter-how-does-it-work.webp"
+            alt="Infographic showing how the beam splitter glass works in a teleprompter"
+            caption="The secret of the teleprompter lies in the glass that reflects text but is transparent to the camera."
+            width={1200}
+            height={675}
+        />
         <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div>
                 <h3 className="text-xl font-bold text-white mb-2">1950: The Paper Roll</h3>

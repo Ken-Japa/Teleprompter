@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterGamersPT = () => (
     <>
@@ -14,6 +15,16 @@ export const TeleprompterGamersPT = () => (
         <p className="text-slate-300 mb-8">
             Neste guia, mostramos por que streamers de sucesso na Twitch e no YouTube estão adotando o <strong>PromptNinja</strong> como sua ferramenta secreta. Descubra como configurar um teleprompter minimalista que não consome seus preciosos FPS, permite a leitura de agradecimentos sem tirar os olhos do game e se integra perfeitamente ao OBS Studio via Chroma Key. Eleve o nível da sua produção, mantenha seu chat engajado e nunca mais perca o ritmo da sua stream!
         </p>
+
+        <SEOImage
+            slug="teleprompter-gamers"
+            src="teleprompter-gamers-streaming-interface.webp"
+            alt="Teleprompter para Gamers e Streamers"
+            caption="O PromptNinja se integra ao seu setup gamer sem consumir FPS."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-gradient-to-r from-red-900/30 to-green-900/30 p-8 rounded-xl border border-slate-700 mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">Setup Gamer: Improviso vs PRO</h3>

@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterParaYoutubersEN = () => (
     <>
@@ -14,6 +15,16 @@ export const TeleprompterParaYoutubersEN = () => (
         <p className="text-slate-300 mb-8 leading-relaxed">
             You know the pain: you turn on the camera, speak two lines, and freeze. "Cut, again". You look down at your script, look back at the lens, and lose your train of thought. At the end of the day, you have hours of raw footage for a video that's only a few minutes long. Editing becomes a nightmare of jump cuts to hide mistakes, killing your video's flow.
         </p>
+
+        <SEOImage
+            slug="teleprompter-para-youtubers-e-criadores"
+            src="teleprompter-for-youtubers-setup.webp"
+            alt="Content creator using a teleprompter"
+            caption="Professional YouTubers use teleprompters to reduce editing time and increase authority."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12 shadow-xl">
             <h3 className="text-2xl font-bold text-white mb-4">Ready to Change Your Workflow?</h3>

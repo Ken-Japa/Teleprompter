@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterPCWindowsPT = () => (
     <>
@@ -14,6 +15,16 @@ export const TeleprompterPCWindowsPT = () => (
         <p className="text-slate-300 mb-8">
             Desenvolvido para máxima otimização nos sistemas Windows 10 e 11, o <strong>PromptNinja</strong> transforma seu computador em um teleprompter de elite sem que você precise baixar um único arquivo .exe. Esqueça instaladores suspeitos ou configurações que pesam no seu processador; aqui, tudo acontece no seu navegador de preferência (Chrome, Edge ou Firefox), garantindo que seu PC foque 100% na qualidade da sua gravação ou transmissão ao vivo.
         </p>
+
+        <SEOImage
+            slug="teleprompter-pc-windows"
+            src="teleprompter-pc-windows-setup.webp"
+            alt="Teleprompter para PC Windows"
+            caption="Use o teleprompter diretamente no seu navegador Windows sem instalações."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
             <h3 className="text-2xl font-bold text-white mb-6">Neste guia completo, você descobrirá:</h3>

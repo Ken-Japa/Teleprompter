@@ -1,5 +1,6 @@
 import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const MelhorAppTeleprompterEN = () => (
     <>
@@ -14,6 +15,16 @@ export const MelhorAppTeleprompterEN = () => (
         <p className="text-slate-300 mb-8 leading-relaxed">
             In this complete guide, we'll show you why **PromptNinja** is revolutionizing the way creators, speakers, and musicians deliver their message. Compare features, see real results, and discover how to transform your production today.
         </p>
+
+        <SEOImage
+            slug="melhor-teleprompter-app"
+            src="best-app-teleprompter-interface-ui.webp"
+            alt="PromptNinja interface showing teleprompter control"
+            caption="The intuitive PromptNinja interface allows full control over your scripts."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
             <h3 className="text-3xl font-bold text-white mb-8 border-b border-slate-700 pb-4">
@@ -269,6 +280,15 @@ export const MelhorAppTeleprompterEN = () => (
                 (Data based on public features in 2026. Information may vary.)
             </p>
         </div>
+
+        <SEOImage
+            slug="melhor-teleprompter-app"
+            src="best-app-teleprompter-comparison.webp"
+            alt="Comparison between PromptNinja and other teleprompter apps"
+            caption="PromptNinja offers superior features compared to traditional apps."
+            width={1200}
+            height={675}
+        />
 
         <SEOContentFAQ
             title="Frequently Asked Questions (FAQ)"

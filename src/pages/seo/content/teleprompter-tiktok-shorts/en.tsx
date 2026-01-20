@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterTikTokShortsEN = () => (
     <>
@@ -14,6 +15,16 @@ export const TeleprompterTikTokShortsEN = () => (
         <p className="text-slate-300 mb-8">
             In this guide, we'll explore why top creators love <strong>PromptNinja</strong>. Discover how our floating teleprompter allows you to maintain the rhythm, energy, and impeccable visual connection, transforming complex scripts into viral videos simply and professionally. Get ready to multiply your production and dominate the algorithm with total fluidity!
         </p>
+
+        <SEOImage
+            slug="teleprompter-tiktok-shorts"
+            src="teleprompter-tiktok-reels-vertical.webp"
+            alt="Content creator recording vertical video for TikTok with a teleprompter"
+            caption="PromptNinja's vertical teleprompter is optimized for TikTok and Instagram Reels proportions."
+            width={720}
+            height={1280}
+            priority={true}
+        />
 
         <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
             <h3 className="text-2xl font-bold text-white mb-6">Why PromptNinja is Perfect for Your TikToks and Shorts?</h3>

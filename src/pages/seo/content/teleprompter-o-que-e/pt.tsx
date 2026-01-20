@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterOQueEPT = () => (
     <>
@@ -13,6 +14,16 @@ export const TeleprompterOQueEPT = () => (
         <p className="text-slate-300 mb-8">
             Neste guia exaustivo, desvendamos todos os segredos do teleprompter, desde sua origem nos primórdios da televisão até sua modernização digital com o PromptNinja. Aprenda por que âncoras de jornal, grandes líderes e YouTubers de sucesso nunca gravam sem um roteiro fluindo diante de seus olhos. Exploramos o funcionamento físico do vidro divisor de feixe, as técnicas de leitura natural e como você pode transformar qualquer dispositivo em um teleprompter profissional de forma gratuita. Domine a arte de manter o contato visual perfeito com sua audiência e transmita sua mensagem com uma autoridade e fluidez inabaláveis.
         </p>
+
+        <SEOImage
+            slug="teleprompter-o-que-e"
+            src="what-is-a-teleprompter-explanation.webp"
+            alt="Exemplificação de um teleprompter em uso profissional"
+            caption="O teleprompter permite que você leia seu roteiro enquanto mantém contato visual direto com a câmera."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
             <h3 className="text-2xl font-bold text-white mb-6">Por que o Teleprompter é Revolucionário?</h3>
@@ -64,6 +75,7 @@ export const TeleprompterOQueEPT = () => (
                         Resultado: O apresentador olha <strong>diretamente nos olhos</strong> da lente enquanto lê.
                     </p>
                 </div>
+
                 <div className="bg-black p-4 rounded-lg border border-slate-600 font-mono text-xs text-green-400 w-full md:w-1/3">
                     <div className="text-center mb-2">📷 Câmera (Não vê nada)</div>
                     <div className="border-b border-slate-500 my-2 text-center text-slate-500">| | Vidro Inclinado 45° | |</div>
@@ -72,6 +84,15 @@ export const TeleprompterOQueEPT = () => (
                 </div>
             </div>
         </div>
+
+        <SEOImage
+            slug="teleprompter-o-que-e"
+            src="what-is-a-teleprompter-how-does-it-work.webp"
+            alt="Infográfico mostrando o funcionamento do vidro divisor de feixe no teleprompter"
+            caption="O segredo do teleprompter está no vidro que reflete o texto mas é transparente para a câmera."
+            width={1200}
+            height={675}
+        />
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div>

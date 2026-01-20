@@ -1,6 +1,7 @@
 import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterZoomMeetingES = () => (
     <>
@@ -27,6 +28,16 @@ export const TeleprompterZoomMeetingES = () => (
             </a>
             <p className="mt-4 text-sm text-slate-400 font-medium">Latencia Cero · P2P Seguro · Funciona en Navegador</p>
         </div>
+
+        <SEOImage
+            slug="teleprompter-zoom-meeting"
+            src="teleprompter-zoom-meeting-transparent.webp"
+            alt="Modo teleprompter transparente para reuniones en Zoom"
+            caption="El modo transparente te permite ver a los participantes mientras lees tu guion."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-slate-800/50 p-6 rounded-lg mb-8 border border-slate-700">
             <h3 className="text-lg font-bold text-white mb-3">🚀 Cómo usar en 3 pasos:</h3>

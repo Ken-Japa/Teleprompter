@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const TeleprompterParaPodcastES = () => (
@@ -14,6 +15,16 @@ export const TeleprompterParaPodcastES = () => (
         <p className="text-slate-300 mb-8 leading-relaxed">
             En este artículo, revelaremos cómo <strong>PromptNinja</strong> se ha convertido en la herramienta secreta para mantener el flujo de la conversación sin perder espontaneidad. Aprende dónde colocar el teleprompter en tu configuración de videocast para mantener el contacto visual con la audiencia y el invitado, y descubre cómo asegurar que tus anuncios de patrocinio se lean con la precisión que exigen las grandes marcas, todo gratis y de forma intuitiva.
         </p>
+
+        <SEOImage
+            slug="teleprompter-para-podcast"
+            src="teleprompter-podcast-audio-recording.webp"
+            alt="Podcast grabado con teleprompter"
+            caption="El teleprompter garantiza que el presentador mantenga el contacto visual con los invitados mientras sigue el guion."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
             <h3 className="text-2xl font-bold text-white mb-4">Graba con Confianza y Fluidez</h3>

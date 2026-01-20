@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterParaYoutubersES = () => (
     <>
@@ -14,6 +15,16 @@ export const TeleprompterParaYoutubersES = () => (
         <p className="text-slate-300 mb-8 font-medium">
             Conoces el dolor: enciendes la cámara, dices dos frases y te trabas. "Corta, de nuevo". Al final del día, tienes 2 horas de material crudo para un vídeo de 8 minutos. La edición se convierte en una pesadilla de cortes para esconder errores.
         </p>
+
+        <SEOImage
+            slug="teleprompter-para-youtubers-e-criadores"
+            src="teleprompter-for-youtubers-setup.webp"
+            alt="Creador de contenido usando teleprompter"
+            caption="Los YouTubers profesionales usan teleprompter para reducir el tiempo de edición y aumentar la autoridad."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-red-600/10 border border-red-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
             <h3 className="text-2xl font-bold text-white mb-4">Gana el Juego del Algoritmo</h3>

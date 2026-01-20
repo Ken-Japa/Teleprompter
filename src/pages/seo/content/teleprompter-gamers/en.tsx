@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterGamersEN = () => (
     <>
@@ -10,6 +11,16 @@ export const TeleprompterGamersEN = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             In the middle of an intense match or a live react, every distraction can be costly. Have you ever had to Alt-Tab to read a script or thank a donation and ended up losing the action? <strong>Streamer life demands total focus, and improvisation isn't always the best path.</strong>
         </p>
+
+        <SEOImage
+            slug="teleprompter-gamers"
+            src="teleprompter-gamers-streamers-youtube.webp"
+            alt="Gamer using a teleprompter for Twitch and YouTube"
+            caption="A teleprompter helps gamers maintain eye contact with the camera while reading chat or notes."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <p className="text-slate-300 mb-8 leading-relaxed">
             In this guide, we show why successful streamers on Twitch and YouTube are adopting <strong>PromptNinja</strong> as their secret tool. Discover how to set up a minimalist teleprompter that doesn't consume your precious FPS, allows reading thank-yous without taking your eyes off the game, and integrates perfectly with OBS Studio via Chroma Key. Raise the level of your production, keep your chat engaged, and never lose the rhythm of your stream again!

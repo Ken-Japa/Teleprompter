@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterTabletEN = () => (
     <>
@@ -10,6 +11,16 @@ export const TeleprompterTabletEN = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             The tablet is the perfect "middle ground": screen large enough for comfortable reading at a distance of meters, but light and portable enough for any location. <strong>Why limit yourself to the small screen of a phone or the weight of a laptop?</strong>
         </p>
+
+        <SEOImage
+            slug="teleprompter-tablet"
+            src="teleprompter-tablet-ipad-android-use.webp"
+            alt="Teleprompter on Tablet and iPad"
+            caption="The tablet is the ideal screen for comfortable reading and portability."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <p className="text-slate-300 mb-8 leading-relaxed">
             In this guide, we explore why tablets are considered the best devices for professional teleprompters. With <strong>PromptNinja</strong>, you unlock the full potential of your iPad or Android tablet, transforming it into a high-performance studio. Learn how to configure the responsive layout to avoid excessive eye movement, use your smartphone as a wireless remote, and discover how the native mirroring mode integrates your tablet perfectly with studio equipment, all for free and directly in the browser.

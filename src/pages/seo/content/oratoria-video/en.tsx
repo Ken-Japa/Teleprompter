@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const OratoriaVideoEN = () => (
     <div className="text-slate-300">
@@ -13,6 +14,16 @@ export const OratoriaVideoEN = () => (
         <p className="text-slate-300 mb-12 text-center max-w-3xl mx-auto leading-relaxed">
             <strong>But here's the secret: public speaking isn't a gift, it's a trained skill.</strong> Speaking well on camera involves aligning your mind, your body, and the right tools. In this guide, we'll explore the 3 pillars that transform insecure speech into a magnetic presentation, and how <strong>PromptNinja</strong> is the secret partner that lets you focus on what truly matters: your connection with the audience.
         </p>
+
+        <SEOImage
+            slug="dicas-oratoria-video"
+            src="public-speaking-video-confident-youtuber.webp"
+            alt="Confident YouTuber recording with a teleprompter"
+            caption="Magnetic public speaking is born from security; tools like a teleprompter release your natural charisma."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12 shadow-xl">
             <h3 className="text-2xl font-bold text-white mb-4">Tired of Stuttering or Forgetting Your Script?</h3>

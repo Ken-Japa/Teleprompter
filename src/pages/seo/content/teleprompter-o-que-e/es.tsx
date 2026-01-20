@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterOQueEES = () => (
     <>
@@ -13,6 +14,16 @@ export const TeleprompterOQueEES = () => (
         <p className="text-slate-300 mb-8 leading-relaxed">
             En esta guía exhaustiva, desvelamos todos los secretos del teleprompter, desde su origen en los inicios de la televisión hasta su modernización digital con PromptNinja. Aprende por qué los presentadores de noticias, grandes líderes y YouTubers exitosos nunca graban sin un guion fluyendo ante sus ojos. Exploramos el funcionamiento físico del cristal "beam splitter", técnicas de lectura natural y cómo transformar cualquier dispositivo en un teleprompter profesional gratis. Domina el arte de mantener contacto visual perfecto con tu audiencia y transmite tu mensaje con autoridad y fluidez inquebrantables.
         </p>
+
+        <SEOImage
+            slug="teleprompter-o-que-e"
+            src="what-is-a-teleprompter-explanation.webp"
+            alt="Ejemplo de un teleprompter en uso profesional"
+            caption="El teleprompter te permite leer tu guion mientras mantienes contacto visual directo con la cámara."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
             <h3 className="text-2xl font-bold text-white mb-6">¿Por qué es revolucionario el Teleprompter?</h3>
@@ -73,6 +84,15 @@ export const TeleprompterOQueEES = () => (
             </div>
         </div>
 
+        <SEOImage
+            slug="teleprompter-o-que-e"
+            src="what-is-a-teleprompter-how-does-it-work.webp"
+            alt="Infografía que muestra cómo funciona el cristal divisor de haz en un teleprompter"
+            caption="El secreto del teleprompter reside en el cristal que refleja el texto pero es transparente para la cámara."
+            width={1200}
+            height={675}
+
+        />
         <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div>
                 <h3 className="text-xl font-bold text-white mb-2">1950: El Rollo de Papel</h3>

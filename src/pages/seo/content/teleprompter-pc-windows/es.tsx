@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterPCWindowsES = () => (
     <>
@@ -10,6 +11,16 @@ export const TeleprompterPCWindowsES = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Transforma tu ordenador en una herramienta de producción de élite. Con **PromptNinja**, obtienes un teleprompter potente para Windows sin necesidad de instalar archivos .exe sospechosos o pagar suscripciones caras.
         </p>
+
+        <SEOImage
+            slug="teleprompter-pc-windows"
+            src="teleprompter-pc-windows-computer-app.webp"
+            alt="Teleprompter siendo usado en una PC con Windows"
+            caption="Una experiencia profesional de teleprompter directamente en tu PC con Windows."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <p className="text-slate-300 mb-8 font-medium">
             ¿Tienes un setup de grabación fantástico pero te trabas al hablar? Olvida los papeles pegados al monitor y las notas improvisadas. Nuestra web app se integra perfectamente con tu flujo de trabajo, permitiéndote mantener el contacto visual 100% del tiempo.

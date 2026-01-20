@@ -1,6 +1,7 @@
 import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterZoomMeetingEN = () => (
     <>
@@ -27,6 +28,16 @@ export const TeleprompterZoomMeetingEN = () => (
                 Start Glowing on Zoom Now!
             </a>
         </div>
+
+        <SEOImage
+            slug="teleprompter-zoom-meeting"
+            src="teleprompter-zoom-meeting-transparent.webp"
+            alt="Transparent teleprompter mode for Zoom meetings"
+            caption="Transparent mode allows you to see participants while reading your script."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-slate-800 p-6 rounded-lg my-8 border-l-4 border-blue-500">
             <h3 className="text-2xl font-bold text-white mb-2">The Secret to Fluidity: Why PromptNinja's P2P Remote Control Doesn't Lag on Zoom</h3>

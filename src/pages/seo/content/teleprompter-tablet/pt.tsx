@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterTabletPT = () => (
     <>
@@ -14,6 +15,16 @@ export const TeleprompterTabletPT = () => (
         <p className="text-slate-300 mb-8">
             Neste guia, exploramos por que os tablets são considerados os melhores dispositivos para teleprompters profissionais. Com o <strong>PromptNinja</strong>, você desbloqueia o potencial máximo do seu iPad ou tablet Android, transformando-o em um estúdio de alta performance. Aprenda a configurar o layout responsivo para evitar movimentos oculares excessivos, use seu smartphone como controle remoto wireless e descubra como o modo espelhamento nativo integra seu tablet perfeitamente a equipamentos de estúdio, tudo de forma gratuita e direto no navegador.
         </p>
+
+        <SEOImage
+            slug="teleprompter-tablet"
+            src="teleprompter-tablet-ipad-android-use.webp"
+            alt="Teleprompter no Tablet e iPad"
+            caption="O tablet é a tela ideal para leitura confortável e portabilidade."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-12">
             <h3 className="text-2xl font-bold text-white mb-6">Por que o Tablet é o Dispositivo Ideal para Teleprompter?</h3>

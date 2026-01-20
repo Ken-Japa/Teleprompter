@@ -101,8 +101,9 @@ export const SEOImage: React.FC<SEOImageProps> = ({
                 <img
                     src={imagePath}
                     alt={alt}
-                    width={width}
-                    height={height}
+                    width={width || 1200}
+                    height={height || 675}
+                    itemProp="image"
                     title={caption || alt} // Good for hover tooltip and SEO
                     loading={priority ? 'eager' : 'lazy'}
                     decoding="async"

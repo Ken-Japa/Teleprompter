@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterGamersES = () => (
     <>
@@ -10,6 +11,16 @@ export const TeleprompterGamersES = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Domina tus directos sin perder el hilo de la conversación. Con **PromptNinja**, obtienes un teleprompter ultra ligero diseñado específicamente para integrarse con OBS Studio y Twitch sin afectar tus FPS.
         </p>
+
+        <SEOImage
+            slug="teleprompter-gamers"
+            src="teleprompter-gamers-streamers-youtube.webp"
+            alt="Gamer usando un teleprompter para Twitch y YouTube"
+            caption="Un teleprompter ayuda a los gamers a mantener el contacto visual con la cámara mientras leen el chat o notas."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <p className="text-slate-300 mb-8 font-medium">
             Ya sea que estés leyendo donaciones, narrando un speedrun o siguiendo un guion para un video de "React", nuestra herramienta te permite mantener la concentración en el juego mientras tu narrativa fluye de forma natural y profesional.

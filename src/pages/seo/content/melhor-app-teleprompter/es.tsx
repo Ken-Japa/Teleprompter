@@ -1,5 +1,6 @@
 import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const MelhorAppTeleprompterES = () => (
     <div className="text-slate-300">
@@ -10,6 +11,16 @@ export const MelhorAppTeleprompterES = () => (
         <p className="lead text-xl text-slate-300 mb-8 text-center max-w-3xl mx-auto font-medium">
             No todas las aplicaciones son iguales. Descubre por qué **PromptNinja** es la herramienta preferida de los creadores que buscan potencia, privacidad y facilidad de uso sin pagar suscripciones abusivas.
         </p>
+
+        <SEOImage
+            slug="melhor-teleprompter-app"
+            src="best-app-teleprompter-interface-ui.webp"
+            alt="Interfaz de PromptNinja que muestra el control del teleprompter"
+            caption="La interfaz intuitiva de PromptNinja permite un control total sobre sus guiones."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         <div className="bg-purple-600/10 border border-purple-500/20 rounded-2xl p-6 md:p-8 text-center mb-12 max-w-3xl mx-auto">
             <h3 className="text-2xl font-bold text-white mb-4">El Veredicto de los Expertos</h3>
@@ -211,6 +222,15 @@ export const MelhorAppTeleprompterES = () => (
         <p className="text-center text-sm text-slate-500 mt-2">
             La tabla deja claro por qué PromptNinja es la elección superior para creadores de contenido serios.
         </p>
+
+        <SEOImage
+            slug="melhor-teleprompter-app"
+            src="best-app-teleprompter-comparison.webp"
+            alt="Comparación entre PromptNinja y otras aplicaciones de teleprompter"
+            caption="PromptNinja ofrece características superiores en comparación con las aplicaciones tradicionales."
+            width={1200}
+            height={675}
+        />
 
         <div className="text-center mt-12">
             <a

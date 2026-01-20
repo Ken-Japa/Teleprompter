@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const OratoriaVideoPT = () => (
     <div className="text-slate-300">
@@ -13,6 +14,16 @@ export const OratoriaVideoPT = () => (
         <p className="text-slate-300 mb-8">
             <strong>Mas aqui está o segredo: oratória não é um dom, é uma habilidade treinada.</strong> Falar bem na frente das câmeras envolve alinhar sua mente, seu corpo e as ferramentas certas. Neste guia, vamos explorar os 3 pilares que transformam uma fala insegura em uma apresentação magnética, e como o <strong>PromptNinja</strong> é o parceiro secreto que te permite focar no que realmente importa: sua conexão com o público.
         </p>
+
+        <SEOImage
+            slug="dicas-oratoria-video"
+            src="public-speaking-video-confident-youtuber.webp"
+            alt="YouTuber confiante gravando com teleprompter"
+            caption="Oratória magnética nasce da segurança; ferramentas como teleprompter liberam seu carisma natural."
+            width={1200}
+            height={675}
+            priority={true}
+        />
 
         {/* CTA Estratégico de Início */}
         <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
