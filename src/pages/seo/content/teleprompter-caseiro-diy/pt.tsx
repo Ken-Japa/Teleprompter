@@ -1,6 +1,7 @@
 import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterCaseiroDIYPT = () => (
     <>
@@ -11,6 +12,15 @@ export const TeleprompterCaseiroDIYPT = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Quer economizar centenas de reais e ainda ter resultados profissionais? Aprenda a montar seu próprio teleprompter caseiro (DIY) e descubra como o PromptNinja é o software gratuito perfeito para seu novo setup.
         </p>
+
+        <SEOImage
+            slug="teleprompter-caseiro-diy"
+            src="homemade-teleprompter-diy-setup.webp"
+            alt="Teleprompter caseiro montado com tablet"
+            caption="Um teleprompter caseiro pode ser montado com materiais simples como uma caixa de papelão e um pedaço de vidro ou acrílico."
+            width={1200}
+            height={675}
+        />
 
         <p className="text-slate-300 mb-8">
             Gravar vídeos com aparência profissional exige fluidez e confiança, mas memorizar roteiros é um desafio constante. Equipamentos profissionais de teleprompter resolvem isso, mas o custo pode ser proibitivo para quem está começando. A boa notícia? Você pode <strong>montar um teleprompter caseiro barato</strong> com materiais simples e obter resultados impressionantes.

@@ -1,10 +1,20 @@
 import { ROUTES_CONFIG } from "../../../../config/routes";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const HubGuideContentES = () => (
     <>
         <div className="lead text-xl text-slate-300 mb-12 font-medium border-l-4 border-purple-500 pl-6 bg-slate-800/30 py-4 rounded-r-lg">
             Bienvenido al repositorio de conocimientos sobre Teleprompters más grande de internet. Si quieres grabar mejores videos, hablar con confianza y dominar la cámara, estás en el lugar correcto.
         </div>
+
+        <SEOImage
+            slug="guia-completo-teleprompter"
+            src="teleprompter-hub-guide-complete.webp"
+            alt="Guía completa de teleprompter y oratoria"
+            caption="Nuestro centro de conocimiento reúne todo lo necesitas para dominar el arte de hablar frente a la cámara."
+            width={1200}
+            height={675}
+        />
 
         <section id="oque" className="mb-16">
             <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">

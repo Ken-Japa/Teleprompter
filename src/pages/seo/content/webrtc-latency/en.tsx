@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const WebRtcLatencyContentEN = () => (
     <>
@@ -17,6 +18,15 @@ export const WebRtcLatencyContentEN = () => (
         <p className="text-slate-300 mb-12 leading-relaxed">
             Imagine your script, song lyrics, or speech scrolling with perfect fluidity, without any delay, no matter if you're using multiple devices or in challenging network conditions. It's exactly this experience of instant and flawless synchronization that WebRTC allows us to deliver.
         </p>
+
+        <SEOImage
+            slug="tecnologia-webrtc-baixa-latencia"
+            src="webrtc-technology-synchronization-devices.webp"
+            alt="Device synchronization via WebRTC"
+            caption="WebRTC technology allows multiple devices to communicate with zero latency, ideal for remote teleprompter control."
+            width={1200}
+            height={675}
+        />
 
         <div className="bg-gradient-to-r from-blue-900/40 to-indigo-900/40 border border-blue-500/30 rounded-2xl p-8 mb-12 text-center shadow-xl">
             <h3 className="text-2xl font-bold text-white mb-4">See PromptNinja's ZERO Latency in Action!</h3>

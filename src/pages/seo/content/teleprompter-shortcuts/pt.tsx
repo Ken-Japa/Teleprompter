@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterShortcutsPT = () => (
     <>
@@ -10,6 +11,15 @@ export const TeleprompterShortcutsPT = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Velocidade e controle total na ponta dos seus dedos. <strong>Aprenda a controlar o PromptNinja via teclado</strong>, Stream Deck ou pedais para uma gravação profissional e sem interrupções.
         </p>
+
+        <SEOImage
+            slug="teleprompter-com-atalhos-de-teclado"
+            src="teleprompter-shortcuts-keyboard-speed.webp"
+            alt="Atalhos de teclado no teleprompter"
+            caption="O PromptNinja foi desenhado com a filosofia 'Keyboard First', permitindo controle total via atalhos de teclado."
+            width={1200}
+            height={675}
+        />
 
         <p className="text-slate-300 mb-8">
             Neste guia essencial para criadores focados em eficiência, detalhamos a filosofia 'Keyboard First' do PromptNinja. Descubra como os atalhos de teclado podem transformar seu fluxo de trabalho, permitindo que você ajuste a velocidade de rolagem, o tamanho da fonte e o controle de play/pause sem nunca precisar tirar as mãos da posição de gravação ou usar o mouse. Explicamos como integrar nossa ferramenta com hardwares externos como Elgato Stream Deck e pedais USB, garantindo que você tenha um centro de comando completo para suas produções, palestras ou apresentações musicais. Ganhe tempo e profissionalismo com comandos simplificados e atalhos inteligentes.

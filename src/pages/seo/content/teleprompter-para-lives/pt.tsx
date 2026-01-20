@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { ROUTES_CONFIG } from "../../../../config/routes";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterParaLivesPT = () => (
     <>
@@ -10,6 +11,15 @@ export const TeleprompterParaLivesPT = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Fazer uma transmissão ao vivo é como caminhar em uma corda bamba. Você precisa monitorar o chat, gerenciar o áudio, interagir com os viewers e, ao mesmo tempo, não perder o fio da meada. <strong>Quantas vezes você já viu um streamer se perder em divagações e ver a audiência despencar em tempo real?</strong>
         </p>
+
+        <SEOImage
+            slug="teleprompter-para-lives"
+            src="teleprompter-lives-live-streaming.webp"
+            alt="Live streaming com teleprompter invisível para o público"
+            caption="O PromptNinja permite que você leia seu roteiro sem que o público perceba, mantendo o engajamento no topo."
+            width={1200}
+            height={675}
+        />
 
         <p className="text-slate-300 mb-8">
             Neste guia prático, vamos te mostrar como o <strong>PromptNinja</strong> se torna o seu copiloto invisível durante lives na Twitch, YouTube ou Instagram. Aprenda como configurar um roteiro ou tópicos estratégicos que ficam visíveis apenas para você, permitindo que você entregue conteúdo de alto valor e anúncios de patrocínio com perfeição, sem nunca tirar o foco da sua comunidade. Descubra o setup ideal para OBS Studio e como usar o controle remoto via celular para ter fluidez total sem gaguejar!

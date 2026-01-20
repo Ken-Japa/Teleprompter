@@ -1,3 +1,5 @@
+import { SEOImage } from "../../../../components/seo/SEOImage";
+
 export const TeleprompterFitnessContentEN = () => (
     <>
         <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 mb-6 leading-tight">
@@ -7,6 +9,15 @@ export const TeleprompterFitnessContentEN = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Stop counting reps or getting your phone dirty. <strong>Use PromptNinja to automate your sets, rest timers, and drills</strong> for a high-intensity, distraction-free performance.
         </p>
+
+        <SEOImage
+            slug="teleprompter-para-fitness-treino"
+            src="teleprompter-fitness-treino-coach.webp"
+            alt="Fitness athlete using teleprompter to guide workout"
+            caption="PromptNinja works as a digital coach, guiding your sets and rests automatically."
+            width={1200}
+            height={675}
+        />
 
         <p className="text-slate-300 mb-8 leading-relaxed">
             Record your workouts with total fluidity. Put your script on the screen and let PromptNinja guide your sets and rests automatically. Turn PromptNinja into your ultimate workout partner. Create automated exercise loops, rest timers, and voice-activated sets. Perfect for home workouts and gym boxes.

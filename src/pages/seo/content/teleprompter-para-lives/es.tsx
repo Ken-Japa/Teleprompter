@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { ROUTES_CONFIG } from "../../../../config/routes";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterParaLivesES = () => (
     <>
@@ -10,6 +11,15 @@ export const TeleprompterParaLivesES = () => (
         <p className="lead text-xl text-slate-300 mb-8">
             Hacer una transmisión en vivo es estresante. Monitorear el chat, verificar el audio y además recordar el guion? Imposible. Es por eso que los grandes streamers usan un "pequeño secreto" en pantalla que el público no ve.
         </p>
+
+        <SEOImage
+            slug="teleprompter-para-lives"
+            src="teleprompter-lives-live-streaming.webp"
+            alt="Transmisión en vivo con teleprompter invisible para el público"
+            caption="PromptNinja te permite leer tu guion sin que el público se dé cuenta, manteniendo el compromiso en lo más alto."
+            width={1200}
+            height={675}
+        />
 
         <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-lg mb-12">
             <h3 className="text-3xl font-bold text-white mb-6">El Problema de los Directos Sin Guion</h3>

@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterTravandoSolucaoPT = () => (
     <>
@@ -10,6 +11,15 @@ export const TeleprompterTravandoSolucaoPT = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Você está no meio de uma gravação crucial, a mensagem está fluindo, a câmera ligada, e de repente... o teleprompter congela. O ritmo quebra, a espontaneidade se esvai, e a frustração toma conta. <strong>Quem nunca passou pela agonia de um teleprompter travando sabe o quanto isso pode sabotar uma produção inteira.</strong>
         </p>
+
+        <SEOImage
+            slug="teleprompter-travando-solucao"
+            src="solucao-teleprompter-travando.webp"
+            alt="Pessoa frustrada com teleprompter travando durante gravação"
+            caption="Travamentos no teleprompter podem arruinar sua gravação; aprenda como evitar."
+            width={1200}
+            height={675}
+        />
 
         <p className="text-slate-300 mb-8">
             A boa notícia? Existe uma <strong>solução testada e aprovada</strong> para os principais vilões que causam travamentos: desde hardware inadequado e software desatualizado até configurações erradas. E a melhor parte é que você não precisa de um diploma em TI para resolver, porque <strong>o PromptNinja foi construído para ser a sua solução definitiva, prevenindo a maioria desses problemas antes mesmo que eles apareçam.</strong>

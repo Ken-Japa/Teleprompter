@@ -1,3 +1,5 @@
+import { SEOImage } from "../../../../components/seo/SEOImage";
+
 export const TeleprompterFitnessContentPT = () => (
     <>
         <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 mb-6 leading-tight">
@@ -7,6 +9,15 @@ export const TeleprompterFitnessContentPT = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Pare de contar repetições mentalmente ou de sujar seu celular. <strong>Use o PromptNinja para automatizar suas séries, timers de descanso e exercícios</strong> para uma performance de alta intensidade e sem distrações.
         </p>
+
+        <SEOImage
+            slug="teleprompter-para-fitness-treino"
+            src="teleprompter-fitness-treino-coach.webp"
+            alt="Atleta de fitness usando teleprompter para guiar treino"
+            caption="O PromptNinja funciona como um coach digital, guiando suas séries e descansos automaticamente."
+            width={1200}
+            height={675}
+        />
 
         <p className="text-slate-300 mb-8 leading-relaxed">
             Grave seus treinos com fluidez total. Coloque seu roteiro na tela e deixe o PromptNinja guiar suas séries e descansos automaticamente. Transforme o PromptNinja em seu parceiro de treino definitivo. Crie loops de exercícios automatizados, timers de descanso e séries ativadas por voz. Perfeito para treinos em casa e boxes de crossfit.

@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterTravandoSolucaoES = () => (
     <>
@@ -10,6 +11,15 @@ export const TeleprompterTravandoSolucaoES = () => (
         <p className="mb-6 text-xl text-slate-300">
             Estás grabando, enfocado, en el "flow". De repente, texto da un salto (se traba). Pierdes concentración. Tu dicción falla. Toma arruinada.
         </p>
+
+        <SEOImage
+            slug="teleprompter-travando-solucao"
+            src="solucao-teleprompter-travando.webp"
+            alt="Persona frustrada con un teleprompter trabado durante la grabación"
+            caption="Los retardos en el teleprompter pueden arruinar tu grabación; aprende cómo evitarlos."
+            width={1200}
+            height={675}
+        />
         <p className="mb-8 text-slate-300">
             Si tu teleprompter online se congela ("lagging") o salta cuadros, problema generalmente no es tu computador. <strong>Es código mal hecho del sitio.</strong>
         </p>

@@ -1,4 +1,5 @@
 import { ROUTES_CONFIG } from "../../../../config/routes";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const HubGuideContentEN = () => (
     <>
@@ -9,6 +10,15 @@ export const HubGuideContentEN = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Master the art of communication and elevate your productions. <strong>Explore everything you need to know</strong> about teleprompters, from reading techniques to professional equipment.
         </p>
+
+        <SEOImage
+            slug="guia-completo-teleprompter"
+            src="teleprompter-hub-guide-complete.webp"
+            alt="Complete guide to teleprompter and public speaking"
+            caption="Our knowledge hub brings together everything you need to master the art of speaking in front of the camera."
+            width={1200}
+            height={675}
+        />
 
         <p className="text-slate-300 mb-8 leading-relaxed">
             Whether you're a beginner trying to understand what a teleprompter is for the first time, or an experienced professional looking for the best tools and scripts, this guide was designed for you. At PromptNinja, we've consolidated years of experience in video, public speaking, and technology to create the ultimate hub on the subject. Here, you'll learn everything from setting up a low-cost kit to using advanced features like voice-activated scrolling and multi-device synchronization. Discover how to save hours of editing by recording in a single take and convey unwavering authority by looking directly at your audience.

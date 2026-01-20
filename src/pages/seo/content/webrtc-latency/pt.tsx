@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const WebRtcLatencyContentPT = () => (
     <>
@@ -17,6 +18,15 @@ export const WebRtcLatencyContentPT = () => (
         <p className="text-slate-300 mb-12">
             Imagine seu roteiro, letra ou discurso rolando com fluidez perfeita, sem qualquer atraso, não importa se você está usando múltiplos dispositivos ou em condições de rede desafiadoras. É exatamente essa experiência de sincronização instantânea e sem falhas que o WebRTC nos permite entregar.
         </p>
+
+        <SEOImage
+            slug="tecnologia-webrtc-baixa-latencia"
+            src="webrtc-technology-synchronization-devices.webp"
+            alt="Sincronização de dispositivos via WebRTC"
+            caption="A tecnologia WebRTC permite que vários dispositivos se comuniquem com latência zero, ideal para controle remoto de teleprompter."
+            width={1200}
+            height={675}
+        />
 
         {/* CTA Estratégico */}
         <div className="bg-gradient-to-r from-blue-900/40 to-indigo-900/40 border border-blue-500/30 rounded-2xl p-8 mb-12 text-center">

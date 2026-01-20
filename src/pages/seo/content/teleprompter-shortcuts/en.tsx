@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterShortcutsEN = () => (
     <>
@@ -10,6 +11,15 @@ export const TeleprompterShortcutsEN = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Speed and total control at your fingertips. <strong>Learn to control PromptNinja via keyboard</strong>, Stream Deck, or pedals for a professional and seamless recording experience.
         </p>
+
+        <SEOImage
+            slug="teleprompter-com-atalhos-de-teclado"
+            src="teleprompter-shortcuts-keyboard-speed.webp"
+            alt="Keyboard shortcuts on teleprompter"
+            caption="PromptNinja was designed with a 'Keyboard First' philosophy, allowing total control via keyboard shortcuts."
+            width={1200}
+            height={675}
+        />
 
         <p className="text-slate-300 mb-8 leading-relaxed">
             In this essential guide for creators focused on efficiency, we detail PromptNinja's 'Keyboard First' philosophy. Discover how keyboard shortcuts can transform your workflow, allowing you to adjust scroll speed, font size, and play/pause control without ever having to take your hands off the recording position or use the mouse. We explain how to integrate our tool with external hardware like Elgato Stream Deck and USB pedals, ensuring you have a complete command center for your productions, talks, or musical performances. Save time and gain professionalism with simplified commands and smart shortcuts.

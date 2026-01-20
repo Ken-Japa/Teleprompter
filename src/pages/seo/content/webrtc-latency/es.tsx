@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const WebRtcLatencyContentES = () => (
     <>
@@ -13,6 +14,15 @@ export const WebRtcLatencyContentES = () => (
         <p className="text-slate-300 mb-8 font-medium">
             Mientras otras aplicaciones envían tus comandos a través de servidores lejanos generando retrasos frustrantes, nosotros conectamos tus dispositivos directamente (P2P). El resultado: un control total y una fluidez que se nota en cada toma.
         </p>
+
+        <SEOImage
+            slug="tecnologia-webrtc-baixa-latencia"
+            src="webrtc-technology-synchronization-devices.webp"
+            alt="Sincronización de dispositivos vía WebRTC"
+            caption="La tecnología WebRTC permite que varios dispositivos se comuniquen con latencia cero, ideal para el control remoto del teleprompter."
+            width={1200}
+            height={675}
+        />
 
         <div className="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-6 md:p-8 text-center mb-12">
             <h3 className="text-2xl font-bold text-white mb-4">Experimenta la Velocidad de la Luz</h3>

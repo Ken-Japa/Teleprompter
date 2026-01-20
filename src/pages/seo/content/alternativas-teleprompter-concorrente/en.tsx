@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const AlternativasTeleprompterConcorrenteEN = () => (
     <>
@@ -9,6 +10,15 @@ export const AlternativasTeleprompterConcorrenteEN = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             If you're a <strong>YouTuber, speaker, musician</strong>, or any professional who needs to communicate with fluidity and naturalness, you know a teleprompter can be your best friend. But traditional options — bulky physical hardware or apps with features locked behind paywalls — often bring more headache than solution.
         </p>
+
+        <SEOImage
+            slug="alternativas-teleprompter-concorrente"
+            src="alternative-teleprompter-professional.webp"
+            alt="Professional teleprompter being used in a studio"
+            caption="PromptNinja is the ultimate alternative for those seeking professional features without the cost of expensive hardware."
+            width={1200}
+            height={675}
+        />
 
         <div className="bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-800 mb-12 shadow-xl">
             <h3 className="text-2xl font-bold text-white mb-6">What PromptNinja offers for your performance?</h3>

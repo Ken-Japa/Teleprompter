@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterShortcutsES = () => (
     <>
@@ -8,6 +9,15 @@ export const TeleprompterShortcutsES = () => (
         <p className="mb-6 text-lg text-slate-300">
             ¿Alguna vez cronometraste cuánto tiempo pierdes en una grabación solo yendo hasta la cámara, apretando REC, volviendo a posición, equivocándote, levantándote para pausar...?
         </p>
+
+        <SEOImage
+            slug="teleprompter-com-atalhos-de-teclado"
+            src="teleprompter-shortcuts-keyboard-speed.webp"
+            alt="Atajos de teclado en el teleprompter"
+            caption="PromptNinja fue diseñado con la filosofía 'Keyboard First', permitiendo un control total mediante atajos de teclado."
+            width={1200}
+            height={675}
+        />
 
         <p className="mb-6">
             Editores de video profesionales en Adobe Premiere o DaVinci Resolve raramente tocan el mouse. Saben que <strong>atajos de teclado = velocidad</strong>.

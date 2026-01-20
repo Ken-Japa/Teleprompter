@@ -1,4 +1,5 @@
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const ComoUsarTeleprompterES = () => (
     <>
@@ -9,6 +10,15 @@ export const ComoUsarTeleprompterES = () => (
         <p className="lead text-xl text-slate-300 mb-8">
             ¿Primera vez intentando un teleprompter? Abres algún sitio cualquiera, pegas el texto, le das a play y... DESASTRE. El texto avanza muy rápido (pareces un subastador nervioso) o muy lento (pausas incómodas). Intentas pausar pero necesitas <strong>tocar la pantalla y temblar la cámara</strong>. Después de 40 minutos probando, te rindes y vuelves a regrabar 20 veces memorizando.
         </p>
+
+        <SEOImage
+            slug="como-usar-teleprompter"
+            src="teleprompter-app-mobile-hand.webp"
+            alt="Persona sosteniendo un celular usando teleprompter"
+            caption="PromptNinja transforma cualquier smartphone en un teleprompter potente y fácil de usar."
+            width={1200}
+            height={675}
+        />
 
         <p className="mb-6">
             EXACTAMENTE lo que me pasó la primera vez. Pensé "el teleprompter cambiará mi vida". ¿Resultado? Pasé MÁS tiempo peleando con la herramienta que si hubiera gravado sin nada. El problema no era YO. Era usar herramientas hechas para estudios profesionales con equipos de $5000, no para creadores solo grabando con móvil.

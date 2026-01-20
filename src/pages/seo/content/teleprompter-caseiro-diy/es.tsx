@@ -1,6 +1,7 @@
 import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterCaseiroDIYES = () => (
     <>
@@ -9,6 +10,15 @@ export const TeleprompterCaseiroDIYES = () => (
         <p className="mb-6">
             Grabar vídeos con aspecto profesional requiere fluidez y confianza, pero memorizar guiones es un desafío. Los equipos de teleprompter profesionales lo resuelven, pero son caros. ¿La buena noticia? Puedes <strong>montar un teleprompter casero barato</strong> con materiales sencillos y obtener resultados impresionantes. El principio físico detrás de esto es el "Fantasma de Pepper", una ilusión óptica utilizada en teatros desde el siglo XIX — ¡y que puedes replicar en casa!
         </p>
+
+        <SEOImage
+            slug="teleprompter-caseiro-diy"
+            src="homemade-teleprompter-diy-setup.webp"
+            alt="Teleprompter casero montado con tablet"
+            caption="Un teleprompter casero puede montarse con materiales simples como una caja de cartón y un trozo de vidrio o acrílico."
+            width={1200}
+            height={675}
+        />
 
         <h3 className="text-2xl font-bold text-white mt-8 mb-4">Materiales Necesarios para Montar tu Teleprompter DIY</h3>
 

@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterTravandoSolucaoEN = () => (
     <>
@@ -10,6 +11,15 @@ export const TeleprompterTravandoSolucaoEN = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             You're in the middle of a crucial recording, the message is flowing, the camera is on, and suddenly... the teleprompter freezes. The rhythm breaks, spontaneity vanishes, and frustration takes over. <strong>Anyone who has experienced a teleprompter lagging knows how it can sabotage an entire production.</strong>
         </p>
+
+        <SEOImage
+            slug="teleprompter-travando-solucao"
+            src="solucao-teleprompter-travando.webp"
+            alt="Person frustrated with a lagging teleprompter during recording"
+            caption="Teleprompter lag can ruin your recording; learn how to prevent it."
+            width={1200}
+            height={675}
+        />
 
         <p className="text-slate-300 mb-8 leading-relaxed">
             The good news? There's a <strong>tested and approved solution</strong> for the main culprits causing freezes: from inadequate hardware and outdated software to incorrect settings. And the best part is you don't need an IT degree to solve it, because <strong>PromptNinja was built to be your definitive solution, preventing most of these issues before they even appear.</strong>

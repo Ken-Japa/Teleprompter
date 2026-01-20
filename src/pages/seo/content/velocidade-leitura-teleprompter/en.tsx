@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const VelocidadeLeituraTeleprompterEN = () => (
@@ -10,6 +11,15 @@ export const VelocidadeLeituraTeleprompterEN = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             End the anxiety of trying to keep up with the text scrolling on the screen. <strong>Discover how to find your ideal rhythm</strong> and use technology so the teleprompter follows you.
         </p>
+
+        <SEOImage
+            slug="velocidade-leitura-teleprompter"
+            src="velocidade-leitura-teleprompter.webp"
+            alt="Person controlling reading speed on a teleprompter"
+            caption="Find the perfect rhythm for your reading and increase your authority on video."
+            width={1200}
+            height={675}
+        />
 
         <p className="text-slate-300 mb-8 leading-relaxed">
             In this essential guide to natural communication, we explore the concept of WPM (Words Per Minute) and how it dictates the perception of authority in your videos. If you've ever felt like a robot trying not to stutter while the text rises relentlessly, this content is for you. We detail the golden metrics of professional speech, from the cadence of news anchors to the dynamism of top YouTubers. Learn how PromptNinja's Voice Control, powered by artificial intelligence, eliminates the need for constant manual adjustments, allowing you to make dramatic pauses and breathe naturally, ensuring the script is always in the right place at the right time, completely free and online.

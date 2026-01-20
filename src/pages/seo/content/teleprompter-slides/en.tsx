@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterSlidesEN = () => (
     <>
@@ -10,6 +11,15 @@ export const TeleprompterSlidesEN = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             The biggest nightmare for anyone presenting with slides is desynchronization: the teleprompter keeps scrolling while you're still explaining the chart on the previous slide. <strong>Tired of reading slides and losing eye contact with your audience?</strong>
         </p>
+
+        <SEOImage
+            slug="teleprompter-sincronizar-powerpoint-slides"
+            src="teleprompter-synchronization-powerpoint-slides.webp"
+            alt="Slide synchronization with teleprompter"
+            caption="Deliver webinars and talks with perfect sync between your slides and the script."
+            width={1200}
+            height={675}
+        />
 
         <p className="text-slate-300 mb-8 leading-relaxed">
             In this guide, we'll show you how to integrate <strong>PromptNinja</strong> with PowerPoint and Google Slides for flawless presentations. Discover how to use the exclusive [STOP] command to pause the script automatically at each slide transition, allowing you to maintain authority, visual connection, and the perfect rhythm. Transform your webinars, classes, and corporate talks into professional performances where audio and visual walk together, effortlessly and for free!

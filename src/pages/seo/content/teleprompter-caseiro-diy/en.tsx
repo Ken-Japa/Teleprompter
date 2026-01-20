@@ -1,6 +1,7 @@
 import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterCaseiroDIYEN = () => (
     <>
@@ -11,6 +12,15 @@ export const TeleprompterCaseiroDIYEN = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Want to save hundreds of dollars and still get professional results? Learn how to build your own DIY homemade teleprompter and discover why <strong>PromptNinja</strong> is the perfect free software for your new setup.
         </p>
+
+        <SEOImage
+            slug="teleprompter-caseiro-diy"
+            src="homemade-teleprompter-diy-setup.webp"
+            alt="DIY homemade teleprompter with tablet"
+            caption="A homemade teleprompter can be built using simple materials like a cardboard box and a piece of glass or acrylic."
+            width={1200}
+            height={675}
+        />
 
         <p className="text-slate-300 mb-8 leading-relaxed">
             Recording professional-looking videos requires fluency and confidence, but memorizing scripts is a constant challenge. Professional teleprompter equipment solves this, but the cost can be prohibitive for those just starting out. The good news? You can <strong>build a cheap DIY homemade teleprompter</strong> with simple materials and achieve impressive results.

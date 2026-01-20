@@ -1,4 +1,5 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 import { ROUTES_CONFIG } from "../../../../config/routes";
 
 export const VelocidadeLeituraTeleprompterES = () => (
@@ -10,6 +11,15 @@ export const VelocidadeLeituraTeleprompterES = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Termina con la ansiedad de intentar seguir el texto desplazándose en la pantalla. <strong>Descubre cómo encontrar tu ritmo ideal</strong> y usa la tecnología para que el teleprompter te siga a ti.
         </p>
+
+        <SEOImage
+            slug="velocidade-leitura-teleprompter"
+            src="velocidade-leitura-teleprompter.webp"
+            alt="Persona controlando la velocidad de lectura en el teleprompter"
+            caption="Encuentra el ritmo perfecto para tu lectura y aumenta tu autoridad en video."
+            width={1200}
+            height={675}
+        />
 
         <p className="text-slate-300 mb-8 leading-relaxed">
             En esta guía esencial para la comunicación natural, exploramos el concepto de PPM (Palabras Por Minuto) y cómo dicta la percepción de autoridad en tus videos. Si alguna vez te has sentido como un robot tratando de no tartamudear mientras el texto sube implacablemente, este contenido es para ti. Detallamos las métricas doradas del habla profesional, desde la cadencia de los presentadores de noticias hasta el dinamismo de los mejores YouTubers. Aprende cómo el Control por Voz de PromptNinja, impulsado por inteligencia artificial, elimina la necesidad de ajustes manuales constantes, permitiéndote hacer pausas dramáticas y respirar naturalmente, asegurando que el guion esté siempre en el lugar correcto en el momento correcto, completamente gratis y online.

@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterSlidesES = () => (
     <>
@@ -10,6 +11,15 @@ export const TeleprompterSlidesES = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Nunca más pierda el ritmo en tus presentaciones. Con **PromptNinja** y el comando exclusivo **[STOP]**, puedes sincronizar perfectamente tu guion con tus diapositivas para una exposición magistral.
         </p>
+
+        <SEOImage
+            slug="teleprompter-sincronizar-powerpoint-slides"
+            src="teleprompter-synchronization-powerpoint-slides.webp"
+            alt="Sincronización de diapositivas con teleprompter"
+            caption="Presenta webinars y conferencias con sincronía perfecta entre tus diapositivas y el guion."
+            width={1200}
+            height={675}
+        />
 
         <p className="text-slate-300 mb-8 font-medium">
             El mayor temor de un orador es que el texto siga avanzando mientras todavía explica un gráfico importante. Nuestra tecnología permite que el guion te espere, garantizando que cada palabra coincida exactamente con lo que el público ve en pantalla.

@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const ComoUsarTeleprompterPT = () => (
     <>
@@ -9,6 +10,15 @@ export const ComoUsarTeleprompterPT = () => (
         <p className="text-lg text-slate-300 mb-6 leading-relaxed">
             Cansado de esquecer seu texto ou perder a linha durante gravações? O teleprompter no celular é a solução perfeita para manter a fluidez. E a boa notícia é: com o <strong>PromptNinja</strong>, você pode transformar seu smartphone em um teleprompter profissional de forma <strong>rápida, gratuita e descomplicada!</strong>
         </p>
+
+        <SEOImage
+            slug="como-usar-teleprompter"
+            src="teleprompter-app-mobile-hand.webp"
+            alt="Pessoa segurando celular usando teleprompter"
+            caption="O PromptNinja transforma qualquer smartphone em um teleprompter potente e fácil de usar."
+            width={1200}
+            height={675}
+        />
         <p className="text-lg text-slate-300 mb-8 leading-relaxed">
             Este guia completo vai te mostrar o <strong>passo a passo exato</strong> para configurar e usar o teleprompter no seu celular. Vamos direto ao ponto para você começar a falar com confiança hoje mesmo.
             <br /><br />

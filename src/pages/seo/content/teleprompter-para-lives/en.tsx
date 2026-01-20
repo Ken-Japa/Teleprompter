@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { ROUTES_CONFIG } from "../../../../config/routes";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterParaLivesEN = () => (
     <>
@@ -10,6 +11,15 @@ export const TeleprompterParaLivesEN = () => (
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Doing a live broadcast is like walking on a tightrope. You need to monitor chat, manage audio, interact with viewers, and, at the same time, not lose your train of thought. <strong>How many times have you seen a streamer get lost in ramblings and see the audience plummet in real time?</strong>
         </p>
+
+        <SEOImage
+            slug="teleprompter-para-lives"
+            src="teleprompter-lives-live-streaming.webp"
+            alt="Live streaming with teleprompter invisible to the audience"
+            caption="PromptNinja allows you to read your script without the audience noticing, keeping engagement at its peak."
+            width={1200}
+            height={675}
+        />
 
         <p className="text-slate-300 mb-8 leading-relaxed">
             In this practical guide, we will show you how <strong>PromptNinja</strong> becomes your invisible copilot during lives on Twitch, YouTube, or Instagram. Learn how to set up a script or strategic topics that are visible only to you, allowing you to deliver high-value content and sponsorship announcements perfectly, without ever taking your focus off your community. Discover the ideal setup for OBS Studio and how to use the remote control via mobile to have total fluidity without stammering!

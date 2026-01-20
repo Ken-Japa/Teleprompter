@@ -1,4 +1,5 @@
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
+import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const ComoUsarTeleprompterEN = () => (
     <>
@@ -9,6 +10,15 @@ export const ComoUsarTeleprompterEN = () => (
         <p className="text-lg text-slate-300 mb-6 leading-relaxed">
             Tired of forgetting lines or stuttering in videos and presentations? Using a teleprompter on your phone is the perfect solution for fluid and professional communication. <span className="text-white font-semibold">Start right now, no registration required</span>, and transform the way you express yourself!
         </p>
+
+        <SEOImage
+            slug="como-usar-teleprompter"
+            src="teleprompter-app-mobile-hand.webp"
+            alt="Person holding phone using teleprompter"
+            caption="PromptNinja transforms any smartphone into a powerful and easy-to-use teleprompter."
+            width={1200}
+            height={675}
+        />
 
         <p className="text-lg text-slate-300 mb-8 leading-relaxed">
             This complete guide will show you the <strong>exact step-by-step</strong> to set up and use a teleprompter on your phone. Let's get straight to the point so you can start speaking with confidence today.
