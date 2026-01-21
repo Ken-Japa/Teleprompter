@@ -14,8 +14,8 @@ export const TeleprompterGoogleMeetTeams: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterGoogleMeetTeamsPT;
-    let title = "Teleprompter para Google Meet e Teams: Domine Suas Reuniões";
-    let description = "Tenha apresentações impecáveis no Google Meet e Microsoft Teams com o PromptNinja. Leia roteiros discretamente, mantenha o contato visual e transmita autoridade profissional.";
+    let title = "Teleprompter para Google Meet e Teams: Olhar na Câmera";
+    let description = "Apresente com autoridade no Google Meet e Teams! Use o PromptNinja para ler roteiros discretamente e manter o contato visual perfeito. Grátis e sem instalação.";
     let ctaText = "Começar Reunião com Teleprompter";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-google-meet-teams";
     const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
@@ -50,8 +50,8 @@ export const TeleprompterGoogleMeetTeams: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = TeleprompterGoogleMeetTeamsEN;
-        title = "Teleprompter for Google Meet and Microsoft Teams";
-        description = "Secure, zero-install teleprompter solution for corporate meetings on Teams, Meet, and Zoom. 100% local data privacy.";
+        title = "Teleprompter for Google Meet and Teams: Eye Contact | PromptNinja";
+        description = "Master your corporate meetings on Teams, Meet, and Zoom. Professional teleprompter for flawless presentations with 100% data privacy. Start for free!";
         ctaText = "Start Meeting with Teleprompter";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-google-meet-teams";
         schema = {
@@ -84,8 +84,8 @@ export const TeleprompterGoogleMeetTeams: React.FC<Props> = ({ onLaunch }) => {
         };
     } else if (lang === 'es') {
         Content = TeleprompterGoogleMeetTeamsES;
-        title = "Teleprompter para Google Meet y Microsoft Teams";
-        description = "Solución segura y sin instalación para usar teleprompter en reuniones corporativas en Teams, Meet y Zoom. Privacidad de datos 100% local.";
+        title = "Teleprompter para Google Meet y Teams: Mirada en la Cámara";
+        description = "¡Domina tus reuniones en Teams y Meet! Usa el teleprompter de PromptNinja para leer guiones sin perder el contacto visual. Seguro, privado y sin instalación.";
         ctaText = "Iniciar Reunión con Teleprompter";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-google-meet-teams";
         schema = {

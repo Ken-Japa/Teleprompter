@@ -13,8 +13,8 @@ export const TeleprompterOnlineGratis: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterOnlineGratisPT;
-    let title = "Teleprompter Online GRÁTIS: Use o PromptNinja Instantaneamente para Vídeos Perfeitos";
-    let description = "Crie vídeos e apresentações profissionais com o teleprompter online grátis do PromptNinja. Use sem cadastro, direto no navegador! Ideal para YouTubers, Músicos e Palestrantes. Comece agora!";
+    let title = "Teleprompter Online GRÁTIS: Controle por Voz e Câmera | PromptNinja";
+    let description = "Chega de esquecer falas! Use o PromptNinja Teleprompter Online GRÁTIS para vídeos e apresentações. Controle a rolagem com sua voz e grave direto com sua câmera. Experimente fácil e sem cadastro!";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-online-gratis";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {

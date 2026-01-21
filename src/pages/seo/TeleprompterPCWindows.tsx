@@ -13,8 +13,8 @@ export const TeleprompterPCWindows: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterPCWindowsPT;
-    let title = "Teleprompter para PC Windows: Use o PromptNinja sem Instalação";
-    let description = "Transforme seu PC Windows em um teleprompter profissional. Sem downloads, sem vírus, direto no Chrome ou Edge. Otimizado para Windows 10 e 11. Comece a usar o PromptNinja grátis agora!";
+    let title = "Teleprompter para PC Windows: Gratis e sem Instalação | PromptNinja";
+    let description = "Transforme seu PC Windows em um teleprompter profissional. Sem downloads ou vírus, direto no Chrome ou Edge. Otimizado para Windows 10 e 11. Teste grátis!";
     let ctaText = "Abrir Teleprompter no PC";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-pc-windows";
     const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
@@ -49,8 +49,8 @@ export const TeleprompterPCWindows: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = TeleprompterPCWindowsEN;
-        title = "PromptNinja: The Best Online Teleprompter for Windows PC (Free)";
-        description = "Transform your Windows PC into a professional studio with PromptNinja. Easy-to-use online teleprompter with advanced features and free trial. Ideal for YouTubers and speakers.";
+        title = "Best Online Teleprompter for Windows PC (Free) | PromptNinja";
+        description = "Turn your Windows PC into a professional studio. Easy online teleprompter with smooth scrolling and remote control. No installation required. Try it free!";
         ctaText = "Open Teleprompter on PC";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-pc-windows";
         schema = {
@@ -83,8 +83,8 @@ export const TeleprompterPCWindows: React.FC<Props> = ({ onLaunch }) => {
         };
     } else if (lang === 'es') {
         Content = TeleprompterPCWindowsES;
-        title = "Teleprompter para PC Windows: Configuración Profesional en Segundos";
-        description = "Transforma tu ordenador en una herramienta de producción de élite. Con PromptNinja, obtienes un teleprompter potente para Windows sin necesidad de instalar archivos .exe sospechosos o pagar suscripciones caras.";
+        title = "Teleprompter para PC Windows: Profesional y Sin Instalación";
+        description = "Convierte tu ordenador en un teleprompter de élite. Sin archivos .exe ni suscripciones caras. La mejor herramienta online para creadores en Windows. Grátis.";
         ctaText = "Abrir Teleprompter en PC";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-pc-windows";
         schema = {

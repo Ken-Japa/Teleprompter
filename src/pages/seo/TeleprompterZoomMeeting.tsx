@@ -13,8 +13,8 @@ export const TeleprompterZoomMeeting: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterZoomMeetingPT;
-    let title = "Teleprompter para Zoom: Fale com Naturalidade em Reuniões e Webinars";
-    let description = "Cansado de desviar o olhar no Zoom? Use o PromptNinja para ler seu roteiro enquanto mantém contato visual com os participantes. Ideal para apresentações e aulas online. Teste grátis.";
+    let title = "Teleprompter para Zoom: Fale com Naturalidade e Olhar na Câmera";
+    let description = "Cansado de desviar o olhar no Zoom? Use o PromptNinja para ler seu roteiro enquanto mantém contato visual. Ideal para reuniões e webinars. Teste grátis!";
     let ctaText = "Abrir Teleprompter para Zoom";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-zoom-meeting";
     const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
@@ -34,8 +34,8 @@ export const TeleprompterZoomMeeting: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = TeleprompterZoomMeetingEN;
-        title = "Virtual Teleprompter for Zoom: Master Your Online Presentations | PromptNinja";
-        description = "Transform your Zoom meetings and lives with PromptNinja’s virtual teleprompter. Read scripts discretely, maintain eye contact, and convey professional confidence. Try for free and simplify your calls!";
+        title = "Virtual Teleprompter for Zoom: Eye Contact & Confidence | PromptNinja";
+        description = "Master your Zoom meetings! Read scripts discretely while maintaining perfect eye contact with PromptNinja. Professional confidence for lives and calls. Try free.";
         ctaText = "Open Teleprompter for Zoom";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-zoom-meeting";
         schema = {
@@ -53,8 +53,8 @@ export const TeleprompterZoomMeeting: React.FC<Props> = ({ onLaunch }) => {
         };
     } else if (lang === 'es') {
         Content = TeleprompterZoomMeetingES;
-        title = "Teleprompter Virtual para Zoom y Videollamadas: El Secreto del Contacto Visual | PromptNinja";
-        description = "Mantén el contacto visual perfecto durante tus reuniones en línea. Usa PromptNinja para leer tu guion con fluidez mientras miras directamente a la cámara, transmitiendo total confianza y autoridad a tu audiencia.";
+        title = "Teleprompter para Zoom y Videollamadas: Contacto Visual Perfecto";
+        description = "¡No pierdas el contacto visual! Usa PromptNinja para leer tu guion con fluidez mientras miras a la cámara en Zoom y Teams. Transmite confianza y autoridad gratis.";
         ctaText = "Abrir Teleprompter para Zoom";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/teleprompter-zoom-meeting";
         schema = {

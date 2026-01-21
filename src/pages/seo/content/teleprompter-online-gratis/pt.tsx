@@ -4,20 +4,54 @@ import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterOnlineGratisPT = () => (
     <>
-        <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-700/50 mb-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Teleprompter Online GRÁTIS: Sua Voz, Sem Esforço!
-            </h2>
-            <p className="text-lg text-slate-300 leading-relaxed mb-8">
-                Cansado de esquecer falas ou gaguejar em vídeos e apresentações? Com o <strong>PromptNinja, seu teleprompter online gratuito</strong>, você tem a solução perfeita para uma comunicação fluida e profissional. <span className="text-white font-semibold">Comece agora mesmo, sem cadastro</span>, e transforme a forma como você se expressa!
-            </p>
+        <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-700/50 mb-12">
+            <h1 className="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-8 text-center leading-tight">
+                Teleprompter Online GRÁTIS: Brilhe em Seus Vídeos e Apresentações!
+            </h1>
 
-            <a href="https://promptninja.solutionkit.com.br/#app"
-                className="inline-flex items-center justify-center bg-green-600 hover:bg-green-500 font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-green-500/30 hover:scale-105 transition-all duration-200 text-xl mb-4 group"
-                style={{ color: 'white' }}>
-                <span style={{ color: 'white' }}>👉 Experimente o Teleprompter GRÁTIS Agora!</span>
-            </a>
-            <p className="text-xs text-slate-500">Não é necessário cartão de crédito ou cadastro.</p>
+            <div className="max-w-3xl mx-auto space-y-6 text-lg text-slate-300 leading-relaxed">
+                <p>
+                    <strong className="text-white">Cansado de tropeçar nas palavras ou esquecer o roteiro no meio da gravação?</strong> Aquele nervosismo que rouba sua espontaneidade e faz suas apresentações parecerem forçadas? Com o <strong>PromptNinja Teleprompter Online Grátis</strong>, esses problemas ficam no passado!
+                </p>
+
+                <p>
+                    Desenvolvido para criadores de conteúdo, palestrantes, educadores e qualquer um que precise de confiança na frente da câmera, o PromptNinja é a sua solução definitiva. <strong className="text-white">Controle a rolagem do texto com a sua própria voz</strong>, ajuste a velocidade com um toque e grave diretamente seus vídeos com seu roteiro fluindo suavemente na tela.
+                </p>
+
+                <div className="grid md:grid-cols-2 gap-4 mt-8">
+                    <ul className="space-y-3">
+                        <li className="flex items-start">
+                            <span className="text-green-500 mr-2">✓</span>
+                            <span><strong className="text-white">Autonomia Total:</strong> Esqueça a memorização e foque na sua paixão.</span>
+                        </li>
+                        <li className="flex items-start">
+                            <span className="text-green-500 mr-2">✓</span>
+                            <span><strong className="text-white">Controle por Voz:</strong> A leitura se adapta ao seu ritmo de fala.</span>
+                        </li>
+                    </ul>
+                    <ul className="space-y-3">
+                        <li className="flex items-start">
+                            <span className="text-green-500 mr-2">✓</span>
+                            <span><strong className="text-white">Gravação Integrada:</strong> Capture vídeos com o roteiro na tela.</span>
+                        </li>
+                        <li className="flex items-start">
+                            <span className="text-green-500 mr-2">✓</span>
+                            <span><strong className="text-white">Sem Cadastro:</strong> Comece agora, direto no navegador.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div className="text-center pt-8">
+                    <p className="text-xl font-semibold text-white mb-6">
+                        Pronto para transformar suas ideias em performances impecáveis?
+                    </p>
+                    <a href="https://promptninja.solutionkit.com.br/#app"
+                        className="inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-blue-500/30 hover:scale-105 transition-all duration-200 text-xl group">
+                        Experimente o PromptNinja Totalmente Grátis!
+                    </a>
+                    <p className="text-sm text-slate-500 mt-4 italic">Sem necessidade de cadastro. Comece em segundos.</p>
+                </div>
+            </div>
         </div>
 
         <SEOImage
@@ -81,6 +115,39 @@ export const TeleprompterOnlineGratisPT = () => (
                     <h4 className="font-bold text-white mb-2">Sem Anúncios ou Cadastro</h4>
                     <p className="text-sm text-slate-300">Sua experiência de gravação deve ser limpa e focada. O PromptNinja não exibe anúncios e não exige cadastro para usar as funcionalidades essenciais. É abrir e usar.</p>
                 </div>
+            </div>
+        </div>
+
+        {/* Visual "Como Funciona" Section for better UX and E-E-A-T */}
+        <div className="bg-slate-800/30 p-8 rounded-2xl border border-slate-700/50 my-12">
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">Como Usar o PromptNinja: Simples, Rápido e Grátis</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+                <div className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center mb-4 border border-blue-500/30">
+                        <span className="text-2xl">📝</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">1. Cole Seu Roteiro</h3>
+                    <p className="text-slate-400 text-sm">Copie e cole o texto da sua apresentação, discurso ou roteiro de vídeo diretamente na interface do PromptNinja.</p>
+                </div>
+                <div className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 bg-purple-600/20 rounded-full flex items-center justify-center mb-4 border border-purple-500/30">
+                        <span className="text-2xl">⚙️</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">2. Ajuste ao Seu Estilo</h3>
+                    <p className="text-slate-400 text-sm">Defina a velocidade de rolagem, tamanho da fonte e cor do texto para uma leitura confortável e personalizada.</p>
+                </div>
+                <div className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 bg-green-600/20 rounded-full flex items-center justify-center mb-4 border border-green-500/30">
+                        <span className="text-2xl">🎤</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">3. Controle por Voz e Grave!</h3>
+                    <p className="text-slate-400 text-sm">Use sua voz para pausar e retomar a rolagem, e grave seu vídeo diretamente, sem preocupações com o roteiro.</p>
+                </div>
+            </div>
+            <div className="mt-10 text-center">
+                <a href="https://promptninja.solutionkit.com.br/#app" className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-8 rounded-full transition-all duration-200">
+                    Comece Sua Performance Agora!
+                </a>
             </div>
         </div>
 

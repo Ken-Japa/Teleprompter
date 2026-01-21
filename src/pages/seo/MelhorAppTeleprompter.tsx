@@ -13,8 +13,8 @@ export const MelhorAppTeleprompter: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = MelhorAppTeleprompterPT;
-    let title = "PromptNinja: O Melhor App de Teleprompter para Conteúdo Impecável (Compare e Veja!)";
-    let description = "Descubra por que o PromptNinja é a escolha superior para youtubers, palestrantes e músicos. Compare recursos, prove resultados reais e comece grátis hoje.";
+    let title = "PromptNinja: O Melhor Teleprompter App para Vídeos Profissionais e Lives Sem Erros";
+    let description = "Domine suas gravações e apresentações! Descubra por que o PromptNinja é o app de teleprompter mais escolhido por YouTubers, palestrantes e músicos. Controle remoto e texto flutuante. Experimente grátis!";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/melhor-teleprompter-app";
     let ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
     let schema: object = {

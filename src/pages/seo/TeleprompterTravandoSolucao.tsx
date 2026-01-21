@@ -13,8 +13,8 @@ export const TeleprompterTravandoSolucao: React.FC<Props> = ({ onLaunch }) => {
     const { lang } = useTranslation();
 
     let Content = TeleprompterTravandoSolucaoPT;
-    let title = "Teleprompter Travando? 🛠️ 5 Soluções Testadas (e a #1) para Gravações Perfeitas com PromptNinja";
-    let description = "Cansado do teleprompter travando? Descubra as causas (hardware, software, conexão) e a solução definitiva do PromptNinja para vídeos fluidos. Diga adeus aos travamentos e grave sem interrupções!";
+    let title = "Teleprompter Travando? 🛠️ 5 Soluções para Gravações Perfeitas";
+    let description = "Cansado do teleprompter travando? Descubra como resolver problemas de hardware e conexão com a tecnologia GPU do PromptNinja para vídeos 100% fluidos.";
     let ctaText = "Testar Rolagem Suave (Grátis)";
     let canonicalUrl = "https://promptninja.solutionkit.com.br/teleprompter-travando-solucao";
     const ogImage = "https://promptninja.solutionkit.com.br/og-image.webp";
@@ -34,8 +34,8 @@ export const TeleprompterTravandoSolucao: React.FC<Props> = ({ onLaunch }) => {
 
     if (lang === 'en') {
         Content = TeleprompterTravandoSolucaoEN;
-        title = "Stop Freezing! P2P Teleprompter FREE: Solution for Lagging and Frozen Text";
-        description = "PromptNinja is the FREE P2P solution for lagging teleprompters. Learn why common apps freeze and use the only one with 100% smooth, zero-lag scrolling.";
+        title = "Teleprompter Lagging? 🛠️ Fix Freezing and Slow Scrolling Now";
+        description = "Stop frames dropping! Learn why teleprompters freeze and how PromptNinja uses GPU acceleration for 100% smooth, zero-lag scrolling performance.";
         ctaText = "Test Smooth Scrolling (Free)";
         canonicalUrl = "https://promptninja.solutionkit.com.br/en/teleprompter-freezing-solution";
         schema = {
@@ -53,8 +53,8 @@ export const TeleprompterTravandoSolucao: React.FC<Props> = ({ onLaunch }) => {
         };
     } else if (lang === 'es') {
         Content = TeleprompterTravandoSolucaoES;
-        title = "¡No Más Congelamientos! Teleprompter P2P GRATIS: Solución Cero Lag";
-        description = "PromptNinja es la solución P2P GRATIS para teleprompters congelados. Entiende por qué las apps fallan y usa el único con desplazamiento 100% suave y cero lag.";
+        title = "¿Teleprompter Congelado? 🛠️ 5 Soluciones para Videos Fluidos";
+        description = "¡No más cortes! Aprende por qué tu teleprompter se traba y cómo PromptNinja usa aceleración por GPU para un desplazamiento 100% suave y sin lag.";
         ctaText = "Probar Desplazamiento Suave (Gratis)";
         canonicalUrl = "https://promptninja.solutionkit.com.br/es/solucion-teleprompter-congelado";
         schema = {
