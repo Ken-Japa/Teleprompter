@@ -314,6 +314,7 @@ Letra y acordes
 [C]       [G]
 Perfectamente alineados`,
     localhostWarning: "Atención: Localhost detectado.",
+    offlineWarning: "¡Estás offline! El teleprompter funciona normalmente, pero la inicialización del control remoto P2P requiere conexión a internet.",
     openRemoteTab: "Abrir Control Remoto (Nueva Pestaña)",
     copyLink: "Copiar Link",
     linkCopied: "¡Copiado!",

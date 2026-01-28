@@ -311,6 +311,7 @@ Letras e acordes
 [C]       [G]
 Alinhados perfeitamente`,
     localhostWarning: "Atenção: Você está em localhost. Para usar o controle remoto, abra em outra aba.",
+    offlineWarning: "Você está offline. O teleprompter funciona normalmente, mas a inicialização do controle remoto P2P requer conexão com a internet.",
     openRemoteTab: "Abrir Controle Remoto (Nova Aba)",
     copyLink: "Copiar Link",
     linkCopied: "Copiado!",

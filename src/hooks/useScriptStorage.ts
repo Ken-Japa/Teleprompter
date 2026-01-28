@@ -252,6 +252,19 @@ export const useScriptStorage = (isMusicianMode?: boolean) => {
 
     }, [user, isMusicianMode]);
 
+    // Força verificação visual / reavaliação quando a aba volta ao foco
+    useEffect(() => {
+        const handleTabFocus = () => {
+            setScripts(prev => [...prev]);
+        };
+
+        window.addEventListener('focus', handleTabFocus);
+
+        return () => {
+            window.removeEventListener('focus', handleTabFocus);
+        };
+    }, []);
+
 
     // --- Actions ---
 

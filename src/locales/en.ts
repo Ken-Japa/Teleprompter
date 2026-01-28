@@ -306,6 +306,7 @@ Lyrics and chords
 [C]       [G]
 Aligned perfectly`,
     localhostWarning: "Warning: Localhost detected. Use the button below to test.",
+    offlineWarning: "You are offline. The teleprompter works normally, but the remote control P2P initialization requires internet connection.",
     openRemoteTab: "Open Remote (New Tab)",
     copyLink: "Copy Link",
     linkCopied: "Copied!",

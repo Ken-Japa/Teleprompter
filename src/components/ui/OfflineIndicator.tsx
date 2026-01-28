@@ -1,5 +1,6 @@
 import React from "react";
 import { useOnlineStatus } from "../../hooks/useOnlineStatus";
+import { useTranslation } from "../../hooks/useTranslation";
 
 /**
  * Component that displays a banner when the user goes offline.
@@ -7,6 +8,7 @@ import { useOnlineStatus } from "../../hooks/useOnlineStatus";
  */
 export const OfflineIndicator: React.FC = () => {
     const isOnline = useOnlineStatus();
+    const { t } = useTranslation();
 
     if (isOnline) {
         return null;
@@ -29,7 +31,7 @@ export const OfflineIndicator: React.FC = () => {
                     />
                 </svg>
                 <span>
-                    Você está offline. O teleprompter funciona normalmente, mas o controle remoto P2P requer conexão com a internet.
+                    {t("host.offlineWarning")}
                 </span>
             </div>
         </div>
