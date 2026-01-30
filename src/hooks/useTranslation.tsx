@@ -4,7 +4,7 @@ import { resources, Language } from "../locales/index";
 interface TranslationContextType {
     lang: Language;
     setLang: (lang: Language) => void;
-    t: (path: string, params?: Record<string, string | number>) => string;
+    t: (path: string, params?: Record<string, string | number | boolean>) => any;
 }
 
 const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
@@ -72,7 +72,7 @@ export const TranslationProvider = ({ children, initialLang }: { children: React
     }, []);
 
     const t = useCallback(
-        (path: string, params?: Record<string, string | number>) => {
+        (path: string, params?: Record<string, string | number | boolean>) => {
             const keys = path.split(".");
             let current: any = resources[lang];
 

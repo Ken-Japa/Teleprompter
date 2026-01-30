@@ -152,6 +152,10 @@ export const en = {
     features: {
       title: "Features",
       subtitle: "Everything you need for professional teleprompting",
+      badges: {
+        free: "FREE",
+        pro: "PRO",
+      },
       sync: {
         title: "Instant Sync",
         desc:
@@ -216,7 +220,7 @@ export const en = {
         period: "/forever",
         cta: "Start Free",
         features: ["20 minutes per session", "Unlimited sessions", "Full remote control", "All themes"],
-        missing: ["Discreet watermark", "Voice control"],
+        missing: ["Unlimited session time", "Voice control", "Custom Shortcuts"],
       },
       pro: {
         badge: "🔥 LAUNCH PRICE",
@@ -232,7 +236,6 @@ export const en = {
           "No watermark",
           "Multiple remote controls (teams)",
           "Voice control",
-          "Custom logo",
           "Priority support",
           "MIDI support for physical controllers",
           "Early access to features",
@@ -871,6 +874,30 @@ Paste your script here and customize your experience to start shining!`,
       EXIT: "Exit",
     },
     proDescription: "Connecting MIDI pedals is exclusive for PRO members.",
+  },
+  onboarding: {
+    title: "Welcome to PromptNinja! 🥷",
+    subtitle: "Your journey to flawless videos starts now",
+    cta: "Next",
+    finish: "Start Now!",
+    skip: "Skip Tour",
+    steps: [
+      {
+        title: "Look at the Camera",
+        desc: "Read your script while maintaining perfect eye contact. PromptNinja is designed for you to speak naturally without forgetting your lines.",
+        icon: "camera"
+      },
+      {
+        title: "Your Phone is the Remote",
+        desc: "Use our zero-lag P2P technology. Scan the QR Code with your phone and control everything remotely: speed, play, and pause.",
+        icon: "remote"
+      },
+      {
+        title: "Ninja Power (PRO)",
+        desc: "Master the stage with Voice Control, custom shortcuts, and unlimited sessions. Transform your browser into a full studio.",
+        icon: "pro"
+      }
+    ]
   }
 };
 

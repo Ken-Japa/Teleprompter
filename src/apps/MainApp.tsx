@@ -17,6 +17,9 @@ import { Language } from "../locales/index";
 import { OfflineIndicator } from "../components/ui/OfflineIndicator";
 
 
+import { OnboardingDialog } from "../components/ui/OnboardingDialog";
+
+
 type ViewState = "LANDING" | "HOST" | "REMOTE" | "THANK_YOU" | SeoRouteKey;
 
 const LoadingSpinner = () => (
@@ -29,8 +32,21 @@ export const MainApp: React.FC = () => {
     const [view, setView] = useState<ViewState>("LANDING");
     const [remoteId, setRemoteId] = useState<string>("");
     const [currentLang, setCurrentLang] = useState<Language | undefined>(undefined);
+    const [showOnboarding, setShowOnboarding] = useState(false);
 
     const { t, lang } = useTranslation();
+
+    useEffect(() => {
+        const seen = localStorage.getItem("promptninja_onboarding_seen");
+        if (!seen && view === "HOST") {
+            setShowOnboarding(true);
+        }
+    }, [view]);
+
+    const handleOnboardingClose = () => {
+        setShowOnboarding(false);
+        localStorage.setItem("promptninja_onboarding_seen", "true");
+    };
 
     // Inactivity check
     const isActive = useInactivity(30 * 60 * 1000); // 30 minutes
@@ -184,6 +200,7 @@ export const MainApp: React.FC = () => {
     return (
         <TranslationProvider initialLang={currentLang}>
             <OfflineIndicator />
+            <OnboardingDialog isOpen={showOnboarding} onClose={handleOnboardingClose} />
             <Suspense fallback={<LoadingSpinner />}>
                 {view === "REMOTE" && <Remote hostId={remoteId} />}
                 {view === "LANDING" && <Landing onLaunch={launchApp} />}

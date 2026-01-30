@@ -22,6 +22,7 @@ export const Features: React.FC = () => {
                         icon={<MicIcon className="w-10 h-10 text-emerald-400 icon-hover-rotate mx-auto" />}
                         title={t("landing.features.voice.title")}
                         desc={t("landing.features.voice.desc")}
+                        badge={{ text: t("landing.features.badges.pro"), variant: "pro" }}
                     >
                         <a
                             href="https://pay.kiwify.com.br/dl571EZ"
@@ -45,6 +46,7 @@ export const Features: React.FC = () => {
                         icon={<LanguagesIcon className="w-10 h-10 text-blue-400 icon-hover-rotate mx-auto" />}
                         title={t("landing.features.bilingual.title")}
                         desc={t("landing.features.bilingual.desc")}
+                        badge={{ text: t("landing.features.badges.free"), variant: "free" }}
                     >
                         <a
                             href={
@@ -67,6 +69,7 @@ export const Features: React.FC = () => {
                             icon={<ZapIcon className="w-6 h-6 icon-hover-rotate" />}
                             title={t("landing.features.sync.title")}
                             desc={t("landing.features.sync.desc")}
+                            badge={{ text: t("landing.features.badges.free"), variant: "free" }}
                         />
                     </div>
                     <div className="stagger-item">
@@ -74,6 +77,7 @@ export const Features: React.FC = () => {
                             icon={<CrownIcon className="w-6 h-6 icon-hover-rotate" />}
                             title={t("landing.features.privacy.title")}
                             desc={t("landing.features.privacy.desc")}
+                            badge={{ text: t("landing.features.badges.free"), variant: "free" }}
                         />
                     </div>
                     <div className="stagger-item">
@@ -81,6 +85,7 @@ export const Features: React.FC = () => {
                             icon={<PiPIcon className="w-6 h-6 icon-hover-rotate" />}
                             title={t("landing.features.pip.title")}
                             desc={t("landing.features.pip.desc")}
+                            badge={{ text: t("landing.features.badges.free"), variant: "free" }}
                         />
                     </div>
                     <div className="stagger-item">
@@ -88,6 +93,7 @@ export const Features: React.FC = () => {
                             icon={<ShieldIcon className="w-6 h-6 icon-hover-rotate" />}
                             title={t("landing.features.offline.title")}
                             desc={t("landing.features.offline.desc")}
+                            badge={{ text: t("landing.features.badges.free"), variant: "free" }}
                         />
                     </div>
                     <div className="stagger-item">
@@ -95,6 +101,7 @@ export const Features: React.FC = () => {
                             icon={<PaletteIcon className="w-6 h-6 icon-hover-rotate" />}
                             title={t("landing.features.themes.title")}
                             desc={t("landing.features.themes.desc")}
+                            badge={{ text: t("landing.features.badges.free"), variant: "free" }}
                         />
                     </div>
                     <div className="stagger-item">
@@ -102,6 +109,7 @@ export const Features: React.FC = () => {
                             icon={<TimerIcon className="w-6 h-6 icon-hover-rotate" />}
                             title={t("landing.features.pacing.title")}
                             desc={t("landing.features.pacing.desc")}
+                            badge={{ text: t("landing.features.badges.free"), variant: "free" }}
                         />
                     </div>
                     <div className="stagger-item">
@@ -109,6 +117,7 @@ export const Features: React.FC = () => {
                             icon={<RecordIcon className="w-6 h-6 icon-hover-rotate" />}
                             title={t("landing.features.recording.title")}
                             desc={t("landing.features.recording.desc")}
+                            badge={{ text: t("landing.features.badges.free"), variant: "free" }}
                         />
                     </div>
                     <div className="stagger-item">
@@ -116,6 +125,7 @@ export const Features: React.FC = () => {
                             icon={<MagicIcon className="w-6 h-6 icon-hover-rotate" />}
                             title={t("landing.features.focus.title")}
                             desc={t("landing.features.focus.desc")}
+                            badge={{ text: t("landing.features.badges.free"), variant: "free" }}
                         />
                     </div>
                     <div className="stagger-item">
@@ -123,6 +133,7 @@ export const Features: React.FC = () => {
                             icon={<KeyboardIcon className="w-6 h-6 icon-hover-rotate" />}
                             title={t("landing.features.shortcuts.title")}
                             desc={t("landing.features.shortcuts.desc")}
+                            badge={{ text: t("landing.features.badges.pro"), variant: "pro" }}
                         />
                     </div>
                 </div>

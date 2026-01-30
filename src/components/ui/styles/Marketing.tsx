@@ -47,18 +47,28 @@ export const FeatureCard = ({
     desc,
     icon,
     children,
+    badge,
     className = "",
 }: {
     title: React.ReactNode;
     desc: string;
     icon: React.ReactNode;
     children?: React.ReactNode;
+    badge?: { text: string; variant: "free" | "pro" };
     className?: string;
 }) => (
     <div className={`relative group h-full perspective-1000 ${className}`}>
         <div className="absolute inset-0 bg-gradient-to-b from-brand-500/20 to-transparent rounded-3xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
         <div className="h-full p-[1px] rounded-3xl bg-gradient-to-b from-white/10 via-white/5 to-transparent transition-colors duration-500 group-hover:from-brand-500/40 group-hover:via-brand-500/10 group-hover:to-transparent">
             <div className="bg-[#0a0f1e]/80 backdrop-blur-md h-full p-8 rounded-[23px] relative z-10 overflow-hidden transition-all duration-500 group-hover:bg-[#0a0f1e]/90 group-hover:translate-y-[-4px]">
+                {badge && (
+                    <div className={`absolute top-6 right-6 px-2 py-1 rounded-md text-[10px] font-black uppercase tracking-tighter z-30 shadow-sm border ${badge.variant === "pro"
+                        ? "bg-brand-500/20 text-brand-400 border-brand-500/30"
+                        : "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
+                        }`}>
+                        {badge.text}
+                    </div>
+                )}
                 <div className="absolute inset-0 bg-noise opacity-[0.02] pointer-events-none"></div>
                 <div className="relative z-20 flex flex-col h-full">
                     <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mb-6 text-brand-400 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white group-hover:border-transparent transition-all duration-300 shadow-lg group-hover:shadow-brand-500/40">

@@ -153,6 +153,10 @@ export const pt = {
     features: {
       title: "Recursos",
       subtitle: "Tudo o que você precisa para um teleprompter profissional",
+      badges: {
+        free: "GRÁTIS",
+        pro: "PRO",
+      },
       sync: {
         title: "Sincronização Instantânea",
         desc:
@@ -220,7 +224,7 @@ export const pt = {
         period: "/sempre",
         cta: "Começar Grátis",
         features: ["20 minutos por sessão", "Sessões ilimitadas", "Controle remoto total", "Todos os temas"],
-        missing: ["Marca d'água discreta", "Controle por voz"],
+        missing: ["Sessões sem limites de tempo", "Controle por voz", "Customizar Atalhos"],
       },
       pro: {
         badge: "🔥 PREÇO DE LANÇAMENTO",
@@ -236,7 +240,6 @@ export const pt = {
           "Sem marca d'água",
           "Múltiplos controles remotos (equipes)",
           "Controle por voz",
-          "Logo personalizado",
           "Suporte prioritário",
           "Suporte MIDI para controladores físicos",
           "Acesso antecipado a features",
@@ -880,5 +883,29 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
     proDescription: "A conexão com pedais MIDI é exclusiva para membros PRO.",
   },
 
+  onboarding: {
+    title: "Seja bem-vindo ao PromptNinja! 🥷",
+    subtitle: "Sua jornada para vídeos impecáveis começa agora",
+    cta: "Próximo",
+    finish: "Começar Agora!",
+    skip: "Pular Tour",
+    steps: [
+      {
+        title: "Olhe para a Câmera",
+        desc: "Leia seu roteiro mantendo contato visual perfeito. O PromptNinja foi desenhado para você falar com naturalidade, sem esquecer o texto.",
+        icon: "camera"
+      },
+      {
+        title: "Seu Celular é o Controle",
+        desc: "Use nosso P2P com zero atraso. Escaneie o QR Code com seu celular e controle tudo à distância: velocidade, play e pause.",
+        icon: "remote"
+      },
+      {
+        title: "Poder Ninja (PRO)",
+        desc: "Domine o palco com o Controle por Voz, atalhos personalizados e sessões ilimitadas. Transforme seu navegador em um estúdio completo.",
+        icon: "pro"
+      }
+    ]
+  }
 };
 

@@ -156,6 +156,10 @@ export const es = {
     features: {
       title: "Características",
       subtitle: "Todo lo que necesitas para un teleprompter profesional",
+      badges: {
+        free: "GRATIS",
+        pro: "PRO",
+      },
       sync: {
         title: "Sincronización Instantánea",
         desc: "Lo que ves en la PC aparece en el celular al instante.",
@@ -224,7 +228,7 @@ export const es = {
         period: "/siempre",
         cta: "Empezar Gratis",
         features: ["20 minutos por sesión", "Sesiones ilimitadas", "Control remoto total", "Todos los temas"],
-        missing: ["Marca de agua discreta", "Control por voz"],
+        missing: ["Sesiones sin límite de tiempo", "Control por voz", "Atajos personalizados"],
       },
       pro: {
         badge: "🔥 PRECIO DE LANZAMIENTO",
@@ -240,7 +244,6 @@ export const es = {
           "Sin marca de agua",
           "Múltiples controles remotos (equipos)",
           "Control por voz",
-          "Logo personalizado",
           "Soporte prioritario",
           "Soporte MIDI para controladores físicos",
           "Acceso anticipado a funciones",
@@ -875,6 +878,30 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
       EXIT: "Salir",
     },
     proDescription: "La conexión con pedales MIDI es exclusiva para miembros PRO.",
+  },
+  onboarding: {
+    title: "¡Bienvenido a PromptNinja! 🥷",
+    subtitle: "Tu viaje hacia videos impecables comienza ahora",
+    cta: "Siguiente",
+    finish: "¡Empezar Ahora!",
+    skip: "Saltar Tour",
+    steps: [
+      {
+        title: "Mira a la Cámara",
+        desc: "Lee tu guion manteniendo un contacto visual perfecto. PromptNinja está diseñado para que hables con naturalidad, sin olvidar el texto.",
+        icon: "camera"
+      },
+      {
+        title: "Tu Celular é o Controle",
+        desc: "Usa nuestro P2P con cero retraso. Escanea o código QR con tu celular y controla todo a distancia: velocidad, play y pausa.",
+        icon: "remote"
+      },
+      {
+        title: "Poder Ninja (PRO)",
+        desc: "Domina el escenario con el Control de Voz, atajos personalizados y sesiones ilimitadas. Transforma tu navegador en un estudio completo.",
+        icon: "pro"
+      }
+    ]
   }
 };
 
