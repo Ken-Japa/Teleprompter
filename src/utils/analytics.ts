@@ -185,6 +185,7 @@ export function trackError(errorType: string, message: string): void {
         msgLower.includes("unknown error") ||
         msgLower.includes("unknown rejection") ||
         msgLower.includes("usedcontainerscopeddefaults") || // Filter internal GA/Contentsquare noise
+        msgLower.includes("popup-closed-by-user") || // Filter Firebase auth popup cancellation
         msgLower.includes("script error") // Generic third-party script error
     ) {
         return;

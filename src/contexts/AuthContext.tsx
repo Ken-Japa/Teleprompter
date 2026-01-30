@@ -71,7 +71,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         const provider = new GoogleAuthProvider();
         try {
             await signInWithPopup(auth, provider);
-        } catch (error) {
+        } catch (error: any) {
+            if (error?.code === 'auth/popup-closed-by-user') {
+                logger.warn("Login popup closed by user");
+                return; // Don't throw for simple closure
+            }
             logger.error("Error logging in with Google", { error: error as Error });
             throw error;
         }
