@@ -187,10 +187,9 @@ export const es = {
         cta: "Más Información sobre el modo Música",
         cta2: "Acceder al Modo Músico",
       },
-      focus: {
-        title: "Enfoque Dinámico",
-        desc:
-          "Línea de enfoque dinámico: El resaltado inteligente sigue tu lectura, asegurando que nunca pierdas el hilo.",
+      obs: {
+        title: "Integración con OBS Studio",
+        desc: "Conéctate directamente a OBS vía WebSocket. Automatiza tus grabaciones y cambia de escenas de forma nativa sin salir del teleprompter.",
       },
       themes: {
         title: "Temas Visuales",
@@ -227,8 +226,9 @@ export const es = {
         price: "$ 0",
         period: "/siempre",
         cta: "Empezar Gratis",
-        features: ["20 minutos por sesión", "Sesiones ilimitadas", "Control remoto total", "Todos los temas"],
-        missing: ["Sesiones sin límite de tiempo", "Control por voz", "Atajos personalizados"],
+        features: ["20 minutos por sesión", "Sesiones ilimitadas", "Control remoto total", "Todos los temas", "Integración OBS (Básico)"],
+
+        missing: ["Sesiones sin límite de tiempo", "Control por voz", "Atajos personalizados", "Integración OBS"],
       },
       pro: {
         badge: "🔥 PRECIO DE LANZAMIENTO",
@@ -248,6 +248,7 @@ export const es = {
           "Soporte MIDI para controladores físicos",
           "Acceso anticipado a funciones",
           "Personalizar Atajos de Teclado",
+          "Integración OBS Nativa (WebSocket)",
         ],
       },
       paymentInfo: "💳 Pago único vía Tarjeta. \n🔒 Garantía de 7 días.",
@@ -877,7 +878,22 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
       TOGGLE_MIRROR: "Espejo",
       EXIT: "Salir",
     },
-    proDescription: "La conexión con pedales MIDI es exclusiva para miembros PRO.",
+    proDescription: "La conexión con pedales MIDI y OBS Studio es exclusiva para miembros PRO.",
+  },
+
+  obs: {
+    title: "Integración OBS Studio",
+    connect: "Conectar",
+    disconnect: "Desconectar",
+    statusConnected: "Conectado",
+    statusDisconnected: "Desconectado",
+    host: "Host / IP",
+    port: "Puerto",
+    password: "Contraseña",
+    automation: "Automatización Ninja",
+    autoRecord: "Grabar en OBS al dar Play",
+    autoPlay: "Dar Play al grabar en OBS",
+    errorConnection: "Error al conectar. Verifica si OBS WebSocket (v5) está activado.",
   },
   onboarding: {
     title: "¡Bienvenido a PromptNinja! 🥷",

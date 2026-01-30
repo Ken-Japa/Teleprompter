@@ -10,6 +10,7 @@ import { usePrompterSettings, PrompterFeatureFlags } from "./usePrompterSettings
 import { tryEnableNoSleep } from "./useWakeLock";
 import { trackStartPacing, trackGoogleAdsPurchase, trackEvent } from "../utils/analytics";
 import { useAutoBpm } from "./useAutoBpm";
+import { useOBS } from "./useOBS";
 
 export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
   const { t } = useTranslation();
@@ -112,6 +113,26 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
 
   const prompterRef = useRef<PrompterHandle>(null);
   const broadcastRef = useRef<any>(null);
+
+  // 4a. OBS Studio Integration
+  const { status: obsStatus, config: obsConfig, setConfig: setObsConfig, connect: connectOBS, disconnect: disconnectOBS, toggleRecord: toggleOBSRecord, switchScene: switchOBSScene } = useOBS();
+
+  // Auto-record logic: When teleprompter starts playing, start OBS recording
+  useEffect(() => {
+    if (isPlaying && obsStatus.isConnected && obsConfig.autoRecordOnPlay && !obsStatus.isRecording) {
+      toggleOBSRecord();
+    }
+  }, [isPlaying, obsStatus.isConnected, obsStatus.isRecording, obsConfig.autoRecordOnPlay, toggleOBSRecord]);
+
+  // Auto-play logic: When OBS starts recording, start teleprompter
+  useEffect(() => {
+    if (obsStatus.isRecording && obsStatus.isConnected && obsConfig.autoPlayOnOBSRecord && !isPlaying) {
+      setIsPlaying(true);
+    } else if (!obsStatus.isRecording && obsStatus.isConnected && obsConfig.autoPlayOnOBSRecord && isPlaying) {
+      // Optional: stop teleprompter when OBS stops recording? 
+      // User didn't specify, but often desired. Let's keep it simple for now (doesn't auto-stop to avoid surprises).
+    }
+  }, [obsStatus.isRecording, obsStatus.isConnected, obsConfig.autoPlayOnOBSRecord, isPlaying]);
 
   // 4. Peer Message Handling Strategy
   const handleRemoteMessage = useCallback(
@@ -505,6 +526,8 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
       autoBpmError,
       isNDIEnabled,
       startCursorIndex,
+      obsStatus,
+      obsConfig,
     },
     actions: {
       setText,
@@ -534,6 +557,12 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
       deleteScript,
       updateScript,
       toggleNDI,
+      // OBS Actions
+      setObsConfig,
+      connectOBS,
+      disconnectOBS,
+      toggleOBSRecord,
+      switchOBSScene,
     },
     refs: {
       prompterRef,

@@ -35,7 +35,7 @@ export const Host: React.FC<HostProps> = ({ featureFlags }) => {
     // Setlist Storage (Used for Music Mode)
     const setlistStorage = useSetlistStorage(!!featureFlags?.isMusicianModeForced);
 
-    const { text, isEditMode, peerId, status, isPro, showPaywall, unlockKey, prompterState, errorMessage, paywallErrorMessage, paywallReason, showCountdownModal, prompterSettings, isValidating, bilingualTexts, isTrialActive, trialEndTime, detectedBpm, autoBpmError, startCursorIndex } = state;
+    const { text, isEditMode, peerId, status, isPro, showPaywall, unlockKey, prompterState, errorMessage, paywallErrorMessage, paywallReason, showCountdownModal, prompterSettings, isValidating, bilingualTexts, isTrialActive, trialEndTime, detectedBpm, autoBpmError, startCursorIndex, obsStatus, obsConfig } = state;
 
     const handleScriptFinished = React.useCallback((summary: any) => {
         setSessionSummary(summary);
@@ -152,6 +152,11 @@ export const Host: React.FC<HostProps> = ({ featureFlags }) => {
                         onSwitchScript={actions.switchScript}
                         onDeleteScript={actions.deleteScript}
                         onUpdateScript={actions.updateScript}
+                        obsStatus={obsStatus}
+                        obsConfig={obsConfig}
+                        onConnectOBS={actions.connectOBS}
+                        onDisconnectOBS={actions.disconnectOBS}
+                        onSaveOBSConfig={actions.setObsConfig}
                     />
                 )
             ) : (

@@ -1,12 +1,13 @@
 import { memo, useState } from "react";
 import { VoiceLanguageSelector } from "./VoiceLanguageSelector";
 import * as S from "../ui/Styled";
-import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LanguagesIcon, CameraIcon, WidgetIcon, SearchIcon, BoldIcon, ItalicIcon, UnderlineIcon } from "../ui/Icons";
+import { TrashIcon, InfoIcon, TimerIcon, MusicIcon, LanguagesIcon, CameraIcon, WidgetIcon, SearchIcon, BoldIcon, ItalicIcon, UnderlineIcon, OBSIcon } from "../ui/Icons";
 import { useTranslation } from "../../hooks/useTranslation";
 import { TutorialModal } from "../ui/TutorialModal";
 import { PacingModal } from "../ui/PacingModal";
 import { FindReplaceModal } from "../ui/FindReplaceModal";
 import { HotkeyConfigModal } from "../ui/HotkeyConfigModal";
+import { OBSConfigModal } from "./OBSConfigModal";
 import { KeyboardIcon } from "../ui/Icons";
 import { ScriptManager } from "./ScriptManager";
 import { Script } from "../../hooks/useScriptStorage";
@@ -41,14 +42,26 @@ interface EditorToolbarProps {
     onSwitchScript: (id: string) => void;
     onDeleteScript: (id: string) => void;
     onUpdateScript: (id: string, updates: Partial<Script>) => void;
+
+    // OBS Integration Props
+    obsStatus?: any;
+    obsConfig?: any;
+    onConnectOBS?: () => Promise<void>;
+    onDisconnectOBS?: () => void;
+    onSaveOBSConfig?: (config: any) => void;
 }
 
-export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, onSelectRange, onUndo, canUndo, isMusicianMode, onToggleMusicianMode, featureFlags, isBilingualMode, onToggleBilingualMode, isCameraMode, onToggleCameraMode, onToggleWidgetMode, isWidgetMode, isPro = false, onUnlockPro = () => { }, voiceLanguage, onVoiceLanguageChange, scripts, activeScriptId, onCreateScript, onSwitchScript, onDeleteScript, onUpdateScript }: EditorToolbarProps) => {
+export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, onSelectRange, onUndo, canUndo, isMusicianMode, onToggleMusicianMode, featureFlags, isBilingualMode, onToggleBilingualMode, isCameraMode, onToggleCameraMode, onToggleWidgetMode, isWidgetMode, isPro = false, onUnlockPro = () => { }, voiceLanguage, onVoiceLanguageChange, scripts, activeScriptId, onCreateScript, onSwitchScript, onDeleteScript, onUpdateScript,
+    obsStatus, obsConfig, onConnectOBS, onDisconnectOBS, onSaveOBSConfig
+}: EditorToolbarProps) => {
     const { t } = useTranslation();
     const [showTutorialModal, setShowTutorialModal] = useState(false);
     const [showPacingModal, setShowPacingModal] = useState(false);
     const [showHotkeyModal, setShowHotkeyModal] = useState(false);
     const [showFindReplaceModal, setShowFindReplaceModal] = useState(false);
+    const [showOBSModal, setShowOBSModal] = useState(false);
+
+    // Removed internal useOBS - now using props from parent host controller
 
     return (
         // Wrapper replaces S.FormattingToolbar to allow custom sticky logic
@@ -191,6 +204,20 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, o
 
                 {/* 2. Actions (Middle on Mobile, Last on Desktop) */}
                 <div className="order-2 md:order-3 w-full md:w-auto flex flex-wrap md:flex-nowrap items-center justify-center gap-3 py-3 md:py-0 border-b border-white/5 md:border-0">
+                    {/* OBS Studio Integration Button */}
+                    <S.IconButton
+                        onClick={isPro ? () => setShowOBSModal(true) : onUnlockPro}
+                        title={t("obs.title") || "OBS Studio Integration"}
+                        aria-label="Open OBS Settings"
+                        className={`w-10 h-10 rounded-2xl transition-all duration-300 border backdrop-blur-md group ${obsStatus.isConnected
+                            ? "bg-gradient-to-br from-indigo-500/20 to-blue-600/20 text-indigo-400 border-indigo-500/60 shadow-[0_0_20px_-3px_rgba(79,70,229,0.4)] ring-1 ring-indigo-500/30 scale-105"
+                            : "bg-white/5 text-slate-500 border-white/5 hover:text-slate-300 hover:bg-white/10"
+                            } relative`}
+                    >
+                        <OBSIcon className={`w-6 h-6 ${obsStatus.isConnected ? "animate-pulse" : ""}`} />
+                        {!isPro && <div className="absolute -top-1 -right-1 bg-amber-500 text-[8px] font-black text-slate-900 px-1 rounded-sm shadow-sm ring-1 ring-black/20 uppercase">Pro</div>}
+                    </S.IconButton>
+
                     <S.IconButton
                         onClick={() => setShowPacingModal(true)}
                         title={t("pacing.button")}
@@ -249,6 +276,15 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, o
             <TutorialModal isOpen={showTutorialModal} onClose={() => setShowTutorialModal(false)} />
             <PacingModal isOpen={showPacingModal} onClose={() => setShowPacingModal(false)} text={text} />
             <HotkeyConfigModal isOpen={showHotkeyModal} onClose={() => setShowHotkeyModal(false)} isPro={isPro} onUnlockPro={onUnlockPro} />
+            <OBSConfigModal
+                isOpen={showOBSModal}
+                onClose={() => setShowOBSModal(false)}
+                config={obsConfig}
+                status={obsStatus}
+                onSaveConfig={onSaveOBSConfig || (() => { })}
+                onConnect={onConnectOBS || (async () => { })}
+                onDisconnect={onDisconnectOBS || (() => { })}
+            />
             {onTextChange && (
                 <FindReplaceModal
                     isOpen={showFindReplaceModal}

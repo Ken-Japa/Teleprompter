@@ -183,10 +183,9 @@ export const pt = {
         cta: "Saiba Mais sobre o Modo Música",
         cta2: "Acesse o Modo Música",
       },
-      focus: {
-        title: "Foco Dinâmico",
-        desc:
-          "Linha de foco dinâmico: O destaque inteligente segue sua leitura, garantindo que você nunca perca o fio.",
+      obs: {
+        title: "Integração OBS Studio",
+        desc: "Conecte diretamente ao OBS via WebSocket. Automatize suas gravações e troque cenas nativamente sem sair do teleprompter.",
       },
       themes: {
         title: "Temas Visuais",
@@ -223,8 +222,8 @@ export const pt = {
         price: "R$ 0",
         period: "/sempre",
         cta: "Começar Grátis",
-        features: ["20 minutos por sessão", "Sessões ilimitadas", "Controle remoto total", "Todos os temas"],
-        missing: ["Sessões sem limites de tempo", "Controle por voz", "Customizar Atalhos"],
+        features: ["20 minutos por sessão", "Sessões ilimitadas", "Controle remoto total", "Todos os temas", "Integração OBS (Básico)"],
+        missing: ["Sessões sem limites de tempo", "Controle por voz", "Customizar Atalhos", "Integração OBS"],
       },
       pro: {
         badge: "🔥 PREÇO DE LANÇAMENTO",
@@ -244,6 +243,7 @@ export const pt = {
           "Suporte MIDI para controladores físicos",
           "Acesso antecipado a features",
           "Customizar Atalhos de Teclado",
+          "Integração OBS (WebSocket)",
         ],
       },
       paymentInfo:
@@ -880,7 +880,22 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
       TOGGLE_MIRROR: "Espelhar",
       EXIT: "Sair",
     },
-    proDescription: "A conexão com pedais MIDI é exclusiva para membros PRO.",
+    proDescription: "A conexão com pedais MIDI e OBS Studio é exclusiva para membros PRO.",
+  },
+
+  obs: {
+    title: "Integração OBS Studio",
+    connect: "Conectar",
+    disconnect: "Desconectar",
+    statusConnected: "Conectado",
+    statusDisconnected: "Desconectado",
+    host: "Host / IP",
+    port: "Porta",
+    password: "Senha",
+    automation: "Automação Ninja",
+    autoRecord: "Gravar no OBS ao dar Play",
+    autoPlay: "Dar Play ao gravar no OBS",
+    errorConnection: "Falha ao conectar. Verifique se o OBS WebSocket (v5) está ativado.",
   },
 
   onboarding: {

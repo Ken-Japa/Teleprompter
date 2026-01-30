@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import * as S from "../ui/Styled";
-import { MagicIcon, MicIcon, PaletteIcon, ShieldIcon, ZapIcon, CrownIcon, TimerIcon, PiPIcon, RecordIcon, KeyboardIcon, LanguagesIcon } from "../ui/Icons";
+import { MicIcon, PaletteIcon, ShieldIcon, ZapIcon, CrownIcon, TimerIcon, PiPIcon, RecordIcon, KeyboardIcon, LanguagesIcon, OBSIcon } from "../ui/Icons";
 import { trackGoogleAdsInterest } from "../../utils/analytics";
 
 export const Features: React.FC = () => {
@@ -122,10 +122,10 @@ export const Features: React.FC = () => {
                     </div>
                     <div className="stagger-item">
                         <S.FeatureCard
-                            icon={<MagicIcon className="w-6 h-6 icon-hover-rotate" />}
-                            title={t("landing.features.focus.title")}
-                            desc={t("landing.features.focus.desc")}
-                            badge={{ text: t("landing.features.badges.free"), variant: "free" }}
+                            icon={<OBSIcon className="w-6 h-6 icon-hover-rotate" />}
+                            title={t("landing.features.obs.title")}
+                            desc={t("landing.features.obs.desc")}
+                            badge={{ text: t("landing.features.badges.pro"), variant: "pro" }}
                         />
                     </div>
                     <div className="stagger-item">

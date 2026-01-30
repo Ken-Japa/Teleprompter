@@ -130,6 +130,48 @@ export const TeleprompterObsStudioES = () => (
             </div>
         </div>
 
+        {/* Start: NEW SECTION - NATIVE OBS CONTROL */}
+        <div className="bg-brand-900/20 p-8 rounded-2xl border border-brand-500/30 my-16 shadow-2xl relative overflow-hidden group">
+            <div className="absolute -right-20 -top-20 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl group-hover:bg-brand-500/20 transition-all duration-700"></div>
+
+            <div className="flex flex-col md:flex-row gap-8 items-center relative z-10">
+                <div className="flex-1">
+                    <div className="inline-flex items-center gap-2 bg-brand-500/20 text-brand-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+                        Exclusivo Ninja PRO
+                    </div>
+                    <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
+                        Integración Nativa <span className="text-brand-400">Direct-Connect</span>
+                    </h3>
+                    <p className="text-slate-300 text-lg leading-relaxed mb-6">
+                        A diferencia de las soluciones básicas que son solo una "ayuda de texto", PromptNinja se conecta <strong className="text-white">directamente a tu OBS Studio</strong> vía WebSocket.
+                    </p>
+                    <ul className="space-y-4">
+                        <li className="flex gap-3">
+                            <span className="text-brand-400 font-bold text-xl">🚀</span>
+                            <span className="text-slate-400"><strong className="text-white">Automatización Ninja:</strong> Pulsa Play en el teleprompter y OBS comienza a grabar (o streamear) automáticamente.</span>
+                        </li>
+                        <li className="flex gap-3">
+                            <span className="text-brand-400 font-bold text-xl">🔃</span>
+                            <span className="text-slate-400"><strong className="text-white">Sincronización Dual:</strong> Comienza a grabar en OBS y el teleprompter inicia el desplazamiento sin que tengas que hacer nada más.</span>
+                        </li>
+                        <li className="flex gap-3">
+                            <span className="text-brand-400 font-bold text-xl">🎮</span>
+                            <span className="text-slate-400"><strong className="text-white">Cambio de Escenas:</strong> Cambia de escenas en OBS directamente desde el panel de PromptNinja (o mediante el control remoto en tu móvil).</span>
+                        </li>
+                    </ul>
+                </div>
+                <div className="w-full md:w-72 aspect-square bg-slate-900 rounded-3xl border border-white/5 flex items-center justify-center p-6 shadow-inner relative">
+                    <div className="absolute inset-4 border-2 border-dashed border-brand-500/20 rounded-2xl"></div>
+                    <div className="text-center">
+                        <div className="text-6xl mb-2">🔌</div>
+                        <p className="text-brand-400 font-black text-xl mb-1">PRO LINK</p>
+                        <p className="text-slate-500 text-xs">Latencia Cero</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {/* End: NEW SECTION */}
+
         <SEOContentHowTo
             title="Setup Paso a Paso: PromptNinja + OBS Studio"
             schemaTitle="Cómo Integrar Teleprompter en OBS Studio"

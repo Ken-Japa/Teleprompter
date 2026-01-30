@@ -54,6 +54,13 @@ interface EditorProps {
     onSwitchScript: (id: string) => void;
     onDeleteScript: (id: string) => void;
     onUpdateScript: (id: string, updates: Partial<Script>) => void;
+
+    // OBS Integration Props
+    obsStatus?: any;
+    obsConfig?: any;
+    onConnectOBS?: () => Promise<void>;
+    onDisconnectOBS?: () => void;
+    onSaveOBSConfig?: (config: any) => void;
 }
 
 export const Editor: React.FC<EditorProps> = ({
@@ -63,7 +70,8 @@ export const Editor: React.FC<EditorProps> = ({
     bilingualTexts, onBilingualTextsChange,
     bilingualVoiceTrackLanguage, onBilingualVoiceTrackChange,
     isPro, onUnlockPro, voiceLanguage, onVoiceLanguageChange,
-    scripts, activeScriptId, onCreateScript, onSwitchScript, onDeleteScript, onUpdateScript
+    scripts, activeScriptId, onCreateScript, onSwitchScript, onDeleteScript, onUpdateScript,
+    obsStatus, obsConfig, onConnectOBS, onDisconnectOBS, onSaveOBSConfig
 }) => {
     const { t } = useTranslation();
     const { user } = useAuth(); // Get user
@@ -167,6 +175,11 @@ export const Editor: React.FC<EditorProps> = ({
                         onSwitchScript={onSwitchScript}
                         onDeleteScript={onDeleteScript}
                         onUpdateScript={onUpdateScript}
+                        obsStatus={obsStatus}
+                        obsConfig={obsConfig}
+                        onConnectOBS={onConnectOBS}
+                        onDisconnectOBS={onDisconnectOBS}
+                        onSaveOBSConfig={onSaveOBSConfig}
                     />
 
                     {isBilingualMode ? (
