@@ -13,9 +13,9 @@ export const TeleprompterGamersEN = () => (
         </p>
 
         <SEOImage
-            slug="teleprompter-gamers"
-            src="teleprompter-gamers-streamers-youtube.webp"
-            alt="Gamer using a teleprompter for Twitch and YouTube"
+            slug="teleprompter-gamers-streaming"
+            src="teleprompter-gamers-streaming-setup.webp"
+            alt="Online teleprompter for streamers and gamers"
             caption="A teleprompter helps gamers maintain eye contact with the camera while reading chat or notes."
             width={1200}
             height={675}

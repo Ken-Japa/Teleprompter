@@ -1,13 +1,9 @@
-import { ROUTES_CONFIG } from "../../../../config/routes";
+﻿import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterOnlineGratisES = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter Online Gratis: Graba Vídeos Profesionales sin Errores
-        </h1>
-
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Deja de perder horas regrabando vídeos. Usa **PromptNinja**, el teleprompter online gratuito que funciona directamente en tu navegador. Sin instalaciones, sin registros y con control remoto P2P de latencia cero.
         </p>
@@ -153,14 +149,14 @@ export const TeleprompterOnlineGratisES = () => (
         <h3 className="text-2xl font-bold text-white mt-12 mb-4">Casos Reales con Números: Antes vs Después</h3>
         <div className="grid md:grid-cols-3 gap-6 mb-12">
             <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
-                <h3 className="font-bold text-lg text-green-400 mb-3">📹 YouTuber Educativo</h3>
+                <h3 className="font-bold text-lg text-green-400 mb-3">📈 YouTuber Educativo</h3>
                 <p className="text-slate-300 text-sm mb-4">
                     "Grabo clases de matemáticas. <strong>ANTES:</strong> 3h25min para grabar 1 video de 20min (23 intentos, olvidaba fórmulas). <strong>DESPUÉS:</strong> 35min por video (2 intentos). Reducción del <strong>84% en el tiempo</strong>. Ahora publico 3x/semana vs 1x antes."
                 </p>
                 <p className="text-slate-500 text-xs italic">— Setup: Laptop + tablet como pantalla | Ahorro: 8h40min/semana</p>
             </div>
             <div className="bg-slate-900 p-6 rounded-lg border border-slate-800">
-                <h3 className="font-bold text-lg text-blue-400 mb-3">💼 Ejecutivo en Home Office</h3>
+                <h3 className="font-bold text-lg text-blue-400 mb-3">📈 Ejecutivo en Home Office</h3>
                 <p className="text-slate-300 text-sm mb-4">
                     "Presentaciones Zoom para directiva. <strong>ANTES:</strong> Usaba notas, desviaba mirada 40+ veces (parecía inseguro). <strong>DESPUÉS:</strong> PromptNinja transparente sobre Zoom. 100% contacto visual. Promoción llegó 2 meses después."
                 </p>
@@ -194,7 +190,7 @@ export const TeleprompterOnlineGratisES = () => (
                         <strong>El problema:</strong> Pruebas, te gusta, grabas 3 videos... luego descubres: "Upgrade a PRO para usar control remoto" ($9.99/mes). O "Quita marca de agua: $4.99/mes". Terminas pagando $15/mes por algo que debería ser gratis.
                     </p>
                     <p className="text-green-400 text-sm">
-                        <strong>✅ PromptNinja:</strong> Control remoto, espejado, ajustes de fuente/velocidad = TODO GRATIS para siempre. Pro existe (control por voz IA), pero funcionalidades esenciales nunca serán de pago.
+                        <strong>✅ PromptNinja:</strong> Control remoto, espejado, ajustes de fuente/velocidad = TODO GRATIS para siempre. Pro existe (control por voz IA), mas funcionalidades esenciales nunca serán de pago.
                     </p>
                 </div>
 
@@ -252,7 +248,7 @@ export const TeleprompterOnlineGratisES = () => (
             <ul className="space-y-2">
                 <li>
                     <a href={ROUTES_CONFIG.SEO_ZOOM.paths.es} className="text-purple-400 hover:text-purple-300 underline flex items-center">
-                        <span className="mr-2">📹</span>
+                        <span className="mr-2">🔍</span>
                         Teleprompter para Zoom y Teams
                     </a>
                 </li>
@@ -272,3 +268,4 @@ export const TeleprompterOnlineGratisES = () => (
         </div>
     </>
 );
+

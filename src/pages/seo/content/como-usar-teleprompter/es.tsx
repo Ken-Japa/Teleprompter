@@ -12,8 +12,8 @@ export const ComoUsarTeleprompterES = () => (
         </p>
 
         <SEOImage
-            slug="como-usar-teleprompter"
-            src="teleprompter-app-mobile-hand.webp"
+            slug="como-usar-teleprompter-celular"
+            src="mobile-teleprompter-use.webp"
             alt="Persona sosteniendo un celular usando teleprompter"
             caption="PromptNinja transforma cualquier smartphone en un teleprompter potente y fácil de usar."
             width={1200}

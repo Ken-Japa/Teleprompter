@@ -1,21 +1,17 @@
-import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+﻿import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterPCWindowsES = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter para PC Windows: Configuración Profesional en Segundos
-        </h1>
-
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Transforma tu ordenador en una herramienta de producción de élite. Con **PromptNinja**, obtienes un teleprompter potente para Windows sin necesidad de instalar archivos .exe sospechosos o pagar suscripciones caras.
         </p>
 
         <SEOImage
             slug="teleprompter-pc-windows"
-            src="teleprompter-pc-windows-computer-app.webp"
-            alt="Teleprompter siendo usado en una PC con Windows"
+            src="teleprompter-pc-windows-setup.webp"
+            alt="Uso de teleprompter en una computadora con Windows"
             caption="Una experiencia profesional de teleprompter directamente en tu PC con Windows."
             width={1200}
             height={675}
@@ -43,31 +39,31 @@ export const TeleprompterPCWindowsES = () => (
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-slate-900/70 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 flex items-center gap-2">
-                        <span>❌</span> SIN Teleprompter
+                        <span>âŒ</span> SIN Teleprompter
                     </h3>
                     <ul className="space-y-3 text-slate-300 text-sm">
-                        <li>📄 <strong>Guion:</strong> Papel en escritorio (miras ABAJO)</li>
+                        <li>�x <strong>Guion:</strong> Papel en escritorio (miras ABAJO)</li>
                         <li>🎬 <strong>Grabación:</strong> Contacto visual roto cada 10s</li>
-                        <li>🔄 <strong>Tomas:</strong> 12 regrabaciones porque olvidas líneas</li>
-                        <li>😓 <strong>Resultado:</strong> "¿Está leyendo algo?" en comentarios</li>
-                        <li>⏱️ <strong>Tiempo total:</strong> 2h para grabar 10min</li>
+                        <li>�x <strong>Tomas:</strong> 12 regrabaciones porque olvidas líneas</li>
+                        <li>�x� <strong>Resultado:</strong> "¿Está leyendo algo?" en comentarios</li>
+                        <li>â±ï¸ <strong>Tiempo total:</strong> 2h para grabar 10min</li>
                     </ul>
                 </div>
                 <div className="bg-slate-900/70 p-6 rounded-lg border border-green-500/30">
                     <h3 className="font-bold text-green-400 mb-4 flex items-center gap-2">
-                        <span>✅</span> CON Teleprompter (PromptNinja)
+                        <span>�S&</span> CON Teleprompter (PromptNinja)
                     </h3>
                     <ul className="space-y-3 text-slate-300 text-sm">
-                        <li>📄 <strong>Guion:</strong> En monitor, DETRÁS de webcam</li>
+                        <li>�x <strong>Guion:</strong> En monitor, DETRÁS de webcam</li>
                         <li>🎬 <strong>Grabación:</strong> Contacto visual 100% del tiempo</li>
-                        <li>🔄 <strong>Tomas:</strong> 1-2 tomas (solo por energía)</li>
-                        <li>😊 <strong>Resultado:</strong> "¡Qué profesional!" en comentarios</li>
-                        <li>⏱️ <strong>Tiempo total:</strong> 25min para grabar 10min LIMPIO</li>
+                        <li>�x <strong>Tomas:</strong> 1-2 tomas (solo por energía)</li>
+                        <li>�x�` <strong>Resultado:</strong> "¡Qué profesional!" en comentarios</li>
+                        <li>â±ï¸ <strong>Tiempo total:</strong> 25min para grabar 10min LIMPIO</li>
                     </ul>
                 </div>
             </div>
             <p className="text-slate-400 text-sm mt-6 italic text-center">
-                💡 Diferencia: <strong className="text-green-400">-79% tiempo</strong> (2h→25min) + calidad broadcast.
+                �x� Diferencia: <strong className="text-green-400">-79% tiempo</strong> (2hâ†’25min) + calidad broadcast.
             </p>
         </div>
 
@@ -99,7 +95,7 @@ export const TeleprompterPCWindowsES = () => (
                     <li>Webcam pegada al borde superior del texto (5cm distancia)</li>
                     <li>Tus ojos leen texto = parecen mirar directo a cámara</li>
                 </ol>
-                <p className="text-green-400 text-sm mt-3">✅ <strong>Ideal para:</strong> Videos educativos, vlogs, tutoriales (~80% de YouTubers usan este setup).</p>
+                <p className="text-green-400 text-sm mt-3">�S& <strong>Ideal para:</strong> Videos educativos, vlogs, tutoriales (~80% de YouTubers usan este setup).</p>
             </div>
 
             <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-purple-500">
@@ -115,7 +111,7 @@ export const TeleprompterPCWindowsES = () => (
                     <li>Graba con manos libres, pausando teleprompter vía móvil cuando necesites</li>
                     <li>Monitor 1 = trabajo técnico, Monitor 2 = performance</li>
                 </ol>
-                <p className="text-green-400 text-sm mt-3">✅ <strong>Ideal para:</strong> Cursos online, videos corporativos, reviews técnicas profesionales.</p>
+                <p className="text-green-400 text-sm mt-3">�S& <strong>Ideal para:</strong> Cursos online, videos corporativos, reviews técnicas profesionales.</p>
             </div>
 
             <div className="bg-slate-800 p-6 rounded-lg border-l-4 border-red-500">
@@ -131,7 +127,7 @@ export const TeleprompterPCWindowsES = () => (
                     <li>Control remoto en móvil para scroll manos libres (no tocar teclado mid-stream)</li>
                     <li>Avanzado: usa Window Capture en OBS para NO mostrar teleprompter en stream</li>
                 </ol>
-                <p className="text-yellow-400 text-sm mt-3">⚠️ <strong>Performance:</strong> PromptNinja usa ~50MB RAM (menos que 1 pestaña Chrome). Cero impacto en OBS incluso grabando 4K60fps.</p>
+                <p className="text-yellow-400 text-sm mt-3">âš ï¸ <strong>Performance:</strong> PromptNinja usa ~50MB RAM (menos que 1 pestaña Chrome). Cero impacto en OBS incluso grabando 4K60fps.</p>
             </div>
         </div>
 
@@ -190,36 +186,36 @@ export const TeleprompterPCWindowsES = () => (
             <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
                 <h4 className="font-bold text-red-400 mb-2">Error #1: Instalar .exe de Fuente Desconocida</h4>
                 <p className="text-slate-300 text-sm">
-                    Googleas "teleprompter windows descarga gratis" → clicas primer resultado → antivirus GRITA alerta roja. 40% de estos sitios incluyen adware. Terminas con pop-ups infinitos o peor: keylogger robando contraseñas.
-                    <span className="text-green-400 block mt-2">✅ <strong>Solución:</strong> Usa web app (PromptNinja). Cero descarga = cero riesgo. Sandbox navegador = imposible infectar PC.</span>
+                    Googleas "teleprompter windows descarga gratis" â†’ clicas primer resultado â†’ antivirus GRITA alerta roja. 40% de estos sitios incluyen adware. Terminas con pop-ups infinitos o peor: keylogger robando contraseñas.
+                    <span className="text-green-400 block mt-2">�S& <strong>Solución:</strong> Usa web app (PromptNinja). Cero descarga = cero riesgo. Sandbox navegador = imposible infectar PC.</span>
                 </p>
             </div>
             <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
                 <h4 className="font-bold text-red-400 mb-2">Error #2: Webcam Lejos del Texto</h4>
                 <p className="text-slate-300 text-sm">
                     Texto en monitor izquierdo, webcam en derecho. Grabas mirando 45º al LADO durante TODO el video. Audiencia subconscientemente siente que no les hablas A ellos. Engagement -30%.
-                    <span className="text-green-400 block mt-2">✅ <strong>Solución:</strong> Webcam PEGADA al borde del monitor con texto. Distancia ideal = 5cm. Ojos leen texto = parecen mirar al lente.</span>
+                    <span className="text-green-400 block mt-2">�S& <strong>Solución:</strong> Webcam PEGADA al borde del monitor con texto. Distancia ideal = 5cm. Ojos leen texto = parecen mirar al lente.</span>
                 </p>
             </div>
             <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
                 <h4 className="font-bold text-red-400 mb-2">Error #3: Tamaño de Fuente Incorrecto</h4>
                 <p className="text-slate-300 text-sm">
                     Fuente 12px = necesitas acercar cara a pantalla (postura horrible + ojeras). O fuente 72px gigante = ojos hacen ping-pong izquierda/derecha visible = OBVIO que estás leyendo.
-                    <span className="text-green-400 block mt-2">✅ <strong>Solución:</strong> 32-40px a 60-80cm de pantalla. Test rápido: si movimiento de ojos es notable en video = fuente muy grande.</span>
+                    <span className="text-green-400 block mt-2">�S& <strong>Solución:</strong> 32-40px a 60-80cm de pantalla. Test rápido: si movimiento de ojos es notable en video = fuente muy grande.</span>
                 </p>
             </div>
             <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
                 <h4 className="font-bold text-red-400 mb-2">Error #4: Monitor Dual Mal Configurado</h4>
                 <p className="text-slate-300 text-sm">
                     Tienes 2 monitores pero pones teleprompter en el que NO tiene cámara. Resultado: grabas todo el video mirando al LADO. Parece entrevista incómoda donde nunca miras al entrevistador.
-                    <span className="text-green-400 block mt-2">✅ <strong>Solución:</strong> Regla de oro: Teleprompter SIEMPRE va en monitor con cámara. Otro monitor = OBS/preview/chat/notas.</span>
+                    <span className="text-green-400 block mt-2">�S& <strong>Solución:</strong> Regla de oro: Teleprompter SIEMPRE va en monitor con cámara. Otro monitor = OBS/preview/chat/notas.</span>
                 </p>
             </div>
             <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
                 <h4 className="font-bold text-red-400 mb-2">Error #5: No Probar CON OBS Corriendo ANTES del En Vivo</h4>
                 <p className="text-slate-300 text-sm">
                     Teleprompter funciona suave solo. Abres OBS para stream = LAG BRUTAL en desplazamiento. PC está renderizando 4K60fps + navegador simultáneamente. GPU 100%. Caídas de frame visibles.
-                    <span className="text-green-400 block mt-2">✅ <strong>Solución:</strong> SIEMPRE prueba con OBS corriendo ANTES de ir en vivo. Si lagea: reduce preview de OBS a 720p o cierra pestañas Chrome innecesarias.</span>
+                    <span className="text-green-400 block mt-2">�S& <strong>Solución:</strong> SIEMPRE prueba con OBS corriendo ANTES de ir en vivo. Si lagea: reduce preview de OBS a 720p o cierra pestañas Chrome innecesarias.</span>
                 </p>
             </div>
         </div>
@@ -264,9 +260,9 @@ export const TeleprompterPCWindowsES = () => (
                 className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >
-                🚀 Transforma Tu PC en Teleprompter Ahora (Gratis)
+                �xa� Transforma Tu PC en Teleprompter Ahora (Gratis)
             </a>
-            <p className="text-slate-400 mt-4 text-sm">Cero instalación • Control remoto incluido • Funciona offline</p>
+            <p className="text-slate-400 mt-4 text-sm">Cero instalación â€¢ Control remoto incluido â€¢ Funciona offline</p>
         </div>
 
         <h3 className="text-2xl font-bold text-white mt-8 mb-4">Preguntas Frecuentes (FAQ) - Usuarios PC Windows</h3>
@@ -299,7 +295,7 @@ export const TeleprompterPCWindowsES = () => (
                 },
                 {
                     question: "¿Puedo controlar scroll con teclado o SOLO móvil?",
-                    answer: "¡Ambos! Teclado: Flechas ↑↓ ajustan velocidad, Espacio = pausa/play, F11 = pantalla completa. O usa móvil como control remoto inalámbrico (más profesional = manos libres durante grabación)."
+                    answer: "¡Ambos! Teclado: Flechas â†‘â†“ ajustan velocidad, Espacio = pausa/play, F11 = pantalla completa. O usa móvil como control remoto inalámbrico (más profesional = manos libres durante grabación)."
                 },
                 {
                     question: "¿OBS capturará el teleprompter en pantalla? ¿Cómo ocultarlo?",
@@ -309,3 +305,4 @@ export const TeleprompterPCWindowsES = () => (
         />
     </>
 );
+

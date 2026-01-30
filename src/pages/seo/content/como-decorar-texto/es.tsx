@@ -1,13 +1,9 @@
-import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+﻿import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const ComoDecorarTextoES = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Cómo Memorizar Textos Rápido: El Secreto de los Profesionales
-        </h1>
-
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             ¿Pasas horas intentando memorizar guiones para terminar bloqueado frente a la cámara? La clave de los grandes comunicadores no es una memoria sobrehumana, sino el uso inteligente de herramientas como **PromptNinja**.
         </p>
@@ -56,14 +52,14 @@ export const ComoDecorarTextoES = () => (
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="bg-red-900/10 p-6 rounded border border-red-500/30">
-                <h3 className="font-bold text-red-400 mb-2">❌ El Error Común</h3>
+                <h3 className="font-bold text-red-400 mb-2">âŒ El Error Común</h3>
                 <p className="text-sm text-slate-300">
                     Poner texto en pantalla completa en monitor ancho.
                     <br /><strong>Resultado:</strong> Tus ojos corren de lado a lado como viendo tenis. Todos lo notan.
                 </p>
             </div>
             <div className="bg-green-900/10 p-6 rounded border border-green-500/50">
-                <h3 className="font-bold text-green-400 mb-2">✅ La Técnica Ninja</h3>
+                <h3 className="font-bold text-green-400 mb-2">�S& La Técnica Ninja</h3>
                 <p className="text-sm text-slate-300">
                     Estrechar margen del texto a solo 3 o 4 palabras por línea, justo en el centro.
                     <br /><strong>Resultado:</strong> Tus ojos se quedan fijos en el centro. Para el espectador, estás mirando profundo a su alma.
@@ -130,3 +126,4 @@ export const ComoDecorarTextoES = () => (
         </div>
     </>
 );
+

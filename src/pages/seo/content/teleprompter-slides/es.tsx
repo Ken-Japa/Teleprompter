@@ -1,13 +1,9 @@
-import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+﻿import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterSlidesES = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Cómo Sincronizar Teleprompter con PowerPoint y Slides
-        </h1>
-
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Nunca más pierda el ritmo en tus presentaciones. Con **PromptNinja** y el comando exclusivo **[STOP]**, puedes sincronizar perfectamente tu guion con tus diapositivas para una exposición magistral.
         </p>
@@ -121,3 +117,4 @@ export const TeleprompterSlidesES = () => (
         />
     </>
 );
+

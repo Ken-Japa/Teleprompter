@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOImage } from "../../../../components/seo/SEOImage";
+import { SEORelatedLinks } from "../../../../components/seo/SEORelatedLinks";
 
 export const WebRtcLatencyContentEN = () => (
     <>
@@ -111,6 +112,16 @@ export const WebRtcLatencyContentEN = () => (
                     question: "Is it faster than physical Bluetooth remote?",
                     answer: "Surprisingly, yes or equal. Cheap Bluetooth remotes have hardware 'input lag' and driver processing. Modern local Wi-Fi (5Ghz) is absurdly fast and stable for small data transmission like text commands."
                 }
+            ]}
+        />
+
+        <SEORelatedLinks
+            title="Technology & Security"
+            links={[
+                { label: "Teleprompter Privacy and Security", href: "/en/teleprompter-privacy-security" },
+                { label: "Teleprompter for PC and Windows", href: "/en/teleprompter-pc-windows" },
+                { label: "Teleprompter for Zoom Meetings", href: "/en/teleprompter-zoom-meeting" },
+                { label: "Keyboard Shortcuts Guide", href: "/en/teleprompter-keyboard-shortcuts" }
             ]}
         />
     </>

@@ -1,14 +1,10 @@
-import { ROUTES_CONFIG } from "../../../../config/routes";
+﻿import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterZoomMeetingES = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter Virtual para Zoom y Videollamadas: El Secreto del Contacto Visual
-        </h1>
-
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Mantén el contacto visual perfecto durante tus reuniones en línea. Usa **PromptNinja** para leer tu guion con fluidez mientras miras directamente a la cámara, transmitiendo total confianza y autoridad a tu audiencia.
         </p>
@@ -40,7 +36,7 @@ export const TeleprompterZoomMeetingES = () => (
         />
 
         <div className="bg-slate-800/50 p-6 rounded-lg mb-8 border border-slate-700">
-            <h3 className="text-lg font-bold text-white mb-3">🚀 Cómo usar en 3 pasos:</h3>
+            <h3 className="text-lg font-bold text-white mb-3">�xa� Cómo usar en 3 pasos:</h3>
             <ol className="list-decimal pl-5 space-y-2 text-slate-300">
                 <li><strong>Abre PromptNinja:</strong> Inicia la aplicación en tu navegador.</li>
                 <li><strong>Pon la ventana transparente:</strong> Colócala sobre Zoom, justo debajo de tu cámara.</li>
@@ -183,7 +179,7 @@ export const TeleprompterZoomMeetingES = () => (
             <ul className="space-y-2">
                 <li>
                     <a href={ROUTES_CONFIG.SEO_GRATIS.paths.es} className="text-purple-400 hover:text-purple-300 underline flex items-center">
-                        <span className="mr-2">📺</span>
+                        <span className="mr-2">�x�</span>
                         Teleprompter Online Gratis (Funciona en el Navegador)
                     </a>
                 </li>
@@ -195,7 +191,7 @@ export const TeleprompterZoomMeetingES = () => (
                 </li>
                 <li>
                     <a href={ROUTES_CONFIG.SEO_WEBRTC.paths.es} className="text-purple-400 hover:text-purple-300 underline flex items-center">
-                        <span className="mr-2">⚡</span>
+                        <span className="mr-2">âš¡</span>
                         Por qué PromptNinja no tiene retraso (Zero Latency)
                     </a>
                 </li>
@@ -213,3 +209,4 @@ export const TeleprompterZoomMeetingES = () => (
         </div>
     </>
 );
+

@@ -17,7 +17,7 @@ export const TeleprompterGamersPT = () => (
         </p>
 
         <SEOImage
-            slug="teleprompter-gamers"
+            slug="teleprompter-gamers-streaming"
             src="teleprompter-gamers-streaming-interface.webp"
             alt="Teleprompter para Gamers e Streamers"
             caption="O PromptNinja se integra ao seu setup gamer sem consumir FPS."

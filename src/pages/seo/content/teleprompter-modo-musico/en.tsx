@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOImage } from "../../../../components/seo/SEOImage";
+import { SEORelatedLinks } from "../../../../components/seo/SEORelatedLinks";
 
 export const TeleprompterModoMusicoEN = () => (
     <>
@@ -149,6 +150,16 @@ export const TeleprompterModoMusicoEN = () => (
                     question: "What if song has a long solo?",
                     answer: "Insert several empty line breaks in text between stanzas. This way, text 'walks' on empty space during solo and next stanza arrives right on time."
                 }
+            ]}
+        />
+
+        <SEORelatedLinks
+            title="Performance Resources"
+            links={[
+                { label: "Teleprompter for Tablet and iPad", href: "/en/teleprompter-app-for-tablet-ipad" },
+                { label: "Improve Reading Speed Guide", href: "/en/teleprompter-reading-speed" },
+                { label: "Teleprompter for Live Streaming", href: "/en/teleprompter-for-live-streaming" },
+                { label: "Speech Pacing & Timer Online", href: "/en/teleprompter-pacing-timer-online" }
             ]}
         />
     </>

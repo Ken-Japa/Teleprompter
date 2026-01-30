@@ -1,13 +1,9 @@
-import { ROUTES_CONFIG } from "../../../../config/routes";
+﻿import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const MelhorAppTeleprompterES = () => (
     <div className="text-slate-300">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 text-center leading-tight">
-            ¿Cuál es la Mejor App de Teleprompter? Comparativa Completa 2026
-        </h1>
-
         <p className="lead text-xl text-slate-300 mb-8 text-center max-w-3xl mx-auto font-medium">
             No todas las aplicaciones son iguales. Descubre por qué **PromptNinja** es la herramienta preferida de los creadores que buscan potencia, privacidad y facilidad de uso sin pagar suscripciones abusivas.
         </p>
@@ -85,7 +81,7 @@ export const MelhorAppTeleprompterES = () => (
                 <p className="text-sm text-slate-400">Refleja el texto (ejes X e Y) para usar con cristales y telemprompters profesionales.</p>
             </div>
             <div className="p-4 bg-slate-800 rounded-lg border border-slate-700">
-                <div className="text-green-400 text-2xl mb-2">🔒</div>
+                <div className="text-green-400 text-2xl mb-2">🔐</div>
                 <h3 className="font-bold text-white mb-2">100% Privado</h3>
                 <p className="text-sm text-slate-400">Tus guiones se guardan en tu navegador. Nada se envía a la nube.</p>
             </div>
@@ -108,7 +104,7 @@ export const MelhorAppTeleprompterES = () => (
                     </h3>
                     <ul className="space-y-2 text-slate-300 text-sm">
                         <li>⏱️ Tiempo de grabación: 2h30min por video</li>
-                        <li>🔄 Regrabaciones: 8-12 por video</li>
+                        <li>📉 Regrabaciones: 8-12 por video</li>
                         <li>😰 Trabas/errores: 15-20 por toma</li>
                         <li>✂️ Tiempo de edición: +1h (cortar errores)</li>
                         <li>📊 Resultado: 1 video/semana (máximo)</li>
@@ -120,7 +116,7 @@ export const MelhorAppTeleprompterES = () => (
                     </h3>
                     <ul className="space-y-2 text-slate-300 text-sm">
                         <li>⏱️ Tiempo de grabación: 45min por video</li>
-                        <li>🔄 Regrabaciones: 1-2 (solo para verificar)</li>
+                        <li>📉 Regrabaciones: 1-2 (solo para verificar)</li>
                         <li>😰 Trabas/errores: 0-2 por toma</li>
                         <li>✂️ Tiempo de edición: 20min (ajustes)</li>
                         <li>📊 Resultado: 3 videos/semana fácilmente</li>
@@ -152,7 +148,7 @@ export const MelhorAppTeleprompterES = () => (
             </div>
             <div className="bg-slate-900 p-6 rounded-xl border border-slate-800">
                 <div className="flex items-center gap-3 mb-3">
-                    <div className="text-green-400 text-2xl">🔒</div>
+                    <div className="text-green-400 text-2xl">🔐</div>
                     <h4 className="font-bold text-white">100% Privado</h4>
                 </div>
                 <p className="text-sm text-slate-400 mb-3">Tus guiones se guardan localmente en tu navegador. Nada se envía a servidores en la nube.</p>
@@ -280,13 +276,13 @@ export const MelhorAppTeleprompterES = () => (
             <ul className="space-y-2">
                 <li>
                     <a href={ROUTES_CONFIG.SEO_GRATIS.paths.es} className="text-purple-400 hover:text-purple-300 underline flex items-center">
-                        <span className="mr-2">📺</span>
+                        <span className="mr-2">🔍</span>
                         Teleprompter Online Gratis
                     </a>
                 </li>
                 <li>
                     <a href={ROUTES_CONFIG.SEO_ZOOM.paths.es} className="text-purple-400 hover:text-purple-300 underline flex items-center">
-                        <span className="mr-2">📹</span>
+                        <span className="mr-2">🔍</span>
                         Teleprompter para Zoom y Lives
                     </a>
                 </li>
@@ -300,3 +296,4 @@ export const MelhorAppTeleprompterES = () => (
         </div>
     </div >
 );
+

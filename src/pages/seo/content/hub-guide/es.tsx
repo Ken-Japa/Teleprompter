@@ -9,8 +9,8 @@ export const HubGuideContentES = () => (
 
         <SEOImage
             slug="guia-completo-teleprompter"
-            src="teleprompter-hub-guide-complete.webp"
-            alt="Guía completa de teleprompter y oratoria"
+            src="complete-guide-teleprompter-everything-about.webp"
+            alt="Guía Completa de Teleprompter - Herramientas y Técnicas Hub"
             caption="Nuestro centro de conocimiento reúne todo lo necesitas para dominar el arte de hablar frente a la cámara."
             width={1200}
             height={675}

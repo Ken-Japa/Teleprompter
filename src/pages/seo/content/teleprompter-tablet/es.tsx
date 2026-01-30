@@ -1,15 +1,11 @@
-import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+﻿import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterTabletES = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter para Tablet y iPad: El Potencial Máximo de tu Pantalla
-        </h1>
-
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            No limites tu talento a pantallas pequeñas. Usa tu **iPad o Tablet** como un teleprompter profesional para obtener una lectura cómoda, natural y 100% fluida en cada grabación.
+            No limites tu talento a pantallas pequeñas. Usa tu <strong>iPad o Tablet</strong> como un teleprompter profesional para obtener una lectura cómoda, natural y 100% fluida en cada grabación.
         </p>
 
         <p className="text-slate-300 mb-8 leading-relaxed">
@@ -17,7 +13,7 @@ export const TeleprompterTabletES = () => (
         </p>
 
         <SEOImage
-            slug="teleprompter-tablet"
+            slug="teleprompter-para-tablet-ipad-android"
             src="teleprompter-tablet-ipad-android-use.webp"
             alt="Teleprompter en Tablet e iPad"
             caption="El tablet es la pantalla ideal para una lectura cómoda y portabilidad."
@@ -44,25 +40,25 @@ export const TeleprompterTabletES = () => (
                 <div className="bg-slate-900/70 p-6 rounded-lg border border-red-500/30">
                     <h3 className="font-bold text-red-400 mb-4 text-center">📱 Celular (Smartphone)</h3>
                     <ul className="space-y-3 text-slate-300 text-sm">
-                        <li>❌ <strong>Pantalla:</strong> Muy pequeña (6"). Exige fuente minúscula o lectura muy rápida.</li>
-                        <li>❌ <strong>Distancia:</strong> Solo funciona a menos de 50cm. Queda "encima" de la cámara.</li>
-                        <li>❌ <strong>Vidrio:</strong> Muy pequeño para teleprompters de vidrio profesionales.</li>
+                        <li><strong>Pantalla:</strong> Muy pequeña (6"). Exige fuente minúscula o lectura muy rápida.</li>
+                        <li><strong>Distancia:</strong> Solo funciona a menos de 50cm. Queda "encima" de la cámara.</li>
+                        <li><strong>Vidrio:</strong> Muy pequeño para teleprompters de vidrio profesionales.</li>
                     </ul>
                 </div>
                 <div className="bg-slate-900/70 p-6 rounded-lg border border-red-500/30">
-                    <h3 className="font-bold text-red-400 mb-4 text-center">💻 Laptop / Monitor</h3>
+                    <h3 className="font-bold text-red-400 mb-4 text-center">🖥️Laptop / Monitor</h3>
                     <ul className="space-y-3 text-slate-300 text-sm">
-                        <li>❌ <strong>Montaje:</strong> Pesado. Difícil montar en trípodes sin accesorios caros.</li>
-                        <li>❌ <strong>Movilidad:</strong> Exige mesa o soporte. Te ata al estudio.</li>
-                        <li>❌ <strong>Complejidad:</strong> Cables, mouse, teclado... setup demora 15min.</li>
+                        <li><strong>Montaje:</strong> Pesado. Difícil montar en trípodes sin accesorios caros.</li>
+                        <li><strong>Movilidad:</strong> Exige mesa o soporte. Te ata al estudio.</li>
+                        <li><strong>Complejidad:</strong> Cables, mouse, teclado... setup demora 15min.</li>
                     </ul>
                 </div>
                 <div className="bg-slate-900/70 p-6 rounded-lg border border-green-500/30 shadow-lg shadow-green-900/20 transform scale-105">
-                    <h3 className="font-bold text-green-400 mb-4 text-center">✨ Tablet / iPad</h3>
+                    <h3 className="font-bold text-green-400 mb-4 text-center">💡 Tablet / iPad</h3>
                     <ul className="space-y-3 text-slate-300 text-sm">
-                        <li>✅ <strong>Pantalla:</strong> Perfecta (10-12"). Lectura cómoda a 2-3 metros.</li>
-                        <li>✅ <strong>Montaje:</strong> Ligero. Cualquier soporte de $15 aguanta en trípode.</li>
-                        <li>✅ <strong>Profesional:</strong> Tamaño estándar para teleprompters de vidrio de estudio.</li>
+                        <li><strong>Pantalla:</strong> Perfecta (10-12"). Lectura cómoda a 2-3 metros.</li>
+                        <li><strong>Montaje:</strong> Ligero. Cualquier soporte de $15 aguanta en trípode.</li>
+                        <li><strong>Profesional:</strong> Tamaño estándar para teleprompters de vidrio de estudio.</li>
                     </ul>
                 </div>
             </div>
@@ -145,7 +141,7 @@ export const TeleprompterTabletES = () => (
                     },
                     {
                         title: "Modo Offline",
-                        text: "Una vez agregado a pantalla inicio, abre la app. Carga instantáneamente y funciona INCLUSO si apagas Wi-Fi (modo avión recomendado para evitar notificaciones)."
+                        text: "Una vez agregado a pantalla inicio, abre la app. Carga instantaneamente y funciona INCLUSO si apagas Wi-Fi (modo avión recomendado para evitar notificaciones)."
                     }
                 ]}
             />
@@ -157,35 +153,35 @@ export const TeleprompterTabletES = () => (
                 <h4 className="font-bold text-red-400 mb-2">Error #1: Olvidar Bloquear Rotación de Pantalla</h4>
                 <p className="text-slate-300 text-sm">
                     Mueves trípode y tablet gira pantalla horizontal/vertical en medio grabación. Texto realinea y pierdes punto.
-                    <span className="text-green-400 block mt-2">✅ <strong>Solución:</strong> Activa "Orientation Lock" en centro control iPad/Android ANTES de empezar.</span>
+                    <span className="text-green-400 block mt-2">💡 <strong>Solución:</strong> Activa "Orientation Lock" en centro control iPad/Android ANTES de empezar.</span>
                 </p>
             </div>
             <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
                 <h4 className="font-bold text-red-400 mb-2">Error #2: Brillo de Pantalla al Máximo (Reflejo Fantasma)</h4>
                 <p className="text-slate-300 text-sm">
                     En teleprompters de vidrio, brillo 100% causa "halo" o doble reflejo en lente cámara, dejando imagen lechosa.
-                    <span className="text-green-400 block mt-2">✅ <strong>Solución:</strong> Usa brillo al 60-70%. Suficiente para ver texto en reflejo, pero no quema imagen de cámara.</span>
+                    <span className="text-green-400 block mt-2">💡 <strong>Solución:</strong> Usa brillo al 60-70%. Suficiente para ver texto en reflejo, pero no quema imagen de cámara.</span>
                 </p>
             </div>
             <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
                 <h4 className="font-bold text-red-400 mb-2">Error #3: Notificaciones "Pop-up" en Video</h4>
                 <p className="text-slate-300 text-sm">
                     A media frase inspiradora, aparece: "TINDER: Nuevo Match!". Arruina grabación (y tal vez reputación si compartes pantalla).
-                    <span className="text-green-400 block mt-2">✅ <strong>Solución:</strong> Modo No Molestar o Modo Avión son OBLIGATORIOS. PromptNinja funciona offline, apaga Wi-Fi si posible.</span>
+                    <span className="text-green-400 block mt-2">💡 <strong>Solución:</strong> Modo No Molestar o Modo Avión son OBLIGATORIOS. PromptNinja funciona offline, apaga Wi-Fi si posible.</span>
                 </p>
             </div>
             <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
                 <h4 className="font-bold text-red-400 mb-2">Error #4: Tamaño de Fuente Incorrecto para Distancia</h4>
                 <p className="text-slate-300 text-sm">
                     Usar fuente tamaño 40 (estándar celular) en tablet a 2 metros. Entrecierras ojos para leer (squinting).
-                    <span className="text-green-400 block mt-2">✅ <strong>Solución:</strong> Regla es: entre más lejos tablet, MÁS GRANDE fuente. En tablets a 2m, usa tamaño 70-90px. Prueba legibilidad antes de grabar.</span>
+                    <span className="text-green-400 block mt-2">💡 <strong>Solución:</strong> Regla es: entre más lejos tablet, MÁS GRANDE fuente. En tablets a 2m, usa tamaño 70-90px. Prueba legibilidad antes de grabar.</span>
                 </p>
             </div>
             <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
                 <h4 className="font-bold text-red-400 mb-2">Error #5: Intentar Controlar Tocando Pantalla (Lejos)</h4>
                 <p className="text-slate-300 text-sm">
                     Tablet está a 2 metros. Erras una línea. Tienes que pararte, ir al trípode, rebobinar, volver, sentarte... Rompe flujo.
-                    <span className="text-green-400 block mt-2">✅ <strong>Solución:</strong> Usa función "Remote Control". Deja celular en regazo. ¿Error? Pausa y vuelve por celular, sin salir de la silla.</span>
+                    <span className="text-green-400 block mt-2">💡 <strong>Solución:</strong> Usa función "Remote Control". Deja celular en regazo. ¿Error? Pausa y vuelve por celular, sin salir de la silla.</span>
                 </p>
             </div>
         </div>
@@ -200,7 +196,7 @@ export const TeleprompterTabletES = () => (
                 className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 font-bold py-3 px-8 rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >
-                🚀 Abrir PromptNinja en Tablet
+                Abrir PromptNinja en Tablet
             </a>
             <p className="text-slate-400 mt-4 text-sm">Compatible con iPadOS, Android y Fire OS</p>
         </div>
@@ -230,7 +226,7 @@ export const TeleprompterTabletES = () => (
                 },
                 {
                     question: "¿Puedo importar guiones de Word o Google Docs en tablet?",
-                    answer: "Sí. Manera más fácil es copiar texto en PC/Celular y pegar en PromptNinja. Si logueado (o usando Sync P2P), texto aparece magicamente en tablet sin necesitar digitar en pantalla de vidrio."
+                    answer: "Sí. Manera más fáciles es copiar texto en PC/Celular y pegar en PromptNinja. Si logueado (o usando Sync P2P), texto aparece magicamente en tablet sin necesitar digitar en pantalla de vidrio."
                 },
                 {
                     question: "¿Funciona con tablet vertical (Portrait) o solo horizontal?",
@@ -240,3 +236,4 @@ export const TeleprompterTabletES = () => (
         />
     </>
 );
+

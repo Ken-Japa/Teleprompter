@@ -2,27 +2,36 @@
 
 ### BACKLOG
 
-- [FEAT-001] Desenvolver funcionalidade de Controle e Gerenciamento Multi-Teleprompter para Eventos
+- [FEAT-001] Desenvolver funcionalidade de Controle e Gerenciamento Multi-Teleprompter para Eventos (Master/Receiver)
   - Prioridade: Alta
   - Status: [ ] Pendente
-- [SEO-001] Corrigir problema de H1 ausente/inadequado
+- [FEAT-002] Gerador de Legendas Automáticas (SRT/VTT) Pós-Gravação via IA
   - Prioridade: Alta
   - Status: [ ] Pendente
-- [SEO-002] Otimizar as landing pages para termos de busca específicos
-  - Prioridade: Alta
-  - Status: [ ] Pendente
-- [TECH-001] Otectar a integração de tecnologia P2P e recursos PRO
+- [FEAT-003] Modo de Compatibilidade Otimizado (Lite Mode) para dispositivos antigos
   - Prioridade: Média
   - Status: [ ] Pendente
-- [DEV-001] Implementar Integração Nativa com OBS Studio via WebSocket para Overlay Transparente e Câmera Virtual
+- [SEO-001] Corrigir problema de H1 duplicado/ausente (Header vs Layout)
+  - Prioridade: Alta
+  - Status: [x] Concluído
+- [SEO-002] Otimizar Landing Pages: YouTube Scripts, WebRTC (<10ms) e Modo Músico
+  - Prioridade: Alta
+  - Status: [x] Concluído
+- [SEO-003] Implementar Linkagem Interna Inteligente (Clusters/Silagem)
+  - Prioridade: Alta
+  - Status: [x] Concluído
+- [SEO-004] Implementar Novas Landings: Eventos profissionais e Checklist Pré-Gravação
+  - Prioridade: Média
+  - Status: [ ] Pendente
+- [TECH-001] Otimizar a integração de tecnologia P2P e recursos PRO (UX de Onboarding)
   - Prioridade: Alta
   - Status: [ ] Pendente
-- [DEV-002] Desenvolver Indicadores Visuais de Contato Visual (Eye Contact Guidance)
+- [DEV-001] Implementar Integração Nativa com OBS Studio via WebSocket
+  - Prioridade: Alta
+  - Status: [ ] Pendente
+- [DEV-002] Ferramentas de Diagnóstico e Teste de Performance Pré-Sessão
   - Prioridade: Média
   - Status: [ ] Pendente
-- [CON-001] Melhorar a comunicação do valor premium da versão Pro
-  - Prioridade: Média
-  - Status: [ ] Pendente
-- [INV-001] Investigar e solucionar problemas de Crashes, Freezing e Falta de Estabilidade
+- [CON-001] Melhorar a comunicação do valor premium (Diferenciação clara Free vs Pro)
   - Prioridade: Alta
   - Status: [ ] Pendente

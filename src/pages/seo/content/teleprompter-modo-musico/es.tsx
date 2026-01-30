@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOImage } from "../../../../components/seo/SEOImage";
+import { SEORelatedLinks } from "../../../../components/seo/SEORelatedLinks";
 
 export const TeleprompterModoMusicoES = () => (
     <>
@@ -149,6 +150,16 @@ export const TeleprompterModoMusicoES = () => (
                     question: "¿Y si la canción tiene un solo largo?",
                     answer: "Inserta varios saltos de línea vacíos en el texto entre estrofas. Así, el texto 'camina' en el espacio vacío durante el solo y la siguiente estrofa llega justo a tiempo."
                 }
+            ]}
+        />
+
+        <SEORelatedLinks
+            title="Recursos para Performance"
+            links={[
+                { label: "Teleprompter para Tablet e iPad", href: "/es/teleprompter-para-tablet-ipad-android" },
+                { label: "Guía de Velocidad de Lectura", href: "/es/velocidad-lectura-teleprompter" },
+                { label: "Teleprompter para Directos y Shows", href: "/es/teleprompter-para-directos" },
+                { label: "Calculadora de Tiempo y Ritmo", href: "/es/teleprompter-pacing-timer-online" }
             ]}
         />
     </>

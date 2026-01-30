@@ -1,6 +1,7 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 import { SEOImage } from "../../../../components/seo/SEOImage";
+import { SEORelatedLinks } from "../../../../components/seo/SEORelatedLinks";
 
 export const TeleprompterParaYoutubersEN = () => (
     <>
@@ -180,6 +181,16 @@ export const TeleprompterParaYoutubersEN = () => (
                     question: "Good for Shorts and TikTok?",
                     answer: "Perfect for it. In 60s videos, every second counts. You can't waste time thinking. With script on screen, you deliver value in exactly 59 seconds without stuttering."
                 }
+            ]}
+        />
+
+        <SEORelatedLinks
+            title="More for Creators"
+            links={[
+                { label: "Ready-to-use YouTube Scripts", href: "/en/scripts-for-youtube" },
+                { label: "Teleprompter for TikTok and Reels", href: "/en/scripts-for-tiktok-shorts" },
+                { label: "Public Speaking Tips for Video", href: "/en/public-speaking-tips-video" },
+                { label: "Teleprompter for OBS Studio", href: "/en/teleprompter-obs-studio" }
             ]}
         />
     </>

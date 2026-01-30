@@ -1,14 +1,10 @@
-import { ROUTES_CONFIG } from "../../../../config/routes";
+﻿import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterCaseiroDIYPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter Caseiro DIY: Faça o Seu Rápido e Barato (e Grave Como um Pro)
-        </h1>
-
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Quer economizar centenas de reais e ainda ter resultados profissionais? Aprenda a montar seu próprio teleprompter caseiro (DIY) e descubra como o PromptNinja é o software gratuito perfeito para seu novo setup.
         </p>
@@ -44,19 +40,19 @@ export const TeleprompterCaseiroDIYPT = () => (
             <ul className="list-disc pl-6 space-y-3">
                 <li>
                     <strong>Vidro ou Acrílico Transparente:</strong> Uma moldura de quadro 20x30cm ou 30x40cm (retire o fundo) ou uma placa de acrílico transparente. Este será seu "beam splitter" que reflete o texto.
-                    <span className="text-slate-400 block mt-1 text-sm">💡 Onde comprar: Lojas de molduras, papelarias grandes, ou lojas de material de construção (acrílico)</span>
+                    <span className="text-slate-400 block mt-1 text-sm">🛒 Onde comprar: Lojas de molduras, papelarias grandes, ou lojas de material de construção (acrílico)</span>
                 </li>
                 <li>
                     <strong>Estrutura de Suporte:</strong> Uma caixa de papelão resistente (caixa de sapato grande ou caixa de mudança) ou uma estrutura de madeira leve (MDF ou compensado). Pinte o interior de preto fosco para evitar reflexos indesejados.
-                    <span className="text-slate-400 block mt-1 text-sm">💡 Onde comprar: Papelarias, lojas de artesanato, ou madeireiras</span>
+                    <span className="text-slate-400 block mt-1 text-sm">🛒 Onde comprar: Papelarias, lojas de artesanato, ou madeireiras</span>
                 </li>
                 <li>
                     <strong>Dispositivo de Exibição:</strong> Um tablet (7-10 polegadas é ideal), smartphone, ou monitor portátil para exibir o roteiro.
-                    <span className="text-slate-400 block mt-1 text-sm">💡 Use o que você já tem! Tablets antigos funcionam perfeitamente</span>
+                    <span className="text-slate-400 block mt-1 text-sm">📱 Use o que você já tem! Tablets antigos funcionam perfeitamente</span>
                 </li>
                 <li>
                     <strong>Pano ou Cartolina Preta:</strong> Para criar um "túnel" entre a lente da câmera e o vidro, bloqueando a luz ambiente e garantindo que a câmera não apareça no reflexo.
-                    <span className="text-slate-400 block mt-1 text-sm">💡 Onde comprar: Lojas de tecido ou papelarias</span>
+                    <span className="text-slate-400 block mt-1 text-sm">🛒 Onde comprar: Lojas de tecido ou papelarias</span>
                 </li>
                 <li>
                     <strong>Câmera:</strong> Qualquer câmera DSLR, mirrorless, webcam, ou até mesmo a do seu smartphone.
@@ -131,7 +127,7 @@ export const TeleprompterCaseiroDIYPT = () => (
                     <p className="text-sm text-slate-300">Funciona direto no navegador. Controle P2P via Wi-Fi local (não depende de internet). Resposta instantânea, zero atraso.</p>
                 </div>
                 <div className="bg-slate-700 p-4 rounded-lg">
-                    <h4 className="font-bold text-white mb-2">🎨 Totalmente Personalizável</h4>
+                    <h4 className="font-bold text-white mb-2">🛠️ Totalmente Personalizável</h4>
                     <p className="text-sm text-slate-300">Ajuste fonte, tamanho, cores, velocidade, e muito mais. Adapte perfeitamente ao seu setup e iluminação.</p>
                 </div>
             </div>
@@ -143,14 +139,14 @@ export const TeleprompterCaseiroDIYPT = () => (
             <h3 className="text-xl font-bold text-white mb-4">Configurações Recomendadas</h3>
             <ul className="space-y-4">
                 <li className="flex items-start">
-                    <span className="text-2xl mr-3">🔆</span>
+                    <span className="text-2xl mr-3">💡 </span>
                     <div>
                         <strong className="text-white">Brilho da Tela:</strong>
                         <p className="text-slate-300 text-sm">Coloque o tablet no brilho máximo. O reflexo no vidro reduz a intensidade da luz, então você precisa compensar.</p>
                     </div>
                 </li>
                 <li className="flex items-start">
-                    <span className="text-2xl mr-3">📏</span>
+                    <span className="text-2xl mr-3">📝</span>
                     <div>
                         <strong className="text-white">Tamanho da Fonte:</strong>
                         <p className="text-slate-300 text-sm">Teste diferentes tamanhos. Para um tablet 10", recomendamos começar com 48-60px e ajustar conforme sua distância.</p>
@@ -294,7 +290,7 @@ export const TeleprompterCaseiroDIYPT = () => (
                     href={ROUTES_CONFIG.SEO_GRATIS.paths.pt}
                     className="inline-block border-2 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white font-bold py-3 px-8 rounded-full transition"
                 >
-                    📖 Ver Mais Recursos
+                    🔍 Ver Mais Recursos
                 </a>
             </div>
             <p className="text-slate-400 text-sm text-center mt-4">
@@ -315,3 +311,4 @@ export const TeleprompterCaseiroDIYPT = () => (
         </div>
     </>
 );
+

@@ -14,8 +14,8 @@ export const TeleprompterPCWindowsEN = () => (
 
         <SEOImage
             slug="teleprompter-pc-windows"
-            src="teleprompter-pc-windows-computer-app.webp"
-            alt="Teleprompter being used on a Windows PC"
+            src="teleprompter-pc-windows-setup.webp"
+            alt="Using teleprompter on a Windows computer"
             caption="A professional teleprompter experience directly on your Windows PC."
             width={1200}
             height={675}

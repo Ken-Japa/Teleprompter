@@ -1,21 +1,17 @@
-import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+﻿import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterGamersES = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter para Gamers y Streamers: Cero Lag, Máximo Impacto
-        </h1>
-
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Domina tus directos sin perder el hilo de la conversación. Con **PromptNinja**, obtienes un teleprompter ultra ligero diseñado específicamente para integrarse con OBS Studio y Twitch sin afectar tus FPS.
         </p>
 
         <SEOImage
-            slug="teleprompter-gamers"
-            src="teleprompter-gamers-streamers-youtube.webp"
-            alt="Gamer usando un teleprompter para Twitch y YouTube"
+            slug="teleprompter-gamers-streaming"
+            src="teleprompter-gamers-streaming-setup.webp"
+            alt="Teleprompter en línea para streamers y gamers"
             caption="Un teleprompter ayuda a los gamers a mantener el contacto visual con la cámara mientras leen el chat o notas."
             width={1200}
             height={675}
@@ -46,10 +42,10 @@ export const TeleprompterGamersES = () => (
                         <span>❌</span> Amateur (Métodos Improvisados)
                     </h3>
                     <ul className="space-y-3 text-slate-300 text-sm">
-                        <li>📝 <strong>Notas:</strong> Notepad abierto (Alt-Tab = juego congela)</li>
-                        <li>🎮 <strong>Mid-Stream:</strong> "Ehhh déjame ver..." (viewers notan)</li>
-                        <li>💾 <strong>RAM:</strong> 12 pestañas Chrome = 2GB usado</li>
-                        <li>😓 <strong>Resultado:</strong> Parece desorganizado, pierde viewers</li>
+                        <li>🗒️ <strong>Notas:</strong> Notepad abierto (Alt-Tab = juego congela)</li>
+                        <li>🎤 <strong>Mid-Stream:</strong> "Ehhh déjame ver..." (viewers notan)</li>
+                        <li>📉 <strong>RAM:</strong> 12 pestañas Chrome = 2GB usado</li>
+                        <li>😔 <strong>Resultado:</strong> Parece desorganizado, pierde viewers</li>
                         <li>⏱️ <strong>Eficiencia:</strong> 40% tiempo OFF-screen</li>
                     </ul>
                 </div>
@@ -58,9 +54,9 @@ export const TeleprompterGamersES = () => (
                         <span>✅</span> PRO (PromptNinja Setup)
                     </h3>
                     <ul className="space-y-3 text-slate-300 text-sm">
-                        <li>📝 <strong>Notas:</strong> Monitor secundario (cero Alt-Tab)</li>
-                        <li>🎮 <strong>Mid-Stream:</strong> Lee guion SIN salir del game</li>
-                        <li>💾 <strong>RAM:</strong> ~50MB (menos que Discord)</li>
+                        <li>🗒️ <strong>Notas:</strong> Monitor secundario (cero Alt-Tab)</li>
+                        <li>🎤 <strong>Mid-Stream:</strong> Lee guion SIN salir del game</li>
+                        <li>🚀 <strong>RAM:</strong> ~50MB (menos que Discord)</li>
                         <li>😊 <strong>Resultado:</strong> "¡Está TAN preparado!" en chat</li>
                         <li>⏱️ <strong>Eficiencia:</strong> 98% ON-screen, flow constante</li>
                     </ul>
@@ -220,7 +216,7 @@ export const TeleprompterGamersES = () => (
                 <p className="text-sm text-slate-300">Flechas ↑↓ = velocidad. Espacio = pause/play. Funciona INCLUSO con juego fullscreen (no necesita focar ventana).</p>
             </div>
             <div className="bg-slate-900 p-4 rounded-lg border border-slate-700">
-                <h3 className="text-xl font-bold text-white mb-2">📝 Comandos Texto</h3>
+                <h3 className="text-xl font-bold text-white mb-2">🗒️ Comandos Texto</h3>
                 <p className="text-sm text-slate-300">[STOP] = pausa automática. [COUNT 3] = countdown. Ideal para segmentar guion entre boss fights.</p>
             </div>
         </div>
@@ -269,7 +265,7 @@ export const TeleprompterGamersES = () => (
                 },
                 {
                     question: "¿Móvil de control necesita cable o WiFi? ¿Tiene lag?",
-                    answer: "WiFi LOCAL (P2P directo PC↔móvil). Lag <50ms (imperceptible). NO usa internet - funciona offline. Móvil queda al lado del mouse = control instantáneo sin quitar mano del teclado."
+                    answer: "WiFi LOCAL (P2P directo PCâ†”móvil). Lag <50ms (imperceptible). NO usa internet - funciona offline. Móvil queda al lado del mouse = control instantáneo sin quitar mano del teclado."
                 },
                 {
                     question: "¿Se puede script automático? Tipo 'lee línea, espera 5s, siguiente'?",
@@ -279,3 +275,4 @@ export const TeleprompterGamersES = () => (
         />
     </>
 );
+

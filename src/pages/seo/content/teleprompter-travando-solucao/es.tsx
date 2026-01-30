@@ -14,8 +14,8 @@ export const TeleprompterTravandoSolucaoES = () => (
 
         <SEOImage
             slug="teleprompter-travando-solucao"
-            src="solucao-teleprompter-travando.webp"
-            alt="Persona frustrada con un teleprompter trabado durante la grabación"
+            src="teleprompter-solution-infographic.webp"
+            alt="Infografías que muestran soluciones para problemas de congelación del teleprompter"
             caption="Los retardos en el teleprompter pueden arruinar tu grabación; aprende cómo evitarlos."
             width={1200}
             height={675}

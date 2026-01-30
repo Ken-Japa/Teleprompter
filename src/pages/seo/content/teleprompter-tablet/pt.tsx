@@ -17,7 +17,7 @@ export const TeleprompterTabletPT = () => (
         </p>
 
         <SEOImage
-            slug="teleprompter-tablet"
+            slug="teleprompter-para-tablet-ipad-android"
             src="teleprompter-tablet-ipad-android-use.webp"
             alt="Teleprompter no Tablet e iPad"
             caption="O tablet é a tela ideal para leitura confortável e portabilidade."

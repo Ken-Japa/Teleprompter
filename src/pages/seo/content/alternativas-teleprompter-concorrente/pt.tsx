@@ -1,14 +1,10 @@
-import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+﻿import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const AlternativasTeleprompterConcorrentePT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Cansado de Teleprompters Físicos e Apps Limitados? Conheça a Revolução Online com PromptNinja!
-        </h1>
-
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
-            Se você é um <strong>YouTuber, palestrante, músico</strong> ou qualquer profissional que precisa se comunicar com fluidez e naturalidade, sabe que um teleprompter pode ser seu melhor amigo. Mas as opções tradicionais — hardwares físicos volumosos ou apps com recursos travados atrás de paywalls — muitas vezes trazem mais dor de cabeça do que solução.
+            Se você é um <strong>YouTuber, palestrante, músico</strong> ou qualquer profissional que precisa se comunicar com fluidez e naturalidade, sabe que um teleprompter pode ser seu melhor amigo. Mas as opções tradicionais â€” hardwares físicos volumosos ou apps com recursos travados atrás de paywalls â€” muitas vezes trazem mais dor de cabeça do que solução.
         </p>
 
         <SEOImage
@@ -189,7 +185,7 @@ export const AlternativasTeleprompterConcorrentePT = () => (
             </p>
             <div className="space-y-4">
                 <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
-                    <span className="text-2xl">✅</span>
+                    <span className="text-2xl">�S&</span>
                     <div>
                         <h4 className="font-bold text-white mb-1">1. Controle Remoto SEM Lag</h4>
                         <p className="text-slate-400 text-sm">Você aperta pause, texto PARA agora. Não 300ms depois. Teste: se tiver atraso perceptivel = DESCARTE.</p>
@@ -197,7 +193,7 @@ export const AlternativasTeleprompterConcorrentePT = () => (
                     </div>
                 </div>
                 <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
-                    <span className="text-2xl">✅</span>
+                    <span className="text-2xl">�S&</span>
                     <div>
                         <h4 className="font-bold text-white mb-1">2. Zero Marca D'Água (Mesmo Versão Free)</h4>
                         <p className="text-slate-400 text-sm">Logo de terceiros no SEU vídeo = amador. Clientes percebem. Audiência percebe. Não aceite.</p>
@@ -205,7 +201,7 @@ export const AlternativasTeleprompterConcorrentePT = () => (
                     </div>
                 </div>
                 <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
-                    <span className="text-2xl">✅</span>
+                    <span className="text-2xl">�S&</span>
                     <div>
                         <h4 className="font-bold text-white mb-1">3. Funciona Desktop E Mobile (Sem Pagar 2x)</h4>
                         <p className="text-slate-400 text-sm">YouTuber trabalha no PC. TikToker no celular. VOCÊ faz os 2. Apps que cobram separado = golpe.</p>
@@ -213,7 +209,7 @@ export const AlternativasTeleprompterConcorrentePT = () => (
                     </div>
                 </div>
                 <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
-                    <span className="text-2xl">✅</span>
+                    <span className="text-2xl">�S&</span>
                     <div>
                         <h4 className="font-bold text-white mb-1">4. Privacidade do Roteiro (Não Enviado pra Nuvem)</h4>
                         <p className="text-slate-400 text-sm">Roteiros confidenciais (lançamentos, estratégias) em servidor de terceiros = risco. Pergunte: "Onde meu texto é armazenado?"</p>
@@ -221,7 +217,7 @@ export const AlternativasTeleprompterConcorrentePT = () => (
                     </div>
                 </div>
                 <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
-                    <span className="text-2xl">✅</span>
+                    <span className="text-2xl">�S&</span>
                     <div>
                         <h4 className="font-bold text-white mb-1">5. Modo Espelho (Pra DIY Teleprompter)</h4>
                         <p className="text-slate-400 text-sm">Se usar espelho 50/50, texto precisa inverter. Muitos apps cobram extra. Verifique ANTES.</p>
@@ -229,7 +225,7 @@ export const AlternativasTeleprompterConcorrentePT = () => (
                     </div>
                 </div>
                 <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
-                    <span className="text-2xl">✅</span>
+                    <span className="text-2xl">�S&</span>
                     <div>
                         <h4 className="font-bold text-white mb-1">6. Funciona Offline (PWA/App Instalado)</h4>
                         <p className="text-slate-400 text-sm">Internet cai no meio da live? Site online = travou. PWA (Progressive Web App) = continua funcionando.</p>
@@ -237,7 +233,7 @@ export const AlternativasTeleprompterConcorrentePT = () => (
                     </div>
                 </div>
                 <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
-                    <span className="text-2xl">✅</span>
+                    <span className="text-2xl">�S&</span>
                     <div>
                         <h4 className="font-bold text-white mb-1">7. Sem Cadastro Obrigatório (Teste Instantâneo)</h4>
                         <p className="text-slate-400 text-sm">Se exige email antes de TESTAR = red flag. Boas ferramentas deixam você experimentar AGORA.</p>
@@ -279,8 +275,9 @@ export const AlternativasTeleprompterConcorrentePT = () => (
                 className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mx-auto rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >
-                🚀 Começar a Usar o PromptNinja GRATUITO
+                �xa� Começar a Usar o PromptNinja GRATUITO
             </a>
         </div>
     </>
 );
+

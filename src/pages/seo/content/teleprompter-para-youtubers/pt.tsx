@@ -1,13 +1,10 @@
-import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+﻿import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOContentHowTo } from "../../../../components/seo/SEOContentHowTo";
 import { SEOImage } from "../../../../components/seo/SEOImage";
+import { SEORelatedLinks } from "../../../../components/seo/SEORelatedLinks";
 
 export const TeleprompterParaYoutubersPT = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Teleprompter para Youtubers & Criadores | Grave Sem Erros com PromptNinja
-        </h1>
-
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             Domine suas câmeras, grave vídeos impecáveis e impulsione seu canal. Descubra como youtubers e criadores de conteúdo usam o PromptNinja para transformar suas produções de forma simples, natural e profissional.
         </p>
@@ -93,7 +90,7 @@ export const TeleprompterParaYoutubersPT = () => (
             </div>
 
             <div className="bg-slate-900/50 p-6 rounded-lg border border-slate-700 hover:border-green-500 transition">
-                <div className="text-3xl mb-4">🎥</div>
+                <div className="text-3xl mb-4">📽️</div>
                 <h3 className="text-xl font-bold text-white mb-2">3. O "Pro Glass"</h3>
                 <p className="text-sm text-slate-400 mb-4">Ideal para Câmeras DSLR.</p>
                 <p className="text-slate-300 text-sm">
@@ -152,13 +149,27 @@ export const TeleprompterParaYoutubersPT = () => (
             ]}
         />
 
-        <div className="mt-16 bg-gradient-to-r from-red-600/20 to-red-900/20 p-8 rounded-xl border border-red-500/30">
-            <h3 className="text-2xl font-bold text-white mb-4">Pare de perder tempo editando "Ehmmm..."</h3>
+        <div id="guia-youtuber" className="mt-16 bg-gradient-to-r from-red-600/20 to-red-900/20 p-8 rounded-xl border border-red-500/30">
+            <h3 className="text-2xl font-bold text-white mb-4">A Estrutura do Script de Sucesso (Hook-Value-CTA)</h3>
             <p className="text-slate-300 mb-6">
-                Os maiores canais (MrBeast, Ali Abdaal, Peter McKinnon) usam algum tipo de roteiro ou teleprompter. A consistência deles vem do fluxo de trabalho. O PromptNinja te dá esse superpoder de graça.
+                Não basta ler; é preciso engajar. O segredo dos grandes canais (MrBeast, Ali Abdaal) é a estrutura:
             </p>
+            <div className="grid md:grid-cols-3 gap-4 mb-8 text-sm">
+                <div className="bg-black/20 p-4 rounded-lg">
+                    <strong className="text-red-400 block mb-1">1. O Gancho (0-15s)</strong>
+                    <span>Prometa o resultado. Olhe fixamente para a lente usando o PromptNinja para não gaguejar no momento mais importante.</span>
+                </div>
+                <div className="bg-black/20 p-4 rounded-lg">
+                    <strong className="text-red-400 block mb-1">2. O Valor (O Meio)</strong>
+                    <span>Use Bullet Points. O PromptNinja permite que você guie seu pensamento sem ler palavra por palavra, mantendo a naturalidade.</span>
+                </div>
+                <div className="bg-black/20 p-4 rounded-lg">
+                    <strong className="text-red-400 block mb-1">3. A Chamada (CTA)</strong>
+                    <span>Não esqueça de pedir o like. Com o roteiro na tela, você nunca mais vai esquecer de vender seu peixe.</span>
+                </div>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                <a href="https://promptninja.solutionkit.com.br/#app" className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full font-bold transition text-center">
+                <a href="https://promptninja.solutionkit.com.br/#app" className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full font-bold transition text-center shadow-lg shadow-red-600/20">
                     Começar a Gravar Agora
                 </a>
             </div>
@@ -181,5 +192,16 @@ export const TeleprompterParaYoutubersPT = () => (
                 }
             ]}
         />
+
+        <SEORelatedLinks
+            title="Mais para Criadores"
+            links={[
+                { label: "Scripts Prontos para YouTube", href: "/scripts-para-youtube" },
+                { label: "Teleprompter para TikTok e Reels", href: "/teleprompter-tiktok-shorts" },
+                { label: "Dicas de Oratória para Vídeo", href: "/dicas-oratoria-video" },
+                { label: "Como usar Teleprompter no OBS Studio", href: "/teleprompter-obs-studio" }
+            ]}
+        />
     </>
 );
+

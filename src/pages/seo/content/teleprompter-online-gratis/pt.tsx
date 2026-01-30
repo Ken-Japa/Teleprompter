@@ -1,14 +1,10 @@
-import { ROUTES_CONFIG } from "../../../../config/routes";
+﻿import { ROUTES_CONFIG } from "../../../../config/routes";
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const TeleprompterOnlineGratisPT = () => (
     <>
         <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-700/50 mb-12">
-            <h1 className="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-8 text-center leading-tight">
-                Teleprompter Online GRÁTIS: Brilhe em Seus Vídeos e Apresentações!
-            </h1>
-
             <div className="max-w-3xl mx-auto space-y-6 text-lg text-slate-300 leading-relaxed">
                 <p>
                     <strong className="text-white">Cansado de tropeçar nas palavras ou esquecer o roteiro no meio da gravação?</strong> Aquele nervosismo que rouba sua espontaneidade e faz suas apresentações parecerem forçadas? Com o <strong>PromptNinja Teleprompter Online Grátis</strong>, esses problemas ficam no passado!
@@ -124,7 +120,7 @@ export const TeleprompterOnlineGratisPT = () => (
             <div className="grid md:grid-cols-3 gap-8">
                 <div className="flex flex-col items-center text-center">
                     <div className="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center mb-4 border border-blue-500/30">
-                        <span className="text-2xl">📝</span>
+                        <span className="text-2xl">🗒️</span>
                     </div>
                     <h3 className="text-xl font-bold text-white mb-2">1. Cole Seu Roteiro</h3>
                     <p className="text-slate-400 text-sm">Copie e cole o texto da sua apresentação, discurso ou roteiro de vídeo diretamente na interface do PromptNinja.</p>
@@ -170,7 +166,7 @@ export const TeleprompterOnlineGratisPT = () => (
                     <tr>
                         <td className="p-4 border-t border-slate-800 font-medium">Espelhamento de Texto</td>
                         <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Sim</td>
-                        <td className="p-4 border-t border-slate-800 text-yellow-500 text-center">⚠ Raro / Pago</td>
+                        <td className="p-4 border-t border-slate-800 text-yellow-500 text-center">⚠️ Raro / Pago</td>
                     </tr>
                     <tr>
                         <td className="p-4 border-t border-slate-800 font-medium">Editor de Texto Rico</td>
@@ -180,7 +176,7 @@ export const TeleprompterOnlineGratisPT = () => (
                     <tr>
                         <td className="p-4 border-t border-slate-800 font-medium">Privacidade (Sem Nuvem)</td>
                         <td className="p-4 border-t border-slate-800 text-green-400 font-bold bg-blue-900/10 text-center">✅ Total (Local)</td>
-                        <td className="p-4 border-t border-slate-800 text-yellow-500 text-center">⚠ Incerta</td>
+                        <td className="p-4 border-t border-slate-800 text-yellow-500 text-center">⚠️ Incerta</td>
                     </tr>
                     <tr>
                         <td className="p-4 border-t border-slate-800 font-medium">Instalação Necessária</td>
@@ -308,7 +304,7 @@ export const TeleprompterOnlineGratisPT = () => (
             <ul className="space-y-2">
                 <li>
                     <a href={ROUTES_CONFIG.SEO_ZOOM.paths.pt} className="text-purple-400 hover:text-purple-300 underline flex items-center">
-                        <span className="mr-2">📹</span>
+                        <span className="mr-2">📡</span>
                         Teleprompter para Zoom e Teams
                     </a>
                 </li>
@@ -343,3 +339,4 @@ export const TeleprompterOnlineGratisPT = () => (
         </div>
     </>
 );
+

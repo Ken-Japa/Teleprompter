@@ -1,5 +1,6 @@
 import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOImage } from "../../../../components/seo/SEOImage";
+import { SEORelatedLinks } from "../../../../components/seo/SEORelatedLinks";
 
 export const TeleprompterModoMusicoPT = () => (
     <>
@@ -31,15 +32,15 @@ export const TeleprompterModoMusicoPT = () => (
                 <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
                     <span className="text-yellow-400 text-xl">⏱️</span>
                     <div className="text-sm">
-                        <strong className="text-white block mb-1">Rolagem Fluida e Rítmica</strong>
-                        <span className="text-slate-400">Ajuste a velocidade para acompanhar o tempo da música, garantindo que o texto suba exatamente no compasso certo.</span>
+                        <strong className="text-white block mb-1">Controle Remoto via P2P</strong>
+                        <span className="text-slate-400">Use seu celular para controlar a rolagem do tablet no pedestal. Latência &lt; 10ms garante que a mudança de música seja instantânea.</span>
                     </div>
                 </li>
                 <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
                     <span className="text-yellow-400 text-xl">🎼</span>
                     <div className="text-sm">
-                        <strong className="text-white block mb-1">Suporte para Cifras e Acordes</strong>
-                        <span className="text-slate-400">Mantenha suas harmonias visíveis logo acima da letra, sem perder o alinhamento mesmo com fontes grandes.</span>
+                        <strong className="text-white block mb-1">Cifras Sempre Alinhadas</strong>
+                        <span className="text-slate-400">Diferente de apps genéricos, mantemos o espaçamento fixo para que suas cifras não "corram" da letra durante a apresentação.</span>
                     </div>
                 </li>
                 <li className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
@@ -149,6 +150,16 @@ export const TeleprompterModoMusicoPT = () => (
                     question: "E se a música tiver um solo longo?",
                     answer: "Insira várias quebras de linha vazias no texto entre as estrofes. Assim, o texto 'anda' no espaço em branco durante o solo e a próxima estrofe chega na hora certa."
                 }
+            ]}
+        />
+
+        <SEORelatedLinks
+            title="Recursos para Performance"
+            links={[
+                { label: "Teleprompter para Tablet e iPad", href: "/teleprompter-para-tablet-ipad-android" },
+                { label: "Como Treinar sua Velocidade de Leitura", href: "/velocidade-leitura-teleprompter" },
+                { label: "Teleprompter para Lives e Shows", href: "/teleprompter-para-lives" },
+                { label: "Calculadora de Tempo de Discurso", href: "/teleprompter-pacing-timer-online" }
             ]}
         />
     </>

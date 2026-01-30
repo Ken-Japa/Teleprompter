@@ -1,12 +1,8 @@
-import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
+﻿import { SEOContentFAQ } from "../../../../components/seo/SEOContentFAQ";
 import { SEOImage } from "../../../../components/seo/SEOImage";
 
 export const AlternativasTeleprompterConcorrenteES = () => (
     <>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            La Mejor Alternativa Gratuita a Teleprompter Pro y Apps de Pago
-        </h1>
-
         <p className="lead text-xl text-slate-300 mb-8 font-medium">
             ¿Cansado de pagar suscripciones caras por funciones básicas? **PromptNinja** es la alternativa inteligente que ofrece control remoto, modo espejo y privacidad total sin el costo de las aplicaciones tradicionales.
         </p>
@@ -172,7 +168,7 @@ export const AlternativasTeleprompterConcorrenteES = () => (
             </p>
             <div className="space-y-4">
                 <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
-                    <span className="text-2xl">✅</span>
+                    <span className="text-2xl">�S&</span>
                     <div>
                         <h4 className="font-bold text-white mb-1">1. Control Remoto SIN Lag</h4>
                         <p className="text-slate-400 text-sm">Presionas pausa, texto PARA ahora. No 300ms después. Prueba: si hay retraso notable = DESCARTA.</p>
@@ -180,7 +176,7 @@ export const AlternativasTeleprompterConcorrenteES = () => (
                     </div>
                 </div>
                 <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
-                    <span className="text-2xl">✅</span>
+                    <span className="text-2xl">�S&</span>
                     <div>
                         <h4 className="font-bold text-white mb-1">2. Cero Marca de Agua (Incluso Versión Gratis)</h4>
                         <p className="text-slate-400 text-sm">Logo de terceros en TU video = amateur. Los clientes lo notan. La audiencia lo nota. No lo aceptes.</p>
@@ -188,7 +184,7 @@ export const AlternativasTeleprompterConcorrenteES = () => (
                     </div>
                 </div>
                 <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
-                    <span className="text-2xl">✅</span>
+                    <span className="text-2xl">�S&</span>
                     <div>
                         <h4 className="font-bold text-white mb-1">3. Funciona Desktop Y Mobile (Sin Pagar Doble)</h4>
                         <p className="text-slate-400 text-sm">YouTuber trabaja en PC. TikToker en móvil. TÚ haces AMBOS. Apps que cobran separado = estafa.</p>
@@ -196,7 +192,7 @@ export const AlternativasTeleprompterConcorrenteES = () => (
                     </div>
                 </div>
                 <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
-                    <span className="text-2xl">✅</span>
+                    <span className="text-2xl">�S&</span>
                     <div>
                         <h4 className="font-bold text-white mb-1">4. Privacidad del Guion (No Enviado a la Nube)</h4>
                         <p className="text-slate-400 text-sm">Guiones confidenciales (lanzamientos, estrategias) en servidor de terceros = riesgo. Pregunta: "¿Dónde se guarda mi texto?"</p>
@@ -204,7 +200,7 @@ export const AlternativasTeleprompterConcorrenteES = () => (
                     </div>
                 </div>
                 <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
-                    <span className="text-2xl">✅</span>
+                    <span className="text-2xl">�S&</span>
                     <div>
                         <h4 className="font-bold text-white mb-1">5. Modo Espejo (Para Teleprompter DIY)</h4>
                         <p className="text-slate-400 text-sm">Si usas espejo 50/50, el texto necesita voltearse. Muchas apps cobran extra. Verifica ANTES.</p>
@@ -212,7 +208,7 @@ export const AlternativasTeleprompterConcorrenteES = () => (
                     </div>
                 </div>
                 <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
-                    <span className="text-2xl">✅</span>
+                    <span className="text-2xl">�S&</span>
                     <div>
                         <h4 className="font-bold text-white mb-1">6. Funciona Offline (PWA/App Instalada)</h4>
                         <p className="text-slate-400 text-sm">¿Internet se cae a mitad de live? Sitio online = colapsó. PWA (Progressive Web App) = sigue funcionando.</p>
@@ -220,7 +216,7 @@ export const AlternativasTeleprompterConcorrenteES = () => (
                     </div>
                 </div>
                 <div className="flex items-start gap-4 bg-slate-800 p-4 rounded-lg">
-                    <span className="text-2xl">✅</span>
+                    <span className="text-2xl">�S&</span>
                     <div>
                         <h4 className="font-bold text-white mb-1">7. Sin Registro Obligatorio (Prueba Instantánea)</h4>
                         <p className="text-slate-400 text-sm">Si requiere email antes de PROBAR = bandera roja. Buenas herramientas te dejan probar AHORA.</p>
@@ -262,8 +258,9 @@ export const AlternativasTeleprompterConcorrenteES = () => (
                 className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 font-bold py-3 px-8 mx-auto rounded-full transition hover:brightness-110"
                 style={{ color: 'white' }}
             >
-                🚀 Comienza a usar PromptNinja GRATIS
+                �xa� Comienza a usar PromptNinja GRATIS
             </a>
         </div>
     </>
 );
+

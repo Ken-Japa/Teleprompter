@@ -14,7 +14,7 @@ export const VelocidadeLeituraTeleprompterPT = () => (
 
         <SEOImage
             slug="velocidade-leitura-teleprompter"
-            src="velocidade-leitura-teleprompter.webp"
+            src="reading-speed-teleprompter-adjustment.webp"
             alt="Pessoa controlando a velocidade de leitura no teleprompter"
             caption="Encontre o ritmo perfeito para sua leitura e aumente sua autoridade em vídeo."
             width={1200}
