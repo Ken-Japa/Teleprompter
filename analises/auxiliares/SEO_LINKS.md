@@ -49,6 +49,8 @@
 - https://promptninja.solutionkit.com.br/velocidade-leitura-teleprompter
 - https://promptninja.solutionkit.com.br/teleprompter-acessibilidade
 - https://promptninja.solutionkit.com.br/futuro-teleprompters-ai
+- https://promptninja.solutionkit.com.br/teleprompter-para-eventos-profissionais
+- https://promptninja.solutionkit.com.br/checklist-gravacao-teleprompter-perfeita
 
 ## Inglês (EN)
 - https://promptninja.solutionkit.com.br/en/free-online-teleprompter
@@ -98,6 +100,8 @@
 - https://promptninja.solutionkit.com.br/en/teleprompter-reading-speed
 - https://promptninja.solutionkit.com.br/en/teleprompter-accessibility
 - https://promptninja.solutionkit.com.br/en/future-teleprompters-ai
+- https://promptninja.solutionkit.com.br/en/teleprompter-for-professional-events
+- https://promptninja.solutionkit.com.br/en/perfect-teleprompter-recording-checklist
 
 ## Espanhol (ES)
 - https://promptninja.solutionkit.com.br/es/teleprompter-online-gratis
@@ -147,3 +151,5 @@
 - https://promptninja.solutionkit.com.br/es/velocidad-lectura-teleprompter
 - https://promptninja.solutionkit.com.br/es/teleprompter-accesibilidad
 - https://promptninja.solutionkit.com.br/es/futuro-teleprompters-ai
+- https://promptninja.solutionkit.com.br/es/teleprompter-para-eventos-profesionales
+- https://promptninja.solutionkit.com.br/es/checklist-grabacion-teleprompter-perfecta

@@ -206,6 +206,16 @@ export const SeoPages = {
             default: module.FuturoTelepromptersAi,
         }))
     ),
+    TeleprompterEventosProfissionais: React.lazy(() =>
+        import("../pages/seo/TeleprompterEventosProfissionais").then((module) => ({
+            default: module.TeleprompterEventosProfissionais,
+        }))
+    ),
+    ChecklistGravacao: React.lazy(() =>
+        import("../pages/seo/ChecklistGravacao").then((module) => ({
+            default: module.ChecklistGravacao,
+        }))
+    ),
 };
 
 export const seoKeyMap: Record<SeoRouteKey, keyof typeof SeoPages> = {
@@ -256,6 +266,8 @@ export const seoKeyMap: Record<SeoRouteKey, keyof typeof SeoPages> = {
     SEO_READING_SPEED: "VelocidadeLeituraTeleprompter",
     SEO_ACCESSIBILITY: "TeleprompterAcessibilidade",
     SEO_FUTURE_AI: "FuturoTelepromptersAi",
+    SEO_EVENTOS: "TeleprompterEventosProfissionais",
+    SEO_CHECKLIST: "ChecklistGravacao",
 };
 
 export type SeoRouteKey =
@@ -305,4 +317,6 @@ export type SeoRouteKey =
     | "SEO_PODCAST"
     | "SEO_READING_SPEED"
     | "SEO_ACCESSIBILITY"
-    | "SEO_FUTURE_AI";
+    | "SEO_FUTURE_AI"
+    | "SEO_EVENTOS"
+    | "SEO_CHECKLIST";

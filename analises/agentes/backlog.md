@@ -22,7 +22,7 @@
   - Status: [x] Concluído
 - [SEO-004] Implementar Novas Landings: Eventos profissionais e Checklist Pré-Gravação
   - Prioridade: Média
-  - Status: [ ] Pendente
+  - Status: [/] Em Progresso
 - [TECH-001] Otimizar a integração de tecnologia P2P e recursos PRO (UX de Onboarding)
   - Prioridade: Alta
   - Status: [ ] Pendente

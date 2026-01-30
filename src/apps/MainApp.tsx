@@ -230,6 +230,8 @@ export const MainApp: React.FC = () => {
                 {view === "SEO_ACCESSIBILITY" && <SeoPages.TeleprompterAcessibilidade onLaunch={launchApp} />}
                 {view === "SEO_HISTORY" && <SeoPages.HistoriaDoTeleprompter onLaunch={launchApp} />}
                 {view === "SEO_FUTURE_AI" && <SeoPages.FuturoTelepromptersAi onLaunch={launchApp} />}
+                {view === "SEO_EVENTOS" && <SeoPages.TeleprompterEventosProfissionais onLaunch={launchApp} />}
+                {view === "SEO_CHECKLIST" && <SeoPages.ChecklistGravacao onLaunch={launchApp} />}
 
                 {/* Script Pages */}
                 {view === "SEO_SCRIPTS" && <SeoPages.TeleprompterScriptsPage onLaunch={launchApp} />}

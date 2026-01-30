@@ -739,4 +739,22 @@ export const ROUTES_CONFIG = {
             es: "/es/futuro-teleprompters-ai",
         },
     },
+    SEO_EVENTOS: {
+        priority: "0.9",
+        changefreq: "monthly",
+        paths: {
+            pt: "/teleprompter-para-eventos-profissionais",
+            en: "/en/teleprompter-for-professional-events",
+            es: "/es/teleprompter-para-eventos-profesionales",
+        },
+    },
+    SEO_CHECKLIST: {
+        priority: "0.9",
+        changefreq: "monthly",
+        paths: {
+            pt: "/checklist-gravacao-teleprompter-perfeita",
+            en: "/en/perfect-teleprompter-recording-checklist",
+            es: "/es/checklist-grabacion-teleprompter-perfecta",
+        },
+    },
 };
