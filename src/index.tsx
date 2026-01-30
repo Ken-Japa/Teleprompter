@@ -41,8 +41,8 @@ if (!rootElement) {
 // Global error handlers for unhandled errors
 window.addEventListener("error", (event) => {
     const errorMessage = event.error?.message || event.message || "Unknown error";
-    const errorStack = event.error?.stack || "";
 
+    // Use the filtered trackError
     trackError("global_js_error", errorMessage);
 
     console.error("Global error caught:", {
@@ -50,7 +50,7 @@ window.addEventListener("error", (event) => {
         filename: event.filename,
         lineno: event.lineno,
         colno: event.colno,
-        stack: errorStack,
+        stack: event.error?.stack || "",
     });
 });
 
@@ -59,23 +59,13 @@ window.addEventListener("unhandledrejection", (event) => {
     const reason = event.reason?.message || event.reason || "Unknown rejection";
     const reasonStr = String(reason);
 
-    // Filter out extremely generic browser-level "Rejected" noise 
-    // which often comes from Service Worker registration failures or 
-    // third-party scripts (like Clarity) in restricted environments.
-    if (reasonStr === "Rejected" || reasonStr === "Unknown rejection") {
-        console.warn("Filtered generic unhandled rejection:", reasonStr);
-        return;
-    }
-
+    // Use the filtered trackError which now handles generic noise
     trackError("unhandled_promise_rejection", reasonStr);
 
     console.error("Unhandled promise rejection:", {
         reason: event.reason,
         promise: event.promise,
     });
-
-    // Prevent default error handling (optional - removes console warning)
-    // event.preventDefault();
 });
 
 import { registerSW } from "virtual:pwa-register";

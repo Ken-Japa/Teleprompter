@@ -2,7 +2,7 @@ import { getP2pErrorMessage } from "../utils/p2pErrorUtils";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { Peer } from "peerjs";
 import { ConnectionStatus, PeerDataConnection, PeerMessage, MessageType } from "../types";
-import { trackSuccessfulConnection, startUsageTracking, trackError } from "../utils/analytics";
+import { trackSuccessfulConnection, startUsageTracking, trackError, trackWarning } from "../utils/analytics";
 import { PEER_CONFIG } from "../utils/peerConfig";
 
 /**
@@ -166,33 +166,42 @@ export const usePeerRemote = (hostId: string) => {
                 peer.on("error", (err: any) => {
                     const msg = getP2pErrorMessage(err, hostId);
                     console.warn("Peer Error:", err);
-                    trackError("remote_peer_error", err.type || err.message);
+                    const errType = err.type || "unknown";
+                    const isTransient = [
+                        "peer-unavailable",
+                        "network",
+                        "webrtc",
+                        "disconnected",
+                        "socket-error"
+                    ].includes(errType);
+
                     if (mountedRef.current) {
                         setErrorMessage(msg);
-                        if (
-                            [
-                                "peer-unavailable",
-                                "network",
-                                "webrtc",
-                                "browser-incompatible",
-                                "invalid-id",
-                                "ssl-unavailable",
-                                "server-error",
-                            ].includes(err.type)
-                        ) {
-                            setStatus(ConnectionStatus.ERROR);
-                            // Retry logic for transient errors
-                            if (retryCountRef.current < MAX_RETRIES) {
+
+                        const isLastRetry = retryCountRef.current >= MAX_RETRIES;
+
+                        if (isTransient) {
+                            if (isLastRetry) {
+                                trackError("remote_peer_fatal", errType);
+                                setStatus(ConnectionStatus.ERROR);
+                            } else {
+                                // Track as warning/retry instead of error
+                                trackWarning("remote_peer_retry", `${errType} - Attempt ${retryCountRef.current + 1}`);
+
+                                if (errType !== "disconnected") {
+                                    setStatus(ConnectionStatus.ERROR);
+                                } else {
+                                    setStatus(ConnectionStatus.DISCONNECTED);
+                                }
+
                                 console.log(`Retrying remote connection... Attempt ${retryCountRef.current + 1}`);
                                 retryCountRef.current += 1;
                                 retryTimeoutRef.current = setTimeout(initRemote, RETRY_DELAY);
                             }
-                        } else if (err.type === "disconnected") {
-                            setStatus(ConnectionStatus.DISCONNECTED);
-                            if (retryCountRef.current < MAX_RETRIES) {
-                                retryCountRef.current += 1;
-                                retryTimeoutRef.current = setTimeout(initRemote, RETRY_DELAY);
-                            }
+                        } else {
+                            // Non-transient errors (invalid-id, ssl-unavailable, server-error, browser-incompatible)
+                            trackError("remote_peer_error", errType);
+                            setStatus(ConnectionStatus.ERROR);
                         }
                     }
                 });

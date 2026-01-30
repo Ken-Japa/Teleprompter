@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { Peer } from "peerjs";
 import { ConnectionStatus, PeerMessage, MessageType } from "../types";
-import { trackSuccessfulConnection, startUsageTracking, trackError } from "../utils/analytics";
+import { trackSuccessfulConnection, startUsageTracking, trackError, trackWarning } from "../utils/analytics";
 import { PEER_CONFIG } from "../utils/peerConfig";
 
 /**
@@ -224,19 +224,21 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void, isPro: 
 
                 peer.on("error", (err: any) => {
                     console.warn("Peer Error:", err);
-                    trackError("peer_error", err.type || err.message);
+                    const errType = err.type || "unknown";
+                    const isTransient = [
+                        "network",
+                        "peer-unavailable",
+                        "socket-error",
+                        "disconnected"
+                    ].includes(errType);
 
-                    if (err.type === 'unavailable-id') {
+                    if (errType === 'unavailable-id') {
                         // ID collision or still alive on server -> Generate new one
-                        // Clear storage and state, then retry will pick up new generation logic (if we handled it rights)
-                        // Actually better: just generate new one here and retry immediately
+                        trackWarning("host_id_collision", "Generating new peer ID");
                         localStorage.removeItem("promptninja_peer_id");
-
-                        // Critical: update REF so next initPeer sees empty and generates new one
                         peerIdRef.current = "";
                         setPeerId("");
 
-                        // Force logic to create new ID on next retry
                         if (mountedRef.current && retryCountRef.current < MAX_RETRIES) {
                             retryCountRef.current += 1;
                             retryTimeoutRef.current = setTimeout(initPeer, 100);
@@ -244,26 +246,23 @@ export const usePeerHost = (onRemoteMessage: (msg: PeerMessage) => void, isPro: 
                         return;
                     }
 
-                    // Critical errors that require UI update
-                    if (["browser-incompatible", "ssl-unavailable", "server-error"].includes(err.type)) {
-                        if (mountedRef.current) setStatus(ConnectionStatus.ERROR);
-                    }
+                    if (mountedRef.current) {
+                        const isLastRetry = retryCountRef.current >= MAX_RETRIES;
 
-                    // If it's a network/socket error, try to reconnect
-                    if (
-                        err.type === "network" ||
-                        err.type === "peer-unavailable" ||
-                        err.type === "socket-error" ||
-                        err.type === "disconnected"
-                    ) {
-                        if (retryCountRef.current < MAX_RETRIES) {
-                            // If network error, we prefer to keep status as DISCONNECTED or ERROR but we KEEP perId in state
-                            // so QR code keeps showing
-                            console.log(`Retrying connection... Attempt ${retryCountRef.current + 1}`);
-                            retryCountRef.current += 1;
-                            retryTimeoutRef.current = setTimeout(initPeer, RETRY_DELAY);
+                        if (isTransient) {
+                            if (isLastRetry) {
+                                trackError("host_peer_fatal", errType);
+                                setErrorMessage("Não foi possível conectar ao servidor. Verifique sua conexão.");
+                                setStatus(ConnectionStatus.ERROR);
+                            } else {
+                                trackWarning("host_peer_retry", `${errType} - Attempt ${retryCountRef.current + 1}`);
+                                console.log(`Retrying connection... Attempt ${retryCountRef.current + 1}`);
+                                retryCountRef.current += 1;
+                                retryTimeoutRef.current = setTimeout(initPeer, RETRY_DELAY);
+                            }
                         } else {
-                            setErrorMessage("Não foi possível conectar ao servidor. Verifique sua conexão.");
+                            // Fatal or configuration errors
+                            trackError("host_peer_error", errType);
                             setStatus(ConnectionStatus.ERROR);
                         }
                     }

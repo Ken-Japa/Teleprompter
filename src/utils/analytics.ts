@@ -175,8 +175,18 @@ export function stopPageUsageTracking(): void {
  * @param message A mensagem de erro ou detalhes.
  */
 export function trackError(errorType: string, message: string): void {
-    // Filter out non-actionable generic browser noise
-    if (message === "Rejected" || message === "Unknown error" || message === "Unknown rejection") {
+    const msgLower = (message || "").toLowerCase();
+
+    // Filter out non-actionable generic browser noise and known third-party debris
+    if (
+        !message ||
+        message === "undefined" ||
+        msgLower.includes("rejected") ||
+        msgLower.includes("unknown error") ||
+        msgLower.includes("unknown rejection") ||
+        msgLower.includes("usedcontainerscopeddefaults") || // Filter internal GA/Contentsquare noise
+        msgLower.includes("script error") // Generic third-party script error
+    ) {
         return;
     }
 
@@ -186,7 +196,26 @@ export function trackError(errorType: string, message: string): void {
     // Send to Sentry (if initialized)
     if (Sentry.isInitialized()) {
         Sentry.captureException(new Error(message), {
-            tags: { error_type: errorType },
+            tags: { error_type: errorType, level: 'error' },
+        });
+    }
+}
+
+/**
+ * Rastreia avisos ou eventos não-críticos (ex: retentativas de P2P).
+ * @param warningType O tipo de aviso.
+ * @param message Detalhes do aviso.
+ */
+export function trackWarning(warningType: string, message: string): void {
+    // Send to Google Analytics as a separate event type
+    trackEvent("app_warning", { warning_type: warningType, message: message });
+
+    // Log to Sentry as a breadcrumb or low-level message (optional)
+    if (Sentry.isInitialized()) {
+        Sentry.addBreadcrumb({
+            category: "warning",
+            message: `${warningType}: ${message}`,
+            level: "warning",
         });
     }
 }
