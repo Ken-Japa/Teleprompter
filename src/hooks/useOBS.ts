@@ -40,7 +40,21 @@ export function useOBS() {
 
     const obsRef = useRef<OBSWebSocket | null>(null);
 
-    const updateStatus = useCallback(async (obs: OBSWebSocket) => {
+    const isMock = config.host.toLowerCase() === "simulation";
+
+    const updateStatus = useCallback(async (obs?: OBSWebSocket) => {
+        if (isMock) {
+            setStatus({
+                isConnected: true,
+                isRecording: false,
+                isStreaming: false,
+                currentScene: "Main Scene",
+                scenes: ["Main Scene", "Game + Cam", "Intro", "Ending"],
+            });
+            return;
+        }
+
+        if (!obs) return;
         try {
             const { outputActive: isRecording } = await obs.call("GetRecordStatus");
             const { outputActive: isStreaming } = await obs.call("GetStreamStatus");
@@ -57,9 +71,17 @@ export function useOBS() {
         } catch (error) {
             console.error("Failed to update OBS status:", error);
         }
-    }, []);
+    }, [isMock]);
 
     const connect = useCallback(async () => {
+        if (isMock) {
+            setIsLoading(true);
+            await new Promise(r => setTimeout(r, 800)); // Simulating lag
+            await updateStatus();
+            setIsLoading(false);
+            return;
+        }
+
         if (obsRef.current) await obsRef.current.disconnect();
 
         const obs = new OBSWebSocket();
@@ -87,7 +109,7 @@ export function useOBS() {
             setStatus(prev => ({ ...prev, isConnected: false }));
             throw error;
         }
-    }, [config, updateStatus]);
+    }, [config, updateStatus, isMock]);
 
     const disconnect = useCallback(() => {
         if (obsRef.current) {
@@ -98,14 +120,30 @@ export function useOBS() {
     }, []);
 
     const toggleRecord = useCallback(async () => {
+        if (isMock) {
+            setStatus(prev => ({ ...prev, isRecording: !prev.isRecording }));
+            return;
+        }
         if (!obsRef.current) return;
-        await obsRef.current.call("ToggleRecord");
-    }, []);
+        try {
+            await obsRef.current.call("ToggleRecord");
+        } catch (err) {
+            console.error("Failed to toggle OBS recording:", err);
+        }
+    }, [isMock]);
 
     const switchScene = useCallback(async (sceneName: string) => {
+        if (isMock) {
+            setStatus(prev => ({ ...prev, currentScene: sceneName }));
+            return;
+        }
         if (!obsRef.current) return;
-        await obsRef.current.call("SetCurrentProgramScene", { sceneName });
-    }, []);
+        try {
+            await obsRef.current.call("SetCurrentProgramScene", { sceneName });
+        } catch (err) {
+            console.error("Failed to switch OBS scene:", err);
+        }
+    }, [isMock]);
 
     useEffect(() => {
         localStorage.setItem("promptninja_obs_config", JSON.stringify(config));
@@ -118,6 +156,8 @@ export function useOBS() {
         };
     }, []);
 
+    const [isLoading, setIsLoading] = useState(false);
+
     return {
         status,
         config,
@@ -126,6 +166,8 @@ export function useOBS() {
         disconnect,
         toggleRecord,
         switchScene,
-        obsRaw: obsRef.current
+        obsRaw: obsRef.current,
+        isLoadingSimulation: isLoading
     };
 }
+

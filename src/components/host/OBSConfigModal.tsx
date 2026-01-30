@@ -93,6 +93,9 @@ export const OBSConfigModal: React.FC<OBSConfigModalProps> = ({
                             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white focus:border-brand-500 outline-none"
                             placeholder="localhost"
                         />
+                        <p className="text-[10px] text-slate-500 mt-1">
+                            {localConfig.host === 'simulation' ? "🚀 Modo Simulação Ativo" : "Dica: Use 'simulation' para testar sem o OBS instalado."}
+                        </p>
                     </div>
                     <div className="space-y-2">
                         <label className="text-xs font-bold text-slate-500 uppercase ml-1">{t("obs.port") || "Port"}</label>
