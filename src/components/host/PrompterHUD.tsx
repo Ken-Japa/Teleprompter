@@ -43,6 +43,7 @@ interface PrompterHUDProps {
         isPaused: boolean;
         recordingTime: string;
         hasRecordedData: boolean;
+        hasSubtitles?: boolean;
     };
     recordingActions?: {
         start: () => void;
@@ -50,6 +51,7 @@ interface PrompterHUDProps {
         pause: () => void;
         resume: () => void;
         download: () => void;
+        downloadSubtitles?: (format: 'srt' | 'vtt') => void;
     };
     onPreviousPart?: () => void;
     onNextPart?: () => void;
@@ -281,6 +283,8 @@ export const PrompterHUD = memo(
                                             onPause={recordingActions.pause}
                                             onResume={recordingActions.resume}
                                             onDownload={recordingActions.download}
+                                            hasSubtitles={recordingState.hasSubtitles}
+                                            onDownloadSubtitles={recordingActions.downloadSubtitles}
                                         />
                                     </div>
                                 )}
@@ -427,6 +431,8 @@ export const PrompterHUD = memo(
                                 onPause={recordingActions.pause}
                                 onResume={recordingActions.resume}
                                 onDownload={recordingActions.download}
+                                hasSubtitles={recordingState.hasSubtitles}
+                                onDownloadSubtitles={recordingActions.downloadSubtitles}
                             />
                         </S.HudGroup>
                     </div>

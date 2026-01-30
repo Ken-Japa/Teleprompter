@@ -13,6 +13,7 @@ export const useVoiceControl = (
     text: string,
     isPro: boolean,
     onSpeechResult?: (transcript: string) => void,
+    onFinalSpeechResult?: (transcript: string) => void,
     forcedLang?: string,
     isFlipVertical: boolean = false,
     isMusicianMode: boolean = false,
@@ -50,9 +51,11 @@ export const useVoiceControl = (
 
     // Keep latest callback in ref to avoid restarting recognition on every state change
     const onSpeechResultRef = useRef(onSpeechResult);
+    const onFinalSpeechResultRef = useRef(onFinalSpeechResult);
     useEffect(() => {
         onSpeechResultRef.current = onSpeechResult;
-    }, [onSpeechResult]);
+        onFinalSpeechResultRef.current = onFinalSpeechResult;
+    }, [onSpeechResult, onFinalSpeechResult]);
 
     // Resilience: Track if user INTENDED to stop. If false and 'end' event fires, we restart.
     const intentionallyStoppedRef = useRef<boolean>(false);
@@ -656,9 +659,10 @@ export const useVoiceControl = (
                 // Better approach: track only on isFinal.
                 if (isFinal) {
                     trackSessionMetrics(false, wordCount); // This is still imperfect if sentences are short, but better.
-                    // A better way for total words is to just use the length of the growing transcript if we had it.
-                    // But SpeechRecognition resets resultIndex. 
-                    // For now, only counting on Final is much safer.
+
+                    if (onFinalSpeechResultRef.current && cleanTranscript.length > 0) {
+                        onFinalSpeechResultRef.current(cleanTranscript);
+                    }
                 }
             }
 

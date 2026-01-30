@@ -40,6 +40,7 @@ import { useTranslation } from "../../hooks/useTranslation";
 import { useMidi } from "../../hooks/useMidi";
 import { MidiAction } from "../../types";
 import { useBackingTrack } from "../../hooks/useBackingTrack";
+import { SubtitleSegment, generateSrt, generateVtt, downloadFile } from "../../utils/subtitleUtils";
 
 
 interface PhysicsMethods {
@@ -124,6 +125,8 @@ export const Prompter = memo(
       const [showHud, setShowHud] = useState<boolean>(true);
       const [showEditModal, setShowEditModal] = useState<boolean>(false);
       const [resetTimerSignal, setResetTimerSignal] = useState<boolean>(false);
+      const [sessionSubtitles, setSessionSubtitles] = useState<SubtitleSegment[]>([]);
+      const currentSegmentStartTimeRef = useRef<number | null>(null);
 
       // Refs
       const containerRef = useRef<HTMLDivElement>(null);
@@ -194,7 +197,8 @@ export const Prompter = memo(
         pauseRecording,
         resumeRecording,
         downloadRecording,
-        formatTime
+        formatTime,
+        getElapsedMs
       } = useMediaRecorder(cameraStream);
 
       // Sync Recording Pause with Scroll Pause
@@ -212,6 +216,8 @@ export const Prompter = memo(
         if (recordingMode === "remote") {
           if (onStartRemoteRecording) onStartRemoteRecording();
         } else {
+          setSessionSubtitles([]);
+          currentSegmentStartTimeRef.current = null;
           await startRecording();
           trackEvent("recording_start", { mode: recordingMode || "host" });
         }
@@ -249,6 +255,11 @@ export const Prompter = memo(
       }, [isBilingualMode, bilingualConfig, text]);
 
       const handleSpeechResult = useCallback((transcript: string) => {
+        // Track start of a subtitle segment
+        if (isRecording && !isPaused && currentSegmentStartTimeRef.current === null) {
+          currentSegmentStartTimeRef.current = getElapsedMs();
+        }
+
         if (fitnessMode === 'COUNT' && fitnessTarget) {
           const currentLang = (['pt', 'en', 'es'].includes(lang) ? lang : 'en') as 'pt' | 'en' | 'es';
           const number = parseSpokenNumber(transcript, currentLang);
@@ -271,7 +282,31 @@ export const Prompter = memo(
             }
           }
         }
-      }, [fitnessMode, fitnessTarget, fitnessValue, lang, onStateChange, externalState.speed]);
+      }, [fitnessMode, fitnessTarget, fitnessValue, lang, onStateChange, externalState.speed, isRecording, isPaused, getElapsedMs]);
+
+      const handleFinalSpeechResult = useCallback((transcript: string) => {
+        if (isRecording && !isPaused) {
+          const endMs = getElapsedMs();
+          const startMs = currentSegmentStartTimeRef.current ?? (endMs - 1000); // Fallback
+
+          setSessionSubtitles(prev => [...prev, {
+            startMs,
+            endMs,
+            text: transcript
+          }]);
+
+          currentSegmentStartTimeRef.current = null; // Reset for next segment
+        }
+      }, [isRecording, isPaused, getElapsedMs]);
+
+      const handleDownloadSubtitles = useCallback((format: 'srt' | 'vtt') => {
+        if (sessionSubtitles.length === 0) return;
+
+        const content = format === 'srt' ? generateSrt(sessionSubtitles) : generateVtt(sessionSubtitles);
+        const filename = `promptninja_subtitles_${new Date().toISOString().slice(0, 19).replace(/:/g, "-")}.${format}`;
+        downloadFile(content, filename, format === 'srt' ? 'text/plain' : 'text/vtt');
+        trackEvent("subtitles_download", { format });
+      }, [sessionSubtitles]);
 
 
 
@@ -288,6 +323,7 @@ export const Prompter = memo(
         voiceControlText,
         isPro,
         handleSpeechResult,
+        handleFinalSpeechResult,
         effectiveVoiceLang,
         isFlipVertical,
         isMusicianMode,
@@ -596,6 +632,8 @@ export const Prompter = memo(
         clearSessionSummary(); // Clear analytics summary as well
         if (onReset) onReset();
         setRemoteVoiceState({ index: -1, progress: 0 });
+        setSessionSubtitles([]);
+        currentSegmentStartTimeRef.current = null;
         resetPhysics();
         loopCountersRef.current.clear(); // Clear loop counters
         loopStartStackRef.current = [];
@@ -1149,18 +1187,19 @@ export const Prompter = memo(
             onToggleNDI={onToggleNDI}
             backingTrack={backingTrack}
             recordingState={{
-
               isRecording,
               isPaused,
               recordingTime: formatTime(recordingTime),
-              hasRecordedData
+              hasRecordedData,
+              hasSubtitles: sessionSubtitles.length > 0
             }}
             recordingActions={{
               start: handleStartRecording,
               stop: handleStopRecording,
               pause: handlePauseRecording,
               resume: handleResumeRecording,
-              download: downloadRecording
+              download: downloadRecording,
+              downloadSubtitles: handleDownloadSubtitles
             }}
           />
 
@@ -1227,18 +1266,19 @@ export const Prompter = memo(
                   isNDIEnabled={isNDIEnabled}
                   onToggleNDI={onToggleNDI}
                   recordingState={{
-
                     isRecording,
                     isPaused,
                     recordingTime: formatTime(recordingTime),
-                    hasRecordedData
+                    hasRecordedData,
+                    hasSubtitles: sessionSubtitles.length > 0
                   }}
                   recordingActions={{
                     start: handleStartRecording,
                     stop: handleStopRecording,
                     pause: handlePauseRecording,
                     resume: handleResumeRecording,
-                    download: downloadRecording
+                    download: downloadRecording,
+                    downloadSubtitles: handleDownloadSubtitles
                   }}
                 />
               </div>

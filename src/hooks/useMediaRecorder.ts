@@ -12,6 +12,9 @@ export const useMediaRecorder = (externalVideoStream?: MediaStream | null) => {
     const timerRef = useRef<NodeJS.Timeout | null>(null);
     const streamRef = useRef<MediaStream | null>(null);
     const mimeTypeRef = useRef<string>(RECORDING_CONFIG.MIME_TYPE); // Store used mime type
+    const recordingStartTimeRef = useRef<number>(0);
+    const pausedTimeRef = useRef<number>(0);
+    const cumulativePausedTimeRef = useRef<number>(0);
 
     const startRecording = useCallback(async () => {
         try {
@@ -89,6 +92,8 @@ export const useMediaRecorder = (externalVideoStream?: MediaStream | null) => {
 
             mediaRecorder.start(RECORDING_CONFIG.TIMESLICE_MS); // Collect data every second
             setIsRecording(true);
+            recordingStartTimeRef.current = Date.now();
+            cumulativePausedTimeRef.current = 0;
             startTimer();
         } catch (err: any) {
             console.error("Error accessing media devices:", err);
@@ -113,6 +118,7 @@ export const useMediaRecorder = (externalVideoStream?: MediaStream | null) => {
         if (mediaRecorderRef.current && mediaRecorderRef.current.state === "recording") {
             mediaRecorderRef.current.pause();
             setIsPaused(true);
+            pausedTimeRef.current = Date.now();
             stopTimer();
         }
     }, []);
@@ -121,6 +127,7 @@ export const useMediaRecorder = (externalVideoStream?: MediaStream | null) => {
         if (mediaRecorderRef.current && mediaRecorderRef.current.state === "paused") {
             mediaRecorderRef.current.resume();
             setIsPaused(false);
+            cumulativePausedTimeRef.current += (Date.now() - pausedTimeRef.current);
             startTimer();
         }
     }, []);
@@ -181,6 +188,15 @@ export const useMediaRecorder = (externalVideoStream?: MediaStream | null) => {
         return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
     };
 
+    const getElapsedMs = useCallback(() => {
+        if (!isRecording) return 0;
+        let elapsed = Date.now() - recordingStartTimeRef.current - cumulativePausedTimeRef.current;
+        if (isPaused) {
+            elapsed -= (Date.now() - pausedTimeRef.current);
+        }
+        return Math.max(0, elapsed);
+    }, [isRecording, isPaused]);
+
     return {
         isRecording,
         isPaused,
@@ -192,5 +208,6 @@ export const useMediaRecorder = (externalVideoStream?: MediaStream | null) => {
         resumeRecording,
         downloadRecording,
         formatTime,
+        getElapsedMs,
     };
 };

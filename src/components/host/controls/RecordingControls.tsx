@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { useTranslation } from "../../../hooks/useTranslation";
 import * as S from "../../ui/Styled";
-import { RecordIcon, StopIcon, PlayIcon, PauseIcon, LaptopIcon, SmartphoneIcon } from "../../ui/Icons";
+import { RecordIcon, StopIcon, PlayIcon, PauseIcon, LaptopIcon, SmartphoneIcon, SubtitleIcon } from "../../ui/Icons";
 import { RecordingMode } from "../../../types";
 
 interface RecordingControlsProps {
@@ -11,12 +11,14 @@ interface RecordingControlsProps {
     hasRecordedData: boolean;
     recordingMode: RecordingMode;
     isConnected: boolean;
+    hasSubtitles?: boolean;
     onToggleMode: () => void;
     onStart: () => void;
     onStop: () => void;
     onPause: () => void;
     onResume: () => void;
     onDownload: () => void;
+    onDownloadSubtitles?: (format: 'srt' | 'vtt') => void;
 }
 
 export const RecordingControls = memo(({
@@ -26,12 +28,14 @@ export const RecordingControls = memo(({
     hasRecordedData,
     recordingMode,
     isConnected,
+    hasSubtitles,
     onToggleMode,
     onStart,
     onStop,
     onPause,
     onResume,
-    onDownload
+    onDownload,
+    onDownloadSubtitles
 }: RecordingControlsProps) => {
     const { t } = useTranslation();
 
@@ -73,6 +77,16 @@ export const RecordingControls = memo(({
                 >
                     <RecordIcon className="w-4 h-4" />
                 </S.IconButton>
+                {hasSubtitles && onDownloadSubtitles && (
+                    <S.IconButton
+                        onClick={() => onDownloadSubtitles('srt')}
+                        title="Baixar Legendas (SRT)"
+                        aria-label="Download Subtitles"
+                        className="w-8 h-8 rounded-full bg-brand-500/20 text-brand-400 hover:bg-brand-500/30 border-transparent"
+                    >
+                        <SubtitleIcon className="w-4 h-4" />
+                    </S.IconButton>
+                )}
             </div>
         );
     }

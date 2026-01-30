@@ -72,7 +72,7 @@ export const OBSConfigModal: React.FC<OBSConfigModalProps> = ({
                             disabled={isLoading}
                             className="bg-brand-600 hover:bg-brand-500 text-white px-4 py-2 rounded-xl text-sm font-bold transition-all disabled:opacity-50"
                         >
-                            {isLoading ? t("common.connecting") || "Connecting..." : t("obs.connect") || "Connect"}
+                            {isLoading ? t("status.connecting") || "Connecting..." : t("obs.connect") || "Connect"}
                         </button>
                     )}
                 </div>
@@ -89,7 +89,11 @@ export const OBSConfigModal: React.FC<OBSConfigModalProps> = ({
                         <input
                             type="text"
                             value={localConfig.host}
-                            onChange={(e) => setLocalConfig({ ...localConfig, host: e.target.value })}
+                            onChange={(e) => {
+                                const newConfig = { ...localConfig, host: e.target.value };
+                                setLocalConfig(newConfig);
+                                onSaveConfig(newConfig);
+                            }}
                             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white focus:border-brand-500 outline-none"
                             placeholder="localhost"
                         />
@@ -102,7 +106,11 @@ export const OBSConfigModal: React.FC<OBSConfigModalProps> = ({
                         <input
                             type="number"
                             value={localConfig.port}
-                            onChange={(e) => setLocalConfig({ ...localConfig, port: parseInt(e.target.value) })}
+                            onChange={(e) => {
+                                const newConfig = { ...localConfig, port: parseInt(e.target.value) || 0 };
+                                setLocalConfig(newConfig);
+                                onSaveConfig(newConfig);
+                            }}
                             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white focus:border-brand-500 outline-none"
                             placeholder="4455"
                         />
@@ -112,7 +120,11 @@ export const OBSConfigModal: React.FC<OBSConfigModalProps> = ({
                         <input
                             type="password"
                             value={localConfig.password}
-                            onChange={(e) => setLocalConfig({ ...localConfig, password: e.target.value })}
+                            onChange={(e) => {
+                                const newConfig = { ...localConfig, password: e.target.value };
+                                setLocalConfig(newConfig);
+                                onSaveConfig(newConfig);
+                            }}
                             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white focus:border-brand-500 outline-none"
                             placeholder="••••••••"
                         />
@@ -127,7 +139,11 @@ export const OBSConfigModal: React.FC<OBSConfigModalProps> = ({
                         <input
                             type="checkbox"
                             checked={localConfig.autoRecordOnPlay}
-                            onChange={(e) => setLocalConfig({ ...localConfig, autoRecordOnPlay: e.target.checked })}
+                            onChange={(e) => {
+                                const newConfig = { ...localConfig, autoRecordOnPlay: e.target.checked };
+                                setLocalConfig(newConfig);
+                                onSaveConfig(newConfig);
+                            }}
                             className="w-5 h-5 accent-brand-500"
                         />
                     </label>
@@ -137,7 +153,11 @@ export const OBSConfigModal: React.FC<OBSConfigModalProps> = ({
                         <input
                             type="checkbox"
                             checked={localConfig.autoPlayOnOBSRecord}
-                            onChange={(e) => setLocalConfig({ ...localConfig, autoPlayOnOBSRecord: e.target.checked })}
+                            onChange={(e) => {
+                                const newConfig = { ...localConfig, autoPlayOnOBSRecord: e.target.checked };
+                                setLocalConfig(newConfig);
+                                onSaveConfig(newConfig);
+                            }}
                             className="w-5 h-5 accent-brand-500"
                         />
                     </label>
