@@ -116,7 +116,20 @@ export const ConnectSidebar: React.FC<ConnectSidebarProps> = memo(({ peerId, sta
                     </div>
                 )}
 
-                <div className="pt-4 border-t border-slate-800">
+                <div className="pt-4 border-t border-slate-800 space-y-4">
+                    <p className="text-[10px] text-slate-500 leading-relaxed uppercase tracking-wider font-bold mb-1">{t("host.masterMode")}</p>
+                    <S.SecondaryButton
+                        onClick={() => window.open(`${window.location.pathname}#master`, "_blank")}
+                        size="sm"
+                        className="w-full bg-slate-900 border-white/5 hover:bg-slate-800 text-slate-300 flex items-center justify-center gap-2 group"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-70 group-hover:scale-110 transition-transform">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <path d="M7 12h10" />
+                            <path d="M12 7v10" />
+                        </svg>
+                        {t("host.masterPanel")}
+                    </S.SecondaryButton>
                     <p className="text-[10px] text-slate-500 leading-relaxed">{t("host.scanInstruction")}</p>
                 </div>
             </S.SidebarContainer>

@@ -12,6 +12,7 @@ export const pt = {
     more: "Mais opções...",
     less: "Menos",
     delete: "Excluir",
+    reconnect: "Reconectar",
   },
   menu: {
     home: "Início",
@@ -212,6 +213,16 @@ export const pt = {
         desc: "Visualize dois idiomas lado a lado. Perfeito para aprender novas línguas ou para apresentações internacionais. Use o controle de voz para rastrear o idioma da sua escolha.",
         cta: "Conhecer o Modo Bilíngue 🌐",
       },
+      focus: {
+        title: "Foco Dinâmico",
+        desc:
+          "Linha de foco dinâmico: O destaque inteligente segue sua leitura, garantindo que você nunca perca o fio.",
+      },
+      master: {
+        title: "Gerenciamento Multi-Teleprompter",
+        desc:
+          "Administre diversos teleprompter em um hub central. Perfeito para eventos com múltiplos apresentadoress",
+      },
     },
     pricing: {
       title: "Preço Simples e Honesto",
@@ -223,7 +234,7 @@ export const pt = {
         period: "/sempre",
         cta: "Começar Grátis",
         features: ["20 minutos por sessão", "Sessões ilimitadas", "Controle remoto total", "Todos os temas", "Integração OBS (Básico)"],
-        missing: ["Sessões sem limites de tempo", "Controle por voz", "Customizar Atalhos", "Integração OBS"],
+        missing: ["Sessões sem limites de tempo", "Controle por voz", "Customizar Atalhos", "Integração OBS", "Gerenciamento Multi-Teleprompter"],
       },
       pro: {
         badge: "🔥 PREÇO DE LANÇAMENTO",
@@ -244,6 +255,7 @@ export const pt = {
           "Acesso antecipado a features",
           "Customizar Atalhos de Teclado",
           "Integração OBS (WebSocket)",
+          "Gerenciamento Multi-Teleprompter para Eventos",
         ],
       },
       paymentInfo:
@@ -409,6 +421,8 @@ Alinhados perfeitamente`,
       notSupported: "Seu navegador não suporta controle por voz",
     },
     exit: "Sair",
+    masterMode: "Gerenciamento Multi-Teleprompter",
+    masterPanel: "Entrar no Painel de Controle",
     editor: {
       highlight: "Destaque",
       musicianMode: "Modo Músico",
@@ -446,7 +460,9 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
         vingesterConfig: "Para NDI nativo, use o app Vingester.app",
         openVdo: "Abrir VDO.Ninja",
         close: "Fechar",
-        cleanModeBtn: "Reiniciar em Modo Limpo (?hud=0)"
+        cleanModeBtn: "Reiniciar em Modo Limpo (?hud=0)",
+        masterMode: "Modo Master (Pro)",
+        masterPanel: "Painel Master",
       }
     }
   },
@@ -788,7 +804,7 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
         desc: "Deixe o PromptNinja virar a página pra você. O reconhecimento de voz acompanha o canto.",
       },
       pro: {
-        desc: "Desbloqueie MIDI customizável (em breve), setlists infinitos e uso em múltiplos dispositivos.",
+        desc: "Desbloqueie MIDI customizável, setlists infinitos e uso em múltiplos dispositivos.",
       },
     },
     landing: {
@@ -921,6 +937,40 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
         icon: "pro"
       }
     ]
+  },
+  master: {
+    title: "MODO MASTER",
+    subtitle: "Controle Múltiplos Teleprompters",
+    exampleTitle: "Roteiro Exemplo",
+    exampleContent: "Bem-vindo ao Modo Evento do PromptNinja!\n\nEste é o seu painel central.",
+    connectDisplay: "Conectar Display",
+    idPlaceholder: "Digite o ID do display...",
+    add: "ADICIONAR",
+    connectedDisplays: "DISPLAYS CONECTADOS",
+    noDisplays: "Nenhum display conectado. Adicione um ID acima para começar.",
+    globalControl: "CONTROLE GLOBAL",
+    playAll: "PLAY EM TODOS",
+    pauseAll: "PAUSE EM TODOS",
+    resetAll: "REINICIAR TODOS",
+    scriptLibrary: "BIBLIOTECA DE ROTEIROS",
+    noScripts: "Nenhum roteiro salvo no banco local.",
+    createScriptsHint: "Crie roteiros para enviar aos seus displays remotamente.",
+    selectedScript: "Roteiro Selecionado",
+    deployHint: "Escolha para qual(is) display(s) deseja enviar este texto:",
+    confirmDelete: "Deseja mesmo remover?",
+    pushAll: "ENVIAR PARA TODOS",
+    editingLocal: "Editando Roteiro Local",
+    scriptTitle: "Título do Roteiro",
+    scriptContent: "Conteúdo do roteiro...",
+    saveChanges: "SALVAR ALTERAÇÕES",
+    limitReached: "Limite atingido: Apenas 1 controle remoto no plano gratuito. Atualize para Pro!",
+    displayActions: {
+      play: "Play",
+      pause: "Pause",
+      edit: "Editar",
+      remove: "Remover",
+      push: "Push",
+    }
   }
 };
 

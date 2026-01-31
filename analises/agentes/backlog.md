@@ -4,7 +4,7 @@
 
 - [FEAT-001] Desenvolver funcionalidade de Controle e Gerenciamento Multi-Teleprompter para Eventos (Master/Receiver)
   - Prioridade: Alta
-  - Status: [ ] Pendente
+  - Status: [x] Concluído
 - [FEAT-002] Gerador de Legendas Automáticas (SRT/VTT) Pós-Gravação via IA
   - Prioridade: Alta
   - Status: [x] Concluído

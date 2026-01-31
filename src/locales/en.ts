@@ -11,7 +11,8 @@ export const en = {
     cancel: "Cancel",
     more: "More options...",
     less: "Less",
-    delete: "Delete"
+    delete: "Delete",
+    reconnect: "Reconnect",
   },
   menu: {
     home: "Home",
@@ -209,6 +210,15 @@ export const en = {
         desc: "View two languages side-by-side. Perfect for language learning or international presentations. Use voice control to track the language of your choice.",
         cta: "Explore Bilingual Mode 🌐",
       },
+      focus: {
+        title: "Dynamic Focus",
+        desc: "Dynamic focus line: Smart highlighting tracks your reading, ensuring you never lose your place.",
+      },
+      master: {
+        title: "Multi-Teleprompter Management",
+        desc:
+          "Manage multiple teleprompters from a central hub.Perfect for events with multiple presenters.",
+      },
     },
     pricing: {
       title: "Simple and Honest Pricing",
@@ -220,7 +230,7 @@ export const en = {
         period: "/forever",
         cta: "Start Free",
         features: ["20 minutes per session", "Unlimited sessions", "Full remote control", "All themes", "OBS Integration (Basic)"],
-        missing: ["Unlimited session time", "Voice control", "Custom Shortcuts", "OBS Integration"],
+        missing: ["Unlimited session time", "Voice control", "Custom Shortcuts", "OBS Integration", "Multiple teleprompters management"],
       },
       pro: {
         badge: "🔥 LAUNCH PRICE",
@@ -241,6 +251,7 @@ export const en = {
           "Early access to features",
           "Customize Keyboard Shortcuts",
           "Native OBS Integration (WebSocket )",
+          "Multiple teleprompters management for events",
         ],
       },
       paymentInfo: "💳 One-time payment via Card. \n🔒 7-day guarantee.",
@@ -404,6 +415,8 @@ Aligned perfectly`,
     voice: {
       notSupported: "Your browser does not support voice control",
     },
+    masterMode: "Multi-Teleprompter",
+    masterPanel: "Enter the Control Panel",
     editor: {
       highlight: "Highlight",
       musicianMode: "Musician Mode",
@@ -441,7 +454,9 @@ Paste your script here and customize your experience to start shining!`,
         vingesterConfig: "For native NDI, use Vingester.app",
         openVdo: "Open VDO.Ninja",
         close: "Close",
-        cleanModeBtn: "Restart in Clean Mode (?hud=0)"
+        cleanModeBtn: "Restart in Clean Mode (?hud=0)",
+        masterMode: "Master Mode (Pro)",
+        masterPanel: "Master Panel",
       }
     }
   },
@@ -779,7 +794,7 @@ Paste your script here and customize your experience to start shining!`,
         desc: "Let PromptNinja turn the page for you. Voice recognition follows your singing.",
       },
       pro: {
-        desc: "Unlock customizable MIDI (soon), infinite setlists, and multi-device use.",
+        desc: "Unlock customizable MIDI, infinite setlists, and multi-device use.",
       },
     },
     landing: {
@@ -914,6 +929,40 @@ Paste your script here and customize your experience to start shining!`,
         icon: "pro"
       }
     ]
+  },
+  master: {
+    title: "MASTER",
+    subtitle: "Control Multiple Teleprompters",
+    exampleTitle: "Example Script",
+    exampleContent: "Welcome to PromptNinja Event Mode!\n\nThis is your central hub.",
+    connectDisplay: "Connect Display",
+    idPlaceholder: "Enter display ID...",
+    add: "ADD",
+    connectedDisplays: "CONNECTED DISPLAYS",
+    noDisplays: "No displays connected. Add an ID above to start.",
+    globalControl: "GLOBAL CONTROL",
+    playAll: "PLAY ALL",
+    pauseAll: "PAUSE ALL",
+    resetAll: "RESET ALL",
+    scriptLibrary: "SCRIPT LIBRARY",
+    noScripts: "No scripts saved in local database.",
+    createScriptsHint: "Create scripts to send to your displays remotely.",
+    selectedScript: "Selected Script",
+    deployHint: "Choose which display(s) you want to send this text to:",
+    confirmDelete: "Do you really want to remove this?",
+    pushAll: "SEND TO ALL",
+    editingLocal: "Editing Local Script",
+    scriptTitle: "Script Title",
+    scriptContent: "Script content...",
+    saveChanges: "SAVE CHANGES",
+    limitReached: "Limit reached: Only 1 remote control in the free plan. Upgrade to Pro!",
+    displayActions: {
+      play: "Play",
+      pause: "Pause",
+      edit: "Edit",
+      remove: "Remove",
+      push: "Push",
+    }
   }
 };
 

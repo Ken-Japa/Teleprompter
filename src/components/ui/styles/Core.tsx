@@ -36,7 +36,7 @@ export const PrimaryButton = ({
     size = "default",
     ...props
 }: {
-    onClick: () => void;
+    onClick?: () => void;
     children: React.ReactNode;
     className?: string;
     size?: "default" | "sm";
@@ -62,7 +62,7 @@ export const SecondaryButton = ({
     size = "default",
     ...props
 }: {
-    onClick: () => void;
+    onClick?: () => void;
     children: React.ReactNode;
     className?: string;
     size?: "default" | "sm";

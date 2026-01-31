@@ -104,27 +104,29 @@ export const usePeerMaster = () => {
      * Tenta se conectar a um Receiver específico.
      * @param targetPeerId O ID do Receiver (Display).
      */
-    const connectToReceiver = useCallback((targetPeerId: string) => {
-        if (!peerRef.current || !targetPeerId) return;
+    const connectToReceiver = useCallback((rawId: string) => {
+        if (!peerRef.current || !rawId) return;
+
+        const targetPeerId = rawId.trim().toUpperCase();
 
         // Prevent double connection if already open
         const existing = connectionsRef.current.get(targetPeerId);
-        if (existing && existing.open) return;
+        if (existing && (existing.open || existing.label === "connecting")) return;
 
-        setReceivers(prev => ({
-            ...prev,
-            [targetPeerId]: prev[targetPeerId] || {
-                id: targetPeerId,
-                status: ConnectionStatus.CONNECTING,
-                lastSeen: Date.now()
-            },
-            [targetPeerId]: {
-                ...prev[targetPeerId],
-                status: ConnectionStatus.CONNECTING
-            }
-        }));
+        setReceivers(prev => {
+            return {
+                ...prev,
+                [targetPeerId]: {
+                    ...(prev[targetPeerId] || {}),
+                    id: targetPeerId,
+                    status: ConnectionStatus.CONNECTING,
+                    lastSeen: Date.now()
+                }
+            };
+        });
 
-        const conn = peerRef.current.connect(targetPeerId, { reliable: true });
+        // Use standard connection for reliability across PeerJS versions
+        const conn = peerRef.current.connect(targetPeerId);
 
         conn.on("open", () => {
             if (!mountedRef.current) return;
@@ -133,7 +135,8 @@ export const usePeerMaster = () => {
             setReceivers(prev => ({
                 ...prev,
                 [targetPeerId]: {
-                    ...prev[targetPeerId],
+                    ...(prev[targetPeerId] || {}),
+                    id: targetPeerId,
                     status: ConnectionStatus.CONNECTED,
                     lastSeen: Date.now()
                 }
@@ -149,15 +152,18 @@ export const usePeerMaster = () => {
 
             // Handle Live Preview data from Receiver
             if (msg.type === MessageType.TEXT_UPDATE || msg.type === MessageType.SYNC_STATE) {
-                setReceivers(prev => ({
-                    ...prev,
-                    [targetPeerId]: {
-                        ...prev[targetPeerId],
-                        textPreview: msg.payload?.text || (typeof msg.payload === 'string' ? msg.payload : prev[targetPeerId].textPreview),
-                        scrollProgress: msg.payload?.progress ?? prev[targetPeerId].scrollProgress,
-                        lastSeen: Date.now()
-                    }
-                }));
+                setReceivers(prev => {
+                    return {
+                        ...prev,
+                        [targetPeerId]: {
+                            ...(prev[targetPeerId] || {}),
+                            id: targetPeerId,
+                            textPreview: msg.payload?.text || (typeof msg.payload === 'string' ? msg.payload : prev[targetPeerId]?.textPreview),
+                            scrollProgress: msg.payload?.progress ?? prev[targetPeerId]?.scrollProgress,
+                            lastSeen: Date.now()
+                        }
+                    };
+                });
             }
         });
 
@@ -223,7 +229,8 @@ export const usePeerMaster = () => {
     /**
      * Envia mensagem para um único display específico.
      */
-    const sendTo = useCallback((targetPeerId: string, type: MessageType, payload?: any) => {
+    const sendTo = useCallback((rawId: string, type: MessageType, payload?: any) => {
+        const targetPeerId = rawId.trim().toUpperCase();
         const conn = connectionsRef.current.get(targetPeerId);
         if (conn && conn.open) {
             const msg: PeerMessage = { type, payload, timestamp: Date.now() };
@@ -241,7 +248,8 @@ export const usePeerMaster = () => {
     /**
      * Remove um receiver da lista e limpa persistência.
      */
-    const removeReceiver = useCallback((targetPeerId: string) => {
+    const removeReceiver = useCallback((rawId: string) => {
+        const targetPeerId = rawId.trim().toUpperCase();
         const conn = connectionsRef.current.get(targetPeerId);
         if (conn) conn.close();
 

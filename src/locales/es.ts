@@ -216,6 +216,16 @@ export const es = {
         desc: "Visualiza dos idiomas lado a lado. Perfecto para aprender nuevos idiomas o para presentaciones internacionales. Usa el control de voz para rastrear el idioma de tu elección.",
         cta: "Conocer el Modo Bilingüe 🌐",
       },
+      focus: {
+        title: "Enfoque Dinámico",
+        desc:
+          "Línea de enfoque dinámico: El resaltado inteligente sigue tu lectura, asegurando que nunca pierdas el hilo.",
+      },
+      master: {
+        title: "Gestión de Teleprompters",
+        desc:
+          "Gestiona varios teleprompters desde un punto central. Ideal para eventos con varios presentadores.",
+      },
     },
     pricing: {
       title: "Precio Simple y Honesto",
@@ -228,7 +238,7 @@ export const es = {
         cta: "Empezar Gratis",
         features: ["20 minutos por sesión", "Sesiones ilimitadas", "Control remoto total", "Todos los temas", "Integración OBS (Básico)"],
 
-        missing: ["Sesiones sin límite de tiempo", "Control por voz", "Atajos personalizados", "Integración OBS"],
+        missing: ["Sesiones sin límite de tiempo", "Control por voz", "Atajos personalizados", "Integración OBS", "Gestión de múltiples teleprompter"],
       },
       pro: {
         badge: "🔥 PRECIO DE LANZAMIENTO",
@@ -249,6 +259,7 @@ export const es = {
           "Acceso anticipado a funciones",
           "Personalizar Atajos de Teclado",
           "Integración OBS Nativa (WebSocket)",
+          "Gestión de múltiples teleprompter para eventos",
         ],
       },
       paymentInfo: "💳 Pago único vía Tarjeta. \n🔒 Garantía de 7 días.",
@@ -413,6 +424,8 @@ Perfectamente alineados`,
     voice: {
       notSupported: "Tu navegador no soporta control por voz",
     },
+    masterMode: "Gestión de múltiples teleprompter",
+    masterPanel: "Ingrese al Panel de Control",
     editor: {
       highlight: "Resaltado",
       musicianMode: "Modo Músico",
@@ -783,7 +796,7 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
         desc: "Deja que PromptNinja pase la página por ti. El reconocimiento de voz sigue tu canto.",
       },
       pro: {
-        desc: "Desbloquea MIDI personalizable (pronto), setlists infinitos y uso multidispositivo.",
+        desc: "Desbloquea MIDI personalizable, setlists infinitos y uso multidispositivo.",
       },
     },
     landing: {
@@ -918,6 +931,41 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
         icon: "pro"
       }
     ]
+  },
+  master: {
+    title: "MASTER",
+    subtitle: "Controlar múltiples teleprompters",
+    exampleTitle: "Guión de ejemplo",
+    exampleContent: "Bienvenido a PromptNinja Event Mode!\n\nEste es tu centro de control.",
+    connectDisplay: "Conectar Display",
+    idPlaceholder: "Introduce ID...",
+    add: "AGREGAR",
+    connectedDisplays: "DISPLAYS CONECTADOS",
+    noDisplays: "No displays conectados. Agrega un ID arriba para comenzar.",
+    globalControl: "CONTROL GLOBAL",
+    playAll: "JUGAR TODO",
+    pauseAll: "PAUSAR TODO",
+    resetAll: "REINICIAR TODO",
+    scriptLibrary: "LIBRERIA DE GUIONES",
+    noScripts: "No scripts guardados en la base de datos local.",
+    createScriptsHint: "Crea scripts para enviar a tus displays remotamente.",
+    selectedScript: "Guion seleccionado",
+    deployHint: "Elige los displays a los que quieres enviar este texto:",
+    confirmDelete: "¿Realmente quieres eliminar esto?",
+    pushAll: "ENVIAR TODO",
+    editingLocal: "Editar Script Local",
+    scriptTitle: "Titulo del Script",
+    scriptContent: "Contenido del Script...",
+    saveChanges: "GUARDAR CAMBIOS",
+    limitReached: "Limitado: Solo 1 control remoto en el plan gratuito. Actualiza a Pro!",
+    displayActions: {
+      play: "Reproducir",
+      pause: "Pausar",
+      edit: "Editar",
+      remove: "Eliminar",
+      push: "Enviar",
+    }
   }
 };
+
 

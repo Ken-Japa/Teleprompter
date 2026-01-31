@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { usePeerMaster } from "../hooks/usePeerMaster";
+import { useTranslation } from "../hooks/useTranslation";
 import { MessageType, ConnectionStatus } from "../types";
 import * as S from "../components/ui/Styled";
 import {
@@ -42,6 +43,7 @@ export const Master: React.FC = () => {
         sendTo,
         removeReceiver
     } = usePeerMaster();
+    const { t } = useTranslation();
 
     // UI States
     const [newTargetId, setNewTargetId] = useState("");
@@ -60,6 +62,11 @@ export const Master: React.FC = () => {
         ];
     });
     const [selectedScriptId, setSelectedScriptId] = useState<string | null>(null);
+
+    // Script Editing States
+    const [editingLibraryScriptId, setEditingLibraryScriptId] = useState<string | null>(null);
+    const [libEditTitle, setLibEditTitle] = useState("");
+    const [libEditContent, setLibEditContent] = useState("");
 
     // Persistence for scripts
     useEffect(() => {
@@ -101,6 +108,10 @@ export const Master: React.FC = () => {
         if (selectedScriptId === id) setSelectedScriptId(null);
     };
 
+    const handleUpdateScript = (id: string, title: string, content: string) => {
+        setScripts(scripts.map(s => s.id === id ? { ...s, title, content, lastUpdated: Date.now() } : s));
+    };
+
     const deployToReceiver = (receiverId: string, content: string) => {
         sendTo(receiverId, MessageType.TEXT_UPDATE, content);
     };
@@ -116,13 +127,13 @@ export const Master: React.FC = () => {
             {/* Header Section */}
             <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-white/5 pb-8">
                 <div className="flex items-center gap-4">
-                    <S.LogoText main="MASTER" sub="HUB" />
+                    <S.LogoText main={t("master.title").split(" ")[0]} sub={t("master.title").split(" ")[1] || "HUB"} />
                     <div className="h-10 w-px bg-white/10 hidden md:block" />
                     <div className="flex flex-col">
-                        <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Sessão</span>
+                        <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">{t("host.idLabel")}</span>
                         <div className="flex items-center gap-2">
                             <div className={`w-2 h-2 rounded-full ${status === ConnectionStatus.CONNECTED ? 'bg-emerald-500 animate-pulse' : 'bg-slate-700'}`} />
-                            <span className="text-xs font-mono text-slate-400">{peerId || "Gerando..."}</span>
+                            <span className="text-xs font-mono text-slate-400">{peerId || t("host.generatingId")}</span>
                         </div>
                     </div>
                 </div>
@@ -131,17 +142,17 @@ export const Master: React.FC = () => {
                     <form onSubmit={handleAddReceiver} className="flex gap-2">
                         <input
                             type="text"
-                            placeholder="ID do Display..."
+                            placeholder={t("master.idPlaceholder")}
                             value={newTargetId}
                             onChange={(e) => setNewTargetId(e.target.value)}
                             className="bg-slate-900 border border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-brand-500/50 transition-all w-32 sm:w-48"
                         />
-                        <S.PrimaryButton type="submit" className="!p-2 !rounded-xl" onClick={() => { }}>
+                        <S.PrimaryButton type="submit" className="!p-2 !rounded-xl">
                             <PlusIcon className="w-5 h-5" />
                         </S.PrimaryButton>
                     </form>
                     <S.PrimaryButton onClick={() => window.location.hash = "app"} className="!bg-slate-800 hover:!bg-slate-700 !shadow-none !text-xs">
-                        Sair
+                        {t("host.exit")}
                     </S.PrimaryButton>
                 </div>
             </div>
@@ -163,7 +174,7 @@ export const Master: React.FC = () => {
 
                         <div className="flex-1 min-w-[150px]">
                             <div className="flex justify-between mb-1.5">
-                                <span className="text-[10px] text-brand-300 font-bold uppercase tracking-wider">Velocidade Global</span>
+                                <span className="text-[10px] text-brand-300 font-bold uppercase tracking-wider">{t("master.globalControl")}</span>
                                 <span className="text-[10px] font-mono text-brand-400">{globalSpeed}px/s</span>
                             </div>
                             <S.RangeSlider value={globalSpeed} min={1} max={100} onChange={handleGlobalSpeedChange} width="w-full" />
@@ -172,7 +183,7 @@ export const Master: React.FC = () => {
                         <div className="h-10 w-px bg-white/10" />
 
                         <S.SecondaryButton onClick={() => broadcast(MessageType.RESTART)} className="!text-[10px] !py-2 !px-4">
-                            <RefreshIcon className="w-3.5 h-3.5 mr-2" /> RESTART TODOS
+                            <RefreshIcon className="w-3.5 h-3.5 mr-2" /> {t("master.resetAll")}
                         </S.SecondaryButton>
                     </div>
 
@@ -181,8 +192,7 @@ export const Master: React.FC = () => {
                         {receivers.length === 0 ? (
                             <div className="col-span-full glass border-dashed border-2 border-white/5 rounded-3xl p-16 flex flex-col items-center opacity-50">
                                 <ControlIcon className="text-slate-700 w-12 h-12 mb-4" />
-                                <p className="text-slate-500 text-sm font-medium">Nenhum display adicionado.</p>
-                                <p className="text-slate-600 text-xs">Os IDs adicionados aparecerão aqui.</p>
+                                <p className="text-slate-500 text-sm font-medium">{t("master.noDisplays")}</p>
                             </div>
                         ) : (
                             receivers.map((rec) => (
@@ -195,7 +205,7 @@ export const Master: React.FC = () => {
                                             <div className="flex flex-col">
                                                 <span className="text-xs font-bold font-mono tracking-tight w-24 truncate" title={rec.id}>{rec.id}</span>
                                                 <span className={`text-[8px] uppercase tracking-widest font-bold ${rec.status === ConnectionStatus.CONNECTED ? 'text-emerald-500' :
-                                                        rec.status === ConnectionStatus.CONNECTING ? 'text-amber-500 animate-pulse' : 'text-red-500'
+                                                    rec.status === ConnectionStatus.CONNECTING ? 'text-amber-500 animate-pulse' : 'text-red-500'
                                                     }`}>
                                                     {rec.status}
                                                 </span>
@@ -234,20 +244,20 @@ export const Master: React.FC = () => {
                                             onClick={() => sendTo(rec.id, MessageType.PLAY)}
                                             className="flex-1 py-2 rounded-lg bg-slate-900 hover:bg-emerald-600/20 hover:text-emerald-400 text-[10px] font-bold transition-all border border-white/5"
                                         >
-                                            PLAY
+                                            {t("master.displayActions.play")}
                                         </button>
                                         <button
                                             onClick={() => sendTo(rec.id, MessageType.PAUSE)}
                                             className="flex-1 py-2 rounded-lg bg-slate-900 hover:bg-amber-600/20 hover:text-amber-400 text-[10px] font-bold transition-all border border-white/5"
                                         >
-                                            PAUSE
+                                            {t("master.displayActions.pause")}
                                         </button>
                                         {rec.status === ConnectionStatus.DISCONNECTED && (
                                             <button
                                                 onClick={() => connectToReceiver(rec.id)}
                                                 className="flex-1 py-2 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-[10px] font-bold transition-all"
                                             >
-                                                RECONNECT
+                                                {t("common.sync")}
                                             </button>
                                         )}
                                     </div>
@@ -269,7 +279,7 @@ export const Master: React.FC = () => {
                         <div className="flex items-center justify-between">
                             <h3 className="font-bold flex items-center gap-2">
                                 <FileTextIcon className="text-brand-400 w-4 h-4" />
-                                Biblioteca de Scripts
+                                {t("master.scriptLibrary")}
                             </h3>
                             <button
                                 onClick={() => handleSaveScript("Novo Roteiro", "")}
@@ -289,15 +299,28 @@ export const Master: React.FC = () => {
                                 >
                                     <div className="flex justify-between items-start mb-2">
                                         <div className="font-bold text-sm truncate max-w-[150px]">{s.title}</div>
-                                        <button
-                                            onClick={(e) => { e.stopPropagation(); handleDeleteScript(s.id); }}
-                                            className="p-1 text-slate-600 hover:text-red-400 transition-colors"
-                                        >
-                                            <TrashIcon className="w-3 h-3" />
-                                        </button>
+                                        <div className="flex gap-1">
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    setEditingLibraryScriptId(s.id);
+                                                    setLibEditTitle(s.title);
+                                                    setLibEditContent(s.content);
+                                                }}
+                                                className="p-1 text-slate-600 hover:text-brand-400 transition-colors"
+                                            >
+                                                <EditIcon className="w-3 h-3" />
+                                            </button>
+                                            <button
+                                                onClick={(e) => { e.stopPropagation(); handleDeleteScript(s.id); }}
+                                                className="p-1 text-slate-600 hover:text-red-400 transition-colors"
+                                            >
+                                                <TrashIcon className="w-3 h-3" />
+                                            </button>
+                                        </div>
                                     </div>
                                     <div className="text-[10px] text-slate-500 mb-3 line-clamp-2 italic">
-                                        {s.content || "Vazio..."}
+                                        {s.content || t("master.noScripts")}
                                     </div>
 
                                     {selectedScriptId === s.id && (
@@ -306,7 +329,7 @@ export const Master: React.FC = () => {
                                                 onClick={(e) => { e.stopPropagation(); deployToAll(s.content); }}
                                                 className="flex-1 py-2 rounded-lg bg-brand-600 hover:bg-brand-500 text-[9px] font-bold flex items-center justify-center gap-1.5"
                                             >
-                                                <CloudUploadIcon className="w-3 h-3" /> PUSH TODOS
+                                                <CloudUploadIcon className="w-3 h-3" /> {t("master.pushAll")}
                                             </button>
                                         </div>
                                     )}
@@ -316,7 +339,7 @@ export const Master: React.FC = () => {
 
                         {selectedScriptId && (
                             <div className="pt-4 border-t border-white/5 flex flex-col gap-3 animate-in fade-in duration-300">
-                                <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Deploy Individual</span>
+                                <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">{t("master.deployHint")}</span>
                                 <div className="grid grid-cols-2 gap-2">
                                     {receivers.filter(r => r.status === ConnectionStatus.CONNECTED).map(r => (
                                         <button
@@ -324,23 +347,17 @@ export const Master: React.FC = () => {
                                             onClick={() => deployToReceiver(r.id, scripts.find((s: SavedScript) => s.id === selectedScriptId)?.content || "")}
                                             className="p-2 rounded-lg bg-slate-900 border border-brand-500/20 hover:bg-brand-500/10 text-[9px] font-bold truncate transition-colors"
                                         >
-                                            PUSH {r.id.substring(0, 6)}
+                                            {t("master.displayActions.push")} {r.id.substring(0, 6)}
                                         </button>
                                     ))}
                                     {receivers.filter(r => r.status === ConnectionStatus.CONNECTED).length === 0 && (
-                                        <span className="col-span-2 text-[9px] text-slate-600 italic">Conecte displays para fazer o push.</span>
+                                        <span className="col-span-2 text-[9px] text-slate-600 italic">{t("master.noDisplays")}</span>
                                     )}
                                 </div>
                             </div>
                         )}
                     </div>
 
-                    <div className="glass p-4 rounded-2xl border border-white/5 bg-slate-900/40">
-                        <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-2">Dica do Operador</div>
-                        <p className="text-[11px] text-slate-400 leading-relaxed">
-                            Você pode editar o roteiro de um display individualmente clicando no ícone do lápis. Mudanças globais de velocidade afetam todos em tempo real.
-                        </p>
-                    </div>
                 </div>
             </div>
 
@@ -355,7 +372,7 @@ export const Master: React.FC = () => {
                                     <EditIcon className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h3 className="font-bold">Editor Remoto</h3>
+                                    <h3 className="font-bold">{t("master.editingLocal")}</h3>
                                     <p className="text-xs text-slate-500 font-mono">{editingReceiverId}</p>
                                 </div>
                             </div>
@@ -366,17 +383,17 @@ export const Master: React.FC = () => {
                             value={editText}
                             onChange={(e) => setEditText(e.target.value)}
                             className="w-full h-64 bg-slate-900/50 border border-white/10 rounded-2xl p-4 text-slate-300 focus:outline-none focus:border-brand-500/50 mb-6 custom-scrollbar resize-none"
-                            placeholder="Digite o texto aqui..."
+                            placeholder={t("master.scriptContent")}
                         />
 
                         <div className="flex gap-4">
                             <button
                                 onClick={() => {
-                                    handleSaveScript(`Roteiro de ${editingReceiverId.substring(0, 5)}`, editText);
+                                    handleSaveScript(t("script.untitled"), editText);
                                 }}
                                 className="flex-1 py-3 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2"
                             >
-                                <SaveIcon className="w-4 h-4" /> SALVAR NA LIB
+                                <SaveIcon className="w-4 h-4" /> {t("common.save")}
                             </button>
                             <S.PrimaryButton
                                 onClick={() => {
@@ -385,7 +402,58 @@ export const Master: React.FC = () => {
                                 }}
                                 className="flex-1 gap-2"
                             >
-                                <CheckCircleIcon className="w-4 h-4" /> SINCRONIZAR AGORA
+                                <CheckCircleIcon className="w-4 h-4" /> {t("common.sync")}
+                            </S.PrimaryButton>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Library Script Editor Modal */}
+            {editingLibraryScriptId && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+                    <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={() => setEditingLibraryScriptId(null)} />
+                    <div className="relative w-full max-w-2xl glass p-8 rounded-3xl border border-white/10 shadow-2xl animate-in zoom-in-95 duration-200">
+                        <div className="flex items-center justify-between mb-6">
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 bg-brand-500/10 rounded-xl flex items-center justify-center text-brand-400">
+                                    <FileTextIcon className="w-5 h-5" />
+                                </div>
+                                <div className="flex-1">
+                                    <input
+                                        value={libEditTitle}
+                                        onChange={(e) => setLibEditTitle(e.target.value)}
+                                        className="bg-transparent border-b border-white/10 text-lg font-bold w-full focus:outline-none focus:border-brand-500 transition-colors"
+                                        placeholder={t("master.scriptTitle")}
+                                    />
+                                    <p className="text-[10px] text-slate-500 uppercase tracking-widest mt-1">{t("master.editingLocal")}</p>
+                                </div>
+                            </div>
+                            <button onClick={() => setEditingLibraryScriptId(null)} className="p-2 text-slate-600 hover:text-white">&times;</button>
+                        </div>
+
+                        <textarea
+                            value={libEditContent}
+                            onChange={(e) => setLibEditContent(e.target.value)}
+                            className="w-full h-80 bg-slate-900/50 border border-white/10 rounded-2xl p-4 text-slate-300 focus:outline-none focus:border-brand-500/50 mb-6 custom-scrollbar resize-none font-sans"
+                            placeholder={t("master.scriptContent")}
+                        />
+
+                        <div className="flex gap-4">
+                            <button
+                                onClick={() => setEditingLibraryScriptId(null)}
+                                className="flex-1 py-3 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold text-sm transition-all"
+                            >
+                                {t("common.cancel")}
+                            </button>
+                            <S.PrimaryButton
+                                onClick={() => {
+                                    handleUpdateScript(editingLibraryScriptId, libEditTitle, libEditContent);
+                                    setEditingLibraryScriptId(null);
+                                }}
+                                className="flex-1 gap-2"
+                            >
+                                <SaveIcon className="w-4 h-4" /> {t("master.saveChanges")}
                             </S.PrimaryButton>
                         </div>
                     </div>
