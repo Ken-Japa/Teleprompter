@@ -182,6 +182,8 @@ export function trackError(errorType: string, message: string): void {
         !message ||
         message === "undefined" ||
         msgLower.includes("rejected") ||
+        message === "Rejected" ||
+        msgLower.includes("peer-unavailable") ||
         msgLower.includes("unknown error") ||
         msgLower.includes("unknown rejection") ||
         msgLower.includes("usedcontainerscopeddefaults") || // Filter internal GA/Contentsquare noise

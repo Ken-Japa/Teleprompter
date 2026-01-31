@@ -185,7 +185,14 @@ export const usePeerMaster = () => {
 
         conn.on("error", (err) => {
             console.warn(`Error connecting to ${targetPeerId}:`, err);
-            trackError("master_conn_error", err.message);
+
+            // Expected network states should be warnings, not Sentry-crashing errors
+            if ((err as any).type === 'peer-unavailable' || err.message?.includes('peer-unavailable')) {
+                trackWarning("master_conn_unavailable", `${targetPeerId}: ${err.message}`);
+            } else {
+                trackError("master_conn_error", err.message || String(err));
+            }
+
             setReceivers(prev => ({
                 ...prev,
                 [targetPeerId]: {
@@ -230,6 +237,7 @@ export const usePeerMaster = () => {
      * Envia mensagem para um único display específico.
      */
     const sendTo = useCallback((rawId: string, type: MessageType, payload?: any) => {
+        if (!rawId) return;
         const targetPeerId = rawId.trim().toUpperCase();
         const conn = connectionsRef.current.get(targetPeerId);
         if (conn && conn.open) {
@@ -249,6 +257,7 @@ export const usePeerMaster = () => {
      * Remove um receiver da lista e limpa persistência.
      */
     const removeReceiver = useCallback((rawId: string) => {
+        if (!rawId) return;
         const targetPeerId = rawId.trim().toUpperCase();
         const conn = connectionsRef.current.get(targetPeerId);
         if (conn) conn.close();

@@ -2,7 +2,7 @@
 
 # 📊 Executive Summary
 
-**Análise realizada em:** 2026-01-31 01:05
+**Análise realizada em:** 2026-01-30 02:12
 
 ## 📈 Visão Geral
 
@@ -406,4 +406,4 @@ As páginas estão ordenadas por força (fortes → médias → fracas).
 
 ---
 
-**Relatório gerado em:** 2026-01-31 01:05:24
+**Relatório gerado em:** 2026-01-30 02:12:29

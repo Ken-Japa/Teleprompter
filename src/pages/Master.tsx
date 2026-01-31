@@ -58,7 +58,7 @@ export const Master: React.FC = () => {
     const [scripts, setScripts] = useState<SavedScript[]>(() => {
         const saved = localStorage.getItem("promptninja_master_scripts");
         return saved ? JSON.parse(saved) : [
-            { id: "1", title: "Roteiro Exemplo", content: "Bem-vindo ao Modo Evento do PromptNinja!\n\nEste é o seu painel central.", lastUpdated: Date.now() }
+            { id: "1", title: t("master.exampleTitle"), content: t("master.exampleContent"), lastUpdated: Date.now() }
         ];
     });
     const [selectedScriptId, setSelectedScriptId] = useState<string | null>(null);
@@ -233,7 +233,7 @@ export const Master: React.FC = () => {
                                     {/* Preview Window */}
                                     <div className="bg-slate-950/80 rounded-xl border border-white/5 p-3 mb-4 h-24 overflow-hidden relative">
                                         <div className="text-[10px] leading-relaxed text-slate-400 select-none whitespace-pre-wrap">
-                                            {rec.textPreview || "Sem texto no display..."}
+                                            {rec.textPreview || t("master.noScripts")}
                                         </div>
                                         <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-slate-950 to-transparent" />
                                     </div>
@@ -257,7 +257,7 @@ export const Master: React.FC = () => {
                                                 onClick={() => connectToReceiver(rec.id)}
                                                 className="flex-1 py-2 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-[10px] font-bold transition-all"
                                             >
-                                                {t("common.sync")}
+                                                {t("common.reconnect")}
                                             </button>
                                         )}
                                     </div>

@@ -2,92 +2,88 @@
 
 ## 💡 Descoberta de Funcionalidades (Gaps)
 
-A análise dos insights da comunidade em conjunto com o contexto do PromptNinja revelou áreas críticas onde o produto pode expandir e aprofundar seu valor, abordando dores e padrões de uso que ainda não estão totalmente cobertos.
+Aqui estão as oportunidades de funcionalidades identificadas que o PromptNinja ainda não resolve, baseando-se nas dores e padrões da comunidade e cruzando com o SSOT e as conquistas recentes.
 
--   **Feature Sugerida:** **Controle e Gerenciamento Multi-Teleprompter para Eventos (Master/Receiver)**
-    -   **Dor Relacionada:** `[PATTERN] (Score: 10) Demanda por setups multi-dispositivo (master/receivers) para gerenciamento remoto`, `[PATTERN] (Score: 9) Funcionalidades para produção de eventos: runorders/playlistas e suporte multi-câmera`.
-    -   **Por que agora?** Atualmente, o "Multi-Remote" permite vários telefones controlando *um* teleprompter. A demanda aponta para a capacidade de um *operador* gerenciar *múltiplos teleprompters* ou displays de forma centralizada (Master/Receiver), vital para produções de eventos, estúdios ou conferências complexas. Isso eleva o PromptNinja para um nível "broadcast-grade" de gerenciamento.
-    -   **Nível de Impacto:** Alto (Abre um nicho de mercado profissional de alto valor com potencial de receita significativo).
+-   **Feature Sugerida:** **Colaboração e Compartilhamento Simplificado de Roteiros**
+    *   **Dor Relacionada:** [PATTERN] (Score: 9) Há alta procura por compartilhamento de roteiros em equipes e templates.
+    *   **Por que agora?** Embora a privacidade seja um pilar, a demanda por trabalho em equipe é forte. Uma solução de compartilhamento *local-first* ou com exportação/importação simplificada (ex: via QR Code para outro dispositivo, ou arquivo `.txt`/`.pn`) manteria a privacidade enquanto atende a uma necessidade crítica de equipes e criadores que revisam scripts.
+    *   **Nível de Impacto:** Alto (Aumenta o potencial de uso em ambientes profissionais e equipes, destravando um novo segmento de valor).
 
--   **Feature Sugerida:** **Integração Nativa com OBS Studio (WebSocket para Overlay Transparente)**
-    -   **Dor Relacionada:** `[PATTERN] (Score: 10) Integração nativa com OBS (via WebSocket) para overlays transparentes e virtual camera`.
-    -   **Por que agora?** Embora o PromptNinja já ofereça temas Chroma Key para OBS, a integração via WebSocket para overlays transparentes ou como uma "câmera virtual" diretamente no OBS é um salto tecnológico. Isso eliminaria a necessidade de chaves de croma e permitiria uma experiência de produtor de vídeo mais fluida e profissional.
-    -   **Nível de Impacto:** Alto (Fortalece o posicionamento para Criadores de Conteúdo, Gamers e Streamers, um dos públicos-alvo principais, com uma solução de ponta).
+-   **Feature Sugerida:** **Indicadores Visuais de Contato Visual com a Câmera**
+    *   **Dor Relacionada:** [FAQ] (Score: 8) Como ler roteiro e manter contato visual com a câmera simultaneamente?
+    *   **Por que agora?** Já é uma "Future Consideration" no SSOT. Resolver a dor de "Dificuldade em manter contato visual" é central para o propósito do teleprompter. Um feedback visual sutil na tela pode guiar o usuário a manter o olhar mais centralizado.
+    *   **Nível de Impacto:** Médio (Melhora diretamente a UX e o resultado final dos vídeos, reforçando o valor do produto).
 
--   **Feature Sugerida:** **Gerador de Legendas Automáticas (SRT/VTT) Pós-Gravação**
-    -   **Dor Relacionada:** `[KEYWORD] (Score: 4) subtítulos automáticos` (implica uma necessidade não atendida de gerar legendas a partir do áudio gravado).
-    -   **Por que agora?** O PromptNinja já possui "Voice Control (AI)" e capacidade de gravação de áudio/vídeo. Aproveitar essa tecnologia para gerar automaticamente arquivos SRT ou VTT (legendas) a partir da fala gravada seria um enorme diferencial para criadores de conteúdo que buscam acessibilidade e SEO para seus vídeos.
-    -   **Nível de Impacto:** Alto (Grande valor agregado para Criadores de Conteúdo, expandindo o uso pós-produção do produto).
+-   **Feature Sugerida:** **Integração de IA para Sugestões/Revisões de Roteiro (Client-Side ou Opt-in)**
+    *   **Dor Relacionada:** [PATTERN] (Score: 9) Integração IA para gerar/resumir roteiros eleva expectativas de usuários.
+    *   **Por que agora?** A IA é uma tendência dominante. Uma funcionalidade que ofereça sugestões de clareza, resumo ou otimização de roteiro (talvez utilizando modelos pequenos client-side ou com um consentimento explícito para API de terceiros, mantendo a privacidade no foreground) pode ser um grande diferencial.
+    *   **Nível de Impacto:** Alto (Posiciona o PromptNinja na vanguarda tecnológica, atraindo um público focado em inovação, mas exige um design cuidadoso para manter o pilar de privacidade).
 
--   **Feature Sugerida:** **Indicadores Visuais de Contato Visual (Eye Contact Guidance)**
-    -   **Dor Relacionada:** `[PAIN] (Score: 7) Dificuldade em manter contato visual com a câmera ao ler roteiro (eye contact)`.
-    -   **Por que agora?** É uma dor central que o PromptNinja se propõe a resolver, e já é uma "Future Consideration" mencionada no SSOT. Implementar guias visuais em tempo real (ex: um ponto que se move com o seu olho ou uma linha que indica a posição ideal de leitura para manter o contato visual natural) aprimoraria significativamente a promessa do produto.
-    -   **Nível de Impacto:** Médio (Melhora diretamente a UX para um problema fundamental, aumentando a satisfação e retenção).
+-   **Feature Sugerida:** **Funcionalidades para Produção de Eventos (Runorders/Playlists de Scripts)**
+    *   **Dor Relacionada:** [PATTERN] (Score: 9) Funcionalidades para produção de eventos: runorders/playlistas e suporte multi-câmera.
+    *   **Por que agora?** O PromptNinja já possui navegação por `[SLIDE X]` e `[PART X]`. Estender isso para playlists de múltiplos scripts ou "runorders" de apresentações pode capturar o nicho de produção de eventos, palestras e aulas mais longas com múltiplos segmentos.
+    *   **Nível de Impacto:** Médio (Abre portas para um nicho de uso mais complexo e profissional, agregando valor ao PRO).
 
--   **Feature Sugerida:** **Ferramentas de Diagnóstico e Teste Pré-Evento/Sessão**
-    -   **Dor Relacionada:** `[PATTERN] (Score: 8) Demanda por verificações técnicas pré-evento e suporte técnico rápido`, `[PAIN] (Score: 10) Crashes, freezing e falta de estabilidade`.
-    -   **Por que agora?** Para usuários profissionais que dependem do PromptNinja em situações críticas (lives, reuniões importantes), ter uma ferramenta integrada que testa a conexão P2P, a performance do navegador, a latência e o uso de recursos antes da sessão seria um grande alívio de dor e aumentaria a confiança no produto.
-    -   **Nível de Impacto:** Médio (Aumenta a confiança do usuário profissional, reduz tickets de suporte e valida a estabilidade do produto).
-
--   **Feature Sugerida:** **Modo de Compatibilidade Otimizado para Dispositivos Antigos/Recursos Limitados**
-    -   **Dor Relacionada:** `[PATTERN] (Score: 8) Necessidade de compatibilidade com periféricos existentes (tablets antigos)`, `[PAIN] (Score: 10) Crashes, freezing e falta de estabilidade`, `[PAIN] (Score: 7) Rolagem instável`.
-    -   **Por que agora?** Embora o PromptNinja vise navegadores modernos, a dor por estabilidade e compatibilidade em "tablets antigos" e "rolagem instável" sugere a necessidade de um modo "lite" ou otimizado. Isso poderia desativar recursos gráficos pesados ou usar métodos de renderização mais simples para garantir estabilidade em hardware menos potente, ampliando a base de usuários.
-    -   **Nível de Impacto:** Médio (Amplia a base de usuários e resolve uma dor de performance para um segmento específico).
+-   **Feature Sugerida:** **Controles Hands-Free Expandidos para Operadores (Pedais/IP Web)**
+    *   **Dor Relacionada:** [PATTERN] (Score: 9) Necessidade de controles hands-free (foot pedals, IP, web) para operadores remotos.
+    *   **Por que agora?** O modo música já tem atalhos para pedais, e o P2P via QR Code é excelente. No entanto, uma interface de controle mais robusta para um "operador remoto" (via web/IP, talvez configurável com atalhos para pedais adicionais) complementaria o Master/Receiver e a OBS Integration, atendendo a demandas mais técnicas.
+    *   **Nível de Impacto:** Médio (Aumenta a versatilidade do produto para setups de gravação mais avançados e operados por terceiros).
 
 ## 🛡️ Oportunidades de SEO Parasita / Novas Landing Pages
 
-Com base nos insights e na lista de gaps, aqui estão 7 sugestões de novas páginas de SEO, focadas em cobrir palavras-chave e dores que o PromptNinja ainda não explora explicitamente na sua estratégia de conteúdo existente.
+Com base nos insights da comunidade e nas conquistas recentes, sugiro as seguintes novas páginas de SEO, focando em termos não totalmente explorados ou que capitalizam as inovações do PromptNinja.
 
-1.  **Keyword/Tema:** **Teleprompter para Eventos e Produções Profissionais: Gerenciamento Multi-Câmera e Playlists**
-    -   **Justificativa:** Atrai um público B2B e profissionais de produção de eventos, palestras e conferências que buscam soluções robustas para múltiplos displays e sequenciamento de roteiros. Posiciona o PromptNinja como uma ferramenta de nível profissional para operações complexas.
-    -   **Público Alvo:** Produtores de eventos, diretores de estúdio, palestrantes profissionais, organizadores de conferências.
-    -   **Impacto vs Esforço:** Alto Impacto / Médio Esforço
+1.  **Keyword/Tema:** **Teleprompter com Legendas Automáticas para Vídeos (SRT/VTT)**
+    *   **Justificativa:** Capitaliza diretamente a conquista recente **[FEAT-002] Gerador de Legendas Automáticas (SRT/VTT)**, que é um grande diferencial para criadores de conteúdo. Aborda a keyword "[KEYWORD] (Score: 4) subtítulos automáticos" com uma solução concreta e de alto valor.
+    *   **Público Alvo:** Criadores de Conteúdo (YouTube, TikTok, Reels), Educadores Online, Produtores de Vídeo.
 
-2.  **Keyword/Tema:** **Teleprompter com Overlay Transparente e Câmera Virtual para OBS Studio**
-    -   **Justificativa:** Endereça diretamente a demanda por uma integração mais avançada com OBS, diferenciando-se de soluções de chroma key. Foca em termos como "overlay transparente", "câmera virtual OBS", que são buscados por streamers e criadores de conteúdo que usam OBS.
-    -   **Público Alvo:** Streamers, Youtubers, criadores de conteúdo ao vivo, educadores online que usam OBS.
-    -   **Impacto vs Esforço:** Alto Impacto / Médio Esforço
+2.  **Keyword/Tema:** **Guia: Como Manter Contato Visual em Vídeos com Teleprompter (Sem Parecer Robótico)**
+    *   **Justificativa:** Responde diretamente à [FAQ] (Score: 8) "Como ler roteiro e manter contato visual com a câmera simultaneamente?". Pode destacar as funcionalidades PRO como Voice Control, PiP, Camera Overlay, Mirror Mode, e a recém-implementada OBS Integration para uma performance natural.
+    *   **Público Alvo:** YouTubers, Influenciadores, Profissionais Corporativos (Zoom/Teams), Palestrantes.
 
-3.  **Keyword/Tema:** **Como Gerar Legendas (SRT) Automaticamente com Seu Teleprompter**
-    -   **Justificativa:** Capitaliza sobre a funcionalidade de Voice Control e gravação para atender à crescente necessidade de acessibilidade e SEO de vídeo. Palavras-chave como "gerar legendas automáticas", "srt", "vtt", "legendar vídeo" são altamente buscadas por criadores.
-    -   **Público Alvo:** Youtubers, TikTokers, criadores de cursos online, empresas que publicam vídeos.
-    -   **Impacto vs Esforço:** Alto Impacto / Médio Esforço
+3.  **Keyword/Tema:** **Teleprompter Multi-Dispositivo: Controle Master/Slave para Co-apresentações**
+    *   **Justificativa:** Explora a conquista **[FEAT-001] Controle Multi-Teleprompter (Master/Receiver)** e a [PATTERN] (Score: 9) "Demanda por sync multi-dispositivo para co-apresentadores". Posiciona o PromptNinja como a solução ideal para equipes ou apresentadores em dupla.
+    *   **Público Alvo:** Profissionais Corporativos, Educadores, Apresentadores de Eventos, Equipes de Conteúdo.
 
-4.  **Keyword/Tema:** **Guia: Mantenha Contato Visual Natural em Vídeos com Teleprompter**
-    -   **Justificativa:** Aborda uma dor universal e persistente de qualquer usuário de teleprompter: a dificuldade em parecer natural. Embora "dicas oratoria video" já exista, esta página seria mais específica e aprofundada no "eye contact", posicionando PromptNinja como a solução que permite essa naturalidade.
-    -   **Público Alvo:** Criadores de conteúdo, profissionais de vendas, palestrantes, qualquer pessoa que grave vídeos.
-    -   **Impacto vs Esforço:** Médio-Alto Impacto / Baixo Esforço
+4.  **Keyword/Tema:** **Teleprompter Estável para Lives e Gravações (Sem Congelamentos)**
+    *   **Justificativa:** Ataca diretamente a [PAIN] (Score: 10) "Crashes, freezing e falta de estabilidade". A página pode enfatizar a tecnologia WebRTC P2P (<10ms), a arquitetura PWA e o processamento local do PromptNinja como diferenciais de estabilidade e confiabilidade.
+    *   **Público Alvo:** Streamers, Criadores de Conteúdo, Produtores de Eventos Online, Gamers.
 
-5.  **Keyword/Tema:** **Sincronização de Voz em Teleprompters: O Guia Essencial para Gravações Perfeitas**
-    -   **Justificativa:** Educa sobre o valor da funcionalidade PRO de controle por voz, que é um diferencial técnico. Ajuda os usuários a entenderem "por que" a sincronização de voz é importante e como o PromptNinja a implementa com baixa latência e precisão.
-    -   **Público Alvo:** Criadores de conteúdo, educadores, profissionais que buscam performance otimizada.
-    -   **Impacto vs Esforço:** Médio Impacto / Baixo Esforço
+5.  **Keyword/Tema:** **Teleprompter Profissional com Teste Grátis de 24h (Sem Cartão de Crédito)**
+    *   **Justificativa:** Aborda a [PATTERN] (Score: 9) "Demanda por trials sem cobrança automática" e o [PAIN] (Score: 9) sobre paywalls. Destaca a estratégia do PromptNinja de oferecer um trial sem fricção, usando **[CON-001] Comunicação de Valor Premium** como base.
+    *   **Público Alvo:** Usuários Profissionais Cautelosos, Pequenas Empresas, Usuários avessos a assinaturas complexas.
 
-6.  **Keyword/Tema:** **Teleprompter para Dispositivos Antigos e de Baixo Custo: A Solução PWA**
-    -   **Justificativa:** Atende diretamente à dor de compatibilidade e performance em hardware mais antigo ou limitado. Destaca o PromptNinja como uma solução PWA leve e acessível, ampliando o alcance para um público que pode ter sido excluído por aplicativos pesados ou requisitos de sistema.
-    -   **Público Alvo:** Usuários com tablets/smartphones antigos, pequenas empresas com orçamento limitado, estudantes.
-    -   **Impacto vs Esforço:** Médio Impacto / Baixo Esforço
+6.  **Keyword/Tema:** **Teleprompter OBS Studio com Controle Remoto e Gravação Integrada**
+    *   **Justificativa:** A página `teleprompter-obs-studio` já existe, mas esta pode ser uma versão mais aprofundada ou um "pillar content" que detalha as capacidades da **[DEV-001] Integração Nativa com OBS Studio**, focando em controle de gravação remoto e troca de cenas automática.
+    *   **Público Alvo:** Streamers, YouTubers, Criadores de Conteúdo que usam OBS Studio para produções avançadas.
 
-7.  **Keyword/Tema:** **Checklist Definitivo: Teste Seu Teleprompter Antes de Gravar ou Entrar ao Vivo**
-    -   **Justificativa:** Oferece valor prático ao usuário, aliviando a ansiedade de problemas técnicos em momentos cruciais. Posiciona o PromptNinja como uma ferramenta confiável e proativa, enquanto educa o usuário sobre como garantir uma experiência perfeita.
-    -   **Público Alvo:** Todos os usuários que dependem do teleprompter para eventos importantes, lives, gravações.
-    -   **Impacto vs Esforço:** Médio Impacto / Baixo Esforço
+7.  **Keyword/Tema:** **IA para Roteiros de Vídeo: Como Ferramentas de Teleprompter Transformam a Produção**
+    *   **Justificativa:** Embora a feature completa de IA para geração de roteiros seja um gap, esta página pode explorar a [PATTERN] (Score: 9) de "Integração IA para gerar/resumir roteiros" e posicionar o PromptNinja dentro da conversa de IA, destacando o Voice Control (PRO) como um recurso de IA já existente.
+    *   **Público Alvo:** Criadores de Conteúdo, Profissionais de Marketing Digital, Inovadores.
+
+8.  **Keyword/Tema:** **Gestão e Organização de Roteiros para Criadores e Equipes**
+    *   **Justificativa:** Aborda a [KEYWORD] (Score: 6) "leitura e gestão de roteiros" e a [PATTERN] (Score: 9) "alta procura por compartilhamento de roteiros em equipes". Mesmo sem um sistema de colaboração em nuvem, a página pode oferecer dicas e fluxos de trabalho para gerenciar roteiros no PromptNinja e preparar para futuras features de colaboração.
+    *   **Público Alvo:** Criadores de Conteúdo, Professores, Profissionais Corporativos, Equipes de Produção.
 
 ## 📈 Roadmap Recomendado (Próximos Passos)
 
-1.  **Priorização Interna de Funcionalidades:** Avaliar as "Descobertas de Funcionalidades" com a equipe de produto e engenharia, focando em:
-    *   **Impacto Potencial:** Qual delas resolve a maior dor ou abre o maior mercado?
-    *   **Viabilidade Técnica:** Qual o esforço de desenvolvimento (recursos, tempo)?
-    *   **Alinhamento Estratégico:** Qual fortalece melhor o USP e a visão de longo prazo do PromptNinja?
-    *   As funcionalidades de **Integração Nativa com OBS** e **Gerador de Legendas Automáticas** parecem ter um alto impacto com um esforço possivelmente gerenciável, alinhado à base tecnológica de IA e vídeo existente.
+**Fase 1: Implementação Rápida de Conteúdo e UX**
+1.  **Criar LP: Teleprompter com Legendas Automáticas para Vídeos (SRT/VTT)**: Alta prioridade, aproveita feature já pronta.
+2.  **Criar LP: Guia: Como Manter Contato Visual em Vídeos com Teleprompter (Sem Parecer Robótico)**: Aborda dor central, reforça valor de features existentes.
+3.  **Criar LP: Teleprompter Multi-Dispositivo: Controle Master/Slave para Co-apresentações**: Capitaliza FEAT-001, atinge nicho específico.
+4.  **Desenvolver Feature: Indicadores Visuais de Contato Visual**: Melhoria de UX com impacto direto na qualidade do vídeo final do usuário.
+5.  **Criar LP: Teleprompter Estável para Lives e Gravações (Sem Congelamentos)**: Ataca diretamente uma dor de estabilidade e reforça diferenciais técnicos.
 
-2.  **Criação de Conteúdo SEO:** Iniciar a produção das novas "Oportunidades de SEO Parasita / Novas Landing Pages", dando prioridade àquelas com "Alto Impacto / Baixo-Médio Esforço":
-    *   "Como Gerar Legendas (SRT) Automaticamente com Seu Teleprompter"
-    *   "Teleprompter com Overlay Transparente e Câmera Virtual para OBS Studio"
-    *   "Guia: Mantenha Contato Visual Natural em Vídeos com Teleprompter"
-    *   "Sincronização de Voz em Teleprompters: O Guia Essencial para Gravações Perfeitas"
-    *   Essas páginas podem começar a atrair tráfego enquanto as funcionalidades são desenvolvidas, e podem ser atualizadas com links diretos para as novas features quando lançadas.
+**Fase 2: Expansão de Conteúdo e Desenvolvimento de Features de Médio Esforço**
+1.  **Criar LP: Teleprompter Profissional com Teste Grátis de 24h (Sem Cartão de Crédito)**: Otimiza o funil de conversão e atrai usuários cautelosos.
+2.  **Aprimorar LP: Teleprompter OBS Studio com Controle Remoto e Gravação Integrada**: Aprofundar o conteúdo da página existente, capitalizando DEV-001.
+3.  **Desenvolver Feature: Colaboração e Compartilhamento Simplificado de Roteiros (versão 1.0 - local-first/export-import)**: Iniciar com funcionalidades que respeitem a privacidade, como exportação/importação fácil de arquivos de roteiro, para testar a demanda por colaboração.
+4.  **Desenvolver Feature: Funcionalidades para Produção de Eventos (Runorders/Playlists de Scripts)**: Iniciar o design e a arquitetura para gerenciamento de sequências de scripts.
 
-3.  **Validação de Gaps de Performance:** Investigar a fundo os relatos de "Crashes, freezing e falta de estabilidade" e "Rolagem instável". Embora o WebRTC seja robusto, a percepção do usuário é crucial. Isso pode envolver telemetria mais detalhada (se a privacidade permitir), testes em diferentes ambientes e dispositivos (incluindo mais antigos), e otimizações de código.
+**Fase 3: Inovação e Abertura de Novos Mercados (Alto Esforço)**
+1.  **Criar LP: IA para Roteiros de Vídeo: Como Ferramentas de Teleprompter Transformam a Produção**: Posicionamento estratégico para o futuro, mesmo que a feature completa de IA ainda esteja em desenvolvimento.
+2.  **Criar LP: Gestão e Organização de Roteiros para Criadores e Equipes**: Prepara o terreno para futuras features de colaboração, oferecendo valor imediato em organização.
+3.  **Desenvolver Feature: Integração de IA para Sugestões/Revisões de Roteiro (Client-Side ou Opt-in)**: Começar a explorar a viabilidade técnica e a UX para uma integração de IA que respeite a privacidade.
+4.  **Desenvolver Feature: Controles Hands-Free Expandidos para Operadores (Pedais/IP Web)**: Pesquisar e prototipar opções para controle mais avançado para operadores.
 
-4.  **Pesquisa de Mercado para Eventos/B2B:** Aprofundar a pesquisa sobre as necessidades de "Controle e Gerenciamento Multi-Teleprompter" e "Funcionalidades para Produção de Eventos". Isso pode incluir entrevistas com produtores de eventos, líderes de estúdios e usuários corporativos para detalhar requisitos e validar a demanda por features mais avançadas, antes de alocar recursos de desenvolvimento significativos.
+Este roadmap visa equilibrar o aproveitamento das conquistas recentes com a exploração de novas oportunidades de SEO e a resposta a demandas de funcionalidades-chave, sempre com um olho na performance e nos pilares do PromptNinja.

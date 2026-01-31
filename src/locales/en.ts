@@ -931,7 +931,7 @@ Paste your script here and customize your experience to start shining!`,
     ]
   },
   master: {
-    title: "MASTER",
+    title: "MASTER MODE",
     subtitle: "Control Multiple Teleprompters",
     exampleTitle: "Example Script",
     exampleContent: "Welcome to PromptNinja Event Mode!\n\nThis is your central hub.",

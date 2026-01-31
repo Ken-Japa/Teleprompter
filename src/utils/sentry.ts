@@ -22,6 +22,8 @@ export const initSentry = () => {
                 "Non-Error exception captured",
                 "usedContainerScopedDefaults", // Microsoft Clarity noise
                 "NotAllowedError: Permission was denied", // Gtag/Browser privacy noise
+                "Rejected", // Service worker registration noise
+                "peer-unavailable", // Expected P2P connection issues
             ],
 
             // Custom error handler before sending to Sentry

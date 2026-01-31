@@ -1,37 +1,13 @@
 # Backlog de Implementacao - PromptNinja
 
-### BACKLOG
-
-- [FEAT-001] Desenvolver funcionalidade de Controle e Gerenciamento Multi-Teleprompter para Eventos (Master/Receiver)
-  - Prioridade: Alta
-  - Status: [x] Concluído
-- [FEAT-002] Gerador de Legendas Automáticas (SRT/VTT) Pós-Gravação via IA
-  - Prioridade: Alta
-  - Status: [x] Concluído
-- [FEAT-003] Modo de Compatibilidade Otimizado (Lite Mode) para dispositivos antigos
-  - Prioridade: Média
-  - Status: [x] Cancelado
-- [SEO-001] Corrigir problema de H1 duplicado/ausente (Header vs Layout)
-  - Prioridade: Alta
-  - Status: [x] Concluído
-- [SEO-002] Otimizar Landing Pages: YouTube Scripts, WebRTC (<10ms) e Modo Músico
-  - Prioridade: Alta
-  - Status: [x] Concluído
-- [SEO-003] Implementar Linkagem Interna Inteligente (Clusters/Silagem)
-  - Prioridade: Alta
-  - Status: [x] Concluído
-- [SEO-004] Implementar Novas Landings: Eventos profissionais e Checklist Pré-Gravação
-  - Prioridade: Média
-  - Status: [x] Concluído
-- [TECH-001] Otimizar a integração de tecnologia P2P e recursos PRO (UX de Onboarding)
-  - Prioridade: Alta
-  - Status: [x] Concluído
-- [DEV-001] Implementar Integração Nativa com OBS Studio via WebSocket
-  - Prioridade: Alta
-  - Status: [x] Concluído
-- [DEV-002] Ferramentas de Diagnóstico e Teste de Performance Pré-Sessão
-  - Prioridade: Média
-  - Status: [x] Cancelado
-- [CON-001] Melhorar a comunicação do valor premium (Diferenciação clara Free vs Pro)
-  - Prioridade: Alta
-  - Status: [x] Concluído
+# BACKLOG
+- [BUG-001]: Corrigir erros críticos de aplicação | Prioridade: Crítica | Status: [ ] Pendente
+- [FEAT-002]: Implementar gatilhos inteligentes para expor funcionalidades premium | Prioridade: Alta | Status: [ ] Pendente
+- [SEO-003]: Otimizar landing pages para termos de cauda longa | Prioridade: Alta | Status: [ ] Pendente
+- [TECH-004]: Melhorar a experiência do usuário para reduzir a taxa de abandono | Prioridade: Média | Status: [ ] Pendente
+- [CONT-005]: Criar conteúdo de qualidade para atrair usuários qualificados | Prioridade: Média | Status: [ ] Pendente
+- [BUG-006]: Corrigir H1 duplicado na página de teleprompter para YouTubers | Prioridade: Alta | Status: [ ] Pendente
+- [SEO-007]: Implementar schema de "passo a passo" em guias relevantes | Prioridade: Baixa | Status: [ ] Pendente
+- [TECH-008]: Clarificar a diferença entre recursos gratuitos e PRO em todas as páginas | Prioridade: Alta | Status: [ ] Pendente
+- [CONT-009]: Adicionar seção de "Por que escolher o PromptNinja" destacando sua tecnologia e vantagens | Prioridade: Média | Status: [ ] Pendente
+- [BUG-010]: Rever e corrigir qualquer inconsistência entre o conteúdo e as funcionalidades do produto | Prioridade: Alta | Status: [ ] Pendente
