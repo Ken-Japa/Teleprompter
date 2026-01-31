@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import { Theme, PrompterSettings, RemoteActions } from "../../types";
 import { PROMPTER_DEFAULTS } from "../../config/constants";
-import { LaptopIcon, SmartphoneIcon } from "../ui/Icons";
+import { LaptopIcon, SmartphoneIcon, PlusIcon } from "../ui/Icons";
 import { SyncButton } from "../ui/SyncButton";
 import { ShareButton } from "../ui/ShareButton";
 
@@ -169,6 +169,31 @@ export const RemoteSettings: React.FC<RemoteSettingsProps> = ({ settings, action
                     <span className="text-sm font-medium text-slate-300">{t("common.refresh") || "Refresh Connection"}</span>
                     <SyncButton onSync={actions.handleRequestSync} className="w-10 h-10 bg-slate-800 hover:bg-slate-700" />
                 </div>
+            </div>
+
+            {/* Event Mode (Master) - Pro Feature */}
+            <div className="space-y-3">
+                <div className="text-sm text-amber-500 uppercase tracking-widest font-bold flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></div>
+                    {t("remote.proFeature") || "Recursos PRO"}
+                </div>
+                <button
+                    onClick={() => { window.location.hash = "master"; }}
+                    className="w-full glass-brand p-5 rounded-2xl border border-brand-500/30 flex items-center justify-between group hover:bg-brand-500/10 transition-all active:scale-[0.98]"
+                >
+                    <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 bg-brand-500/20 rounded-xl flex items-center justify-center text-brand-400 group-hover:scale-110 transition-transform">
+                            <LaptopIcon className="w-6 h-6" />
+                        </div>
+                        <div className="text-left">
+                            <div className="font-bold text-white leading-tight">Modo Evento</div>
+                            <div className="text-[10px] text-slate-400 font-medium">Controle múltiplos displays (Master)</div>
+                        </div>
+                    </div>
+                    <div className="p-2 rounded-lg bg-white/5 text-slate-400 group-hover:text-white transition-colors">
+                        <PlusIcon className="w-5 h-5" />
+                    </div>
+                </button>
             </div>
 
             {/* Share Section */}

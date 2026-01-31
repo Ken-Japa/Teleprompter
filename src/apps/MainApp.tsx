@@ -7,6 +7,7 @@ import { useInactivity } from "../hooks/useInactivity"; // Corrected path
 // Lazy load pages for performance optimization
 const Host = React.lazy(() => import("../pages/Host").then(module => ({ default: module.Host })));
 const Remote = React.lazy(() => import("../pages/Remote").then(module => ({ default: module.Remote })));
+const Master = React.lazy(() => import("../pages/Master").then(module => ({ default: module.Master })));
 const Landing = React.lazy(() => import("../pages/Landing").then(module => ({ default: module.Landing })));
 const ThankYou = React.lazy(() => import("../pages/ThankYou").then(module => ({ default: module.ThankYou })));
 
@@ -20,7 +21,7 @@ import { OfflineIndicator } from "../components/ui/OfflineIndicator";
 import { OnboardingDialog } from "../components/ui/OnboardingDialog";
 
 
-type ViewState = "LANDING" | "HOST" | "REMOTE" | "THANK_YOU" | SeoRouteKey;
+type ViewState = "LANDING" | "HOST" | "REMOTE" | "MASTER" | "THANK_YOU" | SeoRouteKey;
 
 const LoadingSpinner = () => (
     <div className="flex items-center justify-center h-screen bg-slate-950 text-white">
@@ -148,6 +149,11 @@ export const MainApp: React.FC = () => {
                 }
             }
 
+            if (hash.startsWith("#master")) {
+                setView("MASTER");
+                return;
+            }
+
             if (hash.startsWith("#app")) {
                 setView("HOST");
                 return;
@@ -203,6 +209,7 @@ export const MainApp: React.FC = () => {
             <OnboardingDialog isOpen={showOnboarding} onClose={handleOnboardingClose} />
             <Suspense fallback={<LoadingSpinner />}>
                 {view === "REMOTE" && <Remote hostId={remoteId} />}
+                {view === "MASTER" && <Master />}
                 {view === "LANDING" && <Landing onLaunch={launchApp} />}
                 {view === "THANK_YOU" && <ThankYou onLaunch={launchApp} />}
                 {view === "HOST" && <Host featureFlags={{ isMusicianModeDisabled: true }} />}

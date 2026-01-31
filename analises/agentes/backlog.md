@@ -7,7 +7,7 @@
   - Status: [ ] Pendente
 - [FEAT-002] Gerador de Legendas Automáticas (SRT/VTT) Pós-Gravação via IA
   - Prioridade: Alta
-  - Status: [ ] Pendente
+  - Status: [x] Concluído
 - [FEAT-003] Modo de Compatibilidade Otimizado (Lite Mode) para dispositivos antigos
   - Prioridade: Média
   - Status: [x] Cancelado
