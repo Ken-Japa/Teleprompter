@@ -81,7 +81,8 @@ export const useEditorLogic = ({ text, setText }: UseEditorLogicProps) => {
         textarea.focus();
         textarea.setSelectionRange(start, end);
 
-        // Improved scroll into view
+        // Improved scroll into view using Visual Viewport if available
+        const viewportHeight = window.visualViewport ? window.visualViewport.height : textarea.clientHeight;
         const computedStyle = window.getComputedStyle(textarea);
         const lineHeight = parseInt(computedStyle.lineHeight) || 32;
         const padding = parseInt(computedStyle.paddingTop) || 0;
@@ -91,15 +92,31 @@ export const useEditorLogic = ({ text, setText }: UseEditorLogicProps) => {
         const lines = textBefore.split("\n").length;
 
         const targetScroll = (lines - 1) * lineHeight + padding;
-        const containerHeight = textarea.clientHeight;
 
         // If the target is NOT already visible in the middle-ish area, scroll to it
         const currentScroll = textarea.scrollTop;
-        if (targetScroll < currentScroll || targetScroll > (currentScroll + containerHeight - lineHeight * 2)) {
-            // Center the found text
-            textarea.scrollTop = targetScroll - (containerHeight / 2) + (lineHeight / 2);
+        if (targetScroll < currentScroll || targetScroll > (currentScroll + viewportHeight - lineHeight * 2)) {
+            // Center the found text within the VISIBLE viewport
+            textarea.scrollTop = targetScroll - (viewportHeight / 2) + (lineHeight / 2);
         }
     }, []);
+
+    // Effect to handle keyboard appearance (Visual Viewport resize)
+    useEffect(() => {
+        const handler = () => {
+            // If focused, re-trigger the scroll logic to ensure the cursor is still visible
+            if (document.activeElement === textAreaRef.current && textAreaRef.current) {
+                const start = textAreaRef.current.selectionStart;
+                const end = textAreaRef.current.selectionEnd;
+                handleSelectRange(start, end);
+            }
+        };
+
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', handler);
+            return () => window.visualViewport?.removeEventListener('resize', handler);
+        }
+    }, [handleSelectRange]);
 
     const handleClear = useCallback(() => {
         if (window.confirm("Tem certeza que deseja apagar todo o texto?")) {
