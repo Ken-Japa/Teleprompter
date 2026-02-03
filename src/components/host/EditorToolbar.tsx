@@ -66,7 +66,7 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, o
     return (
         // Wrapper replaces S.FormattingToolbar to allow custom sticky logic
         // Desktop: Sticky Top (whole bar). Mobile: Static (children handle sticky).
-        <div className="md:sticky md:top-0 md:z-30 w-full bg-slate-950/80 backdrop-blur-xl border-b border-white/5 md:shadow-lg transition-all duration-300">
+        <div className="sticky top-0 z-50 md:z-30 w-full bg-slate-950/80 backdrop-blur-xl border-b border-white/5 md:shadow-lg transition-all duration-300">
 
             {/* Flex Container */}
             <div className="flex flex-col md:flex-row items-center md:gap-4 w-full md:px-6 md:py-3 max-w-4xl mx-4 mb-2">
