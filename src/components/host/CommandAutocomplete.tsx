@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useMemo } from 'react';
+import React, { useRef } from 'react';
 import { useTranslation } from '../../hooks/useTranslation';
 
 export interface AutocompleteSuggestion {
@@ -9,52 +9,25 @@ export interface AutocompleteSuggestion {
 }
 
 interface CommandAutocompleteProps {
-    query: string;
+    suggestions: AutocompleteSuggestion[];
     position: { top: number; left: number };
     activeIndex: number;
     onSelect: (suggestion: AutocompleteSuggestion) => void;
     onClose: () => void;
-    onResultCount?: (count: number) => void;
 }
 
 export const CommandAutocomplete: React.FC<CommandAutocompleteProps> = ({
-    query,
+    suggestions,
     position,
     activeIndex,
     onSelect,
-    onClose,
-    onResultCount
+    onClose
 }) => {
     const { t } = useTranslation();
     const containerRef = useRef<HTMLDivElement>(null);
 
-    // Dynamic suggestions based on current language
-    const translatedCommands: AutocompleteSuggestion[] = useMemo(() => [
-        { id: 'speed', label: t('host.autocomplete.suggestions.speed.label'), description: t('host.autocomplete.suggestions.speed.desc'), command: '[SPEED ' },
-        { id: 'pause', label: t('host.autocomplete.suggestions.pause.label'), description: t('host.autocomplete.suggestions.pause.desc'), command: '[PAUSE ' },
-        { id: 'stop', label: t('host.autocomplete.suggestions.stop.label'), description: t('host.autocomplete.suggestions.stop.desc'), command: '[STOP]' },
-        { id: 'loop_start', label: t('host.autocomplete.suggestions.loop_start.label'), description: t('host.autocomplete.suggestions.loop_start.desc'), command: '[LOOP START]' },
-        { id: 'loop_end', label: t('host.autocomplete.suggestions.loop_end.label'), description: t('host.autocomplete.suggestions.loop_end.desc'), command: '[LOOP ' },
-        { id: 'part', label: t('host.autocomplete.suggestions.part.label'), description: t('host.autocomplete.suggestions.part.desc'), command: '[PART ' },
-        { id: 'bpm', label: t('host.autocomplete.suggestions.bpm.label'), description: t('host.autocomplete.suggestions.bpm.desc'), command: '[BPM ' },
-        { id: 'count', label: t('host.autocomplete.suggestions.count.label'), description: t('host.autocomplete.suggestions.count.desc'), command: '[COUNT ' },
-        { id: 'rest', label: t('host.autocomplete.suggestions.rest.label'), description: t('host.autocomplete.suggestions.rest.desc'), command: '[REST ' },
-    ], [t]);
-
-    const [filtered, setFiltered] = useState<AutocompleteSuggestion[]>(translatedCommands);
-
-    useEffect(() => {
-        const q = query.toLowerCase().trim();
-        const results = !q ? translatedCommands : translatedCommands.filter(c =>
-            c.label.toLowerCase().includes(q) ||
-            c.id.toLowerCase().includes(q) ||
-            c.command.toLowerCase().includes(q)
-        );
-        setFiltered(results);
-        onResultCount?.(results.length);
-    }, [query, onResultCount, translatedCommands]);
-
-    useEffect(() => {
+    // Close when clicking outside
+    React.useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
             if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
                 onClose();
@@ -64,7 +37,7 @@ export const CommandAutocomplete: React.FC<CommandAutocompleteProps> = ({
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, [onClose]);
 
-    if (filtered.length === 0) return null;
+    if (suggestions.length === 0) return null;
 
     return (
         <div
@@ -79,7 +52,7 @@ export const CommandAutocomplete: React.FC<CommandAutocompleteProps> = ({
                 <div className="px-3 py-2 text-[10px] uppercase tracking-widest text-slate-500 font-bold border-b border-white/5 mb-1">
                     {t('host.autocomplete.title')}
                 </div>
-                {filtered.map((suggestion, index) => (
+                {suggestions.map((suggestion, index) => (
                     <button
                         key={suggestion.id}
                         onClick={() => onSelect(suggestion)}
@@ -114,7 +87,7 @@ export const CommandAutocomplete: React.FC<CommandAutocompleteProps> = ({
                     </span>
                 </div>
                 <span className="text-[9px] text-slate-600 font-mono">
-                    {filtered.length} {t('host.autocomplete.results')}
+                    {suggestions.length} {t('host.autocomplete.results')}
                 </span>
             </div>
         </div>

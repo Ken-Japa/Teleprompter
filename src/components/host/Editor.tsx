@@ -83,8 +83,8 @@ export const Editor: React.FC<EditorProps> = ({
     const {
         localText, textAreaRef, handleChange, handleInsertTag, handleClear,
         handleSelectRange, handleUndo, handleUpdateText, canUndo, handleKeyDown,
-        autocompleteActive, autocompleteQuery, autocompletePos, autocompleteIndex,
-        setFilteredCount, handleAutocompleteSelect, setAutocompleteActive
+        autocompleteActive, autocompletePos, autocompleteIndex,
+        handleAutocompleteSelect, autocompleteCommands, setAutocompleteActive
     } = useEditorLogic({
         text,
         setText,
@@ -211,12 +211,11 @@ export const Editor: React.FC<EditorProps> = ({
                     )}
                     {autocompleteActive && (
                         <CommandAutocomplete
-                            query={autocompleteQuery}
+                            suggestions={autocompleteCommands}
                             position={autocompletePos}
                             activeIndex={autocompleteIndex}
                             onSelect={handleAutocompleteSelect}
                             onClose={() => setAutocompleteActive(false)}
-                            onResultCount={setFilteredCount}
                         />
                     )}
                 </div>
