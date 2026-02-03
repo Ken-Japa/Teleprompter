@@ -183,6 +183,8 @@ export function trackError(errorType: string, message: string): void {
         message === "undefined" ||
         msgLower.includes("rejected") ||
         message === "Rejected" ||
+        msgLower.includes("customevent") || // Filter generic unhandled rejection noise
+        msgLower.includes("@context") || // Filter JSON-LD third-party parsing noise
         msgLower.includes("peer-unavailable") ||
         msgLower.includes("unknown error") ||
         msgLower.includes("unknown rejection") ||

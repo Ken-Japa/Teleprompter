@@ -24,6 +24,8 @@ export const initSentry = () => {
                 "NotAllowedError: Permission was denied", // Gtag/Browser privacy noise
                 "Rejected", // Service worker registration noise
                 "peer-unavailable", // Expected P2P connection issues
+                "r[\"@context\"].toLowerCase", // Third-party JSON-LD noise
+                "CustomEvent", // Generic unhandled rejection noise
             ],
 
             // Custom error handler before sending to Sentry
