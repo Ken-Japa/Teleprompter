@@ -737,6 +737,13 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
       TOGGLE_WIDGET: "Mini-Ventana (PiP)",
       NEXT_PART: "Avanzar Parte",
       PREVIOUS_PART: "Volver Parte",
+      FORMAT_BOLD: "Negrita",
+      FORMAT_ITALIC: "Cursiva",
+      FORMAT_UNDERLINE: "Subrayado",
+      FORMAT_RED: "Color: Rojo",
+      FORMAT_YELLOW: "Color: Amarillo",
+      FORMAT_GREEN: "Color: Verde",
+      FORMAT_BLUE: "Color: Azul",
     },
   },
   voice_analytics: {

@@ -79,7 +79,7 @@ export const Editor: React.FC<EditorProps> = ({
     const showStartHint = isFirstVisit && !user; // Only show if first visit AND user is not logged in
 
     // Separation of Concerns: Logic is now in the hook
-    const { localText, textAreaRef, handleChange, handleInsertTag, handleClear, handleSelectRange, handleUndo, handleUpdateText, canUndo } = useEditorLogic({
+    const { localText, textAreaRef, handleChange, handleInsertTag, handleClear, handleSelectRange, handleUndo, handleUpdateText, canUndo, handleKeyDown } = useEditorLogic({
         text,
         setText,
     });
@@ -192,12 +192,14 @@ export const Editor: React.FC<EditorProps> = ({
                             primaryLanguage={bilingualTexts?.primaryLanguage}
                             secondaryLanguage={bilingualTexts?.secondaryLanguage}
                             primaryTextAreaRef={textAreaRef}
+                            onKeyDown={handleKeyDown}
                         />
                     ) : (
                         <S.EditorTextArea
                             ref={textAreaRef}
                             value={localText}
                             onChange={handleChange}
+                            onKeyDown={handleKeyDown}
                             placeholder={t("host.editorPlaceholder")}
                         />
                     )}

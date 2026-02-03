@@ -235,6 +235,14 @@ export enum HotkeyAction {
     TOGGLE_HUD = "TOGGLE_HUD",
     PREVIOUS_PART = "PREVIOUS_PART",
     NEXT_PART = "NEXT_PART",
+    // Editor Formatting (PRO)
+    FORMAT_BOLD = "FORMAT_BOLD",
+    FORMAT_ITALIC = "FORMAT_ITALIC",
+    FORMAT_UNDERLINE = "FORMAT_UNDERLINE",
+    FORMAT_RED = "FORMAT_RED",
+    FORMAT_YELLOW = "FORMAT_YELLOW",
+    FORMAT_GREEN = "FORMAT_GREEN",
+    FORMAT_BLUE = "FORMAT_BLUE",
 }
 
 export type HotkeyConfig = Record<HotkeyAction, string>;

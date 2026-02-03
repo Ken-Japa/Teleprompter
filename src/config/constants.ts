@@ -62,6 +62,14 @@ export const HOTKEY_DEFAULTS: Record<string, string> = {
     TOGGLE_WIDGET: "KeyW",
     PREVIOUS_PART: "ArrowLeft",
     NEXT_PART: "ArrowRight",
+    // Editor Formatting (PRO)
+    FORMAT_BOLD: "KeyB",
+    FORMAT_ITALIC: "KeyI",
+    FORMAT_UNDERLINE: "KeyU",
+    FORMAT_RED: "KeyR",
+    FORMAT_YELLOW: "KeyY",
+    FORMAT_GREEN: "KeyG",
+    FORMAT_BLUE: "KeyB", // Used with modifier (see logic)
 };
 
 export const MIDI_DEFAULTS: Record<string, { type: "note" | "cc", value: number } | null> = {

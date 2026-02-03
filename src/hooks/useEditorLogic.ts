@@ -1,5 +1,8 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { insertTagInText } from "../utils/editorHelpers";
+import { useLocalStorage } from "./useLocalStorage";
+import { HotkeyConfig } from "../types";
+import { HOTKEY_DEFAULTS } from "../config/constants";
 
 interface UseEditorLogicProps {
     text: string;
@@ -10,6 +13,9 @@ export const useEditorLogic = ({ text, setText }: UseEditorLogicProps) => {
     // Local state for immediate UI feedback
     const [localText, setLocalText] = useState(text);
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
+    // Load hotkey config
+    const [customHotkeys] = useLocalStorage<HotkeyConfig>("neonprompt_hotkeys_v1", HOTKEY_DEFAULTS as unknown as HotkeyConfig);
 
     // Sync from parent if prop changes externally (e.g. initial load or reset)
     useEffect(() => {
@@ -127,6 +133,51 @@ export const useEditorLogic = ({ text, setText }: UseEditorLogicProps) => {
         }
     }, [localText, setText]);
 
+    const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        const isMod = e.ctrlKey || e.metaKey;
+        const isAlt = e.altKey;
+        const isShift = e.shiftKey;
+
+        // Check for formatting shortcuts (usually requires Mod)
+        if (isMod) {
+            let tag = "";
+            const key = e.code;
+
+            if (key === customHotkeys.FORMAT_BOLD) {
+                // If Shift or Alt is pressed with B, use Blue instead of Bold
+                // This logic preserves the user's special request while allowing customization of the base key
+                if (isShift || isAlt) {
+                    tag = "b";
+                } else {
+                    tag = "bold";
+                }
+            } else if (key === customHotkeys.FORMAT_ITALIC) {
+                tag = "i";
+            } else if (key === customHotkeys.FORMAT_UNDERLINE) {
+                tag = "u";
+            } else if (key === customHotkeys.FORMAT_RED) {
+                // Specifically prevent refresh for Red shortcut if it's Ctrl+R
+                if (key === "KeyR") e.preventDefault();
+                tag = "r";
+            } else if (key === customHotkeys.FORMAT_YELLOW) {
+                tag = "y";
+            } else if (key === customHotkeys.FORMAT_GREEN) {
+                tag = "g";
+            } else if (key === customHotkeys.FORMAT_BLUE) {
+                tag = "b";
+            }
+
+            if (tag) {
+                e.preventDefault();
+                handleInsertTag(tag);
+            }
+        } else if (isAlt && e.code === customHotkeys.FORMAT_RED) {
+            // Support user's Option+R request for red
+            e.preventDefault();
+            handleInsertTag("r");
+        }
+    }, [handleInsertTag, customHotkeys]);
+
     return {
         localText,
         textAreaRef,
@@ -136,6 +187,7 @@ export const useEditorLogic = ({ text, setText }: UseEditorLogicProps) => {
         handleSelectRange,
         handleUndo,
         handleUpdateText,
+        handleKeyDown,
         canUndo: history.length > 0,
     };
 };

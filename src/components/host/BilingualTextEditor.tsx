@@ -13,6 +13,7 @@ interface BilingualTextEditorProps {
     primaryLanguage?: string;
     secondaryLanguage?: string;
     primaryTextAreaRef?: React.RefObject<HTMLTextAreaElement>;
+    onKeyDown?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
 }
 
 
@@ -24,7 +25,8 @@ export const BilingualTextEditor: React.FC<BilingualTextEditorProps> = ({
     onVoiceTrackLanguageChange,
     primaryLanguage = 'pt',
     secondaryLanguage = 'en',
-    primaryTextAreaRef
+    primaryTextAreaRef,
+    onKeyDown
 }) => {
     const { t } = useTranslation();
 
@@ -71,6 +73,7 @@ export const BilingualTextEditor: React.FC<BilingualTextEditorProps> = ({
                     ref={primaryTextAreaRef}
                     value={primaryText}
                     onChange={(e) => handleTextChange(e.target.value, secondaryText)}
+                    onKeyDown={onKeyDown}
                     placeholder={t("bilingual.primaryPlaceholder")}
                 />
             </div>
@@ -108,6 +111,7 @@ export const BilingualTextEditor: React.FC<BilingualTextEditorProps> = ({
                 <S.EditorTextArea
                     value={secondaryText}
                     onChange={(e) => handleTextChange(primaryText, e.target.value)}
+                    onKeyDown={onKeyDown}
                     placeholder={t("bilingual.secondaryPlaceholder")}
                 />
             </div>
