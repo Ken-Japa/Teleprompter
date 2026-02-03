@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { insertTagInText } from "../utils/editorHelpers";
+import { insertTagInText, getTextCursorPosition } from "../utils/editorHelpers";
 import { useLocalStorage } from "./useLocalStorage";
+import { AutocompleteSuggestion } from "../components/host/CommandAutocomplete";
 import { HotkeyConfig } from "../types";
 import { HOTKEY_DEFAULTS } from "../config/constants";
 
@@ -13,6 +14,13 @@ export const useEditorLogic = ({ text, setText }: UseEditorLogicProps) => {
     // Local state for immediate UI feedback
     const [localText, setLocalText] = useState(text);
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
+    // Autocomplete State
+    const [autocompleteActive, setAutocompleteActive] = useState(false);
+    const [autocompleteQuery, setAutocompleteQuery] = useState("");
+    const [autocompletePos, setAutocompletePos] = useState({ top: 0, left: 0 });
+    const [autocompleteIndex, setAutocompleteIndex] = useState(0);
+    const [filteredCount, setFilteredCount] = useState(0);
 
     // Load hotkey config
     const [customHotkeys] = useLocalStorage<HotkeyConfig>("neonprompt_hotkeys_v1", HOTKEY_DEFAULTS as unknown as HotkeyConfig);
@@ -34,7 +42,29 @@ export const useEditorLogic = ({ text, setText }: UseEditorLogicProps) => {
     }, [localText, setText, text]);
 
     const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setLocalText(e.target.value);
+        const value = e.target.value;
+        const curPos = e.target.selectionStart;
+        setLocalText(value);
+
+        // Autocomplete detection logic
+        const textBeforeCursor = value.substring(0, curPos);
+        const lastOpenBracket = textBeforeCursor.lastIndexOf("[");
+        const textAfterLastBracket = textBeforeCursor.substring(lastOpenBracket + 1);
+
+        // If there's an open bracket and no closing bracket has been typed since
+        if (lastOpenBracket !== -1 && !textAfterLastBracket.includes("]")) {
+            setAutocompleteActive(true);
+            setAutocompleteQuery(textAfterLastBracket);
+            setAutocompleteIndex(0);
+
+            // Calculate position
+            if (textAreaRef.current) {
+                const pos = getTextCursorPosition(textAreaRef.current);
+                setAutocompletePos({ top: pos.top, left: pos.left });
+            }
+        } else {
+            setAutocompleteActive(false);
+        }
     }, []);
 
     // History for Undo
@@ -134,6 +164,31 @@ export const useEditorLogic = ({ text, setText }: UseEditorLogicProps) => {
     }, [localText, setText]);
 
     const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        if (autocompleteActive) {
+            if (e.key === "ArrowDown") {
+                e.preventDefault();
+                setAutocompleteIndex(prev => (prev + 1) % (filteredCount || 1));
+                return;
+            }
+            if (e.key === "ArrowUp") {
+                e.preventDefault();
+                setAutocompleteIndex(prev => (prev - 1 + (filteredCount || 1)) % (filteredCount || 1));
+                return;
+            }
+            if (e.key === "Enter" || e.key === "Tab") {
+                // This will be handled by the component callback, 
+                // but we might want to trigger it from here if we want full keyboard control
+                // For now, let's let the component handle the selection via a ref or similar if needed,
+                // or we can pass a 'triggerSelect' event.
+                // Alternatively, we'll implement a handleAutocompleteSelect here.
+            }
+            if (e.key === "Escape") {
+                e.preventDefault();
+                setAutocompleteActive(false);
+                return;
+            }
+        }
+
         const isMod = e.ctrlKey || e.metaKey;
         const isAlt = e.altKey;
         const isShift = e.shiftKey;
@@ -178,9 +233,40 @@ export const useEditorLogic = ({ text, setText }: UseEditorLogicProps) => {
         }
     }, [handleInsertTag, customHotkeys]);
 
+    const handleAutocompleteSelect = useCallback((suggestion: AutocompleteSuggestion) => {
+        const textarea = textAreaRef.current;
+        if (!textarea) return;
+
+        const val = textarea.value;
+        const curPos = textarea.selectionStart;
+        const textBeforeCursor = val.substring(0, curPos);
+        const lastOpenBracket = textBeforeCursor.lastIndexOf("[");
+
+        const newText = val.substring(0, lastOpenBracket) + suggestion.command + val.substring(curPos);
+        const newCursorPos = lastOpenBracket + suggestion.command.length;
+
+        setLocalText(newText);
+        setAutocompleteActive(false);
+
+        setTimeout(() => {
+            if (textAreaRef.current) {
+                textAreaRef.current.focus();
+                textAreaRef.current.setSelectionRange(newCursorPos, newCursorPos);
+            }
+        }, 0);
+    }, []);
+
     return {
         localText,
         textAreaRef,
+        autocompleteActive,
+        autocompleteQuery,
+        autocompletePos,
+        autocompleteIndex,
+        setAutocompleteIndex,
+        setFilteredCount,
+        handleAutocompleteSelect,
+        setAutocompleteActive,
         handleChange,
         handleInsertTag,
         handleClear,

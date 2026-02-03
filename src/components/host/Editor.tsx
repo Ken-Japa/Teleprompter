@@ -14,6 +14,7 @@ import { GoogleAuthButton } from "../ui/GoogleAuthButton";
 import { ScriptManager } from "./ScriptManager";
 import { Script } from "../../hooks/useScriptStorage";
 import { PrompterFeatureFlags } from "../../hooks/usePrompterSettings";
+import { CommandAutocomplete } from "./CommandAutocomplete";
 
 interface EditorProps {
     text: string;
@@ -79,7 +80,12 @@ export const Editor: React.FC<EditorProps> = ({
     const showStartHint = isFirstVisit && !user; // Only show if first visit AND user is not logged in
 
     // Separation of Concerns: Logic is now in the hook
-    const { localText, textAreaRef, handleChange, handleInsertTag, handleClear, handleSelectRange, handleUndo, handleUpdateText, canUndo, handleKeyDown } = useEditorLogic({
+    const {
+        localText, textAreaRef, handleChange, handleInsertTag, handleClear,
+        handleSelectRange, handleUndo, handleUpdateText, canUndo, handleKeyDown,
+        autocompleteActive, autocompleteQuery, autocompletePos, autocompleteIndex,
+        setFilteredCount, handleAutocompleteSelect, setAutocompleteActive
+    } = useEditorLogic({
         text,
         setText,
     });
@@ -201,6 +207,16 @@ export const Editor: React.FC<EditorProps> = ({
                             onChange={handleChange}
                             onKeyDown={handleKeyDown}
                             placeholder={t("host.editorPlaceholder")}
+                        />
+                    )}
+                    {autocompleteActive && (
+                        <CommandAutocomplete
+                            query={autocompleteQuery}
+                            position={autocompletePos}
+                            activeIndex={autocompleteIndex}
+                            onSelect={handleAutocompleteSelect}
+                            onClose={() => setAutocompleteActive(false)}
+                            onResultCount={setFilteredCount}
                         />
                     )}
                 </div>

@@ -425,6 +425,23 @@ Aligned perfectly`,
       italic: "Italic",
       underline: "Underline",
     },
+    autocomplete: {
+      title: "Suggested Commands",
+      navigate: "Navigate",
+      select: "Select",
+      results: "results",
+      suggestions: {
+        speed: { label: "SPEED", desc: "Change scroll speed (Ex: [SPEED 5])" },
+        pause: { label: "PAUSE", desc: "Pause for X seconds (Ex: [PAUSE 5])" },
+        stop: { label: "STOP", desc: "Stop scrolling (Ex: [STOP])" },
+        loop_start: { label: "LOOP START", desc: "Start a repeat section" },
+        loop_end: { label: "LOOP END", desc: "End loop with X iterations" },
+        part: { label: "PART", desc: "Mark a script section" },
+        bpm: { label: "BPM", desc: "Adjust BPM (Ex: [BPM 120] or [BPM AUTO])" },
+        count: { label: "COUNT", desc: "Countdown timer (Ex: [COUNT 10])" },
+        rest: { label: "REST", desc: "Rest time (Ex: [REST 15])" },
+      }
+    },
     defaultText: `Welcome to PromptNinja.
 
 Click on PLAY and read looking at the camera.

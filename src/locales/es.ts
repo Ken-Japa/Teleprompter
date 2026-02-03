@@ -434,6 +434,23 @@ Perfectamente alineados`,
       italic: "Itálico",
       underline: "Subrayado",
     },
+    autocomplete: {
+      title: "Comandos Sugeridos",
+      navigate: "Navegar",
+      select: "Selecionar",
+      results: "resultados",
+      suggestions: {
+        speed: { label: "VELOCIDAD", desc: "Cambia la velocidad (Ej: [SPEED 5])" },
+        pause: { label: "PAUSA", desc: "Pausa por X segundos (Ex: [PAUSE 5])" },
+        stop: { label: "PARAR", desc: "Detiene el desplazamiento (Ex: [STOP])" },
+        loop_start: { label: "LOOP INICIO", desc: "Inicia un tramo de repetición" },
+        loop_end: { label: "LOOP FIN", desc: "Termina el bucle con X vueltas" },
+        part: { label: "PARTE", desc: "Marca una división del guion" },
+        bpm: { label: "BPM", desc: "Ajusta el BPM (Ej: [BPM 120] o [BPM AUTO])" },
+        count: { label: "CONTEO", desc: "Temporizador regresivo (Ej: [COUNT 10])" },
+        rest: { label: "DESCANSO", desc: "Tiempo de intervalo (Ej: [REST 15])" },
+      }
+    },
     defaultText: `Bienvenido a PromptNinja.
 
 Haz clic en REPRODUCIR y lee mientras miras a la cámara.
