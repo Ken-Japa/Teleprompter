@@ -1,6 +1,9 @@
 import React from 'react';
 import * as S from './Styled';
 import { useTranslation } from '../../hooks/useTranslation';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { HOTKEY_DEFAULTS } from '../../config/constants';
+import { formatHotkeyForDisplay } from '../../utils/hotkeyUtils';
 
 interface TutorialModalProps {
   isOpen: boolean;
@@ -9,30 +12,24 @@ interface TutorialModalProps {
 
 export const TutorialModal: React.FC<TutorialModalProps> = ({ isOpen, onClose }) => {
   const { t } = useTranslation();
+  const [customHotkeys] = useLocalStorage("customShortcuts", HOTKEY_DEFAULTS);
 
   const shortcuts = [
-    { action: 'TOGGLE_PLAY', keys: ["Space", "Enter", "PgDn"] },
-    { action: 'RESET', keys: ["R", "PgUp"] },
-    { action: 'SPEED_UP', keys: ["↑"] },
-    { action: 'SPEED_DOWN', keys: ["↓"] },
-    { action: 'FONT_INCREASE', keys: ["+"] },
-    { action: 'FONT_DECREASE', keys: ["-"] },
-    { action: 'TOGGLE_MIRROR', keys: ["M"] },
-    { action: 'TOGGLE_FLIP', keys: ["V"] },
-    { action: 'TOGGLE_FOCUS', keys: ["F"] },
-    { action: 'TOGGLE_HUD', keys: ["H"] },
-    { action: 'TOGGLE_CAMERA', keys: ["C"] },
-    { action: 'TOGGLE_WIDGET', keys: ["W"] },
-    { action: 'NEXT_PART', keys: ["→", "End"] },
-    { action: 'PREVIOUS_PART', keys: ["←", "Home"] },
+    { action: 'TOGGLE_PLAY', keys: [formatHotkeyForDisplay(customHotkeys.TOGGLE_PLAY)] },
+    { action: 'RESET', keys: [formatHotkeyForDisplay(customHotkeys.RESET)] },
+    { action: 'SPEED_UP', keys: [formatHotkeyForDisplay(customHotkeys.SPEED_UP)] },
+    { action: 'SPEED_DOWN', keys: [formatHotkeyForDisplay(customHotkeys.SPEED_DOWN)] },
+    { action: 'FONT_INCREASE', keys: [formatHotkeyForDisplay(customHotkeys.FONT_INCREASE)] },
+    { action: 'FONT_DECREASE', keys: [formatHotkeyForDisplay(customHotkeys.FONT_DECREASE)] },
+    { action: 'TOGGLE_MIRROR', keys: [formatHotkeyForDisplay(customHotkeys.TOGGLE_MIRROR)] },
+    { action: 'FORMAT_BOLD', keys: [formatHotkeyForDisplay(customHotkeys.FORMAT_BOLD)] },
+    { action: 'FORMAT_ITALIC', keys: [formatHotkeyForDisplay(customHotkeys.FORMAT_ITALIC)] },
+    { action: 'FORMAT_UNDERLINE', keys: [formatHotkeyForDisplay(customHotkeys.FORMAT_UNDERLINE)] },
+    { action: 'FORMAT_RED', keys: [formatHotkeyForDisplay(customHotkeys.FORMAT_RED)] },
+    { action: 'FORMAT_YELLOW', keys: [formatHotkeyForDisplay(customHotkeys.FORMAT_YELLOW)] },
+    { action: 'FORMAT_GREEN', keys: [formatHotkeyForDisplay(customHotkeys.FORMAT_GREEN)] },
+    { action: 'FORMAT_BLUE', keys: [formatHotkeyForDisplay(customHotkeys.FORMAT_BLUE)] },
     { action: 'EXIT', keys: ["Esc"] },
-    { action: 'FORMAT_BOLD', keys: ["Ctrl+B"] },
-    { action: 'FORMAT_ITALIC', keys: ["Ctrl+I"] },
-    { action: 'FORMAT_UNDERLINE', keys: ["Ctrl+U"] },
-    { action: 'FORMAT_RED', keys: ["Ctrl+E"] },
-    { action: 'FORMAT_YELLOW', keys: ["Ctrl+K"] },
-    { action: 'FORMAT_GREEN', keys: ["Ctrl+Q"] },
-    { action: 'FORMAT_BLUE', keys: ["Ctrl+M"] },
   ];
 
   return (
