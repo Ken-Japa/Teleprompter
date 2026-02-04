@@ -202,7 +202,7 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
                         </button>
 
                         {/* Stop & Voice Buttons */}
-                        <div className="flex gap-2 h-14 items-center">
+                        <div className="flex gap-2 h-14 items-center justify-center">
                             {/* Recording Controls Group */}
                             <div className={`flex items-center ${hasRecordedData || isRecording ? "w-28 border-red-500/50" : "w-14 border-slate-700"} h-full bg-slate-800/50 rounded-2xl border p-1 gap-1 transition-all`}>
                                 {hasRecordedData ? (
@@ -221,25 +221,27 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
                                             title="Record New"
                                             aria-label="Discard and Record New"
                                         >
-                                            <div className={`w-3 h-3 rounded-full bg-red-500 ${isRecording ? "animate-pulse opacity-100" : "opacity-40"}`}></div>
+                                            <div className={`w-4 h-4 rounded-full bg-red-500 ${isRecording ? "animate-pulse opacity-100" : "opacity-40"}`}></div>
                                         </button>
                                     </>
                                 ) : (
                                     <>
-                                        <button
-                                            onClick={actions.handleToggleRecordingMode}
-                                            className={`w-8 h-full rounded-xl hover:bg-white/10 text-slate-400 flex items-center justify-center transition-all ${isRecording ? "opacity-100" : "opacity-0 w-0 overflow-hidden"}`}
-                                            title={settings?.recordingMode === "remote" ? "Record on Remote" : "Record on Host"}
-                                            aria-label={settings?.recordingMode === "remote" ? "Switch to Host Recording" : "Switch to Remote Recording"}
-                                        >
-                                            {settings?.recordingMode === "remote" ? <SmartphoneIcon className="w-4 h-4" /> : <LaptopIcon className="w-4 h-4" />}
-                                        </button>
+                                        {isRecording && (
+                                            <button
+                                                onClick={actions.handleToggleRecordingMode}
+                                                className="w-8 h-full rounded-xl hover:bg-white/10 text-slate-400 flex items-center justify-center transition-all opacity-100"
+                                                title={settings?.recordingMode === "remote" ? "Record on Remote" : "Record on Host"}
+                                                aria-label={settings?.recordingMode === "remote" ? "Switch to Host Recording" : "Switch to Remote Recording"}
+                                            >
+                                                {settings?.recordingMode === "remote" ? <SmartphoneIcon className="w-4 h-4" /> : <LaptopIcon className="w-4 h-4" />}
+                                            </button>
+                                        )}
                                         <button
                                             onClick={() => actions.handleToggleRecording()}
                                             className={`flex-1 h-full rounded-xl flex items-center justify-center gap-1 transition-all ${isRecording ? "bg-red-500 text-white animate-pulse" : "hover:bg-white/5"}`}
                                             aria-label={isRecording ? "Stop Recording" : "Start Recording"}
                                         >
-                                            <div className={`w-3 h-3 rounded-full transition-all ${isRecording ? "bg-white rounded-sm scale-75" : "bg-red-500 opacity-40"}`}></div>
+                                            <div className={`w-4 h-4 rounded-full transition-all ${isRecording ? "bg-white rounded-sm scale-75" : "bg-red-500 opacity-40"}`}></div>
                                         </button>
                                     </>
                                 )}
