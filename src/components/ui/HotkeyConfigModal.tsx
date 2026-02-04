@@ -6,6 +6,7 @@ import { HOTKEY_DEFAULTS } from "../../config/constants";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { RefreshIcon } from "./Icons";
 import { useMidi } from "../../hooks/useMidi";
+import { getEventHotkey, formatHotkeyForDisplay } from "../../utils/hotkeyUtils";
 
 interface HotkeyConfigModalProps {
     isOpen: boolean;
@@ -47,10 +48,10 @@ export const HotkeyConfigModal: React.FC<HotkeyConfigModalProps> = ({ isOpen, on
             e.preventDefault();
             e.stopPropagation();
 
-            // Ignore modifier-only presses
+            // Ignore ONLY if it's a modifier key by itself
             if (["Control", "Shift", "Alt", "Meta"].includes(e.key)) return;
 
-            const code = e.code;
+            const code = getEventHotkey(e);
 
             // Check for conflicts
             const conflict = Object.entries(currentConfig).find(([_, val]) => val === code);
@@ -154,7 +155,7 @@ export const HotkeyConfigModal: React.FC<HotkeyConfigModalProps> = ({ isOpen, on
                                                 </span>
                                             ) : (
                                                 <kbd className="px-2 py-1 bg-slate-950 rounded border border-slate-700 text-xs font-mono text-slate-400 min-w-[2rem] text-center">
-                                                    {currentConfig[action] || "—"}
+                                                    {formatHotkeyForDisplay(currentConfig[action])}
                                                 </kbd>
                                             )}
                                         </div>

@@ -135,10 +135,10 @@ Now in the editor we have an autocomplete for these commands. When the user type
 - `Ctrl + B`: Toggle bold text
 - `Ctrl + I`: Toggle italic text
 - `Ctrl + U`: Toggle underline text
-- `Ctrl + R`: Toggle red text (evicted conflit with refresh)
-- `Ctrl + Y`: Toggle yellow text
-- `Ctrl + G`: Toggle green text
-- `Ctrl + Shift +B`: Toggle blue text
+- `Ctrl + E`: Toggle red text (evicted conflit with refresh)
+- `Ctrl + K`: Toggle yellow text
+- `Ctrl + Q`: Toggle green text
+- `Ctrl + M`: Toggle blue text
 
 
 #### Advanced Video Features

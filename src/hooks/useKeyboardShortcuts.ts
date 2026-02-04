@@ -2,6 +2,7 @@ import { useEffect, useMemo } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 import { HotkeyAction, HotkeyConfig } from '../types';
 import { HOTKEY_DEFAULTS } from '../config/constants';
+import { getEventHotkey } from '../utils/hotkeyUtils';
 
 interface KeyboardShortcutsProps {
   isPlaying: boolean;
@@ -66,7 +67,8 @@ export const useKeyboardShortcuts = ({
       }
 
       // 1. Identificar Ação
-      let action = actionMap[e.code];
+      const hotkeyStr = getEventHotkey(e);
+      let action = actionMap[hotkeyStr];
 
       // Hardcode Alias: Enter é sempre Play (pedido do usuário)
       if (e.code === 'Enter') action = HotkeyAction.TOGGLE_PLAY;

@@ -26,6 +26,13 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({ isOpen, onClose })
     { action: 'NEXT_PART', keys: ["→", "End"] },
     { action: 'PREVIOUS_PART', keys: ["←", "Home"] },
     { action: 'EXIT', keys: ["Esc"] },
+    { action: 'FORMAT_BOLD', keys: ["Ctrl+B"] },
+    { action: 'FORMAT_ITALIC', keys: ["Ctrl+I"] },
+    { action: 'FORMAT_UNDERLINE', keys: ["Ctrl+U"] },
+    { action: 'FORMAT_RED', keys: ["Ctrl+E"] },
+    { action: 'FORMAT_YELLOW', keys: ["Ctrl+K"] },
+    { action: 'FORMAT_GREEN', keys: ["Ctrl+Q"] },
+    { action: 'FORMAT_BLUE', keys: ["Ctrl+M"] },
   ];
 
   return (

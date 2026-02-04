@@ -84,7 +84,8 @@ export const Editor: React.FC<EditorProps> = ({
         localText, textAreaRef, handleChange, handleInsertTag, handleClear,
         handleSelectRange, handleUndo, handleUpdateText, canUndo, handleKeyDown,
         autocompleteActive, autocompletePos, autocompleteIndex,
-        handleAutocompleteSelect, autocompleteCommands, setAutocompleteActive
+        handleAutocompleteSelect, autocompleteCommands, setAutocompleteActive,
+        keyboardHeight
     } = useEditorLogic({
         text,
         setText,
@@ -199,6 +200,7 @@ export const Editor: React.FC<EditorProps> = ({
                             secondaryLanguage={bilingualTexts?.secondaryLanguage}
                             primaryTextAreaRef={textAreaRef}
                             onKeyDown={handleKeyDown}
+                            keyboardHeight={keyboardHeight}
                         />
                     ) : (
                         <S.EditorTextArea
@@ -207,6 +209,7 @@ export const Editor: React.FC<EditorProps> = ({
                             onChange={handleChange}
                             onKeyDown={handleKeyDown}
                             placeholder={t("host.editorPlaceholder")}
+                            style={{ paddingBottom: keyboardHeight > 0 ? `${keyboardHeight}px` : undefined }}
                         />
                     )}
                     {autocompleteActive && (

@@ -4,6 +4,7 @@ import { useLocalStorage } from "./useLocalStorage";
 import { AutocompleteSuggestion } from "../components/host/CommandAutocomplete";
 import { HotkeyConfig } from "../types";
 import { HOTKEY_DEFAULTS } from "../config/constants";
+import { getEventHotkey } from "../utils/hotkeyUtils";
 import { useTranslation } from "./useTranslation";
 import { useMemo } from "react";
 
@@ -22,6 +23,9 @@ export const useEditorLogic = ({ text, setText }: UseEditorLogicProps) => {
     const [autocompleteQuery, setAutocompleteQuery] = useState("");
     const [autocompletePos, setAutocompletePos] = useState({ top: 0, left: 0 });
     const [autocompleteIndex, setAutocompleteIndex] = useState(0);
+
+    // Keyboard padding state for iPad fix
+    const [keyboardHeight, setKeyboardHeight] = useState(0);
 
     const { t } = useTranslation();
 
@@ -138,40 +142,81 @@ export const useEditorLogic = ({ text, setText }: UseEditorLogicProps) => {
         textarea.focus();
         textarea.setSelectionRange(start, end);
 
-        // Improved scroll into view using Visual Viewport if available
-        const viewportHeight = window.visualViewport ? window.visualViewport.height : textarea.clientHeight;
-        const computedStyle = window.getComputedStyle(textarea);
-        const lineHeight = parseInt(computedStyle.lineHeight) || 32;
-        const padding = parseInt(computedStyle.paddingTop) || 0;
+        // Improved scroll into view logic
+        // We use requestAnimationFrame to ensure the focus/layout has stabilized
+        requestAnimationFrame(() => {
+            const currentTextArea = textAreaRef.current;
+            if (!currentTextArea) return;
 
-        // Calculate line number
-        const textBefore = textarea.value.substr(0, start);
-        const lines = textBefore.split("\n").length;
+            // Use the utility to get precise pixel coordinates within the textarea
+            // This correctly accounts for text wrapping (unlike line-counting)
+            const pos = getTextCursorPosition(currentTextArea);
 
-        const targetScroll = (lines - 1) * lineHeight + padding;
+            // getTextCursorPosition returns position relative to visible area
+            // We need the absolute Y within the textarea scrollable content
+            const absoluteY = pos.top + currentTextArea.scrollTop;
 
-        // If the target is NOT already visible in the middle-ish area, scroll to it
-        const currentScroll = textarea.scrollTop;
-        if (targetScroll < currentScroll || targetScroll > (currentScroll + viewportHeight - lineHeight * 2)) {
-            // Center the found text within the VISIBLE viewport
-            textarea.scrollTop = targetScroll - (viewportHeight / 2) + (lineHeight / 2);
-        }
+            // Current visibility metrics
+            const viewportHeight = window.visualViewport ? window.visualViewport.height : currentTextArea.clientHeight;
+            const currentScroll = currentTextArea.scrollTop;
+
+            const computedStyle = window.getComputedStyle(currentTextArea);
+            const lineHeight = parseInt(computedStyle.lineHeight) || 32;
+
+            // Margin to keep caret away from edges
+            const margin = lineHeight * 1.5;
+
+            // CONSERVATIVE CHECK: Only scroll if jumping or obscured
+            const isObscured = absoluteY < (currentScroll + margin) ||
+                (absoluteY + lineHeight) > (currentScroll + viewportHeight - margin);
+
+            if (isObscured) {
+                // Smoothly center the active line in the visible area
+                currentTextArea.scrollTop = absoluteY - (viewportHeight / 2) + (lineHeight / 2);
+            }
+        });
     }, []);
 
     // Effect to handle keyboard appearance (Visual Viewport resize)
     useEffect(() => {
+        let timeoutId: ReturnType<typeof setTimeout>;
+
         const handler = () => {
+            if (!window.visualViewport) return;
+
+            const height = window.innerHeight;
+            const viewportHeight = window.visualViewport.height;
+            const offset = height - viewportHeight;
+
+            // Only set if significant (avoid small jitter)
+            if (offset > 100) {
+                setKeyboardHeight(offset);
+            } else {
+                setKeyboardHeight(0);
+            }
+
             // If focused, re-trigger the scroll logic to ensure the cursor is still visible
+            // We adding a small delay to allow native browser scrolling to finish first
             if (document.activeElement === textAreaRef.current && textAreaRef.current) {
-                const start = textAreaRef.current.selectionStart;
-                const end = textAreaRef.current.selectionEnd;
-                handleSelectRange(start, end);
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    if (textAreaRef.current) {
+                        const start = textAreaRef.current.selectionStart;
+                        const end = textAreaRef.current.selectionEnd;
+                        handleSelectRange(start, end);
+                    }
+                }, 300);
             }
         };
 
         if (window.visualViewport) {
             window.visualViewport.addEventListener('resize', handler);
-            return () => window.visualViewport?.removeEventListener('resize', handler);
+            window.visualViewport.addEventListener('scroll', handler);
+            return () => {
+                window.visualViewport?.removeEventListener('resize', handler);
+                window.visualViewport?.removeEventListener('scroll', handler);
+                clearTimeout(timeoutId);
+            };
         }
     }, [handleSelectRange]);
 
@@ -244,43 +289,29 @@ export const useEditorLogic = ({ text, setText }: UseEditorLogicProps) => {
             }
         }
 
-        const isMod = e.ctrlKey || e.metaKey;
-        const isAlt = e.altKey;
-        const isShift = e.shiftKey;
+        let tag = "";
+        const hotkey = getEventHotkey(e);
 
-        // Check for formatting shortcuts (usually requires Mod)
-        if (isMod) {
-            let tag = "";
-            const key = e.code;
+        if (hotkey === customHotkeys.FORMAT_BOLD) {
+            tag = "bold";
+        } else if (hotkey === customHotkeys.FORMAT_ITALIC) {
+            tag = "i";
+        } else if (hotkey === customHotkeys.FORMAT_UNDERLINE) {
+            tag = "u";
+        } else if (hotkey === customHotkeys.FORMAT_RED) {
+            tag = "red";
+        } else if (hotkey === customHotkeys.FORMAT_YELLOW) {
+            tag = "yellow";
+        } else if (hotkey === customHotkeys.FORMAT_GREEN) {
+            tag = "green";
+        } else if (hotkey === customHotkeys.FORMAT_BLUE) {
+            tag = "blue";
+        }
 
-            if (key === customHotkeys.FORMAT_BOLD) {
-                if (isShift || isAlt) {
-                    tag = "b";
-                } else {
-                    tag = "bold";
-                }
-            } else if (key === customHotkeys.FORMAT_ITALIC) {
-                tag = "i";
-            } else if (key === customHotkeys.FORMAT_UNDERLINE) {
-                tag = "u";
-            } else if (key === customHotkeys.FORMAT_RED) {
-                if (key === "KeyR") e.preventDefault();
-                tag = "r";
-            } else if (key === customHotkeys.FORMAT_YELLOW) {
-                tag = "y";
-            } else if (key === customHotkeys.FORMAT_GREEN) {
-                tag = "g";
-            } else if (key === customHotkeys.FORMAT_BLUE) {
-                tag = "b";
-            }
-
-            if (tag) {
-                e.preventDefault();
-                handleInsertTag(tag);
-            }
-        } else if (isAlt && e.code === customHotkeys.FORMAT_RED) {
+        if (tag) {
             e.preventDefault();
-            handleInsertTag("r");
+            handleInsertTag(tag);
+            return;
         }
     }, [handleInsertTag, customHotkeys, autocompleteActive, filteredCommands, autocompleteIndex, handleAutocompleteSelect]);
 
@@ -301,6 +332,7 @@ export const useEditorLogic = ({ text, setText }: UseEditorLogicProps) => {
         handleUndo,
         handleUpdateText,
         handleKeyDown,
+        keyboardHeight,
         canUndo: history.length > 0,
     };
 };

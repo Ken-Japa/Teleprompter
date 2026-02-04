@@ -63,13 +63,13 @@ export const HOTKEY_DEFAULTS: Record<string, string> = {
     PREVIOUS_PART: "ArrowLeft",
     NEXT_PART: "ArrowRight",
     // Editor Formatting (PRO)
-    FORMAT_BOLD: "KeyB",
-    FORMAT_ITALIC: "KeyI",
-    FORMAT_UNDERLINE: "KeyU",
-    FORMAT_RED: "KeyR",
-    FORMAT_YELLOW: "KeyY",
-    FORMAT_GREEN: "KeyG",
-    FORMAT_BLUE: "KeyB", // Used with modifier (see logic)
+    FORMAT_BOLD: "Control+KeyB",
+    FORMAT_ITALIC: "Control+KeyI",
+    FORMAT_UNDERLINE: "Control+KeyU",
+    FORMAT_RED: "Control+KeyE",
+    FORMAT_YELLOW: "Control+KeyQ",
+    FORMAT_GREEN: "Control+KeyK",
+    FORMAT_BLUE: "Control+KeyM",
 };
 
 export const MIDI_DEFAULTS: Record<string, { type: "note" | "cc", value: number } | null> = {

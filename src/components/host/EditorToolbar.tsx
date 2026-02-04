@@ -82,10 +82,10 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, o
                             role="group"
                             aria-label="Text Highlights"
                         >
-                            <S.ColorButton color="red" label="Red Highlight" onClick={() => onInsertTag("r")} />
-                            <S.ColorButton color="yellow" label="Yellow Highlight" onClick={() => onInsertTag("y")} />
-                            <S.ColorButton color="green" label="Green Highlight" onClick={() => onInsertTag("g")} />
-                            <S.ColorButton color="blue" label="Blue Highlight" onClick={() => onInsertTag("b")} />
+                            <S.ColorButton color="red" label="Red Highlight (Ctrl+E)" onClick={() => onInsertTag("r")} />
+                            <S.ColorButton color="yellow" label="Yellow Highlight (Ctrl+Q)" onClick={() => onInsertTag("y")} />
+                            <S.ColorButton color="green" label="Green Highlight (Ctrl+K)" onClick={() => onInsertTag("g")} />
+                            <S.ColorButton color="blue" label="Blue Highlight (Ctrl+M)" onClick={() => onInsertTag("b")} />
                         </div>
 
                         {/* Text Formatting Buttons */}

@@ -14,6 +14,7 @@ interface BilingualTextEditorProps {
     secondaryLanguage?: string;
     primaryTextAreaRef?: React.RefObject<HTMLTextAreaElement>;
     onKeyDown?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
+    keyboardHeight?: number;
 }
 
 
@@ -26,7 +27,8 @@ export const BilingualTextEditor: React.FC<BilingualTextEditorProps> = ({
     primaryLanguage = 'pt',
     secondaryLanguage = 'en',
     primaryTextAreaRef,
-    onKeyDown
+    onKeyDown,
+    keyboardHeight = 0
 }) => {
     const { t } = useTranslation();
 
@@ -75,6 +77,7 @@ export const BilingualTextEditor: React.FC<BilingualTextEditorProps> = ({
                     onChange={(e) => handleTextChange(e.target.value, secondaryText)}
                     onKeyDown={onKeyDown}
                     placeholder={t("bilingual.primaryPlaceholder")}
+                    style={{ paddingBottom: keyboardHeight > 0 ? `${keyboardHeight}px` : undefined }}
                 />
             </div>
 
@@ -113,6 +116,7 @@ export const BilingualTextEditor: React.FC<BilingualTextEditorProps> = ({
                     onChange={(e) => handleTextChange(primaryText, e.target.value)}
                     onKeyDown={onKeyDown}
                     placeholder={t("bilingual.secondaryPlaceholder")}
+                    style={{ paddingBottom: keyboardHeight > 0 ? `${keyboardHeight}px` : undefined }}
                 />
             </div>
         </div>
