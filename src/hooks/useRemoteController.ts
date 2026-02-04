@@ -48,7 +48,7 @@ export const useRemoteController = (hostId: string) => {
     useWakeLock(status === ConnectionStatus.CONNECTED);
 
     // 4.1 Voice Control (Local)
-    const { startListening, stopListening, activeSentenceIndex, voiceProgress, resetVoice } = useVoiceControl(
+    const { startListening, stopListening, activeSentenceIndex, voiceProgress, resetVoice, voiceApiError } = useVoiceControl(
         text,
         isPro
     );
@@ -312,6 +312,7 @@ export const useRemoteController = (hostId: string) => {
             isRecording: settings?.recordingMode === "remote" ? isLocalRecording : isRecording,
             localRecordingTime,
             hasRecordedData,
+            voiceApiError,
         },
         actions: {
             handleSpeedChange,

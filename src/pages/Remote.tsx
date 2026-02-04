@@ -154,6 +154,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
                         isRecording={isRecording}
                         isVoiceMode={isVoiceMode}
                         settings={settings ?? undefined}
+                        voiceApiError={state.voiceApiError}
                         actions={actions}
                     />
                 )}

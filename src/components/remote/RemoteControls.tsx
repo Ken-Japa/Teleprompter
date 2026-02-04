@@ -15,6 +15,7 @@ interface RemoteControlsProps {
     hasRecordedData: boolean;
     isRecording: boolean;
     isVoiceMode: boolean;
+    voiceApiError?: string | null;
     settings?: PrompterSettings;
     actions: RemoteActions;
 }
@@ -29,6 +30,7 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
     hasRecordedData,
     isRecording,
     isVoiceMode,
+    voiceApiError,
     settings,
     actions
 }) => {
@@ -132,6 +134,33 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
                     onStop={actions.handleTrackpadStop}
                 />
             </div>
+
+            {/* Permission Primer / Error State */}
+            {voiceApiError === "voice.permissionDenied" && settings?.voiceControlMode === "remote" && (
+                <div className="mx-4 mb-3 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <button
+                        onClick={actions.handleToggleVoice}
+                        className="w-full bg-red-500/20 border border-red-500/30 p-4 rounded-2xl flex items-center justify-between group active:scale-[0.98] transition-all"
+                    >
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-xl bg-red-500 flex items-center justify-center text-white shadow-lg shadow-red-500/40 group-hover:scale-110 transition-transform">
+                                <MicOffIcon className="w-5 h-5" />
+                            </div>
+                            <div className="text-left">
+                                <div className="text-sm font-bold text-red-200 leading-tight">
+                                    {t("remote.voicePermission.title")}
+                                </div>
+                                <div className="text-[10px] text-red-300/70 font-medium">
+                                    {t("remote.voicePermission.description")}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="px-3 py-1.5 rounded-lg bg-red-500/20 text-red-200 text-[10px] font-black uppercase tracking-wider border border-red-500/20 group-hover:bg-red-500/40 transition-colors">
+                            {t("remote.voicePermission.action")}
+                        </div>
+                    </button>
+                </div>
+            )}
 
             <S.ControlsContainer>
                 <div className="flex items-center justify-between px-4 pb-4 gap-3">

@@ -2,9 +2,10 @@ import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import { Theme, PrompterSettings, RemoteActions } from "../../types";
 import { PROMPTER_DEFAULTS } from "../../config/constants";
-import { LaptopIcon, SmartphoneIcon, PlusIcon } from "../ui/Icons";
+import { LaptopIcon, SmartphoneIcon, PlusIcon, InfoIcon } from "../ui/Icons";
 import { SyncButton } from "../ui/SyncButton";
 import { ShareButton } from "../ui/ShareButton";
+import { isIOS } from "../../utils/platform";
 
 interface RemoteSettingsProps {
     settings: PrompterSettings | null | undefined;
@@ -195,6 +196,29 @@ export const RemoteSettings: React.FC<RemoteSettingsProps> = ({ settings, action
                     </div>
                 </button>
             </div>
+
+            {/* iOS Optimization Guidance */}
+            {isIOS() && (
+                <div className="bg-blue-500/10 border border-blue-500/20 rounded-2xl p-5 space-y-3">
+                    <div className="flex items-center gap-3 text-blue-400">
+                        <InfoIcon className="w-5 h-5" />
+                        <span className="font-bold text-sm tracking-wide uppercase">{t("remote.iosMicGuidance.title")}</span>
+                    </div>
+                    <p className="text-xs text-slate-300 leading-relaxed">
+                        {t("remote.iosMicGuidance.description")}
+                    </p>
+                    <div className="space-y-2 pt-1">
+                        <div className="flex items-start gap-3">
+                            <div className="w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center text-[10px] font-bold text-blue-300 shrink-0">1</div>
+                            <p className="text-[11px] text-slate-400">{t("remote.iosMicGuidance.step1")}</p>
+                        </div>
+                        <div className="flex items-start gap-3">
+                            <div className="w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center text-[10px] font-bold text-blue-300 shrink-0">2</div>
+                            <p className="text-[11px] text-slate-400">{t("remote.iosMicGuidance.step2")}</p>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {/* Share Section */}
             <ShareButton variant="card" />

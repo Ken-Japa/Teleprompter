@@ -556,6 +556,16 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
     bilingualEditTitle: "Edição Bloqueada",
     bilingualEditWarning: "A edição está desativada no modo bilíngue. Use o computador principal.",
     scanError: "Falha ao acessar a câmera. Verifique as permissões ou se está usando HTTPS.",
+    iosMicGuidance: {
+      title: "Dica para iOS/Safari",
+      description: "Para evitar pedidos repetidos de permissão, toque no ícone 'AA' na barra de endereços, selecione 'Ajustes do Site' e mude 'Microfone' para 'Permitir'.",
+      button: "Como configurar",
+    },
+    voicePermission: {
+      title: "Microfone Bloqueado",
+      description: "O Safari bloqueou o acesso. Clique abaixo para tentar reativar ou siga a dica nos ajustes.",
+      action: "Tentar Novamente",
+    }
   },
   share: {
     button: "Compartilhar PromptNinja",

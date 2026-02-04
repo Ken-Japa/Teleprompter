@@ -552,6 +552,16 @@ Paste your script here and customize your experience to start shining!`,
     language: "Language",
     bilingualEditTitle: "Editing Locked",
     bilingualEditWarning: "Editing is disabled in bilingual mode. Use the main computer.",
+    iosMicGuidance: {
+      title: "iOS/Safari Tip",
+      description: "To avoid repeated permission prompts, tap the 'AA' icon in the address bar, select 'Website Settings', and change 'Microphone' to 'Allow'.",
+      button: "How to configure",
+    },
+    voicePermission: {
+      title: "Microphone Blocked",
+      description: "Safari blocked access. Click below to try re-activating or follow the tip in settings.",
+      action: "Try Again",
+    }
   },
   share: {
     button: "Share PromptNinja",
