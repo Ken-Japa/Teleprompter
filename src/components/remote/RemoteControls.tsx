@@ -202,7 +202,7 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
                         </button>
 
                         {/* Stop & Voice Buttons */}
-                        <div className="flex gap-2 h-14">
+                        <div className="flex gap-2 h-14 items-center">
                             {/* Recording Controls Group */}
                             <div className={`flex items-center ${hasRecordedData || isRecording ? "w-28 border-red-500/50" : "w-14 border-slate-700"} h-full bg-slate-800/50 rounded-2xl border p-1 gap-1 transition-all`}>
                                 {hasRecordedData ? (
