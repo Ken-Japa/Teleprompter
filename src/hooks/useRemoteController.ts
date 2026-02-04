@@ -5,10 +5,12 @@ import { useWakeLock } from "./useWakeLock";
 import { useVoiceControl } from "./useVoiceControl";
 import { useMediaRecorder } from "./useMediaRecorder";
 import { trackSettingChange } from "../utils/analytics";
+import { useTranslation } from "./useTranslation";
 
 const NETWORK_TICK_RATE = 33; // ~30fps
 
 export const useRemoteController = (hostId: string) => {
+    const { setLang } = useTranslation();
     // 1. State
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
     const [speed, setSpeed] = useState<number>(2);
@@ -98,7 +100,12 @@ export const useRemoteController = (hostId: string) => {
             if (data.type === MessageType.SYNC_STATE) {
                 setIsPlaying(data.payload.isPlaying);
                 setSpeed(data.payload.speed);
-                if (data.payload.settings) setSettings(data.payload.settings);
+                if (data.payload.settings) {
+                    setSettings(data.payload.settings);
+                    if (data.payload.settings.language) {
+                        setLang(data.payload.settings.language);
+                    }
+                }
                 if (data.payload.text !== undefined) setText(data.payload.text);
                 if (data.payload.elapsedTime !== undefined) setElapsedTime(data.payload.elapsedTime);
                 if (data.payload.navigationMap !== undefined) setNavigationMap(data.payload.navigationMap);
@@ -220,6 +227,9 @@ export const useRemoteController = (hostId: string) => {
                     trackSettingChange(key, value as string | number | boolean);
                 });
                 setSettings({ ...settings, ...newSettings });
+                if (newSettings.language) {
+                    setLang(newSettings.language as any);
+                }
             }
             sendMessage(MessageType.SETTINGS_UPDATE, newSettings);
         },

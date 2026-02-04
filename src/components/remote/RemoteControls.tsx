@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
-import { MinusIcon, PauseIcon, PlayIcon, PlusIcon, StopIcon, MicIcon, LaptopIcon, SmartphoneIcon, ChevronUpIcon, ChevronDownIcon } from "../ui/Icons";
+import { MinusIcon, PauseIcon, PlayIcon, PlusIcon, StopIcon, MicIcon, MicOffIcon, LaptopIcon, SmartphoneIcon, ChevronUpIcon, ChevronDownIcon } from "../ui/Icons";
 import { Trackpad } from "./Trackpad";
 import * as S from "../ui/Styled";
 import { NavigationItem, PrompterSettings, RemoteActions } from "../../types";
@@ -192,7 +192,7 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
                                             title="Record New"
                                             aria-label="Discard and Record New"
                                         >
-                                            <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                                            <div className={`w-3 h-3 rounded-full bg-red-500 ${isRecording ? "opacity-100" : "opacity-0"}`}></div>
                                         </button>
                                     </>
                                 ) : (
@@ -210,7 +210,7 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
                                             className={`flex-1 h-full rounded-xl flex items-center justify-center gap-1 transition-all ${isRecording ? "bg-red-500 text-white animate-pulse" : "hover:bg-white/5"}`}
                                             aria-label={isRecording ? "Stop Recording" : "Start Recording"}
                                         >
-                                            <div className={`w-3 h-3 rounded-full transition-all ${isRecording ? "bg-white rounded-sm scale-75" : "bg-red-500"}`}></div>
+                                            <div className={`w-3 h-3 rounded-full transition-all ${isRecording ? "bg-white rounded-sm scale-75" : "bg-red-500 opacity-0"}`}></div>
                                         </button>
                                     </>
                                 )}
@@ -222,7 +222,7 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
                                 title="Toggle Voice Control"
                                 aria-label={isVoiceMode ? "Disable Voice Control" : "Enable Voice Control"}
                             >
-                                <MicIcon className="w-6 h-6" />
+                                {isVoiceMode ? <MicIcon className="w-6 h-6" /> : <MicOffIcon className="w-6 h-6" />}
                             </button>
 
                             <button

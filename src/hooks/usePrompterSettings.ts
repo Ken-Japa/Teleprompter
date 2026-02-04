@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { trackSettingChange } from "../utils/analytics";
 import { useLocalStorage } from "./useLocalStorage";
 import { Theme, PrompterSettings, VoiceControlMode, RecordingMode, BilingualConfig } from "../types";
@@ -28,6 +28,7 @@ export interface PrompterActions {
     setVoiceLanguage: (val: string) => void;
     setBpm: (val: number) => void;
     setIsAutoBpmEnabled: (val: boolean) => void;
+    setLanguage: (val: string) => void;
 }
 
 export interface PrompterFeatureFlags {
@@ -128,6 +129,7 @@ export const usePrompterSettings = (featureFlags: PrompterFeatureFlags = {}) => 
         getStorageKey("neonprompt_auto_bpm"),
         false
     );
+    const [language, setLanguage] = useState<string>(""); // Synchronized from useTranslation in HostController
 
     const cycleTheme = useCallback(() => {
         const themes = PROMPTER_DEFAULTS.THEME_ORDER;
@@ -189,6 +191,7 @@ export const usePrompterSettings = (featureFlags: PrompterFeatureFlags = {}) => 
         voiceLanguage,
         bpm,
         autoBpmEnabled,
+        language,
     };
 
     const actions: PrompterActions = {
@@ -232,6 +235,7 @@ export const usePrompterSettings = (featureFlags: PrompterFeatureFlags = {}) => 
         setVoiceLanguage: wrapSetter(setVoiceLanguage, "voice_language"),
         setBpm: wrapSetter(setBpm, "bpm"),
         setIsAutoBpmEnabled: wrapToggle(setAutoBpmEnabled, "auto_bpm"),
+        setLanguage: setLanguage,
     };
 
     return { settings, actions };

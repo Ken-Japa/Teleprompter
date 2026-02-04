@@ -13,7 +13,7 @@ import { useAutoBpm } from "./useAutoBpm";
 import { useOBS } from "./useOBS";
 
 export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
-  const { t } = useTranslation();
+  const { t, lang, setLang } = useTranslation();
   // 1. Data Persistence
   const {
     text,
@@ -109,7 +109,14 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
         secondaryLanguage: prompterSettings.bilingualConfig.secondaryLanguage
       });
     }
-  }, [prompterSettings.isBilingualMode, prompterSettings.bilingualConfig]);
+  }, [prompterSettings.isBilingualMode, prompterSettings.isBilingualMode, prompterSettings.bilingualConfig]);
+
+  // Sync translation language to prompter settings for peer sync
+  useEffect(() => {
+    if (prompterActions.setLanguage) {
+      prompterActions.setLanguage(lang);
+    }
+  }, [lang, prompterActions.setLanguage]);
 
   const prompterRef = useRef<PrompterHandle>(null);
   const broadcastRef = useRef<any>(null);
@@ -228,6 +235,9 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
             if (s.isFlipVertical !== undefined) prompterActions.setIsFlipVertical(s.isFlipVertical);
             if (s.recordingMode) prompterActions.setRecordingMode(s.recordingMode);
             if (s.voiceControlMode) prompterActions.setVoiceControlMode(s.voiceControlMode);
+            if (s.language) {
+              setLang(s.language as any);
+            }
           }
           break;
         case MessageType.TOGGLE_VOICE:

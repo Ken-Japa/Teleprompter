@@ -204,21 +204,30 @@ export const RemoteSettings: React.FC<RemoteSettingsProps> = ({ settings, action
                 <div className="text-sm text-slate-400 uppercase tracking-widest font-bold">{t("remote.language")}</div>
                 <div className="grid grid-cols-3 gap-3">
                     <button
-                        onClick={() => setLang('en')}
+                        onClick={() => {
+                            setLang('en');
+                            actions.handleSettingsChange({ language: 'en' });
+                        }}
                         className={`p-3 rounded-lg border text-xs font-bold ${lang === 'en' ? 'bg-brand-600 text-white border-brand-500' : 'bg-slate-900 border-slate-800 text-slate-500'}`}
                         aria-label="Select English Language"
                     >
                         English
                     </button>
                     <button
-                        onClick={() => setLang('pt')}
+                        onClick={() => {
+                            setLang('pt');
+                            actions.handleSettingsChange({ language: 'pt' });
+                        }}
                         className={`p-3 rounded-lg border text-xs font-bold ${lang === 'pt' ? 'bg-brand-600 text-white border-brand-500' : 'bg-slate-900 border-slate-800 text-slate-500'}`}
                         aria-label="Selecionar Português"
                     >
                         Português
                     </button>
                     <button
-                        onClick={() => setLang('es')}
+                        onClick={() => {
+                            setLang('es');
+                            actions.handleSettingsChange({ language: 'es' });
+                        }}
                         className={`p-3 rounded-lg border text-xs font-bold ${lang === 'es' ? 'bg-brand-600 text-white border-brand-500' : 'bg-slate-900 border-slate-800 text-slate-500'}`}
                         aria-label="Seleccionar Español"
                     >
