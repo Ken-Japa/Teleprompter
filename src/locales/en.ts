@@ -554,8 +554,10 @@ Paste your script here and customize your experience to start shining!`,
     bilingualEditWarning: "Editing is disabled in bilingual mode. Use the main computer.",
     iosMicGuidance: {
       title: "iOS/Safari Tip",
-      description: "To avoid repeated permission prompts, tap the 'AA' icon in the address bar, select 'Website Settings', and change 'Microphone' to 'Allow'.",
+      description: "To avoid repeated permission prompts, tap the 'AA' icon in the address bar, select 'Website Settings' or '...', and change 'Microphone' to 'Allow'.",
       button: "How to configure",
+      step1: "Tap the 'AA' icon in the address bar",
+      step2: "Select 'Website Settings' or '...' and change 'Microphone' to 'Allow'",
     },
     voicePermission: {
       title: "Microphone Blocked",

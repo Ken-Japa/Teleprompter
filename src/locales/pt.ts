@@ -558,8 +558,10 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
     scanError: "Falha ao acessar a câmera. Verifique as permissões ou se está usando HTTPS.",
     iosMicGuidance: {
       title: "Dica para iOS/Safari",
-      description: "Para evitar pedidos repetidos de permissão, toque no ícone 'AA' na barra de endereços, selecione 'Ajustes do Site' e mude 'Microfone' para 'Permitir'.",
+      description: "Para evitar pedidos repetidos de permissão, toque no ícone 'AA' na barra de endereços, selecione 'Ajustes do Site' ou '...' e mude 'Microfone' para 'Permitir'.",
       button: "Como configurar",
+      step1: "Toque no ícone 'AA' na barra de endereços",
+      step2: "Selecione 'Ajustes do Site' ou '...' e mude 'Microfone' para 'Permitir'",
     },
     voicePermission: {
       title: "Microfone Bloqueado",

@@ -562,12 +562,14 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
     scanError: "Error al acceder a la cámara. Verifica los permisos o si estás usando HTTPS.",
     iosMicGuidance: {
       title: "Consejo para iOS/Safari",
-      description: "Para evitar avisos repetidos de permiso, toca el icono 'AA' en la barra de direcciones, selecciona 'Configuración del sitio web' y cambia 'Micrófono' a 'Permitir'.",
+      description: "Para evitar avisos repetidos de permiso, toca el icono 'AA' en la barra de direcciones, selecciona 'Configuración del sitio web' o '...', y cambia 'Micrófono' a 'Permitir'.",
       button: "Cómo configurar",
+      step1: "Toca el icono 'AA' en la barra de direcciones",
+      step2: "Selecciona 'Configuración del sitio web' o '...' y cambia 'Micrófono' a 'Permitir'",
     },
     voicePermission: {
       title: "Micrófono Bloqueado",
-      description: "Safari bloqueó el acesso. Haz clic abajo para intentar reactivar o sigue el consejo en los ajustes.",
+      description: "Safari bloqueó el acceso. Haz clic abajo para intentar reactivar o sigue el consejo en los ajustes.",
       action: "Intentar de nuevo",
     }
   },
