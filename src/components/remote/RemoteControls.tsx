@@ -114,7 +114,7 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
             </div>
 
             {/* Text Preview Window */}
-            <div className="mx-4 mb-2 h-16 bg-slate-900/80 rounded-xl border border-white/10 overflow-hidden relative flex items-center justify-center shadow-inner flex-none" aria-label="Text Preview">
+            <div className="mx-4 mb-2 h-20 bg-slate-900/80 rounded-xl border border-white/10 overflow-hidden relative flex items-center justify-center shadow-inner flex-none" aria-label="Text Preview">
                 <div className="absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-slate-900 to-transparent z-10 pointer-events-none"></div>
                 <div className="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-t from-slate-900 to-transparent z-10 pointer-events-none"></div>
 
