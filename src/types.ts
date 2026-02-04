@@ -211,6 +211,7 @@ export interface RemoteActions {
     handleScrollTo: (newProgress: number) => void;
     handleStop: () => void;
     handleToggleVoice: () => void;
+    handleToggleVoiceMode: () => void;
     handleRequestSync: () => void;
     handleToggleRecording: () => void;
     handleToggleRecordingMode: () => void;

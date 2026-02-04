@@ -236,6 +236,11 @@ export const useRemoteController = (hostId: string) => {
         [sendMessage, settings]
     );
 
+    const handleToggleVoiceMode = useCallback(() => {
+        const nextMode = settings?.voiceControlMode === "host" ? "remote" : "host";
+        handleSettingsChange({ voiceControlMode: nextMode });
+    }, [settings?.voiceControlMode, handleSettingsChange]);
+
     const handleTextChange = useCallback(
         (newText: string) => {
             setText(newText);
@@ -318,6 +323,7 @@ export const useRemoteController = (hostId: string) => {
             handleScrollTo,
             handleStop,
             handleToggleVoice,
+            handleToggleVoiceMode,
             handleRequestSync,
             handleToggleRecording,
             handleToggleRecordingMode,

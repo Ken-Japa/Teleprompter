@@ -188,18 +188,18 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
                                         </button>
                                         <button
                                             onClick={() => actions.handleToggleRecording()} // Start new
-                                            className="w-8 h-full rounded-xl hover:bg-white/10 text-slate-400 flex items-center justify-center"
+                                            className="w-8 h-full rounded-xl hover:bg-white/10 text-slate-400 flex items-center justify-center relative"
                                             title="Record New"
                                             aria-label="Discard and Record New"
                                         >
-                                            <div className={`w-3 h-3 rounded-full bg-red-500 ${isRecording ? "opacity-100" : "opacity-0"}`}></div>
+                                            <div className={`w-3 h-3 rounded-full bg-red-500 ${isRecording ? "animate-pulse opacity-100" : "opacity-40"}`}></div>
                                         </button>
                                     </>
                                 ) : (
                                     <>
                                         <button
                                             onClick={actions.handleToggleRecordingMode}
-                                            className="w-8 h-full rounded-xl hover:bg-white/10 text-slate-400 flex items-center justify-center"
+                                            className={`w-8 h-full rounded-xl hover:bg-white/10 text-slate-400 flex items-center justify-center transition-all ${isRecording ? "opacity-100" : "opacity-0 w-0 overflow-hidden"}`}
                                             title={settings?.recordingMode === "remote" ? "Record on Remote" : "Record on Host"}
                                             aria-label={settings?.recordingMode === "remote" ? "Switch to Host Recording" : "Switch to Remote Recording"}
                                         >
@@ -210,24 +210,35 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
                                             className={`flex-1 h-full rounded-xl flex items-center justify-center gap-1 transition-all ${isRecording ? "bg-red-500 text-white animate-pulse" : "hover:bg-white/5"}`}
                                             aria-label={isRecording ? "Stop Recording" : "Start Recording"}
                                         >
-                                            <div className={`w-3 h-3 rounded-full transition-all ${isRecording ? "bg-white rounded-sm scale-75" : "bg-red-500 opacity-0"}`}></div>
+                                            <div className={`w-3 h-3 rounded-full transition-all ${isRecording ? "bg-white rounded-sm scale-75" : "bg-red-500 opacity-40"}`}></div>
                                         </button>
                                     </>
                                 )}
                             </div>
 
-                            <button
-                                onClick={actions.handleToggleVoice}
-                                className={`w-14 h-full rounded-2xl border transition-all flex items-center justify-center ${isVoiceMode ? "bg-red-500/20 border-red-500/50 text-red-400 animate-pulse" : "bg-purple-500/10 border-purple-500/20 hover:bg-purple-500/20 text-purple-400"}`}
-                                title="Toggle Voice Control"
-                                aria-label={isVoiceMode ? "Disable Voice Control" : "Enable Voice Control"}
-                            >
-                                {isVoiceMode ? <MicIcon className="w-6 h-6" /> : <MicOffIcon className="w-6 h-6" />}
-                            </button>
+                            <div className={`flex items-center h-full bg-slate-800/50 rounded-2xl border transition-all p-1 gap-1 ${isVoiceMode ? "w-28 border-red-500/50" : "w-14 border-slate-700"}`}>
+                                <button
+                                    onClick={actions.handleToggleVoice}
+                                    className={`flex-1 h-full rounded-xl transition-all flex items-center justify-center ${isVoiceMode ? "bg-red-500 text-white animate-pulse" : "hover:bg-white/5 text-purple-400"}`}
+                                    title="Toggle Voice Control"
+                                    aria-label={isVoiceMode ? "Disable Voice Control" : "Enable Voice Control"}
+                                >
+                                    {isVoiceMode ? <MicIcon className="w-5 h-5" /> : <MicOffIcon className="w-5 h-5" />}
+                                </button>
+                                {isVoiceMode && (
+                                    <button
+                                        onClick={actions.handleToggleVoiceMode}
+                                        className="w-10 h-full rounded-xl hover:bg-white/10 text-red-100 flex items-center justify-center border border-red-500/20"
+                                        title={settings?.voiceControlMode === "host" ? "Voice via Host" : "Voice via Remote"}
+                                    >
+                                        {settings?.voiceControlMode === "remote" ? <SmartphoneIcon className="w-4 h-4" /> : <LaptopIcon className="w-4 h-4" />}
+                                    </button>
+                                )}
+                            </div>
 
                             <button
                                 onClick={() => actions.handleStop()}
-                                className="flex-1 min-w-[44px] h-full rounded-2xl bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 text-red-400 active:scale-95 transition-all flex items-center justify-center gap-2"
+                                className="w-14 h-full rounded-2xl bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 text-red-400 active:scale-95 transition-all flex items-center justify-center"
                                 aria-label="Stop Teleprompter and Reset"
                             >
                                 <StopIcon className="w-5 h-5 fill-current" />
