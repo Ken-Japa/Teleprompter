@@ -201,7 +201,12 @@ export const findBestMatch = (
 
         // Apply bonus to ratio (lower is better)
         const ratio = Math.max(0, (dist / patLen) - foreignBonus);
-        if (ratio < bestMatch.ratio) {
+
+        // SEQUENTIAL BIAS: If we already have a match, only replace it if:
+        // 1. The new match is SIGNIFICANTLY better (ratio < bestMatch.ratio - 0.05)
+        // 2. OR the new match is closer and at least as good.
+        // Since we iterate candidates in order, they are already sorted by index.
+        if (bestMatch.index === -1 || ratio < bestMatch.ratio - 0.05) {
             bestMatch = { index: idx, distance: dist, ratio };
             if (dist === 0) break; // Perfect match
         }
@@ -217,9 +222,10 @@ export const findBestMatch = (
 
             if (dist > maxDist) continue;
 
-            // Apply bonus to ratio
             const ratio = Math.max(0, (dist / patLen) - foreignBonus);
-            if (ratio < bestMatch.ratio) {
+
+            // SEQUENTIAL BIAS (same logic)
+            if (bestMatch.index === -1 || ratio < bestMatch.ratio - 0.05) {
                 bestMatch = { index: i, distance: dist, ratio };
                 if (dist === 0) break;
             }

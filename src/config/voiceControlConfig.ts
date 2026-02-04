@@ -143,7 +143,7 @@ export const VOICE_CONFIG = {
   SEARCH_WINDOW: {
     SMALL: 800,
     MEDIUM: 1200,
-    LARGE: 2500,
+    LARGE: 2000, // Reduced from 2500
   },
 
   // --- ADAPTIVE THROTTLE ---
@@ -176,8 +176,8 @@ export const VOICE_CONFIG = {
   // --- RECOVERY & LOOKAHEAD ---
   RECOVERY: {
     enabled: true,
-    aheadWindow: 2, // How many sentences to look ahead
-    minConfidence: 0.60,
+    aheadWindow: 1, // Reduced from 2
+    minConfidence: 0.25, // Stricter: 0.25 ratio (75% accuracy) required for recovery jump
     partialRecovery: true,
   },
 
@@ -309,22 +309,21 @@ export const VOICE_CONFIG = {
   // --- NEW: LANGUAGE OVERRIDES ---
   LANGUAGE_OVERRIDES: {
     'pt': {
-      // Allow more phonetic variation for Portuguese
-      intraSentenceTolerance: 0.60, // Relaxed from 0.5
-      minConfidence: 0.65, // Relaxed from 0.7
+      intraSentenceTolerance: 0.55, // Tightened from 0.60
+      minConfidence: 0.70, // Tightened from 0.65
       segmentMatching: {
         enabled: true,
-        windowSize: 4, // 4-word window
-        threshold: 0.25,
+        windowSize: 4,
+        threshold: 0.22, // Tightened from 0.25
       }
     },
     'en': {
-      intraSentenceTolerance: 0.5,
-      minConfidence: 0.75, // Stricter for English (usually cleaner)
+      intraSentenceTolerance: 0.45, // Tightened from 0.5
+      minConfidence: 0.80, // Tightened from 0.75
       segmentMatching: {
-        enabled: true, // Also good for English
+        enabled: true,
         windowSize: 4,
-        threshold: 0.20,
+        threshold: 0.18, // Tightened from 0.20
       }
     }
   } as Record<string, any>,

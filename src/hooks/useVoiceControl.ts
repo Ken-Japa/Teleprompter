@@ -593,9 +593,9 @@ export const useVoiceControl = (
             if (lockedSentenceIdRef.current >= 0 && sentences[lockedSentenceIdRef.current]) {
                 const currentSentence = sentences[lockedSentenceIdRef.current];
                 const words = cleanTranscript.trim().split(/\s+/);
-                // Keep roughly 1.5x the length of the current sentence + 5 words buffer
+                // Keep roughly 2.5x the length of the current sentence + 10 words buffer
                 // This ensures we have enough context but drop very old history
-                const keepLength = Math.ceil(currentSentence.cleanContent.split(/\s+/).length * 1.5) + 5;
+                const keepLength = Math.ceil(currentSentence.cleanContent.split(/\s+/).length * 2.5) + 10;
 
                 if (words.length > keepLength) {
                     cleanTranscript = words.slice(-keepLength).join(' ');
@@ -1113,10 +1113,13 @@ export const useVoiceControl = (
             setActiveSentenceIndex(visibleSentence);
         }
 
-        // CRITICAL FIX: Sync match index to the visible sentence's start
-        // This ensures matching resumes from the correct position instead of 0
         if (sentences[visibleSentence]) {
-            lastMatchIndexRef.current = sentences[visibleSentence].startIndex ?? 0;
+            // CRITICAL FIX: Find the FIRST occurrence of this sentence ID in the charToSentenceMap
+            // to get the correct start index in the fullCleanText (voice-matching string).
+            // Using .indexOf on Int32Array
+            const firstCharIndex = Array.prototype.indexOf.call(charToSentenceMap, visibleSentence);
+            lastMatchIndexRef.current = firstCharIndex >= 0 ? firstCharIndex : 0;
+            console.log(`[Voice] Syncing lastMatchIndex to ${lastMatchIndexRef.current} for sentence ${visibleSentence}`);
         } else {
             lastMatchIndexRef.current = 0;
         }
