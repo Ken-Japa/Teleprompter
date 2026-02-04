@@ -84,7 +84,7 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
     };
 
     return (
-        <div className="flex-1 flex flex-col min-h-0 overflow-y-auto">
+        <div className="flex-1 flex flex-col min-h-0">
             {/* Timer Display & Navigation */}
             <div className="relative flex justify-center items-center pt-3 pb-2 px-4 flex-none gap-3">
                 <div className="bg-slate-900/50 px-6 py-2 rounded-xl border border-white/5 shadow-lg z-10">
@@ -114,7 +114,7 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
             </div>
 
             {/* Text Preview Window */}
-            <div className="mx-4 mb-2 h-20 bg-slate-900/80 rounded-xl border border-white/10 overflow-hidden relative flex items-center justify-center shadow-inner flex-none" aria-label="Text Preview">
+            <div className="mx-4 mb-2 h-16 bg-slate-900/80 rounded-xl border border-white/10 overflow-hidden relative flex items-center justify-center shadow-inner flex-none" aria-label="Text Preview">
                 <div className="absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-slate-900 to-transparent z-10 pointer-events-none"></div>
                 <div className="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-t from-slate-900 to-transparent z-10 pointer-events-none"></div>
 
@@ -187,7 +187,7 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
                     </div>
 
                     {/* Play/Stop Controls */}
-                    <div className="flex-1 flex flex-col gap-2 h-40">
+                    <div className="flex-1 flex flex-col gap-2 h-32">
                         {/* Play Button */}
                         <button
                             onClick={actions.handlePlayToggle}
@@ -196,8 +196,8 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
                         >
                             <div className="absolute inset-x-0 top-0 h-[1px] bg-white/40"></div>
                             <div className="relative z-10 flex flex-col items-center">
-                                {isPlaying ? <PauseIcon className="w-12 h-12 fill-current drop-shadow-lg" /> : <PlayIcon className="w-12 h-12 fill-current ml-1 drop-shadow-lg" />}
-                                <span className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-80">{isPlaying ? t("remote.pause") : t("remote.start")}</span>
+                                {isPlaying ? <PauseIcon className="w-10 h-10 fill-current drop-shadow-lg" /> : <PlayIcon className="w-10 h-10 fill-current ml-1 drop-shadow-lg" />}
+                                <span className="text-[9px] font-bold uppercase tracking-[0.2em] opacity-80">{isPlaying ? t("remote.pause") : t("remote.start")}</span>
                             </div>
                         </button>
 

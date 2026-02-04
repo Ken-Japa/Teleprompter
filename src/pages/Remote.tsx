@@ -59,7 +59,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
 
     if (status !== ConnectionStatus.CONNECTED) {
         return (
-            <S.ScreenContainer className="bg-slate-950 h-full flex flex-col overflow-hidden">
+            <S.ScreenContainer className="bg-slate-950 h-screen h-[100dvh] flex flex-col overflow-hidden">
                 {errorMessage && <S.ErrorToast message={errorMessage} />}
                 {/* Custom Header for Disconnected State - Matches Connected State Style */}
                 <div className="flex-none bg-slate-950/90 backdrop-blur-xl border-b border-white/5 pt-safe">
@@ -77,7 +77,7 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
     }
 
     return (
-        <S.ScreenContainer className="bg-slate-950 h-full flex flex-col overflow-hidden">
+        <S.ScreenContainer className="bg-slate-950 h-screen h-[100dvh] flex flex-col overflow-hidden">
             {errorMessage && <S.ErrorToast message={errorMessage} />}
 
             {/* Header & Navigation - FIXED */}
