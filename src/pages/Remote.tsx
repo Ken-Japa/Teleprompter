@@ -59,10 +59,10 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
 
     if (status !== ConnectionStatus.CONNECTED) {
         return (
-            <S.ScreenContainer className="bg-slate-950 h-screen h-[100dvh] flex flex-col overflow-hidden">
+            <S.ScreenContainer className="bg-slate-950 h-screen h-[100dvh] flex flex-col overflow-hidden pb-safe px-safe">
                 {errorMessage && <S.ErrorToast message={errorMessage} />}
                 {/* Custom Header for Disconnected State - Matches Connected State Style */}
-                <div className="flex-none bg-slate-950/90 backdrop-blur-xl border-b border-white/5">
+                <div className="flex-none bg-slate-950/90 backdrop-blur-xl border-b border-white/5 pt-safe">
                     <div className="flex items-center justify-between px-4 py-3">
                         <S.LogoText main={t("title.main")} sub={t("title.remote")} />
                         <S.StatusBadge status={status} label={t(`status.${status.toLowerCase()}`)} />
@@ -77,11 +77,11 @@ export const Remote: React.FC<RemoteProps> = ({ hostId }) => {
     }
 
     return (
-        <S.ScreenContainer className="bg-slate-950 h-screen h-[100dvh] flex flex-col overflow-hidden">
+        <S.ScreenContainer className="bg-slate-950 h-screen h-[100dvh] flex flex-col overflow-hidden pb-safe px-safe">
             {errorMessage && <S.ErrorToast message={errorMessage} />}
 
             {/* Header & Navigation - FIXED */}
-            <div className="flex-none bg-slate-950/90 backdrop-blur-xl border-b border-white/5">
+            <div className="flex-none bg-slate-950/90 backdrop-blur-xl border-b border-white/5 pt-safe">
                 <div className="flex items-center justify-between px-4 py-3">
                     <div className="flex items-center gap-2">
                         <S.StatusBadge status={status} label={t(`status.${status.toLowerCase()}`)} />
