@@ -419,37 +419,47 @@ export const useScrollPhysics = ({
     onScrollUpdate(Math.min(1, Math.max(0, progress)));
   }, [scrollContainerRef, metricsRef, onScrollUpdate]);
 
-  const handleRemoteInput = useCallback(
-    (deltaY: number, stop: boolean = false, hardStop: boolean = false) => {
-      if (stop) {
-        // Se for stop, zera momentum ou faz hard stop
-        if (hardStop) {
-          momentumRef.current = 0;
-          isHardStopRequestedRef.current = true;
-        } else {
-          // Soft stop (lift finger) - keep some inertia or just standard decay
-          // momentumRef.current is handled in loop
-        }
+  const handleRemoteInput = useCallback((deltaY: number, stop: boolean = false, hardStop: boolean = false) => {
+    // Detect manual remote usage
+    isManualScrollingRef.current = true;
+    isUserTouchingRef.current = true; // Treat like touch to stop momentum if needed
+
+    if (stop) {
+      // If it's a stop, zero out momentum or hard stop
+      if (hardStop) {
+        momentumRef.current = 0;
+        isHardStopRequestedRef.current = true;
       } else {
-        // If flipped vertically, invert delta
-        const effectiveDelta = isFlipVerticalRef.current ? -deltaY : deltaY;
-        momentumRef.current += effectiveDelta * 2; // Sensibilidade remota
+        // Soft stop (lift finger) - momentumRef.current is handled in loop
       }
-      wakeUpLoop();
-    },
-    [wakeUpLoop]
-  );
+    } else {
+      // If flipped vertically, invert delta
+      const effectiveDelta = isFlipVerticalRef.current ? -deltaY : deltaY;
+      momentumRef.current += effectiveDelta * 2; // Remote sensitivity
+    }
+
+    // Wake up loop
+    wakeUpLoop();
+
+    // Debounce release
+    if (retryTimeoutRef.current) clearTimeout(retryTimeoutRef.current);
+    retryTimeoutRef.current = setTimeout(() => {
+      isManualScrollingRef.current = false;
+      isUserTouchingRef.current = false;
+      lastInteractionTimeRef.current = performance.now();
+      if (onManualScrollEnd) onManualScrollEnd();
+    }, 250); // Same debounce as wheel for consistency
+  }, [onManualScrollEnd, wakeUpLoop]);
 
   const handleScrollTo = useCallback(
     (progress: number) => {
       if (!scrollContainerRef.current) return;
       const metrics = metricsRef.current;
-      const maxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
-      // Progress is 0-1
-      const newPos = Math.min(Math.max(progress, 0), 1) * maxScroll;
+      const newPos = progress * metrics.scrollHeight;
       internalScrollPos.current = newPos;
 
       scrollContainerRef.current.scrollTop = newPos;
+      lastInteractionTimeRef.current = performance.now(); // Register interaction
 
       wakeUpLoop();
     },
