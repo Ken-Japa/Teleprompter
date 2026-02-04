@@ -212,25 +212,29 @@ export const Prompter = memo(
         }
       }, [externalState.isPlaying, isRecording, isPaused, resumeRecording, pauseRecording]);
 
+      // Fallback Logic: If mode is remote but no peer is connected, fallback to host
+      const effectiveVoiceControlMode = (voiceControlMode === "remote" && status !== ConnectionStatus.CONNECTED) ? "host" : (voiceControlMode || "host");
+      const effectiveRecordingMode = (recordingMode === "remote" && status !== ConnectionStatus.CONNECTED) ? "host" : (recordingMode || "host");
+
       const handleStartRecording = useCallback(async () => {
-        if (recordingMode === "remote") {
+        if (effectiveRecordingMode === "remote") {
           if (onStartRemoteRecording) onStartRemoteRecording();
         } else {
           setSessionSubtitles([]);
           currentSegmentStartTimeRef.current = null;
           await startRecording();
-          trackEvent("recording_start", { mode: recordingMode || "host" });
+          trackEvent("recording_start", { mode: effectiveRecordingMode || "host" });
         }
-      }, [recordingMode, startRecording, onStartRemoteRecording]);
+      }, [effectiveRecordingMode, startRecording, onStartRemoteRecording]);
 
       const handleStopRecording = useCallback(() => {
-        if (recordingMode === "remote") {
+        if (effectiveRecordingMode === "remote") {
           if (onStopRemoteRecording) onStopRemoteRecording();
         } else {
           stopRecording();
-          trackEvent("recording_stop", { mode: recordingMode || "host", duration: recordingTime });
+          trackEvent("recording_stop", { mode: effectiveRecordingMode || "host", duration: recordingTime });
         }
-      }, [recordingMode, stopRecording, onStopRemoteRecording, recordingTime]);
+      }, [effectiveRecordingMode, stopRecording, onStopRemoteRecording, recordingTime]);
 
       const handlePauseRecording = useCallback(() => {
         pauseRecording();
@@ -475,8 +479,8 @@ export const Prompter = memo(
       }, [onStateChange, externalState.speed]);
 
       // Determine effective voice state based on mode
-      const effectiveActiveSentenceIndex = voiceControlMode === "remote" ? remoteVoiceState.index : activeSentenceIndex;
-      const effectiveVoiceProgress = voiceControlMode === "remote" ? remoteVoiceState.progress : voiceProgress;
+      const effectiveActiveSentenceIndex = effectiveVoiceControlMode === "remote" ? remoteVoiceState.index : activeSentenceIndex;
+      const effectiveVoiceProgress = effectiveVoiceControlMode === "remote" ? remoteVoiceState.progress : voiceProgress;
 
       // --- PHYSICS ENGINE INTEGRATION ---
       const physicsResult = useScrollPhysics({
@@ -816,7 +820,7 @@ export const Prompter = memo(
           setIsVoiceMode(true);
           // Pause auto-scroll when enabling voice mode
           onStateChange(false, externalState.speed);
-          if (voiceControlMode !== "remote") {
+          if (effectiveVoiceControlMode !== "remote") {
             // First activation: Use 0.5 (Center) because manual reading focus is at center
             // CRITICAL: Pass native scrollTop before it gets reset to 0 by useScrollPhysics sync effect
             startListening(0.5, scrollContainerRef.current?.scrollTop);
@@ -831,13 +835,13 @@ export const Prompter = memo(
         onStateChange,
         externalState.speed,
         currentActiveElementRef,
-        voiceControlMode
+        effectiveVoiceControlMode
       ]);
 
       // Handle Dynamic Mode Switching
       useEffect(() => {
         if (isVoiceMode) {
-          if (voiceControlMode !== "remote") {
+          if (effectiveVoiceControlMode !== "remote") {
             // Reactivation: Use LOOKAHEAD_POSITION because text is already offset for voice mode
             // CRITICAL: Use absolute internal scroll position when voice is already active (scrollTop is 0)
             const currentPos = physicsMethodsRef.current?.internalScrollPos?.current;
@@ -848,7 +852,7 @@ export const Prompter = memo(
         } else {
           stopListening();
         }
-      }, [voiceControlMode, isVoiceMode, startListening, stopListening]);
+      }, [effectiveVoiceControlMode, isVoiceMode, startListening, stopListening]);
 
       const onRemoteVoiceUpdate = useCallback((index: number, progress: number) => {
         setRemoteVoiceState({ index, progress });
