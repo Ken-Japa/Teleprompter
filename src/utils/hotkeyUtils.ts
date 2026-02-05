@@ -18,6 +18,17 @@ export const getEventHotkey = (e: KeyboardEvent | React.KeyboardEvent): string =
 };
 
 /**
+ * Resolves the "Mod" keyword to the appropriate platform key.
+ * On Windows/Linux/Mac, we default to "Control" for PromptNinja shortcuts
+ * to avoid conflicts with system shortcuts on macOS.
+ */
+export const resolveHotkeyMod = (hotkey: string): string => {
+    if (!hotkey) return hotkey;
+    // Always use Control for "Mod" on all platforms for this app
+    return hotkey.replace("Mod", "Control");
+};
+
+/**
  * Formats a standardized hotkey string for display.
  * Example: "Control+KeyB" -> "Ctrl+B"
  */
@@ -29,6 +40,7 @@ export const formatHotkeyForDisplay = (hotkey: string): string => {
         .map(part => {
             switch (part) {
                 case "Control": return "Ctrl";
+                case "Mod": return "Ctrl";
                 case "Shift": return "Shift";
                 case "Alt": return "Alt";
                 case "Meta": return "Meta";

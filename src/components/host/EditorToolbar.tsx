@@ -8,7 +8,7 @@ import { PacingModal } from "../ui/PacingModal";
 import { FindReplaceModal } from "../ui/FindReplaceModal";
 import { HotkeyConfigModal } from "../ui/HotkeyConfigModal";
 import { OBSConfigModal } from "./OBSConfigModal";
-import { formatHotkeyForDisplay } from "../../utils/hotkeyUtils";
+import { formatHotkeyForDisplay, resolveHotkeyMod } from "../../utils/hotkeyUtils";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { HOTKEY_DEFAULTS } from "../../config/constants";
 import { KeyboardIcon } from "../ui/Icons";
@@ -67,7 +67,7 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, o
     const [showHotkeyModal, setShowHotkeyModal] = useState(false);
     const [showFindReplaceModal, setShowFindReplaceModal] = useState(false);
     const [showOBSModal, setShowOBSModal] = useState(false);
-    const [customHotkeys] = useLocalStorage("customShortcuts", HOTKEY_DEFAULTS);
+    const [customHotkeys] = useLocalStorage("neonprompt_hotkeys_v1", HOTKEY_DEFAULTS);
 
     // Removed internal useOBS - now using props from parent host controller
 
@@ -90,10 +90,10 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, o
                             role="group"
                             aria-label="Text Highlights"
                         >
-                            <S.ColorButton color="red" label={`Red Highlight (${formatHotkeyForDisplay(customHotkeys.FORMAT_RED)})`} onClick={() => onInsertTag("r")} />
-                            <S.ColorButton color="yellow" label={`Yellow Highlight (${formatHotkeyForDisplay(customHotkeys.FORMAT_YELLOW)})`} onClick={() => onInsertTag("y")} />
-                            <S.ColorButton color="green" label={`Green Highlight (${formatHotkeyForDisplay(customHotkeys.FORMAT_GREEN)})`} onClick={() => onInsertTag("g")} />
-                            <S.ColorButton color="blue" label={`Blue Highlight (${formatHotkeyForDisplay(customHotkeys.FORMAT_BLUE)})`} onClick={() => onInsertTag("b")} />
+                            <S.ColorButton color="red" label={`Red Highlight (${formatHotkeyForDisplay(resolveHotkeyMod(customHotkeys.FORMAT_RED))})`} onClick={() => onInsertTag("r")} />
+                            <S.ColorButton color="yellow" label={`Yellow Highlight (${formatHotkeyForDisplay(resolveHotkeyMod(customHotkeys.FORMAT_YELLOW))})`} onClick={() => onInsertTag("y")} />
+                            <S.ColorButton color="green" label={`Green Highlight (${formatHotkeyForDisplay(resolveHotkeyMod(customHotkeys.FORMAT_GREEN))})`} onClick={() => onInsertTag("g")} />
+                            <S.ColorButton color="blue" label={`Blue Highlight (${formatHotkeyForDisplay(resolveHotkeyMod(customHotkeys.FORMAT_BLUE))})`} onClick={() => onInsertTag("b")} />
                         </div>
 
                         {/* Text Formatting Buttons */}

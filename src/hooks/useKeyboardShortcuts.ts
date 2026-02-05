@@ -2,7 +2,7 @@ import { useEffect, useMemo } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 import { HotkeyAction, HotkeyConfig } from '../types';
 import { HOTKEY_DEFAULTS } from '../config/constants';
-import { getEventHotkey } from '../utils/hotkeyUtils';
+import { getEventHotkey, resolveHotkeyMod } from '../utils/hotkeyUtils';
 
 interface KeyboardShortcutsProps {
   isPlaying: boolean;
@@ -54,7 +54,10 @@ export const useKeyboardShortcuts = ({
     const config = { ...HOTKEY_DEFAULTS, ...customHotkeys }; // Merge defaults
 
     Object.entries(config).forEach(([action, code]) => {
-      if (code) map[code] = action as HotkeyAction;
+      if (code) {
+        const resolvedCode = resolveHotkeyMod(code);
+        map[resolvedCode] = action as HotkeyAction;
+      }
     });
     return map;
   }, [customHotkeys]);

@@ -3,7 +3,7 @@ import * as S from './Styled';
 import { useTranslation } from '../../hooks/useTranslation';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { HOTKEY_DEFAULTS } from '../../config/constants';
-import { formatHotkeyForDisplay } from '../../utils/hotkeyUtils';
+import { formatHotkeyForDisplay, resolveHotkeyMod } from '../../utils/hotkeyUtils';
 
 interface TutorialModalProps {
   isOpen: boolean;
@@ -12,23 +12,23 @@ interface TutorialModalProps {
 
 export const TutorialModal: React.FC<TutorialModalProps> = ({ isOpen, onClose }) => {
   const { t } = useTranslation();
-  const [customHotkeys] = useLocalStorage("customShortcuts", HOTKEY_DEFAULTS);
+  const [customHotkeys] = useLocalStorage("neonprompt_hotkeys_v1", HOTKEY_DEFAULTS);
 
   const shortcuts = [
-    { action: 'TOGGLE_PLAY', keys: [formatHotkeyForDisplay(customHotkeys.TOGGLE_PLAY)] },
-    { action: 'RESET', keys: [formatHotkeyForDisplay(customHotkeys.RESET)] },
-    { action: 'SPEED_UP', keys: [formatHotkeyForDisplay(customHotkeys.SPEED_UP)] },
-    { action: 'SPEED_DOWN', keys: [formatHotkeyForDisplay(customHotkeys.SPEED_DOWN)] },
-    { action: 'FONT_INCREASE', keys: [formatHotkeyForDisplay(customHotkeys.FONT_INCREASE)] },
-    { action: 'FONT_DECREASE', keys: [formatHotkeyForDisplay(customHotkeys.FONT_DECREASE)] },
-    { action: 'TOGGLE_MIRROR', keys: [formatHotkeyForDisplay(customHotkeys.TOGGLE_MIRROR)] },
-    { action: 'FORMAT_BOLD', keys: [formatHotkeyForDisplay(customHotkeys.FORMAT_BOLD)] },
-    { action: 'FORMAT_ITALIC', keys: [formatHotkeyForDisplay(customHotkeys.FORMAT_ITALIC)] },
-    { action: 'FORMAT_UNDERLINE', keys: [formatHotkeyForDisplay(customHotkeys.FORMAT_UNDERLINE)] },
-    { action: 'FORMAT_RED', keys: [formatHotkeyForDisplay(customHotkeys.FORMAT_RED)] },
-    { action: 'FORMAT_YELLOW', keys: [formatHotkeyForDisplay(customHotkeys.FORMAT_YELLOW)] },
-    { action: 'FORMAT_GREEN', keys: [formatHotkeyForDisplay(customHotkeys.FORMAT_GREEN)] },
-    { action: 'FORMAT_BLUE', keys: [formatHotkeyForDisplay(customHotkeys.FORMAT_BLUE)] },
+    { action: 'TOGGLE_PLAY', keys: [formatHotkeyForDisplay(resolveHotkeyMod(customHotkeys.TOGGLE_PLAY))] },
+    { action: 'RESET', keys: [formatHotkeyForDisplay(resolveHotkeyMod(customHotkeys.RESET))] },
+    { action: 'SPEED_UP', keys: [formatHotkeyForDisplay(resolveHotkeyMod(customHotkeys.SPEED_UP))] },
+    { action: 'SPEED_DOWN', keys: [formatHotkeyForDisplay(resolveHotkeyMod(customHotkeys.SPEED_DOWN))] },
+    { action: 'FONT_INCREASE', keys: [formatHotkeyForDisplay(resolveHotkeyMod(customHotkeys.FONT_INCREASE))] },
+    { action: 'FONT_DECREASE', keys: [formatHotkeyForDisplay(resolveHotkeyMod(customHotkeys.FONT_DECREASE))] },
+    { action: 'TOGGLE_MIRROR', keys: [formatHotkeyForDisplay(resolveHotkeyMod(customHotkeys.TOGGLE_MIRROR))] },
+    { action: 'FORMAT_BOLD', keys: [formatHotkeyForDisplay(resolveHotkeyMod(customHotkeys.FORMAT_BOLD))] },
+    { action: 'FORMAT_ITALIC', keys: [formatHotkeyForDisplay(resolveHotkeyMod(customHotkeys.FORMAT_ITALIC))] },
+    { action: 'FORMAT_UNDERLINE', keys: [formatHotkeyForDisplay(resolveHotkeyMod(customHotkeys.FORMAT_UNDERLINE))] },
+    { action: 'FORMAT_RED', keys: [formatHotkeyForDisplay(resolveHotkeyMod(customHotkeys.FORMAT_RED))] },
+    { action: 'FORMAT_YELLOW', keys: [formatHotkeyForDisplay(resolveHotkeyMod(customHotkeys.FORMAT_YELLOW))] },
+    { action: 'FORMAT_GREEN', keys: [formatHotkeyForDisplay(resolveHotkeyMod(customHotkeys.FORMAT_GREEN))] },
+    { action: 'FORMAT_BLUE', keys: [formatHotkeyForDisplay(resolveHotkeyMod(customHotkeys.FORMAT_BLUE))] },
     { action: 'EXIT', keys: ["Esc"] },
   ];
 

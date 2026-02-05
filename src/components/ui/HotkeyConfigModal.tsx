@@ -6,7 +6,8 @@ import { HOTKEY_DEFAULTS } from "../../config/constants";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { RefreshIcon } from "./Icons";
 import { useMidi } from "../../hooks/useMidi";
-import { getEventHotkey, formatHotkeyForDisplay } from "../../utils/hotkeyUtils";
+import { getEventHotkey, formatHotkeyForDisplay, resolveHotkeyMod } from "../../utils/hotkeyUtils";
+import { useMemo } from "react";
 
 interface HotkeyConfigModalProps {
     isOpen: boolean;
@@ -32,8 +33,16 @@ export const HotkeyConfigModal: React.FC<HotkeyConfigModalProps> = ({ isOpen, on
         hasMidiSupport
     } = useMidi();
 
-    // Merge custom with defaults to ensure all keys exist
-    const currentConfig = { ...HOTKEY_DEFAULTS, ...customHotkeys };
+    // Merge custom with defaults and resolve "Mod" keys
+    const currentConfig = useMemo(() => {
+        const merged = { ...HOTKEY_DEFAULTS, ...customHotkeys };
+        const resolved = { ...merged };
+        Object.keys(resolved).forEach((key) => {
+            const action = key as keyof typeof resolved;
+            resolved[action] = resolveHotkeyMod(resolved[action]);
+        });
+        return resolved;
+    }, [customHotkeys]);
 
     const handleReset = () => {
         if (confirm("Reset all hotkeys to default?")) {

@@ -4,7 +4,7 @@ import { useLocalStorage } from "./useLocalStorage";
 import { AutocompleteSuggestion } from "../components/host/CommandAutocomplete";
 import { HotkeyConfig } from "../types";
 import { HOTKEY_DEFAULTS } from "../config/constants";
-import { getEventHotkey } from "../utils/hotkeyUtils";
+import { getEventHotkey, resolveHotkeyMod } from "../utils/hotkeyUtils";
 import { useTranslation } from "./useTranslation";
 import { useMemo } from "react";
 
@@ -292,19 +292,19 @@ export const useEditorLogic = ({ text, setText }: UseEditorLogicProps) => {
         let tag = "";
         const hotkey = getEventHotkey(e);
 
-        if (hotkey === customHotkeys.FORMAT_BOLD) {
+        if (hotkey === resolveHotkeyMod(customHotkeys.FORMAT_BOLD)) {
             tag = "bold";
-        } else if (hotkey === customHotkeys.FORMAT_ITALIC) {
+        } else if (hotkey === resolveHotkeyMod(customHotkeys.FORMAT_ITALIC)) {
             tag = "i";
-        } else if (hotkey === customHotkeys.FORMAT_UNDERLINE) {
+        } else if (hotkey === resolveHotkeyMod(customHotkeys.FORMAT_UNDERLINE)) {
             tag = "u";
-        } else if (hotkey === customHotkeys.FORMAT_RED) {
+        } else if (hotkey === resolveHotkeyMod(customHotkeys.FORMAT_RED)) {
             tag = "red";
-        } else if (hotkey === customHotkeys.FORMAT_YELLOW) {
+        } else if (hotkey === resolveHotkeyMod(customHotkeys.FORMAT_YELLOW)) {
             tag = "yellow";
-        } else if (hotkey === customHotkeys.FORMAT_GREEN) {
+        } else if (hotkey === resolveHotkeyMod(customHotkeys.FORMAT_GREEN)) {
             tag = "green";
-        } else if (hotkey === customHotkeys.FORMAT_BLUE) {
+        } else if (hotkey === resolveHotkeyMod(customHotkeys.FORMAT_BLUE)) {
             tag = "blue";
         }
 
