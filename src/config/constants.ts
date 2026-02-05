@@ -23,6 +23,7 @@ export const PROMPTER_DEFAULTS = {
     IS_UPPERCASE: false,
     IS_FLIP_VERTICAL: false,
     IS_FOCUS_MODE: false,
+    IS_AUTO_COLOR: false,
     // LocalStorage Keys
     STORAGE_KEYS: {
         FONT_SIZE: "promptninja_font",
@@ -37,6 +38,7 @@ export const PROMPTER_DEFAULTS = {
         RECORDING_MODE: "promptninja_recording_mode",
         PRO_STATUS: "promptninja_pro",
         PRO_TRIAL: "promptninja_trial_data",
+        AUTO_COLOR: "promptninja_autocolor",
     },
     // Theme Definitions
     STANDARD_THEMES: [Theme.DEFAULT, Theme.PAPER, Theme.CONTRAST, Theme.MATRIX, Theme.CYBER, Theme.CREAM],

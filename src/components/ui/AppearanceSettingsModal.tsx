@@ -271,7 +271,7 @@ export const AppearanceSettingsModal = memo(({ isOpen, onClose, settings, action
                             {!settings.isMusicianMode && (
                                 <button
                                     onClick={toggleChroma}
-                                    className={`flex flex-col items-center justify-center p-4 rounded-2xl border transition-all gap-2 col-span-2 ${PROMPTER_DEFAULTS.CHROMA_THEMES.includes(theme)
+                                    className={`flex flex-col items-center justify-center p-4 rounded-2xl border transition-all gap-2 ${PROMPTER_DEFAULTS.CHROMA_THEMES.includes(theme)
                                         ? "bg-green-600/20 border-green-500 text-green-400"
                                         : "bg-slate-800/50 border-slate-700/50 text-slate-400 hover:bg-slate-800"}`}
                                 >
@@ -279,6 +279,16 @@ export const AppearanceSettingsModal = memo(({ isOpen, onClose, settings, action
                                     <span className="text-xs font-medium">{t("host.controls.chroma")}</span>
                                 </button>
                             )}
+
+                            <button
+                                onClick={() => actions.setAutoColorBrackets(!settings.autoColorBrackets)}
+                                className={`flex flex-col items-center justify-center p-4 rounded-2xl border transition-all gap-2 ${settings.autoColorBrackets
+                                    ? "bg-brand-600/20 border-brand-500 text-brand-400"
+                                    : "bg-slate-800/50 border-slate-700/50 text-slate-400 hover:bg-slate-800"} ${!isPro ? "opacity-50" : ""}`}
+                            >
+                                <MagicIcon className="w-6 h-6" />
+                                <span className="text-xs font-medium text-center">{t("host.controls.autoColor") || "Cores Automáticas"}</span>
+                            </button>
                         </div>
 
                         {/* NDI Toggle Section */}

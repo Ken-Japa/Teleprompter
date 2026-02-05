@@ -29,6 +29,7 @@ export interface PrompterActions {
     setBpm: (val: number) => void;
     setIsAutoBpmEnabled: (val: boolean) => void;
     setLanguage: (val: string) => void;
+    setAutoColorBrackets: (val: boolean) => void;
 }
 
 export interface PrompterFeatureFlags {
@@ -129,6 +130,10 @@ export const usePrompterSettings = (featureFlags: PrompterFeatureFlags = {}) => 
         getStorageKey("neonprompt_auto_bpm"),
         false
     );
+    const [autoColorBrackets, setAutoColorBrackets] = useLocalStorage<boolean>(
+        getStorageKey(PROMPTER_DEFAULTS.STORAGE_KEYS.AUTO_COLOR),
+        PROMPTER_DEFAULTS.IS_AUTO_COLOR
+    );
     const [language, setLanguage] = useState<string>(""); // Synchronized from useTranslation in HostController
 
     const cycleTheme = useCallback(() => {
@@ -192,6 +197,7 @@ export const usePrompterSettings = (featureFlags: PrompterFeatureFlags = {}) => 
         bpm,
         autoBpmEnabled,
         language,
+        autoColorBrackets,
     };
 
     const actions: PrompterActions = {
@@ -236,6 +242,7 @@ export const usePrompterSettings = (featureFlags: PrompterFeatureFlags = {}) => 
         setBpm: wrapSetter(setBpm, "bpm"),
         setIsAutoBpmEnabled: wrapToggle(setAutoBpmEnabled, "auto_bpm"),
         setLanguage: setLanguage,
+        setAutoColorBrackets: wrapToggle(setAutoColorBrackets, "auto_color_brackets"),
     };
 
     return { settings, actions };

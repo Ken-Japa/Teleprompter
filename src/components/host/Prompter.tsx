@@ -331,7 +331,8 @@ export const Prompter = memo(
         effectiveVoiceLang,
         isFlipVertical,
         isMusicianMode,
-        isBilingualMode
+        isBilingualMode,
+        settings.autoColorBrackets
       );
 
       const { startListening, stopListening, resetVoice, clearSessionSummary, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError, sessionSummary, syncWithScroll } = voiceControl;
@@ -352,10 +353,10 @@ export const Prompter = memo(
       const bilingualSentences = useMemo(() => {
         if (!isBilingualMode || !bilingualConfig) return null;
         return {
-          primary: parseTextToSentences(bilingualConfig.primaryText).sentences,
-          secondary: parseTextToSentences(bilingualConfig.secondaryText).sentences
+          primary: parseTextToSentences(bilingualConfig.primaryText, settings.autoColorBrackets).sentences,
+          secondary: parseTextToSentences(bilingualConfig.secondaryText, settings.autoColorBrackets).sentences
         };
-      }, [isBilingualMode, bilingualConfig]);
+      }, [isBilingualMode, bilingualConfig, settings.autoColorBrackets]);
 
       // Abstraction: Handle DOM measurements
       const metricsRef = useElementMetrics(scrollContainerRef, [sentences, fontSize, margin, isUpperCase, isFlipVertical]);

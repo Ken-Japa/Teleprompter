@@ -64,4 +64,40 @@ describe("parseTextToSentences", () => {
         // "<action>Go" -> "go"
         expect(result.fullCleanText).toBe("hello world go");
     });
+
+    it("Should handle square brackets as red (always enabled)", () => {
+        const text = "Normal [Bracket] Text";
+        const result = parseTextToSentences(text);
+        const fragments = result.sentences[0].fragments;
+        expect(fragments.find(f => f.text === "[Bracket]")?.type).toBe("red");
+    });
+
+    it("Should handle angle brackets as blue only when autoColorBrackets is true", () => {
+        const text = "Normal <Angle> Text";
+
+        // Disabled
+        const resultOff = parseTextToSentences(text, false);
+        expect(resultOff.sentences[0].fragments.find(f => f.text === "<Angle>")?.type).toBe("normal");
+
+        // Enabled
+        const resultOn = parseTextToSentences(text, true);
+        expect(resultOn.sentences[0].fragments.find(f => f.text === "<Angle>")?.type).toBe("blue");
+    });
+
+    it("Should not color angle brackets for known style tags even if autoColorBrackets is true", () => {
+        const text = "Text <b>Bold</b> Text";
+        const result = parseTextToSentences(text, true);
+        // Style tags should be processed normally and not colored blue as a bracket item
+        expect(result.sentences[0].fragments.some(f => f.text === "Bold" && f.bold)).toBe(true);
+    });
+
+    it("Should not color very long or multiline brackets", () => {
+        const text = "[Too long " + "a".repeat(101) + "]";
+        const result = parseTextToSentences(text, true);
+        expect(result.sentences[0].fragments[0].type).toBe("normal");
+
+        const textMultiline = "[Multi\nLine]";
+        const resultML = parseTextToSentences(textMultiline, true);
+        expect(resultML.sentences.some(s => s.fragments.some(f => f.text.includes("[Multi") && f.type === "normal"))).toBe(true);
+    });
 });

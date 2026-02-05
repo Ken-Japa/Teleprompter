@@ -1,7 +1,8 @@
 import { Sentence, TextFragment, TextCommand } from "../types";
 
 export const parseTextToSentences = (
-    text: string
+    text: string,
+    autoColorBrackets: boolean = false
 ): {
     sentences: Sentence[];
     fullCleanText: string;
@@ -29,8 +30,9 @@ export const parseTextToSentences = (
     // Unified Regex: Matches color tags <r>...</r> OR brackets [...]
     // Group 1: Tag char (r,y,g,b)
     // Group 2: Tag content
-    // Group 3: Bracket match (entire string)
-    const TOKEN_REGEX = /<([rygb])>([\s\S]*?)<\/\1>|(\[.*?\])/g;
+    // Group 3: Square Bracket match [ ... ] (max 100 chars, no newlines)
+    // Group 4: Angle Bracket match < ... > (max 100 chars, no newlines, avoids known tags)
+    const TOKEN_REGEX = /<([rygb])>([\s\S]*?)<\/\1>|(\[[^\]\n]{1,100}\])|(<(?!\/?(?:bold|i|u|b|r|y|g|strong|em)\b)[^>\n]{1,100}>)/g;
 
     let lastIndex = 0;
     let match;
@@ -52,7 +54,7 @@ export const parseTextToSentences = (
             });
         }
 
-        // Check if it's a Tag Match or Bracket Match
+        // Check if it's a Square Bracket match [ ... ]
         if (match[3]) {
             // Bracket Match -> RED default (as per musician mode request)
             tokens.push({
@@ -60,7 +62,16 @@ export const parseTextToSentences = (
                 type: "red",
                 absoluteStart: match.index
             });
-        } else {
+        }
+        // Check if it's an Angle Bracket match < ... > (if enabled)
+        else if (match[4] && autoColorBrackets) {
+            tokens.push({
+                text: match[4],
+                type: "blue",
+                absoluteStart: match.index
+            });
+        }
+        else if (match[1]) {
             // Tag Match
             const code = match[1];
             tokens.push({
@@ -68,6 +79,13 @@ export const parseTextToSentences = (
                 type: colorMap[code] || "normal",
                 absoluteStart: match.index,
                 innerOffset: 3 // length of <r>, <y>, <g>, <b>
+            });
+        } else {
+            // If it matched Group 4 but autoColorBrackets is off, or it's an unhandled case, push as normal text
+            tokens.push({
+                text: match[0],
+                type: "normal",
+                absoluteStart: match.index
             });
         }
         lastIndex = TOKEN_REGEX.lastIndex;

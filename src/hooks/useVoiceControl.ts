@@ -17,7 +17,8 @@ export const useVoiceControl = (
     forcedLang?: string,
     isFlipVertical: boolean = false,
     isMusicianMode: boolean = false,
-    isBilingual: boolean = false
+    isBilingual: boolean = false,
+    autoColorBrackets: boolean = false
 ) => {
     const { lang: globalLang } = useTranslation();
     const lang = forcedLang || globalLang;
@@ -130,8 +131,8 @@ export const useVoiceControl = (
     });
 
     const { sentences, fullCleanText, charToSentenceMap } = useMemo(() => {
-        return parseTextToSentences(text);
-    }, [text]);
+        return parseTextToSentences(text, autoColorBrackets);
+    }, [text, autoColorBrackets]);
 
     useEffect(() => {
         lastMatchIndexRef.current = 0;

@@ -149,6 +149,7 @@ export interface PrompterSettings {
     bpm: number; // Musician mode BPM
     autoBpmEnabled: boolean; // Whether auto-BPM from mic is enabled
     language?: string; // App language for synchronization
+    autoColorBrackets: boolean; // Auto color bracketed items
 }
 
 export interface RemoteScrollHandler {
