@@ -84,11 +84,11 @@ export const QRCodeModal: React.FC<QRCodeModalProps> = ({ isOpen, onClose, peerI
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={t("host.remoteConnect")}>
       <div className="flex flex-col items-center justify-center space-y-6 pt-2 pb-4">
-        <div className="bg-white p-4 sm:p-5 rounded-2xl shadow-xl w-full max-w-[280px] aspect-square flex items-center justify-center">
+        <div className="bg-white p-4 sm:p-5 rounded-2xl shadow-xl w-full max-w-[280px] aspect-square flex items-center justify-center overflow-hidden">
           {!peerId ? (
             <div className="animate-pulse text-slate-400 font-mono text-sm">{t("host.generatingId")}</div>
           ) : (
-            <canvas ref={qrRef} className="w-full h-full block object-contain" />
+            <canvas ref={qrRef} className="max-w-full max-h-full block object-contain" />
           )}
         </div>
 

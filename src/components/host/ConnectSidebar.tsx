@@ -69,7 +69,7 @@ export const ConnectSidebar: React.FC<ConnectSidebarProps> = memo(({ peerId, sta
                 </div>
                 <S.QRCodeBox hasId={!!peerId}>
                     {peerId ? (
-                        <canvas ref={qrRef} className="mx-auto block max-w-full h-auto" />
+                        <canvas ref={qrRef} className="mx-auto block max-w-full max-h-full object-contain" />
                     ) : (
                         <div className="animate-pulse text-slate-400 text-xs aspect-square w-full flex items-center justify-center">
                             {t("host.generatingId")}
