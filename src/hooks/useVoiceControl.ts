@@ -2,7 +2,7 @@ import { useRef, useState, useMemo, useEffect, useCallback } from "react";
 import { SpeechRecognitionEvent, ISpeechRecognition } from "../types";
 import { parseTextToSentences } from "../utils/textParser";
 import { logger } from "../utils/logger";
-import { findBestMatch, clearMatchCache, findSegmentedMatch } from "../utils/stringSimilarity";
+import { findBestMatch, clearMatchCache, findSegmentedMatch, levenshteinDistance } from "../utils/stringSimilarity";
 import { useTranslation } from "./useTranslation";
 import { getAdaptiveConfig, updateVoiceProfile } from "../config/voiceControlConfig";
 import { normalizePronunciation, pronunciationLearner } from "../utils/pronunciationMatcher";
@@ -783,10 +783,27 @@ export const useVoiceControl = (
                 });
 
                 // NEW: Learn from mismatch
-                // This helps the system adapt to the user's voice/pronunciation over time
-                const expectedSentence = sentences[lockedSentenceIdRef.current]?.cleanContent || '';
-                if (expectedSentence && cleanTranscript.length > 5) {
-                    pronunciationLearner.learnFromMismatch(cleanTranscript, expectedSentence);
+                // Improved: Find the best candidate among all sentences to avoid learning from jumps or random noise
+                let bestExpected = '';
+                let bestRatio = 1; // High = bad
+
+                sentences.forEach(s => {
+                    const expectedStr = s.cleanContent || '';
+                    if (expectedStr.length === 0) return;
+
+                    const dist = levenshteinDistance(cleanTranscript, expectedStr);
+                    const currentRatio = dist / Math.max(cleanTranscript.length, expectedStr.length);
+
+                    if (currentRatio < bestRatio) {
+                        bestRatio = currentRatio;
+                        bestExpected = expectedStr;
+                    }
+                });
+
+                if (bestRatio < 0.7 && cleanTranscript.length > 5) {
+                    pronunciationLearner.learnFromMismatch(cleanTranscript, bestExpected);
+                } else {
+                    console.warn(`[Voice] No suitable expected found for learning (best ratio: ${bestRatio.toFixed(2)})`);
                 }
 
                 // NEW: INFINITE LOOP PROTECTION
@@ -801,12 +818,24 @@ export const useVoiceControl = (
                 // RECOVERY STRATEGY: If failing too much, try to rescue
                 if (consecutiveFailuresRef.current >= 4) {
                     console.warn(`[Voice] High failure rate (${consecutiveFailuresRef.current}), attempting wide search...`);
-                    // Try a much wider search with slightly relaxed threshold
-                    // but still require decent quality to avoid random jumps
-                    match = findBestMatch(fullCleanText, cleanTranscript, lastMatchIndexRef.current, VOICE_CONFIG.SEARCH_WINDOW.LARGE, 0.45);
+
+                    // Improved: Limit search range to prevent wild jumps
+                    const maxJump = VOICE_CONFIG.ADVANCED_MATCHING?.maxWideJump || 500;
+
+                    // Try a limited wider search with slightly relaxed threshold
+                    match = findBestMatch(
+                        fullCleanText,
+                        cleanTranscript,
+                        lastMatchIndexRef.current,
+                        maxJump,
+                        0.45
+                    );
 
                     if (match) {
-                        console.log(`[Voice] RECOVERY SUCCESS at index ${match.index}`);
+                        console.log(`[Voice] RECOVERY SUCCESS at relative index ${match.index - lastMatchIndexRef.current}`);
+                    } else {
+                        console.warn('[Voice] Wide search failed. Holding position to avoid jump.');
+                        return; // Exit processing for this result to hold position
                     }
                 }
             } else {

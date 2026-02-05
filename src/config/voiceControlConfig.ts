@@ -140,6 +140,11 @@ export const VOICE_CONFIG = {
   MATCH_CONFIRMATION_FRAMES: 2,
   PROGRESS_SMOOTH_FACTOR: 0.35,
 
+  // --- ADVANCED MATCHING ---
+  ADVANCED_MATCHING: {
+    maxWideJump: 500, // characters
+  },
+
   SEARCH_WINDOW: {
     SMALL: 800,
     MEDIUM: 1200,
@@ -319,7 +324,7 @@ export const VOICE_CONFIG = {
     },
     'en': {
       intraSentenceTolerance: 0.40, // Tightened from 0.5
-      minConfidence: 0.75, // Tightened from 0.75
+      minConfidence: 0.70, // Tightened from 0.75
       segmentMatching: {
         enabled: true,
         windowSize: 5,

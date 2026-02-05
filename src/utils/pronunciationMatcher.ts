@@ -190,18 +190,24 @@ class PronunciationLearner {
      * Checks the similarity ratio to ensure we only learn meaningful variations
      * (e.g., mistranscriptions or mispronunciations) and NOT random noise.
      */
-    learnFromMismatch(transcript: string, expected: string, threshold: number = 0.3) {
+    learnFromMismatch(transcript: string, expected: string, threshold: number = 0.4) {
         if (!transcript || !expected) return;
 
         const dist = levenshteinDistance(transcript, expected);
         const ratio = dist / Math.max(transcript.length, expected.length);
 
-        // Similar but not exact → Likely a phonetic variant or API error
-        // ratio < 0.3 means it's very close (handled by fuzzy matching already usually)
-        // ratio > 0.8 means it's completely different noise
-        if (ratio > threshold && ratio < 0.8) {
-            this.addRule(transcript, expected);
-            console.log(`[Learner] Added auto-rule: "${transcript}" → "${expected}" (ratio: ${ratio.toFixed(2)})`);
+        if (ratio > threshold && ratio < 0.7 && transcript.length > expected.length * 0.5) {
+            const normalized = transcript.toLowerCase().trim();
+            const variants = this.customRules.get(expected) || [];
+
+            if (!variants.includes(normalized)) {
+                variants.push(normalized);
+                this.customRules.set(expected, variants);
+                this.save();
+                console.log(`[Learner] Added auto-rule: "${transcript}" → "${expected}" (ratio: ${ratio.toFixed(2)})`);
+            }
+        } else {
+            console.warn(`[Learner] Skipped learning: Ratio ${ratio.toFixed(2)} too extreme or transcript too short.`);
         }
     }
 
