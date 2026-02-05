@@ -45,6 +45,9 @@ interface EditorToolbarProps {
     onSwitchScript: (id: string) => void;
     onDeleteScript: (id: string) => void;
     onUpdateScript: (id: string, updates: Partial<Script>) => void;
+    deletedScripts: Script[];
+    onRestoreScript: (id: string) => void;
+    onPermanentlyDeleteScript: (id: string) => void;
 
     // OBS Integration Props
     obsStatus?: any;
@@ -55,6 +58,7 @@ interface EditorToolbarProps {
 }
 
 export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, onSelectRange, onUndo, canUndo, isMusicianMode, onToggleMusicianMode, featureFlags, isBilingualMode, onToggleBilingualMode, isCameraMode, onToggleCameraMode, onToggleWidgetMode, isWidgetMode, isPro = false, onUnlockPro = () => { }, voiceLanguage, onVoiceLanguageChange, scripts, activeScriptId, onCreateScript, onSwitchScript, onDeleteScript, onUpdateScript,
+    deletedScripts, onRestoreScript, onPermanentlyDeleteScript,
     obsStatus, obsConfig, onConnectOBS, onDisconnectOBS, onSaveOBSConfig
 }: EditorToolbarProps) => {
     const { t } = useTranslation();
@@ -258,6 +262,9 @@ export const EditorToolbar = memo(({ onInsertTag, onClear, text, onTextChange, o
                             onCreate={onCreateScript}
                             onDelete={onDeleteScript}
                             onUpdateTitle={(id, title) => onUpdateScript(id, { title })}
+                            deletedScripts={deletedScripts || []}
+                            onRestore={onRestoreScript}
+                            onPermanentlyDelete={onPermanentlyDeleteScript}
                         />
                     </div>
 

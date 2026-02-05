@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import { ChevronDownIcon, MusicIcon, SettingsIcon, PlusIcon } from "../ui/Icons";
+import { ChevronDownIcon, MusicIcon, SettingsIcon, PlusIcon, TrashIcon } from "../ui/Icons";
 import { Setlist } from "../../hooks/useSetlistStorage";
 import { Script } from "../../hooks/useScriptStorage";
 import { SetlistManagementModal } from "./SetlistManagementModal";
+import { TrashModal } from "./TrashModal";
 
 interface SetlistManagerProps {
     setlists: Setlist[];
@@ -24,19 +25,24 @@ interface SetlistManagerProps {
     onCreateScript: () => Promise<string>;
     onUpdateScript: (id: string, updates: Partial<Script>) => void;
     onDeleteScript: (id: string) => void;
-    onCreateSetlist: () => string;
+    onCreateSetlist: () => Promise<string>;
     onDeleteSetlist: (id: string) => void;
     onUpdateSetlistTitle: (id: string, title: string) => void;
+    deletedScripts: Script[];
+    onRestore: (id: string) => void;
+    onPermanentlyDelete: (id: string) => void;
 }
 
 export const SetlistManager: React.FC<SetlistManagerProps> = (props) => {
     const {
         setlists, activeSetlistId, onSwitchSetlist, activeSetlist,
-        onSwitchScript, activeScriptId, onCreateScript
+        onSwitchScript, activeScriptId, onCreateScript,
+        deletedScripts, onRestore, onPermanentlyDelete
     } = props;
 
     const [isOpen, setIsOpen] = useState(false);
     const [isManageModalOpen, setIsManageModalOpen] = useState(false);
+    const [isTrashOpen, setIsTrashOpen] = useState(false);
     const wrapperRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -127,19 +133,39 @@ export const SetlistManager: React.FC<SetlistManagerProps> = (props) => {
                 )}
 
                 {/* 3. Manage Button (Quick Access) */}
-                <button
-                    onClick={() => setIsManageModalOpen(true)}
-                    className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white border border-white/5 transition"
-                    title="Manage Setlist"
-                >
-                    <SettingsIcon className="w-4 h-4" />
-                </button>
+                <div className="flex items-center gap-1">
+                    {deletedScripts.length > 0 && (
+                        <button
+                            onClick={() => setIsTrashOpen(true)}
+                            className="p-2 rounded-lg bg-white/5 hover:bg-amber-500/20 text-slate-400 hover:text-amber-500 border border-white/5 transition relative"
+                            title="Lixeira"
+                        >
+                            <TrashIcon className="w-4 h-4" />
+                            <span className="absolute -top-1 -right-1 w-2 h-2 bg-amber-500 rounded-full border border-[#0a0a0a]"></span>
+                        </button>
+                    )}
+                    <button
+                        onClick={() => setIsManageModalOpen(true)}
+                        className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white border border-white/5 transition"
+                        title="Manage Setlist"
+                    >
+                        <SettingsIcon className="w-4 h-4" />
+                    </button>
+                </div>
             </div>
 
             <SetlistManagementModal
                 isOpen={isManageModalOpen}
                 onClose={() => setIsManageModalOpen(false)}
                 {...props}
+            />
+
+            <TrashModal
+                isOpen={isTrashOpen}
+                onClose={() => setIsTrashOpen(false)}
+                deletedScripts={deletedScripts}
+                onRestore={onRestore}
+                onPermanentlyDelete={onPermanentlyDelete}
             />
         </>
     );

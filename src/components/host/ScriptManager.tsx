@@ -4,6 +4,7 @@ import { useTranslation } from '../../hooks/useTranslation';
 import { Script } from '../../hooks/useScriptStorage';
 import { PlusIcon, TrashIcon, EditIcon, CheckIcon, ChevronDownIcon, GoogleIcon, LogoutIcon } from '../ui/Icons';
 import { useAuth } from '../../contexts/AuthContext';
+import { TrashModal } from './TrashModal';
 
 interface ScriptManagerProps {
     scripts: Script[];
@@ -12,6 +13,9 @@ interface ScriptManagerProps {
     onCreate: () => void;
     onDelete: (id: string) => void;
     onUpdateTitle: (id: string, title: string) => void;
+    deletedScripts: Script[];
+    onRestore: (id: string) => void;
+    onPermanentlyDelete: (id: string) => void;
 }
 
 export const ScriptManager: React.FC<ScriptManagerProps> = ({
@@ -20,11 +24,15 @@ export const ScriptManager: React.FC<ScriptManagerProps> = ({
     onSwitch,
     onCreate,
     onDelete,
-    onUpdateTitle
+    onUpdateTitle,
+    deletedScripts,
+    onRestore,
+    onPermanentlyDelete
 }) => {
     const { t } = useTranslation();
     const { user, loginWithGoogle, logout, loading } = useAuth();
     const [isOpen, setIsOpen] = useState(false);
+    const [isTrashOpen, setIsTrashOpen] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [editTitle, setEditTitle] = useState("");
     const wrapperRef = useRef<HTMLDivElement>(null);
@@ -107,12 +115,24 @@ export const ScriptManager: React.FC<ScriptManagerProps> = ({
             `} onClick={(e) => e.stopPropagation()}>
                 <div className="p-2 border-b border-slate-800 flex justify-between items-center bg-[#0f172a]">
                     <span className="text-xs font-bold text-slate-500 px-2 uppercase tracking-wide">{t("script.yourScripts")}</span>
-                    <button
-                        onClick={(e) => { e.stopPropagation(); onCreate(); setIsOpen(false); }}
-                        className="px-3 py-1.5 bg-brand-600 hover:bg-brand-500 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-lg shadow-brand-500/20"
-                    >
-                        <PlusIcon className="w-3 h-3" /> {t("script.new")}
-                    </button>
+                    <div className="flex items-center gap-1">
+                        {deletedScripts.length > 0 && (
+                            <button
+                                onClick={(e) => { e.stopPropagation(); setIsTrashOpen(true); setIsOpen(false); }}
+                                className="p-1.5 text-slate-400 hover:text-brand-400 hover:bg-slate-800 rounded-lg transition-colors relative"
+                                title={t("script.trash")}
+                            >
+                                <TrashIcon className="w-4 h-4" />
+                                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-brand-500 rounded-full border-2 border-[#0f172a]"></span>
+                            </button>
+                        )}
+                        <button
+                            onClick={(e) => { e.stopPropagation(); onCreate(); setIsOpen(false); }}
+                            className="px-3 py-1.5 bg-brand-600 hover:bg-brand-500 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-lg shadow-brand-500/20"
+                        >
+                            <PlusIcon className="w-3 h-3" /> {t("script.new")}
+                        </button>
+                    </div>
                 </div>
 
                 <div className="max-h-[60vh] md:max-h-[300px] overflow-y-auto custom-scrollbar p-1.5 space-y-1 bg-[#0f172a]">
@@ -221,6 +241,14 @@ export const ScriptManager: React.FC<ScriptManagerProps> = ({
             {isOpen && !isEditing && (
                 isMobile ? createPortal(dropdownContent, document.body) : dropdownContent
             )}
+            {/* Trash Modal */}
+            <TrashModal
+                isOpen={isTrashOpen}
+                onClose={() => setIsTrashOpen(false)}
+                deletedScripts={deletedScripts}
+                onRestore={onRestore}
+                onPermanentlyDelete={onPermanentlyDelete}
+            />
         </div>
     );
 };

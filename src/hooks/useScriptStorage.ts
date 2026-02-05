@@ -10,6 +10,7 @@ export interface Script {
     title: string;
     content: string;
     lastModified: number;
+    deletedAt?: number; // Added for Trash feature
     backingTrack?: {
         name: string;
         size: number;
@@ -252,6 +253,43 @@ export const useScriptStorage = (isMusicianMode?: boolean) => {
 
     }, [user, isMusicianMode]);
 
+    // 3. Auto-cleanup for Trash (Scripts older than 14 days)
+    useEffect(() => {
+        const FOURTEEN_DAYS_MS = 14 * 24 * 60 * 60 * 1000;
+        const now = Date.now();
+
+        setScripts(prev => {
+            const scriptsToKeep = prev.filter(s => {
+                if (!s.deletedAt) return true;
+                const age = now - s.deletedAt;
+                return age < FOURTEEN_DAYS_MS;
+            });
+
+            if (scriptsToKeep.length !== prev.length) {
+                logger.info(`Auto-cleaned ${prev.length - scriptsToKeep.length} scripts from trash`);
+
+                // Update LocalStorage
+                localStorage.setItem(scriptsKey, JSON.stringify(scriptsToKeep));
+
+                // Cloud Sync (Permanent Delete)
+                if (user) {
+                    const collectionName = isMusicianMode ? "music_scripts" : "scripts";
+                    const batch = writeBatch(db);
+                    prev.forEach(s => {
+                        if (s.deletedAt && (now - s.deletedAt) >= FOURTEEN_DAYS_MS) {
+                            const docRef = doc(db, "users", user.uid, collectionName, s.id);
+                            batch.delete(docRef);
+                        }
+                    });
+                    batch.commit().catch(e => logger.error("Auto-cleanup cloud sync failed", { error: e as Error }));
+                }
+            }
+
+            return scriptsToKeep;
+        });
+    }, [user, isMusicianMode, scriptsKey]);
+
+
     // Força verificação visual / reavaliação quando a aba volta ao foco
     useEffect(() => {
         const handleTabFocus = () => {
@@ -295,7 +333,83 @@ export const useScriptStorage = (isMusicianMode?: boolean) => {
 
 
     const handleDeleteScript = useCallback(async (id: string) => {
-        // 1. Add to pending deletes (always safe)
+        const timestamp = Date.now();
+
+        // 1. Soft Delete Local
+        setScripts(prev => {
+            const updated = prev.map(s =>
+                s.id === id ? { ...s, deletedAt: timestamp, lastModified: timestamp } : s
+            );
+
+            // Ensure we don't end up with NO active scripts visible
+            const activeScripts = updated.filter(s => !s.deletedAt);
+            if (activeScripts.length === 0) {
+                const newScript = {
+                    id: generateId(),
+                    title: t("script.new"),
+                    content: "",
+                    lastModified: timestamp
+                };
+                updated.push(newScript);
+            }
+
+            localStorage.setItem(scriptsKey, JSON.stringify(updated));
+
+            if (activeScriptId === id) {
+                // Switch to first available active script or the new empty one
+                const nextActive = updated.find(s => !s.deletedAt);
+                setActiveScriptId(nextActive?.id || "");
+            }
+            return updated;
+        });
+
+        // 2. Cloud Update (Soft Delete)
+        if (user) {
+            const collectionName = isMusicianMode ? "music_scripts" : "scripts";
+            try {
+                await setDoc(doc(db, "users", user.uid, collectionName, id), {
+                    deletedAt: timestamp,
+                    lastModified: timestamp
+                }, { merge: true });
+            } catch (e) {
+                logger.error("Cloud soft delete failed", { error: e as Error });
+            }
+        }
+    }, [user, isMusicianMode, scriptsKey, activeScriptId, t]);
+
+    const handleRestoreScript = useCallback(async (id: string) => {
+        const timestamp = Date.now();
+
+        setScripts(prev => {
+            const updated = prev.map(s => {
+                if (s.id === id) {
+                    const { deletedAt, ...rest } = s;
+                    return { ...rest, lastModified: timestamp };
+                }
+                return s;
+            });
+
+            localStorage.setItem(scriptsKey, JSON.stringify(updated));
+            return updated;
+        });
+
+        if (user) {
+            const collectionName = isMusicianMode ? "music_scripts" : "scripts";
+            try {
+                // In Firestore, we delete the deletedAt field
+                const docRef = doc(db, "users", user.uid, collectionName, id);
+                await setDoc(docRef, {
+                    lastModified: timestamp,
+                    deletedAt: null // Using null or removing via serverTimestamp/deleteField would work, null is simple here
+                }, { merge: true });
+            } catch (e) {
+                logger.error("Cloud restore failed", { error: e as Error });
+            }
+        }
+    }, [user, isMusicianMode, scriptsKey]);
+
+    const handlePermanentlyDeleteScript = useCallback(async (id: string) => {
+        // 1. Add to pending deletes (for cloud sync reliability)
         try {
             const storedDeletes = localStorage.getItem(PENDING_DELETES_KEY);
             const pending = storedDeletes ? JSON.parse(storedDeletes) : [];
@@ -305,12 +419,16 @@ export const useScriptStorage = (isMusicianMode?: boolean) => {
             }
         } catch (e) { }
 
-        // 2. Optimistic Update Local
+        // 2. Local Delete
         setScripts(prev => {
             const remaining = prev.filter(s => s.id !== id);
 
-            // Prevent empty state
-            if (remaining.length === 0) {
+            // Prevent empty state (though this is for trash, so maybe it's fine,
+            // but for safety in the app we usually keep at least one active script).
+            // However, since we are deleting from trash, we only care if activeScripts is 0.
+            const activeCount = remaining.filter(s => !s.deletedAt).length;
+
+            if (activeCount === 0) {
                 const newScript = {
                     id: generateId(),
                     title: t("script.new"),
@@ -318,16 +436,12 @@ export const useScriptStorage = (isMusicianMode?: boolean) => {
                     lastModified: Date.now()
                 };
                 remaining.push(newScript);
-                // Also create this new replacement script in cloud? 
-                // We'll let the user interact with it first, or handleCreateScript logic applies if we used it.
-                // But here we just inject it into state.
             }
 
             localStorage.setItem(scriptsKey, JSON.stringify(remaining));
 
             if (activeScriptId === id) {
-                // Switch to first available or the new empty one
-                setActiveScriptId(remaining[0]?.id || "");
+                setActiveScriptId(remaining.find(s => !s.deletedAt)?.id || "");
             }
             return remaining;
         });
@@ -337,7 +451,6 @@ export const useScriptStorage = (isMusicianMode?: boolean) => {
             const collectionName = isMusicianMode ? "music_scripts" : "scripts";
             try {
                 await deleteDoc(doc(db, "users", user.uid, collectionName, id));
-                // If successful, remove from pending deletes
                 const storedDeletes = localStorage.getItem(PENDING_DELETES_KEY);
                 if (storedDeletes) {
                     const pending = JSON.parse(storedDeletes) as string[];
@@ -345,8 +458,7 @@ export const useScriptStorage = (isMusicianMode?: boolean) => {
                     localStorage.setItem(PENDING_DELETES_KEY, JSON.stringify(newPending));
                 }
             } catch (e) {
-                logger.error("Cloud delete failed (queued)", { error: e as Error });
-                // It remains in pendingDeletes for the useEffect to retry later
+                logger.error("Cloud permanent delete failed (queued)", { error: e as Error });
             }
         }
     }, [user, isMusicianMode, scriptsKey, activeScriptId, t]);
@@ -387,15 +499,21 @@ export const useScriptStorage = (isMusicianMode?: boolean) => {
         }
     }, [activeScriptId, handleUpdateScript]);
 
-    const activeScript = scripts.find(s => s.id === activeScriptId) || scripts[0];
+    const activeScripts = scripts.filter(s => !s.deletedAt);
+    const deletedScripts = scripts.filter(s => !!s.deletedAt);
+    const activeScript = activeScripts.find(s => s.id === activeScriptId) || activeScripts[0];
 
     return {
-        scripts,
+        scripts: activeScripts, // Default scripts list only shows active ones
+        allScripts: scripts,
+        deletedScripts,
         activeScriptId,
         activeScript,
         createScript: handleCreateScript,
         updateScript: handleUpdateScript,
         deleteScript: handleDeleteScript,
+        restoreScript: handleRestoreScript,
+        permanentlyDeleteScript: handlePermanentlyDeleteScript,
         switchScript,
         text: activeScript?.content || "",
         setText

@@ -30,6 +30,9 @@ interface MusicEditorProps {
     onSwitchScript: (id: string) => void;
     onDeleteScript: (id: string) => void;
     onUpdateScript: (id: string, updates: Partial<Script>) => void;
+    deletedScripts: Script[];
+    onRestoreScript: (id: string) => void;
+    onPermanentlyDeleteScript: (id: string) => void;
 
     // Setlist Storage passed from Host
     setlistStorage: ReturnType<typeof useSetlistStorage>;
@@ -43,6 +46,7 @@ export const MusicEditor: React.FC<MusicEditorProps> = ({
     text, setText, peerId, status, onStart,
     isPro, onUnlockPro,
     scripts, activeScriptId, onCreateScript, onSwitchScript, onDeleteScript, onUpdateScript,
+    deletedScripts, onRestoreScript, onPermanentlyDeleteScript,
     setlistStorage, settings, prompterActions,
     detectedBpm, autoBpmError
 }) => {
@@ -102,6 +106,9 @@ export const MusicEditor: React.FC<MusicEditorProps> = ({
                         onCreateScript={onCreateScript}
                         onUpdateScript={onUpdateScript}
                         onDeleteScript={onDeleteScript}
+                        deletedScripts={deletedScripts}
+                        onRestoreScript={onRestoreScript}
+                        onPermanentlyDeleteScript={onPermanentlyDeleteScript}
                         onStart={onStart}
                         settings={settings}
                         prompterActions={prompterActions}

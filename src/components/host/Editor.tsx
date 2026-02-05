@@ -55,6 +55,9 @@ interface EditorProps {
     onSwitchScript: (id: string) => void;
     onDeleteScript: (id: string) => void;
     onUpdateScript: (id: string, updates: Partial<Script>) => void;
+    deletedScripts: Script[];
+    onRestoreScript: (id: string) => void;
+    onPermanentlyDeleteScript: (id: string) => void;
 
     // OBS Integration Props
     obsStatus?: any;
@@ -71,7 +74,11 @@ export const Editor: React.FC<EditorProps> = ({
     bilingualTexts, onBilingualTextsChange,
     bilingualVoiceTrackLanguage, onBilingualVoiceTrackChange,
     isPro, onUnlockPro, voiceLanguage, onVoiceLanguageChange,
-    scripts, activeScriptId, onCreateScript, onSwitchScript, onDeleteScript, onUpdateScript,
+    scripts, activeScriptId, onCreateScript, onSwitchScript, onDeleteScript,
+    onUpdateScript,
+    deletedScripts,
+    onRestoreScript,
+    onPermanentlyDeleteScript,
     obsStatus, obsConfig, onConnectOBS, onDisconnectOBS, onSaveOBSConfig
 }) => {
     const { t } = useTranslation();
@@ -116,6 +123,9 @@ export const Editor: React.FC<EditorProps> = ({
                         onCreate={onCreateScript}
                         onDelete={onDeleteScript}
                         onUpdateTitle={(id, title) => onUpdateScript(id, { title })}
+                        deletedScripts={deletedScripts || []}
+                        onRestore={onRestoreScript}
+                        onPermanentlyDelete={onPermanentlyDeleteScript}
                     />
                 </div>
 
@@ -178,10 +188,13 @@ export const Editor: React.FC<EditorProps> = ({
                         // Script Manager Props
                         scripts={scripts}
                         activeScriptId={activeScriptId}
-                        onCreateScript={onCreateScript}
                         onSwitchScript={onSwitchScript}
+                        onCreateScript={onCreateScript}
                         onDeleteScript={onDeleteScript}
                         onUpdateScript={onUpdateScript}
+                        deletedScripts={deletedScripts}
+                        onRestoreScript={onRestoreScript}
+                        onPermanentlyDeleteScript={onPermanentlyDeleteScript}
                         obsStatus={obsStatus}
                         obsConfig={obsConfig}
                         onConnectOBS={onConnectOBS}

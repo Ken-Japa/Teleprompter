@@ -685,6 +685,11 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
     new: "Nuevo guion",
     rename: "Renombrar guion",
     deleteConfirm: "¿Estás seguro de eliminar este guion?",
+    trash: "Basura",
+    emptyTrash: "Tu basura está vacia",
+    restore: "Restaurar",
+    permanentlyDelete: "Eliminar permanentemente",
+    autoCleanupNote: "Los guiones se eliminan automaticamente después de 14 dias",
   },
   footer: {
     copyright: "PromptNinja. Todos los derechos reservados.",

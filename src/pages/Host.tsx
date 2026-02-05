@@ -110,6 +110,9 @@ export const Host: React.FC<HostProps> = ({ featureFlags }) => {
                         prompterActions={actions.prompterActions}
                         detectedBpm={detectedBpm}
                         autoBpmError={autoBpmError}
+                        deletedScripts={state.deletedScripts}
+                        onRestoreScript={actions.restoreScript}
+                        onPermanentlyDeleteScript={actions.permanentlyDeleteScript}
                     />
                 ) : (
                     <Editor
@@ -152,6 +155,9 @@ export const Host: React.FC<HostProps> = ({ featureFlags }) => {
                         onSwitchScript={actions.switchScript}
                         onDeleteScript={actions.deleteScript}
                         onUpdateScript={actions.updateScript}
+                        deletedScripts={state.deletedScripts}
+                        onRestoreScript={actions.restoreScript}
+                        onPermanentlyDeleteScript={actions.permanentlyDeleteScript}
                         obsStatus={obsStatus}
                         obsConfig={obsConfig}
                         onConnectOBS={actions.connectOBS}

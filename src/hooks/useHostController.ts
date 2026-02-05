@@ -24,7 +24,10 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
     createScript,
     switchScript,
     deleteScript,
-    updateScript
+    updateScript,
+    deletedScripts,
+    restoreScript,
+    permanentlyDeleteScript
   } = useScriptStorage(!!featureFlags?.isMusicianModeForced);
 
   // Bilingual Mode State
@@ -532,6 +535,7 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
       scripts,
       activeScriptId,
       activeScript,
+      deletedScripts,
       detectedBpm,
       autoBpmError,
       isNDIEnabled,
@@ -566,6 +570,8 @@ export const useHostController = (featureFlags?: PrompterFeatureFlags) => {
       switchScript: handleSwitchScript,
       deleteScript,
       updateScript,
+      restoreScript,
+      permanentlyDeleteScript,
       toggleNDI,
       // OBS Actions
       setObsConfig,

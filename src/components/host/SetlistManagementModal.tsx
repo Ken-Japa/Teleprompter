@@ -11,7 +11,7 @@ interface SetlistManagementModalProps {
     setlists: Setlist[];
     activeSetlistId: string;
     onSwitchSetlist: (id: string) => void;
-    onCreateSetlist: () => string;
+    onCreateSetlist: () => Promise<string>;
     onDeleteSetlist: (id: string) => void;
     onUpdateSetlistTitle: (id: string, title: string) => void;
 
@@ -111,7 +111,7 @@ export const SetlistManagementModal: React.FC<SetlistManagementModalProps> = ({
                 }
 
                 // 1. Create a new setlist
-                const newSetlistId = onCreateSetlist();
+                const newSetlistId = await onCreateSetlist();
                 if (data.title) {
                     onUpdateSetlistTitle(newSetlistId, data.title);
                 }

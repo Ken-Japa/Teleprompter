@@ -34,7 +34,7 @@ interface MusicActionToolbarProps {
     setlists?: Setlist[];
     activeSetlistId?: string;
     onSwitchSetlist?: (id: string) => void;
-    onCreateSetlist?: () => string;
+    onCreateSetlist: () => Promise<string>;
     onDeleteSetlist?: (id: string) => void;
     onUpdateSetlistTitle?: (id: string, title: string) => void;
 
@@ -49,6 +49,9 @@ interface MusicActionToolbarProps {
     onCreateScript?: () => Promise<string>;
     onUpdateScript?: (id: string, updates: Partial<Script>) => void;
     onDeleteScript?: (id: string) => void;
+    deletedScripts?: Script[];
+    onRestoreScript?: (id: string) => void;
+    onPermanentlyDeleteScript?: (id: string) => void;
 
     onStart?: () => void;
     settings?: PrompterSettings;
@@ -62,7 +65,9 @@ export const MusicActionToolbar = memo(({
     onClear, text, onTextChange, onSelectRange, onUndo, canUndo, isPro, onUnlockPro,
     setlists, activeSetlistId, onSwitchSetlist, onCreateSetlist, onDeleteSetlist, onUpdateSetlistTitle,
     activeSetlist, allScripts, onAddSong, onRemoveSong, onReorderSong,
-    onSwitchScript, activeScriptId, onCreateScript, onUpdateScript, onDeleteScript, onStart,
+    onSwitchScript, activeScriptId, onCreateScript, onUpdateScript, onDeleteScript,
+    deletedScripts, onRestoreScript, onPermanentlyDeleteScript,
+    onStart,
     settings, prompterActions, detectedBpm, autoBpmError, textAreaRef
 }: MusicActionToolbarProps) => {
     const { t } = useTranslation();
@@ -250,7 +255,7 @@ export const MusicActionToolbar = memo(({
                             setlists={setlists}
                             activeSetlistId={activeSetlistId!}
                             onSwitchSetlist={onSwitchSetlist!}
-                            onCreateSetlist={onCreateSetlist!}
+                            onCreateSetlist={onCreateSetlist}
                             onDeleteSetlist={onDeleteSetlist!}
                             onUpdateSetlistTitle={onUpdateSetlistTitle!}
                             activeSetlist={activeSetlist}
@@ -263,6 +268,9 @@ export const MusicActionToolbar = memo(({
                             onCreateScript={onCreateScript!}
                             onUpdateScript={onUpdateScript!}
                             onDeleteScript={onDeleteScript!}
+                            deletedScripts={deletedScripts || []}
+                            onRestore={onRestoreScript!}
+                            onPermanentlyDelete={onPermanentlyDeleteScript!}
                         />
                     )}
 
