@@ -77,10 +77,10 @@ export const ActionButtonsGrid = ({ children }: { children: React.ReactNode }) =
 
 export const QRCodeBox = ({ children, hasId }: { children: React.ReactNode; hasId: boolean }) => (
     <div
-        className={`relative group p-1 bg-gradient-to-br from-brand-500/30 via-purple-500/30 to-pink-500/30 rounded-3xl transition-all duration-500 max-w-fit mx-auto ${hasId ? "shadow-lg shadow-brand-500/20 scale-100 hover:scale-105" : "scale-95 opacity-50 grayscale"}`}
+        className={`relative group p-1 bg-gradient-to-br from-brand-500/30 via-purple-500/30 to-pink-500/30 rounded-3xl transition-all duration-500 max-w-[210px] w-full aspect-square mx-auto ${hasId ? "shadow-lg shadow-brand-500/20 scale-100 hover:scale-105" : "scale-95 opacity-50 grayscale"}`}
     >
-        <div className="bg-slate-950 p-4 rounded-[22px] relative z-10">
-            <div className="bg-white p-3 rounded-xl shadow-inner">{children}</div>
+        <div className="bg-slate-950 p-3 sm:p-4 rounded-[22px] relative z-10 w-full h-full flex items-center justify-center">
+            <div className="bg-white p-2 sm:p-3 rounded-xl shadow-inner w-full h-full flex items-center justify-center overflow-hidden">{children}</div>
         </div>
     </div>
 );
