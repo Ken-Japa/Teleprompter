@@ -1,5 +1,4 @@
-import { describe, it, expect } from "vitest";
-import { levenshteinDistance, findBestMatch } from "./stringSimilarity";
+import { levenshteinDistance, findBestMatch, findSegmentedMatch } from "./stringSimilarity";
 
 describe("stringSimilarity Utils", () => {
   describe("levenshteinDistance", () => {
@@ -37,11 +36,11 @@ describe("stringSimilarity Utils", () => {
     it("should find fuzzy match with typos", () => {
       const pattern = "tsting"; // Missing 'e'
       const result = findBestMatch(text, pattern);
-      
+
       expect(result).not.toBeNull();
       // "testing" vs "tsting" distance is 1
       expect(result?.distance).toBeLessThanOrEqual(1);
-      
+
       // Should point to where "testing" starts
       const expectedIndex = text.indexOf("testing");
       // The match index might vary slightly depending on implementation details of sliding window,
@@ -58,7 +57,7 @@ describe("stringSimilarity Utils", () => {
     it("should respect search window", () => {
       // "functionality" is at the end
       const pattern = "functionality";
-      
+
       // Search only first 20 chars
       const result = findBestMatch(text, pattern, 0, 20);
       expect(result).toBeNull();
@@ -70,10 +69,40 @@ describe("stringSimilarity Utils", () => {
 
     it("should handle patterns larger than text gracefully", () => {
       const result = findBestMatch("short", "longer pattern");
-      // Implementation might return null or best effort.
-      // Given the implementation check `if (i + patLen > text.length) break;`, 
-      // it likely won't find a match if pattern > text remainder.
       expect(result).toBeNull();
+    });
+  });
+
+  describe("findSegmentedMatch", () => {
+    const text = "O rato roeu a roupa do rei de Roma.";
+
+    it("should find a match when segments are close together (sequential cluster)", () => {
+      const transcript = "o rato roeu a roupa do rei";
+      const result = findSegmentedMatch(text, transcript, 0, 100);
+
+      expect(result).not.toBeNull();
+      expect(result?.confidence).toBeGreaterThan(0.5);
+    });
+
+    it("should reject isolated matches (no cluster)", () => {
+      const transcript = "o elefante roeu o castelo";
+      const result = findSegmentedMatch(text, transcript, 0, 100);
+
+      expect(result).toBeNull();
+    });
+
+    it("should find match with slightly differing words", () => {
+      const transcript = "o rato roeu a ropa do rei"; // "ropa" instead of "roupa"
+      const result = findSegmentedMatch(text, transcript, 0, 100);
+
+      expect(result).not.toBeNull();
+    });
+
+    it("should find match even with aggressive normalization", () => {
+      const transcript = "O RATO ROEU A ROUPA!!! 123";
+      const result = findSegmentedMatch(text, transcript, 0, 100);
+
+      expect(result).not.toBeNull();
     });
   });
 });

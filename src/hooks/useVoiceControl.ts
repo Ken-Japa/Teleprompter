@@ -167,6 +167,97 @@ export const useVoiceControl = (
     }, [sentences]);
 
     // --- HELPER FUNCTIONS ---
+    /**
+     * Generate session summary
+     */
+    const generateSessionSummary = useCallback(() => {
+        if (!VOICE_CONFIG.SESSION_ANALYTICS.enabled) return null;
+
+        const analytics = sessionAnalyticsRef.current;
+
+        // CRITICAL FIX: Only generate if session was actually started
+        if (analytics.sessionStartTime === 0) return null;
+
+        analytics.sessionEndTime = Date.now();
+
+        const duration = (analytics.sessionEndTime - analytics.sessionStartTime) / 1000; // seconds
+        const minutes = duration / 60;
+
+        const averageWPM = minutes > 0 ? (analytics.totalWordsRecognized / minutes) : 0;
+        const accuracy = analytics.totalMatches > 0 ? analytics.goodMatches / analytics.totalMatches : 1;
+
+        // ACCIDENTAL TOGGLE PREVENTION: Only return summary if user actually spoke or progressed
+        if (analytics.totalWordsRecognized < 3 && analytics.totalMatches === 0) {
+            return null;
+        }
+
+        const summary = {
+            duration: Math.round(duration),
+            averageWPM: Math.round(averageWPM),
+            accuracy: Math.round(accuracy * 100),
+            sentencesCompleted: analytics.sentencesCompleted,
+        };
+
+        if (VOICE_CONFIG.SESSION_ANALYTICS.logSummaryOnEnd) {
+            console.log('[Voice Session Summary]', {
+                duration: `${Math.floor(summary.duration / 60)}m ${summary.duration % 60}s`,
+                avgWPM: summary.averageWPM,
+                accuracy: `${summary.accuracy}%`,
+                sentences: summary.sentencesCompleted,
+            });
+        }
+
+        // Reset start time to prevent multiple summaries for same session
+        analytics.sessionStartTime = 0;
+
+        // Update adaptive profile
+        if (summary.accuracy > 0) {
+            updateVoiceProfile({
+                averageWPM: summary.averageWPM,
+                accuracy: summary.accuracy / 100,
+            });
+        }
+
+        return summary;
+    }, []);
+
+    /**
+     * Stop sentence completion checker
+     */
+    const stopSentenceCompletionChecker = useCallback(() => {
+        if (sentenceCompletionTimerRef.current) {
+            clearInterval(sentenceCompletionTimerRef.current);
+            sentenceCompletionTimerRef.current = null;
+        }
+    }, []);
+
+    /**
+     * Stop voice recognition and clean up
+     */
+    const stopListening = useCallback(() => {
+        // IDEMPOTENCY CHECK
+        if (intentionallyStoppedRef.current && !isListening) return;
+
+        intentionallyStoppedRef.current = true;
+        if (recognitionRef.current) {
+            try {
+                recognitionRef.current.stop();
+            } catch (e) { /* ignore */ }
+        }
+        setIsListening(false);
+
+        // Stop sentence completion checker
+        stopSentenceCompletionChecker();
+
+        // Generate and log session summary
+        const summary = generateSessionSummary();
+        if (summary) {
+            setSessionSummary(summary);
+        }
+
+        // Reset active sentence to trigger initialization flow on next start
+        setActiveSentenceIndex(-1);
+    }, [stopSentenceCompletionChecker, generateSessionSummary, isListening]);
 
     /**
      * Update performance metrics and calculate adaptive throttle
@@ -273,15 +364,6 @@ export const useVoiceControl = (
         );
     }, [checkSentenceCompletion]);
 
-    /**
-     * Stop sentence completion checker
-     */
-    const stopSentenceCompletionChecker = useCallback(() => {
-        if (sentenceCompletionTimerRef.current) {
-            clearInterval(sentenceCompletionTimerRef.current);
-            sentenceCompletionTimerRef.current = null;
-        }
-    }, []);
 
     // --- ADVANCED FEATURES HELPERS ---
 
@@ -426,65 +508,6 @@ export const useVoiceControl = (
         }
     }, []);
 
-    /**
-     * Generate session summary
-     */
-    const generateSessionSummary = useCallback(() => {
-        if (!VOICE_CONFIG.SESSION_ANALYTICS.enabled) return null;
-
-        const analytics = sessionAnalyticsRef.current;
-
-        // CRITICAL FIX: Only generate if session was actually started
-        if (analytics.sessionStartTime === 0) return null;
-
-        analytics.sessionEndTime = Date.now();
-
-        const duration = (analytics.sessionEndTime - analytics.sessionStartTime) / 1000; // seconds
-        const minutes = duration / 60;
-
-        // Correct WPM Calculation: Use the final word count, not accumulated
-        // But since we can't easily track unique words without complex diffing in the accumulator loop,
-        // let's trust the speechVelocityRef which has better tracking or just rely on the count we have
-        // Actually, the accumulating 'totalWordsRecognized' in onresult is broken (sums up interim).
-        // Let's use words / minutes. 
-        // We will fix the accumulation in onresult first.
-        const averageWPM = minutes > 0 ? (analytics.totalWordsRecognized / minutes) : 0;
-        const accuracy = analytics.totalMatches > 0 ? analytics.goodMatches / analytics.totalMatches : 1;
-
-        // ACCIDENTAL TOGGLE PREVENTION: Only return summary if user actually spoke or progressed
-        if (analytics.totalWordsRecognized < 3 && analytics.totalMatches === 0) {
-            return null;
-        }
-
-        const summary = {
-            duration: Math.round(duration),
-            averageWPM: Math.round(averageWPM),
-            accuracy: Math.round(accuracy * 100),
-            sentencesCompleted: analytics.sentencesCompleted,
-        };
-
-        if (VOICE_CONFIG.SESSION_ANALYTICS.logSummaryOnEnd) {
-            console.log('[Voice Session Summary]', {
-                duration: `${Math.floor(summary.duration / 60)}m ${summary.duration % 60}s`,
-                avgWPM: summary.averageWPM,
-                accuracy: `${summary.accuracy}%`,
-                sentences: summary.sentencesCompleted,
-            });
-        }
-
-        // Reset start time to prevent multiple summaries for same session
-        analytics.sessionStartTime = 0;
-
-        // Update adaptive profile
-        if (summary.accuracy > 0) {
-            updateVoiceProfile({
-                averageWPM: summary.averageWPM,
-                accuracy: summary.accuracy / 100,
-            });
-        }
-
-        return summary;
-    }, []);
 
     // Helper to map language code to BCP 47
     const getRecognitionLanguage = useCallback((l: string) => {
@@ -759,6 +782,22 @@ export const useVoiceControl = (
                     reason: `No match found (failures: ${consecutiveFailuresRef.current})`
                 });
 
+                // NEW: Learn from mismatch
+                // This helps the system adapt to the user's voice/pronunciation over time
+                const expectedSentence = sentences[lockedSentenceIdRef.current]?.cleanContent || '';
+                if (expectedSentence && cleanTranscript.length > 5) {
+                    pronunciationLearner.learnFromMismatch(cleanTranscript, expectedSentence);
+                }
+
+                // NEW: INFINITE LOOP PROTECTION
+                // If we are failing too much consecutively, something is wrong (environment too noisy, or we are totally lost)
+                if (consecutiveFailuresRef.current > 10) {
+                    console.error('[Voice] Max consecutive failures reached. Pausing recognition to prevent loop/resource waste.');
+                    stopListening();
+                    consecutiveFailuresRef.current = 0;
+                    return;
+                }
+
                 // RECOVERY STRATEGY: If failing too much, try to rescue
                 if (consecutiveFailuresRef.current >= 4) {
                     console.warn(`[Voice] High failure rate (${consecutiveFailuresRef.current}), attempting wide search...`);
@@ -1005,7 +1044,7 @@ export const useVoiceControl = (
         } catch (e) {
             logger.error("Voice start error", { error: e as Error });
         }
-    }, [lang, getRecognitionLanguage, updatePerformanceMetrics, performNoiseCalibration, updateSpeechVelocity, trackSessionMetrics, fullCleanText, charToSentenceMap, sentences, updateConfidenceLearning]);
+    }, [lang, getRecognitionLanguage, updatePerformanceMetrics, performNoiseCalibration, updateSpeechVelocity, trackSessionMetrics, fullCleanText, charToSentenceMap, sentences, updateConfidenceLearning, stopListening]);
 
     // Helper: Find which sentence is currently visible on screen
     // Returns index and the estimated progress within that sentence (0-1) based on scroll position
@@ -1183,33 +1222,6 @@ export const useVoiceControl = (
         startSentenceCompletionChecker();
     }, [isPro, isListening, voiceApiSupported, startRecognitionInstance, findVisibleSentenceId, sentences, startSentenceCompletionChecker, applyAutoMode]);
 
-    const stopListening = useCallback(() => {
-        // IDEMPOTENCY CHECK
-        if (intentionallyStoppedRef.current && !isListening) return;
-
-        intentionallyStoppedRef.current = true;
-        if (recognitionRef.current) {
-            try {
-                recognitionRef.current.stop();
-            } catch (e) { /* ignore */ }
-        }
-        setIsListening(false);
-
-        // Stop sentence completion checker
-        stopSentenceCompletionChecker();
-
-        // Generate and log session summary
-        const summary = generateSessionSummary();
-        if (summary) {
-            setSessionSummary(summary);
-        }
-
-        // Reset active sentence to trigger initialization flow on next start
-        // This ensures the "wait for first recognition" behavior works on reactivation
-        setActiveSentenceIndex(-1);
-
-        // DON'T reset locked sentence here - allows resume from same position
-    }, [stopSentenceCompletionChecker, generateSessionSummary, isListening]);
 
     const resetVoice = useCallback(() => {
         stopListening();

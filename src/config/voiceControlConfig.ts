@@ -323,7 +323,7 @@ export const VOICE_CONFIG = {
       segmentMatching: {
         enabled: true,
         windowSize: 5,
-        threshold: 0.15, // Tightened from 0.20
+        threshold: 0.12, // Tightened from 0.20
       }
     }
   } as Record<string, any>,

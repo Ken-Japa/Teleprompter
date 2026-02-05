@@ -81,29 +81,9 @@ export const levenshteinDistance = (a: string, b: string): number => {
     return result;
 };
 
+
 /**
- * Rabin-Karp rolling hash for fast substring search
- */
-class RollingHash {
-    private static readonly BASE = 256;
-    private static readonly MOD = 1e9 + 7;
-
-    static hash(str: string, length: number): number {
-        let h = 0;
-        for (let i = 0; i < length; i++) {
-            h = (h * this.BASE + str.charCodeAt(i)) % this.MOD;
-        }
-        return h;
-    }
-
-    static roll(oldHash: number, oldChar: string, newChar: string, length: number): number {
-        const baseLen = Math.pow(this.BASE, length - 1) % this.MOD;
-        let h = oldHash;
-        h = (h - oldChar.charCodeAt(0) * baseLen) % this.MOD;
-        h = (h * this.BASE + newChar.charCodeAt(0)) % this.MOD;
-        return (h + this.MOD) % this.MOD;
-    }
-}
+ * Boyer-Moore-inspired fast approximate matching
 
 /**
  * Boyer-Moore-inspired fast approximate matching
@@ -134,29 +114,11 @@ export const findBestMatch = (
     const effectiveThreshold = threshold + foreignBonus;
     const maxDist = Math.floor(patLen * effectiveThreshold);
 
-    // PHASE 1: Hash-based pre-filtering (O(n))
-    const patternHash = RollingHash.hash(pattern, patLen);
+    // PHASE 1: Candidate generation
+    // We check every position in the window, but we will quickly discard them in PHASE 2
     const candidates: number[] = [];
-
-    if (searchEndIndex - actualStartIndex > patLen) {
-        let currentHash = RollingHash.hash(text.substring(actualStartIndex, actualStartIndex + patLen), patLen);
-
-        for (let i = actualStartIndex; i <= searchEndIndex - patLen; i++) {
-            // If hashes match, it's a strong candidate
-            if (currentHash === patternHash) {
-                candidates.push(i);
-            }
-
-            // Roll the hash
-            if (i < searchEndIndex - patLen) {
-                currentHash = RollingHash.roll(
-                    currentHash,
-                    text[i],
-                    text[i + patLen],
-                    patLen
-                );
-            }
-        }
+    for (let i = actualStartIndex; i <= searchEndIndex - patLen; i++) {
+        candidates.push(i);
     }
 
     // PHASE 2: Character frequency filter
@@ -238,6 +200,7 @@ export const findBestMatch = (
 /**
  * Segmented matching (N-gram approach)
  * Breaks transcript into chunks and looks for a consensus match
+ * This avoids isolate jumps and rejection of the whole transcript due to one or two mistranscribed words.
  */
 export const findSegmentedMatch = (
     text: string,
@@ -246,62 +209,54 @@ export const findSegmentedMatch = (
     searchWindow: number = 2000,
     segmentSize: number = 4
 ): { index: number; confidence: number } | null => {
-    const words = transcript.split(/\s+/);
+    // Normalização agressiva para áudio sintético/ruidoso (remove pontuação, números, dashes)
+    const normalizeAggressive = (str: string) => str.toLowerCase().replace(/[^a-z\s]/g, '').replace(/\s+/g, ' ').trim();
+    const normalizedTranscript = normalizeAggressive(transcript);
+    const normalizedFullText = normalizeAggressive(text);
+
+    const words = normalizedTranscript.split(/\s+/).filter(Boolean);
     if (words.length < segmentSize) return null;
 
-    const matches: { index: number; ratio: number }[] = [];
-    let totalConfidence = 0;
-
-    // We only check segments if we have enough words
-    // Create overlapping segments: "hello my name is" -> "hello my name", "my name is"
-    for (let i = 0; i <= words.length - segmentSize; i++) {
-        const segment = words.slice(i, i + segmentSize).join(' ');
-
-        // Search for this segment
-        // Allow slightly higher error for segments since they are shorter
-        const match = findBestMatch(text, segment, startIndex, searchWindow, 0.35);
-
-        if (match && match.ratio <= 0.35) {
-            matches.push(match);
-            totalConfidence += (1 - match.ratio);
-        }
+    const segments: string[] = [];
+    for (let i = 0; i <= words.length - segmentSize; i += 1) { // Slidind window of 1 for maximum coverage
+        segments.push(words.slice(i, i + segmentSize).join(" "));
     }
 
-    // Analyze matches to find consensus
+    const matches = segments.map((segment) => {
+        const match = findBestMatch(normalizedFullText, segment, startIndex, searchWindow, 0.35);
+        return match ? { index: match.index, ratio: match.ratio, segment } : null;
+    }).filter((m): m is { index: number; ratio: number; segment: string } => m !== null && m.ratio < 0.35);
+
     if (matches.length === 0) return null;
 
-    // Consistency check: matches should be roughly sequential
-    // We look for a cluster of matches that are close to each other
-    // For simplicity, let's take the median position of the best cluster
-    // or just the position of the best match if it's supported by neighbors.
+    // Priorize clusters sequenciais (evita pulos)
+    // Sort by index to find sequences
+    const sortedMatches = [...matches].sort((a, b) => a.index - b.index);
+    let bestCluster: typeof matches = [];
+    let currentCluster: typeof matches = [sortedMatches[0]];
 
-    // Simple approach: Average the position of valid matches? 
-    // No, "Hello" is at 10, "World" is at 16. Average is 13. Correct.
-    // usage: if we found 3 matches, return the start index of the match corresponding to the START of the transcript.
-    // So if "my name is" matched at 50, and it was the 2nd segment (offset 1 word), 
-    // the transcript probably started around 50 - length_of_first_word.
+    for (let i = 1; i < sortedMatches.length; i++) {
+        // Distância máx em chars entre segmentos sucessivos
+        // Se os segmentos forem contíguos no áudio, eles devem ser contíguos ou próximos no texto
+        if (sortedMatches[i].index - sortedMatches[i - 1].index < 200) {
+            currentCluster.push(sortedMatches[i]);
+        } else {
+            if (currentCluster.length > bestCluster.length) bestCluster = currentCluster;
+            currentCluster = [sortedMatches[i]];
+        }
+    }
+    if (currentCluster.length > bestCluster.length) bestCluster = currentCluster;
 
-    // Let's just return the best single match that is "supported" by others
-    // Supported means: there is another match within reasonable distance
+    // Retorna o melhor match do cluster (menor ratio = maior confiança)
+    const bestOne = [...bestCluster].sort((a, b) => a.ratio - b.ratio)[0];
 
-    const sortedMatches = matches.sort((a, b) => a.ratio - b.ratio);
-    const bestOne = sortedMatches[0];
-
-    if (matches.length === 1) {
-        // Only one segment matched. Is it good enough?
-        return bestOne.ratio < 0.2 ? { index: bestOne.index, confidence: 1 - bestOne.ratio } : null;
+    // Exige cluster mínimo para evitar isolados (ruído)
+    // Se tivermos apenas 1 segmento no transcript, permitimos se a confiança for muito alta
+    if (bestCluster.length < 2 && (segments.length > 1 || bestOne.ratio > 0.15)) {
+        return null;
     }
 
-    // Check support
-    const hasSupport = matches.some(m =>
-        m !== bestOne && Math.abs(m.index - bestOne.index) < 100
-    );
-
-    if (hasSupport) {
-        return { index: bestOne.index, confidence: 1 - bestOne.ratio };
-    }
-
-    return null;
+    return { index: bestOne.index, confidence: 1 - bestOne.ratio };
 };
 
 /**

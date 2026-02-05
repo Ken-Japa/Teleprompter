@@ -2,6 +2,7 @@
  * Pronunciation Matcher
  * Normalizes common speech recognition errors to improve matching accuracy
  */
+import { levenshteinDistance } from './stringSimilarity';
 
 interface PronunciationRule {
     pattern: RegExp;
@@ -185,15 +186,23 @@ class PronunciationLearner {
     }
 
     /**
-    * Learn from a mismatch using frequency-based approach
-    * This is called when a fallback or correction happens
-    */
-    learnFromMismatch(spoken: string, intended: string) {
-        // This can be expanded to be smarter, but for now just add rule
-        // The sophisticated frequency logic would require storing counters, 
-        // which might be overkill for localStorage. 
-        // Start simple: just add the rule.
-        this.addRule(spoken, intended);
+     * Learn from a mismatch using a selective approach.
+     * Checks the similarity ratio to ensure we only learn meaningful variations
+     * (e.g., mistranscriptions or mispronunciations) and NOT random noise.
+     */
+    learnFromMismatch(transcript: string, expected: string, threshold: number = 0.3) {
+        if (!transcript || !expected) return;
+
+        const dist = levenshteinDistance(transcript, expected);
+        const ratio = dist / Math.max(transcript.length, expected.length);
+
+        // Similar but not exact → Likely a phonetic variant or API error
+        // ratio < 0.3 means it's very close (handled by fuzzy matching already usually)
+        // ratio > 0.8 means it's completely different noise
+        if (ratio > threshold && ratio < 0.8) {
+            this.addRule(transcript, expected);
+            console.log(`[Learner] Added auto-rule: "${transcript}" → "${expected}" (ratio: ${ratio.toFixed(2)})`);
+        }
     }
 
 
