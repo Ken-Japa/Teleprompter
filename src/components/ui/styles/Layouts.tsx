@@ -169,10 +169,10 @@ export const HudGroup = ({ children, label }: { children: React.ReactNode; label
 // --- REMOTE SPECIFIC ---
 
 export const ControlsContainer = ({ children }: { children: React.ReactNode }) => (
-    <div className="flex-none bg-slate-950/90 backdrop-blur-3xl p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] rounded-t-[3rem] shadow-[0_-10px_60px_rgba(0,0,0,0.6)] border-t border-white/10 space-y-6 z-20 relative ring-1 ring-white/5 overflow-hidden">
+    <div className="flex-none bg-slate-950/90 backdrop-blur-3xl p-4 sm:p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] rounded-t-[2.5rem] sm:rounded-t-[3.3rem] shadow-[0_-10px_60px_rgba(0,0,0,0.6)] border-t border-white/10 space-y-4 sm:space-y-6 z-20 relative ring-1 ring-white/5 overflow-hidden">
         {/* Subtle sheen at the top */}
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-brand-500/40 to-transparent"></div>
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 w-16 h-1 bg-white/10 rounded-full" />
+        <div className="absolute top-3 left-1/2 -translate-x-1/2 w-12 h-1 bg-white/10 rounded-full" />
         {children}
     </div>
 );

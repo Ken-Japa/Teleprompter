@@ -163,7 +163,7 @@ export const RemoteControls: React.FC<RemoteControlsProps> = ({
             )}
 
             <S.ControlsContainer>
-                <div className="flex items-center justify-between px-4 pb-4 gap-3">
+                <div className="flex items-center justify-between px-2 sm:px-4 gap-3">
                     {/* Speed Control */}
                     <div className="flex flex-col items-center bg-white/5 p-2 rounded-3xl border border-white/5 backdrop-blur-md">
                         <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-1">SPEED</span>
