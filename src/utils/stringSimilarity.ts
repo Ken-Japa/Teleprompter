@@ -207,8 +207,9 @@ export const findSegmentedMatch = (
     transcript: string,
     startIndex: number = 0,
     searchWindow: number = 2000,
-    segmentSize: number = 4
-): { index: number; confidence: number } | null => {
+    segmentSize: number = 6,
+    lastKnownPosition: number = 0
+): { index: number; confidence: number; isSequential: boolean } | null => {
     // Normalização agressiva para áudio sintético/ruidoso (remove pontuação, números, dashes)
     const normalizeAggressive = (str: string) => str.toLowerCase().replace(/[^a-z\s]/g, '').replace(/\s+/g, ' ').trim();
     const normalizedTranscript = normalizeAggressive(transcript);
@@ -229,34 +230,64 @@ export const findSegmentedMatch = (
 
     if (matches.length === 0) return null;
 
-    // Priorize clusters sequenciais (evita pulos)
-    // Sort by index to find sequences
-    const sortedMatches = [...matches].sort((a, b) => a.index - b.index);
-    let bestCluster: typeof matches = [];
-    let currentCluster: typeof matches = [sortedMatches[0]];
+    const matchesWithPenalty = matches.map(m => {
+        let penalty = 0;
 
-    for (let i = 1; i < sortedMatches.length; i++) {
-        // Distância máx em chars entre segmentos sucessivos
-        // Se os segmentos forem contíguos no áudio, eles devem ser contíguos ou próximos no texto
-        if (sortedMatches[i].index - sortedMatches[i - 1].index < 200) {
-            currentCluster.push(sortedMatches[i]);
+        // Heavy penalty for backwards jumps
+        if (m.index < lastKnownPosition) {
+            penalty = 0.30;  // 30% confidence lost
+        }
+
+        // Light penalty for large forward jumps
+        const jumpDistance = m.index - lastKnownPosition;
+        if (jumpDistance > 800) {  // > 800 chars = suspicious
+            penalty += 0.15;
+        }
+
+        return {
+            ...m,
+            adjustedRatio: Math.min(1.0, m.ratio + penalty)
+        };
+    });
+
+    // CRITICAL FIX: To find clusters (sequences), we MUST sort by INDEX first, not ratio.
+    const indexSortedMatches = [...matchesWithPenalty].sort((a, b) => a.index - b.index);
+
+    let bestCluster: typeof matchesWithPenalty = [];
+    let currentCluster: typeof matchesWithPenalty = [indexSortedMatches[0]];
+
+    for (let i = 1; i < indexSortedMatches.length; i++) {
+        // Max distance in chars between successive segments
+        if (indexSortedMatches[i].index - indexSortedMatches[i - 1].index < 200) {
+            currentCluster.push(indexSortedMatches[i]);
         } else {
-            if (currentCluster.length > bestCluster.length) bestCluster = currentCluster;
-            currentCluster = [sortedMatches[i]];
+            // Evaluate current cluster before starting a new one
+            if (currentCluster.length > bestCluster.length) {
+                bestCluster = currentCluster;
+            } else if (currentCluster.length === bestCluster.length && bestCluster.length > 0) {
+                // If same size, pick the one with better average ratio
+                const currentAvg = currentCluster.reduce((sum, m) => sum + m.adjustedRatio, 0) / currentCluster.length;
+                const bestAvg = bestCluster.reduce((sum, m) => sum + m.adjustedRatio, 0) / bestCluster.length;
+                if (currentAvg < bestAvg) bestCluster = currentCluster;
+            }
+            currentCluster = [indexSortedMatches[i]];
         }
     }
     if (currentCluster.length > bestCluster.length) bestCluster = currentCluster;
 
-    // Retorna o melhor match do cluster (menor ratio = maior confiança)
-    const bestOne = [...bestCluster].sort((a, b) => a.ratio - b.ratio)[0];
+    // From the best cluster, pick the item with the best (lowest) adjustedRatio
+    const bestOne = [...bestCluster].sort((a, b) => a.adjustedRatio - b.adjustedRatio)[0];
 
-    // Exige cluster mínimo para evitar isolados (ruído)
-    // Se tivermos apenas 1 segmento no transcript, permitimos se a confiança for muito alta
+    // Minimum cluster size to avoid isolated noise
     if (bestCluster.length < 2 && (segments.length > 1 || bestOne.ratio > 0.15)) {
         return null;
     }
 
-    return { index: bestOne.index, confidence: 1 - bestOne.ratio };
+    return {
+        index: bestOne.index,
+        confidence: 1 - bestOne.ratio, // We report the ORIGINAL confidence for diagnostics
+        isSequential: bestCluster.length > 1
+    };
 };
 
 /**

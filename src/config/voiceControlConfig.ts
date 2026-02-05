@@ -100,7 +100,7 @@ class AdaptiveVoiceConfig {
     const isAccurate = this.profile.accuracyHistory.slice(-3).every(a => a > 0.80);
 
     if (isExperienced && isAccurate) {
-      baseConfig.MATCH_CONFIRMATION_FRAMES = 1; // Faster confirmation
+      baseConfig.MATCH_CONFIRMATION_FRAMES = 3; // Faster confirmation
       baseConfig.PROGRESS_SMOOTH_FACTOR = 0.45; // More responsive
       baseConfig.FUZZY_SYNC.intraSentenceTolerance = 0.55; // More tolerant
     }
@@ -137,18 +137,18 @@ export const VOICE_CONFIG = {
 
   // --- RECOGNITION TUNING ---
   THROTTLE_MS: 50,
-  MATCH_CONFIRMATION_FRAMES: 2,
+  MATCH_CONFIRMATION_FRAMES: 3,
   PROGRESS_SMOOTH_FACTOR: 0.35,
 
   // --- ADVANCED MATCHING ---
   ADVANCED_MATCHING: {
-    maxWideJump: 500, // characters
+    maxWideJump: 200, // characters
   },
 
   SEARCH_WINDOW: {
-    SMALL: 800,
-    MEDIUM: 1200,
-    LARGE: 2000, // Reduced from 2500
+    SMALL: 600,
+    MEDIUM: 1000,
+    LARGE: 1500, // Reduced from 2500
   },
 
   // --- ADAPTIVE THROTTLE ---
@@ -163,8 +163,8 @@ export const VOICE_CONFIG = {
   // --- SENTENCE COMPLETION ---
   SENTENCE_COMPLETION: {
     enabled: true,
-    minProgress: 0.70,
-    pauseTimeout: 800,
+    minProgress: 0.75,
+    pauseTimeout: 1000,
     autoAdvance: true,
     checkInterval: 200,
   },
@@ -172,18 +172,18 @@ export const VOICE_CONFIG = {
   // --- FUZZY SYNC ---
   FUZZY_SYNC: {
     enabled: true,
-    minPartialMatch: 0.50,
-    intraSentenceTolerance: 0.5,
+    minPartialMatch: 0.60,
+    intraSentenceTolerance: 0.4,
     catchUpEnabled: true,
-    progressBoost: 0.25,
+    progressBoost: 0.15,
   },
 
   // --- RECOVERY & LOOKAHEAD ---
   RECOVERY: {
     enabled: true,
     aheadWindow: 1, // Reduced from 2
-    minConfidence: 0.25, // Stricter: 0.25 ratio (75% accuracy) required for recovery jump
-    partialRecovery: true,
+    minConfidence: 0.15, // Stricter: 0.25 ratio (75% accuracy) required for recovery jump
+    partialRecovery: false,
   },
 
   // --- INITIALIZATION ---
@@ -214,7 +214,7 @@ export const VOICE_CONFIG = {
 
   // --- CONFIDENCE LEARNING ---
   CONFIDENCE_LEARNING: {
-    enabled: true,
+    enabled: false, // Disabled for now (User request)
     warmupPeriod: 30000,
     historySize: 50,
     goodMatchThreshold: 0.90,
@@ -314,21 +314,21 @@ export const VOICE_CONFIG = {
   // --- NEW: LANGUAGE OVERRIDES ---
   LANGUAGE_OVERRIDES: {
     'pt': {
-      intraSentenceTolerance: 0.55, // Tightened from 0.60
-      minConfidence: 0.70, // Tightened from 0.65
+      intraSentenceTolerance: 0.40, // Tightened from 0.60
+      minConfidence: 0.75, // Tightened from 0.65
       segmentMatching: {
         enabled: true,
-        windowSize: 4,
-        threshold: 0.22, // Tightened from 0.25
+        windowSize: 6,
+        threshold: 0.18, // Tightened from 0.25
       }
     },
     'en': {
-      intraSentenceTolerance: 0.40, // Tightened from 0.5
-      minConfidence: 0.70, // Tightened from 0.75
+      intraSentenceTolerance: 0.30, // Tightened from 0.5
+      minConfidence: 0.75, // Tightened from 0.75
       segmentMatching: {
         enabled: true,
-        windowSize: 5,
-        threshold: 0.12, // Tightened from 0.20
+        windowSize: 6,
+        threshold: 0.10, // Tightened from 0.20
       }
     }
   } as Record<string, any>,

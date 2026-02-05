@@ -2,7 +2,7 @@ import { useRef, useState, useMemo, useEffect, useCallback } from "react";
 import { SpeechRecognitionEvent, ISpeechRecognition } from "../types";
 import { parseTextToSentences } from "../utils/textParser";
 import { logger } from "../utils/logger";
-import { findBestMatch, clearMatchCache, findSegmentedMatch, levenshteinDistance } from "../utils/stringSimilarity";
+import { findBestMatch, clearMatchCache, findSegmentedMatch } from "../utils/stringSimilarity";
 import { useTranslation } from "./useTranslation";
 import { getAdaptiveConfig, updateVoiceProfile } from "../config/voiceControlConfig";
 import { normalizePronunciation, pronunciationLearner } from "../utils/pronunciationMatcher";
@@ -715,7 +715,8 @@ export const useVoiceControl = (
                     cleanTranscript,
                     lastMatchIndexRef.current,
                     searchWindow,
-                    overrides.segmentMatching.windowSize
+                    overrides.segmentMatching.windowSize,
+                    lastMatchIndexRef.current // Pass last known position for sequential bias
                 );
 
                 if (segMatch) {
@@ -731,44 +732,56 @@ export const useVoiceControl = (
                 }
             }
 
-            // --- LOOK-AHEAD RECOVERY STRATEGY (NEW) ---
-            // If match on current sentence is poor or non-existent, check the NEXT sentence specifically.
-            // This actively fights "Sentence Lock" where we get stuck on sentence N while user is reading N+1.
-            if ((!match || match.ratio > 0.3) && VOICE_CONFIG.RECOVERY.enabled) {
+            // --- LOOK-AHEAD RECOVERY STRATEGY (STRICT) ---
+            // Only activate if current match is VERY poor or non-existent
+            if ((!match || match.ratio > 0.35) && VOICE_CONFIG.RECOVERY.enabled) {
                 const currentSentId = lockedSentenceIdRef.current;
                 const nextSentId = currentSentId + 1;
 
                 if (sentences[nextSentId]) {
                     const nextStartIndex = sentences[nextSentId].startIndex ?? 0;
-                    // Check specifically in the next sentence area
-                    const nextMatch = findBestMatch(fullCleanText, cleanTranscript, nextStartIndex, VOICE_CONFIG.SEARCH_WINDOW.SMALL, 0.45);
 
-                    if (nextMatch && nextMatch.ratio <= VOICE_CONFIG.RECOVERY.minConfidence) {
-                        // Strong match on next sentence!
-                        // But is it BETTER than the current match?
-                        if (!match || nextMatch.ratio < match.ratio - 0.05) { // Significant improvement
-                            console.log(`[Voice] LOOK-AHEAD: Found better match in next sentence (${nextSentId})`);
+                    // CRITICAL FIX: Much stricter threshold (0.45 → 0.20)
+                    const STRICT_NEXT_THRESHOLD = 0.20;  // Only 20% error tolerated!
+
+                    const nextMatch = findBestMatch(
+                        fullCleanText,
+                        cleanTranscript,
+                        nextStartIndex,
+                        VOICE_CONFIG.SEARCH_WINDOW.SMALL,  // Keep small window
+                        STRICT_NEXT_THRESHOLD
+                    );
+
+                    // CRITICAL FIX: Require MUCH better confidence
+                    const CONFIDENCE_REQUIREMENT = 0.15;  // 85% accuracy minimum!
+
+                    if (nextMatch && nextMatch.ratio <= CONFIDENCE_REQUIREMENT) {
+                        // Additional validation: Must be SIGNIFICANTLY better than current
+                        const improvementRequired = 0.15;  // 15% better minimum
+
+                        if (!match || nextMatch.ratio < match.ratio - improvementRequired) {
+                            console.log(
+                                `[Voice] LOOK-AHEAD: Strong match in next sentence ` +
+                                `(confidence: ${((1 - nextMatch.ratio) * 100).toFixed(0)}%, ` +
+                                `improvement: ${(!match ? 'N/A' : (match.ratio - nextMatch.ratio).toFixed(2))})`
+                            );
                             match = nextMatch;
+                        } else {
+                            console.log(
+                                `[Voice] LOOK-AHEAD: Next sentence match found but not better enough ` +
+                                `(current: ${match?.ratio.toFixed(2) || 'none'}, next: ${nextMatch.ratio.toFixed(2)})`
+                            );
                         }
+                    } else if (nextMatch) {
+                        console.log(
+                            `[Voice] LOOK-AHEAD: Next sentence match too weak ` +
+                            `(${(nextMatch.ratio * 100).toFixed(0)}% error, need ≤${CONFIDENCE_REQUIREMENT * 100}%)`
+                        );
                     }
                 }
 
-                // Also check 2 sentences ahead if configured (for very short sentences)
-                if ((!match || match.ratio > 0.4) && VOICE_CONFIG.RECOVERY.aheadWindow > 1) {
-                    const jumpSentId = currentSentId + 2;
-                    if (sentences[jumpSentId]) {
-                        const jumpStartIndex = sentences[jumpSentId].startIndex ?? 0;
-                        const jumpMatch = findBestMatch(fullCleanText, cleanTranscript, jumpStartIndex, VOICE_CONFIG.SEARCH_WINDOW.SMALL, 0.45);
-
-                        // Stricter requirement for jumping 2 sentences
-                        if (jumpMatch && jumpMatch.ratio <= (VOICE_CONFIG.RECOVERY.minConfidence - 0.1)) {
-                            if (!match || jumpMatch.ratio < match.ratio - 0.1) {
-                                console.log(`[Voice] LOOK-AHEAD: Found better match in sentence +2 (${jumpSentId})`);
-                                match = jumpMatch;
-                            }
-                        }
-                    }
-                }
+                // CRITICAL FIX: REMOVED "+2 sentence" look-ahead entirely for safety.
+                // If user really skipped 2 sentences, the next recognition cycle will catch up naturally.
             }
 
             // --- CONSECUTIVE FAILURE HANDLING ---
@@ -783,7 +796,7 @@ export const useVoiceControl = (
                 });
 
                 // NEW: Learn from mismatch
-                // Improved: Find the best candidate among all sentences to avoid learning from jumps or random noise
+                /* Disabled mismatch learning for now (User request)
                 let bestExpected = '';
                 let bestRatio = 1; // High = bad
 
@@ -805,6 +818,7 @@ export const useVoiceControl = (
                 } else {
                     console.warn(`[Voice] No suitable expected found for learning (best ratio: ${bestRatio.toFixed(2)})`);
                 }
+                */
 
                 // NEW: INFINITE LOOP PROTECTION
                 // If we are failing too much consecutively, something is wrong (environment too noisy, or we are totally lost)
@@ -912,6 +926,73 @@ export const useVoiceControl = (
                 const currentSentenceId = lockedSentenceIdRef.current;
                 const jumpDistance = Math.abs(newSentenceId - currentSentenceId);
                 const isSameSentence = newSentenceId === currentSentenceId;
+
+                // ========== CRITICAL FIX: JUMP VALIDATION LAYER ========== //
+                const isForwardJump = newSentenceId > currentSentenceId;
+                const isBackwardJump = newSentenceId < currentSentenceId;
+
+                // RULE 1: Backward jumps > 1 sentence = Almost always wrong
+                if (isBackwardJump && jumpDistance > 1) {
+                    console.warn(`[Voice] ❌ BLOCKED: Backward jump of ${jumpDistance} sentences (ratio: ${match.ratio.toFixed(2)})`);
+                    voiceDiagnostics.recordMiss({
+                        transcript: cleanTranscript,
+                        expectedSentence: currentSentenceId,
+                        reason: `Backward jump rejected (distance: ${jumpDistance}, ratio: ${match.ratio.toFixed(2)})`
+                    });
+                    return;  // Reject this match entirely
+                }
+
+                // RULE 2: Large forward jumps (> 2 sentences) require NEAR-PERFECT match
+                if (isForwardJump && jumpDistance > 2) {
+                    const strictThreshold = 0.10;  // 90% accuracy minimum!
+
+                    if (match.ratio > strictThreshold) {
+                        console.warn(
+                            `[Voice] ❌ BLOCKED: Large forward jump (${jumpDistance} sentences) ` +
+                            `with insufficient confidence (${(match.ratio * 100).toFixed(0)}% error). ` +
+                            `Required: ≤${strictThreshold * 100}% error`
+                        );
+                        voiceDiagnostics.recordMiss({
+                            transcript: cleanTranscript,
+                            expectedSentence: currentSentenceId,
+                            reason: `Large jump blocked - ratio ${match.ratio.toFixed(2)} > ${strictThreshold}`
+                        });
+                        return;
+                    }
+
+                    console.warn(
+                        `[Voice] ⚠️ WARNING: Allowing large jump (${jumpDistance} sentences) ` +
+                        `due to EXCEPTIONAL confidence (${((1 - match.ratio) * 100).toFixed(0)}% accuracy)`
+                    );
+                }
+
+                // RULE 3: +1 sentence jumps (most common) - validate confidence
+                if (isForwardJump && jumpDistance === 1) {
+                    const nextSentenceThreshold = 0.25;  // 75% accuracy for next sentence
+
+                    if (match.ratio > nextSentenceThreshold) {
+                        console.warn(
+                            `[Voice] ❌ BLOCKED: Next sentence jump with low confidence ` +
+                            `(${(match.ratio * 100).toFixed(0)}% error). Required: ≤${nextSentenceThreshold * 100}% error`
+                        );
+                        voiceDiagnostics.recordMiss({
+                            transcript: cleanTranscript,
+                            expectedSentence: currentSentenceId,
+                            reason: `Next sentence jump too uncertain (ratio: ${match.ratio.toFixed(2)})`
+                        });
+                        return;
+                    }
+                }
+
+                // RULE 4: Log any jump for debugging
+                if (jumpDistance > 0) {
+                    console.log(
+                        `[Voice] ✅ JUMP APPROVED: ${currentSentenceId} → ${newSentenceId} ` +
+                        `(distance: ${jumpDistance}, confidence: ${((1 - match.ratio) * 100).toFixed(0)}%)`
+                    );
+                }
+                // ========== END JUMP VALIDATION LAYER ========== //
+
 
                 // --- FUZZY SYNC: Allow partial matches within same sentence ---
                 const isPartialMatch = match.ratio > 0.4; // Lower confidence match
