@@ -186,6 +186,10 @@ export function trackError(errorType: string, message: string): void {
         msgLower.includes("customevent") || // Filter generic unhandled rejection noise
         msgLower.includes("@context") || // Filter JSON-LD third-party parsing noise
         msgLower.includes("peer-unavailable") ||
+        msgLower.includes("negotiation-failed") || // PeerJS/WebRTC network noise
+        msgLower.includes("permission was denied") || // User mic/cam denial
+        msgLower.includes("notallowederror") || // Standard permission error
+        msgLower.includes("notreadableerror") || // Device in use
         msgLower.includes("unknown error") ||
         msgLower.includes("unknown rejection") ||
         msgLower.includes("usedcontainerscopeddefaults") || // Filter internal GA/Contentsquare noise

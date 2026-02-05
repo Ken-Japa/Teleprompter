@@ -59,7 +59,12 @@ export const usePeerRemote = (hostId: string) => {
                     }. Por favor, tente reconectar.`;
                 console.warn("Connection Error:", err);
                 setErrorMessage(msg);
-                trackError("remote_connection_error", err.type || err.message);
+                const errorType = err.type || err.message;
+                if (errorType === 'negotiation-failed') {
+                    trackWarning("remote_connection_negotiation_failed", errorType);
+                } else {
+                    trackError("remote_connection_error", errorType);
+                }
                 if (status === ConnectionStatus.CONNECTING) {
                     setStatus(ConnectionStatus.ERROR);
                 }
@@ -171,6 +176,7 @@ export const usePeerRemote = (hostId: string) => {
                         "peer-unavailable",
                         "network",
                         "webrtc",
+                        "negotiation-failed",
                         "disconnected",
                         "socket-error"
                     ].includes(errType);
