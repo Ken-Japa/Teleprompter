@@ -22,8 +22,8 @@ export const ConnectSidebar: React.FC<ConnectSidebarProps> = memo(({ peerId, sta
                 const QRCode = (await import('qrcode')).default;
 
                 await QRCode.toCanvas(qrRef.current, `${window.location.protocol}//${window.location.host}${window.location.pathname}#remote?id=${peerId}`, {
-                    width: 180,
-                    margin: 0,
+                    width: 256,
+                    margin: 4,
                     color: {
                         dark: "#020617",
                         light: "#ffffff"
