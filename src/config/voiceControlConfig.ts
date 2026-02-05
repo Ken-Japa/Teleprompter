@@ -301,9 +301,9 @@ export const VOICE_CONFIG = {
   CONTEXT_AWARE: {
     enabled: true,
     // Use previous sentences to predict next words (n-gram model)
-    ngramOrder: 2, // bigrams
+    ngramOrder: 3, // bigrams
     // Boost matching confidence if word appears in previous context
-    contextBoostFactor: 0.15,
+    contextBoostFactor: 0.20,
   },
 
   // --- NEW: LANGUAGE OVERRIDES ---
@@ -318,12 +318,12 @@ export const VOICE_CONFIG = {
       }
     },
     'en': {
-      intraSentenceTolerance: 0.45, // Tightened from 0.5
-      minConfidence: 0.80, // Tightened from 0.75
+      intraSentenceTolerance: 0.40, // Tightened from 0.5
+      minConfidence: 0.75, // Tightened from 0.75
       segmentMatching: {
         enabled: true,
-        windowSize: 4,
-        threshold: 0.18, // Tightened from 0.20
+        windowSize: 5,
+        threshold: 0.15, // Tightened from 0.20
       }
     }
   } as Record<string, any>,
