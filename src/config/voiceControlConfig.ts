@@ -196,7 +196,8 @@ export const VOICE_CONFIG = {
   SENTENCE_COMPLETION: {
     enabled: true,
     minProgress: 0.70,
-    pauseTimeout: 1200,
+    standardPauseTimeout: 1200,
+    punctPauseTimeout: 300,
     autoAdvance: true,
     checkInterval: 200,
   },
@@ -355,27 +356,32 @@ export const VOICE_CONFIG = {
   // --- NEW: LANGUAGE OVERRIDES ---
   LANGUAGE_OVERRIDES: {
     'pt': {
-      intraSentenceTolerance: 0.45, // Tightened from 0.60
-      minConfidence: 0.70, // Tightened from 0.65
+      intraSentenceTolerance: 0.45,
+      minConfidence: 0.70,
+      stemWeight: 0.30,
+      phoneticWeight: 0.15,
       segmentMatching: {
         enabled: true,
         windowSize: 6,
-        threshold: 0.22, // Tightened from 0.25
+        threshold: 0.22,
       }
     },
     'en': {
-      intraSentenceTolerance: 0.35, // Tightened from 0.5
-      minConfidence: 0.70, // Tightened from 0.75
+      intraSentenceTolerance: 0.35,
+      minConfidence: 0.70,
+      stemWeight: 0.35,
+      phoneticWeight: 0.10,
       segmentMatching: {
         enabled: true,
         windowSize: 6,
-        threshold: 0.15, // Tightened from 0.20
+        threshold: 0.15,
       }
     }
   } as Record<string, any>,
 
   // --- EMERGENCY RECOVERY ---
   EMERGENCY_RECOVERY: {
+    enabled: true,
     FAILURE_THRESHOLD: 8,
     FAILURE_WINDOW_MS: 3000,
     EMERGENCY_MODE_DURATION: 5000,

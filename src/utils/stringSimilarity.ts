@@ -158,7 +158,9 @@ export const findBestMatch = (
     threshold: number = 0.35,
     lang: string = 'pt',
     useStemming: boolean = false,
-    usePhonetics: boolean = false
+    usePhonetics: boolean = false,
+    stemWeight: number = 0.3,
+    phoneticWeight: number = 0.10
 ): { index: number; distance: number; ratio: number } | null => {
     if (!pattern || pattern.length < 3) return null;
 
@@ -234,8 +236,8 @@ export const findBestMatch = (
             const stemDist = levenshteinDistance(stemmedPattern, stemmedSample);
             const stemRatio = stemDist / Math.max(1, stemmedPattern.length);
 
-            // Weighting: 70% Literal, 30% Stem
-            finalRatio = (rawRatio * 0.7) + (stemRatio * 0.3);
+            // Weighting: dynamic Literal/Stem
+            finalRatio = (rawRatio * (1 - stemWeight)) + (stemRatio * stemWeight);
         }
 
         // 3. Phonetic Boost (Signal 3 - Conditional Boost)
@@ -249,8 +251,8 @@ export const findBestMatch = (
                 (pPattern2 && (pPattern2 === pSample1 || pPattern2 === pSample2));
 
             if (hasPhoneticMatch) {
-                // Apply a -0.10 reduction to ratio (equivalent to +0.10 confidence boost)
-                finalRatio = Math.max(0, finalRatio - 0.10);
+                // Apply a reduction to ratio (equivalent to confidence boost)
+                finalRatio = Math.max(0, finalRatio - phoneticWeight);
             }
         }
 
@@ -279,7 +281,7 @@ export const findBestMatch = (
                 const stemRatio = stemDist / Math.max(1, stemmedPattern.length);
                 const rawDist = levenshteinDistance(normalizedPattern, rawSample);
                 const rawRatio = rawDist / Math.max(1, normalizedPattern.length);
-                sampleRatio = (rawRatio * 0.7) + (stemRatio * 0.3);
+                sampleRatio = (rawRatio * (1 - stemWeight)) + (stemRatio * stemWeight);
             } else {
                 const dist = levenshteinDistance(normalizedPattern, rawSample);
                 sampleRatio = dist / Math.max(1, normalizedPattern.length);
@@ -294,7 +296,7 @@ export const findBestMatch = (
                     (pPattern2 && (pPattern2 === pSample1 || pPattern2 === pSample2));
 
                 if (hasPhoneticMatch) {
-                    sampleRatio = Math.max(0, sampleRatio - 0.10);
+                    sampleRatio = Math.max(0, sampleRatio - phoneticWeight);
                 }
             }
 
@@ -324,7 +326,9 @@ export const findSegmentedMatch = (
     lastKnownPosition: number = 0,
     lang: string = 'pt',
     useStemming: boolean = false,
-    usePhonetics: boolean = false
+    usePhonetics: boolean = false,
+    stemWeight: number = 0.3,
+    phoneticWeight: number = 0.10
 ): { index: number; confidence: number; isSequential: boolean } | null => {
     // Basic normalization (lowercase, remove punctuation)
     const normalizeBasic = (str: string) => {
@@ -342,7 +346,7 @@ export const findSegmentedMatch = (
 
     const matches = segments.map((segment) => {
         // findBestMatch now handles stemming and phonetics internally if enabled
-        const match = findBestMatch(text, segment, startIndex, searchWindow, 0.35, lang, useStemming, usePhonetics);
+        const match = findBestMatch(text, segment, startIndex, searchWindow, 0.35, lang, useStemming, usePhonetics, stemWeight, phoneticWeight);
         return match ? { index: match.index, ratio: match.ratio, segment } : null;
     }).filter((m): m is { index: number; ratio: number; segment: string } => m !== null && m.ratio < 0.45); // Slightly more lenient threshold for filtered matches
 

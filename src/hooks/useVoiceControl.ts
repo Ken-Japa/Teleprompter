@@ -319,6 +319,31 @@ export const useVoiceControl = (
     }, []);
 
     /**
+     * CONTEXT-AWARE EMERGENCY RECOVERY
+     * Uses semantic buffer (previous words) to find where we are when lost
+     */
+    const recoverWithContext = useCallback((transcript: string, searchWindow: number): any => {
+        if (!VOICE_CONFIG.EMERGENCY_RECOVERY.enabled || semanticBufferRef.current.length < 3) return null;
+
+        // Build context transcript: tail of history + current
+        const contextTranscript = (semanticBufferRef.current.slice(-5).join(" ") + " " + transcript).trim();
+
+        // Search with relaxed threshold but localized around last known (or global if searchWindow is large)
+        return findBestMatch(
+            fullCleanText,
+            contextTranscript,
+            lastMatchIndexRef.current,
+            searchWindow,
+            VOICE_CONFIG.EMERGENCY_RECOVERY.RELAXED_CONFIDENCE,
+            lang,
+            true, // Always use stemming for recovery
+            true, // Always use phonetics for recovery
+            0.4,  // Higher stem weight for recovery
+            0.15  // Higher phonetic weight for recovery
+        );
+    }, [fullCleanText, lang]);
+
+    /**
      * Update performance metrics and calculate adaptive throttle
      */
     const updatePerformanceMetrics = useCallback((processingTime: number) => {
@@ -375,10 +400,17 @@ export const useVoiceControl = (
         const now = Date.now();
         const timeSinceLastSpeech = now - lastSpeechTimeRef.current;
 
+        // Punctuation Detection for faster auto-advance
+        const currentSentence = sentences[lockedSentenceIdRef.current];
+        const endsWithPunctuation = currentSentence && /[.!?]$/.test(currentSentence.cleanContent.trim());
+        const effectivePauseTimeout = endsWithPunctuation
+            ? VOICE_CONFIG.SENTENCE_COMPLETION.punctPauseTimeout
+            : VOICE_CONFIG.SENTENCE_COMPLETION.standardPauseTimeout;
+
         // Check if we should auto-advance
         if (
             voiceProgress >= VOICE_CONFIG.SENTENCE_COMPLETION.minProgress &&
-            timeSinceLastSpeech >= VOICE_CONFIG.SENTENCE_COMPLETION.pauseTimeout &&
+            timeSinceLastSpeech >= effectivePauseTimeout &&
             lockedSentenceIdRef.current >= 0
         ) {
             const nextSentenceId = lockedSentenceIdRef.current + 1;
@@ -810,7 +842,9 @@ export const useVoiceControl = (
                 intraSentenceTolerance,
                 recognition.lang,
                 useStemming,
-                usePhonetics
+                usePhonetics,
+                overrides?.stemWeight,
+                overrides?.phoneticWeight
             );
 
             // EMERGENCY FORCE-MATCH
@@ -837,7 +871,9 @@ export const useVoiceControl = (
                     lastMatchIndexRef.current, // Pass last known position for sequential bias
                     recognition.lang,
                     useStemming,
-                    usePhonetics
+                    usePhonetics,
+                    overrides?.stemWeight,
+                    overrides?.phoneticWeight
                 );
 
                 if (segMatch) {
@@ -896,7 +932,9 @@ export const useVoiceControl = (
                         VOICE_CONFIG.RECOVERY.STRICT_NEXT_THRESHOLD,
                         recognition.lang,
                         useStemming,
-                        usePhonetics
+                        usePhonetics,
+                        overrides?.stemWeight,
+                        overrides?.phoneticWeight
                     );
 
                     if (nextMatch && nextMatch.ratio <= VOICE_CONFIG.RECOVERY.CONFIDENCE_REQUIREMENT) {
@@ -983,8 +1021,16 @@ export const useVoiceControl = (
                         0.45, // Relaxed threshold for recovery
                         recognition.lang,
                         useStemming,
-                        usePhonetics
+                        usePhonetics,
+                        overrides?.stemWeight,
+                        overrides?.phoneticWeight
                     );
+
+                    // TRY CONTEXT-AWARE RECOVERY if still no match
+                    if (!match) {
+                        match = recoverWithContext(cleanTranscript, searchWindow);
+                        if (match) console.log("[Voice] EXCEPTION: Recovery successful using semantic context!");
+                    }
 
                     if (match) {
                         console.log(`[Voice] RECOVERY SUCCESS at relative index ${match.index - lastMatchIndexRef.current}`);
