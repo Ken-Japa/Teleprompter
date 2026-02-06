@@ -255,6 +255,17 @@ export function trackFinishReading(duration: number): void {
 }
 
 /**
+ * Rastreia visualizações de páginas SEO/Landing para identificar impressões e engajamento.
+ * @param pagePath O caminho ou URL canônica da página.
+ */
+export function trackSeoPageView(pagePath: string): void {
+    trackEvent("seo_page_view", {
+        page_path: pagePath,
+        timestamp: new Date().toISOString()
+    });
+}
+
+/**
  * Rastreia quando um dispositivo remoto se conecta com sucesso.
  * @param role O papel do dispositivo ('host' ou 'remote').
  */

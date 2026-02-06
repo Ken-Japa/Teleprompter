@@ -6,7 +6,7 @@ import { ROUTES_CONFIG } from "../src/config/routes.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DOMAIN = "https://promptninja.solutionkit.com.br";
+const DOMAIN = process.env.DOMAIN || "https://promptninja.solutionkit.com.br";
 
 const generateSitemap = () => {
   let xml = `<?xml version="1.0" encoding="UTF-8"?>

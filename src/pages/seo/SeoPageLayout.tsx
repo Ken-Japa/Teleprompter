@@ -84,6 +84,8 @@ export const SeoPageLayout: React.FC<SeoPageLayoutProps> = ({
             "description": description,
             "image": ogImage || `${baseUrl}/og-image.png`,
             "inLanguage": lang === 'pt' ? 'pt-BR' : (lang === 'es' ? 'es-ES' : 'en-US'),
+            "datePublished": "2024-01-01T08:00:00+08:00", // Baseline date
+            "dateModified": new Date().toISOString(), // Dynamic update date
             "author": {
                 "@type": "Organization",
                 "name": "PromptNinja"
@@ -186,7 +188,7 @@ export const SeoPageLayout: React.FC<SeoPageLayoutProps> = ({
             <FinalCTA onLaunch={onLaunch} />
             <footer className="py-12 border-t border-slate-900 text-center text-slate-500 text-sm bg-[#020617]">
                 <div className="flex flex-col items-center gap-4 mb-8">
-                    <a href="mailto:teleprompterninja@gmail.com" className="text-slate-400 hover:text-brand-400 transition-colors font-medium">
+                    <a href="mailto:teleprompterninja@gmail.com" rel="nofollow" className="text-slate-400 hover:text-brand-400 transition-colors font-medium">
                         teleprompterninja@gmail.com
                     </a>
                     <button

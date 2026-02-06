@@ -81,7 +81,7 @@ async function prerender() {
             await page.goto(fullUrl, { waitUntil: 'networkidle0' });
 
             // Wait for a specific element to ensure hydration (e.g., Footer or Main)
-            await page.waitForSelector('footer', { timeout: 5000 }).catch(() => { });
+            await page.waitForSelector('footer', { timeout: 10000 }).catch(() => { });
 
             const html = await page.content();
 

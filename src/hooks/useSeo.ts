@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { trackSeoPageView } from "../utils/analytics";
 
 interface SeoProps {
     title: string;
@@ -111,6 +112,9 @@ export const useSeo = ({
         } else if (metaRobots) {
             metaRobots.remove();
         }
+
+        // Track SEO page view in GA4
+        trackSeoPageView(canonicalUrl || window.location.pathname);
 
         return () => {
             // Cleanup logic if needed (rarely needed for SPA navigation unless full reset desired)
