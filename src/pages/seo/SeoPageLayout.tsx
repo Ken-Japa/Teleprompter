@@ -77,32 +77,41 @@ export const SeoPageLayout: React.FC<SeoPageLayoutProps> = ({
         });
 
         // 2. Article Schema
-        schemas.push({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": title.includes(":") ? title.split(":")[0] : title,
-            "description": description,
-            "image": ogImage || `${baseUrl}/og-image.png`,
-            "inLanguage": lang === 'pt' ? 'pt-BR' : (lang === 'es' ? 'es-ES' : 'en-US'),
-            "datePublished": "2024-01-01T08:00:00+08:00", // Baseline date
-            "dateModified": new Date().toISOString(), // Dynamic update date
-            "author": {
-                "@type": "Organization",
-                "name": "PromptNinja"
-            },
-            "publisher": {
-                "@type": "Organization",
-                "name": "PromptNinja",
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": `${baseUrl}/assets/web-app-manifest-512x512.png`
+        const hasArticleSchema = schema ? (
+            Array.isArray(schema)
+                ? schema.some(s => s["@type"] === "Article")
+                : (schema as any)["@type"] === "Article"
+        ) : false;
+
+        if (!hasArticleSchema) {
+            schemas.push({
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "headline": title.includes(":") ? title.split(":")[0] : title,
+                "description": description,
+                "image": ogImage || `${baseUrl}/og-image.png`,
+                "inLanguage": lang === 'pt' ? 'pt-BR' : (lang === 'es' ? 'es-ES' : 'en-US'),
+                "datePublished": "2024-01-01T08:00:00+08:00",
+                "dateModified": new Date().toISOString(),
+                "author": {
+                    "@type": "Organization",
+                    "name": "PromptNinja",
+                    "url": baseUrl
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "PromptNinja",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": `${baseUrl}/assets/web-app-manifest-512x512.png`
+                    }
+                },
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": canonicalUrl || window.location.href
                 }
-            },
-            "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": canonicalUrl
-            }
-        });
+            });
+        }
 
         // 3. Custom Schema if provided (can be single object or array)
         if (schema) {

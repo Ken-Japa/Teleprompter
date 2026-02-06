@@ -17,6 +17,8 @@ export const useFAQSchema = (items: FAQItem[]) => {
         const schema = {
             "@context": "https://schema.org",
             "@type": "FAQPage",
+            "name": "Perguntas Frequentes (FAQ) - PromptNinja",
+            "url": window.location.href,
             "mainEntity": items.map(item => ({
                 "@type": "Question",
                 "name": item.q,
