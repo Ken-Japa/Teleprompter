@@ -1,4 +1,6 @@
 import { Sentence, TextFragment, TextCommand } from "../types";
+import { VOICE_CONFIG } from '../config/voiceControlConfig';
+
 
 export const parseTextToSentences = (
     text: string,
@@ -260,7 +262,29 @@ export const parseTextToSentences = (
     };
 
     processedTokens.forEach((token) => {
-        const parts = token.text.split(/([.!?\n]+)/);
+        let parts = token.text.split(/([.!?\n]+)/);
+
+        // --- NEW FALLBACK FOR UNPUNCTUATED TEXT ---
+        // If a single part is too long (no punctuation), force split by line length or space
+        // This prevents the "single massive sentence" issue that causes scroll freezing.
+        const MAX_SENTENCE_LEN = VOICE_CONFIG.PARSER.MAX_SENTENCE_LEN;
+        const refinedParts: string[] = [];
+        parts.forEach(p => {
+            if (p.length > MAX_SENTENCE_LEN && !/[.!?\n]/.test(p)) {
+                let localP = p;
+                while (localP.length > MAX_SENTENCE_LEN) {
+                    let splitIdx = localP.lastIndexOf(' ', MAX_SENTENCE_LEN);
+                    if (splitIdx === -1) splitIdx = MAX_SENTENCE_LEN;
+                    refinedParts.push(localP.substring(0, splitIdx));
+                    localP = localP.substring(splitIdx).trimStart();
+                }
+                if (localP.length > 0) refinedParts.push(localP);
+            } else {
+                refinedParts.push(p);
+            }
+        });
+        parts = refinedParts;
+
         let localOffset = 0;
 
         for (let i = 0; i < parts.length; i++) {

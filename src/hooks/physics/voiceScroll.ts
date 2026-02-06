@@ -7,8 +7,7 @@ export const calculateVoiceTarget = (
   voiceProgress: number,
   metrics: PhysicsMetrics,
   currentActiveElementRef: MutableRefObject<HTMLElement | null>,
-  lastVoiceIndexRef: MutableRefObject<number>,
-  isFlipVertical: boolean = false
+  lastVoiceIndexRef: MutableRefObject<number>
 ): number | null => {
   // Update active element cache if index changed
   if (activeSentenceIndex !== lastVoiceIndexRef.current) {
@@ -52,13 +51,35 @@ export const calculateVoiceTarget = (
     // TargetScroll = (ElementTop + Offset) - (ViewportHeight * (1 - LookaheadRatio))
 
     // UNIFIED COORDINATES:
-    // We used to invert this for Flip Vertical (1 - Lookahead), but since we use scaleY(-1) CSS transform,
-    // the DOM "Top" (Start) naturally maps to the Visual "Start".
-    // So we should target the same relative position in the DOM for both modes.
     const targetRatio = VOICE_CONFIG.LOOKAHEAD_POSITION;
 
+    // --- ANTICIPATORY SCROLL FOR COMMANDS ---
+    // If we are nearing the end of the current sentence, and the next blocks are commands,
+    // we should "anticipate" and scroll past them earlier to bring the next readable text into view.
+    let commandOffset = 0;
+    if (voiceProgress > VOICE_CONFIG.PHYSICS.ANTICIPATION.MIN_PROGRESS) {
+      let lookAheadId = activeSentenceIndex + 1;
+      let limit = VOICE_CONFIG.PHYSICS.ANTICIPATION.MAX_LOOKAHEAD; // Check elements ahead
+      while (limit > 0) {
+        const nextEl = document.getElementById(`sentence-${lookAheadId}`);
+        if (nextEl && nextEl.dataset.command) {
+          // It's a command block - sum its height
+          commandOffset += nextEl.clientHeight;
+          lookAheadId++;
+          limit--;
+        } else {
+          break;
+        }
+      }
+    }
+
+    // Gradually apply the command offset as we reach the end of the sentence
+    // Progress MIN_PROGRESS -> 0%, Progress 1.0 -> 100%
+    const anticipationBias = Math.max(0, (voiceProgress - VOICE_CONFIG.PHYSICS.ANTICIPATION.MIN_PROGRESS) / VOICE_CONFIG.PHYSICS.ANTICIPATION.PROGRESS_RANGE);
+    const effectiveOffset = readingLineOffset + (commandOffset * anticipationBias);
+
     // Scroll Position = ElementPosition - ViewportOffset
-    return activeEl.offsetTop + readingLineOffset - metrics.clientHeight * targetRatio;
+    return activeEl.offsetTop + effectiveOffset - metrics.clientHeight * targetRatio;
   }
 
   return null;

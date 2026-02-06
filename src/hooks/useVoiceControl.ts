@@ -338,8 +338,8 @@ export const useVoiceControl = (
             lang,
             true, // Always use stemming for recovery
             true, // Always use phonetics for recovery
-            0.4,  // Higher stem weight for recovery
-            0.15  // Higher phonetic weight for recovery
+            VOICE_CONFIG.EMERGENCY_RECOVERY.STEM_WEIGHT,
+            VOICE_CONFIG.EMERGENCY_RECOVERY.PHONETIC_WEIGHT
         );
     }, [fullCleanText, lang]);
 
@@ -366,11 +366,9 @@ export const useVoiceControl = (
         // Adjust throttle: If slow, increase delay. If fast, decrease.
         const targetThrottle = metrics.avgProcessingTime * throttleConfig.throttleMultiplier;
 
-        // Hard limit: Never exceed 80ms to maintain responsiveness
-        const maxAllowedThrottle = 80;
         const newThrottle = Math.max(
             throttleConfig.minThrottle,
-            Math.min(maxAllowedThrottle, targetThrottle)
+            Math.min(throttleConfig.maxThrottle, targetThrottle)
         );
 
         if (Math.abs(newThrottle - metrics.currentThrottle) > 10) {
@@ -1203,7 +1201,7 @@ export const useVoiceControl = (
 
 
                 // --- FUZZY SYNC: Allow partial matches within same sentence ---
-                const isPartialMatch = match.ratio > 0.4; // Lower confidence match
+                const isPartialMatch = match.ratio > VOICE_CONFIG.FUZZY_SYNC.PARTIAL_THRESHOLD; // Lower confidence match
 
                 // Use adapted tolerance from confidence learning
                 const effectiveFuzzyTolerance = VOICE_CONFIG.CONFIDENCE_LEARNING.enabled
@@ -1223,15 +1221,15 @@ export const useVoiceControl = (
                         // Don't return - allow smooth progress
                     } else {
                         // Too poor match even for fuzzy sync
-                        if (consecutivePartialMatchesRef.current < 3) {
+                        if (consecutivePartialMatchesRef.current < VOICE_CONFIG.FUZZY_SYNC.CONSECUTIVE_LIMIT) {
                             // Small grace period - maybe user is just mumbling
                             consecutivePartialMatchesRef.current++;
 
                             // PARTIAL RECOVERY (NEW):
                             // If we have "some" match but it's not good enough for a full confirm,
                             // AND we are getting stuck, force a small progress update to show "life"
-                            if (VOICE_CONFIG.RECOVERY.partialRecovery && consecutivePartialMatchesRef.current > 2) {
-                                const progressBump = 0.05; // 5% nudge
+                            if (VOICE_CONFIG.RECOVERY.partialRecovery && consecutivePartialMatchesRef.current >= VOICE_CONFIG.FUZZY_SYNC.CONSECUTIVE_LIMIT) {
+                                const progressBump = VOICE_CONFIG.RECOVERY.PROGRESS_NUDGE; // nudge
                                 const rawProgress = Math.min(1, voiceProgress + progressBump);
                                 setVoiceProgress(rawProgress);
                                 // Don't update High-Precision sync refs, just visual progress
@@ -1252,14 +1250,14 @@ export const useVoiceControl = (
                 if (!isSameSentence) {
                     const jumpDistance = Math.abs(newSentenceId - currentSentenceId);
 
-                    // Medium jumps: require 95%+ accuracy
-                    if (jumpDistance > 5 && match.ratio > 0.05) {
+                    // Medium jumps: require high accuracy
+                    if (jumpDistance > VOICE_CONFIG.JUMP_VALIDATION.MEDIUM_JUMP_DISTANCE && match.ratio > VOICE_CONFIG.JUMP_VALIDATION.MEDIUM_JUMP_RATIO) {
                         console.warn(`[Voice] Medium jump rejected (${jumpDistance} sentences), ratio ${match.ratio.toFixed(3)} not good enough`);
                         return;
                     }
 
-                    // Large jumps: require 97%+ accuracy
-                    if (jumpDistance > 10 && match.ratio > 0.03) {
+                    // Large jumps: require even higher accuracy
+                    if (jumpDistance > VOICE_CONFIG.JUMP_VALIDATION.LARGE_JUMP_DISTANCE && match.ratio > VOICE_CONFIG.JUMP_VALIDATION.LARGE_JUMP_RATIO) {
                         console.warn(`[Voice] Large jump rejected (${jumpDistance} sentences), ratio ${match.ratio.toFixed(3)} not perfect enough`);
                         return;
                     }
