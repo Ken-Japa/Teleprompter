@@ -171,6 +171,13 @@ export const VOICE_CONFIG = {
     NORMALIZE_VERBS: true,
   },
 
+  // --- PHONETIC MATCHING (METAPHONE) ---
+  PHONETIC_MATCHING: {
+    enabled: true,
+    GRAY_ZONE: { MIN: 0.60, MAX: 0.90 },
+    BOOST: 0.10,
+  },
+
   // --- ADVANCED MATCHING ---
   ADVANCED_MATCHING: {
     maxWideJump: 250, // characters

@@ -800,8 +800,8 @@ export const useVoiceControl = (
             }
 
             // Fuzzy Search Strategy
-            // 1. Try to find fuzzy match starting from last known position
             const useStemming = VOICE_CONFIG.STEMMING.enabled;
+            const usePhonetics = VOICE_CONFIG.PHONETIC_MATCHING.enabled;
             let match = findBestMatch(
                 fullCleanText,
                 intentTranscript,
@@ -809,7 +809,8 @@ export const useVoiceControl = (
                 searchWindow,
                 intraSentenceTolerance,
                 recognition.lang,
-                useStemming
+                useStemming,
+                usePhonetics
             );
 
             // EMERGENCY FORCE-MATCH
@@ -835,7 +836,8 @@ export const useVoiceControl = (
                     overrides.segmentMatching.windowSize,
                     lastMatchIndexRef.current, // Pass last known position for sequential bias
                     recognition.lang,
-                    useStemming
+                    useStemming,
+                    usePhonetics
                 );
 
                 if (segMatch) {
@@ -893,7 +895,8 @@ export const useVoiceControl = (
                         VOICE_CONFIG.SEARCH_WINDOW.SMALL,  // Keep small window
                         VOICE_CONFIG.RECOVERY.STRICT_NEXT_THRESHOLD,
                         recognition.lang,
-                        useStemming
+                        useStemming,
+                        usePhonetics
                     );
 
                     if (nextMatch && nextMatch.ratio <= VOICE_CONFIG.RECOVERY.CONFIDENCE_REQUIREMENT) {
@@ -977,7 +980,10 @@ export const useVoiceControl = (
                         cleanTranscript,
                         lastMatchIndexRef.current,
                         searchWindow,
-                        0.45 // Relaxed threshold for recovery
+                        0.45, // Relaxed threshold for recovery
+                        recognition.lang,
+                        useStemming,
+                        usePhonetics
                     );
 
                     if (match) {
@@ -1004,7 +1010,8 @@ export const useVoiceControl = (
                     2000,
                     0.4,
                     recognition.lang,
-                    VOICE_CONFIG.STEMMING.enabled
+                    VOICE_CONFIG.STEMMING.enabled,
+                    VOICE_CONFIG.PHONETIC_MATCHING.enabled
                 );
 
                 if (fallbackMatch) {

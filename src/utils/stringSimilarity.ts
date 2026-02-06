@@ -1,4 +1,5 @@
 import { newStemmer } from 'snowball-stemmers';
+import { doubleMetaphone } from 'double-metaphone';
 
 // Cache for Levenshtein calculations (LRU with max 100 entries)
 const levenshteinCache = new Map<string, Map<string, number>>();
@@ -13,6 +14,9 @@ const stemmers: Record<string, any> = {
 
 // Cache for stemmed words to avoid redundant calls to the library
 const stemCache = new Map<string, string>();
+
+// Cache for phonetic codes
+const phoneticCache = new Map<string, [string, string]>();
 
 /**
  * Professional Stemmer for PT/EN/ES using snowball-stemmers
@@ -39,6 +43,32 @@ export const applyStemming = (text: string, lang: string = 'pt'): string => {
 
         return stemmed;
     }).join(" ");
+};
+
+/**
+ * Unified Phonetic Matching (Double Metaphone)
+ * Generates phonetic codes for all languages as an auxiliary signal.
+ */
+export const applyPhonetics = (text: string): [string, string] => {
+    if (!text) return ["", ""];
+
+    const normalized = text.toLowerCase().trim();
+    if (phoneticCache.has(normalized)) return phoneticCache.get(normalized)!;
+
+    const words = normalized.split(/\s+/).filter(word => word.length > 2);
+    if (words.length === 0) return ["", ""];
+
+    // Generate codes for each word and join
+    const codes = words.map(word => doubleMetaphone(word));
+    const result: [string, string] = [
+        codes.map(c => c[0]).join(""),
+        codes.map(c => c[1]).join("")
+    ];
+
+    if (phoneticCache.size > 1000) phoneticCache.clear();
+    phoneticCache.set(normalized, result);
+
+    return result;
 };
 
 /**
@@ -127,7 +157,8 @@ export const findBestMatch = (
     searchWindow: number = 1000,
     threshold: number = 0.35,
     lang: string = 'pt',
-    useStemming: boolean = false
+    useStemming: boolean = false,
+    usePhonetics: boolean = false
 ): { index: number; distance: number; ratio: number } | null => {
     if (!pattern || pattern.length < 3) return null;
 
@@ -147,8 +178,6 @@ export const findBestMatch = (
     const foreignBonus = (foreignCount / patternWords.length > 0.2) ? 0.15 : 0;
     const effectiveThreshold = threshold + foreignBonus;
 
-    // Max distance is now based on literal width
-    const maxDist = Math.floor(patLen * (effectiveThreshold + 0.1)); // Slightly more lenient window for candidates
 
     // PHASE 1: Candidate generation
     const candidates: number[] = [];
@@ -205,40 +234,76 @@ export const findBestMatch = (
             const stemDist = levenshteinDistance(stemmedPattern, stemmedSample);
             const stemRatio = stemDist / Math.max(1, stemmedPattern.length);
 
-            // Weighting: 70% Literal, 30% Stem (Stemming acts as a "bonus" or reduction in penalty)
-            // If stems match perfectly but literal doesn't, finalRatio won't easily reach 0.0 (Perfect)
+            // Weighting: 70% Literal, 30% Stem
             finalRatio = (rawRatio * 0.7) + (stemRatio * 0.3);
+        }
+
+        // 3. Phonetic Boost (Signal 3 - Conditional Boost)
+        // Only active in the "gray zone" (60% to 90% confidence -> ratio 0.10 to 0.40)
+        if (usePhonetics && finalRatio > 0.10 && finalRatio < 0.40) {
+            const [pPattern1, pPattern2] = applyPhonetics(normalizedPattern);
+            const [pSample1, pSample2] = applyPhonetics(rawSample);
+
+            const hasPhoneticMatch =
+                (pPattern1 && (pPattern1 === pSample1 || pPattern1 === pSample2)) ||
+                (pPattern2 && (pPattern2 === pSample1 || pPattern2 === pSample2));
+
+            if (hasPhoneticMatch) {
+                // Apply a -0.10 reduction to ratio (equivalent to +0.10 confidence boost)
+                finalRatio = Math.max(0, finalRatio - 0.10);
+            }
         }
 
         const adjustedRatio = Math.max(0, finalRatio - foreignBonus);
         if (adjustedRatio > effectiveThreshold) continue;
 
-        // SEQUENTIAL BIAS: If we already have a match, only replace it if:
-        // 1. The new match is SIGNIFICANTLY better (ratio < bestMatch.ratio - 0.05)
-        // 2. OR the new match is closer and at least as good.
+        // SEQUENTIAL BIAS
         if (bestMatch.index === -1 || adjustedRatio < bestMatch.ratio - 0.05) {
             bestMatch = { index: idx, distance: rawDist, ratio: adjustedRatio };
-            if (adjustedRatio < 0.05) break; // Good enough match
+            if (adjustedRatio < 0.05) break;
         }
     }
 
     // PHASE 4: Fallback to sliding window if no candidates found
     if (bestMatch.ratio > effectiveThreshold && filteredCandidates.length === 0) {
-        const step = Math.max(1, Math.floor(patLen / 4)); // Adaptive step
+        const step = Math.max(1, Math.floor(patLen / 4));
 
         for (let i = actualStartIndex; i < searchEndIndex - patLen; i += step) {
             const rawSample = text.substring(i, i + patLen).toLowerCase();
-            const sampleToMatch = useStemming ? applyStemming(rawSample, stemmingLang) : rawSample;
-            const dist = levenshteinDistance(normalizedPattern, sampleToMatch);
 
-            if (dist > maxDist) continue;
+            // 1 & 2. Similarity with optional stemming
+            let sampleRatio = 0;
+            if (useStemming) {
+                const stemmedSample = applyStemming(rawSample, stemmingLang);
+                const stemDist = levenshteinDistance(stemmedPattern, stemmedSample);
+                const stemRatio = stemDist / Math.max(1, stemmedPattern.length);
+                const rawDist = levenshteinDistance(normalizedPattern, rawSample);
+                const rawRatio = rawDist / Math.max(1, normalizedPattern.length);
+                sampleRatio = (rawRatio * 0.7) + (stemRatio * 0.3);
+            } else {
+                const dist = levenshteinDistance(normalizedPattern, rawSample);
+                sampleRatio = dist / Math.max(1, normalizedPattern.length);
+            }
 
-            const ratio = Math.max(0, (dist / Math.max(1, normalizedPattern.length)) - foreignBonus);
+            // 3. Phonetic Boost in fallback
+            if (usePhonetics && sampleRatio > 0.10 && sampleRatio < 0.40) {
+                const [pPattern1, pPattern2] = applyPhonetics(normalizedPattern);
+                const [pSample1, pSample2] = applyPhonetics(rawSample);
+                const hasPhoneticMatch =
+                    (pPattern1 && (pPattern1 === pSample1 || pPattern1 === pSample2)) ||
+                    (pPattern2 && (pPattern2 === pSample1 || pPattern2 === pSample2));
 
-            // SEQUENTIAL BIAS (same logic)
+                if (hasPhoneticMatch) {
+                    sampleRatio = Math.max(0, sampleRatio - 0.10);
+                }
+            }
+
+            const ratio = Math.max(0, sampleRatio - foreignBonus);
+            if (ratio > effectiveThreshold) continue;
+
             if (bestMatch.index === -1 || ratio < bestMatch.ratio - 0.05) {
-                bestMatch = { index: i, distance: dist, ratio };
-                if (dist === 0) break;
+                bestMatch = { index: i, distance: -1, ratio };
+                if (ratio < 0.05) break;
             }
         }
     }
@@ -258,7 +323,8 @@ export const findSegmentedMatch = (
     segmentSize: number = 6,
     lastKnownPosition: number = 0,
     lang: string = 'pt',
-    useStemming: boolean = false
+    useStemming: boolean = false,
+    usePhonetics: boolean = false
 ): { index: number; confidence: number; isSequential: boolean } | null => {
     // Basic normalization (lowercase, remove punctuation)
     const normalizeBasic = (str: string) => {
@@ -275,10 +341,10 @@ export const findSegmentedMatch = (
     }
 
     const matches = segments.map((segment) => {
-        // findBestMatch now handles stemming internally if enabled, returning ORIGINAL indices
-        const match = findBestMatch(text, segment, startIndex, searchWindow, 0.35, lang, useStemming);
+        // findBestMatch now handles stemming and phonetics internally if enabled
+        const match = findBestMatch(text, segment, startIndex, searchWindow, 0.35, lang, useStemming, usePhonetics);
         return match ? { index: match.index, ratio: match.ratio, segment } : null;
-    }).filter((m): m is { index: number; ratio: number; segment: string } => m !== null && m.ratio < 0.35);
+    }).filter((m): m is { index: number; ratio: number; segment: string } => m !== null && m.ratio < 0.45); // Slightly more lenient threshold for filtered matches
 
     if (matches.length === 0) return null;
 
