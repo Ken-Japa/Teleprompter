@@ -16,9 +16,8 @@ import { SEO_ROUTES } from "../config/constants";
 import { ROUTES_CONFIG } from "../config/routes.js";
 import { Language } from "../locales/index";
 import { OfflineIndicator } from "../components/ui/OfflineIndicator";
-
-
 import { OnboardingDialog } from "../components/ui/OnboardingDialog";
+import { useSeo } from "../hooks/useSeo";
 
 
 type ViewState = "LANDING" | "HOST" | "REMOTE" | "MASTER" | "THANK_YOU" | SeoRouteKey;
@@ -35,7 +34,7 @@ export const MainApp: React.FC = () => {
     const [currentLang, setCurrentLang] = useState<Language | undefined>(undefined);
     const [showOnboarding, setShowOnboarding] = useState(false);
 
-    const { t, lang } = useTranslation();
+    const { t } = useTranslation();
 
     useEffect(() => {
         const seen = localStorage.getItem("promptninja_onboarding_seen");
@@ -70,44 +69,24 @@ export const MainApp: React.FC = () => {
     }, [view]);
 
 
-    useEffect(() => {
-        // Update title
-        document.title = t('landing.meta.title');
+    const isLanding = view === "LANDING";
+    const isAppControl = view === "HOST" || view === "REMOTE" || view === "MASTER";
 
-        // Update meta description
-        const metaDescription = document.querySelector('meta[name="description"]');
-        if (metaDescription) {
-            metaDescription.setAttribute('content', t('landing.meta.description'));
-        }
-
-        // Update Open Graph description
-        const ogDescription = document.querySelector('meta[property="og:description"]');
-        if (ogDescription) {
-            ogDescription.setAttribute('content', t('landing.meta.description'));
-        }
-
-        // Update Twitter description
-        const twitterDescription = document.querySelector('meta[property="twitter:description"]');
-        if (twitterDescription) {
-            twitterDescription.setAttribute('content', t('landing.meta.description'));
-        }
-
-        // Update Open Graph title
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        if (ogTitle) {
-            ogTitle.setAttribute('content', t('landing.meta.title'));
-        }
-
-        // Update Twitter title
-        const twitterTitle = document.querySelector('meta[property="twitter:title"]');
-        if (twitterTitle) {
-            twitterTitle.setAttribute('content', t('landing.meta.title'));
-        }
-
-    }, [view, lang, t]);
+    useSeo({
+        title: isLanding ? t('landing.meta.title') : t('common.app_name'),
+        description: t('landing.meta.description'),
+        canonicalUrl: isLanding ? "https://promptninja.solutionkit.com.br" : undefined,
+        noindex: isAppControl,
+        alternates: isLanding ? [
+            { hreflang: "pt", href: "https://promptninja.solutionkit.com.br" },
+            { hreflang: "en", href: "https://promptninja.solutionkit.com.br/en" },
+            { hreflang: "es", href: "https://promptninja.solutionkit.com.br/es" },
+            { hreflang: "x-default", href: "https://promptninja.solutionkit.com.br/en" },
+        ] : undefined
+    });
 
     useEffect(() => {
-        trackEvent("app_launched");
+        trackEvent("app_launched", {});
     }, []);
 
     useEffect(() => {

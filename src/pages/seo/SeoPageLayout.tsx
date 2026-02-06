@@ -47,7 +47,7 @@ export const SeoPageLayout: React.FC<SeoPageLayoutProps> = ({
             { hreflang: "pt", href: `${baseUrl}${routeEntry.paths.pt}` },
             { hreflang: "en", href: `${baseUrl}${routeEntry.paths.en}` },
             { hreflang: "es", href: `${baseUrl}${routeEntry.paths.es}` },
-            { hreflang: "x-default", href: `${baseUrl}${routeEntry.paths.pt}` },
+            { hreflang: "x-default", href: `${baseUrl}${routeEntry.paths.en}` },
         ];
     }, [canonicalUrl]);
 

@@ -21,14 +21,16 @@ const generateSitemap = () => {
 
   DOMAINS.forEach(domainConfig => {
     xml += `  <url>
-    <loc>${domainConfig.url}/</loc>
+    <loc>${domainConfig.url}</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
 `;
     domainConfig.langs.forEach(lang => {
-      const langPath = lang === 'pt' ? '' : `${lang}/`;
-      xml += `    <xhtml:link rel="alternate" hreflang="${lang}" href="${domainConfig.url}/${langPath}" />\n`;
+      const langPath = lang === 'pt' ? '' : `/${lang}`;
+      xml += `    <xhtml:link rel="alternate" hreflang="${lang}" href="${domainConfig.url}${langPath}" />\n`;
     });
+    // Add x-default (pointing to en version)
+    xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${domainConfig.url}/en" />\n`;
     xml += `  </url>\n`;
   });
 
@@ -50,6 +52,8 @@ const generateSitemap = () => {
       languages.forEach((altLang) => {
         xml += `    <xhtml:link rel="alternate" hreflang="${altLang}" href="${DOMAIN}${paths[altLang]}" />\n`;
       });
+      // Add x-default (pointing to en version)
+      xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${DOMAIN}${paths['en']}" />\n`;
 
       // Add images
       if (routeConfig.images && routeConfig.images.length > 0) {

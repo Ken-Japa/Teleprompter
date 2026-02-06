@@ -9,6 +9,7 @@ interface SeoProps {
     schema?: object; // JSON-LD structured data
     alternates?: { hreflang: string; href: string }[];
     keywords?: string;
+    noindex?: boolean;
 }
 
 export const useSeo = ({
@@ -20,6 +21,7 @@ export const useSeo = ({
     schema,
     alternates,
     keywords,
+    noindex,
 }: SeoProps) => {
     useEffect(() => {
         // Update Title
@@ -107,8 +109,21 @@ export const useSeo = ({
             scriptSchema.remove();
         }
 
+        // Update Robots (noindex)
+        let metaRobots = document.querySelector('meta[name="robots"]');
+        if (noindex) {
+            if (!metaRobots) {
+                metaRobots = document.createElement("meta");
+                metaRobots.setAttribute("name", "robots");
+                document.head.appendChild(metaRobots);
+            }
+            metaRobots.setAttribute("content", "noindex, nofollow");
+        } else if (metaRobots) {
+            metaRobots.remove();
+        }
+
         return () => {
             // Cleanup logic if needed (rarely needed for SPA navigation unless full reset desired)
         };
-    }, [title, description, canonicalUrl, ogImage, ogType, schema, alternates, keywords]);
+    }, [title, description, canonicalUrl, ogImage, ogType, schema, alternates, keywords, noindex]);
 };
