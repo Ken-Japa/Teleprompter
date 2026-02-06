@@ -143,6 +143,8 @@ export const VOICE_CONFIG = {
   // --- ADVANCED MATCHING ---
   ADVANCED_MATCHING: {
     maxWideJump: 200, // characters
+    globalSearchOnStart: true,
+    globalSearchFailureThreshold: 8,
   },
 
   SEARCH_WINDOW: {

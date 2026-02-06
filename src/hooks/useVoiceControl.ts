@@ -692,8 +692,15 @@ export const useVoiceControl = (
 
             // ADAPTIVE SEARCH WINDOW: Larger scripts need larger windows
             const scriptLength = fullCleanText.length;
-            const searchWindow = scriptLength > 5000 ? VOICE_CONFIG.SEARCH_WINDOW.LARGE :
+            let searchWindow = scriptLength > 5000 ? VOICE_CONFIG.SEARCH_WINDOW.LARGE :
                 scriptLength > 2000 ? VOICE_CONFIG.SEARCH_WINDOW.MEDIUM : VOICE_CONFIG.SEARCH_WINDOW.SMALL;
+
+            // GLOBAL SYNC: Use full script search on start or if stalled
+            const isStalled = consecutiveFailuresRef.current >= VOICE_CONFIG.ADVANCED_MATCHING.globalSearchFailureThreshold;
+            if (isInitializingRef.current || isStalled) {
+                searchWindow = scriptLength;
+                // Note: We don't log every time to avoid console spam in stalling states
+            }
 
             // --- LANGUAGE OVERRIDES & THRESHOLDS ---
             const recognitionLangCode = recognition.lang.split('-')[0]; // pt, en, es
@@ -833,23 +840,21 @@ export const useVoiceControl = (
                 if (consecutiveFailuresRef.current >= 4) {
                     console.warn(`[Voice] High failure rate (${consecutiveFailuresRef.current}), attempting wide search...`);
 
-                    // Improved: Limit search range to prevent wild jumps
-                    const maxJump = VOICE_CONFIG.ADVANCED_MATCHING?.maxWideJump || 500;
-
-                    // Try a limited wider search with slightly relaxed threshold
+                    // During recovery, we use the searchWindow determined above (which is global if stalled)
                     match = findBestMatch(
                         fullCleanText,
                         cleanTranscript,
                         lastMatchIndexRef.current,
-                        maxJump,
-                        0.45
+                        searchWindow,
+                        0.45 // Relaxed threshold for recovery
                     );
 
                     if (match) {
                         console.log(`[Voice] RECOVERY SUCCESS at relative index ${match.index - lastMatchIndexRef.current}`);
                     } else {
-                        console.warn('[Voice] Wide search failed. Holding position to avoid jump.');
-                        return; // Exit processing for this result to hold position
+                        // If still no match and we're stalled, holding position is the only safe bet
+                        // but we log that we are actively looking.
+                        return;
                     }
                 }
             } else {
@@ -944,7 +949,8 @@ export const useVoiceControl = (
 
                 // RULE 2: Large forward jumps (> 2 sentences) require NEAR-PERFECT match
                 if (isForwardJump && jumpDistance > 2) {
-                    const strictThreshold = 0.10;  // 90% accuracy minimum!
+                    // RELAXATION: If stalled, we are more desperate to find the user's position
+                    const strictThreshold = isStalled ? 0.25 : 0.10;
 
                     if (match.ratio > strictThreshold) {
                         console.warn(
@@ -962,7 +968,7 @@ export const useVoiceControl = (
 
                     console.warn(
                         `[Voice] ⚠️ WARNING: Allowing large jump (${jumpDistance} sentences) ` +
-                        `due to EXCEPTIONAL confidence (${((1 - match.ratio) * 100).toFixed(0)}% accuracy)`
+                        `due to ${isStalled ? 'stall recovery' : 'exceptional confidence'} (${((1 - match.ratio) * 100).toFixed(0)}% accuracy)`
                     );
                 }
 
