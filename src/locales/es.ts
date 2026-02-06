@@ -26,7 +26,8 @@ export const es = {
     cancel: "Cancelar",
     more: "Más opciones...",
     less: "Menos",
-    delete: "Delete"
+    delete: "Delete",
+    app_name: "PromptNinja",
   },
   landing: {
     meta: {

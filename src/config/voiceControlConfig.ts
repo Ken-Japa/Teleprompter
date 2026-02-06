@@ -145,12 +145,13 @@ export const VOICE_CONFIG = {
     throttleMultiplier: 0.8,
   },
   MATCH_CONFIRMATION_FRAMES: 2,
-  PROGRESS_SMOOTH_FACTOR: 0.40,
+  PROGRESS_SMOOTH_FACTOR: 0.55, // Increased for smoother scroll transitions (was 0.40)
 
   // --- HYSTERESIS & STABILITY ---
   HYSTERESIS: {
     enabled: true,
-    MS: 200, // Wait for 200ms before confirming uncertain matches
+    MS: 300, // Wait 300ms before confirming uncertain matches (was 200ms)
+    REQUIRED_CONFIRMATIONS: 3, // Require 3 confirmations to prevent rapid oscillation
     INSTANT_MATCH_THRESHOLD: 0.90, // Match > 90% accuracy jumps instantly
     CONFIDENCE_BOOST_PER_FRAME: 0.15, // Accumulate confidence over frames
   },
@@ -200,6 +201,15 @@ export const VOICE_CONFIG = {
     punctPauseTimeout: 300,
     autoAdvance: true,
     checkInterval: 200,
+  },
+
+  // --- INTELLIGENT PARSER ---
+  INTELLIGENT_PARSER: {
+    enabled: true, // Toggle for intelligent parser feature
+    excludeMusicianMode: true, // Don't apply to musician mode
+    excludeCommandTags: true, // Don't apply to sentences with command tags
+    minWordsForIntelligentBreak: 8, // Minimum words before considering smart break
+    maxWordsPerSentence: 25, // Maximum words before forcing a break
   },
 
   // --- FUZZY SYNC ---

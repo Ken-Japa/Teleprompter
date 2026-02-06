@@ -335,7 +335,7 @@ export const Prompter = memo(
         settings.autoColorBrackets
       );
 
-      const { startListening, stopListening, resetVoice, clearSessionSummary, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError, sessionSummary, syncWithScroll } = voiceControl;
+      const { startListening, stopListening, resetVoice, clearSessionSummary, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError, sessionSummary, syncWithScroll, syncAfterManualScroll } = voiceControl;
 
       const backingTrack = useBackingTrack(activeScriptId, sentences, isPro);
 
@@ -353,10 +353,10 @@ export const Prompter = memo(
       const bilingualSentences = useMemo(() => {
         if (!isBilingualMode || !bilingualConfig) return null;
         return {
-          primary: parseTextToSentences(bilingualConfig.primaryText, settings.autoColorBrackets).sentences,
-          secondary: parseTextToSentences(bilingualConfig.secondaryText, settings.autoColorBrackets).sentences
+          primary: parseTextToSentences(bilingualConfig.primaryText, settings.autoColorBrackets, isMusicianMode).sentences,
+          secondary: parseTextToSentences(bilingualConfig.secondaryText, settings.autoColorBrackets, isMusicianMode).sentences
         };
-      }, [isBilingualMode, bilingualConfig, settings.autoColorBrackets]);
+      }, [isBilingualMode, bilingualConfig, settings.autoColorBrackets, isMusicianMode]);
 
       // Abstraction: Handle DOM measurements
       const metricsRef = useElementMetrics(scrollContainerRef, [sentences, fontSize, margin, isUpperCase, isFlipVertical]);
@@ -498,6 +498,9 @@ export const Prompter = memo(
         onCommandTriggered: handleCommandTriggered,
         onManualScrollEnd: () => {
           if (isVoiceMode) {
+            // Reset voice control state after manual scroll
+            if (syncAfterManualScroll) syncAfterManualScroll();
+            // Re-sync with visible content
             if (syncWithScroll) syncWithScroll();
           }
         },

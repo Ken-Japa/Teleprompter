@@ -104,7 +104,7 @@ export const MusicActionToolbar = memo(({
     const [isPreviewSyncMode, setIsPreviewSyncMode] = useState(false);
 
     // Parse sentences for preview sync
-    const { sentences } = useMemo(() => parseTextToSentences(text, settings?.autoColorBrackets), [text, settings?.autoColorBrackets]);
+    const { sentences } = useMemo(() => parseTextToSentences(text, settings?.autoColorBrackets, true), [text, settings?.autoColorBrackets]); // true = musician mode
 
     // Backing Track Hook for Preview
     const {

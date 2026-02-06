@@ -208,10 +208,14 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
                 >
                   {bilingualSentences.primary.map((s: Sentence) => (
                     <SentenceItem
-                      key={`primary-${s.id}`}
+                      key={s.id}
                       id={s.id}
                       fragments={s.fragments}
+                      isChord={s.isChord}
+                      isMusicianMode={isMusicianMode}
                       command={s.command}
+                      originalSentenceId={s.originalSentenceId}
+                      darkMode={true}
                     />
                   ))}
                 </div>
@@ -284,7 +288,7 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
             }}
           >
             {processedSentences.map((s: Sentence) => (
-              <SentenceItem key={s.id} id={s.id} fragments={s.fragments} isChord={s.isChord} isMusicianMode={isMusicianMode} command={s.command} originalSentenceId={s.originalSentenceId} />
+              <SentenceItem key={s.id} id={s.id} fragments={s.fragments} isChord={s.isChord} isMusicianMode={isMusicianMode} command={s.command} originalSentenceId={s.originalSentenceId} darkMode={true} />
             ))}
           </div>
         </div>

@@ -1,8 +1,10 @@
 import { Sentence, TextFragment, TextCommand } from "../types";
+import { VOICE_CONFIG } from "../config/voiceControlConfig";
 
 export const parseTextToSentences = (
     text: string,
-    autoColorBrackets: boolean = false
+    autoColorBrackets: boolean = false,
+    isMusicianMode: boolean = false // NEW: Exclude intelligent parser in musician mode
 ): {
     sentences: Sentence[];
     fullCleanText: string;
@@ -309,6 +311,25 @@ export const parseTextToSentences = (
             }
         }
     });
+
+    // INTELLIGENT PARSER: Handle unpunctuated text
+    // This splits long sentences without punctuation based on word count
+    // ONLY applies if:
+    // 1. Intelligent parser is enabled
+    // 2. Not in musician mode
+    // 3. Sentence doesn't contain command tags
+    if (VOICE_CONFIG.INTELLIGENT_PARSER.enabled && !isMusicianMode && currentCleanContent.trim().length > 0) {
+        const wordCount = currentCleanContent.trim().split(/\s+/).length;
+        const hasCommand = detectTextCommand(currentCleanContent.trim()) !== undefined;
+
+        // Don't apply to command sentences if configured
+        const shouldApplyIntelligent = !hasCommand || !VOICE_CONFIG.INTELLIGENT_PARSER.excludeCommandTags;
+
+        if (shouldApplyIntelligent && wordCount >= VOICE_CONFIG.INTELLIGENT_PARSER.maxWordsPerSentence) {
+            // Force break on long unpunctuated sentence
+            finalizeSentence();
+        }
+    }
 
     // Final flush
     if (currentCleanContent.trim().length > 0) {

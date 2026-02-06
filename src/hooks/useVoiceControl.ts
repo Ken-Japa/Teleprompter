@@ -145,6 +145,9 @@ export const useVoiceControl = (
     // --- NEW: INTENT MATCHING (Semantic Buffer) ---
     const semanticBufferRef = useRef<string[]>([]); // Keeps the last X words
 
+    // --- NEW: MANUAL SCROLL SYNC ---
+    const lastManualScrollRef = useRef<number>(0); // Timestamp of last manual scroll event
+
     // --- NEW: STABILITY (Hysteresis) ---
     const hysteresisRef = useRef<{
         proposedIndex: number;
@@ -157,8 +160,8 @@ export const useVoiceControl = (
     const recentPositionsRef = useRef<Array<{ index: number; sentenceId: number; time: number }>>([]);
 
     const { sentences, fullCleanText, charToSentenceMap } = useMemo(() => {
-        return parseTextToSentences(text, autoColorBrackets);
-    }, [text, autoColorBrackets]);
+        return parseTextToSentences(text, autoColorBrackets, isMusicianMode);
+    }, [text, autoColorBrackets, isMusicianMode]);
 
     useEffect(() => {
         lastMatchIndexRef.current = 0;
@@ -1223,24 +1226,27 @@ export const useVoiceControl = (
                         // Don't return - allow smooth progress
                     } else {
                         // Too poor match even for fuzzy sync
-                        if (consecutivePartialMatchesRef.current < 3) {
-                            // Small grace period - maybe user is just mumbling
+                        // CONSERVATIVE APPROACH: Increase failure threshold from 3 to 5
+                        // This prevents lockup on 1-2 word errors
+                        if (consecutivePartialMatchesRef.current < 5) {
+                            // Grace period - user might be mispronouncing or ASR is having issues
                             consecutivePartialMatchesRef.current++;
 
-                            // PARTIAL RECOVERY (NEW):
-                            // If we have "some" match but it's not good enough for a full confirm,
-                            // AND we are getting stuck, force a small progress update to show "life"
-                            if (VOICE_CONFIG.RECOVERY.partialRecovery && consecutivePartialMatchesRef.current > 2) {
-                                const progressBump = 0.05; // 5% nudge
+                            // GENTLE PROGRESS ESTIMATION (NEW):
+                            // After 3 failed attempts, provide gentle forward nudge (8% max)
+                            // This keeps scroll "alive" without aggressive jumps
+                            if (VOICE_CONFIG.RECOVERY.partialRecovery && consecutivePartialMatchesRef.current > 3) {
+                                const progressBump = 0.08; // 8% gentle nudge (conservative)
                                 const rawProgress = Math.min(1, voiceProgress + progressBump);
                                 setVoiceProgress(rawProgress);
+                                console.log(`[Voice] Gentle progress bump: +${(progressBump * 100).toFixed(0)}% (failure ${consecutivePartialMatchesRef.current}/5)`);
                                 // Don't update High-Precision sync refs, just visual progress
                             }
 
                             return; // Skip this one
                         }
                         // Been too many bad matches - might be off track
-                        console.warn(`[Voice] Fuzzy sync limit: Too many poor matches, ratio ${match.ratio.toFixed(3)}`);
+                        console.warn(`[Voice] Fuzzy sync limit: Too many poor matches (${consecutivePartialMatchesRef.current}/5), ratio ${match.ratio.toFixed(3)}`);
                         return;
                     }
                 } else {
@@ -1287,15 +1293,17 @@ export const useVoiceControl = (
                             hysteresisRef.current.confirmationCount++;
                             const timeElapsed = now - hysteresisRef.current.firstSeenAt;
                             const requiredMs = VOICE_CONFIG.HYSTERESIS.MS;
+                            const requiredConfirmations = VOICE_CONFIG.HYSTERESIS.REQUIRED_CONFIRMATIONS || 2;
 
-                            if (timeElapsed >= requiredMs || hysteresisRef.current.confirmationCount >= 2) {
+                            // CRITICAL: Require BOTH time AND confirmation thresholds (conservative approach)
+                            if (timeElapsed >= requiredMs && hysteresisRef.current.confirmationCount >= requiredConfirmations) {
                                 // Consensus reached
-                                console.log(`[Voice] Consensus jump confirmed after ${timeElapsed}ms for sentence ${newSentenceId}`);
+                                console.log(`[Voice] Consensus jump confirmed after ${timeElapsed}ms (${hysteresisRef.current.confirmationCount} confirmations) for sentence ${newSentenceId}`);
                                 lockedSentenceIdRef.current = newSentenceId;
                                 hysteresisRef.current = null;
                                 trackSessionMetrics(true, 0);
                             } else {
-                                console.log(`[Voice] Confirming jump... ${timeElapsed}/${requiredMs}ms`);
+                                console.log(`[Voice] Confirming jump... ${timeElapsed}/${requiredMs}ms, ${hysteresisRef.current.confirmationCount}/${requiredConfirmations} confirmations`);
                                 return;
                             }
                         }
@@ -1613,6 +1621,30 @@ export const useVoiceControl = (
         console.log(`[Voice] Sync'd with scroll: Sentence ${index} (Progress: ${(progress * 100).toFixed(0)}%)`);
     }, [findVisibleSentenceId, sentences]);
 
+    /**
+     * MANUAL SCROLL SYNCHRONIZATION (NEW)
+     * When user manually scrolls, we need to reset voice control's internal state
+     * to prevent desync issues, especially in sections like "Proxy recording"
+     */
+    const syncAfterManualScroll = useCallback(() => {
+        lastManualScrollRef.current = Date.now();
+
+        // Reset all accumulation state
+        consecutiveFailuresRef.current = 0;
+        consecutivePartialMatchesRef.current = 0;
+        hysteresisRef.current = null;
+        pendingMatchRef.current = null;
+
+        // Clear emergency recovery if active
+        if (emergencyRecoveryRef.current.isActive) {
+            emergencyRecoveryRef.current.isActive = false;
+            emergencyRecoveryRef.current.failureTimestamps = [];
+            console.log('[Voice] Emergency recovery cleared due to manual scroll');
+        }
+
+        console.log('[Voice] Manual scroll sync: State reset completed');
+    }, []);
+
 
     // --- ADVANCED STABILITY HELPERS ---
 
@@ -1642,5 +1674,6 @@ export const useVoiceControl = (
         sessionSummary,
         setIsScriptFinished,
         syncWithScroll,
+        syncAfterManualScroll, // NEW: Export manual scroll sync
     };
 };

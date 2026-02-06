@@ -13,6 +13,7 @@ export const pt = {
     less: "Menos",
     delete: "Excluir",
     reconnect: "Reconectar",
+    app_name: "PromptNinja",
   },
   menu: {
     home: "Início",

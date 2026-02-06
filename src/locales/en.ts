@@ -13,6 +13,7 @@ export const en = {
     less: "Less",
     delete: "Delete",
     reconnect: "Reconnect",
+    app_name: "PromptNinja",
   },
   menu: {
     home: "Home",
