@@ -799,14 +799,40 @@ export const useVoiceControl = (
                 );
 
                 if (segMatch) {
-                    console.log(`[Voice] Segmented match found at ${segMatch.index} (Conf: ${segMatch.confidence.toFixed(2)})`);
-                    // Use it if it's better or if we had no match
-                    if (!match || (1 - segMatch.confidence) < match.ratio) {
-                        match = {
-                            index: segMatch.index,
-                            ratio: 1 - segMatch.confidence,
-                            distance: 0 // Synthetic distance
-                        };
+                    // ✅ CRITICAL FIX: Validate contextual proximity before accepting segmented match
+                    const segSentenceId = charToSentenceMap[segMatch.index] || 0;
+                    const currentSentenceId = lockedSentenceIdRef.current;
+                    const segJumpDistance = Math.abs(segSentenceId - currentSentenceId);
+
+                    // Only accept segmented matches that are contextually reasonable
+                    // Allow larger jumps only if confidence is VERY high (near-perfect)
+                    const maxReasonableJump = 3; // Default max jump
+                    const isVeryConfident = segMatch.confidence >= 0.95; // 95%+ accuracy
+                    const isReasonableJump = segJumpDistance <= maxReasonableJump;
+
+                    // Exception: Allow larger jumps if stalled (user might have skipped ahead)
+                    const allowLargeJumpIfStalled = isStalled && segJumpDistance <= 10 && isVeryConfident;
+
+                    if (isReasonableJump || allowLargeJumpIfStalled) {
+                        console.log(
+                            `[Voice] Segmented match found at ${segMatch.index} (Conf: ${segMatch.confidence.toFixed(2)}, ` +
+                            `Jump: ${segJumpDistance} sentences from ${currentSentenceId}→${segSentenceId})`
+                        );
+
+                        // Use it if it's better or if we had no match
+                        if (!match || (1 - segMatch.confidence) < match.ratio) {
+                            match = {
+                                index: segMatch.index,
+                                ratio: 1 - segMatch.confidence,
+                                distance: 0 // Synthetic distance
+                            };
+                        }
+                    } else {
+                        console.warn(
+                            `[Voice] Segmented match REJECTED: Unreasonable jump ` +
+                            `(${segJumpDistance} sentences: ${currentSentenceId}→${segSentenceId}, ` +
+                            `confidence: ${(segMatch.confidence * 100).toFixed(0)}%)`
+                        );
                     }
                 }
             }
@@ -1029,11 +1055,24 @@ export const useVoiceControl = (
 
                 // RULE 1: Backward jumps (Enhanced for repetition)
                 if (isBackwardJump && jumpDistance > 1) {
-                    // EMERGENCY OVERRIDE: If stuck, allow it
+                    // ✅ CRITICAL FIX: Allow backward jumps if match is near-perfect
+                    // This handles intentional re-reading or when user actually went back
+                    const isNearPerfect = match.ratio < 0.02; // 98%+ accuracy
+                    const isModerateJump = jumpDistance <= 5; // Not too far back
+
                     if (emergencyRecoveryRef.current.isActive) {
                         console.warn(`[Voice] Emergency Recovery: Allowing backward jump of ${jumpDistance}`);
+                    } else if (isNearPerfect && isModerateJump) {
+                        // Allow it - log for monitoring
+                        console.log(
+                            `[Voice] ⚠️ Allowing backward jump (${jumpDistance} sentences) ` +
+                            `due to near-perfect match (${((1 - match.ratio) * 100).toFixed(1)}% accuracy)`
+                        );
                     } else {
-                        console.warn(`[Voice] ❌ BLOCKED: Backward jump of ${jumpDistance} sentences`);
+                        console.warn(
+                            `[Voice] ❌ BLOCKED: Backward jump of ${jumpDistance} sentences ` +
+                            `(ratio: ${match.ratio.toFixed(2)}, need <0.02 and ≤5 sentences)`
+                        );
                         return;
                     }
                 }
@@ -1106,7 +1145,7 @@ export const useVoiceControl = (
                     consecutivePartialMatchesRef.current = 0;
                 }
 
-                // STRICTER VALIDATION for cross-sentence jumps
+                // --- STRICTER VALIDATION for cross-sentence jumps ---
                 if (!isSameSentence) {
                     // Medium jumps: require 95%+ accuracy
                     if (jumpDistance > 5 && match.ratio > 0.05) {
@@ -1133,8 +1172,23 @@ export const useVoiceControl = (
                         return;
                     } else {
                         pendingMatchRef.current.count++;
-                        // MATCH CONFIRMATION: FASTER for Emergency Recovery
+
+                        // ✅ Patch #3: Detect and resolve confirmation loops
+                        // If we've been trying to confirm the same sentence for too long (e.g. 5+ frames)
+                        // but fail to reach the threshold (if threshold was dynamically increased or blocked),
+                        // force-confirm it to prevent infinite loops.
                         const requiredFrames = emergencyRecoveryRef.current.isActive ? 1 : VOICE_CONFIG.MATCH_CONFIRMATION_FRAMES;
+
+                        if (pendingMatchRef.current.count >= 5) {
+                            console.warn(
+                                `[Voice] ⚠️ Confirmation loop detected (${pendingMatchRef.current.count} attempts for sentence ${pendingMatchRef.current.sentenceId}). ` +
+                                `Force-confirming to prevent freeze.`
+                            );
+                            lockedSentenceIdRef.current = pendingMatchRef.current.sentenceId;
+                            pendingMatchRef.current = null;
+                            trackSessionMetrics(true, 0);
+                            return;
+                        }
 
                         if (pendingMatchRef.current.count < requiredFrames) {
                             console.log(`[Voice] Sentence confirming: ${pendingMatchRef.current.count}/${requiredFrames}`);
@@ -1156,6 +1210,10 @@ export const useVoiceControl = (
                     // Same sentence - clear any pending confirmation
                     pendingMatchRef.current = null;
                 }
+
+                // --- Patch #3: This was moved/removed because the logic above handles transitions.
+                // If the system is TRULY stuck (no progress for X seconds), 
+                // the existing loop in emergencyRecovery already handles it.
 
                 // ALWAYS update match index for progress calculation
                 lastMatchIndexRef.current = match.index;

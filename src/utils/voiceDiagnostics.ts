@@ -61,6 +61,7 @@ class VoiceDiagnostics {
         matchRatio: number;
         processingTime: number;
         wasJump: boolean;
+        note?: string;
     }) {
         if (!this.isEnabled) return;
 
