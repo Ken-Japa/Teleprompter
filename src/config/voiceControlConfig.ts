@@ -186,6 +186,15 @@ export const VOICE_CONFIG = {
     aheadWindow: 1, // Reduced from 2
     minConfidence: 0.15, // Stricter: 0.25 ratio (75% accuracy) required for recovery jump
     partialRecovery: false,
+    STRICT_NEXT_THRESHOLD: 0.20,
+    CONFIDENCE_REQUIREMENT: 0.15,
+  },
+
+  // --- JUMP VALIDATION ---
+  JUMP_VALIDATION: {
+    STALLED_LARGE_JUMP_THRESHOLD: 0.25,
+    LARGE_JUMP_THRESHOLD: 0.10,
+    NEXT_SENTENCE_THRESHOLD: 0.25,
   },
 
   // --- INITIALIZATION ---
@@ -334,6 +343,23 @@ export const VOICE_CONFIG = {
       }
     }
   } as Record<string, any>,
+
+  // --- EMERGENCY RECOVERY ---
+  EMERGENCY_RECOVERY: {
+    FAILURE_THRESHOLD: 5,
+    FAILURE_WINDOW_MS: 3000,
+    EMERGENCY_MODE_DURATION: 5000,
+    RELAXED_CONFIDENCE: 0.20,
+    FORCE_ADVANCE_ON_SPEECH: true,
+  },
+
+  // --- DYNAMIC JUMP LIMITS ---
+  DYNAMIC_JUMP_LIMITS: {
+    DEFAULT: 200,
+    ON_REACTIVATION: 2000,
+    ON_RECOVERY: 800,
+    REACTIVATION_GRACE_PERIOD: 2000,
+  },
 };
 
 // Export adaptive instance

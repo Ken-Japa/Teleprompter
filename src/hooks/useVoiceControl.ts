@@ -130,6 +130,18 @@ export const useVoiceControl = (
         appliedPreset: VOICE_CONFIG.AUTO_MODES.presets.normal,
     });
 
+    const emergencyRecoveryRef = useRef({
+        isActive: false,
+        activatedAt: 0,
+        failureTimestamps: [] as number[],
+        consecutiveFailures: 0,
+    });
+
+    const dynamicJumpRef = useRef({
+        currentMaxJump: VOICE_CONFIG.DYNAMIC_JUMP_LIMITS.DEFAULT,
+        lastActivationTime: 0,
+    });
+
     const { sentences, fullCleanText, charToSentenceMap } = useMemo(() => {
         return parseTextToSentences(text, autoColorBrackets);
     }, [text, autoColorBrackets]);
@@ -508,7 +520,6 @@ export const useVoiceControl = (
         }
     }, []);
 
-
     // Helper to map language code to BCP 47
     const getRecognitionLanguage = useCallback((l: string) => {
         switch (l) {
@@ -646,9 +657,17 @@ export const useVoiceControl = (
             // Update speech timestamp for sentence completion detection
             lastSpeechTimeRef.current = Date.now();
 
-            // ADAPTIVE THROTTLING: Use dynamic throttle based on device performance
+            // ADAPTIVE THROTTLING: Use dynamic throttle
             const now = Date.now();
-            const isFinal = event.results[event.resultIndex]?.isFinal;
+            const results = event.results;
+            const isFinal = results[results.length - 1].isFinal;
+
+            // ACTIVATION OF STABILITY HELPERS
+            checkAndActivateEmergencyRecovery(now);
+            const dynamicMaxJump = getDynamicMaxJump(now);
+
+            // Process locally
+            // ... (inside processRecognition logic if it were separate, but here it's inline in onresult)
             const currentThrottle = performanceMetricsRef.current.currentThrottle;
 
             if (!isFinal && (now - lastProcessedTimeRef.current) < currentThrottle) {
@@ -692,14 +711,12 @@ export const useVoiceControl = (
 
             // ADAPTIVE SEARCH WINDOW: Larger scripts need larger windows
             const scriptLength = fullCleanText.length;
-            let searchWindow = scriptLength > 5000 ? VOICE_CONFIG.SEARCH_WINDOW.LARGE :
-                scriptLength > 2000 ? VOICE_CONFIG.SEARCH_WINDOW.MEDIUM : VOICE_CONFIG.SEARCH_WINDOW.SMALL;
+            let searchWindow = dynamicMaxJump; // Use the stability-aware value
 
             // GLOBAL SYNC: Use full script search on start or if stalled
             const isStalled = consecutiveFailuresRef.current >= VOICE_CONFIG.ADVANCED_MATCHING.globalSearchFailureThreshold;
             if (isInitializingRef.current || isStalled) {
                 searchWindow = scriptLength;
-                // Note: We don't log every time to avoid console spam in stalling states
             }
 
             // --- LANGUAGE OVERRIDES & THRESHOLDS ---
@@ -707,11 +724,28 @@ export const useVoiceControl = (
             const overrides = VOICE_CONFIG.LANGUAGE_OVERRIDES?.[recognitionLangCode];
 
             // Apply overrides if available
-            const intraSentenceTolerance = overrides?.intraSentenceTolerance ?? VOICE_CONFIG.FUZZY_SYNC.intraSentenceTolerance;
+            // Apply overrides if available
+            let intraSentenceTolerance = overrides?.intraSentenceTolerance ?? VOICE_CONFIG.FUZZY_SYNC.intraSentenceTolerance;
+
+            // EMERGENCY RELAXATION
+            if (emergencyRecoveryRef.current.isActive) {
+                intraSentenceTolerance = Math.max(intraSentenceTolerance, VOICE_CONFIG.EMERGENCY_RECOVERY.RELAXED_CONFIDENCE);
+            }
 
             // Fuzzy Search Strategy
             // 1. Try to find fuzzy match starting from last known position
             let match = findBestMatch(fullCleanText, cleanTranscript, lastMatchIndexRef.current, searchWindow, intraSentenceTolerance);
+
+            // EMERGENCY FORCE-MATCH
+            if (!match && emergencyRecoveryRef.current.isActive && VOICE_CONFIG.EMERGENCY_RECOVERY.FORCE_ADVANCE_ON_SPEECH) {
+                // If in emergency and no match, force match to some characters ahead to keep it moving
+                match = {
+                    index: Math.min(fullCleanText.length - 1, lastMatchIndexRef.current + cleanTranscript.length),
+                    ratio: VOICE_CONFIG.EMERGENCY_RECOVERY.RELAXED_CONFIDENCE,
+                    distance: 0
+                };
+                console.log("[Voice] Emergency: Forcing advance to prevent stall");
+            }
 
             // --- SEGMENTED MATCHING (N-GRAM / FALLBACK) ---
             // If primary match failed or is weak, try breaking transcript into chunks
@@ -748,21 +782,15 @@ export const useVoiceControl = (
                 if (sentences[nextSentId]) {
                     const nextStartIndex = sentences[nextSentId].startIndex ?? 0;
 
-                    // CRITICAL FIX: Much stricter threshold (0.45 → 0.20)
-                    const STRICT_NEXT_THRESHOLD = 0.20;  // Only 20% error tolerated!
-
                     const nextMatch = findBestMatch(
                         fullCleanText,
                         cleanTranscript,
                         nextStartIndex,
                         VOICE_CONFIG.SEARCH_WINDOW.SMALL,  // Keep small window
-                        STRICT_NEXT_THRESHOLD
+                        VOICE_CONFIG.RECOVERY.STRICT_NEXT_THRESHOLD
                     );
 
-                    // CRITICAL FIX: Require MUCH better confidence
-                    const CONFIDENCE_REQUIREMENT = 0.15;  // 85% accuracy minimum!
-
-                    if (nextMatch && nextMatch.ratio <= CONFIDENCE_REQUIREMENT) {
+                    if (nextMatch && nextMatch.ratio <= VOICE_CONFIG.RECOVERY.CONFIDENCE_REQUIREMENT) {
                         // Additional validation: Must be SIGNIFICANTLY better than current
                         const improvementRequired = 0.15;  // 15% better minimum
 
@@ -782,13 +810,10 @@ export const useVoiceControl = (
                     } else if (nextMatch) {
                         console.log(
                             `[Voice] LOOK-AHEAD: Next sentence match too weak ` +
-                            `(${(nextMatch.ratio * 100).toFixed(0)}% error, need ≤${CONFIDENCE_REQUIREMENT * 100}%)`
+                            `(${(nextMatch.ratio * 100).toFixed(0)}% error, need ≤${VOICE_CONFIG.RECOVERY.CONFIDENCE_REQUIREMENT * 100}%)`
                         );
                     }
                 }
-
-                // CRITICAL FIX: REMOVED "+2 sentence" look-ahead entirely for safety.
-                // If user really skipped 2 sentences, the next recognition cycle will catch up naturally.
             }
 
             // --- CONSECUTIVE FAILURE HANDLING ---
@@ -892,6 +917,7 @@ export const useVoiceControl = (
                         console.warn(`[Voice] Fallback rejected: Sentence dist ${sentenceDistance}, Ratio ${fallbackMatch.ratio.toFixed(3)}`);
                         voiceDiagnostics.recordMiss({
                             transcript: cleanTranscript,
+                            expectedSentence: currentSentenceId,
                             reason: "Fallback rejected: forward jump or poor match"
                         });
                     }
@@ -926,7 +952,7 @@ export const useVoiceControl = (
                 // Use a ref to check the CURRENT active index without being a dependency
                 // Since this is inside onresult which is created with dependency array including activeSentenceIndex,
                 // it's actually correct if we want to refer to the value when the function was created.
-                // BUT wait, we want to stabilize startRecognitionInstance! 
+                // BUT wait, we want to stabilize startRecognitionInstance!
                 // Let's use lockedSentenceIdRef instead of props.activeSentenceIndex.
                 const currentSentenceId = lockedSentenceIdRef.current;
                 const jumpDistance = Math.abs(newSentenceId - currentSentenceId);
@@ -950,7 +976,7 @@ export const useVoiceControl = (
                 // RULE 2: Large forward jumps (> 2 sentences) require NEAR-PERFECT match
                 if (isForwardJump && jumpDistance > 2) {
                     // RELAXATION: If stalled, we are more desperate to find the user's position
-                    const strictThreshold = isStalled ? 0.25 : 0.10;
+                    const strictThreshold = isStalled ? VOICE_CONFIG.JUMP_VALIDATION.STALLED_LARGE_JUMP_THRESHOLD : VOICE_CONFIG.JUMP_VALIDATION.LARGE_JUMP_THRESHOLD;
 
                     if (match.ratio > strictThreshold) {
                         console.warn(
@@ -974,7 +1000,7 @@ export const useVoiceControl = (
 
                 // RULE 3: +1 sentence jumps (most common) - validate confidence
                 if (isForwardJump && jumpDistance === 1) {
-                    const nextSentenceThreshold = 0.25;  // 75% accuracy for next sentence
+                    const nextSentenceThreshold = VOICE_CONFIG.JUMP_VALIDATION.NEXT_SENTENCE_THRESHOLD;
 
                     if (match.ratio > nextSentenceThreshold) {
                         console.warn(
@@ -1330,6 +1356,16 @@ export const useVoiceControl = (
             speechVelocityRef.current.adaptedLerpFactor = VOICE_CONFIG.SCROLL_LERP_FACTOR;
         }
 
+        // RESET EMERGENCY/RECOVERY STATE
+        dynamicJumpRef.current.lastActivationTime = Date.now();
+
+        emergencyRecoveryRef.current = {
+            isActive: false,
+            activatedAt: 0,
+            failureTimestamps: [],
+            consecutiveFailures: 0,
+        };
+
         intentionallyStoppedRef.current = false;
         console.log(`[Voice] Mode activated. Expected language: ${getRecognitionLanguage(lang)} (${lang})`);
         startRecognitionInstance();
@@ -1367,6 +1403,50 @@ export const useVoiceControl = (
         console.log(`[Voice] Sync'd with scroll: Sentence ${index} (Progress: ${(progress * 100).toFixed(0)}%)`);
     }, [findVisibleSentenceId, sentences]);
 
+
+    // --- ADVANCED STABILITY HELPERS ---
+
+    const checkAndActivateEmergencyRecovery = useCallback((now: number) => {
+        const state = emergencyRecoveryRef.current;
+
+        // If already active, check if it should expire
+        if (state.isActive) {
+            if (now - state.activatedAt > VOICE_CONFIG.EMERGENCY_RECOVERY.EMERGENCY_MODE_DURATION) {
+                console.log("[Voice] Emergency recovery mode deactivated (timeout)");
+                state.isActive = false;
+                state.consecutiveFailures = 0;
+            }
+            return;
+        }
+
+        // Check if we should activate
+        const recentFailures = state.failureTimestamps.length;
+        if (recentFailures >= VOICE_CONFIG.EMERGENCY_RECOVERY.FAILURE_THRESHOLD) {
+            console.error(`[Voice] CRITICAL: ${recentFailures} failures in ${VOICE_CONFIG.EMERGENCY_RECOVERY.FAILURE_WINDOW_MS}ms. ACTIVATING EMERGENCY RECOVERY.`);
+            state.isActive = true;
+            state.activatedAt = now;
+
+            // Clear timestamps to avoid immediate re-trigger after duration
+            state.failureTimestamps = [];
+        }
+    }, []);
+
+    const getDynamicMaxJump = useCallback((now: number): number => {
+        const recoveryState = emergencyRecoveryRef.current;
+
+        // 1. Emergency recovery has priority (moderate advance)
+        if (recoveryState.isActive) {
+            return VOICE_CONFIG.DYNAMIC_JUMP_LIMITS.ON_RECOVERY;
+        }
+
+        // 2. Reactivation grace period (viva expansion)
+        if (now - dynamicJumpRef.current.lastActivationTime < VOICE_CONFIG.DYNAMIC_JUMP_LIMITS.REACTIVATION_GRACE_PERIOD) {
+            return VOICE_CONFIG.DYNAMIC_JUMP_LIMITS.ON_REACTIVATION;
+        }
+
+        // 3. Normal mode
+        return VOICE_CONFIG.DYNAMIC_JUMP_LIMITS.DEFAULT;
+    }, []);
 
     return {
         isListening,
