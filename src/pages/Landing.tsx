@@ -14,6 +14,8 @@ import { useTranslation } from "../hooks/useTranslation";
 import { useSeo } from "../hooks/useSeo";
 import { ROUTES_CONFIG } from "../config/routes";
 import { FeedbackModal } from "../components/FeedbackModal";
+import { useSchema } from "../hooks/useSchema";
+import { landingSchema } from "../config/landingSchema";
 
 interface LandingProps {
     onLaunch: () => void;
@@ -30,6 +32,8 @@ export const Landing: React.FC<LandingProps> = ({ onLaunch }) => {
         canonicalUrl: `https://promptninja.solutionkit.com.br/${lang !== 'pt' ? `?lang=${lang}` : ''}`,
         ogType: 'website'
     });
+
+    useSchema(landingSchema);
 
     React.useEffect(() => {
         if (window.location.hash === "#pricing") {
@@ -98,47 +102,50 @@ export const Landing: React.FC<LandingProps> = ({ onLaunch }) => {
 
             <footer className="py-12 border-t border-slate-900 bg-[#020617] text-slate-500 text-sm">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-                    <div className="mb-8 text-center">
-                        <h4 className="font-semibold text-slate-400 mb-4 uppercase tracking-wider text-xs">
-                            {t("footer.links.resources")}
-                        </h4>
-                        <div className="flex flex-wrap justify-center gap-6">
-                            <a
-                                href={
-                                    lang === "pt"
-                                        ? "/dicas-oratoria-video"
-                                        : lang === "es"
-                                            ? "/es/consejos-oratoria-video"
-                                            : "/en/public-speaking-tips-video"
-                                }
-                                className="hover:text-white transition-colors"
-                            >
-                                {t("footer.links.oratory")}
-                            </a>
-                            <a
-                                href={
-                                    lang === "pt"
-                                        ? "/alternativas-teleprompter-concorrente"
-                                        : lang === "es"
-                                            ? "/es/alternativas-teleprompter"
-                                            : "/en/teleprompter-alternatives"
-                                }
-                                className="hover:text-white transition-colors"
-                            >
-                                {t("footer.links.alternatives")}
-                            </a>
-                            <a
-                                href={
-                                    lang === "pt"
-                                        ? "/teleprompter-o-que-e"
-                                        : lang === "es"
-                                            ? "/es/teleprompter-que-es"
-                                            : "/en/teleprompter-what-is-it"
-                                }
-                                className="hover:text-white transition-colors"
-                            >
-                                {t("footer.links.whatIs")}
-                            </a>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 text-center md:text-left w-full max-w-4xl">
+                        <div>
+                            <h4 className="font-bold text-white mb-4 uppercase tracking-wider text-xs">{t("footer.links.resources")}</h4>
+                            <div className="flex flex-col gap-3">
+                                <a href={lang === "pt" ? ROUTES_CONFIG.SEO_O_QUE_E.paths.pt : lang === "es" ? ROUTES_CONFIG.SEO_O_QUE_E.paths.es : ROUTES_CONFIG.SEO_O_QUE_E.paths.en} className="hover:text-white transition-colors">
+                                    {t("footer.links.whatIs")}
+                                </a>
+                                <a href={lang === "pt" ? ROUTES_CONFIG.SEO_ORATORIA.paths.pt : lang === "es" ? ROUTES_CONFIG.SEO_ORATORIA.paths.es : ROUTES_CONFIG.SEO_ORATORIA.paths.en} className="hover:text-white transition-colors">
+                                    {t("footer.links.oratory")}
+                                </a>
+                                <a href={lang === "pt" ? ROUTES_CONFIG.SEO_CHECKLIST.paths.pt : lang === "es" ? ROUTES_CONFIG.SEO_CHECKLIST.paths.es : ROUTES_CONFIG.SEO_CHECKLIST.paths.en} className="hover:text-white transition-colors">
+                                    {lang === "pt" ? "Checklist de Gravação" : lang === "es" ? "Checklist de Grabación" : "Recording Checklist"}
+                                </a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 className="font-bold text-white mb-4 uppercase tracking-wider text-xs">{lang === "pt" ? "Tecnologia" : lang === "es" ? "Tecnología" : "Technology"}</h4>
+                            <div className="flex flex-col gap-3">
+                                <a href={lang === "pt" ? ROUTES_CONFIG.SEO_ACCESSIBILITY.paths.pt : lang === "es" ? ROUTES_CONFIG.SEO_ACCESSIBILITY.paths.es : ROUTES_CONFIG.SEO_ACCESSIBILITY.paths.en} className="hover:text-white transition-colors">
+                                    {lang === "pt" ? "Acessibilidade" : lang === "es" ? "Accesibilidad" : "Accessibility"}
+                                </a>
+                                <a href={lang === "pt" ? ROUTES_CONFIG.SEO_FUTURE_AI.paths.pt : lang === "es" ? ROUTES_CONFIG.SEO_FUTURE_AI.paths.es : ROUTES_CONFIG.SEO_FUTURE_AI.paths.en} className="hover:text-white transition-colors">
+                                    {lang === "pt" ? "IA e Futuro" : lang === "es" ? "IA y Futuro" : "AI and Future"}
+                                </a>
+                                <a href={lang === "pt" ? ROUTES_CONFIG.SEO_GRATIS.paths.pt : lang === "es" ? ROUTES_CONFIG.SEO_GRATIS.paths.es : ROUTES_CONFIG.SEO_GRATIS.paths.en} className="hover:text-white transition-colors">
+                                    {lang === "pt" ? "Teleprompter Grátis" : lang === "es" ? "Teleprompter Gratis" : "Free Teleprompter"}
+                                </a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 className="font-bold text-white mb-4 uppercase tracking-wider text-xs">{lang === "pt" ? "Soluções" : lang === "es" ? "Soluciones" : "Solutions"}</h4>
+                            <div className="flex flex-col gap-3">
+                                <a href={lang === "pt" ? ROUTES_CONFIG.SEO_LIVES.paths.pt : lang === "es" ? ROUTES_CONFIG.SEO_LIVES.paths.es : ROUTES_CONFIG.SEO_LIVES.paths.en} className="hover:text-white transition-colors">
+                                    {lang === "pt" ? "Para Lives" : lang === "es" ? "Para Directos" : "For Live Streaming"}
+                                </a>
+                                <a href={lang === "pt" ? ROUTES_CONFIG.SEO_PODCAST.paths.pt : lang === "es" ? ROUTES_CONFIG.SEO_PODCAST.paths.es : ROUTES_CONFIG.SEO_PODCAST.paths.en} className="hover:text-white transition-colors">
+                                    {lang === "pt" ? "Para Podcasts" : lang === "es" ? "Para Podcasts" : "For Podcasts"}
+                                </a>
+                                <a href={lang === "pt" ? ROUTES_CONFIG.SEO_TABLET.paths.pt : lang === "es" ? ROUTES_CONFIG.SEO_TABLET.paths.es : ROUTES_CONFIG.SEO_TABLET.paths.en} className="hover:text-white transition-colors">
+                                    {lang === "pt" ? "Teleprompter para Tablet" : lang === "es" ? "Teleprompter para Tablet" : "Teleprompter for Tablet"}
+                                </a>
+                            </div>
                         </div>
                     </div>
 

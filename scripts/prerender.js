@@ -59,7 +59,7 @@ async function prerender() {
     const page = await browser.newPage();
 
     // 3. Collect routes
-    const routes = [];
+    const routes = ['/', '/en', '/es'];
     Object.values(ROUTES_CONFIG).forEach(config => {
         Object.values(config.paths).forEach(p => routes.push(p));
     });

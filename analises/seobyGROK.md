@@ -24,3 +24,28 @@ Sem redirects explícitos para variações de URL (ex: com/para sem trailing sla
 Sugestões para Melhorar:
 Adicione um rewrite para /sitemap.xml para garantir que bots o encontrem.
 Monitore logs no Vercel Dashboard para ver crawls do Googlebot — se houver 404s, ajuste rewrites.
+
+1. Prerendering das Rotas Raiz (/, /en, /es)
+
+Gaps/Potenciais Problemas:
+O script espera só 5s por seletores — se a página demorar mais (ex: lazy loads), pode falhar. Adicione um timeout maior (10s) ou waitForFunction para garantir hidratação completa.
+Não prerenderiza views dinâmicas do app (bom, pois são noindex), mas certifique-se de que o Vercel sirva o HTML estático corretamente.
+
+Sugestões para Melhorar e Testar:
+Rode npm run build localmente e cheque dist/index.html — deve ter o conteúdo full, não só .
+
+2. Implementação Granular de Schema.org (BreadcrumbList e Article)
+
+Gaps/Potenciais Problemas:
+No SeoPageLayout.tsx, o BreadcrumbList é baseado em path — teste com caminhos complexos (ex: /en/perfect-teleprompter-recording-checklist) para garantir crumbs corretos.
+Falta FAQPage schema em páginas com FAQs — adicione para featured snippets, que trazem tráfego alto sem ads.
+
+Sugestões para Melhorar e Testar:
+Valide com Google's Structured Data Testing Tool (gratuita) — cole o JSON-LD gerado e cheque erros.
+Para multilíngue: Adicione "inLanguage" ao Article (ex: "pt-BR" para /).
+
+3. Fortalecimento de Links Internos
+
+Gaps/Potenciais Problemas:
+Footer ficou longo (muitos links) — pode diluir foco; agrupe em colunas para UX melhor.
+Sem nofollow em links irrelevantes (ex: mailto) — ok, mas monitore crawl budget no GSC.

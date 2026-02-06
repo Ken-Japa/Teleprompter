@@ -5,6 +5,7 @@ import { Header } from "../../components/landing/Header";
 import { FinalCTA } from "../../components/landing/FinalCTA";
 import { useTranslation } from "../../hooks/useTranslation";
 import { useSeo } from "../../hooks/useSeo";
+import { useSchema } from "../../hooks/useSchema";
 import { FeedbackModal } from "../../components/FeedbackModal";
 
 interface SeoPageLayoutProps {
@@ -51,7 +52,70 @@ export const SeoPageLayout: React.FC<SeoPageLayoutProps> = ({
         ];
     }, [canonicalUrl]);
 
+    const pageSchema = React.useMemo(() => {
+        const baseUrl = "https://promptninja.solutionkit.com.br";
+        const schemas: any[] = [];
+
+        // 1. Breadcrumb Schema
+        schemas.push({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": baseUrl
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": title.split(":")[0],
+                    "item": canonicalUrl
+                }
+            ]
+        });
+
+        // 2. Article Schema
+        schemas.push({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": title.includes(":") ? title.split(":")[0] : title,
+            "description": description,
+            "image": ogImage || `${baseUrl}/og-image.png`,
+            "inLanguage": lang === 'pt' ? 'pt-BR' : (lang === 'es' ? 'es-ES' : 'en-US'),
+            "author": {
+                "@type": "Organization",
+                "name": "PromptNinja"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "PromptNinja",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": `${baseUrl}/assets/web-app-manifest-512x512.png`
+                }
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": canonicalUrl
+            }
+        });
+
+        // 3. Custom Schema if provided (can be single object or array)
+        if (schema) {
+            if (Array.isArray(schema)) {
+                schemas.push(...schema);
+            } else {
+                schemas.push(schema);
+            }
+        }
+
+        return schemas;
+    }, [title, description, canonicalUrl, ogImage, schema, lang]);
+
     useSeo({ title, description, canonicalUrl, ogImage, ogType, schema, alternates });
+    useSchema(pageSchema);
 
     return (
         <S.LandingContainer>
@@ -65,6 +129,13 @@ export const SeoPageLayout: React.FC<SeoPageLayoutProps> = ({
                 </div>
 
                 <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+                    {/* Visual Breadcrumbs */}
+                    <nav className="flex justify-center items-center gap-2 text-slate-500 text-xs mb-8 font-medium uppercase tracking-widest">
+                        <a href="/" className="hover:text-primary transition-colors">Home</a>
+                        <span className="opacity-30">/</span>
+                        <span className="text-slate-400">SEO</span>
+                    </nav>
+
                     <h1 className="text-4xl md:text-6xl pb-4 font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400 mb-6 leading-tight">
                         {title.split(":")[0]}
                         {title.includes(":") && (

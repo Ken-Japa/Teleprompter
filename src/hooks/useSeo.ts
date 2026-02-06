@@ -51,6 +51,10 @@ export const useSeo = ({
         updateMeta("og:url", canonicalUrl || window.location.href);
         updateMeta("og:image", ogImage);
         updateMeta("og:site_name", "PromptNinja");
+        // Added og:locale for better international SEO
+        const currentLang = (window.location.pathname.startsWith('/en') || window.location.search.includes('lang=en')) ? 'en_US' :
+            (window.location.pathname.startsWith('/es') || window.location.search.includes('lang=es')) ? 'es_ES' : 'pt_BR';
+        updateMeta("og:locale", currentLang);
 
         // Update Twitter specific
         updateMeta("twitter:image", ogImage);
@@ -93,20 +97,6 @@ export const useSeo = ({
                 }
                 linkAlternate.setAttribute("href", href);
             });
-        }
-
-        // Update JSON-LD Schema
-        let scriptSchema = document.querySelector("#schema-json-ld");
-        if (schema) {
-            if (!scriptSchema) {
-                scriptSchema = document.createElement("script");
-                scriptSchema.setAttribute("type", "application/ld+json");
-                scriptSchema.setAttribute("id", "schema-json-ld");
-                document.head.appendChild(scriptSchema);
-            }
-            scriptSchema.textContent = JSON.stringify(schema);
-        } else if (scriptSchema) {
-            scriptSchema.remove();
         }
 
         // Update Robots (noindex)
