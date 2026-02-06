@@ -115,8 +115,6 @@ export const useScrollPhysics = ({
   const targetVoiceScrollRef = useRef<number | null>(null);
   const lastVoiceIndexRef = useRef<number>(-1);
   const currentActiveElementRef = useRef<HTMLElement | null>(null);
-  const lastJumpTimeRef = useRef<number>(0);
-  const lastTargetSentenceRef = useRef<number>(-1);
 
   // Update Velocity Cache when speed changes
   useEffect(() => {
@@ -241,31 +239,17 @@ export const useScrollPhysics = ({
           _voiceProgress,
           metrics,
           currentActiveElementRef,
-          lastVoiceIndexRef
+          lastVoiceIndexRef,
+          isFlipVerticalRef.current
         );
 
         targetVoiceScrollRef.current = target;
 
         if (targetVoiceScrollRef.current !== null) {
-          // --- ANTI-OSCILLATION WINDOW ---
-          // If we just jumped to a new sentence, use a much lower lerp factor for 400ms
-          // to prevent visual "ping-pong" effect.
-          if (_activeSentenceIndex !== lastTargetSentenceRef.current) {
-            lastJumpTimeRef.current = performance.now();
-            lastTargetSentenceRef.current = _activeSentenceIndex;
-          }
-
-          const stabilizationAge = performance.now() - lastJumpTimeRef.current;
-          const isStabilizing = stabilizationAge < VOICE_CONFIG.PHYSICS.STABILIZATION.DURATION_MS;
-
-          // Use configured reduction speed during stabilization to bridge the gap smoothly
-          const jumpLerpFactor = isStabilizing
-            ? VOICE_CONFIG.SCROLL_LERP_FACTOR * VOICE_CONFIG.PHYSICS.STABILIZATION.LERP_REDUCTION
-            : VOICE_CONFIG.SCROLL_LERP_FACTOR;
-
           const diff = targetVoiceScrollRef.current - internalScrollPos.current;
           if (Math.abs(diff) > PHYSICS_CONSTANTS.SCROLL_TOLERANCE) {
-            deltaScroll += diff * (jumpLerpFactor * timeScale);
+            // Increased Lerp speed for better responsiveness
+            deltaScroll += diff * (VOICE_CONFIG.SCROLL_LERP_FACTOR * timeScale);
           }
         }
       }

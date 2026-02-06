@@ -144,22 +144,8 @@ export const VOICE_CONFIG = {
     emaAlpha: 0.1,
     throttleMultiplier: 0.8,
   },
-  PARSER: {
-    MAX_SENTENCE_LEN: 160,
-  },
-  PHYSICS: {
-    ANTICIPATION: {
-      MIN_PROGRESS: 0.4,
-      MAX_LOOKAHEAD: 4,
-      PROGRESS_RANGE: 0.6,
-    },
-    STABILIZATION: {
-      DURATION_MS: 400,
-      LERP_REDUCTION: 0.25,
-    },
-  },
   MATCH_CONFIRMATION_FRAMES: 2,
-  PROGRESS_SMOOTH_FACTOR: 0.25,
+  PROGRESS_SMOOTH_FACTOR: 0.40,
 
   // --- HYSTERESIS & STABILITY ---
   HYSTERESIS: {
@@ -220,11 +206,9 @@ export const VOICE_CONFIG = {
   FUZZY_SYNC: {
     enabled: true,
     minPartialMatch: 0.55,
-    intraSentenceTolerance: 0.55,
+    intraSentenceTolerance: 0.45,
     catchUpEnabled: true,
     progressBoost: 0.20,
-    PARTIAL_THRESHOLD: 0.4,
-    CONSECUTIVE_LIMIT: 3,
   },
 
   // --- RECOVERY & LOOKAHEAD ---
@@ -235,8 +219,6 @@ export const VOICE_CONFIG = {
     partialRecovery: true,
     STRICT_NEXT_THRESHOLD: 0.25,
     CONFIDENCE_REQUIREMENT: 0.12,
-    PROGRESS_NUDGE: 0.05,
-    RELAXED_CONFIDENCE: 0.30,
   },
 
   // --- JUMP VALIDATION ---
@@ -244,10 +226,6 @@ export const VOICE_CONFIG = {
     STALLED_LARGE_JUMP_THRESHOLD: 0.30,
     LARGE_JUMP_THRESHOLD: 0.20,
     NEXT_SENTENCE_THRESHOLD: 0.30,
-    MEDIUM_JUMP_DISTANCE: 5,
-    MEDIUM_JUMP_RATIO: 0.05,
-    LARGE_JUMP_DISTANCE: 10,
-    LARGE_JUMP_RATIO: 0.03,
   },
 
   // --- INITIALIZATION ---
@@ -409,8 +387,6 @@ export const VOICE_CONFIG = {
     EMERGENCY_MODE_DURATION: 5000,
     RELAXED_CONFIDENCE: 0.30,
     FORCE_ADVANCE_ON_SPEECH: true,
-    STEM_WEIGHT: 0.4,
-    PHONETIC_WEIGHT: 0.15,
   },
 
   // --- DYNAMIC JUMP LIMITS ---
