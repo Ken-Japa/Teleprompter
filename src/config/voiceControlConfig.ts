@@ -33,7 +33,7 @@ class AdaptiveVoiceConfig {
 
     return {
       averageWPM: 140,
-      preferredLerpFactor: 0.30,
+      preferredLerpFactor: 0.35,
       accuracyHistory: [],
       sessionCount: 0,
       lastUpdated: Date.now(),
@@ -74,10 +74,10 @@ class AdaptiveVoiceConfig {
 
     if (avgAccuracy > 0.85) {
       // High accuracy: can be more aggressive
-      this.profile.preferredLerpFactor = Math.min(0.45, this.profile.preferredLerpFactor + 0.02);
+      this.profile.preferredLerpFactor = Math.min(0.50, this.profile.preferredLerpFactor + 0.02);
     } else if (avgAccuracy < 0.70) {
       // Low accuracy: be more conservative
-      this.profile.preferredLerpFactor = Math.max(0.20, this.profile.preferredLerpFactor - 0.02);
+      this.profile.preferredLerpFactor = Math.max(0.25, this.profile.preferredLerpFactor - 0.02);
     }
 
     this.profile.sessionCount++;
@@ -100,9 +100,9 @@ class AdaptiveVoiceConfig {
     const isAccurate = this.profile.accuracyHistory.slice(-3).every(a => a > 0.80);
 
     if (isExperienced && isAccurate) {
-      baseConfig.MATCH_CONFIRMATION_FRAMES = 3; // Faster confirmation
-      baseConfig.PROGRESS_SMOOTH_FACTOR = 0.45; // More responsive
-      baseConfig.FUZZY_SYNC.intraSentenceTolerance = 0.55; // More tolerant
+      baseConfig.MATCH_CONFIRMATION_FRAMES = 2; // Faster confirmation
+      baseConfig.PROGRESS_SMOOTH_FACTOR = 0.50; // More responsive
+      baseConfig.FUZZY_SYNC.intraSentenceTolerance = 0.60; // More tolerant
     }
 
     return baseConfig;
@@ -115,7 +115,7 @@ class AdaptiveVoiceConfig {
   resetProfile() {
     this.profile = {
       averageWPM: 140,
-      preferredLerpFactor: 0.30,
+      preferredLerpFactor: 0.35,
       accuracyHistory: [],
       sessionCount: 0,
       lastUpdated: Date.now(),
@@ -131,20 +131,27 @@ const adaptiveConfig = new AdaptiveVoiceConfig();
 export const VOICE_CONFIG = {
   // --- CORE POSITIONING ---
   LOOKAHEAD_POSITION: 0.12,
-  SCROLL_LERP_FACTOR: 0.30, // Will be overridden by adaptive
+  SCROLL_LERP_FACTOR: 0.35, // Will be overridden by adaptive
   PROGRESS_THRESHOLD: 0.01,
   VOICE_PADDING_TOP: 7,
 
   // --- RECOGNITION TUNING ---
   THROTTLE_MS: 50,
-  MATCH_CONFIRMATION_FRAMES: 3,
-  PROGRESS_SMOOTH_FACTOR: 0.35,
+  ADAPTIVE_THROTTLE: {
+    enabled: true,
+    minThrottle: 30,
+    maxThrottle: 80,
+    emaAlpha: 0.1,
+    throttleMultiplier: 0.8,
+  },
+  MATCH_CONFIRMATION_FRAMES: 2,
+  PROGRESS_SMOOTH_FACTOR: 0.40,
 
   // --- ADVANCED MATCHING ---
   ADVANCED_MATCHING: {
-    maxWideJump: 200, // characters
+    maxWideJump: 250, // characters
     globalSearchOnStart: true,
-    globalSearchFailureThreshold: 8,
+    globalSearchFailureThreshold: 10,
   },
 
   SEARCH_WINDOW: {
@@ -153,20 +160,12 @@ export const VOICE_CONFIG = {
     LARGE: 1500, // Reduced from 2500
   },
 
-  // --- ADAPTIVE THROTTLE ---
-  ADAPTIVE_THROTTLE: {
-    enabled: true,
-    minThrottle: 40,
-    maxThrottle: 150,
-    targetProcessTime: 50,
-    adaptationRate: 0.1,
-  },
 
   // --- SENTENCE COMPLETION ---
   SENTENCE_COMPLETION: {
     enabled: true,
-    minProgress: 0.75,
-    pauseTimeout: 1000,
+    minProgress: 0.70,
+    pauseTimeout: 1200,
     autoAdvance: true,
     checkInterval: 200,
   },
@@ -174,34 +173,34 @@ export const VOICE_CONFIG = {
   // --- FUZZY SYNC ---
   FUZZY_SYNC: {
     enabled: true,
-    minPartialMatch: 0.60,
-    intraSentenceTolerance: 0.4,
+    minPartialMatch: 0.55,
+    intraSentenceTolerance: 0.45,
     catchUpEnabled: true,
-    progressBoost: 0.15,
+    progressBoost: 0.20,
   },
 
   // --- RECOVERY & LOOKAHEAD ---
   RECOVERY: {
     enabled: true,
     aheadWindow: 1, // Reduced from 2
-    minConfidence: 0.15, // Stricter: 0.25 ratio (75% accuracy) required for recovery jump
-    partialRecovery: false,
-    STRICT_NEXT_THRESHOLD: 0.20,
-    CONFIDENCE_REQUIREMENT: 0.15,
+    minConfidence: 0.12, // Stricter: 0.25 ratio (75% accuracy) required for recovery jump
+    partialRecovery: true,
+    STRICT_NEXT_THRESHOLD: 0.25,
+    CONFIDENCE_REQUIREMENT: 0.12,
   },
 
   // --- JUMP VALIDATION ---
   JUMP_VALIDATION: {
-    STALLED_LARGE_JUMP_THRESHOLD: 0.25,
-    LARGE_JUMP_THRESHOLD: 0.10,
-    NEXT_SENTENCE_THRESHOLD: 0.25,
+    STALLED_LARGE_JUMP_THRESHOLD: 0.30,
+    LARGE_JUMP_THRESHOLD: 0.20,
+    NEXT_SENTENCE_THRESHOLD: 0.30,
   },
 
   // --- INITIALIZATION ---
   INITIALIZATION: {
     waitForFirstRecognition: true,
     initialGracePeriod: 500,
-    minConfidenceForInit: 0.7,
+    minConfidenceForInit: 0.65,
   },
 
   // --- METRICS ---
@@ -220,7 +219,7 @@ export const VOICE_CONFIG = {
     baselineWPM: 140, // Will be overridden by adaptive
     adaptLerpFactor: true,
     lerpMin: 0.20,
-    lerpMax: 0.45,
+    lerpMax: 0.50,
   },
 
   // --- CONFIDENCE LEARNING ---
@@ -242,27 +241,27 @@ export const VOICE_CONFIG = {
     enabled: true,
     presets: {
       normal: {
-        scrollLerp: 0.30,
-        lookaheadPosition: 0.12,
-        pauseTimeout: 1000,
-        fuzzyTolerance: 0.5,
-        minConfidence: 0.70,
-        progressThreshold: 0.01,
-      },
-      musician: {
         scrollLerp: 0.35,
-        lookaheadPosition: 0.10,
-        pauseTimeout: 800,
+        lookaheadPosition: 0.12,
+        pauseTimeout: 1200,
         fuzzyTolerance: 0.55,
         minConfidence: 0.65,
         progressThreshold: 0.01,
       },
-      bilingual: {
-        scrollLerp: 0.28,
-        lookaheadPosition: 0.15,
-        pauseTimeout: 1200,
+      musician: {
+        scrollLerp: 0.40,
+        lookaheadPosition: 0.10,
+        pauseTimeout: 800,
         fuzzyTolerance: 0.60,
         minConfidence: 0.60,
+        progressThreshold: 0.01,
+      },
+      bilingual: {
+        scrollLerp: 0.30,
+        lookaheadPosition: 0.15,
+        pauseTimeout: 1400,
+        fuzzyTolerance: 0.65,
+        minConfidence: 0.55,
         progressThreshold: 0.01,
       },
     },
@@ -286,7 +285,7 @@ export const VOICE_CONFIG = {
   SCRIPT_PREPROCESSING: {
     enabled: true,
     relaxMatchingForMixedLanguage: true,
-    foreignWordBonus: 0.10,
+    foreignWordBonus: 0.15,
     detectCapitalizedWords: true,
     minWordLength: 4,
   },
@@ -325,40 +324,40 @@ export const VOICE_CONFIG = {
   // --- NEW: LANGUAGE OVERRIDES ---
   LANGUAGE_OVERRIDES: {
     'pt': {
-      intraSentenceTolerance: 0.40, // Tightened from 0.60
-      minConfidence: 0.75, // Tightened from 0.65
+      intraSentenceTolerance: 0.45, // Tightened from 0.60
+      minConfidence: 0.70, // Tightened from 0.65
       segmentMatching: {
         enabled: true,
         windowSize: 6,
-        threshold: 0.18, // Tightened from 0.25
+        threshold: 0.22, // Tightened from 0.25
       }
     },
     'en': {
-      intraSentenceTolerance: 0.30, // Tightened from 0.5
-      minConfidence: 0.75, // Tightened from 0.75
+      intraSentenceTolerance: 0.35, // Tightened from 0.5
+      minConfidence: 0.70, // Tightened from 0.75
       segmentMatching: {
         enabled: true,
         windowSize: 6,
-        threshold: 0.10, // Tightened from 0.20
+        threshold: 0.15, // Tightened from 0.20
       }
     }
   } as Record<string, any>,
 
   // --- EMERGENCY RECOVERY ---
   EMERGENCY_RECOVERY: {
-    FAILURE_THRESHOLD: 5,
+    FAILURE_THRESHOLD: 8,
     FAILURE_WINDOW_MS: 3000,
     EMERGENCY_MODE_DURATION: 5000,
-    RELAXED_CONFIDENCE: 0.20,
+    RELAXED_CONFIDENCE: 0.30,
     FORCE_ADVANCE_ON_SPEECH: true,
   },
 
   // --- DYNAMIC JUMP LIMITS ---
   DYNAMIC_JUMP_LIMITS: {
-    DEFAULT: 200,
-    ON_REACTIVATION: 2000,
-    ON_RECOVERY: 800,
-    REACTIVATION_GRACE_PERIOD: 2000,
+    DEFAULT: 250,
+    ON_REACTIVATION: 2500,
+    ON_RECOVERY: 1000,
+    REACTIVATION_GRACE_PERIOD: 2500,
   },
 };
 
