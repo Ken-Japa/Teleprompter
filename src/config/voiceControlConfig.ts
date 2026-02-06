@@ -147,6 +147,30 @@ export const VOICE_CONFIG = {
   MATCH_CONFIRMATION_FRAMES: 2,
   PROGRESS_SMOOTH_FACTOR: 0.40,
 
+  // --- HYSTERESIS & STABILITY ---
+  HYSTERESIS: {
+    enabled: true,
+    MS: 200, // Wait for 200ms before confirming uncertain matches
+    INSTANT_MATCH_THRESHOLD: 0.90, // Match > 90% accuracy jumps instantly
+    CONFIDENCE_BOOST_PER_FRAME: 0.15, // Accumulate confidence over frames
+  },
+
+  // --- SEMANTIC WINDOWING ---
+  SEMANTIC_WINDOWING: {
+    enabled: true,
+    WINDOW_SIZE: 3, // Look at last 3 words
+    NEXT_SENTENCE_BIAS: 1.2, // Prefer next sentence over current
+    HISTORY_MAX_WORDS: 12, // How many words to keep in Intent Buffer
+  },
+
+  // --- STEMMING & NORMALIZATION ---
+  STEMMING: {
+    enabled: true,
+    LANGUAGE_SUPPORT: ['pt', 'en', 'es'],
+    STRIP_PLURALS: true,
+    NORMALIZE_VERBS: true,
+  },
+
   // --- ADVANCED MATCHING ---
   ADVANCED_MATCHING: {
     maxWideJump: 250, // characters
@@ -269,7 +293,7 @@ export const VOICE_CONFIG = {
 
   // --- SESSION ANALYTICS ---
   SESSION_ANALYTICS: {
-    enabled: true,
+    enabled: false, // Disabilitado temporariamente a pedido do usuário
     trackMetrics: true,
     logSummaryOnEnd: true,
     metrics: {

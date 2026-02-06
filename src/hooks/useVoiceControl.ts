@@ -142,6 +142,17 @@ export const useVoiceControl = (
         lastActivationTime: 0,
     });
 
+    // --- NEW: INTENT MATCHING (Semantic Buffer) ---
+    const semanticBufferRef = useRef<string[]>([]); // Keeps the last X words
+
+    // --- NEW: STABILITY (Hysteresis) ---
+    const hysteresisRef = useRef<{
+        proposedIndex: number;
+        proposedSentenceId: number;
+        firstSeenAt: number;
+        confirmationCount: number;
+    } | null>(null);
+
     // --- NEW: REPETITION DETECTION ---
     const recentPositionsRef = useRef<Array<{ index: number; sentenceId: number; time: number }>>([]);
 
@@ -741,9 +752,27 @@ export const useVoiceControl = (
                 if (isFinal) {
                     trackSessionMetrics(false, wordCount); // This is still imperfect if sentences are short, but better.
 
+                    // Update Semantic Buffer with new words from final transcript
+                    const newWords = cleanTranscript.split(/\s+/).filter(Boolean);
+                    const currentBuffer = [...semanticBufferRef.current, ...newWords];
+                    semanticBufferRef.current = currentBuffer.slice(-VOICE_CONFIG.SEMANTIC_WINDOWING.HISTORY_MAX_WORDS);
+
                     if (onFinalSpeechResultRef.current && cleanTranscript.length > 0) {
                         onFinalSpeechResultRef.current(cleanTranscript);
                     }
+                }
+            }
+
+            // --- INTENT MATCHING (SEMANTIC WINDOWING) ---
+            // Instead of just matching the raw interim transcript (which can be noisy),
+            // we also try to match the "Intent" from the last few words.
+            let intentTranscript = cleanTranscript;
+            if (semanticBufferRef.current.length > 0) {
+                const windowSize = VOICE_CONFIG.SEMANTIC_WINDOWING.WINDOW_SIZE;
+                const bufferTail = semanticBufferRef.current.slice(-windowSize).join(" ");
+                // If the interim is short, combine it with the buffer tail for better context
+                if (cleanTranscript.split(/\s+/).length < windowSize) {
+                    intentTranscript = (bufferTail + " " + cleanTranscript).trim();
                 }
             }
 
@@ -772,7 +801,16 @@ export const useVoiceControl = (
 
             // Fuzzy Search Strategy
             // 1. Try to find fuzzy match starting from last known position
-            let match = findBestMatch(fullCleanText, cleanTranscript, lastMatchIndexRef.current, searchWindow, intraSentenceTolerance);
+            const useStemming = VOICE_CONFIG.STEMMING.enabled;
+            let match = findBestMatch(
+                fullCleanText,
+                intentTranscript,
+                lastMatchIndexRef.current,
+                searchWindow,
+                intraSentenceTolerance,
+                recognition.lang,
+                useStemming
+            );
 
             // EMERGENCY FORCE-MATCH
             if (!match && emergencyRecoveryRef.current.isActive && VOICE_CONFIG.EMERGENCY_RECOVERY.FORCE_ADVANCE_ON_SPEECH) {
@@ -795,7 +833,9 @@ export const useVoiceControl = (
                     lastMatchIndexRef.current,
                     searchWindow,
                     overrides.segmentMatching.windowSize,
-                    lastMatchIndexRef.current // Pass last known position for sequential bias
+                    lastMatchIndexRef.current, // Pass last known position for sequential bias
+                    recognition.lang,
+                    useStemming
                 );
 
                 if (segMatch) {
@@ -848,10 +888,12 @@ export const useVoiceControl = (
 
                     const nextMatch = findBestMatch(
                         fullCleanText,
-                        cleanTranscript,
+                        intentTranscript,
                         nextStartIndex,
                         VOICE_CONFIG.SEARCH_WINDOW.SMALL,  // Keep small window
-                        VOICE_CONFIG.RECOVERY.STRICT_NEXT_THRESHOLD
+                        VOICE_CONFIG.RECOVERY.STRICT_NEXT_THRESHOLD,
+                        recognition.lang,
+                        useStemming
                     );
 
                     if (nextMatch && nextMatch.ratio <= VOICE_CONFIG.RECOVERY.CONFIDENCE_REQUIREMENT) {
@@ -955,7 +997,15 @@ export const useVoiceControl = (
             // CRITICAL: Fallback is now EXTREMELY restrictive to prevent incorrect jumps
             if (!match && lastMatchIndexRef.current > 0) {
                 // Fallback: search from beginning BUT with VERY strict criteria
-                const fallbackMatch = findBestMatch(fullCleanText, cleanTranscript, 0, 2000, 0.4);
+                const fallbackMatch = findBestMatch(
+                    fullCleanText,
+                    cleanTranscript,
+                    0,
+                    2000,
+                    0.4,
+                    recognition.lang,
+                    VOICE_CONFIG.STEMMING.enabled
+                );
 
                 if (fallbackMatch) {
                     // ULTRA-STRICT LOGIC:
@@ -1145,8 +1195,10 @@ export const useVoiceControl = (
                     consecutivePartialMatchesRef.current = 0;
                 }
 
-                // --- STRICTER VALIDATION for cross-sentence jumps ---
+                // --- DYNAMIC HYSTERESIS (CONFIDENCE ACCUMULATOR) ---
                 if (!isSameSentence) {
+                    const jumpDistance = Math.abs(newSentenceId - currentSentenceId);
+
                     // Medium jumps: require 95%+ accuracy
                     if (jumpDistance > 5 && match.ratio > 0.05) {
                         console.warn(`[Voice] Medium jump rejected (${jumpDistance} sentences), ratio ${match.ratio.toFixed(3)} not good enough`);
@@ -1159,56 +1211,45 @@ export const useVoiceControl = (
                         return;
                     }
 
-                    if (!pendingMatchRef.current || pendingMatchRef.current.sentenceId !== newSentenceId) {
-                        pendingMatchRef.current = { index: match.index, count: 1, sentenceId: newSentenceId };
+                    const isInstantMatch = match.ratio <= (1 - VOICE_CONFIG.HYSTERESIS.INSTANT_MATCH_THRESHOLD);
 
-                        // ✅ NEW: Start moving slightly on first frame (lookahead)
-                        const lookaheadProgress = 0.10; // Start at 10% into new sentence
-                        smoothedProgressRef.current = lookaheadProgress;
-                        setVoiceProgress(lookaheadProgress);
-                        console.log(`[Voice] 1-Frame lookahead: Starting movement to sentence ${newSentenceId}`);
-
-                        // Don't fully commit yet - wait for confirmation
-                        return;
+                    if (isInstantMatch || emergencyRecoveryRef.current.isActive) {
+                        // Confirmed - full commit instantly (Low Lag)
+                        console.log(`[Voice] Instant match confirmed for sentence ${newSentenceId}`);
+                        lockedSentenceIdRef.current = newSentenceId;
+                        hysteresisRef.current = null;
+                        trackSessionMetrics(true, 0);
                     } else {
-                        pendingMatchRef.current.count++;
-
-                        // ✅ Patch #3: Detect and resolve confirmation loops
-                        // If we've been trying to confirm the same sentence for too long (e.g. 5+ frames)
-                        // but fail to reach the threshold (if threshold was dynamically increased or blocked),
-                        // force-confirm it to prevent infinite loops.
-                        const requiredFrames = emergencyRecoveryRef.current.isActive ? 1 : VOICE_CONFIG.MATCH_CONFIRMATION_FRAMES;
-
-                        if (pendingMatchRef.current.count >= 5) {
-                            console.warn(
-                                `[Voice] ⚠️ Confirmation loop detected (${pendingMatchRef.current.count} attempts for sentence ${pendingMatchRef.current.sentenceId}). ` +
-                                `Force-confirming to prevent freeze.`
-                            );
-                            lockedSentenceIdRef.current = pendingMatchRef.current.sentenceId;
-                            pendingMatchRef.current = null;
-                            trackSessionMetrics(true, 0);
-                            return;
-                        }
-
-                        if (pendingMatchRef.current.count < requiredFrames) {
-                            console.log(`[Voice] Sentence confirming: ${pendingMatchRef.current.count}/${requiredFrames}`);
-
-                            // ✅ Continue moving during confirmation (progressive commitment)
-                            const confirmationProgress = 0.10 + (pendingMatchRef.current.count * 0.20); // 10% → 30% → 50%
-                            smoothedProgressRef.current = Math.min(0.50, confirmationProgress);
-                            setVoiceProgress(smoothedProgressRef.current);
-
+                        // Needs verification (Hysteresis)
+                        if (!hysteresisRef.current || hysteresisRef.current.proposedSentenceId !== newSentenceId) {
+                            hysteresisRef.current = {
+                                proposedIndex: match.index,
+                                proposedSentenceId: newSentenceId,
+                                firstSeenAt: now,
+                                confirmationCount: 1
+                            };
+                            console.log(`[Voice] Proposing jump to sentence ${newSentenceId} (needs confirmation)`);
                             return;
                         } else {
-                            // Confirmed - full commit
-                            lockedSentenceIdRef.current = newSentenceId;
-                            pendingMatchRef.current = null;
-                            trackSessionMetrics(true, 0);
+                            hysteresisRef.current.confirmationCount++;
+                            const timeElapsed = now - hysteresisRef.current.firstSeenAt;
+                            const requiredMs = VOICE_CONFIG.HYSTERESIS.MS;
+
+                            if (timeElapsed >= requiredMs || hysteresisRef.current.confirmationCount >= 2) {
+                                // Consensus reached
+                                console.log(`[Voice] Consensus jump confirmed after ${timeElapsed}ms for sentence ${newSentenceId}`);
+                                lockedSentenceIdRef.current = newSentenceId;
+                                hysteresisRef.current = null;
+                                trackSessionMetrics(true, 0);
+                            } else {
+                                console.log(`[Voice] Confirming jump... ${timeElapsed}/${requiredMs}ms`);
+                                return;
+                            }
                         }
                     }
                 } else {
                     // Same sentence - clear any pending confirmation
-                    pendingMatchRef.current = null;
+                    hysteresisRef.current = null;
                 }
 
                 // --- Patch #3: This was moved/removed because the logic above handles transitions.
