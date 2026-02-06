@@ -28,44 +28,49 @@ export const useSeo = ({
         // Update Title
         document.title = `${title} | PromptNinja`;
 
-        // Helper to update or create meta tag
-        const updateMeta = (name: string, content: string) => {
-            // Try enabling finding by name OR property to cover legacy/index.html cases
-            let element = document.querySelector(`meta[name="${name}"], meta[property="${name}"]`);
+        // Helper to update or create meta tag with proper attribute (name vs property)
+        const updateSeoMeta = (key: string, content: string) => {
+            const isOg = key.startsWith("og:") || key.startsWith("fb:") || key === "al:ios:app_store_id";
+            const attr = isOg ? "property" : "name";
+
+            let element = document.querySelector(`meta[${attr}="${key}"]`);
             if (!element) {
                 element = document.createElement("meta");
-                element.setAttribute("name", name);
+                element.setAttribute(attr, key);
                 document.head.appendChild(element);
             }
-            // Ensure consistency (if found by property, might want to normalize, but keeping simple for now)
             element.setAttribute("content", content);
         };
 
-        // Update Meta Description
-        updateMeta("description", description);
-        if (keywords) updateMeta("keywords", keywords);
+        // Update Meta Tags
+        updateSeoMeta("description", description);
+        if (keywords) updateSeoMeta("keywords", keywords);
 
-        // Update Open Graph
-        updateMeta("og:title", title);
-        updateMeta("og:description", description);
-        updateMeta("og:type", ogType);
-        updateMeta("og:url", canonicalUrl || window.location.href);
-        updateMeta("og:image", ogImage);
-        updateMeta("og:site_name", "PromptNinja");
+        // Update Open Graph (using property attribute)
+        updateSeoMeta("og:title", title);
+        updateSeoMeta("og:description", description);
+        updateSeoMeta("og:type", ogType);
+        updateSeoMeta("og:url", canonicalUrl || window.location.href);
+        updateSeoMeta("og:image", ogImage);
+        updateSeoMeta("og:site_name", "PromptNinja");
+
+        // fb:app_id for analytics/debugger
+        updateSeoMeta("fb:app_id", "966242223397117");
+
         // Added og:locale for better international SEO
         const currentLang = (window.location.pathname.startsWith('/en') || window.location.search.includes('lang=en')) ? 'en_US' :
             (window.location.pathname.startsWith('/es') || window.location.search.includes('lang=es')) ? 'es_ES' : 'pt_BR';
-        updateMeta("og:locale", currentLang);
+        updateSeoMeta("og:locale", currentLang);
 
-        // Update Twitter specific
-        updateMeta("twitter:image", ogImage);
-        updateMeta("twitter:card", "summary_large_image");
-        updateMeta("twitter:title", title);
-        updateMeta("twitter:description", description);
-        updateMeta("twitter:url", canonicalUrl || window.location.href);
+        // Update Twitter specific (using name attribute)
+        updateSeoMeta("twitter:image", ogImage);
+        updateSeoMeta("twitter:card", "summary_large_image");
+        updateSeoMeta("twitter:title", title);
+        updateSeoMeta("twitter:description", description);
+        updateSeoMeta("twitter:url", canonicalUrl || window.location.href);
 
         // Update Thumbnail (Google/Other search engines)
-        updateMeta("thumbnail", ogImage);
+        updateSeoMeta("thumbnail", ogImage);
 
         // Update Canonical URL
         let linkCanonical = document.querySelector('link[rel="canonical"]');

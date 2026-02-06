@@ -103,10 +103,23 @@ const viteConfig = defineConfig({
     },
     build: {
         sourcemap: true,
-        cssCodeSplit: true, // Enable CSS code splitting
+        cssCodeSplit: true,
+        chunkSizeWarningLimit: 1000,
+        minify: "terser",
+        terserOptions: {
+            compress: {
+                drop_console: false,
+                drop_debugger: true,
+            },
+        },
         rollupOptions: {
             output: {
-                // Prefix SEO pages to be excluded from PWA precache via globIgnores
+                manualChunks: {
+                    firebase: ["firebase/app", "firebase/auth", "firebase/firestore", "firebase/analytics"],
+                    webrtc: ["peerjs"],
+                    analyzer: ["meyda"],
+                    utils: ["double-metaphone", "snowball-stemmers"],
+                },
                 chunkFileNames: (chunkInfo) => {
                     const isSeo = chunkInfo.moduleIds.some(
                         (id) => id.includes("src/pages/seo/") || id.includes("pages/seo/")
@@ -117,25 +130,12 @@ const viteConfig = defineConfig({
                     return "assets/[name]-[hash].js";
                 },
                 assetFileNames: (assetInfo) => {
-                    if (assetInfo.name && assetInfo.name.endsWith(".css")) {
-                        // This is harder because assetInfo doesn't easily map back to the module source
-                        // But since we want to exclude SEO CSS too, and most SEO CSS is bundled in these chunks
-                        // if we can't easily prefix it, Workbox might still catch it if it's referenced.
-                        // However, if cssCodeSplit is true, Vite generates [name]-[hash].css
-                    }
                     return "assets/[name]-[hash][extname]";
                 },
             },
         },
-        minify: "terser",
-        terserOptions: {
-            compress: {
-                drop_console: false, // Enabled for GA4 debugging
-                drop_debugger: true,
-            },
-        },
         modulePreload: {
-            polyfill: true, // Ensure module preload works on all browsers
+            polyfill: true,
         },
     },
 });

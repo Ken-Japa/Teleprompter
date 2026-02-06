@@ -21,10 +21,11 @@ async function prerender() {
 
     // 1. Start static server (using vite preview)
     console.log('📦 Starting preview server...');
-    const server = spawn('npm', ['run', 'preview', '--', '--port', PORT.toString()], {
+    const npmCmd = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+    const server = spawn(npmCmd, ['run', 'preview', '--', '--port', PORT.toString()], {
         stdio: 'pipe',
         cwd: path.join(__dirname, '..'),
-        shell: true
+        shell: false
     });
 
     // Wait for server to be ready
