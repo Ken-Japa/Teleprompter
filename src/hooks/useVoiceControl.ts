@@ -349,7 +349,8 @@ export const useVoiceControl = (
             true, // Always use stemming for recovery
             true, // Always use phonetics for recovery
             0.4,  // Higher stem weight for recovery
-            0.15  // Higher phonetic weight for recovery
+            0.15, // Higher phonetic weight for recovery
+            lastMatchIndexRef.current
         );
     }, [fullCleanText, lang]);
 
@@ -854,7 +855,8 @@ export const useVoiceControl = (
                 useStemming,
                 usePhonetics,
                 overrides?.stemWeight,
-                overrides?.phoneticWeight
+                overrides?.phoneticWeight,
+                lastMatchIndexRef.current
             );
 
             // EMERGENCY FORCE-MATCH
@@ -944,7 +946,8 @@ export const useVoiceControl = (
                         useStemming,
                         usePhonetics,
                         overrides?.stemWeight,
-                        overrides?.phoneticWeight
+                        overrides?.phoneticWeight,
+                        lastMatchIndexRef.current
                     );
 
                     if (nextMatch && nextMatch.ratio <= VOICE_CONFIG.RECOVERY.CONFIDENCE_REQUIREMENT) {
@@ -1033,7 +1036,8 @@ export const useVoiceControl = (
                         useStemming,
                         usePhonetics,
                         overrides?.stemWeight,
-                        overrides?.phoneticWeight
+                        overrides?.phoneticWeight,
+                        lastMatchIndexRef.current
                     );
 
                     // TRY CONTEXT-AWARE RECOVERY if still no match
@@ -1067,7 +1071,10 @@ export const useVoiceControl = (
                     0.4,
                     recognition.lang,
                     VOICE_CONFIG.STEMMING.enabled,
-                    VOICE_CONFIG.PHONETIC_MATCHING.enabled
+                    VOICE_CONFIG.PHONETIC_MATCHING.enabled,
+                    undefined, // stemWeight
+                    undefined, // phoneticWeight
+                    lastMatchIndexRef.current
                 );
 
                 if (fallbackMatch) {

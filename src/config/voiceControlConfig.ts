@@ -258,6 +258,13 @@ export const VOICE_CONFIG = {
     NEXT_SENTENCE_THRESHOLD: 0.30,
   },
 
+  // --- JUMP PENALTY (NEW) ---
+  JUMP_PENALTY: {
+    enabled: true,
+    k: 500, // Decay constant (lower = steeper penalty)
+    maxPenaltyBonus: 0.25, // Maximum amount to increase ratio (reducing confidence)
+  },
+
   // --- INITIALIZATION ---
   INITIALIZATION: {
     waitForFirstRecognition: true,

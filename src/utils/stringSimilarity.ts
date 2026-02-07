@@ -1,5 +1,6 @@
 import { newStemmer } from 'snowball-stemmers';
 import { doubleMetaphone } from 'double-metaphone';
+import { VOICE_CONFIG } from '../config/voiceControlConfig';
 
 // Cache for Levenshtein calculations (LRU with max 100 entries)
 const levenshteinCache = new Map<string, Map<string, number>>();
@@ -160,7 +161,8 @@ export const findBestMatch = (
     useStemming: boolean = false,
     usePhonetics: boolean = false,
     stemWeight: number = 0.3,
-    phoneticWeight: number = 0.10
+    phoneticWeight: number = 0.10,
+    lastMatchIndex: number = -1
 ): { index: number; distance: number; ratio: number } | null => {
     if (!pattern || pattern.length < 3) return null;
 
@@ -256,7 +258,18 @@ export const findBestMatch = (
             }
         }
 
-        const adjustedRatio = Math.max(0, finalRatio - foreignBonus);
+        let adjustedRatio = Math.max(0, finalRatio - foreignBonus);
+
+        // --- APPLY JUMP PENALTY ---
+        if (VOICE_CONFIG.JUMP_PENALTY.enabled && lastMatchIndex >= 0) {
+            const jumpDistance = Math.abs(idx - lastMatchIndex);
+            // Decay-based penalty: multiplier decreases as distance increases
+            // We use multiplier to increase the ratio (lower confidence)
+            // multiplier = 1 + maxPenaltyBonus * (1 - exp(-distance/k))
+            const penaltyMultiplier = 1 + (VOICE_CONFIG.JUMP_PENALTY.maxPenaltyBonus * (1 - Math.exp(-jumpDistance / VOICE_CONFIG.JUMP_PENALTY.k)));
+            adjustedRatio *= penaltyMultiplier;
+        }
+
         if (adjustedRatio > effectiveThreshold) continue;
 
         // SEQUENTIAL BIAS
@@ -300,7 +313,15 @@ export const findBestMatch = (
                 }
             }
 
-            const ratio = Math.max(0, sampleRatio - foreignBonus);
+            let ratio = Math.max(0, sampleRatio - foreignBonus);
+
+            // --- APPLY JUMP PENALTY IN FALLBACK ---
+            if (VOICE_CONFIG.JUMP_PENALTY.enabled && lastMatchIndex >= 0) {
+                const jumpDistance = Math.abs(i - lastMatchIndex);
+                const penaltyMultiplier = 1 + (VOICE_CONFIG.JUMP_PENALTY.maxPenaltyBonus * (1 - Math.exp(-jumpDistance / VOICE_CONFIG.JUMP_PENALTY.k)));
+                ratio *= penaltyMultiplier;
+            }
+
             if (ratio > effectiveThreshold) continue;
 
             if (bestMatch.index === -1 || ratio < bestMatch.ratio - 0.05) {
@@ -346,29 +367,28 @@ export const findSegmentedMatch = (
 
     const matches = segments.map((segment) => {
         // findBestMatch now handles stemming and phonetics internally if enabled
-        const match = findBestMatch(text, segment, startIndex, searchWindow, 0.35, lang, useStemming, usePhonetics, stemWeight, phoneticWeight);
+        const match = findBestMatch(text, segment, startIndex, searchWindow, 0.35, lang, useStemming, usePhonetics, stemWeight, phoneticWeight, lastKnownPosition);
         return match ? { index: match.index, ratio: match.ratio, segment } : null;
     }).filter((m): m is { index: number; ratio: number; segment: string } => m !== null && m.ratio < 0.45); // Slightly more lenient threshold for filtered matches
 
     if (matches.length === 0) return null;
 
     const matchesWithPenalty = matches.map(m => {
-        let penalty = 0;
+        let ratioWithPenalty = m.ratio;
 
-        // Heavy penalty for backwards jumps
+        // Heavy penalty for backwards jumps (beyond the exponential one)
         if (m.index < lastKnownPosition) {
-            penalty = 0.30;  // 30% confidence lost
+            ratioWithPenalty += 0.30;  // 30% confidence lost
         }
 
-        // Light penalty for large forward jumps
-        const jumpDistance = m.index - lastKnownPosition;
-        if (jumpDistance > 800) {  // > 800 chars = suspicious
-            penalty += 0.15;
-        }
+        // We already applied the exponential penalty inside findBestMatch, 
+        // so we don't need to double-apply it here unless we want to keep the "800 chars suspicious" rule.
+        // Actually, the user asked for the explicit penalty for long jumps, which we implemented in findBestMatch.
+        // Let's keep the backward penalty as it's a "logical" check, but maybe integrate it better.
 
         return {
             ...m,
-            adjustedRatio: Math.min(1.0, m.ratio + penalty)
+            adjustedRatio: Math.min(1.0, ratioWithPenalty)
         };
     });
 
