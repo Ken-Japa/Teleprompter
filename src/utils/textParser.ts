@@ -34,7 +34,7 @@ export const parseTextToSentences = (
     // Group 2: Tag content
     // Group 3: Square Bracket match [ ... ] (max 100 chars, no newlines)
     // Group 4: Angle Bracket match < ... > (max 100 chars, no newlines, avoids known tags)
-    const TOKEN_REGEX = /<([rygb])>([\s\S]*?)<\/\1>|(\[[^\]\n]{1,100}\])|(<(?!\/?(?:bold|i|u|b|r|y|g|strong|em)\b)[^>\n]{1,100}>)/g;
+    const TOKEN_REGEX = /<([ryg])>([\s\S]*?)<\/\1>|(\[[^\]\n]{1,100}\])|(<(?!\/?(?:bold|i|u|b|r|y|g|strong|em)\b)[^>\n]{1,100}>)/g;
 
     let lastIndex = 0;
     let match;
@@ -110,8 +110,8 @@ export const parseTextToSentences = (
         let currentText = token.text;
         const fragments: typeof tokens = [];
 
-        // Pass 2a: Process BOLD <bold>...</bold>
-        const BOLD_REGEX = /<bold>([\s\S]*?)<\/bold>/g;
+        // Pass 2a: Process BOLD <bold>...</bold> or <b>...</b>
+        const BOLD_REGEX = /<(?:bold|b)>([\s\S]*?)<\/(?:bold|b)>/g;
         let boldLastIndex = 0;
         let boldMatch;
         let baseStart = token.absoluteStart + (token.innerOffset || 0);
@@ -129,7 +129,7 @@ export const parseTextToSentences = (
                 type: token.type,
                 bold: true,
                 absoluteStart: baseStart + boldMatch.index,
-                innerOffset: 6 // length of <bold>
+                innerOffset: boldMatch[0].indexOf(boldMatch[1]) // dynamic length of opening tag
             });
             boldLastIndex = BOLD_REGEX.lastIndex;
         }
@@ -144,7 +144,7 @@ export const parseTextToSentences = (
         // Pass 2b: Process ITALIC <i>...</i>
         const italicFragments: typeof tokens = [];
         fragments.forEach(frag => {
-            const ITALIC_REGEX = /<i>([\s\S]*?)<\/i>/g;
+            const ITALIC_REGEX = /<(?:italic|i)>([\s\S]*?)<\/(?:italic|i)>/g;
             let italicLastIndex = 0;
             let italicMatch;
             let hasItalic = false;
@@ -166,7 +166,7 @@ export const parseTextToSentences = (
                     bold: frag.bold,
                     italic: true,
                     absoluteStart: fragBaseStart + italicMatch.index,
-                    innerOffset: 3 // length of <i>
+                    innerOffset: italicMatch[0].indexOf(italicMatch[1]) // dynamic length of opening tag
                 });
                 italicLastIndex = ITALIC_REGEX.lastIndex;
             }
@@ -187,7 +187,7 @@ export const parseTextToSentences = (
         // Pass 2c: Process UNDERLINE <u>...</u>
         const finalFragments: typeof tokens = [];
         italicFragments.forEach(frag => {
-            const UNDERLINE_REGEX = /<u>([\s\S]*?)<\/u>/g;
+            const UNDERLINE_REGEX = /<(?:underline|u)>([\s\S]*?)<\/(?:underline|u)>/g;
             let underlineLastIndex = 0;
             let underlineMatch;
             let hasUnderline = false;
@@ -211,7 +211,7 @@ export const parseTextToSentences = (
                     italic: frag.italic,
                     underline: true,
                     absoluteStart: fragBaseStart + underlineMatch.index,
-                    innerOffset: 3 // length of <u>
+                    innerOffset: underlineMatch[0].indexOf(underlineMatch[1]) // dynamic length of opening tag
                 });
                 underlineLastIndex = UNDERLINE_REGEX.lastIndex;
             }
@@ -246,13 +246,31 @@ export const parseTextToSentences = (
             const command = detectTextCommand(trimmedContent);
             const startIndex = currentSentenceStartIndex !== -1 ? currentSentenceStartIndex : 0;
 
+            // Detect if sentence is unmatchable by voice control (tags, brackets, or chords)
+            const voiceText = trimmedContent
+                .replace(/\[.*?\]/g, "")
+                .replace(/\(.*?\)/g, "")
+                .replace(/<.*?>/g, "");
+
+            const clean = voiceText
+                .toLowerCase()
+                .replace(/[^\p{L}\p{N}\s]/gu, "")
+                .replace(/\b\d+\b/g, " ")
+                .replace(/\s+/g, " ")
+                .trim();
+
+            const isChord = isChordLine(trimmedContent);
+            // Sentence is inertial if it has content but no readable text for voice control
+            const isInertial = (clean.length === 0 || isChord) && (trimmedContent.length > 0 || currentFragments.length > 0);
+
             processedSentences.push({
                 id: sentenceIdCounter++,
                 cleanContent: trimmedContent,
                 fragments: currentFragments,
                 startIndex: startIndex,
-                isChord: isChordLine(trimmedContent),
+                isChord,
                 command,
+                isInertial,
             });
 
             currentSentenceStartIndex = -1;

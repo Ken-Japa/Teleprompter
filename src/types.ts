@@ -200,6 +200,7 @@ export interface Sentence {
     isChord?: boolean;
     command?: TextCommand;
     originalSentenceId?: number; // For voice control when sentence is split in musician mode
+    isInertial?: boolean; // NEW: Sentence that should be scrolled past even without matches (tags, brackets, etc)
 }
 
 export interface RemoteActions {

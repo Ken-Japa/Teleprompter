@@ -33,6 +33,7 @@ interface PhysicsParams {
     endSentenceId: number;
     ratio: number;
   } | null;
+  sentences?: import("../types").Sentence[];
 }
 
 
@@ -59,6 +60,7 @@ export const useScrollPhysics = ({
   bpm,
   backingTrackProgress,
   semanticWindowEvent,
+  sentences = [],
 }: PhysicsParams) => {
 
   // Physics State
@@ -328,7 +330,16 @@ export const useScrollPhysics = ({
         } else {
           // No target, apply semantic inertia if enabled
           if (VOICE_CONFIG.SEMANTIC_INERTIA.enabled && semanticVelocityRef.current !== 0) {
-            const timeSinceLastMatch = performance.now() - lastSemanticMatchTimeRef.current;
+            const now = performance.now();
+            const timeSinceLastMatch = now - lastSemanticMatchTimeRef.current;
+
+            // NEW: If current sentence is inertial (tags/brackets/chords), keep velocity alive
+            // This prevents stalling mid-tag/chord sequence.
+            const currentSentence = sentences[_activeSentenceIndex];
+            if (currentSentence?.isInertial) {
+              lastSemanticMatchTimeRef.current = now;
+            }
+
             if (timeSinceLastMatch < VOICE_CONFIG.SEMANTIC_INERTIA.STALL_THRESHOLD_MS) {
               // Apply decay
               semanticVelocityRef.current *= Math.pow(VOICE_CONFIG.SEMANTIC_INERTIA.VELOCITY_DECAY, timeScale);

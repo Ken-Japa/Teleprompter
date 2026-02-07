@@ -100,4 +100,23 @@ describe("parseTextToSentences", () => {
         const resultML = parseTextToSentences(textMultiline, true);
         expect(resultML.sentences.some(s => s.fragments.some(f => f.text.includes("[Multi") && f.type === "normal"))).toBe(true);
     });
+    it("Should mark sentences with only non-voice content as isInertial", () => {
+        const text = "[STOP]\n<wave>\nHello world.";
+        const result = parseTextToSentences(text);
+
+        expect(result.sentences).toHaveLength(3);
+        expect(result.sentences[0].isInertial).toBe(true); // [STOP]
+        expect(result.sentences[1].isInertial).toBe(true); // <wave>
+        expect(result.sentences[2].isInertial).toBe(false); // Hello world.
+        expect(result.sentences[2].cleanContent).toBe("Hello world.");
+    });
+
+    it("Should handle chord lines as isInertial if isMusicianMode is true", () => {
+        const text = "C G Am F\nLet it be.";
+        const result = parseTextToSentences(text, false, true); // musician mode
+
+        expect(result.sentences).toHaveLength(2);
+        expect(result.sentences[0].isInertial).toBe(true); // chords
+        expect(result.sentences[1].isInertial).toBe(false); // lyrics
+    });
 });

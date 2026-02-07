@@ -508,6 +508,7 @@ export const Prompter = memo(
         bpm: effectiveBpm,
         backingTrackProgress: backingTrack.getProgress(),
         semanticWindowEvent,
+        sentences,
       });
 
       const { handleNativeScroll, handleRemoteInput, handleScrollTo, resetPhysics, wakeUpLoop, currentActiveElementRef, clearProcessedCommands, internalScrollPos, handleInteractionStart, handleInteractionEnd, handleWheel } = physicsResult;
