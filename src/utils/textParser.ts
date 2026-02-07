@@ -261,6 +261,19 @@ export const parseTextToSentences = (
         currentCleanContent = "";
     };
 
+    // Helper: Check if intelligent parser should break the sentence
+    const shouldCheckIntelligentBreak = (): boolean => {
+        if (!VOICE_CONFIG.INTELLIGENT_PARSER.enabled || isMusicianMode || currentCleanContent.trim().length === 0) {
+            return false;
+        }
+
+        const wordCount = currentCleanContent.trim().split(/\s+/).length;
+        const hasCommand = detectTextCommand(currentCleanContent.trim()) !== undefined;
+        const shouldApply = !hasCommand || !VOICE_CONFIG.INTELLIGENT_PARSER.excludeCommandTags;
+
+        return shouldApply && wordCount >= VOICE_CONFIG.INTELLIGENT_PARSER.maxWordsPerSentence;
+    };
+
     processedTokens.forEach((token) => {
         const parts = token.text.split(/([.!?\n]+)/);
         let localOffset = 0;
@@ -308,28 +321,15 @@ export const parseTextToSentences = (
                 currentFragments.push({ text: part, type: token.type, bold: token.bold, italic: token.italic, underline: token.underline });
                 currentCleanContent += part;
                 localOffset += part.length;
+
+                // INTELLIGENT PARSER: Check if sentence is too long (only on space boundaries)
+                if (part.includes(' ') && shouldCheckIntelligentBreak()) {
+                    console.log(`[IntelligentParser] Breaking long sentence at ${currentCleanContent.trim().split(/\s+/).length} words`);
+                    finalizeSentence();
+                }
             }
         }
     });
-
-    // INTELLIGENT PARSER: Handle unpunctuated text
-    // This splits long sentences without punctuation based on word count
-    // ONLY applies if:
-    // 1. Intelligent parser is enabled
-    // 2. Not in musician mode
-    // 3. Sentence doesn't contain command tags
-    if (VOICE_CONFIG.INTELLIGENT_PARSER.enabled && !isMusicianMode && currentCleanContent.trim().length > 0) {
-        const wordCount = currentCleanContent.trim().split(/\s+/).length;
-        const hasCommand = detectTextCommand(currentCleanContent.trim()) !== undefined;
-
-        // Don't apply to command sentences if configured
-        const shouldApplyIntelligent = !hasCommand || !VOICE_CONFIG.INTELLIGENT_PARSER.excludeCommandTags;
-
-        if (shouldApplyIntelligent && wordCount >= VOICE_CONFIG.INTELLIGENT_PARSER.maxWordsPerSentence) {
-            // Force break on long unpunctuated sentence
-            finalizeSentence();
-        }
-    }
 
     // Final flush
     if (currentCleanContent.trim().length > 0) {
