@@ -305,16 +305,39 @@ export const parseTextToSentences = (
             }
 
             if (isDelimiter) {
-                if (currentFragments.length > 0 &&
-                    currentFragments[currentFragments.length - 1].type === token.type &&
-                    currentFragments[currentFragments.length - 1].bold === token.bold &&
-                    currentFragments[currentFragments.length - 1].italic === token.italic &&
-                    currentFragments[currentFragments.length - 1].underline === token.underline) {
-                    currentFragments[currentFragments.length - 1].text += part;
+                // If this is a delimiter, and we just started a sentence that consists only of this delimiter 
+                // (or whitespace), we should instead try to append it to the previous sentence if it exists.
+                const contentSoFar = currentCleanContent.trim();
+
+                if (contentSoFar.length === 0 && processedSentences.length > 0) {
+                    // Append to previous sentence instead of starting a new one
+                    const prevSent = processedSentences[processedSentences.length - 1];
+
+                    // Add fragment
+                    prevSent.fragments.push({
+                        text: part,
+                        type: token.type,
+                        bold: token.bold,
+                        italic: token.italic,
+                        underline: token.underline
+                    });
+
+                    // Add to clean content
+                    prevSent.cleanContent += part;
                 } else {
-                    currentFragments.push({ text: part, type: token.type, bold: token.bold, italic: token.italic, underline: token.underline });
+                    // Normal behavior: append to current and finalize
+                    if (currentFragments.length > 0 &&
+                        currentFragments[currentFragments.length - 1].type === token.type &&
+                        currentFragments[currentFragments.length - 1].bold === token.bold &&
+                        currentFragments[currentFragments.length - 1].italic === token.italic &&
+                        currentFragments[currentFragments.length - 1].underline === token.underline) {
+                        currentFragments[currentFragments.length - 1].text += part;
+                    } else {
+                        currentFragments.push({ text: part, type: token.type, bold: token.bold, italic: token.italic, underline: token.underline });
+                    }
+                    currentCleanContent += part;
                 }
-                currentCleanContent += part;
+
                 localOffset += part.length;
                 finalizeSentence();
             } else {
@@ -322,10 +345,17 @@ export const parseTextToSentences = (
                 currentCleanContent += part;
                 localOffset += part.length;
 
-                // INTELLIGENT PARSER: Check if sentence is too long (only on space boundaries)
+                // INTELLIGENT PARSER: Check if sentence is too long
                 if (part.includes(' ') && shouldCheckIntelligentBreak()) {
-                    console.log(`[IntelligentParser] Breaking long sentence at ${currentCleanContent.trim().split(/\s+/).length} words`);
-                    finalizeSentence();
+                    // LOOKAHEAD: Check if the next part is a delimiter.
+                    // If it IS a delimiter, don't break yet, wait for the delimiter to be processed.
+                    const nextPart = parts[i + 1];
+                    const nextIsDelimiter = nextPart && /[.!?\n]+/.test(nextPart);
+
+                    if (!nextIsDelimiter) {
+                        console.log(`[IntelligentParser] Breaking long sentence at ${currentCleanContent.trim().split(/\s+/).length} words`);
+                        finalizeSentence();
+                    }
                 }
             }
         }
