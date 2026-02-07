@@ -274,6 +274,7 @@ export const parseTextToSentences = (
                 isChord,
                 command,
                 isInertial,
+                matchableLength: clean.length,
             });
 
             currentSentenceStartIndex = -1;

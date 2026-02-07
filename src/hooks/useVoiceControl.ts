@@ -142,6 +142,8 @@ export const useVoiceControl = (
         lastActivationTime: 0,
     });
 
+    const isFirstMatchSinceStartRef = useRef<boolean>(true);
+
     // --- NEW: INTENT MATCHING (Semantic Buffer) ---
     const semanticBufferRef = useRef<string[]>([]); // Keeps the last X words
 
@@ -753,8 +755,10 @@ export const useVoiceControl = (
                 onSpeechResultRef.current(cleanTranscript);
             }
 
-            // Update speech timestamp for sentence completion detection
-            lastSpeechTimeRef.current = Date.now();
+
+            const processStart = performance.now();
+
+            // Handle confidence learning and normal processing
 
             // ADAPTIVE THROTTLING: Use dynamic throttle
             const now = Date.now();
@@ -774,7 +778,6 @@ export const useVoiceControl = (
             }
 
             // Start performance measurement
-            const processStart = performance.now();
             lastProcessedTimeRef.current = now;
 
             // --- NOISE CALIBRATION ---
@@ -1355,59 +1358,72 @@ export const useVoiceControl = (
                     const sentence = sentences[effectiveSentenceId];
                     if (sentence && typeof sentence.startIndex === "number") {
                         const relativeIndex = lookupIndex - sentence.startIndex;
-                        const len = sentence.cleanContent.length;
-                        if (len > 0) {
-                            const rawProgress = Math.min(1, Math.max(0, relativeIndex / len));
+                        const matchLength = sentence.matchableLength ?? sentence.cleanContent.length;
+                        if (matchLength > 0) {
+                            const rawProgress = Math.min(1, Math.max(0, relativeIndex / matchLength));
 
                             // PROGRESS SMOOTHING: Use exponential moving average
-                            const smoothedProgress = smoothedProgressRef.current * (1 - VOICE_CONFIG.PROGRESS_SMOOTH_FACTOR) +
-                                rawProgress * VOICE_CONFIG.PROGRESS_SMOOTH_FACTOR;
+                            // INITIAL SNAP: If this is the first match, use a much higher smooth factor (effectively snapping)
+                            const isFirstMatch = isFirstMatchSinceStartRef.current;
+                            const effectiveSmoothFactor = isFirstMatch ? 0.95 : VOICE_CONFIG.PROGRESS_SMOOTH_FACTOR;
+
+                            if (isFirstMatch) {
+                                console.log("[Voice] Initial match detected - performing SNAP to position");
+                                isFirstMatchSinceStartRef.current = false;
+                            }
+
+                            const smoothedProgress = smoothedProgressRef.current * (1 - effectiveSmoothFactor) +
+                                rawProgress * effectiveSmoothFactor;
+
                             smoothedProgressRef.current = smoothedProgress;
                             setVoiceProgress(smoothedProgress);
+
+                            // Update speech timestamp NOW that we have a valid match
+                            lastSpeechTimeRef.current = Date.now();
                         } else {
                             setVoiceProgress(0);
                         }
                     }
+                }
 
-                    // --- INITIALIZATION CONTROL: First Recognition Detection ---
-                    if (isInitializingRef.current && !hasFirstRecognitionRef.current) {
-                        const timeSinceInit = Date.now() - initStartTimeRef.current;
-                        const hasGracePeriodPassed = timeSinceInit >= VOICE_CONFIG.INITIALIZATION.initialGracePeriod;
-                        const isConfidentMatch = match.ratio <= (1 - VOICE_CONFIG.INITIALIZATION.minConfidenceForInit);
+                // --- INITIALIZATION CONTROL: First Recognition Detection ---
+                if (isInitializingRef.current && !hasFirstRecognitionRef.current) {
+                    const timeSinceInit = Date.now() - initStartTimeRef.current;
+                    const hasGracePeriodPassed = timeSinceInit >= VOICE_CONFIG.INITIALIZATION.initialGracePeriod;
+                    const isConfidentMatch = match.ratio <= (1 - VOICE_CONFIG.INITIALIZATION.minConfidenceForInit);
 
-                        if (hasGracePeriodPassed && isConfidentMatch) {
-                            // First valid recognition! Now activate scrolling
-                            hasFirstRecognitionRef.current = true;
-                            isInitializingRef.current = false;
-                            console.log('[Voice] First recognition detected - activating scroll', {
-                                confidence: ((1 - match.ratio) * 100).toFixed(0) + '%',
-                                delay: timeSinceInit + 'ms'
-                            });
-
-                            // Now we can set the active sentence to trigger scroll
-                            setActiveSentenceIndex(lockedSentenceIdRef.current);
-                        }
-                    }
-
-
-                    // --- APPLY SEMANTIC WINDOW EVENT ---
-                    const driftVelocity = isSameSentence ? 0 : (isForwardJump ? 1 : -1);
-
-                    setSemanticWindowEvent({
-                        centerIndex: match.index,
-                        confidence: 1 - match.ratio,
-                        driftVelocity: driftVelocity
-                    });
-
-                    // Only update active sentence if it's confirmed (locked) AND not initializing
-                    // We use a functional update or just check the ref value to be safe
-                    if (!isInitializingRef.current && lockedSentenceIdRef.current >= 0) {
-                        // Important: Only update if it actually changed to avoid unnecessary re-renders
-                        setActiveSentenceIndex(prev => {
-                            if (prev !== lockedSentenceIdRef.current) return lockedSentenceIdRef.current;
-                            return prev;
+                    if (hasGracePeriodPassed && isConfidentMatch) {
+                        // First valid recognition! Now activate scrolling
+                        hasFirstRecognitionRef.current = true;
+                        isInitializingRef.current = false;
+                        console.log('[Voice] First recognition detected - activating scroll', {
+                            confidence: ((1 - match.ratio) * 100).toFixed(0) + '%',
+                            delay: timeSinceInit + 'ms'
                         });
+
+                        // Now we can set the active sentence to trigger scroll
+                        setActiveSentenceIndex(lockedSentenceIdRef.current);
                     }
+                }
+
+
+                // --- APPLY SEMANTIC WINDOW EVENT ---
+                const driftVelocity = isSameSentence ? 0 : (isForwardJump ? 1 : -1);
+
+                setSemanticWindowEvent({
+                    centerIndex: match.index,
+                    confidence: 1 - match.ratio,
+                    driftVelocity: driftVelocity
+                });
+
+                // Only update active sentence if it's confirmed (locked) AND not initializing
+                // We use a functional update or just check the ref value to be safe
+                if (!isInitializingRef.current && lockedSentenceIdRef.current >= 0) {
+                    // Important: Only update if it actually changed to avoid unnecessary re-renders
+                    setActiveSentenceIndex(prev => {
+                        if (prev !== lockedSentenceIdRef.current) return lockedSentenceIdRef.current;
+                        return prev;
+                    });
                 }
             }
 
@@ -1561,6 +1577,7 @@ export const useVoiceControl = (
 
         // Reset speech timer
         lastSpeechTimeRef.current = Date.now();
+        isFirstMatchSinceStartRef.current = true;
 
         // --- ADVANCED FEATURES INITIALIZATION ---
 
