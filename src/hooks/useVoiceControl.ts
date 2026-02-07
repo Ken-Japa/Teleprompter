@@ -156,6 +156,13 @@ export const useVoiceControl = (
         confirmationCount: number;
     } | null>(null);
 
+    // --- NEW: SEMANTIC WINDOW ---
+    const [semanticWindowEvent, setSemanticWindowEvent] = useState<{
+        centerIndex: number;
+        confidence: number;
+        driftVelocity: number;
+    } | null>(null);
+
     // --- NEW: REPETITION DETECTION ---
     const recentPositionsRef = useRef<Array<{ index: number; sentenceId: number; time: number }>>([]);
 
@@ -1368,6 +1375,16 @@ export const useVoiceControl = (
                         }
                     }
 
+
+                    // --- APPLY SEMANTIC WINDOW EVENT ---
+                    const driftVelocity = isSameSentence ? 0 : (isForwardJump ? 1 : -1);
+
+                    setSemanticWindowEvent({
+                        centerIndex: match.index,
+                        confidence: 1 - match.ratio,
+                        driftVelocity: driftVelocity
+                    });
+
                     // Only update active sentence if it's confirmed (locked) AND not initializing
                     // We use a functional update or just check the ref value to be safe
                     if (!isInitializingRef.current && lockedSentenceIdRef.current >= 0) {
@@ -1675,5 +1692,6 @@ export const useVoiceControl = (
         setIsScriptFinished,
         syncWithScroll,
         syncAfterManualScroll, // NEW: Export manual scroll sync
+        semanticWindowEvent, // NEW: Export semantic window event
     };
 };

@@ -23,6 +23,11 @@ interface PhysicsParams {
   onCommandTriggered?: (command: TextCommand, sentenceId: number) => void;
   onManualScrollEnd?: () => void;
   isMusicianMode?: boolean;
+  semanticWindowEvent?: {
+    centerIndex: number;
+    confidence: number;
+    driftVelocity: number;
+  } | null;
   backingTrackProgress?: {
     startSentenceId: number;
     endSentenceId: number;
@@ -53,6 +58,7 @@ export const useScrollPhysics = ({
   isMusicianMode,
   bpm,
   backingTrackProgress,
+  semanticWindowEvent,
 }: PhysicsParams) => {
 
   // Physics State
@@ -104,6 +110,10 @@ export const useScrollPhysics = ({
   useEffect(() => {
     backingTrackProgressRef.current = backingTrackProgress;
   }, [backingTrackProgress]);
+  const semanticWindowEventRef = useRef(semanticWindowEvent);
+  useEffect(() => {
+    semanticWindowEventRef.current = semanticWindowEvent;
+  }, [semanticWindowEvent]);
 
 
   // Interaction Flags
@@ -117,6 +127,11 @@ export const useScrollPhysics = ({
   const lastTargetVoiceScrollRef = useRef<number | null>(null);
   const lastVoiceIndexRef = useRef<number>(-1);
   const currentActiveElementRef = useRef<HTMLElement | null>(null);
+
+  // --- NEW: SEMANTIC WINDOW & INERTIA REFS ---
+  const semanticVelocityRef = useRef<number>(0); // Current inertia velocity
+  const lastSemanticMatchTimeRef = useRef<number>(0);
+  const semanticVelocityHistoryRef = useRef<Array<{ v: number; t: number }>>([]);
 
   // Update Velocity Cache when speed changes
   useEffect(() => {
@@ -236,13 +251,16 @@ export const useScrollPhysics = ({
         !isManualScrollingRef.current &&
         !isInteractionCoolingDown
       ) {
+        const _semanticEvent = semanticWindowEventRef.current;
+        const driftRatio = (_semanticEvent?.driftVelocity || 0) * (VOICE_CONFIG.SEMANTIC_WINDOWING.STALL_THRESHOLD / 2);
+
         const target = calculateVoiceTarget(
           _activeSentenceIndex,
           _voiceProgress,
           metrics,
           currentActiveElementRef,
           lastVoiceIndexRef,
-          isFlipVerticalRef.current
+          driftRatio
         );
 
         targetVoiceScrollRef.current = target;
@@ -288,10 +306,41 @@ export const useScrollPhysics = ({
             }
 
             deltaScroll += voiceDelta;
-            smoothedVoiceVelocityRef.current = voiceDelta;
             lastTargetVoiceScrollRef.current = targetVoiceScrollRef.current;
+
+            // --- SEMANTIC INERTIA UPDATE (NEW) ---
+            if (_semanticEvent && _semanticEvent.confidence > VOICE_CONFIG.SEMANTIC_INERTIA.MIN_CONFIDENCE_TO_CONTINUE) {
+              const now = performance.now();
+              semanticVelocityHistoryRef.current.push({ v: voiceDelta / timeScale, t: now });
+              // Keep only last X ms
+              const windowMs = VOICE_CONFIG.SEMANTIC_INERTIA.HISTORY_MS;
+              semanticVelocityHistoryRef.current = semanticVelocityHistoryRef.current.filter(h => now - h.t < windowMs);
+
+              if (semanticVelocityHistoryRef.current.length > 2) {
+                const avgV = semanticVelocityHistoryRef.current.reduce((sum, h) => sum + h.v, 0) / semanticVelocityHistoryRef.current.length;
+                semanticVelocityRef.current = avgV;
+                lastSemanticMatchTimeRef.current = now;
+              }
+            }
           } else {
             smoothedVoiceVelocityRef.current = 0;
+          }
+        } else {
+          // No target, apply semantic inertia if enabled
+          if (VOICE_CONFIG.SEMANTIC_INERTIA.enabled && semanticVelocityRef.current !== 0) {
+            const timeSinceLastMatch = performance.now() - lastSemanticMatchTimeRef.current;
+            if (timeSinceLastMatch < VOICE_CONFIG.SEMANTIC_INERTIA.STALL_THRESHOLD_MS) {
+              // Apply decay
+              semanticVelocityRef.current *= Math.pow(VOICE_CONFIG.SEMANTIC_INERTIA.VELOCITY_DECAY, timeScale);
+
+              if (Math.abs(semanticVelocityRef.current) > 0.1) {
+                deltaScroll += semanticVelocityRef.current * timeScale;
+              } else {
+                semanticVelocityRef.current = 0;
+              }
+            } else {
+              semanticVelocityRef.current = 0;
+            }
           }
         }
       }

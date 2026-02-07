@@ -335,7 +335,7 @@ export const Prompter = memo(
         settings.autoColorBrackets
       );
 
-      const { startListening, stopListening, resetVoice, clearSessionSummary, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError, sessionSummary, syncWithScroll, syncAfterManualScroll } = voiceControl;
+      const { startListening, stopListening, resetVoice, clearSessionSummary, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError, sessionSummary, syncWithScroll, syncAfterManualScroll, semanticWindowEvent } = voiceControl;
 
       const backingTrack = useBackingTrack(activeScriptId, sentences, isPro);
 
@@ -507,6 +507,7 @@ export const Prompter = memo(
         isMusicianMode,
         bpm: effectiveBpm,
         backingTrackProgress: backingTrack.getProgress(),
+        semanticWindowEvent,
       });
 
       const { handleNativeScroll, handleRemoteInput, handleScrollTo, resetPhysics, wakeUpLoop, currentActiveElementRef, clearProcessedCommands, internalScrollPos, handleInteractionStart, handleInteractionEnd, handleWheel } = physicsResult;

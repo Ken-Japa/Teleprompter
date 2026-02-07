@@ -159,18 +159,29 @@ export const VOICE_CONFIG = {
   // --- HYSTERESIS & STABILITY ---
   HYSTERESIS: {
     enabled: true,
-    MS: 300, // Wait 300ms before confirming uncertain matches (was 200ms)
+    MS: 200, // Wait 200ms before confirming uncertain matches (was 200ms)
     REQUIRED_CONFIRMATIONS: 3, // Require 3 confirmations to prevent rapid oscillation
     INSTANT_MATCH_THRESHOLD: 0.90, // Match > 90% accuracy jumps instantly
     CONFIDENCE_BOOST_PER_FRAME: 0.15, // Accumulate confidence over frames
   },
 
-  // --- SEMANTIC WINDOWING ---
   SEMANTIC_WINDOWING: {
     enabled: true,
     WINDOW_SIZE: 3, // Look at last 3 words
     NEXT_SENTENCE_BIAS: 1.2, // Prefer next sentence over current
     HISTORY_MAX_WORDS: 12, // How many words to keep in Intent Buffer
+    MIN_CONFIDENCE: 0.50, // Minimum confidence to accept a match
+    STALL_THRESHOLD: 5, // Consecutive misses before assuming stalled
+  },
+
+  // --- SEMANTIC INERTIA (NEW) ---
+  SEMANTIC_INERTIA: {
+    enabled: true,
+    VELOCITY_DECAY: 0.95, // 5% decay per frame
+    MIN_CONFIDENCE_TO_CONTINUE: 0.60, // Only feed inertia if confidence is decent
+    HISTORY_MS: 500, // Look at last 500ms for velocity calculation
+    STALL_THRESHOLD_MS: 300, // Stop inertia if no match for 300ms
+    MAX_DRIFT_SPEED: 2.0, // Pixels per frame
   },
 
   // --- STEMMING & NORMALIZATION ---
@@ -225,7 +236,7 @@ export const VOICE_CONFIG = {
   FUZZY_SYNC: {
     enabled: true,
     minPartialMatch: 0.55,
-    intraSentenceTolerance: 0.45,
+    intraSentenceTolerance: 0.50,
     catchUpEnabled: true,
     progressBoost: 0.20,
   },
