@@ -147,6 +147,15 @@ export const VOICE_CONFIG = {
   MATCH_CONFIRMATION_FRAMES: 2,
   PROGRESS_SMOOTH_FACTOR: 0.55, // Increased for smoother scroll transitions (was 0.40)
 
+  // --- DAMPING & PHYSICS (LAYER 2) ---
+  DAMPING: {
+    enabled: true,
+    OSCILLATION_THRESHOLD: 15, // px - Ignore small reversals to prevent jitter
+    MAX_FOLLOW_VELOCITY: 8, // px/frame - Cap speed to prevent teleporting
+    DEADZONE_PX: 4, // px - Minimum move threshold
+    JERK_LIMIT: 0.5, // limit change in velocity
+  },
+
   // --- HYSTERESIS & STABILITY ---
   HYSTERESIS: {
     enabled: true,

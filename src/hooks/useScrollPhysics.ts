@@ -113,6 +113,8 @@ export const useScrollPhysics = ({
 
   // Voice Logic Refs
   const targetVoiceScrollRef = useRef<number | null>(null);
+  const smoothedVoiceVelocityRef = useRef<number>(0);
+  const lastTargetVoiceScrollRef = useRef<number | null>(null);
   const lastVoiceIndexRef = useRef<number>(-1);
   const currentActiveElementRef = useRef<HTMLElement | null>(null);
 
@@ -247,9 +249,49 @@ export const useScrollPhysics = ({
 
         if (targetVoiceScrollRef.current !== null) {
           const diff = targetVoiceScrollRef.current - internalScrollPos.current;
-          if (Math.abs(diff) > PHYSICS_CONSTANTS.SCROLL_TOLERANCE) {
-            // Increased Lerp speed for better responsiveness
-            deltaScroll += diff * (VOICE_CONFIG.SCROLL_LERP_FACTOR * timeScale);
+
+          if (Math.abs(diff) > (PHYSICS_CONSTANTS.SCROLL_TOLERANCE || 1)) {
+            // --- LAYER 2 DAMPING (NEW) ---
+            const damping = (VOICE_CONFIG as any).DAMPING;
+            let voiceDelta = diff * (VOICE_CONFIG.SCROLL_LERP_FACTOR * timeScale);
+
+            if (damping?.enabled) {
+              // 1. Deadzone
+              if (Math.abs(diff) < damping.DEADZONE_PX) {
+                voiceDelta = 0;
+              } else {
+                // 2. Velocity Capping
+                const maxVelocity = damping.MAX_FOLLOW_VELOCITY * timeScale;
+                voiceDelta = Math.max(-maxVelocity, Math.min(maxVelocity, voiceDelta));
+
+                // 3. Oscillation Filtering
+                // If the target jumped back suddenly (jitter), ignore it unless it's a large intended jump
+                if (lastTargetVoiceScrollRef.current !== null) {
+                  const targetJump = targetVoiceScrollRef.current - lastTargetVoiceScrollRef.current;
+                  const isOppositeDirection = Math.sign(targetJump) !== Math.sign(diff) && Math.sign(targetJump) !== 0;
+
+                  if (isOppositeDirection && Math.abs(targetJump) < damping.OSCILLATION_THRESHOLD) {
+                    // Small jitter in opposite direction - suppress
+                    voiceDelta = 0;
+                  }
+                }
+
+                // 4. Smoothing Acceleration (Jerk Limit)
+                const prevVelocity = smoothedVoiceVelocityRef.current;
+                const jerkLimit = damping.JERK_LIMIT * timeScale;
+                const velocityDiff = voiceDelta - prevVelocity;
+
+                if (Math.abs(velocityDiff) > jerkLimit) {
+                  voiceDelta = prevVelocity + Math.sign(velocityDiff) * jerkLimit;
+                }
+              }
+            }
+
+            deltaScroll += voiceDelta;
+            smoothedVoiceVelocityRef.current = voiceDelta;
+            lastTargetVoiceScrollRef.current = targetVoiceScrollRef.current;
+          } else {
+            smoothedVoiceVelocityRef.current = 0;
           }
         }
       }

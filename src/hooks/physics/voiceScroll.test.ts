@@ -41,13 +41,13 @@ describe('calculateVoiceTarget', () => {
         expect(target).toBeCloseTo(expected);
     });
 
-    it('should calculate target for flip vertical mode (Inverted Alignment)', () => {
+    it('should calculate target for flip vertical mode (Unified Coordinates)', () => {
         const isFlipVertical = true;
         const voiceProgress = 0;
 
-        // Expected:
-        // offsetTop (1000) - clientHeight (800) * (1 - LOOKAHEAD)
-        // 1000 - 800 * (1 - 0.018) = 1000 - 800 * 0.982 = 1000 - 785.6 = 214.4
+        // In unified coordinates, both modes use the same logic:
+        // offsetTop + readingLineOffset - metrics.clientHeight * LOOKAHEAD
+        // 1000 - 800 * 0.12 = 1000 - 96 = 904
 
         const target = calculateVoiceTarget(
             1,
@@ -58,7 +58,7 @@ describe('calculateVoiceTarget', () => {
             isFlipVertical
         );
 
-        const expected = 1000 - (800 * (1 - VOICE_CONFIG.LOOKAHEAD_POSITION));
+        const expected = 1000 - (800 * VOICE_CONFIG.LOOKAHEAD_POSITION);
         expect(target).toBeCloseTo(expected);
     });
 
