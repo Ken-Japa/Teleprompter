@@ -150,10 +150,11 @@ export const VOICE_CONFIG = {
   // --- DAMPING & PHYSICS (LAYER 2) ---
   DAMPING: {
     enabled: true,
-    OSCILLATION_THRESHOLD: 8, // px - Ignore small reversals to prevent jitter (was 15)
-    MAX_FOLLOW_VELOCITY: 30, // px/frame - Cap speed to prevent teleporting (was 8)
+    OSCILLATION_THRESHOLD: 12, // px - Ignore small reversals to prevent jitter (was 15)
+    MAX_FOLLOW_VELOCITY: 50, // px/frame - Cap speed to prevent teleporting (was 8)
     DEADZONE_PX: 1, // px - Minimum move threshold (was 4)
-    JERK_LIMIT: 2.0, // limit change in velocity (was 0.5)
+    JERK_LIMIT: 2.5, // limit change in velocity (was 0.5)
+    INITIAL_SNAP_THRESHOLD: 200, // px - If distance is more than this on first match, jump (snap) instead of damp
   },
 
   // --- HYSTERESIS & STABILITY ---
@@ -335,6 +336,13 @@ export const VOICE_CONFIG = {
       },
     },
   },
+
+  // Unified Regex: Matches color tags <r>...</r> OR brackets [...]
+  // Group 1: Tag char (r,y,g,b,blue)
+  // Group 2: Tag content
+  // Group 3: Square Bracket match [ ... ] (max 100 chars, no newlines)
+  // Group 4: Angle Bracket match < ... > (max 100 chars, no newlines, avoids known tags)
+  TOKEN_REGEX: /<(r|y|g|blue)>([\s\S]*?)<\/\1>|(\[[^\]\n]{1,100}\])|(<(?!\/?(?:bold|i|u|b|r|y|g|strong|em|blue)\b)[^>\n]{1,100}>)/g,
 
   // --- SESSION ANALYTICS ---
   SESSION_ANALYTICS: {

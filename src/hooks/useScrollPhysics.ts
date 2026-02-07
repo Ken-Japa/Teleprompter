@@ -276,6 +276,16 @@ export const useScrollPhysics = ({
         if (targetVoiceScrollRef.current !== null) {
           const diff = targetVoiceScrollRef.current - internalScrollPos.current;
 
+          // --- LAYER 1: INITIAL SNAP (NEW) ---
+          // If this is the first match of the session and distance is large, jump instead of sliding.
+          const maxSnap = (VOICE_CONFIG.DAMPING as any).INITIAL_SNAP_THRESHOLD || 400;
+          if (lastTargetVoiceScrollRef.current === null && Math.abs(diff) > maxSnap) {
+            console.log(`[Physics] Initial Snap triggered: jumping ${diff.toFixed(0)}px`);
+            internalScrollPos.current = targetVoiceScrollRef.current;
+            lastTargetVoiceScrollRef.current = targetVoiceScrollRef.current;
+            return;
+          }
+
           if (Math.abs(diff) > (PHYSICS_CONSTANTS.SCROLL_TOLERANCE || 1)) {
             // --- LAYER 2 DAMPING (NEW) ---
             const damping = (VOICE_CONFIG as any).DAMPING;

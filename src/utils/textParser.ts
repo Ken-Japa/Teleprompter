@@ -30,11 +30,11 @@ export const parseTextToSentences = (
     }[] = [];
 
     // Unified Regex: Matches color tags <r>...</r> OR brackets [...]
-    // Group 1: Tag char (r,y,g,b)
+    // Group 1: Tag char (r,y,g,b,blue)
     // Group 2: Tag content
     // Group 3: Square Bracket match [ ... ] (max 100 chars, no newlines)
     // Group 4: Angle Bracket match < ... > (max 100 chars, no newlines, avoids known tags)
-    const TOKEN_REGEX = /<([ryg])>([\s\S]*?)<\/\1>|(\[[^\]\n]{1,100}\])|(<(?!\/?(?:bold|i|u|b|r|y|g|strong|em)\b)[^>\n]{1,100}>)/g;
+    const TOKEN_REGEX = /<(r|y|g|blue)>([\s\S]*?)<\/\1>|(\[[^\]\n]{1,100}\])|(<(?!\/?(?:bold|i|u|b|r|y|g|strong|em|blue)\b)[^>\n]{1,100}>)/g;
 
     let lastIndex = 0;
     let match;
@@ -44,6 +44,7 @@ export const parseTextToSentences = (
         y: "yellow",
         g: "green",
         b: "blue",
+        blue: "blue",
     };
 
     while ((match = TOKEN_REGEX.exec(text)) !== null) {
@@ -261,7 +262,9 @@ export const parseTextToSentences = (
 
             const isChord = isChordLine(trimmedContent);
             // Sentence is inertial if it has content but no readable text for voice control
-            const isInertial = (clean.length === 0 || isChord) && (trimmedContent.length > 0 || currentFragments.length > 0);
+            // FIXED: We also check if the voiceText is empty even if there are fragments (e.g. style tags only)
+            const isPurelyTags = trimmedContent.length > 0 && voiceText.trim().length === 0;
+            const isInertial = (clean.length === 0 || isChord || isPurelyTags) && (trimmedContent.length > 0 || currentFragments.length > 0);
 
             processedSentences.push({
                 id: sentenceIdCounter++,

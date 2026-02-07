@@ -418,11 +418,18 @@ export const useVoiceControl = (
             ? VOICE_CONFIG.SENTENCE_COMPLETION.punctPauseTimeout
             : VOICE_CONFIG.SENTENCE_COMPLETION.standardPauseTimeout;
 
+        // Check for Inertial Advance (NEW)
+        const isInertial = currentSentence?.isInertial;
+        const inertialTimeout = 800; // ms to wait before moving past non-readable segment
+
         // Check if we should auto-advance
         if (
-            voiceProgress >= VOICE_CONFIG.SENTENCE_COMPLETION.minProgress &&
-            timeSinceLastSpeech >= effectivePauseTimeout &&
-            lockedSentenceIdRef.current >= 0
+            lockedSentenceIdRef.current >= 0 &&
+            (
+                (voiceProgress >= VOICE_CONFIG.SENTENCE_COMPLETION.minProgress &&
+                    timeSinceLastSpeech >= effectivePauseTimeout) ||
+                (isInertial && timeSinceLastSpeech >= inertialTimeout)
+            )
         ) {
             const nextSentenceId = lockedSentenceIdRef.current + 1;
             if (nextSentenceId < sentences.length) {
