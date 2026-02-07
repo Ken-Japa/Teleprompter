@@ -150,10 +150,10 @@ export const VOICE_CONFIG = {
   // --- DAMPING & PHYSICS (LAYER 2) ---
   DAMPING: {
     enabled: true,
-    OSCILLATION_THRESHOLD: 15, // px - Ignore small reversals to prevent jitter
-    MAX_FOLLOW_VELOCITY: 8, // px/frame - Cap speed to prevent teleporting
-    DEADZONE_PX: 4, // px - Minimum move threshold
-    JERK_LIMIT: 0.5, // limit change in velocity
+    OSCILLATION_THRESHOLD: 8, // px - Ignore small reversals to prevent jitter (was 15)
+    MAX_FOLLOW_VELOCITY: 30, // px/frame - Cap speed to prevent teleporting (was 8)
+    DEADZONE_PX: 1, // px - Minimum move threshold (was 4)
+    JERK_LIMIT: 2.0, // limit change in velocity (was 0.5)
   },
 
   // --- HYSTERESIS & STABILITY ---

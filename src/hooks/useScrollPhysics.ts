@@ -12,6 +12,7 @@ interface PhysicsParams {
   bpm: number;
   activeSentenceIndex: number;
   voiceProgress?: number;
+  lerpFactor?: number;
   isFlipVertical?: boolean;
   metricsRef: React.MutableRefObject<{
     scrollHeight: number;
@@ -49,6 +50,7 @@ export const useScrollPhysics = ({
   speed,
   activeSentenceIndex,
   voiceProgress = 0,
+  lerpFactor,
   isFlipVertical,
   metricsRef,
   scrollContainerRef,
@@ -82,6 +84,7 @@ export const useScrollPhysics = ({
   const isVoiceModeRef = useRef(isVoiceMode);
   const activeSentenceIndexRef = useRef(activeSentenceIndex);
   const voiceProgressRef = useRef(voiceProgress);
+  const lerpFactorRef = useRef(lerpFactor);
   const isFlipVerticalRef = useRef(isFlipVertical);
   const bpmRef = useRef(bpm);
   const backingTrackProgressRef = useRef(backingTrackProgress);
@@ -103,6 +106,9 @@ export const useScrollPhysics = ({
   useEffect(() => {
     voiceProgressRef.current = voiceProgress;
   }, [voiceProgress]);
+  useEffect(() => {
+    lerpFactorRef.current = lerpFactor;
+  }, [lerpFactor]);
   useEffect(() => {
     isFlipVerticalRef.current = isFlipVertical;
   }, [isFlipVertical]);
@@ -273,7 +279,8 @@ export const useScrollPhysics = ({
           if (Math.abs(diff) > (PHYSICS_CONSTANTS.SCROLL_TOLERANCE || 1)) {
             // --- LAYER 2 DAMPING (NEW) ---
             const damping = (VOICE_CONFIG as any).DAMPING;
-            let voiceDelta = diff * (VOICE_CONFIG.SCROLL_LERP_FACTOR * timeScale);
+            const effectiveLerp = lerpFactorRef.current || VOICE_CONFIG.SCROLL_LERP_FACTOR;
+            let voiceDelta = diff * (effectiveLerp * timeScale);
 
             if (damping?.enabled) {
               // 1. Deadzone
