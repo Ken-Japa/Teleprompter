@@ -569,7 +569,8 @@ Cole seu roteiro aqui e personalize sua experiência para começar a brilhar!`,
       title: "Microfone Bloqueado",
       description: "O Safari bloqueou o acesso. Clique abaixo para tentar reativar ou siga a dica nos ajustes.",
       action: "Tentar Novamente",
-    }
+    },
+    proFeature: "Recurso PRO",
   },
   share: {
     button: "Compartilhar PromptNinja",

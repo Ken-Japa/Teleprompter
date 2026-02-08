@@ -565,7 +565,8 @@ Paste your script here and customize your experience to start shining!`,
       title: "Microphone Blocked",
       description: "Safari blocked access. Click below to try re-activating or follow the tip in settings.",
       action: "Try Again",
-    }
+    },
+    proFeature: "Pro Feature",
   },
   share: {
     button: "Share PromptNinja",

@@ -68,11 +68,11 @@ export const parseTextToSentences = (
                 isTag: true
             });
         }
-        // Check if it's an Angle Bracket match < ... > (if enabled)
-        else if (match[4] && autoColorBrackets) {
+        // Check if it's an Angle Bracket match < ... > 
+        else if (match[4]) {
             tokens.push({
                 text: match[4],
-                type: "blue",
+                type: autoColorBrackets ? "blue" : "normal",
                 absoluteStart: match.index,
                 isTag: true
             });

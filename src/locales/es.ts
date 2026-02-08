@@ -573,7 +573,8 @@ Usa las etiquetas de color para resaltar momentos importantes en tu guion.
       title: "Micrófono Bloqueado",
       description: "Safari bloqueó el acceso. Haz clic abajo para intentar reactivar o sigue el consejo en los ajustes.",
       action: "Intentar de nuevo",
-    }
+    },
+    proFeature: "Característica PRO",
   },
   share: {
     button: "Compartir PromptNinja",
