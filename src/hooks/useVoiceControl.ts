@@ -1119,8 +1119,17 @@ export const useVoiceControl = (
                         }
                         match = fallbackMatch;
                     } else if (isForwardJump) {
-                        // NEVER allow forward jumps from fallback - too dangerous
-                        console.warn(`[Voice] Fallback BLOCKED: Forward jump rejected (too risky)`);
+                        // NEW RULES: Allow forward jumps if EXTREMELY confident
+                        // This fixes the "Long Jump" issue where user reads from end of script
+                        const isExtremeConfidence = fallbackMatch.ratio < 0.10; // 90%+ accuracy
+
+                        if (isExtremeConfidence) {
+                            console.log(`[Voice] ✅ Fallback Forward Jump ACCEPTED (Confidence: ${((1 - fallbackMatch.ratio) * 100).toFixed(1)}%)`);
+                            match = fallbackMatch;
+                        } else {
+                            // blocked
+                            console.warn(`[Voice] Fallback BLOCKED: Forward jump rejected (Ratio ${fallbackMatch.ratio.toFixed(2)} > 0.10)`);
+                        }
                     } else {
                         console.warn(`[Voice] Fallback rejected: Sentence dist ${sentenceDistance}, Ratio ${fallbackMatch.ratio.toFixed(3)}`);
                         voiceDiagnostics.recordMiss({

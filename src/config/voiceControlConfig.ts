@@ -150,11 +150,11 @@ export const VOICE_CONFIG = {
   // --- DAMPING & PHYSICS (LAYER 2) ---
   DAMPING: {
     enabled: true,
-    OSCILLATION_THRESHOLD: 12, // px - Ignore small reversals to prevent jitter (was 15)
-    MAX_FOLLOW_VELOCITY: 50, // px/frame - Cap speed to prevent teleporting (was 8)
-    DEADZONE_PX: 1, // px - Minimum move threshold (was 4)
-    JERK_LIMIT: 2.5, // limit change in velocity (was 0.5)
-    INITIAL_SNAP_THRESHOLD: 200, // px - If distance is more than this on first match, jump (snap) instead of damp
+    OSCILLATION_THRESHOLD: 20, // px - Ignore small reversals to prevent jitter (was 15)
+    MAX_FOLLOW_VELOCITY: 80, // px/frame - Cap speed to prevent teleporting (was 8)
+    DEADZONE_PX: 2, // px - Minimum move threshold (was 4)
+    JERK_LIMIT: 5.0, // limit change in velocity (was 0.5)
+    INITIAL_SNAP_THRESHOLD: 300, // px - If distance is more than this on first match, jump (snap) instead of damp
   },
 
   // --- HYSTERESIS & STABILITY ---
@@ -204,7 +204,7 @@ export const VOICE_CONFIG = {
   ADVANCED_MATCHING: {
     maxWideJump: 250, // characters
     globalSearchOnStart: true,
-    globalSearchFailureThreshold: 10,
+    globalSearchFailureThreshold: 4, // Reduced from 10 to trigger global search faster
   },
 
   SEARCH_WINDOW: {
@@ -436,9 +436,9 @@ export const VOICE_CONFIG = {
 
   // --- DYNAMIC JUMP LIMITS ---
   DYNAMIC_JUMP_LIMITS: {
-    DEFAULT: 250,
+    DEFAULT: 2500, // Increased from 250 to allow searching wider range
     ON_REACTIVATION: 2500,
-    ON_RECOVERY: 1000,
+    ON_RECOVERY: 2500, // Normalized to wide search
     REACTIVATION_GRACE_PERIOD: 2500,
   },
 };
