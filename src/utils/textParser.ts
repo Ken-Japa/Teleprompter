@@ -35,7 +35,7 @@ export const parseTextToSentences = (
     // Group 2: Tag content
     // Group 3: Square Bracket match [ ... ] (max 1000 chars, no newlines)
     // Group 4: Angle Bracket match < ... > (max 1000 chars, no newlines, avoids known tags)
-    const TOKEN_REGEX = /<(r|y|g|blue)>([\s\S]*?)<\/\1>|(\[[^\]\n]{1,1000}\])|(<(?!\/?(?:bold|i|u|b|r|y|g|strong|em|blue)\b)[^>\n]{1,1000}>)/g;
+    const TOKEN_REGEX = /<(r|y|g|b|blue)>([\s\S]*?)<\/\1>|(\[[^\]\n]{1,1000}\])|(<(?!\/?(?:bold|i|u|b|r|y|g|strong|em|blue)\b)[^>\n]{1,1000}>)/g;
 
     let lastIndex = 0;
     let match;
@@ -84,7 +84,7 @@ export const parseTextToSentences = (
                 text: match[2],
                 type: colorMap[code] || "normal",
                 absoluteStart: match.index,
-                innerOffset: 3 // length of <r>, <y>, <g>, <b>
+                innerOffset: code.length + 2 // length of <r>, <y>, <g>, <b> (3) or <blue> (6)
             });
         } else {
             // If it matched Group 4 but autoColorBrackets is off, or it's an unhandled case, push as normal text
@@ -115,7 +115,7 @@ export const parseTextToSentences = (
         const fragments: typeof tokens = [];
 
         // Pass 2a: Process BOLD <bold>...</bold> or <b>...</b>
-        const BOLD_REGEX = /<(?:bold|b)>([\s\S]*?)<\/(?:bold|b)>/g;
+        const BOLD_REGEX = /<(?:bold|strong)>([\s\S]*?)<\/(?:bold|strong)>/g;
         let boldLastIndex = 0;
         let boldMatch;
         let baseStart = token.absoluteStart + (token.innerOffset || 0);
@@ -148,7 +148,7 @@ export const parseTextToSentences = (
         // Pass 2b: Process ITALIC <i>...</i>
         const italicFragments: typeof tokens = [];
         fragments.forEach(frag => {
-            const ITALIC_REGEX = /<(?:italic|i)>([\s\S]*?)<\/(?:italic|i)>/g;
+            const ITALIC_REGEX = /<(?:italic|em|i)>([\s\S]*?)<\/(?:italic|em|i)>/g;
             let italicLastIndex = 0;
             let italicMatch;
             let hasItalic = false;

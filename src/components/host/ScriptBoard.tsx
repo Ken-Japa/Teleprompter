@@ -203,7 +203,7 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
               {/* Primary Language Column */}
               <div className="flex-1">
                 <div
-                  className="font-sans font-bold whitespace-pre-wrap text-center leading-tight outline-none transition-colors duration-500 text-optimize"
+                  className="font-sans whitespace-pre-wrap text-center leading-tight outline-none transition-colors duration-500 text-optimize"
                   style={{ fontSize: "var(--prompter-font-size)" }}
                 >
                   {bilingualSentences.primary.map((s: Sentence) => (
@@ -227,7 +227,7 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
               {/* Secondary Language Column */}
               <div className="flex-1">
                 <div
-                  className="font-sans font-bold whitespace-pre-wrap text-center leading-tight outline-none transition-colors duration-500 text-optimize"
+                  className="font-sans whitespace-pre-wrap text-center leading-tight outline-none transition-colors duration-500 text-optimize"
                   style={{ fontSize: "var(--prompter-font-size)" }}
                 >
                   {bilingualSentences.secondary.map((s: Sentence) => (
@@ -284,7 +284,6 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
             style={{
               fontSize: "var(--prompter-font-size)",
               fontFamily: "var(--prompter-font-family)",
-              fontWeight: "bold"
             }}
           >
             {processedSentences.map((s: Sentence) => (
