@@ -23,7 +23,7 @@ export const PROMPTER_DEFAULTS = {
     IS_UPPERCASE: false,
     IS_FLIP_VERTICAL: false,
     IS_FOCUS_MODE: false,
-    IS_AUTO_COLOR: false,
+    IS_AUTO_COLOR: true,
     // LocalStorage Keys
     STORAGE_KEYS: {
         FONT_SIZE: "promptninja_font",
