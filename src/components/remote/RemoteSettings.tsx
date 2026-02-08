@@ -44,6 +44,21 @@ export const RemoteSettings: React.FC<RemoteSettingsProps> = ({ settings, action
                 />
             </div>
 
+            {/* Font Weight */}
+            <div className="space-y-3">
+                <div className="flex justify-between text-sm text-slate-400 uppercase tracking-widest font-bold">
+                    <span>{t("host.controls.fontWeight") || "Espessura"}</span>
+                    <span>{settings.fontWeight}</span>
+                </div>
+                <input
+                    type="range" min="100" max="900" step="100"
+                    value={settings.fontWeight}
+                    onChange={(e) => actions.handleSettingsChange({ fontWeight: parseInt(e.target.value) })}
+                    className="w-full h-4 bg-slate-800 rounded-full appearance-none cursor-pointer accent-brand-500"
+                    aria-label="Font Weight"
+                />
+            </div>
+
             {/* Voice Control Mode */}
             {isPro && (
                 <div className="space-y-3">

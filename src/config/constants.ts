@@ -19,6 +19,7 @@ export const PROMPTER_DEFAULTS = {
     FONT_SIZE: 64,
     MARGIN: 10,
     FONT_FAMILY: "sans-serif",
+    FONT_WEIGHT: 600,
     IS_MIRRORED: false,
     IS_UPPERCASE: false,
     IS_FLIP_VERTICAL: false,
@@ -28,6 +29,7 @@ export const PROMPTER_DEFAULTS = {
     STORAGE_KEYS: {
         FONT_SIZE: "promptninja_font",
         FONT_FAMILY: "promptninja_font_family",
+        FONT_WEIGHT: "promptninja_font_weight",
         MARGIN: "promptninja_margin",
         MIRROR: "promptninja_mirror",
         THEME: "promptninja_theme",
@@ -84,6 +86,8 @@ export const MIDI_DEFAULTS: Record<string, { type: "note" | "cc", value: number 
     SPEED_DOWN: null,
     FONT_INCREASE: null,
     FONT_DECREASE: null,
+    FONT_WEIGHT_UP: null,
+    FONT_WEIGHT_DOWN: null,
     RESET: null,
     TOGGLE_MIRROR: null,
     EXIT: null,
@@ -125,6 +129,11 @@ export const UI_LIMITS = {
         MIN: 20, // Unified minimum (was 24 in slider, 20 in button logic)
         MAX: 200,
         STEP_BUTTON: 4,
+    },
+    FONT_WEIGHT: {
+        MIN: 100,
+        MAX: 900,
+        STEP: 100,
     },
     HUD: {
         TIMEOUT_MS: 3000,

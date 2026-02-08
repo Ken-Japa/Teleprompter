@@ -145,6 +145,7 @@ export interface PrompterSettings {
     isBilingualMode: boolean; // Bilingual mode
     bilingualConfig?: BilingualConfig; // Bilingual configuration
     fontFamily: string;
+    fontWeight: number;
     voiceLanguage?: string; // Idioma manual para o controle de voz quando não estiver em modo bilíngue
     bpm: number; // Musician mode BPM
     autoBpmEnabled: boolean; // Whether auto-BPM from mic is enabled

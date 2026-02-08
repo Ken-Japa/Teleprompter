@@ -18,10 +18,11 @@ interface ScriptBoardProps {
     secondary: Sentence[];
   };
   fontSize?: number;
+  fontWeight?: number;
   margin?: number;
 }
 
-export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, theme, isMusicianMode, isBilingualMode, bilingualSentences, fontSize = 60, margin = 10 }: ScriptBoardProps) => {
+export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, theme, isMusicianMode, isBilingualMode, bilingualSentences, fontSize = 60, fontWeight = 400, margin = 10 }: ScriptBoardProps) => {
   const { t } = useTranslation();
 
   const watermarkIndexes = useMemo(() => {
@@ -204,7 +205,7 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
               <div className="flex-1">
                 <div
                   className="font-sans whitespace-pre-wrap text-center leading-tight outline-none transition-colors duration-500 text-optimize"
-                  style={{ fontSize: "var(--prompter-font-size)" }}
+                  style={{ fontSize: "var(--prompter-font-size)", fontWeight: "var(--prompter-font-weight)" }}
                 >
                   {bilingualSentences.primary.map((s: Sentence) => (
                     <SentenceItem
@@ -216,6 +217,7 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
                       command={s.command}
                       originalSentenceId={s.originalSentenceId}
                       darkMode={true}
+                      fontWeight={fontWeight}
                     />
                   ))}
                 </div>
@@ -228,7 +230,7 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
               <div className="flex-1">
                 <div
                   className="font-sans whitespace-pre-wrap text-center leading-tight outline-none transition-colors duration-500 text-optimize"
-                  style={{ fontSize: "var(--prompter-font-size)" }}
+                  style={{ fontSize: "var(--prompter-font-size)", fontWeight: "var(--prompter-font-weight)" }}
                 >
                   {bilingualSentences.secondary.map((s: Sentence) => (
                     <SentenceItem
@@ -236,6 +238,7 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
                       id={s.id}
                       fragments={s.fragments}
                       command={s.command}
+                      fontWeight={fontWeight}
                     />
                   ))}
                 </div>
@@ -283,11 +286,12 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
             className={`${isMusicianMode ? "font-mono whitespace-pre text-left" : "whitespace-pre-wrap text-center"} leading-tight outline-none transition-colors duration-500 text-optimize`}
             style={{
               fontSize: "var(--prompter-font-size)",
+              fontWeight: "var(--prompter-font-weight)",
               fontFamily: "var(--prompter-font-family)",
             }}
           >
             {processedSentences.map((s: Sentence) => (
-              <SentenceItem key={s.id} id={s.id} fragments={s.fragments} isChord={s.isChord} isMusicianMode={isMusicianMode} command={s.command} originalSentenceId={s.originalSentenceId} darkMode={true} />
+              <SentenceItem key={s.id} id={s.id} fragments={s.fragments} isChord={s.isChord} isMusicianMode={isMusicianMode} command={s.command} originalSentenceId={s.originalSentenceId} darkMode={true} fontWeight={fontWeight} />
             ))}
           </div>
         </div>

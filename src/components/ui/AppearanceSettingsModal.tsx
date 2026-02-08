@@ -15,7 +15,8 @@ import {
     ApertureIcon,
     FlipIcon,
     MaximizeIcon,
-    CheckIcon
+    CheckIcon,
+    BoldIcon
 } from "./Icons";
 import { NDIOutputToggle } from "../host/NDIOutputToggle";
 
@@ -38,6 +39,7 @@ export const AppearanceSettingsModal = memo(({ isOpen, onClose, settings, action
         theme,
         fontFamily,
         fontSize,
+        fontWeight,
         margin,
         isUpperCase,
         isFocusMode,
@@ -48,6 +50,7 @@ export const AppearanceSettingsModal = memo(({ isOpen, onClose, settings, action
         setTheme,
         setFontFamily,
         setFontSize,
+        setFontWeight,
         setMargin,
         setIsUpperCase,
         setIsFocusMode,
@@ -92,6 +95,12 @@ export const AppearanceSettingsModal = memo(({ isOpen, onClose, settings, action
         trackSettingChange("font_size", finalSize);
         setFontSize(newSize);
     }, [fontSize, setFontSize]);
+
+    const handleSetFontWeight = useCallback((newWeight: number | ((prevWeight: number) => number)) => {
+        const finalWeight = typeof newWeight === 'function' ? newWeight(fontWeight) : newWeight;
+        trackSettingChange("font_weight", finalWeight);
+        setFontWeight(newWeight);
+    }, [fontWeight, setFontWeight]);
 
     const handleSetMargin = useCallback((newMargin: number | ((v: number) => number)) => {
         const finalMargin = typeof newMargin === 'function' ? newMargin(margin) : newMargin;
@@ -204,6 +213,31 @@ export const AppearanceSettingsModal = memo(({ isOpen, onClose, settings, action
                                     ariaLabel={t("host.controls.fontSize")}
                                 />
                                 <span className="text-sm font-mono text-slate-300">{fontSize}px</span>
+                            </div>
+                        </div>
+
+                        {/* Font Weight Section */}
+                        <div className="space-y-3">
+                            <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                                <BoldIcon className="w-4 h-4" />
+                                {t("host.controls.fontWeight") || "Espessura"}
+                            </label>
+                            <div className="flex flex-col items-center space-y-2 px-2">
+                                <S.RangeSlider
+                                    value={fontWeight}
+                                    min={100}
+                                    max={900}
+                                    step={100}
+                                    onChange={handleSetFontWeight}
+                                    width="w-full"
+                                    ariaLabel={t("host.controls.fontWeight")}
+                                />
+                                <div className="flex justify-between w-full text-xs text-slate-500 font-mono px-1">
+                                    <span>Thin</span>
+                                    <span>Regular</span>
+                                    <span>Bold</span>
+                                    <span>Black</span>
+                                </div>
                             </div>
                         </div>
 
@@ -331,6 +365,25 @@ export const AppearanceSettingsModal = memo(({ isOpen, onClose, settings, action
                                 ariaLabel={t("host.controls.fontSize")}
                             />
                             <span className="text-sm font-mono text-slate-300">{fontSize}px</span>
+                        </div>
+                    </div>
+
+                    {/* Font Weight Control */}
+                    <div className="space-y-3 mb-4">
+                        <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                            <BoldIcon className="w-4 h-4" />
+                            {t("host.controls.fontWeight") || "Espessura"}
+                        </label>
+                        <div className="flex flex-col items-center space-y-2">
+                            <S.RangeSlider
+                                value={fontWeight}
+                                min={100}
+                                max={900}
+                                step={100}
+                                onChange={handleSetFontWeight}
+                                width="w-full"
+                                ariaLabel={t("host.controls.fontWeight")}
+                            />
                         </div>
                     </div>
 

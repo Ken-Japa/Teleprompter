@@ -1038,6 +1038,7 @@ export const Prompter = memo(
 
           return {
             "--prompter-font-size": `${fontSize}px`,
+            "--prompter-font-weight": settings.fontWeight,
             "--prompter-font-family": fontFamilyValue,
             "--prompter-content-width": isWidgetMode ? "100%" : `calc(50% + ${margin}%)`,
           } as React.CSSProperties;
@@ -1149,6 +1150,7 @@ export const Prompter = memo(
                 isBilingualMode={isBilingualMode}
                 bilingualSentences={bilingualSentences || undefined}
                 fontSize={fontSize}
+                fontWeight={settings.fontWeight}
                 margin={margin}
               />
             </S.PrompterScrollArea>

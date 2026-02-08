@@ -8,6 +8,7 @@ export type { PrompterSettings }; // Re-export type
 
 export interface PrompterActions {
     setFontSize: (val: number | ((v: number) => number)) => void;
+    setFontWeight: (val: number | ((v: number) => number)) => void;
     setMargin: (val: number | ((v: number) => number)) => void;
     setIsMirrored: (val: boolean) => void;
     setTheme: (val: Theme | ((v: Theme) => Theme)) => void;
@@ -51,6 +52,10 @@ export const usePrompterSettings = (featureFlags: PrompterFeatureFlags = {}) => 
     const [fontFamily, setFontFamily] = useLocalStorage<string>(
         getStorageKey(PROMPTER_DEFAULTS.STORAGE_KEYS.FONT_FAMILY),
         PROMPTER_DEFAULTS.FONT_FAMILY
+    );
+    const [fontWeight, setFontWeight] = useLocalStorage<number>(
+        getStorageKey(PROMPTER_DEFAULTS.STORAGE_KEYS.FONT_WEIGHT),
+        PROMPTER_DEFAULTS.FONT_WEIGHT
     );
     const [margin, setMargin] = useLocalStorage<number>(
         getStorageKey(PROMPTER_DEFAULTS.STORAGE_KEYS.MARGIN),
@@ -179,6 +184,7 @@ export const usePrompterSettings = (featureFlags: PrompterFeatureFlags = {}) => 
     const settings: PrompterSettings = {
         fontSize,
         fontFamily,
+        fontWeight,
         margin,
         isMirrored,
         theme,
@@ -202,6 +208,7 @@ export const usePrompterSettings = (featureFlags: PrompterFeatureFlags = {}) => 
 
     const actions: PrompterActions = {
         setFontSize: (v) => { setFontSize(v); /* Rate limit in UI usually, tracking here might be noisy */ },
+        setFontWeight: (v) => { setFontWeight(v); trackSettingChange("font_weight", String(v)); },
         setFontFamily: wrapSetter(setFontFamily, "font_family"),
         setMargin: (v) => { setMargin(v); },
         setIsMirrored: wrapToggle(setIsMirrored, "mirror_mode"),
