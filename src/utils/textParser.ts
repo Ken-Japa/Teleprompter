@@ -27,14 +27,15 @@ export const parseTextToSentences = (
         underline?: boolean;
         absoluteStart: number;
         innerOffset?: number;
+        isTag?: boolean; // NEW: Mark token as an instruction tag or bracketed content
     }[] = [];
 
     // Unified Regex: Matches color tags <r>...</r> OR brackets [...]
     // Group 1: Tag char (r,y,g,b,blue)
     // Group 2: Tag content
-    // Group 3: Square Bracket match [ ... ] (max 100 chars, no newlines)
-    // Group 4: Angle Bracket match < ... > (max 100 chars, no newlines, avoids known tags)
-    const TOKEN_REGEX = /<(r|y|g|blue)>([\s\S]*?)<\/\1>|(\[[^\]\n]{1,100}\])|(<(?!\/?(?:bold|i|u|b|r|y|g|strong|em|blue)\b)[^>\n]{1,100}>)/g;
+    // Group 3: Square Bracket match [ ... ] (max 1000 chars, no newlines)
+    // Group 4: Angle Bracket match < ... > (max 1000 chars, no newlines, avoids known tags)
+    const TOKEN_REGEX = /<(r|y|g|blue)>([\s\S]*?)<\/\1>|(\[[^\]\n]{1,1000}\])|(<(?!\/?(?:bold|i|u|b|r|y|g|strong|em|blue)\b)[^>\n]{1,1000}>)/g;
 
     let lastIndex = 0;
     let match;
@@ -63,7 +64,8 @@ export const parseTextToSentences = (
             tokens.push({
                 text: match[3],
                 type: "red",
-                absoluteStart: match.index
+                absoluteStart: match.index,
+                isTag: true
             });
         }
         // Check if it's an Angle Bracket match < ... > (if enabled)
@@ -71,7 +73,8 @@ export const parseTextToSentences = (
             tokens.push({
                 text: match[4],
                 type: "blue",
-                absoluteStart: match.index
+                absoluteStart: match.index,
+                isTag: true
             });
         }
         else if (match[1]) {
@@ -231,7 +234,7 @@ export const parseTextToSentences = (
             }
         });
 
-        processedTokens.push(...finalFragments);
+        processedTokens.push(...finalFragments.map(f => ({ ...f, isTag: token.isTag })));
     });
 
     // 2. Sentence Splitting: Iterate tokens and break on punctuation
@@ -297,6 +300,25 @@ export const parseTextToSentences = (
     };
 
     processedTokens.forEach((token) => {
+        if (token.isTag) {
+            // Force break BEFORE the tag if there's content
+            if (currentCleanContent.trim().length > 0) {
+                finalizeSentence();
+            }
+
+            // The actual character index in the original text for this tag
+            const tagAbsoluteStart = (token.absoluteStart + (token.innerOffset || 0));
+
+            // Start tag sentence
+            currentSentenceStartIndex = tagAbsoluteStart;
+            currentFragments.push({ text: token.text, type: token.type, bold: token.bold, italic: token.italic, underline: token.underline });
+            currentCleanContent = token.text;
+
+            // Force break AFTER the tag
+            finalizeSentence(true);
+            return;
+        }
+
         const parts = token.text.split(/([.!?\n]+)/);
         let localOffset = 0;
 
