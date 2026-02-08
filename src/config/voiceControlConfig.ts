@@ -150,11 +150,11 @@ export const VOICE_CONFIG = {
   // --- DAMPING & PHYSICS (LAYER 2) ---
   DAMPING: {
     enabled: true,
-    OSCILLATION_THRESHOLD: 20, // px - Ignore small reversals to prevent jitter (was 15)
-    MAX_FOLLOW_VELOCITY: 80, // px/frame - Cap speed to prevent teleporting (was 8)
-    DEADZONE_PX: 2, // px - Minimum move threshold (was 4)
-    JERK_LIMIT: 5.0, // limit change in velocity (was 0.5)
-    INITIAL_SNAP_THRESHOLD: 300, // px - If distance is more than this on first match, jump (snap) instead of damp
+    OSCILLATION_THRESHOLD: 12, // px - Ignore small reversals to prevent jitter (was 15)
+    MAX_FOLLOW_VELOCITY: 60, // px/frame - Cap speed to prevent teleporting (was 8)
+    DEADZONE_PX: 1, // px - Minimum move threshold (was 4)
+    JERK_LIMIT: 3.0, // limit change in velocity (was 0.5)
+    INITIAL_SNAP_THRESHOLD: 150, // px - If distance is more than this on first match, jump (snap) instead of damp
   },
 
   // --- HYSTERESIS & STABILITY ---
@@ -202,7 +202,7 @@ export const VOICE_CONFIG = {
 
   // --- ADVANCED MATCHING ---
   ADVANCED_MATCHING: {
-    maxWideJump: 250, // characters
+    maxWideJump: 2500, // characters
     globalSearchOnStart: true,
     globalSearchFailureThreshold: 4, // Reduced from 10 to trigger global search faster
   },
@@ -218,7 +218,7 @@ export const VOICE_CONFIG = {
   SENTENCE_COMPLETION: {
     enabled: true,
     minProgress: 0.70,
-    standardPauseTimeout: 1200,
+    standardPauseTimeout: 1000,
     punctPauseTimeout: 300,
     autoAdvance: true,
     checkInterval: 200,
@@ -289,7 +289,7 @@ export const VOICE_CONFIG = {
     baselineWPM: 140, // Will be overridden by adaptive
     adaptLerpFactor: true,
     lerpMin: 0.20,
-    lerpMax: 0.50,
+    lerpMax: 0.60,
   },
 
   // --- CONFIDENCE LEARNING ---
