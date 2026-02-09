@@ -1,73 +1,74 @@
-# Lógica do Controle de Voz (PromptNinja)
+# Lógica do Controle de Voz (PromptNinja) - Estado Atual
 
-Este documento explica como o PromptNinja processa a sua voz para rolar o teleprompter automaticamente de forma suave e inteligente.
+Este documento detalha o funcionamento técnico do sistema de controle de voz, refletindo a implementação atual no código.
 
-## 1. Visão Geral
-O objetivo do controle de voz é manter a frase que você está lendo sempre em uma "linha de leitura" (geralmente no topo da tela, a cerca de 12% da altura do visor). O sistema não apenas identifica a frase atual, mas também a posição exata (progresso) dentro dela.
+## 1. Arquitetura de Estados
 
-## 2. Pilares da Lógica
+O sistema opera em uma hierarquia de três níveis para garantir estabilidade e precisão:
 
-### A. Arquitetura de "Lock" de Sentença
-O sistema divide o texto em frases e trabalha com dois estados:
-- **Locked Sentence (Frase Travada):** É a frase que o sistema tem certeza que você está lendo. Para mudar de frase, ele exige uma confirmação (Hysteresis) ou uma correspondência de alta confiança. A Hysteresis é o que impede o sistema de “oscilar” decisões quando a fala humana é naturalmente imperfeita. Define o ritmo de decisão do sistema.
-- **Intra-sentence Progress (Progresso Interno):** Dentro da frase travada, o sistema é mais flexível, permitindo que o scroll acompanhe cada palavra falada em tempo real.
+### A. Travamento de Sentença (Sentence Locking)
+O sistema mantém uma **Active Sentence (Sentença Ativa)**. 
+- **Hysteresis:** Para mudar a Sentença Ativa, o sistema exige confirmações baseadas em tempo e quadros (`REQUIRED_CONFIRMATIONS` ou `MS`) ou uma correspondência de alta confiança (`INSTANT_MATCH_THRESHOLD` > 0.90). Isso evita que ruídos causem pulos acidentais.
+- **Adaptive Throttling:** O processamento da fala é limitado dinamicamente (`THROTTLE_MS`) para economizar CPU, processando apenas quando há mudanças significativas na transcrição ou respeitando limites de desempenho.
 
-### B. O Motor de Busca (Matching Engine)
-Quando você fala, o sistema recebe um texto (transcrição) e tenta encontrá-lo no script original usando três técnicas:
-1.  **Fuzzy Matching (Busca Difusa):** Calcula a distância de Levenshtein (quantas letras são diferentes) entre o que foi dito e o script.
-2.  **Stemming (Radicalização):** Reduz as palavras aos seus radicais (ex: "ajudando" e "ajudamos" viram "ajud"). Isso ajuda a ignorar erros pequenos de conjugação ou plural na transcrição.
-3.  **Fonética (Metaphone):** Se a escrita falhar mas o *som* for muito parecido (ex: "Ken" vs "Quem"), o sistema dá um "bônus" de confiança na correspondência. Usa dois códigos fonéticos por palavra para capturar variações de pronúncia e sotaque, aumentando a tolerância a erros comuns do reconhecimento de voz.
+### B. Progresso Intra-Sentença
+Dentro da frase travada, o progresso (0.0 a 1.0) é calculado continuamente.
+- **Fuzzy Sync:** Permite que o scroll avance mesmo se palavras forem puladas ou ditas de forma ligeiramente diferente, mantendo o foco visual no ponto correto de leitura.
 
-### C. Estratégias de Recuperação (Rescue)
-Se o sistema não encontrar o que você disse perto da posição atual:
-1.  **Busca Segmentada:** Ele quebra a sua fala em pequenos pedaços (n-grams) e tenta encontrar um "consenso" de onde você pode estar.
-2.  **Look-Ahead (Olhar para frente):** Ele verifica se você já passou para a próxima frase.
-3.  **Emergency Recovery:** Se houver muitas falhas seguidas, o sistema entra em modo de emergência, fazendo uma busca em todo o script e relaxando as exigências de precisão para te encontrar novamente.
-
-### D. Validação de Pulos (Jump Guard)
-Para evitar que o teleprompter "pule" acidentalmente por causa de ruídos:
-- **Bloqueio de Pulos para Trás:** O sistema é extremamente rigoroso com pulos para trás, permitindo-os apenas se a precisão for quase perfeita (98%+).
-- **Hysteresis (Confirmação):** Transições entre frases distantes exigem que o sistema veja a mesma correspondência pelo menos 2 vezes ou por mais de 200ms antes de agir.
-
-## 3. Dinâmica do Scroll
-O scroll não é instantâneo; ele usa **Física de Suavização (LERP):**
-- O sistema calcula o "alvo" baseado no seu progresso na frase.
-- Ele move a tela gradualmente em direção a esse alvo.
-- **Adaptação de Velocidade:** O sistema aprende a sua velocidade de fala (WPM - Palavras por Minuto) e ajusta a suavidade do scroll para não ficar "nervoso" ou lento demais.
-
----
-Você fala
-  ↓
-Transcrição (Web Speech API)
-  ↓
-Normalização + Fonética
-  ↓
-Matching Local → Matching Global (se necessário)
-  ↓
-Confirmação (Hysteresis)
-  ↓
-Cálculo de Progresso
-  ↓
-Scroll com Física Suave
+### C. Inteligência Adaptativa
+O sistema "aprende" com o usuário durante a sessão (armazenado em `VoiceProfile` no localStorage):
+- **Confidence Learning:** O sistema avalia a qualidade dos matches para ajustar limiares de aceitação.
+- **Adaptive WPM:** Calcula a velocidade média de leitura (Palavras Por Minuto) para ajustar o `SCROLL_LERP_FACTOR` da sessão, tornando o movimento mais natural para locutores rápidos ou lentos.
 
 ---
 
-## Arquivos Responsáveis
+## 2. Motor de Comparação (Matching Engine)
 
-### 🧠 Configuração e Inteligência
-- `src/config/voiceControlConfig.ts`: Contém todos os "parâmetros de sensibilidade", regras de auto-aprendizado (WPM/Acurácia) e limites de pulos.
+O `stringSimilarity.ts` utiliza um sistema multi-sinal:
+1.  **Levenshtein Distance:** Compara a diferença bruta de caracteres.
+2.  **Stemming (Snowball):** Reduz palavras aos radicais (ex: "correndo" -> "corr").
+3.  **Fonética (Double Metaphone):** Gera códigos baseados no som. Se o match visual for fraco mas o som for idêntico, o sistema aplica um bônus de confiança (`phoneticWeight`).
+4.  **Jump Penalty:** Implementa uma penalidade exponencial baseada na distância do pulo (`JUMP_PENALTY.k`). Pulos maiores exigem uma clareza de fala significativamente maior para serem aceitos.
 
-### 🎮 Orquestração (O Cérebro)
-- `src/hooks/useVoiceControl.ts`: O hook principal. Gerencia a API de fala do navegador, limpa o texto, coordena as buscas e decide quando mudar de frase.
-- `src/utils/voiceDiagnostics.ts`: Monitora falhas e acertos em tempo real para diagnóstico técnico.
+---
 
-### ⚙️ Motor de Comparação (O Motor)
-- `src/utils/stringSimilarity.ts`: Onde estão os algoritmos matemáticos (Levenshtein, Stemming, Phonetics, Segmented Matching).
-- `src/utils/pronunciationMatcher.ts`: Normaliza palavras comuns ou apelidos (ex: transforma "ninja" em "PromptNinja" para facilitar a busca).
+## 3. Dinâmica de Scroll e Física
 
-### 📐 Física e Movimento
-- `src/hooks/physics/voiceScroll.ts`: Calcula a posição exata (pixels) em que o teleprompter deve estar baseado no seu progresso de fala.
-- `src/hooks/useScrollPhysics.ts`: Gerencia o movimento físico e a inércia do scroll.
+O scroll é gerenciado por camadas de física no `useScrollPhysics.ts`:
 
-### 🧹 Processamento de Texto
-- `src/utils/textParser.ts`: Divide o seu script original em frases limpas e mapeia cada caractere para uma frase, permitindo a sincronização precisa.
+### A. Camadas de Amortecimento (Damping)
+- **Initial Snap:** Se o primeiro match estiver longe da posição atual, o sistema realiza um salto instantâneo (`INITIAL_SNAP_THRESHOLD`) para evitar um deslize longo e cansativo.
+- **Oscillation Filtering:** Pequenas variações de "vai e vem" na transcrição são filtradas (`OSCILLATION_THRESHOLD`) para evitar que a tela trema.
+- **Jerk Limit:** Limita a variação brusca de velocidade, garantindo acelerações suaves.
+
+### B. Inércia Semântica (Grace Inertia)
+O sistema não para imediatamente se a voz falhar ou em pausas curtas:
+- **Velocity History:** Mantém um histórico (`HISTORY_MS`) da velocidade dos últimos matches realizados.
+- **Glide (Grace Duration):** Se o match falha, o prompter continua deslizando na velocidade média recente por um período (`STALL_THRESHOLD_MS`), aplicando um decaimento suave (`VELOCITY_DECAY`).
+- **Inertial Sentences:** Sentenças marcadas como `isInertial` (tags `<...>` ou acordes) mantém a inércia ativa para "atravessar" esses segmentos sem interrupção.
+
+---
+
+## 4. Recuperação de Erros (Rescue)
+
+Quando o sistema perde a sincronia, ele aplica estas estratégias em ordem:
+1.  **Look-Ahead:** Verifica a frase seguinte imediata.
+2.  **Segmented Matching:** Quebra a fala em fragmentos menores (n-grams) para encontrar um novo ponto de ancoragem no texto.
+3.  **Emergency Recovery:** Após várias falhas consecutivas (`FAILURE_THRESHOLD`), o sistema relaxa os limiares de confiança (`RELAXED_CONFIDENCE`) para facilitar o reencontro com a fala do usuário.
+
+---
+
+## Fluxo de Dados
+```mermaid
+graph TD
+    A[Voz] --> B[Web Speech API]
+    B --> C[Normalização & Throttling]
+    C --> D{Match Local?}
+    D -- Sim --> E[Atualiza Progresso & Velocity History]
+    D -- Não --> F{Rescue Strategy}
+    F -- Sucesso --> E
+    F -- Falha --> G[Inércia Semântica / Glide]
+    E --> H[Cálculo de Target Pixels]
+    G --> I[Scroll Suave / Damping]
+    H --> I
+```

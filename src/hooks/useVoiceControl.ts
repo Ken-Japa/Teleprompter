@@ -744,9 +744,10 @@ export const useVoiceControl = (
 
             // Apply the same cleaning logic as the parser to ensure matching works
             // FLEXIBLE NUMBER MATCHING: Remove digit sequences to allow natural number speech
+            // BUT preserve numbers that are part of alphanumeric strings (like "S1II", "8Kp30")
             cleanTranscript = cleanTranscript
                 .replace(/[^\p{L}\p{N}\s]/gu, "")
-                .replace(/\b\d+\b/g, " ") // Remove isolated numbers (flexible matching)
+                .replace(/(?<!\p{L})\d+(?!\p{L})/gu, " ") // Remove ONLY standalone numbers (not adjacent to letters)
                 .replace(/\s+/g, " ")
                 .trim();
 
@@ -1302,6 +1303,14 @@ export const useVoiceControl = (
                         lockedSentenceIdRef.current = newSentenceId;
                         hysteresisRef.current = null;
                         trackSessionMetrics(true, 0);
+
+                        // CRITICAL: Clear emergency recovery mode on successful match
+                        if (emergencyRecoveryRef.current.isActive) {
+                            console.log("[Voice] Emergency recovery deactivated (successful match found)");
+                            emergencyRecoveryRef.current.isActive = false;
+                            emergencyRecoveryRef.current.consecutiveFailures = 0;
+                            emergencyRecoveryRef.current.failureTimestamps = [];
+                        }
                     } else {
                         // Needs verification (Hysteresis)
                         if (!hysteresisRef.current || hysteresisRef.current.proposedSentenceId !== newSentenceId) {
