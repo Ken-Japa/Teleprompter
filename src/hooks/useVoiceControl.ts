@@ -206,6 +206,22 @@ export const useVoiceControl = (
 
     // --- HELPER FUNCTIONS ---
     /**
+     * Finds the next sentence that is NOT inertial and not a command.
+     * This ensures focus and auto-advance skip non-readable segments.
+     */
+    const findNextMatchableSentence = useCallback((index: number): number => {
+        let current = index;
+        if (current < 0) current = 0;
+
+        while (current < sentences.length) {
+            const s = sentences[current];
+            if (!s.isInertial && !s.command) return current;
+            current++;
+        }
+        return Math.max(0, sentences.length - 1); // Fallback to last or first
+    }, [sentences]);
+
+    /**
      * Generate session summary
      */
     const generateSessionSummary = useCallback(() => {
@@ -435,15 +451,17 @@ export const useVoiceControl = (
         ) {
             const nextSentenceId = lockedSentenceIdRef.current + 1;
             if (nextSentenceId < sentences.length) {
-                console.log('[Voice] Auto-advancing to next sentence after pause');
-                lockedSentenceIdRef.current = nextSentenceId;
-                setActiveSentenceIndex(nextSentenceId);
+                const nextMatchableId = findNextMatchableSentence(nextSentenceId);
+                console.log(`[Voice] Auto-advancing to next readable sentence: ${nextMatchableId} (skipped from ${nextSentenceId})`);
+
+                lockedSentenceIdRef.current = nextMatchableId;
+                setActiveSentenceIndex(nextMatchableId);
                 setVoiceProgress(0);
                 smoothedProgressRef.current = 0;
 
                 // Update match index to new sentence start
-                if (sentences[nextSentenceId]) {
-                    lastMatchIndexRef.current = sentences[nextSentenceId].startIndex ?? 0;
+                if (sentences[nextMatchableId]) {
+                    lastMatchIndexRef.current = sentences[nextMatchableId].startIndex ?? 0;
                 }
 
                 // Reset speech timer
@@ -714,7 +732,6 @@ export const useVoiceControl = (
             for (let i = event.resultIndex; i < event.results.length; ++i) {
                 interimTranscript += event.results[i][0].transcript;
             }
-
             // MEMORY OPTIMIZATION: Recycle session if history gets too long (50 sentences)
             // Check handled AFTER processing to ensure we don't drop data
             if (event.results.length > 50 && !recycleSessionRef.current) {
@@ -795,7 +812,7 @@ export const useVoiceControl = (
 
             // --- SPEECH VELOCITY TRACKING ---
             // Count words in transcript
-            const wordCount = cleanTranscript.split(/\s+/).filter(w => w.length > 0).length;
+            const wordCount = cleanTranscript.split(/\s+/).filter((w: string) => w.length > 0).length;
             if (wordCount > 0) {
                 updatePerformanceMetrics(0); // Dummy for wordCount tracking if needed separately, but we use wordCount below
                 updateSpeechVelocity(wordCount);
@@ -1411,7 +1428,9 @@ export const useVoiceControl = (
                         });
 
                         // Now we can set the active sentence to trigger scroll
-                        setActiveSentenceIndex(lockedSentenceIdRef.current);
+                        const matchableIndex = findNextMatchableSentence(lockedSentenceIdRef.current);
+                        lockedSentenceIdRef.current = matchableIndex; // Ensure ref is also matchable
+                        setActiveSentenceIndex(matchableIndex);
                     }
                 }
 
@@ -1430,7 +1449,11 @@ export const useVoiceControl = (
                 if (!isInitializingRef.current && lockedSentenceIdRef.current >= 0) {
                     // Important: Only update if it actually changed to avoid unnecessary re-renders
                     setActiveSentenceIndex(prev => {
-                        if (prev !== lockedSentenceIdRef.current) return lockedSentenceIdRef.current;
+                        const matchableIndex = findNextMatchableSentence(lockedSentenceIdRef.current);
+                        if (prev !== matchableIndex) {
+                            lockedSentenceIdRef.current = matchableIndex; // Keep in sync
+                            return matchableIndex;
+                        }
                         return prev;
                     });
                 }
@@ -1561,12 +1584,13 @@ export const useVoiceControl = (
         // - 0.5: Used when starting from manual mode (user reading at center)
         // - LOOKAHEAD: Used when reactivating (user reading at top line)
         const { index: visibleSentence } = findVisibleSentenceId(initialRatio, currentPos);
-        lockedSentenceIdRef.current = visibleSentence;
+        const initialMatchableIndex = findNextMatchableSentence(visibleSentence);
+        lockedSentenceIdRef.current = initialMatchableIndex;
 
         // DON'T set active sentence index immediately if waiting for first recognition
         // This prevents the scroll animation before speech is detected
         if (!VOICE_CONFIG.INITIALIZATION.waitForFirstRecognition) {
-            setActiveSentenceIndex(visibleSentence);
+            setActiveSentenceIndex(initialMatchableIndex);
         }
 
         if (sentences[visibleSentence]) {
@@ -1652,31 +1676,33 @@ export const useVoiceControl = (
 
     const resetVoice = useCallback(() => {
         stopListening();
+        const initialMatchableIndex = findNextMatchableSentence(0);
         lastMatchIndexRef.current = 0;
-        lockedSentenceIdRef.current = 0; // Reset to first sentence (not -1)
+        lockedSentenceIdRef.current = initialMatchableIndex;
         pendingMatchRef.current = null; // Clear pending match
         smoothedProgressRef.current = 0; // Reset smoothed progress
         setVoiceProgress(0);
-        setActiveSentenceIndex(0); // Start at first sentence
+        setActiveSentenceIndex(initialMatchableIndex);
         setIsScriptFinished(false);
         setSessionSummary(null);
-    }, [stopListening, setIsScriptFinished, setSessionSummary]);
+    }, [stopListening, setIsScriptFinished, setSessionSummary, findNextMatchableSentence]);
 
 
     const syncWithScroll = useCallback((ratio?: number, pos?: number) => {
         const { index, progress } = findVisibleSentenceId(ratio ?? VOICE_CONFIG.LOOKAHEAD_POSITION, pos);
+        const matchableIndex = findNextMatchableSentence(index);
 
-        lockedSentenceIdRef.current = index;
-        setActiveSentenceIndex(index);
+        lockedSentenceIdRef.current = matchableIndex;
+        setActiveSentenceIndex(matchableIndex);
         setVoiceProgress(progress);
         smoothedProgressRef.current = progress;
 
-        if (sentences[index]) {
-            lastMatchIndexRef.current = sentences[index].startIndex ?? 0;
+        if (sentences[matchableIndex]) {
+            lastMatchIndexRef.current = sentences[matchableIndex].startIndex ?? 0;
         }
 
-        console.log(`[Voice] Sync'd with scroll: Sentence ${index} (Progress: ${(progress * 100).toFixed(0)}%)`);
-    }, [findVisibleSentenceId, sentences]);
+        console.log(`[Voice] Sync'd with scroll: Sentence ${matchableIndex} (from ${index}, Progress: ${(progress * 100).toFixed(0)}%)`);
+    }, [findVisibleSentenceId, findNextMatchableSentence, sentences, VOICE_CONFIG.LOOKAHEAD_POSITION]);
 
     /**
      * MANUAL SCROLL SYNCHRONIZATION (NEW)

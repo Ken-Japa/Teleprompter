@@ -167,7 +167,11 @@ export const findBestMatch = (
     if (!pattern || pattern.length < 3) return null;
 
     const actualStartIndex = Math.max(0, Math.min(startIndex, text.length - 1));
-    const searchEndIndex = Math.min(text.length, actualStartIndex + searchWindow);
+    // --- SEARCH WINDOW CAP (Safety) ---
+    // Prevent browser hang on extremely long scripts if searchWindow is set to scriptLength
+    const MAX_SAFE_WINDOW = 30000;
+    const effectiveSearchWindow = Math.min(searchWindow, MAX_SAFE_WINDOW);
+    const searchEndIndex = Math.min(text.length, actualStartIndex + effectiveSearchWindow);
     const patLen = pattern.length;
 
     // --- STEMMING PREPARATION ---
@@ -182,29 +186,26 @@ export const findBestMatch = (
     const foreignBonus = (foreignCount / patternWords.length > 0.2) ? 0.15 : 0;
     const effectiveThreshold = threshold + foreignBonus;
 
-
-    // PHASE 1: Candidate generation
-    const candidates: number[] = [];
-    for (let i = actualStartIndex; i <= searchEndIndex - patLen; i++) {
-        candidates.push(i);
-    }
-
-    // PHASE 2: Character frequency filter
+    // PHASE 1 & 2: Candidate generation & Character frequency filter (Memory Optimized)
     const patternFreq = new Map<string, number>();
-    const freqSource = normalizedPattern; // Use stemmed pattern for freq filter if possible
+    const freqSource = normalizedPattern;
     for (let i = 0; i < freqSource.length; i++) {
         const char = freqSource[i];
         patternFreq.set(char, (patternFreq.get(char) || 0) + 1);
     }
 
-    const filteredCandidates = candidates.filter(idx => {
-        const candidate = text.substring(idx, idx + patLen).toLowerCase();
+    const filteredCandidates: number[] = [];
+    const windowSize = searchEndIndex - patLen;
+
+    // Performance: Avoid array allocations if window is huge
+    for (let i = actualStartIndex; i <= windowSize; i++) {
+        const candidate = text.substring(i, i + patLen).toLowerCase();
         // If stemming is on, the characters might differ, but frequency is still a good heuristic
         const candidateToFilter = useStemming ? applyStemming(candidate, stemmingLang) : candidate;
 
         const candidateFreq = new Map<string, number>();
-        for (let i = 0; i < candidateToFilter.length; i++) {
-            const char = candidateToFilter[i];
+        for (let k = 0; k < candidateToFilter.length; k++) {
+            const char = candidateToFilter[k];
             candidateFreq.set(char, (candidateFreq.get(char) || 0) + 1);
         }
 
@@ -213,8 +214,14 @@ export const findBestMatch = (
             commonChars += Math.min(count, candidateFreq.get(char) || 0);
         }
 
-        return commonChars / Math.max(1, freqSource.length) >= 0.5; // Slightly lower threshold for stemming noise
-    });
+        if (commonChars / Math.max(1, freqSource.length) >= 0.5) {
+            filteredCandidates.push(i);
+        }
+
+        // Safety: If we have TOO MANY candidates, stop filtering and just take the first N
+        // This prevents the worst-case O(N*M) where M is script length and N is pattern length
+        if (filteredCandidates.length > 200) break;
+    }
 
     // PHASE 3: Full Levenshtein on filtered candidates
     let bestMatch = {

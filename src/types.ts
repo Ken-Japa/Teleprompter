@@ -7,6 +7,7 @@ export interface SpeechRecognitionEvent {
         [index: number]: {
             [index: number]: {
                 transcript: string;
+                confidence: number;
             };
             isFinal: boolean;
         };

@@ -283,7 +283,7 @@ export const useScrollPhysics = ({
             console.log(`[Physics] Initial Snap triggered: jumping ${diff.toFixed(0)}px`);
             internalScrollPos.current = targetVoiceScrollRef.current;
             lastTargetVoiceScrollRef.current = targetVoiceScrollRef.current;
-            return;
+            forceJump = true; // ✅ Mark as force jump instead of early return
           }
 
           if (Math.abs(diff) > (PHYSICS_CONSTANTS.SCROLL_TOLERANCE || 1)) {
