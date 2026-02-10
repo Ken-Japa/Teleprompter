@@ -129,6 +129,20 @@ const adaptiveConfig = new AdaptiveVoiceConfig();
 
 // Export both static and adaptive configs
 export const VOICE_CONFIG = {
+  // --- SCROLL STATES (NEW) ---
+  SCROLL_MODES: {
+    SNAP: {
+      distanceThreshold: 350,   // Jumps instantly if distance > 350px
+    },
+    COASTING: {
+      durationMs: 2000,        // Maintains velocity for 2s after speech stop
+      velocityDecay: 0.98,      // 2% decay per frame during coasting
+    },
+    BRIDGING: {
+      speedMultiplier: 1.1,     // Speed boost for inertial segments (<...>)
+    },
+  },
+
   // --- CORE POSITIONING ---
   LOOKAHEAD_POSITION: 0.12,
   SCROLL_LERP_FACTOR: 0.35, // Will be overridden by adaptive
@@ -175,9 +189,9 @@ export const VOICE_CONFIG = {
     STALL_THRESHOLD: 5, // Consecutive misses before assuming stalled
   },
 
-  // --- SEMANTIC INERTIA (NEW) ---
+  // --- SEMANTIC INERTIA (LEGACY - Disabled in favor of SCROLL_MODES) ---
   SEMANTIC_INERTIA: {
-    enabled: true,
+    enabled: false,
     VELOCITY_DECAY: 0.95, // 5% decay per frame
     MIN_CONFIDENCE_TO_CONTINUE: 0.60, // Only feed inertia if confidence is decent
     HISTORY_MS: 500, // Look at last 500ms for velocity calculation

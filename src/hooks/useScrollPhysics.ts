@@ -131,15 +131,18 @@ export const useScrollPhysics = ({
 
   // Voice Logic Refs
   const targetVoiceScrollRef = useRef<number | null>(null);
-  const smoothedVoiceVelocityRef = useRef<number>(0);
+
   const lastTargetVoiceScrollRef = useRef<number | null>(null);
   const lastVoiceIndexRef = useRef<number>(-1);
   const currentActiveElementRef = useRef<HTMLElement | null>(null);
 
-  // --- NEW: SEMANTIC WINDOW & INERTIA REFS ---
-  const semanticVelocityRef = useRef<number>(0); // Current inertia velocity
-  const lastSemanticMatchTimeRef = useRef<number>(0);
-  const semanticVelocityHistoryRef = useRef<Array<{ v: number; t: number }>>([]);
+
+
+  // --- NEW: SCROLL STATE MACHINE REFS ---
+  type ScrollState = 'IDLE' | 'TRACKING' | 'SNAPPING' | 'COASTING' | 'BRIDGING' | 'MANUAL';
+  const scrollStateRef = useRef<ScrollState>('IDLE');
+  const coastingVelocityRef = useRef<number>(0);
+  const coastingStartTimeRef = useRef<number>(0);
 
   // Update Velocity Cache when speed changes
   useEffect(() => {
@@ -247,18 +250,12 @@ export const useScrollPhysics = ({
       deltaScroll += momentumResult.delta;
       momentumRef.current = momentumResult.newMomentum;
 
-      // 4. Voice Control Scroll
+      // 4. Voice Control Scroll (STATE MACHINE)
       const now = performance.now();
       const isInteractionCoolingDown = now - lastInteractionTimeRef.current < PHYSICS_CONSTANTS.MANUAL_SCROLL_VOICE_TIMEOUT;
+      const _isManualInteraction = isUserTouchingRef.current || isManualScrollingRef.current || isInteractionCoolingDown;
 
-      if (
-        _isVoiceMode &&
-        _activeSentenceIndex !== -1 &&
-        !_isPlaying &&
-        !isUserTouchingRef.current &&
-        !isManualScrollingRef.current &&
-        !isInteractionCoolingDown
-      ) {
+      if (_isVoiceMode && _activeSentenceIndex !== -1 && !_isPlaying && !_isManualInteraction) {
         const _semanticEvent = semanticWindowEventRef.current;
         const driftRatio = (_semanticEvent?.driftVelocity || 0) * (VOICE_CONFIG.SEMANTIC_WINDOWING.STALL_THRESHOLD / 2);
 
@@ -272,105 +269,66 @@ export const useScrollPhysics = ({
         );
 
         targetVoiceScrollRef.current = target;
+        const currentSentence = sentences[_activeSentenceIndex];
+        const isCurrentlyInertial = currentSentence?.isInertial;
 
-        if (targetVoiceScrollRef.current !== null) {
-          const diff = targetVoiceScrollRef.current - internalScrollPos.current;
+        if (target !== null) {
+          const diff = target - internalScrollPos.current;
+          const snapThreshold = VOICE_CONFIG.SCROLL_MODES.SNAP.distanceThreshold;
 
-          // --- LAYER 1: INITIAL SNAP (NEW) ---
-          // If this is the first match of the session and distance is large, jump instead of sliding.
-          const maxSnap = (VOICE_CONFIG.DAMPING as any).INITIAL_SNAP_THRESHOLD || 400;
-          if (lastTargetVoiceScrollRef.current === null && Math.abs(diff) > maxSnap) {
-            console.log(`[Physics] Initial Snap triggered: jumping ${diff.toFixed(0)}px`);
-            internalScrollPos.current = targetVoiceScrollRef.current;
-            lastTargetVoiceScrollRef.current = targetVoiceScrollRef.current;
-            forceJump = true; // ✅ Mark as force jump instead of early return
-          }
-
-          if (Math.abs(diff) > (PHYSICS_CONSTANTS.SCROLL_TOLERANCE || 1)) {
-            // --- LAYER 2 DAMPING (NEW) ---
-            const damping = (VOICE_CONFIG as any).DAMPING;
+          if (Math.abs(diff) > snapThreshold) {
+            // --- STATE: SNAPPING ---
+            scrollStateRef.current = 'SNAPPING';
+            deltaScroll = diff;
+            forceJump = true;
+            coastingVelocityRef.current = 0; // Reset velocity on snap
+          } else if (isCurrentlyInertial) {
+            // --- STATE: BRIDGING ---
+            scrollStateRef.current = 'BRIDGING';
             const effectiveLerp = lerpFactorRef.current || VOICE_CONFIG.SCROLL_LERP_FACTOR;
-            let voiceDelta = diff * (effectiveLerp * timeScale);
-
-            if (damping?.enabled) {
-              // 1. Deadzone
-              if (Math.abs(diff) < damping.DEADZONE_PX) {
-                voiceDelta = 0;
-              } else {
-                // 2. Velocity Capping
-                const maxVelocity = damping.MAX_FOLLOW_VELOCITY * timeScale;
-                voiceDelta = Math.max(-maxVelocity, Math.min(maxVelocity, voiceDelta));
-
-                // 3. Oscillation Filtering
-                // If the target jumped back suddenly (jitter), ignore it unless it's a large intended jump
-                if (lastTargetVoiceScrollRef.current !== null) {
-                  const targetJump = targetVoiceScrollRef.current - lastTargetVoiceScrollRef.current;
-                  const isOppositeDirection = Math.sign(targetJump) !== Math.sign(diff) && Math.sign(targetJump) !== 0;
-
-                  if (isOppositeDirection && Math.abs(targetJump) < damping.OSCILLATION_THRESHOLD) {
-                    // Small jitter in opposite direction - suppress
-                    voiceDelta = 0;
-                  }
-                }
-
-                // 4. Smoothing Acceleration (Jerk Limit)
-                const prevVelocity = smoothedVoiceVelocityRef.current;
-                const jerkLimit = damping.JERK_LIMIT * timeScale;
-                const velocityDiff = voiceDelta - prevVelocity;
-
-                if (Math.abs(velocityDiff) > jerkLimit) {
-                  voiceDelta = prevVelocity + Math.sign(velocityDiff) * jerkLimit;
-                }
-              }
-            }
+            const bridgingLerp = effectiveLerp * VOICE_CONFIG.SCROLL_MODES.BRIDGING.speedMultiplier;
+            const voiceDelta = diff * (bridgingLerp * timeScale);
 
             deltaScroll += voiceDelta;
-            lastTargetVoiceScrollRef.current = targetVoiceScrollRef.current;
-
-            // --- SEMANTIC INERTIA UPDATE (NEW) ---
-            if (_semanticEvent && _semanticEvent.confidence > VOICE_CONFIG.SEMANTIC_INERTIA.MIN_CONFIDENCE_TO_CONTINUE) {
-              const now = performance.now();
-              semanticVelocityHistoryRef.current.push({ v: voiceDelta / timeScale, t: now });
-              // Keep only last X ms
-              const windowMs = VOICE_CONFIG.SEMANTIC_INERTIA.HISTORY_MS;
-              semanticVelocityHistoryRef.current = semanticVelocityHistoryRef.current.filter(h => now - h.t < windowMs);
-
-              if (semanticVelocityHistoryRef.current.length > 2) {
-                const avgV = semanticVelocityHistoryRef.current.reduce((sum, h) => sum + h.v, 0) / semanticVelocityHistoryRef.current.length;
-                semanticVelocityRef.current = avgV;
-                lastSemanticMatchTimeRef.current = now;
-              }
-            }
+            coastingVelocityRef.current = voiceDelta / timeScale;
           } else {
-            smoothedVoiceVelocityRef.current = 0;
+            // --- STATE: TRACKING ---
+            scrollStateRef.current = 'TRACKING';
+            const effectiveLerp = lerpFactorRef.current || VOICE_CONFIG.SCROLL_LERP_FACTOR;
+            const voiceDelta = diff * (effectiveLerp * timeScale);
+
+            deltaScroll += voiceDelta;
+            coastingVelocityRef.current = voiceDelta / timeScale;
           }
+          lastTargetVoiceScrollRef.current = target;
         } else {
-          // No target, apply semantic inertia if enabled
-          if (VOICE_CONFIG.SEMANTIC_INERTIA.enabled && semanticVelocityRef.current !== 0) {
-            const now = performance.now();
-            const timeSinceLastMatch = now - lastSemanticMatchTimeRef.current;
+          // --- STATE: COASTING (NO MATCH / TAGS) ---
+          if (scrollStateRef.current === 'TRACKING' || scrollStateRef.current === 'BRIDGING' || scrollStateRef.current === 'SNAPPING') {
+            scrollStateRef.current = 'COASTING';
+            coastingStartTimeRef.current = now;
+          }
 
-            // NEW: If current sentence is inertial (tags/brackets/chords), keep velocity alive
-            // This prevents stalling mid-tag/chord sequence.
-            const currentSentence = sentences[_activeSentenceIndex];
-            if (currentSentence?.isInertial) {
-              lastSemanticMatchTimeRef.current = now;
-            }
-
-            if (timeSinceLastMatch < VOICE_CONFIG.SEMANTIC_INERTIA.STALL_THRESHOLD_MS) {
-              // Apply decay
-              semanticVelocityRef.current *= Math.pow(VOICE_CONFIG.SEMANTIC_INERTIA.VELOCITY_DECAY, timeScale);
-
-              if (Math.abs(semanticVelocityRef.current) > 0.1) {
-                deltaScroll += semanticVelocityRef.current * timeScale;
-              } else {
-                semanticVelocityRef.current = 0;
-              }
+          if (scrollStateRef.current === 'COASTING') {
+            const elapsed = now - coastingStartTimeRef.current;
+            if (elapsed < VOICE_CONFIG.SCROLL_MODES.COASTING.durationMs) {
+              const decay = VOICE_CONFIG.SCROLL_MODES.COASTING.velocityDecay;
+              coastingVelocityRef.current *= Math.pow(decay, timeScale);
+              deltaScroll += coastingVelocityRef.current * timeScale;
             } else {
-              semanticVelocityRef.current = 0;
+              scrollStateRef.current = 'IDLE';
+              coastingVelocityRef.current = 0;
             }
           }
         }
+      } else {
+        // Reset states if manual or not voice mode
+        if (_isManualInteraction) {
+          scrollStateRef.current = 'MANUAL';
+        } else {
+          scrollStateRef.current = 'IDLE';
+        }
+        targetVoiceScrollRef.current = null;
+        coastingVelocityRef.current = 0;
       }
 
       // 5. Backing Track Sync

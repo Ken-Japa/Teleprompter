@@ -451,17 +451,21 @@ export const useVoiceControl = (
         ) {
             const nextSentenceId = lockedSentenceIdRef.current + 1;
             if (nextSentenceId < sentences.length) {
-                const nextMatchableId = findNextMatchableSentence(nextSentenceId);
-                console.log(`[Voice] Auto-advancing to next readable sentence: ${nextMatchableId} (skipped from ${nextSentenceId})`);
+                // --- SEQUENTIAL ADVANCE (BRIDGING SUPPORT) ---
+                // Instead of jumping directly to the next matchable sentence, we go to the VERY NEXT one.
+                // This allows useScrollPhysics to detect isInertial and enter BRIDGING mode.
+                const targetId = nextSentenceId;
 
-                lockedSentenceIdRef.current = nextMatchableId;
-                setActiveSentenceIndex(nextMatchableId);
+                console.log(`[Voice] Auto-advancing to: ${targetId} (${sentences[targetId].isInertial ? 'Inertial' : 'Matchable'})`);
+
+                lockedSentenceIdRef.current = targetId;
+                setActiveSentenceIndex(targetId);
                 setVoiceProgress(0);
                 smoothedProgressRef.current = 0;
 
                 // Update match index to new sentence start
-                if (sentences[nextMatchableId]) {
-                    lastMatchIndexRef.current = sentences[nextMatchableId].startIndex ?? 0;
+                if (sentences[targetId]) {
+                    lastMatchIndexRef.current = sentences[targetId].startIndex ?? 0;
                 }
 
                 // Reset speech timer
