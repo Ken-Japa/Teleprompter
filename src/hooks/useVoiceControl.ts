@@ -91,14 +91,37 @@ export const useVoiceControl = (
         setIsScriptFinished(isScriptFinished);
     }, [isScriptFinished, setIsScriptFinished]);
 
-    // Lifecycle Synchronization
+    // Lifecycle Synchronization & Momentum Loop
     useEffect(() => {
+        let rafId: number;
+
         if (isListening) {
+            // 1. Auto-resync to current scroll position on start
+            // This prevents the "jump back" issue if the user moved the scroll manually
+            const currentSentenceIndex = useVoiceStore.getState().activeSentenceIndex;
+            const currentSentence = sentences[currentSentenceIndex];
+            if (currentSentence) {
+                engine.resetEngine(currentSentence.cleanStartIndex);
+            }
+
             engine.startEngineSession();
+
+            // 2. Momentum Loop (Inércia)
+            // If no matches occur, extrapolation keeps the text moving
+            const momentumLoop = () => {
+                const wpm = engine.metrics.speechVelocity.currentWPM;
+                state.applyMomentum(wpm);
+                rafId = requestAnimationFrame(momentumLoop);
+            };
+            rafId = requestAnimationFrame(momentumLoop);
         } else {
             engine.stopEngineSession();
         }
-    }, [isListening, engine]);
+
+        return () => {
+            if (rafId) cancelAnimationFrame(rafId);
+        };
+    }, [isListening, engine, state, sentences]);
 
     // --- 4. EXPOSED API ---
     return {
