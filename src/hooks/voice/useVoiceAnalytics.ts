@@ -105,11 +105,11 @@ export const useVoiceAnalytics = (sentences: Sentence[]) => {
         }
     }, [VOICE_CONFIG.FUZZY_SYNC?.minPartialMatch]);
 
-    return {
+    return useMemo(() => ({
         trackSessionMetrics,
         trackMatchQuality,
         startAnalyticsSession,
         stopAnalyticsSession,
         sessionAnalytics: sessionAnalyticsRef.current,
-    };
+    }), [trackSessionMetrics, trackMatchQuality, startAnalyticsSession, stopAnalyticsSession]);
 };

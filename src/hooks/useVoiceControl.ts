@@ -54,7 +54,7 @@ export const useVoiceControl = (
         }
     }, [engine, state]);
 
-    const { toggleVoice: baseToggleVoice, isListening, error } = useVoiceSpeechEngine({
+    const { toggleVoice, start: startListening, stop: stopListening, isListening, error } = useVoiceSpeechEngine({
         lang,
         onTranscript
     });
@@ -99,9 +99,9 @@ export const useVoiceControl = (
     // --- 4. EXPOSED API ---
     return {
         // Actions
-        toggleVoice: baseToggleVoice,
-        startListening: baseToggleVoice,
-        stopListening: baseToggleVoice,
+        toggleVoice,
+        startListening,
+        stopListening,
 
         resetVoice: (startIndex: number = 0) => {
             engine.resetEngine(startIndex);

@@ -186,7 +186,7 @@ export const useVoiceMetrics = () => {
         noiseDetectionRef.current.calibrationStartTime = now;
     }, []);
 
-    return {
+    return useMemo(() => ({
         performanceMetrics: performanceMetricsRef.current,
         speechVelocity: speechVelocityRef.current,
         confidenceLearning: confidenceLearningRef.current,
@@ -196,5 +196,5 @@ export const useVoiceMetrics = () => {
         updateConfidenceLearning,
         performNoiseCalibration,
         startSession,
-    };
+    }), [updatePerformanceMetrics, updateSpeechVelocity, updateConfidenceLearning, performNoiseCalibration, startSession]);
 };

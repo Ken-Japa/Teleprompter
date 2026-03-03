@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback, useMemo } from 'react';
 import { ScoreResult } from '../../utils/voice/matcher/SimilarityScorer';
 
 
@@ -170,10 +170,10 @@ export const useVoiceWorker = (script: string, scriptBuffer: Uint16Array) => {
     // Return object with getters so consumers always read the live ref values
     // without suffering from stale closures, keeping the component perfectly sync
     // without React state re-renders.
-    return {
+    return useMemo(() => ({
         get isProcessing() { return isProcessingRef.current; },
         get error() { return errorRef.current; },
         get lastMatch() { return lastResultRef.current; },
         postMatch
-    };
+    }), [postMatch]);
 };

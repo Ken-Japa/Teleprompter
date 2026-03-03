@@ -83,10 +83,10 @@ export const useVoiceMatchEngine = ({
         failureCountRef.current = 0;
     }, [charToSentenceMap]);
 
-    return {
+    return useMemo(() => ({
         performMatch,
         resetEngine,
         lockedSentenceIdRef,
         failureCountRef
-    };
+    }), [performMatch, resetEngine]);
 };
