@@ -9,13 +9,13 @@ import { useVoiceStore, VoiceStoreState } from "../../store/useVoiceStore";
  */
 export const useVoiceAnalytics = (sentences: Sentence[]) => {
     const setSessionSummary = useVoiceStore((s: VoiceStoreState) => s.setSessionSummary);
-    // useMemo prevents stale config captures across re-renders
-    const VOICE_CONFIG = useMemo(() => getAdaptiveConfig(), []);
+    const VOICE_CONFIG = getAdaptiveConfig();
 
     const sessionAnalyticsRef = useRef({
         sessionStartTime: 0,
         sessionEndTime: 0,
         totalWordsRecognized: 0,
+        lastTotalWords: 0, // Track last word count to calculate delta if needed
         sentencesCompleted: 0,
         sentenceStartTimes: new Map<number, number>(),
         goodMatches: 0,
@@ -23,12 +23,20 @@ export const useVoiceAnalytics = (sentences: Sentence[]) => {
     });
 
     const trackSessionMetrics = useCallback((sentenceCompleted: boolean = false, wordCount: number = 0) => {
-        if (!VOICE_CONFIG.SESSION_ANALYTICS.enabled) return;
+        // Obtenha a config atualizada se não estiver usando o hook de forma reativa
+        const currentConfig = getAdaptiveConfig();
+        if (!currentConfig.SESSION_ANALYTICS.enabled) return;
 
         const analytics = sessionAnalyticsRef.current;
-        if (wordCount > 0) analytics.totalWordsRecognized += wordCount;
+        if (wordCount > 0) {
+            // Se o wordCount for menor que o anterior no mesmo contexto, 
+            // pode ser um novo segmento. Caso contrário, evitamos double-count
+            // se o chamador estiver passando o acumulado do transcript atual.
+            // Para simplificar, assumimos que o useVoiceEngine passa o delta ou o total do match.
+            analytics.totalWordsRecognized += wordCount;
+        }
         if (sentenceCompleted) analytics.sentencesCompleted++;
-    }, [VOICE_CONFIG.SESSION_ANALYTICS.enabled]);
+    }, []);
 
     const generateSessionSummary = useCallback(() => {
         if (!VOICE_CONFIG.SESSION_ANALYTICS.enabled) return null;

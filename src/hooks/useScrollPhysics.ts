@@ -212,14 +212,16 @@ export const useScrollPhysics = ({
       const calculatedMaxScroll = Math.max(0, metrics.scrollHeight - metrics.clientHeight);
 
       // --- FAILSAFE & SELF-HEALING ---
-      // If playing but physics engine thinks there's no scroll room, or if we are at the top,
-      // it might be stale metrics. Force a re-read.
-      if (_isPlaying && (calculatedMaxScroll === 0 || internalScrollPos.current === 0)) {
+      // If playing or in Voice Mode but physics engine thinks there's no scroll room,
+      // or if we are at the top, it might be stale metrics. Force a re-read.
+      if ((_isPlaying || (_isVoiceMode && _activeSentenceIndex !== -1)) &&
+        (calculatedMaxScroll === 0 || internalScrollPos.current === 0)) {
         const newMetrics = readMetrics();
         // Update metrics only if they have actually changed and are valid (> 0)
         if (newMetrics.scrollHeight > 0 && (newMetrics.scrollHeight !== metrics.scrollHeight || newMetrics.clientHeight !== metrics.clientHeight)) {
           metrics = newMetrics;
           metricsRef.current = metrics; // Persist the fresh metrics
+          // console.log('[Physics] Metrics updated mid-loop:', metrics);
         }
       }
 

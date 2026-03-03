@@ -21,7 +21,6 @@ describe('calculateVoiceTarget', () => {
     };
 
     it('should calculate target for normal mode (Top Alignment)', () => {
-        const isFlipVertical = false;
         const voiceProgress = 0; // Start of sentence
 
         // Expected: 
@@ -33,8 +32,7 @@ describe('calculateVoiceTarget', () => {
             voiceProgress,
             mockMetrics,
             mockCurrentActiveElementRef,
-            mockLastVoiceIndexRef,
-            isFlipVertical
+            mockLastVoiceIndexRef
         );
 
         const expected = 1000 - (800 * VOICE_CONFIG.LOOKAHEAD_POSITION);
@@ -54,8 +52,7 @@ describe('calculateVoiceTarget', () => {
             voiceProgress,
             mockMetrics,
             mockCurrentActiveElementRef,
-            mockLastVoiceIndexRef,
-            isFlipVertical
+            mockLastVoiceIndexRef
         );
 
         const expected = 1000 - (800 * VOICE_CONFIG.LOOKAHEAD_POSITION);
@@ -63,19 +60,17 @@ describe('calculateVoiceTarget', () => {
     });
 
     it('should handle voice progress correctly', () => {
-        const isFlipVertical = false;
         const voiceProgress = 0.5; // mid sentence
 
         // Expected:
-        // 1000 + 50 * 0.5 - 800 * 0.018 = 1000 + 25 - 14.4 = 1010.6
+        // 1000 + 50 * 0.5 - 800 * 0.12 = 1000 + 25 - 96 = 929
 
         const target = calculateVoiceTarget(
             1,
             voiceProgress,
             mockMetrics,
             mockCurrentActiveElementRef,
-            mockLastVoiceIndexRef,
-            isFlipVertical
+            mockLastVoiceIndexRef
         );
 
         const expected = 1000 + (50 * 0.5) - (800 * VOICE_CONFIG.LOOKAHEAD_POSITION);
