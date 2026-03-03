@@ -4,7 +4,7 @@ import { db } from "./_firebase.js";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
-import { APP_CONSTANTS } from "./_config.js";
+import { APP_CONSTANTS, isOriginAllowed } from "./_config.js";
 
 // Initialize Ratelimit if env vars are present
 const redis =
@@ -68,13 +68,9 @@ const sendWelcomeEmail = async (toEmail: string) => {
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Allow CORS for local development or specific domains
   const origin = req.headers.origin;
-  const allowedOrigins = [
-    "https://promptninja.solutionkit.com.br",
-    "https://music.solutionkit.com.br",
-  ];
 
-  if (origin && allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
+  if (isOriginAllowed(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin!);
   } else {
     res.setHeader("Access-Control-Allow-Origin", "https://promptninja.solutionkit.com.br");
   }

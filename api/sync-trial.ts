@@ -1,18 +1,13 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { FieldValue } from "firebase-admin/firestore";
 import { db } from "./_firebase.js";
+import { isOriginAllowed } from "./_config.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
     // CORS
     const origin = req.headers.origin;
-    const allowedOrigins = [
-        "https://promptninja.solutionkit.com.br",
-        "https://music.solutionkit.com.br",
-        "http://localhost:3000",
-        "http://localhost:5173"
-    ];
-    if (origin && allowedOrigins.includes(origin)) {
-        res.setHeader("Access-Control-Allow-Origin", origin);
+    if (isOriginAllowed(origin)) {
+        res.setHeader("Access-Control-Allow-Origin", origin!);
     } else {
         res.setHeader("Access-Control-Allow-Origin", "https://promptninja.solutionkit.com.br");
     }
