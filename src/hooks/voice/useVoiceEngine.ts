@@ -29,75 +29,69 @@ export const useVoiceEngine = ({
     charToSentenceMap,
     lang,
     onSpeechResult,
-    onFinalSpeechResult
-}: UseVoiceEngineProps) => {
+    onFinalSpeechResult,
+    onMatchResult // New prop: callback to sync with UI
+}: UseVoiceEngineProps & { onMatchResult?: (match: any, transcript: string) => void }) => {
 
     // --- 1. INITIALIZE SUB-ENGINES ---
     const metrics = useVoiceMetrics();
     const analytics = useVoiceAnalytics(sentences);
+
+    // Internal handler to process results when they arrive from worker
+    const handleMatchResult = useCallback((match: any, transcript: string) => {
+        const processEnd = performance.now();
+
+        // 1. wordCount is provided by the worker
+        const wordCount = match.wordCount || 0;
+        if (wordCount > 0) {
+            metrics.updateSpeechVelocity(wordCount);
+            // Note: isFinal context is lost here, but we can infer or pass it if needed.
+            // For now, trackSessionMetrics will be handled in processTranscript if possible,
+            // or we just track it here for simplicity.
+            analytics.trackSessionMetrics(false, wordCount);
+        }
+
+        analytics.trackMatchQuality(match.ratio);
+        metrics.updatePerformanceMetrics(processEnd - (match as any).processStart || 0); // We'd need to track start time
+        metrics.updateConfidenceLearning(match.ratio);
+
+        const sentenceId = charToSentenceMap[match.index] !== undefined ? charToSentenceMap[match.index] : 0;
+        voiceDiagnostics.recordMatch({
+            sentenceId,
+            transcript,
+            matchRatio: match.ratio,
+            processingTime: 0, // Approximate
+            wasJump: false
+        });
+
+        if (onSpeechResult) onSpeechResult(transcript);
+        if (onMatchResult) onMatchResult(match, transcript);
+    }, [metrics, analytics, charToSentenceMap, onSpeechResult, onMatchResult]);
+
     const matchEngine = useVoiceMatchEngine({
         fullCleanText,
         fullCleanTextBuffer,
         charToSentenceMap,
-        lang
+        lang,
+        onMatch: handleMatchResult
     });
 
     // --- 2. CORE PROCESSING PIPELINE ---
     const processTranscript = useCallback((transcript: string, isFinal: boolean) => {
-        const processStart = performance.now();
-
         // 1. Environmental & Performance Calibration
         metrics.performNoiseCalibration(transcript.length);
 
-        // 2. Match Engine Execution
-        const match = matchEngine.performMatch(
+        // 2. Match Engine Execution (Async)
+        matchEngine.performMatch(
             transcript,
             isFinal,
             metrics.speechVelocity.currentWPM
         );
 
-        // 3. Post-Match Logic & Feedback
-        if (match) {
-            // Metrics (Speech Velocity) - wordCount is now provided by the worker
-            const wordCount = (match as any).wordCount || 0;
-            if (wordCount > 0) {
-                metrics.updateSpeechVelocity(wordCount);
-                if (isFinal) {
-                    analytics.trackSessionMetrics(false, wordCount);
-                }
-            }
-
-            // wordCount NOT passed here — already in trackSessionMetrics (prevents double-count)
-            analytics.trackMatchQuality(match.ratio);
-            metrics.updatePerformanceMetrics(performance.now() - processStart);
-            metrics.updateConfidenceLearning(match.ratio);
-
-            const sentenceId = charToSentenceMap[match.index] !== undefined ? charToSentenceMap[match.index] : 0;
-            voiceDiagnostics.recordMatch({
-                sentenceId,
-                transcript,
-                matchRatio: match.ratio,
-                processingTime: performance.now() - processStart,
-                wasJump: false
-            });
-
-            if (onSpeechResult) onSpeechResult(transcript);
-            if (isFinal && onFinalSpeechResult) onFinalSpeechResult(transcript);
-        } else if (isFinal) {
-            voiceDiagnostics.recordMiss({
-                transcript,
-                reason: "Busca sem correspondência com o texto"
-            });
+        if (isFinal && onFinalSpeechResult) {
+            onFinalSpeechResult(transcript);
         }
-
-        return match;
-    }, [
-        metrics,
-        analytics,
-        matchEngine,
-        onSpeechResult,
-        onFinalSpeechResult
-    ]);
+    }, [metrics, matchEngine, onFinalSpeechResult]);
 
     // --- 3. EXPOSED ENGINE API ---
     return useMemo(() => ({

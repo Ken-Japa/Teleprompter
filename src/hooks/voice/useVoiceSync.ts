@@ -18,7 +18,7 @@ export const useVoiceSync = ({ sentences, charToSentenceMap }: UseVoiceSyncProps
     const setActiveSentenceIndex = useVoiceStore((s: VoiceStoreState) => s.setActiveSentenceIndex);
     const setVoiceProgress = useVoiceStore((s: VoiceStoreState) => s.setVoiceProgress);
 
-    const updatePosition = useCallback((matchIndex: number) => {
+    const updatePosition = useCallback((matchIndex: number, matchLength: number = 0) => {
         const sentenceId = charToSentenceMap[matchIndex];
         if (sentenceId === undefined) return;
 
@@ -27,11 +27,16 @@ export const useVoiceSync = ({ sentences, charToSentenceMap }: UseVoiceSyncProps
         const sentence = sentences[sentenceId];
         if (sentence && sentence.cleanStartIndex !== undefined && sentence.matchableLength !== undefined) {
             const cleanLen = sentence.matchableLength;
-            const posInSentence = matchIndex - sentence.cleanStartIndex;
+
+            // Progress calculation improvement:
+            // We consider the progress to be the *end* of the matched segment.
+            // This prevents the scroll from getting "stuck" at the beginning of the sentence
+            // until the next sentence's first words are matched.
+            const posInSentence = (matchIndex + matchLength) - sentence.cleanStartIndex;
+
             const progress = cleanLen > 0 ? Math.max(0, Math.min(1, posInSentence / cleanLen)) : 0;
 
-            // We no longer apply LERP here to avoid "Double Smoothing".
-            // The useScrollPhysics hook will handle the smoothing using the adaptedLerpFactor.
+            // setVoiceProgress will update the store, and useScrollPhysics will react to it.
             setVoiceProgress(progress);
         }
     }, [charToSentenceMap, sentences, setActiveSentenceIndex, setVoiceProgress]);

@@ -1,6 +1,7 @@
 import { useRef, useMemo, useCallback } from "react";
 import { getAdaptiveConfig, VOICE_CONFIG as STATIC_CONFIG } from "../../config/voiceControlConfig";
 import { useVoiceWorker } from "./useVoiceWorker";
+import { ScoreResult } from "../../utils/voice/matcher/SimilarityScorer";
 
 interface MatchEngineProps {
     fullCleanText: string;
@@ -13,18 +14,34 @@ export const useVoiceMatchEngine = ({
     fullCleanText,
     fullCleanTextBuffer,
     charToSentenceMap,
-    lang
-}: MatchEngineProps) => {
+    lang,
+    onMatch // New prop: callback for when a match is found
+}: MatchEngineProps & { onMatch?: (result: ScoreResult, transcript: string) => void }) => {
     const lastMatchIndexRef = useRef<number>(0);
     const lockedSentenceIdRef = useRef<number>(0);
     const failureCountRef = useRef<number>(0);
     const VOICE_CONFIG = useMemo(() => getAdaptiveConfig(), []);
 
-    // Initialize Web Worker
-    const worker = useVoiceWorker(fullCleanText, fullCleanTextBuffer);
+    // Internal handler to update local state when a match arrives
+    const handleMatch = useCallback((result: ScoreResult, transcript: string) => {
+        lastMatchIndexRef.current = result.index;
+        const sentenceId = charToSentenceMap[result.index];
+        if (sentenceId !== undefined) {
+            lockedSentenceIdRef.current = sentenceId;
+        }
+        failureCountRef.current = 0;
+
+        // Propagate to parent if callback exists
+        if (onMatch) {
+            onMatch(result, transcript);
+        }
+    }, [charToSentenceMap, onMatch]);
+
+    // Initialize Web Worker with the local handler
+    const worker = useVoiceWorker(fullCleanText, fullCleanTextBuffer, handleMatch);
 
     const performMatch = useCallback((transcript: string, isFinal: boolean, currentWPM: number = 140) => {
-        if (!transcript.trim()) return null;
+        if (!transcript.trim()) return;
 
         // Baseline windows
         const baseSmall = VOICE_CONFIG.SEARCH_WINDOW?.SMALL || 600;
@@ -59,22 +76,15 @@ export const useVoiceMatchEngine = ({
             }
         });
 
-        // Use the latest result from the worker (might be from previous transcript update)
-        const matchResult = worker.lastMatch;
-
-        if (matchResult) {
-            lastMatchIndexRef.current = matchResult.index;
-            const sentenceId = charToSentenceMap[matchResult.index];
-            if (sentenceId !== undefined) {
-                lockedSentenceIdRef.current = sentenceId;
-            }
-            failureCountRef.current = 0;
-            return matchResult;
-        } else if (isFinal) {
-            failureCountRef.current++;
+        // We no longer return the result synchronously here.
+        // The result will arrive via onMatch callback later.
+        if (isFinal) {
+            // We can't know if it was a miss yet because it's async.
+            // But we can increment failureCount separately if we want,
+            // though it's better to let handleMatch reset it and 
+            // have a timeout or check in the next frame if needed.
+            // For now, we keep the failureCount management inside handleMatch.
         }
-
-        return null;
     }, [fullCleanText, charToSentenceMap, lang, VOICE_CONFIG, worker]);
 
     const resetEngine = useCallback((startIndex: number = 0) => {

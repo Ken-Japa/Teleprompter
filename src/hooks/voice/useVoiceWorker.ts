@@ -13,7 +13,11 @@ interface PostMatchParams {
     options: any;
 }
 
-export const useVoiceWorker = (script: string, scriptBuffer: Uint16Array) => {
+export const useVoiceWorker = (
+    script: string,
+    scriptBuffer: Uint16Array,
+    onMatch?: (result: ScoreResult, transcript: string) => void
+) => {
     // We use Refs instead of React State to completely eliminate
     // non-critical UI re-renders on every low-level progress frame from the worker.
     const isProcessingRef = useRef<boolean>(false);
@@ -22,6 +26,7 @@ export const useVoiceWorker = (script: string, scriptBuffer: Uint16Array) => {
 
     const workerRef = useRef<Worker | null>(null);
     const lastRequestIdRef = useRef<number>(0);
+    const lastTranscriptRef = useRef<string>("");
 
     const restartCountRef = useRef(0);
     const MAX_RESTARTS = 3;
@@ -51,6 +56,9 @@ export const useVoiceWorker = (script: string, scriptBuffer: Uint16Array) => {
 
                     if (requestId === lastRequestIdRef.current) {
                         lastResultRef.current = payload;
+                        if (payload && onMatch) {
+                            onMatch(payload, lastTranscriptRef.current);
+                        }
                     }
                     isProcessingRef.current = false;
 
@@ -142,6 +150,7 @@ export const useVoiceWorker = (script: string, scriptBuffer: Uint16Array) => {
     const postMatchInternal = useCallback((params: PostMatchParams) => {
         if (!workerRef.current) return;
 
+        lastTranscriptRef.current = params.transcript;
         const requestId = ++lastRequestIdRef.current;
         isProcessingRef.current = true;
 

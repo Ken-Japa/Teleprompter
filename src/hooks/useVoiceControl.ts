@@ -33,6 +33,8 @@ export const useVoiceControl = (
 
 
     // --- 2. SPECIALIZED SUB-HOOKS ---
+    const state = useVoiceSync({ sentences, charToSentenceMap });
+
     const engine = useVoiceEngine({
         sentences,
         fullCleanText,
@@ -40,19 +42,20 @@ export const useVoiceControl = (
         charToSentenceMap,
         lang,
         onSpeechResult,
-        onFinalSpeechResult
+        onFinalSpeechResult,
+        onMatchResult: (match, transcript) => {
+            // This is called reactively when the worker finishes a match.
+            // posInSentence will be (matchIndex + matchLength).
+            // match.wordCount is also available if needed for extra smoothing.
+            const matchLength = transcript.length;
+            state.updatePosition(match.index, matchLength);
+        }
     });
-
-    const state = useVoiceSync({ sentences, charToSentenceMap });
 
     // --- 3. ORCHESTRATION ---
     const onTranscript = useCallback((transcript: string, isFinal: boolean) => {
-        const match = engine.processTranscript(transcript, isFinal);
-
-        if (match) {
-            state.updatePosition(match.index);
-        }
-    }, [engine, state]);
+        engine.processTranscript(transcript, isFinal);
+    }, [engine]);
 
     const { toggleVoice, start: startListening, stop: stopListening, isListening, error } = useVoiceSpeechEngine({
         lang,
