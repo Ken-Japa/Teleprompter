@@ -847,19 +847,7 @@ export const Prompter = memo(
         setToggleListening(toggleVoice);
       }, [toggleVoice, setToggleListening]);
 
-      // Handle Dynamic Mode Switching
-      useEffect(() => {
-        if (isVoiceMode) {
-          if (effectiveVoiceControlMode !== "remote") {
-            // Reactivation: Use LOOKAHEAD_POSITION because text is already offset for voice mode
-            startListening();
-          } else {
-            console.warn("[Prompter] Voice Mode is Remote - Not starting local listener");
-          }
-        } else {
-          stopListening();
-        }
-      }, [effectiveVoiceControlMode, isVoiceMode, startListening, stopListening]);
+
 
       const onRemoteVoiceUpdate = useCallback((index: number, progress: number) => {
         setRemoteVoiceState({ index, progress });
