@@ -3,6 +3,7 @@ import { Sentence } from "../../types";
 import { useVoiceMetrics } from "./useVoiceMetrics";
 import { useVoiceAnalytics } from "./useVoiceAnalytics";
 import { useVoiceMatchEngine } from "./useVoiceMatchEngine";
+import { voiceDiagnostics } from "../../utils/voiceDiagnostics";
 
 interface UseVoiceEngineProps {
     sentences: Sentence[];
@@ -71,8 +72,22 @@ export const useVoiceEngine = ({
             metrics.updatePerformanceMetrics(performance.now() - processStart);
             metrics.updateConfidenceLearning(match.ratio);
 
+            const sentenceId = charToSentenceMap[match.index] !== undefined ? charToSentenceMap[match.index] : 0;
+            voiceDiagnostics.recordMatch({
+                sentenceId,
+                transcript,
+                matchRatio: match.ratio,
+                processingTime: performance.now() - processStart,
+                wasJump: false
+            });
+
             if (onSpeechResult) onSpeechResult(transcript);
             if (isFinal && onFinalSpeechResult) onFinalSpeechResult(transcript);
+        } else if (isFinal) {
+            voiceDiagnostics.recordMiss({
+                transcript,
+                reason: "Busca sem correspondência com o texto"
+            });
         }
 
         return match;

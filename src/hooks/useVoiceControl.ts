@@ -75,9 +75,10 @@ export const useVoiceControl = (
         setIsListening(isListening);
     }, [isListening, setIsListening]);
 
+    const workerError = engine.matchEngine.error;
     useEffect(() => {
-        setError(error);
-    }, [error, setError]);
+        setError(error || workerError);
+    }, [error, workerError, setError]);
 
     const isScriptFinished = useMemo(() => {
         return activeSentenceIndex >= sentences.length - 1 && sentences.length > 0;

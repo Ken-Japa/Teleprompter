@@ -87,6 +87,7 @@ export const useVoiceMatchEngine = ({
         performMatch,
         resetEngine,
         lockedSentenceIdRef,
-        failureCountRef
-    }), [performMatch, resetEngine]);
+        failureCountRef,
+        get error() { return worker.error; }
+    }), [performMatch, resetEngine, worker]);
 };
