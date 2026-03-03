@@ -1,4 +1,5 @@
-import { levenshteinDistance, findBestMatch, findSegmentedMatch } from "./stringSimilarity";
+import { findBestMatch, findSegmentedMatch } from "./stringSimilarity";
+import { levenshteinDistance } from "./voice/levenshtein";
 
 describe("stringSimilarity Utils", () => {
   describe("levenshteinDistance", () => {

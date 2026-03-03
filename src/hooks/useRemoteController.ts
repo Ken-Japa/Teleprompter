@@ -3,6 +3,7 @@ import { ConnectionStatus, MessageType, PeerMessage, PrompterSettings, Navigatio
 import { usePeerRemote } from "./usePeerRemote";
 import { useWakeLock } from "./useWakeLock";
 import { useVoiceControl } from "./useVoiceControl";
+import { useVoiceStore } from "../store/useVoiceStore";
 import { useMediaRecorder } from "./useMediaRecorder";
 import { trackSettingChange } from "../utils/analytics";
 import { useTranslation } from "./useTranslation";
@@ -48,10 +49,15 @@ export const useRemoteController = (hostId: string) => {
     useWakeLock(status === ConnectionStatus.CONNECTED);
 
     // 4.1 Voice Control (Local)
-    const { startListening, stopListening, activeSentenceIndex, voiceProgress, resetVoice, voiceApiError } = useVoiceControl(
+    const { startListening, stopListening, resetVoice } = useVoiceControl(
         text,
         isPro
     );
+
+    // Read voice state fields from Zustand store (source of truth post-refactoring)
+    const activeSentenceIndex = useVoiceStore(s => s.activeSentenceIndex);
+    const voiceProgress = useVoiceStore(s => s.voiceProgress);
+    const voiceApiError = useVoiceStore(s => s.error);
 
     // 4.3 Local Recording
     const {

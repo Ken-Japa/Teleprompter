@@ -244,12 +244,15 @@ class VoiceDiagnostics {
             }
         });
 
+        // Build O(1) lookup map — avoids O(n) sentences.find() inside forEach
+        const sentenceMap = new Map(sentences.map(s => [s.id, s]));
+
         // Filtra apenas frases com problemas
         const problemAreas: ProblemArea[] = [];
 
         sentenceStats.forEach((stats, sentenceId) => {
             if (stats.missCount >= 2 || stats.ratios.length >= 3) {
-                const sentence = sentences.find(s => s.id === sentenceId);
+                const sentence = sentenceMap.get(sentenceId);
                 if (!sentence) return;
 
                 const issues: string[] = [];

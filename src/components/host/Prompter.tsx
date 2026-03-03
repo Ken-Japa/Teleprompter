@@ -41,6 +41,7 @@ import { useMidi } from "../../hooks/useMidi";
 import { MidiAction } from "../../types";
 import { useBackingTrack } from "../../hooks/useBackingTrack";
 import { SubtitleSegment, generateSrt, generateVtt, downloadFile } from "../../utils/subtitleUtils";
+import { useVoiceStore } from "../../store/useVoiceStore";
 
 
 interface PhysicsMethods {
@@ -98,9 +99,13 @@ export const Prompter = memo(
 
       const effectiveBpm = (autoBpmEnabled && detectedBpm) ? detectedBpm : bpm;
 
-      // Ephemeral State
       const [cameraStream, setCameraStream] = useState<MediaStream | null>(null);
-      const [isVoiceMode, setIsVoiceMode] = useState<boolean>(false);
+      const isVoiceMode = useVoiceStore(s => s.isListening);
+      const setToggleListening = useVoiceStore(s => s.setToggleListening);
+      const activeSentenceIndex = useVoiceStore(s => s.activeSentenceIndex);
+      const voiceProgress = useVoiceStore(s => s.voiceProgress);
+      const sessionSummary = useVoiceStore(s => s.sessionSummary);
+      const adaptedLerpFactor = useVoiceStore(s => s.adaptedLerpFactor);
       const [pauseTimeoutId, setPauseTimeoutId] = useState<ReturnType<typeof setTimeout> | null>(null);
 
       // Fitness Mode State
@@ -335,7 +340,7 @@ export const Prompter = memo(
         settings.autoColorBrackets
       );
 
-      const { startListening, stopListening, resetVoice, clearSessionSummary, activeSentenceIndex, voiceProgress, sentences, voiceApiSupported, voiceApiError, sessionSummary, syncWithScroll, syncAfterManualScroll, semanticWindowEvent, adaptedLerpFactor } = voiceControl;
+      const { startListening, stopListening, resetVoice, clearSessionSummary, sentences, voiceApiSupported, syncWithScroll, semanticWindowEvent } = voiceControl;
 
       const backingTrack = useBackingTrack(activeScriptId, sentences, isPro);
 
@@ -379,9 +384,8 @@ export const Prompter = memo(
             return;
           }
 
-          // Auto-enable voice if off
           if (!isVoiceMode) {
-            setIsVoiceMode(true);
+            // isVoiceMode will be updated via startListening state
           }
           startListening();
 
@@ -499,10 +503,8 @@ export const Prompter = memo(
         onCommandTriggered: handleCommandTriggered,
         onManualScrollEnd: () => {
           if (isVoiceMode) {
-            // Reset voice control state after manual scroll
-            if (syncAfterManualScroll) syncAfterManualScroll();
-            // Re-sync with visible content
-            if (syncWithScroll) syncWithScroll();
+            // Reset voice control state + re-sync position after manual scroll
+            if (syncWithScroll) syncWithScroll(activeSentenceIndex);
           }
         },
         isMusicianMode,
@@ -817,20 +819,16 @@ export const Prompter = memo(
         }
 
         if (isVoiceMode) {
-          setIsVoiceMode(false);
           stopListening();
           // Remove active class from current element when stopping
           if (currentActiveElementRef.current) {
             currentActiveElementRef.current.classList.remove("sentence-active");
           }
         } else {
-          setIsVoiceMode(true);
           // Pause auto-scroll when enabling voice mode
           onStateChange(false, externalState.speed);
           if (effectiveVoiceControlMode !== "remote") {
-            // First activation: Use 0.5 (Center) because manual reading focus is at center
-            // CRITICAL: Pass native scrollTop before it gets reset to 0 by useScrollPhysics sync effect
-            startListening(0.5, scrollContainerRef.current?.scrollTop);
+            startListening();
           }
         }
       }, [
@@ -845,14 +843,16 @@ export const Prompter = memo(
         effectiveVoiceControlMode
       ]);
 
+      useEffect(() => {
+        setToggleListening(toggleVoice);
+      }, [toggleVoice, setToggleListening]);
+
       // Handle Dynamic Mode Switching
       useEffect(() => {
         if (isVoiceMode) {
           if (effectiveVoiceControlMode !== "remote") {
             // Reactivation: Use LOOKAHEAD_POSITION because text is already offset for voice mode
-            // CRITICAL: Use absolute internal scroll position when voice is already active (scrollTop is 0)
-            const currentPos = physicsMethodsRef.current?.internalScrollPos?.current;
-            startListening(VOICE_CONFIG.LOOKAHEAD_POSITION, currentPos);
+            startListening();
           } else {
             console.warn("[Prompter] Voice Mode is Remote - Not starting local listener");
           }
@@ -1177,14 +1177,10 @@ export const Prompter = memo(
             settings={settings}
             isCameraMode={isCameraMode}
             actions={actions}
-            isVoiceMode={isVoiceMode}
             isPro={isPro}
-            voiceApiSupported={voiceApiSupported}
-            voiceApiError={voiceApiError}
             resetTimerSignal={resetTimerSignal}
             onStateChange={onStateChange}
             onResetPrompter={resetPrompter}
-            toggleVoice={toggleVoice}
             onExit={onExit}
             onSync={onSync}
             onEdit={() => setShowEditModal(true)}
@@ -1258,14 +1254,10 @@ export const Prompter = memo(
                   settings={settings}
                   isCameraMode={isCameraMode}
                   actions={actions}
-                  isVoiceMode={isVoiceMode}
                   isPro={isPro}
-                  voiceApiSupported={voiceApiSupported}
-                  voiceApiError={voiceApiError}
                   resetTimerSignal={resetTimerSignal}
                   onStateChange={onStateChange}
                   onResetPrompter={resetPrompter}
-                  toggleVoice={toggleVoice}
                   onExit={onExit}
                   onSync={onSync}
                   onEdit={() => setShowEditModal(true)}
