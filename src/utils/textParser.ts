@@ -37,7 +37,7 @@ export const parseTextToSentences = (
     // Group 2: Tag content
     // Group 3: Square Bracket match [ ... ] (max 100 chars for auto-coloring, no newlines)
     // Group 4: Angle Bracket match < ... > (max 100 chars for auto-coloring, no newlines, avoids known tags)
-    const TOKEN_REGEX = /<(r|y|g|b|blue)>([\s\S]*?)<\/\1>|(\[[^\]\n]{1,100}\])|(<(?!\/?(?:bold|i|u|b|r|y|g|strong|em|blue)\b)[^>\n]{1,100}>)/g;
+    const TOKEN_REGEX = /<(r|y|g|blue)>([\s\S]*?)<\/\1>|(\[[^\]\n]{1,100}\])|(<(?!\/?(?:bold|i|u|b|r|y|g|strong|em|blue)\b)[^>\n]{1,100}>)/g;
 
     let lastIndex = 0;
     let match;
@@ -46,7 +46,6 @@ export const parseTextToSentences = (
         r: "red",
         y: "yellow",
         g: "green",
-        b: "blue",
         blue: "blue",
     };
 
@@ -428,13 +427,25 @@ export const parseTextToSentences = (
             .replace(/\s+/g, " ")
             .trim();
 
-        if (clean.length === 0) return;
-        if (s.isChord) return;
+        if (clean.length === 0) {
+            s.cleanStartIndex = builtString.length;
+            s.matchableLength = 0;
+            return;
+        }
+
+        if (s.isChord) {
+            s.cleanStartIndex = builtString.length;
+            s.matchableLength = 0;
+            return;
+        }
 
         if (builtString.length > 0) {
             builtString += " ";
             tempMap.push(s.id);
         }
+
+        s.cleanStartIndex = builtString.length;
+        s.matchableLength = clean.length;
 
         for (let i = 0; i < clean.length; i++) {
             tempMap.push(s.id);

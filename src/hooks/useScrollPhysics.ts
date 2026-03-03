@@ -267,6 +267,7 @@ export const useScrollPhysics = ({
           metrics,
           currentActiveElementRef,
           lastVoiceIndexRef,
+          isFlipVerticalRef.current,
           driftRatio
         );
 

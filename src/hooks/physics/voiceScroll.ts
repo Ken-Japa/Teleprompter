@@ -8,7 +8,8 @@ export const calculateVoiceTarget = (
   metrics: PhysicsMetrics,
   currentActiveElementRef: MutableRefObject<HTMLElement | null>,
   lastVoiceIndexRef: MutableRefObject<number>,
-  semanticWindowOffset: number = 0 // Offset from center of semantic window (drift)
+  isFlipVertical: boolean = false, // Added
+  semanticWindowOffset: number = 0
 ): number | null => {
   // Update active element cache if index changed
   if (activeSentenceIndex !== lastVoiceIndexRef.current) {
@@ -34,7 +35,10 @@ export const calculateVoiceTarget = (
     const readingLineOffset = activeEl.clientHeight * voiceProgress;
 
     // TARGET CALCULATION LOGIC:
-    const targetRatio = VOICE_CONFIG.LOOKAHEAD_POSITION;
+    // In normal mode, we want the text to be around the top (e.g. 10%)
+    // In flip vertical mode (mirror), the text is upside down, so the "top" of the text
+    // is visually at the bottom. We invert the ratio to maintain the visual reading line.
+    const targetRatio = isFlipVertical ? (1 - VOICE_CONFIG.LOOKAHEAD_POSITION) : VOICE_CONFIG.LOOKAHEAD_POSITION;
 
     // Scroll Position = ElementPosition - ViewportOffset + Drift
     return activeEl.offsetTop + readingLineOffset + semanticWindowOffset - metrics.clientHeight * targetRatio;

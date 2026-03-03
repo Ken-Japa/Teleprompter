@@ -25,10 +25,10 @@ export const useVoiceSync = ({ sentences, charToSentenceMap }: UseVoiceSyncProps
         setActiveSentenceIndex(sentenceId);
 
         const sentence = sentences[sentenceId];
-        if (sentence && sentence.startIndex !== undefined) {
-            const cleanLen = sentence.cleanContent.length;
-            const posInSentence = matchIndex - sentence.startIndex;
-            const progress = Math.max(0, Math.min(1, posInSentence / cleanLen));
+        if (sentence && sentence.cleanStartIndex !== undefined && sentence.matchableLength !== undefined) {
+            const cleanLen = sentence.matchableLength;
+            const posInSentence = matchIndex - sentence.cleanStartIndex;
+            const progress = cleanLen > 0 ? Math.max(0, Math.min(1, posInSentence / cleanLen)) : 0;
 
             // We no longer apply LERP here to avoid "Double Smoothing".
             // The useScrollPhysics hook will handle the smoothing using the adaptedLerpFactor.

@@ -119,4 +119,26 @@ describe("parseTextToSentences", () => {
         expect(result.sentences[0].isInertial).toBe(true); // chords
         expect(result.sentences[1].isInertial).toBe(false); // lyrics
     });
+    it("Should provide correct cleanStartIndex and matchableLength for voice synchronization", () => {
+        const text = "First sentence. [STOP]\nSecond sentence!";
+        const result = parseTextToSentences(text);
+
+        expect(result.sentences).toHaveLength(3);
+
+        // "First sentence." -> "first sentence" (len 14)
+        expect(result.sentences[0].cleanStartIndex).toBe(0);
+        expect(result.sentences[0].matchableLength).toBe(14);
+
+        // "[STOP]" -> "" (inertial, no clean text)
+        expect(result.sentences[1].isInertial).toBe(true);
+        expect(result.sentences[1].matchableLength).toBe(0);
+
+        // "Second sentence!" -> "second sentence" (len 15)
+        // clean text should be "first sentence second sentence"
+        // space added between sentences: index 0..13 (s1) + index 14 (space) + index 15..29 (s2)
+        expect(result.sentences[2].cleanStartIndex).toBe(15);
+        expect(result.sentences[2].matchableLength).toBe(15);
+
+        expect(result.fullCleanText).toBe("first sentence second sentence");
+    });
 });

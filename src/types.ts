@@ -198,6 +198,7 @@ export interface Sentence {
     id: number;
     cleanContent: string;
     startIndex?: number;
+    cleanStartIndex?: number;
     fragments: TextFragment[];
     isChord?: boolean;
     command?: TextCommand;
