@@ -21,7 +21,8 @@ export const useVoiceControl = (
     isFlipVertical: boolean = false,
     isMusicianMode: boolean = false,
     isBilingual: boolean = false,
-    autoColorBrackets: boolean = false
+    autoColorBrackets: boolean = false,
+    getInitialIndex?: () => number
 ) => {
     const { lang: globalLang } = useTranslation();
     const lang = forcedLang || globalLang;
@@ -98,10 +99,12 @@ export const useVoiceControl = (
         if (isListening) {
             // 1. Auto-resync to current scroll position on start
             // This prevents the "jump back" issue if the user moved the scroll manually
-            const currentSentenceIndex = useVoiceStore.getState().activeSentenceIndex;
-            const currentSentence = sentences[currentSentenceIndex];
+            const scrollPosIndex = getInitialIndex ? getInitialIndex() : useVoiceStore.getState().activeSentenceIndex;
+            const currentSentence = sentences[scrollPosIndex];
+
             if (currentSentence) {
                 engine.resetEngine(currentSentence.cleanStartIndex);
+                state.syncTo(scrollPosIndex); // Ensure state and engine are both in sync
             }
 
             engine.startEngineSession();
@@ -121,7 +124,7 @@ export const useVoiceControl = (
         return () => {
             if (rafId) cancelAnimationFrame(rafId);
         };
-    }, [isListening, engine, state, sentences]);
+    }, [isListening, engine, state, sentences, getInitialIndex]);
 
     // --- 4. EXPOSED API ---
     return {
@@ -135,9 +138,12 @@ export const useVoiceControl = (
             state.resetState(startIndex);
         },
 
-        syncWithScroll: (startIndex: number) => {
-            engine.resetEngine(startIndex);
-            state.syncTo(startIndex);
+        syncWithScroll: (sentenceIndex: number) => {
+            const sentence = sentences[sentenceIndex];
+            if (sentence) {
+                engine.resetEngine(sentence.cleanStartIndex);
+                state.syncTo(sentenceIndex);
+            }
         },
 
         clearSessionSummary: () => setSessionSummary(null),

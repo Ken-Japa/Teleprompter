@@ -20,9 +20,11 @@ interface ScriptBoardProps {
   fontSize?: number;
   fontWeight?: number;
   margin?: number;
+  activeSentenceIndex?: number;
+  voiceProgress?: number;
 }
 
-export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, theme, isMusicianMode, isBilingualMode, bilingualSentences, fontSize = 60, fontWeight = 400, margin = 10 }: ScriptBoardProps) => {
+export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, theme, isMusicianMode, isBilingualMode, bilingualSentences, fontSize = 60, fontWeight = 400, margin = 10, activeSentenceIndex, voiceProgress }: ScriptBoardProps) => {
   const { t } = useTranslation();
 
   const watermarkIndexes = useMemo(() => {
@@ -218,6 +220,8 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
                       originalSentenceId={s.originalSentenceId}
                       darkMode={true}
                       fontWeight={fontWeight}
+                      isActive={activeSentenceIndex !== undefined && (s.id === activeSentenceIndex || s.originalSentenceId === activeSentenceIndex)}
+                      progress={activeSentenceIndex !== undefined && (s.id === activeSentenceIndex || s.originalSentenceId === activeSentenceIndex) ? voiceProgress : 0}
                     />
                   ))}
                 </div>
@@ -239,6 +243,8 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
                       fragments={s.fragments}
                       command={s.command}
                       fontWeight={fontWeight}
+                      isActive={activeSentenceIndex !== undefined && (s.id === activeSentenceIndex || s.originalSentenceId === activeSentenceIndex)}
+                      progress={activeSentenceIndex !== undefined && (s.id === activeSentenceIndex || s.originalSentenceId === activeSentenceIndex) ? voiceProgress : 0}
                     />
                   ))}
                 </div>
@@ -291,7 +297,19 @@ export const ScriptBoard = memo(({ sentences, isMirrored, isUpperCase, isPro, th
             }}
           >
             {processedSentences.map((s: Sentence) => (
-              <SentenceItem key={s.id} id={s.id} fragments={s.fragments} isChord={s.isChord} isMusicianMode={isMusicianMode} command={s.command} originalSentenceId={s.originalSentenceId} darkMode={true} fontWeight={fontWeight} />
+              <SentenceItem
+                key={s.id}
+                id={s.id}
+                fragments={s.fragments}
+                isChord={s.isChord}
+                isMusicianMode={isMusicianMode}
+                command={s.command}
+                originalSentenceId={s.originalSentenceId}
+                darkMode={true}
+                fontWeight={fontWeight}
+                isActive={activeSentenceIndex !== undefined && (s.id === activeSentenceIndex || s.originalSentenceId === activeSentenceIndex)}
+                progress={activeSentenceIndex !== undefined && (s.id === activeSentenceIndex || s.originalSentenceId === activeSentenceIndex) ? voiceProgress : 0}
+              />
             ))}
           </div>
         </div>

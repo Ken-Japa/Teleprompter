@@ -616,6 +616,31 @@ export const useScrollPhysics = ({
     }, 250); // Increased debounce for wheel to allow smoother manual interaction
   }, [wakeUpLoop, onManualScrollEnd]);
 
+  const getCurrentSentenceIndex = useCallback(() => {
+    if (!scrollContainerRef.current || !sentences.length) return 0;
+
+    const metrics = metricsRef.current;
+    const scrollPos = scrollContainerRef.current.scrollTop;
+    const readingZoneRatio = isFlipVerticalRef.current ? 0.95 : 0.05;
+    const readingZoneOffset = metrics.clientHeight * readingZoneRatio;
+    const triggerPoint = scrollPos + readingZoneOffset;
+
+    let closestIndex = 0;
+    let minDistance = Infinity;
+
+    for (let i = 0; i < sentences.length; i++) {
+      const el = document.getElementById(`sentence-${i}`);
+      if (el) {
+        const distance = Math.abs(el.offsetTop - triggerPoint);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = i;
+        }
+      }
+    }
+    return closestIndex;
+  }, [scrollContainerRef, sentences, metricsRef]);
+
   return {
     handleNativeScroll,
     handleRemoteInput,
@@ -627,6 +652,7 @@ export const useScrollPhysics = ({
     internalScrollPos, // Expose ref for external synchronization
     handleInteractionStart,
     handleInteractionEnd,
-    handleWheel
+    handleWheel,
+    getCurrentSentenceIndex
   };
 };

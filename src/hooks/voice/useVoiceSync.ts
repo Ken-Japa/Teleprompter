@@ -46,14 +46,15 @@ export const useVoiceSync = ({ sentences, charToSentenceMap }: UseVoiceSyncProps
         const now = Date.now();
         const timeSinceLastMatch = now - lastMatchTimeRef.current;
 
-        // Only apply if it's been a short while (e.g. > 400ms) but not too long (e.g. < 3000ms)
-        if (timeSinceLastMatch < 400 || timeSinceLastMatch > 3000) return;
+        // --- FIX: Lower threshold (400ms -> 100ms) to make it feel immediate ---
+        // Also extend max window to 8000ms to allow for longer pauses/mismatches.
+        if (timeSinceLastMatch < 100 || timeSinceLastMatch > 8000) return;
+
+        // --- FIX: Fallback WPM if 0 (matches haven't stabilized yet) ---
+        const effectiveWPM = wpm > 40 ? wpm : 140;
 
         // Calculate expected progress increment based on WPM
-        // Avg word length is approx 5-6 chars. 
-        // WPM / 60 = Words Per Second.
-        // WPS * 5.5 = Chars Per Second.
-        const charsPerSecond = (wpm / 60) * 5.5;
+        const charsPerSecond = (effectiveWPM / 60) * 5.5;
         const dt = (now - lastMatchTimeRef.current) / 1000;
         const expectedCharsSaid = charsPerSecond * dt;
 
@@ -63,30 +64,41 @@ export const useVoiceSync = ({ sentences, charToSentenceMap }: UseVoiceSyncProps
         if (!sentence || !sentence.matchableLength) return;
 
         const progressIncrement = expectedCharsSaid / sentence.matchableLength;
-        const newProgress = Math.min(0.98, lastProgressRef.current + progressIncrement);
+        const newProgress = lastProgressRef.current + progressIncrement;
 
-        // We don't update lastProgressRef here to keep extrapolation relative to the LAST REAL MATCH
-        // This prevents runaway drift.
-        setVoiceProgress(newProgress);
-    }, [sentences, setVoiceProgress]);
+        if (newProgress > 0.98) {
+            // --- FIX: CROSS-SENTENCE MOMENTUM ---
+            // If we've reached the end of the sentence via momentum, jump to the start of the next one.
+            if (activeIndex < sentences.length - 1) {
+                setActiveSentenceIndex(activeIndex + 1);
+                setVoiceProgress(0);
+                lastProgressRef.current = 0;
+                lastMatchTimeRef.current = now; // Reset timer for the new sentence
+            } else {
+                setVoiceProgress(0.98);
+            }
+        } else {
+            setVoiceProgress(newProgress);
+        }
+    }, [sentences, setVoiceProgress, setActiveSentenceIndex]);
 
     const resetState = useCallback((startIndex: number = 0) => {
-        const sentenceId = charToSentenceMap[startIndex];
-        setActiveSentenceIndex(sentenceId !== undefined ? sentenceId : 0);
+        // startIndex is a sentence index here
+        setActiveSentenceIndex(startIndex);
         setVoiceProgress(0);
+        // --- FIX: Initialize time to now to allow momentum to work immediately if no match occurs ---
         lastMatchTimeRef.current = Date.now();
         lastProgressRef.current = 0;
-    }, [charToSentenceMap, setActiveSentenceIndex, setVoiceProgress]);
+    }, [setActiveSentenceIndex, setVoiceProgress]);
 
     const syncTo = useCallback((startIndex: number) => {
-        const sentenceId = charToSentenceMap[startIndex];
-        if (sentenceId !== undefined) {
-            setActiveSentenceIndex(sentenceId);
-            setVoiceProgress(0);
-            lastMatchTimeRef.current = Date.now();
-            lastProgressRef.current = 0;
-        }
-    }, [charToSentenceMap, setActiveSentenceIndex, setVoiceProgress]);
+        // startIndex is a sentence index here
+        setActiveSentenceIndex(startIndex);
+        setVoiceProgress(0);
+        // --- FIX: Initialize time to now to allow momentum to work immediately ---
+        lastMatchTimeRef.current = Date.now();
+        lastProgressRef.current = 0;
+    }, [setActiveSentenceIndex, setVoiceProgress]);
 
     const resetProgress = useCallback(() => {
         setVoiceProgress(0);

@@ -32,6 +32,9 @@ interface PrompterHUDProps {
     isPro: boolean;
     togglePiP?: () => void;
     isPiPActive?: boolean;
+    // Voice Control Props
+    activeSentenceIndex?: number;
+    voiceProgress?: number;
     // Recording Props
     recordingState?: {
         isRecording: boolean;
@@ -61,7 +64,7 @@ interface PrompterHUDProps {
 
 
 export const PrompterHUD = memo(
-    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isPro, resetTimerSignal, onStateChange, onResetPrompter, onExit, onSync, onEdit, togglePiP, isPiPActive, recordingState, recordingActions, onPreviousPart, onNextPart, hasParts, detectedBpm, autoBpmError, setShowPaywall, backingTrack, isNDIEnabled, onToggleNDI }: PrompterHUDProps) => {
+    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isPro, resetTimerSignal, onStateChange, onResetPrompter, onExit, onSync, onEdit, togglePiP, isPiPActive, activeSentenceIndex, voiceProgress, recordingState, recordingActions, onPreviousPart, onNextPart, hasParts, detectedBpm, autoBpmError, setShowPaywall, backingTrack, isNDIEnabled, onToggleNDI }: PrompterHUDProps) => {
 
         const { t } = useTranslation();
         const { recordingMode = 'host' } = settings;
@@ -459,6 +462,44 @@ export const PrompterHUD = memo(
                     onClose={() => setShowQRModal(false)}
                     peerId={peerId}
                 />
+
+                {/* Voice Status Indicator (Fixes Unused Prop Lint) */}
+                {isVoiceMode && activeSentenceIndex !== undefined && (
+                    <div className="fixed top-2 left-1/2 -translate-x-1/2 z-[200] pointer-events-none">
+                        <div className="bg-slate-900/90 backdrop-blur-md border border-red-500/30 px-4 py-1.5 rounded-full flex items-center gap-3 shadow-xl">
+                            <div className="relative">
+                                <MicIcon className="w-4 h-4 text-red-500 animate-pulse" />
+                                {voiceProgress !== undefined && voiceProgress > 0 && (
+                                    <svg className="absolute -inset-1 -rotate-90 w-6 h-6">
+                                        <circle
+                                            cx="12"
+                                            cy="12"
+                                            r="10"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            className="text-white/10"
+                                        />
+                                        <circle
+                                            cx="12"
+                                            cy="12"
+                                            r="10"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeDasharray={2 * Math.PI * 10}
+                                            strokeDashoffset={2 * Math.PI * 10 * (1 - (voiceProgress || 0))}
+                                            className="text-red-500 transition-all duration-300"
+                                        />
+                                    </svg>
+                                )}
+                            </div>
+                            <span className="text-xs font-bold text-white tracking-wide uppercase">
+                                {t("host.controls.voice")}
+                            </span>
+                        </div>
+                    </div>
+                )}
             </S.HudContainer >
         );
     }

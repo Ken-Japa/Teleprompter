@@ -139,6 +139,15 @@ export const Prompter = memo(
       // Track exact container height for pixel-perfect padding calculation
       const [containerHeight, setContainerHeight] = useState<number>(0);
 
+      // --- SCRIPT PROCESSING ---
+      const { sentences } = useMemo(() =>
+        parseTextToSentences(text, settings.autoColorBrackets, isMusicianMode),
+        [text, settings.autoColorBrackets, isMusicianMode]
+      );
+
+      // Abstraction: Handle DOM measurements
+      const metricsRef = useElementMetrics(scrollContainerRef, [sentences, fontSize, margin, isUpperCase, isFlipVertical]);
+
       // Height Tracking for Mobile Viewport Fix
       React.useLayoutEffect(() => {
         if (!scrollContainerRef.current) return;
@@ -328,6 +337,89 @@ export const Prompter = memo(
         return settings.voiceLanguage || lang;
       }, [isBilingualMode, bilingualConfig, lang, settings.voiceLanguage]);
 
+      const handleAutoStop = useCallback(() => {
+        onStateChange(false, externalState.speed);
+        trackFinishReading(0);
+      }, [onStateChange, externalState.speed]);
+
+      const handleCommandTriggered = useCallback((command: TextCommand) => {
+        switch (command.type) {
+          case 'PAUSE':
+            onStateChange(false, externalState.speed);
+            const tid = setTimeout(() => {
+              onStateChange(true, externalState.speed);
+              setPauseTimeoutId(null);
+            }, (command.duration || 0) * 1000);
+            setPauseTimeoutId(tid);
+            break;
+          case 'SPEED':
+            onStateChange(externalState.isPlaying, command.value || externalState.speed);
+            break;
+          case 'REST':
+            setFitnessMode('REST');
+            setFitnessValue((command.duration || 0));
+            onStateChange(false, externalState.speed);
+            break;
+          case 'COUNT':
+            setFitnessMode('COUNT');
+            setFitnessTarget(command.value || 0);
+            setFitnessValue(0);
+            onStateChange(false, externalState.speed);
+            break;
+          case 'PART':
+            // Logic handled by navigation
+            break;
+          default:
+            break;
+        }
+      }, [onStateChange, externalState.isPlaying, externalState.speed]);
+
+      const backingTrack = useBackingTrack(activeScriptId, sentences, isPro);
+
+      // --- PHYSICS ENGINE INTEGRATION ---
+      const physicsResult = useScrollPhysics({
+        isPlaying: externalState.isPlaying,
+        isVoiceMode,
+        speed: externalState.speed,
+        activeSentenceIndex,
+        voiceProgress,
+        lerpFactor: adaptedLerpFactor,
+        isFlipVertical,
+        metricsRef,
+        scrollContainerRef,
+        onScrollUpdate,
+        onAutoStop: handleAutoStop,
+        onCommandTriggered: handleCommandTriggered,
+        onManualScrollEnd: () => {
+          if (isVoiceMode) {
+            // Use the ref to avoid circular dependency / use-before-define
+            if (syncWithScrollRef.current) {
+              const realIndex = physicsResult.getCurrentSentenceIndex();
+              syncWithScrollRef.current(realIndex);
+            }
+          }
+        },
+        isMusicianMode,
+        bpm: effectiveBpm,
+        backingTrackProgress: backingTrack.getProgress(),
+        semanticWindowEvent: null,
+        sentences,
+      });
+
+      const {
+        handleNativeScroll,
+        handleRemoteInput,
+        handleScrollTo,
+        resetPhysics,
+        wakeUpLoop,
+        clearProcessedCommands,
+        internalScrollPos,
+        handleInteractionStart,
+        handleInteractionEnd,
+        handleWheel,
+        getCurrentSentenceIndex
+      } = physicsResult;
+
       const voiceControl = useVoiceControl(
         voiceControlText,
         isPro,
@@ -337,12 +429,23 @@ export const Prompter = memo(
         isFlipVertical,
         isMusicianMode,
         isBilingualMode,
-        settings.autoColorBrackets
+        settings.autoColorBrackets,
+        getCurrentSentenceIndex
       );
 
-      const { startListening, stopListening, resetVoice, clearSessionSummary, sentences, voiceApiSupported, syncWithScroll, semanticWindowEvent } = voiceControl;
+      const {
+        startListening,
+        stopListening,
+        resetVoice,
+        clearSessionSummary,
+        syncWithScroll,
+      } = voiceControl;
 
-      const backingTrack = useBackingTrack(activeScriptId, sentences, isPro);
+      // Ref to break circularity
+      const syncWithScrollRef = useRef<typeof syncWithScroll | null>(null);
+      useEffect(() => {
+        syncWithScrollRef.current = syncWithScroll;
+      }, [syncWithScroll]);
 
 
 
@@ -363,106 +466,7 @@ export const Prompter = memo(
         };
       }, [isBilingualMode, bilingualConfig, settings.autoColorBrackets, isMusicianMode]);
 
-      // Abstraction: Handle DOM measurements
-      const metricsRef = useElementMetrics(scrollContainerRef, [sentences, fontSize, margin, isUpperCase, isFlipVertical]);
-
-      // Command Detection and Execution
-      const handleCommandTriggered = useCallback((command: TextCommand, sentenceId: number) => {
-        if (command.type === 'STOP') {
-          onStateChange(false, externalState.speed);
-        } else if (command.type === 'PAUSE' && command.duration) {
-          onStateChange(false, externalState.speed);
-          const timeoutId = setTimeout(() => {
-            onStateChange(true, externalState.speed);
-          }, command.duration * 1000);
-          setPauseTimeoutId(timeoutId);
-        } else if (command.type === 'SPEED' && command.value !== undefined) {
-          onStateChange(externalState.isPlaying, command.value);
-        } else if (command.type === 'COUNT' && command.value) {
-          // Safety: If not Pro or Voice not supported, ignore command to prevent getting stuck
-          if (!isPro || !voiceApiSupported) {
-            return;
-          }
-
-          if (!isVoiceMode) {
-            // isVoiceMode will be updated via startListening state
-          }
-          startListening();
-
-          onStateChange(false, externalState.speed);
-          setFitnessMode('COUNT');
-          setFitnessValue(0);
-          setFitnessTarget(command.value);
-        } else if (command.type === 'REST' && command.duration) {
-          onStateChange(false, externalState.speed);
-          setFitnessMode('REST');
-          setFitnessValue(command.duration);
-
-          if (fitnessIntervalRef.current) clearInterval(fitnessIntervalRef.current);
-
-          fitnessIntervalRef.current = setInterval(() => {
-            setFitnessValue((prev) => {
-              if (prev <= 1) {
-                if (fitnessIntervalRef.current) clearInterval(fitnessIntervalRef.current);
-                setFitnessMode(null);
-                onStateChange(true, externalState.speed);
-                return 0;
-              }
-              return prev - 1;
-            });
-          }, 1000);
-
-        } else if (command.type === 'LOOP_START') {
-          // Push this start point to the stack
-          // Prevent duplicate pushes if we are just re-scrolling slightly
-          const stack = loopStartStackRef.current;
-          if (stack.length === 0 || stack[stack.length - 1] !== sentenceId) {
-            stack.push(sentenceId);
-          }
-        } else if (command.type === 'LOOP_END') {
-          const iterations = command.value || 1;
-          const currentCount = loopCountersRef.current.get(sentenceId) || 0;
-
-          // Get the corresponding start point (Top of stack)
-          const stack = loopStartStackRef.current;
-          const targetId = stack.length > 0 ? stack[stack.length - 1] : null;
-
-          if (currentCount < iterations) {
-            // Perform Loop
-            if (targetId !== null) {
-              const targetEl = document.getElementById(`sentence-${targetId}`);
-              if (targetEl && scrollContainerRef.current) {
-                const offsetCtx = scrollContainerRef.current.clientHeight * 0.1;
-                const targetPos = Math.max(0, targetEl.offsetTop - offsetCtx);
-
-                const maxScroll = scrollContainerRef.current.scrollHeight - scrollContainerRef.current.clientHeight;
-                const progress = maxScroll > 0 ? targetPos / maxScroll : 0;
-
-                if (physicsMethodsRef.current) {
-                  physicsMethodsRef.current.scrollTo(progress);
-                  physicsMethodsRef.current.clearCommands(targetId, sentenceId);
-                  loopCountersRef.current.set(sentenceId, currentCount + 1);
-                }
-              }
-            }
-          } else {
-            // Loop finished
-            loopCountersRef.current.delete(sentenceId);
-            // Only pop if we matched a start point
-            if (targetId !== null) {
-              stack.pop();
-            }
-          }
-        } else if (command.type === 'BPM' && command.value !== undefined) {
-          if (command.value === 'AUTO') {
-            // Teaser logic - already handled by parser returning AUTO
-            // We can show a toast or just trigger paywall if they click something
-            // For now, let's just ignore or show a small hint if needed.
-          } else {
-            actions.setBpm(command.value);
-          }
-        }
-      }, [onStateChange, externalState.speed, externalState.isPlaying, isVoiceMode, isPro, lang, actions]);
+      // Command Detection logic has been moved up to resolve dependencies.
 
       // Cleanup pause timeout on unmount
       useEffect(() => {
@@ -474,47 +478,10 @@ export const Prompter = memo(
 
       useWakeLock();
 
-      const handleAutoStop = useCallback(() => {
-        onStateChange(false, externalState.speed);
-        // Track finish reading
-        // Estimate duration based on word count/speed is hard here without start time,
-        // but we can just track the event for now. Ideally we'd pass duration.
-        // For now, let's track the event.
-        trackFinishReading(0); // 0 acts as placeholder or we can measure if we had start time state locally
-      }, [onStateChange, externalState.speed]);
 
       // Determine effective voice state based on mode
       const effectiveActiveSentenceIndex = effectiveVoiceControlMode === "remote" ? remoteVoiceState.index : activeSentenceIndex;
       const effectiveVoiceProgress = effectiveVoiceControlMode === "remote" ? remoteVoiceState.progress : voiceProgress;
-
-      // --- PHYSICS ENGINE INTEGRATION ---
-      const physicsResult = useScrollPhysics({
-        isPlaying: externalState.isPlaying,
-        isVoiceMode,
-        speed: externalState.speed,
-        activeSentenceIndex: effectiveActiveSentenceIndex,
-        voiceProgress: effectiveVoiceProgress,
-        lerpFactor: adaptedLerpFactor,
-        isFlipVertical,
-        metricsRef,
-        scrollContainerRef,
-        onScrollUpdate,
-        onAutoStop: handleAutoStop,
-        onCommandTriggered: handleCommandTriggered,
-        onManualScrollEnd: () => {
-          if (isVoiceMode) {
-            // Reset voice control state + re-sync position after manual scroll
-            if (syncWithScroll) syncWithScroll(activeSentenceIndex);
-          }
-        },
-        isMusicianMode,
-        bpm: effectiveBpm,
-        backingTrackProgress: backingTrack.getProgress(),
-        semanticWindowEvent,
-        sentences,
-      });
-
-      const { handleNativeScroll, handleRemoteInput, handleScrollTo, resetPhysics, wakeUpLoop, currentActiveElementRef, clearProcessedCommands, internalScrollPos, handleInteractionStart, handleInteractionEnd, handleWheel } = physicsResult;
 
       // Initial Scroll Logic - MOVED HERE to access handleScrollTo
       const hasInitialScrolledRef = useRef<number | null>(null);
@@ -652,10 +619,7 @@ export const Prompter = memo(
         loopStartStackRef.current = [];
         setFitnessMode(null); // Reset fitness mode
         if (fitnessIntervalRef.current) clearInterval(fitnessIntervalRef.current);
-        if (currentActiveElementRef.current) {
-          currentActiveElementRef.current.classList.remove("sentence-active");
-        }
-      }, [onStateChange, externalState.speed, resetVoice, clearSessionSummary, resetPhysics, currentActiveElementRef, onReset]);
+      }, [onStateChange, externalState.speed, resetVoice, clearSessionSummary, resetPhysics, onReset]);
 
       // Moved Part Jumping Logic Up to fix Hoisting
       const partIndices = useMemo(() => {
@@ -820,14 +784,13 @@ export const Prompter = memo(
 
         if (isVoiceMode) {
           stopListening();
-          // Remove active class from current element when stopping
-          if (currentActiveElementRef.current) {
-            currentActiveElementRef.current.classList.remove("sentence-active");
-          }
         } else {
           // Pause auto-scroll when enabling voice mode
           onStateChange(false, externalState.speed);
           if (effectiveVoiceControlMode !== "remote") {
+            // Re-sync voice position with current scroll position
+            const currentIdx = getCurrentSentenceIndex();
+            syncWithScroll(currentIdx);
             startListening();
           }
         }
@@ -839,8 +802,9 @@ export const Prompter = memo(
         startListening,
         onStateChange,
         externalState.speed,
-        currentActiveElementRef,
-        effectiveVoiceControlMode
+        effectiveVoiceControlMode,
+        getCurrentSentenceIndex,
+        syncWithScroll
       ]);
 
       useEffect(() => {
@@ -885,24 +849,7 @@ export const Prompter = memo(
       }, [isRecording, onRecordingStatusChange]);
 
       // Voice Active Element Highlighting (UI Side)
-      useEffect(() => {
-        if (!isVoiceMode) return;
-
-        const newId = effectiveActiveSentenceIndex;
-        const oldElement = currentActiveElementRef.current;
-
-        // Try direct ID first, fallback to data attribute for musician mode
-        let newElement = document.getElementById(`sentence-${newId}`);
-        if (!newElement) {
-          newElement = document.querySelector(`[data-original-sentence-id="${newId}"]`) as HTMLElement | null;
-        }
-
-        if (oldElement && oldElement !== newElement) oldElement.classList.remove("sentence-active");
-        if (newElement && oldElement !== newElement) {
-          newElement.classList.add("sentence-active");
-          currentActiveElementRef.current = newElement;
-        }
-      }, [effectiveActiveSentenceIndex, isVoiceMode, currentActiveElementRef]);
+      // Refactored to use ScriptBoard props for better reliability with React rendering
 
       const handleMouseMove = useCallback(() => {
         if (mouseMoveRafRef.current) return;
@@ -1140,6 +1087,8 @@ export const Prompter = memo(
                 fontSize={fontSize}
                 fontWeight={settings.fontWeight}
                 margin={margin}
+                activeSentenceIndex={effectiveActiveSentenceIndex}
+                voiceProgress={effectiveVoiceProgress}
               />
             </S.PrompterScrollArea>
           </S.MainContent>
@@ -1162,6 +1111,8 @@ export const Prompter = memo(
             status={status}
             isPlaying={externalState.isPlaying}
             speed={externalState.speed}
+            activeSentenceIndex={effectiveActiveSentenceIndex}
+            voiceProgress={effectiveVoiceProgress}
             settings={settings}
             isCameraMode={isCameraMode}
             actions={actions}
@@ -1239,6 +1190,8 @@ export const Prompter = memo(
                   status={status}
                   isPlaying={externalState.isPlaying}
                   speed={externalState.speed}
+                  activeSentenceIndex={effectiveActiveSentenceIndex}
+                  voiceProgress={effectiveVoiceProgress}
                   settings={settings}
                   isCameraMode={isCameraMode}
                   actions={actions}
@@ -1251,13 +1204,15 @@ export const Prompter = memo(
                   onEdit={() => setShowEditModal(true)}
                   togglePiP={togglePiP}
                   isPiPActive={isPiPActive}
-                  onPreviousPart={() => handleJumpToPart('prev')}
-                  onNextPart={() => handleJumpToPart('next')}
+                  onPreviousPart={() => handleNavigate('prev')}
+                  onNextPart={() => handleNavigate('next')}
                   hasParts={partIndices.length > 0}
-                  backingTrack={backingTrack}
+                  detectedBpm={detectedBpm}
+                  autoBpmError={autoBpmError}
                   setShowPaywall={setShowPaywall}
                   isNDIEnabled={isNDIEnabled}
                   onToggleNDI={onToggleNDI}
+                  backingTrack={backingTrack}
                   recordingState={{
                     isRecording,
                     isPaused,

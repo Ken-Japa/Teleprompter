@@ -10,10 +10,12 @@ interface SentenceItemProps {
     originalSentenceId?: number; // For voice control in musician mode
     darkMode?: boolean; // Added darkMode prop
     fontWeight?: number;
+    isActive?: boolean;
+    progress?: number;
 }
 
 export const SentenceItem = memo(
-    ({ id, fragments, isChord, isMusicianMode, command, originalSentenceId, darkMode, fontWeight = 400 }: SentenceItemProps) => {
+    ({ id, fragments, isChord, isMusicianMode, command, originalSentenceId, darkMode, fontWeight = 400, isActive, progress }: SentenceItemProps) => {
 
         // Smart Bold Logic
         const getBoldStyle = () => {
@@ -35,10 +37,18 @@ export const SentenceItem = memo(
         };
 
         // Musician Mode Styling Logic
-        const className = `sentence-item content-visibility-auto block min-h-[1em] ${isMusicianMode
+        const className = `sentence-item content-visibility-auto block min-h-[1em] ${isActive ? "sentence-active" : ""} ${isMusicianMode
             ? `font-mono whitespace-pre ${isChord ? "text-yellow-400 font-bold" : "text-white"}`
             : ""
             }`;
+
+        // Progress-based highlighting style
+        // We use a subtle background gradient to show how far through the sentence the user has read.
+        const progressStyle: React.CSSProperties = (isActive && progress !== undefined && progress > 0) ? {
+            background: `linear-gradient(to right, rgba(74, 222, 128, 0.15) ${progress * 100}%, transparent ${progress * 100}%)`,
+            borderRadius: '4px',
+            transition: 'background 0.1s linear',
+        } : {};
 
         return (
             <span
@@ -46,7 +56,7 @@ export const SentenceItem = memo(
                 data-original-sentence-id={originalSentenceId} // For voice control matching
                 className={className}
                 data-command={command ? JSON.stringify(command) : undefined}
-                style={{ fontWeight }}
+                style={{ fontWeight, ...progressStyle }}
             >
                 {fragments.map((frag, i) => {
                     const isCommandTag = /^\[.+\]$/.test(frag.text.trim());
@@ -85,5 +95,7 @@ export const SentenceItem = memo(
         prev.isChord === next.isChord &&
         prev.command === next.command &&
         prev.originalSentenceId === next.originalSentenceId &&
-        prev.darkMode === next.darkMode // Added darkMode to comparison
+        prev.darkMode === next.darkMode &&
+        prev.isActive === next.isActive &&
+        prev.progress === next.progress
 );
