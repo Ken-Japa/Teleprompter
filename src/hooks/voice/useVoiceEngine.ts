@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { Sentence } from "../../types";
 import { useVoiceMetrics } from "./useVoiceMetrics";
 import { useVoiceAnalytics } from "./useVoiceAnalytics";
@@ -85,7 +85,7 @@ export const useVoiceEngine = ({
     ]);
 
     // --- 3. EXPOSED ENGINE API ---
-    return {
+    return useMemo(() => ({
         processTranscript,
 
         // Expose necessary sub-engine states
@@ -107,5 +107,5 @@ export const useVoiceEngine = ({
         stopEngineSession: () => {
             analytics.stopAnalyticsSession();
         }
-    };
+    }), [processTranscript, metrics, analytics, matchEngine]);
 };

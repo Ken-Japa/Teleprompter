@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { Sentence } from "../../types";
 import { useVoiceStore, VoiceStoreState } from "../../store/useVoiceStore";
 
@@ -53,10 +53,10 @@ export const useVoiceSync = ({ sentences, charToSentenceMap }: UseVoiceSyncProps
         setVoiceProgress(0);
     }, [setVoiceProgress]);
 
-    return {
+    return useMemo(() => ({
         updatePosition,
         resetState,
         syncTo,
         resetProgress
-    };
+    }), [updatePosition, resetState, syncTo, resetProgress]);
 };

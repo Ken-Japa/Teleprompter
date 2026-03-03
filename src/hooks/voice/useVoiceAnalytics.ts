@@ -80,6 +80,9 @@ export const useVoiceAnalytics = (sentences: Sentence[]) => {
     }, []);
 
     const stopAnalyticsSession = useCallback(() => {
+        const analytics = sessionAnalyticsRef.current;
+        if (analytics.sessionStartTime === 0) return; // No active session to stop
+
         const summary = generateSessionSummary();
         if (summary) {
             setSessionSummary(summary);
