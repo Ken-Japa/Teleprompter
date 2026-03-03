@@ -284,7 +284,8 @@ export const useScrollPhysics = ({
             scrollStateRef.current = 'SNAPPING';
             deltaScroll = diff;
             forceJump = true;
-            coastingVelocityRef.current = 0; // Reset velocity on snap
+            momentumRef.current = 0; // CRITICAL: Stop auto-scroll fighting
+            coastingVelocityRef.current = 0;
           } else if (isCurrentlyInertial) {
             // --- STATE: BRIDGING ---
             scrollStateRef.current = 'BRIDGING';
@@ -292,16 +293,24 @@ export const useScrollPhysics = ({
             const bridgingLerp = effectiveLerp * VOICE_CONFIG.SCROLL_MODES.BRIDGING.speedMultiplier;
             const voiceDelta = diff * (bridgingLerp * timeScale);
 
-            deltaScroll += voiceDelta;
-            coastingVelocityRef.current = voiceDelta / timeScale;
+            // Damping check to prevent micro-jitter
+            if (Math.abs(voiceDelta) > VOICE_CONFIG.DAMPING.DEADZONE_PX) {
+              deltaScroll += voiceDelta;
+              momentumRef.current = 0; // Clear momentum while voice tracking
+              coastingVelocityRef.current = voiceDelta / timeScale;
+            }
           } else {
             // --- STATE: TRACKING ---
             scrollStateRef.current = 'TRACKING';
             const effectiveLerp = lerpFactorRef.current || VOICE_CONFIG.SCROLL_LERP_FACTOR;
             const voiceDelta = diff * (effectiveLerp * timeScale);
 
-            deltaScroll += voiceDelta;
-            coastingVelocityRef.current = voiceDelta / timeScale;
+            // Damping check to prevent micro-jitter
+            if (Math.abs(voiceDelta) > VOICE_CONFIG.DAMPING.DEADZONE_PX) {
+              deltaScroll += voiceDelta;
+              momentumRef.current = 0; // Clear momentum while voice tracking
+              coastingVelocityRef.current = voiceDelta / timeScale;
+            }
           }
           lastTargetVoiceScrollRef.current = target;
         } else {
