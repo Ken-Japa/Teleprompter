@@ -12,8 +12,7 @@ import { TutorialModal } from "../ui/TutorialModal";
 import { QRCodeModal } from "./QRCodeModal";
 import { SyncButton } from "../ui/SyncButton";
 import { useBackingTrack } from "../../hooks/useBackingTrack";
-
-
+import { useVoiceStore } from "../../store/useVoiceStore";
 
 interface PrompterHUDProps {
     showHud: boolean;
@@ -26,15 +25,11 @@ interface PrompterHUDProps {
     resetTimerSignal: boolean;
     onStateChange: (isPlaying: boolean, speed: number) => void;
     onResetPrompter: () => void;
-    toggleVoice: () => void;
     onExit: () => void;
     onSync: () => void;
     onEdit: () => void;
     isCameraMode?: boolean;
-    isVoiceMode: boolean;
     isPro: boolean;
-    voiceApiSupported: boolean;
-    voiceApiError: string | null;
     togglePiP?: () => void;
     isPiPActive?: boolean;
     // Recording Props
@@ -66,11 +61,12 @@ interface PrompterHUDProps {
 
 
 export const PrompterHUD = memo(
-    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isVoiceMode, isPro, voiceApiSupported, voiceApiError, resetTimerSignal, onStateChange, onResetPrompter, toggleVoice, onExit, onSync, onEdit, togglePiP, isPiPActive, recordingState, recordingActions, onPreviousPart, onNextPart, hasParts, detectedBpm, autoBpmError, setShowPaywall, backingTrack, isNDIEnabled, onToggleNDI }: PrompterHUDProps) => {
+    ({ showHud, peerId, status, isPlaying, speed, settings, actions, isPro, resetTimerSignal, onStateChange, onResetPrompter, onExit, onSync, onEdit, togglePiP, isPiPActive, recordingState, recordingActions, onPreviousPart, onNextPart, hasParts, detectedBpm, autoBpmError, setShowPaywall, backingTrack, isNDIEnabled, onToggleNDI }: PrompterHUDProps) => {
 
         const { t } = useTranslation();
         const { recordingMode = 'host' } = settings;
         const { setRecordingMode } = actions;
+        const { isListening: isVoiceMode, isSupported: voiceApiSupported, error: voiceApiError, toggleListening: toggleVoice } = useVoiceStore();
 
         const handleToggleRecordingMode = () => {
             setRecordingMode(recordingMode === "remote" ? "host" : "remote");

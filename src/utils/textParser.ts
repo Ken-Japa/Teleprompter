@@ -8,12 +8,14 @@ export const parseTextToSentences = (
 ): {
     sentences: Sentence[];
     fullCleanText: string;
+    fullCleanTextBuffer: Uint16Array;
     charToSentenceMap: Int32Array;
 } => {
     if (!text)
         return {
             sentences: [],
             fullCleanText: "",
+            fullCleanTextBuffer: new Uint16Array(0),
             charToSentenceMap: new Int32Array(0),
         };
 
@@ -33,9 +35,9 @@ export const parseTextToSentences = (
     // Unified Regex: Matches color tags <r>...</r> OR brackets [...]
     // Group 1: Tag char (r,y,g,b,blue)
     // Group 2: Tag content
-    // Group 3: Square Bracket match [ ... ] (max 1000 chars, no newlines)
-    // Group 4: Angle Bracket match < ... > (max 1000 chars, no newlines, avoids known tags)
-    const TOKEN_REGEX = /<(r|y|g|b|blue)>([\s\S]*?)<\/\1>|(\[[^\]\n]{1,1000}\])|(<(?!\/?(?:bold|i|u|b|r|y|g|strong|em|blue)\b)[^>\n]{1,1000}>)/g;
+    // Group 3: Square Bracket match [ ... ] (max 100 chars for auto-coloring, no newlines)
+    // Group 4: Angle Bracket match < ... > (max 100 chars for auto-coloring, no newlines, avoids known tags)
+    const TOKEN_REGEX = /<(r|y|g|b|blue)>([\s\S]*?)<\/\1>|(\[[^\]\n]{1,100}\])|(<(?!\/?(?:bold|i|u|b|r|y|g|strong|em|blue)\b)[^>\n]{1,100}>)/g;
 
     let lastIndex = 0;
     let match;
@@ -115,7 +117,7 @@ export const parseTextToSentences = (
         const fragments: typeof tokens = [];
 
         // Pass 2a: Process BOLD <bold>...</bold> or <b>...</b>
-        const BOLD_REGEX = /<(?:bold|strong)>([\s\S]*?)<\/(?:bold|strong)>/g;
+        const BOLD_REGEX = /<(?:bold|strong|b)>([\s\S]*?)<\/(?:bold|strong|b)>/g;
         let boldLastIndex = 0;
         let boldMatch;
         let baseStart = token.absoluteStart + (token.innerOffset || 0);
@@ -301,22 +303,23 @@ export const parseTextToSentences = (
 
     processedTokens.forEach((token) => {
         if (token.isTag) {
-            // Force break BEFORE the tag if there's content
-            if (currentCleanContent.trim().length > 0) {
-                finalizeSentence();
+            // Force break BEFORE the tag ONLY if it's a known command or contains a newline
+            // Style-like brackets (e.g. <wave> or [Verse 1]) should stay with the content if they are short
+            const isCommandOrNewline = /\[(stop|pause|speed|loop|count|rest|part|bpm|section|parar|pare|pausa|velocidade|início loop|contar|conta|descanso|repouso|parte|slide|cena|seção|seccao).*?\]/i.test(token.text) || token.text.includes('\n');
+
+            if (isCommandOrNewline) {
+                if (currentCleanContent.trim().length > 0) {
+                    finalizeSentence();
+                }
+
+                const tagAbsoluteStart = (token.absoluteStart + (token.innerOffset || 0));
+                currentSentenceStartIndex = tagAbsoluteStart;
+                currentFragments.push({ text: token.text, type: token.type, bold: token.bold, italic: token.italic, underline: token.underline });
+                currentCleanContent = token.text;
+                finalizeSentence(true);
+                return;
             }
-
-            // The actual character index in the original text for this tag
-            const tagAbsoluteStart = (token.absoluteStart + (token.innerOffset || 0));
-
-            // Start tag sentence
-            currentSentenceStartIndex = tagAbsoluteStart;
-            currentFragments.push({ text: token.text, type: token.type, bold: token.bold, italic: token.italic, underline: token.underline });
-            currentCleanContent = token.text;
-
-            // Force break AFTER the tag
-            finalizeSentence(true);
-            return;
+            // Otherwise, treat as normal fragment that doesn't split sentences
         }
 
         const parts = token.text.split(/([.!?\n]+)/);
@@ -441,9 +444,15 @@ export const parseTextToSentences = (
 
     const map = new Int32Array(tempMap);
 
+    const fullCleanTextBuffer = new Uint16Array(builtString.length);
+    for (let i = 0; i < builtString.length; i++) {
+        fullCleanTextBuffer[i] = builtString.charCodeAt(i);
+    }
+
     return {
         sentences: processedSentences,
         fullCleanText: builtString,
+        fullCleanTextBuffer: fullCleanTextBuffer,
         charToSentenceMap: map,
     };
 };
@@ -632,3 +641,18 @@ const isChordLine = (text: string): boolean => {
     return (chordCount / tokens.length) >= 0.65;
 };
 
+/**
+ * Finds the next sentence that is NOT inertial and not a command.
+ * This ensures focus and auto-advance skip non-readable segments.
+ */
+export const findNextMatchableSentence = (sentences: Sentence[], index: number): number => {
+    let current = index;
+    if (current < 0) current = 0;
+
+    while (current < sentences.length) {
+        const s = sentences[current];
+        if (!s.isInertial && !s.command) return current;
+        current++;
+    }
+    return Math.max(0, sentences.length - 1); // Fallback to last or first
+};

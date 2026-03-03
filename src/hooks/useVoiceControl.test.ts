@@ -1,12 +1,38 @@
 import { renderHook, act } from "@testing-library/react";
+import { useState, useRef } from "react";
 import { useVoiceControl } from "./useVoiceControl";
 import { vi, describe, it, expect, beforeEach, afterEach } from "vitest";
 import { TranslationProvider } from "./useTranslation";
+import { useVoiceStore } from "../store/useVoiceStore";
 
 // Mocks
 const mockStart = vi.fn();
 const mockStop = vi.fn();
 const mockAbort = vi.fn();
+
+// Mock useVoiceWorker to be synchronous in tests
+vi.mock("./voice/useVoiceWorker", () => {
+    return {
+        useVoiceWorker: (script: string) => {
+            const [lastMatch, setLastMatch] = useState<any>(null);
+            const lastMatchRef = useRef<any>(null);
+
+            return {
+                get lastMatch() { return lastMatchRef.current || lastMatch; },
+                isProcessing: false,
+                error: null,
+                postMatch: (params: any) => {
+                    // Logic to simulate a match if transcript matches start of script
+                    if (params.transcript.toLowerCase() === "hello" && script.toLowerCase().startsWith("hello")) {
+                        const result = { index: 0, ratio: 0, distance: 0 };
+                        lastMatchRef.current = result;
+                        setLastMatch(result);
+                    }
+                }
+            };
+        }
+    };
+});
 
 // Global reference to the last created instance
 let lastInstance: MockSpeechRecognition | null = null;
@@ -43,6 +69,18 @@ describe("useVoiceControl Hook", () => {
         lastInstance = null;
         window.SpeechRecognition = MockSpeechRecognition as any;
         window.webkitSpeechRecognition = MockSpeechRecognition as any;
+
+        // Reset Zustand Store
+        useVoiceStore.setState({
+            activeSentenceIndex: 0,
+            voiceProgress: 0,
+            isListening: false,
+            isSupported: true,
+            isScriptFinished: false,
+            error: null,
+            adaptedLerpFactor: 0.1,
+            sessionSummary: null,
+        });
     });
 
     afterEach(() => {
@@ -59,8 +97,8 @@ describe("useVoiceControl Hook", () => {
             wrapper: TranslationProvider,
         });
 
-        expect(result.current.activeSentenceIndex).toBe(-1);
-        expect(result.current.voiceProgress).toBe(0);
+        expect(useVoiceStore.getState().activeSentenceIndex).toBe(-1); // Defaults to -1
+        expect(useVoiceStore.getState().voiceProgress).toBe(0);
     });
 
     it("Should handle startListening", () => {
@@ -115,7 +153,7 @@ describe("useVoiceControl Hook", () => {
         });
 
         // Should match the first sentence (index 0)
-        expect(result.current.activeSentenceIndex).toBe(0);
+        expect(useVoiceStore.getState().activeSentenceIndex).toBe(0);
     });
 
     it("Should handle restart on unexpected end", () => {

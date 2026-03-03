@@ -2,7 +2,7 @@
  * Pronunciation Matcher
  * Normalizes common speech recognition errors to improve matching accuracy
  */
-import { levenshteinDistance } from './stringSimilarity';
+import { levenshteinDistance } from './voice/levenshtein';
 
 interface PronunciationRule {
     pattern: RegExp;
@@ -228,6 +228,7 @@ class PronunciationLearner {
     }
 
     private save() {
+        if (typeof localStorage === 'undefined') return;
         try {
             const data = JSON.stringify(Array.from(this.customRules.entries()));
             localStorage.setItem(this.STORAGE_KEY, data);
@@ -237,6 +238,7 @@ class PronunciationLearner {
     }
 
     private load() {
+        if (typeof localStorage === 'undefined') return;
         try {
             const data = localStorage.getItem(this.STORAGE_KEY);
             if (data) {
